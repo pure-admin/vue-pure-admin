@@ -1,30 +1,30 @@
-# CURD-TS
+# CURD-TS 正在开发中……
 一套基于TS的增删改查系统，前端语言Vue3.0、React、Angular，后端语言node+express，采用了三种数据库MySQL、MongoDB、SQLite编写。  
 A TS based add, delete, modify and query system, the front-end language vue3.0, react, angular, back-end language node + Express, using three kinds of database mysql, mongodb, SQLite  
 
-# 结构介绍 
+## 结构介绍 
 ① sql为数据库存放文件夹  
 ② doc为文档编写存放文件夹  
 ③ backend为后端项目存放文件夹  
 ④ frontend为前端项目存放文件夹  
 
-# Structure introduction 
+## Structure introduction 
 ① SQL stores the folder for the database  
 ② Doc write storage folder for documents  
 ③ Backend stores the folder for the back-end project  
 ④ Frontend stores the folder for the front-end project  
 
-# 前端对应代码存放目录
+## 前端对应代码存放目录
 vue => /frontend/vue-ts  
 react => /frontend/react-ts  
 angular => /frontend/angular-ts  
 
-# Front end corresponding code storage directory
+## Front end corresponding code storage directory
 vue => /frontend/vue-ts  
 react => /frontend/react-ts  
 angular => /frontend/angular-ts  
 
-# 注意点
+## 注意点
 ① 接口文档使用Swagger  
 ② 编写者必须严格遵守项目中tslint编写规则  
 ③ 编写者必须严格遵循代码命名语义化、提高代码可读性  
@@ -33,7 +33,7 @@ angular => /frontend/angular-ts
 ⑥ 编写者提交代码发生冲突，必须先解决，在推送，严禁使用git push -f origin 分支  
 ⑦ 编写者无须在项目中放置.gitignore文件，如需加入别的git忽略请放在CURD-TS文件夹跟目录的.gitignore文件  
 
-# Attention point
+## Attention point
 ① Interface documents use swagger  
 ② The author must strictly abide by the tslint writing rules in the project  
 ③ The author must strictly follow the code naming semantics and improve the readability of the code  
