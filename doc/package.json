@@ -1,0 +1,14 @@
+{
+  "name": "simplicity",
+  "version": "0.0.1",
+  "description": "简约而不简单的文档",
+  "author": "和尚",
+  "license": "ISC",
+  "scripts": {
+    "docs": "vitepress dev docs",
+    "docs:build": "vitepress build docs"
+  },
+  "devDependencies": {
+    "vitepress": "^0.7.4"
+  }
+}
