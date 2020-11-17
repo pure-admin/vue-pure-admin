@@ -1,5 +1,7 @@
 # description
 
+### A system of adding, deleting, modifying and checking based on TS
+
 ## Main Technologies:
 | front end | after end | database | 
 | -- |:--:| -- |
