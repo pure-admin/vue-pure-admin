@@ -2,6 +2,9 @@
 一套基于TS的增删改查系统，前端语言Vue3.0、React、Angular，后端语言node+express，采用了三种数据库MySQL、MongoDB、SQLite编写。  
 A TS based add, delete, modify and query system, the front-end language vue3.0, react, angular, back-end language node + Express, using three kinds of database mysql, mongodb, SQLite  
 
+## 文档地址
+https://xiaoxian521.github.io/zh/standard/
+
 ## 结构介绍 
 ① sql为数据库存放文件夹  
 ② doc为文档编写存放文件夹  
