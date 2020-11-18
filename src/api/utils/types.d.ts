@@ -45,6 +45,4 @@ export default class EnclosureHttp {
         params?: T,
         config?: EnclosureHttpRequestConfig
     ): Promise<T>
-    static install(config?: EnclosureHttpRequestConfig): void
-    static getInstance(): EnclosureHttp
 }

@@ -22,7 +22,7 @@ class EnclosureHttp {
   private static initConfig: EnclosureHttpRequestConfig = {};
 
   // 保存当前Axios实例对象
-  private static axiosInstance: AxiosInstance;
+  private static axiosInstance: AxiosInstance  = Axios.create(genConfig());
 
   // 保存 EnclosureHttp实例
   private static EnclosureHttpInstance: EnclosureHttp;
@@ -153,6 +153,7 @@ class EnclosureHttp {
     const instance = EnclosureHttp.axiosInstance;
     instance.interceptors.response.use(
       (response: EnclosureHttpResoponse) => {
+        
         // 请求每次成功一次就删除当前canceltoken标记
         const cancelKey = this.genUniqueKey(response.config);
         this.deleteCancelTokenByCancelKey(cancelKey);
@@ -191,26 +192,11 @@ class EnclosureHttp {
     );
   }
 
-  /**
-   * @description 获取唯一实例
-   * @returns EnclosureHttp实例
-   */
-  static getInstance(): EnclosureHttp {
-    if (!this.EnclosureHttpInstance) {
-      this.axiosInstance = Axios.create(this.initConfig);
-      this.EnclosureHttpInstance = new EnclosureHttp();
-      this.EnclosureHttpInstance.httpInterceptorsRequest();
-      this.EnclosureHttpInstance.httpInterceptorsResponse();
-    }
-    return this.EnclosureHttpInstance;
-  }
-
-  // eslint-disable-next-line class-methods-use-this
   public request<T>(
     method: RequestMethods,
     url: string,
     param?: AxiosRequestConfig,
-    axiosConfig?: EnclosureHttpRequestConfig
+    axiosConfig?: EnclosureHttpRequestConfig,
   ): Promise<T> {
     const config = transformConfigByMethod(param, {
       method,
@@ -226,8 +212,7 @@ class EnclosureHttp {
     }
 
     return new Promise((resolve, reject) => {
-      Axios
-        .request(config)
+      EnclosureHttp.axiosInstance.request(config)
         .then((response: EnclosureHttpResoponse) => {
           resolve(response.data);
         })
@@ -252,16 +237,7 @@ class EnclosureHttp {
   ): Promise<T> {
     return this.request<T>("get", url, params, config);
   }
-  
-  /**
-   * 注入初始化配置
-   * @description 私有化方法
-   * @param config axios配置
-   * @returns void 0
-   */
-  static install(config?: EnclosureHttpRequestConfig): void {
-    this.initConfig = genConfig(config);
-  }
+
 }
 
 export default EnclosureHttp;

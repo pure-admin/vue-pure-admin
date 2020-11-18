@@ -6,7 +6,7 @@
 import { ref, onMounted, nextTick } from "vue"
 export default {
   mounted() {
-    this.$http.request("get", "https://api.github.com/users")
+    this.$http.request("get", "/getApi")
   },
   setup() {
     const text = ref("vue-ts")
