@@ -8,6 +8,7 @@ const config = {
         lang: 'zh-CN',
         nav: [
           { text: '书写规范', link: '/zh/standard/' },
+          { text: '插件分享', link: '/zh/plugs/' },
         ],
         sidebar: [
           {
@@ -24,6 +25,7 @@ const config = {
         lang: 'en-US',
         nav: [
           { text: 'Standard', link: '/en/standard/' },
+          { text: 'PlugsShare', link: '/zh/plugs/' },
         ],
         sidebar: [
           {

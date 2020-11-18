@@ -29,5 +29,4 @@ GitHub：https://github.com/ChaoSuperScholar/smallhouse
 ```
 Yinwenxu 
 ```
-GitHub：https://github.com/Yinwenxu/Student
 :::
