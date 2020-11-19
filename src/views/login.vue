@@ -1,18 +1,24 @@
 <template>
-  <div class="login">{{ text }}</div>
+  <div class="login">
+    <info :info="contextInfo" />
+  </div>
 </template>
 
 <script lang="ts">
 import { ref } from "vue"
+import info, { ContextProps } from "../components/info.vue"
+const contextInfo: ContextProps = {
+  userName: "admin",
+  passWord: "123456",
+  dynamicText: "登录",
+}
 export default {
-  mounted() {
-    // @ts-ignore
-    this.$http.request("get", "/getApi")
+  components: {
+    info,
   },
   setup() {
-    const text = ref("login")
     return {
-      text,
+      contextInfo,
     }
   },
 }
