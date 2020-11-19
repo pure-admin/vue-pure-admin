@@ -39,5 +39,5 @@ app.get('/getApi', (req, res) => {
 })
 
 app.listen(PORT, () => {
-    console.log('Swagger文档地址:', `http://localhost:${PORT}`);
+  console.log('Swagger文档地址:', `http://localhost:${PORT}`);
 })
