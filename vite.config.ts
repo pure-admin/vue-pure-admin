@@ -1,3 +1,12 @@
+const dotEnv = require('dotenv')
+const path = require('path')
+
+const VUE_APP_ENV = 'development'
+const resolve = dir => path.join(__dirname, dir)
+const { VUE_APP_PROXY_DOMAIN } = dotEnv.config({
+  path: resolve(`.env.${VUE_APP_ENV}`)
+}).parsed
+
 module.exports = {
   alias: {},
   // 是否自动在浏览器打开
@@ -18,7 +27,7 @@ module.exports = {
   // 反向代理
   proxy: {
     '/api': {
-      target: 'http://127.0.0.1:3000',
+      target: VUE_APP_PROXY_DOMAIN,
       changeOrigin: true,
       rewrite: path => path.replace(/^\/api/, '')
     }

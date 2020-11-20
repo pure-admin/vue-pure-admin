@@ -13,6 +13,10 @@ const contextInfo: ContextProps = {
   dynamicText: "登录",
 }
 export default {
+  mounted() {
+    // @ts-ignore
+    this.$http.request("get", "/getApi")
+  },
   components: {
     info,
   },
