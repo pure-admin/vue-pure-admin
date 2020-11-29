@@ -1,43 +1,26 @@
 import app from "./app";
-const PORT = 3000;
+import * as open from "open";
+import config from './config';
+import Logger from './loaders/logger';
 const expressSwagger = require('express-swagger-generator')(app)
+expressSwagger(config.options)
 
 // 引入测试数据
 const test = require("./router/api/test")
-
-let options = {
-  swaggerDefinition: {
-    info: {
-      description: 'This is a sample server',
-      title: 'Swagger',
-      version: '1.0.0'
-    },
-    host: 'localhost:3000',
-    basePath: '/',
-    produces: ['application/json', 'application/xml'],
-    schemes: ['http', 'https'],
-    securityDefinitions: {
-      JWT: {
-        type: 'apiKey',
-        in: 'header',
-        name: 'Authorization',
-        description: ''
-      }
-    }
-  },
-  route: {
-    url: '/swagger-ui.html',
-    docs: '/swagger.json' //swagger文件 api
-  },
-  basedir: __dirname, //app absolute path
-  files: ['./router/api/*.ts'] //Path to the API handle folder
-}
-expressSwagger(options)
 
 app.get('/getApi', (req, res) => {
   test.testGetApi(req, res)
 })
 
-app.listen(PORT, () => {
-  console.log('Swagger文档地址:', `http://localhost:${PORT}`);
-})
+app.listen(config.port, () => {
+  Logger.info(`
+    ################################################
+    🛡️  Swagger文档地址: http://localhost:${config.port} 🛡️
+    ################################################
+  `);
+}).on('error', err => {
+  Logger.error(err);
+  process.exit(1);
+});
+
+open(`http://localhost:${config.port}`);  // 自动打开默认浏览器
