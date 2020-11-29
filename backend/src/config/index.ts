@@ -49,9 +49,13 @@ export default {
     concurrency: parseInt(process.env.AGENDA_CONCURRENCY, 10),
   },
   mysql: {
-    user: 'admin',
-    password: '123456'
+    host: 'localhost',
+    charset: 'utf8_general_ci',
+    user: 'root',
+    password: '123456789'
   },
+  mongodb:{},
+  sqlite:{},
   api: {
     prefix: '/api',
   },

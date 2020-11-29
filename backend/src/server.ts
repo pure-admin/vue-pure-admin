@@ -1,9 +1,13 @@
 import app from "./app";
 import * as open from "open";
 import config from './config';
+import { user } from "./models/mysql";
 import Logger from './loaders/logger';
-const expressSwagger = require('express-swagger-generator')(app)
+import { queryTable } from "./utils/initMysql";
+const expressSwagger = require('express-swagger-generator')(app);
 expressSwagger(config.options)
+
+queryTable(user)
 
 // 引入测试数据
 const test = require("./router/api/test")
