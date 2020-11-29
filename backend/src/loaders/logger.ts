@@ -1,6 +1,6 @@
 
-import config from '../config';
-import * as winston from 'winston';
+import config from "../config";
+import * as winston from "winston";
 
 const transports = [];
 if(process.env.NODE_ENV !== 'development') {

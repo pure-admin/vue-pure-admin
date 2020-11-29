@@ -1,5 +1,5 @@
-import * as bodyParser from 'body-parser';
-import * as express from 'express';
+import * as express from "express";
+import * as bodyParser from "body-parser";
 
 class App {
     public app: express.Application;

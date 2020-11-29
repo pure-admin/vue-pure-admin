@@ -10,10 +10,37 @@ expressSwagger(config.options)
 queryTable(user)
 
 // 引入测试数据
-const test = require("./router/api/test")
+import {   
+  login,
+  register,
+  updateList,
+  deleteList,
+  searchPage,
+  searchVague,
+} from "./router/api/mysql"
 
-app.get('/getApi', (req, res) => {
-  test.testGetApi(req, res)
+app.get('/login', (req, res) => {
+  login(req, res)
+})
+
+app.get('/register', (req, res) => {
+  register(req, res)
+})
+
+app.get('/updateList', (req, res) => {
+  updateList(req, res)
+})
+
+app.get('/deleteList', (req, res) => {
+  deleteList(req, res)
+})
+
+app.get('/register', (req, res) => {
+  register(req, res)
+})
+
+app.get('/searchVague', (req, res) => {
+  searchVague(req, res)
 })
 
 app.listen(config.port, () => {
