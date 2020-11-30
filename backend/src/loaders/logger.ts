@@ -1,9 +1,9 @@
 
-import config from "../config";
-import * as winston from "winston";
+import config from "../config"
+import * as winston from "winston"
 
-const transports = [];
-if(process.env.NODE_ENV !== 'development') {
+const transports = []
+if (process.env.NODE_ENV !== 'development') {
   transports.push(
     new winston.transports.Console()
   )
@@ -30,6 +30,6 @@ const LoggerInstance = winston.createLogger({
     winston.format.json()
   ),
   transports
-});
+})
 
-export default LoggerInstance;
+export default LoggerInstance
