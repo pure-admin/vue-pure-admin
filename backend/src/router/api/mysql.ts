@@ -1,6 +1,7 @@
-import md5 from 'md5-node'
-import jwt from "jsonwebtoken"
-import jwtSecret from "../../config"
+
+import secret from "../../config"
+import * as jwt from "jsonwebtoken"
+import { createHash } from "crypto"
 import Logger from "../../loaders/logger"
 import { Request, Response } from "express"
 import { createMathExpr } from "svg-captcha"
@@ -11,10 +12,10 @@ export interface dataModel {
 }
 
 // 保存验证码
-let verify: number | string
+let generateVerify: number | string
 
 /**
- * @typedef Point
+ * @typedef Login
  * @property {string} username.required - 用户名
  * @property {string} password.required - 密码
  * @property {string} verify.required - 验证码
@@ -33,56 +34,80 @@ let verify: number | string
 /**
  * 登录
  * @route POST /login
- * @param {Point.model} point.body.required - the new point
+ * @param {Login.model} point.body.required - the new point
  * @produces application/json application/xml
  * @consumes application/json application/xml
  * @returns {Response.model} 200 
- * @returns {Array.<Point>} Point 
+ * @returns {Array.<Login>} Login
  * @headers {integer} 200.X-Rate-Limit 
  * @headers {string} 200.X-Expires-After 
  * @security JWT
  */
 
 const login = async (req: Request, res: Response) => {
-  console.log(req.body)
-  // if (verify !== req.query.verify) return res.json({
-  //   code: -1,
-  //   info: "请输入正确的验证码"
-  // })
-  //生成jwt(token令牌)  {expiresIn:3600}为token的过期时间，这里设置的是1小时
-  // const accessToken = jwt.sign({
-  //   accountId: account.id
-  // }, settings.accessTokenSecret, { expiresIn: 3600 })
-  // const idToken = jwt.sign({
-  //   sub: account.id,
-  //   preferred_username: account.username
-  // }, "some secret that doesn't matter")
-  // //返回token
-  // response.status(200).json({
-  //   access_token: accessToken,
-  //   id_token: idToken
-  // })
-  // accessToken
-}
-
-/**
- * 注册
- * @route POST /register
- * @summary 注册
- * @group register - 注册
- * @param {string} username.query.required - username 
- * @param {string} password.query.required - password
- * @param {string} verify.query.required - verify
- * @returns {object} 200 
- * @security JWT
- */
-
-const register = async (req: Request, res: Response) => {
-  if (verify !== req.query.verify) return res.json({
+  const { username, password, verify } = req.body
+  if (generateVerify !== verify) return res.json({
     code: -1,
     info: "请输入正确的验证码"
   })
-  let sql: string = 'select * from users where username=' + "'" + req.query.username + "'"
+  let sql: string = 'select * from users where username=' + "'" + username + "'"
+  connection.query(sql, async function (err, data: dataModel) {
+    if (data.length == 0) {
+      await res.json({
+        code: -1,
+        info: "账号尚未被注册"
+      })
+    } else {
+      if (createHash('md5').update(password).digest('hex') == data[0].password) {
+        const accessToken = jwt.sign({
+          accountId: data[0].id
+        }, secret.jwtSecret, { expiresIn: 3600 })
+        await res.json({
+          code: 0,
+          info: "登录成功",
+          accessToken
+        })
+      } else {
+        await res.json({
+          code: -1,
+          info: "密码错误"
+        })
+      }
+    }
+  })
+}
+
+/**
+ * @typedef Register
+ * @property {string} username.required - 用户名
+ * @property {string} password.required - 密码
+ * @property {string} verify.required - 验证码
+ */
+
+/**
+* 注册
+* @route POST /register
+* @param {Register.model} point.body.required - the new point
+* @produces application/json application/xml
+* @consumes application/json application/xml
+* @returns {Response.model} 200
+* @returns {Array.<Register>} Register
+* @headers {integer} 200.X-Rate-Limit
+* @headers {string} 200.X-Expires-After
+* @security JWT
+*/
+
+const register = async (req: Request, res: Response) => {
+  const { username, password, verify } = req.body
+  if (generateVerify !== verify) return res.json({
+    code: -1,
+    info: "请输入正确的验证码"
+  })
+  if (password.length < 6) return res.json({
+    code: -1,
+    info: "密码长度不能小于6位"
+  })
+  let sql: string = 'select * from users where username=' + "'" + username + "'"
   connection.query(sql, async (err, data: dataModel) => {
     if (data.length > 0) {
       await res.json({
@@ -90,7 +115,7 @@ const register = async (req: Request, res: Response) => {
         info: "账号已被注册"
       })
     } else {
-      let sql: string = 'insert into users (username,password) value(' + "'" + req.query.username + "'" + ',' + "'" + req.query.password +
+      let sql: string = 'insert into users (username,password) value(' + "'" + username + "'" + ',' + "'" + createHash('md5').update(password).digest('hex') +
         "'" + ')'
       connection.query(sql, async function (err) {
         if (err) {
@@ -174,7 +199,7 @@ const captcha = async (req: Request, res: Response) => {
     mathMax: 4,
     mathOperator: "+"
   })
-  verify = create.text
+  generateVerify = create.text
   res.type('svg') // 响应的类型
   res.json({ code: 1, msg: create.text, svg: create.data })
 }

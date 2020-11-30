@@ -23,7 +23,6 @@
     "express": "^4.17.1",
     "express-swagger-generator": "^1.1.17",
     "jsonwebtoken": "^8.5.1",
-    "md5-node": "^1.0.1",
     "mysql2": "^2.2.5",
     "svg-captcha": "^1.4.0",
     "winston": "^3.3.3"

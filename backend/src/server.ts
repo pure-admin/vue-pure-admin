@@ -1,15 +1,14 @@
 import app from "./app"
 import * as open from "open"
-import config from './config'
+import config from "./config"
 import { user } from "./models/mysql"
-import Logger from './loaders/logger'
+import Logger from "./loaders/logger"
 import { queryTable } from "./utils/initMysql"
-const expressSwagger = require('express-swagger-generator')(app)
+const expressSwagger = require("express-swagger-generator")(app)
 expressSwagger(config.options)
 
 queryTable(user)
 
-// 引入测试数据
 import {
   login,
   register,
@@ -59,4 +58,4 @@ app.listen(config.port, () => {
   process.exit(1)
 })
 
-open(`http://localhost:${config.port}`)  // 自动打开默认浏览器
+// open(`http://localhost:${config.port}`)  // 自动打开默认浏览器
