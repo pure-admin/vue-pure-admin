@@ -31,7 +31,7 @@ app.get('/updateList', (req, res) => {
   updateList(req, res)
 })
 
-app.get('/deleteList', (req, res) => {
+app.delete('/deleteList/:id', (req, res) => {
   deleteList(req, res)
 })
 

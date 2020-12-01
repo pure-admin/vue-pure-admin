@@ -32,7 +32,6 @@ let generateVerify: number
  */
 
 /**
- * 登录
  * @route POST /login
  * @param {Login.model} point.body.required - the new point
  * @produces application/json application/xml
@@ -87,7 +86,6 @@ const login = async (req: Request, res: Response) => {
  */
 
 /**
-* 注册
 * @route POST /register
 * @param {Register.model} point.body.required - the new point
 * @produces application/json application/xml
@@ -150,16 +148,41 @@ const updateList = async (req: Request, res: Response) => {
 }
 
 /**
- * 列表删除
- * @route GET /deleteList
+ * @typedef DeleteList
+ * @property {integer} id.required - 当前id
+ */
+
+/**
+ * @route DELETE /deleteList/{id}
  * @summary 列表删除
+ * @param {DeleteList.model} id.path.required - 用户id
  * @group 用户管理相关
  * @returns {object} 200 
+ * @returns {Array.<DeleteList>} DeleteList
  * @security JWT
  */
 
 const deleteList = async (req: Request, res: Response) => {
-  res.json({ code: 1, msg: "成功" })
+  const { id } = req.params
+  let payload = null
+  try {
+    const authorizationHeader = req.get("Authorization")
+    const accessToken = authorizationHeader.substr("Bearer ".length)
+    payload = jwt.verify(accessToken, secret.jwtSecret)
+  } catch (error) {
+    return res.status(401).end()
+  }
+  var sql = 'DELETE FROM users where id=' + "'" + id + "'"
+  connection.query(sql, async function (err, data) {
+    if (err) {
+      console.log(err)
+    } else {
+      await res.json({
+        code: 0,
+        info: '删除成功'
+      })
+    }
+  })
 }
 
 /**
@@ -169,7 +192,6 @@ const deleteList = async (req: Request, res: Response) => {
  */
 
 /**
-* 分页查询
 * @route POST /searchPage
 * @param {SearchPage.model} point.body.required - the new point
 * @produces application/json application/xml
@@ -212,7 +234,6 @@ const searchPage = async (req: Request, res: Response) => {
  */
 
 /**
-* 模糊查询（根据用户名）
 * @route POST /searchVague
 * @param {SearchVague.model} point.body.required - the new point
 * @produces application/json application/xml
@@ -257,7 +278,6 @@ const searchVague = async (req: Request, res: Response) => {
 }
 
 /**
- * 图形验证码
  * @route GET /captcha
  * @summary 图形验证码
  * @group captcha - 图形验证码
