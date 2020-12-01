@@ -1,12 +1,12 @@
-
+import * as mysql from "mysql2"
 import secret from "../../config"
 import * as jwt from "jsonwebtoken"
 import { createHash } from "crypto"
 import Logger from "../../loaders/logger"
 import { Request, Response } from "express"
 import { createMathExpr } from "svg-captcha"
-import { connection } from '../../utils/initMysql'
-
+import getFormatDate from "../../utils/date"
+import { connection } from "../../utils/initMysql"
 export interface dataModel {
   length: number
 }
@@ -115,8 +115,9 @@ const register = async (req: Request, res: Response) => {
         info: "账号已被注册"
       })
     } else {
-      let sql: string = 'insert into users (username,password) value(' + "'" + username + "'" + ',' + "'" + createHash('md5').update(password).digest('hex') +
-        "'" + ')'
+      let time = await getFormatDate()
+      let sql: string = 'insert into users (username,password,time) value(' + "'" + username + "'" + ',' + "'" + createHash('md5').update(password).digest('hex') +
+        "'" + ',' + "'" + time + "'" + ')'
       connection.query(sql, async function (err) {
         if (err) {
           Logger.error(err)
@@ -172,16 +173,51 @@ const searchPage = async (req: Request, res: Response) => {
 }
 
 /**
- * 模糊查询
- * @route GET /searchVague
- * @summary 模糊查询
- * @group searchVague - 模糊查询
- * @returns {object} 200 
- * @security JWT
+ * @typedef SearchVague
+ * @property {string} username.required - 用户名
  */
 
+/**
+* 模糊查询（根据用户名）
+* @route POST /searchVague
+* @param {SearchVague.model} point.body.required - the new point
+* @produces application/json application/xml
+* @consumes application/json application/xml
+* @returns {Response.model} 200
+* @returns {Array.<SearchVague>} SearchVague
+* @headers {integer} 200.X-Rate-Limit
+* @headers {string} 200.X-Expires-After
+* @security JWT
+*/
+
 const searchVague = async (req: Request, res: Response) => {
-  res.json({ code: 1, msg: "成功" })
+  const { username } = req.body
+  let payload = null
+  try {
+    const authorizationHeader = req.get("Authorization")
+    const accessToken = authorizationHeader.substr("Bearer ".length)
+    payload = jwt.verify(accessToken, secret.jwtSecret)
+  } catch (error) {
+    return res.status(401).end()
+  }
+  if (username === "" || username === null) return res.json({
+    code: -1,
+    info: "搜索信息不能为空"
+  })
+  let sql = 'select * from users'
+  sql += " WHERE username LIKE " + mysql.escape("%" + username + "%")
+  connection.query(sql, function (err, data) {
+    connection.query(sql, async function (err) {
+      if (err) {
+        Logger.error(err)
+      } else {
+        await res.json({
+          code: 0,
+          info: data
+        })
+      }
+    })
+  })
 }
 
 /**

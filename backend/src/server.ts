@@ -39,7 +39,7 @@ app.get('/register', (req, res) => {
   register(req, res)
 })
 
-app.get('/searchVague', (req, res) => {
+app.post('/searchVague', (req, res) => {
   searchVague(req, res)
 })
 
