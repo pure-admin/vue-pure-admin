@@ -16,9 +16,9 @@ export default {
   options: {
     swaggerDefinition: {
       info: {
-        description: 'This is a server',
+        description: 'CURD-TS专用接口',
         title: 'Swagger',
-        version: '1.0.0'
+        version: require('../../package.json').version
       },
       host: `localhost:${parseInt(process.env.PORT, 10)}`,
       basePath: '/',
@@ -29,7 +29,7 @@ export default {
           type: 'apiKey',
           in: 'header',
           name: 'Authorization',
-          description: ''
+          description: 'Bearer Authorization'
         }
       }
     },

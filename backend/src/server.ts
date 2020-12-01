@@ -35,8 +35,8 @@ app.get('/deleteList', (req, res) => {
   deleteList(req, res)
 })
 
-app.get('/register', (req, res) => {
-  register(req, res)
+app.post('/searchPage', (req, res) => {
+  searchPage(req, res)
 })
 
 app.post('/searchVague', (req, res) => {

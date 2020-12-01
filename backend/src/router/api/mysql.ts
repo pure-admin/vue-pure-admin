@@ -12,14 +12,7 @@ export interface dataModel {
 }
 
 // 保存验证码
-let generateVerify: number | string
-
-/**
- * @typedef Login
- * @property {string} username.required - 用户名
- * @property {string} password.required - 密码
- * @property {string} verify.required - 验证码
- */
+let generateVerify: number
 
 /**
  * @typedef Error
@@ -32,11 +25,20 @@ let generateVerify: number | string
  */
 
 /**
+ * @typedef Login
+ * @property {string} username.required - 用户名 - eg: admin
+ * @property {string} password.required - 密码 - eg: 123456
+ * @property {integer} verify.required - 验证码
+ */
+
+/**
  * 登录
  * @route POST /login
  * @param {Login.model} point.body.required - the new point
  * @produces application/json application/xml
  * @consumes application/json application/xml
+ * @summary 登录
+ * @group 用户登录、注册相关
  * @returns {Response.model} 200 
  * @returns {Array.<Login>} Login
  * @headers {integer} 200.X-Rate-Limit 
@@ -79,9 +81,9 @@ const login = async (req: Request, res: Response) => {
 
 /**
  * @typedef Register
- * @property {string} username.required - 用户名
- * @property {string} password.required - 密码
- * @property {string} verify.required - 验证码
+ * @property {string} username.required - 用户名 - eg: admin
+ * @property {string} password.required - 密码 - eg: 123456
+ * @property {integer} verify.required - 验证码
  */
 
 /**
@@ -90,6 +92,8 @@ const login = async (req: Request, res: Response) => {
 * @param {Register.model} point.body.required - the new point
 * @produces application/json application/xml
 * @consumes application/json application/xml
+* @summary 注册
+* @group 用户登录、注册相关
 * @returns {Response.model} 200
 * @returns {Array.<Register>} Register
 * @headers {integer} 200.X-Rate-Limit
@@ -136,7 +140,7 @@ const register = async (req: Request, res: Response) => {
  * 列表更新
  * @route GET /updateList
  * @summary 列表更新
- * @group updateList - 列表更新
+ * @group 用户管理相关
  * @returns {object} 200 
  * @security JWT
  */
@@ -149,7 +153,7 @@ const updateList = async (req: Request, res: Response) => {
  * 列表删除
  * @route GET /deleteList
  * @summary 列表删除
- * @group deleteList - 列表删除
+ * @group 用户管理相关
  * @returns {object} 200 
  * @security JWT
  */
@@ -159,22 +163,52 @@ const deleteList = async (req: Request, res: Response) => {
 }
 
 /**
+ * @typedef SearchPage
+ * @property {integer} page.required - 第几页 - eg: 1
+ * @property {integer} size.required - 数据量（条）- eg: 5
+ */
+
+/**
 * 分页查询
-* @route GET /searchPage
+* @route POST /searchPage
+* @param {SearchPage.model} point.body.required - the new point
+* @produces application/json application/xml
+* @consumes application/json application/xml
 * @summary 分页查询
-* @group searchPage - 分页查询
-* @returns {object} 200 
+* @group 用户管理相关
+* @returns {Response.model} 200
+* @returns {Array.<SearchPage>} SearchPage
+* @headers {integer} 200.X-Rate-Limit
+* @headers {string} 200.X-Expires-After
 * @security JWT
-* @returns {Error}  default - Unexpected error
 */
 
 const searchPage = async (req: Request, res: Response) => {
-  res.json({ code: 1, msg: "成功" })
+  const { page, size } = req.body
+  let payload = null
+  try {
+    const authorizationHeader = req.get("Authorization")
+    const accessToken = authorizationHeader.substr("Bearer ".length)
+    payload = jwt.verify(accessToken, secret.jwtSecret)
+  } catch (error) {
+    return res.status(401).end()
+  }
+  let sql = 'select * from users limit ' + size + ' offset ' + size * (page - 1)
+  connection.query(sql, async function (err, data) {
+    if (err) {
+      Logger.error(err)
+    } else {
+      await res.json({
+        code: 0,
+        info: data
+      })
+    }
+  })
 }
 
 /**
  * @typedef SearchVague
- * @property {string} username.required - 用户名
+ * @property {string} username.required - 用户名  - eg: admin
  */
 
 /**
@@ -183,6 +217,8 @@ const searchPage = async (req: Request, res: Response) => {
 * @param {SearchVague.model} point.body.required - the new point
 * @produces application/json application/xml
 * @consumes application/json application/xml
+* @summary 模糊查询
+* @group 用户管理相关
 * @returns {Response.model} 200
 * @returns {Array.<SearchVague>} SearchVague
 * @headers {integer} 200.X-Rate-Limit
@@ -235,7 +271,7 @@ const captcha = async (req: Request, res: Response) => {
     mathMax: 4,
     mathOperator: "+"
   })
-  generateVerify = create.text
+  generateVerify = Number(create.text)
   res.type('svg') // 响应的类型
   res.json({ code: 1, msg: create.text, svg: create.data })
 }

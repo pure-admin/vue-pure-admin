@@ -1,7 +1,7 @@
 {
-  "name": "check-ts",
+  "name": "backend-ts",
   "version": "1.0.0",
-  "description": "",
+  "description": "API接口",
   "main": "index.js",
   "scripts": {
     "build": "tsc",
@@ -9,7 +9,7 @@
     "start": "nodemon ./dist/server.js",
     "prod": "npm run build && npm run start"
   },
-  "author": "Coral Ram",
+  "author": "team",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^1.19.4",
