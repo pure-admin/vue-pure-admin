@@ -52,7 +52,7 @@ export default {
     host: 'localhost',
     charset: 'utf8_general_ci',
     user: 'root',
-    password: 'admin'
+    password: '123456789'
   },
   mongodb: {},
   sqlite: {},

@@ -6,7 +6,9 @@ import Logger from "../../loaders/logger"
 import { Request, Response } from "express"
 import { createMathExpr } from "svg-captcha"
 import getFormatDate from "../../utils/date"
+import { Code, Info } from "../../utils/infoEnum"
 import { connection } from "../../utils/initMysql"
+
 export interface dataModel {
   length: number
 }
@@ -48,15 +50,15 @@ let generateVerify: number
 const login = async (req: Request, res: Response) => {
   const { username, password, verify } = req.body
   if (generateVerify !== verify) return res.json({
-    code: -1,
-    info: "请输入正确的验证码"
+    code: Code.failCode,
+    info: Info[0]
   })
   let sql: string = 'select * from users where username=' + "'" + username + "'"
   connection.query(sql, async function (err, data: dataModel) {
     if (data.length == 0) {
       await res.json({
-        code: -1,
-        info: "账号尚未被注册"
+        code: Code.failCode,
+        info: Info[1]
       })
     } else {
       if (createHash('md5').update(password).digest('hex') == data[0].password) {
@@ -64,14 +66,14 @@ const login = async (req: Request, res: Response) => {
           accountId: data[0].id
         }, secret.jwtSecret, { expiresIn: 3600 })
         await res.json({
-          code: 0,
-          info: "登录成功",
+          code: Code.successCode,
+          info: Info[2],
           accessToken
         })
       } else {
         await res.json({
-          code: -1,
-          info: "密码错误"
+          code: Code.failCode,
+          info: Info[3]
         })
       }
     }
@@ -102,19 +104,19 @@ const login = async (req: Request, res: Response) => {
 const register = async (req: Request, res: Response) => {
   const { username, password, verify } = req.body
   if (generateVerify !== verify) return res.json({
-    code: -1,
-    info: "请输入正确的验证码"
+    code: Code.failCode,
+    info: Info[0]
   })
   if (password.length < 6) return res.json({
-    code: -1,
-    info: "密码长度不能小于6位"
+    code: Code.failCode,
+    info: Info[4]
   })
   let sql: string = 'select * from users where username=' + "'" + username + "'"
   connection.query(sql, async (err, data: dataModel) => {
     if (data.length > 0) {
       await res.json({
-        code: -1,
-        info: "账号已被注册"
+        code: Code.failCode,
+        info: Info[5]
       })
     } else {
       let time = await getFormatDate()
@@ -125,8 +127,8 @@ const register = async (req: Request, res: Response) => {
           Logger.error(err)
         } else {
           await res.json({
-            code: 0,
-            info: "账号注册成功"
+            code: Code.successCode,
+            info: Info[6]
           })
         }
       })
@@ -175,8 +177,8 @@ const updateList = async (req: Request, res: Response) => {
             Logger.error(err)
           } else {
             await res.json({
-              code: 0,
-              info: '修改成功'
+              code: Code.successCode,
+              info: Info[7]
             })
           }
         })
@@ -216,8 +218,8 @@ const deleteList = async (req: Request, res: Response) => {
       console.log(err)
     } else {
       await res.json({
-        code: 0,
-        info: '删除成功'
+        code: Code.successCode,
+        info: Info[8]
       })
     }
   })
@@ -259,7 +261,7 @@ const searchPage = async (req: Request, res: Response) => {
       Logger.error(err)
     } else {
       await res.json({
-        code: 0,
+        code: Code.successCode,
         info: data
       })
     }
@@ -296,8 +298,8 @@ const searchVague = async (req: Request, res: Response) => {
     return res.status(401).end()
   }
   if (username === "" || username === null) return res.json({
-    code: -1,
-    info: "搜索信息不能为空"
+    code: Code.failCode,
+    info: Info[9]
   })
   let sql: string = 'select * from users'
   sql += " WHERE username LIKE " + mysql.escape("%" + username + "%")
@@ -307,7 +309,7 @@ const searchVague = async (req: Request, res: Response) => {
         Logger.error(err)
       } else {
         await res.json({
-          code: 0,
+          code: Code.successCode,
           info: data
         })
       }
@@ -331,7 +333,7 @@ const captcha = async (req: Request, res: Response) => {
   })
   generateVerify = Number(create.text)
   res.type('svg') // 响应的类型
-  res.json({ code: 1, info: create.text, svg: create.data })
+  res.json({ code: Code.successCode, info: create.text, svg: create.data })
 }
 
 export {

@@ -5,9 +5,25 @@
     ],
     "jsRules": {},
     "rules": {
-        "interface-name": [false],
-        "no-console": [false],
-        "quotemark": [true, "single"]
+        "interface-name": [
+            true,
+            "never-prefix"
+        ],
+        "no-console": [
+            false
+        ],
+        "semicolon": [
+            false
+        ],
+        "quotemark": [
+            false
+        ],
+        "object-literal-sor t-keys": [
+            false
+        ],
+        "max-classes-per-file": [
+            false
+        ]
     },
     "rulesDirectory": []
 }
