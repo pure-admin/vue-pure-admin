@@ -135,16 +135,46 @@ const register = async (req: Request, res: Response) => {
 }
 
 /**
- * 列表更新
- * @route GET /updateList
+ * @typedef UpdateList
+ * @property {string} username.required - 用户名 - eg: admin
+ */
+
+/**
+ * @route PUT /updateList/{id}
  * @summary 列表更新
+ * @param {UpdateList.model} point.body.required - 用户名 
+ * @param {UpdateList.model} id.path.required - 用户id
  * @group 用户管理相关
- * @returns {object} 200 
+ * @returns {object} 200
+ * @returns {Array.<UpdateList>} UpdateList
  * @security JWT
  */
 
 const updateList = async (req: Request, res: Response) => {
-  res.json({ code: 1, msg: "成功" })
+  const { id } = req.params
+  const { username } = req.body
+  let modifySql: string = 'UPDATE users SET username = ? WHERE id = ?'
+  let sql: string = 'select * from users where id=' + id
+  connection.query(sql, function (err, data) {
+    connection.query(sql, function (err) {
+      if (err) {
+        Logger.error(err)
+      } else {
+        let modifyParams = [username, id]
+        // 改
+        connection.query(modifySql, modifyParams, async function (err, result) {
+          if (err) {
+            Logger.error(err)
+          } else {
+            await res.json({
+              code: 0,
+              info: '修改成功'
+            })
+          }
+        })
+      }
+    })
+  })
 }
 
 /**
@@ -172,7 +202,7 @@ const deleteList = async (req: Request, res: Response) => {
   } catch (error) {
     return res.status(401).end()
   }
-  var sql = 'DELETE FROM users where id=' + "'" + id + "'"
+  let sql: string = 'DELETE FROM users where id=' + "'" + id + "'"
   connection.query(sql, async function (err, data) {
     if (err) {
       console.log(err)
@@ -215,7 +245,7 @@ const searchPage = async (req: Request, res: Response) => {
   } catch (error) {
     return res.status(401).end()
   }
-  let sql = 'select * from users limit ' + size + ' offset ' + size * (page - 1)
+  let sql: string = 'select * from users limit ' + size + ' offset ' + size * (page - 1)
   connection.query(sql, async function (err, data) {
     if (err) {
       Logger.error(err)
@@ -261,7 +291,7 @@ const searchVague = async (req: Request, res: Response) => {
     code: -1,
     info: "搜索信息不能为空"
   })
-  let sql = 'select * from users'
+  let sql: string = 'select * from users'
   sql += " WHERE username LIKE " + mysql.escape("%" + username + "%")
   connection.query(sql, function (err, data) {
     connection.query(sql, async function (err) {

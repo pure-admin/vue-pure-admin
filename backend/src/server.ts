@@ -27,7 +27,7 @@ app.post('/register', (req, res) => {
   register(req, res)
 })
 
-app.get('/updateList', (req, res) => {
+app.put('/updateList/:id', (req, res) => {
   updateList(req, res)
 })
 
