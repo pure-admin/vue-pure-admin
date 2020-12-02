@@ -153,6 +153,14 @@ const register = async (req: Request, res: Response) => {
 const updateList = async (req: Request, res: Response) => {
   const { id } = req.params
   const { username } = req.body
+  let payload = null
+  try {
+    const authorizationHeader = req.get("Authorization")
+    const accessToken = authorizationHeader.substr("Bearer ".length)
+    payload = jwt.verify(accessToken, secret.jwtSecret)
+  } catch (error) {
+    return res.status(401).end()
+  }
   let modifySql: string = 'UPDATE users SET username = ? WHERE id = ?'
   let sql: string = 'select * from users where id=' + id
   connection.query(sql, function (err, data) {
@@ -160,7 +168,7 @@ const updateList = async (req: Request, res: Response) => {
       if (err) {
         Logger.error(err)
       } else {
-        let modifyParams = [username, id]
+        let modifyParams: string[] = [username, id]
         // 改
         connection.query(modifySql, modifyParams, async function (err, result) {
           if (err) {
@@ -323,7 +331,7 @@ const captcha = async (req: Request, res: Response) => {
   })
   generateVerify = Number(create.text)
   res.type('svg') // 响应的类型
-  res.json({ code: 1, msg: create.text, svg: create.data })
+  res.json({ code: 1, info: create.text, svg: create.data })
 }
 
 export {

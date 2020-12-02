@@ -58,4 +58,4 @@ app.listen(config.port, () => {
   process.exit(1)
 })
 
-// open(`http://localhost:${config.port}`)  // 自动打开默认浏览器
+open(`http://localhost:${config.port}`)  // 自动打开默认浏览器
