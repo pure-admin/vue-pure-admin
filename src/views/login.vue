@@ -5,17 +5,17 @@
 </template>
 
 <script lang="ts">
-import { ref } from "vue"
-import info, { ContextProps } from "../components/info.vue"
+import { ref } from "vue";
+import info, { ContextProps } from "../components/info.vue";
 const contextInfo: ContextProps = {
   userName: "admin",
   passWord: "123456",
   dynamicText: "登录",
-}
+};
 export default {
   mounted() {
     // @ts-ignore
-    this.$http.request("get", "/getApi")
+    this.$http.request("get", "/getApi");
   },
   components: {
     info,
@@ -23,9 +23,9 @@ export default {
   setup() {
     return {
       contextInfo,
-    }
+    };
   },
-}
+};
 </script>
 
 <style scoped>

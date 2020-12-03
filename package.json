@@ -5,34 +5,28 @@
   "scripts": {
     "serve": "vite",
     "build": "vite build",
-    "test:unit": "vue-cli-service test:unit",
-    "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "await-to-js": "^2.1.1",
     "axios": "^0.21.0",
-    "vue": "^3.0.2",
-    "vue-class-component": "^8.0.0-0",
-    "vue-router": "^4.0.0-0",
-    "vuex": "^4.0.0-0"
+    "element-plus": "^1.0.1-beta.2",
+    "vue": "^3.0.4",
+    "vue-class-component": "^8.0.0-rc.1",
+    "vue-router": "^4.0.0-rc.6",
+    "vuex": "^4.0.0-rc.2"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.19",
     "@types/node": "^14.14.8",
     "@typescript-eslint/eslint-plugin": "^2.33.0",
     "@typescript-eslint/parser": "^2.33.0",
-    "@vue/cli-plugin-e2e-cypress": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-plugin-router": "~4.5.0",
     "@vue/cli-plugin-typescript": "~4.5.0",
-    "@vue/cli-plugin-unit-jest": "~4.5.0",
     "@vue/cli-plugin-vuex": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.0.2",
+    "@vue/compiler-sfc": "^3.0.4",
     "@vue/eslint-config-standard": "^5.1.2",
     "@vue/eslint-config-typescript": "^5.0.2",
-    "@vue/test-utils": "^2.0.0-0",
     "eslint": "^6.7.2",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-node": "^11.1.0",
@@ -42,7 +36,6 @@
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "typescript": "~3.9.3",
-    "vite": "^1.0.0-rc.9",
-    "vue-jest": "^5.0.0-0"
+    "vite": "^1.0.0-rc.13"
   }
 }
