@@ -1,6 +1,6 @@
 <template>
   <div class="info">
-    <el-form :model="ruleForm" ref="ruleForm" class="rule-form">
+    <el-form :model="ruleForm" :rules="rules" ref="ruleForm" class="rule-form">
       <el-form-item prop="userName">
         <el-input
           clearable
@@ -12,6 +12,7 @@
       <el-form-item prop="passWord">
         <el-input
           clearable
+          type="password"
           v-model="ruleForm.passWord"
           placeholder="请输入密码"
           prefix-icon="el-icon-lock"
@@ -19,7 +20,10 @@
       </el-form-item>
       <el-form-item prop="verify">
         <el-input
-          v-model="ruleForm.verify"
+          maxlength="2"
+          show-word-limit
+          onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
+          v-model.number="ruleForm.verify"
           placeholder="请输入验证码"
         ></el-input>
         <span
@@ -39,6 +43,7 @@
 
 <script lang='ts'>
 import {
+  ref,
   defineComponent,
   PropType,
   onBeforeMount,
@@ -65,25 +70,44 @@ export default defineComponent({
   setup(props, ctx) {
     let vm: any;
 
+    const rules: Object = ref({
+      userName: [{ required: true, message: "请输入用户名", trigger: "blur" }],
+      passWord: [
+        { required: true, message: "请输入密码", trigger: "blur" },
+        { min: 6, message: "密码长度必须不小于6位", trigger: "blur" },
+      ],
+      verify: [
+        { required: true, message: "请输入验证码", trigger: "blur" },
+        { type: "number", message: "验证码必须是数字类型", trigger: "blur" },
+      ],
+    });
+
     onBeforeMount(() => {
       vm = getCurrentInstance(); //获取组件实例
     });
 
     // 点击登录
     const onLogin = (evt: Object): void => {
-      ctx.emit("onLogin", evt);
+      vm.refs.ruleForm.validate((valid: Boolean) => {
+        if (valid) {
+          ctx.emit("onLogin", evt);
+        } else {
+          return false;
+        }
+      });
     };
 
     // 刷新验证码
     const refreshVerify = (): void => {
       ctx.emit("refreshVerify");
     };
+
     // 表单重置
     const resetForm = (): void => {
       vm.refs.ruleForm.resetFields();
     };
 
-    return { resetForm, onLogin, refreshVerify };
+    return { rules, resetForm, onLogin, refreshVerify };
   },
 });
 </script>
