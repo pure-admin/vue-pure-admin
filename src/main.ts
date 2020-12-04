@@ -9,7 +9,7 @@ import ElementPlus from 'element-plus'
 import 'element-plus/lib/theme-chalk/index.css'
 
 // 导入公共样式
-import './assets/index.css'
+import "./assets/index.css"
 
 const app = createApp(App)
 

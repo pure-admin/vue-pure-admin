@@ -16,17 +16,23 @@ import {
   onBeforeMount,
   getCurrentInstance,
 } from "vue";
-import { http } from "../utils/http";
 import info, { ContextProps } from "../components/info.vue";
-
+import { getVerify, getLogin } from "../api/login";
+import { useRouter } from "vue-router";
+import { storageSession } from "../utils/storage";
 export default {
   components: {
     info,
   },
   setup() {
+    const message = getCurrentInstance()?.appContext.config.globalProperties
+      .$message;
+
+    const router = useRouter();
+
     // 刷新验证码
-    const getVerify = async () => {
-      let { svg } = await http.request("get", "/captcha");
+    const refreshGetVerify = async () => {
+      let { svg } = await getVerify();
       contextInfo.svg = svg;
     };
 
@@ -37,22 +43,40 @@ export default {
       svg: null,
     });
 
+    const toPage = (token: string): void => {
+      storageSession.setItem("accessToken", token);
+      router.push("/");
+    };
+
     // 登录
-    const onLogin = (): void => {
-      console.log(contextInfo.userName);
+    const onLogin = async () => {
+      let { userName, passWord, verify } = contextInfo;
+      let { code, info, accessToken } = await getLogin({
+        username: userName,
+        password: passWord,
+        verify: verify,
+      });
+      code === 0
+        ? message({
+            message: info,
+            type: "success",
+          }) && toPage(accessToken)
+        : message(info);
     };
 
     const refreshVerify = (): void => {
-      getVerify();
+      refreshGetVerify();
     };
 
     onBeforeMount(() => {
-      getVerify();
+      refreshGetVerify();
     });
 
     return {
       contextInfo,
       onLogin,
+      router,
+      toPage,
       refreshVerify,
     };
   },

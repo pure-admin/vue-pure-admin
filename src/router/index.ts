@@ -34,7 +34,7 @@ const router = createRouter({
 const whiteList = ["/login", "/register"]
 
 router.beforeEach((to, _from, next) => {
-  whiteList.indexOf(to.path) !== -1 || storageSession.getItem("Token") ? next() : next("/login") // 全部重定向到登录页
+  whiteList.indexOf(to.path) !== -1 || storageSession.getItem("accessToken") ? next() : next("/login") // 全部重定向到登录页
 })
 
 export default router
