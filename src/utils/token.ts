@@ -9,11 +9,11 @@ export function setToken(token: string): void {
 
 // 取
 export function getToken(): string {
-  let token = sessionStorage.getItem("Token") && JSON.parse(sessionStorage.getItem("Token") || "");
-  return token;
+  let token = sessionStorage.getItem("Token") && JSON.parse(sessionStorage.getItem("Token") || "")
+  return token
 }
 
 // 删
 export function delToken(): void {
-  sessionStorage.removeItem("Token");
+  sessionStorage.removeItem("Token")
 }

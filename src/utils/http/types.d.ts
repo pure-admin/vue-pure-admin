@@ -4,7 +4,7 @@ import Axios, {
     AxiosResponse,
     Method,
     AxiosError
-} from "axios";
+} from "axios"
 
 import { METHODS } from './config'
 

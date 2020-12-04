@@ -10,7 +10,7 @@
   "dependencies": {
     "await-to-js": "^2.1.1",
     "axios": "^0.21.0",
-    "element-plus": "^1.0.1-beta.2",
+    "element-plus": "^1.0.1-beta.3",
     "vue": "^3.0.4",
     "vue-class-component": "^8.0.0-rc.1",
     "vue-router": "^4.0.0-rc.6",

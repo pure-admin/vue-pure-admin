@@ -1,32 +1,60 @@
 <template>
   <div class="login">
-    <info :info="contextInfo" />
+    <info
+      :ruleForm="contextInfo"
+      @on-login="onLogin"
+      @refreshVerify="refreshVerify"
+    />
   </div>
 </template>
 
 <script lang="ts">
-import { ref } from "vue";
+import {
+  ref,
+  reactive,
+  onMounted,
+  onBeforeMount,
+  getCurrentInstance,
+} from "vue";
+import { http } from "../utils/http";
 import info, { ContextProps } from "../components/info.vue";
-const contextInfo: ContextProps = {
-  userName: "admin",
-  passWord: "123456",
-  dynamicText: "登录",
-};
+
 export default {
-  mounted() {
-    // @ts-ignore
-    this.$http.request("get", "/getApi");
-  },
   components: {
     info,
   },
   setup() {
+    // 刷新验证码
+    const getVerify = async () => {
+      let { svg } = await http.request("get", "/captcha");
+      contextInfo.svg = svg;
+    };
+
+    const contextInfo: ContextProps = reactive({
+      userName: "",
+      passWord: "",
+      verify: null,
+      svg: null,
+    });
+
+    // 登录
+    const onLogin = (): void => {
+      console.log(contextInfo.userName);
+    };
+
+    const refreshVerify = (): void => {
+      getVerify();
+    };
+
+    onBeforeMount(() => {
+      getVerify();
+    });
+
     return {
       contextInfo,
+      onLogin,
+      refreshVerify,
     };
   },
 };
 </script>
-
-<style scoped>
-</style>

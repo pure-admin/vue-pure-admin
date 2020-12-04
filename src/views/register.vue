@@ -1,21 +1,13 @@
 <template>
-  <div class="register">{{ text }}</div>
+  <div></div>
 </template>
 
-<script lang="ts">
-import { ref } from "vue"
+<script lang='ts'>
 export default {
-  mounted() {
-    // @ts-ignore
-    this.$http.request("get", "/getApi")
-  },
   setup() {
-    const text = ref("register")
-    return {
-      text,
-    }
+    return {};
   },
-}
+};
 </script>
 
 <style scoped>
