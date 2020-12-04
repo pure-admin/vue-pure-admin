@@ -1,6 +1,6 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import Home from '../views/home.vue'
-import { setToken, getToken } from "../utils/token"
+import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router"
+import Home from "../views/home.vue"
+import { storageSession } from "../utils/storage"
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -34,8 +34,7 @@ const router = createRouter({
 const whiteList = ["/login", "/register"]
 
 router.beforeEach((to, _from, next) => {
-  const token = getToken()
-  whiteList.indexOf(to.path) !== -1 || token ? next() : next("/login") // 全部重定向到登录页
+  whiteList.indexOf(to.path) !== -1 || storageSession.getItem("Token") ? next() : next("/login") // 全部重定向到登录页
 })
 
 export default router
