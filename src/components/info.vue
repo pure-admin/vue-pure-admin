@@ -21,17 +21,11 @@
       <el-form-item prop="verify">
         <el-input
           maxlength="2"
-          show-word-limit
           onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
           v-model.number="ruleForm.verify"
           placeholder="请输入验证码"
         ></el-input>
-        <span
-          class="verify"
-          title="刷新"
-          v-html="ruleForm.svg"
-          @click.prevent="refreshVerify"
-        ></span>
+        <span class="verify" title="刷新" v-html="ruleForm.svg" @click.prevent="refreshVerify"></span>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click.prevent="onLogin">登录</el-button>
@@ -47,7 +41,7 @@ import {
   defineComponent,
   PropType,
   onBeforeMount,
-  getCurrentInstance,
+  getCurrentInstance
 } from "vue";
 
 export interface ContextProps {
@@ -63,8 +57,8 @@ export default defineComponent({
   props: {
     ruleForm: {
       type: Object as PropType<ContextProps>,
-      require: true,
-    },
+      require: true
+    }
   },
   emits: ["onLogin", "refreshVerify"],
   setup(props, ctx) {
@@ -74,12 +68,12 @@ export default defineComponent({
       userName: [{ required: true, message: "请输入用户名", trigger: "blur" }],
       passWord: [
         { required: true, message: "请输入密码", trigger: "blur" },
-        { min: 6, message: "密码长度必须不小于6位", trigger: "blur" },
+        { min: 6, message: "密码长度必须不小于6位", trigger: "blur" }
       ],
       verify: [
         { required: true, message: "请输入验证码", trigger: "blur" },
-        { type: "number", message: "验证码必须是数字类型", trigger: "blur" },
-      ],
+        { type: "number", message: "验证码必须是数字类型", trigger: "blur" }
+      ]
     });
 
     onBeforeMount(() => {
@@ -108,7 +102,7 @@ export default defineComponent({
     };
 
     return { rules, resetForm, onLogin, refreshVerify };
-  },
+  }
 });
 </script>
 
