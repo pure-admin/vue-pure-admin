@@ -1,9 +1,12 @@
+
 import Axios, {
   AxiosRequestConfig,
   CancelTokenStatic,
   AxiosInstance,
   Canceler
 } from "axios"
+
+import NProgress from "../progress"
 
 import { genConfig } from "./config"
 
@@ -18,6 +21,10 @@ import {
 } from "./types.d"
 
 class EnclosureHttp {
+  constructor() {
+    this.httpInterceptorsRequest()
+    this.httpInterceptorsResponse()
+  }
   // 初始化配置对象
   private static initConfig: EnclosureHttpRequestConfig = {};
 
@@ -109,15 +116,12 @@ class EnclosureHttp {
     EnclosureHttp.axiosInstance.interceptors.request.use(
       (config: EnclosureHttpRequestConfig) => {
         const $config = config
-
+        NProgress.start()   // 每次切换页面时，调用进度条
         const cancelKey = this.genUniqueKey($config)
-
         $config.cancelToken = new this.CancelToken((cancelExecutor: (cancel: any) => void) => {
           this.sourceTokenList.push({ cancelKey, cancelExecutor })
         })
-
         this.cancelRepeatRequest()
-
         this.currentCancelTokenKey = cancelKey
         // 优先判断post/get等方法是否传入回掉，否则执行初始化设置等回掉
         if (typeof this.beforeRequestCallback === "function") {
@@ -153,7 +157,6 @@ class EnclosureHttp {
     const instance = EnclosureHttp.axiosInstance
     instance.interceptors.response.use(
       (response: EnclosureHttpResoponse) => {
-
         // 请求每次成功一次就删除当前canceltoken标记
         const cancelKey = this.genUniqueKey(response.config)
         this.deleteCancelTokenByCancelKey(cancelKey)
@@ -167,7 +170,7 @@ class EnclosureHttp {
           EnclosureHttp.initConfig.beforeResponseCallback(response)
           return response.data
         }
-
+        NProgress.done()
         return response.data
       },
       (error: EnclosureHttpError) => {
@@ -210,11 +213,10 @@ class EnclosureHttp {
     if (axiosConfig?.beforeResponseCallback) {
       this.beforeResponseCallback = axiosConfig.beforeResponseCallback
     }
-
     return new Promise((resolve, reject) => {
       EnclosureHttp.axiosInstance.request(config)
         .then((response: EnclosureHttpResoponse) => {
-          resolve(response.data)
+          resolve(response)
         })
         .catch((error: any) => {
           reject(error)
