@@ -30,9 +30,9 @@ npm run lint
 ```
 
 ## 注意点
-请先全局安装typescript、ts-node、vite如安装请忽略
+请先全局安装typescript、ts-node、vite如安装请忽略  
 ```
-npm install -g typescript
-npm install -g ts-node
-npm install -g create-vite-app
+npm install -g typescript  
+npm install -g ts-node  
+npm install -g create-vite-app  
 ```
