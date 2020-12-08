@@ -13,6 +13,7 @@
         <el-input
           clearable
           type="password"
+          show-password
           v-model="ruleForm.passWord"
           placeholder="请输入密码"
           prefix-icon="el-icon-lock"
@@ -25,17 +26,14 @@
           v-model.number="ruleForm.verify"
           placeholder="请输入验证码"
         ></el-input>
-        <span
-          class="verify"
-          title="刷新"
-          v-html="ruleForm.svg"
-          @click.prevent="refreshVerify"
-        ></span>
+        <span class="verify" title="刷新" v-html="ruleForm.svg" @click.prevent="refreshVerify"></span>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click.prevent="onBehavior">{{
+        <el-button type="primary" @click.prevent="onBehavior">
+          {{
           tipsFalse
-        }}</el-button>
+          }}
+        </el-button>
         <el-button @click="resetForm">重置</el-button>
         <span class="tips" @click="changPage">{{ tips }}</span>
       </el-form-item>
@@ -51,7 +49,7 @@ import {
   onBeforeMount,
   getCurrentInstance,
   watch,
-  nextTick,
+  nextTick
 } from "vue";
 
 export interface ContextProps {
@@ -69,8 +67,8 @@ export default defineComponent({
   props: {
     ruleForm: {
       type: Object as PropType<ContextProps>,
-      require: true,
-    },
+      require: true
+    }
   },
   emits: ["onBehavior", "refreshVerify"],
   setup(props, ctx) {
@@ -97,12 +95,12 @@ export default defineComponent({
       userName: [{ required: true, message: "请输入用户名", trigger: "blur" }],
       passWord: [
         { required: true, message: "请输入密码", trigger: "blur" },
-        { min: 6, message: "密码长度必须不小于6位", trigger: "blur" },
+        { min: 6, message: "密码长度必须不小于6位", trigger: "blur" }
       ],
       verify: [
         { required: true, message: "请输入验证码", trigger: "blur" },
-        { type: "number", message: "验证码必须是数字类型", trigger: "blur" },
-      ],
+        { type: "number", message: "验证码必须是数字类型", trigger: "blur" }
+      ]
     });
 
     onBeforeMount(() => {
@@ -142,9 +140,9 @@ export default defineComponent({
       resetForm,
       onBehavior,
       refreshVerify,
-      changPage,
+      changPage
     };
-  },
+  }
 });
 </script>
 

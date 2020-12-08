@@ -1,13 +1,9 @@
 <template>
-  <menus />
+  <div></div>
 </template>
 
 <script lang='ts'>
-import menus from "../layout/menu/index.vue";
 export default {
-  components: {
-    menus
-  },
   setup() {
     return {};
   }
