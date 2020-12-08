@@ -9,3 +9,8 @@ export const getVerify = (): any => {
 export const getLogin = (data: object): any => {
   return http.request("post", "/login", data)
 }
+
+// 注册
+export const getRegist = (data: object): any => {
+  return http.request("post", "/register", data)
+}

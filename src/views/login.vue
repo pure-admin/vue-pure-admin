@@ -1,6 +1,10 @@
 <template>
   <div class="login">
-    <info :ruleForm="contextInfo" @on-login="onLogin" @refreshVerify="refreshVerify" />
+    <info
+      :ruleForm="contextInfo"
+      @on-behavior="onLogin"
+      @refreshVerify="refreshVerify"
+    />
   </div>
 </template>
 
@@ -10,16 +14,16 @@ import {
   reactive,
   onMounted,
   onBeforeMount,
-  getCurrentInstance
+  getCurrentInstance,
 } from "vue";
 import info, { ContextProps } from "../components/info.vue";
-import { getVerify, getLogin } from "../api/login";
+import { getVerify, getLogin } from "../api/user";
 import { useRouter } from "vue-router";
 import { storageSession } from "../utils/storage";
 import { warnMessage, successMessage } from "../utils/message";
 export default {
   components: {
-    info
+    info,
   },
   setup() {
     const router = useRouter();
@@ -34,7 +38,7 @@ export default {
       userName: "",
       passWord: "",
       verify: null,
-      svg: null
+      svg: null,
     });
 
     const toPage = (token: string): void => {
@@ -48,7 +52,7 @@ export default {
       let { code, info, accessToken } = await getLogin({
         username: userName,
         password: passWord,
-        verify: verify
+        verify: verify,
       });
       code === 0
         ? successMessage(info) && toPage(accessToken)
@@ -68,8 +72,8 @@ export default {
       onLogin,
       router,
       toPage,
-      refreshVerify
+      refreshVerify,
     };
-  }
+  },
 };
 </script>

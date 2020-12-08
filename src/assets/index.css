@@ -20,6 +20,10 @@ body {
   user-select: none;
 }
 
+p {
+  margin: 0;
+  padding: 0;
+}
 
 .login,
 .register {
