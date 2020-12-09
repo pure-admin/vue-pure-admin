@@ -3,7 +3,7 @@
     <!-- logo  -->
     <!-- <header class="header">
       <p>CURD Admin</p>
-    </header> -->
+    </header>-->
     <el-menu
       default-active="home"
       class="el-menu-vertical"
@@ -23,9 +23,11 @@
           <span>{{ item.meta.title }}</span>
         </template>
         <el-menu-item-group v-for="(child, key) in item.children" :key="key">
-          <el-menu-item :index="child.path">{{
+          <el-menu-item :index="child.path">
+            {{
             child.meta.title
-          }}</el-menu-item>
+            }}
+          </el-menu-item>
         </el-menu-item-group>
       </el-submenu>
     </el-menu>
@@ -44,7 +46,7 @@ export default defineComponent({
 
     let { getRoutes } = router;
 
-    emitter.on("collapse", (e) => (isCollapse.value = !e));
+    emitter.on("collapse", e => (isCollapse.value = !e));
 
     let routes = algorithm.increaseIndexes(getRoutes());
 
@@ -59,32 +61,34 @@ export default defineComponent({
     };
 
     onUnmounted(() => {
-      emitter.off("collapse", (callback) => Boolean);
+      emitter.off("collapse", callback => Boolean);
     });
 
     return {
       isCollapse,
       handleOpen,
       handleClose,
-      routes,
+      routes
     };
-  },
+  }
 });
 </script>
 
 <style lang="scss" scoped>
 .sides {
+  width: 210px;
   height: 100vh;
   overflow: hidden;
   .header {
-    width: 12vw;
+    width: 210px;
     height: 48px;
     text-align: center;
+    // background: red;
     line-height: 48px;
     border-bottom: 1px solid #f0f0f0;
   }
   .el-menu-vertical:not(.el-menu--collapse) {
-    width: 12vw;
+    width: 210px;
     height: 100%;
     position: absolute;
     // background: #001529;

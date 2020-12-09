@@ -1,5 +1,5 @@
 <template>
-  <div class="header" :style="{ width: flag ? '88vw' : '95vw' }">
+  <div class="header" :style="{ width: flag ? spreadWidth : shrinkWidth }">
     <!-- 左侧元素 -->
     <div class="left-content">
       <div class="left-icon" @click="collapse">
@@ -13,9 +13,14 @@
 
 <script lang='ts'>
 import { emitter } from "../sides/index.vue";
-import { ref, defineComponent } from "vue";
+import { ref, defineComponent, onMounted } from "vue";
+import { addResizeListener } from "../../utils/resize";
+import { debounce } from "../../utils/debounce";
 export default defineComponent({
   setup(props, ctx) {
+    let spreadWidth = ref(document.body.clientWidth - 210 + "px");
+    let shrinkWidth = ref(document.body.clientWidth - 66 + "px");
+
     let flag = ref(true);
 
     const collapse = (): void => {
@@ -23,8 +28,16 @@ export default defineComponent({
       emitter.emit("collapse", flag.value);
     };
 
-    return { flag, collapse };
-  },
+    onMounted(() => {
+      const _resize = (window.onresize = () => {
+        spreadWidth.value = document.body.clientWidth - 210 + "px";
+        shrinkWidth.value = document.body.clientWidth - 66 + "px";
+      });
+      debounce(_resize, 1000);
+    });
+
+    return { flag, spreadWidth, shrinkWidth, collapse };
+  }
 });
 </script>
 

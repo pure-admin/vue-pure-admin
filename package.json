@@ -14,6 +14,7 @@
     "element-plus": "^1.0.1-beta.6",
     "mitt": "^2.1.0",
     "nprogress": "^0.2.0",
+    "resize-observer-polyfill": "^1.5.1",
     "vue": "^3.0.4",
     "vue-class-component": "^8.0.0-rc.1",
     "vue-router": "^4.0.1",
