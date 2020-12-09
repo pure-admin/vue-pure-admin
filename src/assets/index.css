@@ -7,6 +7,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  overflow: hidden;
   position: relative;
 }
 
@@ -33,4 +34,3 @@ p {
   background: url("./bg.png") no-repeat center;
   background-size: cover;
 }
-

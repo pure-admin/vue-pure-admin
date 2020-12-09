@@ -8,6 +8,32 @@ const routes: Array<RouteRecordRaw> = [
     path: '/',
     name: 'home',
     component: Home,
+    redirect: "/home",
+    children: [
+      {
+        path: '/user',
+        name: 'user',
+        component: () => import(/* webpackChunkName: "user" */ '../views/user.vue'),
+        children: [
+          {
+            path: '/user/base',
+            component: () => import(/* webpackChunkName: "user" */ '../views/user.vue'),
+            meta: {
+              // icon: 'el-icon-user',
+              title: '基础管理',
+              showLink: false,
+              savedPosition: true
+            }
+          }
+        ],
+        meta: {
+          icon: 'el-icon-user',
+          title: '用户管理',
+          showLink: true,
+          savedPosition: true
+        }
+      },
+    ],
     meta: {
       savedPosition: false,
       showLink: false
@@ -31,30 +57,30 @@ const routes: Array<RouteRecordRaw> = [
       showLink: false
     }
   },
-  {
-    path: '/user',
-    name: 'user',
-    component: () => import(/* webpackChunkName: "user" */ '../views/user.vue'),
-    redirect: "/user/base",
-    children: [
-      {
-        path: '/user/base',
-        component: () => import(/* webpackChunkName: "user" */ '../views/user.vue'),
-        meta: {
-          // icon: 'el-icon-user',
-          title: '基础管理',
-          showLink: false,
-          savedPosition: true
-        }
-      }
-    ],
-    meta: {
-      icon: 'el-icon-user',
-      title: '用户管理',
-      showLink: true,
-      savedPosition: true
-    }
-  },
+  // {
+  //   path: '/user',
+  //   name: 'user',
+  //   component: () => import(/* webpackChunkName: "user" */ '../views/user.vue'),
+  //   redirect: "/user/base",
+  //   children: [
+  //     {
+  //       path: '/user/base',
+  //       component: () => import(/* webpackChunkName: "user" */ '../views/user.vue'),
+  //       meta: {
+  //         // icon: 'el-icon-user',
+  //         title: '基础管理',
+  //         showLink: false,
+  //         savedPosition: true
+  //       }
+  //     }
+  //   ],
+  //   meta: {
+  //     icon: 'el-icon-user',
+  //     title: '用户管理',
+  //     showLink: true,
+  //     savedPosition: true
+  //   }
+  // },
   {
     // 找不到路由重定向到主页
     path: '/:pathMatch(.*)',

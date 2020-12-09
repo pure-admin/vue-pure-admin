@@ -1,12 +1,12 @@
 <template>
-  <div>用户管理</div>
+  <div style="marginleft: 280px">用户管理</div>
 </template>
 
 <script lang='ts'>
 export default {
   setup() {
     return {};
-  }
+  },
 };
 </script>
 
