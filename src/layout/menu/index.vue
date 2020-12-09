@@ -27,20 +27,14 @@
 <script lang='ts'>
 import { ref, defineComponent } from "vue";
 import router from "../../router/index";
+import { algorithm } from "../../utils/algorithm";
 export default defineComponent({
   setup() {
     let isCollapse = ref(false);
 
     let { getRoutes } = router;
 
-    let routes = Object.keys(getRoutes())
-      .map(v => {
-        return {
-          ...getRoutes()[v],
-          key: v
-        };
-      })
-      .filter(v => v.meta.showLink);
+    let routes = algorithm.increaseIndexes(getRoutes())
 
     console.log(routes);
 
