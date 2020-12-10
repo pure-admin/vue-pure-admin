@@ -34,3 +34,12 @@ p {
   background: url("./bg.png") no-repeat center;
   background-size: cover;
 }
+
+/* 头部用户信息样式重置 */
+.hidden {
+  display: none !important;
+}
+
+.resetTop {
+  top: 48px !important;
+}

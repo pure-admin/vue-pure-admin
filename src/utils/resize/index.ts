@@ -1,5 +1,3 @@
-
-
 import ResizeObserver from 'resize-observer-polyfill'
 
 const isServer = typeof window === 'undefined'

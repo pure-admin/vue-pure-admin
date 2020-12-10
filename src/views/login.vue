@@ -41,8 +41,8 @@ export default {
       svg: null,
     });
 
-    const toPage = (token: string): void => {
-      storageSession.setItem("accessToken", token);
+    const toPage = (info: Object): void => {
+      storageSession.setItem("info", info);
       router.push("/");
     };
 
@@ -55,7 +55,11 @@ export default {
         verify: verify,
       });
       code === 0
-        ? successMessage(info) && toPage(accessToken)
+        ? successMessage(info) &&
+          toPage({
+            username: userName,
+            accessToken,
+          })
         : warnMessage(info);
     };
 

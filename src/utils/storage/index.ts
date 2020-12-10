@@ -14,7 +14,7 @@ class sessionStorageProxy implements ProxyStorage {
   }
 
   // 存 
-  public setItem(key: string, value: string): void {
+  public setItem(key: string, value: any): void {
     this.storage.setItem(key, JSON.stringify(value))
   }
 

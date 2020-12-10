@@ -1,18 +1,19 @@
 <template>
   <div class="sides">
     <!-- logo  -->
-    <!-- <header class="header">
+    <div class="logo">
       <p>CURD Admin</p>
-    </header>-->
+    </div>
     <el-menu
       default-active="home"
       class="el-menu-vertical"
       :router="true"
       :collapse="isCollapse"
+      :popper-append-to-body="true"
       @open="handleOpen"
       @close="handleClose"
     >
-      <el-menu-item index="home">
+      <el-menu-item index="/">
         <i class="el-icon-s-home"></i>
         <span>首页</span>
       </el-menu-item>
@@ -24,9 +25,7 @@
         </template>
         <el-menu-item-group v-for="(child, key) in item.children" :key="key">
           <el-menu-item :index="child.path">
-            {{
-            child.meta.title
-            }}
+            {{ child.meta.title }}
           </el-menu-item>
         </el-menu-item-group>
       </el-submenu>
@@ -36,7 +35,7 @@
 
 <script lang='ts'>
 import mitt from "mitt";
-export const emitter = mitt();
+export const sidesEmitter = mitt();
 import { ref, defineComponent, onUnmounted } from "vue";
 import router from "../../router/index";
 import { algorithm } from "../../utils/algorithm";
@@ -46,7 +45,7 @@ export default defineComponent({
 
     let { getRoutes } = router;
 
-    emitter.on("collapse", e => (isCollapse.value = !e));
+    sidesEmitter.on("collapse", (e) => (isCollapse.value = !e));
 
     let routes = algorithm.increaseIndexes(getRoutes());
 
@@ -61,29 +60,27 @@ export default defineComponent({
     };
 
     onUnmounted(() => {
-      emitter.off("collapse", callback => Boolean);
+      sidesEmitter.off("collapse", (callback) => Boolean);
     });
 
     return {
       isCollapse,
       handleOpen,
       handleClose,
-      routes
+      routes,
     };
-  }
+  },
 });
 </script>
 
 <style lang="scss" scoped>
 .sides {
-  width: 210px;
   height: 100vh;
-  overflow: hidden;
-  .header {
+  width: 210px;
+  .logo {
     width: 210px;
     height: 48px;
     text-align: center;
-    // background: red;
     line-height: 48px;
     border-bottom: 1px solid #f0f0f0;
   }
@@ -91,8 +88,8 @@ export default defineComponent({
     width: 210px;
     height: 100%;
     position: absolute;
-    // background: #001529;
     color: #fff;
+    // background: #001529;
   }
 }
 </style>
