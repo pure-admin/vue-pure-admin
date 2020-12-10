@@ -1,5 +1,5 @@
-const dotEnv = require('dotenv')
-const path = require('path')
+import dotEnv from 'dotenv'
+import path from 'path'
 
 const VUE_APP_ENV = 'development'
 const resolve = dir => path.join(__dirname, dir)

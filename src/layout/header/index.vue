@@ -12,16 +12,14 @@
       </el-breadcrumb>
     </div>
     <!-- 右侧元素 -->
-    <el-dropdown trigger="click">
+    <el-dropdown>
       <span class="el-dropdown-link">
         <img :src="'/favicon.ico'" />
         <p>{{ usename }}</p>
       </span>
       <template #dropdown>
         <el-dropdown-menu>
-          <el-dropdown-item icon="el-icon-switch-button" @click="logout">
-            退出系统
-          </el-dropdown-item>
+          <el-dropdown-item icon="el-icon-switch-button" @click="logout">退出系统</el-dropdown-item>
         </el-dropdown-menu>
       </template>
     </el-dropdown>
@@ -69,7 +67,7 @@ export default defineComponent({
     });
 
     return { flag, spreadWidth, shrinkWidth, usename, collapse, logout };
-  },
+  }
 });
 </script>
 

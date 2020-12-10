@@ -6,7 +6,7 @@
 import layout from "../layout/index.vue";
 export default {
   components: {
-    layout,
-  },
+    layout
+  }
 };
 </script>
