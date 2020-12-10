@@ -79,6 +79,7 @@ export default defineComponent({
   border: 1px solid #f0f0f0;
   display: flex;
   align-items: center;
+  transition: 0.18s;
 
   .left-content {
     display: flex;

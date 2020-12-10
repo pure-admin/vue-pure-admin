@@ -22,8 +22,8 @@ export default {
   components: {
     headBar,
     sides,
-    tags,
-  },
+    tags
+  }
 };
 </script>
 
