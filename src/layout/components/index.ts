@@ -1,0 +1,6 @@
+export { default as headBar } from './header/index.vue'
+export { default as panel } from './panel/index.vue'
+export { default as settings } from './settings/index.vue'
+export { default as sides } from './sides/index.vue'
+export { default as tags } from './tag/index.vue'
+export { default as appMain } from './AppMain.vue'

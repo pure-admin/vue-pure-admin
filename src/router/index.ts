@@ -1,42 +1,72 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router"
 
-import Home from "../views/home.vue"
+import Layout from '../layout/index.vue'
+
 import { storageSession } from "../utils/storage"
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'home',
-    component: Home,
-    redirect: "/home",
+    component: Layout,
+    redirect: "/home/welcome",
+    meta: {
+      savedPosition: false,
+      showLink: false
+    }
+  },
+  {
+    path: '/user',
+    name: 'user',
+    component: Layout,
     children: [
       {
-        path: '/user',
-        name: 'user',
+        path: '/user/base',
         component: () => import(/* webpackChunkName: "user" */ '../views/user.vue'),
-        children: [
-          {
-            path: '/user/base',
-            component: () => import(/* webpackChunkName: "user" */ '../views/user.vue'),
-            meta: {
-              // icon: 'el-icon-user',
-              title: '基础管理',
-              showLink: false,
-              savedPosition: true
-            }
-          }
-        ],
         meta: {
-          icon: 'el-icon-user',
-          title: '用户管理',
-          showLink: true,
+          // icon: 'el-icon-user',
+          title: 'baseinfo',
+          showLink: false,
           savedPosition: true
         }
       },
     ],
     meta: {
-      savedPosition: false,
-      showLink: false
+      icon: 'el-icon-user',
+      title: 'usermanagement', 
+      showLink: true,
+      savedPosition: true
+    }
+  },
+  {
+    path: '/error',
+    name: 'error',
+    component: Layout,
+    children: [
+      {
+        path: '/error/401',
+        component: () => import(/* webpackChunkName: "error" */ '../views/error/401.vue'),
+        meta: {
+          title: '401',
+          showLink: false,
+          savedPosition: true
+        }
+      },
+      {
+        path: '/error/404',
+        component: () => import(/* webpackChunkName: "error" */ '../views/error/404.vue'),
+        meta: {
+          title: '404',
+          showLink: false,
+          savedPosition: true
+        }
+      },
+    ],
+    meta: {
+      icon: 'el-icon-position',
+      title: 'error', 
+      showLink: true,
+      savedPosition: true
     }
   },
   {
@@ -57,34 +87,11 @@ const routes: Array<RouteRecordRaw> = [
       showLink: false
     }
   },
-  // {
-  //   path: '/user',
-  //   name: 'user',
-  //   component: () => import(/* webpackChunkName: "user" */ '../views/user.vue'),
-  //   redirect: "/user/base",
-  //   children: [
-  //     {
-  //       path: '/user/base',
-  //       component: () => import(/* webpackChunkName: "user" */ '../views/user.vue'),
-  //       meta: {
-  //         // icon: 'el-icon-user',
-  //         title: '基础管理',
-  //         showLink: false,
-  //         savedPosition: true
-  //       }
-  //     }
-  //   ],
-  //   meta: {
-  //     icon: 'el-icon-user',
-  //     title: '用户管理',
-  //     showLink: true,
-  //     savedPosition: true
-  //   }
-  // },
   {
     // 找不到路由重定向到主页
     path: '/:pathMatch(.*)',
-    component: Home,
+    component: Layout,
+    redirect: "/error/404",
     meta: {
       icon: 'el-icon-s-home',
       title: '首页',

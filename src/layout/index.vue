@@ -1,29 +1,29 @@
 <template>
   <div class="layout">
     <!-- 头部 -->
-    <head-bar />
+    <headBar />
     <!-- 标签 -->
     <tags />
-    <!-- 内容主体 -->
-    <div class="layout-body">
-      <!-- 侧边栏 -->
-      <sides />
+    <!-- 侧边栏 -->
+    <sides>
       <!-- 内容 -->
-      <router-view></router-view>
-    </div>
+      <appMain />
+    </sides>
+    <!-- 系统设置 -->
+    <panel />
   </div>
 </template>
 
 <script lang='ts'>
-import headBar from "./header/index.vue";
-import sides from "./sides/index.vue";
-import tags from "./tag/index.vue";
+import { headBar, panel, sides, tags, appMain } from "./components/index";
 export default {
   components: {
     headBar,
+    panel,
     sides,
-    tags
-  }
+    tags,
+    appMain,
+  },
 };
 </script>
 

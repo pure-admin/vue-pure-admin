@@ -15,21 +15,22 @@
     >
       <el-menu-item index="/">
         <i class="el-icon-s-home"></i>
-        <span>首页</span>
+        <span>{{ $t("home") }}</span>
       </el-menu-item>
 
-      <el-submenu v-for="item in routes" :key="item.key">
+      <el-submenu v-for="item in routes" :key="item.key" index="item.key">
         <template #title>
           <i :class="item.meta.icon"></i>
-          <span>{{ item.meta.title }}</span>
+          <span>{{ $t(item.meta.title) }}</span>
         </template>
         <el-menu-item-group v-for="(child, key) in item.children" :key="key">
           <el-menu-item :index="child.path">
-            {{ child.meta.title }}
+            {{ $t(child.meta.title) }}
           </el-menu-item>
         </el-menu-item-group>
       </el-submenu>
     </el-menu>
+    <slot />
   </div>
 </template>
 
@@ -37,8 +38,8 @@
 import mitt from "mitt";
 export const sidesEmitter = mitt();
 import { ref, defineComponent, onUnmounted } from "vue";
-import router from "../../router/index";
-import { algorithm } from "../../utils/algorithm";
+import router from "../../../router/index";
+import { algorithm } from "../../../utils/algorithm";
 export default defineComponent({
   setup() {
     let isCollapse = ref(false);

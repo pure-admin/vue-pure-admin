@@ -1,5 +1,7 @@
 <template>
-  <div>用户管理页面</div>
+  <div>
+    <h1>欢迎</h1>
+  </div>
 </template>
 
 <script lang='ts'>

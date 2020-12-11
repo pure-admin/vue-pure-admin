@@ -6,42 +6,62 @@
         <i :class="flag ? 'el-icon-s-fold' : 'el-icon-s-unfold'"></i>
       </div>
       <el-breadcrumb separator="/">
-        <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ path: '/' }">{{
+          $t("home")
+        }}</el-breadcrumb-item>
         <el-breadcrumb-item>用户管理</el-breadcrumb-item>
         <el-breadcrumb-item>基础管理</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
     <!-- 右侧元素 -->
-    <el-dropdown>
-      <span class="el-dropdown-link">
-        <img :src="'/favicon.ico'" />
-        <p>{{ usename }}</p>
-      </span>
-      <template #dropdown>
-        <el-dropdown-menu>
-          <el-dropdown-item icon="el-icon-switch-button" @click="logout">退出系统</el-dropdown-item>
-        </el-dropdown-menu>
-      </template>
-    </el-dropdown>
+    <div class="right-content">
+      <div class="inter" :title="langs ? '中文' : '英文'" @click="toggleLang">
+        <img :src="langs ? '/src/assets/ch.png' : '/src/assets/en.png'" />
+      </div>
+      <el-dropdown>
+        <span class="el-dropdown-link">
+          <img :src="'/favicon.ico'" />
+          <p>{{ usename }}</p>
+        </span>
+        <template #dropdown>
+          <el-dropdown-menu>
+            <el-dropdown-item icon="el-icon-switch-button" @click="logout">{{
+              $t("LoginOut")
+            }}</el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
+    </div>
   </div>
 </template>
 
 <script lang='ts'>
 import { sidesEmitter } from "../sides/index.vue";
 import { tagEmitter } from "../tag/index.vue";
-import { ref, defineComponent, onMounted, nextTick } from "vue";
-import { resizeScreen } from "../resize";
-import { storageSession } from "../../utils/storage";
+import { ref, reactive, defineComponent, onMounted, nextTick } from "vue";
+import { resizeScreen } from "../../resize";
+import { storageSession } from "../../../utils/storage";
 import { useRouter } from "vue-router";
+import { useI18n } from "vue-i18n";
 export default defineComponent({
   setup(props, ctx) {
     let flag = ref(true);
 
     let router = useRouter();
 
+    let langs = ref(true);
+
     let usename = storageSession.getItem("info").username;
 
     const { spreadWidth, shrinkWidth } = resizeScreen();
+
+    const { locale } = useI18n();
+
+    // 国际化语言切换
+    const toggleLang = (): void => {
+      langs.value = !langs.value;
+      langs.value ? (locale.value = "ch") : (locale.value = "en");
+    };
 
     // 侧边栏展开、收起
     const collapse = (): void => {
@@ -66,8 +86,17 @@ export default defineComponent({
         ?.setAttribute("class", "hidden");
     });
 
-    return { flag, spreadWidth, shrinkWidth, usename, collapse, logout };
-  }
+    return {
+      flag,
+      spreadWidth,
+      shrinkWidth,
+      usename,
+      collapse,
+      logout,
+      langs,
+      toggleLang,
+    };
+  },
 });
 </script>
 
@@ -103,19 +132,36 @@ export default defineComponent({
     }
   }
 
-  .el-dropdown-link {
-    width: 80px;
-    height: 48px;
+  .right-content {
     display: flex;
-    align-items: center;
-    justify-content: space-around;
-    margin-right: 20px;
-    &:hover {
-      background: #f0f0f0;
+    .inter {
+      width: 40px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      &:hover {
+        cursor: pointer;
+        background: #f0f0f0;
+      }
+      img {
+        width: 25px;
+      }
     }
-    img {
-      width: 22px;
-      height: 22px;
+    .el-dropdown-link {
+      width: 80px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      margin-right: 20px;
+      &:hover {
+        background: #f0f0f0;
+      }
+      img {
+        width: 22px;
+        height: 22px;
+      }
     }
   }
 }

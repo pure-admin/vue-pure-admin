@@ -1,8 +1,7 @@
 import { ref } from "vue"
 import { debounce } from "../utils/debounce";
-
 // @ts-ignore
-import { tagEmitter } from "./tag/index.vue";
+import { tagEmitter } from "./components/tag/index.vue";
 
 export const resizeScreen = ():any =>  {
     let spreadWidth = ref(document.body.clientWidth - 210 + "px")

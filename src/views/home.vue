@@ -1,12 +1,13 @@
 <template>
-  <layout />
+  <div>Home</div>
+  <!-- <layout /> -->
 </template>
 
 <script lang='ts'>
 import layout from "../layout/index.vue";
 export default {
   components: {
-    layout
-  }
+    layout,
+  },
 };
 </script>

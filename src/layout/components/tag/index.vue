@@ -6,7 +6,8 @@
       :key="tag.name"
       closable
       :type="tag.type"
-    >{{ tag.name }}</el-tag>
+      >{{ tag.name }}</el-tag
+    >
   </div>
 </template>
 
@@ -21,29 +22,29 @@ export default defineComponent({
     let spreadWidth = ref(document.body.clientWidth - 210 + "px");
     let shrinkWidth = ref(document.body.clientWidth - 66 + "px");
 
-    tagEmitter.on("handletag", e => (flag.value = e));
+    tagEmitter.on("handletag", (e) => (flag.value = e));
 
-    tagEmitter.on("resizetag", e => {
+    tagEmitter.on("resizetag", (e) => {
       spreadWidth.value = e.spreadWidth;
       shrinkWidth.value = e.shrinkWidth;
     });
 
     const tags = ref([
       { name: "首页", type: "info" },
-      { name: "基础管理", type: "info" }
+      { name: "基础管理", type: "info" },
     ]);
 
     onUnmounted(() => {
-      tagEmitter.off("handletag", callback => Boolean);
+      tagEmitter.off("handletag", (callback) => Boolean);
     });
 
     return {
       tags,
       spreadWidth,
       shrinkWidth,
-      flag
+      flag,
     };
-  }
+  },
 });
 </script>
 
