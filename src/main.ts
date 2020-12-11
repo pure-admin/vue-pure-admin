@@ -20,6 +20,9 @@ const i18n = createI18n({
 
 // 导入公共样式
 import "./assets/index.css"
+// 导入字体图标
+import "./assets/iconfont/iconfont.js"
+import "./assets/iconfont/iconfont.css"
 
 const app = createApp(App)
 

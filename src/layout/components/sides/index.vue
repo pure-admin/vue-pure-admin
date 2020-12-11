@@ -18,15 +18,13 @@
         <span>{{ $t("home") }}</span>
       </el-menu-item>
 
-      <el-submenu v-for="item in routes" :key="item.key" index="item.key">
+      <el-submenu v-for="item in routes" :key="item.key" :index="item.key">
         <template #title>
           <i :class="item.meta.icon"></i>
           <span>{{ $t(item.meta.title) }}</span>
         </template>
         <el-menu-item-group v-for="(child, key) in item.children" :key="key">
-          <el-menu-item :index="child.path">
-            {{ $t(child.meta.title) }}
-          </el-menu-item>
+          <el-menu-item :index="child.path">{{ $t(child.meta.title) }}</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
     </el-menu>
@@ -46,7 +44,7 @@ export default defineComponent({
 
     let { getRoutes } = router;
 
-    sidesEmitter.on("collapse", (e) => (isCollapse.value = !e));
+    sidesEmitter.on("collapse", e => (isCollapse.value = !e));
 
     let routes = algorithm.increaseIndexes(getRoutes());
 
@@ -61,16 +59,16 @@ export default defineComponent({
     };
 
     onUnmounted(() => {
-      sidesEmitter.off("collapse", (callback) => Boolean);
+      sidesEmitter.off("collapse", callback => Boolean);
     });
 
     return {
       isCollapse,
       handleOpen,
       handleClose,
-      routes,
+      routes
     };
-  },
+  }
 });
 </script>
 

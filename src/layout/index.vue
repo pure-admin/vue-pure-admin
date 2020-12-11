@@ -22,8 +22,8 @@ export default {
     panel,
     sides,
     tags,
-    appMain,
-  },
+    appMain
+  }
 };
 </script>
 

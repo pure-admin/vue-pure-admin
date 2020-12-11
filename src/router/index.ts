@@ -33,7 +33,7 @@ const routes: Array<RouteRecordRaw> = [
     ],
     meta: {
       icon: 'el-icon-user',
-      title: 'usermanagement', 
+      title: 'usermanagement',
       showLink: true,
       savedPosition: true
     }
@@ -64,7 +64,7 @@ const routes: Array<RouteRecordRaw> = [
     ],
     meta: {
       icon: 'el-icon-position',
-      title: 'error', 
+      title: 'error',
       showLink: true,
       savedPosition: true
     }
@@ -118,11 +118,19 @@ const router = createRouter({
   }
 })
 
+import NProgress from "../utils/progress"
+
 const whiteList = ["/login", "/register"]
 
 router.beforeEach((to, _from, next) => {
+  NProgress.start()
   document.title = to.meta.title // 动态title
   whiteList.indexOf(to.path) !== -1 || storageSession.getItem("info") ? next() : next("/login") // 全部重定向到登录页
+})
+
+router.afterEach(() => {
+  // finish progress bar
+  NProgress.done()
 })
 
 export default router

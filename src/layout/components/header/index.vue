@@ -6,15 +6,18 @@
         <i :class="flag ? 'el-icon-s-fold' : 'el-icon-s-unfold'"></i>
       </div>
       <el-breadcrumb separator="/">
-        <el-breadcrumb-item :to="{ path: '/' }">{{
+        <el-breadcrumb-item :to="{ path: '/' }">
+          {{
           $t("home")
-        }}</el-breadcrumb-item>
+          }}
+        </el-breadcrumb-item>
         <el-breadcrumb-item>用户管理</el-breadcrumb-item>
         <el-breadcrumb-item>基础管理</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
     <!-- 右侧元素 -->
     <div class="right-content">
+      <screenfull />
       <div class="inter" :title="langs ? '中文' : '英文'" @click="toggleLang">
         <img :src="langs ? '/src/assets/ch.png' : '/src/assets/en.png'" />
       </div>
@@ -25,9 +28,11 @@
         </span>
         <template #dropdown>
           <el-dropdown-menu>
-            <el-dropdown-item icon="el-icon-switch-button" @click="logout">{{
+            <el-dropdown-item icon="el-icon-switch-button" @click="logout">
+              {{
               $t("LoginOut")
-            }}</el-dropdown-item>
+              }}
+            </el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -38,12 +43,16 @@
 <script lang='ts'>
 import { sidesEmitter } from "../sides/index.vue";
 import { tagEmitter } from "../tag/index.vue";
+import screenfull from "./screenfull/index.vue";
 import { ref, reactive, defineComponent, onMounted, nextTick } from "vue";
 import { resizeScreen } from "../../resize";
 import { storageSession } from "../../../utils/storage";
 import { useRouter } from "vue-router";
 import { useI18n } from "vue-i18n";
 export default defineComponent({
+  components: {
+    screenfull
+  },
   setup(props, ctx) {
     let flag = ref(true);
 
@@ -94,9 +103,9 @@ export default defineComponent({
       collapse,
       logout,
       langs,
-      toggleLang,
+      toggleLang
     };
-  },
+  }
 });
 </script>
 
@@ -134,12 +143,14 @@ export default defineComponent({
 
   .right-content {
     display: flex;
+    align-items: center;
     .inter {
       width: 40px;
       height: 48px;
       display: flex;
       align-items: center;
       justify-content: space-around;
+      margin-right: 5px;
       &:hover {
         cursor: pointer;
         background: #f0f0f0;
