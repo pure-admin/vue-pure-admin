@@ -70,6 +70,28 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
+    path: '/components',
+    name: 'components',
+    component: Layout,
+    children: [
+      {
+        path: '/components/split-pane',
+        component: () => import(/* webpackChunkName: "components" */ '../views/components/split-pane/index.vue'),
+        meta: {
+          title: 'split-pane',
+          showLink: false,
+          savedPosition: true
+        }
+      }
+    ],
+    meta: {
+      icon: 'el-icon-menu',
+      title: 'components',
+      showLink: true,
+      savedPosition: true
+    }
+  },
+  {
     path: '/login',
     name: 'login',
     component: () => import(/* webpackChunkName: "login" */ '../views/login.vue'),

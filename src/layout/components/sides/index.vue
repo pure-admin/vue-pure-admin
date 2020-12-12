@@ -48,8 +48,6 @@ export default defineComponent({
 
     let routes = algorithm.increaseIndexes(getRoutes());
 
-    console.log(routes);
-
     const handleOpen = (key, keyPath): void => {
       // console.log(key, keyPath);
     };
