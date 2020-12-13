@@ -17,7 +17,7 @@
   transition: all .5s;
 }
 
-.fade-transform-enter {
+.fade-transform-enter-from {
   opacity: 0;
   transform: translateX(-30px);
 }
@@ -33,14 +33,10 @@
   transition: all .5s;
 }
 
-.breadcrumb-enter,
+.breadcrumb-enter-from,
 .breadcrumb-leave-active {
   opacity: 0;
   transform: translateX(20px);
-}
-
-.breadcrumb-move {
-  transition: all .5s;
 }
 
 .breadcrumb-leave-active {
