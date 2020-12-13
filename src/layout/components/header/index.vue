@@ -5,15 +5,7 @@
       <div class="left-icon" @click="collapse">
         <i :class="flag ? 'el-icon-s-fold' : 'el-icon-s-unfold'"></i>
       </div>
-      <el-breadcrumb separator="/">
-        <el-breadcrumb-item :to="{ path: '/' }">
-          {{
-          $t("home")
-          }}
-        </el-breadcrumb-item>
-        <el-breadcrumb-item>用户管理</el-breadcrumb-item>
-        <el-breadcrumb-item>基础管理</el-breadcrumb-item>
-      </el-breadcrumb>
+      <bread-crumb />
     </div>
     <!-- 右侧元素 -->
     <div class="right-content">
@@ -44,6 +36,7 @@
 import { sidesEmitter } from "../sides/index.vue";
 import { tagEmitter } from "../tag/index.vue";
 import screenfull from "./screenfull/index.vue";
+import breadCrumb from "../../../components/bread-crumb/index.vue";
 import { ref, reactive, defineComponent, onMounted, nextTick } from "vue";
 import { resizeScreen } from "../../resize";
 import { storageSession } from "../../../utils/storage";
@@ -51,7 +44,8 @@ import { useRouter } from "vue-router";
 import { useI18n } from "vue-i18n";
 export default defineComponent({
   components: {
-    screenfull
+    screenfull,
+    breadCrumb
   },
   setup(props, ctx) {
     let flag = ref(true);
