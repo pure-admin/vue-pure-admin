@@ -1,5 +1,5 @@
 <template>
-  <div class="tags" :style="{ width: flag ? spreadWidth : shrinkWidth }">
+  <div class="tags">
     <el-tag
       size="medium"
       v-for="tag in tags"
@@ -12,36 +12,18 @@
 </template>
 
 <script lang='ts'>
-import mitt from "mitt";
-export const tagEmitter = mitt();
 import { ref, defineComponent, onUnmounted, onMounted } from "vue";
 export default defineComponent({
   setup() {
     let flag = ref(true);
-
-    let spreadWidth = ref(document.body.clientWidth - 210 + "px");
-    let shrinkWidth = ref(document.body.clientWidth - 66 + "px");
-
-    tagEmitter.on("handletag", (e) => (flag.value = e));
-
-    tagEmitter.on("resizetag", (e) => {
-      spreadWidth.value = e.spreadWidth;
-      shrinkWidth.value = e.shrinkWidth;
-    });
 
     const tags = ref([
       { name: "首页", type: "info" },
       { name: "基础管理", type: "info" },
     ]);
 
-    onUnmounted(() => {
-      tagEmitter.off("handletag", (callback) => Boolean);
-    });
-
     return {
       tags,
-      spreadWidth,
-      shrinkWidth,
       flag,
     };
   },

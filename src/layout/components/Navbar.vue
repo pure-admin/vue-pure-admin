@@ -1,14 +1,14 @@
 <template>
-  <div class="header" :style="{ width: flag ? spreadWidth : shrinkWidth }">
-    <!-- 左侧元素 -->
-    <div class="left-content">
-      <div class="left-icon" @click="collapse">
-        <i :class="flag ? 'el-icon-s-fold' : 'el-icon-s-unfold'"></i>
-      </div>
-      <bread-crumb />
-    </div>
-    <!-- 右侧元素 -->
-    <div class="right-content">
+  <div class="navbar">
+    <hamburger
+      :is-active="sidebar.opened"
+      class="hamburger-container"
+      @toggleClick="toggleSideBar"
+    />
+
+    <breadcrumb class="breadcrumb-container" />
+
+    <div class="right-menu">
       <screenfull />
       <div class="inter" :title="langs ? '中文' : '英文'" @click="toggleLang">
         <img :src="langs ? '/src/assets/ch.png' : '/src/assets/en.png'" />
@@ -21,9 +21,7 @@
         <template #dropdown>
           <el-dropdown-menu>
             <el-dropdown-item icon="el-icon-switch-button" @click="logout">
-              {{
-              $t("LoginOut")
-              }}
+              {{ $t("LoginOut") }}
             </el-dropdown-item>
           </el-dropdown-menu>
         </template>
@@ -32,31 +30,30 @@
   </div>
 </template>
 
-<script lang='ts'>
-import { sidesEmitter } from "../sides/index.vue";
-import { tagEmitter } from "../tag/index.vue";
-import screenfull from "./screenfull/index.vue";
-import breadCrumb from "../../../components/bread-crumb/index.vue";
+<script lang="ts">
 import { ref, reactive, defineComponent, onMounted, nextTick } from "vue";
-import { resizeScreen } from "../../resize";
-import { storageSession } from "../../../utils/storage";
-import { useRouter } from "vue-router";
+import Breadcrumb from "../../components/breadCrumb/index.vue";
+import Hamburger from "../../components/hamBurger/index.vue";
+import screenfull from "../components/screenfull/index.vue";
+import { useMapGetters } from "../store";
+import { useRoute, useRouter } from "vue-router";
+import { mapGetters, useStore } from "vuex";
+import { storageSession } from "../../utils/storage";
 import { useI18n } from "vue-i18n";
+
 export default defineComponent({
   components: {
+    Breadcrumb,
+    Hamburger,
     screenfull,
-    breadCrumb
   },
-  setup(props, ctx) {
-    let flag = ref(true);
-
-    let router = useRouter();
-
+  setup() {
     let langs = ref(true);
 
-    let usename = storageSession.getItem("info").username;
+    const store = useStore();
+    const router = useRouter();
 
-    const { spreadWidth, shrinkWidth } = resizeScreen();
+    let usename = storageSession.getItem("info").username;
 
     const { locale } = useI18n();
 
@@ -66,21 +63,13 @@ export default defineComponent({
       langs.value ? (locale.value = "ch") : (locale.value = "en");
     };
 
-    // 侧边栏展开、收起
-    const collapse = (): void => {
-      flag.value = !flag.value;
-      sidesEmitter.emit("collapse", flag.value);
-      tagEmitter.emit("handletag", flag.value);
-    };
-
     // 退出登录
     const logout = (): void => {
       storageSession.removeItem("info");
       router.push("/login");
     };
 
-    onMounted(async () => {
-      await nextTick();
+    onMounted(() => {
       document
         .querySelector(".el-dropdown__popper")
         ?.setAttribute("class", "resetTop");
@@ -90,52 +79,47 @@ export default defineComponent({
     });
 
     return {
-      flag,
-      spreadWidth,
-      shrinkWidth,
-      usename,
-      collapse,
-      logout,
+      // @ts-ignore
+      ...useMapGetters(["sidebar"]),
+      toggleSideBar() {
+        store.dispatch("app/toggleSideBar");
+      },
       langs,
-      toggleLang
+      usename,
+      toggleLang,
+      logout,
     };
-  }
+  },
 });
 </script>
 
 <style lang="scss" scoped>
-@import "./index.scss";
-.header {
-  float: right;
-  height: 48px;
-  border: 1px solid #f0f0f0;
-  display: flex;
-  align-items: center;
-  transition: 0.18s;
+.navbar {
+  height: 50px;
+  overflow: hidden;
+  position: relative;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
 
-  .left-content {
-    display: flex;
-    align-items: center;
-    flex-grow: 1;
-    justify-content: flex-start;
-    .left-icon {
-      width: 40px;
-      height: 48px;
-      line-height: 48px;
-      text-align: center;
-      margin-right: 5px;
-      &:hover {
-        background: #f6f6f6;
-        cursor: pointer;
-      }
-      i {
-        font-size: 22px;
-        line-height: 48px;
-      }
+  .hamburger-container {
+    line-height: 46px;
+    height: 100%;
+    float: left;
+    cursor: pointer;
+    transition: background 0.3s;
+    -webkit-tap-highlight-color: transparent;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.025);
     }
   }
 
-  .right-content {
+  .breadcrumb-container {
+    float: left;
+  }
+
+  .right-menu {
+    float: right;
     display: flex;
     align-items: center;
     .inter {
@@ -169,5 +153,17 @@ export default defineComponent({
       }
     }
   }
+}
+// single element-plus reset
+.el-dropdown-menu__item {
+  padding: 0 10px;
+}
+.el-dropdown-menu {
+  padding: 0;
+}
+.el-dropdown-menu__item:focus,
+.el-dropdown-menu__item:not(.is-disabled):hover {
+  color:  #606266;
+  background: #f0f0f0;
 }
 </style>

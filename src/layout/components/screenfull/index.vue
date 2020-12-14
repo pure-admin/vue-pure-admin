@@ -2,53 +2,63 @@
   <div class="screen-full" @click="onClick">
     <i
       :title="isFullscreen ? '退出全屏' : '全屏'"
-      :class="isFullscreen ? 'iconfont team-iconexit-fullscreen' : 'iconfont team-iconfullscreen'"
+      :class="
+        isFullscreen
+          ? 'iconfont team-iconexit-fullscreen'
+          : 'iconfont team-iconfullscreen'
+      "
     ></i>
   </div>
 </template>
 
 <script>
-import screenfull from "screenfull"
-import { ref, onBeforeMount, onUnmounted, defineComponent, onMounted } from "vue"
+import screenfull from "screenfull";
+import {
+  ref,
+  onBeforeMount,
+  onUnmounted,
+  defineComponent,
+  onMounted,
+} from "vue";
 export default defineComponent({
   setup() {
-    let isFullscreen = ref(false)
+    let isFullscreen = ref(false);
 
     const onClick = () => {
-      if (!screenfull.isEnabled) return
-      screenfull.toggle()
-    }
+      if (!screenfull.isEnabled) return;
+      screenfull.toggle();
+    };
 
     const change = () => {
-      isFullscreen.value = screenfull.isFullscreen
-    }
+      isFullscreen.value = screenfull.isFullscreen;
+    };
 
     const init = () => {
       if (screenfull.isEnabled) {
-        screenfull.on('change', change)
+        screenfull.on("change", change);
       }
-    }
+    };
 
     const destroy = () => {
       if (screenfull.isEnabled) {
-        screenfull.off('change', change)
+        screenfull.off("change", change);
       }
-    }
+    };
 
     onMounted(() => {
-      init()
-    })
+      init();
+    });
 
     onUnmounted(() => {
-      destroy()
-    })
+      destroy();
+    });
 
     return {
       isFullscreen,
-      onClick
-    }
-  }
-})
+      onClick,
+    };
+  },
+});
 </script>
 
 <style lang="scss" scoped>

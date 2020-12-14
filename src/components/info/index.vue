@@ -153,7 +153,7 @@ export default defineComponent({
 .info {
   width: 30vw;
   height: 48vh;
-  background: url("./login.png") no-repeat center;
+  background: url("../../assets/login.png") no-repeat center;
   background-size: cover;
   position: absolute;
   border-radius: 20px;

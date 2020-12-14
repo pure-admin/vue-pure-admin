@@ -4,23 +4,23 @@
   "private": true,
   "scripts": {
     "serve": "vite",
-    "build": "vite build",
-    "lint": "vue-cli-service lint"
+    "build": "vite build"
   },
   "dependencies": {
     "@types/nprogress": "^0.2.0",
     "await-to-js": "^2.1.1",
     "axios": "^0.21.0",
-    "element-plus": "^1.0.1-beta.8",
+    "element-plus": "^1.0.1-beta.7",
     "mitt": "^2.1.0",
     "nprogress": "^0.2.0",
+    "path": "^0.12.7",
     "path-to-regexp": "^6.2.0",
     "resize-observer-polyfill": "^1.5.1",
     "screenfull": "^5.0.2",
     "v-contextmenu": "^3.0.0-alpha.4",
     "vue": "^3.0.4",
     "vue-class-component": "^8.0.0-rc.1",
-    "vue-i18n": "^9.0.0-beta.10",
+    "vue-i18n": "^9.0.0-beta.12",
     "vue-router": "^4.0.1",
     "vuex": "^4.0.0-rc.2"
   },

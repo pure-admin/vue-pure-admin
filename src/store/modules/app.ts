@@ -1,5 +1,7 @@
+import { storageLocal } from "../../utils/storage"
 interface stateInter {
   sidebar: {
+    opened: Boolean,
     withoutAnimation: Boolean
   },
   device: String
@@ -7,6 +9,7 @@ interface stateInter {
 
 const state = {
   sidebar: {
+     opened: storageLocal.getItem('sidebarStatus') ? !!+storageLocal.getItem('sidebarStatus') : true,
     withoutAnimation: false
   },
   device: 'desktop'
@@ -14,9 +17,17 @@ const state = {
 
 const mutations = {
   TOGGLE_SIDEBAR: (state: stateInter): void => {
+    state.sidebar.opened = !state.sidebar.opened
     state.sidebar.withoutAnimation = false
+     if (state.sidebar.opened) {
+      storageLocal.setItem('sidebarStatus', 1)
+    } else {
+      storageLocal.setItem('sidebarStatus', 0)
+    }
   },
   CLOSE_SIDEBAR: (state: stateInter, withoutAnimation: Boolean) => {
+    storageLocal.setItem('sidebarStatus', 0)
+    state.sidebar.opened = false
     state.sidebar.withoutAnimation = withoutAnimation
   },
   TOGGLE_DEVICE: (state: stateInter, device: String) => {

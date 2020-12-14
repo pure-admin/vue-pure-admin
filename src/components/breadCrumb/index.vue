@@ -1,12 +1,15 @@
 <template>
   <el-breadcrumb class="app-breadcrumb" separator="/">
     <transition-group appear name="breadcrumb">
-      <el-breadcrumb-item v-for="(item,index) in levelList" :key="item.path">
+      <el-breadcrumb-item v-for="(item, index) in levelList" :key="item.path">
         <span
           v-if="item.redirect === 'noRedirect' || index == levelList.length - 1"
           class="no-redirect"
-        >{{ $t(item.meta.title) }}</span>
-        <a v-else @click.prevent="handleLink(item)">{{ $t(item.meta.title) }}</a>
+          >{{ $t(item.meta.title) }}</span
+        >
+        <a v-else @click.prevent="handleLink(item)">{{
+          $t(item.meta.title)
+        }}</a>
       </el-breadcrumb-item>
     </transition-group>
   </el-breadcrumb>
@@ -32,18 +35,20 @@ export default defineComponent({
     };
 
     const getBreadcrumb = (): void => {
-      let matched = route.matched.filter(item => item.meta && item.meta.title);
+      let matched = route.matched.filter(
+        (item) => item.meta && item.meta.title
+      );
       const first = matched[0];
       if (!isDashboard(first)) {
         matched = [
           ({
             path: "/home",
-            meta: { title: "home" }
-          } as unknown) as RouteLocationMatched
+            meta: { title: "home" },
+          } as unknown) as RouteLocationMatched,
         ].concat(matched);
       }
       levelList.value = matched.filter(
-        item => item.meta && item.meta.title && item.meta.breadcrumb !== false
+        (item) => item.meta && item.meta.title && item.meta.breadcrumb !== false
       );
     };
 
@@ -70,7 +75,7 @@ export default defineComponent({
     };
 
     return { levelList, handleLink };
-  }
+  },
 });
 </script>
 

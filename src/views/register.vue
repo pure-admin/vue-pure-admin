@@ -16,7 +16,7 @@ import {
   onBeforeMount,
   getCurrentInstance,
 } from "vue";
-import info, { ContextProps } from "../components/info.vue";
+import info, { ContextProps } from "../components/info/index.vue";
 import { getRegist, getVerify } from "../api/user";
 import { useRouter } from "vue-router";
 import { warnMessage, successMessage } from "../utils/message";

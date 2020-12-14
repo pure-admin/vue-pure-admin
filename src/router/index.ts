@@ -82,7 +82,7 @@ const routes: Array<RouteRecordRaw> = [
           showLink: false,
           savedPosition: true
         }
-      }
+      },
     ],
     meta: {
       icon: 'el-icon-menu',
