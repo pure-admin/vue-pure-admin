@@ -7,6 +7,11 @@ import store from './store'
 import ElementPlus from 'element-plus'
 import 'element-plus/lib/theme-chalk/index.css'
 
+// 内置vxe-table
+import 'xe-utils'
+import VXETable from 'vxe-table'
+import 'vxe-table/lib/style.css'
+
 // 内置国际化语言包
 import { createI18n } from 'vue-i18n'
 import ch from "./locales/ch.json"
@@ -27,4 +32,4 @@ import "./assets/iconfont/iconfont.css"
 
 const app = createApp(App)
 
-app.use(store).use(router).use(i18n).use(ElementPlus).mount('#app')
+app.use(store).use(router).use(i18n).use(ElementPlus).use(VXETable).mount('#app')

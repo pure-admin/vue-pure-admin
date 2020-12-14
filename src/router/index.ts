@@ -19,6 +19,7 @@ const routes: Array<RouteRecordRaw> = [
     path: '/user',
     name: 'user',
     component: Layout,
+    redirect: '/user/base',
     children: [
       {
         path: '/user/base',
@@ -42,6 +43,7 @@ const routes: Array<RouteRecordRaw> = [
     path: '/error',
     name: 'error',
     component: Layout,
+     redirect: '/error/401',
     children: [
       {
         path: '/error/401',
@@ -73,6 +75,7 @@ const routes: Array<RouteRecordRaw> = [
     path: '/components',
     name: 'components',
     component: Layout,
+    redirect: '/components/split-pane',
     children: [
       {
         path: '/components/split-pane',
@@ -110,7 +113,7 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    // 找不到路由重定向到主页
+    // 找不到路由重定向到404页面
     path: '/:pathMatch(.*)',
     component: Layout,
     redirect: "/error/404",
@@ -151,7 +154,6 @@ router.beforeEach((to, _from, next) => {
 })
 
 router.afterEach(() => {
-  // finish progress bar
   NProgress.done()
 })
 

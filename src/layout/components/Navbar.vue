@@ -163,7 +163,7 @@ export default defineComponent({
 }
 .el-dropdown-menu__item:focus,
 .el-dropdown-menu__item:not(.is-disabled):hover {
-  color:  #606266;
+  color: #606266;
   background: #f0f0f0;
 }
 </style>

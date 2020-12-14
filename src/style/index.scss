@@ -17,12 +17,14 @@ label {
 }
 
 html {
+  overflow: hidden;
   height: 100%;
   box-sizing: border-box;
 }
 
 #app {
   height: 100%;
+  overflow: hidden;
 }
 
 *,
@@ -46,6 +48,12 @@ a:hover {
 
 div:focus {
   outline: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .clearfix {
@@ -80,4 +88,15 @@ div:focus {
 
 .resetTop {
   top: 48px !important;
+}
+
+.html-grey {
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    filter: url("data:image/svg+xml;utf8,#grayscale");
+    filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+    -webkit-filter: grayscale(1);
 }

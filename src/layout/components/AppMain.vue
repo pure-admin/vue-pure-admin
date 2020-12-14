@@ -29,6 +29,7 @@ export default defineComponent({
   width: 100%;
   position: relative;
   overflow: hidden;
+  margin: 10px;
 }
 .fixed-header + .app-main {
   padding-top: 50px;

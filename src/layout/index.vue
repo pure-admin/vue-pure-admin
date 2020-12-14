@@ -16,12 +16,12 @@
       <app-main />
     </div>
     <!-- 系统设置 -->
-    <panel />
+    <setting />
   </div>
 </template>
 
 <script lang="ts">
-import { Navbar, Sidebar, AppMain, panel } from "./components";
+import { Navbar, Sidebar, AppMain, setting } from "./components";
 import {
   ref,
   reactive,
@@ -47,7 +47,7 @@ export default {
     Navbar,
     Sidebar,
     AppMain,
-    panel,
+    setting,
   },
   setup() {
     const store = useStore();
