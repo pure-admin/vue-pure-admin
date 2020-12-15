@@ -40,6 +40,9 @@
         <el-button @click="resetForm">重置</el-button>
         <span class="tips" @click="changPage">{{ tips }}</span>
       </el-form-item>
+      <span title="测试用户 直接登录" class="secret" @click="noSecret"
+        >免密登录</span
+      >
     </el-form>
   </div>
 </template>
@@ -54,6 +57,7 @@ import {
   watch,
   nextTick,
 } from "vue";
+import { storageSession } from "../../utils/storage";
 
 export interface ContextProps {
   userName: string;
@@ -136,6 +140,14 @@ export default defineComponent({
       tips.value === "注册" ? router.push("/register") : router.push("/login");
     };
 
+    const noSecret = (): void => {
+      storageSession.setItem("info", {
+        username: "测试用户",
+        accessToken: "eyJhbGciOiJIUzUxMiJ9.test",
+      });
+      router.push("/");
+    };
+
     return {
       rules,
       tips,
@@ -144,6 +156,7 @@ export default defineComponent({
       onBehavior,
       refreshVerify,
       changPage,
+      noSecret,
     };
   },
 });
@@ -177,6 +190,12 @@ export default defineComponent({
       &:hover {
         cursor: pointer;
       }
+    }
+  }
+  .secret {
+    color: #409eff;
+    &:hover {
+      cursor: pointer;
     }
   }
 }
