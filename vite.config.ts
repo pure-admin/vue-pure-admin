@@ -1,14 +1,24 @@
+
+import type { UserConfig } from 'vite'
 import dotEnv from 'dotenv'
 import path from 'path'
 
 const VUE_APP_ENV = 'development'
 const resolve = dir => path.join(__dirname, dir)
-const { VUE_APP_PROXY_DOMAIN } = dotEnv.config({
+const { VITE_PROXY_DOMAIN } = dotEnv.config({
   path: resolve(`.env.${VUE_APP_ENV}`)
 }).parsed
 
-module.exports = {
-  alias: {},
+
+const alias: Record<string, string> = {
+  '/@/': resolve('src')
+}
+
+const root: string = process.cwd()
+
+const viteConfig: UserConfig = {
+  root,
+  alias,
   // 是否自动在浏览器打开
   open: false,
   // 是否开启 https
@@ -27,9 +37,16 @@ module.exports = {
   // 反向代理
   proxy: {
     '/api': {
-      target: VUE_APP_PROXY_DOMAIN,
+      target: VITE_PROXY_DOMAIN,
       changeOrigin: true,
       rewrite: path => path.replace(/^\/api/, '')
     }
-  }
+  },
+  /**
+   * Transpile target for esbuild.
+   * @default 'es2020'
+   */
+  esbuildTarget: 'es2019'
 }
+
+export default viteConfig
