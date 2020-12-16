@@ -50,16 +50,6 @@ export default {
       }
     };
 
-    const insertToBody = (): void => {
-      const elx = vm.refs["right-panel"];
-      const body: any = document.querySelector("body");
-      body.insertBefore(elx, body.firstChild);
-    };
-
-    onMounted(() => {
-      insertToBody();
-    });
-
     onBeforeMount(() => {
       vm = getCurrentInstance();
     });

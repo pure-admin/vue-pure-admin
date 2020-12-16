@@ -53,19 +53,10 @@
       overflow: hidden;
     }
 
-    .svg-icon {
-      margin-right: 16px;
-    }
-
-    .sub-el-icon {
-      margin-right: 12px;
-      margin-left: -5px;
-    }
-
     .el-menu {
       border: none;
       height: 100%;
-      width: 100% !important;
+      // width: 100% !important;
     }
 
     // menu hover
@@ -92,6 +83,7 @@
   }
 
   .hideSidebar {
+   
     .sidebar-container {
       width: 54px !important;
     }
@@ -106,32 +98,13 @@
 
       .el-tooltip {
         padding: 0 !important;
-
-        .svg-icon {
-          margin-left: 20px;
-        }
-
-        .sub-el-icon {
-          margin-left: 14px;
-        }
+        
       }
     }
 
     .el-submenu {
       overflow: hidden;
-
       &>.el-submenu__title {
-        text-align: center;
-        
-        padding: 0 !important;
-
-        .svg-icon {
-          margin-left: 20px;
-        }
-
-        .sub-el-icon {
-          margin-left: 15px;
-        }
 
         .el-submenu__icon-arrow {
           display: none;
@@ -140,6 +113,7 @@
     }
 
     .el-menu--collapse {
+      margin-left: -5px; //需优化的地方
       .el-submenu {
         &>.el-submenu__title {
           &>span {
@@ -190,12 +164,8 @@
 // when menu collapsed
 .el-menu--vertical {
   &>.el-menu {
-    .svg-icon {
+    i {
       margin-right: 16px;
-    }
-    .sub-el-icon {
-      margin-right: 12px;
-      margin-left: -5px;
     }
   }
 
@@ -225,4 +195,5 @@
       border-radius: 20px;
     }
   }
+  
 }

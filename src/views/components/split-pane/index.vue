@@ -24,31 +24,31 @@
 
 <script lang="ts">
 import splitpane, {
-  ContextProps
+  ContextProps,
 } from "../../../components/split-pane/index.vue";
 import { reactive } from "vue";
 export default {
   components: {
-    splitpane
+    splitpane,
   },
   setup() {
     const settingLR: ContextProps = reactive({
       minPercent: 20,
       defaultPercent: 40,
-      split: "vertical"
+      split: "vertical",
     });
 
     const settingTB: ContextProps = reactive({
       minPercent: 20,
       defaultPercent: 40,
-      split: "horizontal"
+      split: "horizontal",
     });
 
     return {
       settingLR,
-      settingTB
+      settingTB,
     };
-  }
+  },
 };
 </script>
 

@@ -9,10 +9,44 @@ const routes: Array<RouteRecordRaw> = [
     path: '/',
     name: 'home',
     component: Layout,
-    redirect: "/home/welcome",
+    redirect: "/welcome",
+    children: [{
+      path: '/welcome',
+      name: 'welcome',
+      component: () => import(/* webpackChunkName: "home" */ '../views/welcome.vue'),
+      meta: {
+        title: 'home',
+        showLink: true,
+        savedPosition: false
+      }
+    }],
     meta: {
+      icon: 'el-icon-s-home',
+      showLink: true,
       savedPosition: false,
-      showLink: false
+    }
+  },
+  {
+    path: '/components',
+    name: 'components',
+    component: Layout,
+    redirect: '/components/split-pane',
+    children: [
+      {
+        path: '/components/split-pane',
+        component: () => import(/* webpackChunkName: "components" */ '../views/components/split-pane/index.vue'),
+        meta: {
+          title: 'split-pane',
+          showLink: false,
+          savedPosition: true
+        }
+      },
+    ],
+    meta: {
+      icon: 'el-icon-menu',
+      title: 'components',
+      showLink: true,
+      savedPosition: true
     }
   },
   {
@@ -43,7 +77,7 @@ const routes: Array<RouteRecordRaw> = [
     path: '/error',
     name: 'error',
     component: Layout,
-     redirect: '/error/401',
+    redirect: '/error/401',
     children: [
       {
         path: '/error/401',
@@ -67,29 +101,6 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       icon: 'el-icon-position',
       title: 'error',
-      showLink: true,
-      savedPosition: true
-    }
-  },
-  {
-    path: '/components',
-    name: 'components',
-    component: Layout,
-    redirect: '/components/split-pane',
-    children: [
-      {
-        path: '/components/split-pane',
-        component: () => import(/* webpackChunkName: "components" */ '../views/components/split-pane/index.vue'),
-        meta: {
-          title: 'split-pane',
-          showLink: false,
-          savedPosition: true
-        }
-      },
-    ],
-    meta: {
-      icon: 'el-icon-menu',
-      title: 'components',
       showLink: true,
       savedPosition: true
     }

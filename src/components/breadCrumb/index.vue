@@ -31,7 +31,7 @@ export default defineComponent({
       if (!name) {
         return false;
       }
-      return name.trim().toLocaleLowerCase() === "home".toLocaleLowerCase();
+      return name.trim().toLocaleLowerCase() === "welcome".toLocaleLowerCase();
     };
 
     const getBreadcrumb = (): void => {
@@ -42,7 +42,7 @@ export default defineComponent({
       if (!isDashboard(first)) {
         matched = [
           ({
-            path: "/home",
+            path: "/welcome",
             meta: { title: "home" },
           } as unknown) as RouteLocationMatched,
         ].concat(matched);
@@ -67,6 +67,7 @@ export default defineComponent({
 
     const handleLink = (item: RouteLocationMatched): any => {
       const { redirect, path } = item;
+      console.log(pathCompile(path));
       if (redirect) {
         router.push(redirect.toString());
         return;

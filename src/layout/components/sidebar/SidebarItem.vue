@@ -12,7 +12,7 @@
           :index="resolvePath(onlyOneChild.path)"
           :class="{ 'submenu-title-noDropdown': !isNest }"
         >
-          <i :icon="onlyOneChild.meta.icon || (item.meta && item.meta.icon)" />
+          <i :class="onlyOneChild.meta.icon || (item.meta && item.meta.icon)" />
           <template #title>
             <span>{{ $t(onlyOneChild.meta.title) }}</span>
           </template>
@@ -71,9 +71,17 @@ export default defineComponent({
       parent: RouteRecordRaw
     ) {
       const showingChildren = children.filter((item) => {
-        onlyOneChild.value = item;
-        return true;
+        if (item.hidden) {
+          return false;
+        } else {
+          onlyOneChild.value = item;
+          return true;
+        }
       });
+
+      if (showingChildren.length === 1) {
+        return true;
+      }
 
       if (showingChildren.length === 0) {
         onlyOneChild.value = { ...parent, path: "", noShowingChildren: true };

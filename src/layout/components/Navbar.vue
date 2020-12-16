@@ -144,6 +144,9 @@ export default defineComponent({
       align-items: center;
       justify-content: space-around;
       margin-right: 20px;
+      p {
+        font-size: 13px;
+      }
       &:hover {
         background: #f0f0f0;
       }

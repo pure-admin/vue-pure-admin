@@ -19,7 +19,6 @@
 import panel from "../panel/index.vue";
 import { onMounted, reactive, toRefs } from "vue";
 import { storageLocal } from "../../../utils/storage";
-import { debug } from "console";
 export default {
   components: { panel },
   setup() {
