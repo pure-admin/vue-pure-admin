@@ -1,17 +1,17 @@
 
+import { resolve } from 'path'
 import type { UserConfig } from 'vite'
-import dotEnv from 'dotenv'
-import path from 'path'
+import { loadEnv } from './build/utils'
+import { createProxy } from './build/proxy'
 
-const VUE_APP_ENV = 'development'
-const resolve = dir => path.join(__dirname, dir)
-const { VITE_PROXY_DOMAIN } = dotEnv.config({
-  path: resolve(`.env.${VUE_APP_ENV}`)
-}).parsed
+const pathResolve = (dir: string): any =>  {
+  return resolve(__dirname, '.', dir)
+}
 
+const { VITE_PORT, VITE_PUBLIC_PATH, VITE_PROXY, VITE_OPEN } = loadEnv()
 
 const alias: Record<string, string> = {
-  '/@/': resolve('src')
+  '/@/': pathResolve('src'),
 }
 
 const root: string = process.cwd()
@@ -19,34 +19,33 @@ const root: string = process.cwd()
 const viteConfig: UserConfig = {
   root,
   alias,
-  // 是否自动在浏览器打开
-  open: false,
   // 是否开启 https
   https: false,
   // 服务端渲染
   ssr: false,
+  sourcemap: true,
   /**
-   * Base public path when served in production.
+   * 端口号
+   * @default 3000
+   */
+  port: VITE_PORT,
+    /**
+   * 运行自动打开浏览器·
+   * @default 'false'
+   */
+  open: VITE_OPEN,
+  /**
+   * 基本公共路径
    * @default '/'
    */
-  /**
-   * Directory relative from `root` where build output will be placed. If the
-   * directory exists, it will be removed before the build.
-   * @default 'dist'
-   */
-  // 反向代理
-  proxy: {
-    '/api': {
-      target: VITE_PROXY_DOMAIN,
-      changeOrigin: true,
-      rewrite: path => path.replace(/^\/api/, '')
-    }
-  },
+  base: VITE_PUBLIC_PATH,
   /**
    * Transpile target for esbuild.
    * @default 'es2020'
    */
-  esbuildTarget: 'es2019'
+  esbuildTarget: 'es2020',
+  // 本地跨域代理
+  proxy: createProxy(VITE_PROXY)
 }
 
 export default viteConfig

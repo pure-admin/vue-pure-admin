@@ -28,6 +28,7 @@ import SidebarItem from "./SidebarItem.vue";
 import { algorithm } from "../../../utils/algorithm";
 
 export default defineComponent({
+  name: "sidebar",
   components: { SidebarItem },
   setup() {
     const router = useRouter().options.routes;

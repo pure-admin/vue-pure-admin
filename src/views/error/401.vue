@@ -21,8 +21,9 @@
 <script lang='ts'>
 import { ref } from "vue";
 export default {
+  name: "401",
   setup() {
-    let errGif = ref(`/src/assets/401.gif?${new Date()}`);
+    let errGif = ref(`/@/assets/401.gif?${new Date()}`);
     return {
       errGif,
     };

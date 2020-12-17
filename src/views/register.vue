@@ -21,6 +21,7 @@ import { getRegist, getVerify } from "../api/user";
 import { useRouter } from "vue-router";
 import { warnMessage, successMessage } from "../utils/message";
 export default {
+  name: "register",
   components: {
     info,
   },

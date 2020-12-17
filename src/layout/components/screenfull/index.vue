@@ -21,6 +21,7 @@ import {
   onMounted,
 } from "vue";
 export default defineComponent({
+  name: "screenfull",
   setup() {
     let isFullscreen = ref(false);
 

@@ -14,6 +14,7 @@
 <script lang='ts'>
 import { ref, defineComponent, onUnmounted, onMounted } from "vue";
 export default defineComponent({
+  name: "tag",
   setup() {
     let flag = ref(true);
 

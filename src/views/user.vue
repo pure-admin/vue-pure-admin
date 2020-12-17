@@ -4,6 +4,7 @@
 
 <script lang='ts'>
 export default {
+  name: "user",
   setup() {
     return {};
   },

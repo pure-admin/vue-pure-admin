@@ -48,6 +48,7 @@ import AppLink from "./Link.vue";
 import { defineComponent, PropType, ref } from "vue";
 import { RouteRecordRaw } from "vue-router";
 export default defineComponent({
+  name: "SidebarItem",
   components: { AppLink },
   props: {
     item: {

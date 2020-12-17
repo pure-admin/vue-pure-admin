@@ -1,4 +1,4 @@
-# vue-ts
+# Vue3.0后台管理系统
 
 ## 知识库地址
 
@@ -13,28 +13,22 @@
 [vue-i18n-next]: https://vue-i18n-next.intlify.dev/  
 [composition-api-vue-i18n-next]: https://vue-i18n-next.intlify.dev/advanced/composition.html#local-scope  
 
-## Project setup
+## 安装依赖
 
 ```
 npm install
 ```
 
-## Compiles and hot-reloads for development
+## 项目运行
 
 ```
 npm run serve
 ```
 
-## Compiles and minifies for production
+## 项目打包
 
 ```
 npm run build
-```
-
-## Lints and fixes files
-
-```
-npm run lint
 ```
 
 ## 注意点
@@ -46,3 +40,12 @@ npm install -g typescript
 npm install -g ts-node
 npm install -g create-vite-app
 ```
+
+坑位  
+1.  
+path模块线上部署会遇到process is undefined问题  
+解决办法：在源码中开头加入window.process = {}  
+issues：https://github.com/jinder/path/issues/7  
+2.  
+运行项目时控制台报NODE_ENV not found  
+解决办法：删除node_modules和package-lock.json文件，重新npm install  

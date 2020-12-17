@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "esnext",
     "module": "esnext",
     "strict": true,
     "jsx": "preserve",
@@ -10,24 +10,21 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
     "sourceMap": true,
     "baseUrl": ".",
+    "allowJs": true,
     "resolveJsonModule": true, // 包含导入的模块。json的扩展
-    "types": [
-      "webpack-env",
-      "jest"
+    "lib": [
+      "dom",
+      "esnext"
     ],
+    "incremental": true,
     "paths": {
-      "@/*": [
+      "/@/*": [
         "src/*"
       ]
     },
-    "lib": [
-      "esnext",
-      "dom",
-      "dom.iterable",
-      "scripthost"
-    ]
   },
   "include": [
     "src/**/*.ts",
@@ -37,6 +34,8 @@
     "tests/**/*.tsx", "src/mixins/bus.js"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "dist",
+    "**/*.js"
   ],
 }

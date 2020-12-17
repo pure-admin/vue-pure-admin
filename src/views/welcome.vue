@@ -9,6 +9,12 @@
   </div>
 </template>
 
+<script lang='ts'>
+export default {
+  name: "welcome",
+};
+</script>
+
 <style scoped>
 .welcome {
   width: 100vw;

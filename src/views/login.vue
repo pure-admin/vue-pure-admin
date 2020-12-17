@@ -22,6 +22,7 @@ import { useRouter } from "vue-router";
 import { storageSession } from "../utils/storage";
 import { warnMessage, successMessage } from "../utils/message";
 export default {
+  name: "login",
   components: {
     info,
   },

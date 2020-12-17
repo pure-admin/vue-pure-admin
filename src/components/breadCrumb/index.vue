@@ -21,6 +21,7 @@ import { ref, defineComponent, watch, Ref } from "vue";
 import { useRoute, useRouter, RouteLocationMatched } from "vue-router";
 
 export default defineComponent({
+  name: "breadCrumb",
   setup() {
     const levelList: Ref<RouteLocationMatched[]> = ref([]);
     const route = useRoute();
@@ -67,7 +68,6 @@ export default defineComponent({
 
     const handleLink = (item: RouteLocationMatched): any => {
       const { redirect, path } = item;
-      console.log(pathCompile(path));
       if (redirect) {
         router.push(redirect.toString());
         return;

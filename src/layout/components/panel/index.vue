@@ -20,6 +20,7 @@
 import { addClass, removeClass } from "../../../utils/operate";
 import { ref, watch, getCurrentInstance, onMounted, onBeforeMount } from "vue";
 export default {
+  name: "panel",
   setup() {
     let vm: any;
 

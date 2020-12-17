@@ -43,6 +43,7 @@ interface setInter {
 }
 
 export default {
+  name: "layout",
   components: {
     Navbar,
     Sidebar,

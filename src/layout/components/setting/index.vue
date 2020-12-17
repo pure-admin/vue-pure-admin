@@ -20,6 +20,7 @@ import panel from "../panel/index.vue";
 import { onMounted, reactive, toRefs } from "vue";
 import { storageLocal } from "../../../utils/storage";
 export default {
+  name: "setting",
   components: { panel },
   setup() {
     const localOperate = (key: string, value?: any, model?: string): any => {

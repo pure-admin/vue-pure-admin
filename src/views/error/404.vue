@@ -2,22 +2,10 @@
   <div class="wscn-http404-container">
     <div class="wscn-http404">
       <div class="pic-404">
-        <img class="pic-404__parent" src="/src/assets/404.png" alt="404" />
-        <img
-          class="pic-404__child left"
-          src="/src/assets/404_cloud.png"
-          alt="404"
-        />
-        <img
-          class="pic-404__child mid"
-          src="/src/assets/404_cloud.png"
-          alt="404"
-        />
-        <img
-          class="pic-404__child right"
-          src="/src/assets/404_cloud.png"
-          alt="404"
-        />
+        <img class="pic-404__parent" :src="four" alt="404" />
+        <img class="pic-404__child left" :src="four_cloud" alt="404" />
+        <img class="pic-404__child mid" :src="four_cloud" alt="404" />
+        <img class="pic-404__child right" :src="four_cloud" alt="404" />
       </div>
       <div class="bullshit">
         <div class="bullshit__oops">CURD Admin</div>
@@ -34,6 +22,8 @@
 
 <script>
 import { computed } from "vue";
+import four from "/@/assets/404.png";
+import four_cloud from "/@/assets/404_cloud.png";
 export default {
   name: "404",
   setup() {
@@ -43,6 +33,8 @@ export default {
 
     return {
       message,
+      four,
+      four_cloud,
     };
   },
 };

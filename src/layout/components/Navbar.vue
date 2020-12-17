@@ -11,7 +11,7 @@
     <div class="right-menu">
       <screenfull />
       <div class="inter" :title="langs ? '中文' : '英文'" @click="toggleLang">
-        <img :src="langs ? '/src/assets/ch.png' : '/src/assets/en.png'" />
+        <img :src="langs ? ch : en" />
       </div>
       <el-dropdown>
         <span class="el-dropdown-link">
@@ -40,8 +40,10 @@ import { useRoute, useRouter } from "vue-router";
 import { mapGetters, useStore } from "vuex";
 import { storageSession } from "../../utils/storage";
 import { useI18n } from "vue-i18n";
-
+import ch from "/@/assets/ch.png";
+import en from "/@/assets/en.png";
 export default defineComponent({
+  name: "Navbar",
   components: {
     Breadcrumb,
     Hamburger,
@@ -88,6 +90,8 @@ export default defineComponent({
       usename,
       toggleLang,
       logout,
+      ch,
+      en,
     };
   },
 });
