@@ -15,7 +15,7 @@
       </div>
       <el-dropdown>
         <span class="el-dropdown-link">
-          <img :src="'/favicon.ico'" />
+          <img :src="favicon" />
           <p>{{ usename }}</p>
         </span>
         <template #dropdown>
@@ -42,6 +42,7 @@ import { storageSession } from "../../utils/storage";
 import { useI18n } from "vue-i18n";
 import ch from "/@/assets/ch.png";
 import en from "/@/assets/en.png";
+import favicon from "/favicon.ico";
 export default defineComponent({
   name: "Navbar",
   components: {
@@ -92,6 +93,7 @@ export default defineComponent({
       logout,
       ch,
       en,
+      favicon
     };
   },
 });

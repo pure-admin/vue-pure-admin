@@ -38,7 +38,7 @@ const viteConfig: UserConfig = {
    * 基本公共路径
    * @default '/'
    */
-  base: VITE_PUBLIC_PATH,
+  base: process.env.NODE_ENV === "production" ? "./" : VITE_PUBLIC_PATH,
   /**
    * Transpile target for esbuild.
    * @default 'es2020'
