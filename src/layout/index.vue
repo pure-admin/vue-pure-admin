@@ -27,13 +27,13 @@ import {
   reactive,
   computed,
   toRefs,
+  watch,
   watchEffect,
   onMounted,
   onBeforeMount,
   onBeforeUnmount,
 } from "vue";
 import { useStore } from "vuex";
-
 interface setInter {
   sidebar: any;
   device: String;
@@ -78,11 +78,11 @@ export default {
     });
 
     watchEffect(() => {
-      if (set.device === "mobile" && set.sidebar.opened) {
+      if (set.device === "mobile" && !set.sidebar.opened) {
         store.dispatch("app/closeSideBar", { withoutAnimation: false });
       }
     })
-
+ 
     const handleClickOutside = () => {
       store.dispatch("app/closeSideBar", { withoutAnimation: false });
     };

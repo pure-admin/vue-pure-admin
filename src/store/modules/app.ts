@@ -9,7 +9,7 @@ interface stateInter {
 
 const state = {
   sidebar: {
-     opened: storageLocal.getItem('sidebarStatus') ? !!+storageLocal.getItem('sidebarStatus') : true,
+    opened: storageLocal.getItem('sidebarStatus') ? !!+storageLocal.getItem('sidebarStatus') : true,
     withoutAnimation: false
   },
   device: 'desktop'

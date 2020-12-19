@@ -17,8 +17,8 @@ export default {
 
 <style scoped>
 .welcome {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background: url("../assets/welcome.png") no-repeat center;
   background-size: cover;
   position: absolute;

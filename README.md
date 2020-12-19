@@ -50,5 +50,5 @@ issues：https://github.com/jinder/path/issues/7
 运行项目时控制台报NODE_ENV not found  
 解决办法：删除node_modules和package-lock.json文件，重新npm install  
 3.  
-运行项目会感觉菜单切换比较卡，这个原因是使用watch造成的，watch默认{ deep: true }，最好使用watchEffect  
+运行项目会感觉菜单切换比较卡，这个原因是使用route造成的，watch(route)是隐式的{ deep: true }，最好使用watchEffect  
 issues：https://github.com/vuejs/vue-next/issues/2027  
