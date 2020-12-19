@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    "strict": true,
+    "strict": false,
     "jsx": "preserve",
     "importHelpers": true,
     "moduleResolution": "node",
@@ -25,13 +25,17 @@
         "src/*"
       ]
     },
+    "types": ["node"],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
   },
   "include": [
     "src/**/*.ts",
-    "src/**/*.tsx",
+, "src/utils/path.js"    "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
-    "tests/**/*.tsx", "src/mixins/bus.js"
+    "src/utils/path.js"    
   ],
   "exclude": [
     "node_modules",

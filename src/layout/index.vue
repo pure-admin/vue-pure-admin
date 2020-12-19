@@ -27,13 +27,12 @@ import {
   reactive,
   computed,
   toRefs,
-  watch,
+  watchEffect,
   onMounted,
   onBeforeMount,
   onBeforeUnmount,
 } from "vue";
 import { useStore } from "vuex";
-import { useRoute } from "vue-router";
 
 interface setInter {
   sidebar: any;
@@ -52,8 +51,6 @@ export default {
   },
   setup() {
     const store = useStore();
-
-    const route = useRoute();
 
     const WIDTH = ref(992);
 
@@ -80,11 +77,11 @@ export default {
       }),
     });
 
-    watch(route, (val, prevVal): void => {
+    watchEffect(() => {
       if (set.device === "mobile" && set.sidebar.opened) {
         store.dispatch("app/closeSideBar", { withoutAnimation: false });
       }
-    });
+    })
 
     const handleClickOutside = () => {
       store.dispatch("app/closeSideBar", { withoutAnimation: false });

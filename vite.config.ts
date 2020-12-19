@@ -23,7 +23,7 @@ const viteConfig: UserConfig = {
   https: false,
   // 服务端渲染
   ssr: false,
-  sourcemap: true,
+  sourcemap: false,
   /**
    * 端口号
    * @default 3000

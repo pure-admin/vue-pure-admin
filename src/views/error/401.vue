@@ -8,7 +8,7 @@
       </el-col>
       <el-col :span="12">
         <img
-          :src="errGif"
+          :src="img"
           width="313"
           height="428"
           alt="Girl has dropped her ice cream."
@@ -19,13 +19,14 @@
 </template>
 
 <script lang='ts'>
-import { ref } from "vue";
+import imgs from '/@/assets/401.gif'
+import { ref } from "vue"
 export default {
   name: "401",
   setup() {
-    let errGif = ref(`/@/assets/401.gif?${new Date()}`);
+    const img = ref(`${imgs}?${new Date()}`)
     return {
-      errGif,
+      img
     };
   },
 };
