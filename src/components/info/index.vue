@@ -175,6 +175,11 @@ export default defineComponent({
   display: flex;
   justify-content: center;
   align-items: center;
+  @media screen and (max-width: 750px){
+    width: 88vw;
+    right: 25px;
+    top: 22vh;
+  }
   .rule-form {
     width: 80%;
     .verify {
