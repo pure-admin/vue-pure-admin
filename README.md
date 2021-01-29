@@ -9,6 +9,7 @@
 [vue-router-next 文档地址]: https://next.router.vuejs.org/  
 [next.vuex 文档地址]: https://next.vuex.vuejs.org/  
 [vite 源码]: https://github.com/vitejs/vite  
+[vite 文档地址]: https://vitejs.dev/  
 [vite 中文文档地址（非官方版本）]: https://vite-design.surge.sh/guide/chinese-doc.html  
 [vue-i18n-next]: https://vue-i18n-next.intlify.dev/  
 [composition-api-vue-i18n-next]: https://vue-i18n-next.intlify.dev/advanced/composition.html#local-scope  
