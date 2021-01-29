@@ -32,7 +32,7 @@
   },
   "include": [
     "src/**/*.ts",
-, "src/utils/path.js"    "src/**/*.tsx",
+    "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
     "src/utils/path.js"    
