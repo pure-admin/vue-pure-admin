@@ -1,0 +1,45 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "strict": false,
+    "jsx": "preserve",
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "allowJs": true,
+    "resolveJsonModule": true, // 包含导入的模块。json的扩展
+    "lib": [
+      "dom",
+      "esnext"
+    ],
+    "incremental": true,
+    "paths": {
+      "/@/*": [
+        "src/*"
+      ]
+    },
+    "types": ["node"],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "src/utils/path.js"    
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.js"
+  ],
+}

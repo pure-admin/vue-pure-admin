@@ -1,4 +1,4 @@
-# CURD-TS 正在开发中……
+# Vue3.0版本已开发完成！
 一套基于TS的增删改查系统，前端语言Vue3.0、React、Angular，后端语言node+express，采用了三种数据库MySQL、MongoDB、SQLite编写。  
 A TS based add, delete, modify and query system, the front-end language vue3.0, react, angular, back-end language node + Express, using three kinds of database mysql, mongodb, SQLite  
 

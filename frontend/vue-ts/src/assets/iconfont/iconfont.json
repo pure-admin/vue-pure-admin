@@ -1,0 +1,23 @@
+{
+  "id": "2208059",
+  "name": "CURD-TS",
+  "font_family": "iconfont",
+  "css_prefix_text": "team-icon",
+  "description": "增删查改xi't",
+  "glyphs": [
+    {
+      "icon_id": "5698509",
+      "name": "全屏缩小",
+      "font_class": "exit-fullscreen",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
+    },
+    {
+      "icon_id": "5698510",
+      "name": "全屏显示",
+      "font_class": "fullscreen",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
+    }
+  ]
+}
