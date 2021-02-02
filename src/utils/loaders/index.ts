@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2021-02-02 15:12:44
+ * @LastEditTime: 2021-02-02 15:17:37
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \CURD-TS-self\src\utils\loaders\index.ts
+ */
 interface ProxyLoader {
   loadCss(src: string): any
   loadScript(src: string): Promise<any>
@@ -11,7 +19,7 @@ class loaderProxy implements ProxyLoader {
   protected scriptLoaderCache: Array<string> = []
 
   public loadCss = (src: string): any => {
-    let element = document.createElement("link")
+    let element:HTMLLinkElement = document.createElement("link")
     element.rel = "stylesheet"
     element.href = src
     document.body.appendChild(element)
@@ -21,7 +29,7 @@ class loaderProxy implements ProxyLoader {
     if (this.scriptLoaderCache.includes(src)) {
       return src
     } else {
-      let element: Element = document.createElement("script")
+      let element: HTMLScriptElement = document.createElement("script")
       element.src = src
       document.body.appendChild(element)
       element.onload = () => {
