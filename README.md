@@ -1,21 +1,18 @@
 # Vue3.0版本已开发完成！
-一套基于TS的增删改查系统，前端语言Vue3.0、React、Angular，后端语言node+express，采用了三种数据库MySQL、MongoDB、SQLite编写。  
-A TS based add, delete, modify and query system, the front-end language vue3.0, react, angular, back-end language node + Express, using three kinds of database mysql, mongodb, SQLite  
+Vue3.0+TypeScript+NodeJS+MySql编写的一套后台管理框架
 
 ## 文档地址
 https://xiaoxian521.github.io/zh/standard/
 
 ## 结构介绍 
-① sql为数据库存放文件夹  
-② doc为文档编写存放文件夹  
-③ backend为后端项目存放文件夹  
-④ frontend为前端项目存放文件夹  
+① frontend为前端项目存放文件夹  
+② backend为后端项目存放文件夹   
+③ doc为文档编写存放文件夹  
 
 ## Structure introduction 
-① SQL stores the folder for the database  
-② Doc write storage folder for documents  
-③ Backend stores the folder for the back-end project  
-④ Frontend stores the folder for the front-end project  
+① Frontend stores the folder for the front-end project  
+② Backend stores the folder for the back-end project  
+③ Doc write storage folder for documents  
 
 ## 前端对应代码存放目录
 vue => /frontend/vue-ts  
