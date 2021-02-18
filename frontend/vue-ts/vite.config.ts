@@ -24,7 +24,9 @@ const viteConfig: UserConfig = {
    */
   base: process.env.NODE_ENV === "production" ? "./" : VITE_PUBLIC_PATH,
   root,
-  alias,
+  resolve: {
+    alias
+  },
   // 服务端渲染
   server: {
     // 是否开启 https
