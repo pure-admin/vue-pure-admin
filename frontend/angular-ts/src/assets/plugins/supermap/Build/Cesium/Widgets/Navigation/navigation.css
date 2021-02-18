@@ -1,0 +1,219 @@
+.sm-compass{
+    pointer-events: auto;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 128px;
+    height: 128px;
+    overflow: hidden;
+}
+.sm-compass-outer-ring{
+    cursor: pointer;
+    position: absolute;
+    width: 128px;
+    height: 128px;
+    top: 0px;
+    transform: rotate(0rad);
+    -webkit-transform: rotate(0rad);
+    background-image: url("../Images/Navigation/ring.png");
+}
+.sm-compass-outer-ring:active{
+    background-image: url("../Images/Navigation/ring_active.png");
+}
+.sm-compass-tilt{
+    position: absolute;
+    width: 128px;
+    height: 128px;
+    background-image: url("../Images/Navigation/tilt.png");
+    visibility: hidden;
+}
+.cesium-viewer-navigationContainer {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 300px;
+    width: 128px;
+}
+.cesium-viewer-navigationContainer:hover .sm-compass-tilt{
+    visibility: visible;
+}
+.cesium-viewer-navigationContainer:active .sm-compass-tilt{
+    visibility: visible;
+}
+
+.sm-compass-tiltbar{
+    cursor: pointer;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    /*left: 64px;
+    top: 5px;*/
+    background-image: url("../Images/Navigation/tiltbar.png");
+    background-repeat: no-repeat;
+    z-index: 10;
+    visibility: hidden;
+}
+
+.cesium-viewer-navigationContainer:hover .sm-compass-tiltbar{
+    visibility: visible;
+}
+
+.cesium-viewer-navigationContainer:active .sm-compass-tiltbar{
+    visibility: visible;
+}
+
+.sm-compass-arrows{
+    position: absolute;
+    width: 128px;
+    height: 128px;
+    top: 0px;
+    background-image: url("../Images/Navigation/compass_active.png");
+    visibility: hidden;
+}
+
+.cesium-viewer-navigationContainer:hover .sm-compass-arrows{
+    visibility: visible;
+}
+
+.cesium-viewer-navigationContainer:active .sm-compass-arrows{
+    visibility: visible;
+}
+
+.arrows_e_active{
+    cursor: pointer;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 52px;
+    left: 68px;
+    visibility: hidden;
+}
+
+.cesium-viewer-navigationContainer:hover .arrows_e_active{
+    visibility: visible;
+}
+
+.cesium-viewer-navigationContainer:active .arrows_e_active{
+    visibility: visible;
+}
+
+.arrows_e_active:active{
+    background-image: url("../Images/Navigation/arrows_e_active.png");
+}
+
+.arrows_n_active{
+    cursor: pointer;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 32px;
+    left: 53px;
+    visibility: hidden;
+}
+
+
+.arrows_n_active:active{
+    background-image: url("../Images/Navigation/arrows_n_active.png");
+}
+
+.cesium-viewer-navigationContainer:hover .arrows_n_active{
+    visibility: visible;
+}
+
+.cesium-viewer-navigationContainer:active .arrows_n_active{
+    visibility: visible;
+}
+
+.arrows_s_active{
+    cursor: pointer;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 74px;
+    left: 53px;
+    visibility: hidden;
+}
+
+.arrows_s_active:active{
+    background-image: url("../Images/Navigation/arrows_s_active.png");
+}
+
+.cesium-viewer-navigationContainer:hover .arrows_s_active{
+    visibility: visible;
+}
+
+.cesium-viewer-navigationContainer:active .arrows_s_active{
+    visibility: visible;
+}
+
+.arrows_w_active{
+    cursor: pointer;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 52px;
+    left: 35px;
+    visibility: hidden;
+}
+
+.arrows_w_active:active{
+    background-image: url("../Images/Navigation/arrows_w_active.png");
+}
+
+.cesium-viewer-navigationContainer:hover .arrows_w_active{
+    visibility: visible;
+}
+
+.cesium-viewer-navigationContainer:active .arrows_w_active{
+    visibility: visible;
+}
+
+.sm-zoom{
+    position: absolute;
+    width: 30px;
+    height: 150px;
+    background-image: url("../Images/Navigation/zoom.png");
+    top: 130px;
+    right: 60px;
+    visibility: hidden;
+}
+
+.cesium-viewer-navigationContainer:hover .sm-zoom{
+    visibility: visible;
+}
+.cesium-viewer-navigationContainer:active .sm-zoom{
+    visibility: visible;
+}
+
+.sm-zoomin{
+    cursor: pointer;
+    position: absolute;
+    width: 32px;
+    height: 32px;
+}
+.sm-zoomin:active{
+    background-image: url("../Images/Navigation/zoom_active_in.png");
+}
+.sm-zoomout{
+    cursor: pointer;
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    bottom: 0px;
+}
+.sm-zoomout:active{
+    background-image: url("../Images/Navigation/zoom_active_out.png");
+}
+.sm-zoombar{
+    cursor: pointer;
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    top: 65px;
+    background-image: url("../Images/Navigation/zoombar.png");
+}

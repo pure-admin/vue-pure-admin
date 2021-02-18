@@ -1,0 +1,19 @@
+.cesium-zoom-wrapper {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    pointer-events: none;
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: visibility 0s 0.2s, opacity 0.2s ease-in;
+    -moz-transition: visibility 0s 0.2s, opacity 0.2s ease-in;
+    transition: visibility 0s 0.2s, opacity 0.2s ease-in;
+}
+
+.cesium-zoom-wrapper-visible {
+    visibility: visible;
+    opacity: 1;
+    -webkit-transition: opacity 0.2s ease-out;
+    -moz-transition: opacity 0.2s ease-out;
+    transition: opacity 0.2s ease-out;
+}
