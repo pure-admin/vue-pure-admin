@@ -1,6 +1,12 @@
 # Vue3.0后台管理系统
 ### 功能已开发完毕，新需求请提issues  
 
+vue版本代码：https://github.com/xiaoxian521/CURD-TS/tree/main  
+react版本代码：https://github.com/xiaoxian521/CURD-TS/tree/react-ts  
+angular版本代码：https://github.com/xiaoxian521/CURD-TS/tree/angular-ts  
+node接口：https://github.com/xiaoxian521/CURD-TS/tree/backend  
+doc文档：https://github.com/xiaoxian521/CURD-TS/tree/doc  
+
 ## 知识库地址
 
 帮助你获取最新的 API  
