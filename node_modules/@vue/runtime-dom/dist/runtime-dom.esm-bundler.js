@@ -1,0 +1,1248 @@
+import { camelize, warn, callWithAsyncErrorHandling, getCurrentInstance, onMounted, watchEffect, onUpdated, unref, Fragment, h, BaseTransition, useTransitionState, getTransitionRawChildren, setTransitionHooks, resolveTransitionHooks, createVNode, createRenderer, createHydrationRenderer } from '@vue/runtime-core';
+export * from '@vue/runtime-core';
+import { isString, isArray, hyphenate, capitalize, isSpecialBooleanAttr, isOn, isModelListener, isFunction, EMPTY_OBJ, extend, isObject, toNumber, invokeArrayFns, looseIndexOf, isSet, looseEqual, isHTMLTag, isSVGTag } from '@vue/shared';
+
+const svgNS = 'http://www.w3.org/2000/svg';
+const doc = (typeof document !== 'undefined' ? document : null);
+let tempContainer;
+let tempSVGContainer;
+const nodeOps = {
+    insert: (child, parent, anchor) => {
+        parent.insertBefore(child, anchor || null);
+    },
+    remove: child => {
+        const parent = child.parentNode;
+        if (parent) {
+            parent.removeChild(child);
+        }
+    },
+    createElement: (tag, isSVG, is) => isSVG
+        ? doc.createElementNS(svgNS, tag)
+        : doc.createElement(tag, is ? { is } : undefined),
+    createText: text => doc.createTextNode(text),
+    createComment: text => doc.createComment(text),
+    setText: (node, text) => {
+        node.nodeValue = text;
+    },
+    setElementText: (el, text) => {
+        el.textContent = text;
+    },
+    parentNode: node => node.parentNode,
+    nextSibling: node => node.nextSibling,
+    querySelector: selector => doc.querySelector(selector),
+    setScopeId(el, id) {
+        el.setAttribute(id, '');
+    },
+    cloneNode(el) {
+        return el.cloneNode(true);
+    },
+    // __UNSAFE__
+    // Reason: innerHTML.
+    // Static content here can only come from compiled templates.
+    // As long as the user only uses trusted templates, this is safe.
+    insertStaticContent(content, parent, anchor, isSVG) {
+        const temp = isSVG
+            ? tempSVGContainer ||
+                (tempSVGContainer = doc.createElementNS(svgNS, 'svg'))
+            : tempContainer || (tempContainer = doc.createElement('div'));
+        temp.innerHTML = content;
+        const first = temp.firstChild;
+        let node = first;
+        let last = node;
+        while (node) {
+            last = node;
+            nodeOps.insert(node, parent, anchor);
+            node = temp.firstChild;
+        }
+        return [first, last];
+    }
+};
+
+// compiler should normalize class + :class bindings on the same element
+// into a single binding ['staticClass', dynamic]
+function patchClass(el, value, isSVG) {
+    if (value == null) {
+        value = '';
+    }
+    if (isSVG) {
+        el.setAttribute('class', value);
+    }
+    else {
+        // directly setting className should be faster than setAttribute in theory
+        // if this is an element during a transition, take the temporary transition
+        // classes into account.
+        const transitionClasses = el._vtc;
+        if (transitionClasses) {
+            value = (value
+                ? [value, ...transitionClasses]
+                : [...transitionClasses]).join(' ');
+        }
+        el.className = value;
+    }
+}
+
+function patchStyle(el, prev, next) {
+    const style = el.style;
+    if (!next) {
+        el.removeAttribute('style');
+    }
+    else if (isString(next)) {
+        if (prev !== next) {
+            style.cssText = next;
+        }
+    }
+    else {
+        for (const key in next) {
+            setStyle(style, key, next[key]);
+        }
+        if (prev && !isString(prev)) {
+            for (const key in prev) {
+                if (next[key] == null) {
+                    setStyle(style, key, '');
+                }
+            }
+        }
+    }
+}
+const importantRE = /\s*!important$/;
+function setStyle(style, name, val) {
+    if (isArray(val)) {
+        val.forEach(v => setStyle(style, name, v));
+    }
+    else {
+        if (name.startsWith('--')) {
+            // custom property definition
+            style.setProperty(name, val);
+        }
+        else {
+            const prefixed = autoPrefix(style, name);
+            if (importantRE.test(val)) {
+                // !important
+                style.setProperty(hyphenate(prefixed), val.replace(importantRE, ''), 'important');
+            }
+            else {
+                style[prefixed] = val;
+            }
+        }
+    }
+}
+const prefixes = ['Webkit', 'Moz', 'ms'];
+const prefixCache = {};
+function autoPrefix(style, rawName) {
+    const cached = prefixCache[rawName];
+    if (cached) {
+        return cached;
+    }
+    let name = camelize(rawName);
+    if (name !== 'filter' && name in style) {
+        return (prefixCache[rawName] = name);
+    }
+    name = capitalize(name);
+    for (let i = 0; i < prefixes.length; i++) {
+        const prefixed = prefixes[i] + name;
+        if (prefixed in style) {
+            return (prefixCache[rawName] = prefixed);
+        }
+    }
+    return rawName;
+}
+
+const xlinkNS = 'http://www.w3.org/1999/xlink';
+function patchAttr(el, key, value, isSVG) {
+    if (isSVG && key.startsWith('xlink:')) {
+        if (value == null) {
+            el.removeAttributeNS(xlinkNS, key.slice(6, key.length));
+        }
+        else {
+            el.setAttributeNS(xlinkNS, key, value);
+        }
+    }
+    else {
+        // note we are only checking boolean attributes that don't have a
+        // corresponding dom prop of the same name here.
+        const isBoolean = isSpecialBooleanAttr(key);
+        if (value == null || (isBoolean && value === false)) {
+            el.removeAttribute(key);
+        }
+        else {
+            el.setAttribute(key, isBoolean ? '' : value);
+        }
+    }
+}
+
+// __UNSAFE__
+// functions. The user is responsible for using them with only trusted content.
+function patchDOMProp(el, key, value, 
+// the following args are passed only due to potential innerHTML/textContent
+// overriding existing VNodes, in which case the old tree must be properly
+// unmounted.
+prevChildren, parentComponent, parentSuspense, unmountChildren) {
+    if (key === 'innerHTML' || key === 'textContent') {
+        if (prevChildren) {
+            unmountChildren(prevChildren, parentComponent, parentSuspense);
+        }
+        el[key] = value == null ? '' : value;
+        return;
+    }
+    if (key === 'value' && el.tagName !== 'PROGRESS') {
+        // store value as _value as well since
+        // non-string values will be stringified.
+        el._value = value;
+        const newValue = value == null ? '' : value;
+        if (el.value !== newValue) {
+            el.value = newValue;
+        }
+        return;
+    }
+    if (value === '' && typeof el[key] === 'boolean') {
+        // e.g. <select multiple> compiles to { multiple: '' }
+        el[key] = true;
+    }
+    else if (value == null && typeof el[key] === 'string') {
+        // e.g. <div :id="null">
+        el[key] = '';
+        el.removeAttribute(key);
+    }
+    else {
+        // some properties perform value validation and throw
+        try {
+            el[key] = value;
+        }
+        catch (e) {
+            if ((process.env.NODE_ENV !== 'production')) {
+                warn(`Failed setting prop "${key}" on <${el.tagName.toLowerCase()}>: ` +
+                    `value ${value} is invalid.`, e);
+            }
+        }
+    }
+}
+
+// Async edge case fix requires storing an event listener's attach timestamp.
+let _getNow = Date.now;
+// Determine what event timestamp the browser is using. Annoyingly, the
+// timestamp can either be hi-res (relative to page load) or low-res
+// (relative to UNIX epoch), so in order to compare time we have to use the
+// same timestamp type when saving the flush timestamp.
+if (typeof document !== 'undefined' &&
+    _getNow() > document.createEvent('Event').timeStamp) {
+    // if the low-res timestamp which is bigger than the event timestamp
+    // (which is evaluated AFTER) it means the event is using a hi-res timestamp,
+    // and we need to use the hi-res version for event listeners as well.
+    _getNow = () => performance.now();
+}
+// To avoid the overhead of repeatedly calling performance.now(), we cache
+// and use the same timestamp for all event listeners attached in the same tick.
+let cachedNow = 0;
+const p = Promise.resolve();
+const reset = () => {
+    cachedNow = 0;
+};
+const getNow = () => cachedNow || (p.then(reset), (cachedNow = _getNow()));
+function addEventListener(el, event, handler, options) {
+    el.addEventListener(event, handler, options);
+}
+function removeEventListener(el, event, handler, options) {
+    el.removeEventListener(event, handler, options);
+}
+function patchEvent(el, rawName, prevValue, nextValue, instance = null) {
+    // vei = vue event invokers
+    const invokers = el._vei || (el._vei = {});
+    const existingInvoker = invokers[rawName];
+    if (nextValue && existingInvoker) {
+        // patch
+        existingInvoker.value = nextValue;
+    }
+    else {
+        const [name, options] = parseName(rawName);
+        if (nextValue) {
+            // add
+            const invoker = (invokers[rawName] = createInvoker(nextValue, instance));
+            addEventListener(el, name, invoker, options);
+        }
+        else if (existingInvoker) {
+            // remove
+            removeEventListener(el, name, existingInvoker, options);
+            invokers[rawName] = undefined;
+        }
+    }
+}
+const optionsModifierRE = /(?:Once|Passive|Capture)$/;
+function parseName(name) {
+    let options;
+    if (optionsModifierRE.test(name)) {
+        options = {};
+        let m;
+        while ((m = name.match(optionsModifierRE))) {
+            name = name.slice(0, name.length - m[0].length);
+            options[m[0].toLowerCase()] = true;
+        }
+    }
+    return [name.slice(2).toLowerCase(), options];
+}
+function createInvoker(initialValue, instance) {
+    const invoker = (e) => {
+        // async edge case #6566: inner click event triggers patch, event handler
+        // attached to outer element during patch, and triggered again. This
+        // happens because browsers fire microtask ticks between event propagation.
+        // the solution is simple: we save the timestamp when a handler is attached,
+        // and the handler would only fire if the event passed to it was fired
+        // AFTER it was attached.
+        const timeStamp = e.timeStamp || _getNow();
+        if (timeStamp >= invoker.attached - 1) {
+            callWithAsyncErrorHandling(patchStopImmediatePropagation(e, invoker.value), instance, 5 /* NATIVE_EVENT_HANDLER */, [e]);
+        }
+    };
+    invoker.value = initialValue;
+    invoker.attached = getNow();
+    return invoker;
+}
+function patchStopImmediatePropagation(e, value) {
+    if (isArray(value)) {
+        const originalStop = e.stopImmediatePropagation;
+        e.stopImmediatePropagation = () => {
+            originalStop.call(e);
+            e._stopped = true;
+        };
+        return value.map(fn => (e) => !e._stopped && fn(e));
+    }
+    else {
+        return value;
+    }
+}
+
+const nativeOnRE = /^on[a-z]/;
+const forcePatchProp = (_, key) => key === 'value';
+const patchProp = (el, key, prevValue, nextValue, isSVG = false, prevChildren, parentComponent, parentSuspense, unmountChildren) => {
+    switch (key) {
+        // special
+        case 'class':
+            patchClass(el, nextValue, isSVG);
+            break;
+        case 'style':
+            patchStyle(el, prevValue, nextValue);
+            break;
+        default:
+            if (isOn(key)) {
+                // ignore v-model listeners
+                if (!isModelListener(key)) {
+                    patchEvent(el, key, prevValue, nextValue, parentComponent);
+                }
+            }
+            else if (shouldSetAsProp(el, key, nextValue, isSVG)) {
+                patchDOMProp(el, key, nextValue, prevChildren, parentComponent, parentSuspense, unmountChildren);
+            }
+            else {
+                // special case for <input v-model type="checkbox"> with
+                // :true-value & :false-value
+                // store value as dom properties since non-string values will be
+                // stringified.
+                if (key === 'true-value') {
+                    el._trueValue = nextValue;
+                }
+                else if (key === 'false-value') {
+                    el._falseValue = nextValue;
+                }
+                patchAttr(el, key, nextValue, isSVG);
+            }
+            break;
+    }
+};
+function shouldSetAsProp(el, key, value, isSVG) {
+    if (isSVG) {
+        // most keys must be set as attribute on svg elements to work
+        // ...except innerHTML
+        if (key === 'innerHTML') {
+            return true;
+        }
+        // or native onclick with function values
+        if (key in el && nativeOnRE.test(key) && isFunction(value)) {
+            return true;
+        }
+        return false;
+    }
+    // spellcheck and draggable are numerated attrs, however their
+    // corresponding DOM properties are actually booleans - this leads to
+    // setting it with a string "false" value leading it to be coerced to
+    // `true`, so we need to always treat them as attributes.
+    // Note that `contentEditable` doesn't have this problem: its DOM
+    // property is also enumerated string values.
+    if (key === 'spellcheck' || key === 'draggable') {
+        return false;
+    }
+    // #1787 form as an attribute must be a string, while it accepts an Element as
+    // a prop
+    if (key === 'form' && typeof value === 'string') {
+        return false;
+    }
+    // #1526 <input list> must be set as attribute
+    if (key === 'list' && el.tagName === 'INPUT') {
+        return false;
+    }
+    // native onclick with string value, must be set as attribute
+    if (nativeOnRE.test(key) && isString(value)) {
+        return false;
+    }
+    return key in el;
+}
+
+function useCssModule(name = '$style') {
+    /* istanbul ignore else */
+    {
+        const instance = getCurrentInstance();
+        if (!instance) {
+            (process.env.NODE_ENV !== 'production') && warn(`useCssModule must be called inside setup()`);
+            return EMPTY_OBJ;
+        }
+        const modules = instance.type.__cssModules;
+        if (!modules) {
+            (process.env.NODE_ENV !== 'production') && warn(`Current instance does not have CSS modules injected.`);
+            return EMPTY_OBJ;
+        }
+        const mod = modules[name];
+        if (!mod) {
+            (process.env.NODE_ENV !== 'production') &&
+                warn(`Current instance does not have CSS module named "${name}".`);
+            return EMPTY_OBJ;
+        }
+        return mod;
+    }
+}
+
+function useCssVars(getter, scoped = false) {
+    const instance = getCurrentInstance();
+    /* istanbul ignore next */
+    if (!instance) {
+        (process.env.NODE_ENV !== 'production') &&
+            warn(`useCssVars is called without current active component instance.`);
+        return;
+    }
+    const prefix = scoped && instance.type.__scopeId
+        ? `${instance.type.__scopeId.replace(/^data-v-/, '')}-`
+        : ``;
+    const setVars = () => setVarsOnVNode(instance.subTree, getter(instance.proxy), prefix);
+    onMounted(() => watchEffect(setVars));
+    onUpdated(setVars);
+}
+function setVarsOnVNode(vnode, vars, prefix) {
+    if ( vnode.shapeFlag & 128 /* SUSPENSE */) {
+        const suspense = vnode.suspense;
+        vnode = suspense.activeBranch;
+        if (suspense.pendingBranch && !suspense.isHydrating) {
+            suspense.effects.push(() => {
+                setVarsOnVNode(suspense.activeBranch, vars, prefix);
+            });
+        }
+    }
+    // drill down HOCs until it's a non-component vnode
+    while (vnode.component) {
+        vnode = vnode.component.subTree;
+    }
+    if (vnode.shapeFlag & 1 /* ELEMENT */ && vnode.el) {
+        const style = vnode.el.style;
+        for (const key in vars) {
+            style.setProperty(`--${prefix}${key}`, unref(vars[key]));
+        }
+    }
+    else if (vnode.type === Fragment) {
+        vnode.children.forEach(c => setVarsOnVNode(c, vars, prefix));
+    }
+}
+
+const TRANSITION = 'transition';
+const ANIMATION = 'animation';
+// DOM Transition is a higher-order-component based on the platform-agnostic
+// base Transition component, with DOM-specific logic.
+const Transition = (props, { slots }) => h(BaseTransition, resolveTransitionProps(props), slots);
+Transition.displayName = 'Transition';
+const DOMTransitionPropsValidators = {
+    name: String,
+    type: String,
+    css: {
+        type: Boolean,
+        default: true
+    },
+    duration: [String, Number, Object],
+    enterFromClass: String,
+    enterActiveClass: String,
+    enterToClass: String,
+    appearFromClass: String,
+    appearActiveClass: String,
+    appearToClass: String,
+    leaveFromClass: String,
+    leaveActiveClass: String,
+    leaveToClass: String
+};
+const TransitionPropsValidators = (Transition.props = /*#__PURE__*/ extend({}, BaseTransition.props, DOMTransitionPropsValidators));
+function resolveTransitionProps(rawProps) {
+    let { name = 'v', type, css = true, duration, enterFromClass = `${name}-enter-from`, enterActiveClass = `${name}-enter-active`, enterToClass = `${name}-enter-to`, appearFromClass = enterFromClass, appearActiveClass = enterActiveClass, appearToClass = enterToClass, leaveFromClass = `${name}-leave-from`, leaveActiveClass = `${name}-leave-active`, leaveToClass = `${name}-leave-to` } = rawProps;
+    const baseProps = {};
+    for (const key in rawProps) {
+        if (!(key in DOMTransitionPropsValidators)) {
+            baseProps[key] = rawProps[key];
+        }
+    }
+    if (!css) {
+        return baseProps;
+    }
+    const durations = normalizeDuration(duration);
+    const enterDuration = durations && durations[0];
+    const leaveDuration = durations && durations[1];
+    const { onBeforeEnter, onEnter, onEnterCancelled, onLeave, onLeaveCancelled, onBeforeAppear = onBeforeEnter, onAppear = onEnter, onAppearCancelled = onEnterCancelled } = baseProps;
+    const finishEnter = (el, isAppear, done) => {
+        removeTransitionClass(el, isAppear ? appearToClass : enterToClass);
+        removeTransitionClass(el, isAppear ? appearActiveClass : enterActiveClass);
+        done && done();
+    };
+    const finishLeave = (el, done) => {
+        removeTransitionClass(el, leaveToClass);
+        removeTransitionClass(el, leaveActiveClass);
+        done && done();
+    };
+    const makeEnterHook = (isAppear) => {
+        return (el, done) => {
+            const hook = isAppear ? onAppear : onEnter;
+            const resolve = () => finishEnter(el, isAppear, done);
+            hook && hook(el, resolve);
+            nextFrame(() => {
+                removeTransitionClass(el, isAppear ? appearFromClass : enterFromClass);
+                addTransitionClass(el, isAppear ? appearToClass : enterToClass);
+                if (!(hook && hook.length > 1)) {
+                    if (enterDuration) {
+                        setTimeout(resolve, enterDuration);
+                    }
+                    else {
+                        whenTransitionEnds(el, type, resolve);
+                    }
+                }
+            });
+        };
+    };
+    return extend(baseProps, {
+        onBeforeEnter(el) {
+            onBeforeEnter && onBeforeEnter(el);
+            addTransitionClass(el, enterActiveClass);
+            addTransitionClass(el, enterFromClass);
+        },
+        onBeforeAppear(el) {
+            onBeforeAppear && onBeforeAppear(el);
+            addTransitionClass(el, appearActiveClass);
+            addTransitionClass(el, appearFromClass);
+        },
+        onEnter: makeEnterHook(false),
+        onAppear: makeEnterHook(true),
+        onLeave(el, done) {
+            const resolve = () => finishLeave(el, done);
+            addTransitionClass(el, leaveActiveClass);
+            addTransitionClass(el, leaveFromClass);
+            nextFrame(() => {
+                removeTransitionClass(el, leaveFromClass);
+                addTransitionClass(el, leaveToClass);
+                if (!(onLeave && onLeave.length > 1)) {
+                    if (leaveDuration) {
+                        setTimeout(resolve, leaveDuration);
+                    }
+                    else {
+                        whenTransitionEnds(el, type, resolve);
+                    }
+                }
+            });
+            onLeave && onLeave(el, resolve);
+        },
+        onEnterCancelled(el) {
+            finishEnter(el, false);
+            onEnterCancelled && onEnterCancelled(el);
+        },
+        onAppearCancelled(el) {
+            finishEnter(el, true);
+            onAppearCancelled && onAppearCancelled(el);
+        },
+        onLeaveCancelled(el) {
+            finishLeave(el);
+            onLeaveCancelled && onLeaveCancelled(el);
+        }
+    });
+}
+function normalizeDuration(duration) {
+    if (duration == null) {
+        return null;
+    }
+    else if (isObject(duration)) {
+        return [NumberOf(duration.enter), NumberOf(duration.leave)];
+    }
+    else {
+        const n = NumberOf(duration);
+        return [n, n];
+    }
+}
+function NumberOf(val) {
+    const res = toNumber(val);
+    if ((process.env.NODE_ENV !== 'production'))
+        validateDuration(res);
+    return res;
+}
+function validateDuration(val) {
+    if (typeof val !== 'number') {
+        warn(`<transition> explicit duration is not a valid number - ` +
+            `got ${JSON.stringify(val)}.`);
+    }
+    else if (isNaN(val)) {
+        warn(`<transition> explicit duration is NaN - ` +
+            'the duration expression might be incorrect.');
+    }
+}
+function addTransitionClass(el, cls) {
+    cls.split(/\s+/).forEach(c => c && el.classList.add(c));
+    (el._vtc ||
+        (el._vtc = new Set())).add(cls);
+}
+function removeTransitionClass(el, cls) {
+    cls.split(/\s+/).forEach(c => c && el.classList.remove(c));
+    const { _vtc } = el;
+    if (_vtc) {
+        _vtc.delete(cls);
+        if (!_vtc.size) {
+            el._vtc = undefined;
+        }
+    }
+}
+function nextFrame(cb) {
+    requestAnimationFrame(() => {
+        requestAnimationFrame(cb);
+    });
+}
+function whenTransitionEnds(el, expectedType, cb) {
+    const { type, timeout, propCount } = getTransitionInfo(el, expectedType);
+    if (!type) {
+        return cb();
+    }
+    const endEvent = type + 'end';
+    let ended = 0;
+    const end = () => {
+        el.removeEventListener(endEvent, onEnd);
+        cb();
+    };
+    const onEnd = (e) => {
+        if (e.target === el) {
+            if (++ended >= propCount) {
+                end();
+            }
+        }
+    };
+    setTimeout(() => {
+        if (ended < propCount) {
+            end();
+        }
+    }, timeout + 1);
+    el.addEventListener(endEvent, onEnd);
+}
+function getTransitionInfo(el, expectedType) {
+    const styles = window.getComputedStyle(el);
+    // JSDOM may return undefined for transition properties
+    const getStyleProperties = (key) => (styles[key] || '').split(', ');
+    const transitionDelays = getStyleProperties(TRANSITION + 'Delay');
+    const transitionDurations = getStyleProperties(TRANSITION + 'Duration');
+    const transitionTimeout = getTimeout(transitionDelays, transitionDurations);
+    const animationDelays = getStyleProperties(ANIMATION + 'Delay');
+    const animationDurations = getStyleProperties(ANIMATION + 'Duration');
+    const animationTimeout = getTimeout(animationDelays, animationDurations);
+    let type = null;
+    let timeout = 0;
+    let propCount = 0;
+    /* istanbul ignore if */
+    if (expectedType === TRANSITION) {
+        if (transitionTimeout > 0) {
+            type = TRANSITION;
+            timeout = transitionTimeout;
+            propCount = transitionDurations.length;
+        }
+    }
+    else if (expectedType === ANIMATION) {
+        if (animationTimeout > 0) {
+            type = ANIMATION;
+            timeout = animationTimeout;
+            propCount = animationDurations.length;
+        }
+    }
+    else {
+        timeout = Math.max(transitionTimeout, animationTimeout);
+        type =
+            timeout > 0
+                ? transitionTimeout > animationTimeout
+                    ? TRANSITION
+                    : ANIMATION
+                : null;
+        propCount = type
+            ? type === TRANSITION
+                ? transitionDurations.length
+                : animationDurations.length
+            : 0;
+    }
+    const hasTransform = type === TRANSITION &&
+        /\b(transform|all)(,|$)/.test(styles[TRANSITION + 'Property']);
+    return {
+        type,
+        timeout,
+        propCount,
+        hasTransform
+    };
+}
+function getTimeout(delays, durations) {
+    while (delays.length < durations.length) {
+        delays = delays.concat(delays);
+    }
+    return Math.max(...durations.map((d, i) => toMs(d) + toMs(delays[i])));
+}
+// Old versions of Chromium (below 61.0.3163.100) formats floating pointer
+// numbers in a locale-dependent way, using a comma instead of a dot.
+// If comma is not replaced with a dot, the input will be rounded down
+// (i.e. acting as a floor function) causing unexpected behaviors
+function toMs(s) {
+    return Number(s.slice(0, -1).replace(',', '.')) * 1000;
+}
+
+function toRaw(observed) {
+    return ((observed && toRaw(observed["__v_raw" /* RAW */])) || observed);
+}
+
+const positionMap = new WeakMap();
+const newPositionMap = new WeakMap();
+const TransitionGroupImpl = {
+    name: 'TransitionGroup',
+    props: /*#__PURE__*/ extend({}, TransitionPropsValidators, {
+        tag: String,
+        moveClass: String
+    }),
+    setup(props, { slots }) {
+        const instance = getCurrentInstance();
+        const state = useTransitionState();
+        let prevChildren;
+        let children;
+        onUpdated(() => {
+            // children is guaranteed to exist after initial render
+            if (!prevChildren.length) {
+                return;
+            }
+            const moveClass = props.moveClass || `${props.name || 'v'}-move`;
+            if (!hasCSSTransform(prevChildren[0].el, instance.vnode.el, moveClass)) {
+                return;
+            }
+            // we divide the work into three loops to avoid mixing DOM reads and writes
+            // in each iteration - which helps prevent layout thrashing.
+            prevChildren.forEach(callPendingCbs);
+            prevChildren.forEach(recordPosition);
+            const movedChildren = prevChildren.filter(applyTranslation);
+            // force reflow to put everything in position
+            forceReflow();
+            movedChildren.forEach(c => {
+                const el = c.el;
+                const style = el.style;
+                addTransitionClass(el, moveClass);
+                style.transform = style.webkitTransform = style.transitionDuration = '';
+                const cb = (el._moveCb = (e) => {
+                    if (e && e.target !== el) {
+                        return;
+                    }
+                    if (!e || /transform$/.test(e.propertyName)) {
+                        el.removeEventListener('transitionend', cb);
+                        el._moveCb = null;
+                        removeTransitionClass(el, moveClass);
+                    }
+                });
+                el.addEventListener('transitionend', cb);
+            });
+        });
+        return () => {
+            const rawProps = toRaw(props);
+            const cssTransitionProps = resolveTransitionProps(rawProps);
+            const tag = rawProps.tag || Fragment;
+            prevChildren = children;
+            children = slots.default ? getTransitionRawChildren(slots.default()) : [];
+            for (let i = 0; i < children.length; i++) {
+                const child = children[i];
+                if (child.key != null) {
+                    setTransitionHooks(child, resolveTransitionHooks(child, cssTransitionProps, state, instance));
+                }
+                else if ((process.env.NODE_ENV !== 'production')) {
+                    warn(`<TransitionGroup> children must be keyed.`);
+                }
+            }
+            if (prevChildren) {
+                for (let i = 0; i < prevChildren.length; i++) {
+                    const child = prevChildren[i];
+                    setTransitionHooks(child, resolveTransitionHooks(child, cssTransitionProps, state, instance));
+                    positionMap.set(child, child.el.getBoundingClientRect());
+                }
+            }
+            return createVNode(tag, null, children);
+        };
+    }
+};
+const TransitionGroup = TransitionGroupImpl;
+function callPendingCbs(c) {
+    const el = c.el;
+    if (el._moveCb) {
+        el._moveCb();
+    }
+    if (el._enterCb) {
+        el._enterCb();
+    }
+}
+function recordPosition(c) {
+    newPositionMap.set(c, c.el.getBoundingClientRect());
+}
+function applyTranslation(c) {
+    const oldPos = positionMap.get(c);
+    const newPos = newPositionMap.get(c);
+    const dx = oldPos.left - newPos.left;
+    const dy = oldPos.top - newPos.top;
+    if (dx || dy) {
+        const s = c.el.style;
+        s.transform = s.webkitTransform = `translate(${dx}px,${dy}px)`;
+        s.transitionDuration = '0s';
+        return c;
+    }
+}
+// this is put in a dedicated function to avoid the line from being treeshaken
+function forceReflow() {
+    return document.body.offsetHeight;
+}
+function hasCSSTransform(el, root, moveClass) {
+    // Detect whether an element with the move class applied has
+    // CSS transitions. Since the element may be inside an entering
+    // transition at this very moment, we make a clone of it and remove
+    // all other transition classes applied to ensure only the move class
+    // is applied.
+    const clone = el.cloneNode();
+    if (el._vtc) {
+        el._vtc.forEach(cls => {
+            cls.split(/\s+/).forEach(c => c && clone.classList.remove(c));
+        });
+    }
+    moveClass.split(/\s+/).forEach(c => c && clone.classList.add(c));
+    clone.style.display = 'none';
+    const container = (root.nodeType === 1
+        ? root
+        : root.parentNode);
+    container.appendChild(clone);
+    const { hasTransform } = getTransitionInfo(clone);
+    container.removeChild(clone);
+    return hasTransform;
+}
+
+const getModelAssigner = (vnode) => {
+    const fn = vnode.props['onUpdate:modelValue'];
+    return isArray(fn) ? value => invokeArrayFns(fn, value) : fn;
+};
+function onCompositionStart(e) {
+    e.target.composing = true;
+}
+function onCompositionEnd(e) {
+    const target = e.target;
+    if (target.composing) {
+        target.composing = false;
+        trigger(target, 'input');
+    }
+}
+function trigger(el, type) {
+    const e = document.createEvent('HTMLEvents');
+    e.initEvent(type, true, true);
+    el.dispatchEvent(e);
+}
+// We are exporting the v-model runtime directly as vnode hooks so that it can
+// be tree-shaken in case v-model is never used.
+const vModelText = {
+    created(el, { modifiers: { lazy, trim, number } }, vnode) {
+        el._assign = getModelAssigner(vnode);
+        const castToNumber = number || el.type === 'number';
+        addEventListener(el, lazy ? 'change' : 'input', e => {
+            if (e.target.composing)
+                return;
+            let domValue = el.value;
+            if (trim) {
+                domValue = domValue.trim();
+            }
+            else if (castToNumber) {
+                domValue = toNumber(domValue);
+            }
+            el._assign(domValue);
+        });
+        if (trim) {
+            addEventListener(el, 'change', () => {
+                el.value = el.value.trim();
+            });
+        }
+        if (!lazy) {
+            addEventListener(el, 'compositionstart', onCompositionStart);
+            addEventListener(el, 'compositionend', onCompositionEnd);
+            // Safari < 10.2 & UIWebView doesn't fire compositionend when
+            // switching focus before confirming composition choice
+            // this also fixes the issue where some browsers e.g. iOS Chrome
+            // fires "change" instead of "input" on autocomplete.
+            addEventListener(el, 'change', onCompositionEnd);
+        }
+    },
+    // set value on mounted so it's after min/max for type="range"
+    mounted(el, { value }) {
+        el.value = value == null ? '' : value;
+    },
+    beforeUpdate(el, { value, modifiers: { trim, number } }, vnode) {
+        el._assign = getModelAssigner(vnode);
+        // avoid clearing unresolved text. #2302
+        if (el.composing)
+            return;
+        if (document.activeElement === el) {
+            if (trim && el.value.trim() === value) {
+                return;
+            }
+            if ((number || el.type === 'number') && toNumber(el.value) === value) {
+                return;
+            }
+        }
+        const newValue = value == null ? '' : value;
+        if (el.value !== newValue) {
+            el.value = newValue;
+        }
+    }
+};
+const vModelCheckbox = {
+    created(el, binding, vnode) {
+        setChecked(el, binding, vnode);
+        el._assign = getModelAssigner(vnode);
+        addEventListener(el, 'change', () => {
+            const modelValue = el._modelValue;
+            const elementValue = getValue(el);
+            const checked = el.checked;
+            const assign = el._assign;
+            if (isArray(modelValue)) {
+                const index = looseIndexOf(modelValue, elementValue);
+                const found = index !== -1;
+                if (checked && !found) {
+                    assign(modelValue.concat(elementValue));
+                }
+                else if (!checked && found) {
+                    const filtered = [...modelValue];
+                    filtered.splice(index, 1);
+                    assign(filtered);
+                }
+            }
+            else if (isSet(modelValue)) {
+                if (checked) {
+                    modelValue.add(elementValue);
+                }
+                else {
+                    modelValue.delete(elementValue);
+                }
+            }
+            else {
+                assign(getCheckboxValue(el, checked));
+            }
+        });
+    },
+    beforeUpdate(el, binding, vnode) {
+        el._assign = getModelAssigner(vnode);
+        setChecked(el, binding, vnode);
+    }
+};
+function setChecked(el, { value, oldValue }, vnode) {
+    el._modelValue = value;
+    if (isArray(value)) {
+        el.checked = looseIndexOf(value, vnode.props.value) > -1;
+    }
+    else if (isSet(value)) {
+        el.checked = value.has(vnode.props.value);
+    }
+    else if (value !== oldValue) {
+        el.checked = looseEqual(value, getCheckboxValue(el, true));
+    }
+}
+const vModelRadio = {
+    created(el, { value }, vnode) {
+        el.checked = looseEqual(value, vnode.props.value);
+        el._assign = getModelAssigner(vnode);
+        addEventListener(el, 'change', () => {
+            el._assign(getValue(el));
+        });
+    },
+    beforeUpdate(el, { value, oldValue }, vnode) {
+        el._assign = getModelAssigner(vnode);
+        if (value !== oldValue) {
+            el.checked = looseEqual(value, vnode.props.value);
+        }
+    }
+};
+const vModelSelect = {
+    created(el, { modifiers: { number } }, vnode) {
+        addEventListener(el, 'change', () => {
+            const selectedVal = Array.prototype.filter
+                .call(el.options, (o) => o.selected)
+                .map((o) => number ? toNumber(getValue(o)) : getValue(o));
+            el._assign(el.multiple ? selectedVal : selectedVal[0]);
+        });
+        el._assign = getModelAssigner(vnode);
+    },
+    // set value in mounted & updated because <select> relies on its children
+    // <option>s.
+    mounted(el, { value }) {
+        setSelected(el, value);
+    },
+    beforeUpdate(el, _binding, vnode) {
+        el._assign = getModelAssigner(vnode);
+    },
+    updated(el, { value }) {
+        setSelected(el, value);
+    }
+};
+function setSelected(el, value) {
+    const isMultiple = el.multiple;
+    if (isMultiple && !isArray(value) && !isSet(value)) {
+        (process.env.NODE_ENV !== 'production') &&
+            warn(`<select multiple v-model> expects an Array or Set value for its binding, ` +
+                `but got ${Object.prototype.toString.call(value).slice(8, -1)}.`);
+        return;
+    }
+    for (let i = 0, l = el.options.length; i < l; i++) {
+        const option = el.options[i];
+        const optionValue = getValue(option);
+        if (isMultiple) {
+            if (isArray(value)) {
+                option.selected = looseIndexOf(value, optionValue) > -1;
+            }
+            else {
+                option.selected = value.has(optionValue);
+            }
+        }
+        else {
+            if (looseEqual(getValue(option), value)) {
+                el.selectedIndex = i;
+                return;
+            }
+        }
+    }
+    if (!isMultiple) {
+        el.selectedIndex = -1;
+    }
+}
+// retrieve raw value set via :value bindings
+function getValue(el) {
+    return '_value' in el ? el._value : el.value;
+}
+// retrieve raw value for true-value and false-value set via :true-value or :false-value bindings
+function getCheckboxValue(el, checked) {
+    const key = checked ? '_trueValue' : '_falseValue';
+    return key in el ? el[key] : checked;
+}
+const vModelDynamic = {
+    created(el, binding, vnode) {
+        callModelHook(el, binding, vnode, null, 'created');
+    },
+    mounted(el, binding, vnode) {
+        callModelHook(el, binding, vnode, null, 'mounted');
+    },
+    beforeUpdate(el, binding, vnode, prevVNode) {
+        callModelHook(el, binding, vnode, prevVNode, 'beforeUpdate');
+    },
+    updated(el, binding, vnode, prevVNode) {
+        callModelHook(el, binding, vnode, prevVNode, 'updated');
+    }
+};
+function callModelHook(el, binding, vnode, prevVNode, hook) {
+    let modelToUse;
+    switch (el.tagName) {
+        case 'SELECT':
+            modelToUse = vModelSelect;
+            break;
+        case 'TEXTAREA':
+            modelToUse = vModelText;
+            break;
+        default:
+            switch (vnode.props && vnode.props.type) {
+                case 'checkbox':
+                    modelToUse = vModelCheckbox;
+                    break;
+                case 'radio':
+                    modelToUse = vModelRadio;
+                    break;
+                default:
+                    modelToUse = vModelText;
+            }
+    }
+    const fn = modelToUse[hook];
+    fn && fn(el, binding, vnode, prevVNode);
+}
+
+const systemModifiers = ['ctrl', 'shift', 'alt', 'meta'];
+const modifierGuards = {
+    stop: e => e.stopPropagation(),
+    prevent: e => e.preventDefault(),
+    self: e => e.target !== e.currentTarget,
+    ctrl: e => !e.ctrlKey,
+    shift: e => !e.shiftKey,
+    alt: e => !e.altKey,
+    meta: e => !e.metaKey,
+    left: e => 'button' in e && e.button !== 0,
+    middle: e => 'button' in e && e.button !== 1,
+    right: e => 'button' in e && e.button !== 2,
+    exact: (e, modifiers) => systemModifiers.some(m => e[`${m}Key`] && !modifiers.includes(m))
+};
+/**
+ * @private
+ */
+const withModifiers = (fn, modifiers) => {
+    return (event, ...args) => {
+        for (let i = 0; i < modifiers.length; i++) {
+            const guard = modifierGuards[modifiers[i]];
+            if (guard && guard(event, modifiers))
+                return;
+        }
+        return fn(event, ...args);
+    };
+};
+// Kept for 2.x compat.
+// Note: IE11 compat for `spacebar` and `del` is removed for now.
+const keyNames = {
+    esc: 'escape',
+    space: ' ',
+    up: 'arrow-up',
+    left: 'arrow-left',
+    right: 'arrow-right',
+    down: 'arrow-down',
+    delete: 'backspace'
+};
+/**
+ * @private
+ */
+const withKeys = (fn, modifiers) => {
+    return (event) => {
+        if (!('key' in event))
+            return;
+        const eventKey = hyphenate(event.key);
+        if (
+        // None of the provided key modifiers match the current event key
+        !modifiers.some(k => k === eventKey || keyNames[k] === eventKey)) {
+            return;
+        }
+        return fn(event);
+    };
+};
+
+const vShow = {
+    beforeMount(el, { value }, { transition }) {
+        el._vod = el.style.display === 'none' ? '' : el.style.display;
+        if (transition && value) {
+            transition.beforeEnter(el);
+        }
+        else {
+            setDisplay(el, value);
+        }
+    },
+    mounted(el, { value }, { transition }) {
+        if (transition && value) {
+            transition.enter(el);
+        }
+    },
+    updated(el, { value, oldValue }, { transition }) {
+        if (!value === !oldValue)
+            return;
+        if (transition) {
+            if (value) {
+                transition.beforeEnter(el);
+                setDisplay(el, true);
+                transition.enter(el);
+            }
+            else {
+                transition.leave(el, () => {
+                    setDisplay(el, false);
+                });
+            }
+        }
+        else {
+            setDisplay(el, value);
+        }
+    },
+    beforeUnmount(el, { value }) {
+        setDisplay(el, value);
+    }
+};
+function setDisplay(el, value) {
+    el.style.display = value ? el._vod : 'none';
+}
+
+const rendererOptions = extend({ patchProp, forcePatchProp }, nodeOps);
+// lazy create the renderer - this makes core renderer logic tree-shakable
+// in case the user only imports reactivity utilities from Vue.
+let renderer;
+let enabledHydration = false;
+function ensureRenderer() {
+    return renderer || (renderer = createRenderer(rendererOptions));
+}
+function ensureHydrationRenderer() {
+    renderer = enabledHydration
+        ? renderer
+        : createHydrationRenderer(rendererOptions);
+    enabledHydration = true;
+    return renderer;
+}
+// use explicit type casts here to avoid import() calls in rolled-up d.ts
+const render = ((...args) => {
+    ensureRenderer().render(...args);
+});
+const hydrate = ((...args) => {
+    ensureHydrationRenderer().hydrate(...args);
+});
+const createApp = ((...args) => {
+    const app = ensureRenderer().createApp(...args);
+    if ((process.env.NODE_ENV !== 'production')) {
+        injectNativeTagCheck(app);
+    }
+    const { mount } = app;
+    app.mount = (containerOrSelector) => {
+        const container = normalizeContainer(containerOrSelector);
+        if (!container)
+            return;
+        const component = app._component;
+        if (!isFunction(component) && !component.render && !component.template) {
+            component.template = container.innerHTML;
+        }
+        // clear content before mounting
+        container.innerHTML = '';
+        const proxy = mount(container);
+        container.removeAttribute('v-cloak');
+        container.setAttribute('data-v-app', '');
+        return proxy;
+    };
+    return app;
+});
+const createSSRApp = ((...args) => {
+    const app = ensureHydrationRenderer().createApp(...args);
+    if ((process.env.NODE_ENV !== 'production')) {
+        injectNativeTagCheck(app);
+    }
+    const { mount } = app;
+    app.mount = (containerOrSelector) => {
+        const container = normalizeContainer(containerOrSelector);
+        if (container) {
+            return mount(container, true);
+        }
+    };
+    return app;
+});
+function injectNativeTagCheck(app) {
+    // Inject `isNativeTag`
+    // this is used for component name validation (dev only)
+    Object.defineProperty(app.config, 'isNativeTag', {
+        value: (tag) => isHTMLTag(tag) || isSVGTag(tag),
+        writable: false
+    });
+}
+function normalizeContainer(container) {
+    if (isString(container)) {
+        const res = document.querySelector(container);
+        if ((process.env.NODE_ENV !== 'production') && !res) {
+            warn(`Failed to mount app: mount target selector returned null.`);
+        }
+        return res;
+    }
+    return container;
+}
+
+export { Transition, TransitionGroup, createApp, createSSRApp, hydrate, render, useCssModule, useCssVars, vModelCheckbox, vModelDynamic, vModelRadio, vModelSelect, vModelText, vShow, withKeys, withModifiers };

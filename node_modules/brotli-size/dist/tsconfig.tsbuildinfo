@@ -1,0 +1,1949 @@
+{
+  "program": {
+    "fileInfos": {
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es5.d.ts": {
+        "version": "1f753cee573dea40df8a9dc873fef5566957b19ad513874f6643d8dfb14842d0",
+        "signature": "1f753cee573dea40df8a9dc873fef5566957b19ad513874f6643d8dfb14842d0"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.d.ts": {
+        "version": "7994d44005046d1413ea31d046577cdda33b8b2470f30281fd9c8b3c99fe2d96",
+        "signature": "7994d44005046d1413ea31d046577cdda33b8b2470f30281fd9c8b3c99fe2d96"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2016.d.ts": {
+        "version": "5f217838d25704474d9ef93774f04164889169ca31475fe423a9de6758f058d1",
+        "signature": "5f217838d25704474d9ef93774f04164889169ca31475fe423a9de6758f058d1"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2017.d.ts": {
+        "version": "459097c7bdd88fc5731367e56591e4f465f2c9de81a35427a7bd473165c34743",
+        "signature": "459097c7bdd88fc5731367e56591e4f465f2c9de81a35427a7bd473165c34743"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2018.d.ts": {
+        "version": "2edd3ddf436ef8e12df876dcae4ecd6a8748577944c477bf4b20d5596e0c9843",
+        "signature": "2edd3ddf436ef8e12df876dcae4ecd6a8748577944c477bf4b20d5596e0c9843"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.core.d.ts": {
+        "version": "2a0390a665763bcc90f0670e43c587928d8fefe2a94a11209c1e22cba7b09f52",
+        "signature": "2a0390a665763bcc90f0670e43c587928d8fefe2a94a11209c1e22cba7b09f52"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.collection.d.ts": {
+        "version": "dd94d8ef48c562389eb58af8df3a3a34d11367f7c818192aa5f16470d469e3f0",
+        "signature": "dd94d8ef48c562389eb58af8df3a3a34d11367f7c818192aa5f16470d469e3f0"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.generator.d.ts": {
+        "version": "828413486bdcaa342558e8e4570b1b287b776cb61b4b70b0214bd10c5d9a94c3",
+        "signature": "828413486bdcaa342558e8e4570b1b287b776cb61b4b70b0214bd10c5d9a94c3"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.iterable.d.ts": {
+        "version": "6c9f73334f8bf47aea685ca5b46a8f7e992a223e96fbceb030f26a4d2324ba21",
+        "signature": "6c9f73334f8bf47aea685ca5b46a8f7e992a223e96fbceb030f26a4d2324ba21"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.promise.d.ts": {
+        "version": "e6b8ff2798f8ebd7a1c7afd8671f2cb67ee1901c422f5964d74b0b34c6574ea2",
+        "signature": "e6b8ff2798f8ebd7a1c7afd8671f2cb67ee1901c422f5964d74b0b34c6574ea2"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.proxy.d.ts": {
+        "version": "5e72f949a89717db444e3bd9433468890068bb21a5638d8ab15a1359e05e54fe",
+        "signature": "5e72f949a89717db444e3bd9433468890068bb21a5638d8ab15a1359e05e54fe"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.reflect.d.ts": {
+        "version": "f5b242136ae9bfb1cc99a5971cccc44e99947ae6b5ef6fd8aa54b5ade553b976",
+        "signature": "f5b242136ae9bfb1cc99a5971cccc44e99947ae6b5ef6fd8aa54b5ade553b976"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.symbol.d.ts": {
+        "version": "9ae2860252d6b5f16e2026d8a2c2069db7b2a3295e98b6031d01337b96437230",
+        "signature": "9ae2860252d6b5f16e2026d8a2c2069db7b2a3295e98b6031d01337b96437230"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts": {
+        "version": "3e0a459888f32b42138d5a39f706ff2d55d500ab1031e0988b5568b0f67c2303",
+        "signature": "3e0a459888f32b42138d5a39f706ff2d55d500ab1031e0988b5568b0f67c2303"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2016.array.include.d.ts": {
+        "version": "3f96f1e570aedbd97bf818c246727151e873125d0512e4ae904330286c721bc0",
+        "signature": "3f96f1e570aedbd97bf818c246727151e873125d0512e4ae904330286c721bc0"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2017.object.d.ts": {
+        "version": "ff8ad203e83338289b0f5defc1a5b5c253fb7d251b464db497383f915a0df3f4",
+        "signature": "ff8ad203e83338289b0f5defc1a5b5c253fb7d251b464db497383f915a0df3f4"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2017.sharedmemory.d.ts": {
+        "version": "b8667586a618c5cf64523d4e500ae39e781428abfb28f3de441fc66b56144b6f",
+        "signature": "b8667586a618c5cf64523d4e500ae39e781428abfb28f3de441fc66b56144b6f"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2017.string.d.ts": {
+        "version": "21df2e0059f14dcb4c3a0e125859f6b6ff01332ee24b0065a741d121250bc71c",
+        "signature": "21df2e0059f14dcb4c3a0e125859f6b6ff01332ee24b0065a741d121250bc71c"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2017.intl.d.ts": {
+        "version": "c1759cb171c7619af0d2234f2f8fb2a871ee88e956e2ed91bb61778e41f272c6",
+        "signature": "c1759cb171c7619af0d2234f2f8fb2a871ee88e956e2ed91bb61778e41f272c6"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2017.typedarrays.d.ts": {
+        "version": "28569d59e07d4378cb3d54979c4c60f9f06305c9bb6999ffe6cab758957adc46",
+        "signature": "28569d59e07d4378cb3d54979c4c60f9f06305c9bb6999ffe6cab758957adc46"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2018.asynciterable.d.ts": {
+        "version": "42102aaeb1bfec213be1e9777466a6d551eeba8567fed18c0cdbca8c35e3c6e4",
+        "signature": "42102aaeb1bfec213be1e9777466a6d551eeba8567fed18c0cdbca8c35e3c6e4"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2018.intl.d.ts": {
+        "version": "1b820b57379c726f94af50cd60053674af53ff9d079c1563cc70071e8b757dd0",
+        "signature": "1b820b57379c726f94af50cd60053674af53ff9d079c1563cc70071e8b757dd0"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2018.promise.d.ts": {
+        "version": "efe049114bad1035b0aa9a4a0359f50ab776e3897c411521e51d3013079cbd62",
+        "signature": "efe049114bad1035b0aa9a4a0359f50ab776e3897c411521e51d3013079cbd62"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2018.regexp.d.ts": {
+        "version": "e7780d04cd4120ee554c665829db2bbdd6b947cbaa3c150b7d9ea74df3beb2e8",
+        "signature": "e7780d04cd4120ee554c665829db2bbdd6b947cbaa3c150b7d9ea74df3beb2e8"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.esnext.intl.d.ts": {
+        "version": "f6e0c89daaf72eac38dfb1d5ef0972183f7f26a68da15bfe5bcb7cfccf0c7db8",
+        "signature": "f6e0c89daaf72eac38dfb1d5ef0972183f7f26a68da15bfe5bcb7cfccf0c7db8"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.esnext.bigint.d.ts": {
+        "version": "63b66918290d794f73832a6d0325be5026236674fe8c0cb0b68d162000d7bbe8",
+        "signature": "63b66918290d794f73832a6d0325be5026236674fe8c0cb0b68d162000d7bbe8"
+      },
+      "/users/erwinm/dev/brotli-size/src/index.ts": {
+        "version": "b99f1758ec2cc44f97422ab2573ed424775c30f1ad7cc8117344d097136eb1b2",
+        "signature": "90836fbf6890c93ee5146022df114d971229c398a1af890549f6613c7a2d10a4"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/events/index.d.ts": {
+        "version": "400db42c3a46984118bff14260d60cec580057dc1ab4c2d7310beb643e4f5935",
+        "signature": "400db42c3a46984118bff14260d60cec580057dc1ab4c2d7310beb643e4f5935"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/globals.d.ts": {
+        "version": "e4461b72726848da76a31153b6b01af5e0be3b08dbfa2ec5741ad302eb20f2ed",
+        "signature": "e4461b72726848da76a31153b6b01af5e0be3b08dbfa2ec5741ad302eb20f2ed"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/assert.d.ts": {
+        "version": "58a52f282f1dad18179023804c1f3a7536bf875748a0a314abd43f60fd5b244f",
+        "signature": "58a52f282f1dad18179023804c1f3a7536bf875748a0a314abd43f60fd5b244f"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/async_hooks.d.ts": {
+        "version": "1305b079a057355f496bdde048716189178877a6b4fe0e9267a46af67f8c7561",
+        "signature": "1305b079a057355f496bdde048716189178877a6b4fe0e9267a46af67f8c7561"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/buffer.d.ts": {
+        "version": "61215c1a376bbe8f51cab4cc4ddbf3746387015113c37a84d981d4738c21b878",
+        "signature": "61215c1a376bbe8f51cab4cc4ddbf3746387015113c37a84d981d4738c21b878"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/child_process.d.ts": {
+        "version": "123366127434e33eade36f3d06653dbc7457397fc93cfdd100776cfc12b6734c",
+        "signature": "123366127434e33eade36f3d06653dbc7457397fc93cfdd100776cfc12b6734c"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/cluster.d.ts": {
+        "version": "ce629710e5e58724902b753212e97861fd73e2aa09f5d88cb6d55dc763cf8c8a",
+        "signature": "ce629710e5e58724902b753212e97861fd73e2aa09f5d88cb6d55dc763cf8c8a"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/console.d.ts": {
+        "version": "525c8fc510d9632d2a0a9de2d41c3ac1cdd79ff44d3b45c6d81cacabb683528d",
+        "signature": "525c8fc510d9632d2a0a9de2d41c3ac1cdd79ff44d3b45c6d81cacabb683528d"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/constants.d.ts": {
+        "version": "8ce9418c78d3c1fb703ddbe38c936d34a989ba278666979826590dfa0772a424",
+        "signature": "8ce9418c78d3c1fb703ddbe38c936d34a989ba278666979826590dfa0772a424"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/crypto.d.ts": {
+        "version": "77c1fb6a190212f87a5edb26351d419c31dff1992c48707540cdcf812e4655f1",
+        "signature": "77c1fb6a190212f87a5edb26351d419c31dff1992c48707540cdcf812e4655f1"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/dgram.d.ts": {
+        "version": "7954df44c35d39b851b996fdc1af0a252e4e23f862abfef388a058203bb94c30",
+        "signature": "7954df44c35d39b851b996fdc1af0a252e4e23f862abfef388a058203bb94c30"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/dns.d.ts": {
+        "version": "ef226a42de7022eacdfa0f15aabf73b46c47af93044c8ebfab8aa8e3cf6c330c",
+        "signature": "ef226a42de7022eacdfa0f15aabf73b46c47af93044c8ebfab8aa8e3cf6c330c"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/domain.d.ts": {
+        "version": "d5b7c8819ce1bd31a45f7675309e145ec28e3aa1b60a8e0637fd0e8916255baa",
+        "signature": "d5b7c8819ce1bd31a45f7675309e145ec28e3aa1b60a8e0637fd0e8916255baa"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/events.d.ts": {
+        "version": "0be551fde848d5adde38731272ee980bda2bde0f8bf2a76ce99e01b86985546c",
+        "signature": "0be551fde848d5adde38731272ee980bda2bde0f8bf2a76ce99e01b86985546c"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/fs.d.ts": {
+        "version": "6bd120d96313412155ae7d4766d586a38576a058b3e269be2152db7030fbc882",
+        "signature": "6bd120d96313412155ae7d4766d586a38576a058b3e269be2152db7030fbc882"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/http.d.ts": {
+        "version": "db6de49919cf11a300f9203371d8e251d58558c509b3b92cee3badadfdb34d36",
+        "signature": "db6de49919cf11a300f9203371d8e251d58558c509b3b92cee3badadfdb34d36"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/http2.d.ts": {
+        "version": "745494f14a9e133beee622ca51cdc59c8896ff77c9f3cd017a4ce735b30dac2d",
+        "signature": "745494f14a9e133beee622ca51cdc59c8896ff77c9f3cd017a4ce735b30dac2d"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/https.d.ts": {
+        "version": "dacbe08610729f6343ea9880ea8e737c6d7a6efa4a318d8f6acaf85db4aceed6",
+        "signature": "dacbe08610729f6343ea9880ea8e737c6d7a6efa4a318d8f6acaf85db4aceed6"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/inspector.d.ts": {
+        "version": "4218ced3933a31eed1278d350dd63c5900df0f0904f57d61c054d7a4b83dbe4c",
+        "signature": "4218ced3933a31eed1278d350dd63c5900df0f0904f57d61c054d7a4b83dbe4c"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/module.d.ts": {
+        "version": "03394bf8deb8781b490ae9266a843fbdf00647947d79e25fcbf1d89a9e9c8a66",
+        "signature": "03394bf8deb8781b490ae9266a843fbdf00647947d79e25fcbf1d89a9e9c8a66"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/net.d.ts": {
+        "version": "1224b49e2c8f3b4ed618969d2989412d1282536d2a6a31c30c84d5da01d8b8e4",
+        "signature": "1224b49e2c8f3b4ed618969d2989412d1282536d2a6a31c30c84d5da01d8b8e4"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/os.d.ts": {
+        "version": "1a6016bd905855b2b45881e9edbd7ab8c7175f8bcbb711ff06989c4bcdc75486",
+        "signature": "1a6016bd905855b2b45881e9edbd7ab8c7175f8bcbb711ff06989c4bcdc75486"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/path.d.ts": {
+        "version": "5fb30076f0e0e5744db8993648bfb67aadd895f439edad5cce039127a87a8a36",
+        "signature": "5fb30076f0e0e5744db8993648bfb67aadd895f439edad5cce039127a87a8a36"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/perf_hooks.d.ts": {
+        "version": "27ef4001526ee9d8afa57687a60bb3b59c52b32d29db0a2260094ab64726164f",
+        "signature": "27ef4001526ee9d8afa57687a60bb3b59c52b32d29db0a2260094ab64726164f"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/process.d.ts": {
+        "version": "3a8848a9c307429b861402cc69bc472ffe0c05b86474fc158723169161e16389",
+        "signature": "3a8848a9c307429b861402cc69bc472ffe0c05b86474fc158723169161e16389"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/punycode.d.ts": {
+        "version": "30ec6f9c683b988c3cfaa0c4690692049c4e7ed7dc6f6e94f56194c06b86f5e1",
+        "signature": "30ec6f9c683b988c3cfaa0c4690692049c4e7ed7dc6f6e94f56194c06b86f5e1"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/querystring.d.ts": {
+        "version": "e0070c45bf15b872f58eee948f71ad6f4f424f36330b2477753fc1aed3ece36e",
+        "signature": "e0070c45bf15b872f58eee948f71ad6f4f424f36330b2477753fc1aed3ece36e"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/readline.d.ts": {
+        "version": "0870ded99753a8561f19452466e7d094f122ef12960024946ea45d8694693f54",
+        "signature": "0870ded99753a8561f19452466e7d094f122ef12960024946ea45d8694693f54"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/repl.d.ts": {
+        "version": "65dbe15ed8a8ed5d4707a63868178dc38111cfc06de28a2e50713ca017a9c157",
+        "signature": "65dbe15ed8a8ed5d4707a63868178dc38111cfc06de28a2e50713ca017a9c157"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/stream.d.ts": {
+        "version": "2350c09d0121a0b22c386a7bb8436d521b444c6b4b3e6ee37197d08a23f3b9dd",
+        "signature": "2350c09d0121a0b22c386a7bb8436d521b444c6b4b3e6ee37197d08a23f3b9dd"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/string_decoder.d.ts": {
+        "version": "7e62aac2cc9c0710d772047ad89e8d7117f52592c791eb995ce1f865fedab432",
+        "signature": "7e62aac2cc9c0710d772047ad89e8d7117f52592c791eb995ce1f865fedab432"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/timers.d.ts": {
+        "version": "b40652bf8ce4a18133b31349086523b219724dca8df3448c1a0742528e7ad5b9",
+        "signature": "b40652bf8ce4a18133b31349086523b219724dca8df3448c1a0742528e7ad5b9"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/tls.d.ts": {
+        "version": "af5f07deb33b2fb92ef67ea5ebb69670b81c74908b646e7cd4361a331d2a558a",
+        "signature": "af5f07deb33b2fb92ef67ea5ebb69670b81c74908b646e7cd4361a331d2a558a"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/trace_events.d.ts": {
+        "version": "978aecd2e6bc2ac094e9a35eda98ff8586713857b3655e7c98ca5ed8f7d50662",
+        "signature": "978aecd2e6bc2ac094e9a35eda98ff8586713857b3655e7c98ca5ed8f7d50662"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/tty.d.ts": {
+        "version": "08261bfa763b8cd7fa74c06debf70ee22268c299a18e5dc7c48736bc352be007",
+        "signature": "08261bfa763b8cd7fa74c06debf70ee22268c299a18e5dc7c48736bc352be007"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/url.d.ts": {
+        "version": "1e3da92862604b1f7a32265169f9aa712c4567742d42597704e04ae3e07019e7",
+        "signature": "1e3da92862604b1f7a32265169f9aa712c4567742d42597704e04ae3e07019e7"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts": {
+        "version": "0f6382d5032e45eec50b8f6c1e18c77544bc4db2ef8f854d196b254ec16add12",
+        "signature": "0f6382d5032e45eec50b8f6c1e18c77544bc4db2ef8f854d196b254ec16add12"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/v8.d.ts": {
+        "version": "e98d697adf809fc14dc88ed4e00e4f0e0e381ca23d6d9320cf01af87e801f725",
+        "signature": "e98d697adf809fc14dc88ed4e00e4f0e0e381ca23d6d9320cf01af87e801f725"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/vm.d.ts": {
+        "version": "ad20b1311e55187f8eeefdd282a02dbc70e5ac0cf8ab4cabae99c142b32cc562",
+        "signature": "ad20b1311e55187f8eeefdd282a02dbc70e5ac0cf8ab4cabae99c142b32cc562"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/worker_threads.d.ts": {
+        "version": "7780573ed8387aaadcc61d87f3d60d77dabf1e060da252dc72ab1d73401988bb",
+        "signature": "7780573ed8387aaadcc61d87f3d60d77dabf1e060da252dc72ab1d73401988bb"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/zlib.d.ts": {
+        "version": "2ffd50644d73fc1fa59c69d48859b6c843d3604609d7353725b6d2b001f05a2b",
+        "signature": "2ffd50644d73fc1fa59c69d48859b6c843d3604609d7353725b6d2b001f05a2b"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/base.d.ts": {
+        "version": "6622f76993bdfeaacb947ba7c4cf26f2e5c5194194d02d792c3cba4174cd8fce",
+        "signature": "6622f76993bdfeaacb947ba7c4cf26f2e5c5194194d02d792c3cba4174cd8fce"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts": {
+        "version": "4f54f0a9dd3b644c99ec32b32f8804d5978bc854799b228ae9c467bf3c84c64c",
+        "signature": "4f54f0a9dd3b644c99ec32b32f8804d5978bc854799b228ae9c467bf3c84c64c"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/globals.d.ts": {
+        "version": "4926e99d2ad39c0bbd36f2d37cc8f52756bc7a5661ad7b12815df871a4b07ba1",
+        "signature": "4926e99d2ad39c0bbd36f2d37cc8f52756bc7a5661ad7b12815df871a4b07ba1"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/index.d.ts": {
+        "version": "765fc34423b93c2ab763670d8d11d99e5f47387c13c161d6f1640dd6d91b7d1c",
+        "signature": "765fc34423b93c2ab763670d8d11d99e5f47387c13c161d6f1640dd6d91b7d1c"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/minimatch/index.d.ts": {
+        "version": "1d1e6bd176eee5970968423d7e215bfd66828b6db8d54d17afec05a831322633",
+        "signature": "1d1e6bd176eee5970968423d7e215bfd66828b6db8d54d17afec05a831322633"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/glob/index.d.ts": {
+        "version": "d852d6282c8dc8156d26d6bda83ab4bde51fee05ba2fe0ecdc165ddda009d3ee",
+        "signature": "d852d6282c8dc8156d26d6bda83ab4bde51fee05ba2fe0ecdc165ddda009d3ee"
+      },
+      "/users/erwinm/dev/brotli-size/node_modules/@types/normalize-package-data/index.d.ts": {
+        "version": "c9ad058b2cc9ce6dc2ed92960d6d009e8c04bef46d3f5312283debca6869f613",
+        "signature": "c9ad058b2cc9ce6dc2ed92960d6d009e8c04bef46d3f5312283debca6869f613"
+      },
+      "/users/erwinm/dev/node_modules/@types/connect/index.d.ts": {
+        "version": "c3be42b83b5f57ae2f65280fa395f6d31f61304ac1a29b7b406b6a0e71da8c82",
+        "signature": "c3be42b83b5f57ae2f65280fa395f6d31f61304ac1a29b7b406b6a0e71da8c82"
+      },
+      "/users/erwinm/dev/node_modules/@types/body-parser/index.d.ts": {
+        "version": "1b7919dbb6b43ff272f38f6f6522fb9f4e9e854356b2932a36aa4674f4a2fcf2",
+        "signature": "1b7919dbb6b43ff272f38f6f6522fb9f4e9e854356b2932a36aa4674f4a2fcf2"
+      },
+      "/users/erwinm/dev/node_modules/@types/caseless/index.d.ts": {
+        "version": "621c939dd665f42a4d7d531d97d5cc793c5886029e9335a31451f895e867154a",
+        "signature": "621c939dd665f42a4d7d531d97d5cc793c5886029e9335a31451f895e867154a"
+      },
+      "/users/erwinm/dev/node_modules/@types/events/index.d.ts": {
+        "version": "acc248b90a16d95f2c53b598927967497ed4da2a7e6c9fc6006c5ed9dee25fd7",
+        "signature": "acc248b90a16d95f2c53b598927967497ed4da2a7e6c9fc6006c5ed9dee25fd7"
+      },
+      "/users/erwinm/dev/node_modules/@types/range-parser/index.d.ts": {
+        "version": "da3d536653bd97a22e8b2075e7871cb68b421fa531a699bf503519390f913974",
+        "signature": "da3d536653bd97a22e8b2075e7871cb68b421fa531a699bf503519390f913974"
+      },
+      "/users/erwinm/dev/node_modules/@types/express-serve-static-core/index.d.ts": {
+        "version": "4da217e475298c668851d3730378aa6e2e19777c1d2a3cd5ddcb8b9183d4a8f2",
+        "signature": "4da217e475298c668851d3730378aa6e2e19777c1d2a3cd5ddcb8b9183d4a8f2"
+      },
+      "/users/erwinm/dev/node_modules/@types/mime/index.d.ts": {
+        "version": "0011751bdb49b3f408ab26b7bb51c4ab63e72dcc3fea4327efd9049601d88cb3",
+        "signature": "0011751bdb49b3f408ab26b7bb51c4ab63e72dcc3fea4327efd9049601d88cb3"
+      },
+      "/users/erwinm/dev/node_modules/@types/serve-static/index.d.ts": {
+        "version": "b27dd918d8c3f10270cadea529c69e3a9b37ce59db0852945a39068cc5c10fff",
+        "signature": "b27dd918d8c3f10270cadea529c69e3a9b37ce59db0852945a39068cc5c10fff"
+      },
+      "/users/erwinm/dev/node_modules/@types/express/index.d.ts": {
+        "version": "90a21629af2bfe9117cd964fbc89cbdafa3565bee40d2d0c00ae9b24b3895ece",
+        "signature": "90a21629af2bfe9117cd964fbc89cbdafa3565bee40d2d0c00ae9b24b3895ece"
+      },
+      "/users/erwinm/dev/node_modules/@types/cors/index.d.ts": {
+        "version": "81daacad7019267800ee5ef207fbca95b158c8088ca6b4f98cb3159564808ebc",
+        "signature": "81daacad7019267800ee5ef207fbca95b158c8088ca6b4f98cb3159564808ebc"
+      },
+      "/users/erwinm/dev/node_modules/@types/form-data/index.d.ts": {
+        "version": "55f4b87f27e4f2fac4820e2c822f6476dea04317b695c1f3f9fa94a386a6e456",
+        "signature": "55f4b87f27e4f2fac4820e2c822f6476dea04317b695c1f3f9fa94a386a6e456"
+      },
+      "/users/erwinm/dev/node_modules/@types/tough-cookie/index.d.ts": {
+        "version": "1e0564e22286aed7fa63829228c4c6680ff9e2a00e0aa55ab4a57c225d599811",
+        "signature": "1e0564e22286aed7fa63829228c4c6680ff9e2a00e0aa55ab4a57c225d599811"
+      },
+      "/users/erwinm/dev/node_modules/@types/request/index.d.ts": {
+        "version": "bf09b736d635a19764d674f8c07d8d5d87550b1ad5b78777b84e8d8637520259",
+        "signature": "bf09b736d635a19764d674f8c07d8d5d87550b1ad5b78777b84e8d8637520259"
+      },
+      "/users/erwinm/dev/node_modules/@types/google-cloud__storage/index.d.ts": {
+        "version": "57f9cd1f2bf2855319709c3d461fd15a4616216020247b5de646a13a2ffa13b9",
+        "signature": "57f9cd1f2bf2855319709c3d461fd15a4616216020247b5de646a13a2ffa13b9"
+      },
+      "/users/erwinm/dev/node_modules/@types/jsonwebtoken/index.d.ts": {
+        "version": "3ee1c4479498ce568cf7789174c181a68a7f7f16f7b338132ded0daf24a8a971",
+        "signature": "3ee1c4479498ce568cf7789174c181a68a7f7f16f7b338132ded0daf24a8a971"
+      },
+      "/users/erwinm/dev/node_modules/@types/lodash/common/common.d.ts": {
+        "version": "34d4e49fb6a233df0592edeac9fecd45cf1d8e5e7ce449d5723d6d942a23e1ad",
+        "signature": "34d4e49fb6a233df0592edeac9fecd45cf1d8e5e7ce449d5723d6d942a23e1ad"
+      },
+      "/users/erwinm/dev/node_modules/@types/lodash/common/array.d.ts": {
+        "version": "24f73778cc712f3d2ff4b69227957577487118bd41652b63c5f913ba12f7631a",
+        "signature": "24f73778cc712f3d2ff4b69227957577487118bd41652b63c5f913ba12f7631a"
+      },
+      "/users/erwinm/dev/node_modules/@types/lodash/common/collection.d.ts": {
+        "version": "8de0ccabecb272b69ad77054b4ddd3e9099ba34bf68846de4cc043278b0236c8",
+        "signature": "8de0ccabecb272b69ad77054b4ddd3e9099ba34bf68846de4cc043278b0236c8"
+      },
+      "/users/erwinm/dev/node_modules/@types/lodash/common/date.d.ts": {
+        "version": "6e88e36ca6d6953fde31898701899e61239b22f09906d5970caac88107a4b01a",
+        "signature": "6e88e36ca6d6953fde31898701899e61239b22f09906d5970caac88107a4b01a"
+      },
+      "/users/erwinm/dev/node_modules/@types/lodash/common/function.d.ts": {
+        "version": "8d0b0656ffc2f973bdea853fc00a3f99122db54fd7a0e13bf87d6f358fbc3c6e",
+        "signature": "8d0b0656ffc2f973bdea853fc00a3f99122db54fd7a0e13bf87d6f358fbc3c6e"
+      },
+      "/users/erwinm/dev/node_modules/@types/lodash/common/lang.d.ts": {
+        "version": "aab4483e495e5fa9865b69b03f96e46b52c0eaeba9275a1f6ce3c620daf90b8f",
+        "signature": "aab4483e495e5fa9865b69b03f96e46b52c0eaeba9275a1f6ce3c620daf90b8f"
+      },
+      "/users/erwinm/dev/node_modules/@types/lodash/common/math.d.ts": {
+        "version": "90e654b460f8ff7a3ff73ec54996290afebf00c8acc0fc634961af1509416db5",
+        "signature": "90e654b460f8ff7a3ff73ec54996290afebf00c8acc0fc634961af1509416db5"
+      },
+      "/users/erwinm/dev/node_modules/@types/lodash/common/number.d.ts": {
+        "version": "81fdef0cbc4aeed4e29f7ed43d7b768ebe39e068da55c95bd710f47be289d6ac",
+        "signature": "81fdef0cbc4aeed4e29f7ed43d7b768ebe39e068da55c95bd710f47be289d6ac"
+      },
+      "/users/erwinm/dev/node_modules/@types/lodash/common/object.d.ts": {
+        "version": "17d66f8a355e76a5a1ee0a82e3428541abdebe80db47f93586a21a2cd79d89bc",
+        "signature": "17d66f8a355e76a5a1ee0a82e3428541abdebe80db47f93586a21a2cd79d89bc"
+      },
+      "/users/erwinm/dev/node_modules/@types/lodash/common/seq.d.ts": {
+        "version": "e4db201366aed6e8ec28c4f9e998729477b0825ae7e517441e8000f192b8b033",
+        "signature": "e4db201366aed6e8ec28c4f9e998729477b0825ae7e517441e8000f192b8b033"
+      },
+      "/users/erwinm/dev/node_modules/@types/lodash/common/string.d.ts": {
+        "version": "20fb7144dd7a3e5007cc44e96c843879216fd082bf5761bd420715d645eb683e",
+        "signature": "20fb7144dd7a3e5007cc44e96c843879216fd082bf5761bd420715d645eb683e"
+      },
+      "/users/erwinm/dev/node_modules/@types/lodash/common/util.d.ts": {
+        "version": "026742bab94860543fde035a6bfd5d5103fab08afbdacf9a207a44b2bb6fccba",
+        "signature": "026742bab94860543fde035a6bfd5d5103fab08afbdacf9a207a44b2bb6fccba"
+      },
+      "/users/erwinm/dev/node_modules/@types/lodash/index.d.ts": {
+        "version": "4b0129cc010964d404b46ab0ecc2017e29e61be7f243a2f4b8633de40c6bf632",
+        "signature": "4b0129cc010964d404b46ab0ecc2017e29e61be7f243a2f4b8633de40c6bf632"
+      },
+      "/users/erwinm/dev/node_modules/@types/long/index.d.ts": {
+        "version": "d32ef7739402db3a15640222d047f0044e8e9a09ee123d49e8f57f3c66c2a732",
+        "signature": "d32ef7739402db3a15640222d047f0044e8e9a09ee123d49e8f57f3c66c2a732"
+      }
+    },
+    "options": {
+      "declaration": true,
+      "lib": [
+        "lib.es2017.d.ts"
+      ],
+      "outDir": "/Users/erwinm/dev/brotli-size/dist",
+      "sourceMap": true,
+      "moduleResolution": 2,
+      "target": 8,
+      "module": 1,
+      "allowJs": false,
+      "noUnusedLocals": true,
+      "strictNullChecks": true,
+      "noImplicitAny": true,
+      "noImplicitThis": true,
+      "alwaysStrict": true,
+      "incremental": true,
+      "project": "tsconfig.json",
+      "configFilePath": "/Users/erwinm/dev/brotli-size/tsconfig.json"
+    },
+    "referencedMap": {
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es5.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2016.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2017.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2018.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.core.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.collection.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.generator.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.iterable.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.promise.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.proxy.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.reflect.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.symbol.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2016.array.include.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2017.object.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2017.sharedmemory.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2017.string.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2017.intl.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2017.typedarrays.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2018.asynciterable.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2018.intl.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2018.promise.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2018.regexp.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.esnext.intl.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.esnext.bigint.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/src/index.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/zlib.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/stream.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/fs.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/events/index.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/globals.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/assert.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/async_hooks.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/buffer.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/child_process.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/events.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/net.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/stream.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/cluster.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/child_process.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/events.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/net.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/console.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/constants.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/crypto.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/stream.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/dgram.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/net.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/dns.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/events.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/dns.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/domain.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/events.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/events.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/fs.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/stream.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/events.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/url.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/http.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/events.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/stream.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/url.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/net.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/http2.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/events.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/fs.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/net.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/stream.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/tls.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/url.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/http.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/https.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/tls.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/events.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/http.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/url.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/inspector.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/events.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/module.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/net.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/stream.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/events.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/dns.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/os.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/path.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/perf_hooks.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/async_hooks.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/process.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/punycode.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/querystring.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/readline.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/events.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/stream.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/repl.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/readline.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/vm.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/stream.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/events.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/string_decoder.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/timers.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/tls.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/crypto.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/dns.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/net.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/stream.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/trace_events.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/tty.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/net.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/url.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/querystring.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/v8.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/stream.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/vm.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/worker_threads.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/vm.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/events.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/stream.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/zlib.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/stream.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/base.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/globals.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/assert.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/async_hooks.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/buffer.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/child_process.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/cluster.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/console.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/constants.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/crypto.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/dgram.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/dns.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/domain.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/events.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/fs.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/http.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/http2.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/https.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/inspector.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/module.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/net.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/os.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/path.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/perf_hooks.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/process.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/punycode.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/querystring.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/readline.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/repl.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/stream.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/string_decoder.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/timers.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/tls.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/trace_events.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/tty.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/url.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/v8.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/vm.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/worker_threads.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/zlib.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/globals.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/globals.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/index.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/base.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/globals.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/minimatch/index.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/glob/index.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/events.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/minimatch/index.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/index.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/normalize-package-data/index.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/connect/index.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/http.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/index.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/body-parser/index.d.ts": [
+        "/users/erwinm/dev/node_modules/@types/connect/index.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/http.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/index.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/caseless/index.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/events/index.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/range-parser/index.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/express-serve-static-core/index.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/http.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/events.d.ts",
+        "/users/erwinm/dev/node_modules/@types/range-parser/index.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/index.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/mime/index.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/serve-static/index.d.ts": [
+        "/users/erwinm/dev/node_modules/@types/express-serve-static-core/index.d.ts",
+        "/users/erwinm/dev/node_modules/@types/mime/index.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/express/index.d.ts": [
+        "/users/erwinm/dev/node_modules/@types/body-parser/index.d.ts",
+        "/users/erwinm/dev/node_modules/@types/serve-static/index.d.ts",
+        "/users/erwinm/dev/node_modules/@types/express-serve-static-core/index.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/cors/index.d.ts": [
+        "/users/erwinm/dev/node_modules/@types/express/index.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/form-data/index.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/stream.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/http.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/index.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/tough-cookie/index.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/request/index.d.ts": [
+        "/users/erwinm/dev/node_modules/@types/caseless/index.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/stream.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/http.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/https.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/fs.d.ts",
+        "/users/erwinm/dev/node_modules/@types/form-data/index.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/net.d.ts",
+        "/users/erwinm/dev/node_modules/@types/tough-cookie/index.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/url.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/index.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/google-cloud__storage/index.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/fs.d.ts",
+        "/users/erwinm/dev/node_modules/@types/request/index.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/index.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/jsonwebtoken/index.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/index.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/lodash/common/common.d.ts": [
+        "/users/erwinm/dev/node_modules/@types/lodash/index.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/array.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/collection.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/date.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/function.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/lang.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/math.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/number.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/object.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/seq.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/string.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/lodash/common/array.d.ts": [
+        "/users/erwinm/dev/node_modules/@types/lodash/index.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/common.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/collection.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/date.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/function.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/lang.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/math.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/number.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/object.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/seq.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/string.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/lodash/common/collection.d.ts": [
+        "/users/erwinm/dev/node_modules/@types/lodash/index.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/common.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/array.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/date.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/function.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/lang.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/math.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/number.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/object.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/seq.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/string.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/lodash/common/date.d.ts": [
+        "/users/erwinm/dev/node_modules/@types/lodash/index.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/common.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/array.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/collection.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/function.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/lang.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/math.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/number.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/object.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/seq.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/string.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/lodash/common/function.d.ts": [
+        "/users/erwinm/dev/node_modules/@types/lodash/index.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/common.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/array.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/collection.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/date.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/lang.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/math.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/number.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/object.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/seq.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/string.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/lodash/common/lang.d.ts": [
+        "/users/erwinm/dev/node_modules/@types/lodash/index.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/common.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/array.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/collection.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/date.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/function.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/math.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/number.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/object.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/seq.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/string.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/lodash/common/math.d.ts": [
+        "/users/erwinm/dev/node_modules/@types/lodash/index.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/common.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/array.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/collection.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/date.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/function.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/lang.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/number.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/object.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/seq.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/string.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/lodash/common/number.d.ts": [
+        "/users/erwinm/dev/node_modules/@types/lodash/index.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/common.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/array.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/collection.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/date.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/function.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/lang.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/math.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/object.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/seq.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/string.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/lodash/common/object.d.ts": [
+        "/users/erwinm/dev/node_modules/@types/lodash/index.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/common.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/array.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/collection.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/date.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/function.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/lang.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/math.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/number.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/seq.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/string.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/lodash/common/seq.d.ts": [
+        "/users/erwinm/dev/node_modules/@types/lodash/index.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/common.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/array.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/collection.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/date.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/function.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/lang.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/math.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/number.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/object.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/string.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/lodash/common/string.d.ts": [
+        "/users/erwinm/dev/node_modules/@types/lodash/index.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/common.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/array.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/collection.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/date.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/function.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/lang.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/math.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/number.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/object.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/seq.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/lodash/common/util.d.ts": [
+        "/users/erwinm/dev/node_modules/@types/lodash/index.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/common.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/array.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/collection.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/date.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/function.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/lang.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/math.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/number.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/object.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/seq.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/string.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/lodash/index.d.ts": [
+        "/users/erwinm/dev/node_modules/@types/lodash/common/common.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/array.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/collection.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/date.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/function.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/lang.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/math.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/number.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/object.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/seq.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/string.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/long/index.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ]
+    },
+    "exportedModulesMap": {
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es5.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2016.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2017.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2018.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.core.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.collection.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.generator.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.iterable.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.promise.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.proxy.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.reflect.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.symbol.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2016.array.include.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2017.object.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2017.sharedmemory.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2017.string.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2017.intl.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2017.typedarrays.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2018.asynciterable.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2018.intl.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2018.promise.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2018.regexp.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.esnext.intl.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.esnext.bigint.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/src/index.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/stream.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/events/index.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/globals.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/assert.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/async_hooks.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/buffer.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/child_process.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/events.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/net.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/stream.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/cluster.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/child_process.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/events.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/net.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/console.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/constants.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/crypto.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/stream.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/dgram.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/net.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/dns.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/events.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/dns.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/domain.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/events.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/events.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/fs.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/stream.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/events.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/url.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/http.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/events.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/stream.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/url.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/net.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/http2.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/events.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/fs.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/net.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/stream.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/tls.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/url.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/http.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/https.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/tls.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/events.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/http.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/url.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/inspector.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/events.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/module.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/net.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/stream.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/events.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/dns.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/os.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/path.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/perf_hooks.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/async_hooks.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/process.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/punycode.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/querystring.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/readline.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/events.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/stream.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/repl.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/readline.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/vm.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/stream.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/events.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/string_decoder.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/timers.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/tls.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/crypto.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/dns.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/net.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/stream.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/trace_events.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/tty.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/net.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/url.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/querystring.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/v8.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/stream.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/vm.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/worker_threads.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/vm.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/events.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/stream.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/zlib.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/stream.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/base.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/globals.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/assert.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/async_hooks.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/buffer.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/child_process.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/cluster.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/console.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/constants.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/crypto.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/dgram.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/dns.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/domain.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/events.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/fs.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/http.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/http2.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/https.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/inspector.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/module.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/net.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/os.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/path.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/perf_hooks.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/process.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/punycode.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/querystring.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/readline.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/repl.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/stream.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/string_decoder.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/timers.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/tls.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/trace_events.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/tty.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/url.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/v8.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/vm.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/worker_threads.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/zlib.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/globals.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/globals.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/index.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/base.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/globals.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/minimatch/index.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/glob/index.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/events.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/minimatch/index.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/index.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/brotli-size/node_modules/@types/normalize-package-data/index.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/connect/index.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/http.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/index.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/body-parser/index.d.ts": [
+        "/users/erwinm/dev/node_modules/@types/connect/index.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/http.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/index.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/caseless/index.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/events/index.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/range-parser/index.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/express-serve-static-core/index.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/http.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/events.d.ts",
+        "/users/erwinm/dev/node_modules/@types/range-parser/index.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/index.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/mime/index.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/serve-static/index.d.ts": [
+        "/users/erwinm/dev/node_modules/@types/express-serve-static-core/index.d.ts",
+        "/users/erwinm/dev/node_modules/@types/mime/index.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/express/index.d.ts": [
+        "/users/erwinm/dev/node_modules/@types/body-parser/index.d.ts",
+        "/users/erwinm/dev/node_modules/@types/serve-static/index.d.ts",
+        "/users/erwinm/dev/node_modules/@types/express-serve-static-core/index.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/cors/index.d.ts": [
+        "/users/erwinm/dev/node_modules/@types/express/index.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/form-data/index.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/stream.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/http.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/index.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/tough-cookie/index.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/request/index.d.ts": [
+        "/users/erwinm/dev/node_modules/@types/caseless/index.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/stream.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/http.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/https.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/fs.d.ts",
+        "/users/erwinm/dev/node_modules/@types/form-data/index.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/net.d.ts",
+        "/users/erwinm/dev/node_modules/@types/tough-cookie/index.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/url.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/index.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/google-cloud__storage/index.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/fs.d.ts",
+        "/users/erwinm/dev/node_modules/@types/request/index.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/index.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/jsonwebtoken/index.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/index.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/lodash/common/common.d.ts": [
+        "/users/erwinm/dev/node_modules/@types/lodash/index.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/array.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/collection.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/date.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/function.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/lang.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/math.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/number.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/object.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/seq.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/string.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/lodash/common/array.d.ts": [
+        "/users/erwinm/dev/node_modules/@types/lodash/index.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/common.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/collection.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/date.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/function.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/lang.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/math.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/number.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/object.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/seq.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/string.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/lodash/common/collection.d.ts": [
+        "/users/erwinm/dev/node_modules/@types/lodash/index.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/common.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/array.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/date.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/function.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/lang.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/math.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/number.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/object.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/seq.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/string.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/lodash/common/date.d.ts": [
+        "/users/erwinm/dev/node_modules/@types/lodash/index.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/common.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/array.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/collection.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/function.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/lang.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/math.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/number.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/object.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/seq.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/string.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/lodash/common/function.d.ts": [
+        "/users/erwinm/dev/node_modules/@types/lodash/index.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/common.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/array.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/collection.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/date.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/lang.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/math.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/number.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/object.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/seq.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/string.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/lodash/common/lang.d.ts": [
+        "/users/erwinm/dev/node_modules/@types/lodash/index.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/common.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/array.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/collection.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/date.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/function.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/math.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/number.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/object.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/seq.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/string.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/lodash/common/math.d.ts": [
+        "/users/erwinm/dev/node_modules/@types/lodash/index.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/common.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/array.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/collection.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/date.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/function.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/lang.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/number.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/object.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/seq.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/string.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/lodash/common/number.d.ts": [
+        "/users/erwinm/dev/node_modules/@types/lodash/index.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/common.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/array.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/collection.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/date.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/function.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/lang.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/math.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/object.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/seq.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/string.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/lodash/common/object.d.ts": [
+        "/users/erwinm/dev/node_modules/@types/lodash/index.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/common.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/array.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/collection.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/date.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/function.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/lang.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/math.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/number.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/seq.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/string.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/lodash/common/seq.d.ts": [
+        "/users/erwinm/dev/node_modules/@types/lodash/index.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/common.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/array.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/collection.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/date.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/function.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/lang.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/math.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/number.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/object.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/string.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/lodash/common/string.d.ts": [
+        "/users/erwinm/dev/node_modules/@types/lodash/index.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/common.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/array.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/collection.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/date.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/function.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/lang.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/math.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/number.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/object.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/seq.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/lodash/common/util.d.ts": [
+        "/users/erwinm/dev/node_modules/@types/lodash/index.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/common.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/array.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/collection.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/date.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/function.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/lang.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/math.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/number.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/object.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/seq.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/string.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/lodash/index.d.ts": [
+        "/users/erwinm/dev/node_modules/@types/lodash/common/common.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/array.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/collection.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/date.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/function.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/lang.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/math.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/number.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/object.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/seq.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/string.d.ts",
+        "/users/erwinm/dev/node_modules/@types/lodash/common/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "/users/erwinm/dev/node_modules/@types/long/index.d.ts": [
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+        "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts"
+      ]
+    },
+    "semanticDiagnosticsPerFile": [
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es5.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2016.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2017.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2018.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.core.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.collection.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.generator.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.iterable.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.promise.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.proxy.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.reflect.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.symbol.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2016.array.include.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2017.object.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2017.sharedmemory.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2017.string.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2017.intl.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2017.typedarrays.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2018.asynciterable.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2018.intl.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2018.promise.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.es2018.regexp.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.esnext.intl.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/typescript/lib/lib.esnext.bigint.d.ts",
+      "/users/erwinm/dev/brotli-size/src/index.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/events/index.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/globals.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/assert.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/async_hooks.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/buffer.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/child_process.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/cluster.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/console.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/constants.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/crypto.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/dgram.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/dns.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/domain.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/events.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/fs.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/http.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/http2.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/https.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/inspector.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/module.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/net.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/os.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/path.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/perf_hooks.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/process.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/punycode.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/querystring.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/readline.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/repl.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/stream.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/string_decoder.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/timers.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/tls.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/trace_events.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/tty.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/url.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/util.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/v8.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/vm.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/worker_threads.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/zlib.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/base.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/util.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/globals.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/node/ts3.2/index.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/minimatch/index.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/glob/index.d.ts",
+      "/users/erwinm/dev/brotli-size/node_modules/@types/normalize-package-data/index.d.ts",
+      "/users/erwinm/dev/node_modules/@types/connect/index.d.ts",
+      "/users/erwinm/dev/node_modules/@types/body-parser/index.d.ts",
+      "/users/erwinm/dev/node_modules/@types/caseless/index.d.ts",
+      "/users/erwinm/dev/node_modules/@types/events/index.d.ts",
+      "/users/erwinm/dev/node_modules/@types/range-parser/index.d.ts",
+      "/users/erwinm/dev/node_modules/@types/express-serve-static-core/index.d.ts",
+      "/users/erwinm/dev/node_modules/@types/mime/index.d.ts",
+      "/users/erwinm/dev/node_modules/@types/serve-static/index.d.ts",
+      "/users/erwinm/dev/node_modules/@types/express/index.d.ts",
+      "/users/erwinm/dev/node_modules/@types/cors/index.d.ts",
+      "/users/erwinm/dev/node_modules/@types/form-data/index.d.ts",
+      "/users/erwinm/dev/node_modules/@types/tough-cookie/index.d.ts",
+      "/users/erwinm/dev/node_modules/@types/request/index.d.ts",
+      "/users/erwinm/dev/node_modules/@types/google-cloud__storage/index.d.ts",
+      "/users/erwinm/dev/node_modules/@types/jsonwebtoken/index.d.ts",
+      "/users/erwinm/dev/node_modules/@types/lodash/common/common.d.ts",
+      "/users/erwinm/dev/node_modules/@types/lodash/common/array.d.ts",
+      "/users/erwinm/dev/node_modules/@types/lodash/common/collection.d.ts",
+      "/users/erwinm/dev/node_modules/@types/lodash/common/date.d.ts",
+      "/users/erwinm/dev/node_modules/@types/lodash/common/function.d.ts",
+      "/users/erwinm/dev/node_modules/@types/lodash/common/lang.d.ts",
+      "/users/erwinm/dev/node_modules/@types/lodash/common/math.d.ts",
+      "/users/erwinm/dev/node_modules/@types/lodash/common/number.d.ts",
+      "/users/erwinm/dev/node_modules/@types/lodash/common/object.d.ts",
+      "/users/erwinm/dev/node_modules/@types/lodash/common/seq.d.ts",
+      "/users/erwinm/dev/node_modules/@types/lodash/common/string.d.ts",
+      "/users/erwinm/dev/node_modules/@types/lodash/common/util.d.ts",
+      "/users/erwinm/dev/node_modules/@types/lodash/index.d.ts",
+      "/users/erwinm/dev/node_modules/@types/long/index.d.ts"
+    ]
+  },
+  "version": "3.5.2"
+}

@@ -1,0 +1,271 @@
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, Courier New, monospace;
+  font-size: 0.85em;
+  color: var(--text-color-light);
+  background-color: rgba(27, 31, 35, 0.05);
+  padding: 0.25rem 0.5rem;
+  border-radius: 3px;
+  margin: 0;
+}
+
+code .token.deleted {
+  color: #ec5975;
+}
+
+code .token.inserted {
+  color: var(--accent-color);
+}
+
+div[class*='language-'] {
+  line-height: 1.5;
+  padding: 0.5rem 1.5rem;
+  background-color: var(--code-bg-color);
+  border-radius: 6px;
+  overflow-x: auto;
+  position: relative;
+  margin: 0.85rem 0;
+}
+
+[class*='language-'] pre {
+  background: transparent;
+  position: relative;
+  z-index: 1;
+}
+
+[class*='language-'] code {
+  color: #eee;
+  padding: 0;
+}
+
+[class*='language-'] code,
+[class*='language-'] pre {
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Line highlighting */
+
+.highlight-lines {
+  font-size: 0.9em;
+  user-select: none;
+  padding-top: 1.3rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  line-height: 1.5;
+}
+
+.highlight-lines .highlighted {
+  background-color: rgba(0, 0, 0, 66%);
+}
+
+/* Line numbers mode */
+
+div[class*='language-'].line-numbers-mode {
+  padding-left: 5rem;
+}
+
+.line-numbers-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3.5rem;
+  text-align: center;
+  color: #888;
+  line-height: 1.5;
+  font-size: 0.9em;
+  padding: 1.3rem 0;
+  border-right: 1px solid rgba(0,0,0,50%);
+  z-index: 4;
+}
+
+/* Language marker */
+
+[class*='language-']:before {
+  position: absolute;
+  z-index: 3;
+  top: 0.6em;
+  right: 1em;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+[class~='language-html']:before,
+[class~='language-markup']:before {
+  content: 'html';
+}
+
+[class~='language-md']:before,
+[class~='language-markdown']:before {
+  content: 'md';
+}
+
+[class~='language-css']:before {
+  content: 'css';
+}
+
+[class~='language-sass']:before {
+  content: 'sass';
+}
+
+[class~='language-scss']:before {
+  content: 'scss';
+}
+
+[class~='language-less']:before {
+  content: 'less';
+}
+
+[class~='language-stylus']:before {
+  content: 'styl';
+}
+
+[class~='language-js']:before,
+[class~='language-typescript']:before {
+  content: 'js';
+}
+
+[class~='language-ts']:before,
+[class~='language-typescript']:before {
+  content: 'ts';
+}
+
+[class~='language-json']:before {
+  content: 'json';
+}
+
+[class~='language-rb']:before,
+[class~='language-ruby']:before {
+  content: 'rb';
+}
+
+[class~='language-py']:before,
+[class~='language-python']:before {
+  content: 'py';
+}
+
+[class~='language-sh']:before,
+[class~='language-bash']:before {
+  content: 'sh';
+}
+
+[class~='language-php']:before {
+  content: 'php';
+}
+
+[class~='language-go']:before {
+  content: 'go';
+}
+
+[class~='language-rust']:before {
+  content: 'rust';
+}
+
+[class~='language-java']:before {
+  content: 'java';
+}
+
+[class~='language-c']:before {
+  content: 'c';
+}
+
+[class~='language-yaml']:before {
+  content: 'yaml';
+}
+
+[class~='language-dockerfile']:before {
+  content: 'dockerfile';
+}
+
+/**
+ * prism.js tomorrow night eighties for JavaScript, CoffeeScript, CSS and HTML
+ * Based on https://github.com/chriskempson/tomorrow-theme
+ * @author Rose Pritchard
+ */
+.token.comment,
+.token.block-comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #999;
+}
+
+.token.punctuation {
+  color: #ccc;
+}
+
+.token.tag,
+.token.attr-name,
+.token.namespace,
+.token.deleted {
+  color: #e2777a;
+}
+
+.token.function-name {
+  color: #6196cc;
+}
+
+.token.boolean,
+.token.number,
+.token.function {
+  color: #f08d49;
+}
+
+.token.property,
+.token.class-name,
+.token.constant,
+.token.symbol {
+  color: #f8c555;
+}
+
+.token.selector,
+.token.important,
+.token.atrule,
+.token.keyword,
+.token.builtin {
+  color: #cc99cd;
+}
+
+.token.string,
+.token.char,
+.token.attr-value,
+.token.regex,
+.token.variable {
+  color: #7ec699;
+}
+
+.token.operator,
+.token.entity,
+.token.url {
+  color: #67cdcc;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.inserted {
+  color: green;
+}

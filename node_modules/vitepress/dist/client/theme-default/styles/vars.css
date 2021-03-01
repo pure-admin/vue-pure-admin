@@ -1,0 +1,14 @@
+.theme {
+  --border-color: rgb(226, 232, 240);
+  --header-height: 3.6rem;
+  --sidebar-width: 16.4rem;
+  --text-color: #2c3e50;
+  --text-color-light: #476582;
+  --code-bg-color: #282c34;
+  --accent-color: #3eaf7c;
+
+  /* responsive breakpoints */
+  /* --mq-narrow: 959px; */
+  /* --mq-mobile: 719px; */
+  /* --mq-mobile-narrow: 419px; */
+}
