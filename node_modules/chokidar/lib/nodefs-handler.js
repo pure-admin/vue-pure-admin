@@ -603,13 +603,14 @@ async _addToNodeFs(path, initialAdd, priorWh, depth, target) {
     const follow = this.fsw.options.followSymlinks && !path.includes(STAR) && !path.includes(BRACE_START);
     let closer;
     if (stats.isDirectory()) {
+      const absPath = sysPath.resolve(path);
       const targetPath = follow ? await fsrealpath(path) : path;
       if (this.fsw.closed) return;
       closer = await this._handleDir(wh.watchPath, stats, initialAdd, depth, target, wh, targetPath);
       if (this.fsw.closed) return;
       // preserve this symlink's target path
-      if (path !== targetPath && targetPath !== undefined) {
-        this.fsw._symlinkPaths.set(targetPath, true);
+      if (absPath !== targetPath && targetPath !== undefined) {
+        this.fsw._symlinkPaths.set(absPath, targetPath);
       }
     } else if (stats.isSymbolicLink()) {
       const targetPath = follow ? await fsrealpath(path) : path;

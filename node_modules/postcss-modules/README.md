@@ -301,7 +301,7 @@ Sure! Take a look at the [example](https://github.com/outpunk/postcss-modules-ex
 See [PostCSS] docs for examples for your environment and don't forget to run
 
 ```
-npm install --save-dev postcss-modules
+npm install --save-dev postcss postcss-modules
 ```
 
 [filesystemloader]: https://github.com/css-modules/css-modules-loader-core/blob/master/src/file-system-loader.js

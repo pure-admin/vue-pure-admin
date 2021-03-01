@@ -27,6 +27,7 @@ into:
 
 - Only a certain whitelist of properties are inspected. Currently, that whitelist is `['composes']` alone.
 - An extend-import has the following format:
+
 ```
 composes: className [... className] from "path/to/file.css";
 ```
@@ -37,14 +38,14 @@ composes: className [... className] from "path/to/file.css";
 
 ```css
 .aa {
-  composes: b from './b.css';
-  composes: c from './c.css';
+  composes: b from "./b.css";
+  composes: c from "./c.css";
 }
 
 .bb {
   /* "b.css" should be before "c.css" in this case */
-  composes: c from './c.css';
-  composes: b from './b.css';
+  composes: c from "./c.css";
+  composes: b from "./b.css";
 }
 ```
 
@@ -57,13 +58,8 @@ npm test
 
 [![Build Status](https://travis-ci.org/css-modules/postcss-modules-extract-imports.svg?branch=master)](https://travis-ci.org/css-modules/postcss-modules-extract-imports)
 
-* Lines: [![Coverage Status](https://coveralls.io/repos/css-modules/postcss-modules-extract-imports/badge.svg?branch=master)](https://coveralls.io/r/css-modules/postcss-modules-extract-imports?branch=master)
-* Statements: [![codecov.io](http://codecov.io/github/css-modules/postcss-modules-extract-imports/coverage.svg?branch=master)](http://codecov.io/github/css-modules/postcss-modules-extract-imports?branch=master)
-
-## Development
-
-- `npm watch` will watch `src` for changes and rebuild
-- `npm autotest` will watch `src` and `test` for changes and retest
+- Lines: [![Coverage Status](https://coveralls.io/repos/css-modules/postcss-modules-extract-imports/badge.svg?branch=master)](https://coveralls.io/r/css-modules/postcss-modules-extract-imports?branch=master)
+- Statements: [![codecov.io](http://codecov.io/github/css-modules/postcss-modules-extract-imports/coverage.svg?branch=master)](http://codecov.io/github/css-modules/postcss-modules-extract-imports?branch=master)
 
 ## License
 
@@ -76,4 +72,5 @@ ISC
 - Guy Bedford
 
 ---
+
 Glen Maddern, 2015.

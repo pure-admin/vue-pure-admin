@@ -1,8 +1,0 @@
-node_modules
-.*
-bamboo
-coverage
-dist
-example
-gulpfile.js
-tests

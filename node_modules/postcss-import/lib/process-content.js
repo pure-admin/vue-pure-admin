@@ -10,7 +10,7 @@ const postcss = require("postcss")
 let sugarss
 
 module.exports = function processContent(result, content, filename, options) {
-  const plugins = options.plugins
+  const { plugins } = options
   const ext = path.extname(filename)
 
   const parserList = []
@@ -20,9 +20,7 @@ module.exports = function processContent(result, content, filename, options) {
     if (!sugarss) {
       try {
         sugarss = require("sugarss")
-      } catch (e) {
-        // Ignore
-      }
+      } catch {} // Ignore
     }
     if (sugarss) return runPostcss(content, filename, plugins, [sugarss])
   }

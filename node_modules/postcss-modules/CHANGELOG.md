@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.0.0
+
+- Upgraded to PostCSS 8 by Evan You (@yyx990803) https://github.com/css-modules/postcss-modules/pull/114
+
 ## 3.2.2
 
 ### Fixed

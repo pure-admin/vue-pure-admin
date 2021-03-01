@@ -1,0 +1,12 @@
+{
+  "home": "Home",
+  "LoginOut": "Login Out",
+  "usermanagement": "User Manage",
+  "baseinfo": "Base Info",
+  "error": "Error Page",
+  "404": "404",
+  "401": "401",
+  "components": "Components",
+  "split-pane": "Split Pane",
+  "draggable": "Draggable Components"
+}

@@ -1,5 +1,9 @@
 # changelog
 
+## 2.0.2
+
+* Internal tidying up (change test runner, convert to JS)
+
 ## 2.0.1
 
 * Robustify `this.remove()`, pass current index to walker functions ([#18](https://github.com/Rich-Harris/estree-walker/pull/18))

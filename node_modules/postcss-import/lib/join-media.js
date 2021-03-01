@@ -1,6 +1,6 @@
 "use strict"
 
-module.exports = function(parentMedia, childMedia) {
+module.exports = function (parentMedia, childMedia) {
   if (!parentMedia.length && childMedia.length) return childMedia
   if (parentMedia.length && !childMedia.length) return parentMedia
   if (!parentMedia.length && !childMedia.length) return []

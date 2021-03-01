@@ -65,10 +65,6 @@ Note also you can _import_ multiple values at once but can only _define_ one val
 @value a: b, c: d; /* defines a as "b, c: d" */
 ```
 
-### Justification
-
-See [this PR](https://github.com/css-modules/css-modules-loader-core/pull/28) for more background
-
 ## License
 
 ISC

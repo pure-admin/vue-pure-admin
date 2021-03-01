@@ -299,8 +299,7 @@ handleEvent(event, path, fullPath, realPath, parent, watchedDir, item, info, opt
  * @returns {Function} closer for the watcher instance
 */
 _watchWithFsEvents(watchPath, realPath, transform, globFilter) {
-  if (this.fsw.closed) return;
-  if (this.fsw._isIgnored(watchPath)) return;
+  if (this.fsw.closed || this.fsw._isIgnored(watchPath)) return;
   const opts = this.fsw.options;
   const watchCallback = async (fullPath, flags, info) => {
     if (this.fsw.closed) return;

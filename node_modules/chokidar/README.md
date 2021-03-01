@@ -1,10 +1,8 @@
 # Chokidar [![Weekly downloads](https://img.shields.io/npm/dw/chokidar.svg)](https://github.com/paulmillr/chokidar) [![Yearly downloads](https://img.shields.io/npm/dy/chokidar.svg)](https://github.com/paulmillr/chokidar)
 
-> A neat wrapper around Node.js fs.watch / fs.watchFile / FSEvents.
+> Minimal and efficient cross-platform file watching library
 
 [![NPM](https://nodei.co/npm/chokidar.png)](https://www.npmjs.com/package/chokidar)
-
-Version 3 is out! Check out our blog post about it: [Chokidar 3: How to save 32TB of traffic every week](https://paulmillr.com/posts/chokidar-3-save-32tb-of-traffic/)
 
 ## Why?
 
@@ -34,6 +32,8 @@ Initially made for **[Brunch](https://brunch.io/)** (an ultra-swift web app buil
 [BrowserSync](https://www.browsersync.io/),
 and [many others](https://www.npmjs.com/browse/depended/chokidar).
 It has proven itself in production environments.
+
+Version 3 is out! Check out our blog post about it: [Chokidar 3: How to save 32TB of traffic every week](https://paulmillr.com/posts/chokidar-3-save-32tb-of-traffic/)
 
 ## How?
 
@@ -74,7 +74,7 @@ chokidar.watch('.').on('all', (event, path) => {
 ## API
 
 ```javascript
-// Example of a more typical implementation structure:
+// Example of a more typical implementation structure
 
 // Initialize watcher.
 const watcher = chokidar.watch('file, dir, glob, or array', {
@@ -286,7 +286,8 @@ execute a command on each change, or get a stdio stream of change events.
 ## Changelog
 
 For more detailed changelog, see [`full_changelog.md`](.github/full_changelog.md).
-- **v3.4 (Apr 26, 2020):** Support for directory-based symlinks. Macos file replacement fixes.
+- **v3.5 (Jan 6, 2021):** Support for ARM Macs with Apple Silicon. Fixes for deleted symlinks.
+- **v3.4 (Apr 26, 2020):** Support for directory-based symlinks. Fixes for macos file replacement.
 - **v3.3 (Nov 2, 2019):** `FSWatcher#close()` method became async. That fixes IO race conditions related to close method.
 - **v3.2 (Oct 1, 2019):** Improve Linux RAM usage by 50%. Race condition fixes. Windows glob fixes. Improve stability by using tight range of dependency versions.
 - **v3.1 (Sep 16, 2019):** dotfiles are no longer filtered out by default. Use `ignored` option if needed. Improve initial Linux scan time by 50%.

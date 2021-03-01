@@ -1,14 +1,43 @@
 {
-  "name": "simplicity",
-  "version": "0.0.1",
-  "description": "后端管理项目文档",
-  "author": "和尚",
-  "license": "ISC",
+  "name": "vue-ts",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "docs": "vitepress dev docs",
-    "docs:build": "vitepress build docs"
+    "serve": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@types/nprogress": "^0.2.0",
+    "await-to-js": "^2.1.1",
+    "axios": "^0.21.1",
+    "dotenv": "^8.2.0",
+    "element-plus": "^1.0.2-beta.32",
+    "mitt": "^2.1.0",
+    "nprogress": "^0.2.0",
+    "path": "^0.12.7",
+    "path-to-regexp": "^6.2.0",
+    "resize-observer-polyfill": "^1.5.1",
+    "screenfull": "^5.1.0",
+    "v-contextmenu": "^3.0.0-alpha.4",
+    "vue": "^3.0.6",
+    "vue-i18n": "^9.0.0-rc.8",
+    "vue-router": "^4.0.4",
+    "vuedraggable": "^4.0.1",
+    "vuex": "^4.0.0",
+    "vxe-table": "^4.0.0-beta.10",
+    "xe-utils": "^3.1.8"
   },
   "devDependencies": {
-    "vitepress": "^0.7.4"
+    "@types/node": "^14.14.14",
+    "@vitejs/plugin-vue": "^1.1.4",
+    "@vue/compiler-sfc": "^3.0.6",
+    "autoprefixer": "^10.2.4",
+    "babel-plugin-transform-remove-console": "^6.9.4",
+    "postcss": "^8.2.6",
+    "postcss-import": "^14.0.0",
+    "sass": "^1.32.8",
+    "sass-loader": "^11.0.1",
+    "typescript": "^4.2.2",
+    "vite": "^2.0.4"
   }
 }
