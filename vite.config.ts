@@ -13,6 +13,7 @@ const { VITE_PORT, VITE_PUBLIC_PATH, VITE_PROXY, VITE_OPEN } = loadEnv()
 
 const alias: Record<string, string> = {
   '/@': pathResolve('src'),
+  'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js' //解决警告You are running the esm-bundler build of vue-i18n. It is recommended to configure your bundler to explicitly replace feature flag globals with boolean literals to get proper tree-shaking in the final bundle.
 }
 
 const root: string = process.cwd()
