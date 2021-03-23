@@ -33,10 +33,10 @@ const routes: Array<RouteRecordRaw> = [
     redirect: '/components/split-pane',
     children: [
       {
-        path: '/components/split-pane',
-        component: () => import(/* webpackChunkName: "components" */ '../views/components/split-pane/index.vue'),
+        path: '/components/video',
+        component: () => import(/* webpackChunkName: "components" */ '../views/components/video/index.vue'),
         meta: {
-          title: 'split-pane',
+          title: 'video',
           showLink: false,
           savedPosition: true
         }
@@ -50,6 +50,15 @@ const routes: Array<RouteRecordRaw> = [
           savedPosition: true
         }
       },
+      {
+        path: '/components/split-pane',
+        component: () => import(/* webpackChunkName: "components" */ '../views/components/split-pane/index.vue'),
+        meta: {
+          title: 'split-pane',
+          showLink: false,
+          savedPosition: true
+        }
+      }
     ],
     meta: {
       icon: 'el-icon-menu',

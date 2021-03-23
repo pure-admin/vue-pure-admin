@@ -25,7 +25,8 @@
     "vuedraggable": "^4.0.1",
     "vuex": "^4.0.0",
     "vxe-table": "^4.0.0-beta.10",
-    "xe-utils": "^3.1.8"
+    "xe-utils": "^3.1.8",
+    "xgplayer": "^2.18.3"
   },
   "devDependencies": {
     "@types/node": "^14.14.14",

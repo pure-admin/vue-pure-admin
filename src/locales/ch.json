@@ -7,6 +7,7 @@
   "404": "404",
   "401": "401",
   "components": "组件",
-  "split-pane": "切割面板",
-  "draggable": "拖拽组件"
+  "video": "视频组件",
+  "draggable": "拖拽组件",
+  "split-pane": "切割面板"
 }
