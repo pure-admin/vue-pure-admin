@@ -30,6 +30,41 @@ import './style/index.scss'
 import "./assets/iconfont/iconfont.js"
 import "./assets/iconfont/iconfont.css"
 
-const app = createApp(App)
+import { setConfig, getConfig } from "./config"
+import axios from 'axios'
 
-app.use(store).use(router).use(i18n).use(ElementPlus).use(VXETable).mount('#app')
+const app = createApp(App)
+app.config.globalProperties.$config = getConfig()
+
+// 获取项目动态全局配置
+export const getServerConfig = async (): Promise<any> => {
+  return axios({
+    baseURL: "",
+    method: "get",
+    url: (app.config.globalProperties.$baseUrl || "/") + "serverConfig.json"
+  }).then(({ data: config }) => {
+    let $config = app.config.globalProperties.$config
+    // 自动注入项目配置
+    if (app && $config && typeof config === "object") {
+      $config = Object.assign($config, config)
+      app.config.globalProperties.$config = $config
+      // 设置全局配置
+      setConfig($config)
+    }
+    // 设置全局baseURL
+    app.config.globalProperties.$baseUrl = $config.baseURL
+    return $config
+  }).catch(() => { throw "请在public文件夹下添加serverConfig.json配置文件" })
+}
+
+getServerConfig().then(() => {
+  app
+    .use(store)
+    .use(router)
+    .use(i18n)
+    .use(ElementPlus)
+    .use(VXETable)
+    .mount('#app')
+})
+
+

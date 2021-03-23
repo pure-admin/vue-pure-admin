@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-02-02 15:12:44
- * @LastEditTime: 2021-02-02 15:17:37
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \CURD-TS-self\src\utils\loaders\index.ts
- */
 interface ProxyLoader {
   loadCss(src: string): any
   loadScript(src: string): Promise<any>

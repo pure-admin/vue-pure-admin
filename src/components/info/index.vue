@@ -112,6 +112,7 @@ export default defineComponent({
 
     onBeforeMount(() => {
       vm = getCurrentInstance(); //获取组件实例
+      console.log('vm: ', vm.appContext.config.globalProperties.$config);
     });
 
     // 点击登录或注册
