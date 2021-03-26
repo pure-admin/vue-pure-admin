@@ -42,6 +42,15 @@ const routes: Array<RouteRecordRaw> = [
         }
       },
       {
+        path: '/components/map',
+        component: () => import(/* webpackChunkName: "components" */ '../views/components/map/index.vue'),
+        meta: {
+          title: 'map',
+          showLink: false,
+          savedPosition: true
+        }
+      },
+      {
         path: '/components/draggable',
         component: () => import(/* webpackChunkName: "components" */ '../views/components/draggable/index.vue'),
         meta: {

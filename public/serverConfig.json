@@ -1,3 +1,15 @@
 {
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "MapConfigure": {
+    "amapKey": "97b3248d1553172e81f168cf94ea667e",
+    "baiduKey": "wTHbkkEweiFqZLKunMIjcrb2RcqNXkhc",
+    "options": {
+      "resizeEnable": true,
+      "center": [
+        114.085947,
+        22.547
+      ],
+      "zoom": 12
+    }
+  }
 }
