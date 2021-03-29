@@ -35,14 +35,14 @@
         />
 
         <NoisyPlane
-          :width="200"
-          :width-segments="100"
-          :height="200"
-          :height-segments="100"
+          :width="120"
+          :width-segments="120"
+          :height="100"
+          :height-segments="120"
           :time-coef="0.0003"
           :noise-coef="5"
-          :displacement-scale="15"
-          :delta-coef="1 / 200"
+          :displacement-scale="20"
+          :delta-coef="1 / 120"
           :position="{ x: 0, y: 0, z: 0 }"
         >
           <PhysicalMaterial />
@@ -115,6 +115,6 @@ export default {
 .welcome {
   width: 100vw;
   height: 100vh;
-  position: absolute;
+  overflow: hidden;
 }
 </style>
