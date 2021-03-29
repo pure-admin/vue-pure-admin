@@ -41,7 +41,7 @@ export const getServerConfig = async (): Promise<any> => {
   return axios({
     baseURL: "",
     method: "get",
-    url: (app.config.globalProperties.$baseUrl || "/") + "serverConfig.json"
+    url: (app.config.globalProperties.$baseUrl || "/manages/") + "serverConfig.json"
   }).then(({ data: config }) => {
     let $config = app.config.globalProperties.$config
     // 自动注入项目配置
