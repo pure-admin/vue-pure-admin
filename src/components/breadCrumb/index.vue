@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts">
-import * as pathToRegexp from "path-to-regexp";
+import { pathToRegexp } from "path-to-regexp";
 import { ref, defineComponent, watch, Ref } from "vue";
 import { useRoute, useRouter, RouteLocationMatched } from "vue-router";
 
