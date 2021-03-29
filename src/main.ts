@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import { TroisJSVuePlugin } from 'troisjs'
 
 // 内置ElementPlus
 import ElementPlus from 'element-plus'
@@ -41,7 +42,7 @@ export const getServerConfig = async (): Promise<any> => {
   return axios({
     baseURL: "",
     method: "get",
-    url: (app.config.globalProperties.$baseUrl || "/manages/") + "serverConfig.json"
+    url: (app.config.globalProperties.$baseUrl || "/") + "serverConfig.json"
   }).then(({ data: config }) => {
     let $config = app.config.globalProperties.$config
     // 自动注入项目配置
@@ -64,6 +65,7 @@ getServerConfig().then(() => {
     .use(i18n)
     .use(ElementPlus)
     .use(VXETable)
+    .use(TroisJSVuePlugin)
     .mount('#app')
 })
 
