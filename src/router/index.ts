@@ -67,6 +67,15 @@ const routes: Array<RouteRecordRaw> = [
           showLink: false,
           savedPosition: true
         }
+      },
+      {
+        path: '/components/button',
+        component: () => import(/* webpackChunkName: "components" */ '../views/components/button/index.vue'),
+        meta: {
+          title: 'button',
+          showLink: false,
+          savedPosition: true
+        }
       }
     ],
     meta: {
