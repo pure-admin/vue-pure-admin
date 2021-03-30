@@ -21,6 +21,7 @@ import {
 
 import { mapJson } from "../../api/map";
 import greenCar from "/@/assets/green.png";
+import { deviceDetection } from "../../utils/deviceDetection"
 
 let MarkerCluster = null;
 
@@ -44,7 +45,7 @@ export default defineComponent({
     let map: MapConfigureInter;
 
     const mapSet: mapInter = reactive({
-      loading: true,
+      loading: deviceDetection() ? false : true,
     });
 
     // 地图创建完成(动画关闭)
@@ -134,6 +135,7 @@ export default defineComponent({
           complete();
         })
         .catch((err) => {
+          mapSet.loading = false;
           throw "地图加载失败，请重新加载";
         });
     });

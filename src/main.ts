@@ -37,6 +37,9 @@ import axios from 'axios'
 const app = createApp(App)
 app.config.globalProperties.$config = getConfig()
 
+// import vConsole from 'vconsole'
+// app.config.globalProperties.$vConsole = new vConsole()
+
 // 获取项目动态全局配置
 export const getServerConfig = async (): Promise<any> => {
   return axios({
