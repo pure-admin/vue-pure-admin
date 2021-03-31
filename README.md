@@ -1,5 +1,5 @@
 # Vue3.0后台管理系统
-### 功能已开发完毕（兼容手机端），新需求请提issues  
+### 功能已开发完毕（兼容移动端），新需求请提issues  
 
 vue版本代码：https://github.com/xiaoxian521/CURD-TS  
 vue版本在线地址：http://yiming_chang.gitee.io/manages  
