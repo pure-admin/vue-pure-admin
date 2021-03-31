@@ -23,7 +23,7 @@
     "troisjs": "^0.1.19",
     "v-contextmenu": "^3.0.0-alpha.4",
     "vconsole": "^3.4.0",
-    "vue": "^3.0.7",
+    "vue": "^3.0.10",
     "vue-i18n": "^9.0.0",
     "vue-router": "^4.0.4",
     "vuedraggable": "^4.0.1",
@@ -37,7 +37,7 @@
     "@types/node": "^14.14.14",
     "@types/nprogress": "^0.2.0",
     "@vitejs/plugin-vue": "^1.1.4",
-    "@vue/compiler-sfc": "^3.0.6",
+    "@vue/compiler-sfc": "^3.0.10",
     "autoprefixer": "^10.2.4",
     "babel-plugin-transform-remove-console": "^6.9.4",
     "postcss": "^8.2.6",
@@ -46,6 +46,6 @@
     "sass-loader": "^11.0.1",
     "typescript": "^4.2.2",
     "vite": "^2.1.4",
-    "vite-plugin-mock": "^2.4.0"
+    "vite-plugin-mock": "^2.4.1"
   }
 }
