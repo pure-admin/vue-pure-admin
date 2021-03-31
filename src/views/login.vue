@@ -66,7 +66,7 @@ export default {
     };
 
     onBeforeMount(() => {
-      refreshGetVerify();
+      // refreshGetVerify();
     });
 
     return {
