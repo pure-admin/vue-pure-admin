@@ -7,6 +7,7 @@ const mapList = (): any => {
     result.push({
       plateNumber: "豫A@natural(11111, 99999)@character('upper')",
       driver: '@cname()',
+      "orientation|1-360": 100,
       "lng|113-114.1-10": 1,
       "lat|34-35.1-10": 1
     })

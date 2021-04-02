@@ -100,8 +100,10 @@ export default defineComponent({
             renderMarker(ctx) {
               let { marker, data } = ctx;
               if (Array.isArray(data) && data[0]) {
-                var { driver, plateNumber } = data[0];
-                var content = `<img src='${greenCar}' />`;
+                var { driver, plateNumber, orientation } = data[0];
+                var content = `<img style="transform: scale(1) rotate(${
+                360 - Number(orientation)
+              }deg);" src='${greenCar}' />`;
                 marker.setContent(content);
                 marker.setLabel({
                   direction: "bottom",
