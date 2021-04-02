@@ -12,6 +12,7 @@
     "axios": "^0.21.1",
     "dotenv": "^8.2.0",
     "element-plus": "^1.0.2-beta.36",
+    "font-awesome": "^4.7.0",
     "mitt": "^2.1.0",
     "mockjs": "^1.1.0",
     "nprogress": "^0.2.0",

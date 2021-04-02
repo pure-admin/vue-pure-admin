@@ -1,5 +1,5 @@
 <template>
-  <section class="app-main">
+  <section class="app-main" :style="{'margin': appMargin}">
     <router-view :key="key" v-slot="{ Component }">
       <transition appear name="fade-transform" mode="out-in">
         <keep-alive>
@@ -13,24 +13,25 @@
 <script>
 import { computed, defineComponent } from "vue";
 import { useRoute } from "vue-router";
+import { deviceDetection } from "../../utils/deviceDetection";
 export default defineComponent({
   name: "AppMain",
   setup() {
     const route = useRoute();
     const key = computed(() => route.path);
+    const appMargin = computed(() => (deviceDetection() ? 0 : "10px"));
 
-    return { key };
+    return { key, appMargin };
   },
 });
 </script>
 
 <style scoped>
 .app-main {
-  min-height: calc(100vh - 50px);
+  /* min-height: calc(100vh - 50px); */
   width: 100%;
   position: relative;
   overflow-x: hidden;
-  margin: 10px;
 }
 .fixed-header + .app-main {
   padding-top: 50px;

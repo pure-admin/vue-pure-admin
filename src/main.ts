@@ -9,6 +9,7 @@ import ElementPlus from 'element-plus'
 import 'element-plus/lib/theme-chalk/index.css'
 
 // 内置vxe-table
+import "font-awesome/css/font-awesome.css"
 import VXETable from 'vxe-table'
 import 'vxe-table/lib/style.css'
 
