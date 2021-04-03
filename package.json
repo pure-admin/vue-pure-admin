@@ -28,6 +28,7 @@
     "vue": "^3.0.10",
     "vue-i18n": "^9.0.0",
     "vue-router": "^4.0.4",
+    "vue-types": "^3.0.2",
     "vuedraggable": "^4.0.1",
     "vuex": "^4.0.0",
     "vxe-table": "^4.0.7-beta.4",
