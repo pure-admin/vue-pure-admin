@@ -110,6 +110,30 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
+    path: '/editor',
+    name: 'editor',
+    component: Layout,
+    redirect: '/editor/index',
+    children: [
+      {
+        path: '/editor/index',
+        component: () => import(/* webpackChunkName: "user" */ '../views/editor/index.vue'),
+        meta: {
+          // icon: 'el-icon-edit-outline',
+          title: 'editor',
+          showLink: false,
+          savedPosition: true
+        }
+      },
+    ],
+    meta: {
+      icon: 'el-icon-edit-outline',
+      title: 'editor',
+      showLink: true,
+      savedPosition: true
+    }
+  },
+  {
     path: '/error',
     name: 'error',
     component: Layout,
