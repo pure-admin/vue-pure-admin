@@ -100,6 +100,7 @@ ul {
   top: 48px !important;
 }
 
+// 灰色模式
 .html-grey {
     filter: grayscale(100%);
     -webkit-filter: grayscale(100%);
@@ -109,6 +110,15 @@ ul {
     filter: url("data:image/svg+xml;utf8,#grayscale");
     filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
     -webkit-filter: grayscale(1);
+}
+
+// 色弱模式
+.html-weakness {
+  filter: invert(80%);
+  -webkit-filter: invert(80%);
+  -moz-filter: invert(80%);
+  -ms-filter: invert(80%);
+  -o-filter: invert(80%);
 }
 
 .el-loading-mask {
