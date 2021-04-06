@@ -29,7 +29,7 @@ html {
 #app {
   width: 100%;
   height: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 *,
@@ -76,6 +76,11 @@ ul {
 .app-container {
   padding: 20px;
 }
+
+// 隐藏滚动条
+// .element::-webkit-scrollbar { width: 0 !important } //webkit
+// .element { -ms-overflow-style: none; } //IE 10+
+// .element { overflow: -moz-scrollbars-none; } //Firefox
 
 .login,
 .register {

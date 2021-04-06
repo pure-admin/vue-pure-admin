@@ -30,6 +30,7 @@ export default defineComponent({
 .app-main {
   min-height: calc(100vh - 70px);
   width: 100%;
+  height: 100vh;
   position: relative;
   overflow-x: hidden;
 }
