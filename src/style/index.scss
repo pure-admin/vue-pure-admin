@@ -30,6 +30,7 @@ html {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  background-color: #f0f2f5;
 }
 
 *,
@@ -123,4 +124,12 @@ ul {
 
 .el-loading-mask {
   z-index: -1;
+}
+
+.pc-spacing {
+  margin: 10px;
+}
+
+.mobile-spacing {
+  margin: 0;
 }

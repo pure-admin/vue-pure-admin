@@ -1,5 +1,5 @@
 <template>
-  <section class="app-main" :style="{'margin': appMargin}">
+  <section class="app-main">
     <router-view :key="key" v-slot="{ Component }">
       <transition appear name="fade-transform" mode="out-in">
         <keep-alive>
@@ -19,9 +19,8 @@ export default defineComponent({
   setup() {
     const route = useRoute();
     const key = computed(() => route.path);
-    const appMargin = computed(() => (deviceDetection() ? 0 : "10px"));
 
-    return { key, appMargin };
+    return { key };
   },
 });
 </script>
@@ -30,7 +29,7 @@ export default defineComponent({
 .app-main {
   min-height: calc(100vh - 70px);
   width: 100%;
-  height: 100vh;
+  height: 90vh;
   position: relative;
   overflow-x: hidden;
 }
