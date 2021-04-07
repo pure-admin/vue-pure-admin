@@ -19,7 +19,7 @@ import {
   getCurrentInstance,
 } from "vue";
 
-import { mapJson } from "../../api/map";
+import { mapJson } from "../../api/mock";
 import greenCar from "/@/assets/green.png";
 import { deviceDetection } from "../../utils/deviceDetection"
 
