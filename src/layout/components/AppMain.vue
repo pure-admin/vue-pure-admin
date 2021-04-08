@@ -13,7 +13,6 @@
 <script>
 import { computed, defineComponent } from "vue";
 import { useRoute } from "vue-router";
-import { deviceDetection } from "../../utils/deviceDetection";
 export default defineComponent({
   name: "AppMain",
   setup() {

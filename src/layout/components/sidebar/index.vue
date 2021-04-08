@@ -9,6 +9,7 @@
       active-text-color="#409EFF"
       :collapse-transition="false"
       mode="vertical"
+      @select="menuSelect"
     >
       <sidebar-item
         v-for="route in routes"
@@ -26,6 +27,7 @@ import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex";
 import SidebarItem from "./SidebarItem.vue";
 import { algorithm } from "../../../utils/algorithm";
+import { useDynamicRoutesHook } from "../tag/tagsHook";
 
 export default defineComponent({
   name: "sidebar",
@@ -45,10 +47,22 @@ export default defineComponent({
       return path;
     });
 
+    const { dynamicRouteTags } = useDynamicRoutesHook();
+
+    const menuSelect = (indexPath: string): void => {
+      let parentPath = "";
+      let parentPathIndex = indexPath.lastIndexOf("/");
+      if (parentPathIndex > 0) {
+        parentPath = indexPath.slice(0, parentPathIndex);
+      }
+      dynamicRouteTags(indexPath, parentPath);
+    };
+
     return {
       routes: computed(() => algorithm.increaseIndexes(router)),
       activeMenu,
       isCollapse: computed(() => !store.getters.sidebar.opened),
+      menuSelect,
     };
   },
 });

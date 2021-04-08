@@ -11,6 +11,8 @@
       <div :class="{ 'fixed-header': fixedHeader }">
         <!-- 顶部导航栏 -->
         <navbar />
+        <!-- tabs标签页 -->
+        <tag /> 
       </div>
       <!-- 主体内容 -->
       <app-main />
@@ -21,7 +23,7 @@
 </template>
 
 <script lang="ts">
-import { Navbar, Sidebar, AppMain, setting } from "./components";
+import { Navbar, Sidebar, AppMain, setting, tag } from "./components";
 import {
   ref,
   reactive,
@@ -48,6 +50,7 @@ export default {
     Sidebar,
     AppMain,
     setting,
+    tag
   },
   setup() {
     const store = useStore();

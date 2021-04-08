@@ -220,6 +220,7 @@ const whiteList = ["/login", "/register"]
 
 router.beforeEach((to, _from, next) => {
   NProgress.start()
+  // @ts-ignore
   document.title = to.meta.title // 动态title
   whiteList.indexOf(to.path) !== -1 || storageSession.getItem("info") ? next() : next("/login") // 全部重定向到登录页
 })
