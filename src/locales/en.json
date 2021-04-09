@@ -1,6 +1,8 @@
 {
   "home": "Home",
   "LoginOut": "Login Out",
+  "fullscreen": "Fullscreen",
+  "exitfullscreen": "Exit Fullscreen",
   "usermanagement": "User Manage",
   "baseinfo": "Base Info",
   "editor": "Editor",

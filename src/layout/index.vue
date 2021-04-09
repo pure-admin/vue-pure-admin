@@ -36,6 +36,7 @@ import {
   onBeforeUnmount,
 } from "vue";
 import { useStore } from "vuex";
+import { useEventListener } from "@vueuse/core";
 interface setInter {
   sidebar: any;
   device: String;
@@ -115,13 +116,9 @@ export default {
     });
 
     onBeforeMount(() => {
-      window.addEventListener("resize", $_resizeHandler);
+      useEventListener("resize", $_resizeHandler);
     });
-
-    onBeforeUnmount(() => {
-      window.removeEventListener("resize", $_resizeHandler);
-    });
-
+    
     return {
       ...toRefs(set),
       handleClickOutside,

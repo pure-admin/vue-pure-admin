@@ -5,7 +5,9 @@
         <div class="left-mark">
           <img
             src="https://avatars.githubusercontent.com/u/44761321?s=400&u=30907819abd29bb3779bc247910873e7c7f7c12f&v=4"
+            title="直达仓库地址"
             alt
+            @click="openDepot"
           />
           <span>{{ greetings }}</span>
         </div>
@@ -21,7 +23,6 @@
       </template>
     </el-skeleton>
     </el-card>
-    <!-- <a title="欢迎Star" href="https://github.com/xiaoxian521/CURD-TS" target="_blank">点击打开仓库地址</a> -->
     <!-- <CountTo prefix="$" :startVal="1" :endVal="200" /> -->
   </div>
 </template>
@@ -32,6 +33,7 @@ import CountTo from "../components/countTo/src/index.vue";
 import { ref, computed, onMounted, inject, nextTick } from "vue";
 import { deviceDetection } from "../utils/deviceDetection";
 import { echartsJson } from "../api/mock";
+import { useEventListener } from "@vueuse/core";
 
 let brokenLine: any = null; //折线图实例
 export default {
@@ -178,8 +180,13 @@ export default {
       });
     };
 
+    const openDepot = ():void => {
+      window.open('https://github.com/xiaoxian521/vue-pure-admin')
+    }
+
     onMounted(() => {
-      window.addEventListener("resize", () => {
+      useEventListener("resize", () => {
+        if(!brokenLine) return;
         brokenLine.resize();
       });
     });
@@ -188,6 +195,7 @@ export default {
       greetings,
       mobile,
       loading,
+      openDepot
     };
   },
 };
@@ -214,6 +222,7 @@ export default {
         height: 72px;
         border-radius: 50%;
         margin-right: 10px;
+        cursor: pointer;
       }
     }
   }

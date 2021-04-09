@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@amap/amap-jsapi-loader": "^1.0.1",
+    "@vueuse/core": "^4.8.1",
     "await-to-js": "^2.1.1",
     "axios": "^0.21.1",
     "dayjs": "^1.10.4",
@@ -21,7 +22,6 @@
     "path": "^0.12.7",
     "path-to-regexp": "^6.2.0",
     "resize-observer-polyfill": "^1.5.1",
-    "screenfull": "^5.1.0",
     "three": "^0.126.1",
     "troisjs": "^0.1.19",
     "v-contextmenu": "^3.0.0-alpha.4",

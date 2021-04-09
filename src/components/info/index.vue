@@ -144,6 +144,10 @@ export default defineComponent({
       router.push("/");
     };
 
+    onBeforeMount(()=>{
+      vm = getCurrentInstance(); //获取组件实例
+    })
+
     return {
       rules,
       tips,

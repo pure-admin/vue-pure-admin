@@ -19,6 +19,7 @@
 <script lang='ts'>
 import { addClass, removeClass } from "../../../utils/operate";
 import { ref, watch, getCurrentInstance, onMounted, onBeforeMount } from "vue";
+import { useEventListener } from "@vueuse/core";
 export default {
   name: "panel",
   setup() {
@@ -40,7 +41,7 @@ export default {
     );
 
     const addEventClick = (): void => {
-      window.addEventListener("click", closeSidebar);
+      useEventListener("click", closeSidebar);
     };
 
     const closeSidebar = (evt: any): void => {

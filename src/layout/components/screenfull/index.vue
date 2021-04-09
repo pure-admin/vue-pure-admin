@@ -1,7 +1,7 @@
 <template>
-  <div class="screen-full" @click="onClick">
+  <div class="screen-full" @click="toggle">
     <i
-      :title="isFullscreen ? '退出全屏' : '全屏'"
+      :title="isFullscreen ? $t('exitfullscreen') : $t('fullscreen')"
       :class="
         isFullscreen
           ? 'iconfont team-iconexit-fullscreen'
@@ -12,51 +12,18 @@
 </template>
 
 <script>
-import screenfull from "screenfull";
+import { useFullscreen } from '@vueuse/core'
 import {
-  ref,
-  onBeforeMount,
-  onUnmounted,
   defineComponent,
-  onMounted,
 } from "vue";
 export default defineComponent({
   name: "screenfull",
   setup() {
-    let isFullscreen = ref(false);
-
-    const onClick = () => {
-      if (!screenfull.isEnabled) return;
-      screenfull.toggle();
-    };
-
-    const change = () => {
-      isFullscreen.value = screenfull.isFullscreen;
-    };
-
-    const init = () => {
-      if (screenfull.isEnabled) {
-        screenfull.on("change", change);
-      }
-    };
-
-    const destroy = () => {
-      if (screenfull.isEnabled) {
-        screenfull.off("change", change);
-      }
-    };
-
-    onMounted(() => {
-      init();
-    });
-
-    onUnmounted(() => {
-      destroy();
-    });
+    const { isFullscreen, toggle } = useFullscreen()
 
     return {
       isFullscreen,
-      onClick,
+      toggle,
     };
   },
 });
