@@ -1,20 +1,19 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
-import { TroisJSVuePlugin } from 'troisjs'
+import { createApp } from "vue"
+import App from "./App.vue"
+import router from "./router"
+import store from "./store"
 
 // 内置ElementPlus
-import ElementPlus from 'element-plus'
-import 'element-plus/lib/theme-chalk/index.css'
+import ElementPlus from "element-plus"
+import "element-plus/lib/theme-chalk/index.css"
 
 // 内置vxe-table
 import "font-awesome/css/font-awesome.css"
-import VXETable from 'vxe-table'
-import 'vxe-table/lib/style.css'
+import VXETable from "vxe-table"
+import "vxe-table/lib/style.css"
 
 // 内置国际化语言包
-import { createI18n } from 'vue-i18n'
+import { createI18n } from "vue-i18n"
 import ch from "./locales/ch.json"
 import en from "./locales/en.json"
 const i18n = createI18n({
@@ -26,19 +25,16 @@ const i18n = createI18n({
 })
 
 // 导入公共样式
-import './style/index.scss'
+import "./style/index.scss"
 // 导入字体图标
 import "./assets/iconfont/iconfont.js"
 import "./assets/iconfont/iconfont.css"
 
 import { setConfig, getConfig } from "./config"
-import axios from 'axios'
+import axios from "axios"
 
 const app = createApp(App)
 app.config.globalProperties.$config = getConfig()
-
-// import vConsole from 'vconsole'
-// app.config.globalProperties.$vConsole = new vConsole()
 
 // 获取项目动态全局配置
 export const getServerConfig = async (): Promise<any> => {
@@ -68,7 +64,6 @@ getServerConfig().then(() => {
     .use(i18n)
     .use(ElementPlus)
     .use(VXETable)
-    .use(TroisJSVuePlugin)
     .mount('#app')
 })
 
