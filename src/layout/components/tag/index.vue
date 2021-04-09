@@ -50,16 +50,17 @@ export default {
 <style lang="scss" scoped>
 .tags-view {
   width: 100%;
+  height: 38px;
   font-size: 14px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   .scroll-item {
-    border: 1px solid #eee;
+    // border: 1px solid #eee;
     border-radius: 3px;
     padding: 2px 8px;
     display: inline-block;
-    margin-right: 2px;
+    // margin-right: 2px;
   }
   a {
     text-decoration: none;
