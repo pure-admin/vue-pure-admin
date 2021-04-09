@@ -59,7 +59,7 @@ $H: 80vh;
 .split-pane {
   width: 98%;
   height: $H;
-  margin-top: 20px;
+  margin-top: 5px;
   text-align: center;
   font-size: 50px;
   color: #fff;

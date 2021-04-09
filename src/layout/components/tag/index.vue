@@ -50,7 +50,7 @@ export default {
 <style lang="scss" scoped>
 .tags-view {
   width: 100%;
-  height: 38px;
+  height: 34px;
   font-size: 14px;
   display: flex;
   align-items: center;
@@ -84,15 +84,7 @@ export default {
   position: relative;
   overflow: hidden;
   width: 100%;
-  :deep(.el-scrollbar__bar) {
-    bottom: 0px;
-  }
-  :deep(.el-scrollbar__wrap) {
-    height: 49px;
-  }
-  :deep(.el-scrollbar__wrap::-webkit-scrollbar) {
-    display: none;
-  }
+   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
 }
 .active {
   background: #409EFF;
