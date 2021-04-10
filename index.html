@@ -17,129 +17,121 @@
 <body>
   <div id="app">
     <style>
-      .app-loading {
-        display: flex;
-        width: 100%;
-        height: 100%;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        background: #f4f7f9;
+      * {
+        margin: 0;
+        pad: 0;
+        box-sizing: border-box;
       }
 
-      .app-loading .app-loading-wrap {
+      section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: #001d10;
+        animation: animateBackgroundC0olor 10s linear infinite;
+      }
+
+      @keyframes animateBackgroundC0olor {
+        0% {
+          filter: hue-rotate(0deg);
+        }
+
+        100% {
+          filter: hue-rotate(360deg);
+        }
+      }
+
+      .loading {
+        position: relative;
+        width: 250px;
+        height: 250px;
+      }
+
+      .loading .blocks {
+        position: absolute;
+        width: 8px;
+        height: 25px;
+        background-color: #050c09;
+        left: 50%;
+        border-radius: 8px;
+        transform: rotate(calc(18deg * var(--i)));
+        transform-origin: 0 125px;
+        animation: animate 1.9s ease-in-out infinite;
+        animation-delay: calc(0.05s * var(--i));
+      }
+
+      @keyframes animate {
+
+        0%,
+        50% {
+          background: #050c09;
+          box-shadow: none;
+        }
+
+        50.1%,
+        100% {
+          background: #0f0;
+          box-sizing: 0 0 5px #0f0,
+            0 0 15px #0f0,
+            0 0 30px #0f0,
+            0 0 60px #0f0,
+            0 0 90px #0f0;
+        }
+      }
+
+      h3 {
         position: absolute;
         top: 50%;
         left: 50%;
-        display: flex;
-        -webkit-transform: translate3d(-50%, -50%, 0);
-        transform: translate3d(-50%, -50%, 0);
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
+        transform: translate(-50%, -50%);
+        font-size: 2em;
+        letter-spacing: 2px;
+        animation: animateText 2s ease-in-out infinite;
+        animation-delay: -1s;
       }
 
-      .app-loading .dots {
-        display: flex;
-        padding: 98px;
-        justify-content: center;
-        align-items: center;
-      }
+      @keyframes animateText {
 
-      .app-loading .app-loading-title {
-        display: flex;
-        margin-top: 30px;
-        font-size: 1.2em;
-        color: rgba(0, 0, 0, 0.85);
-        justify-content: center;
-        align-items: center;
-      }
-
-      .dot {
-        position: relative;
-        display: inline-block;
-        width: 48px;
-        height: 48px;
-        margin-top: 30px;
-        font-size: 1.2em;
-        transform: rotate(45deg);
-        box-sizing: border-box;
-        animation: antRotate 1.2s infinite linear;
-      }
-
-      .dot i {
-        position: absolute;
-        display: block;
-        width: 20px;
-        height: 20px;
-        background-color: #0065cc;
-        border-radius: 100%;
-        opacity: 0.3;
-        transform: scale(0.75);
-        animation: antSpinMove 1s infinite linear alternate;
-        transform-origin: 50% 50%;
-      }
-
-      .dot i:nth-child(1) {
-        top: 0;
-        left: 0;
-      }
-
-      .dot i:nth-child(2) {
-        top: 0;
-        right: 0;
-        -webkit-animation-delay: 0.4s;
-        animation-delay: 0.4s;
-      }
-
-      .dot i:nth-child(3) {
-        right: 0;
-        bottom: 0;
-        -webkit-animation-delay: 0.8s;
-        animation-delay: 0.8s;
-      }
-
-      .dot i:nth-child(4) {
-        bottom: 0;
-        left: 0;
-        -webkit-animation-delay: 1.2s;
-        animation-delay: 1.2s;
-      }
-
-      @keyframes antRotate {
-        to {
-          -webkit-transform: rotate(405deg);
-          transform: rotate(405deg);
+        0%,
+        50% {
+          color: #050c09;
+          text-shadow: none;
         }
-      }
 
-      @-webkit-keyframes antRotate {
-        to {
-          -webkit-transform: rotate(405deg);
-          transform: rotate(405deg);
-        }
-      }
-
-      @keyframes antSpinMove {
-        to {
-          opacity: 1;
-        }
-      }
-
-      @-webkit-keyframes antSpinMove {
-        to {
-          opacity: 1;
+        50.1%,
+        100% {
+          color: #0f0;
+          text-shadow: 0 0 5px #0f0,
+            0 0 15px #0f0;
         }
       }
     </style>
-    <div class="app-loading">
-      <div class="app-loading-wrap">
-        <div class="app-loading-dots">
-          <span class="dot dot-spin"><i></i><i></i><i></i><i></i></span>
-        </div>
-        <div class="app-loading-title">vue-pure-admin</div>
+    <section>
+      <div class="loading">
+        <div class="blocks" style="--i:1;"></div>
+        <div class="blocks" style="--i:2;"></div>
+        <div class="blocks" style="--i:3;"></div>
+        <div class="blocks" style="--i:4;"></div>
+        <div class="blocks" style="--i:5;"></div>
+        <div class="blocks" style="--i:6;"></div>
+        <div class="blocks" style="--i:7;"></div>
+        <div class="blocks" style="--i:8;"></div>
+        <div class="blocks" style="--i:9;"></div>
+        <div class="blocks" style="--i:10;"></div>
+        <div class="blocks" style="--i:11;"></div>
+        <div class="blocks" style="--i:12;"></div>
+        <div class="blocks" style="--i:13;"></div>
+        <div class="blocks" style="--i:14;"></div>
+        <div class="blocks" style="--i:15;"></div>
+        <div class="blocks" style="--i:16;"></div>
+        <div class="blocks" style="--i:17;"></div>
+        <div class="blocks" style="--i:18;"></div>
+        <div class="blocks" style="--i:19;"></div>
+        <div class="blocks" style="--i:20;"></div>
+        <h3>loading</h3>
       </div>
-    </div>
+    </section>
   </div>
   <script type="module" src="/src/main.ts"></script>
 </body>
