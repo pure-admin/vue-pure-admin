@@ -85,6 +85,15 @@ const routes: Array<RouteRecordRaw> = [
           showLink: false,
           savedPosition: true
         }
+      },
+      {
+        path: '/components/countTo',
+        component: () => import(/* webpackChunkName: "components" */ '../views/components/countTo/index.vue'),
+        meta: {
+          title: 'countTo',
+          showLink: false,
+          savedPosition: true
+        }
       }
     ],
     meta: {

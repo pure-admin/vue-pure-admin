@@ -1,3 +1,4 @@
+import { strict } from 'assert'
 import { PropType } from 'vue'
 import { propTypes } from '/@/utils/propTypes'
 export const countToProps = {
@@ -12,6 +13,10 @@ export const countToProps = {
     validator(value: number) {
       return value >= 0
     },
+  },
+  color: {
+    type: String as PropType<string>,
+    require: false
   },
   decimal: propTypes.string.def('.'),
   separator: propTypes.string.def(','),
