@@ -31,7 +31,7 @@ import flop from "../components/flop/index.vue";
 import { ref, computed, onMounted, inject, nextTick } from "vue";
 import { deviceDetection } from "../utils/deviceDetection";
 import { echartsJson } from "../api/mock";
-import { useEventListener } from "@vueuse/core";
+import { useEventListener, tryOnUnmounted } from "@vueuse/core";
 
 let brokenLine: any = null; //折线图实例
 export default {
@@ -186,6 +186,12 @@ export default {
         if (!brokenLine) return;
         brokenLine.resize();
       });
+    });
+
+    tryOnUnmounted(() => {
+      if (!brokenLine) return;
+      brokenLine.dispose();
+      brokenLine = null;
     });
 
     return {
