@@ -14,35 +14,35 @@
 </template>
 
 <script>
-import { useDynamicRoutesHook } from "./tagsHook";
-import { useRoute } from "vue-router";
-import { ref, watchEffect } from "vue";
+import { useDynamicRoutesHook } from "./tagsHook"
+import { useRoute } from "vue-router"
+import { ref, watchEffect } from "vue"
 export default {
   setup() {
-    const route = useRoute();
-    const { deleteDynamicTag, dRoutes } = ref(useDynamicRoutesHook()).value;
+    const route = useRoute()
+    const { deleteDynamicTag, dRoutes } = ref(useDynamicRoutesHook()).value
 
     function deleteMenu(item) {
-      deleteDynamicTag(item, route.path);
+      deleteDynamicTag(item, route.path)
     }
 
-    const { dynamicRouteTags } = useDynamicRoutesHook();
+    const { dynamicRouteTags } = useDynamicRoutesHook()
 
     // 初始化页面刷新保证当前路由tabview存在
     let stop = watchEffect(() => {
-      let parentPath = route.path.slice(0, route.path.lastIndexOf("/"));
-      dynamicRouteTags(route.path, parentPath);
-    });
+      let parentPath = route.path.slice(0, route.path.lastIndexOf("/"))
+      dynamicRouteTags(route.path, parentPath)
+    })
 
     setTimeout(() => {
       // 监听只执行一次，但获取不到当前路由，需要下一个事件轮询中取消监听
-      stop();
-    });
+      stop()
+    })
 
     return {
       dynamicTagList: dRoutes,
       deleteMenu,
-    };
+    }
   },
 };
 </script>
@@ -55,6 +55,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  margin-left: 5px;
   .scroll-item {
     // border: 1px solid #eee;
     border-radius: 3px;
@@ -84,10 +85,10 @@ export default {
   position: relative;
   overflow: hidden;
   width: 100%;
-   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
 }
 .active {
-  background: #409EFF;
+  background: #409eff;
   position: relative;
   color: #fff;
   a {

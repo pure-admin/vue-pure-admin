@@ -44,6 +44,6 @@ export default {
 
 <style lang="scss" scoped>
 :deep(.w-e-text-container) {
-  z-index: 999 !important;
+  z-index: 99 !important;
 }
 </style>
