@@ -76,6 +76,15 @@ const routes: Array<RouteRecordRaw> = [
           showLink: false,
           savedPosition: true
         }
+      },
+      {
+        path: '/components/cropping',
+        component: () => import(/* webpackChunkName: "components" */ '../views/components/cropping/index.vue'),
+        meta: {
+          title: 'cropping',
+          showLink: false,
+          savedPosition: true
+        }
       }
     ],
     meta: {

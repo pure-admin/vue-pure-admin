@@ -11,6 +11,7 @@
     "@vueuse/core": "^4.8.1",
     "await-to-js": "^2.1.1",
     "axios": "^0.21.1",
+    "cropperjs": "^1.5.11",
     "dayjs": "^1.10.4",
     "dotenv": "^8.2.0",
     "echarts": "^5.0.2",

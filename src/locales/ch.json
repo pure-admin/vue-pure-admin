@@ -14,5 +14,6 @@
   "map": "地图组件",
   "draggable": "拖拽组件",
   "split-pane": "切割面板",
-  "button": "按钮组件"
+  "button": "按钮组件",
+  "cropping": "图片裁剪"
 }
