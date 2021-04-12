@@ -35,7 +35,7 @@ export function useDynamicRoutesHook() {
           let pathConcat = parentPath + '/' + arrItem.path
           if (arrItem.path === value || pathConcat === value) {
             dynamic.dRoutes.push({ path: value, meta: arrItem.meta })
-            console.log(dynamic.dRoutes)
+            // console.log(dynamic.dRoutes)
           } else {
             if (arrItem.children && arrItem.children.length > 0) {
               concatPath(arrItem.children, value, parentPath)

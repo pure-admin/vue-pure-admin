@@ -16,5 +16,6 @@
   "split-pane": "Split Pane",
   "button": "Button Components",
   "cropping": "Picture Cropping",
-  "countTo": "Digital Animation"
+  "countTo": "Digital Animation",
+  "selector": "Selector Components"
 }

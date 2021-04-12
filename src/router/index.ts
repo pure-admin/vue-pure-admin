@@ -94,6 +94,15 @@ const routes: Array<RouteRecordRaw> = [
           showLink: false,
           savedPosition: true
         }
+      },
+      {
+        path: '/components/selector',
+        component: () => import(/* webpackChunkName: "components" */ '../views/components/selector/index.vue'),
+        meta: {
+          title: 'selector',
+          showLink: false,
+          savedPosition: true
+        }
       }
     ],
     meta: {
