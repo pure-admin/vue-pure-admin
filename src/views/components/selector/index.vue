@@ -5,17 +5,28 @@
         <span>基本使用</span>
       </div>
     </template>
-    <Selector />
+    <Selector @selectedVal="selectedVal" />
+    <h4>选中范围：{{ selectRange }}</h4>
   </el-card>
 </template>
 
 <script lang='ts'>
-import Selector from "../../../components/selector/index.vue";
+import { ref } from "vue";
+import Selector from "/@/components/selector/index.vue";
 export default {
   components: { Selector },
   setup() {
-    return {};
-  },
+    let selectRange = ref(null);
+
+    const selectedVal = ({ left, right, whole }) => {
+      selectRange.value = `${left}-${right}`;
+    };
+
+    return {
+      selectedVal,
+      selectRange
+    };
+  }
 };
 </script>
 

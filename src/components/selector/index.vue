@@ -12,7 +12,7 @@
           :key="key"
         >
           <div :class="[classes[key] + key]" class="hs-item">
-            <span>{{key}}</span>
+            <span>{{item}}</span>
           </div>
         </td>
       </tr>
@@ -22,7 +22,7 @@
 
 <script lang='ts'>
 import { defineComponent, computed, nextTick } from "vue";
-import { addClass, removeClass } from "../../utils/operate/index";
+import { addClass, removeClass, toggleClass } from "/@/utils/operate";
 import { useDebounceFn } from "@vueuse/core";
 
 // 选中非选中状态
@@ -30,6 +30,9 @@ let stayClass = "stay"; //鼠标点击
 let activeClass = "hs-on"; //鼠标移动上去
 let voidClass = "hs-off"; //鼠标移开
 let inRange = "hs-range"; //当前选中的两个元素之间的背景
+let bothLeftSides = "both-left-sides";
+let bothRightSides = "both-right-sides";
+let selectedDirection = "right"; //默认从左往右，索引变大
 
 // 存放第一个选中的元素和最后一个选中元素，只能存放这两个元素
 let selectedList = [];
@@ -51,6 +54,7 @@ export default defineComponent({
       default: 10
     }
   },
+  emits: ["selectedVal"],
   setup(props, { emit }) {
     let currentValue = props.value;
 
@@ -77,12 +81,19 @@ export default defineComponent({
     const setCurrentValue = (index, event) => {
       // 当选中一个元素后，开始添加背景色
       if (selectedList.length === 1) {
-        overList.push({ index });
+        if (overList.length < 1) overList.push({ index });
 
         let firstIndex = overList[0].index;
 
-        // 往左走，索引变大
+        // 往右走，索引变大
         if (index > firstIndex) {
+          selectedDirection = "right";
+          toggleClass(
+            false,
+            bothRightSides,
+            document.querySelector(".hs-select__item" + selectedList[0].index)
+          );
+
           while (index >= firstIndex) {
             addClass(
               document.querySelector(".hs-select__item" + firstIndex),
@@ -91,6 +102,13 @@ export default defineComponent({
             firstIndex++;
           }
         } else {
+          selectedDirection = "left";
+          toggleClass(
+            true,
+            bothRightSides,
+            document.querySelector(".hs-select__item" + selectedList[0].index)
+          );
+
           while (index <= firstIndex) {
             addClass(
               document.querySelector(".hs-select__item" + firstIndex),
@@ -142,7 +160,45 @@ export default defineComponent({
         selectedList.push({ item, index });
         addClass(document.querySelector("." + voidClass + index), stayClass);
 
-        // let rangeDom = document.querySelector(".hs-select__item" + index)
+        addClass(
+          document.querySelector(".hs-select__item" + selectedList[0].index),
+          bothLeftSides
+        );
+
+        if (selectedList[1]) {
+          if (selectedDirection === "right") {
+            addClass(
+              document.querySelector(
+                ".hs-select__item" + selectedList[1].index
+              ),
+              bothRightSides
+            );
+          } else {
+            addClass(
+              document.querySelector(
+                ".hs-select__item" + selectedList[1].index
+              ),
+              bothLeftSides
+            );
+          }
+        }
+
+        if (len === 1) {
+          // 顺时针排序
+          if (selectedDirection === "right") {
+            emit("selectedVal", {
+              left: selectedList[0].item,
+              right: selectedList[1].item,
+              whole: selectedList
+            });
+          } else {
+            emit("selectedVal", {
+              left: selectedList[1].item,
+              right: selectedList[0].item,
+              whole: selectedList
+            });
+          }
+        }
       } else {
         nextTick(() => {
           selectedList.forEach(v => {
@@ -151,15 +207,30 @@ export default defineComponent({
               activeClass,
               stayClass
             );
-          });
-          selectedList = [];
 
+            removeClass(
+              document.querySelector(".hs-select__item" + v.index),
+              bothLeftSides,
+              bothRightSides
+            );
+          });
+
+          selectedList = [];
+          overList = [];
           for (let i = 0; i <= props.max; i++) {
             let currentDom = document.querySelector(".hs-select__item" + i);
             if (currentDom) {
               removeClass(currentDom, inRange);
             }
           }
+
+          selectedList.push({ item, index });
+          addClass(document.querySelector("." + voidClass + index), stayClass);
+
+          addClass(
+            document.querySelector(".hs-select__item" + selectedList[0].index),
+            bothLeftSides
+          );
         });
       }
     };
@@ -191,6 +262,12 @@ export default defineComponent({
   border-radius: 50%;
 }
 .hs-range {
-  background-color: #ccc;
+  background-color: #f2f6fc;
+}
+.both-left-sides {
+  border-radius: 50% 0 0 50%;
+}
+.both-right-sides {
+  border-radius: 0 50% 50% 0;
 }
 </style>

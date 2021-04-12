@@ -17,7 +17,9 @@
 <script lang='ts'>
 import panel from "../panel/index.vue";
 import { onMounted, reactive, toRefs } from "vue";
-import { storageLocal } from "../../../utils/storage";
+import { storageLocal } from "/@/utils/storage";
+import { toggleClass } from "/@/utils/operate";
+
 export default {
   name: "setting",
   components: { panel },
