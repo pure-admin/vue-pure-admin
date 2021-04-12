@@ -5,14 +5,14 @@
         <td
           v-for="(item, key) in max"
           :class="['hs-select__item' + key]"
-          @mousemove="setCurrentValue(key, $event)"
-          @mouseleave="resetCurrentValue(key)"
+          @mousemove.prevent="setCurrentValue(key, $event)"
+          @mouseleave.prevent="resetCurrentValue(key)"
           @click="selectValue(key, item)"
           :style="{ cursor: rateDisabled ? 'auto' : 'pointer', 'text-align': 'center' }"
           :key="key"
         >
           <div :class="[classes[key] + key]" class="hs-item">
-            <span>22</span>
+            <span>{{key}}</span>
           </div>
         </td>
       </tr>
@@ -40,16 +40,16 @@ export default defineComponent({
   props: {
     disabled: {
       type: Boolean,
-      default: false,
+      default: false
     },
     value: {
       type: Number,
-      default: 0,
+      default: 0
     },
     max: {
       type: Number,
-      default: 10,
-    },
+      default: 10
+    }
   },
   setup(props, { emit }) {
     let currentValue = props.value;
@@ -79,30 +79,32 @@ export default defineComponent({
       if (selectedList.length === 1) {
         overList.push({ index });
 
-        // let i = 0;
-
         let firstIndex = overList[0].index;
+
         // 往左走，索引变大
-
         if (index > firstIndex) {
-          // console.log(index, firstIndex);
-          let leftIndex = index - firstIndex;
-
-          for (var i =0; i < index; i++) {
-            // useDebounceFn(() => {
-              if(document.querySelector(".hs-select__item" + (i+index))) {
-              addClass(document.querySelector(".hs-select__item" + (i+index)), inRange);
-              }
-            // }, 100)();
+          while (index >= firstIndex) {
+            addClass(
+              document.querySelector(".hs-select__item" + firstIndex),
+              inRange
+            );
+            firstIndex++;
           }
         } else {
+          while (index <= firstIndex) {
+            addClass(
+              document.querySelector(".hs-select__item" + firstIndex),
+              inRange
+            );
+            firstIndex--;
+          }
         }
       }
 
       addClass(document.querySelector("." + voidClass + index), activeClass);
     };
 
-    const resetCurrentValue = (index) => {
+    const resetCurrentValue = index => {
       // 移除先检查是否选中 选中则返回false 不移除
       const currentHsDom = document.querySelector("." + voidClass + index);
       if (currentHsDom.className.includes(stayClass)) {
@@ -113,8 +115,22 @@ export default defineComponent({
 
       // 当选中一个元素后，开始移除背景色
       if (selectedList.length === 1) {
-        for (let i = 0; i <= index; i++) {
-          removeClass(document.querySelector(".hs-select__item" + i), inRange);
+        let firstIndex = overList[0].index;
+        if (index >= firstIndex) {
+          for (let i = 0; i <= index; i++) {
+            removeClass(
+              document.querySelector(".hs-select__item" + i),
+              inRange
+            );
+          }
+        } else {
+          while (index <= firstIndex) {
+            removeClass(
+              document.querySelector(".hs-select__item" + index),
+              inRange
+            );
+            index++;
+          }
         }
       }
     };
@@ -129,7 +145,7 @@ export default defineComponent({
         // let rangeDom = document.querySelector(".hs-select__item" + index)
       } else {
         nextTick(() => {
-          selectedList.forEach((v) => {
+          selectedList.forEach(v => {
             removeClass(
               document.querySelector("." + voidClass + v.index),
               activeClass,
@@ -153,9 +169,9 @@ export default defineComponent({
       setCurrentValue,
       resetCurrentValue,
       selectValue,
-      classes,
+      classes
     };
-  },
+  }
 });
 </script>
 

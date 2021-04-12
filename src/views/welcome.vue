@@ -32,6 +32,7 @@ import { ref, computed, onMounted, inject, nextTick } from "vue";
 import { deviceDetection } from "../utils/deviceDetection";
 import { echartsJson } from "../api/mock";
 import { useEventListener, tryOnUnmounted } from "@vueuse/core";
+import * as echarts from "echarts";
 
 let brokenLine: any = null; //折线图实例
 export default {
@@ -43,7 +44,6 @@ export default {
     let mobile = ref(deviceDetection());
     let date: Date = new Date();
     let loading = ref(true);
-    let echarts = inject("echarts"); //引入
 
     setTimeout(() => {
       loading.value = !loading.value;
