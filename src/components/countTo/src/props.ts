@@ -1,4 +1,3 @@
-import { strict } from 'assert'
 import { PropType } from 'vue'
 import { propTypes } from '/@/utils/propTypes'
 export const countToProps = {
@@ -15,6 +14,10 @@ export const countToProps = {
     },
   },
   color: {
+    type: String as PropType<string>,
+    require: false
+  },
+  fontSize: {
     type: String as PropType<string>,
     require: false
   },

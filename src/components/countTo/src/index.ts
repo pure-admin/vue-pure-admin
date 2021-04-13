@@ -1,5 +1,6 @@
+/**
 <template>
-  <span :style="{color: color}">{{ displayValue }}</span>
+  <span :style="{color: color,fontSize: fontSize}">{{ displayValue }}</span>
 </template>
 <script lang="ts">
 import {
@@ -29,6 +30,7 @@ export default defineComponent({
       rAF: any;
       remaining: number | null;
       color: any;
+      fontSize: string;
     }>({
       localStartVal: props.startVal,
       displayValue: formatNumber(props.startVal),
@@ -39,7 +41,8 @@ export default defineComponent({
       timestamp: null,
       remaining: null,
       rAF: null,
-      color: null
+      color: null,
+      fontSize: "16px"
     });
 
     onMounted(() => {
@@ -60,12 +63,13 @@ export default defineComponent({
     });
 
     function start() {
-      const { startVal, duration, color } = props;
+      const { startVal, duration, color, fontSize } = props;
       state.localStartVal = startVal;
       state.startTime = null;
       state.localDuration = duration;
       state.paused = false;
       state.color = color;
+      state.fontSize = fontSize;
       state.rAF = requestAnimationFrame(count);
     }
 
@@ -173,3 +177,4 @@ export default defineComponent({
   }
 });
 </script>
+*/

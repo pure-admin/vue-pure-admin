@@ -282,22 +282,22 @@ export default defineComponent({
             <tr>
               {
                 props.max.map((item, key) => {
-                return <td
-                  data-index={props.HsKey}
-                  ref={`hstd${props.HsKey}${key}`}
-                  class={`hs-select__item${key}`}
-                  onMousemove={() => setCurrentValue(key)}
-                  onMouseleave={() => resetCurrentValue(key)}
-                  onClick={() => selectValue(key, item)}
-                  style={{
-                    cursor: unref(rateDisabled) ? 'auto' : 'pointer', textAlign: 'center'
-                  }}
-                  key={key}
-                >
-                  <div ref={`hsdiv${props.HsKey}${key}`} class={`hs-item ${[unref(classes)[key] + key]}`}>
-                    <span>{item}</span>
-                  </div>
-                </td>
+                  return <td
+                    data-index={props.HsKey}
+                    ref={`hstd${props.HsKey}${key}`}
+                    class={`hs-select__item${key}`}
+                    onMousemove={() => setCurrentValue(key)}
+                    onMouseleave={() => resetCurrentValue(key)}
+                    onClick={() => selectValue(key, item)}
+                    style={{
+                      cursor: unref(rateDisabled) ? 'auto' : 'pointer', textAlign: 'center'
+                    }}
+                    key={key}
+                  >
+                    <div ref={`hsdiv${props.HsKey}${key}`} class={`hs-item ${[unref(classes)[key] + key]}`}>
+                      <span>{item}</span>
+                    </div>
+                  </td>
                 })
               }
             </tr>
@@ -305,5 +305,5 @@ export default defineComponent({
         </table>
       </>
     )
-  },
+  }
 })

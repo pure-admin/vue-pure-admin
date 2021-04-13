@@ -3,12 +3,26 @@
     <el-row :gutter="10">
       <el-col :span="10">
         <el-card shadow="always">
-          <CountTo prefix="$" :color="'#409EFF'" :startVal="1" :endVal="1000" />
+          <CountTo
+            prefix="$"
+            :duration="1000"
+            :color="'#409EFF'"
+            :fontSize="'60px'"
+            :startVal="1"
+            :endVal="1000"
+          />
         </el-card>
       </el-col>
       <el-col :span="10">
         <el-card shadow="always">
-          <CountTo prefix="$" :color="'green'" :startVal="1" :endVal="1500" />
+          <CountTo
+            prefix="$"
+            :duration="2000"
+            :color="'green'"
+            :fontSize="'60px'"
+            :startVal="1"
+            :endVal="2000"
+          />
         </el-card>
       </el-col>
     </el-row>
@@ -16,7 +30,7 @@
 </template>
 
 <script lang='ts'>
-import CountTo from "../../../components/countTo/src/index.vue";
+import CountTo from "/@/components/countTo";
 export default {
   components: {
     CountTo
