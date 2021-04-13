@@ -20,6 +20,7 @@ Click to log in without password
     <img alt="VbenAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9c81c5348fb2476097dd847e3b050168~tplv-k3u1fbpfcp-watermark.image">
     <img alt="VbenAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/13749b799727449cbdcb2383f6ea1eb4~tplv-k3u1fbpfcp-watermark.image">
     <img alt="VbenAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6745a79321cc40aba4de02aaf11ba4f2~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="VbenAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cab5f2aa2b58483f8a2cf40fb3aafdb7~tplv-k3u1fbpfcp-watermark.image">
 </p>
 
 ### Use Gitpod
@@ -65,7 +66,7 @@ npm run build
 
 ## How to contribute
 
-You are very welcome to join！[Raise an issue](https://github.com/anncwb/vue-vben-admin/issues/new/choose) Or submit a Pull Request 
+You are very welcome to join！[Raise an issue](https://github.com/xiaoxian521/vue-pure-admin/issues/new/choose) Or submit a Pull Request 
 
 **Pull Request:**
 
