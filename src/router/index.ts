@@ -103,7 +103,16 @@ const routes: Array<RouteRecordRaw> = [
           showLink: false,
           savedPosition: true
         }
-      }
+      },
+      // {
+      //   path: '/components/flowChart',
+      //   component: () => import(/* webpackChunkName: "components" */ '../views/components/flowChart/index.vue'),
+      //   meta: {
+      //     title: 'flowChart',
+      //     showLink: false,
+      //     savedPosition: true
+      //   }
+      // }
     ],
     meta: {
       icon: 'el-icon-menu',

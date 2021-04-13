@@ -2,6 +2,7 @@
 import { resolve } from 'path'
 import { UserConfigExport, ConfigEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
 import { loadEnv } from './build/utils'
 import { createProxy } from './build/proxy'
 import { viteMockServe } from 'vite-plugin-mock'
@@ -45,6 +46,7 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
     },
     plugins: [
       vue(),
+      vueJsx(),
       viteMockServe({
         mockPath: 'mock',
         localEnabled: command === 'serve',

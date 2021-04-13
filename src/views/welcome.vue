@@ -28,17 +28,21 @@
 
 <script lang='ts'>
 import flop from "../components/flop/index.vue";
-import { ref, computed, onMounted, inject, nextTick } from "vue";
+import { ref, computed, onMounted, nextTick, onUpdated } from "vue";
 import { deviceDetection } from "../utils/deviceDetection";
 import { echartsJson } from "../api/mock";
-import { useEventListener, tryOnUnmounted } from "@vueuse/core";
+import {
+  useEventListener,
+  tryOnUnmounted,
+  useTimeoutFn,
+} from "@vueuse/core";
 import * as echarts from "echarts";
 
 let brokenLine: any = null; //折线图实例
 export default {
   name: "welcome",
   components: {
-    flop
+    flop,
   },
   setup() {
     let mobile = ref(deviceDetection());
@@ -71,39 +75,39 @@ export default {
         brokenLine.setOption({
           title: {
             text: "上海 空气质量指数",
-            left: "1%"
+            left: "1%",
           },
           tooltip: {
-            trigger: "axis"
+            trigger: "axis",
           },
           grid: {
             left: "5%",
             right: "15%",
-            bottom: "10%"
+            bottom: "10%",
           },
           xAxis: {
-            data: info.map(function(item) {
+            data: info.map(function (item) {
               return item[0];
-            })
+            }),
           },
           yAxis: {},
           toolbox: {
             right: 10,
             feature: {
               dataZoom: {
-                yAxisIndex: "none"
+                yAxisIndex: "none",
               },
               restore: {},
-              saveAsImage: {}
-            }
+              saveAsImage: {},
+            },
           },
           dataZoom: [
             {
-              startValue: "2014-06-01"
+              startValue: "2014-06-01",
             },
             {
-              type: "inside"
-            }
+              type: "inside",
+            },
           ],
           visualMap: {
             top: 50,
@@ -112,67 +116,67 @@ export default {
               {
                 gt: 0,
                 lte: 50,
-                color: "#93CE07"
+                color: "#93CE07",
               },
               {
                 gt: 50,
                 lte: 100,
-                color: "#FBDB0F"
+                color: "#FBDB0F",
               },
               {
                 gt: 100,
                 lte: 150,
-                color: "#FC7D02"
+                color: "#FC7D02",
               },
               {
                 gt: 150,
                 lte: 200,
-                color: "#FD0100"
+                color: "#FD0100",
               },
               {
                 gt: 200,
                 lte: 300,
-                color: "#AA069F"
+                color: "#AA069F",
               },
               {
                 gt: 300,
-                color: "#AC3B2A"
-              }
+                color: "#AC3B2A",
+              },
             ],
             outOfRange: {
-              color: "#999"
-            }
+              color: "#999",
+            },
           },
           series: {
             name: "上海 空气质量指数",
             type: "line",
-            data: info.map(function(item) {
+            data: info.map(function (item) {
               return item[1];
             }),
             markLine: {
               silent: true,
               lineStyle: {
-                color: "#333"
+                color: "#333",
               },
               data: [
                 {
-                  yAxis: 50
+                  yAxis: 50,
                 },
                 {
-                  yAxis: 100
+                  yAxis: 100,
                 },
                 {
-                  yAxis: 150
+                  yAxis: 150,
                 },
                 {
-                  yAxis: 200
+                  yAxis: 200,
                 },
                 {
-                  yAxis: 300
-                }
-              ]
-            }
-          }
+                  yAxis: 300,
+                },
+              ],
+            },
+          },
         });
       });
     };
@@ -182,9 +186,13 @@ export default {
     };
 
     onMounted(() => {
-      useEventListener("resize", () => {
-        if (!brokenLine) return;
-        brokenLine.resize();
+      nextTick(() => {
+        useEventListener("resize", () => {
+          if (!brokenLine) return;
+          useTimeoutFn(() => {
+            brokenLine.resize()
+          }, 180);
+        });
       });
     });
 
@@ -198,9 +206,9 @@ export default {
       greetings,
       mobile,
       loading,
-      openDepot
+      openDepot,
     };
-  }
+  },
 };
 </script>
 

@@ -17,5 +17,6 @@
   "button": "Button Components",
   "cropping": "Picture Cropping",
   "countTo": "Digital Animation",
-  "selector": "Selector Components"
+  "selector": "Selector Components",
+  "flowChart": "flow Chart"
 }

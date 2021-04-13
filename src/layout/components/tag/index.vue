@@ -57,16 +57,14 @@ export default {
   justify-content: flex-start;
   margin-left: 5px;
   .scroll-item {
-    // border: 1px solid #eee;
     border-radius: 3px;
     padding: 2px 8px;
     display: inline-block;
-    // margin-right: 2px;
   }
   a {
     text-decoration: none;
     color: #666;
-    padding: 0 10px;
+    padding: 0 4px 0 10px;
   }
 }
 .el-icon-close {

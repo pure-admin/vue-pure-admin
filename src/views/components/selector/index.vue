@@ -1,22 +1,37 @@
 <template>
-  <el-card class="box-card" style="margin:20px">
-    <template #header>
-      <div class="card-header">
-        <span>基本使用</span>
-      </div>
-    </template>
-    <Selector @selectedVal="selectedVal" />
-    <h4>选中范围：{{ selectRange }}</h4>
-  </el-card>
+  <div>
+    <el-card class="box-card" style="margin:10px" v-for="(item,key) in dataLists" :key="key">
+      <template #header>
+        <div class="card-header">
+          <span>{{item.title}}</span>
+        </div>
+      </template>
+      <Selector :HsKey="key" :echo="item.echo" @selectedVal="selectedVal" :disabled="item.disabled" />
+      <h4 v-if="!item.disabled">选中范围：{{ selectRange }}</h4>
+    </el-card>
+  </div>
 </template>
 
 <script lang='ts'>
 import { ref } from "vue";
-import Selector from "/@/components/selector/index.vue";
+import Selector from "/@/components/selector";
+
 export default {
   components: { Selector },
   setup() {
     let selectRange = ref(null);
+    let dataLists = ref([
+      {
+        title: "基本使用",
+        echo: [],
+        disabled: false,
+      },
+      {
+        title: "回显模式",
+        echo: [2, 7],
+        disabled: true,
+      },
+    ]);
 
     const selectedVal = ({ left, right, whole }) => {
       selectRange.value = `${left}-${right}`;
@@ -24,11 +39,9 @@ export default {
 
     return {
       selectedVal,
-      selectRange
+      selectRange,
+      dataLists,
     };
-  }
+  },
 };
 </script>
-
-<style scoped>
-</style>
