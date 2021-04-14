@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'vue'
 
-import { defineComponent, onBeforeMount, nextTick, ref, unref, computed, PropType, getCurrentInstance } from 'vue'
-
+import { defineComponent, onBeforeMount, nextTick, ref, unref, computed, PropType } from 'vue'
+import { templateRef } from '@vueuse/core'
 import { useAttrs } from '/@/utils/useAttrs'
 import { emitter } from '/@/utils/mitt'
 
@@ -64,8 +64,8 @@ export default defineComponent({
     }
   },
   setup(props) {
-    let vm: any
     const cropper: any = ref<Nullable<Cropper>>(null)
+    const imgElRef = templateRef<HTMLElement | null>('imgElRef', null)
 
     const isReady = ref(false)
 
@@ -88,7 +88,7 @@ export default defineComponent({
     )
 
     async function init() {
-      const imgEl = vm.refs.imgElRef
+      const imgEl = unref(imgElRef)
       if (!imgEl) {
         return
       }
@@ -102,7 +102,6 @@ export default defineComponent({
     }
 
     onBeforeMount(() => {
-      vm = getCurrentInstance()
       nextTick(() => {
         init()
         // tsx语法返回渲染模板，外部组件想调用内部方法或者获取setup里面的实例，暂时想到的办法是通过公共事件
