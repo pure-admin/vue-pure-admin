@@ -2,5 +2,4 @@ ports:
   - port: 3344
     onOpen: open-preview
 tasks:
-  - init: npm
-    command: npm serve
+  - init: npm install && npm run serve
