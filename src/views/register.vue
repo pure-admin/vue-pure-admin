@@ -1,10 +1,6 @@
 <template>
   <div class="register">
-    <info
-      :ruleForm="contextInfo"
-      @on-behavior="onRegist"
-      @refreshVerify="refreshVerify"
-    />
+    <info :ruleForm="contextInfo" @on-behavior="onRegist" @refreshVerify="refreshVerify" />
   </div>
 </template>
 
@@ -14,16 +10,16 @@ import {
   reactive,
   onMounted,
   onBeforeMount,
-  getCurrentInstance,
+  getCurrentInstance
 } from "vue";
-import info, { ContextProps } from "/@//components/Info/index.vue";
+import info, { ContextProps } from "/@/components/Info/index.vue";
 import { getRegist, getVerify } from "/@/api/user";
 import { useRouter } from "vue-router";
 import { warnMessage, successMessage } from "/@/utils/message";
 export default {
   name: "register",
   components: {
-    info,
+    info
   },
   setup() {
     const router = useRouter();
@@ -38,7 +34,7 @@ export default {
       userName: "",
       passWord: "",
       verify: null,
-      svg: null,
+      svg: null
     });
 
     // 注册
@@ -47,7 +43,7 @@ export default {
       let { code, info } = await getRegist({
         username: userName,
         password: passWord,
-        verify: verify,
+        verify: verify
       });
       code === 0
         ? successMessage(info) && router.push("/login")
@@ -66,8 +62,8 @@ export default {
       contextInfo,
       onRegist,
       router,
-      refreshVerify,
+      refreshVerify
     };
-  },
+  }
 };
 </script>
