@@ -57,7 +57,7 @@ import {
   watch,
   nextTick,
 } from "vue";
-import { storageSession } from "../../utils/storage";
+import { storageSession } from "/@/utils/storage";
 
 export interface ContextProps {
   userName: string;
@@ -71,6 +71,7 @@ export interface ContextProps {
 import { useRouter, useRoute } from "vue-router";
 
 export default defineComponent({
+  name: "Info",
   props: {
     ruleForm: {
       type: Object as PropType<ContextProps>,

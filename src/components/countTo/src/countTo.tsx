@@ -25,7 +25,7 @@ export default defineComponent({
       timestamp: number | null
       rAF: any
       remaining: number | null
-      color: any
+      color: string
       fontSize: string
     }>({
       localStartVal: props.startVal,

@@ -11,7 +11,7 @@
           />
           <span>{{ greetings }}</span>
         </div>
-        <flop v-if="!mobile" />
+        <Flop v-if="!mobile" />
       </div>
     </el-affix>
 
@@ -27,10 +27,10 @@
 </template>
 
 <script lang='ts'>
-import flop from "../components/flop/index.vue";
-import { ref, computed, onMounted, nextTick, onUpdated } from "vue";
-import { deviceDetection } from "../utils/deviceDetection";
-import { echartsJson } from "../api/mock";
+import Flop from "/@/components/Flop";
+import { ref, computed, onMounted, nextTick } from "vue";
+import { deviceDetection } from "/@/utils/deviceDetection";
+import { echartsJson } from "/@/api/mock";
 import {
   useEventListener,
   tryOnUnmounted,
@@ -42,7 +42,7 @@ let brokenLine: any = null; //折线图实例
 export default {
   name: "welcome",
   components: {
-    flop,
+    Flop,
   },
   setup() {
     let mobile = ref(deviceDetection());

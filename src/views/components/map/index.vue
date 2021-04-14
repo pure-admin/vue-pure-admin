@@ -1,14 +1,14 @@
 <template>
   <div class="map">
-    <amap />
+    <Amap />
   </div>
 </template>
 
 <script lang='ts'>
-import amap from "../../../components/map/amap.vue";
+import { Amap } from "/@/components/Map";
 export default {
   components: {
-    amap
+    Amap
   },
   setup(){
     return{

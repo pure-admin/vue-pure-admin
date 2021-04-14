@@ -23,11 +23,17 @@
     "paths": {
       "/@/*": [
         "src/*"
+      ],
+      "/#/*": [
+        "types/*"
       ]
     },
-    "types": ["node"],
+    "types": [
+      "node"
+    ],
     "typeRoots": [
-      "node_modules/@types"
+      "./node_modules/@types/",
+      "./types"
     ],
   },
   "include": [
@@ -35,7 +41,10 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
-    "src/utils/path.js"    
+    "src/utils/path.js",
+    "types/**/*.d.ts",
+    "types/**/*.ts",
+    "types/shims-tsx.d.ts"
   ],
   "exclude": [
     "node_modules",

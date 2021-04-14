@@ -5,8 +5,10 @@
 <script lang='ts'>
 import { onMounted } from "vue";
 import Player from "xgplayer/dist/simple_player";
-import { volume, playbackRate, screenShot } from "xgplayer/dist/controls";
-import { deviceDetection } from "../../../utils/deviceDetection"
+import volume from 'xgplayer/dist/controls/volume';
+import playbackRate from 'xgplayer/dist/controls/playbackRate';
+import screenShot from 'xgplayer/dist/controls/screenShot';
+import { deviceDetection } from "/@/utils/deviceDetection"
 
 export default {
   setup() {

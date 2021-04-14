@@ -36,11 +36,8 @@
 import {
   defineComponent,
   ref,
-  getCurrentInstance,
   computed,
-  watch,
   PropType,
-  onBeforeMount,
 } from "vue";
 import resizer from "./resizer.vue";
 

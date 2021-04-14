@@ -1,12 +1,12 @@
 <template>
   <div class="navbar">
-    <hamburger
+    <Hamburger
       :is-active="sidebar.opened"
       class="hamburger-container"
       @toggleClick="toggleSideBar"
     />
 
-    <breadcrumb class="breadcrumb-container" />
+    <Breadcrumb class="breadcrumb-container" />
 
     <div class="right-menu">
       <screenfull />
@@ -31,14 +31,14 @@
 </template>
 
 <script lang="ts">
-import { ref, reactive, defineComponent, onMounted, nextTick } from "vue";
-import Breadcrumb from "../../components/breadCrumb/index.vue";
-import Hamburger from "../../components/hamBurger/index.vue";
+import { ref, defineComponent, onMounted } from "vue";
+import Breadcrumb from "/@/components/BreadCrumb";
+import Hamburger from "/@/components/HamBurger";
 import screenfull from "../components/screenfull/index.vue";
 import { useMapGetters } from "../store";
-import { useRoute, useRouter } from "vue-router";
-import { mapGetters, useStore } from "vuex";
-import { storageSession } from "../../utils/storage";
+import { useRouter } from "vue-router";
+import { useStore } from "vuex";
+import { storageSession } from "/@/utils/storage";
 import { useI18n } from "vue-i18n";
 import ch from "/@/assets/ch.png";
 import en from "/@/assets/en.png";

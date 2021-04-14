@@ -1,3 +1,4 @@
+/**
 <template>
   <div :class="$attrs.class" :style="getWrapperStyle">
     <img
@@ -43,6 +44,7 @@
     rotatable: true,
   };
   export default defineComponent({
+    name: "Cropper",
     props: {
       src: {
         type: String,
@@ -126,3 +128,4 @@
     },
   });
 </script>
+ */

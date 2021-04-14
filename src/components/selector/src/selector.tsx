@@ -22,7 +22,7 @@ let overList = []
 let selectedList = []
 
 export default defineComponent({
-  name: "HsSelector",
+  name: "Selector",
   props: {
     HsKey: {
       type: Number || String,

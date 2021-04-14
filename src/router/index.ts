@@ -88,7 +88,7 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: '/components/countTo',
-        component: () => import(/* webpackChunkName: "components" */ '../views/components/countTo/index.vue'),
+        component: () => import(/* webpackChunkName: "components" */ '../views/components/count-to/index.vue'),
         meta: {
           title: 'countTo',
           showLink: false,
@@ -106,7 +106,7 @@ const routes: Array<RouteRecordRaw> = [
       },
       // {
       //   path: '/components/flowChart',
-      //   component: () => import(/* webpackChunkName: "components" */ '../views/components/flowChart/index.vue'),
+      //   component: () => import(/* webpackChunkName: "components" */ '../views/components/flow-chart/index.vue'),
       //   meta: {
       //     title: 'flowChart',
       //     showLink: false,

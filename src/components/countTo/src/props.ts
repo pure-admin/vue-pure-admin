@@ -13,14 +13,8 @@ export const countToProps = {
       return value >= 0
     },
   },
-  color: {
-    type: String as PropType<string>,
-    require: false
-  },
-  fontSize: {
-    type: String as PropType<string>,
-    require: false
-  },
+  color: propTypes.string.def(),
+  fontSize: propTypes.string.def(),
   decimal: propTypes.string.def('.'),
   separator: propTypes.string.def(','),
   prefix: propTypes.string.def(''),

@@ -19,9 +19,10 @@ import {
   getCurrentInstance,
 } from "vue";
 
-import { mapJson } from "../../api/mock";
+import { mapJson } from "/@/api/mock";
+import { deviceDetection } from "/@/utils/deviceDetection"
+
 import greenCar from "/@/assets/green.png";
-import { deviceDetection } from "../../utils/deviceDetection"
 
 let MarkerCluster = null;
 
@@ -40,6 +41,7 @@ export interface mapInter {
 }
 
 export default defineComponent({
+  name: "Amap",
   setup() {
     let vm: any;
     let map: MapConfigureInter;

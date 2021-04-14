@@ -13,8 +13,9 @@
 
 <script lang='ts'>
 import { ref, onBeforeMount, getCurrentInstance, nextTick } from "vue";
-import flippers from "./flipper.vue";
+import flippers from "./Flipper.vue";
 export default {
+  name: "Flop",
   components: {
     flippers,
   },

@@ -13,11 +13,11 @@ import {
   reactive,
   onBeforeMount,
 } from "vue";
-import info, { ContextProps } from "../components/info/index.vue";
-import { getVerify, getLogin } from "../api/user";
+import info, { ContextProps } from "/@/components/Info/index.vue";
+import { getVerify, getLogin } from "/@/api/user";
 import { useRouter } from "vue-router";
-import { storageSession } from "../utils/storage";
-import { warnMessage, successMessage } from "../utils/message";
+import { storageSession } from "/@/utils/storage";
+import { warnMessage, successMessage } from "/@/utils/message";
 export default {
   name: "login",
   components: {

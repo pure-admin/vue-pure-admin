@@ -18,7 +18,7 @@
 <script>
 import { defineComponent } from "vue";
 export default defineComponent({
-  name: "hamBurger",
+  name: "HamBurger",
   props: {
     isActive: {
       type: Boolean,

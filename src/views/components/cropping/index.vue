@@ -1,7 +1,7 @@
 <template>
   <div style="margin: 10px">
     <div class="cropper-container">
-      <cropperImage ref="refCropper" :src="img" @cropperedInfo="cropperedInfo" style="width:45%" />
+      <Cropper ref="refCropper" :width="'45vw'" :src="img" />
       <img :src="cropperImg" class="croppered" v-if="cropperImg" />
     </div>
     <el-button type="primary" @click="onCropper">裁剪</el-button>
@@ -9,39 +9,47 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref, onBeforeMount, getCurrentInstance } from "vue";
-import cropperImage from "../../../components/cropper/index.vue";
+import { defineComponent, ref, onBeforeMount, nextTick } from "vue";
+import Cropper from "/@/components/Cropper";
 import img from "./picture.jpeg";
+import { emitter } from "/@/utils/mitt";
+
+let cropperInstance = null;
 export default defineComponent({
   components: {
-    cropperImage
+    Cropper,
   },
   setup() {
-    let vm: any;
     let info = ref("");
     let cropperImg = ref("");
 
     const onCropper = (): void => {
-      vm.refs.refCropper.croppered();
+      nextTick(() => {
+        let imgInfo = cropperInstance.getData();
+        cropperInstance.getCroppedCanvas().toBlob((blob) => {
+          let fileReader: FileReader = new FileReader();
+          fileReader.onloadend = (e: any) => {
+            cropperImg.value = e.target.result;
+            info.value = imgInfo;
+          };
+          fileReader.readAsDataURL(blob);
+        }, "image/jpeg");
+      });
     };
 
     onBeforeMount(() => {
-      vm = getCurrentInstance();
+      emitter.on("cropperInstance", (key) => {
+        cropperInstance = key;
+      });
     });
-
-    function cropperedInfo({ imgBase64, imgInfo }) {
-      info.value = imgInfo;
-      cropperImg.value = imgBase64;
-    }
 
     return {
       img,
       info,
       cropperImg,
       onCropper,
-      cropperedInfo
     };
-  }
+  },
 });
 </script>
 
