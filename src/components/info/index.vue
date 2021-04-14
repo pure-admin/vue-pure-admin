@@ -26,23 +26,14 @@
           v-model.number="ruleForm.verify"
           placeholder="请输入验证码"
         ></el-input>
-        <span
-          class="verify"
-          title="刷新"
-          v-html="ruleForm.svg"
-          @click.prevent="refreshVerify"
-        ></span>
+        <span class="verify" title="刷新" v-html="ruleForm.svg" @click.prevent="refreshVerify"></span>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click.prevent="onBehavior">
-          {{ tipsFalse }}
-        </el-button>
+        <el-button type="primary" @click.prevent="onBehavior">{{ tipsFalse }}</el-button>
         <el-button @click="resetForm">重置</el-button>
         <span class="tips" @click="changPage">{{ tips }}</span>
       </el-form-item>
-      <span title="测试用户 直接登录" class="secret" @click="noSecret"
-        >免密登录</span
-      >
+      <span title="测试用户 直接登录" class="secret" @click="noSecret">免密登录</span>
     </el-form>
   </div>
 </template>
@@ -55,7 +46,7 @@ import {
   onBeforeMount,
   getCurrentInstance,
   watch,
-  nextTick,
+  nextTick
 } from "vue";
 import { storageSession } from "/@/utils/storage";
 
@@ -75,8 +66,8 @@ export default defineComponent({
   props: {
     ruleForm: {
       type: Object as PropType<ContextProps>,
-      require: true,
-    },
+      require: true
+    }
   },
   emits: ["onBehavior", "refreshVerify"],
   setup(props, ctx) {
@@ -103,12 +94,12 @@ export default defineComponent({
       userName: [{ required: true, message: "请输入用户名", trigger: "blur" }],
       passWord: [
         { required: true, message: "请输入密码", trigger: "blur" },
-        { min: 6, message: "密码长度必须不小于6位", trigger: "blur" },
+        { min: 6, message: "密码长度必须不小于6位", trigger: "blur" }
       ],
       verify: [
         { required: true, message: "请输入验证码", trigger: "blur" },
-        { type: "number", message: "验证码必须是数字类型", trigger: "blur" },
-      ],
+        { type: "number", message: "验证码必须是数字类型", trigger: "blur" }
+      ]
     });
 
     // 点击登录或注册
@@ -140,14 +131,14 @@ export default defineComponent({
     const noSecret = (): void => {
       storageSession.setItem("info", {
         username: "测试用户",
-        accessToken: "eyJhbGciOiJIUzUxMiJ9.test",
+        accessToken: "eyJhbGciOiJIUzUxMiJ9.test"
       });
       router.push("/");
     };
 
-    onBeforeMount(()=>{
+    onBeforeMount(() => {
       vm = getCurrentInstance(); //获取组件实例
-    })
+    });
 
     return {
       rules,
@@ -157,9 +148,9 @@ export default defineComponent({
       onBehavior,
       refreshVerify,
       changPage,
-      noSecret,
+      noSecret
     };
-  },
+  }
 });
 </script>
 
@@ -176,7 +167,7 @@ export default defineComponent({
   display: flex;
   justify-content: center;
   align-items: center;
-  @media screen and (max-width: 750px){
+  @media screen and (max-width: 750px) {
     width: 88vw;
     right: 25px;
     top: 22vh;

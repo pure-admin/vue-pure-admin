@@ -1,19 +1,12 @@
 <template>
   <div class="login">
-    <info
-      :ruleForm="contextInfo"
-      @on-behavior="onLogin"
-      @refreshVerify="refreshVerify"
-    />
+    <info :ruleForm="contextInfo" @on-behavior="onLogin" @refreshVerify="refreshVerify" />
   </div>
 </template>
 
 <script lang="ts">
-import {
-  reactive,
-  onBeforeMount,
-} from "vue";
-import info, { ContextProps } from "/@/components/Info/index.vue";
+import { reactive, onBeforeMount } from "vue";
+import info, { ContextProps } from "../components/info/index.vue";
 import { getVerify, getLogin } from "/@/api/user";
 import { useRouter } from "vue-router";
 import { storageSession } from "/@/utils/storage";
@@ -21,7 +14,7 @@ import { warnMessage, successMessage } from "/@/utils/message";
 export default {
   name: "login",
   components: {
-    info,
+    info
   },
   setup() {
     const router = useRouter();
@@ -36,7 +29,7 @@ export default {
       userName: "",
       passWord: "",
       verify: null,
-      svg: null,
+      svg: null
     });
 
     const toPage = (info: Object): void => {
@@ -50,13 +43,13 @@ export default {
       let { code, info, accessToken } = await getLogin({
         username: userName,
         password: passWord,
-        verify: verify,
+        verify: verify
       });
       code === 0
         ? successMessage(info) &&
           toPage({
             username: userName,
-            accessToken,
+            accessToken
           })
         : warnMessage(info);
     };
@@ -74,8 +67,8 @@ export default {
       onLogin,
       router,
       toPage,
-      refreshVerify,
+      refreshVerify
     };
-  },
+  }
 };
 </script>
