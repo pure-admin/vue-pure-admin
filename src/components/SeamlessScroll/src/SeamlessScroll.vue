@@ -30,7 +30,7 @@ import {
   ref,
   unref,
   watchEffect,
-  nextTick,
+  nextTick
 } from "vue";
 import { tryOnMounted, tryOnUnmounted, templateRef } from "@vueuse/core";
 import * as utilsMethods from "./utils";
@@ -56,14 +56,14 @@ export default defineComponent({
       type: Array,
       default: () => {
         return [];
-      },
+      }
     },
     classOption: {
       type: Object,
       default: () => {
         return {};
-      },
-    },
+      }
+    }
   },
   emits: ["ScrollEnd"],
   setup(props, { emit }) {
@@ -117,7 +117,7 @@ export default defineComponent({
         switchDelay: 400,
         switchDisabledClass: "disabled",
         // singleWidth/singleHeight 是否开启rem度量
-        isSingleRemUnit: false,
+        isSingleRemUnit: false
       };
     });
 
@@ -138,17 +138,16 @@ export default defineComponent({
       return {
         position: "absolute",
         margin: `${unref(height) / 2}px 0 0 -${unref(options).switchOffset}px`,
-        transform: "translate(-100%,-50%)",
+        transform: "translate(-100%,-50%)"
       };
     });
 
     let rightSwitch = computed(() => {
       return {
         position: "absolute",
-        margin: `${unref(height) / 2}px 0 0 ${
-          unref(width) + unref(options).switchOffset
-        }px`,
-        transform: "translateY(-50%)",
+        margin: `${unref(height) / 2}px 0 0 ${unref(width) +
+          unref(options).switchOffset}px`,
+        transform: "translateY(-50%)"
       };
     });
 
@@ -169,7 +168,7 @@ export default defineComponent({
       return {
         transform: `translate(${unref(xPos)}px,${unref(yPos)}px)`,
         transition: `all ${ease} ${unref(delay)}ms`,
-        overflow: "hidden",
+        overflow: "hidden"
       };
     });
 
@@ -225,6 +224,8 @@ export default defineComponent({
     });
 
     function reset() {
+      xPos.value = 0;
+      yPos.value = 0;
       scrollCancle();
       scrollInitMove();
     }
@@ -265,7 +266,7 @@ export default defineComponent({
       //取第一个touch的坐标值
       startPos = {
         x: touch.pageX,
-        y: touch.pageY,
+        y: touch.pageY
       };
       //记录touchStart时候的posY
       startPosY = unref(yPos);
@@ -280,7 +281,7 @@ export default defineComponent({
         scrollCancle();
       }
     }
-    
+
     function touchMove(e) {
       //当屏幕有多个touch或者页面被缩放过，就不执行move操作
       if (
@@ -293,7 +294,7 @@ export default defineComponent({
       const { direction } = unref(options);
       let endPos = {
         x: touch.pageX - startPos.x,
-        y: touch.pageY - startPos.y,
+        y: touch.pageY - startPos.y
       };
       //阻止触摸事件的默认行为，即阻止滚屏
       e.preventDefault();
@@ -350,7 +351,7 @@ export default defineComponent({
       if (isHover) return;
       //进入move立即先清除动画 防止频繁touchMove导致多动画同时进行
       scrollCancle();
-      reqFrame = requestAnimationFrame(function () {
+      reqFrame = requestAnimationFrame(function() {
         //实际高度
         const h = unref(realBoxHeight) / 2;
         //宽度
@@ -538,8 +539,8 @@ export default defineComponent({
       scrollMove,
       scrollInitMove,
       scrollStartMove,
-      scrollStopMove,
+      scrollStopMove
     };
-  },
+  }
 });
 </script>
