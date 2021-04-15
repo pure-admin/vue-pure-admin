@@ -1,7 +1,7 @@
 <template>
   <div style="margin: 10px">
     <div class="cropper-container">
-      <Cropper ref="refCropper" :width="'45vw'" :src="img" />
+      <Cropper ref="refCropper" :width="'40vw'" :src="img" />
       <img :src="cropperImg" class="croppered" v-if="cropperImg" />
     </div>
     <el-button type="primary" @click="onCropper">裁剪</el-button>

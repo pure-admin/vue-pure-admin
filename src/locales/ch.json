@@ -18,5 +18,6 @@
   "cropping": "图片裁剪",
   "countTo": "数字动画",
   "selector": "选择器组件",
-  "flowChart": "流程图"
+  "flowChart": "流程图",
+  "seamless": "无缝滚动"
 }

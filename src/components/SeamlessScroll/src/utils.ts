@@ -1,7 +1,7 @@
 /**
  * @desc AnimationFrame简单兼容hack
  */
-const animationFrame = () => {
+export const animationFrame = () => {
   window.cancelAnimationFrame = (function () {
     return window.cancelAnimationFrame ||
       window.webkitCancelAnimationFrame ||
@@ -31,7 +31,7 @@ const animationFrame = () => {
  * @param {arr1,arr2}
  * @return {Boolean}
  */
-const arrayEqual = (arr1: Array<any>, arr2: Array<any>) => {
+export const arrayEqual = (arr1: Array<any>, arr2: Array<any>) => {
   if (arr1 === arr2) return true
   if (arr1.length !== arr2.length) return false
   for (let i = 0; i < arr1.length; ++i) {
@@ -43,7 +43,7 @@ const arrayEqual = (arr1: Array<any>, arr2: Array<any>) => {
 /**
  * @desc 深浅合并拷贝
  */
-function copyObj() {
+export function copyObj() {
   if (!Array.isArray) {
     // @ts-expect-error
     Array.isArray = function (arg) {
@@ -102,12 +102,6 @@ function copyObj() {
     }
   }
   return target
-}
-
-export default {
-  animationFrame,
-  arrayEqual,
-  copyObj
 }
 
 

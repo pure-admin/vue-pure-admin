@@ -104,6 +104,15 @@ const routes: Array<RouteRecordRaw> = [
           savedPosition: true
         }
       },
+      {
+        path: '/components/seamlessScroll',
+        component: () => import(/* webpackChunkName: "components" */ '../views/components/seamless-scroll/index.vue'),
+        meta: {
+          title: 'seamless',
+          showLink: false,
+          savedPosition: true
+        }
+      }
       // {
       //   path: '/components/flowChart',
       //   component: () => import(/* webpackChunkName: "components" */ '../views/components/flow-chart/index.vue'),
