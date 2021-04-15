@@ -131,25 +131,24 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: '/user',
-    name: 'user',
+    path: '/flowChart',
+    name: 'flowChart',
     component: Layout,
-    redirect: '/user/base',
+    redirect: '/flowChart/index',
     children: [
       {
-        path: '/user/base',
-        component: () => import(/* webpackChunkName: "user" */ '../views/user.vue'),
+        path: '/flowChart/index',
+        component: () => import(/* webpackChunkName: "user" */ '../views/flow-chart/index.vue'),
         meta: {
-          // icon: 'el-icon-user',
-          title: 'baseinfo',
+          title: 'flowChart',
           showLink: false,
           savedPosition: true
         }
       },
     ],
     meta: {
-      icon: 'el-icon-user',
-      title: 'usermanagement',
+      icon: 'el-icon-set-up',
+      title: 'flowChart',
       showLink: true,
       savedPosition: true
     }
@@ -174,6 +173,30 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       icon: 'el-icon-edit-outline',
       title: 'editor',
+      showLink: true,
+      savedPosition: true
+    }
+  },
+  {
+    path: '/user',
+    name: 'user',
+    component: Layout,
+    redirect: '/user/base',
+    children: [
+      {
+        path: '/user/base',
+        component: () => import(/* webpackChunkName: "user" */ '../views/user.vue'),
+        meta: {
+          // icon: 'el-icon-user',
+          title: 'baseinfo',
+          showLink: false,
+          savedPosition: true
+        }
+      },
+    ],
+    meta: {
+      icon: 'el-icon-user',
+      title: 'usermanagement',
       showLink: true,
       savedPosition: true
     }

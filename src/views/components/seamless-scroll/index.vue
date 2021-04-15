@@ -4,10 +4,18 @@
       <template #header>
         <div class="card-header">
           <span>无缝滚动示例</span>
-          <el-button class="button" type="text" @click="changeDirection('top')">向上滚动</el-button>
-          <el-button class="button" type="text" @click="changeDirection('bottom')">向下滚动</el-button>
-          <el-button class="button" type="text" @click="changeDirection('left')">向左滚动</el-button>
-          <el-button class="button" type="text" @click="changeDirection('right')">向右滚动</el-button>
+          <el-button class="button" type="text" @click="changeDirection('top')">
+            <span :style="{color: classOption.direction === 'top' ? 'red' : ''}">向上滚动</span>
+          </el-button>
+          <el-button class="button" type="text" @click="changeDirection('bottom')">
+            <span :style="{color: classOption.direction === 'bottom' ? 'red' : ''}">向下滚动</span>
+          </el-button>
+          <el-button class="button" type="text" @click="changeDirection('left')">
+            <span :style="{color: classOption.direction === 'left' ? 'red' : ''}">向左滚动</span>
+          </el-button>
+          <el-button class="button" type="text" @click="changeDirection('right')">
+            <span :style="{color: classOption.direction === 'right' ? 'red' : ''}">向右滚动</span>
+          </el-button>
         </div>
       </template>
       <SeamlessScroll ref="scroll" :data="listData" :class-option="classOption" class="warp">
