@@ -1,5 +1,6 @@
 <template>
   <div class="control-container">
+    <!-- 功能按钮 -->
     <ul>
       <li
         v-for="(item,key) in titleLists"
@@ -9,116 +10,110 @@
         @mouseenter.prevent="onEnter(key)"
         @mouseleave.prevent="focusIndex = -1"
       >
-        <button ref="controlButton" @click="onControl(item,key)">
+        <button
+          :ref="'controlButton' + key"
+          :disabled="item.disabled"
+          :style="{cursor: item.disabled === false ? 'pointer' : 'not-allowed'}"
+          @click="onControl(item,key)"
+        >
           <span :class="'iconfont ' + item.icon"></span>
           <p>{{ item.text }}</p>
         </button>
       </li>
     </ul>
-    <!-- <el-button size="small" @click="$_zoomIn">放大</el-button>
-      <el-button size="small" @click="$_zoomOut">缩小</el-button>
-      <el-button size="small" @click="$_zoomReset">大小适应</el-button>
-      <el-button size="small" @click="$_translateRest">定位还原</el-button>
-      <el-button size="small" @click="$_reset">还原(大小&定位)</el-button>
-      <el-button size="small" @click="$_undo" :disabled="undoDisable">上一步(ctrl+z)</el-button>
-      <el-button size="small" @click="$_redo" :disabled="redoDisable">下一步(ctrl+y)</el-button>
-      <el-button size="small" @click="$_download">下载图片</el-button>
-      <el-button size="small" @click="$_catData">查看数据</el-button>
-    <el-button v-if="catTurboData" size="small" @click="$_catTurboData">查看turbo数据</el-button>-->
   </div>
 </template>
 
-<script>
-export default {
+<script lang='ts'>
+import { defineComponent ,ref, unref, onMounted } from "vue";
+import { templateRef } from '@vueuse/core'
+
+export default defineComponent({
   name: "Control",
   props: {
     lf: Object || String,
     catTurboData: Boolean,
   },
-  data() {
-    return {
-      undoDisable: true,
-      redoDisable: true,
-      focusIndex: -1,
-      titleLists: [
+  emits: ["catData"],
+  setup(props,{emit}) {
+    const controlButton3 = templateRef<HTMLElement | null>('controlButton3', null)
+    const controlButton4 = templateRef<HTMLElement | null>('controlButton4', null)
+
+    let focusIndex = ref(-1)
+    let titleLists = ref([
         {
           icon: "icon-zoom-out-hs",
           text: "缩小",
+          disabled: false
         },
         {
           icon: "icon-enlarge-hs",
           text: "放大",
+          disabled: false
         },
         {
           icon: "icon-full-screen-hs",
           text: "适应",
+          disabled: false
         },
         {
           icon: "icon-previous-hs",
           text: "上一步",
+          disabled: true
         },
         {
           icon: "icon-next-step-hs",
           text: "下一步",
+          disabled: true
         },
-      ],
-    };
-  },
-  mounted() {
-    this.$props.lf.on("history:change", ({ data: { undoAble, redoAble } }) => {
-      this.$data.undoDisable = !undoAble;
-      this.$data.redoDisable = !redoAble;
-    });
-  },
-  methods: {
-    onControl(item, key) {
-      ["zoom", "zoom", "resetZoom", "undo", "redo"].forEach((v, i) => {
-        let domControl = this.$props.lf;
+        {
+          icon: "icon-download-hs",
+          text: "下载图片",
+          disabled: false
+        },
+        {
+          icon: "icon-watch-hs",
+          text: "查看数据",
+          disabled: false
+        },
+      ])
+
+    const onControl = (item, key) => {
+      ["zoom", "zoom", "resetZoom", "undo", "redo", "getSnapshot"].forEach((v, i) => {
+        let domControl = props.lf
         if (key === 1) {
-          domControl.zoom(true);
+          domControl.zoom(true)
+        }
+        if (key === 6) {
+          emit("catData")
         }
         if (key === i) {
-          domControl[v]();
+          domControl[v]()
         }
-      });
-    },
-    onEnter(key) {
-      this.focusIndex = key;
-    },
-    $_zoomIn() {
-      this.$props.lf.zoom(true);
-    },
-    $_zoomOut() {
-      this.$props.lf.zoom(false);
-    },
-    $_zoomReset() {
-      this.$props.lf.resetZoom();
-    },
-    $_translateRest() {
-      this.$props.lf.resetTranslate();
-    },
-    $_reset() {
-      this.$props.lf.resetZoom();
-      this.$props.lf.resetTranslate();
-    },
-    $_undo() {
-      this.$props.lf.undo();
-    },
-    $_redo() {
-      this.$props.lf.redo();
-    },
-    $_download() {
-      this.$props.lf.getSnapshot();
-    },
-    $_catData() {
-      this.$emit("catData");
-    },
-    $_catTurboData() {
-      this.$emit("catTurboData");
-    },
+      })
+    }
+
+    const onEnter = (key) => {
+      focusIndex.value = key
+    }
+
+    onMounted(()=>{
+      props.lf.on("history:change", ({ data: { undoAble, redoAble } }) => {
+        unref(titleLists)[3].disabled = unref(controlButton3).disabled = !undoAble
+        unref(titleLists)[4].disabled = unref(controlButton4).disabled = !redoAble
+      })
+    })
+
+    return {
+      focusIndex,
+      titleLists,
+      onControl,
+      onEnter
+    };
   },
-};
+});
 </script>
+
 
 <style scoped>
 @import "./assets/iconfont/iconfont.css";
@@ -127,7 +122,6 @@ export default {
   right: 20px;
   background: hsla(0, 0%, 100%, 0.8);
   box-shadow: 0 1px 4px rgb(0 0 0 / 30%);
-  border-radius: 5px;
 }
 .iconfont {
   font-size: 25px;
@@ -145,7 +139,10 @@ export default {
 .control-container ul li {
   width: 60px;
   text-align: center;
-  cursor: pointer;
-  /* pointer-events: none; */
+}
+.control-container ul li button {
+  border: none;
+  background-color: transparent;
+  outline: none;
 }
 </style>

@@ -1,6 +1,12 @@
 <template>
+  <!-- 左侧bpmn元素选择器 -->
   <div class="node-panel">
-    <div class="node-item" v-for="item in nodeList" :key="item.text" @mousedown="$_dragNode(item)">
+    <div
+      class="node-item"
+      v-for="item in nodeList"
+      :key="item.text"
+      @mousedown="nodeDragNode(item)"
+    >
       <div class="node-item-icon" :class="item.class">
         <div v-if="item.type === 'user' || item.type === 'time'" class="shape"></div>
       </div>
@@ -9,40 +15,45 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'NodePanel',
+<script lang='ts'>
+import { defineComponent, ref, unref } from "vue";
+export default defineComponent({
+  name: "NodePanel",
   props: {
     lf: Object,
-    nodeList: Array,
+    nodeList: Array
   },
-  data() {
-    return {
-      node: {
-        type: 'rect',
-        property: {
-          a: 'efrwe',
-          b: 'wewe'
-        }
-      },
-      properties: {
-        a: 'efrwe',
-        b: 'wewe'
+  setup(props) {
+    let node = ref({
+      type: "rect",
+      property: {
+        a: "efrwe",
+        b: "wewe"
       }
-    }
-  },
-  methods: {
-    $_dragNode(item) {
-      this.$props.lf.dnd.startDrag({
+    });
+    let properties = ref({
+      a: "efrwe",
+      b: "wewe"
+    });
+
+    const nodeDragNode = item => {
+      props.lf.dnd.startDrag({
         type: item.type,
-        properties: this.$data.properties
-      })
-    }
+        properties: unref(properties)
+      });
+    };
+
+    return {
+      node,
+      properties,
+      nodeDragNode
+    };
   }
-}
+});
 </script>
 
-<style>
+
+<style scoped>
 .node-panel {
   position: absolute;
   top: 100px;

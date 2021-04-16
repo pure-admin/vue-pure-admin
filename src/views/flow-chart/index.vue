@@ -6,8 +6,7 @@
       v-if="lf"
       :lf="lf"
       :catTurboData="false"
-      @catData="$_catData"
-      @catTurboData="$_catTurboData"
+      @catData="catData"
     ></Control>
     <!-- 节点面板 -->
     <NodePanel :lf="lf" :nodeList="nodeList"></NodePanel>
@@ -19,28 +18,25 @@
     </el-dialog>
   </div>
 </template>
-<script>
+
+<script lang='ts'>
+import { ref, unref, onMounted, nextTick } from "vue"
 import LogicFlow from '@logicflow/core'
 import { Snapshot, BpmnElement } from '@logicflow/extension'
 import '@logicflow/core/dist/style/index.css'
 import '@logicflow/extension/lib/style/index.css'
-import NodePanel from '/@/components/FlowChart/src/NodePanel.vue'
-import Control from '/@/components/FlowChart/src/Control.vue'
-import DataDialog from '/@/components/FlowChart/src/DataDialog.vue'
-import { toTurboData, toLogicflowData } from '/@/components/FlowChart/src/adpterForTurbo.ts'
-import { BpmnNode } from '/@/components/FlowChart/src/config.ts'
-import demoData from './dataTurbo.json'
+import { Control, NodePanel, DataDialog } from '/@/components/FlowChart'
 
+import { toTurboData, toLogicflowData } from '/@/components/FlowChart/src/adpterForTurbo'
+import { BpmnNode } from '/@/components/FlowChart/src/config'
+import demoData from './dataTurbo.json'
 export default {
-  name: 'LF',
   components: { NodePanel, Control, DataDialog },
-  data() {
-    return {
-      lf: null,
-      dialogVisible: false,
-      graphData: null,
-      dataVisible: false,
-      config: {
+  setup() {
+    let lf = ref(null) 
+    let graphData =ref(null)
+    let dataVisible = ref(false)
+    let config = ref({
         grid: true,
         background: {
           color: '#f7f9ff'
@@ -48,51 +44,54 @@ export default {
         keyboard: {
           enabled: true
         },
-      },
-      nodeList: BpmnNode,
-    }
-  },
-  mounted() {
-    this.$_initLf()
-  },
-  methods: {
-    $_initLf() {
+      })
+    let nodeList= BpmnNode
+
+    function initLf() {
       // 画布配置
       LogicFlow.use(Snapshot)
       // 使用bpmn插件，引入bpmn元素，这些元素可以在turbo中转换后使用
       LogicFlow.use(BpmnElement)
-      const lf = new LogicFlow({ ...this.config, container: document.querySelector('#LF-Turbo') })
-      this.lf = lf
+      const domLf = new LogicFlow({ ...unref(config), container: document.querySelector('#LF-Turbo') })
+      lf.value = domLf
       // 设置边类型bpmn:sequenceFlow为默认类型
-      lf.setDefaultEdgeType('bpmn:sequenceFlow')
-      this.$_render()
-    },
-    $_render() {
+      unref(lf).setDefaultEdgeType('bpmn:sequenceFlow')
+      onRender()
+    }
+
+    function onRender() {
       // Turbo数据转换为LogicFlow内部识别的数据结构
       const lFData = toLogicflowData(demoData)
-      this.lf.render(lFData)
-    },
-    closeDialog() {
-      this.$data.dialogVisible = false
-    },
-    $_catData() {
-      this.$data.graphData = this.$data.lf.getGraphData()
-      this.$data.dataVisible = true
-    },
-    $_catTurboData() {
-      debugger
-      const graphData = this.$data.lf.getGraphData()
-      // 数据转化为Turbo识别的数据结构
-      this.$data.graphData = toTurboData(graphData)
-      this.$data.dataVisible = true
-    },
-    goto() {
-      this.$router.push('/')
+      lf.value.render(lFData)
     }
-  }
-}
+
+    function catData() {
+      graphData.value = unref(lf).getGraphData()
+      dataVisible.value = true
+    }
+
+    onMounted(()=>{
+      initLf()
+    })
+
+    return {
+      lf,
+      graphData,
+      dataVisible,
+      config,
+      nodeList,
+      catData
+    };
+  },
+};
 </script>
-<style>
+
+<style scoped>
+#LF-Turbo {
+  width: 100vw;
+  height: 85%;
+  outline: none;
+}
 .logic-flow-view {
   height: 100%;
   position: relative;
@@ -106,11 +105,6 @@ export default {
   top: 10px;
   right: 20px;
   z-index: 2;
-}
-#LF-Turbo {
-  width: 100vw;
-  height: 85%;
-  outline: none;
 }
 .time-plus {
   cursor: pointer;
