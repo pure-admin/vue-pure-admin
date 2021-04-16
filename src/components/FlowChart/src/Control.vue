@@ -25,84 +25,96 @@
 </template>
 
 <script lang='ts'>
-import { defineComponent ,ref, unref, onMounted } from "vue";
-import { templateRef } from '@vueuse/core'
+import { defineComponent, ref, unref, onMounted } from "vue";
+import { templateRef } from "@vueuse/core";
 
 export default defineComponent({
   name: "Control",
   props: {
     lf: Object || String,
-    catTurboData: Boolean,
+    catTurboData: Boolean
   },
   emits: ["catData"],
-  setup(props,{emit}) {
-    const controlButton3 = templateRef<HTMLElement | null>('controlButton3', null)
-    const controlButton4 = templateRef<HTMLElement | null>('controlButton4', null)
+  setup(props, { emit }) {
+    const controlButton3 = templateRef<HTMLElement | null>(
+      "controlButton3",
+      null
+    );
+    const controlButton4 = templateRef<HTMLElement | null>(
+      "controlButton4",
+      null
+    );
 
-    let focusIndex = ref(-1)
+    let focusIndex = ref(-1);
     let titleLists = ref([
-        {
-          icon: "icon-zoom-out-hs",
-          text: "缩小",
-          disabled: false
-        },
-        {
-          icon: "icon-enlarge-hs",
-          text: "放大",
-          disabled: false
-        },
-        {
-          icon: "icon-full-screen-hs",
-          text: "适应",
-          disabled: false
-        },
-        {
-          icon: "icon-previous-hs",
-          text: "上一步",
-          disabled: true
-        },
-        {
-          icon: "icon-next-step-hs",
-          text: "下一步",
-          disabled: true
-        },
-        {
-          icon: "icon-download-hs",
-          text: "下载图片",
-          disabled: false
-        },
-        {
-          icon: "icon-watch-hs",
-          text: "查看数据",
-          disabled: false
-        },
-      ])
+      {
+        icon: "icon-zoom-out-hs",
+        text: "缩小",
+        disabled: false
+      },
+      {
+        icon: "icon-enlarge-hs",
+        text: "放大",
+        disabled: false
+      },
+      {
+        icon: "icon-full-screen-hs",
+        text: "适应",
+        disabled: false
+      },
+      {
+        icon: "icon-previous-hs",
+        text: "上一步",
+        disabled: true
+      },
+      {
+        icon: "icon-next-step-hs",
+        text: "下一步",
+        disabled: true
+      },
+      {
+        icon: "icon-download-hs",
+        text: "下载图片",
+        disabled: false
+      },
+      {
+        icon: "icon-watch-hs",
+        text: "查看数据",
+        disabled: false
+      }
+    ]);
 
     const onControl = (item, key) => {
-      ["zoom", "zoom", "resetZoom", "undo", "redo", "getSnapshot"].forEach((v, i) => {
-        let domControl = props.lf
-        if (key === 1) {
-          domControl.zoom(true)
+      ["zoom", "zoom", "resetZoom", "undo", "redo", "getSnapshot"].forEach(
+        (v, i) => {
+          let domControl = props.lf;
+          if (key === 1) {
+            domControl.zoom(true);
+          }
+          if (key === 6) {
+            emit("catData");
+          }
+          if (key === i) {
+            domControl[v]();
+          }
         }
-        if (key === 6) {
-          emit("catData")
-        }
-        if (key === i) {
-          domControl[v]()
-        }
-      })
-    }
+      );
+    };
 
-    const onEnter = (key) => {
-      focusIndex.value = key
-    }
+    const onEnter = key => {
+      focusIndex.value = key;
+    };
 
-    onMounted(()=>{
+    onMounted(() => {
       props.lf.on("history:change", ({ data: { undoAble, redoAble } }) => {
-        unref(titleLists)[3].disabled = unref(controlButton3).disabled = !undoAble
-        unref(titleLists)[4].disabled = unref(controlButton4).disabled = !redoAble
-      })
-    })
+        unref(titleLists)[3].disabled = unref(
+          controlButton3
+        ).disabled = !undoAble;
+        unref(titleLists)[4].disabled = unref(
+          controlButton4
+        ).disabled = !redoAble;
+      });
+    });
 
     return {
       focusIndex,
@@ -110,7 +122,7 @@ export default defineComponent({
       onControl,
       onEnter
     };
-  },
+  }
 });
 </script>
 
