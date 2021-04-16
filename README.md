@@ -51,7 +51,7 @@ npm install
 - run
 
 ```bash
-yarn serve
+npm run serve
 ```
 
 - build

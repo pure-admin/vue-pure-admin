@@ -94,7 +94,7 @@ export default {
 </script>
 <style>
 .logic-flow-view {
-  height: 100vh;
+  height: 100%;
   position: relative;
 }
 .demo-title {
@@ -103,15 +103,14 @@ export default {
 }
 .demo-control {
   position: absolute;
-  top: 50px;
-  right: 100px;
+  top: 10px;
+  right: 20px;
   z-index: 2;
 }
 #LF-Turbo {
   width: 100vw;
   height: 85%;
   outline: none;
-  margin: 10px 0 0 10px;
 }
 .time-plus {
   cursor: pointer;

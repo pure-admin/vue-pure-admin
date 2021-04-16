@@ -3,7 +3,7 @@ export const hasClass = (ele: Element, cls: string): any => {
 }
 
 export const addClass = (ele: Element, cls: string, extracls?: string): any => {
-  if (!hasClass(ele, cls)) ele.className += ' ' + cls
+  if (!hasClass(ele, cls)) ele.className += (' ' + cls).trim()
   if (extracls) {
     if (!hasClass(ele, extracls)) ele.className += ' ' + extracls
   }

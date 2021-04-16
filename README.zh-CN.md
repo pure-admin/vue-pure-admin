@@ -51,7 +51,7 @@ npm install
 - 运行
 
 ```bash
-yarn serve
+npm run serve
 ```
 
 - 打包
