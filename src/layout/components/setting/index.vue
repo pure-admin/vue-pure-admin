@@ -10,6 +10,10 @@
         <span>色弱模式</span>
         <vxe-switch v-model="weekVal" open-label="开" close-label="关" @change="weekChange"></vxe-switch>
       </li>
+      <li>
+        <span>隐藏标签页</span>
+        <vxe-switch v-model="tagsVal" open-label="开" close-label="关" @change="tagsChange"></vxe-switch>
+      </li>
     </ul>
   </panel>
 </template>
@@ -19,6 +23,7 @@ import panel from "../panel/index.vue";
 import { onMounted, reactive, toRefs } from "vue";
 import { storageLocal } from "/@/utils/storage";
 import { toggleClass } from "/@/utils/operate";
+import { emitter } from "/@/utils/mitt";
 
 export default {
   name: "setting",
@@ -39,7 +44,8 @@ export default {
 
     const settings = reactive({
       greyVal: storageLocal.getItem("greyVal"),
-      weekVal: storageLocal.getItem("weekVal")
+      weekVal: storageLocal.getItem("weekVal"),
+      tagsVal: storageLocal.getItem("tagsVal")
     });
 
     settings.greyVal === null
@@ -74,11 +80,20 @@ export default {
         : localOperate("weekVal", false, "set");
     };
 
+    const tagsChange = () => {
+      let showVal = settings.tagsVal;
+      showVal
+        ? storageLocal.setItem("tagsVal", true)
+        : storageLocal.setItem("tagsVal", false);
+      emitter.emit("tagViewsChange", showVal);
+    };
+
     return {
       ...toRefs(settings),
       localOperate,
       greyChange,
-      weekChange
+      weekChange,
+      tagsChange
     };
   }
 };

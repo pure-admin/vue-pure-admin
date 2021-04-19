@@ -1,5 +1,5 @@
 <template>
-  <div class="tags-view">
+  <div class="tags-view" v-if="!showTags">
     <el-scrollbar :vertical="false" class="scroll-container">
       <div
         v-for="(item, index) in dynamicTagList"
@@ -10,16 +10,23 @@
         <span v-if="index !== 0 " class="el-icon-close" @click="deleteMenu(item)"></span>
       </div>
     </el-scrollbar>
+    <slot></slot>
   </div>
 </template>
 
 <script>
 import { useDynamicRoutesHook } from "./tagsHook"
-import { useRoute } from "vue-router"
-import { ref, watchEffect } from "vue"
+import { useRoute, useRouter } from "vue-router"
+import { ref, watchEffect, onBeforeMount, unref } from "vue"
+import { storageLocal } from "/@/utils/storage"
+import { emitter } from "/@/utils/mitt"
+
 export default {
   setup() {
     const route = useRoute()
+    const router = useRouter()
+    const showTags = ref(storageLocal.getItem("tagsVal") || false)
+
     const { deleteDynamicTag, dRoutes } = ref(useDynamicRoutesHook()).value
 
     function deleteMenu(item) {
@@ -39,9 +46,17 @@ export default {
       stop()
     })
 
+    onBeforeMount(() => {
+      emitter.on("tagViewsChange", (key) => {
+        if (unref(showTags) === key) return
+        showTags.value = key
+      })
+    })
+
     return {
       dynamicTagList: dRoutes,
       deleteMenu,
+      showTags
     }
   },
 };
@@ -55,7 +70,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin-left: 5px;
+  position: relative;
   .scroll-item {
     border-radius: 3px;
     padding: 2px 8px;
@@ -64,26 +79,33 @@ export default {
   a {
     text-decoration: none;
     color: #666;
-    padding: 0 4px 0 10px;
+    padding: 0 4px 0 4px;
+  }
+
+  .scroll-container {
+    text-align: left;
+    padding: 5px 0;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    background: #fff;
+    border: 0.5px solid rgba($color: #ccc, $alpha: 0.3);
+    .scroll-item {
+      &:nth-child(1) {
+        margin-left: 5px;
+      }
+    }
   }
 }
+
 .el-icon-close {
   cursor: pointer;
   border-radius: 50%;
-  padding: 1px;
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 .el-icon-close:hover {
   background: #b4bccc;
-}
-.scroll-container {
-  text-align: left;
-  padding: 5px 0;
-  white-space: nowrap;
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
 }
 .active {
   background: #409eff;
@@ -93,17 +115,7 @@ export default {
     color: #fff;
   }
 }
-.active::before {
-  content: "";
-  background: #fff;
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: 5px;
-  margin-top: -4px;
-  margin-right: 2px;
+:deep(.el-scrollbar__wrap) {
+  height: 100vh;
 }
 </style>

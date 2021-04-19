@@ -14,6 +14,7 @@
       @touchstart="touchStart"
       @touchmove="touchMove"
       @touchend="touchEnd"
+      @mousewheel="wheel"
     >
       <div ref="slotList" :style="float">
         <slot></slot>
@@ -32,7 +33,12 @@ import {
   watchEffect,
   nextTick
 } from "vue";
-import { tryOnMounted, tryOnUnmounted, templateRef } from "@vueuse/core";
+import {
+  tryOnMounted,
+  tryOnUnmounted,
+  templateRef,
+  useDebounceFn
+} from "@vueuse/core";
 import * as utilsMethods from "./utils";
 const { animationFrame, copyObj } = utilsMethods;
 animationFrame();
@@ -490,6 +496,19 @@ export default defineComponent({
       }
     });
 
+    // 鼠标滚轮事件
+    function wheel(e) {
+      e.preventDefault();
+      if (
+        unref(options).direction === "left" ||
+        unref(options).direction === "right"
+      )
+        return;
+      useDebounceFn(() => {
+        e.deltaY > 0 ? (yPos.value -= step.value) : (yPos.value += step.value);
+      }, 50)();
+    }
+
     tryOnMounted(() => {
       scrollInitMove();
     });
@@ -539,7 +558,8 @@ export default defineComponent({
       scrollMove,
       scrollInitMove,
       scrollStartMove,
-      scrollStopMove
+      scrollStopMove,
+      wheel
     };
   }
 });

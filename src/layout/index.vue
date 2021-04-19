@@ -6,13 +6,29 @@
       @click="handleClickOutside"
     />
     <!-- 侧边栏 -->
-    <sidebar class="sidebar-container" />
+    <sidebar class="sidebar-container" v-if="!containerHiddenSideBar" />
     <div class="main-container">
       <div :class="{ 'fixed-header': fixedHeader }">
         <!-- 顶部导航栏 -->
-        <navbar />
+        <navbar v-if="!containerHiddenSideBar" />
         <!-- tabs标签页 -->
-        <tag /> 
+        <tag>
+          <!-- 右侧功能按钮 -->
+          <ul class="right-func">
+            <li>
+              <i class="el-icon-refresh-right"></i>
+            </li>
+            <li>
+              <i class="el-icon-arrow-down"></i>
+            </li>
+            <li>
+              <i
+                :class="containerHiddenSideBar? 'iconfont team-iconhidden-main-container': 'iconfont team-iconshow-main-container'"
+                @click="onFullScreen"
+              ></i>
+            </li>
+          </ul>
+        </tag>
       </div>
       <!-- 主体内容 -->
       <app-main />
@@ -26,17 +42,23 @@
 import { Navbar, Sidebar, AppMain, setting, tag } from "./components";
 import {
   ref,
+  unref,
   reactive,
   computed,
   toRefs,
   watch,
+  nextTick,
   watchEffect,
   onMounted,
   onBeforeMount,
-  onBeforeUnmount,
+  onBeforeUnmount
 } from "vue";
 import { useStore } from "vuex";
-import { useEventListener } from "@vueuse/core";
+import { useEventListener, useFullscreen } from "@vueuse/core";
+import { toggleClass } from "/@/utils/operate";
+let hiddenMainContainer = "hidden-main-container";
+import options from "/@/settings";
+
 interface setInter {
   sidebar: any;
   device: String;
@@ -58,6 +80,8 @@ export default {
 
     const WIDTH = ref(992);
 
+    let containerHiddenSideBar = ref(options.hiddenSideBar);
+
     const set: setInter = reactive({
       sidebar: computed(() => {
         return store.state.app.sidebar;
@@ -76,17 +100,17 @@ export default {
           hideSidebar: !set.sidebar.opened,
           openSidebar: set.sidebar.opened,
           withoutAnimation: set.sidebar.withoutAnimation,
-          mobile: set.device === "mobile",
+          mobile: set.device === "mobile"
         };
-      }),
+      })
     });
 
     watchEffect(() => {
       if (set.device === "mobile" && !set.sidebar.opened) {
         store.dispatch("app/closeSideBar", { withoutAnimation: false });
       }
-    })
- 
+    });
+
     const handleClickOutside = () => {
       store.dispatch("app/closeSideBar", { withoutAnimation: false });
     };
@@ -107,23 +131,48 @@ export default {
       }
     };
 
+    function onFullScreen() {
+      if (unref(containerHiddenSideBar)) {
+        containerHiddenSideBar.value = false;
+        toggleClass(
+          false,
+          hiddenMainContainer,
+          document.querySelector(".main-container")
+        );
+      } else {
+        containerHiddenSideBar.value = true;
+        toggleClass(
+          true,
+          hiddenMainContainer,
+          document.querySelector(".main-container")
+        );
+      }
+    }
+
     onMounted(() => {
       const isMobile = $_isMobile();
       if (isMobile) {
         store.dispatch("app/toggleDevice", "mobile");
         store.dispatch("app/closeSideBar", { withoutAnimation: true });
       }
+      toggleClass(
+        unref(containerHiddenSideBar),
+        hiddenMainContainer,
+        document.querySelector(".main-container")
+      );
     });
 
     onBeforeMount(() => {
       useEventListener("resize", $_resizeHandler);
     });
-    
+
     return {
       ...toRefs(set),
       handleClickOutside,
+      containerHiddenSideBar,
+      onFullScreen
     };
-  },
+  }
 };
 </script>
 
@@ -172,5 +221,24 @@ $sideBarWidth: 210px;
 
 .mobile .fixed-header {
   width: 100%;
+}
+
+.right-func {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 0.5px solid rgba($color: #ccc, $alpha: 0.3);
+  font-size: 16px;
+  li {
+    width: 40px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    border-right: 1px solid #ccc;
+    cursor: pointer;
+  }
+}
+.hidden-main-container {
+  margin-left: 0 !important;
 }
 </style>

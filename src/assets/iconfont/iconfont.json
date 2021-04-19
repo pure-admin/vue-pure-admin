@@ -6,6 +6,20 @@
   "description": "增删查改xi't",
   "glyphs": [
     {
+      "icon_id": "9626913",
+      "name": "全屏",
+      "font_class": "show-main-container",
+      "unicode": "e878",
+      "unicode_decimal": 59512
+    },
+    {
+      "icon_id": "9626952",
+      "name": "退出全屏",
+      "font_class": "hidden-main-container",
+      "unicode": "e881",
+      "unicode_decimal": 59521
+    },
+    {
       "icon_id": "5698509",
       "name": "全屏缩小",
       "font_class": "exit-fullscreen",

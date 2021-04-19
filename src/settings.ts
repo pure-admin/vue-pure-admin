@@ -1,9 +1,9 @@
 export default {
-
-  title: 'CURE Admin',
+  title: "CURE Admin",
 
   fixedHeader: false,
 
-  sidebarLogo: false
+  sidebarLogo: false,
 
-}
+  hiddenSideBar: false,
+};

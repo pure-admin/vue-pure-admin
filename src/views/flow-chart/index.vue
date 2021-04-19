@@ -91,11 +91,11 @@ export default {
 <style scoped>
 #LF-Turbo {
   width: 100vw;
-  height: 85%;
+  height: 85vh;
   outline: none;
 }
 .logic-flow-view {
-  height: 100%;
+  margin: 10px;
   position: relative;
 }
 .demo-title {

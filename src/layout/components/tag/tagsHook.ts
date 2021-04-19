@@ -1,4 +1,5 @@
 import { reactive, toRefs, nextTick } from "vue"
+import { storageLocal } from "/@/utils/storage"
 import { useRouter } from "vue-router"
 
 interface InterDynamic {
@@ -25,10 +26,11 @@ export function useDynamicRoutesHook() {
    * @param value string 当前menu对应的路由path
    * @param parentPath string 当前路由中父级路由
    */
-  function dynamicRouteTags(value: string, parentPath: string): void {
+  const dynamicRouteTags = (value: string, parentPath: string): void => {
     const hasValue = dynamic.dRoutes.some((item: any) => {
       return item.path === value
     })
+
     function concatPath(arr: object[], value: string, parentPath: string) {
       if (!hasValue) {
         arr.forEach((arrItem: any) => {
@@ -45,6 +47,14 @@ export function useDynamicRoutesHook() {
       }
     }
     concatPath(router.options.routes, value, parentPath)
+
+    if (storageLocal.getItem("routesInStorage") && storageLocal.getItem("routesInStorage").length > 2) {
+      let lens = storageLocal.getItem("routesInStorage").length
+      let itemss = storageLocal.getItem("routesInStorage")[lens - 1]
+      dynamic.dRoutes.push({ path: itemss.path, meta: itemss.meta })
+    }
+
+    storageLocal.setItem("routesInStorage", dynamic.dRoutes)
   }
   /**
    * @param value any 当前删除tag路由
@@ -56,6 +66,7 @@ export function useDynamicRoutesHook() {
     })
     // 从当前匹配到的路径中删除
     await dynamic.dRoutes.splice(valueIndex, 1)
+    storageLocal.setItem("routesInStorage", dynamic.dRoutes)
     if (current === obj.path) { // 如果删除当前激活tag就自动切换到最后一个tag
       let newRoute: any = dynamic.dRoutes.slice(-1)
       nextTick(() => {

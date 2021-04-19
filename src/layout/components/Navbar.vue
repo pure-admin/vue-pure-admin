@@ -9,20 +9,21 @@
     <Breadcrumb class="breadcrumb-container" />
 
     <div class="right-menu">
+      <!-- 全屏 -->
       <screenfull />
+      <!-- 国际化 -->
       <div class="inter" :title="langs ? '中文' : '英文'" @click="toggleLang">
         <img :src="langs ? ch : en" />
       </div>
-      <el-dropdown>
+      <!-- 退出登陆 -->
+      <el-dropdown trigger="click">
         <span class="el-dropdown-link">
           <img :src="favicon" />
           <p>{{ usename }}</p>
         </span>
         <template #dropdown>
           <el-dropdown-menu>
-            <el-dropdown-item icon="el-icon-switch-button" @click="logout">
-              {{ $t("LoginOut") }}
-            </el-dropdown-item>
+            <el-dropdown-item icon="el-icon-switch-button" @click="logout">{{ $t("LoginOut") }}</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -48,7 +49,7 @@ export default defineComponent({
   components: {
     Breadcrumb,
     Hamburger,
-    screenfull,
+    screenfull
   },
   setup() {
     let langs = ref(true);
@@ -95,7 +96,7 @@ export default defineComponent({
       en,
       favicon
     };
-  },
+  }
 });
 </script>
 
@@ -149,12 +150,10 @@ export default defineComponent({
       display: flex;
       align-items: center;
       justify-content: space-around;
-      margin-right: 20px;
+      margin-right: 10px;
+      cursor: pointer;
       p {
         font-size: 13px;
-      }
-      &:hover {
-        background: #f0f0f0;
       }
       img {
         width: 22px;
