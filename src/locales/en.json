@@ -19,5 +19,6 @@
   "countTo": "Digital Animation",
   "selector": "Selector Components",
   "flowChart": "flow Chart",
-  "seamless": "Seamless Scroll"
+  "seamless": "Seamless Scroll",
+  "refreshRoute": "refreshRoute"
 }

@@ -19,5 +19,6 @@
   "countTo": "数字动画",
   "selector": "选择器组件",
   "flowChart": "流程图",
-  "seamless": "无缝滚动"
+  "seamless": "无缝滚动",
+  "refreshRoute": "刷新路由"
 }

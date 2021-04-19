@@ -16,7 +16,7 @@
           <!-- 右侧功能按钮 -->
           <ul class="right-func">
             <li>
-              <i class="el-icon-refresh-right" @click="onFresh"></i>
+              <i :title="$t('refreshRoute')" class="el-icon-refresh-right rotate" @click="onFresh"></i>
             </li>
             <li>
               <i class="el-icon-arrow-down"></i>
@@ -55,8 +55,9 @@ import {
 } from "vue";
 import { useStore } from "vuex";
 import { useEventListener, useFullscreen } from "@vueuse/core";
-import { toggleClass } from "/@/utils/operate";
+import { toggleClass, removeClass } from "/@/utils/operate";
 let hiddenMainContainer = "hidden-main-container";
+let refreshDiv = "refresh-div";
 import options from "/@/settings";
 import { useRouter, useRoute } from "vue-router";
 
@@ -154,10 +155,14 @@ export default {
     }
 
     function onFresh() {
+      toggleClass(true, refreshDiv, document.querySelector(".rotate"));
       const { path, fullPath } = unref(route);
       router.replace({
         path: "/redirect" + fullPath
       });
+      setTimeout(() => {
+        removeClass(document.querySelector(".rotate"), refreshDiv);
+      }, 600);
     }
 
     onMounted(() => {
@@ -252,5 +257,47 @@ $sideBarWidth: 210px;
 }
 .hidden-main-container {
   margin-left: 0 !important;
+}
+.refresh-div {
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-duration: 600ms;
+  -moz-transition-property: -moz-transform;
+  -moz-transition-duration: 600ms;
+  -webkit-animation: rotate 600ms linear infinite;
+  -moz-animation: rotate 600ms linear infinite;
+  -o-animation: rotate 600ms linear infinite;
+  animation: rotate 600ms linear infinite;
+}
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-moz-keyframes rotate {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-o-keyframes rotate {
+  from {
+    -o-transform: rotate(0deg);
+  }
+  to {
+    -o-transform: rotate(360deg);
+  }
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 </style>
