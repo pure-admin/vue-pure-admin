@@ -16,7 +16,7 @@
           <!-- 右侧功能按钮 -->
           <ul class="right-func">
             <li>
-              <i class="el-icon-refresh-right"></i>
+              <i class="el-icon-refresh-right" @click="onFresh"></i>
             </li>
             <li>
               <i class="el-icon-arrow-down"></i>
@@ -58,6 +58,7 @@ import { useEventListener, useFullscreen } from "@vueuse/core";
 import { toggleClass } from "/@/utils/operate";
 let hiddenMainContainer = "hidden-main-container";
 import options from "/@/settings";
+import { useRouter, useRoute } from "vue-router";
 
 interface setInter {
   sidebar: any;
@@ -77,6 +78,9 @@ export default {
   },
   setup() {
     const store = useStore();
+
+    const router = useRouter();
+    const route = useRoute();
 
     const WIDTH = ref(992);
 
@@ -149,6 +153,13 @@ export default {
       }
     }
 
+    function onFresh() {
+      const { path, fullPath } = unref(route);
+      router.replace({
+        path: "/redirect" + fullPath
+      });
+    }
+
     onMounted(() => {
       const isMobile = $_isMobile();
       if (isMobile) {
@@ -170,7 +181,8 @@ export default {
       ...toRefs(set),
       handleClickOutside,
       containerHiddenSideBar,
-      onFullScreen
+      onFullScreen,
+      onFresh
     };
   }
 };

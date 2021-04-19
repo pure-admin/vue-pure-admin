@@ -1,118 +1,153 @@
-import { createRouter, createWebHistory, createWebHashHistory, RouteRecordRaw } from "vue-router"
+import {
+  createRouter,
+  createWebHistory,
+  createWebHashHistory,
+  RouteRecordRaw,
+} from "vue-router";
 
-import Layout from '../layout/index.vue'
+import Layout from "../layout/index.vue";
 
-import { storageSession } from "../utils/storage"
+import { storageSession } from "../utils/storage";
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
-    name: 'home',
+    path: "/",
+    name: "home",
     component: Layout,
     redirect: "/welcome",
-    children: [{
-      path: '/welcome',
-      name: 'welcome',
-      component: () => import(/* webpackChunkName: "home" */ '../views/welcome.vue'),
-      meta: {
-        title: 'home',
-        showLink: true,
-        savedPosition: false
-      }
-    }],
-    meta: {
-      icon: 'el-icon-s-home',
-      showLink: true,
-      savedPosition: false,
-    }
-  },
-  {
-    path: '/components',
-    name: 'components',
-    component: Layout,
-    redirect: '/components/split-pane',
     children: [
       {
-        path: '/components/video',
-        component: () => import(/* webpackChunkName: "components" */ '../views/components/video/index.vue'),
+        path: "/welcome",
+        name: "welcome",
+        component: () =>
+          import(/* webpackChunkName: "home" */ "../views/welcome.vue"),
         meta: {
-          title: 'video',
+          title: "home",
+          showLink: true,
+          savedPosition: false,
+        },
+      },
+    ],
+    meta: {
+      icon: "el-icon-s-home",
+      showLink: true,
+      savedPosition: false,
+    },
+  },
+  {
+    path: "/components",
+    name: "components",
+    component: Layout,
+    redirect: "/components/split-pane",
+    children: [
+      {
+        path: "/components/video",
+        component: () =>
+          import(
+            /* webpackChunkName: "components" */ "../views/components/video/index.vue"
+          ),
+        meta: {
+          title: "video",
           showLink: false,
-          savedPosition: true
-        }
+          savedPosition: true,
+        },
       },
       {
-        path: '/components/map',
-        component: () => import(/* webpackChunkName: "components" */ '../views/components/map/index.vue'),
+        path: "/components/map",
+        component: () =>
+          import(
+            /* webpackChunkName: "components" */ "../views/components/map/index.vue"
+          ),
         meta: {
-          title: 'map',
+          title: "map",
           showLink: false,
-          savedPosition: true
-        }
+          savedPosition: true,
+        },
       },
       {
-        path: '/components/draggable',
-        component: () => import(/* webpackChunkName: "components" */ '../views/components/draggable/index.vue'),
+        path: "/components/draggable",
+        component: () =>
+          import(
+            /* webpackChunkName: "components" */ "../views/components/draggable/index.vue"
+          ),
         meta: {
-          title: 'draggable',
+          title: "draggable",
           showLink: false,
-          savedPosition: true
-        }
+          savedPosition: true,
+        },
       },
       {
-        path: '/components/split-pane',
-        component: () => import(/* webpackChunkName: "components" */ '../views/components/split-pane/index.vue'),
+        path: "/components/split-pane",
+        component: () =>
+          import(
+            /* webpackChunkName: "components" */ "../views/components/split-pane/index.vue"
+          ),
         meta: {
-          title: 'split-pane',
+          title: "split-pane",
           showLink: false,
-          savedPosition: true
-        }
+          savedPosition: true,
+        },
       },
       {
-        path: '/components/button',
-        component: () => import(/* webpackChunkName: "components" */ '../views/components/button/index.vue'),
+        path: "/components/button",
+        component: () =>
+          import(
+            /* webpackChunkName: "components" */ "../views/components/button/index.vue"
+          ),
         meta: {
-          title: 'button',
+          title: "button",
           showLink: false,
-          savedPosition: true
-        }
+          savedPosition: true,
+        },
       },
       {
-        path: '/components/cropping',
-        component: () => import(/* webpackChunkName: "components" */ '../views/components/cropping/index.vue'),
+        path: "/components/cropping",
+        component: () =>
+          import(
+            /* webpackChunkName: "components" */ "../views/components/cropping/index.vue"
+          ),
         meta: {
-          title: 'cropping',
+          title: "cropping",
           showLink: false,
-          savedPosition: true
-        }
+          savedPosition: true,
+        },
       },
       {
-        path: '/components/countTo',
-        component: () => import(/* webpackChunkName: "components" */ '../views/components/count-to/index.vue'),
+        path: "/components/countTo",
+        component: () =>
+          import(
+            /* webpackChunkName: "components" */ "../views/components/count-to/index.vue"
+          ),
         meta: {
-          title: 'countTo',
+          title: "countTo",
           showLink: false,
-          savedPosition: true
-        }
+          savedPosition: true,
+        },
       },
       {
-        path: '/components/selector',
-        component: () => import(/* webpackChunkName: "components" */ '../views/components/selector/index.vue'),
+        path: "/components/selector",
+        component: () =>
+          import(
+            /* webpackChunkName: "components" */ "../views/components/selector/index.vue"
+          ),
         meta: {
-          title: 'selector',
+          title: "selector",
           showLink: false,
-          savedPosition: true
-        }
+          savedPosition: true,
+        },
       },
       {
-        path: '/components/seamlessScroll',
-        component: () => import(/* webpackChunkName: "components" */ '../views/components/seamless-scroll/index.vue'),
+        path: "/components/seamlessScroll",
+        component: () =>
+          import(
+            /* webpackChunkName: "components" */ "../views/components/seamless-scroll/index.vue"
+          ),
         meta: {
-          title: 'seamless',
+          title: "seamless",
           showLink: false,
-          savedPosition: true
-        }
-      }
+          savedPosition: true,
+        },
+      },
       // {
       //   path: '/components/flowChart',
       //   component: () => import(/* webpackChunkName: "components" */ '../views/components/flow-chart/index.vue'),
@@ -124,146 +159,165 @@ const routes: Array<RouteRecordRaw> = [
       // }
     ],
     meta: {
-      icon: 'el-icon-menu',
-      title: 'components',
+      icon: "el-icon-menu",
+      title: "components",
       showLink: true,
-      savedPosition: true
-    }
+      savedPosition: true,
+    },
   },
   {
-    path: '/flowChart',
-    name: 'flowChart',
+    path: "/flowChart",
+    name: "flowChart",
     component: Layout,
-    redirect: '/flowChart/index',
+    redirect: "/flowChart/index",
     children: [
       {
-        path: '/flowChart/index',
-        component: () => import(/* webpackChunkName: "user" */ '../views/flow-chart/index.vue'),
+        path: "/flowChart/index",
+        component: () =>
+          import(
+            /* webpackChunkName: "user" */ "../views/flow-chart/index.vue"
+          ),
         meta: {
-          title: 'flowChart',
+          title: "flowChart",
           showLink: false,
-          savedPosition: true
-        }
+          savedPosition: true,
+        },
       },
     ],
     meta: {
-      icon: 'el-icon-set-up',
-      title: 'flowChart',
+      icon: "el-icon-set-up",
+      title: "flowChart",
       showLink: true,
-      savedPosition: true
-    }
+      savedPosition: true,
+    },
   },
   {
-    path: '/editor',
-    name: 'editor',
+    path: "/editor",
+    name: "editor",
     component: Layout,
-    redirect: '/editor/index',
+    redirect: "/editor/index",
     children: [
       {
-        path: '/editor/index',
-        component: () => import(/* webpackChunkName: "user" */ '../views/editor/index.vue'),
+        path: "/editor/index",
+        component: () =>
+          import(/* webpackChunkName: "user" */ "../views/editor/index.vue"),
         meta: {
           // icon: 'el-icon-edit-outline',
-          title: 'editor',
+          title: "editor",
           showLink: false,
-          savedPosition: true
-        }
+          savedPosition: true,
+        },
       },
     ],
     meta: {
-      icon: 'el-icon-edit-outline',
-      title: 'editor',
+      icon: "el-icon-edit-outline",
+      title: "editor",
       showLink: true,
-      savedPosition: true
-    }
+      savedPosition: true,
+    },
   },
   {
-    path: '/user',
-    name: 'user',
+    path: "/user",
+    name: "user",
     component: Layout,
-    redirect: '/user/base',
+    redirect: "/user/base",
     children: [
       {
-        path: '/user/base',
-        component: () => import(/* webpackChunkName: "user" */ '../views/user.vue'),
+        path: "/user/base",
+        component: () =>
+          import(/* webpackChunkName: "user" */ "../views/user.vue"),
         meta: {
           // icon: 'el-icon-user',
-          title: 'baseinfo',
+          title: "baseinfo",
           showLink: false,
-          savedPosition: true
-        }
+          savedPosition: true,
+        },
       },
     ],
     meta: {
-      icon: 'el-icon-user',
-      title: 'usermanagement',
+      icon: "el-icon-user",
+      title: "usermanagement",
       showLink: true,
-      savedPosition: true
-    }
+      savedPosition: true,
+    },
   },
   {
-    path: '/error',
-    name: 'error',
+    path: "/error",
+    name: "error",
     component: Layout,
-    redirect: '/error/401',
+    redirect: "/error/401",
     children: [
       {
-        path: '/error/401',
-        component: () => import(/* webpackChunkName: "error" */ '../views/error/401.vue'),
+        path: "/error/401",
+        component: () =>
+          import(/* webpackChunkName: "error" */ "../views/error/401.vue"),
         meta: {
-          title: '401',
+          title: "401",
           showLink: false,
-          savedPosition: true
-        }
+          savedPosition: true,
+        },
       },
       {
-        path: '/error/404',
-        component: () => import(/* webpackChunkName: "error" */ '../views/error/404.vue'),
+        path: "/error/404",
+        component: () =>
+          import(/* webpackChunkName: "error" */ "../views/error/404.vue"),
         meta: {
-          title: '404',
+          title: "404",
           showLink: false,
-          savedPosition: true
-        }
+          savedPosition: true,
+        },
       },
     ],
     meta: {
-      icon: 'el-icon-position',
-      title: 'error',
+      icon: "el-icon-position",
+      title: "error",
       showLink: true,
-      savedPosition: true
-    }
+      savedPosition: true,
+    },
   },
   {
-    path: '/login',
-    name: 'login',
-    component: () => import(/* webpackChunkName: "login" */ '../views/login.vue'),
+    path: "/login",
+    name: "login",
+    component: () =>
+      import(/* webpackChunkName: "login" */ "../views/login.vue"),
     meta: {
-      title: '登陆',
-      showLink: false
-    }
+      title: "登陆",
+      showLink: false,
+    },
   },
   {
-    path: '/register',
-    name: 'register',
-    component: () => import(/* webpackChunkName: "register" */ '../views/register.vue'),
+    path: "/register",
+    name: "register",
+    component: () =>
+      import(/* webpackChunkName: "register" */ "../views/register.vue"),
     meta: {
-      title: '注册',
-      showLink: false
-    }
+      title: "注册",
+      showLink: false,
+    },
   },
   {
     // 找不到路由重定向到404页面
-    path: '/:pathMatch(.*)',
+    path: "/:pathMatch(.*)",
     component: Layout,
     redirect: "/error/404",
     meta: {
-      icon: 'el-icon-s-home',
-      title: '首页',
+      icon: "el-icon-s-home",
+      title: "首页",
       showLink: false,
       savedPosition: false,
-    }
+    },
   },
-]
+  {
+    path: "/redirect",
+    component: Layout,
+    children: [
+      {
+        path: "/redirect/:path(.*)",
+        component: () => import("../views/redirect.vue"),
+      },
+    ],
+  },
+];
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -271,30 +325,33 @@ const router = createRouter({
   scrollBehavior(to, from, savedPosition) {
     return new Promise((resolve, reject) => {
       if (savedPosition) {
-        return savedPosition
+        return savedPosition;
       } else {
         if (from.meta.saveSrollTop) {
-          const top: number = document.documentElement.scrollTop || document.body.scrollTop
-          resolve({ left: 0, top })
+          const top: number =
+            document.documentElement.scrollTop || document.body.scrollTop;
+          resolve({ left: 0, top });
         }
       }
-    })
-  }
-})
+    });
+  },
+});
 
-import NProgress from "../utils/progress"
+import NProgress from "../utils/progress";
 
-const whiteList = ["/login", "/register"]
+const whiteList = ["/login", "/register"];
 
 router.beforeEach((to, _from, next) => {
-  NProgress.start()
+  NProgress.start();
   // @ts-ignore
-  document.title = to.meta.title // 动态title
-  whiteList.indexOf(to.path) !== -1 || storageSession.getItem("info") ? next() : next("/login") // 全部重定向到登录页
-})
+  document.title = to.meta.title; // 动态title
+  whiteList.indexOf(to.path) !== -1 || storageSession.getItem("info")
+    ? next()
+    : next("/login"); // 全部重定向到登录页
+});
 
 router.afterEach(() => {
-  NProgress.done()
-})
+  NProgress.done();
+});
 
-export default router
+export default router;
