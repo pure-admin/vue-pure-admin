@@ -7,7 +7,7 @@
             prefix="$"
             :duration="1000"
             :color="'#409EFF'"
-            :fontSize="'60px'"
+            :fontSize="'2.3em'"
             :startVal="1"
             :endVal="1000"
           />
@@ -19,7 +19,7 @@
             prefix="$"
             :duration="2000"
             :color="'green'"
-            :fontSize="'60px'"
+            :fontSize="'2.3em'"
             :startVal="1"
             :endVal="2000"
           />

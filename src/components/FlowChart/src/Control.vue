@@ -25,7 +25,7 @@
 </template>
 
 <script lang='ts'>
-import { defineComponent, ref, unref, onMounted } from "vue";
+import { defineComponent, ref, unref, onMounted, onUnmounted } from "vue";
 import { templateRef } from "@vueuse/core";
 
 export default defineComponent({
@@ -115,6 +115,10 @@ export default defineComponent({
         ).disabled = !redoAble;
       });
     });
+
+    // onUnmounted(() => {
+    //   console.log(props.lf);
+    // });
 
     return {
       focusIndex,

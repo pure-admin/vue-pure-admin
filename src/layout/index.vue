@@ -10,7 +10,7 @@
     <div class="main-container">
       <div :class="{ 'fixed-header': fixedHeader }">
         <!-- 顶部导航栏 -->
-        <navbar v-if="!containerHiddenSideBar" />
+        <navbar v-show="!containerHiddenSideBar" />
         <!-- tabs标签页 -->
         <tag>
           <i
