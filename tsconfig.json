@@ -15,26 +15,14 @@
     "baseUrl": ".",
     "allowJs": true,
     "resolveJsonModule": true, // 包含导入的模块。json的扩展
-    "lib": [
-      "dom",
-      "esnext"
-    ],
+    "lib": ["dom", "esnext"],
     "incremental": true,
     "paths": {
-      "/@/*": [
-        "src/*"
-      ],
-      "/#/*": [
-        "types/*"
-      ]
+      "/@/*": ["src/*"],
+      "/#/*": ["types/*"]
     },
-    "types": [
-      "node"
-    ],
-    "typeRoots": [
-      "./node_modules/@types/",
-      "./types"
-    ],
+    "types": ["node"],
+    "typeRoots": ["./node_modules/@types/", "./types"]
   },
   "include": [
     "src/**/*.ts",
@@ -44,11 +32,9 @@
     "src/utils/path.js",
     "types/**/*.d.ts",
     "types/**/*.ts",
-    "types/shims-tsx.d.ts"
+    "types/global.d.ts",
+    "types/shims-tsx.d.ts",
+    "types/shims-vue.d.ts"
   ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "**/*.js"
-  ],
+  "exclude": ["node_modules", "dist", "**/*.js"]
 }

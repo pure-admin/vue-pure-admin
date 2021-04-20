@@ -13,21 +13,10 @@
         <navbar v-if="!containerHiddenSideBar" />
         <!-- tabs标签页 -->
         <tag>
-          <!-- 右侧功能按钮 -->
-          <ul class="right-func">
-            <li>
-              <i :title="$t('refreshRoute')" class="el-icon-refresh-right rotate" @click="onFresh"></i>
-            </li>
-            <li>
-              <i class="el-icon-arrow-down"></i>
-            </li>
-            <li>
-              <i
-                :class="containerHiddenSideBar? 'iconfont team-iconhidden-main-container': 'iconfont team-iconshow-main-container'"
-                @click="onFullScreen"
-              ></i>
-            </li>
-          </ul>
+          <i
+            :class="containerHiddenSideBar? 'iconfont team-iconhidden-main-container': 'iconfont team-iconshow-main-container'"
+            @click="onFullScreen"
+          ></i>
         </tag>
       </div>
       <!-- 主体内容 -->
@@ -57,7 +46,6 @@ import { useStore } from "vuex";
 import { useEventListener, useFullscreen } from "@vueuse/core";
 import { toggleClass, removeClass } from "/@/utils/operate";
 let hiddenMainContainer = "hidden-main-container";
-let refreshDiv = "refresh-div";
 import options from "/@/settings";
 import { useRouter, useRoute } from "vue-router";
 
@@ -154,17 +142,6 @@ export default {
       }
     }
 
-    function onFresh() {
-      toggleClass(true, refreshDiv, document.querySelector(".rotate"));
-      const { path, fullPath } = unref(route);
-      router.replace({
-        path: "/redirect" + fullPath
-      });
-      setTimeout(() => {
-        removeClass(document.querySelector(".rotate"), refreshDiv);
-      }, 600);
-    }
-
     onMounted(() => {
       const isMobile = $_isMobile();
       if (isMobile) {
@@ -186,8 +163,7 @@ export default {
       ...toRefs(set),
       handleClickOutside,
       containerHiddenSideBar,
-      onFullScreen,
-      onFresh
+      onFullScreen
     };
   }
 };
@@ -240,64 +216,7 @@ $sideBarWidth: 210px;
   width: 100%;
 }
 
-.right-func {
-  display: flex;
-  align-items: center;
-  background: #fff;
-  border: 0.5px solid rgba($color: #ccc, $alpha: 0.3);
-  font-size: 16px;
-  li {
-    width: 40px;
-    height: 34px;
-    line-height: 34px;
-    text-align: center;
-    border-right: 1px solid #ccc;
-    cursor: pointer;
-  }
-}
 .hidden-main-container {
   margin-left: 0 !important;
-}
-.refresh-div {
-  -webkit-transition-property: -webkit-transform;
-  -webkit-transition-duration: 600ms;
-  -moz-transition-property: -moz-transform;
-  -moz-transition-duration: 600ms;
-  -webkit-animation: rotate 600ms linear infinite;
-  -moz-animation: rotate 600ms linear infinite;
-  -o-animation: rotate 600ms linear infinite;
-  animation: rotate 600ms linear infinite;
-}
-@-webkit-keyframes rotate {
-  from {
-    -webkit-transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-  }
-}
-@-moz-keyframes rotate {
-  from {
-    -moz-transform: rotate(0deg);
-  }
-  to {
-    -moz-transform: rotate(360deg);
-  }
-}
-@-o-keyframes rotate {
-  from {
-    -o-transform: rotate(0deg);
-  }
-  to {
-    -o-transform: rotate(360deg);
-  }
-}
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 </style>
