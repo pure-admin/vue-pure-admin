@@ -22,12 +22,13 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from "vue";
+import { computed, defineComponent, unref, nextTick } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex";
 import SidebarItem from "./SidebarItem.vue";
 import { algorithm } from "../../../utils/algorithm";
 import { useDynamicRoutesHook } from "../tag/tagsHook";
+import { emitter } from "/@/utils/mitt";
 
 export default defineComponent({
   name: "sidebar",
@@ -55,15 +56,27 @@ export default defineComponent({
       if (parentPathIndex > 0) {
         parentPath = indexPath.slice(0, parentPathIndex);
       }
-      dynamicRouteTags(indexPath, parentPath);
+      // 找到当前路由的信息
+      function findCurrentRoute(routes) {
+        return routes.map((item, key) => {
+          if (item.path === indexPath) {
+            dynamicRouteTags(indexPath, parentPath, item);
+          } else {
+            if (item.children) findCurrentRoute(item.children);
+          }
+        });
+        return;
+      }
+      findCurrentRoute(algorithm.increaseIndexes(router));
+      emitter.emit("changLayoutRoute", indexPath);
     };
 
     return {
       routes: computed(() => algorithm.increaseIndexes(router)),
       activeMenu,
       isCollapse: computed(() => !store.getters.sidebar.opened),
-      menuSelect,
+      menuSelect
     };
-  },
+  }
 });
 </script>

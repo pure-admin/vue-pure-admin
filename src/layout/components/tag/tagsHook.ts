@@ -1,6 +1,7 @@
-import { reactive, toRefs, nextTick, computed } from "vue";
+import { reactive, toRefs, unref, nextTick, computed } from "vue";
 import { storageLocal } from "/@/utils/storage";
 import { useRouter } from "vue-router";
+import { homeRoute } from "./type";
 
 interface InterDynamic {
   dRoutes: object[];
@@ -24,14 +25,46 @@ let dynamic: InterDynamic = reactive({
 
 export function useDynamicRoutesHook() {
   const router = useRouter();
+  const routesLength = computed(() => {
+    return storageLocal.getItem("routesInStorage")
+      ? storageLocal.getItem("routesInStorage").length
+      : 0;
+  });
+  // 返回当前路由组成的数组
+  const routesStorageLists = computed(() => {
+    return storageLocal.getItem("routesInStorage")
+      ? storageLocal.getItem("routesInStorage")
+      : [];
+  });
   /**
    * @param value string 当前menu对应的路由path
    * @param parentPath string 当前路由中父级路由
    */
-  const dynamicRouteTags = (value: string, parentPath: string): void => {
+  const dynamicRouteTags = (
+    value: string,
+    parentPath: string,
+    route: any
+  ): void => {
+    nextTick(() => {
+      if (unref(routesStorageLists).length > 2) {
+        dynamic.dRoutes = unref(routesStorageLists);
+        return;
+      }
+    });
+
     const hasValue = dynamic.dRoutes.some((item: any) => {
       return item.path === value;
     });
+
+    if (route) {
+      let ramStorage = storageLocal.getItem("routesInStorage");
+      nextTick(() => {
+        let currentIndex = ramStorage.findIndex((v) => v.path === route.path);
+        if (currentIndex !== -1) return;
+        ramStorage.push({ path: route.path, meta: route.meta });
+        storageLocal.setItem("routesInStorage", ramStorage);
+      });
+    }
 
     function concatPath(arr: object[], value: string, parentPath: string) {
       if (!hasValue) {
@@ -39,6 +72,10 @@ export function useDynamicRoutesHook() {
           let pathConcat = parentPath + "/" + arrItem.path;
           if (arrItem.path === value || pathConcat === value) {
             dynamic.dRoutes.push({ path: value, meta: arrItem.meta });
+
+            unref(routesLength) === 0
+              ? storageLocal.setItem("routesInStorage", dynamic.dRoutes)
+              : [];
           } else {
             if (arrItem.children && arrItem.children.length > 0) {
               concatPath(arrItem.children, value, parentPath);
@@ -48,12 +85,6 @@ export function useDynamicRoutesHook() {
       }
     }
     concatPath(router.options.routes, value, parentPath);
-    // if (storageLocal.getItem("routesInStorage") && storageLocal.getItem("routesInStorage").length > 2) {
-    //   let lens = storageLocal.getItem("routesInStorage").length
-    //   let itemss = storageLocal.getItem("routesInStorage")[lens - 1]
-    //   dynamic.dRoutes.push({ path: itemss.path, meta: itemss.meta })
-    // }
-    storageLocal.setItem("routesInStorage", dynamic.dRoutes);
   };
   /**
    * @param value any 当前删除tag路由
@@ -76,16 +107,12 @@ export function useDynamicRoutesHook() {
       });
     }
   };
-  const routesLength = computed(() => {
-    return storageLocal.getItem("routesInStorage")
-      ? storageLocal.getItem("routesInStorage").length
-      : 0;
-  });
 
   return {
     ...toRefs(dynamic),
     dynamicRouteTags,
     deleteDynamicTag,
     routesLength,
+    routesStorageLists,
   };
 }

@@ -20,12 +20,7 @@
       </app-link>
     </template>
 
-    <el-submenu
-      v-else
-      ref="subMenu"
-      :index="resolvePath(item.path)"
-      popper-append-to-body
-    >
+    <el-submenu v-else ref="subMenu" :index="resolvePath(item.path)" popper-append-to-body>
       <template #title>
         <i :class="item.meta.icon"></i>
         <span>{{ $t(item.meta.title) }}</span>
@@ -53,16 +48,16 @@ export default defineComponent({
   props: {
     item: {
       type: Object as PropType<RouteRecordRaw>,
-      required: true,
+      required: true
     },
     isNest: {
       type: Boolean,
-      default: false,
+      default: false
     },
     basePath: {
       type: String,
-      default: "",
-    },
+      default: ""
+    }
   },
   setup(props) {
     const onlyOneChild = ref<RouteRecordRaw>({} as any);
@@ -71,7 +66,7 @@ export default defineComponent({
       children: RouteRecordRaw[] = [],
       parent: RouteRecordRaw
     ) {
-      const showingChildren = children.filter((item) => {
+      const showingChildren = children.filter(item => {
         if (item.hidden) {
           return false;
         } else {
@@ -96,6 +91,6 @@ export default defineComponent({
     };
 
     return { hasOneShowingChild, resolvePath, onlyOneChild };
-  },
+  }
 });
 </script>

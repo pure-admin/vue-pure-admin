@@ -42,11 +42,11 @@
 <script>
 import { useDynamicRoutesHook } from "./tagsHook"
 import { useRoute, useRouter } from "vue-router"
-import { ref, watchEffect, onBeforeMount, unref } from "vue"
+import { ref, watchEffect, onBeforeMount, unref, nextTick } from "vue"
 import { storageLocal } from "/@/utils/storage"
 import { emitter } from "/@/utils/mitt"
 import { toggleClass, removeClass } from "/@/utils/operate"
-import { nextTick } from 'vue'
+import { homeRoute } from "./type"
 let refreshDiv = "refresh-div"
 
 export default {
@@ -73,20 +73,25 @@ export default {
         icon: "el-icon-more",
         text: "关闭其他标签页",
         divided: true,
-        disabled: false
+        disabled: unref(routesLength) > 2 ? false : true
       },
       {
         icon: "el-icon-minus",
         text: "关闭全部标签页",
         divided: false,
-        disabled: false
+        disabled: unref(routesLength) > 1 ? false : true
       },
     ])
 
     function deleteMenu(item) {
-      let tagslen = storageLocal.getItem("routesInStorage").length - 1
-      if (tagslen === 1) {
-        tagsViews.value[1].disabled = true
+      let tagslen = storageLocal.getItem("routesInStorage").length
+      if (tagslen === 2) {
+        Array.from([1, 2, 3]).forEach(v => {
+          tagsViews.value[v].disabled = true
+        })
+      }
+      if (tagslen === 3) {
+        tagsViews.value[2].disabled = true
       }
       deleteDynamicTag(item, route.path)
     }
@@ -115,6 +120,7 @@ export default {
 
     function onClickDrop(key, item) {
       if (item.disabled) return
+      // 当前路由信息
       switch (key) {
         case 0:
           // 重新加载
@@ -122,25 +128,22 @@ export default {
           break
         case 1:
           // 关闭当前标签页
-          deleteMenu({ meta: route.meta, path: route.path })
+          deleteMenu({ path: route.path, meta: route.meta })
           break
         case 2:
           // 关闭其他标签页
+          dRoutes.value = [homeRoute, { path: route.path, meta: route.meta }]
+          storageLocal.setItem("routesInStorage", dRoutes.value)
+          tagsViews.value[2].disabled = true
           break
         case 3:
           // 关闭全部标签页
-          dRoutes.value = [{
-            path: "/welcome",
-            meta: {
-              title: "home",
-              icon: "el-icon-s-home",
-              showLink: true,
-              savedPosition: false,
-            },
-          }]
+          dRoutes.value = [homeRoute]
           storageLocal.setItem("routesInStorage", dRoutes.value)
           router.push("/welcome")
-          tagsViews.value[1].disabled = true
+          Array.from([1, 2, 3]).forEach(v => {
+            tagsViews.value[v].disabled = true
+          })
           break
       }
     }
@@ -149,6 +152,20 @@ export default {
       emitter.on("tagViewsChange", (key) => {
         if (unref(showTags) === key) return
         showTags.value = key
+      })
+
+      emitter.on("changLayoutRoute", (indexPath) => {
+        let currentLen = storageLocal.getItem("routesInStorage").length
+        if (currentLen === 1) {
+          Array.from([1, 3]).forEach(v => {
+            tagsViews.value[v].disabled = false
+          })
+        }
+        if (currentLen >= 2) {
+          Array.from([1, 2, 3]).forEach(v => {
+            tagsViews.value[v].disabled = false
+          })
+        }
       })
     })
 
