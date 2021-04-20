@@ -50,7 +50,7 @@ export default {
       nextTick(() => {
         initbrokenLine();
       });
-    }, 2000);
+    }, 500);
 
     let greetings = computed(() => {
       if (date.getHours() >= 0 && date.getHours() < 12) {
@@ -62,9 +62,10 @@ export default {
       }
     });
 
-    let initbrokenLine = (): any => {
-      // @ts-ignore
-      brokenLine = echarts.init(document.getElementById("brokenLine"));
+    function initbrokenLine() {
+      const lineRefDom = document.getElementById("brokenLine");
+      if (!lineRefDom) return;
+      brokenLine = echarts.init(lineRefDom);
       brokenLine.clear(); //清除旧画布 重新渲染
 
       echartsJson().then(({ info }) => {
@@ -175,7 +176,7 @@ export default {
           }
         });
       });
-    };
+    }
 
     const openDepot = (): void => {
       window.open("https://github.com/xiaoxian521/vue-pure-admin");
@@ -220,6 +221,7 @@ export default {
     height: 120px;
     background: #fff;
     padding: 20px;
+    border-bottom: 0.5px solid rgba($color: #ccc, $alpha: 0.3);
     .left-mark {
       display: flex;
       align-items: center;

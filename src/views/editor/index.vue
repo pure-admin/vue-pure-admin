@@ -48,5 +48,6 @@ export default {
 }
 :deep(.w-e-toolbar) {
   z-index: 999 !important;
+  position: static;
 }
 </style>

@@ -77,7 +77,9 @@ export function useDynamicRoutesHook() {
     }
   };
   const routesLength = computed(() => {
-    return storageLocal.getItem("routesInStorage").length;
+    return storageLocal.getItem("routesInStorage")
+      ? storageLocal.getItem("routesInStorage").length
+      : 0;
   });
 
   return {
