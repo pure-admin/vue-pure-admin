@@ -67,7 +67,7 @@ export default defineComponent({
     // 国际化语言切换
     const toggleLang = (): void => {
       langs.value = !langs.value;
-      langs.value ? (locale.value = "ch") : (locale.value = "en");
+      langs.value ? (locale.value = "zh") : (locale.value = "en");
     };
 
     // 退出登录
