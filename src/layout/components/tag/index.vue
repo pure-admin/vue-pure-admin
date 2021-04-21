@@ -13,7 +13,11 @@
     <!-- 右侧功能按钮 -->
     <ul class="right-func">
       <li>
-        <i :title="$t('refreshRoute')" class="el-icon-refresh-right rotate" @click="onFresh"></i>
+        <i
+          :title="$t('message.hsrefreshRoute')"
+          class="el-icon-refresh-right rotate"
+          @click="onFresh"
+        ></i>
       </li>
       <li>
         <el-dropdown trigger="click" placement="bottom-end">

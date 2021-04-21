@@ -1,9 +1,4 @@
-import {
-  createRouter,
-  createWebHistory,
-  createWebHashHistory,
-  RouteRecordRaw,
-} from "vue-router";
+import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 
 import Layout from "../layout/index.vue";
 
@@ -22,7 +17,7 @@ const routes: Array<RouteRecordRaw> = [
         component: () =>
           import(/* webpackChunkName: "home" */ "../views/welcome.vue"),
         meta: {
-          title: "home",
+          title: "message.hshome",
           showLink: true,
           savedPosition: false,
         },
@@ -47,7 +42,7 @@ const routes: Array<RouteRecordRaw> = [
             /* webpackChunkName: "components" */ "../views/components/video/index.vue"
           ),
         meta: {
-          title: "video",
+          title: "message.hsvideo",
           showLink: false,
           savedPosition: true,
         },
@@ -59,7 +54,7 @@ const routes: Array<RouteRecordRaw> = [
             /* webpackChunkName: "components" */ "../views/components/map/index.vue"
           ),
         meta: {
-          title: "map",
+          title: "message.hsmap",
           showLink: false,
           savedPosition: true,
         },
@@ -71,7 +66,7 @@ const routes: Array<RouteRecordRaw> = [
             /* webpackChunkName: "components" */ "../views/components/draggable/index.vue"
           ),
         meta: {
-          title: "draggable",
+          title: "message.hsdraggable",
           showLink: false,
           savedPosition: true,
         },
@@ -83,7 +78,7 @@ const routes: Array<RouteRecordRaw> = [
             /* webpackChunkName: "components" */ "../views/components/split-pane/index.vue"
           ),
         meta: {
-          title: "split-pane",
+          title: "message.hssplitPane",
           showLink: false,
           savedPosition: true,
         },
@@ -95,7 +90,7 @@ const routes: Array<RouteRecordRaw> = [
             /* webpackChunkName: "components" */ "../views/components/button/index.vue"
           ),
         meta: {
-          title: "button",
+          title: "message.hsbutton",
           showLink: false,
           savedPosition: true,
         },
@@ -107,7 +102,7 @@ const routes: Array<RouteRecordRaw> = [
             /* webpackChunkName: "components" */ "../views/components/cropping/index.vue"
           ),
         meta: {
-          title: "cropping",
+          title: "message.hscropping",
           showLink: false,
           savedPosition: true,
         },
@@ -119,7 +114,7 @@ const routes: Array<RouteRecordRaw> = [
             /* webpackChunkName: "components" */ "../views/components/count-to/index.vue"
           ),
         meta: {
-          title: "countTo",
+          title: "message.hscountTo",
           showLink: false,
           savedPosition: true,
         },
@@ -131,7 +126,7 @@ const routes: Array<RouteRecordRaw> = [
             /* webpackChunkName: "components" */ "../views/components/selector/index.vue"
           ),
         meta: {
-          title: "selector",
+          title: "message.hsselector",
           showLink: false,
           savedPosition: true,
         },
@@ -143,7 +138,7 @@ const routes: Array<RouteRecordRaw> = [
             /* webpackChunkName: "components" */ "../views/components/seamless-scroll/index.vue"
           ),
         meta: {
-          title: "seamless",
+          title: "message.hsseamless",
           showLink: false,
           savedPosition: true,
         },
@@ -152,7 +147,7 @@ const routes: Array<RouteRecordRaw> = [
       //   path: '/components/flowChart',
       //   component: () => import(/* webpackChunkName: "components" */ '../views/components/flow-chart/index.vue'),
       //   meta: {
-      //     title: 'flowChart',
+      //     title: 'message.hsflowChart',
       //     showLink: false,
       //     savedPosition: true
       //   }
@@ -160,7 +155,7 @@ const routes: Array<RouteRecordRaw> = [
     ],
     meta: {
       icon: "el-icon-menu",
-      title: "components",
+      title: "message.hscomponents",
       showLink: true,
       savedPosition: true,
     },
@@ -178,7 +173,7 @@ const routes: Array<RouteRecordRaw> = [
             /* webpackChunkName: "user" */ "../views/flow-chart/index.vue"
           ),
         meta: {
-          title: "flowChart",
+          title: "message.hsflowChart",
           showLink: false,
           savedPosition: true,
         },
@@ -186,7 +181,7 @@ const routes: Array<RouteRecordRaw> = [
     ],
     meta: {
       icon: "el-icon-set-up",
-      title: "flowChart",
+      title: "message.hsflowChart",
       showLink: true,
       savedPosition: true,
     },
@@ -203,7 +198,7 @@ const routes: Array<RouteRecordRaw> = [
           import(/* webpackChunkName: "user" */ "../views/editor/index.vue"),
         meta: {
           // icon: 'el-icon-edit-outline',
-          title: "editor",
+          title: "message.hseditor",
           showLink: false,
           savedPosition: true,
         },
@@ -211,7 +206,7 @@ const routes: Array<RouteRecordRaw> = [
     ],
     meta: {
       icon: "el-icon-edit-outline",
-      title: "editor",
+      title: "message.hseditor",
       showLink: true,
       savedPosition: true,
     },
@@ -228,7 +223,7 @@ const routes: Array<RouteRecordRaw> = [
           import(/* webpackChunkName: "user" */ "../views/user.vue"),
         meta: {
           // icon: 'el-icon-user',
-          title: "baseinfo",
+          title: "message.hsBaseinfo",
           showLink: false,
           savedPosition: true,
         },
@@ -236,7 +231,7 @@ const routes: Array<RouteRecordRaw> = [
     ],
     meta: {
       icon: "el-icon-user",
-      title: "usermanagement",
+      title: "message.hsuserManagement",
       showLink: true,
       savedPosition: true,
     },
@@ -252,7 +247,7 @@ const routes: Array<RouteRecordRaw> = [
         component: () =>
           import(/* webpackChunkName: "error" */ "../views/error/401.vue"),
         meta: {
-          title: "401",
+          title: "message.hsfourZeroOne",
           showLink: false,
           savedPosition: true,
         },
@@ -262,7 +257,7 @@ const routes: Array<RouteRecordRaw> = [
         component: () =>
           import(/* webpackChunkName: "error" */ "../views/error/404.vue"),
         meta: {
-          title: "404",
+          title: "message.hsfourZeroFour",
           showLink: false,
           savedPosition: true,
         },
@@ -270,7 +265,7 @@ const routes: Array<RouteRecordRaw> = [
     ],
     meta: {
       icon: "el-icon-position",
-      title: "error",
+      title: "message.hserror",
       showLink: true,
       savedPosition: true,
     },
@@ -281,7 +276,7 @@ const routes: Array<RouteRecordRaw> = [
     component: () =>
       import(/* webpackChunkName: "login" */ "../views/login.vue"),
     meta: {
-      title: "登陆",
+      title: "message.hslogin",
       showLink: false,
     },
   },
@@ -291,7 +286,7 @@ const routes: Array<RouteRecordRaw> = [
     component: () =>
       import(/* webpackChunkName: "register" */ "../views/register.vue"),
     meta: {
-      title: "注册",
+      title: "message.hsregister",
       showLink: false,
     },
   },
@@ -302,7 +297,7 @@ const routes: Array<RouteRecordRaw> = [
     redirect: "/error/404",
     meta: {
       icon: "el-icon-s-home",
-      title: "首页",
+      title: "message.hshome",
       showLink: false,
       savedPosition: false,
     },
@@ -344,7 +339,7 @@ const whiteList = ["/login", "/register"];
 router.beforeEach((to, _from, next) => {
   NProgress.start();
   // @ts-ignore
-  document.title = to.meta.title; // 动态title
+  // document.title = $t(to.meta.title); // 动态title
   whiteList.indexOf(to.path) !== -1 || storageSession.getItem("info")
     ? next()
     : next("/login"); // 全部重定向到登录页

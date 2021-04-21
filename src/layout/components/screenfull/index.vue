@@ -1,7 +1,7 @@
 <template>
   <div class="screen-full" @click="toggle">
     <i
-      :title="isFullscreen ? $t('exitfullscreen') : $t('fullscreen')"
+      :title="isFullscreen ? $t('message.hsexitfullscreen') : $t('message.hsfullscreen')"
       :class="
         isFullscreen
           ? 'iconfont team-iconexit-fullscreen'

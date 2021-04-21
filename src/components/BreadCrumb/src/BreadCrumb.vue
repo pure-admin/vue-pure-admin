@@ -5,11 +5,12 @@
         <span
           v-if="item.redirect === 'noRedirect' || index == levelList.length - 1"
           class="no-redirect"
-          >{{ $t(item.meta.title) }}</span
-        >
-        <a v-else @click.prevent="handleLink(item)">{{
+        >{{ $t(item.meta.title) }}</span>
+        <a v-else @click.prevent="handleLink(item)">
+          {{
           $t(item.meta.title)
-        }}</a>
+          }}
+        </a>
       </el-breadcrumb-item>
     </transition-group>
   </el-breadcrumb>
@@ -36,20 +37,18 @@ export default defineComponent({
     };
 
     const getBreadcrumb = (): void => {
-      let matched = route.matched.filter(
-        (item) => item.meta && item.meta.title
-      );
+      let matched = route.matched.filter(item => item.meta && item.meta.title);
       const first = matched[0];
       if (!isDashboard(first)) {
         matched = [
           ({
             path: "/welcome",
-            meta: { title: "home" },
-          } as unknown) as RouteLocationMatched,
+            meta: { title: "message.hshome" }
+          } as unknown) as RouteLocationMatched
         ].concat(matched);
       }
       levelList.value = matched.filter(
-        (item) => item.meta && item.meta.title && item.meta.breadcrumb !== false
+        item => item.meta && item.meta.title && item.meta.breadcrumb !== false
       );
     };
 
@@ -61,9 +60,9 @@ export default defineComponent({
     );
 
     // const pathCompile = (path: string): string | Object => {
-      // const { params } = route;
-      // var toPath = pathToRegexp.compile(path);
-      // return toPath(params);
+    // const { params } = route;
+    // var toPath = pathToRegexp.compile(path);
+    // return toPath(params);
     // };
 
     const handleLink = (item: RouteLocationMatched): any => {
@@ -76,7 +75,7 @@ export default defineComponent({
     };
 
     return { levelList, handleLink };
-  },
+  }
 });
 </script>
 

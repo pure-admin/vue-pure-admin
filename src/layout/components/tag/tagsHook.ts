@@ -14,7 +14,7 @@ let dynamic: InterDynamic = reactive({
     {
       path: "/welcome",
       meta: {
-        title: "home",
+        title: "message.hshome",
         icon: "el-icon-s-home",
         showLink: true,
         savedPosition: false,

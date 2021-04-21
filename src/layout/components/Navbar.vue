@@ -23,7 +23,10 @@
         </span>
         <template #dropdown>
           <el-dropdown-menu>
-            <el-dropdown-item icon="el-icon-switch-button" @click="logout">{{ $t("LoginOut") }}</el-dropdown-item>
+            <el-dropdown-item
+              icon="el-icon-switch-button"
+              @click="logout"
+            >{{ $t("message.hsLoginOut") }}</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
