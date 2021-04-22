@@ -1,10 +1,13 @@
 {
-  "name": "vue-ts",
-  "version": "1.0.0",
+  "name": "vue-pure-admin",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
-    "serve": "vite",
-    "build": "vite build"
+    "dev": "cross-env --max_old_space_size=4096 vite",
+    "serve": "cross-env --max_old_space_size=4096 vite",
+    "build": "cross-env vite build",
+    "preview": "vite preview",
+    "preview:build": "npm run build && vite preview"
   },
   "dependencies": {
     "@amap/amap-jsapi-loader": "^1.0.1",
@@ -47,6 +50,7 @@
     "@vue/compiler-sfc": "^3.0.11",
     "autoprefixer": "^10.2.4",
     "babel-plugin-transform-remove-console": "^6.9.4",
+    "cross-env": "^7.0.3",
     "postcss": "^8.2.6",
     "postcss-import": "^14.0.0",
     "sass": "^1.32.8",

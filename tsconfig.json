@@ -9,6 +9,7 @@
     "experimentalDecorators": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
+    "isolatedModules": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "sourceMap": true,
@@ -21,7 +22,7 @@
       "/@/*": ["src/*"],
       "/#/*": ["types/*"]
     },
-    "types": ["node"],
+    "types": ["node", "vite/client"],
     "typeRoots": ["./node_modules/@types/", "./types"]
   },
   "include": [
