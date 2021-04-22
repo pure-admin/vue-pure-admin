@@ -30,9 +30,9 @@
 import Flop from "/@/components/Flop";
 import { ref, computed, onMounted, nextTick } from "vue";
 import { deviceDetection } from "/@/utils/deviceDetection";
-import { echartsJson } from "/@/api/mock";
 import { useEventListener, tryOnUnmounted, useTimeoutFn } from "@vueuse/core";
-import * as echarts from "echarts";
+import { echartsJson } from "/@/api/mock";
+import echarts from "/@/plugins/echarts";
 
 let brokenLine: any = null; //折线图实例
 export default {
@@ -91,10 +91,6 @@ export default {
           toolbox: {
             right: 10,
             feature: {
-              dataZoom: {
-                yAxisIndex: "none"
-              },
-              restore: {},
               saveAsImage: {}
             }
           },
