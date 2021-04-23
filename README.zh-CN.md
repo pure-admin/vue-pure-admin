@@ -2,7 +2,6 @@
 
 [![license](https://img.shields.io/github/license/xiaoxian521/vue-pure-admin.svg)](LICENSE)
 
-
 **中文** | [English](./README.md)
 
 ## 简介
@@ -11,18 +10,27 @@ vue-pure-admin 是一个免费开源的中后台模版。使用了最新的`vue3
 
 ## 预览
 
-- [vue-pure-admin](http://yiming_chang.gitee.io/manages) 
+- [vue-pure-admin](http://yiming_chang.gitee.io/manages)
 
 点击免密登录
 
 <p align="center">
-    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/31d4e268a9554389abb2b691a165f983~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9c81c5348fb2476097dd847e3b050168~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/13749b799727449cbdcb2383f6ea1eb4~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6745a79321cc40aba4de02aaf11ba4f2~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cab5f2aa2b58483f8a2cf40fb3aafdb7~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/af13a41cf056402b9a235dbcf136cb23~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f73e7bac1a0247f68c73fc97f282cd27~tplv-k3u1fbpfcp-watermark.image">
+   <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5cf9fd0bb1d7468f8ff3fbfa6bb8113c~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/124ebe67371b49038874a1b65196f189~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/654de30b077540f195595c98b1e0d316~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/dd7caee2d36f400a819f8dd22036281c~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/79a6fa10e55c4c859187d93fa40ac26f~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c5570ea358e94d8a8649fcd1501dbecc~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/24170b706e644f848441bac41ee4c05a~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/03d471b0d3604730b8f41835500ec979~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/98f91183a41e4a99947f036574b40a05~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bfbbefeb48a044c7828efdd63b56dff9~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cb7416d405af4f3f9335924d342246d1~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cf8381ce84f14bf0935ec811b5271b04~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/690c9d3677b6466cac9be16b26180a49~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/22bfdd68db684632bcdd09c997fbdf04~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/68eda5c0fe944f848ce9b11e50840922~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/db7fc79ef7ec45af865d7c3644a2766f~tplv-k3u1fbpfcp-watermark.image">
 </p>
 
 ### 使用 Gitpod
@@ -103,8 +111,8 @@ npm run build
 支持现代浏览器, 不支持 IE
 
 | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt=" Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>IE | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt=" Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Safari |
-| :-: | :-: | :-: | :-: | :-: |
-| not support | last 2 versions | last 2 versions | last 2 versions | last 2 versions |
+| :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|                                                                                             not support                                                                                              |                                                                                            last 2 versions                                                                                             |                                                                                                  last 2 versions                                                                                                  |                                                                                                last 2 versions                                                                                                |                                                                                                last 2 versions                                                                                                |
 
 ## 维护者
 
