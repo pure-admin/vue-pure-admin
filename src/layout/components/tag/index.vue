@@ -1,15 +1,31 @@
 <template>
-  <div class="tags-view" v-if="!showTags">
+  <div ref="containerDom" class="tags-view" v-if="!showTags">
     <el-scrollbar :vertical="false" class="scroll-container">
       <div
         v-for="(item, index) in dynamicTagList"
         :key="index"
         :class="['scroll-item', $route.path === item.path ? 'active' : '']"
+        @contextmenu.prevent.native="openMenu(item, $event)"
       >
         <router-link :to="item.path">{{ $t(item.meta.title) }}</router-link>
         <span v-if="index !== 0 " class="el-icon-close" @click="deleteMenu(item)"></span>
       </div>
     </el-scrollbar>
+    <!-- 右键菜单按钮 -->
+    <ul
+      v-show="visible"
+      :style="{ left: buttonLeft + 'px',top: buttonTop + 'px'}"
+      class="contextmenu"
+    >
+      <div v-for="(item,key) in tagsViews" :key="key" style="display:flex; align-items: center;">
+        <li v-if="item.show" @click="selectTag(item,key)">
+          <span>
+            <i :class="item.icon"></i>
+          </span>
+          {{item.text}}
+        </li>
+      </div>
+    </ul>
     <!-- 右侧功能按钮 -->
     <ul class="right-func">
       <li>
@@ -43,135 +59,211 @@
   </div>
 </template>
 
-<script>
-import { useDynamicRoutesHook } from "./tagsHook"
-import { useRoute, useRouter } from "vue-router"
-import { ref, watchEffect, onBeforeMount, unref, nextTick } from "vue"
-import { storageLocal } from "/@/utils/storage"
-import { emitter } from "/@/utils/mitt"
-import { toggleClass, removeClass } from "/@/utils/operate"
-import { homeRoute } from "./type"
-let refreshDiv = "refresh-div"
+<script lang='ts'>
+import { useDynamicRoutesHook } from "./tagsHook";
+import { useRoute, useRouter } from "vue-router";
+import { ref, watchEffect, watch, onBeforeMount, unref, nextTick } from "vue";
+import { storageLocal } from "/@/utils/storage";
+import { emitter } from "/@/utils/mitt";
+import { toggleClass, removeClass } from "/@/utils/operate";
+import { templateRef } from "@vueuse/core";
+import { homeRoute } from "./type";
+let refreshDiv = "refresh-div";
 
 export default {
   setup() {
-    const { deleteDynamicTag, dynamicRouteTags, dRoutes, routesLength } = useDynamicRoutesHook()
-    const route = useRoute()
-    const router = useRouter()
-    const showTags = ref(storageLocal.getItem("tagsVal") || false)
+    const {
+      deleteDynamicTag,
+      dynamicRouteTags,
+      dRoutes,
+      routesLength
+    } = useDynamicRoutesHook();
+    const route = useRoute();
+    const router = useRouter();
+    const showTags = ref(storageLocal.getItem("tagsVal") || false);
+    const containerDom = templateRef<HTMLElement | null>("containerDom", null);
 
     const tagsViews = ref([
       {
         icon: "el-icon-refresh-right",
         text: "重新加载",
         divided: false,
-        disabled: false
+        disabled: false,
+        show: true
       },
       {
         icon: "el-icon-close",
         text: "关闭当前标签页",
         divided: false,
-        disabled: unref(routesLength) > 1 ? false : true
+        disabled: unref(routesLength) > 1 ? false : true,
+        show: true
       },
       {
         icon: "el-icon-more",
         text: "关闭其他标签页",
         divided: true,
-        disabled: unref(routesLength) > 2 ? false : true
+        disabled: unref(routesLength) > 2 ? false : true,
+        show: true
       },
       {
         icon: "el-icon-minus",
         text: "关闭全部标签页",
         divided: false,
-        disabled: unref(routesLength) > 1 ? false : true
-      },
-    ])
+        disabled: unref(routesLength) > 1 ? false : true,
+        show: true
+      }
+    ]);
+
+    let visible = ref(false);
+    let buttonLeft = ref(0);
+    let buttonTop = ref(0);
+
+    // 当前右键选中的路由信息
+    let currentSelect = ref({});
 
     function deleteMenu(item) {
-      let tagslen = storageLocal.getItem("routesInStorage").length
+      let tagslen = storageLocal.getItem("routesInStorage").length;
       if (tagslen === 2) {
         Array.from([1, 2, 3]).forEach(v => {
-          tagsViews.value[v].disabled = true
-        })
+          tagsViews.value[v].disabled = true;
+        });
       }
       if (tagslen === 3) {
-        tagsViews.value[2].disabled = true
+        tagsViews.value[2].disabled = true;
       }
-      deleteDynamicTag(item, route.path)
+      deleteDynamicTag(item, route.path);
     }
 
     // 初始化页面刷新保证当前路由tabview存在
     let stop = watchEffect(() => {
-      let parentPath = route.path.slice(0, route.path.lastIndexOf("/"))
-      dynamicRouteTags(route.path, parentPath)
-    })
+      let parentPath = route.path.slice(0, route.path.lastIndexOf("/"));
+      dynamicRouteTags(route.path, parentPath);
+    });
 
     setTimeout(() => {
       // 监听只执行一次，但获取不到当前路由，需要下一个事件轮询中取消监听
-      stop()
-    })
+      stop();
+    });
 
     function onFresh() {
-      toggleClass(true, refreshDiv, document.querySelector(".rotate"))
-      const { path, fullPath } = unref(route)
+      toggleClass(true, refreshDiv, document.querySelector(".rotate"));
+      const { path, fullPath } = unref(route);
       router.replace({
         path: "/redirect" + fullPath
-      })
+      });
       setTimeout(() => {
-        removeClass(document.querySelector(".rotate"), refreshDiv)
-      }, 600)
+        removeClass(document.querySelector(".rotate"), refreshDiv);
+      }, 600);
     }
 
-    function onClickDrop(key, item) {
-      if (item.disabled) return
+    function onClickDrop(key, item, selectRoute) {
+      if (item && item.disabled) return;
       // 当前路由信息
       switch (key) {
         case 0:
           // 重新加载
-          onFresh()
-          break
+          onFresh();
+          break;
         case 1:
           // 关闭当前标签页
-          deleteMenu({ path: route.path, meta: route.meta })
-          break
+          selectRoute
+            ? deleteMenu({ path: selectRoute.path, meta: selectRoute.meta })
+            : deleteMenu({ path: route.path, meta: route.meta });
+          break;
         case 2:
           // 关闭其他标签页
-          dRoutes.value = [homeRoute, { path: route.path, meta: route.meta }]
-          storageLocal.setItem("routesInStorage", dRoutes.value)
-          tagsViews.value[2].disabled = true
-          break
+          dRoutes.value = selectRoute
+            ? [homeRoute, { path: selectRoute.path, meta: selectRoute.meta }]
+            : [homeRoute, { path: route.path, meta: route.meta }];
+          storageLocal.setItem("routesInStorage", dRoutes.value);
+          tagsViews.value[2].disabled = true;
+          if (selectRoute) router.push(selectRoute.path);
+          break;
         case 3:
           // 关闭全部标签页
-          dRoutes.value = [homeRoute]
-          storageLocal.setItem("routesInStorage", dRoutes.value)
-          router.push("/welcome")
+          dRoutes.value = [homeRoute];
+          storageLocal.setItem("routesInStorage", dRoutes.value);
+          router.push("/welcome");
           Array.from([1, 2, 3]).forEach(v => {
-            tagsViews.value[v].disabled = true
-          })
-          break
+            tagsViews.value[v].disabled = true;
+          });
+          break;
       }
     }
 
-    onBeforeMount(() => {
-      emitter.on("tagViewsChange", (key) => {
-        if (unref(showTags) === key) return
-        showTags.value = key
-      })
+    function selectTag(item, key) {
+      onClickDrop(key, {}, currentSelect.value);
+    }
 
-      emitter.on("changLayoutRoute", (indexPath) => {
-        let currentLen = storageLocal.getItem("routesInStorage").length
+    function openMenu(tag, e) {
+      if (tag.path === "/welcome") {
+        // 右键菜单为首页，只显示刷新
+        Array.from([1, 2, 3]).forEach(v => {
+          tagsViews.value[v].show = false;
+        });
+        tagsViews.value[0].show = true;
+      } else if (route.path !== tag.path) {
+        // 右键菜单匹配当前路由，显示刷新
+        tagsViews.value[0].show = false;
+        Array.from([1, 2, 3]).forEach(v => {
+          tagsViews.value[v].show = true;
+        });
+      } else {
+        Array.from([0, 1, 2, 3]).forEach(v => {
+          tagsViews.value[v].show = true;
+        });
+      }
+
+      currentSelect.value = tag;
+      const menuMinWidth = 105;
+      const offsetLeft = unref(containerDom).getBoundingClientRect().left;
+      const offsetWidth = unref(containerDom).offsetWidth;
+      const maxLeft = offsetWidth - menuMinWidth;
+      const left = e.clientX - offsetLeft + 15;
+      if (left > maxLeft) {
+        buttonLeft.value = maxLeft;
+      } else {
+        buttonLeft.value = left;
+      }
+      buttonTop.value = e.offsetY * 2;
+      visible.value = true;
+    }
+
+    function closeMenu() {
+      visible.value = false;
+    }
+
+    watch(
+      () => visible.value,
+      val => {
+        if (val) {
+          document.body.addEventListener("click", closeMenu);
+        } else {
+          document.body.removeEventListener("click", closeMenu);
+        }
+      }
+    );
+
+    onBeforeMount(() => {
+      emitter.on("tagViewsChange", key => {
+        if (unref(showTags) === key) return;
+        showTags.value = key;
+      });
+
+      emitter.on("changLayoutRoute", indexPath => {
+        let currentLen = storageLocal.getItem("routesInStorage").length;
         if (currentLen === 1) {
           Array.from([1, 3]).forEach(v => {
-            tagsViews.value[v].disabled = false
-          })
+            tagsViews.value[v].disabled = false;
+          });
         }
         if (currentLen >= 2) {
           Array.from([1, 2, 3]).forEach(v => {
-            tagsViews.value[v].disabled = false
-          })
+            tagsViews.value[v].disabled = false;
+          });
         }
-      })
-    })
+      });
+    });
 
     return {
       dynamicTagList: dRoutes,
@@ -179,9 +271,16 @@ export default {
       showTags,
       onFresh,
       tagsViews,
-      onClickDrop
-    }
-  },
+      onClickDrop,
+      visible,
+      buttonLeft,
+      buttonTop,
+      openMenu,
+      closeMenu,
+      selectTag,
+      currentSelect
+    };
+  }
 };
 </script>
 
@@ -217,6 +316,28 @@ export default {
     .scroll-item {
       &:nth-child(1) {
         margin-left: 5px;
+      }
+    }
+  }
+
+  .contextmenu {
+    margin: 0;
+    background: #fff;
+    z-index: 3000;
+    position: absolute;
+    list-style-type: none;
+    padding: 5px 0;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #333;
+    box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.3);
+    li {
+      margin: 0;
+      padding: 7px 16px;
+      cursor: pointer;
+      &:hover {
+        background: #eee;
       }
     }
   }
