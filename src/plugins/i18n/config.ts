@@ -68,6 +68,7 @@ export const buttonConfig = {
       hssearch: "搜索",
       hsexpendAll: "全部展开",
       hscollapseAll: "全部折叠",
+      hssystemSet: "系统设置",
     },
   },
   en: {
@@ -84,6 +85,7 @@ export const buttonConfig = {
       hssearch: "Search",
       hsexpendAll: "Expand All",
       hscollapseAll: "Collapse All",
+      hssystemSet: "System Set",
     },
   },
 };

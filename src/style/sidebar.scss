@@ -70,6 +70,7 @@
 
     .is-active > .el-submenu__title,
     .is-active > .el-submenu__title i {
+      transition: color 0.3s;
       color: $subMenuActiveText !important;
     }
 

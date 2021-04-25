@@ -1,15 +1,13 @@
 <template>
-  <div ref="right-panel" :class="{ show: show }" class="right-panel-container">
+  <div :class="{ show: show }" class="right-panel-container">
     <div class="right-panel-background" />
-    <div class="right-panel">
-      <div
-        class="handle-button"
-        :title="show ? '关闭设置' : '打开设置'"
-        @click="show = !show"
-      >
-        <i :class="show ? 'el-icon-close' : 'el-icon-setting'" />
-      </div>
+    <div ref="target" class="right-panel">
       <div class="right-panel-items">
+        <div class="project-configuration">
+          <h3>项目配置</h3>
+          <i class="el-icon-close" @click="show = !show"></i>
+        </div>
+        <el-divider />
         <slot />
       </div>
     </div>
@@ -19,26 +17,19 @@
 <script lang='ts'>
 import { addClass, removeClass } from "../../../utils/operate";
 import { ref, watch, getCurrentInstance, onMounted, onBeforeMount } from "vue";
-import { useEventListener } from "@vueuse/core";
+import { useEventListener, onClickOutside } from "@vueuse/core";
+import { emitter } from "/@/utils/mitt";
+
 export default {
   name: "panel",
   setup() {
-    let vm: any;
-
     let show = ref(false);
 
-    watch(
-      show,
-      (val, prevVal) => {
-        val ? addEventClick() : () => {};
-        if (val) {
-          addClass(document.body, "showright-panel");
-        } else {
-          removeClass(document.body, "showright-panel");
-        }
-      },
-      { immediate: true }
-    );
+    const target = ref(null);
+
+    onClickOutside(target, event => {
+      show.value = false;
+    });
 
     const addEventClick = (): void => {
       useEventListener("click", closeSidebar);
@@ -52,14 +43,15 @@ export default {
       }
     };
 
-    onBeforeMount(() => {
-      vm = getCurrentInstance();
+    emitter.on("openPanel", () => {
+      show.value = true;
     });
 
     return {
       show,
+      target
     };
-  },
+  }
 };
 </script>
 
@@ -84,7 +76,7 @@ export default {
 
 .right-panel {
   width: 100%;
-  max-width: 260px;
+  max-width: 300px;
   height: 100vh;
   position: fixed;
   top: 0;
@@ -130,5 +122,35 @@ export default {
     font-size: 24px;
     line-height: 48px;
   }
+}
+
+.right-panel-items {
+  margin-top: 60px;
+  height: 100vh;
+  overflow: auto;
+}
+
+.project-configuration {
+  display: flex;
+  width: 100%;
+  height: 30px;
+  position: fixed;
+  justify-content: space-between;
+  align-items: center;
+  top: 15px;
+  margin-left: 10px;
+  i {
+    font-size: 20px;
+    margin-right: 20px;
+    &:hover {
+      cursor: pointer;
+      color: red;
+    }
+  }
+}
+
+:deep(.el-divider--horizontal) {
+  width: 90%;
+  margin: 20px auto 0 auto;
 }
 </style>

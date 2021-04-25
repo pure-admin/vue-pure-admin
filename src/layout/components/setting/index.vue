@@ -15,6 +15,14 @@
         <vxe-switch v-model="tagsVal" open-label="开" close-label="关" @change="tagsChange"></vxe-switch>
       </li>
     </ul>
+    <el-divider />
+    <vxe-button
+      status="danger"
+      style="width: 90%;margin: 24px 15px;"
+      content="清空缓存并返回登录页"
+      icon="fa fa-sign-out"
+      @click="onReset"
+    ></vxe-button>
   </panel>
 </template>
 
@@ -24,11 +32,14 @@ import { onMounted, reactive, toRefs } from "vue";
 import { storageLocal } from "/@/utils/storage";
 import { toggleClass } from "/@/utils/operate";
 import { emitter } from "/@/utils/mitt";
+import { useRouter } from "vue-router";
 
 export default {
   name: "setting",
   components: { panel },
   setup() {
+    const router = useRouter();
+
     function toggleClass(flag: boolean, clsName: string, target?: HTMLElement) {
       const targetEl = target || document.body;
       let { className } = targetEl;
@@ -88,12 +99,18 @@ export default {
       emitter.emit("tagViewsChange", showVal);
     };
 
+    function onReset() {
+      storageLocal.clear();
+      router.push("/login");
+    }
+
     return {
       ...toRefs(settings),
       localOperate,
       greyChange,
       weekChange,
-      tagsChange
+      tagsChange,
+      onReset
     };
   }
 };

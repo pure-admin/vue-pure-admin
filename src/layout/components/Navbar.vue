@@ -12,9 +12,10 @@
       <!-- 全屏 -->
       <screenfull />
       <!-- 国际化 -->
-      <div class="inter" :title="langs ? '中文' : '英文'" @click="toggleLang">
+      <div class="inter" :title="langs ? '中文' : 'English'" @click="toggleLang">
         <img :src="langs ? ch : en" />
       </div>
+      <i class="el-icon-setting hsset" :title="$t('message.hssystemSet')" @click="onPanel"></i>
       <!-- 退出登陆 -->
       <el-dropdown trigger="click">
         <span class="el-dropdown-link">
@@ -47,6 +48,8 @@ import { useI18n } from "vue-i18n";
 import ch from "/@/assets/ch.png";
 import en from "/@/assets/en.png";
 import favicon from "/favicon.ico";
+import { emitter } from "/@/utils/mitt";
+
 export default defineComponent({
   name: "Navbar",
   components: {
@@ -76,6 +79,10 @@ export default defineComponent({
       router.push("/login");
     };
 
+    function onPanel() {
+      emitter.emit("openPanel");
+    }
+
     onMounted(() => {
       document
         .querySelector(".el-dropdown__popper")
@@ -97,7 +104,8 @@ export default defineComponent({
       logout,
       ch,
       en,
-      favicon
+      favicon,
+      onPanel
     };
   }
 });
@@ -145,6 +153,18 @@ export default defineComponent({
       }
       img {
         width: 25px;
+      }
+    }
+    .hsset {
+      width: 40px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      margin-right: 5px;
+      &:hover {
+        cursor: pointer;
+        background: #f0f0f0;
       }
     }
     .el-dropdown-link {
