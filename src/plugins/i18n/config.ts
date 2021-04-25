@@ -7,8 +7,9 @@ export const menusConfig = {
   zh: {
     message: {
       hshome: "首页",
-      hsuserManagement: "用户管理",
+      hssysManagement: "系统管理",
       hsBaseinfo: "基础信息",
+      hsDict: "字典管理",
       hseditor: "编辑器",
       hserror: "错误页面",
       hsfourZeroFour: "404",
@@ -29,8 +30,9 @@ export const menusConfig = {
   en: {
     message: {
       hshome: "Home",
-      hsuserManagement: "User Manage",
+      hssysManagement: "System Manage",
       hsBaseinfo: "Base Info",
+      hsDict: "Dict Manage",
       hseditor: "Editor",
       hserror: "Error Page",
       hsfourZeroFour: "404",
@@ -63,6 +65,9 @@ export const buttonConfig = {
       hsadd: "新增",
       hsmark: "标记/取消",
       hssave: "保存",
+      hssearch: "搜索",
+      hsexpendAll: "全部展开",
+      hscollapseAll: "全部折叠",
     },
   },
   en: {
@@ -76,9 +81,22 @@ export const buttonConfig = {
       hsadd: "Add",
       hsmark: "Mark/Cancel",
       hssave: "Save",
+      hssearch: "Search",
+      hsexpendAll: "Expand All",
+      hscollapseAll: "Collapse All",
     },
   },
 };
+
+// 配置
+// export const xxxx = {
+//   zh: {
+//     message: {},
+//   },
+//   en: {
+//     message: {},
+//   },
+// };
 
 const localesList = [menusConfig, buttonConfig];
 

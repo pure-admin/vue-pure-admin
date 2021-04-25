@@ -1,11 +1,16 @@
 // sidebar
-$menuText: #bfcbd9;
-$menuActiveText: #409eff;
+$menuText: #7a80b4;
+$menuActiveText: #7a80b4;
 $subMenuActiveText: #f4f4f5;
-$menuBg: #304156;
-$menuHover: #263445;
 
+//菜单背景
+$menuBg: #1b2a47;
+// 鼠标覆盖菜单时的背景
+$menuHover: #2a395b;
+
+// 子菜单背景
 $subMenuBg: #1f2d3d;
+// 鼠标覆盖子菜单时的背景
 $subMenuHover: #001528;
 
 $sideBarWidth: 210px;

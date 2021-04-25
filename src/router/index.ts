@@ -212,26 +212,37 @@ const routes: Array<RouteRecordRaw> = [
     },
   },
   {
-    path: "/user",
-    name: "user",
+    path: "/system",
+    name: "system",
     component: Layout,
-    redirect: "/user/base",
+    redirect: "/system/base",
     children: [
       {
-        path: "/user/base",
+        path: "/system/base",
         component: () =>
-          import(/* webpackChunkName: "user" */ "../views/user.vue"),
+          import(/* webpackChunkName: "system" */ "../views/system/user.vue"),
         meta: {
-          // icon: 'el-icon-user',
+          // icon: '',
           title: "message.hsBaseinfo",
+          showLink: false,
+          savedPosition: true,
+        },
+      },
+      {
+        path: "/system/dict",
+        component: () =>
+          import(/* webpackChunkName: "system" */ "../views/system/dict.vue"),
+        meta: {
+          // icon: '',
+          title: "message.hsDict",
           showLink: false,
           savedPosition: true,
         },
       },
     ],
     meta: {
-      icon: "el-icon-user",
-      title: "message.hsuserManagement",
+      icon: "el-icon-setting",
+      title: "message.hssysManagement",
       showLink: true,
       savedPosition: true,
     },

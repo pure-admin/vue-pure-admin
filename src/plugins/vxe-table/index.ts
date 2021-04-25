@@ -49,6 +49,7 @@ import {
 
 // 全局默认参数
 VXETable.setup({
+  size: "medium",
   version: 0,
   zIndex: 100,
   table: {

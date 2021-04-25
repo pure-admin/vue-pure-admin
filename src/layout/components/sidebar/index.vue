@@ -3,10 +3,10 @@
     <el-menu
       :default-active="activeMenu"
       :collapse="isCollapse"
-      background-color="#304156"
-      text-color="#bfcbd9"
+      background-color="#1b2a47"
+      text-color="#7a80b4"
       :unique-opened="false"
-      active-text-color="#409EFF"
+      active-text-color="#fff"
       :collapse-transition="false"
       mode="vertical"
       @select="menuSelect"
