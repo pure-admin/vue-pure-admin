@@ -4,11 +4,23 @@
       <div
         v-for="(item, index) in dynamicTagList"
         :key="index"
-        :class="['scroll-item', $route.path === item.path ? 'active' : '']"
+        :ref="'dynamic' + index"
+        :class="['scroll-item', $route.path === item.path ? 'is-active' : '', $route.path === item.path && showModel ==='card'  ? 'card-active' : '' ]"
         @contextmenu.prevent.native="openMenu(item, $event)"
+        @mouseenter.prevent="onMouseenter(item, index)"
+        @mouseleave.prevent="onMouseleave(item, index)"
       >
         <router-link :to="item.path">{{ $t(item.meta.title) }}</router-link>
-        <span v-if="index !== 0 " class="el-icon-close" @click="deleteMenu(item)"></span>
+        <i
+          v-if="$route.path === item.path && index !== 0 || index === activeIndex && index !== 0"
+          class="iconfont team-iconshanchu"
+          @click="deleteMenu(item)"
+        ></i>
+        <div
+          :ref="'schedule' + index"
+          v-if="showModel !=='card'"
+          :class="[$route.path === item.path ? 'schedule-active' : '']"
+        ></div>
       </div>
     </el-scrollbar>
     <!-- 右键菜单按钮 -->
@@ -62,16 +74,25 @@
 <script lang='ts'>
 import { useDynamicRoutesHook } from "./tagsHook";
 import { useRoute, useRouter } from "vue-router";
-import { ref, watchEffect, watch, onBeforeMount, unref, nextTick } from "vue";
+import {
+  ref,
+  watchEffect,
+  watch,
+  onBeforeMount,
+  unref,
+  nextTick,
+  getCurrentInstance
+} from "vue";
 import { storageLocal } from "/@/utils/storage";
 import { emitter } from "/@/utils/mitt";
-import { toggleClass, removeClass } from "/@/utils/operate";
+import { toggleClass, removeClass, hasClass } from "/@/utils/operate";
 import { templateRef } from "@vueuse/core";
 import { homeRoute } from "./type";
-let refreshDiv = "refresh-div";
+let refreshButton = "refresh-button";
 
 export default {
   setup() {
+    let vm: any;
     const {
       deleteDynamicTag,
       dynamicRouteTags,
@@ -82,7 +103,7 @@ export default {
     const router = useRouter();
     const showTags = ref(storageLocal.getItem("tagsVal") || false);
     const containerDom = templateRef<HTMLElement | null>("containerDom", null);
-
+    const activeIndex = ref(-1);
     const tagsViews = ref([
       {
         icon: "el-icon-refresh-right",
@@ -113,6 +134,12 @@ export default {
         show: true
       }
     ]);
+
+    // 显示模式，默认卡片模式显示
+    const showModel = ref(storageLocal.getItem("showModel") || "card");
+    if (!showModel) {
+      storageLocal.setItem("showModel", "card");
+    }
 
     let visible = ref(false);
     let buttonLeft = ref(0);
@@ -146,13 +173,13 @@ export default {
     });
 
     function onFresh() {
-      toggleClass(true, refreshDiv, document.querySelector(".rotate"));
+      toggleClass(true, refreshButton, document.querySelector(".rotate"));
       const { path, fullPath } = unref(route);
       router.replace({
         path: "/redirect" + fullPath
       });
       setTimeout(() => {
-        removeClass(document.querySelector(".rotate"), refreshDiv);
+        removeClass(document.querySelector(".rotate"), refreshButton);
       }, 600);
     }
 
@@ -225,7 +252,7 @@ export default {
       } else {
         buttonLeft.value = left;
       }
-      buttonTop.value = e.offsetY * 2;
+      buttonTop.value = e.clientY;
       visible.value = true;
     }
 
@@ -244,10 +271,44 @@ export default {
       }
     );
 
+    // 鼠标移入
+    function onMouseenter(item, index) {
+      if (index) activeIndex.value = index;
+      if (unref(showModel) === "smart") {
+        if (hasClass(vm.refs["schedule" + index], "schedule-active")) return;
+        toggleClass(true, "schedule-in", vm.refs["schedule" + index]);
+        toggleClass(false, "schedule-out", vm.refs["schedule" + index]);
+      } else {
+        if (hasClass(vm.refs["dynamic" + index], "card-active")) return;
+        toggleClass(true, "card-in", vm.refs["dynamic" + index]);
+        toggleClass(false, "card-out", vm.refs["dynamic" + index]);
+      }
+    }
+
+    // 鼠标移出
+    function onMouseleave(item, index) {
+      activeIndex.value = -1;
+      if (unref(showModel) === "smart") {
+        if (hasClass(vm.refs["schedule" + index], "schedule-active")) return;
+        toggleClass(false, "schedule-in", vm.refs["schedule" + index]);
+        toggleClass(true, "schedule-out", vm.refs["schedule" + index]);
+      } else {
+        if (hasClass(vm.refs["dynamic" + index], "card-active")) return;
+        toggleClass(false, "card-in", vm.refs["dynamic" + index]);
+        toggleClass(true, "card-out", vm.refs["dynamic" + index]);
+      }
+    }
+
     onBeforeMount(() => {
+      vm = getCurrentInstance();
+
       emitter.on("tagViewsChange", key => {
         if (unref(showTags) === key) return;
         showTags.value = key;
+      });
+
+      emitter.on("tagViewsShowModel", key => {
+        showModel.value = key;
       });
 
       emitter.on("changLayoutRoute", indexPath => {
@@ -278,7 +339,11 @@ export default {
       openMenu,
       closeMenu,
       selectTag,
-      currentSelect
+      currentSelect,
+      onMouseenter,
+      onMouseleave,
+      activeIndex,
+      showModel
     };
   }
 };
@@ -287,16 +352,20 @@ export default {
 <style lang="scss" scoped>
 .tags-view {
   width: 100%;
-  height: 34px;
+  height: 40px;
   font-size: 14px;
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  position: relative;
   .scroll-item {
-    border-radius: 3px;
+    border-radius: 3px 3px 0 0;
     padding: 2px 8px;
     display: inline-block;
+    position: relative;
+    margin-right: 5px;
+    height: 28px;
+    line-height: 25px;
+    &:hover {
+      background-color: #eaf4fe;
+    }
   }
   a {
     text-decoration: none;
@@ -309,7 +378,6 @@ export default {
     padding: 5px 0;
     white-space: nowrap;
     position: relative;
-    overflow: hidden;
     width: 100%;
     background: #fff;
     border: 0.5px solid rgba($color: #ccc, $alpha: 0.3);
@@ -343,22 +411,6 @@ export default {
   }
 }
 
-.el-icon-close {
-  cursor: pointer;
-  border-radius: 50%;
-  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-.el-icon-close:hover {
-  background: #b4bccc;
-}
-.active {
-  background: #409eff;
-  position: relative;
-  color: #fff;
-  a {
-    color: #fff;
-  }
-}
 :deep(.el-scrollbar__wrap) {
   height: 100vh;
 }
@@ -379,7 +431,112 @@ export default {
   }
 }
 
-.refresh-div {
+.el-dropdown-menu {
+  padding: 0;
+}
+.el-dropdown-menu__item:not(.is-disabled):hover {
+  color: #606266;
+  background: #f0f0f0;
+}
+.el-dropdown-menu__item,
+.el-menu-item {
+  padding: 0 14px;
+  overflow: hidden;
+}
+:deep(.el-dropdown-menu__item) i {
+  margin-right: 10px;
+}
+
+.is-active {
+  background-color: #eaf4fe;
+  position: relative;
+  color: #fff;
+  a {
+    color: #1890ff;
+  }
+}
+
+// 关闭图标
+.team-iconshanchu {
+  color: #1890ff;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.team-iconshanchu:hover {
+  border-radius: 50%;
+  color: #fff;
+  background: #b4bccc;
+}
+
+// 卡片模式
+.card-active {
+  border: 1px solid #1890ff;
+}
+// 卡片模式下鼠标移入显示蓝色边框
+.card-in {
+  border: 1px solid #1890ff;
+  color: #1890ff;
+  a {
+    color: #1890ff;
+  }
+}
+// 卡片模式下鼠标移出隐藏蓝色边框
+.card-out {
+  border: none;
+  color: #666;
+  a {
+    color: #666;
+  }
+}
+
+// 灵动模式
+.schedule-active {
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: #1890ff;
+}
+// 灵动模式下鼠标移入显示蓝色进度条
+.schedule-in {
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: #1890ff;
+  animation: scheduleInWidth 400ms ease-in;
+}
+@keyframes scheduleInWidth {
+  from {
+    width: 0px;
+  }
+  to {
+    width: 100%;
+  }
+}
+// 灵动模式下鼠标移出隐藏蓝色进度条
+.schedule-out {
+  width: 0;
+  height: 2px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: #1890ff;
+  animation: scheduleOutWidth 400ms ease-in;
+}
+@keyframes scheduleOutWidth {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0;
+  }
+}
+// 刷新按钮动画效果
+.refresh-button {
   -webkit-transition-property: -webkit-transform;
   -webkit-transition-duration: 600ms;
   -moz-transition-property: -moz-transform;
@@ -420,20 +577,5 @@ export default {
   to {
     transform: rotate(360deg);
   }
-}
-.el-dropdown-menu {
-  padding: 0;
-}
-.el-dropdown-menu__item:not(.is-disabled):hover {
-  color: #606266;
-  background: #f0f0f0;
-}
-.el-dropdown-menu__item,
-.el-menu-item {
-  padding: 0 14px;
-  overflow: hidden;
-}
-:deep(.el-dropdown-menu__item) i {
-  margin-right: 10px;
 }
 </style>

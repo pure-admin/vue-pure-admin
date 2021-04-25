@@ -29,10 +29,11 @@
       resizable
       :tree-config="{children: 'children', iconOpen: 'fa fa-minus-square-o', iconClose: 'fa fa-plus-square-o'}"
       :data="demo1.tableData"
+      @cell-dblclick="cellDBLClickEvent"
     >
       <vxe-table-column tree-node field="name" title="字典名称"></vxe-table-column>
       <vxe-table-column field="model" title="字典类型"></vxe-table-column>
-      <vxe-table-column title="操作" width="330">
+      <vxe-table-column title="操作" width="330" fixed="right">
         <template #default="{ row }">
           <vxe-button type="text" icon="el-icon-edit" @click="demo1.value8 = true">编辑</vxe-button>
           <vxe-button type="text" icon="el-icon-circle-plus-outline">新增子类型</vxe-button>
@@ -43,6 +44,27 @@
     </vxe-table>
 
     <vxe-modal
+      v-model="demo1.showEdit"
+      :title="demo1.selectRow ? '编辑&保存' : '新增&保存'"
+      width="800"
+      min-width="600"
+      min-height="300"
+      :loading="demo1.submitLoading"
+      resize
+      destroy-on-close
+    >
+      <template #default>
+        <vxe-form
+          :data="demo1.formData"
+          :items="demo1.formItems"
+          :rules="demo1.formRules"
+          title-align="right"
+          title-width="100"
+          @submit="demo1.submitEvent"
+        ></vxe-form>
+      </template>
+    </vxe-modal>
+    <!-- <vxe-modal
       v-model="demo1.value8"
       title="记忆功能的窗口"
       width="440"
@@ -84,7 +106,7 @@
           </vxe-form-item>
         </vxe-form>
       </template>
-    </vxe-modal>
+    </vxe-modal>-->
   </div>
 </template>
 <script  lang="ts">
@@ -92,11 +114,17 @@ import { reactive, ref, nextTick } from "vue";
 import XEUtils from "xe-utils";
 import { cloneDeep } from "lodash-es";
 import { templateRef } from "@vueuse/core";
-import { VxeTablePropTypes, VxeTableInstance, VXETable } from "vxe-table";
+import {
+  VxeTablePropTypes,
+  VxeTableInstance,
+  VXETable,
+  VxeTableEvents
+} from "vxe-table";
 
 export default {
   setup() {
     const demo1 = reactive({
+      showEdit: false,
       filterName: "",
       tableData: [
         {
@@ -181,12 +209,21 @@ export default {
       });
     }
 
+    const cellDBLClickEvent: VxeTableEvents.CellDblclick = ({ row }) => {
+      console.log(
+        "%crow===>>>: ",
+        "color: MidnightBlue; background: Aquamarine; font-size: 20px;",
+        row
+      );
+    };
+
     return {
       demo1,
       formatDate,
       searchEvent,
       confirmEvent,
-      onEdit
+      onEdit,
+      cellDBLClickEvent
     };
   }
 };

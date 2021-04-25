@@ -1,10 +1,10 @@
 @font-face {font-family: "iconfont";
-  src: url('iconfont.eot?t=1618822116404'); /* IE9 */
-  src: url('iconfont.eot?t=1618822116404#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAQkAAsAAAAACWAAAAPWAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDKgqFXIRAATYCJAMUCwwABCAFhG0HdBvwByMRJnztRfZfEuS6lrOvYNUWLBYrKHuUFPQcqdIW23Ll3d/JYMdZJG0ywiQE2XibeOB/7dt9Nn92ZlFNoklck5hG8QQJTud0QvS4hLZsQyzkjzg4gYMfJMARR4FqiZ5Qv7nUxxktKhcgP2GOJ7yLe0h+e5+srP9bW5jUlU4kMovHteofSLoSClKhShx579qwZ1MiUVu+eGkhN9tVZaKjkibzPwC6wOKi2f+/36x4/pCg6W00erHHR00ShxBJGhKRNBGvSyt1HhdSn4V5ZXpPRi73jLsJaEw2R1i/cft+tYwfFBAunT97XF2Y5RF6UOuqnjOz8EpRxxexDy/dx4e/5oaaqCT8yN1nNpyy+scsD9L97n2HDAHa3/2gIGEOMuFCr/uUFNJzJM2iOFuMWmwX+THbPQ+63YY2S3Yt29UaDZLM/vEiocLVvaCuNmb3DCmn5E4iBGSAICDw60FGxHM6gwYjMUDYIyrVRqWiIFdVp5OlyCpHcnXQV+vUI7rXm1ptaTRp0Hm9oRXMpAmqQSOaIBI1qVN9nqAO5KJ7TSUHFIblUEH0NoQp0wBj2Q2AEXWiYHAwugaLKd4Eo1KgwDj+QGY+owqccO4AIaofYhlTYN6hW+7Dd6SN/U6MDzpzZvmgbx5r60OOaeZD09L3JEsc7b/PZS7X23TI3ef0CxrUrZmkfm3xJkO+8xhXHsctAM5NNHJurk5K9fjJ3SPN4BygE8ZXbqAMt2z918loI1PRgoKDpDcU3gQmajswlr/cWWUz2Q6bc9/7n0bOs+6t1GfZ/ldEG5O9TNajSIjEyBT1USyPdo/RXgiA3oVDIopCACvZkvDYFst63Sb6FTsjq0wOUp6dnghX/LXsUMRY0H2fviR0P6SgXfVX+Ru7rs1tjg5Zft1m0P/21LuO7v0s3ef7RmT0x0DEsbzEuaXk+bCSzr3FnrfVG/kf4H+IPMMN7Ec7ilxNUBuVIOqYBEltCjFT50DRmh+p1K6xmsZsm3B+a4QbkpB7MMsTBsFQ7yAa7D0kQ30lZuo3KEb7D5WhIUHjYBhxxdagBn/AqAQt6Dd4UwtJmxx87Te6e1Kc4479j9x9DNZpqXM3LMj7OKY/3CZCQFwzXNn9MKUKjWtAI9Mu0i7zTH2vNJmahwOMStAC/Qbe1EJmuhxa7/+N7p4Uj4xcCP8jd78+WE0WAvGmLqSR57J9f7iNCM32I64ZXOHEJNIVtP7dAhqZ7Fsk28XcTCKqejq+Nr/GK9Dg1y0hhhRyKKGSm3t9jln5Mj4CpbjNkL92by2Wnt997svLSPeUumHEcoimYQAAAA==') format('woff2'),
-  url('iconfont.woff?t=1618822116404') format('woff'),
-  url('iconfont.ttf?t=1618822116404') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
-  url('iconfont.svg?t=1618822116404#iconfont') format('svg'); /* iOS 4.1- */
+  src: url('iconfont.eot?t=1619360751585'); /* IE9 */
+  src: url('iconfont.eot?t=1619360751585#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAARMAAsAAAAACbwAAAP9AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDQAqGEIRiATYCJAMYCw4ABCAFhG0Hfhs2CMgOJS2d2ECiAwlgBN+vlf0+zE5mg6wAXeJZIjpmuSejwkZFpjyxij57rCLU/p9b+c8NWt6VZsJElIM/LOtvdta6uELEuI1RpSiTq877eC1W5aXc/38/V+f5b2lrettv68Xkvj8zA0+cJTJJQyKSxKSSKBWPlNixsM5M+mTE89a4m0BnrRop+8ZmViBbIQ4KxE1DVyC7cisjwtDamp4zi3ihatOz9BfAc//xMQNNkU1SM3Hk4cujGgyMi5MjaYPhCecti35/94OKjG1AIR72hm9Li+Vt0nSLYro9YHl8K0nj4vjWyaffTiaTMMEW0xUVO53ZUn8t//CqJBMNgbPB31+pjC/TNMH4FprC+FaayuRTmsTkiFuGvdnj1KXAOIiV4K+OJFWaiyg0Ta9XlNpZFnNMMU87Fu6JpEd7eVb2opxYflpfv3a6POca5EdfirMurHNGCE8kd+I1Aga56YZpli8QTd2pkM13zTZ3LWH/yp07FYsroO6K+8wWApapQmIJS/sos3zFfAfHn7h7YNkyBXLpDpx4e1dclrGWJZBjHTZlH7GTZu5+x+JBl122Uu7Dnneswsb7GzdAYdAeAQNsuPCgpUXf26No0Vtakrt6EdLv73FsGfVc+stJczdJknB3izcB36+MxPaRNRuxkhDbHm3uWlgXdtH0nPRZONzVMmLbhDTJuGaPNCfq0vWC2f87RVXNo+ZKmG1whgeqbK2MNlctwFnlMtis7d3MsMNhGBuNtnQt7IjdW4k7NbE3+trR+Ch7WcWwpjkOHUkI4nbFjG3xcHdz1HEIabtS38eCpsmEOO2WrO1tMUMd5tprJzKSyJyclDN2xNNTI/96bFx+DY/OZ1M/Agzf5q9pwwDDd2mR2fk3+hv//gtHjxX1/Gv7BYy+e/TXTxieKPKA/wJB1v9p9MQFZWkUnqbM59f7CDSOyHhvg3RyEX+W+EJf98UsIXcTWksyJD1rIGutYxf+Nqj6dmQarevsprPVOM7vW4RJE2UWtjjLIMz3BpK5PkA23x678L9AtdRvaMyPNOicjLIr9m0II3eYocJRk1bjkqEG/FT5eG7oXUI97FVYafRSgixk5KTGuoZmbRz9yPZxTCiiN3FOJcoCPmmM3Q+93oAUZAE3qrzOxXmwq76e9r1SnRrwQa69GKTgkEayKk5iUAX4Ubs0l9t6/yVIF+alYCPzLlQJxIQYG5c0qtNAYI+jnzTvuWwfEqFrwnF0th/FBPhIxhBEXlkOkAT7d3NDKq6Oa4tiUJd6Po5Sse74jO9VXgcdcdUmUuQoUaOJnt4Dl+JXXeEyPxSI1voUw1/7MCwcm0NW4TI0Df09vyvCmMFradjrDakM0Z+bXAAAAAA=') format('woff2'),
+  url('iconfont.woff?t=1619360751585') format('woff'),
+  url('iconfont.ttf?t=1619360751585') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('iconfont.svg?t=1619360751585#iconfont') format('svg'); /* iOS 4.1- */
 }
 
 .iconfont {
@@ -13,6 +13,10 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.team-iconshanchu:before {
+  content: "\e617";
 }
 
 .team-iconshow-main-container:before {

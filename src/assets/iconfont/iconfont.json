@@ -6,6 +6,13 @@
   "description": "增删查改xi't",
   "glyphs": [
     {
+      "icon_id": "6184565",
+      "name": "删除",
+      "font_class": "shanchu",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
       "icon_id": "9626913",
       "name": "全屏",
       "font_class": "show-main-container",

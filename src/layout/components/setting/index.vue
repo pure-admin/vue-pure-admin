@@ -14,6 +14,14 @@
         <span>隐藏标签页</span>
         <vxe-switch v-model="tagsVal" open-label="开" close-label="关" @change="tagsChange"></vxe-switch>
       </li>
+
+      <li>
+        <span>标签风格</span>
+        <vxe-radio-group v-model="markValue" @change="onChange">
+          <vxe-radio label="card" content="卡片"></vxe-radio>
+          <vxe-radio label="smart" content="灵动"></vxe-radio>
+        </vxe-radio-group>
+      </li>
     </ul>
     <el-divider />
     <vxe-button
@@ -28,7 +36,7 @@
 
 <script lang='ts'>
 import panel from "../panel/index.vue";
-import { onMounted, reactive, toRefs } from "vue";
+import { onMounted, reactive, toRefs, ref, unref } from "vue";
 import { storageLocal } from "/@/utils/storage";
 import { toggleClass } from "/@/utils/operate";
 import { emitter } from "/@/utils/mitt";
@@ -39,6 +47,9 @@ export default {
   components: { panel },
   setup() {
     const router = useRouter();
+
+    // 默认卡片模式
+    const markValue = ref(storageLocal.getItem("showModel") || "card");
 
     function toggleClass(flag: boolean, clsName: string, target?: HTMLElement) {
       const targetEl = target || document.body;
@@ -104,13 +115,20 @@ export default {
       router.push("/login");
     }
 
+    function onChange({ label }) {
+      storageLocal.setItem("showModel", label);
+      emitter.emit("tagViewsShowModel", label);
+    }
+
     return {
       ...toRefs(settings),
       localOperate,
       greyChange,
       weekChange,
       tagsChange,
-      onReset
+      onReset,
+      markValue,
+      onChange
     };
   }
 };

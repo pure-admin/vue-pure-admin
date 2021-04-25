@@ -1,17 +1,29 @@
 // sidebar
 $menuText: #7a80b4;
 $menuActiveText: #7a80b4;
-$subMenuActiveText: #f4f4f5;
+$subMenuActiveText: #409eff;
 
+// dark样式
 //菜单背景
-$menuBg: #1b2a47;
-// 鼠标覆盖菜单时的背景
-$menuHover: #2a395b;
+// $menuBg: #1b2a47;
+// // 鼠标覆盖菜单时的背景
+// $menuHover: #2a395b;
 
 // 子菜单背景
-$subMenuBg: #1f2d3d;
+// $subMenuBg: #1f2d3d;
+// // 鼠标覆盖子菜单时的背景
+// $subMenuHover: #001528;
+
+// night样式
+//菜单背景
+$menuBg: #fff;
+// 鼠标覆盖菜单时的背景
+$menuHover: #e0ebf6;
+
+// 子菜单背景
+$subMenuBg: #fff;
 // 鼠标覆盖子菜单时的背景
-$subMenuHover: #001528;
+$subMenuHover: #e0ebf6;
 
 $sideBarWidth: 210px;
 
