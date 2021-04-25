@@ -7,7 +7,7 @@
           <h3>项目配置</h3>
           <i class="el-icon-close" @click="show = !show"></i>
         </div>
-        <el-divider />
+        <div style="border-bottom:1px solid #DCDFE6"></div>
         <slot />
       </div>
     </div>
