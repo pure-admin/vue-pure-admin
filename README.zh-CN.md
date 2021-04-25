@@ -15,21 +15,26 @@ vue-pure-admin 是一个免费开源的中后台模版。使用了最新的`vue3
 点击免密登录
 
 <p align="center">
-   <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5cf9fd0bb1d7468f8ff3fbfa6bb8113c~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/124ebe67371b49038874a1b65196f189~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/654de30b077540f195595c98b1e0d316~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/dd7caee2d36f400a819f8dd22036281c~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/79a6fa10e55c4c859187d93fa40ac26f~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c5570ea358e94d8a8649fcd1501dbecc~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/24170b706e644f848441bac41ee4c05a~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/03d471b0d3604730b8f41835500ec979~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/98f91183a41e4a99947f036574b40a05~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bfbbefeb48a044c7828efdd63b56dff9~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cb7416d405af4f3f9335924d342246d1~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cf8381ce84f14bf0935ec811b5271b04~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/690c9d3677b6466cac9be16b26180a49~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/22bfdd68db684632bcdd09c997fbdf04~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/68eda5c0fe944f848ce9b11e50840922~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/aba41c75d8f54a30807ee69d89e59843~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/474263a442c44cb7b29d08a885c8d3ff~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2fe7bb4fa5d94d0ab89b587eab8f786b~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3ceb2a259f044e9188efb561e805de7c~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/052cb606731d401390935698a02006f2~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e351da117b334bbdbaaf2dcdff5e9774~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bdf6d93d1245467c8cab6bb38aa4a552~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c35b456779b5499b9b8220dcc8a180a4~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/01bb4404f82241418f3151cdb4060e28~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9866cc4e3f5f450db95f7992057e3de6~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2c77673737b6451b9d52e460a2386fdc~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8d88b9794fbf4b1baa634c62419bd534~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5b8d43a71d904a078a8e438c1610a729~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4f845130b37740a99f86a254850a7ba1~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6d922b84ea7a40c0b7173ae9a0e744a6~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9b97c6924b7b465fa0c53dbff23b882f~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/07a62341b49d4ec48060227bd42e2770~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1eb27cd067c841cd9cb970b8447c32ca~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3cc80a3388254daf863edb684e7264a5~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/38799a113959428fba2a7aa800568f1c~tplv-k3u1fbpfcp-watermark.image">
     <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/db7fc79ef7ec45af865d7c3644a2766f~tplv-k3u1fbpfcp-watermark.image">
 </p>
 
