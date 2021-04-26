@@ -15,27 +15,21 @@ vue-pure-admin is a free and open source middle and back-end template. Using the
 Click to log in without password
 
 <p align="center">
-    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/aba41c75d8f54a30807ee69d89e59843~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/474263a442c44cb7b29d08a885c8d3ff~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2fe7bb4fa5d94d0ab89b587eab8f786b~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3ceb2a259f044e9188efb561e805de7c~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/052cb606731d401390935698a02006f2~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e351da117b334bbdbaaf2dcdff5e9774~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bdf6d93d1245467c8cab6bb38aa4a552~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c35b456779b5499b9b8220dcc8a180a4~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/01bb4404f82241418f3151cdb4060e28~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9866cc4e3f5f450db95f7992057e3de6~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2c77673737b6451b9d52e460a2386fdc~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8d88b9794fbf4b1baa634c62419bd534~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5b8d43a71d904a078a8e438c1610a729~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4f845130b37740a99f86a254850a7ba1~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6d922b84ea7a40c0b7173ae9a0e744a6~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9b97c6924b7b465fa0c53dbff23b882f~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/07a62341b49d4ec48060227bd42e2770~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1eb27cd067c841cd9cb970b8447c32ca~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3cc80a3388254daf863edb684e7264a5~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/38799a113959428fba2a7aa800568f1c~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/db7fc79ef7ec45af865d7c3644a2766f~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c659b762ed5a47cc8bdc6546e9df8cd2~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a28fc0af7ac44e3b8f30469cba4a9993~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a17e54329cda4d76aa9c1c4f2a4715d3~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d884fb611da74ee0bdc17c29014d0260~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/abed44ac1f2744e897c28d1689bcb517~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cf2f068650f44a0787c699f5a20c75a6~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/73c575dd06474731ad8ab9d853f1ddfd~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/99389b90f5ac4db9b0d61d99dd9a1454~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f1546f1c6014446db6c9983934aedc86~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cfb0093b77c34e87b094daaa4304bc2d~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fe133cc6db3245f9b1b37f231d040550~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d3110a12d63e4f6fb314e60bf18bdb66~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/45b93ec453e3406a939affe65ddcc803~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cdc2dc88c1ef4aafbaaade820442c986~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f4c91b162206485b88cc58a72ff54a01~tplv-k3u1fbpfcp-watermark.image">
 </p>
 
 ### Use Gitpod
