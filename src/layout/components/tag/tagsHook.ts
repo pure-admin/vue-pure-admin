@@ -59,10 +59,12 @@ export function useDynamicRoutesHook() {
     if (route) {
       let ramStorage = storageLocal.getItem("routesInStorage");
       nextTick(() => {
-        let currentIndex = ramStorage.findIndex((v) => v.path === route.path);
-        if (currentIndex !== -1) return;
-        ramStorage.push({ path: route.path, meta: route.meta });
-        storageLocal.setItem("routesInStorage", ramStorage);
+        if (ramStorage) {
+          let currentIndex = ramStorage.findIndex((v) => v.path === route.path);
+          if (currentIndex !== -1) return;
+          ramStorage.push({ path: route.path, meta: route.meta });
+          storageLocal.setItem("routesInStorage", ramStorage);
+        }
       });
     }
 

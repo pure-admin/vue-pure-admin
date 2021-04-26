@@ -1,6 +1,6 @@
 <template>
   <div ref="containerDom" class="tags-view" v-if="!showTags">
-    <el-scrollbar :vertical="false" class="scroll-container">
+    <el-scrollbar wrap-class="scrollbar-wrapper" class="scroll-container">
       <div
         v-for="(item, index) in dynamicTagList"
         :key="index"
@@ -39,7 +39,7 @@
       </div>
     </ul>
     <!-- 右侧功能按钮 -->
-    <ul class="right-func">
+    <ul class="right-button">
       <li>
         <i
           :title="$t('message.hsrefreshRoute')"
@@ -327,7 +327,7 @@ export default {
     });
 
     return {
-      dynamicTagList: dRoutes,
+      dynamicTagList: useDynamicRoutesHook().dRoutes,
       deleteMenu,
       showTags,
       onFresh,
@@ -352,9 +352,9 @@ export default {
 <style lang="scss" scoped>
 .tags-view {
   width: 100%;
-  height: 40px;
   font-size: 14px;
   display: flex;
+  box-shadow: 0 0 1px #888888;
   .scroll-item {
     border-radius: 3px 3px 0 0;
     padding: 2px 8px;
@@ -374,17 +374,21 @@ export default {
   }
 
   .scroll-container {
-    text-align: left;
     padding: 5px 0;
     white-space: nowrap;
     position: relative;
     width: 100%;
     background: #fff;
-    border: 0.5px solid rgba($color: #ccc, $alpha: 0.3);
     .scroll-item {
       &:nth-child(1) {
         margin-left: 5px;
       }
+    }
+
+    .scrollbar-wrapper {
+      position: absolute;
+      height: 40px;
+      overflow-x: hidden !important;
     }
   }
 
@@ -399,7 +403,6 @@ export default {
     font-size: 12px;
     font-weight: 400;
     color: #333;
-    box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.3);
     li {
       margin: 0;
       padding: 7px 16px;
@@ -411,20 +414,15 @@ export default {
   }
 }
 
-:deep(.el-scrollbar__wrap) {
-  height: 100vh;
-}
-
-.right-func {
+.right-button {
   display: flex;
   align-items: center;
   background: #fff;
-  border: 0.5px solid rgba($color: #ccc, $alpha: 0.3);
   font-size: 16px;
   li {
     width: 40px;
-    height: 34px;
-    line-height: 34px;
+    height: 38px;
+    line-height: 38px;
     text-align: center;
     border-right: 1px solid #ccc;
     cursor: pointer;

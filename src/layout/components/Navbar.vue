@@ -10,9 +10,14 @@
 
     <div class="right-menu">
       <!-- 全屏 -->
-      <screenfull />
+      <screenfull v-show="!deviceDetection()" />
       <!-- 国际化 -->
-      <div class="inter" :title="langs ? '中文' : 'English'" @click="toggleLang">
+      <div
+        v-show="!deviceDetection()"
+        class="inter"
+        :title="langs ? '中文' : 'English'"
+        @click="toggleLang"
+      >
         <img :src="langs ? ch : en" />
       </div>
       <i class="el-icon-setting hsset" :title="$t('message.hssystemSet')" @click="onPanel"></i>
@@ -49,6 +54,7 @@ import ch from "/@/assets/ch.png";
 import en from "/@/assets/en.png";
 import favicon from "/favicon.ico";
 import { emitter } from "/@/utils/mitt";
+import { deviceDetection } from "/@/utils/deviceDetection";
 
 export default defineComponent({
   name: "Navbar",
@@ -105,7 +111,8 @@ export default defineComponent({
       ch,
       en,
       favicon,
-      onPanel
+      onPanel,
+      deviceDetection
     };
   }
 });
@@ -113,9 +120,9 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .navbar {
+  width: 100%;
   height: 50px;
   overflow: hidden;
-  position: relative;
   background: #fff;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
 
@@ -137,16 +144,18 @@ export default defineComponent({
   }
 
   .right-menu {
-    float: right;
+    position: absolute;
+    right: 0;
     display: flex;
     align-items: center;
+    height: 48px;
+    line-height: 48px;
     .inter {
       width: 40px;
       height: 48px;
       display: flex;
       align-items: center;
       justify-content: space-around;
-      margin-right: 5px;
       &:hover {
         cursor: pointer;
         background: #f0f0f0;
@@ -169,7 +178,6 @@ export default defineComponent({
     }
     .el-dropdown-link {
       width: 80px;
-      height: 48px;
       display: flex;
       align-items: center;
       justify-content: space-around;
