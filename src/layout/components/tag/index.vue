@@ -164,7 +164,7 @@ export default {
     // 初始化页面刷新保证当前路由tabview存在
     let stop = watchEffect(() => {
       let parentPath = route.path.slice(0, route.path.lastIndexOf("/"));
-      dynamicRouteTags(route.path, parentPath);
+      dynamicRouteTags(route.path, parentPath, route);
     });
 
     setTimeout(() => {

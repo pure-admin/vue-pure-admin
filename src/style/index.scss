@@ -1,4 +1,3 @@
-@import "./variables.scss";
 @import "./mixin.scss";
 @import "./transition.scss";
 @import "./element-ui.scss";
@@ -121,10 +120,6 @@ ul {
   -moz-filter: invert(80%);
   -ms-filter: invert(80%);
   -o-filter: invert(80%);
-}
-
-.el-loading-mask {
-  z-index: -1;
 }
 
 .pc-spacing {

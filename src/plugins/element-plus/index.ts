@@ -23,6 +23,9 @@ import {
   ElForm,
   ElFormItem,
   ElLoading,
+  ElPopover,
+  ElPopper,
+  ElTooltip,
 } from "element-plus";
 
 const components = [
@@ -48,6 +51,9 @@ const components = [
   ElInput,
   ElForm,
   ElFormItem,
+  ElPopover,
+  ElPopper,
+  ElTooltip,
 ];
 
 const plugins = [ElLoading];

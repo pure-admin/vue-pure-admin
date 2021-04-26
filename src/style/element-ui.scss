@@ -15,7 +15,6 @@
   display: none;
 }
 
-
 .el-dialog {
   transform: none;
   left: 0;
@@ -38,11 +37,20 @@
 // dropdown
 .el-dropdown-menu {
   a {
-    display: block
+    display: block;
   }
 }
 
 // to fix el-date-picker css style
 .el-range-separator {
   box-sizing: content-box;
+}
+
+.el-loading-mask {
+  z-index: -1;
+}
+
+// el-tooltip,的权重
+.is-dark {
+  z-index: 99999 !important;
 }

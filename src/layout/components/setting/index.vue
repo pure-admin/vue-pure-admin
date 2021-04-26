@@ -23,6 +23,24 @@
         </vxe-radio-group>
       </li>
     </ul>
+
+    <el-divider>主题风格</el-divider>
+    <ul class="theme-stley">
+      <el-tooltip class="item" effect="dark" content="暗色主题" placement="bottom">
+        <li :class="dataTheme === 'dark' ? 'is-select' : ''" ref="firstTheme" @click="onDark">
+          <div></div>
+          <div></div>
+        </li>
+      </el-tooltip>
+
+      <el-tooltip class="item" effect="dark" content="亮色主题" placement="bottom">
+        <li :class="dataTheme === 'light' ? 'is-select' : ''" ref="secondTheme" @click="onLight">
+          <div></div>
+          <div></div>
+        </li>
+      </el-tooltip>
+    </ul>
+
     <el-divider />
     <vxe-button
       status="danger"
@@ -41,6 +59,8 @@ import { storageLocal } from "/@/utils/storage";
 import { toggleClass } from "/@/utils/operate";
 import { emitter } from "/@/utils/mitt";
 import { useRouter } from "vue-router";
+import { templateRef } from "@vueuse/core";
+let isSelect = "is-select";
 
 export default {
   name: "setting",
@@ -120,6 +140,31 @@ export default {
       emitter.emit("tagViewsShowModel", label);
     }
 
+    const firstTheme = templateRef<HTMLElement | null>("firstTheme", null);
+    const secondTheme = templateRef<HTMLElement | null>("secondTheme", null);
+
+    const dataTheme = ref(storageLocal.getItem("data-theme") || "dark");
+    if (dataTheme) {
+      storageLocal.setItem("data-theme", unref(dataTheme));
+      window.document.body.setAttribute("data-theme", unref(dataTheme));
+    }
+
+    // dark主题
+    function onDark() {
+      storageLocal.setItem("data-theme", "dark");
+      window.document.body.setAttribute("data-theme", "dark");
+      toggleClass(true, isSelect, unref(firstTheme));
+      toggleClass(false, isSelect, unref(secondTheme));
+    }
+
+    // light主题
+    function onLight() {
+      storageLocal.setItem("data-theme", "light");
+      window.document.body.setAttribute("data-theme", "light");
+      toggleClass(false, isSelect, unref(firstTheme));
+      toggleClass(true, isSelect, unref(secondTheme));
+    }
+
     return {
       ...toRefs(settings),
       localOperate,
@@ -128,7 +173,10 @@ export default {
       tagsChange,
       onReset,
       markValue,
-      onChange
+      onChange,
+      onDark,
+      onLight,
+      dataTheme
     };
   }
 };
@@ -141,11 +189,71 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 16px;
+    margin: 25px;
   }
 }
 :deep(.el-divider__text) {
   font-size: 16px;
   font-weight: 700;
+}
+.theme-stley {
+  margin-top: 25px;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-around;
+  li {
+    width: 30%;
+    height: 100%;
+    background: #f0f2f5;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    background-color: #f0f2f5;
+    border-radius: 4px;
+    box-shadow: 0 1px 2.5px 0 rgb(0 0 0 / 18%);
+    &:nth-child(1) {
+      div {
+        &:nth-child(1) {
+          width: 30%;
+          height: 100%;
+          background: #1b2a47;
+        }
+        &:nth-child(2) {
+          width: 70%;
+          height: 30%;
+          top: 0;
+          right: 0;
+          background-color: #fff;
+          box-shadow: 0 0 1px #888888;
+          position: absolute;
+        }
+      }
+    }
+
+    &:nth-child(2) {
+      div {
+        &:nth-child(1) {
+          width: 30%;
+          height: 100%;
+          box-shadow: 0 0 1px #888888;
+          background-color: #fff;
+          border-radius: 4px 0 0 4px;
+        }
+        &:nth-child(2) {
+          width: 70%;
+          height: 30%;
+          top: 0;
+          right: 0;
+          background-color: #fff;
+          box-shadow: 0 0 1px #888888;
+          position: absolute;
+        }
+      }
+    }
+  }
+}
+.is-select {
+  border: 2px solid #0960bd;
 }
 </style>
