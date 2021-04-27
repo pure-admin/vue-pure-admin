@@ -1,29 +1,5 @@
 <template>
   <panel>
-    <el-divider>界面显示</el-divider>
-    <ul class="setting">
-      <li>
-        <span>灰色模式</span>
-        <vxe-switch v-model="greyVal" open-label="开" close-label="关" @change="greyChange"></vxe-switch>
-      </li>
-      <li>
-        <span>色弱模式</span>
-        <vxe-switch v-model="weekVal" open-label="开" close-label="关" @change="weekChange"></vxe-switch>
-      </li>
-      <li>
-        <span>隐藏标签页</span>
-        <vxe-switch v-model="tagsVal" open-label="开" close-label="关" @change="tagsChange"></vxe-switch>
-      </li>
-
-      <li>
-        <span>标签风格</span>
-        <vxe-radio-group v-model="markValue" @change="onChange">
-          <vxe-radio label="card" content="卡片"></vxe-radio>
-          <vxe-radio label="smart" content="灵动"></vxe-radio>
-        </vxe-radio-group>
-      </li>
-    </ul>
-
     <el-divider>主题风格</el-divider>
     <ul class="theme-stley">
       <el-tooltip class="item" effect="dark" content="暗色主题" placement="bottom">
@@ -39,6 +15,41 @@
           <div></div>
         </li>
       </el-tooltip>
+    </ul>
+
+    <el-divider>界面显示</el-divider>
+    <ul class="setting">
+      <li>
+        <span>灰色模式</span>
+        <vxe-switch v-model="greyVal" open-label="开" close-label="关" @change="greyChange"></vxe-switch>
+      </li>
+      <li>
+        <span>色弱模式</span>
+        <vxe-switch v-model="weekVal" open-label="开" close-label="关" @change="weekChange"></vxe-switch>
+      </li>
+      <li>
+        <span>隐藏标签页</span>
+        <vxe-switch v-model="tagsVal" open-label="开" close-label="关" @change="tagsChange"></vxe-switch>
+      </li>
+      <li>
+        <span>侧边栏Logo</span>
+        <vxe-switch
+          v-model="logoVal"
+          open-value="1"
+          close-value="-1"
+          open-label="开"
+          close-label="关"
+          @change="logoChange"
+        ></vxe-switch>
+      </li>
+
+      <li>
+        <span>标签风格</span>
+        <vxe-radio-group v-model="markValue" @change="onChange">
+          <vxe-radio label="card" content="卡片"></vxe-radio>
+          <vxe-radio label="smart" content="灵动"></vxe-radio>
+        </vxe-radio-group>
+      </li>
     </ul>
 
     <el-divider />
@@ -71,12 +82,7 @@ export default {
     // 默认卡片模式
     const markValue = ref(storageLocal.getItem("showModel") || "card");
 
-    function toggleClass(flag: boolean, clsName: string, target?: HTMLElement) {
-      const targetEl = target || document.body;
-      let { className } = targetEl;
-      className = className.replace(clsName, "");
-      targetEl.className = flag ? `${className} ${clsName} ` : className;
-    }
+    const logoVal = ref(storageLocal.getItem("logoVal") || "1");
 
     const localOperate = (key: string, value?: any, model?: string): any => {
       model && model === "set"
@@ -97,6 +103,13 @@ export default {
     settings.weekVal === null
       ? localOperate("weekVal", false, "set")
       : document.querySelector("html")?.setAttribute("class", "html-weakness");
+
+    function toggleClass(flag: boolean, clsName: string, target?: HTMLElement) {
+      const targetEl = target || document.body;
+      let { className } = targetEl;
+      className = className.replace(clsName, "");
+      targetEl.className = flag ? `${className} ${clsName} ` : className;
+    }
 
     // 灰色模式设置
     const greyChange = ({ value }): void => {
@@ -165,6 +178,13 @@ export default {
       toggleClass(true, isSelect, unref(secondTheme));
     }
 
+    function logoChange() {
+      unref(logoVal) === "1"
+        ? storageLocal.setItem("logoVal", "1")
+        : storageLocal.setItem("logoVal", "-1");
+      emitter.emit("logoChange", unref(logoVal));
+    }
+
     return {
       ...toRefs(settings),
       localOperate,
@@ -176,7 +196,9 @@ export default {
       onChange,
       onDark,
       onLight,
-      dataTheme
+      dataTheme,
+      logoVal,
+      logoChange
     };
   }
 };

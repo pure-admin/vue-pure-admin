@@ -116,10 +116,6 @@ export default defineComponent({
       });
     });
 
-    // onUnmounted(() => {
-    //   console.log(props.lf);
-    // });
-
     return {
       focusIndex,
       titleLists,
