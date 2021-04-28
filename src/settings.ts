@@ -3,7 +3,5 @@ export default {
 
   fixedHeader: false,
 
-  sidebarLogo: true,
-
   hiddenSideBar: false,
 };

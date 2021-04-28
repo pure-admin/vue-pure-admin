@@ -41,12 +41,12 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent, onMounted } from "vue";
+import { ref, defineComponent, onMounted, unref, watch } from "vue";
 import Breadcrumb from "/@/components/BreadCrumb";
 import Hamburger from "/@/components/HamBurger";
 import screenfull from "../components/screenfull/index.vue";
 import { useMapGetters } from "../store";
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 import { useStore } from "vuex";
 import { storageSession } from "/@/utils/storage";
 import { useI18n } from "vue-i18n";
@@ -68,16 +68,25 @@ export default defineComponent({
 
     const store = useStore();
     const router = useRouter();
+    const route = useRoute();
 
     let usename = storageSession.getItem("info").username;
 
-    const { locale } = useI18n();
+    const { locale, t } = useI18n();
 
     // 国际化语言切换
     const toggleLang = (): void => {
       langs.value = !langs.value;
       langs.value ? (locale.value = "zh") : (locale.value = "en");
     };
+
+    watch(
+      () => langs.value,
+      val => {
+        //@ts-ignore
+        document.title = t(unref(route.meta.title)); // 动态title
+      }
+    );
 
     // 退出登录
     const logout = (): void => {

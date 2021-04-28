@@ -4,6 +4,8 @@ import Layout from "../layout/index.vue";
 
 import { storageSession } from "../utils/storage";
 
+import { i18n } from "/@/plugins/i18n/index";
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
@@ -349,8 +351,9 @@ const whiteList = ["/login", "/register"];
 
 router.beforeEach((to, _from, next) => {
   NProgress.start();
+  const { t } = i18n.global;
   // @ts-ignore
-  // document.title = $t(to.meta.title); // 动态title
+  document.title = t(to.meta.title); // 动态title
   whiteList.indexOf(to.path) !== -1 || storageSession.getItem("info")
     ? next()
     : next("/login"); // 全部重定向到登录页
