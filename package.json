@@ -36,7 +36,7 @@
     "vue-types": "^3.0.2",
     "vuedraggable": "^4.0.1",
     "vuex": "^4.0.0",
-    "vxe-table": "^4.0.14",
+    "vxe-table": "^4.0.15-beta.2",
     "wangeditor": "^4.0.3",
     "xe-ajax": "^4.0.5",
     "xe-utils": "^3.1.12",
