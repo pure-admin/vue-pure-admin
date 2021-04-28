@@ -30,7 +30,7 @@ import demoData from "./dataTurbo.json";
 export default {
   components: { NodePanel, Control, DataDialog },
   setup() {
-    let lf = ref(null);
+    let lf = ref<ElRef>(null);
     let graphData = ref(null);
     let dataVisible = ref(false);
     let config = ref({

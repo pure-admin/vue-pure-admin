@@ -39,7 +39,7 @@ export default {
     SeamlessScroll
   },
   setup() {
-    const scroll = templateRef<HTMLElement | null>("scroll", null);
+    const scroll = templateRef<ElRef | null>("scroll", null);
 
     let listData = ref([
       {
@@ -76,8 +76,8 @@ export default {
     });
 
     function changeDirection(val) {
-      scroll.value.reset();
-      classOption.value.direction = val;
+      unref(scroll).reset();
+      unref(classOption).direction = val;
     }
 
     return {

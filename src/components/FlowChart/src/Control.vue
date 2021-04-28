@@ -31,16 +31,16 @@ import { templateRef } from "@vueuse/core";
 export default defineComponent({
   name: "Control",
   props: {
-    lf: Object || String,
+    lf: <ElRef>Object,
     catTurboData: Boolean
   },
   emits: ["catData"],
   setup(props, { emit }) {
-    const controlButton3 = templateRef<HTMLElement | null>(
+    const controlButton3 = templateRef<HTMLElement | any>(
       "controlButton3",
       null
     );
-    const controlButton4 = templateRef<HTMLElement | null>(
+    const controlButton4 = templateRef<HTMLElement | any>(
       "controlButton4",
       null
     );

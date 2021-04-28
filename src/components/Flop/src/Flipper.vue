@@ -13,20 +13,20 @@ export default defineComponent({
     // 前牌文字
     frontText: {
       type: [Number, String],
-      default: 0,
+      default: 0
     },
     // back paper text
     // 后牌文字
     backText: {
       type: [Number, String],
-      default: 1,
+      default: 1
     },
     // flipping duration, please be consistent with the CSS animation-duration value.
     // 翻牌动画时间，与CSS中设置的animation-duration保持一致
     duration: {
       type: Number,
-      default: 600,
-    },
+      default: 600
+    }
   },
   setup(props) {
     const { frontText, backText, duration } = props;
@@ -86,9 +86,9 @@ export default defineComponent({
       flipDown,
       flipUp,
       setFront,
-      setBack,
+      setBack
     };
-  },
+  }
 });
 </script>
 

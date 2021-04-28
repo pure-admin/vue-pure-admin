@@ -59,12 +59,6 @@ export default defineComponent({
       () => getBreadcrumb()
     );
 
-    // const pathCompile = (path: string): string | Object => {
-    // const { params } = route;
-    // var toPath = pathToRegexp.compile(path);
-    // return toPath(params);
-    // };
-
     const handleLink = (item: RouteLocationMatched): any => {
       const { redirect, path } = item;
       if (redirect) {

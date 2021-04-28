@@ -16,24 +16,24 @@ import {
   toRefs,
   defineComponent,
   onBeforeMount,
-  getCurrentInstance,
+  getCurrentInstance
 } from "vue";
 
 import { mapJson } from "/@/api/mock";
-import { deviceDetection } from "/@/utils/deviceDetection"
+import { deviceDetection } from "/@/utils/deviceDetection";
 
 import greenCar from "/@/assets/green.png";
 
-let MarkerCluster = null;
+let MarkerCluster = <ElRef>null;
 
 export interface MapConfigureInter {
-  on: any;
-  destroy?: any;
-  clearEvents?: any;
-  plugin?: any;
-  addControl?: any;
-  setCenter?: any;
-  setZoom?: any;
+  on: Fn;
+  destroy?: Fn;
+  clearEvents?: Fn;
+  addControl?: Fn;
+  setCenter?: Fn;
+  setZoom?: Fn;
+  plugin?: Fn;
 }
 
 export interface mapInter {
@@ -47,7 +47,7 @@ export default defineComponent({
     let map: MapConfigureInter;
 
     const mapSet: mapInter = reactive({
-      loading: deviceDetection() ? false : true,
+      loading: deviceDetection() ? false : true
     });
 
     // 地图创建完成(动画关闭)
@@ -71,18 +71,18 @@ export default defineComponent({
       if (!vm) return;
       let {
         MapConfigure,
-        options,
+        options
       } = vm.appContext.config.globalProperties.$config;
 
       AMapLoader.load({
         key: MapConfigure.amapKey,
         version: "2.0",
-        plugins: ["AMap.MarkerCluster"],
+        plugins: ["AMap.MarkerCluster"]
       })
-        .then((AMap) => {
+        .then(AMap => {
           // 创建地图实例
           map = new AMap.Map(vm.refs.mapview, {
-            options,
+            options
           });
 
           //地图中添加地图操作ToolBar插件
@@ -91,7 +91,7 @@ export default defineComponent({
             //地图类型切换
             map.addControl(
               new AMap.MapType({
-                defaultType: 0,
+                defaultType: 0
               })
             );
           });
@@ -103,14 +103,13 @@ export default defineComponent({
               let { marker, data } = ctx;
               if (Array.isArray(data) && data[0]) {
                 var { driver, plateNumber, orientation } = data[0];
-                var content = `<img style="transform: scale(1) rotate(${
-                360 - Number(orientation)
-              }deg);" src='${greenCar}' />`;
+                var content = `<img style="transform: scale(1) rotate(${360 -
+                  Number(orientation)}deg);" src='${greenCar}' />`;
                 marker.setContent(content);
                 marker.setLabel({
                   direction: "bottom",
                   offset: new AMap.Pixel(-4, 0), //设置文本标注偏移量
-                  content: `<div> ${plateNumber}(${driver})</div>`, //设置文本标注内容
+                  content: `<div> ${plateNumber}(${driver})</div>` //设置文本标注内容
                 });
                 marker.setOffset(new AMap.Pixel(-18, -10));
                 marker.on("click", ({ lnglat }) => {
@@ -118,27 +117,27 @@ export default defineComponent({
                   map.setCenter(lnglat);
                 });
               }
-            },
+            }
           });
 
           // 获取模拟车辆信息
           mapJson()
-            .then((res) => {
+            .then(res => {
               let points: object = res.info.map((v: any) => {
                 return {
                   lnglat: [v.lng, v.lat],
-                  ...v,
+                  ...v
                 };
               });
               if (MarkerCluster) MarkerCluster.setData(points);
             })
-            .catch((err) => {
+            .catch(err => {
               console.log("err:", err);
             });
 
           complete();
         })
-        .catch((err) => {
+        .catch(err => {
           mapSet.loading = false;
           throw "地图加载失败，请重新加载";
         });
@@ -148,9 +147,9 @@ export default defineComponent({
       ...toRefs(mapSet),
       complete,
       destroyMap,
-      greenCar,
+      greenCar
     };
-  },
+  }
 });
 </script>
 

@@ -1,11 +1,12 @@
 // 延迟函数
-export const delay = (timeout: number) => new Promise(resolve => setTimeout(resolve, timeout))
+export const delay = (timeout: number) =>
+  new Promise((resolve) => setTimeout(resolve, timeout));
 
 // 防抖函数
-export const debounce = (fn: () => any, timeout: number) => {
-  let timmer: any
+export const debounce = (fn: () => Fn, timeout: number) => {
+  let timmer: TimeoutHandle;
   return () => {
-    timmer ? clearTimeout(timmer) : null
-    timmer = setTimeout(fn, timeout)
-  }
-}
+    timmer ? clearTimeout(timmer) : null;
+    timmer = setTimeout(fn, timeout);
+  };
+};
