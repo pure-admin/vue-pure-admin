@@ -233,7 +233,9 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "/system/dict",
         component: () =>
-          import(/* webpackChunkName: "system" */ "../views/system/dict.vue"),
+          import(
+            /* webpackChunkName: "system" */ "../views/system/dict/index.vue"
+          ),
         meta: {
           // icon: '',
           title: "message.hsDict",

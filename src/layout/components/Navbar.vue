@@ -49,12 +49,15 @@ import { useMapGetters } from "../store";
 import { useRouter, useRoute } from "vue-router";
 import { useStore } from "vuex";
 import { storageSession } from "/@/utils/storage";
-import { useI18n } from "vue-i18n";
 import ch from "/@/assets/ch.png";
 import en from "/@/assets/en.png";
 import favicon from "/favicon.ico";
 import { emitter } from "/@/utils/mitt";
 import { deviceDetection } from "/@/utils/deviceDetection";
+import { useI18n } from "vue-i18n";
+import { locale as eleplusLocale } from "element-plus";
+import enLocale from "element-plus/lib/locale/lang/en";
+import zhLocale from "element-plus/lib/locale/lang/zh-cn";
 
 export default defineComponent({
   name: "Navbar",
@@ -77,7 +80,13 @@ export default defineComponent({
     // 国际化语言切换
     const toggleLang = (): void => {
       langs.value = !langs.value;
-      langs.value ? (locale.value = "zh") : (locale.value = "en");
+      if (langs.value) {
+        locale.value = "zh";
+        eleplusLocale(zhLocale);
+      } else {
+        locale.value = "en";
+        eleplusLocale(enLocale);
+      }
     };
 
     watch(
@@ -121,7 +130,9 @@ export default defineComponent({
       en,
       favicon,
       onPanel,
-      deviceDetection
+      deviceDetection,
+      locale,
+      t
     };
   }
 });

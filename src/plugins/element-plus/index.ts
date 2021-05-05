@@ -26,6 +26,8 @@ import {
   ElPopover,
   ElPopper,
   ElTooltip,
+  ElDrawer,
+  ElPagination,
 } from "element-plus";
 
 const components = [
@@ -54,6 +56,8 @@ const components = [
   ElPopover,
   ElPopper,
   ElTooltip,
+  ElDrawer,
+  ElPagination,
 ];
 
 const plugins = [ElLoading];

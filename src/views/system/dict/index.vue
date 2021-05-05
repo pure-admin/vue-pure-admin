@@ -1,13 +1,9 @@
-<template>
+.<template>
   <div class="dict-container">
     <!-- 工具栏 -->
     <vxe-toolbar>
       <template #buttons>
-        <vxe-input
-          v-model="dictData.filterName"
-          :placeholder="$t('message.hssearch')"
-          @keyup="searchEvent"
-        ></vxe-input>
+        <vxe-input v-model="filterName" :placeholder="$t('message.hssearch')" @keyup="searchEvent"></vxe-input>
       </template>
       <template #tools>
         <vxe-button
@@ -34,13 +30,13 @@
       border
       resizable
       :tree-config="{children: 'children', iconOpen: 'fa fa-minus-square-o', iconClose: 'fa fa-plus-square-o'}"
-      :data="dictData.tableData"
+      :data="tableData"
       @cell-dblclick="cellDBLClickEvent"
     >
       <vxe-table-column tree-node field="name" title="字典名称"></vxe-table-column>
       <vxe-table-column title="字典类型">
         <template #default="{ row }">
-          <el-tooltip effect="dark" :content="'双击复制：'+row.model" placement="top-end">
+          <el-tooltip effect="dark" :content="'双击复制：'+row.model" placement="right">
             <span class="text-model">{{ row.model }}</span>
           </el-tooltip>
         </template>
@@ -49,36 +45,43 @@
         <template #default="{ row }">
           <vxe-button type="text" icon="el-icon-edit" @click="onEdit(row)">编辑</vxe-button>
           <vxe-button type="text" icon="el-icon-circle-plus-outline" @click="onAddChild(row)">新增子类型</vxe-button>
-          <vxe-button v-show="row.model" type="text" icon="el-icon-setting">字典配置</vxe-button>
+          <vxe-button
+            v-show="row.model"
+            type="text"
+            icon="el-icon-setting"
+            @click="onDeploy(row)"
+          >字典配置</vxe-button>
           <vxe-button type="text" icon="el-icon-delete" @click="confirmEvent">删除</vxe-button>
         </template>
       </vxe-table-column>
     </vxe-table>
 
-    <!-- 配置弹框 -->
+    <!-- 修改、添加弹框 -->
     <vxe-modal
       resize
       width="450"
-      v-model="dictData.showEdit"
-      :title="dictData.selectRow ? '编辑' : '新增'"
-      :loading="dictData.submitLoading"
+      v-model="showEdit"
+      :title="selectRow ? '编辑' : '新增'"
+      :loading="submitLoading"
       @hide="$refs.xForm.reset();"
     >
       <template #default>
         <vxe-form
           ref="xForm"
-          :data="dictData.formData"
-          :items="dictData.formItems"
+          :data="formData"
+          :items="formItems"
           title-align="right"
           title-width="100"
-          @submit="dictData.submitEvent"
+          @submit="submitEvent"
         ></vxe-form>
       </template>
     </vxe-modal>
+
+    <Config :drawer="drawer" drawTitle="字典列表" @handleClose="handleClose" />
   </div>
 </template>
 <script  lang="ts">
-import { reactive, ref, unref, nextTick } from "vue";
+import { reactive, ref, unref, nextTick, toRefs } from "vue";
 import XEUtils from "xe-utils";
 import { cloneDeep } from "lodash-es";
 import { templateRef } from "@vueuse/core";
@@ -90,8 +93,12 @@ import {
   VxeTablePropTypes,
   VxeFormPropTypes
 } from "vxe-table";
+import Config from "./config.vue";
 
 export default {
+  components: {
+    Config
+  },
   setup() {
     const dictData = reactive({
       submitLoading: false,
@@ -129,7 +136,7 @@ export default {
           span: 24,
           itemRender: {
             name: "$input",
-            props: { placeholder: "请输入字典名称", clearable: true }
+            props: { placeholder: "请输入字典名称" }
           }
         },
         {
@@ -141,8 +148,7 @@ export default {
             props: {
               placeholder: "请输入字典类型",
               //这里vxe-table文档并没有提到，可以配置所选组件的所有属性，比如这里可以配置关于vxe-input的所有属性
-              disabled: true,
-              clearable: true
+              disabled: true
             }
           }
         },
@@ -270,8 +276,18 @@ export default {
       }, 500);
     };
 
+    let drawer = ref(false);
+
+    function onDeploy(row: any) {
+      drawer.value = true;
+    }
+
+    function handleClose() {
+      drawer.value = false;
+    }
+
     return {
-      dictData,
+      ...toRefs(dictData),
       formatDate,
       searchEvent,
       confirmEvent,
@@ -279,7 +295,10 @@ export default {
       submitEvent,
       onEdit,
       onAddChild,
-      onAdd
+      onAdd,
+      onDeploy,
+      drawer,
+      handleClose
     };
   }
 };
