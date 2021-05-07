@@ -13,6 +13,8 @@ import "./style/index.scss";
 import "./assets/iconfont/iconfont.js";
 import "./assets/iconfont/iconfont.css";
 
+import "v-contextmenu/dist/themes/default.css";
+
 import { setConfig, getConfig } from "./config";
 import axios from "axios";
 

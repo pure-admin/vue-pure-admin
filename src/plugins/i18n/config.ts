@@ -31,6 +31,7 @@ export const menusConfig = {
       hsselector: "选择器组件",
       hsflowChart: "流程图",
       hsseamless: "无缝滚动",
+      hscontextmenu: "右键菜单",
     },
   },
   en: {
@@ -54,6 +55,7 @@ export const menusConfig = {
       hsselector: "Selector Components",
       hsflowChart: "Flow Chart",
       hsseamless: "Seamless Scroll",
+      hscontextmenu: "Context Menu",
     },
   },
 };

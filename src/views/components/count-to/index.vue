@@ -1,7 +1,7 @@
 <template>
   <div style="margin:10px">
-    <el-row :gutter="10">
-      <el-col :span="10">
+    <el-row :gutter="24">
+      <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
         <el-card shadow="always">
           <CountTo
             prefix="$"
@@ -13,7 +13,7 @@
           />
         </el-card>
       </el-col>
-      <el-col :span="10">
+      <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
         <el-card shadow="always">
           <CountTo
             prefix="$"
@@ -44,5 +44,6 @@ export default {
 <style lang="scss" scoped>
 :deep(.el-card) {
   text-align: center;
+  margin-bottom: 10px;
 }
 </style>

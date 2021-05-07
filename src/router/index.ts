@@ -145,15 +145,18 @@ const routes: Array<RouteRecordRaw> = [
           savedPosition: true,
         },
       },
-      // {
-      //   path: '/components/flowChart',
-      //   component: () => import(/* webpackChunkName: "components" */ '../views/components/flow-chart/index.vue'),
-      //   meta: {
-      //     title: 'message.hsflowChart',
-      //     showLink: false,
-      //     savedPosition: true
-      //   }
-      // }
+      {
+        path: "/components/contextmenu",
+        component: () =>
+          import(
+            /* webpackChunkName: "components" */ "../views/components/contextmenu/index.vue"
+          ),
+        meta: {
+          title: "message.hscontextmenu",
+          showLink: false,
+          savedPosition: true,
+        },
+      },
     ],
     meta: {
       icon: "el-icon-menu",
@@ -355,7 +358,7 @@ router.beforeEach((to, _from, next) => {
   NProgress.start();
   const { t } = i18n.global;
   // @ts-ignore
-  document.title = t(to.meta.title); // 动态title
+  to.meta.title ? (document.title = t(to.meta.title)) : ""; // 动态title
   whiteList.indexOf(to.path) !== -1 || storageSession.getItem("info")
     ? next()
     : next("/login"); // 全部重定向到登录页
