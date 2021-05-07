@@ -55,7 +55,8 @@ import favicon from "/favicon.ico";
 import { emitter } from "/@/utils/mitt";
 import { deviceDetection } from "/@/utils/deviceDetection";
 import { useI18n } from "vue-i18n";
-import { locale as eleplusLocale } from "element-plus";
+
+import ElementLocale from "element-plus/lib/locale";
 import enLocale from "element-plus/lib/locale/lang/en";
 import zhLocale from "element-plus/lib/locale/lang/zh-cn";
 
@@ -82,10 +83,10 @@ export default defineComponent({
       langs.value = !langs.value;
       if (langs.value) {
         locale.value = "zh";
-        eleplusLocale(zhLocale);
+        ElementLocale.use(zhLocale);
       } else {
         locale.value = "en";
-        eleplusLocale(enLocale);
+        ElementLocale.use(enLocale);
       }
     };
 
