@@ -88,6 +88,8 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
       include: [
         "element-plus/lib/locale/lang/zh-cn",
         "element-plus/lib/locale/lang/en",
+        "vxe-table/lib/locale/lang/zh-CN",
+        "vxe-table/lib/locale/lang/en-US",
       ],
     },
     build: {

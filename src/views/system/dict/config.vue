@@ -6,7 +6,7 @@
       :direction="direction"
       :before-close="handleClose"
       destroy-on-close
-      size="620px"
+      size="640px"
     >
       <el-divider></el-divider>
       <!-- 列表 -->
@@ -43,7 +43,7 @@
                 @change="changeAllEvent"
               ></vxe-checkbox>
               <span class="select-count">已选中{{ selectRecords.length }}条</span>
-              <vxe-button>删除</vxe-button>
+              <vxe-button size="small">{{ $t("message.hsdelete") }}</vxe-button>
             </span>
           </template>
         </vxe-pager>

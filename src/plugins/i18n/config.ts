@@ -75,6 +75,7 @@ export const buttonConfig = {
       hsexpendAll: "全部展开",
       hscollapseAll: "全部折叠",
       hssystemSet: "系统设置",
+      hsdelete: "删除",
     },
   },
   en: {
@@ -92,6 +93,7 @@ export const buttonConfig = {
       hsexpendAll: "Expand All",
       hscollapseAll: "Collapse All",
       hssystemSet: "System Set",
+      hsdelete: "Delete",
     },
   },
 };

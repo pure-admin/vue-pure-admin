@@ -20,7 +20,7 @@
     "dayjs": "^1.10.4",
     "dotenv": "^8.2.0",
     "echarts": "^5.1.1",
-    "element-plus": "^1.0.2-beta.41",
+    "element-plus": "^1.0.2-beta.42",
     "font-awesome": "^4.7.0",
     "lodash-es": "^4.17.21",
     "mitt": "^2.1.0",
