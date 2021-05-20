@@ -67,7 +67,7 @@
 </template>
 
 <script lang='ts'>
-import draggable from "vuedraggable";
+import draggable from "vuedraggable/src/vuedraggable";
 import { reactive, toRefs, onMounted } from "vue";
 export default {
   components: { draggable },
@@ -82,20 +82,20 @@ export default {
         { grid: "cn", num: 6 },
         { grid: "cn", num: 7 },
         { grid: "cn", num: 8 },
-        { grid: "cn", num: 9 },
+        { grid: "cn", num: 9 }
       ],
       lists: [
         { people: "cn", id: 1, name: "www.itxst.com" },
         { people: "cn", id: 2, name: "www.baidu.com" },
         { people: "cn", id: 3, name: "www.taobao.com" },
-        { people: "cn", id: 4, name: "www.google.com" },
+        { people: "cn", id: 4, name: "www.google.com" }
       ],
       cutLists: [
         { people: "cn", id: 1, name: "cut1" },
         { people: "cn", id: 2, name: "cut2" },
         { people: "cn", id: 3, name: "cut3" },
-        { people: "cn", id: 4, name: "cut4" },
-      ],
+        { people: "cn", id: 4, name: "cut4" }
+      ]
     });
 
     const change = (evt): void => {
@@ -110,15 +110,15 @@ export default {
         forceFallback: true,
         chosenClass: "chosen",
         swapClass: "highlight",
-        animation: 300,
+        animation: 300
       });
     });
 
     return {
       ...toRefs(myArray),
-      change,
+      change
     };
-  },
+  }
 };
 </script>
 

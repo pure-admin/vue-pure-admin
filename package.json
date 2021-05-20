@@ -20,7 +20,7 @@
     "dayjs": "^1.10.4",
     "dotenv": "^8.2.0",
     "echarts": "^5.1.1",
-    "element-plus": "^1.0.2-beta.42",
+    "element-plus": "^1.0.2-beta.44",
     "font-awesome": "^4.7.0",
     "lodash-es": "^4.17.21",
     "mitt": "^2.1.0",
@@ -33,14 +33,14 @@
     "vue": "^3.0.11",
     "vue-i18n": "^9.1.6",
     "vue-json-pretty": "^2.0.2",
-    "vue-router": "^4.0.6",
+    "vue-router": "^4.0.8",
     "vue-types": "^3.0.2",
     "vuedraggable": "^4.0.1",
     "vuex": "^4.0.0",
-    "vxe-table": "^4.0.15-beta.2",
+    "vxe-table": "^4.0.16",
     "wangeditor": "^4.0.3",
     "xe-ajax": "^4.0.5",
-    "xe-utils": "^3.1.12",
+    "xe-utils": "^3.2.1",
     "xgplayer": "^2.20.3"
   },
   "devDependencies": {
@@ -58,7 +58,7 @@
     "sass": "^1.32.8",
     "sass-loader": "^11.0.1",
     "typescript": "^4.2.4",
-    "vite": "^2.2.3",
+    "vite": "^2.3.3",
     "vite-plugin-mock": "^2.5.0",
     "vite-plugin-style-import": "^0.10.0"
   }
