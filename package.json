@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "@amap/amap-jsapi-loader": "^1.0.1",
-    "@logicflow/core": "^0.3.6",
-    "@logicflow/extension": "^0.3.6",
+    "@logicflow/core": "^0.4.6",
+    "@logicflow/extension": "^0.4.6",
     "@vueuse/core": "^4.9.1",
     "await-to-js": "^3.0.0",
     "axios": "^0.21.1",
