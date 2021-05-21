@@ -173,6 +173,9 @@
           background-color: $subMenuHover;
         }
       }
+      .el-submenu__title {
+        color: $menuText;
+      }
     }
     & > .el-menu {
       i {

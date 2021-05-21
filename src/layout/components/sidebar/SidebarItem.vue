@@ -66,8 +66,9 @@ export default defineComponent({
       children: RouteRecordRaw[] = [],
       parent: RouteRecordRaw
     ) {
-      const showingChildren = children.filter(item => {
+      const showingChildren = children.filter((item: any) => {
         if (item.hidden) {
+          // 不显示hidden属性为true的菜单
           return false;
         } else {
           onlyOneChild.value = item;

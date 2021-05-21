@@ -28,6 +28,7 @@ import {
   ElTooltip,
   ElDrawer,
   ElPagination,
+  ElAlert,
 } from "element-plus";
 
 const components = [
@@ -58,6 +59,7 @@ const components = [
   ElTooltip,
   ElDrawer,
   ElPagination,
+  ElAlert,
 ];
 
 const plugins = [ElLoading];
