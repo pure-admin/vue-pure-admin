@@ -69,10 +69,8 @@ export default defineComponent({
     onBeforeMount(() => {
       vm = getCurrentInstance(); //获取组件实例
       if (!vm) return;
-      let {
-        MapConfigure,
-        options
-      } = vm.appContext.config.globalProperties.$config;
+      let { MapConfigure } = vm.appContext.config.globalProperties.$config;
+      let { options } = MapConfigure;
 
       AMapLoader.load({
         key: MapConfigure.amapKey,
@@ -81,9 +79,7 @@ export default defineComponent({
       })
         .then(AMap => {
           // 创建地图实例
-          map = new AMap.Map(vm.refs.mapview, {
-            options
-          });
+          map = new AMap.Map(vm.refs.mapview, options);
 
           //地图中添加地图操作ToolBar插件
           map.plugin(["AMap.ToolBar", "AMap.MapType"], () => {

@@ -36,8 +36,8 @@
     "vue-router": "^4.0.8",
     "vue-types": "^3.0.2",
     "vuedraggable": "^4.0.1",
-    "vuex": "^4.0.0",
-    "vxe-table": "^4.0.16",
+    "vuex": "^4.0.1",
+    "vxe-table": "^4.0.18-beta.0",
     "wangeditor": "^4.0.3",
     "xe-ajax": "^4.0.5",
     "xe-utils": "^3.2.1",
@@ -58,7 +58,7 @@
     "sass": "^1.32.8",
     "sass-loader": "^11.0.1",
     "typescript": "^4.2.4",
-    "vite": "^2.3.3",
+    "vite": "^2.3.4",
     "vite-plugin-mock": "^2.5.0",
     "vite-plugin-style-import": "^0.10.0"
   }

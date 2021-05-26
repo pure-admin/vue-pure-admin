@@ -5,10 +5,7 @@
     "baiduKey": "wTHbkkEweiFqZLKunMIjcrb2RcqNXkhc",
     "options": {
       "resizeEnable": true,
-      "center": [
-        114.085947,
-        22.547
-      ],
+      "center": [113.6401, 34.72468],
       "zoom": 12
     }
   }
