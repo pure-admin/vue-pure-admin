@@ -50,9 +50,7 @@ export const getServerConfig = async (): Promise<any> => {
 };
 
 getServerConfig().then(async () => {
-  app.use(router).use(store).use(useElementPlus).use(useTable).use(usI18n);
-
+  app.use(router);
   await router.isReady();
-
-  app.mount("#app");
+  app.use(store).use(useElementPlus).use(useTable).use(usI18n).mount("#app");
 });

@@ -75,9 +75,12 @@ const whiteList = ["/login", "/register"];
 router.beforeEach((to, _from, next) => {
   let isLogin = storageSession.getItem("info");
   // _from?.name;
-  if (isLogin && isLogin.username === "admin") {
+  if (isLogin) {
     // 异步路由
-    getAsyncRoutes().then(({ info }) => {
+    getAsyncRoutes({ name: isLogin.username }).then(({ info }) => {
+      if (info.length === 0) {
+        return;
+      }
       addAsyncRoutes([info]).forEach((v: any) => {
         // 防止重复添加路由
         if (
@@ -92,6 +95,7 @@ router.beforeEach((to, _from, next) => {
         router.addRoute(v.name, v);
       });
     });
+    console.log(router.options.routes);
   }
   NProgress.start();
   const { t } = i18n.global;

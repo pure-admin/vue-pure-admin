@@ -42,11 +42,18 @@ export default [
   {
     url: "/getAsyncRoutes",
     method: "get",
-    response: () => {
-      return {
-        code: 0,
-        info: systemRouter,
-      };
+    response: ({ query }) => {
+      if (query.name === "admin") {
+        return {
+          code: 0,
+          info: systemRouter,
+        };
+      } else {
+        return {
+          code: 0,
+          info: [],
+        };
+      }
     },
   },
 ] as MockMethod[];
