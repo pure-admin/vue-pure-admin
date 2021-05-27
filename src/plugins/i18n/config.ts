@@ -38,6 +38,9 @@ export const menusConfig = {
       "hsmenu1-2-2": "菜单1-2-2",
       "hsmenu1-3": "菜单1-3",
       hsmenu2: "菜单2",
+      permission: "权限管理",
+      permissionPage: "页面权限",
+      permissionButton: "按钮权限",
     },
   },
   en: {
@@ -70,6 +73,9 @@ export const menusConfig = {
       "hsmenu1-2-2": "Menu1-2-2",
       "hsmenu1-3": "Menu1-3",
       hsmenu2: "Menu2",
+      permission: "Permission Manage",
+      permissionPage: "Page Permission",
+      permissionButton: "Button Permission",
     },
   },
 };

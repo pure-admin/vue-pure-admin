@@ -5,6 +5,12 @@ const homeRouter = {
   name: "home",
   component: Layout,
   redirect: "/welcome",
+  meta: {
+    icon: "el-icon-s-home",
+    showLink: true,
+    savedPosition: false,
+    rank: 0,
+  },
   children: [
     {
       path: "/welcome",
@@ -17,11 +23,6 @@ const homeRouter = {
       },
     },
   ],
-  meta: {
-    icon: "el-icon-s-home",
-    showLink: true,
-    savedPosition: false,
-  },
 };
 
 export default homeRouter;

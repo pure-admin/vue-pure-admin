@@ -96,6 +96,7 @@ import {
 import Config from "./config.vue";
 
 export default {
+  name: "dict",
   components: {
     Config
   },

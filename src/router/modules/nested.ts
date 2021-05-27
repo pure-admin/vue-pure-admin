@@ -10,6 +10,7 @@ const nestedRouter = {
     icon: "el-icon-s-data",
     showLink: true,
     savedPosition: false,
+    rank: 5,
   },
   children: [
     {

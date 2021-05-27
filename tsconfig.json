@@ -35,7 +35,8 @@
     "types/**/*.ts",
     "types/global.d.ts",
     "types/shims-tsx.d.ts",
-    "types/shims-vue.d.ts"
+    "types/shims-vue.d.ts",
+    "mock/asyncRoutes.ts"
   ],
   "exclude": ["node_modules", "dist", "**/*.js"]
 }

@@ -130,7 +130,7 @@ export default defineComponent({
 
     const noSecret = (): void => {
       storageSession.setItem("info", {
-        username: "测试用户",
+        username: "admin",
         accessToken: "eyJhbGciOiJIUzUxMiJ9.test"
       });
       router.push("/");

@@ -198,14 +198,14 @@ export default defineComponent({
       }
     }
     .el-dropdown-link {
-      width: 80px;
+      width: 70px;
       display: flex;
       align-items: center;
       justify-content: space-around;
       margin-right: 10px;
       cursor: pointer;
       p {
-        font-size: 13px;
+        font-size: 14px;
       }
       img {
         width: 22px;

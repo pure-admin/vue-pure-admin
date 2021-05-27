@@ -49,12 +49,10 @@ export const getServerConfig = async (): Promise<any> => {
     });
 };
 
-getServerConfig().then(() => {
-  app
-    .use(router)
-    .use(store)
-    .use(useElementPlus)
-    .use(useTable)
-    .use(usI18n)
-    .mount("#app");
+getServerConfig().then(async () => {
+  app.use(router).use(store).use(useElementPlus).use(useTable).use(usI18n);
+
+  await router.isReady();
+
+  app.mount("#app");
 });
