@@ -3,7 +3,7 @@
     <h4>
       当前角色：
       <span style="font-size:26px">{{ purview }}</span>
-      <p style="color:	#FFA500">查看左侧菜单变化(系统管理)，模拟后台根据不同角色返回对应路由</p>
+      <p style="color:#FFA500">查看左侧菜单变化(系统管理)，模拟后台根据不同角色返回对应路由</p>
     </h4>
     <el-button type="primary" @click="changRole">切换角色</el-button>
   </div>

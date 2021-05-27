@@ -10,6 +10,9 @@ import permissionRouter from "./modules/permission";
 import remainingRouter from "./modules/remaining"; //静态路由
 import Layout from "/@/layout/index.vue";
 
+// https://cn.vitejs.dev/guide/features.html#glob-import
+const modulesRoutes = import.meta.glob("/src/views/*/*/*.vue");
+
 import { getAsyncRoutes } from "/@/api/routes";
 import { storageSession } from "../utils/storage";
 import { i18n } from "/@/plugins/i18n/index";
@@ -31,9 +34,7 @@ const addAsyncRoutes = (arrRoutes: Array<string>) => {
     if (v.redirect) {
       v.component = Layout;
     } else {
-      // https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars#limitations
-      v.component = () =>
-        import(/* @vite-ignore */ `/@/views${v.path}/index.vue`);
+      v.component = modulesRoutes[`/src/views${v.path}/index.vue`];
     }
     if (v.children) {
       addAsyncRoutes(v.children);
