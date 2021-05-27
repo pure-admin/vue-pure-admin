@@ -188,7 +188,8 @@ export default defineComponent({
     });
 
     let scrollSwitch = computed(() => {
-      return data.length >= unref(options).limitMoveNum;
+      // 从 props 解构出来的 属性 不再具有相应性. 
+      return props.data.length >= unref(options).limitMoveNum;
     });
 
     let hoverStopSwitch = computed(() => {
