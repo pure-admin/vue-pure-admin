@@ -1,11 +1,12 @@
 import { defineStore } from "pinia";
 import { store } from "/@/store";
 
-import { constantRoutesArr, ascending, isLogin } from "/@/router/index";
+import { constantRoutesArr, ascending } from "/@/router/index";
 
 import { getAsyncRoutes } from "/@/api/routes";
 import Layout from "/@/layout/index.vue";
 import router from "/@/router/index";
+import { storageSession } from "/@/utils/storage";
 
 // https://cn.vitejs.dev/guide/features.html#glob-import
 const modulesRoutes = import.meta.glob("/src/views/*/*/*.vue");
@@ -41,8 +42,8 @@ export const usePermissionStore = defineStore({
       this.asyncRoutes.push(routes);
     },
     async changeSetting() {
-      // 异步路由
-      await getAsyncRoutes({ name: isLogin.username }).then(({ info }) => {
+      let name = storageSession.getItem("info")?.username;
+      await getAsyncRoutes({ name }).then(({ info }) => {
         if (info.length === 0) {
           this.wholeRoutes = router.options.routes.filter(
             (v) => v.meta.showLink
@@ -55,14 +56,16 @@ export const usePermissionStore = defineStore({
             router.options.routes.findIndex(
               (value) => value.path === v.path
             ) !== -1
-          )
+          ) {
             return;
-          // 切记将路由push到routes后还需要使用addRoute，这样路由才能正常跳转
-          router.options.routes.push(v);
-          // 最终路由进行升序
-          ascending(router.options.routes);
-          router.addRoute(v.name, v);
-          this.asyncActionRoutes(v);
+          } else {
+            // 切记将路由push到routes后还需要使用addRoute，这样路由才能正常跳转
+            router.options.routes.push(v);
+            // 最终路由进行升序
+            ascending(router.options.routes);
+            router.addRoute(v.name, v);
+            this.asyncActionRoutes(v);
+          }
         });
       });
     },

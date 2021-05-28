@@ -35,8 +35,6 @@ export const constantRoutesArr = ascending(constantRoutes).concat(
   ...remainingRouter
 );
 
-export const isLogin = storageSession.getItem("info");
-
 const router = createRouter({
   history: createWebHashHistory(),
   routes: ascending(constantRoutes).concat(...remainingRouter),
@@ -61,14 +59,15 @@ const whiteList = ["/login", "/register"];
 
 router.beforeEach((to, _from, next) => {
   // _from?.name;
-  if (isLogin) {
+  let name = storageSession.getItem("info");
+  if (name) {
     usePermissionStoreHook().changeSetting();
   }
   NProgress.start();
   const { t } = i18n.global;
   // @ts-ignore
   to.meta.title ? (document.title = t(to.meta.title)) : ""; // 动态title
-  whiteList.indexOf(to.path) !== -1 || isLogin ? next() : next("/login"); // 全部重定向到登录页
+  whiteList.indexOf(to.path) !== -1 || name ? next() : next("/login"); // 全部重定向到登录页
 });
 
 router.afterEach(() => {
