@@ -19,7 +19,7 @@ const componentsRouter = {
       component: () => import("/@/views/components/video/index.vue"),
       meta: {
         title: "message.hsvideo",
-        showLink: false,
+        showLink: true,
         savedPosition: true,
       },
     },
@@ -29,7 +29,7 @@ const componentsRouter = {
       component: () => import("/@/views/components/map/index.vue"),
       meta: {
         title: "message.hsmap",
-        showLink: false,
+        showLink: true,
         savedPosition: true,
       },
     },
@@ -39,7 +39,7 @@ const componentsRouter = {
       component: () => import("/@/views/components/draggable/index.vue"),
       meta: {
         title: "message.hsdraggable",
-        showLink: false,
+        showLink: true,
         savedPosition: true,
       },
     },
@@ -50,7 +50,7 @@ const componentsRouter = {
       component: () => import("/@/views/components/split-pane/index.vue"),
       meta: {
         title: "message.hssplitPane",
-        showLink: false,
+        showLink: true,
         savedPosition: true,
       },
     },
@@ -60,7 +60,7 @@ const componentsRouter = {
       component: () => import("/@/views/components/button/index.vue"),
       meta: {
         title: "message.hsbutton",
-        showLink: false,
+        showLink: true,
         savedPosition: true,
       },
     },
@@ -70,7 +70,7 @@ const componentsRouter = {
       component: () => import("/@/views/components/cropping/index.vue"),
       meta: {
         title: "message.hscropping",
-        showLink: false,
+        showLink: true,
         savedPosition: true,
       },
     },
@@ -80,7 +80,7 @@ const componentsRouter = {
       component: () => import("/@/views/components/count-to/index.vue"),
       meta: {
         title: "message.hscountTo",
-        showLink: false,
+        showLink: true,
         savedPosition: true,
       },
     },
@@ -90,7 +90,7 @@ const componentsRouter = {
       component: () => import("/@/views/components/selector/index.vue"),
       meta: {
         title: "message.hsselector",
-        showLink: false,
+        showLink: true,
         savedPosition: true,
       },
     },
@@ -100,7 +100,7 @@ const componentsRouter = {
       component: () => import("/@/views/components/seamless-scroll/index.vue"),
       meta: {
         title: "message.hsseamless",
-        showLink: false,
+        showLink: true,
         savedPosition: true,
       },
     },
@@ -110,7 +110,7 @@ const componentsRouter = {
       component: () => import("/@/views/components/contextmenu/index.vue"),
       meta: {
         title: "message.hscontextmenu",
-        showLink: false,
+        showLink: true,
         savedPosition: true,
       },
     },

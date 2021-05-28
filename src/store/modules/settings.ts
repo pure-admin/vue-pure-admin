@@ -1,27 +1,38 @@
 import defaultSettings from "../../settings";
+import { defineStore } from "pinia";
+import { store } from "/@/store";
 
-const state = {
-  title: defaultSettings.title,
-  fixedHeader: defaultSettings.fixedHeader,
-};
+interface SettingState {
+  title: String;
+  fixedHeader: Boolean;
+}
 
-const mutations = {
-  CHANGE_SETTING: (state: any, { key, value }) => {
-    if (state.hasOwnProperty(key)) {
-      state[key] = value;
-    }
+export const useSettingStore = defineStore({
+  id: "pure-setting",
+  state: (): SettingState => ({
+    title: defaultSettings.title,
+    fixedHeader: defaultSettings.fixedHeader,
+  }),
+  getters: {
+    getTitle() {
+      return this.title;
+    },
+    getFixedHeader() {
+      return this.fixedHeader;
+    },
   },
-};
-
-const actions = {
-  changeSetting({ commit }, data) {
-    commit("CHANGE_SETTING", data);
+  actions: {
+    CHANGE_SETTING({ key, value }) {
+      if (this.hasOwnProperty(key)) {
+        this[key] = value;
+      }
+    },
+    changeSetting(data) {
+      this.CHANGE_SETTING(data);
+    },
   },
-};
+});
 
-export default {
-  namespaced: true,
-  state,
-  mutations,
-  actions,
-};
+export function useSettingStoreHook() {
+  return useSettingStore(store);
+}

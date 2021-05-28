@@ -1,7 +1,7 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
-import store from "./store";
+import { setupStore } from "/@/store";
 
 import { useElementPlus } from "../src/plugins/element-plus";
 import { useTable } from "../src/plugins/vxe-table";
@@ -50,7 +50,11 @@ export const getServerConfig = async (): Promise<any> => {
 };
 
 getServerConfig().then(async () => {
-  app.use(router);
+  setupStore(app);
+
+  app.use(router).use(useElementPlus).use(useTable).use(usI18n);
+
   await router.isReady();
-  app.use(store).use(useElementPlus).use(useTable).use(usI18n).mount("#app");
+
+  app.mount("#app");
 });

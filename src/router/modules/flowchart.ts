@@ -19,7 +19,7 @@ const flowChartRouter = {
       component: () => import("/@/views/flow-chart/index.vue"),
       meta: {
         title: "message.hsflowChart",
-        showLink: false,
+        showLink: true,
         savedPosition: true,
       },
     },

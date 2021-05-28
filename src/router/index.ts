@@ -8,14 +8,10 @@ import nestedRouter from "./modules/nested";
 import errorRouter from "./modules/error";
 import permissionRouter from "./modules/permission";
 import remainingRouter from "./modules/remaining"; //静态路由
-import Layout from "/@/layout/index.vue";
 
-// https://cn.vitejs.dev/guide/features.html#glob-import
-const modulesRoutes = import.meta.glob("/src/views/*/*/*.vue");
-
-import { getAsyncRoutes } from "/@/api/routes";
 import { storageSession } from "../utils/storage";
 import { i18n } from "/@/plugins/i18n/index";
+import { usePermissionStoreHook } from "/@/store/modules/permission";
 
 const constantRoutes: Array<RouteRecordRaw> = [
   homeRouter,
@@ -27,28 +23,19 @@ const constantRoutes: Array<RouteRecordRaw> = [
   errorRouter,
 ];
 
-// 过滤后端传来的动态路由重新生成规范路由
-const addAsyncRoutes = (arrRoutes: Array<string>) => {
-  if (!arrRoutes || !arrRoutes.length) return;
-  arrRoutes.forEach((v: any) => {
-    if (v.redirect) {
-      v.component = Layout;
-    } else {
-      v.component = modulesRoutes[`/src/views${v.path}/index.vue`];
-    }
-    if (v.children) {
-      addAsyncRoutes(v.children);
-    }
-  });
-  return arrRoutes;
-};
-
 // 按照路由中meta下的rank等级升序来排序路由
-function ascending(arr) {
+export const ascending = (arr) => {
   return arr.sort((a: any, b: any) => {
     return a?.meta?.rank - b?.meta?.rank;
   });
-}
+};
+
+// 将所有静态路由导出
+export const constantRoutesArr = ascending(constantRoutes).concat(
+  ...remainingRouter
+);
+
+export const isLogin = storageSession.getItem("info");
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -73,29 +60,9 @@ import NProgress from "../utils/progress";
 const whiteList = ["/login", "/register"];
 
 router.beforeEach((to, _from, next) => {
-  let isLogin = storageSession.getItem("info");
   // _from?.name;
   if (isLogin) {
-    // 异步路由
-    getAsyncRoutes({ name: isLogin.username }).then(({ info }) => {
-      if (info.length === 0) {
-        return;
-      }
-      addAsyncRoutes([info]).forEach((v: any) => {
-        // 防止重复添加路由
-        if (
-          router.options.routes.findIndex((value) => value.path === v.path) !==
-          -1
-        )
-          return;
-        // 切记将路由push到routes后还需要使用addRoute，这样路由才能正常跳转
-        router.options.routes.push(v);
-        // 最终路由进行升序
-        ascending(router.options.routes);
-        router.addRoute(v.name, v);
-      });
-    });
-    console.log(router.options.routes);
+    usePermissionStoreHook().changeSetting();
   }
   NProgress.start();
   const { t } = i18n.global;

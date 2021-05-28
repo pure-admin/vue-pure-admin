@@ -21,7 +21,7 @@ const systemRouter = {
       // component: () => import("/@/views/system/user/index.vue"),
       meta: {
         title: "message.hsBaseinfo",
-        showLink: false,
+        showLink: true,
         savedPosition: true,
       },
     },
@@ -31,7 +31,7 @@ const systemRouter = {
       // component: () => import("/@/views/system/dict/index.vue"),
       meta: {
         title: "message.hsDict",
-        showLink: false,
+        showLink: true,
         savedPosition: true,
       },
     },

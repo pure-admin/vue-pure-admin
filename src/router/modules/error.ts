@@ -19,7 +19,7 @@ const errorRouter = {
       component: () => import("/@/views/error/401.vue"),
       meta: {
         title: "message.hsfourZeroOne",
-        showLink: false,
+        showLink: true,
         savedPosition: true,
       },
     },
@@ -29,7 +29,7 @@ const errorRouter = {
       component: () => import("/@/views/error/404.vue"),
       meta: {
         title: "message.hsfourZeroFour",
-        showLink: false,
+        showLink: true,
         savedPosition: true,
       },
     },

@@ -1,7 +1,7 @@
 <template>
   <div class="navbar">
     <Hamburger
-      :is-active="sidebar.opened"
+      :is-active="pureApp.sidebar.opened"
       class="hamburger-container"
       @toggleClick="toggleSideBar"
     />
@@ -45,9 +45,9 @@ import { ref, defineComponent, onMounted, unref, watch } from "vue";
 import Breadcrumb from "/@/components/BreadCrumb";
 import Hamburger from "/@/components/HamBurger";
 import screenfull from "../components/screenfull/index.vue";
-import { useMapGetters } from "../store";
 import { useRouter, useRoute } from "vue-router";
-import { useStore } from "vuex";
+import { useAppStoreHook } from "/@/store/modules/app";
+import { mapGetters } from "pinia";
 import { storageSession } from "/@/utils/storage";
 import ch from "/@/assets/ch.png";
 import en from "/@/assets/en.png";
@@ -70,7 +70,7 @@ export default defineComponent({
   setup() {
     let langs = ref(true);
 
-    const store = useStore();
+    const pureApp = useAppStoreHook();
     const router = useRouter();
     const route = useRoute();
 
@@ -108,6 +108,10 @@ export default defineComponent({
       emitter.emit("openPanel");
     }
 
+    function toggleSideBar() {
+      pureApp.toggleSideBar();
+    }
+
     onMounted(() => {
       document
         .querySelector(".el-dropdown__popper")
@@ -118,11 +122,8 @@ export default defineComponent({
     });
 
     return {
-      // @ts-ignore
-      ...useMapGetters(["sidebar"]),
-      toggleSideBar() {
-        store.dispatch("app/toggleSideBar");
-      },
+      pureApp,
+      toggleSideBar,
       langs,
       usename,
       toggleLang,

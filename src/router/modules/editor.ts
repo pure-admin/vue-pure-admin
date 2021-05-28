@@ -19,7 +19,7 @@ const editorRouter = {
       component: () => import("/@/views/editor/index.vue"),
       meta: {
         title: "message.hseditor",
-        showLink: false,
+        showLink: true,
         savedPosition: true,
       },
     },

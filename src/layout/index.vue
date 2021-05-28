@@ -3,7 +3,7 @@
     <div
       v-if="device === 'mobile' && sidebar.opened"
       class="drawer-bg"
-      @click="handleClickOutside"
+      @click="handleClickOutside(false)"
     />
     <!-- 侧边栏 -->
     <sidebar class="sidebar-container" v-if="!containerHiddenSideBar" />
@@ -42,7 +42,8 @@ import {
   onBeforeMount,
   onBeforeUnmount
 } from "vue";
-import { useStore } from "vuex";
+import { useAppStoreHook } from "/@/store/modules/app";
+import { useSettingStoreHook } from "/@/store/modules/settings";
 import { useEventListener, useFullscreen } from "@vueuse/core";
 import { toggleClass, removeClass } from "/@/utils/operate";
 let hiddenMainContainer = "hidden-main-container";
@@ -67,7 +68,8 @@ export default {
     tag
   },
   setup() {
-    const store = useStore();
+    const pureApp = useAppStoreHook();
+    const pureSetting = useSettingStoreHook();
 
     const router = useRouter();
     const route = useRoute();
@@ -78,15 +80,15 @@ export default {
 
     const set: setInter = reactive({
       sidebar: computed(() => {
-        return store.state.app.sidebar;
+        return pureApp.sidebar;
       }),
 
       device: computed(() => {
-        return store.state.app.device;
+        return pureApp.device;
       }),
 
       fixedHeader: computed(() => {
-        return store.state.settings.fixedHeader;
+        return pureSetting.fixedHeader;
       }),
 
       classes: computed(() => {
@@ -99,15 +101,15 @@ export default {
       })
     });
 
+    const handleClickOutside = (params: Boolean) => {
+      pureApp.closeSideBar({ withoutAnimation: params });
+    };
+
     watchEffect(() => {
       if (set.device === "mobile" && !set.sidebar.opened) {
-        store.dispatch("app/closeSideBar", { withoutAnimation: false });
+        handleClickOutside(false);
       }
     });
-
-    const handleClickOutside = () => {
-      store.dispatch("app/closeSideBar", { withoutAnimation: false });
-    };
 
     const $_isMobile = () => {
       const rect = document.body.getBoundingClientRect();
@@ -117,10 +119,9 @@ export default {
     const $_resizeHandler = () => {
       if (!document.hidden) {
         const isMobile = $_isMobile();
-        store.dispatch("app/toggleDevice", isMobile ? "mobile" : "desktop");
-
+        pureApp.toggleDevice(isMobile ? "mobile" : "desktop");
         if (isMobile) {
-          store.dispatch("app/closeSideBar", { withoutAnimation: true });
+          handleClickOutside(true);
         }
       }
     };
@@ -146,8 +147,8 @@ export default {
     onMounted(() => {
       const isMobile = $_isMobile();
       if (isMobile) {
-        store.dispatch("app/toggleDevice", "mobile");
-        store.dispatch("app/closeSideBar", { withoutAnimation: true });
+        pureApp.toggleDevice("mobile");
+        handleClickOutside(true);
       }
       toggleClass(
         unref(containerHiddenSideBar),

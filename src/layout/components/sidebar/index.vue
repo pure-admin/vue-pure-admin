@@ -11,7 +11,7 @@
         @select="menuSelect"
       >
         <sidebar-item
-          v-for="route in routes"
+          v-for="route in routeStore.wholeRoutes"
           :key="route.path"
           :item="route"
           :base-path="route.path"
@@ -31,21 +31,24 @@ import {
   onBeforeMount
 } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { useStore } from "vuex";
+import { useAppStoreHook } from "/@/store/modules/app";
 import SidebarItem from "./SidebarItem.vue";
 import { algorithm } from "../../../utils/algorithm";
 import { useDynamicRoutesHook } from "../tag/tagsHook";
 import { emitter } from "/@/utils/mitt";
 import Logo from "./Logo.vue";
 import { storageLocal } from "/@/utils/storage";
+import { usePermissionStoreHook } from "/@/store/modules/permission";
 
 export default defineComponent({
   name: "sidebar",
   components: { SidebarItem, Logo },
   setup() {
+    const routeStore = usePermissionStoreHook();
+
     const router = useRouter().options.routes;
 
-    const store = useStore();
+    const pureApp = useAppStoreHook();
 
     const route = useRoute();
 
@@ -89,11 +92,11 @@ export default defineComponent({
     });
 
     return {
-      routes: computed(() => algorithm.increaseIndexes(router)),
       activeMenu,
-      isCollapse: computed(() => !store.getters.sidebar.opened),
+      isCollapse: computed(() => !pureApp.getSidebarStatus),
       menuSelect,
-      showLogo
+      showLogo,
+      routeStore
     };
   }
 });
