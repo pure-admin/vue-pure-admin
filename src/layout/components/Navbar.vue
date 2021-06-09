@@ -74,7 +74,7 @@ export default defineComponent({
     const router = useRouter();
     const route = useRoute();
 
-    let usename = storageSession.getItem("info").username;
+    let usename = storageSession.getItem("info")?.username;
 
     const { locale, t } = useI18n();
 
