@@ -1,5 +1,5 @@
 <template>
-  <div ref="wrap">
+  <div :ref="'wrap' + classOption['key']">
     <div :style="leftSwitch" v-if="navigation" :class="leftSwitchClass" @click="leftSwitchClick">
       <slot name="left-switch"></slot>
     </div>
@@ -7,7 +7,7 @@
       <slot name="right-switch"></slot>
     </div>
     <div
-      ref="realBox"
+      :ref="'realBox'+ classOption['key']"
       :style="pos"
       @mouseenter="enter"
       @mouseleave="leave"
@@ -16,7 +16,7 @@
       @touchend="touchEnd"
       @mousewheel="wheel"
     >
-      <div ref="slotList" :style="float">
+      <div :ref="'slotList'+ classOption['key']" :style="float">
         <slot></slot>
       </div>
       <div v-html="copyHtml" :style="float"></div>
@@ -84,11 +84,24 @@ export default defineComponent({
     let realBoxWidth = ref(0);
     let realBoxHeight = ref(0);
 
-    const wrap = templateRef<HTMLElement | null>("wrap", null);
-    const slotList = templateRef<HTMLElement | null>("slotList", null);
-    const realBox = templateRef<HTMLElement | null>("realBox", null);
-
     let { data, classOption } = props;
+
+    if (classOption["key"] === undefined) {
+      classOption["key"] = 0;
+    }
+
+    const wrap = templateRef<HTMLElement | null>(
+      `wrap${classOption["key"]}`,
+      null
+    );
+    const slotList = templateRef<HTMLElement | null>(
+      `slotList${classOption["key"]}`,
+      null
+    );
+    const realBox = templateRef<HTMLElement | null>(
+      `realBox${classOption["key"]}`,
+      null
+    );
 
     let leftSwitchState = computed(() => {
       return unref(xPos) < 0;
@@ -188,7 +201,7 @@ export default defineComponent({
     });
 
     let scrollSwitch = computed(() => {
-      // 从 props 解构出来的 属性 不再具有相应性. 
+      // 从 props 解构出来的 属性 不再具有相应性.
       return props.data.length >= unref(options).limitMoveNum;
     });
 
@@ -357,7 +370,7 @@ export default defineComponent({
       // 鼠标移入时拦截scrollMove()
       if (isHover) return;
       //进入move立即先清除动画 防止频繁touchMove导致多动画同时进行
-      scrollCancle();
+      // scrollCancle();
       reqFrame = requestAnimationFrame(function() {
         //实际高度
         const h = unref(realBoxHeight) / 2;
@@ -482,20 +495,20 @@ export default defineComponent({
       scrollCancle();
     }
 
-    watchEffect(() => {
-      const watchData = data;
-      if (!watchData) return;
-      nextTick(() => {
-        reset();
-      });
+    // watchEffect(() => {
+    //   const watchData = data;
+    //   if (!watchData) return;
+    //   nextTick(() => {
+    //     reset();
+    //   });
 
-      const watchAutoPlay = unref(autoPlay);
-      if (watchAutoPlay) {
-        reset();
-      } else {
-        scrollStopMove();
-      }
-    });
+    //   const watchAutoPlay = unref(autoPlay);
+    //   if (watchAutoPlay) {
+    //     reset();
+    //   } else {
+    //     scrollStopMove();
+    //   }
+    // });
 
     // 鼠标滚轮事件
     function wheel(e) {
