@@ -123,6 +123,12 @@ If you think this project is helpful to you, you can help the author buy a cup o
 
 ![donate](http://yiming_chang.gitee.io/manages/pay.jpg)
 
+## Exchange Group
+
+Please scan the code to join the WeChat exchange group, if you have any questions, you can communicate in the group!
+
+![group](http://yiming_chang.gitee.io/manages/wechat.jpg)
+
 ## License
 
 [MIT © xiaoxian521-2020](./LICENSE)
