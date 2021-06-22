@@ -19,7 +19,28 @@ import { setConfig, getConfig } from "./config";
 import axios from "axios";
 
 const app = createApp(App);
+
 app.config.globalProperties.$config = getConfig();
+
+// 响应式storage
+import Storage from "responsive-storage";
+
+app.use(Storage, {
+  routesInStorage: {
+    type: String,
+    default: Storage.getData(undefined, "routesInStorage") ?? [
+      {
+        path: "/welcome",
+        meta: {
+          title: "message.hshome",
+          icon: "el-icon-s-home",
+          showLink: true,
+          savedPosition: false,
+        },
+      },
+    ],
+  },
+});
 
 // 获取项目动态全局配置
 export const getServerConfig = async (): Promise<any> => {
