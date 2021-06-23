@@ -34,7 +34,6 @@ import { useRoute, useRouter } from "vue-router";
 import { useAppStoreHook } from "/@/store/modules/app";
 import SidebarItem from "./SidebarItem.vue";
 import { algorithm } from "../../../utils/algorithm";
-import { useDynamicRoutesHook } from "../tag/tagsHook";
 import { emitter } from "/@/utils/mitt";
 import Logo from "./Logo.vue";
 import { storageLocal } from "/@/utils/storage";
@@ -62,8 +61,6 @@ export default defineComponent({
       return path;
     });
 
-    const { dynamicRouteTags } = useDynamicRoutesHook();
-
     const menuSelect = (indexPath: string): void => {
       let parentPath = "";
       let parentPathIndex = indexPath.lastIndexOf("/");
@@ -74,7 +71,11 @@ export default defineComponent({
       function findCurrentRoute(routes) {
         return routes.map((item, key) => {
           if (item.path === indexPath) {
-            dynamicRouteTags(indexPath, parentPath, item);
+            // 切换左侧菜单 通知标签页
+            emitter.emit("changLayoutRoute", {
+              indexPath,
+              parentPath
+            });
           } else {
             if (item.children) findCurrentRoute(item.children);
           }
@@ -82,7 +83,6 @@ export default defineComponent({
         return;
       }
       findCurrentRoute(algorithm.increaseIndexes(router));
-      emitter.emit("changLayoutRoute", indexPath);
     };
 
     onBeforeMount(() => {

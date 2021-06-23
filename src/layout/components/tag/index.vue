@@ -72,8 +72,6 @@
 </template>
 
 <script lang='ts'>
-import { useDynamicRoutesHook } from "./tagsHook";
-import { useRoute, useRouter } from "vue-router";
 import {
   ref,
   watchEffect,
@@ -83,22 +81,39 @@ import {
   nextTick,
   getCurrentInstance
 } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import { storageLocal } from "/@/utils/storage";
 import { emitter } from "/@/utils/mitt";
 import { toggleClass, removeClass, hasClass } from "/@/utils/operate";
 import { templateRef } from "@vueuse/core";
-import { homeRoute } from "./type";
 let refreshButton = "refresh-button";
 
+let routerArrays = [
+  {
+    path: "/welcome",
+    meta: {
+      title: "message.hshome",
+      icon: "el-icon-s-home",
+      showLink: true,
+      savedPosition: false
+    }
+  }
+];
 export default {
+  computed: {
+    dynamicTagList() {
+      if (
+        !this.$storage.routesInStorage ||
+        this.$storage.routesInStorage.length === 0
+      ) {
+        this.$storage.routesInStorage = routerArrays;
+      }
+      return this.$storage.routesInStorage;
+    }
+  },
   setup() {
     let vm: any;
-    const {
-      deleteDynamicTag,
-      dynamicRouteTags,
-      dRoutes,
-      routesLength
-    } = useDynamicRoutesHook();
+    let st: any;
     const route = useRoute();
     const router = useRouter();
     const showTags = ref(storageLocal.getItem("tagsVal") || false);
@@ -116,21 +131,21 @@ export default {
         icon: "el-icon-close",
         text: "关闭当前标签页",
         divided: false,
-        disabled: unref(routesLength) > 1 ? false : true,
+        disabled: routerArrays.length > 1 ? false : true,
         show: true
       },
       {
         icon: "el-icon-more",
         text: "关闭其他标签页",
         divided: true,
-        disabled: unref(routesLength) > 2 ? false : true,
+        disabled: routerArrays.length > 2 ? false : true,
         show: true
       },
       {
         icon: "el-icon-minus",
         text: "关闭全部标签页",
         divided: false,
-        disabled: unref(routesLength) > 1 ? false : true,
+        disabled: routerArrays.length > 1 ? false : true,
         show: true
       }
     ]);
@@ -148,30 +163,33 @@ export default {
     // 当前右键选中的路由信息
     let currentSelect = ref({});
 
-    function deleteMenu(item) {
-      let tagslen = storageLocal.getItem("routesInStorage").length;
-      if (tagslen === 2) {
-        Array.from([1, 2, 3]).forEach(v => {
-          tagsViews.value[v].disabled = true;
-        });
+    function dynamicRouteTag(value: string, parentPath: string): void {
+      const hasValue = st.routesInStorage.some((item: any) => {
+        return item.path === value;
+      });
+
+      function concatPath(arr: object[], value: string, parentPath: string) {
+        if (!hasValue) {
+          arr.forEach((arrItem: any) => {
+            let pathConcat = parentPath + arrItem.path;
+            if (arrItem.path === value || pathConcat === value) {
+              routerArrays.push({
+                path: value,
+                meta: arrItem.meta
+              });
+              st.routesInStorage = routerArrays;
+            } else {
+              if (arrItem.children && arrItem.children.length > 0) {
+                concatPath(arrItem.children, value, parentPath);
+              }
+            }
+          });
+        }
       }
-      if (tagslen === 3) {
-        tagsViews.value[2].disabled = true;
-      }
-      deleteDynamicTag(item, route.path);
+      concatPath(router.options.routes, value, parentPath);
     }
 
-    // 初始化页面刷新保证当前路由tabview存在
-    let stop = watchEffect(() => {
-      let parentPath = route.path.slice(0, route.path.lastIndexOf("/"));
-      dynamicRouteTags(route.path, parentPath, route);
-    });
-
-    setTimeout(() => {
-      // 监听只执行一次，但获取不到当前路由，需要下一个事件轮询中取消监听
-      stop();
-    });
-
+    // 重新加载
     function onFresh() {
       toggleClass(true, refreshButton, document.querySelector(".rotate"));
       const { path, fullPath } = unref(route);
@@ -181,6 +199,57 @@ export default {
       setTimeout(() => {
         removeClass(document.querySelector(".rotate"), refreshButton);
       }, 600);
+    }
+
+    function deleteDynamicTag(obj: any, current: any, other: any) {
+      let valueIndex: number = routerArrays.findIndex((item: any) => {
+        return item.path === obj.path;
+      });
+
+      if (other) {
+        st.routesInStorage = routerArrays = [
+          {
+            path: "/welcome",
+            meta: {
+              title: "message.hshome",
+              icon: "el-icon-s-home",
+              showLink: true,
+              savedPosition: false
+            }
+          },
+          obj
+        ];
+        router.push(obj.path);
+        Array.from([2]).forEach(v => {
+          tagsViews.value[v].disabled = true;
+        });
+      } else {
+        // 从当前匹配到的路径中删除
+        routerArrays.splice(valueIndex, 1);
+        st.routesInStorage = routerArrays;
+      }
+
+      if (current === obj.path) {
+        // 如果删除当前激活tag就自动切换到最后一个tag
+        let newRoute: any = routerArrays.slice(-1);
+        nextTick(() => {
+          router.push({
+            path: newRoute[0].path
+          });
+        });
+      }
+    }
+
+    function deleteMenu(item, other = false) {
+      if (routerArrays.length === 2) {
+        Array.from([1, 2, 3]).forEach(v => {
+          tagsViews.value[v].disabled = true;
+        });
+      }
+      if (routerArrays.length === 3) {
+        tagsViews.value[2].disabled = true;
+      }
+      deleteDynamicTag(item, route.path, other);
     }
 
     function onClickDrop(key, item, selectRoute) {
@@ -199,17 +268,20 @@ export default {
           break;
         case 2:
           // 关闭其他标签页
-          dRoutes.value = selectRoute
-            ? [homeRoute, { path: selectRoute.path, meta: selectRoute.meta }]
-            : [homeRoute, { path: route.path, meta: route.meta }];
-          storageLocal.setItem("routesInStorage", dRoutes.value);
-          tagsViews.value[2].disabled = true;
-          if (selectRoute) router.push(selectRoute.path);
+          selectRoute
+            ? deleteMenu(
+                {
+                  path: selectRoute.path,
+                  meta: selectRoute.meta
+                },
+                true
+              )
+            : deleteMenu({ path: route.path, meta: route.meta }, true);
           break;
         case 3:
           // 关闭全部标签页
-          dRoutes.value = [homeRoute];
-          storageLocal.setItem("routesInStorage", dRoutes.value);
+          routerArrays.splice(1, routerArrays.length);
+          st.routesInStorage = routerArrays;
           router.push("/welcome");
           Array.from([1, 2, 3]).forEach(v => {
             tagsViews.value[v].disabled = true;
@@ -233,6 +305,12 @@ export default {
         // 右键菜单匹配当前路由，显示刷新
         tagsViews.value[0].show = false;
         Array.from([1, 2, 3]).forEach(v => {
+          tagsViews.value[v].show = true;
+        });
+      } else if (st.routesInStorage.length === 2) {
+        // 只有两个标签时不显示关闭其他标签页
+        tagsViews.value[2].show = false;
+        Array.from([0, 1, 3]).forEach(v => {
           tagsViews.value[v].show = true;
         });
       } else {
@@ -259,17 +337,6 @@ export default {
     function closeMenu() {
       visible.value = false;
     }
-
-    watch(
-      () => visible.value,
-      val => {
-        if (val) {
-          document.body.addEventListener("click", closeMenu);
-        } else {
-          document.body.removeEventListener("click", closeMenu);
-        }
-      }
-    );
 
     // 鼠标移入
     function onMouseenter(item, index) {
@@ -299,8 +366,20 @@ export default {
       }
     }
 
+    watch(
+      () => visible.value,
+      val => {
+        if (val) {
+          document.body.addEventListener("click", closeMenu);
+        } else {
+          document.body.removeEventListener("click", closeMenu);
+        }
+      }
+    );
+
     onBeforeMount(() => {
       vm = getCurrentInstance();
+      st = vm.appContext.app.config.globalProperties.$storage;
 
       emitter.on("tagViewsChange", key => {
         if (unref(showTags) === key) return;
@@ -311,14 +390,16 @@ export default {
         showModel.value = key;
       });
 
-      emitter.on("changLayoutRoute", indexPath => {
-        let currentLen = storageLocal.getItem("routesInStorage").length;
-        if (currentLen === 1) {
+      //  接收侧边栏切换传递过来的参数
+      emitter.on("changLayoutRoute", ({ indexPath, parentPath }) => {
+        dynamicRouteTag(indexPath, parentPath);
+
+        if (routerArrays.length === 2) {
           Array.from([1, 3]).forEach(v => {
             tagsViews.value[v].disabled = false;
           });
         }
-        if (currentLen >= 2) {
+        if (routerArrays.length > 2) {
           Array.from([1, 2, 3]).forEach(v => {
             tagsViews.value[v].disabled = false;
           });
@@ -327,7 +408,6 @@ export default {
     });
 
     return {
-      dynamicTagList: useDynamicRoutesHook().dRoutes,
       deleteMenu,
       showTags,
       onFresh,

@@ -26,6 +26,7 @@ app.config.globalProperties.$config = getConfig();
 import Storage from "responsive-storage";
 
 app.use(Storage, {
+  // 默认显示首页tag
   routesInStorage: {
     type: String,
     default: Storage.getData(undefined, "routesInStorage") ?? [
