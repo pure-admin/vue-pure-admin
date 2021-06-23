@@ -43,18 +43,6 @@ import * as utilsMethods from "./utils";
 const { animationFrame, copyObj } = utilsMethods;
 animationFrame();
 
-// move动画的animationFrame定时器
-let reqFrame = null;
-let startPos = null;
-// single 单步滚动的定时器
-let singleWaitTime = null;
-//记录touchStart时候的posY
-let startPosY = null;
-//记录touchStart时候的posX
-let startPosX = null;
-// mouseenter mouseleave 控制scrollMove()的开关
-let isHover = false;
-let ease = "ease-in";
 export default defineComponent({
   name: "SeamlessScroll",
   props: {
@@ -83,6 +71,19 @@ export default defineComponent({
     // 内容实际宽度
     let realBoxWidth = ref(0);
     let realBoxHeight = ref(0);
+
+    // single 单步滚动的定时器
+    let singleWaitTime = null;
+    // move动画的animationFrame定时器
+    let reqFrame = null;
+    let startPos = null;
+    //记录touchStart时候的posY
+    let startPosY = null;
+    //记录touchStart时候的posX
+    let startPosX = null;
+    // mouseenter mouseleave 控制scrollMove()的开关
+    let isHover = false;
+    let ease = "ease-in";
 
     let { data, classOption } = props;
 
@@ -542,7 +543,6 @@ export default defineComponent({
       realBoxWidth,
       leftSwitchState,
       rightSwitchState,
-      defaultOption,
       options,
       leftSwitchClass,
       rightSwitchClass,
