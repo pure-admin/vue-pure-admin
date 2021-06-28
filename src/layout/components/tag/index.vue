@@ -490,6 +490,7 @@ export default {
     }
   }
 
+  // 右键菜单
   .contextmenu {
     margin: 0;
     background: #fff;
@@ -502,6 +503,7 @@ export default {
     font-weight: 400;
     color: #333;
     li {
+      width: 100%;
       margin: 0;
       padding: 7px 16px;
       cursor: pointer;

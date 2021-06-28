@@ -25,7 +25,7 @@
     "dayjs": "^1.10.5",
     "dotenv": "^8.2.0",
     "echarts": "^5.1.1",
-    "element-plus": "^1.0.2-beta.48",
+    "element-plus": "^1.0.2-beta.53",
     "font-awesome": "^4.7.0",
     "lodash-es": "^4.17.21",
     "mitt": "^2.1.0",
@@ -37,7 +37,7 @@
     "resize-observer-polyfill": "^1.5.1",
     "responsive-storage": "^1.0.4",
     "v-contextmenu": "^3.0.0",
-    "vue": "^3.1.1",
+    "vue": "^3.1.2",
     "vue-i18n": "^9.1.6",
     "vue-json-pretty": "^2.0.2",
     "vue-router": "^4.0.9",
@@ -53,9 +53,9 @@
     "@types/mockjs": "^1.0.3",
     "@types/node": "^14.14.14",
     "@types/nprogress": "^0.2.0",
-    "@vitejs/plugin-vue": "^1.2.3",
-    "@vitejs/plugin-vue-jsx": "^1.1.5",
-    "@vue/compiler-sfc": "^3.1.1",
+    "@vitejs/plugin-vue": "^1.2.4",
+    "@vitejs/plugin-vue-jsx": "^1.1.6",
+    "@vue/compiler-sfc": "^3.1.2",
     "autoprefixer": "^10.2.4",
     "babel-plugin-transform-remove-console": "^6.9.4",
     "chalk": "^2.4.2",
@@ -68,6 +68,6 @@
     "typescript": "^4.2.4",
     "vite": "^2.3.8",
     "vite-plugin-mock": "^2.8.0",
-    "vite-plugin-style-import": "^1.0.0"
+    "vite-plugin-style-import": "^1.0.1"
   }
 }
