@@ -5,17 +5,17 @@
         v-for="(item, index) in dynamicTagList"
         :key="index"
         :ref="'dynamic' + index"
-        :class="['scroll-item', $route.path === item.path ? 'is-active' : '', $route.path === item.path && showModel ==='card'  ? 'card-active' : '' ]"
+        :class="['scroll-item is-closable', $route.path === item.path ? 'is-active' : '', $route.path === item.path && showModel ==='card'  ? 'card-active' : '' ]"
         @contextmenu.prevent.native="openMenu(item, $event)"
         @mouseenter.prevent="onMouseenter(item, index)"
         @mouseleave.prevent="onMouseleave(item, index)"
       >
         <router-link :to="item.path">{{ $t(item.meta.title) }}</router-link>
-        <i
+        <span
           v-if="$route.path === item.path && index !== 0 || index === activeIndex && index !== 0"
-          class="iconfont team-iconshanchu"
+          class="el-icon-close"
           @click="deleteMenu(item)"
-        ></i>
+        ></span>
         <div
           :ref="'schedule' + index"
           v-if="showModel !=='card'"
@@ -150,8 +150,8 @@ export default {
       }
     ]);
 
-    // 显示模式，默认卡片模式显示
-    const showModel = ref(storageLocal.getItem("showModel") || "card");
+    // 显示模式，默认灵动模式显示
+    const showModel = ref(storageLocal.getItem("showModel") || "smart");
     if (!showModel) {
       storageLocal.setItem("showModel", "card");
     }
@@ -435,18 +435,36 @@ export default {
   font-size: 14px;
   display: flex;
   box-shadow: 0 0 1px #888888;
+
   .scroll-item {
     border-radius: 3px 3px 0 0;
-    padding: 2px 8px;
+    padding: 2px 6px;
     display: inline-block;
     position: relative;
-    margin-right: 5px;
+    margin-right: 4px;
     height: 28px;
     line-height: 25px;
-    &:hover {
-      background-color: #eaf4fe;
+    transition: all 0.4s;
+
+    .el-icon-close {
+      font-size: 10px;
+      color: #1890ff;
+      cursor: pointer;
+      &:hover {
+        border-radius: 50%;
+        color: #fff;
+        background: #b4bccc;
+        font-size: 14px;
+      }
+    }
+
+    &.is-closable:not(:first-child) {
+      &:hover {
+        padding-right: 8px;
+      }
     }
   }
+
   a {
     text-decoration: none;
     color: #666;
@@ -532,19 +550,6 @@ export default {
   a {
     color: #1890ff;
   }
-}
-
-// 关闭图标
-.team-iconshanchu {
-  color: #1890ff;
-  cursor: pointer;
-  font-size: 14px;
-  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-.team-iconshanchu:hover {
-  border-radius: 50%;
-  color: #fff;
-  background: #b4bccc;
 }
 
 // 卡片模式

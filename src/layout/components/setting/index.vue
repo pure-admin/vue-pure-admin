@@ -79,8 +79,8 @@ export default {
   setup() {
     const router = useRouter();
 
-    // 默认卡片模式
-    const markValue = ref(storageLocal.getItem("showModel") || "card");
+    // 默认灵动模式
+    const markValue = ref(storageLocal.getItem("showModel") || "smart");
 
     const logoVal = ref(storageLocal.getItem("logoVal") || "1");
 
