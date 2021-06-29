@@ -59,7 +59,9 @@ export interface ContextProps {
   dynamicText?: string;
 }
 
-import { useRouter, useRoute } from "vue-router";
+import { useRouter, useRoute, Router } from "vue-router";
+
+import { initRouter } from "/@/router/index";
 
 export default defineComponent({
   name: "Info",
@@ -133,7 +135,9 @@ export default defineComponent({
         username: "admin",
         accessToken: "eyJhbGciOiJIUzUxMiJ9.test"
       });
-      router.push("/");
+      initRouter("admin").then((router: Router) => {
+        router.push("/");
+      });
     };
 
     onBeforeMount(() => {

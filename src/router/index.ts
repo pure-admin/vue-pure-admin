@@ -1,4 +1,9 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
+import {
+  createRouter,
+  createWebHashHistory,
+  RouteRecordRaw,
+  Router,
+} from "vue-router";
 
 import homeRouter from "./modules/home";
 import flowChartRouter from "./modules/flowchart";
@@ -12,6 +17,8 @@ import remainingRouter from "./modules/remaining"; //静态路由
 import { storageSession } from "../utils/storage";
 import { i18n } from "/@/plugins/i18n/index";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
+
+import { getAsyncRoutes } from "/@/api/routes";
 
 const constantRoutes: Array<RouteRecordRaw> = [
   homeRouter,
@@ -34,6 +41,25 @@ export const ascending = (arr) => {
 export const constantRoutesArr = ascending(constantRoutes).concat(
   ...remainingRouter
 );
+import Layout from "/@/layout/index.vue";
+// https://cn.vitejs.dev/guide/features.html#glob-import
+const modulesRoutes = import.meta.glob("/src/views/*/*/*.vue");
+
+// 过滤后端传来的动态路由重新生成规范路由
+export const addAsyncRoutes = (arrRoutes: Array<string>) => {
+  if (!arrRoutes || !arrRoutes.length) return;
+  arrRoutes.forEach((v: any) => {
+    if (v.redirect) {
+      v.component = Layout;
+    } else {
+      v.component = modulesRoutes[`/src/views${v.path}/index.vue`];
+    }
+    if (v.children) {
+      addAsyncRoutes(v.children);
+    }
+  });
+  return arrRoutes;
+};
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -53,15 +79,50 @@ const router = createRouter({
   },
 });
 
+export const initRouter = (name) => {
+  return new Promise((resolve, reject) => {
+    getAsyncRoutes({ name }).then(({ info }) => {
+      if (info.length === 0) {
+        usePermissionStoreHook().changeSetting(info);
+      } else {
+        addAsyncRoutes([info]).map((v: any) => {
+          // 防止重复添加路由
+          if (
+            router.options.routes.findIndex(
+              (value) => value.path === v.path
+            ) !== -1
+          ) {
+            return;
+          } else {
+            // 切记将路由push到routes后还需要使用addRoute，这样路由才能正常跳转
+            router.options.routes.push(v);
+            // 最终路由进行升序
+            ascending(router.options.routes);
+            router.addRoute(v.name, v);
+            usePermissionStoreHook().changeSetting(info);
+            resolve(router);
+          }
+        });
+      }
+      router.addRoute({
+        path: "/:pathMatch(.*)",
+        redirect: "/error/404",
+      });
+    });
+  });
+};
+
 import NProgress from "../utils/progress";
 
 const whiteList = ["/login", "/register"];
 
 router.beforeEach((to, _from, next) => {
-  // _from?.name;
   let name = storageSession.getItem("info");
-  if (name) {
-    usePermissionStoreHook().changeSetting();
+  // 刷新
+  if (name && !_from?.name) {
+    initRouter(name.username).then((router: Router) => {
+      router.push(to.path);
+    });
   }
   NProgress.start();
   const { t } = i18n.global;
