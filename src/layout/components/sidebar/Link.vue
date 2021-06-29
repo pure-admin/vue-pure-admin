@@ -5,7 +5,8 @@
 </template>
 
 <script>
-import { computed, defineComponent } from "vue";
+import { computed, defineComponent, unref } from "vue"
+import { isUrl } from "/@/utils/is.ts"
 
 export default defineComponent({
   name: "Link",
@@ -16,15 +17,36 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const linkProps = (to) => {
+
+    const isExternal = computed(() => {
+      return isUrl(props.to)
+    })
+
+    const type = computed(() => {
+      if (unref(isExternal)) {
+        return 'a'
+      }
+      return 'router-link'
+    })
+
+    function linkProps(to) {
+      if (unref(isExternal)) {
+        return {
+          href: to,
+          target: '_blank',
+          rel: 'noopener'
+        }
+      }
       return {
-        to: to,
-      };
-    };
+        to: to
+      }
+    }
+
     return {
-      type: "router-link",
+      isExternal,
+      type,
       linkProps,
-    };
+    }
   },
 });
 </script>

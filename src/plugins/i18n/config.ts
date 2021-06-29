@@ -41,6 +41,7 @@ export const menusConfig = {
       permission: "权限管理",
       permissionPage: "页面权限",
       permissionButton: "按钮权限",
+      externalLink: "外链",
     },
   },
   en: {
@@ -76,6 +77,7 @@ export const menusConfig = {
       permission: "Permission Manage",
       permissionPage: "Page Permission",
       permissionButton: "Button Permission",
+      externalLink: "External Link",
     },
   },
 };

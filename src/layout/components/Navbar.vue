@@ -220,7 +220,7 @@ export default defineComponent({
   padding: 0 10px;
 }
 .el-dropdown-menu {
-  padding: 0;
+  padding: 6px 0;
 }
 .el-dropdown-menu__item:focus,
 .el-dropdown-menu__item:not(.is-disabled):hover {

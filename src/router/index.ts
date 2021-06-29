@@ -1,9 +1,4 @@
-import {
-  createRouter,
-  createWebHashHistory,
-  RouteRecordRaw,
-  Router,
-} from "vue-router";
+import { createRouter, createWebHashHistory, Router } from "vue-router";
 
 import homeRouter from "./modules/home";
 import flowChartRouter from "./modules/flowchart";
@@ -12,6 +7,7 @@ import componentsRouter from "./modules/components";
 import nestedRouter from "./modules/nested";
 import errorRouter from "./modules/error";
 import permissionRouter from "./modules/permission";
+import externalLink from "./modules/externalLink";
 import remainingRouter from "./modules/remaining"; //静态路由
 
 import { storageSession } from "../utils/storage";
@@ -20,13 +16,18 @@ import { usePermissionStoreHook } from "/@/store/modules/permission";
 
 import { getAsyncRoutes } from "/@/api/routes";
 
-const constantRoutes: Array<RouteRecordRaw> = [
+import Layout from "/@/layout/index.vue";
+// https://cn.vitejs.dev/guide/features.html#glob-import
+const modulesRoutes = import.meta.glob("/src/views/*/*/*.vue");
+
+const constantRoutes: Array<any> = [
   homeRouter,
   flowChartRouter,
   editorRouter,
   componentsRouter,
   nestedRouter,
   permissionRouter,
+  externalLink,
   errorRouter,
 ];
 
@@ -41,9 +42,6 @@ export const ascending = (arr) => {
 export const constantRoutesArr = ascending(constantRoutes).concat(
   ...remainingRouter
 );
-import Layout from "/@/layout/index.vue";
-// https://cn.vitejs.dev/guide/features.html#glob-import
-const modulesRoutes = import.meta.glob("/src/views/*/*/*.vue");
 
 // 过滤后端传来的动态路由重新生成规范路由
 export const addAsyncRoutes = (arrRoutes: Array<string>) => {
@@ -79,7 +77,7 @@ const router = createRouter({
   },
 });
 
-export const initRouter = (name) => {
+export const initRouter = (name, next?, to?) => {
   return new Promise((resolve, reject) => {
     getAsyncRoutes({ name }).then(({ info }) => {
       if (info.length === 0) {
@@ -99,6 +97,7 @@ export const initRouter = (name) => {
             // 最终路由进行升序
             ascending(router.options.routes);
             router.addRoute(v.name, v);
+            if (next && to) next({ ...to, replace: true });
             usePermissionStoreHook().changeSetting(info);
             resolve(router);
           }
@@ -112,23 +111,42 @@ export const initRouter = (name) => {
   });
 };
 
+// reset router
+export function resetRouter() {
+  router.getRoutes().forEach((route) => {
+    const { name } = route;
+    if (name) {
+      router.hasRoute(name) && router.removeRoute(name);
+    }
+  });
+}
+
 import NProgress from "../utils/progress";
 
-const whiteList = ["/login", "/register"];
+// const whiteList = ["/login", "/register"];
 
 router.beforeEach((to, _from, next) => {
   let name = storageSession.getItem("info");
-  // 刷新
-  if (name && !_from?.name) {
-    initRouter(name.username).then((router: Router) => {
-      router.push(to.path);
-    });
-  }
   NProgress.start();
   const { t } = i18n.global;
   // @ts-ignore
   to.meta.title ? (document.title = t(to.meta.title)) : ""; // 动态title
-  whiteList.indexOf(to.path) !== -1 || name ? next() : next("/login"); // 全部重定向到登录页
+  if (name) {
+    if (_from?.name) {
+      next();
+    } else {
+      initRouter(name.username, next, to).then((router: Router) => {
+        router.push(to.path);
+      });
+      next();
+    }
+  } else {
+    if (to.path !== "/login") {
+      next({ path: "/login" });
+    } else {
+      next();
+    }
+  }
 });
 
 router.afterEach(() => {

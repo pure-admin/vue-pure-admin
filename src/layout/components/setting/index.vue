@@ -66,7 +66,7 @@
 <script lang='ts'>
 import panel from "../panel/index.vue";
 import { onMounted, reactive, toRefs, ref, unref } from "vue";
-import { storageLocal } from "/@/utils/storage";
+import { storageLocal, storageSession } from "/@/utils/storage";
 import { toggleClass } from "/@/utils/operate";
 import { emitter } from "/@/utils/mitt";
 import { useRouter } from "vue-router";
@@ -145,6 +145,7 @@ export default {
 
     function onReset() {
       storageLocal.clear();
+      storageSession.clear();
       router.push("/login");
     }
 
