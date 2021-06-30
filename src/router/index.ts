@@ -6,7 +6,6 @@ import editorRouter from "./modules/editor";
 import componentsRouter from "./modules/components";
 import nestedRouter from "./modules/nested";
 import errorRouter from "./modules/error";
-import permissionRouter from "./modules/permission";
 import externalLink from "./modules/externalLink";
 import remainingRouter from "./modules/remaining"; //静态路由
 
@@ -26,7 +25,6 @@ const constantRoutes: Array<any> = [
   editorRouter,
   componentsRouter,
   nestedRouter,
-  permissionRouter,
   externalLink,
   errorRouter,
 ];
@@ -83,7 +81,7 @@ export const initRouter = (name, next?, to?) => {
       if (info.length === 0) {
         usePermissionStoreHook().changeSetting(info);
       } else {
-        addAsyncRoutes([info]).map((v: any) => {
+        addAsyncRoutes(info).map((v: any) => {
           // 防止重复添加路由
           if (
             router.options.routes.findIndex(
@@ -99,8 +97,8 @@ export const initRouter = (name, next?, to?) => {
             router.addRoute(v.name, v);
             if (next && to) next({ ...to, replace: true });
             usePermissionStoreHook().changeSetting(info);
-            resolve(router);
           }
+          resolve(router);
         });
       }
       router.addRoute({
@@ -135,9 +133,10 @@ router.beforeEach((to, _from, next) => {
     if (_from?.name) {
       next();
     } else {
-      initRouter(name.username, next, to).then((router: Router) => {
-        router.push(to.path);
-      });
+      if (usePermissionStoreHook().wholeRoutes.length === 0)
+        initRouter(name.username, next, to).then((router: Router) => {
+          router.push(to.path);
+        });
       next();
     }
   } else {

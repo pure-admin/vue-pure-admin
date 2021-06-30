@@ -27,7 +27,7 @@ export default {
       } else {
         storageSession.setItem("info", {
           username: "admin",
-          accessToken: "eyJhbGciOiJIUzUxMiJ9.test"
+          accessToken: "eyJhbGciOiJIUzUxMiJ9.admin"
         });
         window.location.reload();
       }
@@ -40,6 +40,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-</style>

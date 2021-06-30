@@ -29,6 +29,8 @@ import {
   ElDrawer,
   ElPagination,
   ElAlert,
+  ElRadioButton,
+  ElRadioGroup,
 } from "element-plus";
 import "element-plus/packages/theme-chalk/src/base.scss";
 
@@ -61,6 +63,8 @@ const components = [
   ElDrawer,
   ElPagination,
   ElAlert,
+  ElRadioButton,
+  ElRadioGroup,
 ];
 
 const plugins = [ElLoading];

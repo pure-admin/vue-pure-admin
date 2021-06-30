@@ -5,7 +5,6 @@ import { MockMethod } from "vite-plugin-mock";
 const systemRouter = {
   path: "/system",
   name: "system",
-  // component: Layout,
   redirect: "/system/user",
   meta: {
     icon: "el-icon-setting",
@@ -18,7 +17,6 @@ const systemRouter = {
     {
       path: "/system/user",
       name: "user",
-      // component: () => import("/@/views/system/user/index.vue"),
       meta: {
         title: "message.hsBaseinfo",
         showLink: true,
@@ -28,7 +26,6 @@ const systemRouter = {
     {
       path: "/system/dict",
       name: "dict",
-      // component: () => import("/@/views/system/dict/index.vue"),
       meta: {
         title: "message.hsDict",
         showLink: true,
@@ -38,6 +35,46 @@ const systemRouter = {
   ],
 };
 
+const permissionRouter = {
+  path: "/permission",
+  name: "permission",
+  redirect: "/permission/page",
+  meta: {
+    title: "message.permission",
+    icon: "el-icon-lollipop",
+    showLink: true,
+    savedPosition: true,
+    rank: 3,
+  },
+  children: [
+    {
+      path: "/permission/page",
+      name: "permissionPage",
+      meta: {
+        title: "message.permissionPage",
+        showLink: true,
+        savedPosition: true,
+      },
+    },
+    {
+      path: "/permission/button",
+      name: "permissionButton",
+      meta: {
+        title: "message.permissionButton",
+        showLink: true,
+        savedPosition: true,
+        authority: [],
+      },
+    },
+  ],
+};
+
+// 添加不同按钮权限到/permission/button页面中
+function setDifAuthority(authority, routes) {
+  routes.children[1].meta.authority = [authority];
+  return routes;
+}
+
 export default [
   {
     url: "/getAsyncRoutes",
@@ -46,12 +83,12 @@ export default [
       if (query.name === "admin") {
         return {
           code: 0,
-          info: systemRouter,
+          info: [systemRouter, setDifAuthority("v-admin", permissionRouter)],
         };
       } else {
         return {
           code: 0,
-          info: [],
+          info: [setDifAuthority("v-test", permissionRouter)],
         };
       }
     },
