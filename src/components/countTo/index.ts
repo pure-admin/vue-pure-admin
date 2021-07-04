@@ -1,5 +1,5 @@
 import { App } from "vue";
-import countTo from "./src/CountTo";
+import countTo from "./src/countTo";
 
 export const CountTo = Object.assign(countTo, {
   install(app: App) {

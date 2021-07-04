@@ -14,7 +14,7 @@
 
 <script lang='ts'>
 import { ref } from "vue";
-import Selector from "/@/components/Selector";
+import Selector from "/@/components/selector";
 
 export default {
   components: { Selector },

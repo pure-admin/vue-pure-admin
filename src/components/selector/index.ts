@@ -1,5 +1,5 @@
 import { App } from "vue"
-import selector from "./src/Selector"
+import selector from "./src/selector"
 
 export const Selector = Object.assign(selector, {
   install(app: App) {
