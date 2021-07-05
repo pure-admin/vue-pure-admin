@@ -8,29 +8,28 @@
     <p v-if="cropperImg">裁剪后图片信息：{{ info }}</p>
   </div>
 </template>
-<script lang="ts">
-import { defineComponent, ref, onBeforeMount, nextTick } from "vue";
-import Cropper from "/@/components/Cropper";
-import img from "./picture.jpeg";
-import { emitter } from "/@/utils/mitt";
 
-let cropperInstance = null;
-export default defineComponent({
+<script lang="ts">
+import { ref, onBeforeMount, nextTick, getCurrentInstance } from "vue";
+import Cropper from "/@/components/ReCropper";
+import img from "./picture.jpeg";
+
+export default {
   components: {
-    Cropper,
+    Cropper
   },
   setup() {
+    let vm: any;
     let info = ref("");
     let cropperImg = ref("");
 
     const onCropper = (): void => {
       nextTick(() => {
-        let imgInfo = cropperInstance.getData();
-        cropperInstance.getCroppedCanvas().toBlob((blob) => {
+        vm.refs.refCropper.cropper.getCroppedCanvas().toBlob(blob => {
           let fileReader: FileReader = new FileReader();
           fileReader.onloadend = (e: any) => {
             cropperImg.value = e.target.result;
-            info.value = imgInfo;
+            info.value = vm.refs.refCropper.cropper.getData();
           };
           fileReader.readAsDataURL(blob);
         }, "image/jpeg");
@@ -38,19 +37,17 @@ export default defineComponent({
     };
 
     onBeforeMount(() => {
-      emitter.on("cropperInstance", (key) => {
-        cropperInstance = key;
-      });
+      vm = getCurrentInstance();
     });
 
     return {
       img,
       info,
       cropperImg,
-      onCropper,
+      onCropper
     };
-  },
-});
+  }
+};
 </script>
 
 <style scoped>

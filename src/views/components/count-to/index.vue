@@ -30,7 +30,7 @@
 </template>
 
 <script lang='ts'>
-import CountTo from "/@/components/countTo";
+import CountTo from "/@/components/ReCountTo";
 export default {
   components: {
     CountTo

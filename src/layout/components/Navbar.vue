@@ -42,8 +42,8 @@
 
 <script lang="ts">
 import { ref, defineComponent, onMounted, unref, watch } from "vue";
-import Breadcrumb from "/@/components/BreadCrumb";
-import Hamburger from "/@/components/HamBurger";
+import Breadcrumb from "/@/components/ReBreadCrumb";
+import Hamburger from "/@/components/ReHamBurger";
 import screenfull from "../components/screenfull/index.vue";
 import { useRouter, useRoute } from "vue-router";
 import { useAppStoreHook } from "/@/store/modules/app";

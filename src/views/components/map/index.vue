@@ -5,17 +5,15 @@
 </template>
 
 <script lang='ts'>
-import { Amap } from "/@/components/Map";
+import { Amap } from "/@/components/ReMap";
 export default {
   components: {
     Amap
   },
-  setup(){
-    return{
-
-    }
-  },
-}
+  setup() {
+    return {};
+  }
+};
 </script>
 
 <style scoped>

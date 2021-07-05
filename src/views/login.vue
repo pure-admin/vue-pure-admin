@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { reactive, onBeforeMount } from "vue";
-import info, { ContextProps } from "../components/info/index.vue";
+import info, { ContextProps } from "../components/ReInfo/index.vue";
 import { getVerify, getLogin } from "/@/api/user";
 import { useRouter } from "vue-router";
 import { storageSession } from "/@/utils/storage";

@@ -23,9 +23,7 @@
 </template>
 
 <script lang="ts">
-import splitpane, {
-  ContextProps
-} from "../../../components/splitPane/index.vue";
+import splitpane, { ContextProps } from "/@/components/ReSplitPane";
 import { reactive } from "vue";
 export default {
   name: "split",

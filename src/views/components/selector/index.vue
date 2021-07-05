@@ -6,7 +6,12 @@
           <span>{{item.title}}</span>
         </div>
       </template>
-      <Selector :HsKey="key" :echo="item.echo" @selectedVal="selectedVal" :disabled="item.disabled" />
+      <Selector
+        :HsKey="key"
+        :echo="item.echo"
+        @selectedVal="selectedVal"
+        :disabled="item.disabled"
+      />
       <h4 v-if="!item.disabled">选中范围：{{ selectRange }}</h4>
     </el-card>
   </div>
@@ -14,7 +19,7 @@
 
 <script lang='ts'>
 import { ref } from "vue";
-import Selector from "/@/components/selector";
+import Selector from "/@/components/ReSelector";
 
 export default {
   components: { Selector },
@@ -24,13 +29,13 @@ export default {
       {
         title: "基本使用",
         echo: [],
-        disabled: false,
+        disabled: false
       },
       {
         title: "回显模式",
         echo: [2, 7],
-        disabled: true,
-      },
+        disabled: true
+      }
     ]);
 
     const selectedVal = ({ left, right, whole }) => {
@@ -40,8 +45,8 @@ export default {
     return {
       selectedVal,
       selectRange,
-      dataLists,
+      dataLists
     };
-  },
+  }
 };
 </script>

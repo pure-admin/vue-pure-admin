@@ -19,6 +19,8 @@ declare global {
   declare interface Window {
     // Global vue app instance
     __APP__: App<Element>;
+    webkitCancelAnimationFrame: (id?: any) => any;
+    webkitRequestAnimationFrame: (id?: any) => any;
     mozCancelAnimationFrame: (id?: any) => any;
     oCancelAnimationFrame: (id?: any) => any;
     msCancelAnimationFrame: (id?: any) => any;

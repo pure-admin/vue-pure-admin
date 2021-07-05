@@ -33,7 +33,7 @@
 import { ref, unref } from "vue";
 import { templateRef } from "@vueuse/core";
 
-import SeamlessScroll from "/@/components/SeamlessScroll";
+import SeamlessScroll from "/@/components/ReSeamlessScroll";
 export default {
   components: {
     SeamlessScroll

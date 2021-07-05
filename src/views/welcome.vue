@@ -27,7 +27,7 @@
 </template>
 
 <script lang='ts'>
-import Flop from "/@/components/Flop";
+import Flop from "/@/components/ReFlop";
 import { ref, computed, onMounted, nextTick } from "vue";
 import { deviceDetection } from "/@/utils/deviceDetection";
 import { useEventListener, tryOnUnmounted, useTimeoutFn } from "@vueuse/core";

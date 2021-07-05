@@ -19,13 +19,13 @@ import LogicFlow from "@logicflow/core";
 import { Snapshot, BpmnElement, Menu } from "@logicflow/extension";
 import "@logicflow/core/dist/style/index.css";
 import "@logicflow/extension/lib/style/index.css";
-import { Control, NodePanel, DataDialog } from "/@/components/FlowChart";
+import { Control, NodePanel, DataDialog } from "/@/components/ReFlowChart";
 
 import {
   toTurboData,
   toLogicflowData
-} from "/@/components/FlowChart/src/adpterForTurbo";
-import { BpmnNode } from "/@/components/FlowChart/src/config";
+} from "/@/components/ReFlowChart/src/adpterForTurbo";
+import { BpmnNode } from "/@/components/ReFlowChart/src/config";
 import demoData from "./dataTurbo.json";
 export default {
   components: { NodePanel, Control, DataDialog },
