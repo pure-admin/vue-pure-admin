@@ -1,25 +1,25 @@
-let config: object = {}
+let config: object = {};
 
 const setConfig = (cfg?: any) => {
-  config = Object.assign(config, cfg)
-}
+  config = Object.assign(config, cfg);
+};
 
 const getConfig = (key?: string) => {
   if (typeof key === "string") {
-    const arr = key.split(".")
+    const arr = key.split(".");
     if (arr && arr.length) {
-      let data = config
+      let data = config;
       arr.forEach(v => {
         if (data && typeof data[v] !== "undefined") {
-          data = data[v]
+          data = data[v];
         } else {
-          data = null
+          data = null;
         }
-      })
-      return data
+      });
+      return data;
     }
   }
-  return config
-}
+  return config;
+};
 
-export { getConfig, setConfig }
+export { getConfig, setConfig };

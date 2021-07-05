@@ -2,15 +2,33 @@
   <panel>
     <el-divider>主题风格</el-divider>
     <ul class="theme-stley">
-      <el-tooltip class="item" effect="dark" content="暗色主题" placement="bottom">
-        <li :class="dataTheme === 'dark' ? 'is-select' : ''" ref="firstTheme" @click="onDark">
+      <el-tooltip
+        class="item"
+        effect="dark"
+        content="暗色主题"
+        placement="bottom"
+      >
+        <li
+          :class="dataTheme === 'dark' ? 'is-select' : ''"
+          ref="firstTheme"
+          @click="onDark"
+        >
           <div></div>
           <div></div>
         </li>
       </el-tooltip>
 
-      <el-tooltip class="item" effect="dark" content="亮色主题" placement="bottom">
-        <li :class="dataTheme === 'light' ? 'is-select' : ''" ref="secondTheme" @click="onLight">
+      <el-tooltip
+        class="item"
+        effect="dark"
+        content="亮色主题"
+        placement="bottom"
+      >
+        <li
+          :class="dataTheme === 'light' ? 'is-select' : ''"
+          ref="secondTheme"
+          @click="onLight"
+        >
           <div></div>
           <div></div>
         </li>
@@ -21,15 +39,30 @@
     <ul class="setting">
       <li>
         <span>灰色模式</span>
-        <vxe-switch v-model="greyVal" open-label="开" close-label="关" @change="greyChange"></vxe-switch>
+        <vxe-switch
+          v-model="greyVal"
+          open-label="开"
+          close-label="关"
+          @change="greyChange"
+        ></vxe-switch>
       </li>
       <li>
         <span>色弱模式</span>
-        <vxe-switch v-model="weekVal" open-label="开" close-label="关" @change="weekChange"></vxe-switch>
+        <vxe-switch
+          v-model="weekVal"
+          open-label="开"
+          close-label="关"
+          @change="weekChange"
+        ></vxe-switch>
       </li>
       <li>
         <span>隐藏标签页</span>
-        <vxe-switch v-model="tagsVal" open-label="开" close-label="关" @change="tagsChange"></vxe-switch>
+        <vxe-switch
+          v-model="tagsVal"
+          open-label="开"
+          close-label="关"
+          @change="tagsChange"
+        ></vxe-switch>
       </li>
       <li>
         <span>侧边栏Logo</span>
@@ -55,7 +88,7 @@
     <el-divider />
     <vxe-button
       status="danger"
-      style="width: 90%;margin: 24px 15px;"
+      style="width: 90%; margin: 24px 15px"
       content="清空缓存并返回登录页"
       icon="fa fa-sign-out"
       @click="onReset"
@@ -63,11 +96,10 @@
   </panel>
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 import panel from "../panel/index.vue";
-import { onMounted, reactive, toRefs, ref, unref } from "vue";
+import { reactive, toRefs, ref, unref } from "vue";
 import { storageLocal, storageSession } from "/@/utils/storage";
-import { toggleClass } from "/@/utils/operate";
 import { emitter } from "/@/utils/mitt";
 import { useRouter } from "vue-router";
 import { templateRef } from "@vueuse/core";
@@ -158,7 +190,7 @@ export default {
     const secondTheme = templateRef<HTMLElement | null>("secondTheme", null);
 
     const dataTheme = ref(storageLocal.getItem("data-theme") || "dark");
-    if (dataTheme) {
+    if (dataTheme.value) {
       storageLocal.setItem("data-theme", unref(dataTheme));
       window.document.body.setAttribute("data-theme", unref(dataTheme));
     }

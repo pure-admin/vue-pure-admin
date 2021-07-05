@@ -1,4 +1,4 @@
-import { EnclosureHttpRequestConfig } from "./types.d"
+import { EnclosureHttpRequestConfig } from "./types.d";
 
 export function excludeProps<T extends { [key: string]: any }>(
   origin: T,
@@ -7,23 +7,23 @@ export function excludeProps<T extends { [key: string]: any }>(
   return Object.keys(origin)
     .filter(key => !prop.includes(key))
     .reduce((res, key) => {
-      res[key] = origin[key]
-      return res
-    }, {} as { [key: string]: T })
+      res[key] = origin[key];
+      return res;
+    }, {} as { [key: string]: T });
 }
 
 export function transformConfigByMethod(
   params: any,
   config: EnclosureHttpRequestConfig
 ): EnclosureHttpRequestConfig {
-  const { method } = config
+  const { method } = config;
   const props = ["delete", "get", "head", "options"].includes(
     method!.toLocaleLowerCase()
   )
     ? "params"
-    : "data"
+    : "data";
   return {
     ...config,
     [props]: params
-  }
+  };
 }

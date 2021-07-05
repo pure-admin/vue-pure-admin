@@ -1,6 +1,10 @@
 <template>
   <div class="login">
-    <info :ruleForm="contextInfo" @on-behavior="onLogin" @refreshVerify="refreshVerify" />
+    <info
+      :ruleForm="contextInfo"
+      @on-behavior="onLogin"
+      @refreshVerify="refreshVerify"
+    />
   </div>
 </template>
 

@@ -3,15 +3,15 @@ import { defineStore } from "pinia";
 import { store } from "/@/store";
 
 interface SettingState {
-  title: String;
-  fixedHeader: Boolean;
+  title: string;
+  fixedHeader: boolean;
 }
 
 export const useSettingStore = defineStore({
   id: "pure-setting",
   state: (): SettingState => ({
     title: defaultSettings.title,
-    fixedHeader: defaultSettings.fixedHeader,
+    fixedHeader: defaultSettings.fixedHeader
   }),
   getters: {
     getTitle() {
@@ -19,18 +19,19 @@ export const useSettingStore = defineStore({
     },
     getFixedHeader() {
       return this.fixedHeader;
-    },
+    }
   },
   actions: {
     CHANGE_SETTING({ key, value }) {
+      // eslint-disable-next-line no-prototype-builtins
       if (this.hasOwnProperty(key)) {
         this[key] = value;
       }
     },
     changeSetting(data) {
       this.CHANGE_SETTING(data);
-    },
-  },
+    }
+  }
 });
 
 export function useSettingStoreHook() {

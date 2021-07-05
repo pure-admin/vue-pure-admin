@@ -8,7 +8,7 @@ import {
   GridComponent,
   ToolboxComponent,
   DataZoomComponent,
-  VisualMapComponent,
+  VisualMapComponent
 } from "echarts/components";
 
 import { SVGRenderer } from "echarts/renderers";
@@ -23,7 +23,7 @@ use([
   SVGRenderer,
   ToolboxComponent,
   DataZoomComponent,
-  VisualMapComponent,
+  VisualMapComponent
 ]);
 
 // 自定义主题

@@ -3,18 +3,20 @@
     <!-- 功能按钮 -->
     <ul>
       <li
-        v-for="(item,key) in titleLists"
+        v-for="(item, key) in titleLists"
         :key="key"
         :title="item.text"
-        :style="{background: focusIndex === key ? '#ccc' : ''}"
+        :style="{ background: focusIndex === key ? '#ccc' : '' }"
         @mouseenter.prevent="onEnter(key)"
         @mouseleave.prevent="focusIndex = -1"
       >
         <button
           :ref="'controlButton' + key"
           :disabled="item.disabled"
-          :style="{cursor: item.disabled === false ? 'pointer' : 'not-allowed'}"
-          @click="onControl(item,key)"
+          :style="{
+            cursor: item.disabled === false ? 'pointer' : 'not-allowed'
+          }"
+          @click="onControl(item, key)"
         >
           <span :class="'iconfont ' + item.icon"></span>
           <p>{{ item.text }}</p>
@@ -24,14 +26,14 @@
   </div>
 </template>
 
-<script lang='ts'>
-import { defineComponent, ref, unref, onMounted, onUnmounted } from "vue";
+<script lang="ts">
+import { defineComponent, ref, unref, onMounted } from "vue";
 import { templateRef } from "@vueuse/core";
 
 export default defineComponent({
   name: "Control",
   props: {
-    lf: <ElRef>Object,
+    lf: null,
     catTurboData: Boolean
   },
   emits: ["catData"],
@@ -107,12 +109,10 @@ export default defineComponent({
 
     onMounted(() => {
       props.lf.on("history:change", ({ data: { undoAble, redoAble } }) => {
-        unref(titleLists)[3].disabled = unref(
-          controlButton3
-        ).disabled = !undoAble;
-        unref(titleLists)[4].disabled = unref(
-          controlButton4
-        ).disabled = !redoAble;
+        unref(titleLists)[3].disabled = unref(controlButton3).disabled =
+          !undoAble;
+        unref(titleLists)[4].disabled = unref(controlButton4).disabled =
+          !redoAble;
       });
     });
 
@@ -126,14 +126,13 @@ export default defineComponent({
 });
 </script>
 
-
 <style scoped>
 @import "./assets/iconfont/iconfont.css";
 .control-container {
   position: absolute;
   right: 20px;
   background: hsla(0, 0%, 100%, 0.8);
-  box-shadow: 0 1px 4px rgb(0 0 0 / 30%);
+  box-shadow: 0 1px 4px rgb(0 0 0);
 }
 .iconfont {
   font-size: 25px;

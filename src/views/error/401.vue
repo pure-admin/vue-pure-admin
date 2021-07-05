@@ -18,17 +18,17 @@
   </div>
 </template>
 
-<script lang='ts'>
-import imgs from '/@/assets/401.gif'
-import { ref } from "vue"
+<script lang="ts">
+import imgs from "/@/assets/401.gif";
+import { ref } from "vue";
 export default {
   name: "401",
   setup() {
-    const img = ref(`${imgs}?${new Date()}`)
+    const img = ref(`${imgs}?${new Date()}`);
     return {
       img
     };
-  },
+  }
 };
 </script>
 

@@ -13,5 +13,5 @@ export const auth: Directive = {
     } else {
       throw new Error("need roles! Like v-auth=\"['admin','test']\"");
     }
-  },
+  }
 };

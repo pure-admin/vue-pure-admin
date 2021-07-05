@@ -16,23 +16,23 @@
 </template>
 
 <script>
-import { defineComponent } from "vue"
+import { defineComponent } from "vue";
 export default defineComponent({
   name: "HamBurger",
   props: {
     isActive: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   emits: ["toggleClick"],
   setup(props, ctx) {
     const toggleClick = () => {
-      ctx.emit("toggleClick")
-    }
+      ctx.emit("toggleClick");
+    };
 
-    return { toggleClick }
-  },
+    return { toggleClick };
+  }
 });
 </script>
 

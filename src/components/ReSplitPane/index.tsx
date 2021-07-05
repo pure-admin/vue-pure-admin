@@ -14,25 +14,25 @@ export default defineComponent({
   props: {
     splitSet: {
       type: Object as PropType<ContextProps>,
-      require: true,
-    },
+      require: true
+    }
   },
   emits: ["resize"],
   setup(props, ctx) {
-    let active = ref(false);
-    let hasMoved = ref(false);
-    let percent = ref(props.splitSet?.defaultPercent);
-    let type = props.splitSet?.split === "vertical" ? "width" : "height";
-    let resizeType = props.splitSet?.split === "vertical" ? "left" : "top";
+    const active = ref(false);
+    const hasMoved = ref(false);
+    const percent = ref(props.splitSet?.defaultPercent);
+    const type = props.splitSet?.split === "vertical" ? "width" : "height";
+    const resizeType = props.splitSet?.split === "vertical" ? "left" : "top";
 
-    let leftClass = ref([
+    const leftClass = ref([
       "splitter-pane splitter-paneL",
-      props.splitSet?.split,
+      props.splitSet?.split
     ]);
 
-    let rightClass = ref([
+    const rightClass = ref([
       "splitter-pane splitter-paneR",
-      props.splitSet?.split,
+      props.splitSet?.split
     ]);
 
     const userSelect = computed(() => {
@@ -111,29 +111,25 @@ export default defineComponent({
           class="vue-splitter-container clearfix"
           style={(unref(cursor), unref(userSelect))}
           onMouseup={() => onMouseUp()}
-          onMousemove={() => onMouseMove(event)}
-        >
+          onMousemove={() => onMouseMove(event)}>
           <div
             class={unref(leftClass)}
-            style={{ [unref(type)]: unref(percent) + "%" }}
-          >
+            style={{ [unref(type)]: unref(percent) + "%" }}>
             {ctx.slots.paneL()}
           </div>
           <resizer
             style={`${unref([resizeType])}:${unref(percent)}%`}
             split={props.splitSet?.split}
             onMousedown={() => onMouseDown()}
-            onClick={() => onClick()}
-          ></resizer>
+            onClick={() => onClick()}></resizer>
           <div
             class={unref(rightClass)}
-            style={{ [unref(type)]: 100 - unref(percent) + "%" }}
-          >
+            style={{ [unref(type)]: 100 - unref(percent) + "%" }}>
             {ctx.slots.paneR()}
           </div>
           <div v-show={unref(active)} class="vue-splitter-container-mask"></div>
         </div>
       </>
     );
-  },
+  }
 });

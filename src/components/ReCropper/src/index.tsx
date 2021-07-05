@@ -7,7 +7,7 @@ import {
   ref,
   unref,
   computed,
-  PropType,
+  PropType
 } from "vue";
 import { templateRef } from "@vueuse/core";
 import { useAttrs } from "/@/utils/useAttrs";
@@ -37,7 +37,7 @@ const defaultOptions: Cropper.Options = {
   modal: true,
   guides: true,
   movable: true,
-  rotatable: true,
+  rotatable: true
 };
 
 export default defineComponent({
@@ -45,31 +45,35 @@ export default defineComponent({
   props: {
     src: {
       type: String,
-      required: true,
+      required: true
     },
     alt: {
-      type: String,
+      type: String
     },
     width: {
       type: [String, Number],
-      default: "",
+      default: ""
     },
     height: {
       type: [String, Number],
-      default: "360px",
+      default: "360px"
     },
     crossorigin: {
       type: String || Object,
-      default: undefined,
+      default: undefined
     },
     imageStyle: {
       type: Object as PropType<CSSProperties>,
-      default: {},
+      default() {
+        return {};
+      }
     },
     options: {
       type: Object as PropType<Options>,
-      default: {},
-    },
+      default() {
+        return {};
+      }
+    }
   },
   setup(props) {
     const cropper: any = ref<Nullable<Cropper>>(null);
@@ -77,26 +81,22 @@ export default defineComponent({
 
     const isReady = ref(false);
 
-    const getImageStyle = computed(
-      (): CSSProperties => {
-        return {
-          height: props.height,
-          width: props.width,
-          maxWidth: "100%",
-          ...props.imageStyle,
-        };
-      }
-    );
+    const getImageStyle = computed((): CSSProperties => {
+      return {
+        height: props.height,
+        width: props.width,
+        maxWidth: "100%",
+        ...props.imageStyle
+      };
+    });
 
-    const getWrapperStyle = computed(
-      (): CSSProperties => {
-        const { height, width } = props;
-        return {
-          width: `${width}`.replace(/px/, "") + "px",
-          height: `${height}`.replace(/px/, "") + "px",
-        };
-      }
-    );
+    const getWrapperStyle = computed((): CSSProperties => {
+      const { height, width } = props;
+      return {
+        width: `${width}`.replace(/px/, "") + "px",
+        height: `${height}`.replace(/px/, "") + "px"
+      };
+    });
 
     function init() {
       const imgEl = unref(imgElRef);
@@ -108,7 +108,7 @@ export default defineComponent({
         ready: () => {
           isReady.value = true;
         },
-        ...props.options,
+        ...props.options
       });
     }
 
@@ -123,7 +123,7 @@ export default defineComponent({
       imgElRef,
       cropper,
       getWrapperStyle,
-      getImageStyle,
+      getImageStyle
     };
   },
 
@@ -132,8 +132,7 @@ export default defineComponent({
       <>
         <div
           class={useAttrs({ excludeListeners: true, excludeKeys: ["class"] })}
-          style={this.getWrapperStyle}
-        >
+          style={this.getWrapperStyle}>
           <img
             ref="imgElRef"
             src={this.props.src}
@@ -144,5 +143,5 @@ export default defineComponent({
         </div>
       </>
     );
-  },
+  }
 });

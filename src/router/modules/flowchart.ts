@@ -10,7 +10,7 @@ const flowChartRouter = {
     title: "message.hsflowChart",
     showLink: true,
     savedPosition: true,
-    rank: 1,
+    rank: 1
   },
   children: [
     {
@@ -20,10 +20,10 @@ const flowChartRouter = {
       meta: {
         title: "message.hsflowChart",
         showLink: true,
-        savedPosition: true,
-      },
-    },
-  ],
+        savedPosition: true
+      }
+    }
+  ]
 };
 
 export default flowChartRouter;

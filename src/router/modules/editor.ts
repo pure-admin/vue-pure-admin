@@ -10,7 +10,7 @@ const editorRouter = {
     title: "message.hseditor",
     showLink: true,
     savedPosition: true,
-    rank: 2,
+    rank: 2
   },
   children: [
     {
@@ -20,10 +20,10 @@ const editorRouter = {
       meta: {
         title: "message.hseditor",
         showLink: true,
-        savedPosition: true,
-      },
-    },
-  ],
+        savedPosition: true
+      }
+    }
+  ]
 };
 
 export default editorRouter;

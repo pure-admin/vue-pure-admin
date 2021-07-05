@@ -10,7 +10,7 @@ const errorRouter = {
     title: "message.hserror",
     showLink: true,
     savedPosition: true,
-    rank: 7,
+    rank: 7
   },
   children: [
     {
@@ -20,8 +20,8 @@ const errorRouter = {
       meta: {
         title: "message.hsfourZeroOne",
         showLink: true,
-        savedPosition: true,
-      },
+        savedPosition: true
+      }
     },
     {
       path: "/error/404",
@@ -30,10 +30,10 @@ const errorRouter = {
       meta: {
         title: "message.hsfourZeroFour",
         showLink: true,
-        savedPosition: true,
-      },
-    },
-  ],
+        savedPosition: true
+      }
+    }
+  ]
 };
 
 export default errorRouter;

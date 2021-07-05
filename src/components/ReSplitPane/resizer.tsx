@@ -6,18 +6,18 @@ export default defineComponent({
   props: {
     split: {
       type: String,
-      required: true,
+      required: true
     },
     className: {
       type: String,
-      default: "",
-    },
+      default: ""
+    }
   },
   setup(props) {
-    let classes = computed(() => {
+    const classes = computed(() => {
       return ["splitter-pane-resizer", props.split, props.className].join(" ");
     });
 
     return () => <div class={unref(classes)}></div>;
-  },
+  }
 });

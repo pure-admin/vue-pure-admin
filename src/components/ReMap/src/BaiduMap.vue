@@ -1,20 +1,14 @@
 <template>
-  <div>
-
-  </div>
+  <div></div>
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 export default {
   name: "BaiduMap",
-  setup(){
-    return{
-
-    }
-  },
-}
+  setup() {
+    return {};
+  }
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

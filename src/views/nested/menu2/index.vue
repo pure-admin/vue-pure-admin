@@ -1,3 +1,3 @@
 <template>
-  <p class="app-container">{{$t('message.hsmenu2')}}</p>
+  <p class="app-container">{{ $t("message.hsmenu2") }}</p>
 </template>

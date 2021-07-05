@@ -23,8 +23,18 @@
           <vxe-table-column field="dataval" title="数据值"></vxe-table-column>
           <vxe-table-column title="操作" fixed="right">
             <template #default="{ row }">
-              <vxe-button type="text" icon="el-icon-edit" @click="editConfig(row)">编辑</vxe-button>
-              <vxe-button type="text" icon="el-icon-delete" @click="delConfig(row)">删除</vxe-button>
+              <vxe-button
+                type="text"
+                icon="el-icon-edit"
+                @click="editConfig(row)"
+                >编辑</vxe-button
+              >
+              <vxe-button
+                type="text"
+                icon="el-icon-delete"
+                @click="delConfig(row)"
+                >删除</vxe-button
+              >
             </template>
           </vxe-table-column>
         </vxe-table>
@@ -33,7 +43,16 @@
           v-model:current-page="tablePage.currentPage"
           v-model:page-size="tablePage.pageSize"
           :total="tablePage.total"
-          :layouts="['PrevJump', 'PrevPage', 'Number', 'NextPage', 'NextJump', 'Sizes', 'FullJump', 'Total']"
+          :layouts="[
+            'PrevJump',
+            'PrevPage',
+            'Number',
+            'NextPage',
+            'NextJump',
+            'Sizes',
+            'FullJump',
+            'Total'
+          ]"
         >
           <template #left>
             <span class="page-left">
@@ -42,7 +61,9 @@
                 :indeterminate="isIndeterminate"
                 @change="changeAllEvent"
               ></vxe-checkbox>
-              <span class="select-count">已选中{{ selectRecords.length }}条</span>
+              <span class="select-count"
+                >已选中{{ selectRecords.length }}条</span
+              >
               <vxe-button size="small">{{ $t("message.hsdelete") }}</vxe-button>
             </span>
           </template>
@@ -53,7 +74,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs, ref } from "vue";
+import { defineComponent, reactive, toRefs } from "vue";
 import { propTypes } from "/@/utils/propTypes";
 import { VxeTableEvents } from "vxe-table";
 import { templateRef } from "@vueuse/core";
@@ -92,7 +113,7 @@ export default defineComponent({
     });
 
     // 抽屉关闭
-    function handleClose(done) {
+    function handleClose() {
       configData.isAllChecked = false;
       configData.isIndeterminate = false;
       emit("handleClose");

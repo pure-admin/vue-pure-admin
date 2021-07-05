@@ -1,5 +1,5 @@
 <template>
-  <div style="margin:10px">
+  <div style="margin: 10px">
     <el-row :gutter="24">
       <el-col :xs="24" :sm="10" :md="10" :lg="8" :xl="10">
         <!-- 基本使用 -->

@@ -1,20 +1,20 @@
 <template>
-  <iframe
-    :src="url"
-    frameborder="0"
-    class="iframe"
-  ></iframe>
+  <iframe :src="url" frameborder="0" class="iframe"></iframe>
 </template>
 
-<script lang='ts'>
-import { ref } from 'vue';
+<script lang="ts">
+import { ref } from "vue";
 export default {
   setup() {
-    const url = ref(process.env.NODE_ENV === 'production' ? '/manages/html/button.html' : '/html/button.html');
+    const url = ref(
+      process.env.NODE_ENV === "production"
+        ? "/manages/html/button.html"
+        : "/html/button.html"
+    );
     return {
       url
     };
-  },
+  }
 };
 </script>
 

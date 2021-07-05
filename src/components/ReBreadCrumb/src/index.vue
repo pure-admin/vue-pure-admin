@@ -5,11 +5,10 @@
         <span
           v-if="item.redirect === 'noRedirect' || index == levelList.length - 1"
           class="no-redirect"
-        >{{ $t(item.meta.title) }}</span>
+          >{{ $t(item.meta.title) }}</span
+        >
         <a v-else @click.prevent="handleLink(item)">
-          {{
-          $t(item.meta.title)
-          }}
+          {{ $t(item.meta.title) }}
         </a>
       </el-breadcrumb-item>
     </transition-group>
@@ -17,7 +16,6 @@
 </template>
 
 <script lang="ts">
-import { pathToRegexp } from "path-to-regexp";
 import { ref, defineComponent, watch, Ref } from "vue";
 import { useRoute, useRouter, RouteLocationMatched } from "vue-router";
 
@@ -28,7 +26,7 @@ export default defineComponent({
     const route = useRoute();
     const router = useRouter();
 
-    const isDashboard = (route: RouteLocationMatched): Boolean | string => {
+    const isDashboard = (route: RouteLocationMatched): boolean | string => {
       const name = route && (route.name as string);
       if (!name) {
         return false;
@@ -41,10 +39,10 @@ export default defineComponent({
       const first = matched[0];
       if (!isDashboard(first)) {
         matched = [
-          ({
+          {
             path: "/welcome",
             meta: { title: "message.hshome" }
-          } as unknown) as RouteLocationMatched
+          } as unknown as RouteLocationMatched
         ].concat(matched);
       }
       levelList.value = matched.filter(
@@ -73,7 +71,7 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped >
+<style lang="scss" scoped>
 .app-breadcrumb.el-breadcrumb {
   display: inline-block;
   font-size: 14px;

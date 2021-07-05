@@ -7,16 +7,15 @@
           <h3>项目配置</h3>
           <i class="el-icon-close" @click="show = !show"></i>
         </div>
-        <div style="border-bottom:1px solid #DCDFE6"></div>
+        <div style="border-bottom: 1px solid #dcdfe6"></div>
         <slot />
       </div>
     </div>
   </div>
 </template>
 
-<script lang='ts'>
-import { addClass, removeClass } from "../../../utils/operate";
-import { ref, watch, getCurrentInstance, onMounted, onBeforeMount } from "vue";
+<script lang="ts">
+import { ref } from "vue";
 import { useEventListener, onClickOutside } from "@vueuse/core";
 import { emitter } from "/@/utils/mitt";
 
@@ -27,10 +26,11 @@ export default {
 
     const target = ref(null);
 
-    onClickOutside(target, event => {
+    onClickOutside(target, () => {
       show.value = false;
     });
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars,no-unused-vars
     const addEventClick = (): void => {
       useEventListener("click", closeSidebar);
     };

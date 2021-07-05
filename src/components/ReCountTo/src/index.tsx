@@ -4,7 +4,7 @@ import {
   computed,
   watch,
   onMounted,
-  unref,
+  unref
 } from "vue";
 import { countToProps } from "./props";
 import { isNumber } from "/@/utils/is";
@@ -37,7 +37,7 @@ export default defineComponent({
       remaining: null,
       rAF: null,
       color: null,
-      fontSize: "16px",
+      fontSize: "16px"
     });
 
     const getCountDown = computed(() => {
@@ -61,6 +61,7 @@ export default defineComponent({
       state.rAF = requestAnimationFrame(count);
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars,no-unused-vars
     function pauseResume() {
       if (state.paused) {
         resume();
@@ -82,6 +83,7 @@ export default defineComponent({
       requestAnimationFrame(count);
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars,no-unused-vars
     function reset() {
       state.startTime = null;
       cancelAnimationFrame(state.rAF);
@@ -166,12 +168,11 @@ export default defineComponent({
         <span
           style={{
             color: props.color,
-            fontSize: props.fontSize,
-          }}
-        >
+            fontSize: props.fontSize
+          }}>
           {state.displayValue}
         </span>
       </>
     );
-  },
+  }
 });
