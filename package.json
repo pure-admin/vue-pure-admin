@@ -8,12 +8,13 @@
     "build": "cross-env vite build",
     "preview": "vite preview",
     "preview:build": "npm run build && vite preview",
-    "lint": "eslint --ext .js,.jsx,.vue,.ts,.tsx src"
+    "lint": "eslint --ext .js,.jsx,.vue,.ts,.tsx src",
+    "lint-staged": "lint-staged"
   },
   "husky": {
     "hooks": {
       "commit-msg": "node scripts/verify-commit.js",
-      "pre-commit": "lint-staged"
+      "pre-commit": "npm run lint-staged"
     }
   },
   "dependencies": {
