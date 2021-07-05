@@ -7,11 +7,13 @@
     "serve": "cross-env --max_old_space_size=4096 vite",
     "build": "cross-env vite build",
     "preview": "vite preview",
-    "preview:build": "npm run build && vite preview"
+    "preview:build": "npm run build && vite preview",
+    "lint": "eslint --ext .js,.jsx,.vue,.ts,.tsx src"
   },
   "husky": {
     "hooks": {
-      "commit-msg": "node scripts/verify-commit.js"
+      "commit-msg": "node scripts/verify-commit.js",
+      "pre-commit": "lint-staged"
     }
   },
   "dependencies": {
@@ -53,21 +55,37 @@
     "@types/mockjs": "^1.0.3",
     "@types/node": "^14.14.14",
     "@types/nprogress": "^0.2.0",
+    "@typescript-eslint/eslint-plugin": "^4.28.1",
+    "@typescript-eslint/parser": "^4.28.1",
     "@vitejs/plugin-vue": "^1.2.4",
     "@vitejs/plugin-vue-jsx": "^1.1.6",
     "@vue/compiler-sfc": "^3.1.2",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "@vue/eslint-config-typescript": "^7.0.0",
     "autoprefixer": "^10.2.4",
     "babel-plugin-transform-remove-console": "^6.9.4",
     "chalk": "^2.4.2",
     "cross-env": "^7.0.3",
+    "eslint": "^7.30.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-vue": "^7.12.1",
     "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
     "postcss": "^8.2.6",
     "postcss-import": "^14.0.0",
+    "prettier": "^2.3.2",
     "sass": "^1.32.8",
     "sass-loader": "^11.0.1",
     "typescript": "^4.2.4",
     "vite": "^2.3.8",
     "vite-plugin-mock": "^2.8.0",
-    "vite-plugin-style-import": "^1.0.1"
+    "vite-plugin-style-import": "^1.0.1",
+    "vue-eslint-parser": "^7.7.2"
+  },
+  "lint-staged": {
+    "*.{js,jsx,vue,ts,tsx}": [
+      "npm run lint",
+      "git add"
+    ]
   }
 }

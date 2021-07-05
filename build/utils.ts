@@ -1,4 +1,4 @@
-import dotenv from 'dotenv';
+import * as dotenv from 'dotenv';
 
 export interface ViteEnv {
   VITE_PORT: number;

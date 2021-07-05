@@ -1,4 +1,4 @@
-import { App } from "vue";
+import {App, Component} from "vue";
 import {
   ElAffix,
   ElSkeleton,
@@ -74,7 +74,7 @@ import zhLocale from "element-plus/lib/locale/lang/zh-cn";
 ElementLocale.use(zhLocale);
 
 export function useElementPlus(app: App) {
-  components.forEach((component) => {
+  components.forEach((component: Component) => {
     app.component(component.name, component);
   });
   plugins.forEach((plugin) => {
