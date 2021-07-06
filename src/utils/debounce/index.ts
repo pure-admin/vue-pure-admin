@@ -1,6 +1,6 @@
 // 延迟函数
 export const delay = (timeout: number) =>
-  new Promise((resolve) => setTimeout(resolve, timeout));
+  new Promise(resolve => setTimeout(resolve, timeout));
 
 // 防抖函数
 export const debounce = (fn: () => Fn, timeout: number) => {

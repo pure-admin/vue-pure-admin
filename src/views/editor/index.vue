@@ -6,39 +6,39 @@
 </template>
 
 <script>
-import { onMounted, onBeforeUnmount, ref, reactive } from 'vue'
-import WangEditor from 'wangeditor'
+import { onMounted, onBeforeUnmount, ref, reactive } from "vue";
+import WangEditor from "wangeditor";
 
 export default {
-  name: 'editor',
+  name: "editor",
   setup() {
-    const editor = ref()
+    const editor = ref();
     const content = reactive({
-      html: '',
-      text: '',
-    })
+      html: "",
+      text: ""
+    });
 
-    let instance
+    let instance;
     onMounted(() => {
-      instance = new WangEditor(editor.value)
+      instance = new WangEditor(editor.value);
       Object.assign(instance.config, {
         onchange() {
-          content.html = instance.txt.html()
-        },
-      })
-      instance.create()
-    })
+          content.html = instance.txt.html();
+        }
+      });
+      instance.create();
+    });
 
     onBeforeUnmount(() => {
-      instance.destroy()
-      instance = null
-    })
+      instance.destroy();
+      instance = null;
+    });
 
     return {
       editor,
-      content,
-    }
-  },
+      content
+    };
+  }
 };
 </script>
 

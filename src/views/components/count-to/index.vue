@@ -1,5 +1,5 @@
 <template>
-  <div style="margin:10px">
+  <div style="margin: 10px">
     <el-row :gutter="24">
       <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
         <el-card shadow="always">
@@ -29,7 +29,7 @@
   </div>
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 import CountTo from "/@/components/ReCountTo";
 export default {
   components: {

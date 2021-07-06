@@ -1,8 +1,8 @@
 <template>
-  <vxe-grid v-bind="gridOptions" style="width:98%"></vxe-grid>
+  <vxe-grid v-bind="gridOptions" style="width: 98%"></vxe-grid>
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 import { reactive } from "vue";
 import { VxeGridProps } from "vxe-table";
 export default {
@@ -249,5 +249,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

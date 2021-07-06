@@ -6,7 +6,7 @@ import { localesConfigs } from "./config";
 export const i18n = createI18n({
   locale: "zh", // set locale
   fallbackLocale: "en", // set fallback locale
-  messages: localesConfigs,
+  messages: localesConfigs
 });
 
 export function usI18n(app: App) {

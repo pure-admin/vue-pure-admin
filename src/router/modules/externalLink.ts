@@ -9,7 +9,7 @@ const externalLink = {
     title: "message.externalLink",
     showLink: true,
     savedPosition: true,
-    rank: 190,
+    rank: 190
   },
   children: [
     {
@@ -19,10 +19,10 @@ const externalLink = {
         title: "message.externalLink",
         showLink: true,
         savedPosition: true,
-        rank: 191,
-      },
-    },
-  ],
+        rank: 191
+      }
+    }
+  ]
 };
 
 export default externalLink;

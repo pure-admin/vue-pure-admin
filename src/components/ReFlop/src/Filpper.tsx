@@ -13,14 +13,15 @@ export default defineComponent({
     backText: propTypes.number.def(1),
     // flipping duration, please be consistent with the CSS animation-duration value.
     // 翻牌动画时间，与CSS中设置的animation-duration保持一致
-    duration: propTypes.number.def(600),
+    duration: propTypes.number.def(600)
   },
   setup(props) {
+    // eslint-disable-next-line vue/no-setup-props-destructure
     const { frontText, backText, duration } = props;
-    let isFlipping = ref(false);
-    let flipType = ref("down");
-    let frontTextFromData = ref(frontText);
-    let backTextFromData = ref(backText);
+    const isFlipping = ref(false);
+    const flipType = ref("down");
+    const frontTextFromData = ref(frontText);
+    const backTextFromData = ref(backText);
 
     const textClass = (number: number) => {
       return "number" + number;
@@ -72,24 +73,19 @@ export default defineComponent({
       flipDown,
       flipUp,
       setFront,
-      setBack,
+      setBack
     };
   },
 
   render() {
+    const main = `m-flipper ${this.flipType} ${this.isFlipping ? "go" : ""}`;
+    const front = `digital front ${this.textClass(this.frontTextFromData)}`;
+    const back = `digital back ${this.textClass(this.backTextFromData)}`;
     return (
-      <>
-        <div
-          class={`m-flipper ${this.flipType} ${this.isFlipping ? "go" : ""}`}
-        >
-          <div
-            class={`digital front ${this.textClass(this.frontTextFromData)}`}
-          ></div>
-          <div
-            class={`digital back ${this.textClass(this.backTextFromData)}`}
-          ></div>
-        </div>
-      </>
+      <div class={main}>
+        <div class={front} />
+        <div class={back} />
+      </div>
     );
-  },
+  }
 });

@@ -10,7 +10,7 @@ import externalLink from "./modules/externalLink";
 import remainingRouter from "./modules/remaining"; //静态路由
 
 import { storageSession } from "../utils/storage";
-import { i18n } from "/@/plugins/i18n/index";
+import { i18n } from "/@/plugins/i18n";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 
 import { getAsyncRoutes } from "/@/api/routes";
@@ -26,11 +26,11 @@ const constantRoutes: Array<any> = [
   componentsRouter,
   nestedRouter,
   externalLink,
-  errorRouter,
+  errorRouter
 ];
 
 // 按照路由中meta下的rank等级升序来排序路由
-export const ascending = (arr) => {
+export const ascending = arr => {
   return arr.sort((a: any, b: any) => {
     return a?.meta?.rank - b?.meta?.rank;
   });
@@ -61,7 +61,7 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes: ascending(constantRoutes).concat(...remainingRouter),
   scrollBehavior(to, from, savedPosition) {
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
       if (savedPosition) {
         return savedPosition;
       } else {
@@ -72,11 +72,11 @@ const router = createRouter({
         }
       }
     });
-  },
+  }
 });
 
 export const initRouter = (name, next?, to?) => {
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     getAsyncRoutes({ name }).then(({ info }) => {
       if (info.length === 0) {
         usePermissionStoreHook().changeSetting(info);
@@ -84,9 +84,8 @@ export const initRouter = (name, next?, to?) => {
         addAsyncRoutes(info).map((v: any) => {
           // 防止重复添加路由
           if (
-            router.options.routes.findIndex(
-              (value) => value.path === v.path
-            ) !== -1
+            router.options.routes.findIndex(value => value.path === v.path) !==
+            -1
           ) {
             return;
           } else {
@@ -103,7 +102,7 @@ export const initRouter = (name, next?, to?) => {
       }
       router.addRoute({
         path: "/:pathMatch(.*)",
-        redirect: "/error/404",
+        redirect: "/error/404"
       });
     });
   });
@@ -111,7 +110,7 @@ export const initRouter = (name, next?, to?) => {
 
 // reset router
 export function resetRouter() {
-  router.getRoutes().forEach((route) => {
+  router.getRoutes().forEach(route => {
     const { name } = route;
     if (name) {
       router.hasRoute(name) && router.removeRoute(name);
@@ -124,7 +123,7 @@ import NProgress from "../utils/progress";
 // const whiteList = ["/login", "/register"];
 
 router.beforeEach((to, _from, next) => {
-  let name = storageSession.getItem("info");
+  const name = storageSession.getItem("info");
   NProgress.start();
   const { t } = i18n.global;
   // @ts-ignore

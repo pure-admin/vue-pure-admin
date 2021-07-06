@@ -8,8 +8,8 @@ const remainingRouter = [
     meta: {
       title: "message.hslogin",
       showLink: false,
-      rank: 101,
-    },
+      rank: 101
+    }
   },
   {
     path: "/register",
@@ -18,8 +18,8 @@ const remainingRouter = [
     meta: {
       title: "message.hsregister",
       showLink: false,
-      rank: 102,
-    },
+      rank: 102
+    }
   },
   // {
   //   // 找不到路由重定向到404页面
@@ -44,16 +44,16 @@ const remainingRouter = [
       title: "message.hshome",
       showLink: false,
       savedPosition: false,
-      rank: 104,
+      rank: 104
     },
     children: [
       {
         path: "/redirect/:path(.*)",
         name: "redirect",
-        component: () => import("/@/views/redirect.vue"),
-      },
-    ],
-  },
+        component: () => import("/@/views/redirect.vue")
+      }
+    ]
+  }
 ];
 
 export default remainingRouter;

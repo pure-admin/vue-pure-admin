@@ -18,7 +18,9 @@
             forceFallback="true"
           >
             <template #item="{ element }">
-              <div :class="'item'+' '+ 'item-' + element.num">{{ element.num }}</div>
+              <div :class="'item' + ' ' + 'item-' + element.num">
+                {{ element.num }}
+              </div>
             </template>
           </draggable>
         </el-card>
@@ -41,7 +43,7 @@
             animation="300"
           >
             <template #item="{ element, index }">
-              <div class="item-single">{{element.name}} {{ index }}</div>
+              <div class="item-single">{{ element.name }} {{ index }}</div>
             </template>
           </draggable>
         </el-card>
@@ -56,7 +58,11 @@
           </template>
           <!-- 拖拽实现元素位置切换 -->
           <div class="cut-container">
-            <div class="item-cut" v-for="(item,index) in cutLists" :key="index">
+            <div
+              class="item-cut"
+              v-for="(item, index) in cutLists"
+              :key="index"
+            >
               <p>{{ item.name }}</p>
             </div>
           </div>
@@ -66,7 +72,7 @@
   </div>
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 import draggable from "vuedraggable/src/vuedraggable";
 import { reactive, toRefs, onMounted } from "vue";
 export default {
@@ -105,6 +111,7 @@ export default {
     onMounted(() => {
       // 使用原生sortable实现元素位置切换
       // @ts-ignore
+      // eslint-disable-next-line no-undef
       new Sortable(document.querySelector(".cut-container"), {
         swap: true,
         forceFallback: true,

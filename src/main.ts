@@ -36,16 +36,16 @@ app.use(Storage, {
           title: "message.hshome",
           icon: "el-icon-s-home",
           showLink: true,
-          savedPosition: false,
-        },
-      },
-    ],
-  },
+          savedPosition: false
+        }
+      }
+    ]
+  }
 });
 
 // 自定义指令
 import * as directives from "/@/directives";
-Object.keys(directives).forEach((key) => {
+Object.keys(directives).forEach(key => {
   app.directive(key, (directives as { [key: string]: Directive })[key]);
 });
 
@@ -57,7 +57,7 @@ export const getServerConfig = async (): Promise<any> => {
     url:
       process.env.NODE_ENV === "production"
         ? "/manages/serverConfig.json"
-        : "/serverConfig.json",
+        : "/serverConfig.json"
   })
     .then(({ data: config }) => {
       let $config = app.config.globalProperties.$config;
@@ -80,11 +80,7 @@ export const getServerConfig = async (): Promise<any> => {
 getServerConfig().then(async () => {
   setupStore(app);
 
-  app
-    .use(router)
-    .use(useElementPlus)
-    .use(useTable)
-    .use(usI18n);
+  app.use(router).use(useElementPlus).use(useTable).use(usI18n);
 
   await router.isReady();
 

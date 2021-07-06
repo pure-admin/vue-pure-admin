@@ -34,9 +34,9 @@ export default {
     return {
       message,
       four,
-      four_cloud,
+      four_cloud
     };
-  },
+  }
 };
 </script>
 

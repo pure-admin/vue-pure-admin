@@ -9,7 +9,7 @@ const homeRouter = {
     icon: "el-icon-s-home",
     showLink: true,
     savedPosition: false,
-    rank: 0,
+    rank: 0
   },
   children: [
     {
@@ -19,10 +19,10 @@ const homeRouter = {
       meta: {
         title: "message.hshome",
         showLink: true,
-        savedPosition: false,
-      },
-    },
-  ],
+        savedPosition: false
+      }
+    }
+  ]
 };
 
 export default homeRouter;

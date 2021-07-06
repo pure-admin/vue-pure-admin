@@ -41,8 +41,8 @@ export const menusConfig = {
       permission: "权限管理",
       permissionPage: "页面权限",
       permissionButton: "按钮权限",
-      externalLink: "外链",
-    },
+      externalLink: "外链"
+    }
   },
   en: {
     message: {
@@ -77,9 +77,9 @@ export const menusConfig = {
       permission: "Permission Manage",
       permissionPage: "Page Permission",
       permissionButton: "Button Permission",
-      externalLink: "External Link",
-    },
-  },
+      externalLink: "External Link"
+    }
+  }
 };
 
 // 按钮配置
@@ -99,8 +99,8 @@ export const buttonConfig = {
       hsexpendAll: "全部展开",
       hscollapseAll: "全部折叠",
       hssystemSet: "系统设置",
-      hsdelete: "删除",
-    },
+      hsdelete: "删除"
+    }
   },
   en: {
     message: {
@@ -117,9 +117,9 @@ export const buttonConfig = {
       hsexpendAll: "Expand All",
       hscollapseAll: "Collapse All",
       hssystemSet: "System Set",
-      hsdelete: "Delete",
-    },
-  },
+      hsdelete: "Delete"
+    }
+  }
 };
 
 // 配置
@@ -136,13 +136,13 @@ const localesList = [menusConfig, buttonConfig];
 
 export const localesConfigs = {
   zh: {
-    message: Object.assign({}, ...localesList.map((v) => v.zh.message)),
+    message: Object.assign({}, ...localesList.map(v => v.zh.message)),
     ...zhVxeTable,
-    ...zhLocale,
+    ...zhLocale
   },
   en: {
-    message: Object.assign({}, ...localesList.map((v) => v.en.message)),
+    message: Object.assign({}, ...localesList.map(v => v.en.message)),
     ...enVxeTable,
-    ...enLocale,
-  },
+    ...enLocale
+  }
 };

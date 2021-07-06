@@ -8,14 +8,17 @@
       @mousedown="nodeDragNode(item)"
     >
       <div class="node-item-icon" :class="item.class">
-        <div v-if="item.type === 'user' || item.type === 'time'" class="shape"></div>
+        <div
+          v-if="item.type === 'user' || item.type === 'time'"
+          class="shape"
+        ></div>
       </div>
-      <span class="node-label">{{item.text}}</span>
+      <span class="node-label">{{ item.text }}</span>
     </div>
   </div>
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 import { defineComponent, ref, unref } from "vue";
 export default defineComponent({
   name: "NodePanel",
@@ -51,7 +54,6 @@ export default defineComponent({
   }
 });
 </script>
-
 
 <style scoped>
 .node-panel {

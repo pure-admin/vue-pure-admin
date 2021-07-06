@@ -9,8 +9,8 @@ export const defaultConfig: AxiosRequestConfig = {
   headers: {
     Accept: "application/json, text/plain, */*",
     "Content-Type": "application/json",
-    "X-Requested-With": "XMLHttpRequest",
-  },
+    "X-Requested-With": "XMLHttpRequest"
+  }
 };
 
 export function genConfig(config?: AxiosRequestConfig): AxiosRequestConfig {
@@ -22,7 +22,7 @@ export function genConfig(config?: AxiosRequestConfig): AxiosRequestConfig {
   if (headers && typeof headers === "object") {
     defaultConfig.headers = {
       ...defaultConfig.headers,
-      ...headers,
+      ...headers
     };
   }
   return { ...excludeProps(config!, "headers"), ...defaultConfig };

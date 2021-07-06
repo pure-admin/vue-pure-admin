@@ -10,7 +10,7 @@ const componentsRouter = {
     title: "message.hscomponents",
     showLink: true,
     savedPosition: true,
-    rank: 4,
+    rank: 4
   },
   children: [
     {
@@ -20,8 +20,8 @@ const componentsRouter = {
       meta: {
         title: "message.hsvideo",
         showLink: true,
-        savedPosition: true,
-      },
+        savedPosition: true
+      }
     },
     {
       path: "/components/map",
@@ -30,8 +30,8 @@ const componentsRouter = {
       meta: {
         title: "message.hsmap",
         showLink: true,
-        savedPosition: true,
-      },
+        savedPosition: true
+      }
     },
     {
       path: "/components/draggable",
@@ -40,8 +40,8 @@ const componentsRouter = {
       meta: {
         title: "message.hsdraggable",
         showLink: true,
-        savedPosition: true,
-      },
+        savedPosition: true
+      }
     },
 
     {
@@ -51,8 +51,8 @@ const componentsRouter = {
       meta: {
         title: "message.hssplitPane",
         showLink: true,
-        savedPosition: true,
-      },
+        savedPosition: true
+      }
     },
     {
       path: "/components/button",
@@ -61,8 +61,8 @@ const componentsRouter = {
       meta: {
         title: "message.hsbutton",
         showLink: true,
-        savedPosition: true,
-      },
+        savedPosition: true
+      }
     },
     {
       path: "/components/cropping",
@@ -71,8 +71,8 @@ const componentsRouter = {
       meta: {
         title: "message.hscropping",
         showLink: true,
-        savedPosition: true,
-      },
+        savedPosition: true
+      }
     },
     {
       path: "/components/countTo",
@@ -81,8 +81,8 @@ const componentsRouter = {
       meta: {
         title: "message.hscountTo",
         showLink: true,
-        savedPosition: true,
-      },
+        savedPosition: true
+      }
     },
     {
       path: "/components/selector",
@@ -91,8 +91,8 @@ const componentsRouter = {
       meta: {
         title: "message.hsselector",
         showLink: true,
-        savedPosition: true,
-      },
+        savedPosition: true
+      }
     },
     {
       path: "/components/seamlessScroll",
@@ -101,8 +101,8 @@ const componentsRouter = {
       meta: {
         title: "message.hsseamless",
         showLink: true,
-        savedPosition: true,
-      },
+        savedPosition: true
+      }
     },
     {
       path: "/components/contextmenu",
@@ -111,10 +111,10 @@ const componentsRouter = {
       meta: {
         title: "message.hscontextmenu",
         showLink: true,
-        savedPosition: true,
-      },
-    },
-  ],
+        savedPosition: true
+      }
+    }
+  ]
 };
 
 export default componentsRouter;

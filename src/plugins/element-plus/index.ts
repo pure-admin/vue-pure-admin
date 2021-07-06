@@ -1,4 +1,4 @@
-import { App } from "vue";
+import { App, Component } from "vue";
 import {
   ElAffix,
   ElSkeleton,
@@ -30,7 +30,7 @@ import {
   ElPagination,
   ElAlert,
   ElRadioButton,
-  ElRadioGroup,
+  ElRadioGroup
 } from "element-plus";
 import "element-plus/packages/theme-chalk/src/base.scss";
 
@@ -64,7 +64,7 @@ const components = [
   ElPagination,
   ElAlert,
   ElRadioButton,
-  ElRadioGroup,
+  ElRadioGroup
 ];
 
 const plugins = [ElLoading];
@@ -74,10 +74,10 @@ import zhLocale from "element-plus/lib/locale/lang/zh-cn";
 ElementLocale.use(zhLocale);
 
 export function useElementPlus(app: App) {
-  components.forEach((component) => {
+  components.forEach((component: Component) => {
     app.component(component.name, component);
   });
-  plugins.forEach((plugin) => {
+  plugins.forEach(plugin => {
     app.use(plugin);
   });
 }

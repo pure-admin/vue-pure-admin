@@ -1,10 +1,10 @@
 <template>
   <div class="info">
-    <el-form :model="ruleForm" :rules="rules" ref="ruleForm" class="rule-form">
+    <el-form :model="model" :rules="rules" ref="ruleForm" class="rule-form">
       <el-form-item prop="userName">
         <el-input
           clearable
-          v-model="ruleForm.userName"
+          v-model="model.userName"
           placeholder="请输入用户名"
           prefix-icon="el-icon-user"
         ></el-input>
@@ -14,7 +14,7 @@
           clearable
           type="password"
           show-password
-          v-model="ruleForm.passWord"
+          v-model="model.passWord"
           placeholder="请输入密码"
           prefix-icon="el-icon-lock"
         ></el-input>
@@ -23,22 +23,31 @@
         <el-input
           maxlength="2"
           onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
-          v-model.number="ruleForm.verify"
+          v-model.number="model.verify"
           placeholder="请输入验证码"
         ></el-input>
-        <span class="verify" title="刷新" v-html="ruleForm.svg" @click.prevent="refreshVerify"></span>
+        <span
+          class="verify"
+          title="刷新"
+          v-html="model.svg"
+          @click.prevent="refreshVerify"
+        ></span>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click.prevent="onBehavior">{{ tipsFalse }}</el-button>
+        <el-button type="primary" @click.prevent="onBehavior">{{
+          tipsFalse
+        }}</el-button>
         <el-button @click="resetForm">重置</el-button>
         <span class="tips" @click="changPage">{{ tips }}</span>
       </el-form-item>
-      <span title="测试用户 直接登录" class="secret" @click="noSecret">免密登录</span>
+      <span title="测试用户 直接登录" class="secret" @click="noSecret"
+        >免密登录</span
+      >
     </el-form>
   </div>
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 import {
   ref,
   defineComponent,
@@ -46,7 +55,8 @@ import {
   onBeforeMount,
   getCurrentInstance,
   watch,
-  nextTick
+  nextTick,
+  toRef
 } from "vue";
 import { storageSession } from "/@/utils/storage";
 
@@ -59,7 +69,7 @@ export interface ContextProps {
   dynamicText?: string;
 }
 
-import { useRouter, useRoute, Router } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 
 import { initRouter } from "/@/router";
 
@@ -75,6 +85,7 @@ export default defineComponent({
   setup(props, ctx) {
     let vm: any;
 
+    const model = toRef(props, "ruleForm");
     let tips = ref("注册");
     let tipsFalse = ref("登录");
 
@@ -83,7 +94,7 @@ export default defineComponent({
 
     watch(
       route,
-      async ({ path }, prevRoute: unknown): Promise<void> => {
+      async ({ path }): Promise<void> => {
         await nextTick();
         path.includes("register")
           ? (tips.value = "登录") && (tipsFalse.value = "注册")
@@ -106,7 +117,7 @@ export default defineComponent({
 
     // 点击登录或注册
     const onBehavior = (evt: Object): void => {
-      vm.refs.ruleForm.validate((valid: Boolean) => {
+      vm.refs.ruleForm.validate((valid: boolean) => {
         if (valid) {
           ctx.emit("onBehavior", evt);
         } else {
@@ -135,7 +146,7 @@ export default defineComponent({
         username: "admin",
         accessToken: "eyJhbGciOiJIUzUxMiJ9.test"
       });
-      initRouter("admin").then((router: Router) => {});
+      initRouter("admin").then(() => {});
       router.push("/");
     };
 
@@ -144,6 +155,7 @@ export default defineComponent({
     });
 
     return {
+      model,
       rules,
       tips,
       tipsFalse,

@@ -4,10 +4,10 @@ import { store } from "/@/store";
 
 interface AppState {
   sidebar: {
-    opened: Boolean;
-    withoutAnimation: Boolean;
+    opened: boolean;
+    withoutAnimation: boolean;
   };
-  device: String;
+  device: string;
 }
 
 export const useAppStore = defineStore({
@@ -17,9 +17,9 @@ export const useAppStore = defineStore({
       opened: storageLocal.getItem("sidebarStatus")
         ? !!+storageLocal.getItem("sidebarStatus")
         : true,
-      withoutAnimation: false,
+      withoutAnimation: false
     },
-    device: "desktop",
+    device: "desktop"
   }),
   getters: {
     getSidebarStatus() {
@@ -27,7 +27,7 @@ export const useAppStore = defineStore({
     },
     getDevice() {
       return this.device;
-    },
+    }
   },
   actions: {
     TOGGLE_SIDEBAR() {
@@ -39,12 +39,12 @@ export const useAppStore = defineStore({
         storageLocal.setItem("sidebarStatus", 0);
       }
     },
-    CLOSE_SIDEBAR(withoutAnimation: Boolean) {
+    CLOSE_SIDEBAR(withoutAnimation: boolean) {
       storageLocal.setItem("sidebarStatus", 0);
       this.sidebar.opened = false;
       this.sidebar.withoutAnimation = withoutAnimation;
     },
-    TOGGLE_DEVICE(device: String) {
+    TOGGLE_DEVICE(device: string) {
       this.device = device;
     },
     async toggleSideBar() {
@@ -55,8 +55,8 @@ export const useAppStore = defineStore({
     },
     toggleDevice(device) {
       this.TOGGLE_DEVICE(device);
-    },
-  },
+    }
+  }
 });
 
 export function useAppStoreHook() {

@@ -4,17 +4,17 @@ import {
   nextTick,
   onBeforeMount,
   getCurrentInstance,
-  unref,
+  unref
 } from "vue";
 import { addClass, removeClass, toggleClass } from "/@/utils/operate";
 import "./index.css";
 
-let stayClass = "stay"; //鼠标点击
-let activeClass = "hs-on"; //鼠标移动上去
-let voidClass = "hs-off"; //鼠标移开
-let inRange = "hs-range"; //当前选中的两个元素之间的背景
-let bothLeftSides = "both-left-sides";
-let bothRightSides = "both-right-sides";
+const stayClass = "stay"; //鼠标点击
+const activeClass = "hs-on"; //鼠标移动上去
+const voidClass = "hs-off"; //鼠标移开
+const inRange = "hs-range"; //当前选中的两个元素之间的背景
+const bothLeftSides = "both-left-sides";
+const bothRightSides = "both-right-sides";
 let selectedDirection = "right"; //默认从左往右，索引变大
 
 let overList = [];
@@ -26,37 +26,42 @@ export default defineComponent({
   props: {
     HsKey: {
       type: Number || String,
-      default: 0,
+      default: 0
     },
     disabled: {
       type: Boolean,
-      default: false,
+      default: false
     },
     value: {
       type: Number,
-      default: 0,
+      default: 0
     },
     max: {
       type: Array,
-      default: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      default() {
+        return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      }
     },
     // 回显数据的索引，长度必须是2
     echo: {
       type: Array,
-      default: [],
-    },
+      default() {
+        return [];
+      }
+    }
   },
   emits: ["selectedVal"],
   setup(props, { emit }) {
     let vm: any;
-    let currentValue = props.value;
+    // eslint-disable-next-line vue/no-setup-props-destructure
+    const currentValue = props.value;
 
-    let rateDisabled = computed(() => {
+    const rateDisabled = computed(() => {
       return props.disabled;
     });
 
-    let classes = computed(() => {
-      let result = [];
+    const classes = computed(() => {
+      const result = [];
       let i = 0;
       let threshold = currentValue;
       if (currentValue !== Math.floor(currentValue)) {
@@ -72,7 +77,7 @@ export default defineComponent({
     });
 
     // 鼠标移入
-    const setCurrentValue = (index) => {
+    const setCurrentValue = index => {
       if (props.disabled) return;
       // 当选中一个元素后，开始添加背景色
       if (selectedList.length === 1) {
@@ -118,7 +123,7 @@ export default defineComponent({
     };
 
     // 鼠标离开
-    const resetCurrentValue = (index) => {
+    const resetCurrentValue = index => {
       if (props.disabled) return;
       // 移除先检查是否选中 选中则返回false 不移除
       const currentHsDom = document.querySelector("." + voidClass + index);
@@ -130,7 +135,7 @@ export default defineComponent({
 
       // 当选中一个元素后，开始移除背景色
       if (selectedList.length === 1) {
-        let firstIndex = overList[0].index;
+        const firstIndex = overList[0].index;
         if (index >= firstIndex) {
           for (let i = 0; i <= index; i++) {
             removeClass(
@@ -153,7 +158,7 @@ export default defineComponent({
     // 鼠标点击
     const selectValue = (index, item) => {
       if (props.disabled) return;
-      let len = selectedList.length;
+      const len = selectedList.length;
 
       if (len < 2) {
         selectedList.push({ item, index });
@@ -188,19 +193,19 @@ export default defineComponent({
             emit("selectedVal", {
               left: selectedList[0].item,
               right: selectedList[1].item,
-              whole: selectedList,
+              whole: selectedList
             });
           } else {
             emit("selectedVal", {
               left: selectedList[1].item,
               right: selectedList[0].item,
-              whole: selectedList,
+              whole: selectedList
             });
           }
         }
       } else {
         nextTick(() => {
-          selectedList.forEach((v) => {
+          selectedList.forEach(v => {
             removeClass(
               document.querySelector("." + voidClass + v.index),
               activeClass,
@@ -217,7 +222,7 @@ export default defineComponent({
           selectedList = [];
           overList = [];
           for (let i = 0; i <= props.max.length; i++) {
-            let currentDom = document.querySelector(".hs-select__item" + i);
+            const currentDom = document.querySelector(".hs-select__item" + i);
             if (currentDom) {
               removeClass(currentDom, inRange);
             }
@@ -235,7 +240,7 @@ export default defineComponent({
     };
 
     // 回显数据
-    const echoView = (item) => {
+    const echoView = item => {
       if (item.length === 0) return;
 
       if (item.length > 2 || item.length === 1) {
@@ -291,14 +296,12 @@ export default defineComponent({
                     onClick={() => selectValue(key, item)}
                     style={{
                       cursor: unref(rateDisabled) ? "auto" : "pointer",
-                      textAlign: "center",
+                      textAlign: "center"
                     }}
-                    key={key}
-                  >
+                    key={key}>
                     <div
                       ref={`hsdiv${props.HsKey}${key}`}
-                      class={`hs-item ${[unref(classes)[key] + key]}`}
-                    >
+                      class={`hs-item ${[unref(classes)[key] + key]}`}>
                       <span>{item}</span>
                     </div>
                   </td>
@@ -309,5 +312,5 @@ export default defineComponent({
         </table>
       </>
     );
-  },
+  }
 });

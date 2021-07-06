@@ -3,5 +3,5 @@ export default {
 
   fixedHeader: false,
 
-  hiddenSideBar: false,
+  hiddenSideBar: false
 };

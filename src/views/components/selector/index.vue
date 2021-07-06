@@ -1,9 +1,14 @@
 <template>
   <div>
-    <el-card class="box-card" style="margin:10px" v-for="(item,key) in dataLists" :key="key">
+    <el-card
+      class="box-card"
+      style="margin: 10px"
+      v-for="(item, key) in dataLists"
+      :key="key"
+    >
       <template #header>
         <div class="card-header">
-          <span>{{item.title}}</span>
+          <span>{{ item.title }}</span>
         </div>
       </template>
       <Selector
@@ -17,7 +22,7 @@
   </div>
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 import { ref } from "vue";
 import Selector from "/@/components/ReSelector";
 
@@ -38,7 +43,7 @@ export default {
       }
     ]);
 
-    const selectedVal = ({ left, right, whole }) => {
+    const selectedVal = ({ left, right }) => {
       selectRange.value = `${left}-${right}`;
     };
 

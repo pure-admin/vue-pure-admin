@@ -1,5 +1,5 @@
 <template>
-  <div :class="{'has-logo': showLogo}">
+  <div :class="{ 'has-logo': showLogo }">
     <Logo v-if="showLogo === '1'" :collapse="isCollapse" />
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu
@@ -22,18 +22,11 @@
 </template>
 
 <script lang="ts">
-import {
-  computed,
-  defineComponent,
-  ref,
-  unref,
-  nextTick,
-  onBeforeMount
-} from "vue";
+import { computed, defineComponent, ref, onBeforeMount } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useAppStoreHook } from "/@/store/modules/app";
 import SidebarItem from "./SidebarItem.vue";
-import { algorithm } from "../../../utils/algorithm";
+import { algorithm } from "/@/utils/algorithm";
 import { emitter } from "/@/utils/mitt";
 import Logo from "./Logo.vue";
 import { storageLocal } from "/@/utils/storage";
@@ -69,7 +62,7 @@ export default defineComponent({
       }
       // 找到当前路由的信息
       function findCurrentRoute(routes) {
-        return routes.map((item, key) => {
+        return routes.map(item => {
           if (item.path === indexPath) {
             // 切换左侧菜单 通知标签页
             emitter.emit("changLayoutRoute", {
@@ -80,7 +73,6 @@ export default defineComponent({
             if (item.children) findCurrentRoute(item.children);
           }
         });
-        return;
       }
       findCurrentRoute(algorithm.increaseIndexes(router));
     };

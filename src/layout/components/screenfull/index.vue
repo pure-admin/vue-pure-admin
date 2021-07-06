@@ -1,7 +1,11 @@
 <template>
   <div class="screen-full" @click="toggle">
     <i
-      :title="isFullscreen ? $t('message.hsexitfullscreen') : $t('message.hsfullscreen')"
+      :title="
+        isFullscreen
+          ? $t('message.hsexitfullscreen')
+          : $t('message.hsfullscreen')
+      "
       :class="
         isFullscreen
           ? 'iconfont team-iconexit-fullscreen'
@@ -12,20 +16,18 @@
 </template>
 
 <script>
-import { useFullscreen } from '@vueuse/core'
-import {
-  defineComponent,
-} from "vue"
+import { useFullscreen } from "@vueuse/core";
+import { defineComponent } from "vue";
 export default defineComponent({
   name: "screenfull",
   setup() {
-    const { isFullscreen, toggle } = useFullscreen()
+    const { isFullscreen, toggle } = useFullscreen();
 
     return {
       isFullscreen,
-      toggle,
-    }
-  },
+      toggle
+    };
+  }
 });
 </script>
 

@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 import { Amap } from "/@/components/ReMap";
 export default {
   components: {

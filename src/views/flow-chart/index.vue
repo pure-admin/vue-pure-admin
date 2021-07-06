@@ -1,7 +1,13 @@
 <template>
   <div class="logic-flow-view">
     <!-- 辅助工具栏 -->
-    <Control class="demo-control" v-if="lf" :lf="lf" :catTurboData="false" @catData="catData"></Control>
+    <Control
+      class="demo-control"
+      v-if="lf"
+      :lf="lf"
+      :catTurboData="false"
+      @catData="catData"
+    ></Control>
     <!-- 节点面板 -->
     <NodePanel :lf="lf" :nodeList="nodeList"></NodePanel>
     <!-- 画布 -->
@@ -13,23 +19,21 @@
   </div>
 </template>
 
-<script lang='ts'>
-import { ref, unref, onMounted, nextTick } from "vue";
+<script lang="ts">
+import { ref, unref, onMounted } from "vue";
 import LogicFlow from "@logicflow/core";
 import { Snapshot, BpmnElement, Menu } from "@logicflow/extension";
 import "@logicflow/core/dist/style/index.css";
 import "@logicflow/extension/lib/style/index.css";
 import { Control, NodePanel, DataDialog } from "/@/components/ReFlowChart";
 
-import {
-  toTurboData,
-  toLogicflowData
-} from "/@/components/ReFlowChart/src/adpterForTurbo";
+import { toLogicflowData } from "/@/components/ReFlowChart/src/adpterForTurbo";
 import { BpmnNode } from "/@/components/ReFlowChart/src/config";
 import demoData from "./dataTurbo.json";
 export default {
   components: { NodePanel, Control, DataDialog },
   setup() {
+    // eslint-disable-next-line no-undef
     let lf = ref<ElRef>(null);
     let graphData = ref(null);
     let dataVisible = ref(false);
@@ -124,4 +128,3 @@ export default {
   z-index: 3;
 }
 </style>
-

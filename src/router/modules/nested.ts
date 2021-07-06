@@ -10,7 +10,7 @@ const nestedRouter = {
     icon: "el-icon-s-data",
     showLink: true,
     savedPosition: false,
-    rank: 5,
+    rank: 5
   },
   children: [
     {
@@ -20,7 +20,7 @@ const nestedRouter = {
       meta: {
         title: "message.hsmenu1",
         showLink: true,
-        savedPosition: false,
+        savedPosition: false
       },
       redirect: "/nested/menu1/menu1-1",
       children: [
@@ -31,8 +31,8 @@ const nestedRouter = {
           meta: {
             title: "message.hsmenu1-1",
             showLink: true,
-            savedPosition: false,
-          },
+            savedPosition: false
+          }
         },
         {
           path: "/nested/menu1/menu1-2",
@@ -42,7 +42,7 @@ const nestedRouter = {
           meta: {
             title: "message.hsmenu1-2",
             showLink: true,
-            savedPosition: false,
+            savedPosition: false
           },
           children: [
             {
@@ -53,8 +53,8 @@ const nestedRouter = {
               meta: {
                 title: "message.hsmenu1-2-1",
                 showLink: true,
-                savedPosition: false,
-              },
+                savedPosition: false
+              }
             },
             {
               path: "/nested/menu1/menu1-2/menu1-2-2",
@@ -64,10 +64,10 @@ const nestedRouter = {
               meta: {
                 title: "message.hsmenu1-2-2",
                 showLink: true,
-                savedPosition: false,
-              },
-            },
-          ],
+                savedPosition: false
+              }
+            }
+          ]
         },
         {
           path: "/nested/menu1/menu1-3",
@@ -76,10 +76,10 @@ const nestedRouter = {
           meta: {
             title: "message.hsmenu1-3",
             showLink: true,
-            savedPosition: false,
-          },
-        },
-      ],
+            savedPosition: false
+          }
+        }
+      ]
     },
     {
       path: "/nested/menu2",
@@ -88,10 +88,10 @@ const nestedRouter = {
       meta: {
         title: "message.hsmenu2",
         showLink: true,
-        savedPosition: false,
-      },
-    },
-  ],
+        savedPosition: false
+      }
+    }
+  ]
 };
 
 export default nestedRouter;

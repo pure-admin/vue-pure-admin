@@ -44,7 +44,7 @@ import {
   Pulldown,
 
   // 表格
-  Table,
+  Table
 } from "vxe-table";
 
 // 全局默认参数
@@ -56,10 +56,10 @@ VXETable.setup({
     // 自动监听父元素的变化去重新计算表格
     autoResize: true,
     // 鼠标移到行是否要高亮显示
-    highlightHoverRow: true,
+    highlightHoverRow: true
   },
   input: {
-    clearable: true,
+    clearable: true
   },
   // 对组件内置的提示语进行国际化翻译
   i18n: (key, args) => i18n.global.t(key, args),
@@ -73,7 +73,7 @@ VXETable.setup({
       return i18n.global.t(key, args);
     }
     return key;
-  },
+  }
 });
 
 export function useTable(app: App) {

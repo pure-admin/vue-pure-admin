@@ -1,26 +1,34 @@
-.<template>
+.
+<template>
   <div class="dict-container">
     <!-- 工具栏 -->
     <vxe-toolbar>
       <template #buttons>
-        <vxe-input v-model="filterName" :placeholder="$t('message.hssearch')" @keyup="searchEvent"></vxe-input>
+        <vxe-input
+          v-model="filterName"
+          :placeholder="$t('message.hssearch')"
+          @keyup="searchEvent"
+        ></vxe-input>
       </template>
       <template #tools>
         <vxe-button
           icon="el-icon-circle-plus-outline"
           status="primary"
           @click="onAdd"
-        >{{$t('message.hsadd')}}</vxe-button>
+          >{{ $t("message.hsadd") }}</vxe-button
+        >
         <vxe-button
           icon="el-icon-folder-opened"
           status="primary"
           @click="$refs.xTree.setAllTreeExpand(true)"
-        >{{$t('message.hsexpendAll')}}</vxe-button>
+          >{{ $t("message.hsexpendAll") }}</vxe-button
+        >
         <vxe-button
           icon="el-icon-folder"
           status="primary"
           @click="$refs.xTree.clearTreeExpand()"
-        >{{$t('message.hscollapseAll')}}</vxe-button>
+          >{{ $t("message.hscollapseAll") }}</vxe-button
+        >
       </template>
     </vxe-toolbar>
 
@@ -29,29 +37,51 @@
       ref="xTree"
       border
       resizable
-      :tree-config="{children: 'children', iconOpen: 'fa fa-minus-square-o', iconClose: 'fa fa-plus-square-o'}"
+      :tree-config="{
+        children: 'children',
+        iconOpen: 'fa fa-minus-square-o',
+        iconClose: 'fa fa-plus-square-o'
+      }"
       :data="tableData"
       @cell-dblclick="cellDBLClickEvent"
     >
-      <vxe-table-column tree-node field="name" title="字典名称"></vxe-table-column>
+      <vxe-table-column
+        tree-node
+        field="name"
+        title="字典名称"
+      ></vxe-table-column>
       <vxe-table-column title="字典类型">
         <template #default="{ row }">
-          <el-tooltip effect="dark" :content="'双击复制：'+row.model" placement="right">
+          <el-tooltip
+            effect="dark"
+            :content="'双击复制：' + row.model"
+            placement="right"
+          >
             <span class="text-model">{{ row.model }}</span>
           </el-tooltip>
         </template>
       </vxe-table-column>
       <vxe-table-column title="操作" width="330" fixed="right">
         <template #default="{ row }">
-          <vxe-button type="text" icon="el-icon-edit" @click="onEdit(row)">编辑</vxe-button>
-          <vxe-button type="text" icon="el-icon-circle-plus-outline" @click="onAddChild(row)">新增子类型</vxe-button>
+          <vxe-button type="text" icon="el-icon-edit" @click="onEdit(row)"
+            >编辑</vxe-button
+          >
+          <vxe-button
+            type="text"
+            icon="el-icon-circle-plus-outline"
+            @click="onAddChild(row)"
+            >新增子类型</vxe-button
+          >
           <vxe-button
             v-show="row.model"
             type="text"
             icon="el-icon-setting"
             @click="onDeploy(row)"
-          >字典配置</vxe-button>
-          <vxe-button type="text" icon="el-icon-delete" @click="confirmEvent">删除</vxe-button>
+            >字典配置</vxe-button
+          >
+          <vxe-button type="text" icon="el-icon-delete" @click="confirmEvent"
+            >删除</vxe-button
+          >
         </template>
       </vxe-table-column>
     </vxe-table>
@@ -63,7 +93,7 @@
       v-model="showEdit"
       :title="selectRow ? '编辑' : '新增'"
       :loading="submitLoading"
-      @hide="$refs.xForm.reset();"
+      @hide="$refs.xForm.reset()"
     >
       <template #default>
         <vxe-form
@@ -80,7 +110,7 @@
     <Config :drawer="drawer" drawTitle="字典列表" @handleClose="handleClose" />
   </div>
 </template>
-<script  lang="ts">
+<script lang="ts">
 import { reactive, ref, unref, nextTick, toRefs } from "vue";
 import XEUtils from "xe-utils";
 import { cloneDeep } from "lodash-es";
@@ -90,7 +120,6 @@ import {
   VXETable,
   VxeTableInstance,
   VxeTableEvents,
-  VxeTablePropTypes,
   VxeFormPropTypes
 } from "vxe-table";
 import Config from "./config.vue";
@@ -203,7 +232,7 @@ export default {
 
     // 创建一个防防抖函数，调用频率间隔 100 毫秒
     const searchEvent = XEUtils.debounce(
-      function() {
+      function () {
         handleSearch();
       },
       100,
@@ -279,7 +308,7 @@ export default {
 
     let drawer = ref(false);
 
-    function onDeploy(row: any) {
+    function onDeploy() {
       drawer.value = true;
     }
 

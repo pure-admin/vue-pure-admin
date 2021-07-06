@@ -1,13 +1,23 @@
 <template>
   <div :ref="'wrap' + classOption['key']">
-    <div :style="leftSwitch" v-if="navigation" :class="leftSwitchClass" @click="leftSwitchClick">
+    <div
+      :style="leftSwitch"
+      v-if="navigation"
+      :class="leftSwitchClass"
+      @click="leftSwitchClick"
+    >
       <slot name="left-switch"></slot>
     </div>
-    <div :style="rightSwitch" v-if="navigation" :class="rightSwitchClass" @click="rightSwitchClick">
+    <div
+      :style="rightSwitch"
+      v-if="navigation"
+      :class="rightSwitchClass"
+      @click="rightSwitchClick"
+    >
       <slot name="right-switch"></slot>
     </div>
     <div
-      :ref="'realBox'+ classOption['key']"
+      :ref="'realBox' + classOption['key']"
       :style="pos"
       @mouseenter="enter"
       @mouseleave="leave"
@@ -16,7 +26,7 @@
       @touchend="touchEnd"
       @mousewheel="wheel"
     >
-      <div :ref="'slotList'+ classOption['key']" :style="float">
+      <div :ref="'slotList' + classOption['key']" :style="float">
         <slot></slot>
       </div>
       <div v-html="copyHtml" :style="float"></div>
@@ -24,15 +34,8 @@
   </div>
 </template>
 
-<script lang='ts'>
-import {
-  defineComponent,
-  computed,
-  ref,
-  unref,
-  watchEffect,
-  nextTick
-} from "vue";
+<script lang="ts">
+import { defineComponent, computed, ref, unref, nextTick } from "vue";
 import {
   tryOnMounted,
   tryOnUnmounted,
@@ -85,7 +88,8 @@ export default defineComponent({
     let isHover = false;
     let ease = "ease-in";
 
-    let { data, classOption } = props;
+    // eslint-disable-next-line vue/no-setup-props-destructure
+    let { classOption } = props;
 
     if (classOption["key"] === undefined) {
       classOption["key"] = 0;
@@ -165,8 +169,9 @@ export default defineComponent({
     let rightSwitch = computed(() => {
       return {
         position: "absolute",
-        margin: `${unref(height) / 2}px 0 0 ${unref(width) +
-          unref(options).switchOffset}px`,
+        margin: `${unref(height) / 2}px 0 0 ${
+          unref(width) + unref(options).switchOffset
+        }px`,
         transform: "translateY(-50%)"
       };
     });
@@ -372,7 +377,7 @@ export default defineComponent({
       if (isHover) return;
       //进入move立即先清除动画 防止频繁touchMove导致多动画同时进行
       // scrollCancle();
-      reqFrame = requestAnimationFrame(function() {
+      reqFrame = requestAnimationFrame(function () {
         //实际高度
         const h = unref(realBoxHeight) / 2;
         //宽度
@@ -408,7 +413,7 @@ export default defineComponent({
           xPos.value += step.value;
         }
         if (singleWaitTime) clearTimeout(singleWaitTime);
-        if (!!unref(realSingleStopHeight)) {
+        if (unref(realSingleStopHeight)) {
           //是否启动了单行暂停配置
           if (
             Math.abs(unref(yPos)) % unref(realSingleStopHeight) <
@@ -421,7 +426,7 @@ export default defineComponent({
           } else {
             scrollMove();
           }
-        } else if (!!unref(realSingleStopWidth)) {
+        } else if (unref(realSingleStopWidth)) {
           if (
             Math.abs(unref(xPos)) % unref(realSingleStopWidth) <
             unref(step)

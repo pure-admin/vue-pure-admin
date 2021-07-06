@@ -11,8 +11,14 @@
   </div>
 </template>
 
-<script lang='ts'>
-import { ref, onBeforeMount, getCurrentInstance, nextTick } from "vue";
+<script lang="ts">
+import {
+  ref,
+  onBeforeMount,
+  getCurrentInstance,
+  nextTick,
+  onUnmounted
+} from "vue";
 import flippers from "./Filpper";
 export default {
   name: "Flop",
@@ -108,6 +114,13 @@ export default {
         init();
         run();
       });
+    });
+
+    onUnmounted(() => {
+      if (timer.value) {
+        clearInterval(timer.value);
+        timer.value = null;
+      }
     });
 
     return {

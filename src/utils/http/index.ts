@@ -1,3 +1,2 @@
-import EnclosureHttp from "./core"
-export const http = new EnclosureHttp()
-
+import EnclosureHttp from "./core";
+export const http = new EnclosureHttp();

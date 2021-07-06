@@ -5,20 +5,27 @@
         v-for="(item, index) in dynamicTagList"
         :key="index"
         :ref="'dynamic' + index"
-        :class="['scroll-item is-closable', $route.path === item.path ? 'is-active' : '', $route.path === item.path && showModel ==='card'  ? 'card-active' : '' ]"
-        @contextmenu.prevent.native="openMenu(item, $event)"
+        :class="[
+          'scroll-item is-closable',
+          $route.path === item.path ? 'is-active' : '',
+          $route.path === item.path && showModel === 'card' ? 'card-active' : ''
+        ]"
+        @contextmenu.prevent="openMenu(item, $event)"
         @mouseenter.prevent="onMouseenter(item, index)"
         @mouseleave.prevent="onMouseleave(item, index)"
       >
         <router-link :to="item.path">{{ $t(item.meta.title) }}</router-link>
         <span
-          v-if="$route.path === item.path && index !== 0 || index === activeIndex && index !== 0"
+          v-if="
+            ($route.path === item.path && index !== 0) ||
+            (index === activeIndex && index !== 0)
+          "
           class="el-icon-close"
           @click="deleteMenu(item)"
         ></span>
         <div
           :ref="'schedule' + index"
-          v-if="showModel !=='card'"
+          v-if="showModel !== 'card'"
           :class="[$route.path === item.path ? 'schedule-active' : '']"
         ></div>
       </div>
@@ -26,15 +33,19 @@
     <!-- 右键菜单按钮 -->
     <ul
       v-show="visible"
-      :style="{ left: buttonLeft + 'px',top: buttonTop + 'px'}"
+      :style="{ left: buttonLeft + 'px', top: buttonTop + 'px' }"
       class="contextmenu"
     >
-      <div v-for="(item,key) in tagsViews" :key="key" style="display:flex; align-items: center;">
-        <li v-if="item.show" @click="selectTag(item,key)">
+      <div
+        v-for="(item, key) in tagsViews"
+        :key="key"
+        style="display: flex; align-items: center"
+      >
+        <li v-if="item.show" @click="selectTag(item, key)">
           <span>
             <i :class="item.icon"></i>
           </span>
-          {{item.text}}
+          {{ item.text }}
         </li>
       </div>
     </ul>
@@ -53,13 +64,14 @@
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item
-                v-for="(item,key) in tagsViews"
+                v-for="(item, key) in tagsViews"
                 :key="key"
                 :icon="item.icon"
                 :divided="item.divided"
                 :disabled="item.disabled"
                 @click="onClickDrop(key, item)"
-              >{{item.text}}</el-dropdown-item>
+                >{{ item.text }}</el-dropdown-item
+              >
             </el-dropdown-menu>
           </template>
         </el-dropdown>
@@ -71,10 +83,9 @@
   </div>
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 import {
   ref,
-  watchEffect,
   watch,
   onBeforeMount,
   unref,
@@ -106,6 +117,7 @@ export default {
         !this.$storage.routesInStorage ||
         this.$storage.routesInStorage.length === 0
       ) {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
         this.$storage.routesInStorage = routerArrays;
       }
       return this.$storage.routesInStorage;
@@ -152,7 +164,7 @@ export default {
 
     // 显示模式，默认灵动模式显示
     const showModel = ref(storageLocal.getItem("showModel") || "smart");
-    if (!showModel) {
+    if (!showModel.value) {
       storageLocal.setItem("showModel", "card");
     }
 
@@ -192,7 +204,7 @@ export default {
     // 重新加载
     function onFresh() {
       toggleClass(true, refreshButton, document.querySelector(".rotate"));
-      const { path, fullPath } = unref(route);
+      const { fullPath } = unref(route);
       router.replace({
         path: "/redirect" + fullPath
       });

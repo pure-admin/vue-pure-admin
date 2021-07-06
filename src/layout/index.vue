@@ -14,7 +14,11 @@
         <!-- tabs标签页 -->
         <tag>
           <i
-            :class="containerHiddenSideBar? 'iconfont team-iconhidden-main-container': 'iconfont team-iconshow-main-container'"
+            :class="
+              containerHiddenSideBar
+                ? 'iconfont team-iconhidden-main-container'
+                : 'iconfont team-iconshow-main-container'
+            "
             @click="onFullScreen"
           ></i>
         </tag>
@@ -35,26 +39,21 @@ import {
   reactive,
   computed,
   toRefs,
-  watch,
-  nextTick,
   watchEffect,
   onMounted,
-  onBeforeMount,
-  onBeforeUnmount
+  onBeforeMount
 } from "vue";
 import { useAppStoreHook } from "/@/store/modules/app";
 import { useSettingStoreHook } from "/@/store/modules/settings";
-import { useEventListener, useFullscreen } from "@vueuse/core";
-import { toggleClass, removeClass } from "/@/utils/operate";
+import { useEventListener } from "@vueuse/core";
+import { toggleClass } from "/@/utils/operate";
 let hiddenMainContainer = "hidden-main-container";
 import options from "/@/settings";
-import { useRouter, useRoute } from "vue-router";
-import { storageLocal } from "/@/utils/storage";
 
 interface setInter {
   sidebar: any;
-  device: String;
-  fixedHeader: Boolean;
+  device: string;
+  fixedHeader: boolean;
   classes: any;
 }
 
@@ -71,8 +70,8 @@ export default {
     const pureApp = useAppStoreHook();
     const pureSetting = useSettingStoreHook();
 
-    const router = useRouter();
-    const route = useRoute();
+    // const router = useRouter();
+    // const route = useRoute();
 
     const WIDTH = ref(992);
 
@@ -101,7 +100,7 @@ export default {
       })
     });
 
-    const handleClickOutside = (params: Boolean) => {
+    const handleClickOutside = (params: boolean) => {
       pureApp.closeSideBar({ withoutAnimation: params });
     };
 

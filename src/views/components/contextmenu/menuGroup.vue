@@ -31,7 +31,6 @@ import { defineComponent } from "vue";
 
 import {
   directive,
-  version,
   Contextmenu,
   ContextmenuItem,
   ContextmenuDivider,

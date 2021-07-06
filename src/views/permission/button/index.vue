@@ -9,8 +9,8 @@
   </div>
 </template>
 
-<script lang='ts'>
-import { ref, unref } from "vue";
+<script lang="ts">
+import { ref } from "vue";
 import { storageSession } from "/@/utils/storage";
 export default {
   name: "permissionButton",
@@ -34,5 +34,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
