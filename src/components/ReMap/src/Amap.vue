@@ -9,7 +9,7 @@
   ></div>
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 import AMapLoader from "@amap/amap-jsapi-loader";
 import {
   reactive,
@@ -24,15 +24,22 @@ import { deviceDetection } from "/@/utils/deviceDetection";
 
 import greenCar from "/@/assets/green.png";
 
-let MarkerCluster = <ElRef>null;
+let MarkerCluster;
 
 export interface MapConfigureInter {
+  // eslint-disable-next-line no-undef
   on: Fn;
+  // eslint-disable-next-line no-undef
   destroy?: Fn;
+  // eslint-disable-next-line no-undef
   clearEvents?: Fn;
+  // eslint-disable-next-line no-undef
   addControl?: Fn;
+  // eslint-disable-next-line no-undef
   setCenter?: Fn;
+  // eslint-disable-next-line no-undef
   setZoom?: Fn;
+  // eslint-disable-next-line no-undef
   plugin?: Fn;
 }
 
@@ -99,8 +106,9 @@ export default defineComponent({
               let { marker, data } = ctx;
               if (Array.isArray(data) && data[0]) {
                 var { driver, plateNumber, orientation } = data[0];
-                var content = `<img style="transform: scale(1) rotate(${360 -
-                  Number(orientation)}deg);" src='${greenCar}' />`;
+                var content = `<img style="transform: scale(1) rotate(${
+                  360 - Number(orientation)
+                }deg);" src='${greenCar}' />`;
                 marker.setContent(content);
                 marker.setLabel({
                   direction: "bottom",
@@ -133,7 +141,7 @@ export default defineComponent({
 
           complete();
         })
-        .catch(err => {
+        .catch(() => {
           mapSet.loading = false;
           throw "地图加载失败，请重新加载";
         });

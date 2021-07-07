@@ -11,18 +11,18 @@ const pathResolve = (dir: string): any => {
   return resolve(__dirname, ".", dir);
 };
 
-const { VITE_PORT, VITE_PUBLIC_PATH, VITE_PROXY, VITE_OPEN } = loadEnv();
+const { VITE_PORT, VITE_PUBLIC_PATH, VITE_PROXY } = loadEnv();
 
 const alias: Record<string, string> = {
   "/@": pathResolve("src"),
   //解决开发环境下的警告 You are running the esm-bundler build of vue-i18n. It is recommended to configure your bundler to explicitly replace feature flag globals with boolean literals to get proper tree-shaking in the final bundle.
-  "vue-i18n": "vue-i18n/dist/vue-i18n.cjs.js",
+  "vue-i18n": "vue-i18n/dist/vue-i18n.cjs.js"
 };
 
 const root: string = process.cwd();
 
 export default ({ command }: ConfigEnv): UserConfigExport => {
-  let prodMock = true;
+  const prodMock = true;
   return {
     /**
      * 基本公共路径
@@ -33,7 +33,7 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
       process.env.NODE_ENV === "production" ? "/manages/" : VITE_PUBLIC_PATH,
     root,
     resolve: {
-      alias,
+      alias
     },
     // 服务端渲染
     server: {
@@ -45,7 +45,7 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
        */
       port: VITE_PORT,
       // 本地跨域代理
-      proxy: createProxy(VITE_PROXY),
+      proxy: createProxy(VITE_PROXY)
     },
     plugins: [
       vue(),
@@ -57,21 +57,21 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
             libraryName: "element-plus",
             esModule: true,
             ensureStyleFile: true,
-            resolveStyle: (name) => {
+            resolveStyle: name => {
               return `element-plus/lib/theme-chalk/${name}.css`;
             },
-            resolveComponent: (name) => {
+            resolveComponent: name => {
               return `element-plus/lib/${name}`;
-            },
+            }
           },
           // 按需加载vxe-table
           {
             libraryName: "vxe-table",
             esModule: true,
-            resolveComponent: (name) => `vxe-table/es/${name}`,
-            resolveStyle: (name) => `vxe-table/es/${name}/style.css`,
-          },
-        ],
+            resolveComponent: name => `vxe-table/es/${name}`,
+            resolveStyle: name => `vxe-table/es/${name}/style.css`
+          }
+        ]
       }),
       viteMockServe({
         mockPath: "mock",
@@ -81,24 +81,24 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
           import { setupProdMockServer } from './mockProdServer';
           setupProdMockServer();
         `,
-        logger: true,
-      }),
+        logger: true
+      })
     ],
     optimizeDeps: {
       include: [
         "element-plus/lib/locale/lang/zh-cn",
         "element-plus/lib/locale/lang/en",
         "vxe-table/lib/locale/lang/zh-CN",
-        "vxe-table/lib/locale/lang/en-US",
-      ],
+        "vxe-table/lib/locale/lang/en-US"
+      ]
     },
     build: {
       brotliSize: false,
       // 消除打包大小超过500kb警告
-      chunkSizeWarningLimit: 2000,
+      chunkSizeWarningLimit: 2000
     },
     define: {
-      __INTLIFY_PROD_DEVTOOLS__: false,
-    },
+      __INTLIFY_PROD_DEVTOOLS__: false
+    }
   };
 };
