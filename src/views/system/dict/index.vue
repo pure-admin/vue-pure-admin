@@ -1,4 +1,3 @@
-.
 <template>
   <div class="dict-container">
     <!-- 工具栏 -->

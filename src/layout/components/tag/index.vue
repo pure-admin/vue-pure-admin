@@ -392,6 +392,7 @@ export default {
     onBeforeMount(() => {
       vm = getCurrentInstance();
       st = vm.appContext.app.config.globalProperties.$storage;
+      routerArrays = st.routesInStorage ?? routerArrays;
 
       emitter.on("tagViewsChange", key => {
         if (unref(showTags) === key) return;
