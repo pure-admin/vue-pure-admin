@@ -127,7 +127,7 @@ npm run build
 
 请扫码加入微信交流群，有问题可以在群里沟通!
 
-![group](./public/wechat.jpg)
+![group](https://yiming_chang.gitee.io/manages/wechat.jpg)
 
 ## License
 
