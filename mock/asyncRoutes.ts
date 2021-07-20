@@ -11,7 +11,7 @@ const systemRouter = {
     title: "message.hssysManagement",
     showLink: true,
     savedPosition: true,
-    rank: 6,
+    rank: 6
   },
   children: [
     {
@@ -20,8 +20,8 @@ const systemRouter = {
       meta: {
         title: "message.hsBaseinfo",
         showLink: true,
-        savedPosition: true,
-      },
+        savedPosition: true
+      }
     },
     {
       path: "/system/dict",
@@ -29,10 +29,10 @@ const systemRouter = {
       meta: {
         title: "message.hsDict",
         showLink: true,
-        savedPosition: true,
-      },
-    },
-  ],
+        savedPosition: true
+      }
+    }
+  ]
 };
 
 const permissionRouter = {
@@ -44,7 +44,7 @@ const permissionRouter = {
     icon: "el-icon-lollipop",
     showLink: true,
     savedPosition: true,
-    rank: 3,
+    rank: 3
   },
   children: [
     {
@@ -53,8 +53,8 @@ const permissionRouter = {
       meta: {
         title: "message.permissionPage",
         showLink: true,
-        savedPosition: true,
-      },
+        savedPosition: true
+      }
     },
     {
       path: "/permission/button",
@@ -63,10 +63,10 @@ const permissionRouter = {
         title: "message.permissionButton",
         showLink: true,
         savedPosition: true,
-        authority: [],
-      },
-    },
-  ],
+        authority: []
+      }
+    }
+  ]
 };
 
 // 添加不同按钮权限到/permission/button页面中
@@ -83,14 +83,14 @@ export default [
       if (query.name === "admin") {
         return {
           code: 0,
-          info: [systemRouter, setDifAuthority("v-admin", permissionRouter)],
+          info: [systemRouter, setDifAuthority("v-admin", permissionRouter)]
         };
       } else {
         return {
           code: 0,
-          info: [setDifAuthority("v-test", permissionRouter)],
+          info: [setDifAuthority("v-test", permissionRouter)]
         };
       }
-    },
-  },
+    }
+  }
 ] as MockMethod[];

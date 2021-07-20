@@ -9,7 +9,7 @@ const mapList = (): any => {
       driver: "@cname()",
       "orientation|1-360": 100,
       "lng|113-114.1-10": 1,
-      "lat|34-35.1-10": 1,
+      "lat|34-35.1-10": 1
     });
   }
   return result;
@@ -22,8 +22,8 @@ export default [
     response: () => {
       return {
         code: 0,
-        info: mapList(),
+        info: mapList()
       };
-    },
-  },
+    }
+  }
 ] as MockMethod[];
