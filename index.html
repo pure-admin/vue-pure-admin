@@ -1,139 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/iconfont.css" />
+    <link rel="stylesheet" href="/animate.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>后台管理系统</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/Sortable/1.13.0/Sortable.js"></script>
+    <script>
+      window.process = {};
+    </script>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <link rel="icon" href="/favicon.ico" />
-  <link rel="stylesheet" href="/iconfont.css" />
-  <link rel="stylesheet" href="/animate.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>后台管理系统</title>
-  <script src="https://cdn.bootcdn.net/ajax/libs/Sortable/1.13.0/Sortable.js"></script>
-  <script>
-    window.process = {}
-  </script>
-</head>
-
-<body>
-  <div id="app">
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      section {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        background: #001d10;
-        animation: animateBackgroundC0olor 10s linear infinite;
-      }
-
-      @keyframes animateBackgroundC0olor {
-        0% {
-          filter: hue-rotate(0deg);
+  <body>
+    <div id="app">
+      <style>
+        * {
+          margin: 0;
+          padding: 0;
         }
 
-        100% {
-          filter: hue-rotate(360deg);
-        }
-      }
-
-      .loading {
-        position: relative;
-        width: 250px;
-        height: 250px;
-      }
-
-      .loading .blocks {
-        position: absolute;
-        width: 8px;
-        height: 25px;
-        background-color: #050c09;
-        left: 50%;
-        border-radius: 8px;
-        transform: rotate(calc(18deg * var(--i)));
-        transform-origin: 0 125px;
-        animation: animate 1.9s ease-in-out infinite;
-        animation-delay: calc(0.05s * var(--i));
-      }
-
-      @keyframes animate {
-
-        0%,
-        50% {
-          background: #050c09;
-          box-shadow: none;
+        html,
+        body {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: #000;
+          overflow: hidden;
+          font-family: "Reggae One", cursive;
         }
 
-        50.1%,
-        100% {
-          background: #0f0;
-          box-shadow: 0 0 5px #0f0,
-            0 0 15px #0f0,
-            0 0 30px #0f0,
-            0 0 60px #0f0,
-            0 0 90px #0f0;
-        }
-      }
-
-      h3 {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 2em;
-        letter-spacing: 2px;
-        animation: animateText 2s ease-in-out infinite;
-        animation-delay: -1s;
-      }
-
-      @keyframes animateText {
-
-        0%,
-        50% {
-          color: #050c09;
-          text-shadow: none;
+        p {
+          font-size: 12vw;
+          overflow: hidden;
+          -webkit-text-stroke: 3px #7272a5;
         }
 
-        50.1%,
-        100% {
-          color: #0f0;
-          text-shadow: 0 0 5px #0f0,
-            0 0 15px #0f0;
+        p::before {
+          content: " ";
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          left: 0;
+          top: 0;
+          background-image: linear-gradient(45deg, #ff269b, #2ab5f5, #ffbf00);
+          mix-blend-mode: multiply;
         }
-      }
-    </style>
-    <section>
-      <div class="loading">
-        <div class="blocks" style="--i:1;"></div>
-        <div class="blocks" style="--i:2;"></div>
-        <div class="blocks" style="--i:3;"></div>
-        <div class="blocks" style="--i:4;"></div>
-        <div class="blocks" style="--i:5;"></div>
-        <div class="blocks" style="--i:6;"></div>
-        <div class="blocks" style="--i:7;"></div>
-        <div class="blocks" style="--i:8;"></div>
-        <div class="blocks" style="--i:9;"></div>
-        <div class="blocks" style="--i:10;"></div>
-        <div class="blocks" style="--i:11;"></div>
-        <div class="blocks" style="--i:12;"></div>
-        <div class="blocks" style="--i:13;"></div>
-        <div class="blocks" style="--i:14;"></div>
-        <div class="blocks" style="--i:15;"></div>
-        <div class="blocks" style="--i:16;"></div>
-        <div class="blocks" style="--i:17;"></div>
-        <div class="blocks" style="--i:18;"></div>
-        <div class="blocks" style="--i:19;"></div>
-        <div class="blocks" style="--i:20;"></div>
-        <h3>loading</h3>
+
+        p::after {
+          content: "";
+          background: radial-gradient(circle, #fff, #000 50%);
+          background-size: 25% 25%;
+          position: absolute;
+          top: -100%;
+          left: -100%;
+          right: 0;
+          bottom: 0;
+          mix-blend-mode: color-dodge;
+          animation: mix 2s linear infinite;
+        }
+
+        @keyframes mix {
+          to {
+            transform: translate(50%, 50%);
+          }
+        }
+      </style>
+      <div class="g-container">
+        <p>Pure-Admin</p>
       </div>
-    </section>
-  </div>
-  <script type="module" src="/src/main.ts"></script>
-</body>
-
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>

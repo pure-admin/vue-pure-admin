@@ -44,6 +44,7 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
        * @default 3000
        */
       port: VITE_PORT,
+      host: "0.0.0.0",
       // 本地跨域代理
       proxy: createProxy(VITE_PROXY)
     },
