@@ -34,7 +34,7 @@
     <ul
       v-show="visible"
       :style="{ left: buttonLeft + 'px', top: buttonTop + 'px' }"
-      class="contextmenu"
+      class="contextmenu animate__animated animate__flipInX"
     >
       <div
         v-for="(item, key) in tagsViews"
@@ -70,8 +70,9 @@
                 :divided="item.divided"
                 :disabled="item.disabled"
                 @click="onClickDrop(key, item)"
-                >{{ item.text }}</el-dropdown-item
               >
+                {{ item.text }}
+              </el-dropdown-item>
             </el-dropdown-menu>
           </template>
         </el-dropdown>
@@ -306,7 +307,12 @@ export default {
       onClickDrop(key, {}, currentSelect.value);
     }
 
+    function closeMenu() {
+      visible.value = false;
+    }
+
     function openMenu(tag, e) {
+      closeMenu();
       if (tag.path === "/welcome") {
         // 右键菜单为首页，只显示刷新
         Array.from([1, 2, 3]).forEach(v => {
@@ -343,11 +349,11 @@ export default {
         buttonLeft.value = left;
       }
       buttonTop.value = e.clientY;
-      visible.value = true;
-    }
-
-    function closeMenu() {
-      visible.value = false;
+      nextTick(() => {
+        setTimeout(() => {
+          visible.value = true;
+        }, 50);
+      });
     }
 
     // 鼠标移入
@@ -515,6 +521,8 @@ export default {
     font-size: 12px;
     font-weight: 400;
     color: #333;
+    outline: 0;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
     li {
       width: 100%;
       margin: 0;
