@@ -29,7 +29,7 @@ import Storage from "responsive-storage";
 app.use(Storage, {
   // 默认显示首页tag
   routesInStorage: {
-    type: String,
+    type: Array,
     default: Storage.getData(undefined, "routesInStorage") ?? [
       {
         path: "/welcome",
@@ -41,6 +41,13 @@ app.use(Storage, {
         }
       }
     ]
+  },
+  // 国际化 默认中文zh
+  locale: {
+    type: Object,
+    default: Storage.getData(undefined, "locale") ?? {
+      locale: "zh"
+    }
   }
 });
 

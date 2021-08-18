@@ -15,10 +15,10 @@
       <div
         v-show="!deviceDetection()"
         class="inter"
-        :title="langs ? '中文' : 'English'"
+        :title="currentLocale ? '中文' : 'English'"
         @click="toggleLang"
       >
-        <img :src="langs ? ch : en" />
+        <img :src="currentLocale ? ch : en" />
       </div>
       <i
         class="el-icon-setting hsset"
@@ -33,9 +33,9 @@
         </span>
         <template #dropdown>
           <el-dropdown-menu>
-            <el-dropdown-item icon="el-icon-switch-button" @click="logout">{{
-              $t("message.hsLoginOut")
-            }}</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-switch-button" @click="logout">
+              {{ $t("message.hsLoginOut") }}
+            </el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -44,7 +44,13 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent, onMounted, unref, watch } from "vue";
+import {
+  defineComponent,
+  onMounted,
+  unref,
+  watch,
+  getCurrentInstance
+} from "vue";
 import Breadcrumb from "/@/components/ReBreadCrumb";
 import Hamburger from "/@/components/ReHamBurger";
 import screenfull from "../components/screenfull/index.vue";
@@ -58,10 +64,6 @@ import { emitter } from "/@/utils/mitt";
 import { deviceDetection } from "/@/utils/deviceDetection";
 import { useI18n } from "vue-i18n";
 
-import ElementLocale from "element-plus/lib/locale";
-import enLocale from "element-plus/lib/locale/lang/en";
-import zhLocale from "element-plus/lib/locale/lang/zh-cn";
-
 export default defineComponent({
   name: "Navbar",
   components: {
@@ -69,9 +71,25 @@ export default defineComponent({
     Hamburger,
     screenfull
   },
+  computed: {
+    // eslint-disable-next-line vue/return-in-computed-property
+    currentLocale() {
+      if (!this.$storage.locale) {
+        // eslint-disable-next-line
+        this.$storage.locale = { locale: "zh" }
+        useI18n().locale.value = "zh";
+      }
+      switch (this.$storage.locale?.locale) {
+        case "zh":
+          return true;
+        case "en":
+          return false;
+      }
+    }
+  },
   setup() {
-    let langs = ref(true);
-
+    // eslint-disable-next-line no-unused-vars
+    let vm: any;
     const pureApp = useAppStoreHook();
     const router = useRouter();
     const route = useRoute();
@@ -82,18 +100,20 @@ export default defineComponent({
 
     // 国际化语言切换
     const toggleLang = (): void => {
-      langs.value = !langs.value;
-      if (langs.value) {
-        locale.value = "zh";
-        ElementLocale.use(zhLocale);
-      } else {
-        locale.value = "en";
-        ElementLocale.use(enLocale);
+      switch (vm.locale.locale) {
+        case "zh":
+          vm.locale = { locale: "en" };
+          locale.value = "en";
+          break;
+        case "en":
+          vm.locale = { locale: "zh" };
+          locale.value = "zh";
+          break;
       }
     };
 
     watch(
-      () => langs.value,
+      () => locale.value,
       () => {
         //@ts-ignore
         document.title = t(unref(route.meta.title)); // 动态title
@@ -115,6 +135,8 @@ export default defineComponent({
     }
 
     onMounted(() => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      vm = getCurrentInstance().appContext.config.globalProperties.$storage;
       document
         .querySelector(".el-dropdown__popper")
         ?.setAttribute("class", "resetTop");
@@ -126,7 +148,6 @@ export default defineComponent({
     return {
       pureApp,
       toggleSideBar,
-      langs,
       usename,
       toggleLang,
       logout,

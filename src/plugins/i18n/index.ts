@@ -2,10 +2,11 @@
 import { App } from "vue";
 import { createI18n } from "vue-i18n";
 import { localesConfigs } from "./config";
+import { storageLocal } from "/@/utils/storage";
 
 export const i18n = createI18n({
-  locale: "zh", // set locale
-  fallbackLocale: "en", // set fallback locale
+  locale: storageLocal.getItem("responsive-locale")?.locale ?? "zh",
+  fallbackLocale: "en",
   messages: localesConfigs
 });
 

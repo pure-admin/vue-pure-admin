@@ -69,10 +69,6 @@ const components = [
 
 const plugins = [ElLoading];
 
-import ElementLocale from "element-plus/lib/locale";
-import zhLocale from "element-plus/lib/locale/lang/zh-cn";
-ElementLocale.use(zhLocale);
-
 export function useElementPlus(app: App) {
   components.forEach((component: Component) => {
     app.component(component.name, component);
