@@ -10,7 +10,7 @@ import { countToProps } from "./props";
 import { isNumber } from "/@/utils/is";
 
 export default defineComponent({
-  name: "CountTo",
+  name: "Normal",
   props: countToProps,
   emits: ["mounted", "callback"],
   setup(props, { emit }) {

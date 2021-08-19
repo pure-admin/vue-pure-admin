@@ -1,10 +1,15 @@
 import { App } from "vue";
-import reCountTo from "./src";
+import reNormalCountTo from "./src/normal";
+import reboundCountTo from "./src/rebound";
 
-export const ReCountTo = Object.assign(reCountTo, {
+export const ReNormalCountTo = Object.assign(reNormalCountTo, {
   install(app: App) {
-    app.component(reCountTo.name, reCountTo);
+    app.component(reNormalCountTo.name, reNormalCountTo);
   }
 });
 
-export default ReCountTo;
+export const ReboundCountTo = Object.assign(reboundCountTo, {
+  install(app: App) {
+    app.component(reboundCountTo.name, reboundCountTo);
+  }
+});

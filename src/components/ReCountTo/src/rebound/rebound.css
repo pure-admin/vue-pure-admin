@@ -1,0 +1,66 @@
+.scroll-num {
+  width: var(--width, 20px);
+  height: var(--height, calc(var(--width, 20px) * 1.8));
+  color: var(--color, #333);
+  font-size: var(--height, calc(var(--width, 20px) * 1.1));
+  line-height: var(--height, calc(var(--width, 20px) * 1.8));
+  text-align: center;
+  overflow: hidden;
+  animation: enhance-bounce-in-down 1s calc(var(--delay) * 1s) forwards;
+}
+
+ul {
+  animation: move 0.3s linear infinite,
+    bounce-in-down 1s calc(var(--delay) * 1s) forwards;
+}
+
+@keyframes move {
+  from {
+    transform: translateY(-90%);
+    filter: url(#blur);
+  }
+  to {
+    transform: translateY(1%);
+    filter: url(#blur);
+  }
+}
+
+@keyframes bounce-in-down {
+  from {
+    transform: translateY(calc(var(--i) * -9.09% - 7%));
+    filter: none;
+  }
+  25% {
+    transform: translateY(calc(var(--i) * -9.09% + 3%));
+  }
+  50% {
+    transform: translateY(calc(var(--i) * -9.09% - 1%));
+  }
+  70% {
+    transform: translateY(calc(var(--i) * -9.09% + 0.6%));
+  }
+  85% {
+    transform: translateY(calc(var(--i) * -9.09% - 0.3%));
+  }
+  to {
+    transform: translateY(calc(var(--i) * -9.09%));
+  }
+}
+
+@keyframes enhance-bounce-in-down {
+  25% {
+    transform: translateY(8%);
+  }
+  50% {
+    transform: translateY(-4%);
+  }
+  70% {
+    transform: translateY(2%);
+  }
+  85% {
+    transform: translateY(-1%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}

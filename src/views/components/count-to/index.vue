@@ -3,7 +3,7 @@
     <el-row :gutter="24">
       <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
         <el-card shadow="always">
-          <CountTo
+          <ReNormalCountTo
             prefix="$"
             :duration="1000"
             :color="'#409EFF'"
@@ -15,14 +15,15 @@
       </el-col>
       <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
         <el-card shadow="always">
-          <CountTo
-            prefix="$"
-            :duration="2000"
-            :color="'green'"
-            :fontSize="'2.3em'"
-            :startVal="1"
-            :endVal="2000"
-          />
+          <ul class="flex">
+            <ReboundCountTo
+              v-for="(num, inx) of [1, 6, 6, 6]"
+              :key="inx"
+              :i="num"
+              :blur="inx"
+              :delay="inx + 1"
+            />
+          </ul>
         </el-card>
       </el-col>
     </el-row>
@@ -30,10 +31,11 @@
 </template>
 
 <script lang="ts">
-import CountTo from "/@/components/ReCountTo";
+import { ReNormalCountTo, ReboundCountTo } from "/@/components/ReCountTo";
 export default {
   components: {
-    CountTo
+    ReNormalCountTo,
+    ReboundCountTo
   },
   setup() {
     return {};
@@ -42,6 +44,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.flex {
+  display: flex;
+}
 :deep(.el-card) {
   text-align: center;
   margin-bottom: 10px;
