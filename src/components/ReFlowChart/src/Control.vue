@@ -132,7 +132,7 @@ export default defineComponent({
   position: absolute;
   right: 20px;
   background: hsla(0, 0%, 100%, 0.8);
-  box-shadow: 0 1px 4px rgb(0 0 0);
+  box-shadow: 0 1px 4px rgb(0 0 0 / 20%);
 }
 .iconfont {
   font-size: 25px;
