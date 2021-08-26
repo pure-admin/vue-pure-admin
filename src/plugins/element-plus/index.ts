@@ -5,7 +5,7 @@ import {
   ElBreadcrumb,
   ElBreadcrumbItem,
   ElScrollbar,
-  ElSubmenu,
+  ElSubMenu,
   ElButton,
   ElCol,
   ElRow,
@@ -32,7 +32,6 @@ import {
   ElRadioButton,
   ElRadioGroup
 } from "element-plus";
-import "element-plus/packages/theme-chalk/src/base.scss";
 
 const components = [
   ElAffix,
@@ -40,7 +39,7 @@ const components = [
   ElBreadcrumb,
   ElBreadcrumbItem,
   ElScrollbar,
-  ElSubmenu,
+  ElSubMenu,
   ElButton,
   ElCol,
   ElRow,

@@ -6,6 +6,7 @@ import { loadEnv } from "./build/utils";
 import { createProxy } from "./build/proxy";
 import { viteMockServe } from "vite-plugin-mock";
 import styleImport from "vite-plugin-style-import";
+import VitePluginElementPlus from "vite-plugin-element-plus";
 
 const pathResolve = (dir: string): any => {
   return resolve(__dirname, ".", dir);
@@ -53,18 +54,6 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
       vueJsx(),
       styleImport({
         libs: [
-          // 按需加载element-plus
-          {
-            libraryName: "element-plus",
-            esModule: true,
-            ensureStyleFile: true,
-            resolveStyle: name => {
-              return `element-plus/lib/theme-chalk/${name}.css`;
-            },
-            resolveComponent: name => {
-              return `element-plus/lib/${name}`;
-            }
-          },
           // 按需加载vxe-table
           {
             libraryName: "vxe-table",
@@ -74,6 +63,7 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
           }
         ]
       }),
+      VitePluginElementPlus({ useSource: true }),
       viteMockServe({
         mockPath: "mock",
         localEnabled: command === "serve",

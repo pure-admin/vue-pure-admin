@@ -6,7 +6,7 @@ import { setupStore } from "/@/store";
 import { useElementPlus } from "../src/plugins/element-plus";
 import { useTable } from "../src/plugins/vxe-table";
 import { usI18n } from "../src/plugins/i18n";
-
+import "element-plus/dist/index.css";
 // 导入公共样式
 import "./style/index.scss";
 // 导入字体图标
