@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "cross-env --max_old_space_size=4096 vite",
     "serve": "cross-env --max_old_space_size=4096 vite",
-    "build": "cross-env vite build",
+    "build": "rimraf dist && cross-env vite build",
     "preview": "vite preview",
     "preview:build": "npm run build && vite preview",
     "lint": "eslint --ext .js,.jsx,.vue,.ts,.tsx src",
@@ -76,6 +76,7 @@
     "postcss": "^8.2.6",
     "postcss-import": "^14.0.0",
     "prettier": "^2.3.2",
+    "rimraf": "^3.0.2",
     "sass": "^1.38.0",
     "sass-loader": "^12.1.0",
     "typescript": "^4.2.4",
