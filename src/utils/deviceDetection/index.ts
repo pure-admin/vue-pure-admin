@@ -2,6 +2,11 @@ interface deviceInter {
   match: Fn;
 }
 
+interface BrowserInter {
+  browser: string;
+  version: string;
+}
+
 // 检测设备类型(手机返回true,反之)
 export const deviceDetection = () => {
   const sUserAgent: deviceInter = navigator.userAgent.toLowerCase();
@@ -16,4 +21,17 @@ export const deviceDetection = () => {
   return (
     bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM
   );
+};
+
+// 获取浏览器型号以及版本
+export const getBrowserInfo = () => {
+  const ua = navigator.userAgent.toLowerCase();
+  const re = /(msie|firefox|chrome|opera|version).*?([\d.]+)/;
+  const m = ua.match(re);
+  const Sys: BrowserInter = {
+    browser: m[1].replace(/version/, "'safari"),
+    version: m[2]
+  };
+
+  return Sys;
 };

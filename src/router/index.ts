@@ -120,13 +120,12 @@ export function resetRouter() {
 
 import NProgress from "../utils/progress";
 
-// const whiteList = ["/login", "/register"];
+const whiteList = ["/login", "/register"];
 
 router.beforeEach((to, _from, next) => {
   const name = storageSession.getItem("info");
   NProgress.start();
   const { t } = i18n.global;
-  // @ts-ignore
   to.meta.title ? (document.title = t(to.meta.title)) : ""; // 动态title
   if (name) {
     if (_from?.name) {
@@ -140,7 +139,11 @@ router.beforeEach((to, _from, next) => {
     }
   } else {
     if (to.path !== "/login") {
-      next({ path: "/login" });
+      if (whiteList.indexOf(to.path) !== -1) {
+        next();
+      } else {
+        next({ path: "/login" });
+      }
     } else {
       next();
     }

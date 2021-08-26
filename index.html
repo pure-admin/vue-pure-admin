@@ -33,9 +33,17 @@
         }
 
         p {
-          font-size: 12vw;
+          font-size: 8vw;
           overflow: hidden;
           -webkit-text-stroke: 3px #7272a5;
+        }
+
+        span {
+          display: block;
+          font-size: 20px;
+          overflow: hidden;
+          color: green;
+          text-align: center;
         }
 
         p::before {
@@ -70,8 +78,40 @@
       </style>
       <div class="g-container">
         <p>Pure-Admin</p>
+        <span class="_develop"></span>
       </div>
     </div>
+    <script>
+      window.onload = function () {
+        (function () {
+          const ua = navigator.userAgent.toLowerCase();
+          const re = /(msie|firefox|chrome|opera|version).*?([\d.]+)/;
+          const m = ua.match(re);
+          const Sys = {
+            browser: m[1].replace(/version/, "'safari"),
+            version: m[2]
+          };
+
+          const browser = Array.of("chrome", "firefox").includes(Sys.browser);
+          const version = parseFloat(Sys.version);
+
+          const el = document.querySelector("._develop");
+
+          if (browser && version >= 90) {
+            let success =
+              document.createTextNode("当前浏览器版本很适合开发！！！ 😃");
+            el.appendChild(success);
+          } else {
+            let warn = document.createTextNode(
+              "当前浏览器版本不适合开发，建议使用最新版本的谷歌或者火狐浏览器！！！😯"
+            );
+            el.appendChild(warn);
+            el.style.color = "red";
+          }
+          return Sys;
+        })();
+      };
+    </script>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
