@@ -29,7 +29,7 @@
     "dayjs": "^1.10.6",
     "dotenv": "^8.2.0",
     "echarts": "^5.1.2",
-    "element-plus": "^1.1.0-beta.6",
+    "element-plus": "^1.1.0-beta.7",
     "font-awesome": "^4.7.0",
     "lodash-es": "^4.17.21",
     "mitt": "^2.1.0",
@@ -80,7 +80,7 @@
     "sass-loader": "^12.1.0",
     "typescript": "^4.2.4",
     "vite": "^2.5.1",
-    "vite-plugin-element-plus": "^0.0.9",
+    "vite-plugin-element-plus": "^0.0.11",
     "vite-plugin-mock": "^2.9.6",
     "vite-plugin-style-import": "^1.2.1",
     "vue-eslint-parser": "^7.7.2"
