@@ -2,20 +2,20 @@
 
 [![license](https://img.shields.io/github/license/xiaoxian521/vue-pure-admin.svg)](LICENSE)
 
-**English** | [中文](./README.zh-CN.md)
+**中文** | [English](./README.en-US.md)
 
-## Introduction
+## 简介
 
-vue-pure-admin is a free and open source middle and back-end template. Using the latest `vue3`, `vite2`, `TypeScript`, `Element-Plus` and other mainstream technology development, the out-of-the-box middle and back-end front-end solutions can also be used for learning reference.
+vue-pure-admin 是一个免费开源的中后台模版。使用了最新的`vue3`,`vite2`,`TypeScript`,`Element-Plus`等主流技术开发，开箱即用的中后台前端解决方案，也可用于学习参考。
 
-## Preview
+## 预览
 
 - [vue-pure-admin](http://yiming_chang.gitee.io/manages)
 
-Click to log in without password
+点击免密登录
 
 <p align="center">
-    <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c659b762ed5a47cc8bdc6546e9df8cd2~tplv-k3u1fbpfcp-watermark.image">
+   <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c659b762ed5a47cc8bdc6546e9df8cd2~tplv-k3u1fbpfcp-watermark.image">
     <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a28fc0af7ac44e3b8f30469cba4a9993~tplv-k3u1fbpfcp-watermark.image">
     <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a17e54329cda4d76aa9c1c4f2a4715d3~tplv-k3u1fbpfcp-watermark.image">
     <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d884fb611da74ee0bdc17c29014d0260~tplv-k3u1fbpfcp-watermark.image">
@@ -32,15 +32,15 @@ Click to log in without password
     <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f4c91b162206485b88cc58a72ff54a01~tplv-k3u1fbpfcp-watermark.image">
 </p>
 
-### Use Gitpod
+### 使用 Gitpod
 
-Open the project in Gitpod (free online dev environment for GitHub) and start coding immediately.
+在 Gitpod（适用于 GitHub 的免费在线开发环境）中打开项目，并立即开始编码.
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/xiaoxian521/vue-pure-admin)
 
-## Install and use
+## 安装使用
 
-- Get the project code
+- 获取项目代码
 
 ```bash
 git clone https://github.com/xiaoxian521/vue-pure-admin.git
@@ -48,7 +48,7 @@ or
 git clone https://github.com.cnpmjs.org/xiaoxian521/vue-pure-admin.git
 ```
 
-- Installation dependencies
+- 安装依赖
 
 ```bash
 cd vue-pure-admin
@@ -57,75 +57,75 @@ npm install
 
 ```
 
-- run
+- 运行
 
 ```bash
 npm run serve
 ```
 
-- build
+- 打包
 
 ```bash
 npm run build
 ```
 
-## Change Log
+## 更新日志
 
-[CHANGELOG](./CHANGELOG.en_US.md)
+[CHANGELOG](./CHANGELOG.zh_CN.md)
 
-## How to contribute
+## 如何贡献
 
-You are very welcome to join！[Raise an issue](https://github.com/xiaoxian521/vue-pure-admin/issues/new/choose) Or submit a Pull Request
+非常欢迎你的加入！[提一个 Issue](https://github.com/xiaoxian521/vue-pure-admin/issues/new/choose) 或者提交一个 Pull Request
 
 **Pull Request:**
 
-1. Fork code!
-2. Create your own branch: `git checkout -b feat/xxxx`
-3. Submit your changes: `git commit -am 'feat(function): add xxxxx'`
-4. Push your branch: `git push origin feat/xxxx`
-5. submit`pull request`
+1. Fork 代码!
+2. 创建自己的分支: `git checkout -b feat/xxxx`
+3. 提交你的修改: `git commit -am 'feat(function): add xxxxx'`
+4. 推送您的分支: `git push origin feat/xxxx`
+5. 提交`pull request`
 
-## Git Contribution submission specification
+## Git 贡献提交规范
 
-- reference [vue](https://github.com/vuejs/vue/blob/dev/.github/COMMIT_CONVENTION.md) specification ([Angular](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular))
+- 参考 [vue](https://github.com/vuejs/vue/blob/dev/.github/COMMIT_CONVENTION.md) 规范 ([Angular](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular))
 
-  - `feat` Add new features
-  - `fix` Fix the problem/BUG
-  - `style` The code style is related and does not affect the running result
-  - `perf` Optimization/performance improvement
-  - `refactor` Refactor
-  - `revert` Undo edit
-  - `test` Test related
-  - `docs` Documentation/notes
-  - `chore` Dependency update/scaffolding configuration modification etc.
-  - `workflow` Workflow improvements
-  - `ci` Continuous integration
-  - `types` Type definition file changes
-  - `wip` In development
+  - `feat` 增加新功能
+  - `fix` 修复问题/BUG
+  - `style` 代码风格相关无影响运行结果的
+  - `perf` 优化/性能提升
+  - `refactor` 重构
+  - `revert` 撤销修改
+  - `test` 测试相关
+  - `docs` 文档/注释
+  - `chore` 依赖更新/脚手架配置修改等
+  - `workflow` 工作流改进
+  - `ci` 持续集成
+  - `types` 类型定义文件更改
+  - `wip` 开发中
 
-## Browser support
+## 浏览器支持
 
-The `Chrome 80+` browser is recommended for local development
+本地开发推荐使用`Chrome 80+` 浏览器
 
-Support modern browsers, not IE
+支持现代浏览器, 不支持 IE
 
 | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt=" Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>IE | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt=" Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Safari |
 | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 |                                                                                             not support                                                                                              |                                                                                            last 2 versions                                                                                             |                                                                                                  last 2 versions                                                                                                  |                                                                                                last 2 versions                                                                                                |                                                                                                last 2 versions                                                                                                |
 
-## Maintainer
+## 维护者
 
 [xiaoxian521](https://github.com/xiaoxian521)
 
-## Donate
+## 捐赠
 
-If you think this project is helpful to you, you can help the author buy a cup of coffee to show your support!
+如果你觉得这个项目对你有帮助，你可以帮作者买一杯咖啡表示支持!
 
 ![donate](http://yiming_chang.gitee.io/manages/pay.jpg)
 
-## Exchange Group
+## 交流群
 
-Please scan the code to join the WeChat exchange group, if you have any questions, you can communicate in the group!
+请扫码加入微信交流群，有问题可以在群里沟通!
 
 ![group](https://yiming_chang.gitee.io/manages/wechat.jpg)
 
