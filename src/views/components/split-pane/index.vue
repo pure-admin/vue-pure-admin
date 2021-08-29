@@ -26,7 +26,7 @@
 import splitpane, { ContextProps } from "/@/components/ReSplitPane";
 import { reactive } from "vue";
 export default {
-  name: "split",
+  name: "reSplitPane",
   components: {
     splitpane
   },

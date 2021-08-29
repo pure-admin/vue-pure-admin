@@ -27,6 +27,7 @@ import { ref } from "vue";
 import Selector from "/@/components/ReSelector";
 
 export default {
+  name: "reSelector",
   components: { Selector },
   setup() {
     let selectRange = ref(null);

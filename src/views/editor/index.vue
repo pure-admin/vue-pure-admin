@@ -10,7 +10,7 @@ import { onMounted, onBeforeUnmount, ref, reactive } from "vue";
 import WangEditor from "wangeditor";
 
 export default {
-  name: "editor",
+  name: "reEditor",
   setup() {
     const editor = ref();
     const content = reactive({

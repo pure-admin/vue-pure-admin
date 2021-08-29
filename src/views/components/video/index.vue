@@ -11,6 +11,7 @@ import screenShot from "xgplayer/dist/controls/screenShot";
 import { deviceDetection } from "/@/utils/deviceDetection";
 
 export default {
+  name: "reVideo",
   setup() {
     onMounted(() => {
       new Player({

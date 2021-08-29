@@ -14,28 +14,49 @@
 <script lang="ts">
 import {
   ref,
+  unref,
   onBeforeMount,
   getCurrentInstance,
   nextTick,
   onUnmounted
 } from "vue";
 import flippers from "./Filpper";
+
+import { templateRef } from "@vueuse/core";
 export default {
   name: "Flop",
   components: {
     flippers
   },
   setup() {
-    let vm: any;
     let timer = ref(null);
     let flipObjs = ref([]);
+
+    const flipperHour1 = templateRef<HTMLElement | null>("flipperHour1", null);
+    const flipperHour2 = templateRef<HTMLElement | null>("flipperHour2", null);
+    const flipperMinute1 = templateRef<HTMLElement | null>(
+      "flipperMinute1",
+      null
+    );
+    const flipperMinute2 = templateRef<HTMLElement | null>(
+      "flipperMinute2",
+      null
+    );
+    const flipperSecond1 = templateRef<HTMLElement | null>(
+      "flipperSecond1",
+      null
+    );
+    const flipperSecond2 = templateRef<HTMLElement | null>(
+      "flipperSecond2",
+      null
+    );
 
     // 初始化数字
     const init = () => {
       let now = new Date();
       let nowTimeStr = formatDate(new Date(now.getTime()), "hhiiss");
       for (let i = 0; i < flipObjs.value.length; i++) {
-        flipObjs.value[i].setFront(nowTimeStr[i]);
+        flipObjs?.value[i]?.setFront(nowTimeStr[i]);
       }
     };
 
@@ -50,7 +71,7 @@ export default {
           if (nowTimeStr[i] === nextTimeStr[i]) {
             continue;
           }
-          flipObjs.value[i].flipDown(nowTimeStr[i], nextTimeStr[i]);
+          flipObjs?.value[i]?.flipDown(nowTimeStr[i], nextTimeStr[i]);
         }
       }, 1000);
     };
@@ -99,21 +120,18 @@ export default {
       return ("00" + str).substr(str.length);
     };
 
-    onBeforeMount(() => {
-      vm = getCurrentInstance(); //获取组件实例
-      nextTick(() => {
-        flipObjs.value = [
-          vm.refs.flipperHour1,
-          vm.refs.flipperHour2,
-          vm.refs.flipperMinute1,
-          vm.refs.flipperMinute2,
-          vm.refs.flipperSecond1,
-          vm.refs.flipperSecond2
-        ];
+    nextTick(() => {
+      flipObjs.value = [
+        unref(flipperHour1),
+        unref(flipperHour2),
+        unref(flipperMinute1),
+        unref(flipperMinute2),
+        unref(flipperSecond1),
+        unref(flipperSecond2)
+      ];
 
-        init();
-        run();
-      });
+      init();
+      run();
     });
 
     onUnmounted(() => {
@@ -129,7 +147,13 @@ export default {
       init,
       run,
       formatDate,
-      padLeftZero
+      padLeftZero,
+      flipperHour1,
+      flipperHour2,
+      flipperMinute1,
+      flipperMinute2,
+      flipperSecond1,
+      flipperSecond2
     };
   }
 };

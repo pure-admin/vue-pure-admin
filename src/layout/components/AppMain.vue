@@ -25,7 +25,7 @@ import {
 import { useRoute } from "vue-router";
 import { useSettingStoreHook } from "/@/store/modules/settings";
 export default defineComponent({
-  name: "AppMain",
+  name: "appMain",
   setup() {
     let vm: any;
     const keepAlive: Boolean = ref(

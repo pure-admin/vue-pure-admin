@@ -31,6 +31,7 @@ import { toLogicflowData } from "/@/components/ReFlowChart/src/adpterForTurbo";
 import { BpmnNode } from "/@/components/ReFlowChart/src/config";
 import demoData from "./dataTurbo.json";
 export default {
+  name: "reFlowChart",
   components: { NodePanel, Control, DataDialog },
   setup() {
     // eslint-disable-next-line no-undef

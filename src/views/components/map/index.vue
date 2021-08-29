@@ -7,6 +7,7 @@
 <script lang="ts">
 import { Amap } from "/@/components/ReMap";
 export default {
+  name: "reMap",
   components: {
     Amap
   },

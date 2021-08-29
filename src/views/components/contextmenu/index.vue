@@ -22,6 +22,7 @@ import basic from "./basic.vue";
 import menuGroup from "./menuGroup.vue";
 import menuDynamic from "./menuDynamic.vue";
 export default {
+  name: "reContextmenu",
   components: {
     basic,
     menuGroup,

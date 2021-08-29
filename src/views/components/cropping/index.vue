@@ -15,6 +15,7 @@ import Cropper from "/@/components/ReCropper";
 import img from "./picture.jpeg";
 
 export default {
+  name: "reCropping",
   components: {
     Cropper
   },

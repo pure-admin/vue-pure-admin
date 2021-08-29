@@ -76,6 +76,7 @@
 import draggable from "vuedraggable/src/vuedraggable";
 import { reactive, toRefs, onMounted } from "vue";
 export default {
+  name: "reDraggable",
   components: { draggable },
   setup() {
     const myArray = reactive({

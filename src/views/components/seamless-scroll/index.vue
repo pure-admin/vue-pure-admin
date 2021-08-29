@@ -66,6 +66,7 @@ import { templateRef } from "@vueuse/core";
 
 import SeamlessScroll from "/@/components/ReSeamlessScroll";
 export default {
+  name: "reSeamlessScroll",
   components: {
     SeamlessScroll
   },

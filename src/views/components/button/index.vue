@@ -5,6 +5,7 @@
 <script lang="ts">
 import { ref } from "vue";
 export default {
+  name: "reButton",
   setup() {
     const url = ref(
       process.env.NODE_ENV === "production"
