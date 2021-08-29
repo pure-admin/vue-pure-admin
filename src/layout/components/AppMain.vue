@@ -1,25 +1,47 @@
 <template>
   <section class="app-main">
-    <router-view :key="key" v-slot="{ Component }">
-      <transition appear name="fade-transform" mode="out-in">
-        <keep-alive>
-          <component :is="Component" />
-        </keep-alive>
-      </transition>
+    <router-view>
+      <template #default="{ Component, route }">
+        <transition appear name="fade-transform" mode="out-in">
+          <keep-alive v-if="keepAlive" :include="getCachedPageList">
+            <component :is="Component" :key="route.fullPath" />
+          </keep-alive>
+          <component v-else :is="Component" :key="route.fullPath" />
+        </transition>
+      </template>
     </router-view>
   </section>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from "vue";
+import {
+  ref,
+  unref,
+  computed,
+  defineComponent,
+  onBeforeMount,
+  getCurrentInstance
+} from "vue";
 import { useRoute } from "vue-router";
+import { useSettingStoreHook } from "/@/store/modules/settings";
 export default defineComponent({
   name: "AppMain",
   setup() {
+    let vm: any;
+    const keepAlive: Boolean = ref(
+      getCurrentInstance().appContext.config.globalProperties.$config?.keepAlive
+    );
     const route = useRoute();
     const key = computed(() => route.path);
 
-    return { key };
+    const getCachedPageList = computed((): string[] => {
+      if (!unref(keepAlive)) {
+        return [];
+      }
+      return useSettingStoreHook().cachedPageList;
+    });
+
+    return { key, keepAlive, getCachedPageList };
   }
 });
 </script>

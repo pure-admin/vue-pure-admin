@@ -16,27 +16,39 @@
     "baseUrl": ".",
     "allowJs": false,
     "resolveJsonModule": true, // 包含导入的模块。json的扩展
-    "lib": ["dom", "esnext"],
+    "lib": [
+      "dom",
+      "esnext"
+    ],
     "incremental": true,
     "paths": {
-      "/@/*": ["src/*"],
-      "/#/*": ["types/*"]
+      "/@/*": [
+        "src/*"
+      ],
+      "/#/*": [
+        "types/*"
+      ]
     },
-    "types": ["node", "vite/client"],
-    "typeRoots": ["./node_modules/@types/", "./types"]
+    "types": [
+      "node",
+      "vite/client"
+    ],
+    "typeRoots": [
+      "./node_modules/@types/",
+      "./types"
+    ]
   },
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "tests/**/*.ts",
-    "src/utils/path.js",
-    "types/**/*.d.ts",
-    "types/**/*.ts",
-    "types/global.d.ts",
-    "types/shims-tsx.d.ts",
-    "types/shims-vue.d.ts",
-    "mock/asyncRoutes.ts"
+    "types/*.d.ts",
+    "mock/*.ts",
+    "vite.config.ts"
   ],
-  "exclude": ["node_modules", "dist", "**/*.js"]
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.js"
+  ]
 }
