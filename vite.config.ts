@@ -5,6 +5,7 @@ import vueJsx from "@vitejs/plugin-vue-jsx"
 import { loadEnv } from "./build/utils"
 import { createProxy } from "./build/proxy"
 import { viteMockServe } from "vite-plugin-mock"
+import svgLoader from "vite-svg-loader"
 import styleImport from "vite-plugin-style-import"
 import VitePluginElementPlus from "vite-plugin-element-plus"
 
@@ -52,6 +53,7 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
     plugins: [
       vue(),
       vueJsx(),
+      svgLoader(),
       styleImport({
         libs: [
           // 按需加载vxe-table

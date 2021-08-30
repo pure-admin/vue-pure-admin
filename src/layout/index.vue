@@ -13,14 +13,10 @@
         <navbar v-show="!containerHiddenSideBar" />
         <!-- tabs标签页 -->
         <tag>
-          <i
-            :class="
-              containerHiddenSideBar
-                ? 'iconfont team-iconhidden-main-container'
-                : 'iconfont team-iconshow-main-container'
-            "
-            @click="onFullScreen"
-          ></i>
+          <span @click="onFullScreen">
+            <fullScreen v-if="!containerHiddenSideBar" />
+            <exitScreen v-else />
+          </span>
         </tag>
       </div>
       <!-- 主体内容 -->
@@ -50,6 +46,8 @@ import { toggleClass } from "/@/utils/operate";
 let hiddenMainContainer = "hidden-main-container";
 import options from "/@/settings";
 
+import fullScreen from "/@/assets/svg/full_screen.svg";
+import exitScreen from "/@/assets/svg/exit_screen.svg";
 interface setInter {
   sidebar: any;
   device: string;
@@ -64,7 +62,9 @@ export default {
     Sidebar,
     AppMain,
     setting,
-    tag
+    tag,
+    fullScreen,
+    exitScreen
   },
   setup() {
     const pureApp = useAppStoreHook();
@@ -219,5 +219,9 @@ $sideBarWidth: 210px;
 
 .hidden-main-container {
   margin-left: 0 !important;
+}
+
+.re-screen {
+  margin-top: 12px;
 }
 </style>

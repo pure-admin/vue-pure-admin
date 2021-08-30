@@ -84,6 +84,7 @@
     "vite-plugin-element-plus": "^0.0.11",
     "vite-plugin-mock": "^2.9.6",
     "vite-plugin-style-import": "^1.2.1",
+    "vite-svg-loader": "^2.2.0",
     "vue-eslint-parser": "^7.7.2"
   },
   "lint-staged": {

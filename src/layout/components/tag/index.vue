@@ -14,7 +14,7 @@
         @mouseenter.prevent="onMouseenter(item, index)"
         @mouseleave.prevent="onMouseleave(item, index)"
       >
-        <router-link :to="item.path">{{ $t(item.meta.title) }}</router-link>
+        <router-link :to="item.path" @click="tagOnClick(item)">{{ $t(item.meta.title) }}</router-link>
         <span
           v-if="
             ($route.path === item.path && index !== 0) ||
@@ -31,24 +31,21 @@
       </div>
     </el-scrollbar>
     <!-- 右键菜单按钮 -->
-    <ul
-      v-show="visible"
-      :style="{ left: buttonLeft + 'px', top: buttonTop + 'px' }"
-      class="contextmenu animate__animated animate__flipInX"
-    >
-      <div
-        v-for="(item, key) in tagsViews"
-        :key="key"
-        style="display: flex; align-items: center"
+    <transition name="el-zoom-in-top">
+      <ul
+        v-show="visible"
+        :key="Math.random()"
+        :style="{ left: buttonLeft + 'px', top: buttonTop + 'px' }"
+        class="contextmenu"
       >
-        <li v-if="item.show" @click="selectTag(item, key)">
-          <span>
-            <i :class="item.icon"></i>
-          </span>
-          {{ item.text }}
-        </li>
-      </div>
-    </ul>
+        <div v-for="(item, key) in tagsViews" :key="key" style="display: flex; align-items: center">
+          <li v-if="item.show" @click="selectTag(item, key)">
+            <component :is="item.icon" :key="key" />
+            {{ item.text }}
+          </li>
+        </div>
+      </ul>
+    </transition>
     <!-- 右侧功能按钮 -->
     <ul class="right-button">
       <li>
@@ -66,11 +63,11 @@
               <el-dropdown-item
                 v-for="(item, key) in tagsViews"
                 :key="key"
-                :icon="item.icon"
                 :divided="item.divided"
                 :disabled="item.disabled"
                 @click="onClickDrop(key, item)"
               >
+                <component :is="item.icon" :key="key" />
                 {{ item.text }}
               </el-dropdown-item>
             </el-dropdown-menu>
@@ -100,6 +97,12 @@ import { toggleClass, removeClass, hasClass } from "/@/utils/operate";
 import { templateRef } from "@vueuse/core";
 let refreshButton = "refresh-button";
 
+import closeOther from "/@/assets/svg/close_other.svg";
+import closeLeft from "/@/assets/svg/close_left.svg";
+import closeRight from "/@/assets/svg/close_right.svg";
+import close from "/@/assets/svg/close.svg";
+import refresh from "/@/assets/svg/refresh.svg";
+import closeAll from "/@/assets/svg/close_all.svg";
 let routerArrays = [
   {
     path: "/welcome",
@@ -112,13 +115,22 @@ let routerArrays = [
   }
 ];
 export default {
+  name: "tag",
+  components: {
+    closeOther,
+    closeLeft,
+    closeRight,
+    close,
+    refresh,
+    closeAll
+  },
+  // @ts-ignore
   computed: {
     dynamicTagList() {
       if (
         !this.$storage.routesInStorage ||
         this.$storage.routesInStorage.length === 0
       ) {
-        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
         this.$storage.routesInStorage = routerArrays;
       }
       return this.$storage.routesInStorage;
@@ -134,28 +146,42 @@ export default {
     const activeIndex = ref(-1);
     const tagsViews = ref([
       {
-        icon: "el-icon-refresh-right",
+        icon: "refresh",
         text: "重新加载",
         divided: false,
         disabled: false,
         show: true
       },
       {
-        icon: "el-icon-close",
+        icon: "close",
         text: "关闭当前标签页",
         divided: false,
         disabled: routerArrays.length > 1 ? false : true,
         show: true
       },
       {
-        icon: "el-icon-more",
+        icon: "closeLeft",
+        text: "关闭左侧标签页",
+        divided: true,
+        disabled: routerArrays.length > 1 ? false : true,
+        show: true
+      },
+      {
+        icon: "closeRight",
+        text: "关闭右侧标签页",
+        divided: false,
+        disabled: routerArrays.length > 1 ? false : true,
+        show: true
+      },
+      {
+        icon: "closeOther",
         text: "关闭其他标签页",
         divided: true,
         disabled: routerArrays.length > 2 ? false : true,
         show: true
       },
       {
-        icon: "el-icon-minus",
+        icon: "closeAll",
         text: "关闭全部标签页",
         divided: false,
         disabled: routerArrays.length > 1 ? false : true,
@@ -214,32 +240,48 @@ export default {
       }, 600);
     }
 
-    function deleteDynamicTag(obj: any, current: any, other: any) {
+    function deleteDynamicTag(obj: any, current: any, tag?: string) {
       let valueIndex: number = routerArrays.findIndex((item: any) => {
         return item.path === obj.path;
       });
 
-      if (other) {
-        st.routesInStorage = routerArrays = [
-          {
-            path: "/welcome",
-            meta: {
-              title: "message.hshome",
-              icon: "el-icon-s-home",
-              showLink: true,
-              savedPosition: false
-            }
-          },
-          obj
-        ];
+      const spliceRoute = (
+        start?: number,
+        end?: number,
+        other?: boolean
+      ): void => {
+        if (other) {
+          st.routesInStorage = routerArrays = [
+            {
+              path: "/welcome",
+              meta: {
+                title: "message.hshome",
+                icon: "el-icon-s-home",
+                showLink: true,
+                savedPosition: false
+              }
+            },
+            obj
+          ];
+        } else {
+          routerArrays.splice(start, end);
+          st.routesInStorage = routerArrays;
+        }
         router.push(obj.path);
-        Array.from([2]).forEach(v => {
-          tagsViews.value[v].disabled = true;
-        });
+      };
+
+      if (tag === "other") {
+        spliceRoute(1, 1, true);
+        // Array.from([2]).forEach(v => {
+        //   tagsViews.value[v].disabled = true;
+        // });
+      } else if (tag === "left") {
+        spliceRoute(1, valueIndex - 1);
+      } else if (tag === "right") {
+        spliceRoute(valueIndex + 1, routerArrays.length);
       } else {
         // 从当前匹配到的路径中删除
-        routerArrays.splice(valueIndex, 1);
-        st.routesInStorage = routerArrays;
+        spliceRoute(valueIndex, 1);
       }
 
       if (current === obj.path) {
@@ -253,16 +295,16 @@ export default {
       }
     }
 
-    function deleteMenu(item, other = false) {
-      if (routerArrays.length === 2) {
-        Array.from([1, 2, 3]).forEach(v => {
-          tagsViews.value[v].disabled = true;
-        });
-      }
-      if (routerArrays.length === 3) {
-        tagsViews.value[2].disabled = true;
-      }
-      deleteDynamicTag(item, route.path, other);
+    function deleteMenu(item, tag?: string) {
+      // if (routerArrays.length === 2) {
+      //   Array.from([1, 2, 3]).forEach(v => {
+      //     tagsViews.value[v].disabled = true;
+      //   });
+      // }
+      // if (routerArrays.length === 3) {
+      //   tagsViews.value[2].disabled = true;
+      // }
+      deleteDynamicTag(item, route.path, tag);
     }
 
     function onClickDrop(key, item, selectRoute) {
@@ -280,6 +322,30 @@ export default {
             : deleteMenu({ path: route.path, meta: route.meta });
           break;
         case 2:
+          // 关闭左侧标签页
+          selectRoute
+            ? deleteMenu(
+                {
+                  path: selectRoute.path,
+                  meta: selectRoute.meta
+                },
+                "left"
+              )
+            : deleteMenu({ path: route.path, meta: route.meta }, "left");
+          break;
+        case 3:
+          // 关闭右侧标签页
+          selectRoute
+            ? deleteMenu(
+                {
+                  path: selectRoute.path,
+                  meta: selectRoute.meta
+                },
+                "right"
+              )
+            : deleteMenu({ path: route.path, meta: route.meta }, "right");
+          break;
+        case 4:
           // 关闭其他标签页
           selectRoute
             ? deleteMenu(
@@ -287,22 +353,23 @@ export default {
                   path: selectRoute.path,
                   meta: selectRoute.meta
                 },
-                true
+                "other"
               )
-            : deleteMenu({ path: route.path, meta: route.meta }, true);
+            : deleteMenu({ path: route.path, meta: route.meta }, "other");
           break;
-        case 3:
+        case 5:
           // 关闭全部标签页
           routerArrays.splice(1, routerArrays.length);
           st.routesInStorage = routerArrays;
           router.push("/welcome");
-          Array.from([1, 2, 3]).forEach(v => {
-            tagsViews.value[v].disabled = true;
-          });
           break;
       }
+      setTimeout(() => {
+        showMenuModel(route.fullPath);
+      });
     }
 
+    // 触发右键中菜单的点击事件
     function selectTag(item, key) {
       onClickDrop(key, {}, currentSelect.value);
     }
@@ -311,30 +378,77 @@ export default {
       visible.value = false;
     }
 
+    function showMenus(value: Boolean) {
+      Array.of(1, 2, 3, 4, 5).forEach(v => {
+        tagsViews.value[v].show = value;
+      });
+    }
+
+    function disabledMenus(value: Boolean) {
+      Array.of(1, 2, 3, 4, 5).forEach(v => {
+        tagsViews.value[v].disabled = value;
+      });
+    }
+
+    // 检查当前右键的菜单两边是否存在别的菜单，如果左侧的菜单是首页，则不显示关闭左侧标签页，如果右侧没有菜单，则不显示关闭右侧标签页
+    function showMenuModel(currentPath: string, refresh = false) {
+      let allRoute = unref(st.routesInStorage);
+      let routeLength = unref(st.routesInStorage).length;
+      // currentIndex为1时，左侧的菜单是首页，则不显示关闭左侧标签页
+      let currentIndex = allRoute.findIndex(v => v.path === currentPath);
+      // 如果currentIndex等于routeLength-1，右侧没有菜单，则不显示关闭右侧标签页
+      showMenus(true);
+
+      if (refresh) {
+        tagsViews.value[0].show = true;
+      }
+
+      if (currentIndex === 1 && routeLength !== 2) {
+        // 左侧的菜单是首页，右侧存在别的菜单
+        tagsViews.value[2].show = false;
+        Array.of(1, 3, 4, 5).forEach(v => {
+          tagsViews.value[v].disabled = false;
+        });
+        tagsViews.value[2].disabled = true;
+      } else if (currentIndex === 1 && routeLength === 2) {
+        disabledMenus(false);
+        // 左侧的菜单是首页，右侧不存在别的菜单
+        Array.of(2, 3, 4).forEach(v => {
+          tagsViews.value[v].show = false;
+          tagsViews.value[v].disabled = true;
+        });
+      } else if (routeLength - 1 === currentIndex && currentIndex !== 0) {
+        // 当前路由是所有路由中的最后一个
+        tagsViews.value[3].show = false;
+        Array.of(1, 2, 4, 5).forEach(v => {
+          tagsViews.value[v].disabled = false;
+        });
+        tagsViews.value[3].disabled = true;
+      } else if (currentIndex === 0) {
+        // 当前路由为首页
+        disabledMenus(true);
+      } else {
+        disabledMenus(false);
+      }
+    }
+
     function openMenu(tag, e) {
       closeMenu();
       if (tag.path === "/welcome") {
         // 右键菜单为首页，只显示刷新
-        Array.from([1, 2, 3]).forEach(v => {
-          tagsViews.value[v].show = false;
-        });
+        showMenus(false);
         tagsViews.value[0].show = true;
       } else if (route.path !== tag.path) {
-        // 右键菜单匹配当前路由，显示刷新
+        // 右键菜单不匹配当前路由，隐藏刷新
         tagsViews.value[0].show = false;
-        Array.from([1, 2, 3]).forEach(v => {
-          tagsViews.value[v].show = true;
-        });
-      } else if (st.routesInStorage.length === 2) {
+        showMenuModel(tag.path);
+      } else if (st.routesInStorage.length === 2 && route.path !== tag.path) {
+        showMenus(true);
         // 只有两个标签时不显示关闭其他标签页
-        tagsViews.value[2].show = false;
-        Array.from([0, 1, 3]).forEach(v => {
-          tagsViews.value[v].show = true;
-        });
-      } else {
-        Array.from([0, 1, 2, 3]).forEach(v => {
-          tagsViews.value[v].show = true;
-        });
+        tagsViews.value[4].show = false;
+      } else if (route.path === tag.path) {
+        // 右键当前激活的菜单
+        showMenuModel(tag.path, true);
       }
 
       currentSelect.value = tag;
@@ -342,18 +456,21 @@ export default {
       const offsetLeft = unref(containerDom).getBoundingClientRect().left;
       const offsetWidth = unref(containerDom).offsetWidth;
       const maxLeft = offsetWidth - menuMinWidth;
-      const left = e.clientX - offsetLeft + 15;
+      const left = e.clientX - offsetLeft + 5;
       if (left > maxLeft) {
         buttonLeft.value = maxLeft;
       } else {
         buttonLeft.value = left;
       }
-      buttonTop.value = e.clientY;
-      nextTick(() => {
-        setTimeout(() => {
-          visible.value = true;
-        }, 50);
-      });
+      buttonTop.value = e.clientY + 10;
+      setTimeout(() => {
+        visible.value = true;
+      }, 10);
+    }
+
+    // 触发tags标签切换
+    function tagOnClick(item) {
+      showMenuModel(item.path);
     }
 
     // 鼠标移入
@@ -400,11 +517,16 @@ export default {
       st = vm.appContext.app.config.globalProperties.$storage;
       routerArrays = st.routesInStorage ?? routerArrays;
 
+      // 根据当前路由初始化操作标签页的禁用状态
+      showMenuModel(route.fullPath);
+
+      // 触发隐藏标签页
       emitter.on("tagViewsChange", key => {
         if (unref(showTags) === key) return;
         showTags.value = key;
       });
 
+      // 改变标签风格
       emitter.on("tagViewsShowModel", key => {
         showModel.value = key;
       });
@@ -412,17 +534,9 @@ export default {
       //  接收侧边栏切换传递过来的参数
       emitter.on("changLayoutRoute", ({ indexPath, parentPath }) => {
         dynamicRouteTag(indexPath, parentPath);
-
-        if (routerArrays.length === 2) {
-          Array.from([1, 3]).forEach(v => {
-            tagsViews.value[v].disabled = false;
-          });
-        }
-        if (routerArrays.length > 2) {
-          Array.from([1, 2, 3]).forEach(v => {
-            tagsViews.value[v].disabled = false;
-          });
-        }
+        setTimeout(() => {
+          showMenuModel(indexPath);
+        });
       });
     });
 
@@ -441,8 +555,10 @@ export default {
       currentSelect,
       onMouseenter,
       onMouseleave,
+      tagOnClick,
       activeIndex,
-      showModel
+      showModel,
+      showMenuModel
     };
   }
 };
@@ -518,18 +634,27 @@ export default {
     list-style-type: none;
     padding: 5px 0;
     border-radius: 4px;
-    font-size: 12px;
-    font-weight: 400;
-    color: #333;
+    color: #000000d9;
+    font-weight: normal;
+    font-size: 13px;
+    white-space: nowrap;
     outline: 0;
     box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
     li {
       width: 100%;
       margin: 0;
-      padding: 7px 16px;
+      padding: 7px 12px;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+
       &:hover {
         background: #eee;
+      }
+
+      svg {
+        display: block;
+        margin-right: 0.5em;
       }
     }
   }
@@ -552,18 +677,35 @@ export default {
 
 .el-dropdown-menu {
   padding: 0;
+
+  li {
+    width: 100%;
+    margin: 0;
+    padding: 0 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    svg {
+      display: block;
+      margin-right: 0.5em;
+    }
+  }
 }
 .el-dropdown-menu__item:not(.is-disabled):hover {
   color: #606266;
   background: #f0f0f0;
 }
-.el-dropdown-menu__item,
-.el-menu-item {
-  padding: 0 14px;
-  overflow: hidden;
-}
 :deep(.el-dropdown-menu__item) i {
   margin-right: 10px;
+}
+
+.el-dropdown-menu__item--divided:before {
+  margin: 0;
+}
+
+.el-dropdown-menu__item.is-disabled {
+  cursor: not-allowed;
 }
 
 .is-active {

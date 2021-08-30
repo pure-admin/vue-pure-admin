@@ -86,6 +86,8 @@ ul {
 
 .resetTop {
   top: 48px !important;
+  outline: 0;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
 }
 
 // 灰色模式
@@ -115,4 +117,8 @@ ul {
 
 .mobile-spacing {
   margin: 0;
+}
+
+.el-popper[data-popper-placement^="bottom"] > .el-popper__arrow {
+  top: 0 !important;
 }

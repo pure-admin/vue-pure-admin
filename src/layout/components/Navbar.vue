@@ -20,11 +20,7 @@
       >
         <img :src="currentLocale ? ch : en" />
       </div>
-      <i
-        class="el-icon-setting hsset"
-        :title="$t('message.hssystemSet')"
-        @click="onPanel"
-      ></i>
+      <i class="el-icon-setting hsset" :title="$t('message.hssystemSet')" @click="onPanel"></i>
       <!-- 退出登陆 -->
       <el-dropdown trigger="click">
         <span class="el-dropdown-link">
@@ -33,9 +29,10 @@
         </span>
         <template #dropdown>
           <el-dropdown-menu>
-            <el-dropdown-item icon="el-icon-switch-button" @click="logout">
-              {{ $t("message.hsLoginOut") }}
-            </el-dropdown-item>
+            <el-dropdown-item
+              icon="el-icon-switch-button"
+              @click="logout"
+            >{{ $t("message.hsLoginOut") }}</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -76,7 +73,7 @@ export default defineComponent({
     currentLocale() {
       if (!this.$storage.locale) {
         // eslint-disable-next-line
-        this.$storage.locale = { locale: "zh" }
+        this.$storage.locale = { locale: "zh" };
         useI18n().locale.value = "zh";
       }
       switch (this.$storage.locale?.locale) {
