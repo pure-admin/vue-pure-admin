@@ -12,14 +12,7 @@
 </template>
 
 <script lang="ts">
-import {
-  ref,
-  unref,
-  onBeforeMount,
-  getCurrentInstance,
-  nextTick,
-  onUnmounted
-} from "vue";
+import { ref, unref, nextTick, onUnmounted } from "vue";
 import flippers from "./Filpper";
 
 import { templateRef } from "@vueuse/core";

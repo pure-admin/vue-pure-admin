@@ -1,11 +1,11 @@
-import defaultSettings from "../../settings"
-import { defineStore } from "pinia"
-import { store } from "/@/store"
+import defaultSettings from "../../settings";
+import { defineStore } from "pinia";
+import { store } from "/@/store";
 
 interface SettingState {
-  title: string
-  fixedHeader: boolean
-  cachedPageList: string[]
+  title: string;
+  fixedHeader: boolean;
+  cachedPageList: string[];
 }
 
 export const useSettingStore = defineStore({
@@ -18,25 +18,25 @@ export const useSettingStore = defineStore({
   }),
   getters: {
     getTitle() {
-      return this.title
+      return this.title;
     },
     getFixedHeader() {
-      return this.fixedHeader
+      return this.fixedHeader;
     }
   },
   actions: {
     CHANGE_SETTING({ key, value }) {
       // eslint-disable-next-line no-prototype-builtins
       if (this.hasOwnProperty(key)) {
-        this[key] = value
+        this[key] = value;
       }
     },
     changeSetting(data) {
-      this.CHANGE_SETTING(data)
+      this.CHANGE_SETTING(data);
     }
   }
-})
+});
 
 export function useSettingStoreHook() {
-  return useSettingStore(store)
+  return useSettingStore(store);
 }

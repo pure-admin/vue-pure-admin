@@ -20,7 +20,11 @@
       >
         <img :src="currentLocale ? ch : en" />
       </div>
-      <i class="el-icon-setting hsset" :title="$t('message.hssystemSet')" @click="onPanel"></i>
+      <i
+        class="el-icon-setting hsset"
+        :title="$t('message.hssystemSet')"
+        @click="onPanel"
+      ></i>
       <!-- 退出登陆 -->
       <el-dropdown trigger="click">
         <span class="el-dropdown-link">
@@ -29,10 +33,9 @@
         </span>
         <template #dropdown>
           <el-dropdown-menu>
-            <el-dropdown-item
-              icon="el-icon-switch-button"
-              @click="logout"
-            >{{ $t("message.hsLoginOut") }}</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-switch-button" @click="logout">
+              {{ $t("message.hsLoginOut") }}
+            </el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -68,6 +71,7 @@ export default defineComponent({
     Hamburger,
     screenfull
   },
+  // @ts-ignore
   computed: {
     // eslint-disable-next-line vue/return-in-computed-property
     currentLocale() {

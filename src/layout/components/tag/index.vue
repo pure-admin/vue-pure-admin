@@ -14,7 +14,9 @@
         @mouseenter.prevent="onMouseenter(item, index)"
         @mouseleave.prevent="onMouseleave(item, index)"
       >
-        <router-link :to="item.path" @click="tagOnClick(item)">{{ $t(item.meta.title) }}</router-link>
+        <router-link :to="item.path" @click="tagOnClick(item)">
+          {{ $t(item.meta.title) }}
+        </router-link>
         <span
           v-if="
             ($route.path === item.path && index !== 0) ||
@@ -38,7 +40,11 @@
         :style="{ left: buttonLeft + 'px', top: buttonTop + 'px' }"
         class="contextmenu"
       >
-        <div v-for="(item, key) in tagsViews" :key="key" style="display: flex; align-items: center">
+        <div
+          v-for="(item, key) in tagsViews"
+          :key="key"
+          style="display: flex; align-items: center"
+        >
           <li v-if="item.show" @click="selectTag(item, key)">
             <component :is="item.icon" :key="key" />
             {{ item.text }}
@@ -131,6 +137,7 @@ export default {
         !this.$storage.routesInStorage ||
         this.$storage.routesInStorage.length === 0
       ) {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
         this.$storage.routesInStorage = routerArrays;
       }
       return this.$storage.routesInStorage;
@@ -272,9 +279,6 @@ export default {
 
       if (tag === "other") {
         spliceRoute(1, 1, true);
-        // Array.from([2]).forEach(v => {
-        //   tagsViews.value[v].disabled = true;
-        // });
       } else if (tag === "left") {
         spliceRoute(1, valueIndex - 1);
       } else if (tag === "right") {
@@ -296,14 +300,6 @@ export default {
     }
 
     function deleteMenu(item, tag?: string) {
-      // if (routerArrays.length === 2) {
-      //   Array.from([1, 2, 3]).forEach(v => {
-      //     tagsViews.value[v].disabled = true;
-      //   });
-      // }
-      // if (routerArrays.length === 3) {
-      //   tagsViews.value[2].disabled = true;
-      // }
       deleteDynamicTag(item, route.path, tag);
     }
 
@@ -442,6 +438,7 @@ export default {
         // 右键菜单不匹配当前路由，隐藏刷新
         tagsViews.value[0].show = false;
         showMenuModel(tag.path);
+        // eslint-disable-next-line no-dupe-else-if
       } else if (st.routesInStorage.length === 2 && route.path !== tag.path) {
         showMenus(true);
         // 只有两个标签时不显示关闭其他标签页

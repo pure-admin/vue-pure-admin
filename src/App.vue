@@ -5,9 +5,9 @@
 </template>
 
 <script>
-import { ElConfigProvider } from "element-plus"
-import zhCn from "element-plus/lib/locale/lang/zh-cn"
-import en from "element-plus/lib/locale/lang/en"
+import { ElConfigProvider } from "element-plus";
+import zhCn from "element-plus/lib/locale/lang/zh-cn";
+import en from "element-plus/lib/locale/lang/en";
 export default {
   name: "app",
   components: {
@@ -18,9 +18,9 @@ export default {
     currentLocale() {
       switch (this.$storage.locale?.locale) {
         case "zh":
-          return zhCn
+          return zhCn;
         case "en":
-          return en
+          return en;
       }
     }
   }
