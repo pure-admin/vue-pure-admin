@@ -1,30 +1,30 @@
-import { resolve } from "path"
-import { UserConfigExport, ConfigEnv } from "vite"
-import vue from "@vitejs/plugin-vue"
-import vueJsx from "@vitejs/plugin-vue-jsx"
-import { loadEnv } from "./build/utils"
-import { createProxy } from "./build/proxy"
-import { viteMockServe } from "vite-plugin-mock"
-import svgLoader from "vite-svg-loader"
-import styleImport from "vite-plugin-style-import"
-import VitePluginElementPlus from "vite-plugin-element-plus"
+import { resolve } from "path";
+import { UserConfigExport, ConfigEnv } from "vite";
+import vue from "@vitejs/plugin-vue";
+import vueJsx from "@vitejs/plugin-vue-jsx";
+import { loadEnv } from "./build/utils";
+import { createProxy } from "./build/proxy";
+import { viteMockServe } from "vite-plugin-mock";
+import svgLoader from "vite-svg-loader";
+import styleImport from "vite-plugin-style-import";
+import VitePluginElementPlus from "vite-plugin-element-plus";
 
 const pathResolve = (dir: string): any => {
-  return resolve(__dirname, ".", dir)
-}
+  return resolve(__dirname, ".", dir);
+};
 
-const { VITE_PORT, VITE_PUBLIC_PATH, VITE_PROXY } = loadEnv()
+const { VITE_PORT, VITE_PUBLIC_PATH, VITE_PROXY } = loadEnv();
 
 const alias: Record<string, string> = {
   "/@": pathResolve("src"),
   //解决开发环境下的警告 You are running the esm-bundler build of vue-i18n. It is recommended to configure your bundler to explicitly replace feature flag globals with boolean literals to get proper tree-shaking in the final bundle.
   "vue-i18n": "vue-i18n/dist/vue-i18n.cjs.js"
-}
+};
 
-const root: string = process.cwd()
+const root: string = process.cwd();
 
 export default ({ command }: ConfigEnv): UserConfigExport => {
-  const prodMock = true
+  const prodMock = true;
   return {
     /**
      * 基本公共路径
@@ -95,5 +95,5 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
     define: {
       __INTLIFY_PROD_DEVTOOLS__: false
     }
-  }
-}
+  };
+};
