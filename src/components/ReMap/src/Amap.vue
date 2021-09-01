@@ -50,7 +50,7 @@ export interface mapInter {
 export default defineComponent({
   name: "Amap",
   setup() {
-    let vm: any;
+    const instance = getCurrentInstance();
     let map: MapConfigureInter;
 
     const mapSet: mapInter = reactive({
@@ -74,9 +74,9 @@ export default defineComponent({
     };
 
     onBeforeMount(() => {
-      vm = getCurrentInstance(); //获取组件实例
-      if (!vm) return;
-      let { MapConfigure } = vm.appContext.config.globalProperties.$config;
+      if (!instance) return;
+      let { MapConfigure } =
+        instance.appContext.config.globalProperties.$config;
       let { options } = MapConfigure;
 
       AMapLoader.load({
@@ -86,7 +86,7 @@ export default defineComponent({
       })
         .then(AMap => {
           // 创建地图实例
-          map = new AMap.Map(vm.refs.mapview, options);
+          map = new AMap.Map(instance.refs.mapview, options);
 
           //地图中添加地图操作ToolBar插件
           map.plugin(["AMap.ToolBar", "AMap.MapType"], () => {

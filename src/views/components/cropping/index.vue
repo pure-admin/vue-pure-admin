@@ -20,26 +20,22 @@ export default {
     Cropper
   },
   setup() {
-    let vm: any;
+    const instance = getCurrentInstance();
     let info = ref("");
     let cropperImg = ref("");
 
     const onCropper = (): void => {
       nextTick(() => {
-        vm.refs.refCropper.cropper.getCroppedCanvas().toBlob(blob => {
+        instance.refs.refCropper.cropper.getCroppedCanvas().toBlob(blob => {
           let fileReader: FileReader = new FileReader();
           fileReader.onloadend = (e: any) => {
             cropperImg.value = e.target.result;
-            info.value = vm.refs.refCropper.cropper.getData();
+            info.value = instance.refs.refCropper.cropper.getData();
           };
           fileReader.readAsDataURL(blob);
         }, "image/jpeg");
       });
     };
-
-    onBeforeMount(() => {
-      vm = getCurrentInstance();
-    });
 
     return {
       img,

@@ -18,6 +18,7 @@
 <script>
 import { useFullscreen } from "@vueuse/core";
 import { defineComponent } from "vue";
+
 export default defineComponent({
   name: "screenfull",
   setup() {

@@ -37,17 +37,17 @@ import {
   toRefs,
   watchEffect,
   onMounted,
-  onBeforeMount
+  onBeforeMount,
+  useCssModule
 } from "vue";
 import { useAppStoreHook } from "/@/store/modules/app";
 import { useSettingStoreHook } from "/@/store/modules/settings";
 import { useEventListener } from "@vueuse/core";
 import { toggleClass } from "/@/utils/operate";
-let hiddenMainContainer = "hidden-main-container";
 import options from "/@/settings";
-
 import fullScreen from "/@/assets/svg/full_screen.svg";
 import exitScreen from "/@/assets/svg/exit_screen.svg";
+
 interface setInter {
   sidebar: any;
   device: string;
@@ -69,9 +69,7 @@ export default {
   setup() {
     const pureApp = useAppStoreHook();
     const pureSetting = useSettingStoreHook();
-
-    // const router = useRouter();
-    // const route = useRoute();
+    const { hiddenMainContainer } = useCssModule();
 
     const WIDTH = ref(992);
 
@@ -170,6 +168,12 @@ export default {
 };
 </script>
 
+<style scoped module>
+.hiddenMainContainer {
+  margin-left: 0 !important;
+}
+</style>
+
 <style lang="scss" scoped>
 @mixin clearfix {
   &:after {
@@ -215,10 +219,6 @@ $sideBarWidth: 210px;
 
 .mobile .fixed-header {
   width: 100%;
-}
-
-.hidden-main-container {
-  margin-left: 0 !important;
 }
 
 .re-screen {

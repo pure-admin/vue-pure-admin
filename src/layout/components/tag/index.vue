@@ -101,15 +101,15 @@ import { storageLocal } from "/@/utils/storage";
 import { emitter } from "/@/utils/mitt";
 import { toggleClass, removeClass, hasClass } from "/@/utils/operate";
 import { templateRef } from "@vueuse/core";
-let refreshButton = "refresh-button";
-
 import closeOther from "/@/assets/svg/close_other.svg";
 import closeLeft from "/@/assets/svg/close_left.svg";
 import closeRight from "/@/assets/svg/close_right.svg";
 import close from "/@/assets/svg/close.svg";
 import refresh from "/@/assets/svg/refresh.svg";
 import closeAll from "/@/assets/svg/close_all.svg";
-let routerArrays = [
+
+let refreshButton = "refresh-button";
+let routerArrays: Array<object> = [
   {
     path: "/welcome",
     meta: {
@@ -120,6 +120,7 @@ let routerArrays = [
     }
   }
 ];
+
 export default {
   name: "tag",
   components: {
@@ -144,7 +145,7 @@ export default {
     }
   },
   setup() {
-    let vm: any;
+    const instance = getCurrentInstance();
     let st: any;
     const route = useRoute();
     const router = useRouter();
@@ -474,13 +475,14 @@ export default {
     function onMouseenter(item, index) {
       if (index) activeIndex.value = index;
       if (unref(showModel) === "smart") {
-        if (hasClass(vm.refs["schedule" + index], "schedule-active")) return;
-        toggleClass(true, "schedule-in", vm.refs["schedule" + index]);
-        toggleClass(false, "schedule-out", vm.refs["schedule" + index]);
+        if (hasClass(instance.refs["schedule" + index], "schedule-active"))
+          return;
+        toggleClass(true, "schedule-in", instance.refs["schedule" + index]);
+        toggleClass(false, "schedule-out", instance.refs["schedule" + index]);
       } else {
-        if (hasClass(vm.refs["dynamic" + index], "card-active")) return;
-        toggleClass(true, "card-in", vm.refs["dynamic" + index]);
-        toggleClass(false, "card-out", vm.refs["dynamic" + index]);
+        if (hasClass(instance.refs["dynamic" + index], "card-active")) return;
+        toggleClass(true, "card-in", instance.refs["dynamic" + index]);
+        toggleClass(false, "card-out", instance.refs["dynamic" + index]);
       }
     }
 
@@ -488,13 +490,14 @@ export default {
     function onMouseleave(item, index) {
       activeIndex.value = -1;
       if (unref(showModel) === "smart") {
-        if (hasClass(vm.refs["schedule" + index], "schedule-active")) return;
-        toggleClass(false, "schedule-in", vm.refs["schedule" + index]);
-        toggleClass(true, "schedule-out", vm.refs["schedule" + index]);
+        if (hasClass(instance.refs["schedule" + index], "schedule-active"))
+          return;
+        toggleClass(false, "schedule-in", instance.refs["schedule" + index]);
+        toggleClass(true, "schedule-out", instance.refs["schedule" + index]);
       } else {
-        if (hasClass(vm.refs["dynamic" + index], "card-active")) return;
-        toggleClass(false, "card-in", vm.refs["dynamic" + index]);
-        toggleClass(true, "card-out", vm.refs["dynamic" + index]);
+        if (hasClass(instance.refs["dynamic" + index], "card-active")) return;
+        toggleClass(false, "card-in", instance.refs["dynamic" + index]);
+        toggleClass(true, "card-out", instance.refs["dynamic" + index]);
       }
     }
 
@@ -510,8 +513,8 @@ export default {
     );
 
     onBeforeMount(() => {
-      vm = getCurrentInstance();
-      st = vm.appContext.app.config.globalProperties.$storage;
+      if (!instance) return;
+      st = instance.appContext.app.config.globalProperties.$storage;
       routerArrays = st.routesInStorage ?? routerArrays;
 
       // 根据当前路由初始化操作标签页的禁用状态
@@ -782,10 +785,6 @@ export default {
 }
 // 刷新按钮动画效果
 .refresh-button {
-  -webkit-transition-property: -webkit-transform;
-  -webkit-transition-duration: 600ms;
-  -moz-transition-property: -moz-transform;
-  -moz-transition-duration: 600ms;
   -webkit-animation: rotate 600ms linear infinite;
   -moz-animation: rotate 600ms linear infinite;
   -o-animation: rotate 600ms linear infinite;

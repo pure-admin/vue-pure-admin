@@ -9,7 +9,7 @@
         placement="bottom"
       >
         <li
-          :class="dataTheme === 'dark' ? 'is-select' : ''"
+          :class="dataTheme === 'dark' ? $style.isSelect : ''"
           ref="firstTheme"
           @click="onDark"
         >
@@ -25,7 +25,7 @@
         placement="bottom"
       >
         <li
-          :class="dataTheme === 'light' ? 'is-select' : ''"
+          :class="dataTheme === 'light' ? $style.isSelect : ''"
           ref="secondTheme"
           @click="onLight"
         >
@@ -98,18 +98,18 @@
 
 <script lang="ts">
 import panel from "../panel/index.vue";
-import { reactive, toRefs, ref, unref } from "vue";
+import { reactive, toRefs, ref, unref, useCssModule } from "vue";
 import { storageLocal, storageSession } from "/@/utils/storage";
 import { emitter } from "/@/utils/mitt";
 import { useRouter } from "vue-router";
 import { templateRef } from "@vueuse/core";
-let isSelect = "is-select";
 
 export default {
   name: "setting",
   components: { panel },
   setup() {
     const router = useRouter();
+    const { isSelect } = useCssModule();
 
     // 默认灵动模式
     const markValue = ref(storageLocal.getItem("showModel") || "smart");
@@ -237,6 +237,12 @@ export default {
 };
 </script>
 
+<style scoped module>
+.isSelect {
+  border: 2px solid #0960bd;
+}
+</style>
+
 <style lang="scss" scoped>
 .setting {
   width: 100%;
@@ -307,8 +313,5 @@ export default {
       }
     }
   }
-}
-.is-select {
-  border: 2px solid #0960bd;
 }
 </style>

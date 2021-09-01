@@ -29,7 +29,7 @@
     "dayjs": "^1.10.6",
     "dotenv": "^8.2.0",
     "echarts": "^5.1.2",
-    "element-plus": "^1.1.0-beta.7",
+    "element-plus": "^1.1.0-beta.8",
     "font-awesome": "^4.7.0",
     "lodash-es": "^4.17.21",
     "mitt": "^2.1.0",
@@ -70,7 +70,7 @@
     "cross-env": "^7.0.3",
     "eslint": "^7.30.0",
     "eslint-plugin-prettier": "^3.4.0",
-    "eslint-plugin-vue": "^7.12.1",
+    "eslint-plugin-vue": "^7.17.0",
     "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
     "postcss": "^8.2.6",
@@ -80,12 +80,12 @@
     "sass": "^1.38.0",
     "sass-loader": "^12.1.0",
     "typescript": "^4.2.4",
-    "vite": "^2.5.1",
-    "vite-plugin-element-plus": "^0.0.11",
+    "vite": "^2.5.3",
+    "vite-plugin-element-plus": "^0.0.12",
     "vite-plugin-mock": "^2.9.6",
     "vite-plugin-style-import": "^1.2.1",
     "vite-svg-loader": "^2.2.0",
-    "vue-eslint-parser": "^7.7.2"
+    "vue-eslint-parser": "^7.10.0"
   },
   "lint-staged": {
     "*.{js,jsx,vue,ts,tsx}": [

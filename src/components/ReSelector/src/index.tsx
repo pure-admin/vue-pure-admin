@@ -52,7 +52,7 @@ export default defineComponent({
   },
   emits: ["selectedVal"],
   setup(props, { emit }) {
-    let vm: any;
+    const instance = getCurrentInstance();
     // eslint-disable-next-line vue/no-setup-props-destructure
     const currentValue = props.value;
 
@@ -252,29 +252,28 @@ export default defineComponent({
       });
 
       addClass(
-        vm.refs["hsdiv" + props.HsKey + item[0]],
+        instance.refs["hsdiv" + props.HsKey + item[0]],
         activeClass,
         stayClass
       );
 
-      addClass(vm.refs["hstd" + props.HsKey + item[0]], bothLeftSides);
+      addClass(instance.refs["hstd" + props.HsKey + item[0]], bothLeftSides);
 
       addClass(
-        vm.refs["hsdiv" + props.HsKey + item[1]],
+        instance.refs["hsdiv" + props.HsKey + item[1]],
         activeClass,
         stayClass
       );
 
-      addClass(vm.refs["hstd" + props.HsKey + item[1]], bothRightSides);
+      addClass(instance.refs["hstd" + props.HsKey + item[1]], bothRightSides);
 
       while (item[1] >= item[0]) {
-        addClass(vm.refs["hstd" + props.HsKey + item[0]], inRange);
+        addClass(instance.refs["hstd" + props.HsKey + item[0]], inRange);
         item[0]++;
       }
     };
 
     onBeforeMount(() => {
-      vm = getCurrentInstance();
       nextTick(() => {
         echoView(props.echo);
       });

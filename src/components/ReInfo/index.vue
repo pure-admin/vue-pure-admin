@@ -83,7 +83,7 @@ export default defineComponent({
   },
   emits: ["onBehavior", "refreshVerify"],
   setup(props, ctx) {
-    let vm: any;
+    const instance = getCurrentInstance();
 
     const model = toRef(props, "ruleForm");
     let tips = ref("注册");
@@ -117,7 +117,7 @@ export default defineComponent({
 
     // 点击登录或注册
     const onBehavior = (evt: Object): void => {
-      vm.refs.ruleForm.validate((valid: boolean) => {
+      instance.refs.ruleForm.validate((valid: boolean) => {
         if (valid) {
           ctx.emit("onBehavior", evt);
         } else {
@@ -133,7 +133,7 @@ export default defineComponent({
 
     // 表单重置
     const resetForm = (): void => {
-      vm.refs.ruleForm.resetFields();
+      instance.refs.ruleForm.resetFields();
     };
 
     // 登录、注册页面切换
@@ -149,10 +149,6 @@ export default defineComponent({
       initRouter("admin").then(() => {});
       router.push("/");
     };
-
-    onBeforeMount(() => {
-      vm = getCurrentInstance(); //获取组件实例
-    });
 
     return {
       model,
