@@ -152,7 +152,7 @@ class EnclosureHttp {
   }
 
   /**
-   * @description 拦截相应
+   * @description 拦截响应
    * @returns void 0
    */
   private httpInterceptorsResponse(): void {
