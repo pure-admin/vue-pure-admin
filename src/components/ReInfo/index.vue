@@ -52,7 +52,6 @@ import {
   ref,
   defineComponent,
   PropType,
-  onBeforeMount,
   getCurrentInstance,
   watch,
   nextTick,
