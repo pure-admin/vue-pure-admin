@@ -89,8 +89,8 @@ export default defineComponent({
     }
   },
   setup() {
-    // eslint-disable-next-line no-unused-vars
-    let vm: any;
+    const instance =
+      getCurrentInstance().appContext.config.globalProperties.$storage;
     const pureApp = useAppStoreHook();
     const router = useRouter();
     const route = useRoute();
@@ -101,13 +101,13 @@ export default defineComponent({
 
     // 国际化语言切换
     const toggleLang = (): void => {
-      switch (vm.locale.locale) {
+      switch (instance.locale.locale) {
         case "zh":
-          vm.locale = { locale: "en" };
+          instance.locale = { locale: "en" };
           locale.value = "en";
           break;
         case "en":
-          vm.locale = { locale: "zh" };
+          instance.locale = { locale: "zh" };
           locale.value = "zh";
           break;
       }
@@ -136,8 +136,6 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      vm = getCurrentInstance().appContext.config.globalProperties.$storage;
       document
         .querySelector(".el-dropdown__popper")
         ?.setAttribute("class", "resetTop");

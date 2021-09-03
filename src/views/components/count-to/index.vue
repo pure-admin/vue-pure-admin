@@ -32,6 +32,7 @@
 
 <script lang="ts">
 import { ReNormalCountTo, ReboundCountTo } from "/@/components/ReCountTo";
+
 export default {
   name: "reCountTo",
   components: {

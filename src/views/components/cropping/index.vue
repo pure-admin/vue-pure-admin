@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import { ref, onBeforeMount, nextTick, getCurrentInstance } from "vue";
+import { ref, nextTick, getCurrentInstance } from "vue";
 import Cropper from "/@/components/ReCropper";
 import img from "./picture.jpeg";
 
