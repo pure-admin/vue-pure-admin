@@ -15,23 +15,23 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.team-iconshanchu:before {
+.team-iconshanchu::before {
   content: "\e617";
 }
 
-.team-iconshow-main-container:before {
+.team-iconshow-main-container::before {
   content: "\e878";
 }
 
-.team-iconhidden-main-container:before {
+.team-iconhidden-main-container::before {
   content: "\e881";
 }
 
-.team-iconexit-fullscreen:before {
+.team-iconexit-fullscreen::before {
   content: "\e62a";
 }
 
-.team-iconfullscreen:before {
+.team-iconfullscreen::before {
   content: "\e62b";
 }
 

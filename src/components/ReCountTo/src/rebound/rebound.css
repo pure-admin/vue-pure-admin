@@ -19,6 +19,7 @@ ul {
     transform: translateY(-90%);
     filter: url(#blur);
   }
+
   to {
     transform: translateY(1%);
     filter: url(#blur);
@@ -30,18 +31,23 @@ ul {
     transform: translateY(calc(var(--i) * -9.09% - 7%));
     filter: none;
   }
+
   25% {
     transform: translateY(calc(var(--i) * -9.09% + 3%));
   }
+
   50% {
     transform: translateY(calc(var(--i) * -9.09% - 1%));
   }
+
   70% {
     transform: translateY(calc(var(--i) * -9.09% + 0.6%));
   }
+
   85% {
     transform: translateY(calc(var(--i) * -9.09% - 0.3%));
   }
+
   to {
     transform: translateY(calc(var(--i) * -9.09%));
   }
@@ -51,15 +57,19 @@ ul {
   25% {
     transform: translateY(8%);
   }
+
   50% {
     transform: translateY(-4%);
   }
+
   70% {
     transform: translateY(2%);
   }
+
   85% {
     transform: translateY(-1%);
   }
+
   to {
     transform: translateY(0);
   }

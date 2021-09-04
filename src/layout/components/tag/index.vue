@@ -565,11 +565,66 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@keyframes scheduleInWidth {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+@keyframes scheduleOutWidth {
+  from {
+    width: 100%;
+  }
+
+  to {
+    width: 0;
+  }
+}
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-moz-keyframes rotate {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+
+  to {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-o-keyframes rotate {
+  from {
+    -o-transform: rotate(0deg);
+  }
+
+  to {
+    -o-transform: rotate(360deg);
+  }
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .tags-view {
   width: 100%;
   font-size: 14px;
   display: flex;
-  box-shadow: 0 0 1px #888888;
+  box-shadow: 0 0 1px #888;
 
   .scroll-item {
     border-radius: 3px 3px 0 0;
@@ -585,6 +640,7 @@ export default {
       font-size: 10px;
       color: #1890ff;
       cursor: pointer;
+
       &:hover {
         border-radius: 50%;
         color: #fff;
@@ -612,6 +668,7 @@ export default {
     position: relative;
     width: 100%;
     background: #fff;
+
     .scroll-item {
       &:nth-child(1) {
         margin-left: 5px;
@@ -640,6 +697,7 @@ export default {
     white-space: nowrap;
     outline: 0;
     box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
+
     li {
       width: 100%;
       margin: 0;
@@ -665,6 +723,7 @@ export default {
   align-items: center;
   background: #fff;
   font-size: 16px;
+
   li {
     width: 40px;
     height: 38px;
@@ -692,15 +751,17 @@ export default {
     }
   }
 }
+
 .el-dropdown-menu__item:not(.is-disabled):hover {
   color: #606266;
   background: #f0f0f0;
 }
+
 :deep(.el-dropdown-menu__item) i {
   margin-right: 10px;
 }
 
-.el-dropdown-menu__item--divided:before {
+.el-dropdown-menu__item--divided::before {
   margin: 0;
 }
 
@@ -712,6 +773,7 @@ export default {
   background-color: #eaf4fe;
   position: relative;
   color: #fff;
+
   a {
     color: #1890ff;
   }
@@ -725,6 +787,7 @@ export default {
 .card-in {
   border: 1px solid #1890ff;
   color: #1890ff;
+
   a {
     color: #1890ff;
   }
@@ -733,6 +796,7 @@ export default {
 .card-out {
   border: none;
   color: #666;
+
   a {
     color: #666;
   }
@@ -757,14 +821,6 @@ export default {
   background: #1890ff;
   animation: scheduleInWidth 400ms ease-in;
 }
-@keyframes scheduleInWidth {
-  from {
-    width: 0px;
-  }
-  to {
-    width: 100%;
-  }
-}
 // 灵动模式下鼠标移出隐藏蓝色进度条
 .schedule-out {
   width: 0;
@@ -775,51 +831,11 @@ export default {
   background: #1890ff;
   animation: scheduleOutWidth 400ms ease-in;
 }
-@keyframes scheduleOutWidth {
-  from {
-    width: 100%;
-  }
-  to {
-    width: 0;
-  }
-}
 // 刷新按钮动画效果
 .refresh-button {
   -webkit-animation: rotate 600ms linear infinite;
   -moz-animation: rotate 600ms linear infinite;
   -o-animation: rotate 600ms linear infinite;
   animation: rotate 600ms linear infinite;
-}
-@-webkit-keyframes rotate {
-  from {
-    -webkit-transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-  }
-}
-@-moz-keyframes rotate {
-  from {
-    -moz-transform: rotate(0deg);
-  }
-  to {
-    -moz-transform: rotate(360deg);
-  }
-}
-@-o-keyframes rotate {
-  from {
-    -o-transform: rotate(0deg);
-  }
-  to {
-    -o-transform: rotate(360deg);
-  }
-}
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 </style>

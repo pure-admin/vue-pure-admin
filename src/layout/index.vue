@@ -175,25 +175,28 @@ export default {
 </style>
 
 <style lang="scss" scoped>
+$sideBarWidth: 210px;
 @mixin clearfix {
-  &:after {
+  &::after {
     content: "";
     display: table;
     clear: both;
   }
 }
-$sideBarWidth: 210px;
 
 .app-wrapper {
   @include clearfix;
+
   position: relative;
   height: 100%;
   width: 100%;
+
   &.mobile.openSidebar {
     position: fixed;
     top: 0;
   }
 }
+
 .drawer-bg {
   background: #000;
   opacity: 0.3;

@@ -15,31 +15,31 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-full-screen-hs:before {
+.icon-full-screen-hs::before {
   content: "\e656";
 }
 
-.icon-watch-hs:before {
+.icon-watch-hs::before {
   content: "\e766";
 }
 
-.icon-download-hs:before {
+.icon-download-hs::before {
   content: "\e6af";
 }
 
-.icon-enlarge-hs:before {
+.icon-enlarge-hs::before {
   content: "\e765";
 }
 
-.icon-previous-hs:before {
+.icon-previous-hs::before {
   content: "\e84c";
 }
 
-.icon-zoom-out-hs:before {
+.icon-zoom-out-hs::before {
   content: "\e744";
 }
 
-.icon-next-step-hs:before {
+.icon-next-step-hs::before {
   content: "\e84b";
 }
 

@@ -336,18 +336,22 @@ export default {
 .dict-container {
   margin: 10px;
 }
+
 .vxe-input + .vxe-button,
 .vxe-input + .vxe-button--dropdown,
 .vxe-button + .vxe-button,
 .vxe-button + .vxe-button--dropdown {
   margin-left: 0;
 }
+
 .vxe-button.type--button:not(.is--round) {
   border-radius: 0;
 }
+
 .vxe-button.size--medium.type--button {
   margin-right: 0.07em;
 }
+
 .text-model {
   &:hover {
     cursor: pointer;

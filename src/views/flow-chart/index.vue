@@ -99,29 +99,35 @@ export default {
   height: 85vh;
   outline: none;
 }
+
 .logic-flow-view {
   margin: 10px;
   position: relative;
 }
+
 .demo-title {
   text-align: center;
   margin: 20px;
 }
+
 .demo-control {
   position: absolute;
   top: 10px;
   right: 20px;
   z-index: 2;
 }
+
 .time-plus {
   cursor: pointer;
 }
+
 .add-panel {
   position: absolute;
   z-index: 11;
   background-color: white;
   padding: 10px 5px;
 }
+
 .el-drawer__body {
   height: 80%;
   overflow: auto;

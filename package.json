@@ -9,6 +9,7 @@
     "preview": "vite preview",
     "preview:build": "npm run build && vite preview",
     "lint": "eslint --ext .js,.jsx,.vue,.ts,.tsx src",
+    "lint:stylelint": "stylelint --cache --fix \"**/*.{vue,css,scss,postcss,less}\" --cache --cache-location node_modules/.cache/stylelint/",
     "lint-staged": "lint-staged"
   },
   "husky": {
@@ -81,6 +82,10 @@
     "rimraf": "^3.0.2",
     "sass": "^1.38.0",
     "sass-loader": "^12.1.0",
+    "stylelint": "^13.13.1",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-standard": "^22.0.0",
+    "stylelint-order": "^4.1.0",
     "typescript": "^4.4.2",
     "vite": "^2.5.3",
     "vite-plugin-element-plus": "^0.0.12",

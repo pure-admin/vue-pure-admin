@@ -39,6 +39,7 @@ export default defineComponent({
   display: flex;
   align-items: center;
   justify-content: space-around;
+
   &:hover {
     cursor: pointer;
     background: #f0f0f0;

@@ -2,22 +2,27 @@
   font-size: 18px;
   transition: 0.3s;
 }
+
 .hs-item {
   width: 30px;
   height: 30px;
   box-sizing: border-box;
   line-height: 30px;
 }
+
 .hs-on {
   background-color: #409eff;
   border-radius: 50%;
 }
+
 .hs-range {
   background-color: #f2f6fc;
 }
+
 .both-left-sides {
   border-radius: 50% 0 0 50%;
 }
+
 .both-right-sides {
   border-radius: 0 50% 50% 0;
 }

@@ -182,25 +182,32 @@ export default defineComponent({
     right: 25px;
     top: 22vh;
   }
+
   .rule-form {
     width: 80%;
+
     .verify {
       position: absolute;
       margin: -10px 0 0 -120px;
+
       &:hover {
         cursor: pointer;
       }
     }
+
     .tips {
       color: #409eff;
       float: right;
+
       &:hover {
         cursor: pointer;
       }
     }
   }
+
   .secret {
     color: #409eff;
+
     &:hover {
       cursor: pointer;
     }

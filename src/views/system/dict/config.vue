@@ -168,6 +168,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .list {
   padding: 10px;
+
   .page-left {
     position: absolute;
     left: 10px;
@@ -176,20 +177,25 @@ export default defineComponent({
     z-index: 10;
   }
 }
+
 :deep(.select-count) {
   margin-right: 5px;
 }
+
 :deep(.el-drawer__header) {
   margin-bottom: 0;
 }
+
 :deep(.el-drawer__header span) {
   color: rgba(0, 0, 0, 0.85);
   font-weight: 500;
   font-size: 16px;
 }
+
 :deep(.el-divider--horizontal) {
   margin: 13px 0;
 }
+
 :deep(.el-icon-close) {
   &:hover {
     color: red;

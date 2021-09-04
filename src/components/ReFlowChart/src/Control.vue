@@ -128,29 +128,35 @@ export default defineComponent({
 
 <style scoped>
 @import "./assets/iconfont/iconfont.css";
+
 .control-container {
   position: absolute;
   right: 20px;
   background: hsla(0, 0%, 100%, 0.8);
   box-shadow: 0 1px 4px rgb(0 0 0 / 20%);
 }
+
 .iconfont {
   font-size: 25px;
 }
+
 .control-container p {
   margin: 0;
   font-size: 12px;
 }
+
 .control-container ul {
   display: flex;
   justify-content: space-around;
   align-items: center;
   margin: 2px;
 }
+
 .control-container ul li {
   width: 60px;
   text-align: center;
 }
+
 .control-container ul li button {
   border: none;
   background-color: transparent;

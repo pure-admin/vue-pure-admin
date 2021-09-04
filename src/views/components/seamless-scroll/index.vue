@@ -126,26 +126,30 @@ export default {
 .box-card {
   margin: 10px;
 }
+
 .card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   span {
     margin-right: 20px;
   }
 }
+
 .warp {
   height: 270px;
   width: 360px;
   margin: 0 auto;
   overflow: hidden;
+
   ul {
     list-style: none;
     padding: 0;
     margin: 0 auto;
+
     li,
     a {
-      display: block;
       height: 30px;
       line-height: 30px;
       display: flex;

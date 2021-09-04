@@ -53,9 +53,11 @@ export default {
   justify-content: space-between;
   align-items: center;
 }
+
 .el-button {
   margin-top: 10px;
 }
+
 .croppered {
   display: block;
   width: 45%;

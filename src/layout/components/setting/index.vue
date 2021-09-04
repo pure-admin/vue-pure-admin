@@ -246,6 +246,7 @@ export default {
 <style lang="scss" scoped>
 .setting {
   width: 100%;
+
   li {
     display: flex;
     justify-content: space-between;
@@ -253,16 +254,19 @@ export default {
     margin: 25px;
   }
 }
+
 :deep(.el-divider__text) {
   font-size: 16px;
   font-weight: 700;
 }
+
 .theme-stley {
   margin-top: 25px;
   width: 100%;
   height: 60px;
   display: flex;
   justify-content: space-around;
+
   li {
     width: 30%;
     height: 100%;
@@ -273,6 +277,7 @@ export default {
     background-color: #f0f2f5;
     border-radius: 4px;
     box-shadow: 0 1px 2.5px 0 rgb(0 0 0 / 18%);
+
     &:nth-child(1) {
       div {
         &:nth-child(1) {
@@ -280,13 +285,14 @@ export default {
           height: 100%;
           background: #1b2a47;
         }
+
         &:nth-child(2) {
           width: 70%;
           height: 30%;
           top: 0;
           right: 0;
           background-color: #fff;
-          box-shadow: 0 0 1px #888888;
+          box-shadow: 0 0 1px #888;
           position: absolute;
         }
       }
@@ -297,17 +303,18 @@ export default {
         &:nth-child(1) {
           width: 30%;
           height: 100%;
-          box-shadow: 0 0 1px #888888;
+          box-shadow: 0 0 1px #888;
           background-color: #fff;
           border-radius: 4px 0 0 4px;
         }
+
         &:nth-child(2) {
           width: 70%;
           height: 30%;
           top: 0;
           right: 0;
           background-color: #fff;
-          box-shadow: 0 0 1px #888888;
+          box-shadow: 0 0 1px #888;
           position: absolute;
         }
       }

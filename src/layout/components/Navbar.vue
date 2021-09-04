@@ -194,20 +194,24 @@ export default defineComponent({
     align-items: center;
     height: 48px;
     line-height: 48px;
+
     .inter {
       width: 40px;
       height: 48px;
       display: flex;
       align-items: center;
       justify-content: space-around;
+
       &:hover {
         cursor: pointer;
         background: #f0f0f0;
       }
+
       img {
         width: 25px;
       }
     }
+
     .hsset {
       width: 40px;
       height: 48px;
@@ -215,11 +219,13 @@ export default defineComponent({
       align-items: center;
       justify-content: space-around;
       margin-right: 5px;
+
       &:hover {
         cursor: pointer;
         background: #f0f0f0;
       }
     }
+
     .el-dropdown-link {
       width: 70px;
       display: flex;
@@ -227,9 +233,11 @@ export default defineComponent({
       justify-content: space-around;
       margin-right: 10px;
       cursor: pointer;
+
       p {
         font-size: 14px;
       }
+
       img {
         width: 22px;
         height: 22px;
@@ -241,9 +249,11 @@ export default defineComponent({
 .el-dropdown-menu__item {
   padding: 0 10px;
 }
+
 .el-dropdown-menu {
   padding: 6px 0;
 }
+
 .el-dropdown-menu__item:focus,
 .el-dropdown-menu__item:not(.is-disabled):hover {
   color: #606266;

@@ -81,7 +81,7 @@ export default {
   position: fixed;
   top: 0;
   right: 0;
-  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.05);
   transition: all 0.25s cubic-bezier(0.7, 0.3, 0.1, 1);
   transform: translate(100%);
   background: #fff;
@@ -118,6 +118,7 @@ export default {
   line-height: 48px;
   top: 45%;
   background: rgb(24, 144, 255);
+
   i {
     font-size: 24px;
     line-height: 48px;
@@ -139,9 +140,11 @@ export default {
   align-items: center;
   top: 15px;
   margin-left: 10px;
+
   i {
     font-size: 20px;
     margin-right: 20px;
+
     &:hover {
       cursor: pointer;
       color: red;

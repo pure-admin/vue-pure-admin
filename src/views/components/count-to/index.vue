@@ -49,6 +49,7 @@ export default {
 .flex {
   display: flex;
 }
+
 :deep(.el-card) {
   text-align: center;
   margin-bottom: 10px;

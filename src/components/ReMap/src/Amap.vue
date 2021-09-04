@@ -161,6 +161,7 @@ export default defineComponent({
 #mapview {
   height: 100%;
 }
+
 :deep(.amap-marker-label) {
   border: none !important;
 }

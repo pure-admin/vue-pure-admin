@@ -54,6 +54,7 @@ export default {
 <style lang="scss" scoped>
 $W: 100%;
 $H: 80vh;
+
 .split-pane {
   width: 98%;
   height: $H;
@@ -61,6 +62,7 @@ $H: 80vh;
   text-align: center;
   font-size: 50px;
   color: #fff;
+
   .dv-a,
   .dv-b,
   .dv-c {
@@ -69,13 +71,16 @@ $H: 80vh;
     background: rgba($color: dodgerblue, $alpha: 0.8);
     line-height: $H;
   }
+
   .dv-b,
   .dv-c {
     line-height: 250px;
   }
+
   .dv-b {
     background: rgba($color: #000, $alpha: 0.8);
   }
+
   .dv-c {
     background: rgba($color: #ce272d, $alpha: 0.8);
   }

@@ -27,13 +27,13 @@
     background-color: $menuBg;
     height: 100%;
     position: fixed;
-    font-size: 0px;
+    font-size: 0;
     top: 0;
     bottom: 0;
     left: 0;
     z-index: 1001;
     overflow: hidden;
-    box-shadow: 0 0 1px #888888;
+    box-shadow: 0 0 1px #888;
 
     // reset element-plus css
     .horizontal-collapse-transition {
@@ -46,7 +46,7 @@
     }
 
     .el-scrollbar__bar.is-vertical {
-      right: 0px;
+      right: 0;
     }
 
     .el-scrollbar {
@@ -72,6 +72,7 @@
     .el-menu {
       border: none;
       height: 100%;
+      background-color: transparent;
       // background-color: $menuBg !important;
       // width: 100% !important;
     }
@@ -80,23 +81,21 @@
     .el-sub-menu__title {
       color: $menuText;
     }
-
-    .el-menu {
-      background-color: transparent;
-    }
-
+    
     // menu hover
     .submenu-title-noDropdown,
     .el-sub-menu__title {
+      background: $menuBg;
+
       &:hover {
         background-color: $menuHover !important;
       }
-      background: $menuBg;
     }
 
     .is-active > .el-sub-menu__title,
     .is-active.submenu-title-noDropdown {
       color: $subMenuActiveText !important;
+
       i {
         color: $subMenuActiveText !important;
       }
@@ -139,6 +138,7 @@
 
     .el-sub-menu {
       overflow: hidden;
+
       & > .el-sub-menu__title {
         .el-sub-menu__icon-arrow {
           display: none;
@@ -166,17 +166,21 @@
   .el-menu--vertical {
     .el-menu--popup {
       background-color: $subMenuBg !important;
+
       .el-menu-item {
         color: $menuText;
         background-color: $subMenuBg;
+
         &:hover {
           background-color: $subMenuHover;
         }
       }
+
       .el-sub-menu__title {
         color: $menuText;
       }
     }
+
     & > .el-menu {
       i {
         margin-right: 16px;
@@ -186,6 +190,7 @@
     .is-active > .el-sub-menu__title,
     .is-active.submenu-title-noDropdown {
       color: $subMenuActiveText !important;
+
       i {
         color: $subMenuActiveText !important;
       }
@@ -217,7 +222,7 @@
   // 手机端
   .mobile {
     .main-container {
-      margin-left: 0px;
+      margin-left: 0;
     }
 
     .sidebar-container {

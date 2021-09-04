@@ -14,8 +14,8 @@
   font-family: "Helvetica Neue";
 }
 
-.m-flipper .digital:before,
-.m-flipper .digital:after {
+.m-flipper .digital::before,
+.m-flipper .digital::after {
   content: "";
   position: absolute;
   left: 0;
@@ -25,71 +25,71 @@
   box-sizing: border-box;
 }
 
-.m-flipper .digital:before {
+.m-flipper .digital::before {
   top: 0;
   bottom: 50%;
   border-radius: 10px 10px 0 0;
   border-bottom: solid 1px #666;
 }
 
-.m-flipper .digital:after {
+.m-flipper .digital::after {
   top: 50%;
   bottom: 0;
   border-radius: 0 0 10px 10px;
   line-height: 0;
 }
 
-/*向下翻*/
-.m-flipper.down .front:before {
+/* 向下翻 */
+.m-flipper.down .front::before {
   z-index: 3;
 }
 
-.m-flipper.down .back:after {
+.m-flipper.down .back::after {
   z-index: 2;
   transform-origin: 50% 0%;
   transform: perspective(160px) rotateX(180deg);
 }
 
-.m-flipper.down .front:after,
-.m-flipper.down .back:before {
+.m-flipper.down .front::after,
+.m-flipper.down .back::before {
   z-index: 1;
 }
 
-.m-flipper.down.go .front:before {
+.m-flipper.down.go .front::before {
   transform-origin: 50% 100%;
   animation: frontFlipDown 0.6s ease-in-out both;
   box-shadow: 0 -2px 6px rgba(255, 255, 255, 0.3);
   backface-visibility: hidden;
 }
 
-.m-flipper.down.go .back:after {
+.m-flipper.down.go .back::after {
   animation: backFlipDown 0.6s ease-in-out both;
 }
 
-/*向上翻*/
-.m-flipper.up .front:after {
+/* 向上翻 */
+.m-flipper.up .front::after {
   z-index: 3;
 }
 
-.m-flipper.up .back:before {
+.m-flipper.up .back::before {
   z-index: 2;
   transform-origin: 50% 100%;
   transform: perspective(160px) rotateX(-180deg);
 }
 
-.m-flipper.up .front:before,
-.m-flipper.up .back:after {
+.m-flipper.up .front::before,
+.m-flipper.up .back::after {
   z-index: 1;
 }
 
-.m-flipper.up.go .front:after {
+.m-flipper.up.go .front::after {
   transform-origin: 50% 0;
   animation: frontFlipUp 0.6s ease-in-out both;
   box-shadow: 0 2px 6px rgba(255, 255, 255, 0.3);
   backface-visibility: hidden;
 }
 
-.m-flipper.up.go .back:before {
+.m-flipper.up.go .back::before {
   animation: backFlipUp 0.6s ease-in-out both;
 }
 
@@ -133,52 +133,52 @@
   }
 }
 
-.m-flipper .number0:before,
-.m-flipper .number0:after {
+.m-flipper .number0::before,
+.m-flipper .number0::after {
   content: "0";
 }
 
-.m-flipper .number1:before,
-.m-flipper .number1:after {
+.m-flipper .number1::before,
+.m-flipper .number1::after {
   content: "1";
 }
 
-.m-flipper .number2:before,
-.m-flipper .number2:after {
+.m-flipper .number2::before,
+.m-flipper .number2::after {
   content: "2";
 }
 
-.m-flipper .number3:before,
-.m-flipper .number3:after {
+.m-flipper .number3::before,
+.m-flipper .number3::after {
   content: "3";
 }
 
-.m-flipper .number4:before,
-.m-flipper .number4:after {
+.m-flipper .number4::before,
+.m-flipper .number4::after {
   content: "4";
 }
 
-.m-flipper .number5:before,
-.m-flipper .number5:after {
+.m-flipper .number5::before,
+.m-flipper .number5::after {
   content: "5";
 }
 
-.m-flipper .number6:before,
-.m-flipper .number6:after {
+.m-flipper .number6::before,
+.m-flipper .number6::after {
   content: "6";
 }
 
-.m-flipper .number7:before,
-.m-flipper .number7:after {
+.m-flipper .number7::before,
+.m-flipper .number7::after {
   content: "7";
 }
 
-.m-flipper .number8:before,
-.m-flipper .number8:after {
+.m-flipper .number8::before,
+.m-flipper .number8::after {
   content: "8";
 }
 
-.m-flipper .number9:before,
-.m-flipper .number9:after {
+.m-flipper .number9::before,
+.m-flipper .number9::after {
   content: "9";
 }
