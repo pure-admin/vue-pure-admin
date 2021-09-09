@@ -3,6 +3,7 @@ node_modules
 dist
 dist-ssr
 *.local
+.eslintcache
 
 npm-debug.log*
 yarn-debug.log*
