@@ -1,5 +1,5 @@
 import { Directive } from "vue";
-import type { DirectiveBinding } from "vue";
+import type { DirectiveBinding, VNode } from "vue";
 import elementResizeDetectorMaker from "element-resize-detector";
 import type { Erd } from "element-resize-detector";
 import { emitter } from "/@/utils/mitt";
@@ -9,7 +9,7 @@ const erd: Erd = elementResizeDetectorMaker({
 });
 
 export const resize: Directive = {
-  mounted(el: HTMLElement, binding?: DirectiveBinding, vnode?: any) {
+  mounted(el: HTMLElement, binding?: DirectiveBinding, vnode?: VNode) {
     erd.listenTo(el, elem => {
       const width = elem.offsetWidth;
       const height = elem.offsetHeight;

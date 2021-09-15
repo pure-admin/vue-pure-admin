@@ -7,7 +7,7 @@ import { createProxy } from "./build/proxy";
 import { viteMockServe } from "vite-plugin-mock";
 import svgLoader from "vite-svg-loader";
 import styleImport from "vite-plugin-style-import";
-import VitePluginElementPlus from "vite-plugin-element-plus";
+import ElementPlus from "unplugin-element-plus";
 
 const pathResolve = (dir: string): any => {
   return resolve(__dirname, ".", dir);
@@ -65,7 +65,7 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
           }
         ]
       }),
-      VitePluginElementPlus({ useSource: true }),
+      ElementPlus(),
       viteMockServe({
         mockPath: "mock",
         localEnabled: command === "serve",

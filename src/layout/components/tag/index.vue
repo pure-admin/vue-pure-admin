@@ -14,9 +14,9 @@
         @mouseenter.prevent="onMouseenter(item, index)"
         @mouseleave.prevent="onMouseleave(item, index)"
       >
-        <router-link :to="item.path" @click="tagOnClick(item)">
-          {{ $t(item.meta.title) }}
-        </router-link>
+        <router-link :to="item.path" @click="tagOnClick(item)">{{
+          $t(item.meta.title)
+        }}</router-link>
         <span
           v-if="
             ($route.path === item.path && index !== 0) ||
@@ -134,13 +134,6 @@ export default {
   // @ts-ignore
   computed: {
     dynamicTagList() {
-      if (
-        !this.$storage.routesInStorage ||
-        this.$storage.routesInStorage.length === 0
-      ) {
-        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-        this.$storage.routesInStorage = routerArrays;
-      }
       return this.$storage.routesInStorage;
     }
   },

@@ -33,9 +33,9 @@
         </span>
         <template #dropdown>
           <el-dropdown-menu>
-            <el-dropdown-item icon="el-icon-switch-button" @click="logout">
-              {{ $t("message.hsLoginOut") }}
-            </el-dropdown-item>
+            <el-dropdown-item icon="el-icon-switch-button" @click="logout">{{
+              $t("message.hsLoginOut")
+            }}</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -64,6 +64,17 @@ import { emitter } from "/@/utils/mitt";
 import { deviceDetection } from "/@/utils/deviceDetection";
 import { useI18n } from "vue-i18n";
 
+let routerArrays: Array<object> = [
+  {
+    path: "/welcome",
+    meta: {
+      title: "message.hshome",
+      icon: "el-icon-s-home",
+      showLink: true,
+      savedPosition: false
+    }
+  }
+];
 export default defineComponent({
   name: "Navbar",
   components: {
@@ -75,6 +86,14 @@ export default defineComponent({
   computed: {
     // eslint-disable-next-line vue/return-in-computed-property
     currentLocale() {
+      if (
+        !this.$storage.routesInStorage ||
+        this.$storage.routesInStorage.length === 0
+      ) {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+        this.$storage.routesInStorage = routerArrays;
+      }
+
       if (!this.$storage.locale) {
         // eslint-disable-next-line
         this.$storage.locale = { locale: "zh" };
