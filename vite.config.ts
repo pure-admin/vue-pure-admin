@@ -65,7 +65,7 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
           }
         ]
       }),
-      ElementPlus(),
+      ElementPlus({}),
       viteMockServe({
         mockPath: "mock",
         localEnabled: command === "serve",
