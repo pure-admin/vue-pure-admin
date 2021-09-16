@@ -7,6 +7,7 @@
     "importHelpers": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
+    "strictFunctionTypes": false,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "isolatedModules": true,
@@ -16,27 +17,14 @@
     "baseUrl": ".",
     "allowJs": false,
     "resolveJsonModule": true, // 包含导入的模块。json的扩展
-    "lib": [
-      "dom",
-      "esnext"
-    ],
+    "lib": ["dom", "esnext"],
     "incremental": true,
     "paths": {
-      "/@/*": [
-        "src/*"
-      ],
-      "/#/*": [
-        "types/*"
-      ]
+      "/@/*": ["src/*"],
+      "/#/*": ["types/*"]
     },
-    "types": [
-      "node",
-      "vite/client"
-    ],
-    "typeRoots": [
-      "./node_modules/@types/",
-      "./types"
-    ]
+    "types": ["node", "vite/client"],
+    "typeRoots": ["./node_modules/@types/", "./types"]
   },
   "include": [
     "src/**/*.ts",
@@ -46,9 +34,5 @@
     "mock/*.ts",
     "vite.config.ts"
   ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "**/*.js"
-  ]
+  "exclude": ["node_modules", "dist", "**/*.js"]
 }

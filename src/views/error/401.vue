@@ -1,10 +1,16 @@
+<script setup lang="ts">
+import imgs from "/@/assets/401.gif";
+import { ref } from "vue";
+
+const img = ref(`${imgs}?${new Date()}`);
+</script>
+
 <template>
   <div class="errPage-container">
     <el-row>
       <el-col :span="12">
-        <h1 class="text-jumbo text-ginormous">CURD Admin</h1>
+        <h1 class="text-jumbo text-ginormous">Pure Admin</h1>
         <h2>你没有权限去该页面</h2>
-        <h6>如有不满请联系你领导</h6>
       </el-col>
       <el-col :span="12">
         <img
@@ -17,20 +23,6 @@
     </el-row>
   </div>
 </template>
-
-<script lang="ts">
-import imgs from "/@/assets/401.gif";
-import { ref } from "vue";
-export default {
-  name: "401",
-  setup() {
-    const img = ref(`${imgs}?${new Date()}`);
-    return {
-      img
-    };
-  }
-};
-</script>
 
 <style lang="scss" scoped>
 .errPage-container {
