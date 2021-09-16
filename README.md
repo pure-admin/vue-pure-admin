@@ -53,20 +53,20 @@ git clone https://github.com.cnpmjs.org/xiaoxian521/vue-pure-admin.git
 ```bash
 cd vue-pure-admin
 
-npm install
+yarn install
 
 ```
 
 - 运行
 
 ```bash
-npm run serve
+yarn serve
 ```
 
 - 打包
 
 ```bash
-npm run build
+yarn build
 ```
 
 ## 更新日志

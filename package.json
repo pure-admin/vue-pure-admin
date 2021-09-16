@@ -4,16 +4,17 @@
   "private": true,
   "scripts": {
     "dev": "cross-env --max_old_space_size=4096 vite",
-    "serve": "cross-env --max_old_space_size=4096 vite",
+    "serve": "yarn dev",
     "build": "rimraf dist && cross-env vite build",
     "preview": "vite preview",
-    "preview:build": "npm run build && vite preview",
+    "preview:build": "yarn build && vite preview",
+    "clean:cache": "rm -rf node_modules && yarn cache clean && yarn install",
     "lint:eslint": "eslint --cache --max-warnings 0  \"{src,mock}/**/*.{vue,ts,tsx}\" --fix",
     "lint:prettier": "prettier --write  \"src/**/*.{js,json,tsx,css,less,scss,vue,html,md}\"",
     "lint:stylelint": "stylelint --cache --fix \"**/*.{vue,css,scss,postcss,less}\" --cache --cache-location node_modules/.cache/stylelint/",
     "lint:lint-staged": "lint-staged -c ./.husky/lintstagedrc.js",
     "lint:pretty": "pretty-quick --staged",
-    "lint:all": "npm run lint:eslint && npm run lint:prettier && npm run lint:stylelint && npm run lint:pretty",
+    "lint:all": "yarn lint:eslint && yarn lint:prettier && yarn lint:stylelint && yarn lint:pretty",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -94,5 +95,8 @@
     "vite-plugin-style-import": "^1.2.1",
     "vite-svg-loader": "^2.2.0",
     "vue-eslint-parser": "^7.10.0"
-  }
+  },
+  "repository": "git@github.com:xiaoxian521/vue-pure-admin.git",
+  "author": "xiaoxian521",
+  "license": "MIT"
 }
