@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import { ReNormalCountTo, ReboundCountTo } from "/@/components/ReCountTo";
+</script>
+
 <template>
   <div style="margin: 10px">
     <el-row :gutter="24">
@@ -29,21 +33,6 @@
     </el-row>
   </div>
 </template>
-
-<script lang="ts">
-import { ReNormalCountTo, ReboundCountTo } from "/@/components/ReCountTo";
-
-export default {
-  name: "reCountTo",
-  components: {
-    ReNormalCountTo,
-    ReboundCountTo
-  },
-  setup() {
-    return {};
-  }
-};
-</script>
 
 <style lang="scss" scoped>
 .flex {

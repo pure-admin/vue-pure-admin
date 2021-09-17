@@ -1,21 +1,12 @@
+<script setup lang="ts">
+import { Amap } from "/@/components/ReMap";
+</script>
+
 <template>
   <div class="map">
     <Amap />
   </div>
 </template>
-
-<script lang="ts">
-import { Amap } from "/@/components/ReMap";
-export default {
-  name: "reMap",
-  components: {
-    Amap
-  },
-  setup() {
-    return {};
-  }
-};
-</script>
 
 <style scoped>
 .map {

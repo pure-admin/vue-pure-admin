@@ -2,7 +2,7 @@
 import { ref, unref } from "vue";
 import { storageSession } from "/@/utils/storage";
 
-let purview: string = ref(storageSession.getItem("info").username);
+let purview = ref<string>(storageSession.getItem("info").username);
 
 function changRole() {
   if (unref(purview) === "admin") {

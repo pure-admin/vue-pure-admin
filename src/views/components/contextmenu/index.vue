@@ -1,3 +1,9 @@
+<script setup lang="ts">
+import basic from "./basic.vue";
+import menuGroup from "./menuGroup.vue";
+import menuDynamic from "./menuDynamic.vue";
+</script>
+
 <template>
   <div style="margin: 10px">
     <el-row :gutter="24">
@@ -16,20 +22,3 @@
     </el-row>
   </div>
 </template>
-
-<script lang="ts">
-import basic from "./basic.vue";
-import menuGroup from "./menuGroup.vue";
-import menuDynamic from "./menuDynamic.vue";
-export default {
-  name: "reContextmenu",
-  components: {
-    basic,
-    menuGroup,
-    menuDynamic
-  },
-  setup() {
-    return {};
-  }
-};
-</script>
