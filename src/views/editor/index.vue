@@ -9,8 +9,8 @@ import { onMounted, onBeforeUnmount, ref, unref } from "vue";
 import WangEditor from "wangeditor";
 
 // eslint-disable-next-line no-undef
-const editor = ref<ComponentRef>(null);
-const html = ref<HTMLElement>(null);
+const editor = ref(null);
+const html = ref(null);
 let instance: WangEditor;
 
 onMounted(() => {

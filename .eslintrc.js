@@ -3,6 +3,20 @@ module.exports = {
   env: {
     node: true
   },
+  globals: {
+    // Ref sugar (take 2)
+    $: "readonly",
+    $$: "readonly",
+    $ref: "readonly",
+    $shallowRef: "readonly",
+    $computed: "readonly",
+
+    // script setup
+    defineProps: "readonly",
+    defineEmits: "readonly",
+    defineExpose: "readonly",
+    withDefaults: "readonly"
+  },
   extends: [
     "plugin:vue/vue3-essential",
     "eslint:recommended",

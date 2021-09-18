@@ -9,8 +9,7 @@ import { toLogicflowData } from "/@/components/ReFlowChart/src/adpterForTurbo";
 import { BpmnNode } from "/@/components/ReFlowChart/src/config";
 import demoData from "./dataTurbo.json";
 
-// eslint-disable-next-line no-undef
-let lf = ref<ElRef>(null);
+let lf = ref(null);
 let graphData = ref(null);
 let dataVisible = ref<boolean>(false);
 let config = ref({

@@ -4,7 +4,7 @@ import Cropper from "/@/components/ReCropper";
 import img from "./picture.jpeg";
 
 const instance = getCurrentInstance();
-let info = ref<object>("");
+let info = ref<object>(null);
 let cropperImg = ref<string>("");
 
 const onCropper = (): void => {

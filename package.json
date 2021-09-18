@@ -8,7 +8,7 @@
     "build": "rimraf dist && cross-env vite build",
     "preview": "vite preview",
     "preview:build": "yarn build && vite preview",
-    "clean:cache": "rm -rf node_modules && yarn cache clean && yarn install",
+    "clean:cache": "rm -rf node_modules && rm -rf .eslintcache && yarn cache clean && yarn install",
     "lint:eslint": "eslint --cache --max-warnings 0  \"{src,mock}/**/*.{vue,ts,tsx}\" --fix",
     "lint:prettier": "prettier --write  \"src/**/*.{js,json,tsx,css,less,scss,vue,html,md}\"",
     "lint:stylelint": "stylelint --cache --fix \"**/*.{vue,css,scss,postcss,less}\" --cache --cache-location node_modules/.cache/stylelint/",
