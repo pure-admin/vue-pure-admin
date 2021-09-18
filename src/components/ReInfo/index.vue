@@ -1,3 +1,97 @@
+<script setup lang="ts">
+import { ref, PropType, getCurrentInstance, watch, nextTick, toRef } from "vue";
+import { useRouter, useRoute } from "vue-router";
+import { initRouter } from "/@/router";
+import { storageSession } from "/@/utils/storage";
+
+export interface ContextProps {
+  userName: string;
+  passWord: string;
+  verify: number | null;
+  svg: any;
+  telephone?: number;
+  dynamicText?: string;
+}
+
+const props = defineProps({
+  ruleForm: {
+    type: Object as PropType<ContextProps>
+  }
+});
+
+const emit = defineEmits<{
+  (e: "onBehavior", evt: Object): void;
+  (e: "refreshVerify"): void;
+}>();
+
+const instance = getCurrentInstance();
+
+const model = toRef(props, "ruleForm");
+let tips = ref<string>("注册");
+let tipsFalse = ref<string>("登录");
+
+const route = useRoute();
+const router = useRouter();
+
+watch(
+  route,
+  async ({ path }): Promise<void> => {
+    await nextTick();
+    path.includes("register")
+      ? (tips.value = "登录") && (tipsFalse.value = "注册")
+      : (tips.value = "注册") && (tipsFalse.value = "登录");
+  },
+  { immediate: true }
+);
+
+const rules: Object = ref({
+  userName: [{ required: true, message: "请输入用户名", trigger: "blur" }],
+  passWord: [
+    { required: true, message: "请输入密码", trigger: "blur" },
+    { min: 6, message: "密码长度必须不小于6位", trigger: "blur" }
+  ],
+  verify: [
+    { required: true, message: "请输入验证码", trigger: "blur" },
+    { type: "number", message: "验证码必须是数字类型", trigger: "blur" }
+  ]
+});
+
+// 点击登录或注册
+const onBehavior = (evt: Object): void => {
+  instance.refs.ruleForm.validate((valid: boolean) => {
+    if (valid) {
+      emit("onBehavior", evt);
+    } else {
+      return false;
+    }
+  });
+};
+
+// 刷新验证码
+const refreshVerify = (): void => {
+  emit("refreshVerify");
+};
+
+// 表单重置
+const resetForm = (): void => {
+  instance.refs.ruleForm.resetFields();
+};
+
+// 登录、注册页面切换
+const changPage = (): void => {
+  tips.value === "注册" ? router.push("/register") : router.push("/login");
+};
+
+const noSecret = (): void => {
+  storageSession.setItem("info", {
+    username: "admin",
+    accessToken: "eyJhbGciOiJIUzUxMiJ9.test"
+  });
+  initRouter("admin").then(() => {});
+  router.push("/");
+};
+</script>
+
 <template>
   <div class="info">
     <el-form :model="model" :rules="rules" ref="ruleForm" class="rule-form">
@@ -46,123 +140,6 @@
     </el-form>
   </div>
 </template>
-
-<script lang="ts">
-import {
-  ref,
-  defineComponent,
-  PropType,
-  getCurrentInstance,
-  watch,
-  nextTick,
-  toRef
-} from "vue";
-import { storageSession } from "/@/utils/storage";
-
-export interface ContextProps {
-  userName: string;
-  passWord: string;
-  verify: number | null;
-  svg: any;
-  telephone?: number;
-  dynamicText?: string;
-}
-
-import { useRouter, useRoute } from "vue-router";
-
-import { initRouter } from "/@/router";
-
-export default defineComponent({
-  name: "Info",
-  props: {
-    ruleForm: {
-      type: Object as PropType<ContextProps>,
-      require: true
-    }
-  },
-  emits: ["onBehavior", "refreshVerify"],
-  setup(props, ctx) {
-    const instance = getCurrentInstance();
-
-    const model = toRef(props, "ruleForm");
-    let tips = ref("注册");
-    let tipsFalse = ref("登录");
-
-    const route = useRoute();
-    const router = useRouter();
-
-    watch(
-      route,
-      async ({ path }): Promise<void> => {
-        await nextTick();
-        path.includes("register")
-          ? (tips.value = "登录") && (tipsFalse.value = "注册")
-          : (tips.value = "注册") && (tipsFalse.value = "登录");
-      },
-      { immediate: true }
-    );
-
-    const rules: Object = ref({
-      userName: [{ required: true, message: "请输入用户名", trigger: "blur" }],
-      passWord: [
-        { required: true, message: "请输入密码", trigger: "blur" },
-        { min: 6, message: "密码长度必须不小于6位", trigger: "blur" }
-      ],
-      verify: [
-        { required: true, message: "请输入验证码", trigger: "blur" },
-        { type: "number", message: "验证码必须是数字类型", trigger: "blur" }
-      ]
-    });
-
-    // 点击登录或注册
-    const onBehavior = (evt: Object): void => {
-      instance.refs.ruleForm.validate((valid: boolean) => {
-        if (valid) {
-          ctx.emit("onBehavior", evt);
-        } else {
-          return false;
-        }
-      });
-    };
-
-    // 刷新验证码
-    const refreshVerify = (): void => {
-      ctx.emit("refreshVerify");
-    };
-
-    // 表单重置
-    const resetForm = (): void => {
-      instance.refs.ruleForm.resetFields();
-    };
-
-    // 登录、注册页面切换
-    const changPage = (): void => {
-      tips.value === "注册" ? router.push("/register") : router.push("/login");
-    };
-
-    const noSecret = (): void => {
-      storageSession.setItem("info", {
-        username: "admin",
-        accessToken: "eyJhbGciOiJIUzUxMiJ9.test"
-      });
-      initRouter("admin").then(() => {});
-      router.push("/");
-    };
-
-    return {
-      model,
-      rules,
-      tips,
-      tipsFalse,
-      resetForm,
-      onBehavior,
-      refreshVerify,
-      changPage,
-      noSecret
-    };
-  }
-});
-</script>
 
 <style lang="scss" scoped>
 .info {

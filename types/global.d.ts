@@ -20,13 +20,14 @@ declare global {
     // Global vue app instance
     __APP__: App<Element>;
     webkitCancelAnimationFrame: (handle: number) => void;
+    mozCancelAnimationFrame: (handle: number) => void;
+    oCancelAnimationFrame: (handle: number) => void;
+    msCancelAnimationFrame: (handle: number) => void;
+
     webkitRequestAnimationFrame: (callback: FrameRequestCallback) => number;
-    mozCancelAnimationFrame: (id?: string) => any;
-    oCancelAnimationFrame: (id?: string) => any;
-    msCancelAnimationFrame: (id?: string) => any;
-    mozRequestAnimationFrame: (id?: string) => any;
-    oRequestAnimationFrame: (id?: string) => any;
-    msRequestAnimationFrame: (id?: string) => any;
+    mozRequestAnimationFrame: (callback: FrameRequestCallback) => number;
+    oRequestAnimationFrame: (callback: FrameRequestCallback) => number;
+    msRequestAnimationFrame: (callback: FrameRequestCallback) => number;
   }
 
   // vue

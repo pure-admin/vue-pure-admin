@@ -1,9 +1,36 @@
+<script setup lang="ts">
+import { ref, unref } from "vue";
+import { LogicFlow } from "@logicflow/core";
+
+interface Props {
+  lf: LogicFlow;
+  nodeList: ForDataType<undefined>;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  lf: null,
+  nodeList: null
+});
+
+let properties = ref({
+  a: "efrwe",
+  b: "wewe"
+});
+
+const nodeDragNode = item => {
+  props.lf.dnd.startDrag({
+    type: item.type,
+    properties: unref(properties)
+  });
+};
+</script>
+
 <template>
   <!-- 左侧bpmn元素选择器 -->
   <div class="node-panel">
     <div
       class="node-item"
-      v-for="item in nodeList"
+      v-for="item in props.nodeList"
       :key="item.text"
       @mousedown="nodeDragNode(item)"
     >
@@ -17,43 +44,6 @@
     </div>
   </div>
 </template>
-
-<script lang="ts">
-import { defineComponent, ref, unref } from "vue";
-export default defineComponent({
-  name: "NodePanel",
-  props: {
-    lf: Object,
-    nodeList: Array
-  },
-  setup(props) {
-    let node = ref({
-      type: "rect",
-      property: {
-        a: "efrwe",
-        b: "wewe"
-      }
-    });
-    let properties = ref({
-      a: "efrwe",
-      b: "wewe"
-    });
-
-    const nodeDragNode = item => {
-      props.lf.dnd.startDrag({
-        type: item.type,
-        properties: unref(properties)
-      });
-    };
-
-    return {
-      node,
-      properties,
-      nodeDragNode
-    };
-  }
-});
-</script>
 
 <style scoped>
 .node-panel {

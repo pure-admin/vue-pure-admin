@@ -2,7 +2,7 @@
  * @desc AnimationFrame简单兼容hack
  */
 export const animationFrame = () => {
-  window.cancelAnimationFrame = (function () {
+  window.cancelAnimationFrame = (() => {
     return (
       window.cancelAnimationFrame ||
       window.webkitCancelAnimationFrame ||

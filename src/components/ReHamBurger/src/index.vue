@@ -1,8 +1,26 @@
+<script setup lang="ts">
+export interface Props {
+  isActive: boolean;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  isActive: false
+});
+
+const emit = defineEmits<{
+  (e: "toggleClick"): void;
+}>();
+
+const toggleClick = () => {
+  emit("toggleClick");
+};
+</script>
+
 <template>
-  <div style="padding: 0 15px" @click="toggleClick">
+  <div :class="classes.container" @click="toggleClick">
     <svg
-      :class="{ 'is-active': isActive }"
       class="hamburger"
+      :class="props.isActive ? 'is-active' : ''"
       viewBox="0 0 1024 1024"
       xmlns="http://www.w3.org/2000/svg"
       width="64"
@@ -15,26 +33,11 @@
   </div>
 </template>
 
-<script>
-import { defineComponent } from "vue";
-export default defineComponent({
-  name: "HamBurger",
-  props: {
-    isActive: {
-      type: Boolean,
-      default: false
-    }
-  },
-  emits: ["toggleClick"],
-  setup(props, ctx) {
-    const toggleClick = () => {
-      ctx.emit("toggleClick");
-    };
-
-    return { toggleClick };
-  }
-});
-</script>
+<style module="classes" scoped>
+.container {
+  padding: 0 15px;
+}
+</style>
 
 <style scoped>
 .hamburger {
@@ -44,7 +47,7 @@ export default defineComponent({
   height: 20px;
 }
 
-.hamburger.is-active {
+.is-active {
   transform: rotate(180deg);
 }
 </style>

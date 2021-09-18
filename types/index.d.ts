@@ -25,3 +25,7 @@ declare type ComponentRef<T extends HTMLElement = HTMLDivElement> =
   ComponentElRef<T> | null;
 
 declare type ElRef<T extends HTMLElement = HTMLDivElement> = Nullable<T>;
+
+declare type ForDataType<T> = {
+  [P in T]?: ForDataType<T[P]>;
+};
