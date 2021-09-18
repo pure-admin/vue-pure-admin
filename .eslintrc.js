@@ -24,6 +24,7 @@ module.exports = {
     ElRef: "readonly",
     global: "readonly",
     ForDataType: "readonly",
+    ComponentRoutes: "readonly",
 
     // script setup
     defineProps: "readonly",

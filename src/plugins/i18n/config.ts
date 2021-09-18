@@ -7,6 +7,7 @@ import enVxeTable from "vxe-table/lib/locale/lang/en-US";
 import enLocale from "element-plus/lib/locale/lang/en";
 import zhLocale from "element-plus/lib/locale/lang/zh-cn";
 
+// 导航菜单配置
 export const menusConfig = {
   zh: {
     message: {

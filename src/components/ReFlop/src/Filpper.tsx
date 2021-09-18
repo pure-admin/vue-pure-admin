@@ -2,19 +2,21 @@ import { defineComponent, ref } from "vue";
 import { propTypes } from "/@/utils/propTypes";
 import "./filpper.css";
 
+const props = {
+  // front paper text
+  // 前牌文字
+  frontText: propTypes.number.def(0),
+  // back paper text
+  // 后牌文字
+  backText: propTypes.number.def(1),
+  // flipping duration, please be consistent with the CSS animation-duration value.
+  // 翻牌动画时间，与CSS中设置的animation-duration保持一致
+  duration: propTypes.number.def(600)
+};
+
 export default defineComponent({
   name: "Filpper",
-  props: {
-    // front paper text
-    // 前牌文字
-    frontText: propTypes.number.def(0),
-    // back paper text
-    // 后牌文字
-    backText: propTypes.number.def(1),
-    // flipping duration, please be consistent with the CSS animation-duration value.
-    // 翻牌动画时间，与CSS中设置的animation-duration保持一致
-    duration: propTypes.number.def(600)
-  },
+  props,
   setup(props) {
     // eslint-disable-next-line vue/no-setup-props-destructure
     const { frontText, backText, duration } = props;

@@ -58,6 +58,7 @@ const rules: Object = ref({
 
 // 点击登录或注册
 const onBehavior = (evt: Object): void => {
+  // @ts-expect-error
   instance.refs.ruleForm.validate((valid: boolean) => {
     if (valid) {
       emit("onBehavior", evt);
@@ -74,6 +75,7 @@ const refreshVerify = (): void => {
 
 // 表单重置
 const resetForm = (): void => {
+  // @ts-expect-error
   instance.refs.ruleForm.resetFields();
 };
 

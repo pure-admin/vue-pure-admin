@@ -9,11 +9,13 @@ let cropperImg = ref<string>("");
 
 const onCropper = (): void => {
   nextTick(() => {
+    // @ts-expect-error
     instance.refs.refCropper.cropper.getCroppedCanvas().toBlob(blob => {
       let fileReader: FileReader = new FileReader();
       fileReader.onloadend = (e: ProgressEvent) => {
         // @ts-ignore
         cropperImg.value = e.target.result;
+        // @ts-expect-error
         info.value = instance.refs.refCropper.cropper.getData();
       };
       fileReader.readAsDataURL(blob);

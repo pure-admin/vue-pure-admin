@@ -5,7 +5,8 @@ import { excludeProps } from "./utils";
  */
 export const defaultConfig: AxiosRequestConfig = {
   baseURL: "",
-  timeout: 10000, //10秒超时
+  //10秒超时
+  timeout: 10000,
   headers: {
     Accept: "application/json, text/plain, */*",
     "Content-Type": "application/json",

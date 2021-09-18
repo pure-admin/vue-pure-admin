@@ -1,19 +1,17 @@
-import { createApp, Directive } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import { setupStore } from "/@/store";
-
-import { useElementPlus } from "../src/plugins/element-plus";
-import { useTable } from "../src/plugins/vxe-table";
+import { createApp, Directive } from "vue";
 import { usI18n } from "../src/plugins/i18n";
+import { useTable } from "../src/plugins/vxe-table";
+import { useElementPlus } from "../src/plugins/element-plus";
 
+import "animate.css";
 // 导入公共样式
 import "./style/index.scss";
 // 导入字体图标
 import "./assets/iconfont/iconfont.js";
 import "./assets/iconfont/iconfont.css";
-import "animate.css";
-
 import "v-contextmenu/dist/themes/default.css";
 
 import { setConfig, getConfig } from "./config";
@@ -25,7 +23,7 @@ app.config.globalProperties.$config = getConfig();
 
 // 响应式storage
 import Storage from "responsive-storage";
-
+// @ts-ignore
 app.use(Storage, {
   // 默认显示首页tag
   routesInStorage: {
@@ -58,7 +56,7 @@ Object.keys(directives).forEach(key => {
 });
 
 // 获取项目动态全局配置
-export const getServerConfig = async (): Promise<any> => {
+export const getServerConfig = async (): Promise<undefined> => {
   return axios({
     baseURL: "",
     method: "get",
@@ -87,10 +85,7 @@ export const getServerConfig = async (): Promise<any> => {
 
 getServerConfig().then(async () => {
   setupStore(app);
-
   app.use(router).use(useElementPlus).use(useTable).use(usI18n);
-
   await router.isReady();
-
   app.mount("#app");
 });

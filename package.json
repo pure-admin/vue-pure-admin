@@ -14,7 +14,7 @@
     "lint:stylelint": "stylelint --cache --fix \"**/*.{vue,css,scss,postcss,less}\" --cache --cache-location node_modules/.cache/stylelint/",
     "lint:lint-staged": "lint-staged -c ./.husky/lintstagedrc.js",
     "lint:pretty": "pretty-quick --staged",
-    "lint:all": "yarn lint:eslint && yarn lint:prettier && yarn lint:stylelint && yarn lint:pretty",
+    "lint": "yarn lint:eslint && yarn lint:prettier && yarn lint:stylelint && yarn lint:pretty",
     "prepare": "husky install"
   },
   "dependencies": {

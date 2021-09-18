@@ -1,8 +1,12 @@
-export const hasClass = (ele: Element, cls: string): any => {
+export const hasClass = (ele: RefType<any>, cls: string): any => {
   return !!ele.className.match(new RegExp("(\\s|^)" + cls + "(\\s|$)"));
 };
 
-export const addClass = (ele: Element, cls: string, extracls?: string): any => {
+export const addClass = (
+  ele: RefType<any>,
+  cls: string,
+  extracls?: string
+): any => {
   if (!hasClass(ele, cls)) ele.className += " " + cls;
   if (extracls) {
     if (!hasClass(ele, extracls)) ele.className += " " + extracls;
@@ -10,7 +14,7 @@ export const addClass = (ele: Element, cls: string, extracls?: string): any => {
 };
 
 export const removeClass = (
-  ele: Element,
+  ele: RefType<any>,
   cls: string,
   extracls?: string
 ): any => {
