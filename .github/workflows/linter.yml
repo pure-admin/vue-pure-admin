@@ -4,7 +4,7 @@
 ## Super Linter GitHub Actions ##
 #################################
 #################################
-name: Lint Code Base
+name: Lint Code
 
 #
 # Documentation:
@@ -27,7 +27,7 @@ on:
 jobs:
   build:
     # Name the Job
-    name: Lint Code Base
+    name: Lint Code
     # Set the agent to run on
     runs-on: ubuntu-latest
 
@@ -36,25 +36,9 @@ jobs:
     ##################
     steps:
       ##########################
-      # Checkout the code base #
+      #   Checkout the code    #
       ##########################
-      - name: Checkout Code
-        uses: actions/checkout@v2
-        with:
-          # Full git history is needed to get a proper list of changed files within `super-linter`
-          fetch-depth: 0
-
-      ################################
-      # Run Linter against code base #
-      ################################
-      - name: Lint Code Base
-        uses: github/super-linter@v4
-        env:
-          VALIDATE_ALL_CODEBASE: false
-          DEFAULT_BRANCH: main
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Build
+      - name: Lint
         run: |
           yarn install
           yarn lint
