@@ -33,7 +33,7 @@ export const removeClass = (
 export const toggleClass = (
   flag: boolean,
   clsName: string,
-  target?: HTMLElement
+  target?: RefType<any>
 ): any => {
   const targetEl = target || document.body;
   let { className } = targetEl;

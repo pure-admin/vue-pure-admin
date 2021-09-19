@@ -19,8 +19,7 @@ const toggleClick = () => {
 <template>
   <div :class="classes.container" @click="toggleClick">
     <svg
-      class="hamburger"
-      :class="props.isActive ? 'is-active' : ''"
+      :class="['hamburger', props.isActive ? 'is-active' : '']"
       viewBox="0 0 1024 1024"
       xmlns="http://www.w3.org/2000/svg"
       width="64"
