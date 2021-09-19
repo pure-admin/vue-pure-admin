@@ -16,6 +16,7 @@ let currentLocale = () => {
       return en;
   }
 };
+// test
 </script>
 
 <template>
