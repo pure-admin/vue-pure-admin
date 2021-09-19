@@ -219,7 +219,7 @@ class EnclosureHttp {
     return new Promise((resolve, reject) => {
       EnclosureHttp.axiosInstance
         .request(config)
-        .then((response: EnclosureHttpResoponse) => {
+        .then((response: undefined) => {
           resolve(response);
         })
         .catch((error: any) => {

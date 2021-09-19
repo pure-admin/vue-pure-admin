@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref, watch, Ref } from "vue";
+import { ref, watch } from "vue";
 import { useRoute, useRouter, RouteLocationMatched } from "vue-router";
 
-const levelList: Ref<RouteLocationMatched[]> = ref([]);
+const levelList = ref([]);
 const route = useRoute();
 const router = useRouter();
 

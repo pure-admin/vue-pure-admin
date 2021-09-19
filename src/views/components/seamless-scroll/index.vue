@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { ref, unref } from "vue";
+import { ref, reactive, unref } from "vue";
 import { templateRef } from "@vueuse/core";
 import SeamlessScroll from "/@/components/ReSeamlessScroll";
 
 // eslint-disable-next-line no-undef
 const scroll = templateRef<ElRef | null>("scroll", null);
 
-let listData = ref<Array<Object>>([
+let listData = ref<ForDataType<undefined>>([
   {
     title: "无缝滚动第一行无缝滚动第一行！！！！！！！！！！"
   },
@@ -36,11 +36,12 @@ let listData = ref<Array<Object>>([
   }
 ]);
 
-let classOption = ref<Object>({
+let classOption = reactive({
   direction: "top"
 });
 
 function changeDirection(val) {
+  // @ts-ignore
   unref(scroll).reset();
   unref(classOption).direction = val;
 }
