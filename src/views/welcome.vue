@@ -65,7 +65,7 @@ function initbrokenLine() {
       },
       dataZoom: [
         {
-          startValue: "2014-06-01"
+          startValue: "2021-06-01"
         },
         {
           type: "inside"
