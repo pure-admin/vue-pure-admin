@@ -1,3 +1,20 @@
+<script setup lang="ts">
+import splitpane, { ContextProps } from "/@/components/ReSplitPane";
+import { reactive } from "vue";
+
+const settingLR: ContextProps = reactive({
+  minPercent: 20,
+  defaultPercent: 40,
+  split: "vertical"
+});
+
+const settingTB: ContextProps = reactive({
+  minPercent: 20,
+  defaultPercent: 40,
+  split: "horizontal"
+});
+</script>
+
 <template>
   <div class="split-pane">
     <splitpane :splitSet="settingLR">
@@ -21,35 +38,6 @@
     </splitpane>
   </div>
 </template>
-
-<script lang="ts">
-import splitpane, { ContextProps } from "/@/components/ReSplitPane";
-import { reactive } from "vue";
-export default {
-  name: "reSplitPane",
-  components: {
-    splitpane
-  },
-  setup() {
-    const settingLR: ContextProps = reactive({
-      minPercent: 20,
-      defaultPercent: 40,
-      split: "vertical"
-    });
-
-    const settingTB: ContextProps = reactive({
-      minPercent: 20,
-      defaultPercent: 40,
-      split: "horizontal"
-    });
-
-    return {
-      settingLR,
-      settingTB
-    };
-  }
-};
-</script>
 
 <style lang="scss" scoped>
 $W: 100%;

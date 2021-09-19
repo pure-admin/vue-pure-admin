@@ -1,3 +1,79 @@
+<script setup lang="ts">
+import { reactive } from "vue";
+import { VxeTableEvents } from "vxe-table";
+import { templateRef } from "@vueuse/core";
+
+interface Props {
+  drawer: boolean;
+  drawTitle?: string;
+  direction?: string;
+}
+
+withDefaults(defineProps<Props>(), {
+  drawer: false,
+  drawTitle: "",
+  direction: "rtl"
+});
+
+const emit = defineEmits<{
+  (e: "handleClose"): void;
+}>();
+
+const xTable = templateRef<any>("xTable", null);
+
+const configData = reactive({
+  tableData: [
+    {
+      name: "禁用",
+      dataval: "0"
+    },
+    {
+      name: "启用",
+      dataval: "1"
+    }
+  ],
+  isAllChecked: false,
+  isIndeterminate: false,
+  selectRecords: [] as any[],
+  tablePage: {
+    total: 0,
+    currentPage: 1,
+    pageSize: 10
+  }
+});
+
+// 抽屉关闭
+function handleClose() {
+  configData.isAllChecked = false;
+  configData.isIndeterminate = false;
+  emit("handleClose");
+}
+
+function editConfig(row) {
+  console.log("editConfig", row);
+}
+
+function delConfig(row) {
+  console.log("delConfig", row);
+}
+
+const changeAllEvent = () => {
+  setTimeout(() => {
+    console.log(xTable);
+  }, 1000);
+  const $table = xTable.value;
+  $table.setAllCheckboxRow(configData.isAllChecked);
+  configData.selectRecords = $table.getCheckboxRecords();
+};
+
+const checkboxChangeEvent: VxeTableEvents.CheckboxChange = ({ records }) => {
+  const $table = xTable.value;
+  configData.isAllChecked = $table.isAllCheckboxChecked();
+  configData.isIndeterminate = $table.isCheckboxIndeterminate();
+  configData.selectRecords = records;
+};
+</script>
+
 <template>
   <div class="config">
     <el-drawer
@@ -14,7 +90,7 @@
         <vxe-table
           ref="xTable"
           border
-          :data="tableData"
+          :data="configData.tableData"
           @checkbox-change="checkboxChangeEvent"
           @checkbox-all="checkboxChangeEvent"
         >
@@ -40,9 +116,9 @@
         </vxe-table>
         <vxe-pager
           perfect
-          v-model:current-page="tablePage.currentPage"
-          v-model:page-size="tablePage.pageSize"
-          :total="tablePage.total"
+          v-model:current-page="configData.tablePage.currentPage"
+          v-model:page-size="configData.tablePage.pageSize"
+          :total="configData.tablePage.total"
           :layouts="[
             'PrevJump',
             'PrevPage',
@@ -57,12 +133,12 @@
           <template #left>
             <span class="page-left">
               <vxe-checkbox
-                v-model="isAllChecked"
-                :indeterminate="isIndeterminate"
+                v-model="configData.isAllChecked"
+                :indeterminate="configData.isIndeterminate"
                 @change="changeAllEvent"
               ></vxe-checkbox>
               <span class="select-count"
-                >已选中{{ selectRecords.length }}条</span
+                >已选中{{ configData.selectRecords.length }}条</span
               >
               <vxe-button size="small">{{ $t("message.hsdelete") }}</vxe-button>
             </span>
@@ -72,98 +148,6 @@
     </el-drawer>
   </div>
 </template>
-
-<script lang="ts">
-import { defineComponent, reactive, toRefs } from "vue";
-import { propTypes } from "/@/utils/propTypes";
-import { VxeTableEvents } from "vxe-table";
-import { templateRef } from "@vueuse/core";
-
-export default defineComponent({
-  props: {
-    drawer: propTypes.bool.def(false),
-    drawTitle: propTypes.string.def(""),
-    direction: propTypes.string.def("rtl")
-  },
-  emits: ["handleClose"],
-  setup(props, ctx) {
-    const { emit } = ctx;
-
-    const xTable = templateRef<any>("xTable", null);
-
-    const configData = reactive({
-      tableData: [
-        {
-          name: "禁用",
-          dataval: "0"
-        },
-        {
-          name: "启用",
-          dataval: "1"
-        }
-      ],
-      isAllChecked: false,
-      isIndeterminate: false,
-      selectRecords: [] as any[],
-      tablePage: {
-        total: 0,
-        currentPage: 1,
-        pageSize: 10
-      }
-    });
-
-    // 抽屉关闭
-    function handleClose() {
-      configData.isAllChecked = false;
-      configData.isIndeterminate = false;
-      emit("handleClose");
-    }
-
-    function editConfig(row) {
-      console.log(
-        "%crow===>>>: ",
-        "color: MidnightBlue; background: Aquamarine; font-size: 20px;",
-        row
-      );
-    }
-
-    function delConfig(row) {
-      console.log(
-        "%crow===>>>: ",
-        "color: MidnightBlue; background: Aquamarine; font-size: 20px;",
-        row
-      );
-    }
-
-    const changeAllEvent = () => {
-      setTimeout(() => {
-        console.log(xTable);
-      }, 1000);
-      const $table = xTable.value;
-      $table.setAllCheckboxRow(configData.isAllChecked);
-      configData.selectRecords = $table.getCheckboxRecords();
-    };
-
-    const checkboxChangeEvent: VxeTableEvents.CheckboxChange = ({
-      records
-    }) => {
-      const $table = xTable.value;
-      configData.isAllChecked = $table.isAllCheckboxChecked();
-      configData.isIndeterminate = $table.isCheckboxIndeterminate();
-      configData.selectRecords = records;
-    };
-
-    return {
-      ...toRefs(configData),
-      handleClose,
-      editConfig,
-      delConfig,
-      changeAllEvent,
-      checkboxChangeEvent
-    };
-  }
-});
-</script>
 
 <style lang="scss" scoped>
 .list {

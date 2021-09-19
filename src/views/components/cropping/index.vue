@@ -1,3 +1,29 @@
+<script setup lang="ts">
+import { ref, nextTick, getCurrentInstance } from "vue";
+import Cropper from "/@/components/ReCropper";
+import img from "./picture.jpeg";
+
+const instance = getCurrentInstance();
+let info = ref<object>(null);
+let cropperImg = ref<string>("");
+
+const onCropper = (): void => {
+  nextTick(() => {
+    // @ts-expect-error
+    instance.refs.refCropper.cropper.getCroppedCanvas().toBlob(blob => {
+      let fileReader: FileReader = new FileReader();
+      fileReader.onloadend = (e: ProgressEvent) => {
+        // @ts-ignore
+        cropperImg.value = e.target.result;
+        // @ts-expect-error
+        info.value = instance.refs.refCropper.cropper.getData();
+      };
+      fileReader.readAsDataURL(blob);
+    }, "image/jpeg");
+  });
+};
+</script>
+
 <template>
   <div style="margin: 10px">
     <div class="cropper-container">
@@ -8,44 +34,6 @@
     <p v-if="cropperImg">裁剪后图片信息：{{ info }}</p>
   </div>
 </template>
-
-<script lang="ts">
-import { ref, nextTick, getCurrentInstance } from "vue";
-import Cropper from "/@/components/ReCropper";
-import img from "./picture.jpeg";
-
-export default {
-  name: "reCropping",
-  components: {
-    Cropper
-  },
-  setup() {
-    const instance = getCurrentInstance();
-    let info = ref("");
-    let cropperImg = ref("");
-
-    const onCropper = (): void => {
-      nextTick(() => {
-        instance.refs.refCropper.cropper.getCroppedCanvas().toBlob(blob => {
-          let fileReader: FileReader = new FileReader();
-          fileReader.onloadend = (e: any) => {
-            cropperImg.value = e.target.result;
-            info.value = instance.refs.refCropper.cropper.getData();
-          };
-          fileReader.readAsDataURL(blob);
-        }, "image/jpeg");
-      });
-    };
-
-    return {
-      img,
-      info,
-      cropperImg,
-      onCropper
-    };
-  }
-};
-</script>
 
 <style scoped>
 .cropper-container {

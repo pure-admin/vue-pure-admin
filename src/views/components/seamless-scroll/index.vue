@@ -1,3 +1,51 @@
+<script setup lang="ts">
+import { ref, unref } from "vue";
+import { templateRef } from "@vueuse/core";
+import SeamlessScroll from "/@/components/ReSeamlessScroll";
+
+// eslint-disable-next-line no-undef
+const scroll = templateRef<ElRef | null>("scroll", null);
+
+let listData = ref<Array<Object>>([
+  {
+    title: "无缝滚动第一行无缝滚动第一行！！！！！！！！！！"
+  },
+  {
+    title: "无缝滚动第二行无缝滚动第二行！！！！！！！！！！"
+  },
+  {
+    title: "无缝滚动第三行无缝滚动第三行！！！！！！！！！！"
+  },
+  {
+    title: "无缝滚动第四行无缝滚动第四行！！！！！！！！！！"
+  },
+  {
+    title: "无缝滚动第五行无缝滚动第五行！！！！！！！！！！"
+  },
+  {
+    title: "无缝滚动第六行无缝滚动第六行！！！！！！！！！！"
+  },
+  {
+    title: "无缝滚动第七行无缝滚动第七行！！！！！！！！！！"
+  },
+  {
+    title: "无缝滚动第八行无缝滚动第八行！！！！！！！！！！"
+  },
+  {
+    title: "无缝滚动第九行无缝滚动第九行！！！！！！！！！！"
+  }
+]);
+
+let classOption = ref<Object>({
+  direction: "top"
+});
+
+function changeDirection(val) {
+  unref(scroll).reset();
+  unref(classOption).direction = val;
+}
+</script>
+
 <template>
   <el-space wrap>
     <el-card class="box-card">
@@ -59,68 +107,6 @@
     </el-card>
   </el-space>
 </template>
-
-<script lang="ts">
-import { ref, unref } from "vue";
-import { templateRef } from "@vueuse/core";
-
-import SeamlessScroll from "/@/components/ReSeamlessScroll";
-export default {
-  name: "reSeamlessScroll",
-  components: {
-    SeamlessScroll
-  },
-  setup() {
-    // eslint-disable-next-line no-undef
-    const scroll = templateRef<ElRef | null>("scroll", null);
-
-    let listData = ref([
-      {
-        title: "无缝滚动第一行无缝滚动第一行！！！！！！！！！！"
-      },
-      {
-        title: "无缝滚动第二行无缝滚动第二行！！！！！！！！！！"
-      },
-      {
-        title: "无缝滚动第三行无缝滚动第三行！！！！！！！！！！"
-      },
-      {
-        title: "无缝滚动第四行无缝滚动第四行！！！！！！！！！！"
-      },
-      {
-        title: "无缝滚动第五行无缝滚动第五行！！！！！！！！！！"
-      },
-      {
-        title: "无缝滚动第六行无缝滚动第六行！！！！！！！！！！"
-      },
-      {
-        title: "无缝滚动第七行无缝滚动第七行！！！！！！！！！！"
-      },
-      {
-        title: "无缝滚动第八行无缝滚动第八行！！！！！！！！！！"
-      },
-      {
-        title: "无缝滚动第九行无缝滚动第九行！！！！！！！！！！"
-      }
-    ]);
-
-    let classOption = ref({
-      direction: "top"
-    });
-
-    function changeDirection(val) {
-      unref(scroll).reset();
-      unref(classOption).direction = val;
-    }
-
-    return {
-      listData,
-      classOption,
-      changeDirection
-    };
-  }
-};
-</script>
 
 <style lang="scss" scoped>
 .box-card {

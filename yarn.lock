@@ -794,7 +794,7 @@
     "@vue/compiler-core" "3.2.11"
     "@vue/shared" "3.2.11"
 
-"@vue/compiler-sfc@^3.0.11", "@vue/compiler-sfc@^3.2.11":
+"@vue/compiler-sfc@3.2.11", "@vue/compiler-sfc@^3.0.11":
   version "3.2.11"
   resolved "https://registry.npmjs.org/@vue/compiler-sfc/-/compiler-sfc-3.2.11.tgz#628fa12238760d9b9b339ac2e125a759224fadbf"
   integrity sha512-cUIaS8mgJrQ6yucj2AupWAwBRITK3W/a8wCOn9g5fJGtOl8h4APY8vN3lzP8HIJDyEeRF3I8SfRhL+oX97kSnw==
@@ -885,12 +885,12 @@
   resolved "https://registry.npmjs.org/@vue/shared/-/shared-3.2.11.tgz#01899f54949caf1ac241de397bd17069632574de"
   integrity sha512-ovfXAsSsCvV9JVceWjkqC/7OF5HbgLOtCWjCIosmPGG8lxbPuavhIxRH1dTx4Dg9xLgRTNLvI3pVxG4ItQZekg==
 
-"@vueuse/core@^6.0.0":
-  version "6.3.3"
-  resolved "https://registry.npmjs.org/@vueuse/core/-/core-6.3.3.tgz#0682c01b50d28e91d3d76f27278600ee1692fa24"
-  integrity sha512-qa/0WYqcvqFKQmlkgsLGlXBrYcQeUi3fzHMIaxsD/lO/zm0IWBSN8CTFu91LwER5qNYs4DGhU5pu7jOdrTzAIQ==
+"@vueuse/core@^6.4.1":
+  version "6.4.1"
+  resolved "https://registry.npmjs.org/@vueuse/core/-/core-6.4.1.tgz#21416997a23bfb4924a5082ed6fa959027f80d04"
+  integrity sha512-FRFeEPVq77gcMZP0mCloJY+lyHJaUQmUMaPp5fBds3fs/BbkAt7HTMMizFKHWDVjbmA20vBOjmC9tTnfD+DdEA==
   dependencies:
-    "@vueuse/shared" "6.3.3"
+    "@vueuse/shared" "6.4.1"
     vue-demi "*"
 
 "@vueuse/core@~6.1.0":
@@ -908,10 +908,10 @@
   dependencies:
     vue-demi "*"
 
-"@vueuse/shared@6.3.3":
-  version "6.3.3"
-  resolved "https://registry.npmjs.org/@vueuse/shared/-/shared-6.3.3.tgz#4e5c600ad1ed5bf2a8630ad0bd38edb1f4269f37"
-  integrity sha512-2+YPRhFNUXEhhvKNTWBtNU6hGkft9+mfYSVjI4hZu2U8KDbNNKF/215lBPzMYI2twScDtPsAssQ+vu5t9PBy0g==
+"@vueuse/shared@6.4.1":
+  version "6.4.1"
+  resolved "https://registry.npmjs.org/@vueuse/shared/-/shared-6.4.1.tgz#5bc84be107cead84e11c21d2c57b1e9f2c376975"
+  integrity sha512-zsaYxxZwACQbMmGg+UBjPUVemi325sDdnnB0mn+PNizE0fVC57B+vbLgdj45NBmr6P4nw6a0Y2rMupebwDWsdw==
   dependencies:
     vue-demi "*"
 
@@ -3865,6 +3865,11 @@ snake-case@^3.0.4:
     dot-case "^3.0.4"
     tslib "^2.0.3"
 
+sortablejs@1.13.0:
+  version "1.13.0"
+  resolved "https://registry.npmjs.org/sortablejs/-/sortablejs-1.13.0.tgz#3ab2473f8c69ca63569e80b1cd1b5669b51269e9"
+  integrity sha512-RBJirPY0spWCrU5yCmWM1eFs/XgX2J5c6b275/YyxFRgnzPhKl/TDeU2hNR8Dt7ITq66NRPM4UlOt+e5O4CFHg==
+
 sortablejs@1.14.0:
   version "1.14.0"
   resolved "https://registry.npmjs.org/sortablejs/-/sortablejs-1.14.0.tgz#6d2e17ccbdb25f464734df621d4f35d4ab35b3d8"
@@ -4493,14 +4498,14 @@ vue-router@^4.0.11:
   dependencies:
     "@vue/devtools-api" "^6.0.0-beta.14"
 
-vue-types@^4.0.3:
+vue-types@^4.1.0:
   version "4.1.0"
   resolved "https://registry.npmjs.org/vue-types/-/vue-types-4.1.0.tgz#8dcbbaccf9d5c3815449ac7cb8ae5864454cfff0"
   integrity sha512-oPAeKKx5vY5Q8c7lMQPQyrBIbmWQGael5XEHqO1f+Y3V/RUZNuISz7KxI4woGjh79Vy/gDDaPX9j9zKYpaaA2g==
   dependencies:
     is-plain-object "5.0.0"
 
-vue@^3.1.1, vue@^3.2.11:
+vue@3.2.11, vue@^3.1.1:
   version "3.2.11"
   resolved "https://registry.npmjs.org/vue/-/vue-3.2.11.tgz#6b92295048df705ddac558fd3e3ed553e55e57c8"
   integrity sha512-JkI3/eIgfk4E0f/p319TD3EZgOwBQfftgnkRsXlT7OrRyyiyoyUXn6embPGZXSBxD3LoZ9SWhJoxLhFh5AleeA==

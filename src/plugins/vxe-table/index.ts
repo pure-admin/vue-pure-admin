@@ -1,7 +1,7 @@
+import "xe-utils";
 import { App } from "vue";
 import { i18n } from "../i18n/index";
 import "font-awesome/css/font-awesome.css";
-import "xe-utils";
 import {
   // 核心
   VXETable,
@@ -62,6 +62,7 @@ VXETable.setup({
     clearable: true
   },
   // 对组件内置的提示语进行国际化翻译
+  // @ts-ignore
   i18n: (key, args) => i18n.global.t(key, args),
   // 可选，对参数中的列头、校验提示..等进行自动翻译（只对支持国际化的有效）
   translate(key, args) {

@@ -1,5 +1,4 @@
 import type { CSSProperties } from "vue";
-
 import {
   defineComponent,
   onBeforeMount,
@@ -40,46 +39,48 @@ const defaultOptions: Cropper.Options = {
   rotatable: true
 };
 
-export default defineComponent({
-  name: "Cropper",
-  props: {
-    src: {
-      type: String,
-      required: true
-    },
-    alt: {
-      type: String
-    },
-    width: {
-      type: [String, Number],
-      default: ""
-    },
-    height: {
-      type: [String, Number],
-      default: "360px"
-    },
-    crossorigin: {
-      type: String || Object,
-      default: undefined
-    },
-    imageStyle: {
-      type: Object as PropType<CSSProperties>,
-      default() {
-        return {};
-      }
-    },
-    options: {
-      type: Object as PropType<Options>,
-      default() {
-        return {};
-      }
+const props = {
+  src: {
+    type: String,
+    required: true
+  },
+  alt: {
+    type: String
+  },
+  width: {
+    type: [String, Number],
+    default: ""
+  },
+  height: {
+    type: [String, Number],
+    default: "360px"
+  },
+  crossorigin: {
+    type: String || Object,
+    default: undefined
+  },
+  imageStyle: {
+    type: Object as PropType<CSSProperties>,
+    default() {
+      return {};
     }
   },
+  options: {
+    type: Object as PropType<Options>,
+    default() {
+      return {};
+    }
+  }
+};
+
+export default defineComponent({
+  name: "Cropper",
+  props,
   setup(props) {
     const cropper: any = ref<Nullable<Cropper>>(null);
     const imgElRef = templateRef<HTMLImageElement | null>("imgElRef", null);
 
-    const isReady = ref(false);
+    const isReady = ref<boolean>(false);
 
     const getImageStyle = computed((): CSSProperties => {
       return {

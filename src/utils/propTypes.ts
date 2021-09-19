@@ -30,4 +30,5 @@ propTypes.extend([
     type: undefined
   }
 ]);
+
 export { propTypes };

@@ -21,35 +21,37 @@ let overList = [];
 // 存放第一个选中的元素和最后一个选中元素，只能存放这两个元素
 let selectedList = [];
 
-export default defineComponent({
-  name: "Selector",
-  props: {
-    HsKey: {
-      type: Number || String,
-      default: 0
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    value: {
-      type: Number,
-      default: 0
-    },
-    max: {
-      type: Array,
-      default() {
-        return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-      }
-    },
-    // 回显数据的索引，长度必须是2
-    echo: {
-      type: Array,
-      default() {
-        return [];
-      }
+const props = {
+  HsKey: {
+    type: Number || String,
+    default: 0
+  },
+  disabled: {
+    type: Boolean,
+    default: false
+  },
+  value: {
+    type: Number,
+    default: 0
+  },
+  max: {
+    type: Array,
+    default() {
+      return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     }
   },
+  // 回显数据的索引，长度必须是2
+  echo: {
+    type: Array,
+    default() {
+      return [];
+    }
+  }
+};
+
+export default defineComponent({
+  name: "Selector",
+  props,
   emits: ["selectedVal"],
   setup(props, { emit }) {
     const instance = getCurrentInstance();

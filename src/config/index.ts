@@ -1,6 +1,6 @@
 let config: object = {};
 
-const setConfig = (cfg?: any) => {
+const setConfig = (cfg?: unknown) => {
   config = Object.assign(config, cfg);
 };
 

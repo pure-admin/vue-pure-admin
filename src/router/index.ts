@@ -1,5 +1,11 @@
-import { createRouter, createWebHashHistory, Router } from "vue-router";
+import {
+  createRouter,
+  createWebHashHistory,
+  Router,
+  RouteComponent
+} from "vue-router";
 
+import Layout from "/@/layout/index.vue";
 import homeRouter from "./modules/home";
 import flowChartRouter from "./modules/flowchart";
 import editorRouter from "./modules/editor";
@@ -9,17 +15,15 @@ import errorRouter from "./modules/error";
 import externalLink from "./modules/externalLink";
 import remainingRouter from "./modules/remaining"; //静态路由
 
-import { storageSession } from "../utils/storage";
 import { i18n } from "/@/plugins/i18n";
+import { getAsyncRoutes } from "/@/api/routes";
+import { storageSession } from "../utils/storage";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 
-import { getAsyncRoutes } from "/@/api/routes";
-
-import Layout from "/@/layout/index.vue";
 // https://cn.vitejs.dev/guide/features.html#glob-import
 const modulesRoutes = import.meta.glob("/src/views/*/*/*.vue");
 
-const constantRoutes: Array<any> = [
+const constantRoutes: Array<RouteComponent> = [
   homeRouter,
   flowChartRouter,
   editorRouter,
@@ -125,8 +129,10 @@ const whiteList = ["/login", "/register"];
 router.beforeEach((to, _from, next) => {
   const name = storageSession.getItem("info");
   NProgress.start();
+  // @ts-ignore
   const { t } = i18n.global;
-  to.meta.title ? (document.title = t(to.meta.title)) : ""; // 动态title
+  // @ts-ignore
+  to.meta.title ? (document.title = t(to.meta.title)) : "";
   if (name) {
     if (_from?.name) {
       next();

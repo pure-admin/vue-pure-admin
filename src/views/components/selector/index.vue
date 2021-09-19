@@ -1,3 +1,26 @@
+<script setup lang="ts">
+import { ref } from "vue";
+import Selector from "/@/components/ReSelector";
+
+let selectRange = ref<string>("");
+let dataLists = ref<Array<Object>>([
+  {
+    title: "基本使用",
+    echo: [],
+    disabled: false
+  },
+  {
+    title: "回显模式",
+    echo: [2, 7],
+    disabled: true
+  }
+]);
+
+const selectedVal = ({ left, right }): void => {
+  selectRange.value = `${left}-${right}`;
+};
+</script>
+
 <template>
   <div>
     <el-card
@@ -21,38 +44,3 @@
     </el-card>
   </div>
 </template>
-
-<script lang="ts">
-import { ref } from "vue";
-import Selector from "/@/components/ReSelector";
-
-export default {
-  name: "reSelector",
-  components: { Selector },
-  setup() {
-    let selectRange = ref(null);
-    let dataLists = ref([
-      {
-        title: "基本使用",
-        echo: [],
-        disabled: false
-      },
-      {
-        title: "回显模式",
-        echo: [2, 7],
-        disabled: true
-      }
-    ]);
-
-    const selectedVal = ({ left, right }) => {
-      selectRange.value = `${left}-${right}`;
-    };
-
-    return {
-      selectedVal,
-      selectRange,
-      dataLists
-    };
-  }
-};
-</script>

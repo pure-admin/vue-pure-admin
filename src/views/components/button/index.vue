@@ -1,23 +1,16 @@
+<script setup lang="ts">
+import { ref } from "vue";
+
+const url = ref(
+  process.env.NODE_ENV === "production"
+    ? "/manages/html/button.html"
+    : "/html/button.html"
+);
+</script>
+
 <template>
   <iframe :src="url" frameborder="0" class="iframe"></iframe>
 </template>
-
-<script lang="ts">
-import { ref } from "vue";
-export default {
-  name: "reButton",
-  setup() {
-    const url = ref(
-      process.env.NODE_ENV === "production"
-        ? "/manages/html/button.html"
-        : "/html/button.html"
-    );
-    return {
-      url
-    };
-  }
-};
-</script>
 
 <style scoped>
 .iframe {

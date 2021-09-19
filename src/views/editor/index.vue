@@ -1,46 +1,39 @@
+<script lang="ts">
+export default {
+  name: "reEditor"
+};
+</script>
+
+<script setup lang="ts">
+import { onMounted, onBeforeUnmount, ref, unref } from "vue";
+import WangEditor from "wangeditor";
+
+// eslint-disable-next-line no-undef
+const editor = ref(null);
+const html = ref(null);
+let instance: WangEditor;
+
+onMounted(() => {
+  instance = new WangEditor(unref(editor));
+  Object.assign(instance.config, {
+    onchange() {
+      html.value = instance.txt.html();
+    }
+  });
+  instance.create();
+});
+
+onBeforeUnmount(() => {
+  instance.destroy();
+});
+</script>
+
 <template>
   <div>
     <div ref="editor"></div>
-    <div :innerHTML="content.html"></div>
+    <div :innerHTML="html"></div>
   </div>
 </template>
-
-<script>
-import { onMounted, onBeforeUnmount, ref, reactive } from "vue";
-import WangEditor from "wangeditor";
-
-export default {
-  name: "reEditor",
-  setup() {
-    const editor = ref();
-    const content = reactive({
-      html: "",
-      text: ""
-    });
-
-    let instance;
-    onMounted(() => {
-      instance = new WangEditor(editor.value);
-      Object.assign(instance.config, {
-        onchange() {
-          content.html = instance.txt.html();
-        }
-      });
-      instance.create();
-    });
-
-    onBeforeUnmount(() => {
-      instance.destroy();
-      instance = null;
-    });
-
-    return {
-      editor,
-      content
-    };
-  }
-};
-</script>
 
 <style lang="scss" scoped>
 :deep(.w-e-text-container) {

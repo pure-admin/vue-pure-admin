@@ -1,3 +1,18 @@
+<script setup lang="ts">
+import { ref } from "vue";
+import { storageSession } from "/@/utils/storage";
+
+const auth = ref<Boolean>(storageSession.getItem("info").username || "admin");
+
+function changRole(value) {
+  storageSession.setItem("info", {
+    username: value,
+    accessToken: `eyJhbGciOiJIUzUxMiJ9.${value}`
+  });
+  window.location.reload();
+}
+</script>
+
 <template>
   <div class="app-container">
     <el-radio-group v-model="auth" @change="changRole">
@@ -8,30 +23,3 @@
     <p v-auth="'v-test'">只有test可看</p>
   </div>
 </template>
-
-<script lang="ts">
-import { ref } from "vue";
-import { storageSession } from "/@/utils/storage";
-export default {
-  name: "permissionButton",
-  setup() {
-    const auth = ref(storageSession.getItem("info").username || "admin");
-
-    function changRole(value) {
-      storageSession.setItem("info", {
-        username: value,
-        accessToken: `eyJhbGciOiJIUzUxMiJ9.${value}`
-      });
-
-      window.location.reload();
-    }
-
-    return {
-      auth,
-      changRole
-    };
-  }
-};
-</script>
-
-<style scoped></style>

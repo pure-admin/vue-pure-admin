@@ -10,7 +10,6 @@ class algorithmProxy implements ProxyAlgorithm {
     return Object.keys(val)
       .map(v => {
         return {
-          // @ts-ignore
           ...val[v],
           key: v
         };

@@ -1,3 +1,9 @@
+<script setup lang="ts">
+import { useFullscreen } from "@vueuse/core";
+
+const { isFullscreen, toggle } = useFullscreen();
+</script>
+
 <template>
   <div class="screen-full" @click="toggle">
     <i
@@ -14,23 +20,6 @@
     ></i>
   </div>
 </template>
-
-<script>
-import { useFullscreen } from "@vueuse/core";
-import { defineComponent } from "vue";
-
-export default defineComponent({
-  name: "screenfull",
-  setup() {
-    const { isFullscreen, toggle } = useFullscreen();
-
-    return {
-      isFullscreen,
-      toggle
-    };
-  }
-});
-</script>
 
 <style lang="scss" scoped>
 .screen-full {
