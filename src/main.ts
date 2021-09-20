@@ -31,6 +31,7 @@ app.use(Storage, {
     default: Storage.getData(undefined, "routesInStorage") ?? [
       {
         path: "/welcome",
+        parentPath: "/",
         meta: {
           title: "message.hshome",
           icon: "el-icon-s-home",

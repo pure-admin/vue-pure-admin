@@ -1,24 +1,26 @@
 import {
-  createRouter,
-  createWebHashHistory,
   Router,
-  RouteComponent
+  createRouter,
+  RouteComponent,
+  createWebHashHistory
 } from "vue-router";
-
-import Layout from "/@/layout/index.vue";
-import homeRouter from "./modules/home";
-import flowChartRouter from "./modules/flowchart";
-import editorRouter from "./modules/editor";
-import componentsRouter from "./modules/components";
-import nestedRouter from "./modules/nested";
-import errorRouter from "./modules/error";
-import externalLink from "./modules/externalLink";
-import remainingRouter from "./modules/remaining"; //静态路由
-
 import { i18n } from "/@/plugins/i18n";
-import { getAsyncRoutes } from "/@/api/routes";
-import { storageSession } from "../utils/storage";
+import NProgress from "/@/utils/progress";
+import { storageSession, storageLocal } from "/@/utils/storage";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
+
+// 静态路由
+import homeRouter from "./modules/home";
+import Layout from "/@/layout/index.vue";
+import errorRouter from "./modules/error";
+import editorRouter from "./modules/editor";
+import nestedRouter from "./modules/nested";
+import externalLink from "./modules/externalLink";
+import remainingRouter from "./modules/remaining";
+import flowChartRouter from "./modules/flowchart";
+import componentsRouter from "./modules/components";
+// 动态路由
+import { getAsyncRoutes } from "/@/api/routes";
 
 // https://cn.vitejs.dev/guide/features.html#glob-import
 const modulesRoutes = import.meta.glob("/src/views/*/*/*.vue");
@@ -41,12 +43,12 @@ export const ascending = arr => {
 };
 
 // 将所有静态路由导出
-export const constantRoutesArr = ascending(constantRoutes).concat(
-  ...remainingRouter
-);
+export const constantRoutesArr: Array<RouteComponent> = ascending(
+  constantRoutes
+).concat(...remainingRouter);
 
-// 过滤后端传来的动态路由重新生成规范路由
-export const addAsyncRoutes = (arrRoutes: Array<string>) => {
+// 过滤后端传来的动态路由 重新生成规范路由
+export const addAsyncRoutes = (arrRoutes: Array<RouteComponent>) => {
   if (!arrRoutes || !arrRoutes.length) return;
   arrRoutes.forEach((v: any) => {
     if (v.redirect) {
@@ -61,7 +63,7 @@ export const addAsyncRoutes = (arrRoutes: Array<string>) => {
   return arrRoutes;
 };
 
-const router = createRouter({
+const router: Router = createRouter({
   history: createWebHashHistory(),
   routes: ascending(constantRoutes).concat(...remainingRouter),
   scrollBehavior(to, from, savedPosition) {
@@ -79,7 +81,7 @@ const router = createRouter({
   }
 });
 
-export const initRouter = (name, next?, to?) => {
+export const initRouter = name => {
   return new Promise(resolve => {
     getAsyncRoutes({ name }).then(({ info }) => {
       if (info.length === 0) {
@@ -98,7 +100,6 @@ export const initRouter = (name, next?, to?) => {
             // 最终路由进行升序
             ascending(router.options.routes);
             router.addRoute(v.name, v);
-            if (next && to) next({ ...to, replace: true });
             usePermissionStoreHook().changeSetting(info);
           }
           resolve(router);
@@ -122,8 +123,6 @@ export function resetRouter() {
   });
 }
 
-import NProgress from "../utils/progress";
-
 const whiteList = ["/login", "/register"];
 
 router.beforeEach((to, _from, next) => {
@@ -137,9 +136,24 @@ router.beforeEach((to, _from, next) => {
     if (_from?.name) {
       next();
     } else {
+      // 刷新
       if (usePermissionStoreHook().wholeRoutes.length === 0)
-        initRouter(name.username, next, to).then((router: Router) => {
+        initRouter(name.username).then((router: Router) => {
           router.push(to.path);
+          // 刷新页面更新标签栏与页面路由匹配
+          const localRoutes = storageLocal.getItem(
+            "responsive-routesInStorage"
+          );
+          const optionsRoutes = router.options?.routes;
+          const newLocalRoutes = [];
+          optionsRoutes.forEach(ors => {
+            localRoutes.forEach(lrs => {
+              if (ors.path === lrs.parentPath) {
+                newLocalRoutes.push(lrs);
+              }
+            });
+          });
+          storageLocal.setItem("responsive-routesInStorage", newLocalRoutes);
         });
       next();
     }

@@ -6,7 +6,8 @@ import { constantRoutesArr, ascending } from "/@/router/index";
 export const usePermissionStore = defineStore({
   id: "pure-permission",
   state: () => ({
-    constantRoutes: constantRoutesArr, //静态路由
+    // 静态路由
+    constantRoutes: constantRoutesArr,
     wholeRoutes: [],
     buttonAuth: []
   }),

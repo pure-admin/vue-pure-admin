@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import Flop from "/@/components/ReFlop";
 import { ref, computed, onMounted, nextTick } from "vue";
-import { deviceDetection } from "/@/utils/deviceDetection";
 import { useEventListener, tryOnUnmounted, useTimeoutFn } from "@vueuse/core";
 import { echartsJson } from "/@/api/mock";
 import echarts from "/@/plugins/echarts";
@@ -9,7 +7,6 @@ import { ECharts } from "echarts";
 
 //折线图实例
 let brokenLine: ECharts;
-let mobile = ref<boolean>(deviceDetection());
 let date: Date = new Date();
 let loading = ref<boolean>(true);
 
@@ -167,29 +164,41 @@ tryOnUnmounted(() => {
 
 <template>
   <div class="welcome">
-    <el-affix>
-      <div class="top-content">
-        <div class="left-mark">
-          <img
-            src="https://avatars.githubusercontent.com/u/44761321?s=400&u=30907819abd29bb3779bc247910873e7c7f7c12f&v=4"
-            title="直达仓库地址"
-            alt
-            @click="openDepot"
-          />
-          <span>{{ greetings }}</span>
-        </div>
-        <Flop v-if="!mobile" />
+    <el-card class="top-content">
+      <div class="left-mark">
+        <img
+          src="https://avatars.githubusercontent.com/u/44761321?s=400&u=30907819abd29bb3779bc247910873e7c7f7c12f&v=4"
+          title="直达仓库地址"
+          alt
+          @click="openDepot"
+        />
+        <span>{{ greetings }}</span>
       </div>
-    </el-affix>
+    </el-card>
 
     <!-- 图表 -->
-    <el-card class="box-card">
+
+    <el-space wrap>
+      <el-card class="box-card" style="width: 250px" v-for="i in 3" :key="i">
+        <template #header>
+          <div class="card-header">
+            <span>Card name</span>
+            <el-button class="button" type="text">Operation button</el-button>
+          </div>
+        </template>
+        <div v-for="o in 4" :key="o" class="text item">
+          {{ "List item " + o }}
+        </div>
+      </el-card>
+    </el-space>
+
+    <!-- <el-card class="box-card">
       <el-skeleton style="height: 50vh" :rows="8" :loading="loading" animated>
         <template #default>
           <div id="brokenLine"></div>
         </template>
       </el-skeleton>
-    </el-card>
+    </el-card> -->
   </div>
 </template>
 
@@ -197,16 +206,13 @@ tryOnUnmounted(() => {
 .welcome {
   width: 100%;
   height: 100%;
-  margin-top: 1px;
 
   .top-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 120px;
+    height: 60px;
     background: #fff;
-    padding: 20px;
-    border-bottom: 0.5px solid rgba($color: #ccc, $alpha: 0.3);
 
     .left-mark {
       display: flex;
@@ -214,11 +220,15 @@ tryOnUnmounted(() => {
 
       img {
         display: block;
-        width: 72px;
-        height: 72px;
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
         margin-right: 10px;
         cursor: pointer;
+      }
+
+      span {
+        font-size: 14px;
       }
     }
   }

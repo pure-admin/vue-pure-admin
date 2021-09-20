@@ -45,7 +45,7 @@
           :key="key"
           style="display: flex; align-items: center"
         >
-          <li v-if="item.show" @click="selectTag(item, key)">
+          <li v-if="item.show" @click="selectTag(key, item)">
             <component :is="item.icon" :key="key" />
             {{ item.text }}
           </li>
@@ -112,6 +112,7 @@ let refreshButton = "refresh-button";
 let routerArrays: Array<object> = [
   {
     path: "/welcome",
+    parentPath: "/",
     meta: {
       title: "message.hshome",
       icon: "el-icon-s-home",
@@ -215,6 +216,7 @@ export default {
             if (arrItem.path === value || pathConcat === value) {
               routerArrays.push({
                 path: value,
+                parentPath: `/${parentPath.split("/")[1]}`,
                 meta: arrItem.meta
               });
               st.routesInStorage = routerArrays;
@@ -255,6 +257,7 @@ export default {
           st.routesInStorage = routerArrays = [
             {
               path: "/welcome",
+              parentPath: "/",
               meta: {
                 title: "message.hshome",
                 icon: "el-icon-s-home",
@@ -294,7 +297,7 @@ export default {
     }
 
     function deleteMenu(item, tag?: string) {
-      deleteDynamicTag(item, route.path, tag);
+      deleteDynamicTag(item, item.path, tag);
     }
 
     function onClickDrop(key, item, selectRoute) {
@@ -360,8 +363,8 @@ export default {
     }
 
     // 触发右键中菜单的点击事件
-    function selectTag(item, key) {
-      onClickDrop(key, {}, currentSelect.value);
+    function selectTag(key, item) {
+      onClickDrop(key, item, currentSelect.value);
     }
 
     function closeMenu() {
