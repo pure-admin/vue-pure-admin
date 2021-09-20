@@ -1,7 +1,7 @@
 import type { CSSProperties } from "vue";
 import {
   defineComponent,
-  onBeforeMount,
+  onMounted,
   nextTick,
   ref,
   unref,
@@ -113,7 +113,7 @@ export default defineComponent({
       });
     }
 
-    onBeforeMount(() => {
+    onMounted(() => {
       nextTick(() => {
         init();
       });
