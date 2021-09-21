@@ -4,9 +4,9 @@
   </component>
 </template>
 
-<script>
+<script lang="ts">
 import { computed, defineComponent, unref } from "vue";
-import { isUrl } from "/@/utils/is.ts";
+import { isUrl } from "/@/utils/is";
 
 export default defineComponent({
   name: "Link",

@@ -21,6 +21,7 @@ const getBreadcrumb = (): void => {
     matched = [
       {
         path: "/welcome",
+        parentPath: "/",
         meta: { title: "message.hshome" }
       } as unknown as RouteLocationMatched
     ].concat(matched);
