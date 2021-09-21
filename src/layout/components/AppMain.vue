@@ -1,3 +1,19 @@
+<script setup lang="ts">
+import { ref, unref, computed, getCurrentInstance } from "vue";
+import { useSettingStoreHook } from "/@/store/modules/settings";
+
+const keepAlive: Boolean = ref(
+  getCurrentInstance().appContext.config.globalProperties.$config?.keepAlive
+);
+
+const getCachedPageList = computed((): string[] => {
+  if (!unref(keepAlive)) {
+    return [];
+  }
+  return useSettingStoreHook().cachedPageList;
+});
+</script>
+
 <template>
   <section class="app-main">
     <router-view>
@@ -12,32 +28,6 @@
     </router-view>
   </section>
 </template>
-
-<script lang="ts">
-import { ref, unref, computed, defineComponent, getCurrentInstance } from "vue";
-import { useRoute } from "vue-router";
-import { useSettingStoreHook } from "/@/store/modules/settings";
-
-export default defineComponent({
-  name: "appMain",
-  setup() {
-    const keepAlive: Boolean = ref(
-      getCurrentInstance().appContext.config.globalProperties.$config?.keepAlive
-    );
-    const route = useRoute();
-    const key = computed(() => route.path);
-
-    const getCachedPageList = computed((): string[] => {
-      if (!unref(keepAlive)) {
-        return [];
-      }
-      return useSettingStoreHook().cachedPageList;
-    });
-
-    return { key, keepAlive, getCachedPageList };
-  }
-});
-</script>
 
 <style scoped>
 .app-main {

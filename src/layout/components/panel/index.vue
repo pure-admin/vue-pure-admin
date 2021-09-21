@@ -1,3 +1,35 @@
+<script setup lang="ts">
+import { ref } from "vue";
+import { useEventListener, onClickOutside } from "@vueuse/core";
+import { emitter } from "/@/utils/mitt";
+
+let show = ref(false);
+const target = ref(null);
+onClickOutside(target, () => {
+  show.value = false;
+});
+
+const addEventClick = (): void => {
+  useEventListener("click", closeSidebar);
+};
+
+const closeSidebar = (evt: any): void => {
+  const parent = evt.target.closest(".right-panel");
+  if (!parent) {
+    show.value = false;
+    window.removeEventListener("click", closeSidebar);
+  }
+};
+
+emitter.on("openPanel", () => {
+  show.value = true;
+});
+
+defineExpose({
+  addEventClick
+});
+</script>
+
 <template>
   <div :class="{ show: show }" class="right-panel-container">
     <div class="right-panel-background" />
@@ -13,47 +45,6 @@
     </div>
   </div>
 </template>
-
-<script lang="ts">
-import { ref } from "vue";
-import { useEventListener, onClickOutside } from "@vueuse/core";
-import { emitter } from "/@/utils/mitt";
-
-export default {
-  name: "panel",
-  setup() {
-    let show = ref(false);
-
-    const target = ref(null);
-
-    onClickOutside(target, () => {
-      show.value = false;
-    });
-
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars,no-unused-vars
-    const addEventClick = (): void => {
-      useEventListener("click", closeSidebar);
-    };
-
-    const closeSidebar = (evt: any): void => {
-      const parent = evt.target.closest(".right-panel");
-      if (!parent) {
-        show.value = false;
-        window.removeEventListener("click", closeSidebar);
-      }
-    };
-
-    emitter.on("openPanel", () => {
-      show.value = true;
-    });
-
-    return {
-      show,
-      target
-    };
-  }
-};
-</script>
 
 <style>
 .showright-panel {
