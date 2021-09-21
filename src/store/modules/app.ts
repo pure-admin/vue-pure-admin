@@ -1,4 +1,5 @@
-import { storageLocal } from "../../utils/storage";
+import { storageLocal } from "/@/utils/storage";
+import { deviceDetection } from "/@/utils/deviceDetection";
 import { defineStore } from "pinia";
 import { store } from "/@/store";
 
@@ -19,7 +20,7 @@ export const useAppStore = defineStore({
         : true,
       withoutAnimation: false
     },
-    device: "desktop"
+    device: deviceDetection() ? "mobile" : "desktop"
   }),
   getters: {
     getSidebarStatus() {
