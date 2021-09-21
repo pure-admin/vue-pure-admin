@@ -1,20 +1,20 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, nextTick } from "vue";
-import { useEventListener, tryOnUnmounted, useTimeoutFn } from "@vueuse/core";
-import { echartsJson } from "/@/api/mock";
-import echarts from "/@/plugins/echarts";
-import { ECharts } from "echarts";
+import { ref, shallowRef, computed, onBeforeMount } from "vue";
+import { useAppStoreHook } from "/@/store/modules/app";
+import {
+  ReGithub,
+  ReInfinite,
+  RePie,
+  ReLine,
+  ReBar
+} from "/@/components/ReCharts/index";
 
-//折线图实例
-let brokenLine: ECharts;
-let date: Date = new Date();
+const date: Date = new Date();
 let loading = ref<boolean>(true);
+const componentList = shallowRef<ForDataType<undefined>>([]);
 
 setTimeout(() => {
   loading.value = !loading.value;
-  nextTick(() => {
-    initbrokenLine();
-  });
 }, 500);
 
 let greetings = computed(() => {
@@ -27,139 +27,59 @@ let greetings = computed(() => {
   }
 });
 
-function initbrokenLine() {
-  const lineRefDom = document.getElementById("brokenLine");
-  if (!lineRefDom) return;
-  // @ts-ignore
-  brokenLine = echarts.init(lineRefDom);
-  brokenLine.clear(); //清除旧画布 重新渲染
-
-  echartsJson().then(({ info }) => {
-    brokenLine.setOption({
-      title: {
-        text: "上海 空气质量指数",
-        left: "1%"
+onBeforeMount(() => {
+  if (useAppStoreHook().device === "mobile") {
+    componentList.value = [
+      {
+        width: "20em",
+        title: "GitHub饼图信息",
+        component: RePie
       },
-      tooltip: {
-        trigger: "axis"
+      {
+        width: "20em",
+        title: "GitHub折线图信息",
+        component: ReLine
       },
-      grid: {
-        left: "5%",
-        right: "15%",
-        bottom: "10%"
-      },
-      xAxis: {
-        data: info.map(function (item) {
-          return item[0];
-        })
-      },
-      yAxis: {},
-      toolbox: {
-        right: 10,
-        feature: {
-          saveAsImage: {}
-        }
-      },
-      dataZoom: [
-        {
-          startValue: "2014-06-01"
-        },
-        {
-          type: "inside"
-        }
-      ],
-      visualMap: {
-        top: 50,
-        right: 10,
-        pieces: [
-          {
-            gt: 0,
-            lte: 50,
-            color: "#93CE07"
-          },
-          {
-            gt: 50,
-            lte: 100,
-            color: "#FBDB0F"
-          },
-          {
-            gt: 100,
-            lte: 150,
-            color: "#FC7D02"
-          },
-          {
-            gt: 150,
-            lte: 200,
-            color: "#FD0100"
-          },
-          {
-            gt: 200,
-            lte: 300,
-            color: "#AA069F"
-          },
-          {
-            gt: 300,
-            color: "#AC3B2A"
-          }
-        ],
-        outOfRange: {
-          color: "#999"
-        }
-      },
-      series: {
-        name: "上海 空气质量指数",
-        type: "line",
-        data: info.map(function (item) {
-          return item[1];
-        }),
-        markLine: {
-          silent: true,
-          lineStyle: {
-            color: "#333"
-          },
-          data: [
-            {
-              yAxis: 50
-            },
-            {
-              yAxis: 100
-            },
-            {
-              yAxis: 150
-            },
-            {
-              yAxis: 200
-            },
-            {
-              yAxis: 300
-            }
-          ]
-        }
+      {
+        width: "20em",
+        title: "GitHub柱状图信息",
+        component: ReBar
       }
-    });
-  });
-}
+    ];
+  } else {
+    componentList.value = [
+      {
+        width: "43em",
+        title: "GitHub信息",
+        component: ReGithub
+      },
+      {
+        width: "43em",
+        title: "GitHub滚动信息",
+        component: ReInfinite
+      },
+      {
+        width: "28.28em",
+        title: "GitHub饼图信息",
+        component: RePie
+      },
+      {
+        width: "28.28em",
+        title: "GitHub折线图信息",
+        component: ReLine
+      },
+      {
+        width: "28.28em",
+        title: "GitHub柱状图信息",
+        component: ReBar
+      }
+    ];
+  }
+});
 
 const openDepot = (): void => {
   window.open("https://github.com/xiaoxian521/vue-pure-admin");
 };
-
-onMounted(() => {
-  nextTick(() => {
-    useEventListener("resize", () => {
-      if (!brokenLine) return;
-      useTimeoutFn(() => {
-        brokenLine.resize();
-      }, 180);
-    });
-  });
-});
-
-tryOnUnmounted(() => {
-  if (!brokenLine) return;
-  brokenLine.dispose();
-  brokenLine = null;
-});
 </script>
 
 <template>
@@ -176,31 +96,35 @@ tryOnUnmounted(() => {
       </div>
     </el-card>
 
-    <!-- 图表 -->
-
-    <el-space wrap>
-      <el-card class="box-card" style="width: 250px" v-for="i in 3" :key="i">
-        <template #header>
-          <div class="card-header">
-            <span>Card name</span>
-            <el-button class="button" type="text">Operation button</el-button>
+    <el-space class="space" wrap size="large">
+      <el-skeleton
+        v-for="(item, key) in componentList"
+        :key="key"
+        animated
+        :rows="7"
+        :loading="loading"
+        :class="$style.size"
+        :style="{ width: item.width }"
+      >
+        <template #default>
+          <div
+            :class="['echart-card', $style.size]"
+            :style="{ width: item.width }"
+          >
+            <h4>{{ item.title }}</h4>
+            <component :is="item.component"></component>
           </div>
         </template>
-        <div v-for="o in 4" :key="o" class="text item">
-          {{ "List item " + o }}
-        </div>
-      </el-card>
-    </el-space>
-
-    <!-- <el-card class="box-card">
-      <el-skeleton style="height: 50vh" :rows="8" :loading="loading" animated>
-        <template #default>
-          <div id="brokenLine"></div>
-        </template>
       </el-skeleton>
-    </el-card> -->
+    </el-space>
   </div>
 </template>
+
+<style module scoped>
+.size {
+  height: 335px;
+}
+</style>
 
 <style lang="scss" scoped>
 .welcome {
@@ -233,14 +157,20 @@ tryOnUnmounted(() => {
     }
   }
 
-  .box-card {
-    width: 80vw;
-    margin: 10px auto;
-    position: relative;
+  .space {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 8px;
+    padding: 10px;
 
-    #brokenLine {
-      width: 100%;
-      height: 50vh;
+    .echart-card {
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
+
+      h4 {
+        margin: 0;
+        padding: 20px;
+      }
     }
   }
 }

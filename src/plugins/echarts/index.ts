@@ -1,27 +1,30 @@
 import * as echarts from "echarts/core";
 
-import { LineChart } from "echarts/charts";
+import { PieChart, BarChart, LineChart } from "echarts/charts";
+import { SVGRenderer } from "echarts/renderers";
 
 import {
-  TitleComponent,
-  TooltipComponent,
   GridComponent,
+  TitleComponent,
+  LegendComponent,
   ToolboxComponent,
+  TooltipComponent,
   DataZoomComponent,
   VisualMapComponent
 } from "echarts/components";
 
-import { SVGRenderer } from "echarts/renderers";
-
 const { use, registerTheme } = echarts;
 
 use([
-  TitleComponent,
-  TooltipComponent,
-  GridComponent,
+  PieChart,
+  BarChart,
   LineChart,
   SVGRenderer,
+  GridComponent,
+  TitleComponent,
+  LegendComponent,
   ToolboxComponent,
+  TooltipComponent,
   DataZoomComponent,
   VisualMapComponent
 ]);

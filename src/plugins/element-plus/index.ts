@@ -1,5 +1,6 @@
 import { App, Component } from "vue";
 import {
+  ElTag,
   ElAffix,
   ElSkeleton,
   ElBreadcrumb,
@@ -30,10 +31,13 @@ import {
   ElPagination,
   ElAlert,
   ElRadioButton,
-  ElRadioGroup
+  ElRadioGroup,
+  ElDescriptions,
+  ElDescriptionsItem
 } from "element-plus";
 
 const components = [
+  ElTag,
   ElAffix,
   ElSkeleton,
   ElBreadcrumb,
@@ -63,7 +67,9 @@ const components = [
   ElPagination,
   ElAlert,
   ElRadioButton,
-  ElRadioGroup
+  ElRadioGroup,
+  ElDescriptions,
+  ElDescriptionsItem
 ];
 
 const plugins = [ElLoading];
