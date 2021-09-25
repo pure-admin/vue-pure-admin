@@ -69,17 +69,17 @@ import {
   onBeforeMount,
   onMounted
 } from "vue";
-import { useRoute, useRouter } from "vue-router";
+import { useI18n } from "vue-i18n";
+import settings from "/@/settings";
+import { emitter } from "/@/utils/mitt";
 import SidebarItem from "./sidebarItem.vue";
 import { algorithm } from "/@/utils/algorithm";
-import { emitter } from "/@/utils/mitt";
-import { useI18n } from "vue-i18n";
 import { storageLocal } from "/@/utils/storage";
-import { usePermissionStoreHook } from "/@/store/modules/permission";
-import { deviceDetection } from "/@/utils/deviceDetection";
 import screenfull from "../screenfull/index.vue";
+import { useRoute, useRouter } from "vue-router";
 import { storageSession } from "/@/utils/storage";
-import settings from "/@/settings";
+import { deviceDetection } from "/@/utils/deviceDetection";
+import { usePermissionStoreHook } from "/@/store/modules/permission";
 import iconinternationality from "/@/assets/svg/iconinternationality.svg";
 
 let routerArrays: Array<object> = [

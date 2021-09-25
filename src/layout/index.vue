@@ -1,3 +1,13 @@
+<script lang="ts">
+export default {
+  computed: {
+    layout() {
+      return this.$storage?.layout.layout;
+    }
+  }
+};
+</script>
+
 <script setup lang="ts">
 import {
   ref,
@@ -16,9 +26,12 @@ import { useAppStoreHook } from "/@/store/modules/app";
 import fullScreen from "/@/assets/svg/full_screen.svg";
 import exitScreen from "/@/assets/svg/exit_screen.svg";
 import { useSettingStoreHook } from "/@/store/modules/settings";
+
+import navbar from "./components/navbar.vue";
+import tag from "./components/tag/index.vue";
 import appMain from "./components/appMain.vue";
 import setting from "./components/setting/index.vue";
-import tag from "./components/tag/index.vue";
+import Vertical from "./components/sidebar/vertical.vue";
 import Horizontal from "./components/sidebar/horizontal.vue";
 
 interface setInter {
@@ -121,26 +134,32 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <div :class="set.classes" class="app-wrapper">
-    <!-- <div
-      v-if="set.device === 'mobile' && set.sidebar.opened"
+  <div :class="['app-wrapper', set.classes]">
+    <div
+      v-show="
+        set.device === 'mobile' &&
+        set.sidebar.opened &&
+        layout.includes('vertical')
+      "
       class="drawer-bg"
       @click="handleClickOutside(false)"
-    /> -->
-    <!-- 侧边栏 -->
-    <!-- <sidebar class="sidebar-container" v-if="!containerHiddenSideBar" /> -->
+    />
+    <Vertical v-show="!containerHiddenSideBar && layout.includes('vertical')" />
     <div class="main-container">
-      <!-- <div :class="{ 'fixed-header': set.fixedHeader }"> -->
-      <!-- 顶部导航栏 -->
-      <Horizontal />
-      <!-- tabs标签页 -->
-      <tag>
-        <span @click="onFullScreen">
-          <fullScreen v-if="!containerHiddenSideBar" />
-          <exitScreen v-else />
-        </span>
-      </tag>
-      <!-- </div> -->
+      <div :class="{ 'fixed-header': set.fixedHeader }">
+        <!-- 顶部导航栏 -->
+        <navbar
+          v-show="!containerHiddenSideBar && layout.includes('vertical')"
+        />
+        <!-- tabs标签页 -->
+        <Horizontal v-show="layout.includes('horizontal')" />
+        <tag>
+          <span @click="onFullScreen">
+            <fullScreen v-if="!containerHiddenSideBar" />
+            <exitScreen v-else />
+          </span>
+        </tag>
+      </div>
       <!-- 主体内容 -->
       <app-main />
     </div>
@@ -195,10 +214,6 @@ $sideBarWidth: 210px;
   z-index: 9;
   width: calc(100% - #{$sideBarWidth});
   transition: width 0.28s;
-}
-
-.hideSidebar .fixed-header {
-  // width: calc(100% - 54px);
 }
 
 .mobile .fixed-header {

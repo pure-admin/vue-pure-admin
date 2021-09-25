@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ 'has-logo': showLogo }">
+  <div :class="['sidebar-container', showLogo ? 'has-logo' : '']">
     <Logo v-if="showLogo === '1'" :collapse="isCollapse" />
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu
@@ -22,14 +22,14 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, onBeforeMount } from "vue";
-import { useRoute, useRouter } from "vue-router";
-import { useAppStoreHook } from "/@/store/modules/app";
+import Logo from "./logo.vue";
+import { emitter } from "/@/utils/mitt";
 import SidebarItem from "./sidebarItem.vue";
 import { algorithm } from "/@/utils/algorithm";
-import { emitter } from "/@/utils/mitt";
-import Logo from "./logo.vue";
 import { storageLocal } from "/@/utils/storage";
+import { useRoute, useRouter } from "vue-router";
+import { useAppStoreHook } from "/@/store/modules/app";
+import { computed, defineComponent, ref, onBeforeMount } from "vue";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 
 export default defineComponent({

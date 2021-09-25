@@ -5,10 +5,6 @@ import { PropType, ref } from "vue";
 import { isUrl } from "/@/utils/is";
 import { RouteRecordRaw } from "vue-router";
 
-// type RouteRecordRaw = {
-//   hidden?: boolean;
-// };
-
 const props = defineProps({
   item: {
     type: Object as PropType<RouteRecordRaw>

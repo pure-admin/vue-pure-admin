@@ -23,9 +23,13 @@
     position: relative;
   }
 
+  .el-popper.is-light {
+    border: none !important;
+  }
+
   .sidebar-container {
     transition: width 0.28s;
-    width: $sideBarWidth !important;
+    width: $sideBarWidth;
     background-color: $menuBg;
     height: 100%;
     position: fixed;
@@ -35,9 +39,16 @@
     left: 0;
     z-index: 1001;
     overflow: hidden;
+    box-shadow: 0 0 1px #888;
 
     .scrollbar-wrapper {
       overflow-x: hidden !important;
+    }
+
+    // reset element-plus css
+    .horizontal-collapse-transition {
+      transition: 0s width ease-in-out, 0s padding-left ease-in-out,
+        0s padding-right ease-in-out;
     }
 
     .el-scrollbar__bar.is-vertical {
@@ -54,12 +65,20 @@
       }
     }
 
+    .is-horizontal {
+      display: none;
+    }
+
+    a {
+      display: inline-block;
+      width: 100%;
+      overflow: hidden;
+    }
+
     .el-menu {
       border: none;
       height: 100%;
-      background-color: transparent;
-      // background-color: $menuBg !important;
-      // width: 100% !important;
+      background-color: transparent !important;
     }
 
     .el-menu-item,
@@ -80,7 +99,6 @@
     .is-active > .el-sub-menu__title,
     .is-active.submenu-title-noDropdown {
       color: $subMenuActiveText !important;
-      border-bottom-color: #409eff;
 
       i {
         color: $subMenuActiveText !important;
@@ -90,10 +108,9 @@
     .is-active {
       transition: color 0.3s;
       color: $subMenuActiveText !important;
-      border-bottom-color: #409eff;
     }
 
-    & .nest-menu .el-sub-menu > .el-sub-menu__title,
+    el-sub-menu nest-menu & .el-sub-menu > .el-sub-menu__title,
     & .el-sub-menu .el-menu-item {
       font-size: 12px;
       min-width: $sideBarWidth !important;
@@ -139,6 +156,17 @@
       }
     }
 
+    // 子菜单中还有子菜单
+    .el-menu .el-sub-menu__title {
+      font-size: 12px;
+      min-width: $sideBarWidth !important;
+      background-color: $subMenuBg !important;
+
+      &:hover {
+        background-color: $menuHover !important;
+      }
+    }
+
     .is-active {
       transition: color 0.3s;
       color: $subMenuActiveText !important;
@@ -147,7 +175,6 @@
     .nest-menu .el-sub-menu > .el-sub-menu__title,
     .el-menu-item {
       &:hover {
-        // you can use $subMenuHover
         background-color: $menuHover !important;
       }
     }
@@ -401,6 +428,56 @@
   }
 }
 
+body[data-layout="vertical"] {
+  .hideSidebar {
+    .fixed-header {
+      width: calc(100% - 54px);
+    }
+
+    .sidebar-container {
+      width: 54px !important;
+    }
+
+    .main-container {
+      margin-left: 54px !important;
+    }
+
+    .submenu-title-noDropdown {
+      padding: 0 !important;
+      position: relative;
+
+      .el-tooltip {
+        padding: 0 !important;
+      }
+    }
+
+    .el-sub-menu {
+      overflow: hidden;
+
+      & > .el-sub-menu__title {
+        .el-sub-menu__icon-arrow {
+          display: none;
+        }
+      }
+    }
+
+    .el-menu--collapse {
+      margin-left: -5px; //需优化的地方
+      .el-sub-menu {
+        & > .el-sub-menu__title {
+          & > span {
+            height: 0;
+            width: 0;
+            overflow: hidden;
+            visibility: hidden;
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+}
+
 // vertical模式下暗色主题
 body[data-layout="vertical"][data-theme="dark"] {
   $subMenuActiveText: #f4f4f5;
@@ -410,7 +487,6 @@ body[data-layout="vertical"][data-theme="dark"] {
   $subMenuHover: #001528;
   $sideBarWidth: 210px;
   $navTextColor: #fff;
-  // $mainContainerMarginLeft: 54px;
 
   @include merge-style(
     $subMenuActiveText,
@@ -419,7 +495,7 @@ body[data-layout="vertical"][data-theme="dark"] {
     $subMenuBg,
     $subMenuHover,
     $sideBarWidth,
-    $navTextColor // $mainContainerMarginLeft
+    $navTextColor
   );
 }
 
@@ -432,7 +508,6 @@ body[data-layout="vertical"][data-theme="light"] {
   $subMenuHover: #e0ebf6;
   $sideBarWidth: 210px;
   $navTextColor: #7a80b4;
-  // $mainContainerMarginLeft: 54px;
 
   @include merge-style(
     $subMenuActiveText,
@@ -441,7 +516,7 @@ body[data-layout="vertical"][data-theme="light"] {
     $subMenuBg,
     $subMenuHover,
     $sideBarWidth,
-    $navTextColor // $mainContainerMarginLeft
+    $navTextColor
   );
 }
 
@@ -454,7 +529,6 @@ body[data-layout="horizontal"][data-theme="dark"] {
   $subMenuHover: #001528;
   $sideBarWidth: 0;
   $navTextColor: #fff;
-  // $mainContainerMarginLeft: 0;
 
   @include merge-style(
     $subMenuActiveText,
@@ -463,7 +537,7 @@ body[data-layout="horizontal"][data-theme="dark"] {
     $subMenuBg,
     $subMenuHover,
     $sideBarWidth,
-    $navTextColor // $mainContainerMarginLeft
+    $navTextColor
   );
 }
 
@@ -476,7 +550,6 @@ body[data-layout="horizontal"][data-theme="light"] {
   $subMenuHover: #e0ebf6;
   $sideBarWidth: 0;
   $navTextColor: #7a80b4;
-  // $mainContainerMarginLeft: 0;
 
   @include merge-style(
     $subMenuActiveText,
@@ -485,6 +558,6 @@ body[data-layout="horizontal"][data-theme="light"] {
     $subMenuBg,
     $subMenuHover,
     $sideBarWidth,
-    $navTextColor // $mainContainerMarginLeft
+    $navTextColor
   );
 }

@@ -4,11 +4,14 @@ import panel from "../panel/index.vue";
 import { useRouter } from "vue-router";
 import { emitter } from "/@/utils/mitt";
 import { templateRef } from "@vueuse/core";
-import { reactive, ref, unref, useCssModule } from "vue";
 import { storageLocal, storageSession } from "/@/utils/storage";
+import { reactive, ref, unref, useCssModule, getCurrentInstance } from "vue";
 
 const router = useRouter();
 const { isSelect } = useCssModule();
+
+const instance =
+  getCurrentInstance().appContext.app.config.globalProperties.$storage;
 
 // 默认灵动模式
 const markValue = ref(storageLocal.getItem("showModel") || "smart");
@@ -125,7 +128,7 @@ function setTheme(layout: string, theme: string, dom: HTMLElement) {
   dataTheme.value.layout = `${layout}-${theme}`;
   window.document.body.setAttribute("data-layout", layout);
   window.document.body.setAttribute("data-theme", theme);
-  storageLocal.setItem("responsive-layout", { layout: `${layout}-${theme}` });
+  instance.layout = { layout: `${layout}-${theme}` };
   toggleClass(true, isSelect, unref(dom));
   toggleClass(false, isSelect, unref(dom));
 }
