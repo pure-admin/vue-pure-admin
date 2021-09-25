@@ -67,6 +67,7 @@ import { useI18n } from "vue-i18n";
 let routerArrays: Array<object> = [
   {
     path: "/welcome",
+    parentPath: "/",
     meta: {
       title: "message.hshome",
       icon: "el-icon-s-home",

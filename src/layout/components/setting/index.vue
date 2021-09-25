@@ -1,3 +1,118 @@
+<script setup lang="ts">
+import panel from "../panel/index.vue";
+import { useRouter } from "vue-router";
+import { emitter } from "/@/utils/mitt";
+import { templateRef } from "@vueuse/core";
+import { reactive, ref, unref, useCssModule } from "vue";
+import { storageLocal, storageSession } from "/@/utils/storage";
+
+const router = useRouter();
+const { isSelect } = useCssModule();
+
+// 默认灵动模式
+const markValue = ref(storageLocal.getItem("showModel") || "smart");
+
+const logoVal = ref(storageLocal.getItem("logoVal") || "1");
+
+const localOperate = (key: string, value?: any, model?: string): any => {
+  model && model === "set"
+    ? storageLocal.setItem(key, value)
+    : storageLocal.getItem(key);
+};
+
+const settings = reactive({
+  greyVal: storageLocal.getItem("greyVal"),
+  weekVal: storageLocal.getItem("weekVal"),
+  tagsVal: storageLocal.getItem("tagsVal")
+});
+
+settings.greyVal === null
+  ? localOperate("greyVal", false, "set")
+  : document.querySelector("html")?.setAttribute("class", "html-grey");
+
+settings.weekVal === null
+  ? localOperate("weekVal", false, "set")
+  : document.querySelector("html")?.setAttribute("class", "html-weakness");
+
+function toggleClass(flag: boolean, clsName: string, target?: HTMLElement) {
+  const targetEl = target || document.body;
+  let { className } = targetEl;
+  className = className.replace(clsName, "");
+  targetEl.className = flag ? `${className} ${clsName} ` : className;
+}
+
+// 灰色模式设置
+const greyChange = ({ value }): void => {
+  toggleClass(settings.greyVal, "html-grey", document.querySelector("html"));
+  value
+    ? localOperate("greyVal", true, "set")
+    : localOperate("greyVal", false, "set");
+};
+
+// 色弱模式设置
+const weekChange = ({ value }): void => {
+  toggleClass(
+    settings.weekVal,
+    "html-weakness",
+    document.querySelector("html")
+  );
+  value
+    ? localOperate("weekVal", true, "set")
+    : localOperate("weekVal", false, "set");
+};
+
+const tagsChange = () => {
+  let showVal = settings.tagsVal;
+  showVal
+    ? storageLocal.setItem("tagsVal", true)
+    : storageLocal.setItem("tagsVal", false);
+  emitter.emit("tagViewsChange", showVal);
+};
+
+function onReset() {
+  storageLocal.clear();
+  storageSession.clear();
+  router.push("/login");
+}
+
+function onChange({ label }) {
+  storageLocal.setItem("showModel", label);
+  emitter.emit("tagViewsShowModel", label);
+}
+
+const firstTheme = templateRef<HTMLElement | null>("firstTheme", null);
+const secondTheme = templateRef<HTMLElement | null>("secondTheme", null);
+
+const dataTheme = ref(storageLocal.getItem("data-theme") || "dark");
+if (dataTheme.value) {
+  storageLocal.setItem("data-theme", unref(dataTheme));
+  window.document.body.setAttribute("data-theme", unref(dataTheme));
+}
+
+// dark主题
+function onDark() {
+  storageLocal.setItem("data-theme", "dark");
+  window.document.body.setAttribute("data-theme", "dark");
+  toggleClass(true, isSelect, unref(firstTheme));
+  toggleClass(false, isSelect, unref(secondTheme));
+}
+
+// light主题
+function onLight() {
+  storageLocal.setItem("data-theme", "light");
+  window.document.body.setAttribute("data-theme", "light");
+  toggleClass(false, isSelect, unref(firstTheme));
+  toggleClass(true, isSelect, unref(secondTheme));
+}
+
+function logoChange() {
+  unref(logoVal) === "1"
+    ? storageLocal.setItem("logoVal", "1")
+    : storageLocal.setItem("logoVal", "-1");
+  emitter.emit("logoChange", unref(logoVal));
+}
+</script>
+
 <template>
   <panel>
     <el-divider>主题风格</el-divider>
@@ -40,7 +155,7 @@
       <li>
         <span>灰色模式</span>
         <vxe-switch
-          v-model="greyVal"
+          v-model="settings.greyVal"
           open-label="开"
           close-label="关"
           @change="greyChange"
@@ -49,7 +164,7 @@
       <li>
         <span>色弱模式</span>
         <vxe-switch
-          v-model="weekVal"
+          v-model="settings.weekVal"
           open-label="开"
           close-label="关"
           @change="weekChange"
@@ -58,7 +173,7 @@
       <li>
         <span>隐藏标签页</span>
         <vxe-switch
-          v-model="tagsVal"
+          v-model="settings.tagsVal"
           open-label="开"
           close-label="关"
           @change="tagsChange"
@@ -95,147 +210,6 @@
     ></vxe-button>
   </panel>
 </template>
-
-<script lang="ts">
-import panel from "../panel/index.vue";
-import { reactive, toRefs, ref, unref, useCssModule } from "vue";
-import { storageLocal, storageSession } from "/@/utils/storage";
-import { emitter } from "/@/utils/mitt";
-import { useRouter } from "vue-router";
-import { templateRef } from "@vueuse/core";
-
-export default {
-  name: "setting",
-  components: { panel },
-  setup() {
-    const router = useRouter();
-    const { isSelect } = useCssModule();
-
-    // 默认灵动模式
-    const markValue = ref(storageLocal.getItem("showModel") || "smart");
-
-    const logoVal = ref(storageLocal.getItem("logoVal") || "1");
-
-    const localOperate = (key: string, value?: any, model?: string): any => {
-      model && model === "set"
-        ? storageLocal.setItem(key, value)
-        : storageLocal.getItem(key);
-    };
-
-    const settings = reactive({
-      greyVal: storageLocal.getItem("greyVal"),
-      weekVal: storageLocal.getItem("weekVal"),
-      tagsVal: storageLocal.getItem("tagsVal")
-    });
-
-    settings.greyVal === null
-      ? localOperate("greyVal", false, "set")
-      : document.querySelector("html")?.setAttribute("class", "html-grey");
-
-    settings.weekVal === null
-      ? localOperate("weekVal", false, "set")
-      : document.querySelector("html")?.setAttribute("class", "html-weakness");
-
-    function toggleClass(flag: boolean, clsName: string, target?: HTMLElement) {
-      const targetEl = target || document.body;
-      let { className } = targetEl;
-      className = className.replace(clsName, "");
-      targetEl.className = flag ? `${className} ${clsName} ` : className;
-    }
-
-    // 灰色模式设置
-    const greyChange = ({ value }): void => {
-      toggleClass(
-        settings.greyVal,
-        "html-grey",
-        document.querySelector("html")
-      );
-      value
-        ? localOperate("greyVal", true, "set")
-        : localOperate("greyVal", false, "set");
-    };
-
-    // 色弱模式设置
-    const weekChange = ({ value }): void => {
-      toggleClass(
-        settings.weekVal,
-        "html-weakness",
-        document.querySelector("html")
-      );
-      value
-        ? localOperate("weekVal", true, "set")
-        : localOperate("weekVal", false, "set");
-    };
-
-    const tagsChange = () => {
-      let showVal = settings.tagsVal;
-      showVal
-        ? storageLocal.setItem("tagsVal", true)
-        : storageLocal.setItem("tagsVal", false);
-      emitter.emit("tagViewsChange", showVal);
-    };
-
-    function onReset() {
-      storageLocal.clear();
-      storageSession.clear();
-      router.push("/login");
-    }
-
-    function onChange({ label }) {
-      storageLocal.setItem("showModel", label);
-      emitter.emit("tagViewsShowModel", label);
-    }
-
-    const firstTheme = templateRef<HTMLElement | null>("firstTheme", null);
-    const secondTheme = templateRef<HTMLElement | null>("secondTheme", null);
-
-    const dataTheme = ref(storageLocal.getItem("data-theme") || "dark");
-    if (dataTheme.value) {
-      storageLocal.setItem("data-theme", unref(dataTheme));
-      window.document.body.setAttribute("data-theme", unref(dataTheme));
-    }
-
-    // dark主题
-    function onDark() {
-      storageLocal.setItem("data-theme", "dark");
-      window.document.body.setAttribute("data-theme", "dark");
-      toggleClass(true, isSelect, unref(firstTheme));
-      toggleClass(false, isSelect, unref(secondTheme));
-    }
-
-    // light主题
-    function onLight() {
-      storageLocal.setItem("data-theme", "light");
-      window.document.body.setAttribute("data-theme", "light");
-      toggleClass(false, isSelect, unref(firstTheme));
-      toggleClass(true, isSelect, unref(secondTheme));
-    }
-
-    function logoChange() {
-      unref(logoVal) === "1"
-        ? storageLocal.setItem("logoVal", "1")
-        : storageLocal.setItem("logoVal", "-1");
-      emitter.emit("logoChange", unref(logoVal));
-    }
-
-    return {
-      ...toRefs(settings),
-      localOperate,
-      greyChange,
-      weekChange,
-      tagsChange,
-      onReset,
-      markValue,
-      onChange,
-      onDark,
-      onLight,
-      dataTheme,
-      logoVal,
-      logoChange
-    };
-  }
-};
-</script>
 
 <style scoped module>
 .isSelect {
