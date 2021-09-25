@@ -57,5 +57,5 @@ jobs:
       - name: Build
         run: |
           yarn install
-          yarn lint:prettier
+          yarn lint:stylelint
           yarn run build
