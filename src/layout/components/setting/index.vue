@@ -84,9 +84,14 @@ const firstTheme = templateRef<HTMLElement | null>("firstTheme", null);
 const secondTheme = templateRef<HTMLElement | null>("secondTheme", null);
 
 const dataTheme = ref(storageLocal.getItem("data-theme") || "dark");
+const dataLayout = ref(storageLocal.getItem("data-layout") || "horizontal");
 if (dataTheme.value) {
+  // 设置主题
   storageLocal.setItem("data-theme", unref(dataTheme));
   window.document.body.setAttribute("data-theme", unref(dataTheme));
+  // 设置导航模式
+  storageLocal.setItem("data-layout", unref(dataLayout));
+  window.document.body.setAttribute("data-layout", unref(dataLayout));
 }
 
 // dark主题

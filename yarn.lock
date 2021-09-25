@@ -420,11 +420,6 @@
   dependencies:
     chalk "^4.0.0"
 
-"@element-plus/icons@^0.0.11":
-  version "0.0.11"
-  resolved "https://registry.npmjs.org/@element-plus/icons/-/icons-0.0.11.tgz#9b187c002774548b911850d17fa5fc2f9a515f57"
-  integrity sha512-iKQXSxXu131Ai+I9Ymtcof9WId7kaXvB1+WRfAfpQCW7UiAMYgdNDqb/u0hgTo2Yq3MwC4MWJnNuTBEpG8r7+A==
-
 "@eslint/eslintrc@^0.4.3":
   version "0.4.3"
   resolved "https://registry.npmjs.org/@eslint/eslintrc/-/eslintrc-0.4.3.tgz#9e42981ef035beb3dd49add17acb96e8ff6f394c"
@@ -1532,7 +1527,7 @@ dargs@^7.0.0:
   resolved "https://registry.npmjs.org/dargs/-/dargs-7.0.0.tgz#04015c41de0bcb69ec84050f3d9be0caf8d6d5cc"
   integrity sha512-2iy1EkLdlBzQGvbweYRFxmFath8+K7+AKB0TlhHWkNuH+TmovaMH/Wp7V7R4u7f4SnX3OgLsU9t1NI9ioDnUpg==
 
-dayjs@1.x, dayjs@^1.10.6:
+dayjs@^1.10.6, dayjs@^1.10.7:
   version "1.10.7"
   resolved "https://registry.npmjs.org/dayjs/-/dayjs-1.10.7.tgz#2cf5f91add28116748440866a0a1d26f3a6ce468"
   integrity sha512-P6twpd70BcPK34K26uJ1KT3wlhpuOAPoMwJzpsIWUxHZ7wpmbdZL/hQqBDfz7hGurYSa5PhzdhDHtt319hL3ig==
@@ -1707,18 +1702,17 @@ electron-to-chromium@^1.3.830:
   resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.3.840.tgz#3f2a1df97015d9b1db5d86a4c6bd4cdb920adcbb"
   integrity sha512-yRoUmTLDJnkIJx23xLY7GbSvnmDCq++NSuxHDQ0jiyDJ9YZBUGJcrdUqm+ZwZFzMbCciVzfem2N2AWiHJcWlbw==
 
-element-plus@^1.1.0-beta.12:
-  version "1.1.0-beta.12"
-  resolved "https://registry.npmjs.org/element-plus/-/element-plus-1.1.0-beta.12.tgz#2fd646f3c2f787dfb282d091ec6aa6945d1bec6a"
-  integrity sha512-IkFHcYWGDzHqeL2LpDM5ZQnuviqkNj8Bu9zg/Q6KImGk8xo4rqMf+e4rBHinIpeKzKdVag0c2TDABNBfKvjaPA==
+element-plus@^1.1.0-beta.16:
+  version "1.1.0-beta.16"
+  resolved "https://registry.npmjs.org/element-plus/-/element-plus-1.1.0-beta.16.tgz#4409d9e33d005693f6039f5ed1fe05e301b3170d"
+  integrity sha512-4BZEldnIfFZs5A/saRqaWE4PwTot4p3YZU7qsDr3ev2zp35pcCL9TtpWMLIvNTMxvxKew0HTDPTk9fAWIZFQrQ==
   dependencies:
-    "@element-plus/icons" "^0.0.11"
     "@popperjs/core" "^2.10.1"
     "@vueuse/core" "~6.1.0"
     async-validator "^3.4.0"
-    dayjs "1.x"
+    dayjs "^1.10.7"
     lodash "^4.17.21"
-    mitt "^2.1.0"
+    memoize-one "^5.2.1"
     normalize-wheel "^1.0.1"
     resize-observer-polyfill "^1.5.1"
 
@@ -1817,9 +1811,9 @@ esbuild@0.11.3:
   integrity sha512-BzVRHcCtFepjS9WcqRjqoIxLqgpK21a8J4Zi4msSGxDxiXVO1IbcqT1KjhdDDnJxKfe7bvzZrvMEX+bVO0Elcw==
 
 esbuild@^0.12.17:
-  version "0.12.28"
-  resolved "https://registry.npmjs.org/esbuild/-/esbuild-0.12.28.tgz#84da0d2a0d0dee181281545271e0d65cf6fab1ef"
-  integrity sha512-pZ0FrWZXlvQOATlp14lRSk1N9GkeJ3vLIwOcUoo3ICQn9WNR4rWoNi81pbn6sC1iYUy7QPqNzI3+AEzokwyVcA==
+  version "0.12.29"
+  resolved "https://registry.npmjs.org/esbuild/-/esbuild-0.12.29.tgz#be602db7c4dc78944a9dbde0d1ea19d36c1f882d"
+  integrity sha512-w/XuoBCSwepyiZtIRsKsetiLDUVGPVw1E/R3VTFSecIy8UR7Cq3SOtwKHJMFoVqqVG36aGkzh4e8BvpO1Fdc7g==
 
 escalade@^3.1.1:
   version "3.1.1"
@@ -2939,6 +2933,11 @@ mdn-data@2.0.14:
   resolved "https://registry.npmjs.org/mdn-data/-/mdn-data-2.0.14.tgz#7113fc4281917d63ce29b43446f701e68c25ba50"
   integrity sha512-dn6wd0uw5GsdswPFfsgMp5NSB0/aDe6fK94YJV/AJDYXL6HVLWBsxeq7js7Ad+mU2K9LAlwpk6kN2D5mwCPVow==
 
+memoize-one@^5.2.1:
+  version "5.2.1"
+  resolved "https://registry.npmjs.org/memoize-one/-/memoize-one-5.2.1.tgz#8337aa3c4335581839ec01c3d594090cebe8f00e"
+  integrity sha512-zYiwtZUcYyXKo/np96AGZAckk+FWWsUdJ3cHGGmld7+AhvcWmQyGCYUh1hc4Q/pkOhb65dQR/pqCyK0cOaHz4Q==
+
 meow@^8.0.0:
   version "8.1.2"
   resolved "https://registry.npmjs.org/meow/-/meow-8.1.2.tgz#bcbe45bda0ee1729d350c03cffc8395a36c4e897"
@@ -3081,7 +3080,12 @@ multimatch@^4.0.0:
     arrify "^2.0.1"
     minimatch "^3.0.4"
 
-nanoid@^3.1.23:
+nanocolors@^0.1.5:
+  version "0.1.12"
+  resolved "https://registry.npmjs.org/nanocolors/-/nanocolors-0.1.12.tgz#8577482c58cbd7b5bb1681db4cf48f11a87fd5f6"
+  integrity sha512-2nMHqg1x5PU+unxX7PGY7AuYxl2qDx7PSrTRjizr8sxdd3l/3hBuWWaki62qmtYm2U5i4Z5E7GbjlyDFhs9/EQ==
+
+nanoid@^3.1.23, nanoid@^3.1.25:
   version "3.1.25"
   resolved "https://registry.npmjs.org/nanoid/-/nanoid-3.1.25.tgz#09ca32747c0e543f0e1814b7d3793477f9c8e152"
   integrity sha512-rdwtIXaXCLFAQbnfqDRnI6jaRHp9fTcYBjtFKE8eezcZ7LuLjhUaQGNeMXf1HmRoCH32CLz6XwX0TtxEOS/A3Q==
@@ -3504,13 +3508,22 @@ postcss@^7.0.14, postcss@^7.0.17, postcss@^7.0.2, postcss@^7.0.21, postcss@^7.0.
     source-map "^0.6.1"
     supports-color "^6.1.0"
 
-postcss@^8.1.10, postcss@^8.2.6, postcss@^8.3.6:
+postcss@^8.1.10, postcss@^8.2.6:
   version "8.3.6"
   resolved "https://registry.npmjs.org/postcss/-/postcss-8.3.6.tgz#2730dd76a97969f37f53b9a6096197be311cc4ea"
   integrity sha512-wG1cc/JhRgdqB6WHEuyLTedf3KIRuD0hG6ldkFEZNCjRxiC+3i6kkWUUbiJQayP28iwG35cEmAbe98585BYV0A==
   dependencies:
     colorette "^1.2.2"
     nanoid "^3.1.23"
+    source-map-js "^0.6.2"
+
+postcss@^8.3.6:
+  version "8.3.7"
+  resolved "https://registry.npmjs.org/postcss/-/postcss-8.3.7.tgz#ec88563588c8da8e58e7226f7633b51ae221eeda"
+  integrity sha512-9SaY7nnyQ63/WittqZYAvkkYPyKxchMKH71UDzeTmWuLSvxTRpeEeABZAzlCi55cuGcoFyoV/amX2BdsafQidQ==
+  dependencies:
+    nanocolors "^0.1.5"
+    nanoid "^3.1.25"
     source-map-js "^0.6.2"
 
 preact@^10.4.8:
@@ -3741,9 +3754,9 @@ rimraf@^3.0.2:
     glob "^7.1.3"
 
 rollup@^2.38.5:
-  version "2.56.3"
-  resolved "https://registry.npmjs.org/rollup/-/rollup-2.56.3.tgz#b63edadd9851b0d618a6d0e6af8201955a77aeff"
-  integrity sha512-Au92NuznFklgQCUcV96iXlxUbHuB1vQMaH76DHl5M11TotjOHwqk9CwcrT78+Tnv4FN9uTBxq6p4EJoYkpyekg==
+  version "2.57.0"
+  resolved "https://registry.npmjs.org/rollup/-/rollup-2.57.0.tgz#c1694475eb22e1022477c0f4635fd0ac80713173"
+  integrity sha512-bKQIh1rWKofRee6mv8SrF2HdP6pea5QkwBZSMImJysFj39gQuiV8MEPBjXOCpzk3wSYp63M2v2wkWBmFC8O/rg==
   optionalDependencies:
     fsevents "~2.3.2"
 
@@ -4446,10 +4459,10 @@ vite-svg-loader@^2.2.0:
     "@vue/compiler-sfc" "^3.0.11"
     svgo "^2.3.0"
 
-vite@^2.5.7:
-  version "2.5.7"
-  resolved "https://registry.npmjs.org/vite/-/vite-2.5.7.tgz#e495be9d8bcbf9d30c7141efdccacde746ee0125"
-  integrity sha512-hyUoWmRPhjN1aI+ZSBqDINKdIq7aokHE2ZXiztOg4YlmtpeQtMwMeyxv6X9YxHZmvGzg/js/eATM9Z1nwyakxg==
+vite@^2.5.10:
+  version "2.5.10"
+  resolved "https://registry.npmjs.org/vite/-/vite-2.5.10.tgz#c598e3b5a7e1956ffc52eb3b3420d177fc2ed2a5"
+  integrity sha512-0ObiHTi5AHyXdJcvZ67HMsDgVpjT5RehvVKv6+Q0jFZ7zDI28PF5zK9mYz2avxdA+4iJMdwCz6wnGNnn4WX5Gg==
   dependencies:
     esbuild "^0.12.17"
     postcss "^8.3.6"

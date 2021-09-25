@@ -1,9 +1,17 @@
+<script setup lang="ts">
+import settings from "/@/settings";
+
+const props = defineProps({
+  collapse: Boolean
+});
+</script>
+
 <template>
-  <div class="sidebar-logo-container" :class="{ collapse: collapse }">
+  <div class="sidebar-logo-container" :class="{ collapse: props.collapse }">
     <transition name="sidebarLogoFade">
       <router-link
-        v-if="collapse"
-        key="collapse"
+        v-if="props.collapse"
+        key="props.collapse"
         :title="settings.title"
         class="sidebar-logo-link"
         to="/"
@@ -24,25 +32,6 @@
     </transition>
   </div>
 </template>
-
-<script lang="ts">
-import { defineComponent } from "vue";
-import settings from "/@/settings";
-
-export default defineComponent({
-  props: {
-    collapse: {
-      type: Boolean,
-      required: true
-    }
-  },
-  setup() {
-    return {
-      settings
-    };
-  }
-});
-</script>
 
 <style lang="scss" scoped>
 .sidebar-logo-container {

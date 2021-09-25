@@ -1,14 +1,8 @@
 @font-face {
-  font-family: "iconfont";
-  src: url("iconfont.eot?t=1619360751585"); /* IE9 */
-  src: url("iconfont.eot?t=1619360751585#iefix") format("embedded-opentype"),
-    /* IE6-IE8 */
-      url("data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAARMAAsAAAAACbwAAAP9AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDQAqGEIRiATYCJAMYCw4ABCAFhG0Hfhs2CMgOJS2d2ECiAwlgBN+vlf0+zE5mg6wAXeJZIjpmuSejwkZFpjyxij57rCLU/p9b+c8NWt6VZsJElIM/LOtvdta6uELEuI1RpSiTq877eC1W5aXc/38/V+f5b2lrettv68Xkvj8zA0+cJTJJQyKSxKSSKBWPlNixsM5M+mTE89a4m0BnrRop+8ZmViBbIQ4KxE1DVyC7cisjwtDamp4zi3ihatOz9BfAc//xMQNNkU1SM3Hk4cujGgyMi5MjaYPhCecti35/94OKjG1AIR72hm9Li+Vt0nSLYro9YHl8K0nj4vjWyaffTiaTMMEW0xUVO53ZUn8t//CqJBMNgbPB31+pjC/TNMH4FprC+FaayuRTmsTkiFuGvdnj1KXAOIiV4K+OJFWaiyg0Ta9XlNpZFnNMMU87Fu6JpEd7eVb2opxYflpfv3a6POca5EdfirMurHNGCE8kd+I1Aga56YZpli8QTd2pkM13zTZ3LWH/yp07FYsroO6K+8wWApapQmIJS/sos3zFfAfHn7h7YNkyBXLpDpx4e1dclrGWJZBjHTZlH7GTZu5+x+JBl122Uu7Dnneswsb7GzdAYdAeAQNsuPCgpUXf26No0Vtakrt6EdLv73FsGfVc+stJczdJknB3izcB36+MxPaRNRuxkhDbHm3uWlgXdtH0nPRZONzVMmLbhDTJuGaPNCfq0vWC2f87RVXNo+ZKmG1whgeqbK2MNlctwFnlMtis7d3MsMNhGBuNtnQt7IjdW4k7NbE3+trR+Ch7WcWwpjkOHUkI4nbFjG3xcHdz1HEIabtS38eCpsmEOO2WrO1tMUMd5tprJzKSyJyclDN2xNNTI/96bFx+DY/OZ1M/Agzf5q9pwwDDd2mR2fk3+hv//gtHjxX1/Gv7BYy+e/TXTxieKPKA/wJB1v9p9MQFZWkUnqbM59f7CDSOyHhvg3RyEX+W+EJf98UsIXcTWksyJD1rIGutYxf+Nqj6dmQarevsprPVOM7vW4RJE2UWtjjLIMz3BpK5PkA23x678L9AtdRvaMyPNOicjLIr9m0II3eYocJRk1bjkqEG/FT5eG7oXUI97FVYafRSgixk5KTGuoZmbRz9yPZxTCiiN3FOJcoCPmmM3Q+93oAUZAE3qrzOxXmwq76e9r1SnRrwQa69GKTgkEayKk5iUAX4Ubs0l9t6/yVIF+alYCPzLlQJxIQYG5c0qtNAYI+jnzTvuWwfEqFrwnF0th/FBPhIxhBEXlkOkAT7d3NDKq6Oa4tiUJd6Po5Sse74jO9VXgcdcdUmUuQoUaOJnt4Dl+JXXeEyPxSI1voUw1/7MCwcm0NW4TI0Df09vyvCmMFradjrDakM0Z+bXAAAAAA=")
-      format("woff2"),
-    url("iconfont.woff?t=1619360751585") format("woff"),
-    url("iconfont.ttf?t=1619360751585") format("truetype"),
-    /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
-      url("iconfont.svg?t=1619360751585#iconfont") format("svg"); /* iOS 4.1- */
+  font-family: "iconfont"; /* Project id 2208059 */
+  src: url("iconfont.woff2?t=1632557807050") format("woff2"),
+    url("iconfont.woff?t=1632557807050") format("woff"),
+    url("iconfont.ttf?t=1632557807050") format("truetype");
 }
 
 .iconfont {
@@ -17,6 +11,10 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.team-iconinternationality::before {
+  content: "\e67a";
 }
 
 .team-iconshanchu::before {

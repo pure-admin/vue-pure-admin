@@ -16,7 +16,8 @@ import { useAppStoreHook } from "/@/store/modules/app";
 import fullScreen from "/@/assets/svg/full_screen.svg";
 import exitScreen from "/@/assets/svg/exit_screen.svg";
 import { useSettingStoreHook } from "/@/store/modules/settings";
-import { Navbar, Sidebar, AppMain, setting, tag } from "./components";
+import { AppMain, setting, tag } from "./components";
+import Horizontal from "./components/sidebar/horizontal.vue";
 
 interface setInter {
   sidebar: any;
@@ -119,25 +120,25 @@ onBeforeMount(() => {
 
 <template>
   <div :class="set.classes" class="app-wrapper">
-    <div
+    <!-- <div
       v-if="set.device === 'mobile' && set.sidebar.opened"
       class="drawer-bg"
       @click="handleClickOutside(false)"
-    />
+    /> -->
     <!-- 侧边栏 -->
-    <sidebar class="sidebar-container" v-if="!containerHiddenSideBar" />
+    <!-- <sidebar class="sidebar-container" v-if="!containerHiddenSideBar" /> -->
     <div class="main-container">
-      <div :class="{ 'fixed-header': set.fixedHeader }">
-        <!-- 顶部导航栏 -->
-        <navbar v-show="!containerHiddenSideBar" />
-        <!-- tabs标签页 -->
-        <tag>
-          <span @click="onFullScreen">
-            <fullScreen v-if="!containerHiddenSideBar" />
-            <exitScreen v-else />
-          </span>
-        </tag>
-      </div>
+      <!-- <div :class="{ 'fixed-header': set.fixedHeader }"> -->
+      <!-- 顶部导航栏 -->
+      <Horizontal />
+      <!-- tabs标签页 -->
+      <tag>
+        <span @click="onFullScreen">
+          <fullScreen v-if="!containerHiddenSideBar" />
+          <exitScreen v-else />
+        </span>
+      </tag>
+      <!-- </div> -->
       <!-- 主体内容 -->
       <app-main />
     </div>
@@ -195,7 +196,7 @@ $sideBarWidth: 210px;
 }
 
 .hideSidebar .fixed-header {
-  width: calc(100% - 54px);
+  // width: calc(100% - 54px);
 }
 
 .mobile .fixed-header {

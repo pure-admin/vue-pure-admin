@@ -1,10 +1,17 @@
 {
   "id": "2208059",
-  "name": "CURD-TS",
+  "name": "pure-admin",
   "font_family": "iconfont",
   "css_prefix_text": "team-icon",
-  "description": "增删查改xi't",
+  "description": "pure-admin",
   "glyphs": [
+    {
+      "icon_id": "18367956",
+      "name": "中英文2 中文",
+      "font_class": "internationality",
+      "unicode": "e67a",
+      "unicode_decimal": 59002
+    },
     {
       "icon_id": "6184565",
       "name": "删除",

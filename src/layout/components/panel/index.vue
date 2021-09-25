@@ -3,7 +3,7 @@ import { ref } from "vue";
 import { useEventListener, onClickOutside } from "@vueuse/core";
 import { emitter } from "/@/utils/mitt";
 
-let show = ref(false);
+let show = ref<Boolean>(false);
 const target = ref(null);
 onClickOutside(target, () => {
   show.value = false;
