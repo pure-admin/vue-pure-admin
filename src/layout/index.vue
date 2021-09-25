@@ -16,7 +16,9 @@ import { useAppStoreHook } from "/@/store/modules/app";
 import fullScreen from "/@/assets/svg/full_screen.svg";
 import exitScreen from "/@/assets/svg/exit_screen.svg";
 import { useSettingStoreHook } from "/@/store/modules/settings";
-import { AppMain, setting, tag } from "./components";
+import appMain from "./components/appMain.vue";
+import setting from "./components/setting/index.vue";
+import tag from "./components/tag/index.vue";
 import Horizontal from "./components/sidebar/horizontal.vue";
 
 interface setInter {
