@@ -70,14 +70,14 @@ import {
   onMounted
 } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import SidebarItem from "./SidebarItem.vue";
+import SidebarItem from "./sidebarItem.vue";
 import { algorithm } from "/@/utils/algorithm";
 import { emitter } from "/@/utils/mitt";
 import { useI18n } from "vue-i18n";
 import { storageLocal } from "/@/utils/storage";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 import { deviceDetection } from "/@/utils/deviceDetection";
-import screenfull from "../Screenfull/index.vue";
+import screenfull from "../screenfull/index.vue";
 import { storageSession } from "/@/utils/storage";
 import settings from "/@/settings";
 import iconinternationality from "/@/assets/svg/iconinternationality.svg";

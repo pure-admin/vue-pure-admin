@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import path from "path";
-import AppLink from "./Link.vue";
+import AppLink from "./link.vue";
 import { PropType, ref } from "vue";
 import { isUrl } from "/@/utils/is";
 import { RouteRecordRaw } from "vue-router";

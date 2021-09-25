@@ -25,10 +25,10 @@
 import { computed, defineComponent, ref, onBeforeMount } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useAppStoreHook } from "/@/store/modules/app";
-import SidebarItem from "./SidebarItem.vue";
+import SidebarItem from "./sidebarItem.vue";
 import { algorithm } from "/@/utils/algorithm";
 import { emitter } from "/@/utils/mitt";
-import Logo from "./Logo.vue";
+import Logo from "./logo.vue";
 import { storageLocal } from "/@/utils/storage";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 
