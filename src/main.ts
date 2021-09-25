@@ -48,10 +48,7 @@ app.use(Storage, {
   layout: {
     type: Object,
     default: Storage.getData(undefined, "layout") ?? {
-      layout: {
-        model: "vertical",
-        theme: "dark"
-      }
+      layout: "horizontal-dark"
     }
   }
 });
