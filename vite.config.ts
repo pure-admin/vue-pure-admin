@@ -1,8 +1,8 @@
 import { resolve } from "path";
-import { UserConfigExport, ConfigEnv } from "vite";
+import { UserConfigExport, ConfigEnv, loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
 import vueJsx from "@vitejs/plugin-vue-jsx";
-import { loadEnv } from "./build/utils";
+import { warpperEnv } from "./build/utils";
 import { createProxy } from "./build/proxy";
 import { viteMockServe } from "vite-plugin-mock";
 import svgLoader from "vite-svg-loader";
@@ -13,8 +13,6 @@ const pathResolve = (dir: string): any => {
   return resolve(__dirname, ".", dir);
 };
 
-const { VITE_PORT, VITE_PUBLIC_PATH, VITE_PROXY } = loadEnv();
-
 const alias: Record<string, string> = {
   "/@": pathResolve("src"),
   //解决开发环境下的警告 You are running the esm-bundler build of vue-i18n. It is recommended to configure your bundler to explicitly replace feature flag globals with boolean literals to get proper tree-shaking in the final bundle.
@@ -23,7 +21,10 @@ const alias: Record<string, string> = {
 
 const root: string = process.cwd();
 
-export default ({ command }: ConfigEnv): UserConfigExport => {
+export default ({ command, mode }: ConfigEnv): UserConfigExport => {
+  const { VITE_PORT, VITE_PUBLIC_PATH, VITE_PROXY } = warpperEnv(
+    loadEnv(mode, root)
+  );
   const prodMock = true;
   return {
     /**
