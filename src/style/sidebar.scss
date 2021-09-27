@@ -110,7 +110,7 @@
       color: $subMenuActiveText !important;
     }
 
-    el-sub-menu nest-menu & .el-sub-menu > .el-sub-menu__title,
+    & .nest-menu .el-sub-menu > .el-sub-menu__title,
     & .el-sub-menu .el-menu-item {
       font-size: 12px;
       min-width: $sideBarWidth !important;
@@ -403,7 +403,7 @@
   // 手机端
   .mobile {
     .main-container {
-      margin-left: 0;
+      margin-left: 0 !important;
     }
 
     .sidebar-container {

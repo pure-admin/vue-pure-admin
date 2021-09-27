@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import path from "path";
 import AppLink from "./link.vue";
-import { PropType, ref } from "vue";
+import { PropType, ref, unref } from "vue";
 import { isUrl } from "/@/utils/is";
 import { RouteRecordRaw } from "vue-router";
 
@@ -68,47 +68,54 @@ function resolvePath(routePath) {
 </script>
 
 <template>
-  <template
-    v-if="
-      hasOneShowingChild(props.item.children, props.item) &&
-      (!onlyOneChild.children || onlyOneChild.noShowingChildren) &&
-      !props.item.alwaysShow
-    "
-  >
-    <app-link v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path)">
-      <el-menu-item
-        :index="resolvePath(onlyOneChild.path)"
-        :class="{ 'submenu-title-noDropdown': !isNest }"
+  <div v-if="!props.item.hidden">
+    <template
+      v-if="
+        hasOneShowingChild(props.item.children, props.item) &&
+        (!unref(onlyOneChild).children ||
+          unref(onlyOneChild).noShowingChildren) &&
+        !props.item.alwaysShow
+      "
+    >
+      <app-link
+        v-if="unref(onlyOneChild).meta"
+        :to="resolvePath(unref(onlyOneChild).path)"
       >
-        <i
-          :class="
-            onlyOneChild.meta.icon || (props.item.meta && props.item.meta.icon)
-          "
-        />
-        <template #title>
-          <span>{{ $t(onlyOneChild.meta.title) }}</span>
-        </template>
-      </el-menu-item>
-    </app-link>
-  </template>
-
-  <el-sub-menu
-    v-else
-    ref="subMenu"
-    :index="resolvePath(props.item.path)"
-    popper-append-to-body
-  >
-    <template #title>
-      <i :class="props.item.meta.icon"></i>
-      <span>{{ $t(props.item.meta.title) }}</span>
+        <el-menu-item
+          :index="resolvePath(unref(onlyOneChild).path)"
+          :class="{ 'submenu-title-noDropdown': !props.isNest }"
+        >
+          <i
+            :class="
+              unref(onlyOneChild).meta.icon ||
+              (props.item.meta && props.item.meta.icon)
+            "
+          />
+          <template #title>
+            <span>{{ $t(unref(onlyOneChild).meta.title) }}</span>
+          </template>
+        </el-menu-item>
+      </app-link>
     </template>
-    <sidebar-item
-      v-for="child in props.item.children"
-      :key="child.path"
-      :is-nest="true"
-      :item="child"
-      :base-path="resolvePath(child.path)"
-      class="nest-menu"
-    />
-  </el-sub-menu>
+
+    <el-sub-menu
+      v-else
+      ref="subMenu"
+      :index="resolvePath(props.item.path)"
+      popper-append-to-body
+    >
+      <template #title>
+        <i :class="props.item.meta.icon"></i>
+        <span>{{ $t(props.item.meta.title) }}</span>
+      </template>
+      <sidebar-item
+        v-for="child in props.item.children"
+        :key="child.path"
+        :is-nest="true"
+        :item="child"
+        :base-path="resolvePath(child.path)"
+        class="nest-menu"
+      />
+    </el-sub-menu>
+  </div>
 </template>
