@@ -7,6 +7,7 @@
     <el-menu
       :default-active="activeMenu"
       unique-opened
+      router
       class="horizontal-header-menu"
       mode="horizontal"
       @select="menuSelect"

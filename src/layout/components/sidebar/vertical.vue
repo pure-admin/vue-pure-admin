@@ -6,6 +6,7 @@
         :default-active="activeMenu"
         :collapse="isCollapse"
         unique-opened
+        router
         :collapse-transition="false"
         mode="vertical"
         @select="menuSelect"

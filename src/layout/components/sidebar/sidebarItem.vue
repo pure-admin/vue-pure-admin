@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import path from "path";
-import AppLink from "./link.vue";
 import { PropType, ref } from "vue";
 import { isUrl } from "/@/utils/is";
 import { RouteRecordRaw } from "vue-router";
@@ -75,21 +74,19 @@ function resolvePath(routePath) {
       !props.item.alwaysShow
     "
   >
-    <app-link v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path)">
-      <el-menu-item
-        :index="resolvePath(onlyOneChild.path)"
-        :class="{ 'submenu-title-noDropdown': !isNest }"
-      >
-        <i
-          :class="
-            onlyOneChild.meta.icon || (props.item.meta && props.item.meta.icon)
-          "
-        />
-        <template #title>
-          <span>{{ $t(onlyOneChild.meta.title) }}</span>
-        </template>
-      </el-menu-item>
-    </app-link>
+    <el-menu-item
+      :index="resolvePath(onlyOneChild.path)"
+      :class="{ 'submenu-title-noDropdown': !isNest }"
+    >
+      <i
+        :class="
+          onlyOneChild.meta.icon || (props.item.meta && props.item.meta.icon)
+        "
+      />
+      <template #title>
+        <span>{{ $t(onlyOneChild.meta.title) }}</span>
+      </template>
+    </el-menu-item>
   </template>
 
   <el-sub-menu

@@ -45,7 +45,6 @@
       overflow-x: hidden !important;
     }
 
-    // reset element-plus css
     .horizontal-collapse-transition {
       transition: 0s width ease-in-out, 0s padding-left ease-in-out,
         0s padding-right ease-in-out;
@@ -89,7 +88,7 @@
     // menu hover
     .submenu-title-noDropdown,
     .el-sub-menu__title {
-      background: $menuBg;
+      // background: $menuBg;
 
       &:hover {
         background-color: $menuHover !important;
@@ -110,7 +109,7 @@
       color: $subMenuActiveText !important;
     }
 
-    el-sub-menu nest-menu & .el-sub-menu > .el-sub-menu__title,
+    .el-menu .el-menu--inline .el-sub-menu__title,
     & .el-sub-menu .el-menu-item {
       font-size: 12px;
       min-width: $sideBarWidth !important;
@@ -118,128 +117,6 @@
 
       &:hover {
         background-color: $subMenuHover !important;
-      }
-    }
-  }
-
-  // vertical菜单折叠
-  .el-menu--vertical {
-    .el-menu--popup {
-      background-color: $subMenuBg !important;
-
-      .el-menu-item {
-        color: $menuText;
-        background-color: $subMenuBg;
-
-        &:hover {
-          background-color: $subMenuHover;
-        }
-      }
-
-      .el-sub-menu__title {
-        color: $menuText;
-      }
-    }
-
-    & > .el-menu {
-      i {
-        margin-right: 16px;
-      }
-    }
-
-    .is-active > .el-sub-menu__title,
-    .is-active.submenu-title-noDropdown {
-      color: $subMenuActiveText !important;
-
-      i {
-        color: $subMenuActiveText !important;
-      }
-    }
-
-    // 子菜单中还有子菜单
-    .el-menu .el-sub-menu__title {
-      font-size: 12px;
-      min-width: $sideBarWidth !important;
-      background-color: $subMenuBg !important;
-
-      &:hover {
-        background-color: $menuHover !important;
-      }
-    }
-
-    .is-active {
-      transition: color 0.3s;
-      color: $subMenuActiveText !important;
-    }
-
-    .nest-menu .el-sub-menu > .el-sub-menu__title,
-    .el-menu-item {
-      &:hover {
-        background-color: $menuHover !important;
-      }
-    }
-  }
-
-  // horizontal菜单折叠
-  .el-menu--horizontal {
-    .el-menu--popup {
-      background-color: $subMenuBg !important;
-
-      .el-menu-item {
-        color: $menuText;
-        background-color: $subMenuBg;
-
-        &:hover {
-          background-color: $subMenuHover;
-        }
-      }
-
-      .el-sub-menu__title {
-        color: $menuText;
-      }
-    }
-
-    // 无子菜单时激活border-bottom
-    .router-link-exact-active > .submenu-title-noDropdown {
-      height: 60px;
-      border-bottom: 2px solid var(--el-menu-active-color);
-    }
-
-    // 子菜单中还有子菜单
-    .el-menu .el-sub-menu__title {
-      font-size: 12px;
-      min-width: $sideBarWidth !important;
-      background-color: $subMenuBg !important;
-
-      &:hover {
-        background-color: $menuHover !important;
-      }
-    }
-
-    & > .el-menu {
-      i {
-        margin-right: 16px;
-      }
-    }
-
-    .is-active > .el-sub-menu__title,
-    .is-active.submenu-title-noDropdown {
-      color: $subMenuActiveText !important;
-
-      i {
-        color: $subMenuActiveText !important;
-      }
-    }
-
-    .is-active {
-      transition: color 0.3s;
-      color: $subMenuActiveText !important;
-    }
-
-    .nest-menu .el-sub-menu > .el-sub-menu__title,
-    .el-menu-item {
-      &:hover {
-        background-color: $menuHover !important;
       }
     }
   }
@@ -391,6 +268,128 @@
     }
   }
 
+  // vertical菜单折叠
+  .el-menu--vertical {
+    .el-menu--popup {
+      background-color: $subMenuBg !important;
+
+      .el-menu-item {
+        color: $menuText;
+        background-color: $subMenuBg;
+
+        &:hover {
+          background-color: $subMenuHover;
+        }
+      }
+
+      .el-sub-menu__title {
+        color: $menuText;
+      }
+    }
+
+    & > .el-menu {
+      i {
+        margin-right: 16px;
+      }
+    }
+
+    .is-active > .el-sub-menu__title,
+    .is-active.submenu-title-noDropdown {
+      color: $subMenuActiveText !important;
+
+      i {
+        color: $subMenuActiveText !important;
+      }
+    }
+
+    // 子菜单中还有子菜单
+    .el-menu .el-sub-menu__title {
+      font-size: 12px;
+      min-width: $sideBarWidth !important;
+      background-color: $subMenuBg !important;
+
+      &:hover {
+        background-color: $menuHover !important;
+      }
+    }
+
+    .is-active {
+      transition: color 0.3s;
+      color: $subMenuActiveText !important;
+    }
+
+    .nest-menu .el-sub-menu > .el-sub-menu__title,
+    .el-menu-item {
+      &:hover {
+        background-color: $menuHover !important;
+      }
+    }
+  }
+
+  // horizontal菜单折叠
+  .el-menu--horizontal {
+    .el-menu--popup {
+      background-color: $subMenuBg !important;
+
+      .el-menu-item {
+        color: $menuText;
+        background-color: $subMenuBg;
+
+        &:hover {
+          background-color: $subMenuHover;
+        }
+      }
+
+      .el-sub-menu__title {
+        color: $menuText;
+      }
+    }
+
+    // 无子菜单时激活border-bottom
+    .router-link-exact-active > .submenu-title-noDropdown {
+      height: 60px;
+      border-bottom: 2px solid var(--el-menu-active-color);
+    }
+
+    // 子菜单中还有子菜单
+    .el-menu .el-sub-menu__title {
+      font-size: 12px;
+      min-width: $sideBarWidth !important;
+      background-color: $subMenuBg !important;
+
+      &:hover {
+        background-color: $menuHover !important;
+      }
+    }
+
+    & > .el-menu {
+      i {
+        margin-right: 16px;
+      }
+    }
+
+    .is-active > .el-sub-menu__title,
+    .is-active.submenu-title-noDropdown {
+      color: $subMenuActiveText !important;
+
+      i {
+        color: $subMenuActiveText !important;
+      }
+    }
+
+    .is-active {
+      transition: color 0.3s;
+      color: $subMenuActiveText !important;
+    }
+
+    .nest-menu .el-sub-menu > .el-sub-menu__title,
+    .el-menu-item {
+      &:hover {
+        background-color: $menuHover !important;
+      }
+    }
+  }
+
   .el-scrollbar__wrap {
     overflow: auto;
     height: 100%;
@@ -403,7 +402,7 @@
   // 手机端
   .mobile {
     .main-container {
-      margin-left: 0;
+      margin-left: 0 !important;
     }
 
     .sidebar-container {
