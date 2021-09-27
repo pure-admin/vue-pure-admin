@@ -15,6 +15,9 @@ name: Lint Code Base
 # Start the job on all push #
 #############################
 on:
+  push:
+    branches-ignore: main
+    # Remove the line above to run when pushing to master
   pull_request:
     branches: main
 
@@ -32,10 +35,16 @@ jobs:
     # Load all steps #
     ##################
     steps:
-      ################################
-      # Run Linter against code base #
-      ################################
-      - name: Lint
+      ##########################
+      # Checkout the code base #
+      ##########################
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        with:
+          # Full git history is needed to get a proper list of changed files within `super-linter`
+          fetch-depth: 0
+
+      - name: Build
         run: |
           yarn install
           yarn lint
