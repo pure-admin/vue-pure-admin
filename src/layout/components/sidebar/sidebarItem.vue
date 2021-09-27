@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import path from "path";
 import { PropType, ref } from "vue";
-import { isUrl } from "/@/utils/is";
 import { RouteRecordRaw } from "vue-router";
 
 const props = defineProps({
@@ -56,12 +55,6 @@ function hasOneShowingChild(
 }
 
 function resolvePath(routePath) {
-  if (isUrl(routePath)) {
-    return routePath;
-  }
-  if (isUrl(this.basePath)) {
-    return props.basePath;
-  }
   return path.resolve(props.basePath, routePath);
 }
 </script>

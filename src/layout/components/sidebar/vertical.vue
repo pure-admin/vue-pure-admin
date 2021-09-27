@@ -24,7 +24,9 @@
 
 <script lang="ts">
 import Logo from "./logo.vue";
+import { split } from "lodash-es";
 import { emitter } from "/@/utils/mitt";
+import { createLink } from "/@/utils/link";
 import SidebarItem from "./sidebarItem.vue";
 import { algorithm } from "/@/utils/algorithm";
 import { storageLocal } from "/@/utils/storage";
@@ -56,26 +58,32 @@ export default defineComponent({
     });
 
     const menuSelect = (indexPath: string): void => {
-      let parentPath = "";
-      let parentPathIndex = indexPath.lastIndexOf("/");
-      if (parentPathIndex > 0) {
-        parentPath = indexPath.slice(0, parentPathIndex);
+      // 如果路由包含http 则是超链接 反之是普通路由
+      if (indexPath.includes("http")) {
+        createLink(`http${split(indexPath, "http")[1]}`);
+      } else {
+        let parentPath = "";
+        let parentPathIndex = indexPath.lastIndexOf("/");
+        if (parentPathIndex > 0) {
+          parentPath = indexPath.slice(0, parentPathIndex);
+        }
+        // 找到当前路由的信息
+        // eslint-disable-next-line no-inner-declarations
+        function findCurrentRoute(routes) {
+          return routes.map(item => {
+            if (item.path === indexPath) {
+              // 切换左侧菜单 通知标签页
+              emitter.emit("changLayoutRoute", {
+                indexPath,
+                parentPath
+              });
+            } else {
+              if (item.children) findCurrentRoute(item.children);
+            }
+          });
+        }
+        findCurrentRoute(algorithm.increaseIndexes(router));
       }
-      // 找到当前路由的信息
-      function findCurrentRoute(routes) {
-        return routes.map(item => {
-          if (item.path === indexPath) {
-            // 切换左侧菜单 通知标签页
-            emitter.emit("changLayoutRoute", {
-              indexPath,
-              parentPath
-            });
-          } else {
-            if (item.children) findCurrentRoute(item.children);
-          }
-        });
-      }
-      findCurrentRoute(algorithm.increaseIndexes(router));
     };
 
     onBeforeMount(() => {
