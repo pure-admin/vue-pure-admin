@@ -2,6 +2,7 @@ import { loadEnv } from "@build/utils";
 import { LocalStorage, LowSync } from "lowdb";
 import lodash from "lodash";
 import { storageLocal } from ".";
+import { cookies } from "./cookie";
 /**
  * db 数据存储,采用 LocalStorage存储
  */
@@ -33,7 +34,7 @@ class DB {
     validator = () => true,
     defaultValue = ""
   }): string {
-    const uuid = "ghost-uuid";
+    const uuid = cookies.get("uuid") || "ghost-uuid";
     const currentPath = `${dbName}.${user ? `user.${uuid}` : "public"}${
       path ? `.${path}` : ""
     }`;
