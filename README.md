@@ -15,7 +15,9 @@ vue-pure-admin 是一个免费开源的中后台模版。使用了最新的`vue3
 点击免密登录
 
 <p align="center">
-   <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c659b762ed5a47cc8bdc6546e9df8cd2~tplv-k3u1fbpfcp-watermark.image">
+   <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f5ee80eee1014fb4a53c5bb37574a5f5~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/dec0672a62e141f3b7f626c22ff6c7ef~tplv-k3u1fbpfcp-watermark.image">
+    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f586f1353de74b1b88cc9f89fce2146e~tplv-k3u1fbpfcp-watermark.image">
     <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a28fc0af7ac44e3b8f30469cba4a9993~tplv-k3u1fbpfcp-watermark.image">
     <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a17e54329cda4d76aa9c1c4f2a4715d3~tplv-k3u1fbpfcp-watermark.image">
     <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d884fb611da74ee0bdc17c29014d0260~tplv-k3u1fbpfcp-watermark.image">
