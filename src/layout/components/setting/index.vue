@@ -1,13 +1,17 @@
 <script setup lang="ts">
+import { split } from "lodash-es";
 import panel from "../panel/index.vue";
 import { useRouter } from "vue-router";
 import { emitter } from "/@/utils/mitt";
 import { templateRef } from "@vueuse/core";
-import { reactive, ref, unref, useCssModule } from "vue";
 import { storageLocal, storageSession } from "/@/utils/storage";
+import { reactive, ref, unref, useCssModule, getCurrentInstance } from "vue";
 
 const router = useRouter();
 const { isSelect } = useCssModule();
+
+const instance =
+  getCurrentInstance().appContext.app.config.globalProperties.$storage;
 
 // 默认灵动模式
 const markValue = ref(storageLocal.getItem("showModel") || "smart");
@@ -80,36 +84,53 @@ function onChange({ label }) {
   emitter.emit("tagViewsShowModel", label);
 }
 
-const firstTheme = templateRef<HTMLElement | null>("firstTheme", null);
-const secondTheme = templateRef<HTMLElement | null>("secondTheme", null);
+const verticalDarkDom = templateRef<HTMLElement | null>(
+  "verticalDarkDom",
+  null
+);
+const verticalLightDom = templateRef<HTMLElement | null>(
+  "verticalLightDom",
+  null
+);
+const horizontalDarkDom = templateRef<HTMLElement | null>(
+  "horizontalDarkDom",
+  null
+);
+const horizontalLightDom = templateRef<HTMLElement | null>(
+  "horizontalLightDom",
+  null
+);
 
-const dataTheme = ref(storageLocal.getItem("data-theme") || "dark");
-if (dataTheme.value) {
-  storageLocal.setItem("data-theme", unref(dataTheme));
-  window.document.body.setAttribute("data-theme", unref(dataTheme));
+let dataTheme =
+  ref(storageLocal.getItem("responsive-layout")) ||
+  ref({
+    layout: "horizontal-dark"
+  });
+
+if (unref(dataTheme)) {
+  // 设置主题
+  let theme = split(unref(dataTheme).layout, "-")[1];
+  window.document.body.setAttribute("data-theme", theme);
+  // 设置导航模式
+  let layout = split(unref(dataTheme).layout, "-")[0];
+  window.document.body.setAttribute("data-layout", layout);
 }
 
-// dark主题
-function onDark() {
-  storageLocal.setItem("data-theme", "dark");
-  window.document.body.setAttribute("data-theme", "dark");
-  toggleClass(true, isSelect, unref(firstTheme));
-  toggleClass(false, isSelect, unref(secondTheme));
-}
-
-// light主题
-function onLight() {
-  storageLocal.setItem("data-theme", "light");
-  window.document.body.setAttribute("data-theme", "light");
-  toggleClass(false, isSelect, unref(firstTheme));
-  toggleClass(true, isSelect, unref(secondTheme));
-}
-
+// 侧边栏Logo
 function logoChange() {
   unref(logoVal) === "1"
     ? storageLocal.setItem("logoVal", "1")
     : storageLocal.setItem("logoVal", "-1");
   emitter.emit("logoChange", unref(logoVal));
+}
+
+function setTheme(layout: string, theme: string, dom: HTMLElement) {
+  dataTheme.value.layout = `${layout}-${theme}`;
+  window.document.body.setAttribute("data-layout", layout);
+  window.document.body.setAttribute("data-theme", theme);
+  instance.layout = { layout: `${layout}-${theme}` };
+  toggleClass(true, isSelect, unref(dom));
+  toggleClass(false, isSelect, unref(dom));
 }
 </script>
 
@@ -124,9 +145,9 @@ function logoChange() {
         placement="bottom"
       >
         <li
-          :class="dataTheme === 'dark' ? $style.isSelect : ''"
-          ref="firstTheme"
-          @click="onDark"
+          :class="dataTheme.layout === 'vertical-dark' ? $style.isSelect : ''"
+          ref="verticalDarkDom"
+          @click="setTheme('vertical', 'dark', verticalDarkDom)"
         >
           <div></div>
           <div></div>
@@ -140,9 +161,43 @@ function logoChange() {
         placement="bottom"
       >
         <li
-          :class="dataTheme === 'light' ? $style.isSelect : ''"
-          ref="secondTheme"
-          @click="onLight"
+          :class="dataTheme.layout === 'vertical-light' ? $style.isSelect : ''"
+          ref="verticalLightDom"
+          @click="setTheme('vertical', 'light', verticalLightDom)"
+        >
+          <div></div>
+          <div></div>
+        </li>
+      </el-tooltip>
+
+      <el-tooltip
+        class="item"
+        effect="dark"
+        content="暗色主题"
+        placement="bottom"
+      >
+        <li
+          :class="dataTheme.layout === 'horizontal-dark' ? $style.isSelect : ''"
+          ref="horizontalDarkDom"
+          @click="setTheme('horizontal', 'dark', horizontalDarkDom)"
+        >
+          <div></div>
+          <div></div>
+        </li>
+      </el-tooltip>
+
+      <el-tooltip
+        class="item"
+        effect="dark"
+        content="暗色主题"
+        placement="bottom"
+      >
+        <li
+          :class="
+            dataTheme.layout === 'horizontal-light' ? $style.isSelect : ''
+          "
+          ref="horizontalLightDom"
+          @click="setTheme('horizontal', 'light', horizontalLightDom)"
         >
           <div></div>
           <div></div>
@@ -237,18 +292,19 @@ function logoChange() {
 .theme-stley {
   margin-top: 25px;
   width: 100%;
-  height: 60px;
+  height: 180px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
 
   li {
-    width: 30%;
-    height: 100%;
+    margin: 10px;
+    width: 36%;
+    height: 70px;
     background: #f0f2f5;
     position: relative;
     overflow: hidden;
     cursor: pointer;
-    background-color: #f0f2f5;
     border-radius: 4px;
     box-shadow: 0 1px 2.5px 0 rgb(0 0 0 / 18%);
 
@@ -265,7 +321,7 @@ function logoChange() {
           height: 30%;
           top: 0;
           right: 0;
-          background-color: #fff;
+          background: #fff;
           box-shadow: 0 0 1px #888;
           position: absolute;
         }
@@ -278,7 +334,7 @@ function logoChange() {
           width: 30%;
           height: 100%;
           box-shadow: 0 0 1px #888;
-          background-color: #fff;
+          background: #fff;
           border-radius: 4px 0 0 4px;
         }
 
@@ -287,9 +343,31 @@ function logoChange() {
           height: 30%;
           top: 0;
           right: 0;
-          background-color: #fff;
+          background: #fff;
           box-shadow: 0 0 1px #888;
           position: absolute;
+        }
+      }
+    }
+
+    &:nth-child(3) {
+      div {
+        &:nth-child(1) {
+          width: 100%;
+          height: 30%;
+          background: #1b2a47;
+          box-shadow: 0 0 1px #888;
+        }
+      }
+    }
+
+    &:nth-child(4) {
+      div {
+        &:nth-child(1) {
+          width: 100%;
+          height: 30%;
+          background: #fff;
+          box-shadow: 0 0 1px #888;
         }
       }
     }

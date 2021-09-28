@@ -36,9 +36,7 @@
 
 // dropdown
 .el-dropdown-menu {
-  a {
-    display: block;
-  }
+  padding: 2px 0 2px 0 !important;
 }
 
 // to fix el-date-picker css style
@@ -51,6 +49,6 @@
 }
 
 // el-tooltip,的权重
-.is-dark {
-  z-index: 99999 !important;
-}
+// .is-dark {
+//   z-index: 99999 !important;
+// }

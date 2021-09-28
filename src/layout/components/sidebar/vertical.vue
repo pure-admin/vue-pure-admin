@@ -1,11 +1,12 @@
 <template>
-  <div :class="{ 'has-logo': showLogo }">
+  <div :class="['sidebar-container', showLogo ? 'has-logo' : '']">
     <Logo v-if="showLogo === '1'" :collapse="isCollapse" />
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu
         :default-active="activeMenu"
         :collapse="isCollapse"
         unique-opened
+        router
         :collapse-transition="false"
         mode="vertical"
         @select="menuSelect"
@@ -22,14 +23,14 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, onBeforeMount } from "vue";
+import Logo from "./logo.vue";
+import { emitter } from "/@/utils/mitt";
+import SidebarItem from "./sidebarItem.vue";
+import { algorithm } from "/@/utils/algorithm";
+import { storageLocal } from "/@/utils/storage";
 import { useRoute, useRouter } from "vue-router";
 import { useAppStoreHook } from "/@/store/modules/app";
-import SidebarItem from "./SidebarItem.vue";
-import { algorithm } from "/@/utils/algorithm";
-import { emitter } from "/@/utils/mitt";
-import Logo from "./Logo.vue";
-import { storageLocal } from "/@/utils/storage";
+import { computed, defineComponent, ref, onBeforeMount } from "vue";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 
 export default defineComponent({
@@ -61,6 +62,7 @@ export default defineComponent({
         parentPath = indexPath.slice(0, parentPathIndex);
       }
       // 找到当前路由的信息
+      // eslint-disable-next-line no-inner-declarations
       function findCurrentRoute(routes) {
         return routes.map(item => {
           if (item.path === indexPath) {

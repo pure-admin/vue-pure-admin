@@ -8,98 +8,84 @@
 
     <Breadcrumb class="breadcrumb-container" />
 
-    <div class="right-menu">
+    <div class="vertical-header-right">
       <!-- 全屏 -->
       <screenfull v-show="!deviceDetection()" />
       <!-- 国际化 -->
-      <div
-        v-show="!deviceDetection()"
-        class="inter"
-        :title="currentLocale ? '中文' : 'English'"
-        @click="toggleLang"
-      >
-        <img :src="currentLocale ? ch : en" />
-      </div>
-      <i
-        class="el-icon-setting hsset"
-        :title="$t('message.hssystemSet')"
-        @click="onPanel"
-      ></i>
+      <el-dropdown trigger="click">
+        <iconinternationality />
+        <template #dropdown>
+          <el-dropdown-menu class="translation">
+            <el-dropdown-item
+              :style="{
+                background: locale === 'zh' ? '#1b2a47' : '',
+                color: locale === 'zh' ? '#f4f4f5' : '#000'
+              }"
+              @click="translationCh"
+              >简体中文</el-dropdown-item
+            >
+            <el-dropdown-item
+              :style="{
+                background: locale === 'en' ? '#1b2a47' : '',
+                color: locale === 'en' ? '#f4f4f5' : '#000'
+              }"
+              @click="translationEn"
+              >English</el-dropdown-item
+            >
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
       <!-- 退出登陆 -->
       <el-dropdown trigger="click">
         <span class="el-dropdown-link">
-          <img :src="favicon" />
+          <img
+            src="https://avatars.githubusercontent.com/u/44761321?s=400&u=30907819abd29bb3779bc247910873e7c7f7c12f&v=4"
+          />
           <p>{{ usename }}</p>
         </span>
         <template #dropdown>
-          <el-dropdown-menu>
+          <el-dropdown-menu class="logout">
             <el-dropdown-item icon="el-icon-switch-button" @click="logout">{{
               $t("message.hsLoginOut")
             }}</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
+      <i
+        class="el-icon-setting"
+        :title="$t('message.hssystemSet')"
+        @click="onPanel"
+      ></i>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  onMounted,
-  unref,
-  watch,
-  getCurrentInstance
-} from "vue";
+import { defineComponent, unref, watch, getCurrentInstance } from "vue";
 import Breadcrumb from "/@/components/ReBreadCrumb";
 import Hamburger from "/@/components/ReHamBurger";
 import screenfull from "../components/screenfull/index.vue";
 import { useRouter, useRoute } from "vue-router";
 import { useAppStoreHook } from "/@/store/modules/app";
 import { storageSession } from "/@/utils/storage";
-import ch from "/@/assets/ch.png";
-import en from "/@/assets/en.png";
 import favicon from "/favicon.ico";
 import { emitter } from "/@/utils/mitt";
 import { deviceDetection } from "/@/utils/deviceDetection";
 import { useI18n } from "vue-i18n";
+import iconinternationality from "/@/assets/svg/iconinternationality.svg";
 
-let routerArrays: Array<object> = [
-  {
-    path: "/welcome",
-    parentPath: "/",
-    meta: {
-      title: "message.hshome",
-      icon: "el-icon-s-home",
-      showLink: true,
-      savedPosition: false
-    }
-  }
-];
 export default defineComponent({
   name: "Navbar",
   components: {
     Breadcrumb,
     Hamburger,
-    screenfull
+    screenfull,
+    iconinternationality
   },
   // @ts-ignore
   computed: {
     // eslint-disable-next-line vue/return-in-computed-property
     currentLocale() {
-      if (
-        !this.$storage.routesInStorage ||
-        this.$storage.routesInStorage.length === 0
-      ) {
-        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-        this.$storage.routesInStorage = routerArrays;
-      }
-
-      if (!this.$storage.locale) {
-        // eslint-disable-next-line
-        this.$storage.locale = { locale: "zh" };
-        useI18n().locale.value = "zh";
-      }
       switch (this.$storage.locale?.locale) {
         case "zh":
           return true;
@@ -114,24 +100,8 @@ export default defineComponent({
     const pureApp = useAppStoreHook();
     const router = useRouter();
     const route = useRoute();
-
     let usename = storageSession.getItem("info")?.username;
-
     const { locale, t } = useI18n();
-
-    // 国际化语言切换
-    const toggleLang = (): void => {
-      switch (instance.locale.locale) {
-        case "zh":
-          instance.locale = { locale: "en" };
-          locale.value = "en";
-          break;
-        case "en":
-          instance.locale = { locale: "zh" };
-          locale.value = "zh";
-          break;
-      }
-    };
 
     watch(
       () => locale.value,
@@ -155,28 +125,31 @@ export default defineComponent({
       pureApp.toggleSideBar();
     }
 
-    onMounted(() => {
-      document
-        .querySelector(".el-dropdown__popper")
-        ?.setAttribute("class", "resetTop");
-      document
-        .querySelector(".el-popper__arrow")
-        ?.setAttribute("class", "hidden");
-    });
+    // 简体中文
+    function translationCh() {
+      instance.locale = { locale: "zh" };
+      locale.value = "zh";
+      window.location.reload();
+    }
+
+    // English
+    function translationEn() {
+      instance.locale = { locale: "en" };
+      locale.value = "en";
+      window.location.reload();
+    }
 
     return {
-      pureApp,
-      toggleSideBar,
-      usename,
-      toggleLang,
-      logout,
-      ch,
-      en,
-      favicon,
-      onPanel,
-      deviceDetection,
       locale,
-      t
+      usename,
+      pureApp,
+      favicon,
+      logout,
+      onPanel,
+      translationCh,
+      translationEn,
+      toggleSideBar,
+      deviceDetection
     };
   }
 });
@@ -185,13 +158,13 @@ export default defineComponent({
 <style lang="scss" scoped>
 .navbar {
   width: 100%;
-  height: 50px;
+  height: 48px;
   overflow: hidden;
   background: #fff;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
 
   .hamburger-container {
-    line-height: 46px;
+    line-height: 48px;
     height: 100%;
     float: left;
     cursor: pointer;
@@ -203,56 +176,46 @@ export default defineComponent({
     }
   }
 
-  .breadcrumb-container {
-    float: left;
-  }
-
-  .right-menu {
-    position: absolute;
-    right: 0;
+  .vertical-header-right {
     display: flex;
-    align-items: center;
+    min-width: 280px;
     height: 48px;
-    line-height: 48px;
+    align-items: center;
+    color: #000000d9;
+    justify-content: flex-end;
 
-    .inter {
-      width: 40px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
+    .screen-full {
+      cursor: pointer;
 
       &:hover {
-        cursor: pointer;
-        background: #f0f0f0;
-      }
-
-      img {
-        width: 25px;
+        background: #f6f6f6;
       }
     }
 
-    .hsset {
-      width: 40px;
+    .iconinternationality {
       height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      margin-right: 5px;
+      width: 40px;
+      padding: 11px;
+      cursor: pointer;
 
       &:hover {
-        cursor: pointer;
-        background: #f0f0f0;
+        background: #f6f6f6;
       }
     }
 
     .el-dropdown-link {
-      width: 70px;
+      width: 100px;
+      height: 48px;
+      padding: 10px;
       display: flex;
       align-items: center;
       justify-content: space-around;
-      margin-right: 10px;
       cursor: pointer;
+      color: #000000d9;
+
+      &:hover {
+        background: #f6f6f6;
+      }
 
       p {
         font-size: 14px;
@@ -261,22 +224,50 @@ export default defineComponent({
       img {
         width: 22px;
         height: 22px;
+        border-radius: 50%;
+      }
+    }
+
+    .el-icon-setting {
+      height: 48px;
+      width: 40px;
+      padding: 11px;
+      display: flex;
+      cursor: pointer;
+      align-items: center;
+
+      &:hover {
+        background: #f6f6f6;
       }
     }
   }
-}
-// single element-plus reset
-.el-dropdown-menu__item {
-  padding: 0 10px;
+
+  .breadcrumb-container {
+    float: left;
+  }
 }
 
-.el-dropdown-menu {
-  padding: 6px 0;
+.translation {
+  .el-dropdown-menu__item {
+    padding: 0 40px !important;
+  }
+
+  .el-dropdown-menu__item:focus,
+  .el-dropdown-menu__item:not(.is-disabled):hover {
+    color: #606266;
+    background: #f0f0f0;
+  }
 }
 
-.el-dropdown-menu__item:focus,
-.el-dropdown-menu__item:not(.is-disabled):hover {
-  color: #606266;
-  background: #f0f0f0;
+.logout {
+  .el-dropdown-menu__item {
+    padding: 0 18px !important;
+  }
+
+  .el-dropdown-menu__item:focus,
+  .el-dropdown-menu__item:not(.is-disabled):hover {
+    color: #606266;
+    background: #f0f0f0;
+  }
 }
 </style>
