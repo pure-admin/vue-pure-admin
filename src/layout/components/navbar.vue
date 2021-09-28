@@ -154,12 +154,14 @@ export default defineComponent({
     function translationCh() {
       instance.locale = { locale: "zh" };
       locale.value = "zh";
+      window.location.reload();
     }
 
     // English
     function translationEn() {
       instance.locale = { locale: "en" };
       locale.value = "en";
+      window.location.reload();
     }
 
     return {
