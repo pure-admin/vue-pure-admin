@@ -23,17 +23,29 @@
       <!-- 全屏 -->
       <screenfull v-show="!deviceDetection()" />
       <!-- 国际化 -->
-      <iconinternationality />
-      <!-- <i class="iconfont team-iconinternationality"></i> -->
-      <!-- <div
-        v-show="!deviceDetection()"
-        class="inter"
-        :title="currentLocale ? '中文' : 'English'"
-        @click="toggleLang"
-      >
-        <img :src="currentLocale ? ch : en" />
-      </div> -->
-
+      <el-dropdown trigger="click">
+        <iconinternationality />
+        <template #dropdown>
+          <el-dropdown-menu class="translation">
+            <el-dropdown-item
+              :style="{
+                background: locale === 'zh' ? '#1b2a47' : '',
+                color: locale === 'zh' ? '#f4f4f5' : '#000'
+              }"
+              @click="translationCh"
+              >简体中文</el-dropdown-item
+            >
+            <el-dropdown-item
+              :style="{
+                background: locale === 'en' ? '#1b2a47' : '',
+                color: locale === 'en' ? '#f4f4f5' : '#000'
+              }"
+              @click="translationEn"
+              >English</el-dropdown-item
+            >
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
       <!-- 退出登陆 -->
       <el-dropdown trigger="click">
         <span class="el-dropdown-link">
@@ -43,7 +55,7 @@
           <p>{{ usename }}</p>
         </span>
         <template #dropdown>
-          <el-dropdown-menu>
+          <el-dropdown-menu class="logout">
             <el-dropdown-item icon="el-icon-switch-button" @click="logout">{{
               $t("message.hsLoginOut")
             }}</el-dropdown-item>
@@ -63,19 +75,15 @@
 import {
   computed,
   defineComponent,
-  ref,
   unref,
   watch,
-  getCurrentInstance,
-  onBeforeMount,
-  onMounted
+  getCurrentInstance
 } from "vue";
 import { useI18n } from "vue-i18n";
 import settings from "/@/settings";
 import { emitter } from "/@/utils/mitt";
 import SidebarItem from "./sidebarItem.vue";
 import { algorithm } from "/@/utils/algorithm";
-import { storageLocal } from "/@/utils/storage";
 import screenfull from "../screenfull/index.vue";
 import { useRoute, useRouter } from "vue-router";
 import { storageSession } from "/@/utils/storage";
@@ -127,27 +135,12 @@ export default defineComponent({
     const instance =
       getCurrentInstance().appContext.config.globalProperties.$storage;
     const routeStore = usePermissionStoreHook();
-
-    const router = useRouter().options.routes;
-
     const route = useRoute();
-
+    const router = useRouter();
+    const routers = useRouter().options.routes;
     let usename = storageSession.getItem("info")?.username;
-
     const { locale, t } = useI18n();
-    // 国际化语言切换
-    const toggleLang = (): void => {
-      switch (instance.locale.locale) {
-        case "zh":
-          instance.locale = { locale: "en" };
-          locale.value = "en";
-          break;
-        case "en":
-          instance.locale = { locale: "zh" };
-          locale.value = "zh";
-          break;
-      }
-    };
+
     watch(
       () => locale.value,
       () => {
@@ -156,6 +149,7 @@ export default defineComponent({
         document.title = t(unref(route.meta.title));
       }
     );
+
     // 退出登录
     const logout = (): void => {
       storageSession.removeItem("info");
@@ -165,16 +159,6 @@ export default defineComponent({
     function onPanel() {
       emitter.emit("openPanel");
     }
-
-    onMounted(() => {
-      document
-        .querySelector(".el-dropdown__popper")
-        ?.setAttribute("class", "resetTop");
-      document
-        .querySelector(".el-popper__arrow")
-        ?.setAttribute("class", "hidden");
-    });
-    const showLogo = ref(storageLocal.getItem("logoVal") || "1");
 
     const activeMenu = computed(() => {
       const { meta, path } = route;
@@ -191,7 +175,6 @@ export default defineComponent({
         parentPath = indexPath.slice(0, parentPathIndex);
       }
       // 找到当前路由的信息
-      // eslint-disable-next-line no-inner-declarations
       function findCurrentRoute(routes) {
         return routes.map(item => {
           if (item.path === indexPath) {
@@ -205,50 +188,65 @@ export default defineComponent({
           }
         });
       }
-      findCurrentRoute(algorithm.increaseIndexes(router));
+      findCurrentRoute(algorithm.increaseIndexes(routers));
     };
 
     function backHome() {
-      // @ts-ignore
-      router.push({ path: "/welcome" });
+      router.push("/welcome");
     }
 
-    onBeforeMount(() => {
-      emitter.on("logoChange", key => {
-        showLogo.value = key;
-      });
-    });
+    // 简体中文
+    function translationCh() {
+      instance.locale = { locale: "zh" };
+      locale.value = "zh";
+    }
+
+    // English
+    function translationEn() {
+      instance.locale = { locale: "en" };
+      locale.value = "en";
+    }
 
     return {
-      activeMenu,
-      menuSelect,
-      showLogo,
-      routeStore,
+      locale,
       usename,
-      toggleLang,
+      settings,
+      routeStore,
+      activeMenu,
       logout,
       onPanel,
-      deviceDetection,
-      settings,
-      backHome
+      backHome,
+      menuSelect,
+      translationCh,
+      translationEn,
+      deviceDetection
     };
   }
 });
 </script>
 
 <style lang="scss" scoped>
-// single element-plus reset
-.el-dropdown-menu__item {
-  padding: 0 10px;
+.translation {
+  .el-dropdown-menu__item {
+    padding: 0 40px !important;
+  }
+
+  .el-dropdown-menu__item:focus,
+  .el-dropdown-menu__item:not(.is-disabled):hover {
+    color: #606266;
+    background: #f0f0f0;
+  }
 }
 
-.el-dropdown-menu {
-  padding: 6px 0;
-}
+.logout {
+  .el-dropdown-menu__item {
+    padding: 0 18px !important;
+  }
 
-.el-dropdown-menu__item:focus,
-.el-dropdown-menu__item:not(.is-disabled):hover {
-  color: #606266;
-  background: #f0f0f0;
+  .el-dropdown-menu__item:focus,
+  .el-dropdown-menu__item:not(.is-disabled):hover {
+    color: #606266;
+    background: #f0f0f0;
+  }
 }
 </style>

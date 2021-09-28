@@ -12,20 +12,29 @@
       <!-- 全屏 -->
       <screenfull v-show="!deviceDetection()" />
       <!-- 国际化 -->
-      <iconinternationality />
-      <!-- <div
-        v-show="!deviceDetection()"
-        class="inter"
-        :title="currentLocale ? '中文' : 'English'"
-        @click="toggleLang"
-      >
-        <img :src="currentLocale ? ch : en" />
-      </div>
-      <i
-        class="el-icon-setting hsset"
-        :title="$t('message.hssystemSet')"
-        @click="onPanel"
-      ></i> -->
+      <el-dropdown trigger="click">
+        <iconinternationality />
+        <template #dropdown>
+          <el-dropdown-menu class="translation">
+            <el-dropdown-item
+              :style="{
+                background: locale === 'zh' ? '#1b2a47' : '',
+                color: locale === 'zh' ? '#f4f4f5' : '#000'
+              }"
+              @click="translationCh"
+              >简体中文</el-dropdown-item
+            >
+            <el-dropdown-item
+              :style="{
+                background: locale === 'en' ? '#1b2a47' : '',
+                color: locale === 'en' ? '#f4f4f5' : '#000'
+              }"
+              @click="translationEn"
+              >English</el-dropdown-item
+            >
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
       <!-- 退出登陆 -->
       <el-dropdown trigger="click">
         <span class="el-dropdown-link">
@@ -35,7 +44,7 @@
           <p>{{ usename }}</p>
         </span>
         <template #dropdown>
-          <el-dropdown-menu>
+          <el-dropdown-menu class="logout">
             <el-dropdown-item icon="el-icon-switch-button" @click="logout">{{
               $t("message.hsLoginOut")
             }}</el-dropdown-item>
@@ -52,21 +61,13 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  onMounted,
-  unref,
-  watch,
-  getCurrentInstance
-} from "vue";
+import { defineComponent, unref, watch, getCurrentInstance } from "vue";
 import Breadcrumb from "/@/components/ReBreadCrumb";
 import Hamburger from "/@/components/ReHamBurger";
 import screenfull from "../components/screenfull/index.vue";
 import { useRouter, useRoute } from "vue-router";
 import { useAppStoreHook } from "/@/store/modules/app";
 import { storageSession } from "/@/utils/storage";
-import ch from "/@/assets/ch.png";
-import en from "/@/assets/en.png";
 import favicon from "/favicon.ico";
 import { emitter } from "/@/utils/mitt";
 import { deviceDetection } from "/@/utils/deviceDetection";
@@ -124,24 +125,8 @@ export default defineComponent({
     const pureApp = useAppStoreHook();
     const router = useRouter();
     const route = useRoute();
-
     let usename = storageSession.getItem("info")?.username;
-
     const { locale, t } = useI18n();
-
-    // 国际化语言切换
-    const toggleLang = (): void => {
-      switch (instance.locale.locale) {
-        case "zh":
-          instance.locale = { locale: "en" };
-          locale.value = "en";
-          break;
-        case "en":
-          instance.locale = { locale: "zh" };
-          locale.value = "zh";
-          break;
-      }
-    };
 
     watch(
       () => locale.value,
@@ -165,28 +150,29 @@ export default defineComponent({
       pureApp.toggleSideBar();
     }
 
-    onMounted(() => {
-      document
-        .querySelector(".el-dropdown__popper")
-        ?.setAttribute("class", "resetTop");
-      document
-        .querySelector(".el-popper__arrow")
-        ?.setAttribute("class", "hidden");
-    });
+    // 简体中文
+    function translationCh() {
+      instance.locale = { locale: "zh" };
+      locale.value = "zh";
+    }
+
+    // English
+    function translationEn() {
+      instance.locale = { locale: "en" };
+      locale.value = "en";
+    }
 
     return {
-      pureApp,
-      toggleSideBar,
-      usename,
-      toggleLang,
-      logout,
-      ch,
-      en,
-      favicon,
-      onPanel,
-      deviceDetection,
       locale,
-      t
+      usename,
+      pureApp,
+      favicon,
+      logout,
+      onPanel,
+      translationCh,
+      translationEn,
+      toggleSideBar,
+      deviceDetection
     };
   }
 });
@@ -283,18 +269,28 @@ export default defineComponent({
     float: left;
   }
 }
-// single element-plus reset
-.el-dropdown-menu__item {
-  padding: 0 10px;
+
+.translation {
+  .el-dropdown-menu__item {
+    padding: 0 40px !important;
+  }
+
+  .el-dropdown-menu__item:focus,
+  .el-dropdown-menu__item:not(.is-disabled):hover {
+    color: #606266;
+    background: #f0f0f0;
+  }
 }
 
-.el-dropdown-menu {
-  padding: 6px 0;
-}
+.logout {
+  .el-dropdown-menu__item {
+    padding: 0 18px !important;
+  }
 
-.el-dropdown-menu__item:focus,
-.el-dropdown-menu__item:not(.is-disabled):hover {
-  color: #606266;
-  background: #f0f0f0;
+  .el-dropdown-menu__item:focus,
+  .el-dropdown-menu__item:not(.is-disabled):hover {
+    color: #606266;
+    background: #f0f0f0;
+  }
 }
 </style>

@@ -35,11 +35,9 @@
 }
 
 // dropdown
-// .el-dropdown-menu {
-//   a {
-//     display: block;
-//   }
-// }
+.el-dropdown-menu {
+  padding: 2px 0 2px 0 !important;
+}
 
 // to fix el-date-picker css style
 .el-range-separator {
