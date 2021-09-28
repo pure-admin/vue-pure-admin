@@ -1671,11 +1671,6 @@ dot-prop@^5.1.0:
   dependencies:
     is-obj "^2.0.0"
 
-dotenv@^8.2.0:
-  version "8.6.0"
-  resolved "https://registry.npmjs.org/dotenv/-/dotenv-8.6.0.tgz#061af664d19f7f4d8fc6e4ff9b584ce237adcb8b"
-  integrity sha512-IrPdXQsk2BbzvCBGBOTmmSH5SodmqZNt4ERAZDmW4CT+tL8VtvinqywuANaFu4bOMWki16nqf0e4oC0QIaDr/g==
-
 downloadjs@1.4.7:
   version "1.4.7"
   resolved "https://registry.npmjs.org/downloadjs/-/downloadjs-1.4.7.tgz#f69f96f940e0d0553dac291139865a3cd0101e3c"
@@ -2837,8 +2832,8 @@ lodash.truncate@^4.4.2:
 
 lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.21:
   version "4.17.21"
-  resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
-  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
+  resolved "https://registry.npm.taobao.org/lodash/download/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  integrity sha1-Z5WRxWTDv/quhFTPCz3zcMPWkRw=
 
 log-symbols@^4.1.0:
   version "4.1.0"
@@ -2862,6 +2857,13 @@ longest-streak@^2.0.0:
   version "2.0.4"
   resolved "https://registry.npmjs.org/longest-streak/-/longest-streak-2.0.4.tgz#b8599957da5b5dab64dee3fe316fa774597d90e4"
   integrity sha512-vM6rUVCVUJJt33bnmHiZEvr7wPT78ztX7rojL+LW51bHtLh6HTjx84LA5W4+oa6aKEJA7jJu5LR6vQRBpA5DVg==
+
+lowdb@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.nlark.com/lowdb/download/lowdb-3.0.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.nlark.com%2Flowdb%2Fdownload%2Flowdb-3.0.0.tgz#c10ab4e7eb86f1cbe255e35e60ffb0c6f42049e0"
+  integrity sha1-wQq05+uG8cviVeNeYP+wxvQgSeA=
+  dependencies:
+    steno "^2.1.0"
 
 lower-case@^2.0.2:
   version "2.0.2"
@@ -3948,6 +3950,11 @@ statuses@~1.5.0:
   resolved "https://registry.npmjs.org/statuses/-/statuses-1.5.0.tgz#161c7dac177659fd9811f43771fa99381478628c"
   integrity sha1-Fhx9rBd2Wf2YEfQ3cfqZOBR4Yow=
 
+steno@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.nlark.com/steno/download/steno-2.1.0.tgz#05a9c378ce42ed04f642cda6fcb41787a10e4e33"
+  integrity sha1-BanDeM5C7QT2Qs2m/LQXh6EOTjM=
+
 string-argv@0.3.1:
   version "0.3.1"
   resolved "https://registry.npmjs.org/string-argv/-/string-argv-0.3.1.tgz#95e2fbec0427ae19184935f816d74aaa4c5c19da"
@@ -4264,6 +4271,11 @@ typedarray-to-buffer@^3.1.5:
   integrity sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==
   dependencies:
     is-typedarray "^1.0.0"
+
+typescript-cookie@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmmirror.com/typescript-cookie/download/typescript-cookie-1.0.0.tgz#5354bf5d827b98dfe40807bf19b143cdd595a772"
+  integrity sha1-U1S/XYJ7mN/kCAe/GbFDzdWVp3I=
 
 typescript@^4.4.2:
   version "4.4.3"
