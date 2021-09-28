@@ -31,7 +31,6 @@
     "element-plus": "^1.1.0-beta.12",
     "element-resize-detector": "^1.2.3",
     "font-awesome": "^4.7.0",
-    "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
     "lowdb": "^3.0.0",
     "mitt": "^2.1.0",
