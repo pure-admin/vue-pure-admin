@@ -8,11 +8,12 @@
 
     <Breadcrumb class="breadcrumb-container" />
 
-    <div class="right-menu">
+    <div class="vertical-header-right">
       <!-- 全屏 -->
       <screenfull v-show="!deviceDetection()" />
       <!-- 国际化 -->
-      <div
+      <iconinternationality />
+      <!-- <div
         v-show="!deviceDetection()"
         class="inter"
         :title="currentLocale ? '中文' : 'English'"
@@ -24,11 +25,13 @@
         class="el-icon-setting hsset"
         :title="$t('message.hssystemSet')"
         @click="onPanel"
-      ></i>
+      ></i> -->
       <!-- 退出登陆 -->
       <el-dropdown trigger="click">
         <span class="el-dropdown-link">
-          <img :src="favicon" />
+          <img
+            src="https://avatars.githubusercontent.com/u/44761321?s=400&u=30907819abd29bb3779bc247910873e7c7f7c12f&v=4"
+          />
           <p>{{ usename }}</p>
         </span>
         <template #dropdown>
@@ -39,6 +42,11 @@
           </el-dropdown-menu>
         </template>
       </el-dropdown>
+      <i
+        class="el-icon-setting"
+        :title="$t('message.hssystemSet')"
+        @click="onPanel"
+      ></i>
     </div>
   </div>
 </template>
@@ -63,6 +71,7 @@ import favicon from "/favicon.ico";
 import { emitter } from "/@/utils/mitt";
 import { deviceDetection } from "/@/utils/deviceDetection";
 import { useI18n } from "vue-i18n";
+import iconinternationality from "/@/assets/svg/iconinternationality.svg";
 
 let routerArrays: Array<object> = [
   {
@@ -81,7 +90,8 @@ export default defineComponent({
   components: {
     Breadcrumb,
     Hamburger,
-    screenfull
+    screenfull,
+    iconinternationality
   },
   // @ts-ignore
   computed: {
@@ -185,13 +195,13 @@ export default defineComponent({
 <style lang="scss" scoped>
 .navbar {
   width: 100%;
-  height: 50px;
+  height: 48px;
   overflow: hidden;
   background: #fff;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
 
   .hamburger-container {
-    line-height: 46px;
+    line-height: 48px;
     height: 100%;
     float: left;
     cursor: pointer;
@@ -203,56 +213,46 @@ export default defineComponent({
     }
   }
 
-  .breadcrumb-container {
-    float: left;
-  }
-
-  .right-menu {
-    position: absolute;
-    right: 0;
+  .vertical-header-right {
     display: flex;
-    align-items: center;
+    min-width: 280px;
     height: 48px;
-    line-height: 48px;
+    align-items: center;
+    color: #000000d9;
+    justify-content: flex-end;
 
-    .inter {
-      width: 40px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
+    .screen-full {
+      cursor: pointer;
 
       &:hover {
-        cursor: pointer;
-        background: #f0f0f0;
-      }
-
-      img {
-        width: 25px;
+        background: #f6f6f6;
       }
     }
 
-    .hsset {
-      width: 40px;
+    .iconinternationality {
       height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      margin-right: 5px;
+      width: 40px;
+      padding: 11px;
+      cursor: pointer;
 
       &:hover {
-        cursor: pointer;
-        background: #f0f0f0;
+        background: #f6f6f6;
       }
     }
 
     .el-dropdown-link {
-      width: 70px;
+      width: 100px;
+      height: 48px;
+      padding: 10px;
       display: flex;
       align-items: center;
       justify-content: space-around;
-      margin-right: 10px;
       cursor: pointer;
+      color: #000000d9;
+
+      &:hover {
+        background: #f6f6f6;
+      }
 
       p {
         font-size: 14px;
@@ -261,8 +261,26 @@ export default defineComponent({
       img {
         width: 22px;
         height: 22px;
+        border-radius: 50%;
       }
     }
+
+    .el-icon-setting {
+      height: 48px;
+      width: 40px;
+      padding: 11px;
+      display: flex;
+      cursor: pointer;
+      align-items: center;
+
+      &:hover {
+        background: #f6f6f6;
+      }
+    }
+  }
+
+  .breadcrumb-container {
+    float: left;
   }
 }
 // single element-plus reset

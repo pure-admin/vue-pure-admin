@@ -130,13 +130,13 @@ const whiteList = ["/login", "/register"];
 router.beforeEach((to, _from, next) => {
   const name = storageSession.getItem("info");
   NProgress.start();
+  const externalLink = to?.redirectedFrom?.fullPath;
   // @ts-ignore
   const { t } = i18n.global;
   // @ts-ignore
-  to.meta.title ? (document.title = t(to.meta.title)) : "";
+  if (!externalLink) to.meta.title ? (document.title = t(to.meta.title)) : "";
   if (name) {
     if (_from?.name) {
-      const externalLink = to?.redirectedFrom?.fullPath;
       // 如果路由包含http 则是超链接 反之是普通路由
       if (externalLink && externalLink.includes("http")) {
         openLink(`http${split(externalLink, "http")[1]}`);
