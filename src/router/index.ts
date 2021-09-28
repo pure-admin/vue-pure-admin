@@ -4,8 +4,10 @@ import {
   RouteComponent,
   createWebHashHistory
 } from "vue-router";
+import { split } from "lodash-es";
 import { i18n } from "/@/plugins/i18n";
 import NProgress from "/@/utils/progress";
+import { openLink } from "/@/utils/link";
 import { storageSession, storageLocal } from "/@/utils/storage";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 
@@ -134,7 +136,14 @@ router.beforeEach((to, _from, next) => {
   to.meta.title ? (document.title = t(to.meta.title)) : "";
   if (name) {
     if (_from?.name) {
-      next();
+      const externalLink = to?.redirectedFrom?.fullPath;
+      // 如果路由包含http 则是超链接 反之是普通路由
+      if (externalLink && externalLink.includes("http")) {
+        openLink(`http${split(externalLink, "http")[1]}`);
+        NProgress.done();
+      } else {
+        next();
+      }
     } else {
       // 刷新
       if (usePermissionStoreHook().wholeRoutes.length === 0)
