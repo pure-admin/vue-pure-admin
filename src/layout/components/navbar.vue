@@ -74,18 +74,6 @@ import { deviceDetection } from "/@/utils/deviceDetection";
 import { useI18n } from "vue-i18n";
 import iconinternationality from "/@/assets/svg/iconinternationality.svg";
 
-let routerArrays: Array<object> = [
-  {
-    path: "/welcome",
-    parentPath: "/",
-    meta: {
-      title: "message.hshome",
-      icon: "el-icon-s-home",
-      showLink: true,
-      savedPosition: false
-    }
-  }
-];
 export default defineComponent({
   name: "Navbar",
   components: {
@@ -98,19 +86,6 @@ export default defineComponent({
   computed: {
     // eslint-disable-next-line vue/return-in-computed-property
     currentLocale() {
-      if (
-        !this.$storage.routesInStorage ||
-        this.$storage.routesInStorage.length === 0
-      ) {
-        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-        this.$storage.routesInStorage = routerArrays;
-      }
-
-      if (!this.$storage.locale) {
-        // eslint-disable-next-line
-        this.$storage.locale = { locale: "zh" };
-        useI18n().locale.value = "zh";
-      }
       switch (this.$storage.locale?.locale) {
         case "zh":
           return true;

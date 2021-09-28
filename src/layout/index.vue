@@ -1,7 +1,35 @@
 <script lang="ts">
+let routerArrays: Array<object> = [
+  {
+    path: "/welcome",
+    parentPath: "/",
+    meta: {
+      title: "message.hshome",
+      icon: "el-icon-s-home",
+      showLink: true,
+      savedPosition: false
+    }
+  }
+];
 export default {
   computed: {
     layout() {
+      if (!this.$storage.layout) {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+        this.$storage.layout = { layout: "vertical-dark" };
+      }
+      if (
+        !this.$storage.routesInStorage ||
+        this.$storage.routesInStorage.length === 0
+      ) {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+        this.$storage.routesInStorage = routerArrays;
+      }
+      if (!this.$storage.locale) {
+        // eslint-disable-next-line
+        this.$storage.locale = { locale: "zh" };
+        useI18n().locale.value = "zh";
+      }
       return this.$storage?.layout.layout;
     }
   }
@@ -20,6 +48,7 @@ import {
   useCssModule
 } from "vue";
 import options from "/@/settings";
+import { useI18n } from "vue-i18n";
 import { toggleClass } from "/@/utils/operate";
 import { useEventListener } from "@vueuse/core";
 import { useAppStoreHook } from "/@/store/modules/app";
