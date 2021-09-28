@@ -21,7 +21,7 @@
     "incremental": true,
     "paths": {
       "/@/*": ["src/*"],
-      "@build": ["build/*"],
+      "@build/*": ["build/*"],
       "/#/*": ["types/*"]
     },
     "types": ["node", "vite/client"],
