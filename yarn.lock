@@ -1103,10 +1103,10 @@ astral-regex@^2.0.0:
   resolved "https://registry.npmjs.org/astral-regex/-/astral-regex-2.0.0.tgz#483143c567aeed4785759c0865786dc77d7d2e31"
   integrity sha512-Z7tMw1ytTXt5jqMcOP+OQteU1VuNK9Y02uuJtKQ1Sv69jXQKKg5cibLwGJow8yzZP+eAc18EmLGPal0bp36rvQ==
 
-async-validator@^3.4.0:
-  version "3.5.2"
-  resolved "https://registry.npmjs.org/async-validator/-/async-validator-3.5.2.tgz#68e866a96824e8b2694ff7a831c1a25c44d5e500"
-  integrity sha512-8eLCg00W9pIRZSB781UUX/H6Oskmm8xloZfr09lz5bikRpBVDlJ3hRVuxxP1SxcwsEYfJ4IU8Q19Y8/893r3rQ==
+async-validator@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.npmjs.org/async-validator/-/async-validator-4.0.3.tgz#c8ecd6b28fc8e18b14be4ec7c704641f999d377d"
+  integrity sha512-LVoIbJNHPKsO7FMLamo88uxdrvayGkF3vLTMTeiN3CqAbP3qSafLRc6yx3Sq9lHkiEOLNpoA2jwwnfGDdu1SMQ==
 
 autoprefixer@^10.2.4:
   version "10.3.4"
@@ -1763,18 +1763,18 @@ electron-to-chromium@^1.3.830:
   resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.3.840.tgz#3f2a1df97015d9b1db5d86a4c6bd4cdb920adcbb"
   integrity sha512-yRoUmTLDJnkIJx23xLY7GbSvnmDCq++NSuxHDQ0jiyDJ9YZBUGJcrdUqm+ZwZFzMbCciVzfem2N2AWiHJcWlbw==
 
-element-plus@^1.1.0-beta.16:
-  version "1.1.0-beta.16"
-  resolved "https://registry.npmjs.org/element-plus/-/element-plus-1.1.0-beta.16.tgz#4409d9e33d005693f6039f5ed1fe05e301b3170d"
-  integrity sha512-4BZEldnIfFZs5A/saRqaWE4PwTot4p3YZU7qsDr3ev2zp35pcCL9TtpWMLIvNTMxvxKew0HTDPTk9fAWIZFQrQ==
+element-plus@1.1.0-beta.18:
+  version "1.1.0-beta.18"
+  resolved "https://registry.npmjs.org/element-plus/-/element-plus-1.1.0-beta.18.tgz#eb16d091004a618002c75ed87299208f6dbf662e"
+  integrity sha512-Q2cscYlpcbq/enuU/vlPLBP5K4bHkPakF6IkCiDrSgOkAr7XQYMem6QUOCRZ/8PFV0UnJRMyPJ7Xt0PKTFi8mg==
   dependencies:
     "@popperjs/core" "^2.10.1"
     "@vueuse/core" "~6.1.0"
-    async-validator "^3.4.0"
+    async-validator "^4.0.3"
     dayjs "^1.10.7"
     lodash "^4.17.21"
     memoize-one "^5.2.1"
-    normalize-wheel "^1.0.1"
+    normalize-wheel-es "^1.1.0"
     resize-observer-polyfill "^1.5.1"
 
 element-resize-detector@^1.2.3:
@@ -1829,11 +1829,6 @@ error-ex@^1.3.1:
   integrity sha512-7dFHNmqeFSEt2ZBsCriorKnn3Z2pj+fd9kmI6QoWw4//DL+icEBfc0U7qJCisqrTsKTjw4fNFy2pW9OqStD84g==
   dependencies:
     is-arrayish "^0.2.1"
-
-es-module-lexer@^0.6.0:
-  version "0.6.0"
-  resolved "https://registry.npmjs.org/es-module-lexer/-/es-module-lexer-0.6.0.tgz#e72ab05b7412e62b9be37c37a09bdb6000d706f0"
-  integrity sha512-f8kcHX1ArhllUtb/wVSyvygoKCznIjnxhLxy7TCvIiMdT7fL4ZDTIKaadMe6eLvOXg6Wk02UeoFgUoZ2EKZZUA==
 
 es-module-lexer@^0.7.1:
   version "0.7.1"
@@ -3221,10 +3216,10 @@ normalize-selector@^0.2.0:
   resolved "https://registry.npmjs.org/normalize-selector/-/normalize-selector-0.2.0.tgz#d0b145eb691189c63a78d201dc4fdb1293ef0c03"
   integrity sha1-0LFF62kRicY6eNIB3E/bEpPvDAM=
 
-normalize-wheel@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.npmjs.org/normalize-wheel/-/normalize-wheel-1.0.1.tgz#aec886affdb045070d856447df62ecf86146ec45"
-  integrity sha1-rsiGr/2wRQcNhWRH32Ls+GFG7EU=
+normalize-wheel-es@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/normalize-wheel-es/-/normalize-wheel-es-1.1.0.tgz#db017af1dd5d4c6222c07ae38bc224049d25861e"
+  integrity sha512-gkcE5xzp8WkSGgu2HItXePGyh3qDOetgPYg0RnjclOIaWTCMB75NTrk0t6KVlbm6ShSikV3ykBFZMiR9GDkvkA==
 
 npm-run-path@^4.0.0, npm-run-path@^4.0.1:
   version "4.0.1"
@@ -4421,13 +4416,22 @@ unpipe@~1.0.0:
   resolved "https://registry.npmjs.org/unpipe/-/unpipe-1.0.0.tgz#b2bf4ee8514aae6165b4817829d21b2ef49904ec"
   integrity sha1-sr9O6FFKrmFltIF4KdIbLvSZBOw=
 
-unplugin-element-plus@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.npmjs.org/unplugin-element-plus/-/unplugin-element-plus-0.0.1.tgz#959d4640253312529e93000aaa7a2078d5543e80"
-  integrity sha512-5WyuJTE7S6pJV/gK2a6RiGmxEoaNBjJn37tooBYsX9D9CSGamqzIcq+NtBHU0qRkDnx/fpcRcjZh3UXkSLkbuA==
+unplugin-element-plus@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.npmjs.org/unplugin-element-plus/-/unplugin-element-plus-0.1.0.tgz#eb68721f152a79ebe39a7404cc60cfcd6a8e587b"
+  integrity sha512-DdNgXlZtarpU6dGzh8WIP5bxLSIWg1qPKHnGvlqOY+RGlljyxe3yULPo6HMAzovdxy+ix4kAijncZSEud72khA==
   dependencies:
     "@rollup/pluginutils" "^4.1.0"
-    es-module-lexer "^0.6.0"
+    es-module-lexer "^0.7.1"
+    magic-string "^0.25.7"
+    unplugin "^0.2.7"
+
+unplugin@^0.2.7:
+  version "0.2.16"
+  resolved "https://registry.npmjs.org/unplugin/-/unplugin-0.2.16.tgz#6f34e9f5068ca3ec92a36b016f47b5ad8bb875ca"
+  integrity sha512-KkXatHba0baJszSHW+2e8EQU/5Bz7rYwzYXu8wUeq97tE6K3wvub+7OWSuRv04LttvzNLsJ2jXEyR35gofv74Q==
+  dependencies:
+    webpack-virtual-modules "^0.4.3"
 
 upper-case-first@^2.0.2:
   version "2.0.2"
@@ -4627,6 +4631,11 @@ wangeditor@^4.7.7:
     "@babel/runtime" "^7.11.2"
     "@babel/runtime-corejs3" "^7.11.2"
     tslib "^2.1.0"
+
+webpack-virtual-modules@^0.4.3:
+  version "0.4.3"
+  resolved "https://registry.npmjs.org/webpack-virtual-modules/-/webpack-virtual-modules-0.4.3.tgz#cd597c6d51d5a5ecb473eea1983a58fa8a17ded9"
+  integrity sha512-5NUqC2JquIL2pBAAo/VfBP6KuGkHIZQXW/lNKupLPfhViwh8wNsu0BObtl09yuKZszeEUfbXz8xhrHvSG16Nqw==
 
 which@^1.3.1:
   version "1.3.1"

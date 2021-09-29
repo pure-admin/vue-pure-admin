@@ -27,7 +27,7 @@ class Cookies {
    * @param name
    * @returns
    */
-  get(name = "default"): any {
+  get(name = "default") {
     return tsCookies.get(
       `${Cookies.env.VITE_TITLE}-${Cookies.env.VITE_VERSION}-${name}`
     );
@@ -36,7 +36,7 @@ class Cookies {
    * 拿到 cookie 全部的值
    * @returns
    */
-  getAll(): any {
+  getAll() {
     return tsCookies.get();
   }
   /**
