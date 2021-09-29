@@ -1,5 +1,5 @@
 import { loadEnv } from "@build/utils";
-import { merge } from "lodash";
+import { merge } from "lodash-es";
 import tsCookies from "typescript-cookie/dist/src/compat";
 
 class Cookies {

@@ -1,6 +1,6 @@
 import { loadEnv } from "@build/utils";
 import { LocalStorage, LowSync } from "lowdb";
-import lodash from "lodash";
+import { chain, cloneDeep } from "lodash-es";
 import { storageLocal } from ".";
 import { cookies } from "./cookie";
 /**
@@ -14,7 +14,7 @@ class DB {
       new LocalStorage(`${DB.env.VITE_TITLE}-${DB.env.VITE_VERSION}`)
     );
     this.initialization();
-    this.db.chain = lodash.chain(this.db.data);
+    this.db.chain = chain(this.db.data);
   }
   private initialization() {
     this.db.data = storageLocal.getItem(
@@ -76,7 +76,7 @@ class DB {
     const values = this.db.chain
       .get(this.pathInit({ dbName, path, user, defaultValue }))
       .value();
-    return lodash.cloneDeep(values);
+    return cloneDeep(values);
   }
 }
 
