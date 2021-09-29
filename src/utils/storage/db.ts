@@ -3,15 +3,19 @@ import { LocalStorage, LowSync } from "lowdb";
 import { chain, cloneDeep } from "lodash-es";
 import { storageLocal } from ".";
 import { cookies } from "./cookie";
+type Data = {
+  database: {};
+  sys: {};
+};
 /**
  * db 数据存储,采用 LocalStorage存储
  */
 class DB {
-  private db: LowSync;
+  private db: LowSync<Data>;
   private static env = loadEnv();
   constructor() {
-    this.db = new LowSync(
-      new LocalStorage(`${DB.env.VITE_TITLE}-${DB.env.VITE_VERSION}`)
+    this.db = new LowSync<Data>(
+      new LocalStorage<Data>(`${DB.env.VITE_TITLE}-${DB.env.VITE_VERSION}`)
     );
     this.initialization();
     this.db.chain = chain(this.db.data);
@@ -19,7 +23,7 @@ class DB {
   private initialization() {
     this.db.data = storageLocal.getItem(
       `${DB.env.VITE_TITLE}-${DB.env.VITE_VERSION}`
-    );
+    ) || { database: {}, sys: {} };
     this.db.write();
   }
   /**
