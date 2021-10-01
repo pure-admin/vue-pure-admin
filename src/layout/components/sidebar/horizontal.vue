@@ -5,6 +5,7 @@
       <h4>{{ settings.title }}</h4>
     </div>
     <el-menu
+      ref="menu"
       :default-active="activeMenu"
       unique-opened
       router
@@ -82,6 +83,7 @@ import {
 import { useI18n } from "vue-i18n";
 import settings from "/@/settings";
 import { emitter } from "/@/utils/mitt";
+import { templateRef } from "@vueuse/core";
 import SidebarItem from "./sidebarItem.vue";
 import { algorithm } from "/@/utils/algorithm";
 import screenfull from "../screenfull/index.vue";
@@ -134,6 +136,7 @@ export default defineComponent({
   setup() {
     const instance =
       getCurrentInstance().appContext.config.globalProperties.$storage;
+    const menuRef = templateRef<ElRef | null>("menu", null);
     const routeStore = usePermissionStoreHook();
     const route = useRoute();
     const router = useRouter();
@@ -199,14 +202,13 @@ export default defineComponent({
     function translationCh() {
       instance.locale = { locale: "zh" };
       locale.value = "zh";
-      window.location.reload();
     }
 
     // English
     function translationEn() {
       instance.locale = { locale: "en" };
       locale.value = "en";
-      window.location.reload();
+      menuRef.value.handleResize();
     }
 
     return {
