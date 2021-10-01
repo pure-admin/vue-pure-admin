@@ -78,6 +78,8 @@ import {
   defineComponent,
   unref,
   watch,
+  nextTick,
+  onMounted,
   getCurrentInstance
 } from "vue";
 import { useI18n } from "vue-i18n";
@@ -137,6 +139,7 @@ export default defineComponent({
     const instance =
       getCurrentInstance().appContext.config.globalProperties.$storage;
     const menuRef = templateRef<ElRef | null>("menu", null);
+
     const routeStore = usePermissionStoreHook();
     const route = useRoute();
     const router = useRouter();
@@ -198,18 +201,29 @@ export default defineComponent({
       router.push("/welcome");
     }
 
+    function handleResize() {
+      menuRef.value.handleResize();
+    }
+
     // 简体中文
     function translationCh() {
       instance.locale = { locale: "zh" };
       locale.value = "zh";
+      handleResize();
     }
 
     // English
     function translationEn() {
       instance.locale = { locale: "en" };
       locale.value = "en";
-      menuRef.value.handleResize();
+      handleResize();
     }
+
+    onMounted(() => {
+      nextTick(() => {
+        handleResize();
+      });
+    });
 
     return {
       locale,
