@@ -1,3 +1,114 @@
+<script setup lang="ts">
+import {
+  computed,
+  unref,
+  watch,
+  nextTick,
+  onMounted,
+  getCurrentInstance
+} from "vue";
+import { useI18n } from "vue-i18n";
+import settings from "/@/settings";
+import { emitter } from "/@/utils/mitt";
+import { templateRef } from "@vueuse/core";
+import SidebarItem from "./sidebarItem.vue";
+import { algorithm } from "/@/utils/algorithm";
+import screenfull from "../screenfull/index.vue";
+import { useRoute, useRouter } from "vue-router";
+import { storageSession } from "/@/utils/storage";
+import { deviceDetection } from "/@/utils/deviceDetection";
+import globalization from "/@/assets/svg/globalization.svg";
+import { usePermissionStoreHook } from "/@/store/modules/permission";
+
+const instance =
+  getCurrentInstance().appContext.config.globalProperties.$storage;
+const menuRef = templateRef<ElRef | null>("menu", null);
+const routeStore = usePermissionStoreHook();
+const route = useRoute();
+const router = useRouter();
+const routers = useRouter().options.routes;
+let usename = storageSession.getItem("info")?.username;
+const { locale, t } = useI18n();
+
+watch(
+  () => locale.value,
+  () => {
+    //@ts-ignore
+    // 动态title
+    document.title = t(unref(route.meta.title));
+  }
+);
+
+// 退出登录
+const logout = (): void => {
+  storageSession.removeItem("info");
+  router.push("/login");
+};
+
+function onPanel() {
+  emitter.emit("openPanel");
+}
+
+const activeMenu = computed(() => {
+  const { meta, path } = route;
+  if (meta.activeMenu) {
+    return meta.activeMenu;
+  }
+  return path;
+});
+
+const menuSelect = (indexPath: string): void => {
+  let parentPath = "";
+  let parentPathIndex = indexPath.lastIndexOf("/");
+  if (parentPathIndex > 0) {
+    parentPath = indexPath.slice(0, parentPathIndex);
+  }
+  // 找到当前路由的信息
+  function findCurrentRoute(routes) {
+    return routes.map(item => {
+      if (item.path === indexPath) {
+        // 切换左侧菜单 通知标签页
+        emitter.emit("changLayoutRoute", {
+          indexPath,
+          parentPath
+        });
+      } else {
+        if (item.children) findCurrentRoute(item.children);
+      }
+    });
+  }
+  findCurrentRoute(algorithm.increaseIndexes(routers));
+};
+
+function backHome() {
+  router.push("/welcome");
+}
+
+function handleResize() {
+  menuRef.value.handleResize();
+}
+
+// 简体中文
+function translationCh() {
+  instance.locale = { locale: "zh" };
+  locale.value = "zh";
+  handleResize();
+}
+
+// English
+function translationEn() {
+  instance.locale = { locale: "en" };
+  locale.value = "en";
+  handleResize();
+}
+
+onMounted(() => {
+  nextTick(() => {
+    handleResize();
+  });
+});
+</script>
+
 <template>
   <div class="horizontal-header">
     <div class="horizontal-header-left" @click="backHome">
@@ -25,7 +136,7 @@
       <screenfull v-show="!deviceDetection()" />
       <!-- 国际化 -->
       <el-dropdown trigger="click">
-        <iconinternationality />
+        <globalization />
         <template #dropdown>
           <el-dropdown-menu class="translation">
             <el-dropdown-item
@@ -71,177 +182,6 @@
     </div>
   </div>
 </template>
-
-<script lang="ts">
-import {
-  computed,
-  defineComponent,
-  unref,
-  watch,
-  nextTick,
-  onMounted,
-  getCurrentInstance
-} from "vue";
-import { useI18n } from "vue-i18n";
-import settings from "/@/settings";
-import { emitter } from "/@/utils/mitt";
-import { templateRef } from "@vueuse/core";
-import SidebarItem from "./sidebarItem.vue";
-import { algorithm } from "/@/utils/algorithm";
-import screenfull from "../screenfull/index.vue";
-import { useRoute, useRouter } from "vue-router";
-import { storageSession } from "/@/utils/storage";
-import { deviceDetection } from "/@/utils/deviceDetection";
-import { usePermissionStoreHook } from "/@/store/modules/permission";
-import iconinternationality from "/@/assets/svg/iconinternationality.svg";
-
-let routerArrays: Array<object> = [
-  {
-    path: "/welcome",
-    parentPath: "/",
-    meta: {
-      title: "message.hshome",
-      icon: "el-icon-s-home",
-      showLink: true,
-      savedPosition: false
-    }
-  }
-];
-export default defineComponent({
-  name: "sidebar",
-  components: { SidebarItem, screenfull, iconinternationality },
-  // @ts-ignore
-  computed: {
-    // eslint-disable-next-line vue/return-in-computed-property
-    currentLocale() {
-      if (
-        !this.$storage.routesInStorage ||
-        this.$storage.routesInStorage.length === 0
-      ) {
-        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-        this.$storage.routesInStorage = routerArrays;
-      }
-
-      if (!this.$storage.locale) {
-        // eslint-disable-next-line
-        this.$storage.locale = { locale: "zh" };
-        useI18n().locale.value = "zh";
-      }
-      switch (this.$storage.locale?.locale) {
-        case "zh":
-          return true;
-        case "en":
-          return false;
-      }
-    }
-  },
-  setup() {
-    const instance =
-      getCurrentInstance().appContext.config.globalProperties.$storage;
-    const menuRef = templateRef<ElRef | null>("menu", null);
-
-    const routeStore = usePermissionStoreHook();
-    const route = useRoute();
-    const router = useRouter();
-    const routers = useRouter().options.routes;
-    let usename = storageSession.getItem("info")?.username;
-    const { locale, t } = useI18n();
-
-    watch(
-      () => locale.value,
-      () => {
-        //@ts-ignore
-        // 动态title
-        document.title = t(unref(route.meta.title));
-      }
-    );
-
-    // 退出登录
-    const logout = (): void => {
-      storageSession.removeItem("info");
-      router.push("/login");
-    };
-
-    function onPanel() {
-      emitter.emit("openPanel");
-    }
-
-    const activeMenu = computed(() => {
-      const { meta, path } = route;
-      if (meta.activeMenu) {
-        return meta.activeMenu;
-      }
-      return path;
-    });
-
-    const menuSelect = (indexPath: string): void => {
-      let parentPath = "";
-      let parentPathIndex = indexPath.lastIndexOf("/");
-      if (parentPathIndex > 0) {
-        parentPath = indexPath.slice(0, parentPathIndex);
-      }
-      // 找到当前路由的信息
-      function findCurrentRoute(routes) {
-        return routes.map(item => {
-          if (item.path === indexPath) {
-            // 切换左侧菜单 通知标签页
-            emitter.emit("changLayoutRoute", {
-              indexPath,
-              parentPath
-            });
-          } else {
-            if (item.children) findCurrentRoute(item.children);
-          }
-        });
-      }
-      findCurrentRoute(algorithm.increaseIndexes(routers));
-    };
-
-    function backHome() {
-      router.push("/welcome");
-    }
-
-    function handleResize() {
-      menuRef.value.handleResize();
-    }
-
-    // 简体中文
-    function translationCh() {
-      instance.locale = { locale: "zh" };
-      locale.value = "zh";
-      handleResize();
-    }
-
-    // English
-    function translationEn() {
-      instance.locale = { locale: "en" };
-      locale.value = "en";
-      handleResize();
-    }
-
-    onMounted(() => {
-      nextTick(() => {
-        handleResize();
-      });
-    });
-
-    return {
-      locale,
-      usename,
-      settings,
-      routeStore,
-      activeMenu,
-      logout,
-      onPanel,
-      backHome,
-      menuSelect,
-      translationCh,
-      translationEn,
-      deviceDetection
-    };
-  }
-});
-</script>
 
 <style lang="scss" scoped>
 .translation {
