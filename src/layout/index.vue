@@ -1,16 +1,5 @@
 <script lang="ts">
-let routerArrays: Array<object> = [
-  {
-    path: "/welcome",
-    parentPath: "/",
-    meta: {
-      title: "message.hshome",
-      icon: "el-icon-s-home",
-      showLink: true,
-      savedPosition: false
-    }
-  }
-];
+import { routerArrays } from "./types";
 export default {
   computed: {
     layout() {
@@ -204,7 +193,6 @@ onBeforeMount(() => {
 </style>
 
 <style lang="scss" scoped>
-$sideBarWidth: 210px;
 @mixin clearfix {
   &::after {
     content: "";
@@ -241,7 +229,7 @@ $sideBarWidth: 210px;
   top: 0;
   right: 0;
   z-index: 9;
-  width: calc(100% - #{$sideBarWidth});
+  width: calc(100% - 210px);
   transition: width 0.28s;
 }
 

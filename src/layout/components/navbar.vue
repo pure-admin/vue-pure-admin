@@ -1,3 +1,59 @@
+<script setup lang="ts">
+import { useI18n } from "vue-i18n";
+import { emitter } from "/@/utils/mitt";
+import Hamburger from "./sidebar/hamBurger.vue";
+import { useRouter, useRoute } from "vue-router";
+import { storageSession } from "/@/utils/storage";
+import Breadcrumb from "./sidebar/breadCrumb.vue";
+import { useAppStoreHook } from "/@/store/modules/app";
+import { unref, watch, getCurrentInstance } from "vue";
+import { deviceDetection } from "/@/utils/deviceDetection";
+import screenfull from "../components/screenfull/index.vue";
+import globalization from "/@/assets/svg/globalization.svg";
+
+const instance =
+  getCurrentInstance().appContext.config.globalProperties.$storage;
+const pureApp = useAppStoreHook();
+const router = useRouter();
+const route = useRoute();
+let usename = storageSession.getItem("info")?.username;
+const { locale, t } = useI18n();
+
+watch(
+  () => locale.value,
+  () => {
+    //@ts-ignore
+    document.title = t(unref(route.meta.title)); // 动态title
+  }
+);
+
+// 退出登录
+const logout = (): void => {
+  storageSession.removeItem("info");
+  router.push("/login");
+};
+
+function onPanel() {
+  emitter.emit("openPanel");
+}
+
+function toggleSideBar() {
+  pureApp.toggleSideBar();
+}
+
+// 简体中文
+function translationCh() {
+  instance.locale = { locale: "zh" };
+  locale.value = "zh";
+}
+
+// English
+function translationEn() {
+  instance.locale = { locale: "en" };
+  locale.value = "en";
+}
+</script>
+
 <template>
   <div class="navbar">
     <Hamburger
@@ -13,7 +69,7 @@
       <screenfull v-show="!deviceDetection()" />
       <!-- 国际化 -->
       <el-dropdown trigger="click">
-        <iconinternationality />
+        <globalization />
         <template #dropdown>
           <el-dropdown-menu class="translation">
             <el-dropdown-item
@@ -60,99 +116,6 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, unref, watch, getCurrentInstance } from "vue";
-import Breadcrumb from "/@/components/ReBreadCrumb";
-import Hamburger from "/@/components/ReHamBurger";
-import screenfull from "../components/screenfull/index.vue";
-import { useRouter, useRoute } from "vue-router";
-import { useAppStoreHook } from "/@/store/modules/app";
-import { storageSession } from "/@/utils/storage";
-import favicon from "/favicon.ico";
-import { emitter } from "/@/utils/mitt";
-import { deviceDetection } from "/@/utils/deviceDetection";
-import { useI18n } from "vue-i18n";
-import iconinternationality from "/@/assets/svg/iconinternationality.svg";
-
-export default defineComponent({
-  name: "Navbar",
-  components: {
-    Breadcrumb,
-    Hamburger,
-    screenfull,
-    iconinternationality
-  },
-  // @ts-ignore
-  computed: {
-    // eslint-disable-next-line vue/return-in-computed-property
-    currentLocale() {
-      switch (this.$storage.locale?.locale) {
-        case "zh":
-          return true;
-        case "en":
-          return false;
-      }
-    }
-  },
-  setup() {
-    const instance =
-      getCurrentInstance().appContext.config.globalProperties.$storage;
-    const pureApp = useAppStoreHook();
-    const router = useRouter();
-    const route = useRoute();
-    let usename = storageSession.getItem("info")?.username;
-    const { locale, t } = useI18n();
-
-    watch(
-      () => locale.value,
-      () => {
-        //@ts-ignore
-        document.title = t(unref(route.meta.title)); // 动态title
-      }
-    );
-
-    // 退出登录
-    const logout = (): void => {
-      storageSession.removeItem("info");
-      router.push("/login");
-    };
-
-    function onPanel() {
-      emitter.emit("openPanel");
-    }
-
-    function toggleSideBar() {
-      pureApp.toggleSideBar();
-    }
-
-    // 简体中文
-    function translationCh() {
-      instance.locale = { locale: "zh" };
-      locale.value = "zh";
-    }
-
-    // English
-    function translationEn() {
-      instance.locale = { locale: "en" };
-      locale.value = "en";
-    }
-
-    return {
-      locale,
-      usename,
-      pureApp,
-      favicon,
-      logout,
-      onPanel,
-      translationCh,
-      translationEn,
-      toggleSideBar,
-      deviceDetection
-    };
-  }
-});
-</script>
-
 <style lang="scss" scoped>
 .navbar {
   width: 100%;
@@ -190,7 +153,7 @@ export default defineComponent({
       }
     }
 
-    .iconinternationality {
+    .globalization {
       height: 48px;
       width: 40px;
       padding: 11px;

@@ -1,3 +1,14 @@
+<script setup lang="ts">
+import { ref } from "vue";
+const lists = ref<ForDataType<undefined>>([
+  { type: "", label: "善良" },
+  { type: "success", label: "好学" },
+  { type: "info", label: "幽默" },
+  { type: "danger", label: "旅游" },
+  { type: "warning", label: "追剧" }
+]);
+</script>
+
 <template>
   <el-descriptions
     class="margin-top"
@@ -74,17 +85,6 @@
     </el-descriptions-item>
   </el-descriptions>
 </template>
-
-<script setup lang="ts">
-import { ref } from "vue";
-const lists = ref<ForDataType<undefined>>([
-  { type: "", label: "善良" },
-  { type: "success", label: "好学" },
-  { type: "info", label: "幽默" },
-  { type: "danger", label: "旅游" },
-  { type: "warning", label: "追剧" }
-]);
-</script>
 
 <style scoped>
 .el-tag--mini {
