@@ -9,6 +9,24 @@ export type RouteConfigs = {
   };
 };
 
+export type relativeStorageType = {
+  routesInStorage: Array<RouteConfigs>;
+};
+
+export type tagsViewsType = {
+  icon: string;
+  text: string;
+  divided: {
+    valueOf: () => boolean;
+  };
+  disabled: {
+    valueOf: () => boolean;
+  };
+  show: {
+    valueOf: () => boolean;
+  };
+};
+
 export const routerArrays: Array<RouteConfigs> = [
   {
     path: "/welcome",

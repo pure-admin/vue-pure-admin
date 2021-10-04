@@ -1,13 +1,3 @@
-<script lang="ts">
-export default {
-  computed: {
-    dynamicTagList() {
-      return this.$storage.routesInStorage;
-    }
-  }
-};
-</script>
-
 <script setup lang="ts">
 import {
   ref,
@@ -15,9 +5,11 @@ import {
   onBeforeMount,
   unref,
   nextTick,
-  getCurrentInstance
+  computed,
+  getCurrentInstance,
+  ComputedRef
 } from "vue";
-import { RouteConfigs } from "../../types";
+import { RouteConfigs, relativeStorageType, tagsViewsType } from "../../types";
 import { emitter } from "/@/utils/mitt";
 import { templateRef } from "@vueuse/core";
 import { storageLocal } from "/@/utils/storage";
@@ -33,7 +25,9 @@ import closeRight from "/@/assets/svg/close_right.svg";
 
 let refreshButton = "refresh-button";
 const instance = getCurrentInstance();
-let st: any;
+
+// 响应式storage
+let relativeStorage: relativeStorageType;
 const route = useRoute();
 const router = useRouter();
 const showTags = ref(storageLocal.getItem("tagsVal") || false);
@@ -51,50 +45,53 @@ let routerArrays: Array<RouteConfigs> = [
     }
   }
 ];
-const tagsViews = ref<ForDataType<undefined>>([
+const tagsViews = ref<Array<tagsViewsType>>([
   {
     icon: refresh,
-    text: "重新加载",
+    text: "message.hsreload",
     divided: false,
     disabled: false,
     show: true
   },
   {
     icon: close,
-    text: "关闭当前标签页",
+    text: "message.hscloseCurrentTab",
     divided: false,
     disabled: routerArrays.length > 1 ? false : true,
     show: true
   },
   {
     icon: closeLeft,
-    text: "关闭左侧标签页",
+    text: "message.hscloseLeftTabs",
     divided: true,
     disabled: routerArrays.length > 1 ? false : true,
     show: true
   },
   {
     icon: closeRight,
-    text: "关闭右侧标签页",
+    text: "message.hscloseRightTabs",
     divided: false,
     disabled: routerArrays.length > 1 ? false : true,
     show: true
   },
   {
     icon: closeOther,
-    text: "关闭其他标签页",
+    text: "message.hscloseOtherTabs",
     divided: true,
     disabled: routerArrays.length > 2 ? false : true,
     show: true
   },
   {
     icon: closeAll,
-    text: "关闭全部标签页",
+    text: "message.hscloseAllTabs",
     divided: false,
     disabled: routerArrays.length > 1 ? false : true,
     show: true
   }
 ]);
+const dynamicTagList: ComputedRef<Array<RouteConfigs>> = computed(() => {
+  return relativeStorage.routesInStorage;
+});
 
 // 显示模式，默认灵动模式显示
 const showModel = ref(storageLocal.getItem("showModel") || "smart");
@@ -110,7 +107,7 @@ let buttonTop = ref(0);
 let currentSelect = ref({});
 
 function dynamicRouteTag(value: string, parentPath: string): void {
-  const hasValue = st.routesInStorage.some((item: any) => {
+  const hasValue = relativeStorage.routesInStorage.some((item: any) => {
     return item.path === value;
   });
 
@@ -124,7 +121,7 @@ function dynamicRouteTag(value: string, parentPath: string): void {
             parentPath: `/${parentPath.split("/")[1]}`,
             meta: arrItem.meta
           });
-          st.routesInStorage = routerArrays;
+          relativeStorage.routesInStorage = routerArrays;
         } else {
           if (arrItem.children && arrItem.children.length > 0) {
             concatPath(arrItem.children, value, parentPath);
@@ -155,7 +152,7 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
 
   const spliceRoute = (start?: number, end?: number, other?: boolean): void => {
     if (other) {
-      st.routesInStorage = [
+      relativeStorage.routesInStorage = [
         {
           path: "/welcome",
           parentPath: "/",
@@ -168,10 +165,10 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
         },
         obj
       ];
-      routerArrays = st.routesInStorage;
+      routerArrays = relativeStorage.routesInStorage;
     } else {
       routerArrays.splice(start, end);
-      st.routesInStorage = routerArrays;
+      relativeStorage.routesInStorage = routerArrays;
     }
     router.push(obj.path);
   };
@@ -255,7 +252,7 @@ function onClickDrop(key, item, selectRoute?: RouteConfigs) {
     case 5:
       // 关闭全部标签页
       routerArrays.splice(1, routerArrays.length);
-      st.routesInStorage = routerArrays;
+      relativeStorage.routesInStorage = routerArrays;
       router.push("/welcome");
       break;
   }
@@ -287,8 +284,8 @@ function disabledMenus(value: Boolean) {
 
 // 检查当前右键的菜单两边是否存在别的菜单，如果左侧的菜单是首页，则不显示关闭左侧标签页，如果右侧没有菜单，则不显示关闭右侧标签页
 function showMenuModel(currentPath: string, refresh = false) {
-  let allRoute = unref(st.routesInStorage);
-  let routeLength = unref(st.routesInStorage).length;
+  let allRoute = unref(relativeStorage.routesInStorage);
+  let routeLength = unref(relativeStorage.routesInStorage).length;
   // currentIndex为1时，左侧的菜单是首页，则不显示关闭左侧标签页
   let currentIndex = allRoute.findIndex(v => v.path === currentPath);
   // 如果currentIndex等于routeLength-1，右侧没有菜单，则不显示关闭右侧标签页
@@ -319,7 +316,7 @@ function showMenuModel(currentPath: string, refresh = false) {
       tagsViews.value[v].disabled = false;
     });
     tagsViews.value[3].disabled = true;
-  } else if (currentIndex === 0) {
+  } else if (currentIndex === 0 || currentPath === "/redirect/welcome") {
     // 当前路由为首页
     disabledMenus(true);
   } else {
@@ -337,8 +334,11 @@ function openMenu(tag, e) {
     // 右键菜单不匹配当前路由，隐藏刷新
     tagsViews.value[0].show = false;
     showMenuModel(tag.path);
+  } else if (
     // eslint-disable-next-line no-dupe-else-if
-  } else if (st.routesInStorage.length === 2 && route.path !== tag.path) {
+    relativeStorage.routesInStorage.length === 2 &&
+    route.path !== tag.path
+  ) {
     showMenus(true);
     // 只有两个标签时不显示关闭其他标签页
     tagsViews.value[4].show = false;
@@ -410,8 +410,8 @@ watch(
 
 onBeforeMount(() => {
   if (!instance) return;
-  st = instance.appContext.app.config.globalProperties.$storage;
-  routerArrays = st.routesInStorage ?? routerArrays;
+  relativeStorage = instance.appContext.app.config.globalProperties.$storage;
+  routerArrays = relativeStorage.routesInStorage ?? routerArrays;
 
   // 根据当前路由初始化操作标签页的禁用状态
   showMenuModel(route.fullPath);
@@ -486,7 +486,7 @@ onBeforeMount(() => {
         >
           <li v-if="item.show" @click="selectTag(key, item)">
             <component :is="item.icon" :key="key" />
-            {{ item.text }}
+            {{ $t(item.text) }}
           </li>
         </div>
       </ul>
@@ -513,7 +513,7 @@ onBeforeMount(() => {
                 @click="onClickDrop(key, item)"
               >
                 <component :is="item.icon" :key="key" />
-                {{ item.text }}
+                {{ $t(item.text) }}
               </el-dropdown-item>
             </el-dropdown-menu>
           </template>
