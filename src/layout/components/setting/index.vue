@@ -141,7 +141,7 @@ function setTheme(layout: string, theme: string, dom: HTMLElement) {
       <el-tooltip
         class="item"
         effect="dark"
-        content="暗色主题"
+        content="左侧菜单暗色模式"
         placement="bottom"
       >
         <li
@@ -157,7 +157,7 @@ function setTheme(layout: string, theme: string, dom: HTMLElement) {
       <el-tooltip
         class="item"
         effect="dark"
-        content="亮色主题"
+        content="左侧菜单亮色模式"
         placement="bottom"
       >
         <li
@@ -173,7 +173,7 @@ function setTheme(layout: string, theme: string, dom: HTMLElement) {
       <el-tooltip
         class="item"
         effect="dark"
-        content="暗色主题"
+        content="顶部菜单暗色模式"
         placement="bottom"
       >
         <li
@@ -189,7 +189,7 @@ function setTheme(layout: string, theme: string, dom: HTMLElement) {
       <el-tooltip
         class="item"
         effect="dark"
-        content="暗色主题"
+        content="顶部菜单亮色模式"
         placement="bottom"
       >
         <li

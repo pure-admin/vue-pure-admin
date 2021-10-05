@@ -170,7 +170,9 @@ onBeforeMount(() => {
           v-show="!containerHiddenSideBar && layout.includes('vertical')"
         />
         <!-- tabs标签页 -->
-        <Horizontal v-show="layout.includes('horizontal')" />
+        <Horizontal
+          v-show="!containerHiddenSideBar && layout.includes('horizontal')"
+        />
         <tag>
           <span @click="onFullScreen">
             <fullScreen v-if="!containerHiddenSideBar" />
