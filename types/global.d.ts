@@ -82,6 +82,14 @@ declare global {
     VITE_GENERATE_UI: string;
   }
 
+  declare interface ServerConfigs {
+    Version?: string;
+    KeepAlive?: boolean;
+    Locale?: string;
+    Layout?: string;
+    MapConfigure?: any;
+  }
+
   function parseInt(s: string | number, radix?: number): number;
 
   function parseFloat(string: string | number): number;

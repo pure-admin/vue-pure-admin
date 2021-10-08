@@ -3,7 +3,7 @@ import { ref, unref, computed, getCurrentInstance } from "vue";
 import { useSettingStoreHook } from "/@/store/modules/settings";
 
 const keepAlive: Boolean = ref(
-  getCurrentInstance().appContext.config.globalProperties.$config?.keepAlive
+  getCurrentInstance().appContext.config.globalProperties.$config?.KeepAlive
 );
 
 const getCachedPageList = computed((): string[] => {
