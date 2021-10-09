@@ -65,7 +65,7 @@ export const addAsyncRoutes = (arrRoutes: Array<RouteComponent>) => {
   return arrRoutes;
 };
 
-const router: Router = createRouter({
+export const router: Router = createRouter({
   history: createWebHashHistory(),
   routes: ascending(constantRoutes).concat(...remainingRouter),
   scrollBehavior(to, from, savedPosition) {
