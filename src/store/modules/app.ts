@@ -8,6 +8,7 @@ interface AppState {
     opened: boolean;
     withoutAnimation: boolean;
   };
+  layout: string;
   device: string;
 }
 
@@ -20,6 +21,9 @@ export const useAppStore = defineStore({
         : true,
       withoutAnimation: false
     },
+    layout:
+      storageLocal.getItem("responsive-layout")?.layout.match(/(.*)-/)[1] ??
+      "vertical",
     device: deviceDetection() ? "mobile" : "desktop"
   }),
   getters: {
@@ -56,6 +60,9 @@ export const useAppStore = defineStore({
     },
     toggleDevice(device) {
       this.TOGGLE_DEVICE(device);
+    },
+    setLayout(layout) {
+      this.layout = layout;
     }
   }
 });

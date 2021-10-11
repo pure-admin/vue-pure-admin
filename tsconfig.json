@@ -16,7 +16,7 @@
     "sourceMap": true,
     "baseUrl": ".",
     "allowJs": false,
-    "resolveJsonModule": true, // 包含导入的模块。json的扩展
+    "resolveJsonModule": true,
     "lib": ["dom", "esnext"],
     "incremental": true,
     "paths": {

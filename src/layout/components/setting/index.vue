@@ -4,8 +4,17 @@ import panel from "../panel/index.vue";
 import { useRouter } from "vue-router";
 import { emitter } from "/@/utils/mitt";
 import { templateRef } from "@vueuse/core";
+import { debounce } from "/@/utils/debounce";
+import { useAppStoreHook } from "/@/store/modules/app";
 import { storageLocal, storageSession } from "/@/utils/storage";
-import { reactive, ref, unref, useCssModule, getCurrentInstance } from "vue";
+import {
+  reactive,
+  ref,
+  unref,
+  watch,
+  useCssModule,
+  getCurrentInstance
+} from "vue";
 
 const router = useRouter();
 const { isSelect } = useCssModule();
@@ -124,13 +133,51 @@ function logoChange() {
   emitter.emit("logoChange", unref(logoVal));
 }
 
-function setTheme(layout: string, theme: string, dom: HTMLElement) {
+function setFalse(Doms): any {
+  Doms.forEach(v => {
+    toggleClass(false, isSelect, unref(v));
+  });
+}
+
+watch(instance, ({ layout }) => {
+  switch (layout["layout"]) {
+    case "vertical-dark":
+      toggleClass(true, isSelect, unref(verticalDarkDom));
+      debounce(
+        setFalse([verticalLightDom, horizontalDarkDom, horizontalLightDom]),
+        50
+      );
+      break;
+    case "vertical-light":
+      toggleClass(true, isSelect, unref(verticalLightDom));
+      debounce(
+        setFalse([verticalDarkDom, horizontalDarkDom, horizontalLightDom]),
+        50
+      );
+      break;
+    case "horizontal-dark":
+      toggleClass(true, isSelect, unref(horizontalDarkDom));
+      debounce(
+        setFalse([verticalDarkDom, verticalLightDom, horizontalLightDom]),
+        50
+      );
+      break;
+    case "horizontal-light":
+      toggleClass(true, isSelect, unref(horizontalLightDom));
+      debounce(
+        setFalse([verticalDarkDom, verticalLightDom, horizontalDarkDom]),
+        50
+      );
+      break;
+  }
+});
+
+function setTheme(layout: string, theme: string) {
   dataTheme.value.layout = `${layout}-${theme}`;
   window.document.body.setAttribute("data-layout", layout);
   window.document.body.setAttribute("data-theme", theme);
   instance.layout = { layout: `${layout}-${theme}` };
-  toggleClass(true, isSelect, unref(dom));
-  toggleClass(false, isSelect, unref(dom));
+  useAppStoreHook().setLayout(layout);
 }
 </script>
 
@@ -147,7 +194,7 @@ function setTheme(layout: string, theme: string, dom: HTMLElement) {
         <li
           :class="dataTheme.layout === 'vertical-dark' ? $style.isSelect : ''"
           ref="verticalDarkDom"
-          @click="setTheme('vertical', 'dark', verticalDarkDom)"
+          @click="setTheme('vertical', 'dark')"
         >
           <div></div>
           <div></div>
@@ -163,7 +210,7 @@ function setTheme(layout: string, theme: string, dom: HTMLElement) {
         <li
           :class="dataTheme.layout === 'vertical-light' ? $style.isSelect : ''"
           ref="verticalLightDom"
-          @click="setTheme('vertical', 'light', verticalLightDom)"
+          @click="setTheme('vertical', 'light')"
         >
           <div></div>
           <div></div>
@@ -179,7 +226,7 @@ function setTheme(layout: string, theme: string, dom: HTMLElement) {
         <li
           :class="dataTheme.layout === 'horizontal-dark' ? $style.isSelect : ''"
           ref="horizontalDarkDom"
-          @click="setTheme('horizontal', 'dark', horizontalDarkDom)"
+          @click="setTheme('horizontal', 'dark')"
         >
           <div></div>
           <div></div>
@@ -197,7 +244,7 @@ function setTheme(layout: string, theme: string, dom: HTMLElement) {
             dataTheme.layout === 'horizontal-light' ? $style.isSelect : ''
           "
           ref="horizontalLightDom"
-          @click="setTheme('horizontal', 'light', horizontalLightDom)"
+          @click="setTheme('horizontal', 'light')"
         >
           <div></div>
           <div></div>

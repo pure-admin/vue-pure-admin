@@ -31,15 +31,19 @@ import {
   unref,
   reactive,
   computed,
-  watchEffect,
   onMounted,
+  watchEffect,
+  useCssModule,
   onBeforeMount,
-  useCssModule
+  getCurrentInstance
 } from "vue";
+import { setType } from "./types";
 import options from "/@/settings";
 import { useI18n } from "vue-i18n";
+import { emitter } from "/@/utils/mitt";
 import { toggleClass } from "/@/utils/operate";
 import { useEventListener } from "@vueuse/core";
+import { storageLocal } from "/@/utils/storage";
 import { useAppStoreHook } from "/@/store/modules/app";
 import fullScreen from "/@/assets/svg/full_screen.svg";
 import exitScreen from "/@/assets/svg/exit_screen.svg";
@@ -52,28 +56,21 @@ import setting from "./components/setting/index.vue";
 import Vertical from "./components/sidebar/vertical.vue";
 import Horizontal from "./components/sidebar/horizontal.vue";
 
-interface setInter {
-  sidebar: any;
-  device: string;
-  fixedHeader: boolean;
-  classes: any;
-}
-
-const pureApp = useAppStoreHook();
 const pureSetting = useSettingStoreHook();
 const { hiddenMainContainer } = useCssModule();
 
-const WIDTH = ref(992);
+const instance =
+  getCurrentInstance().appContext.app.config.globalProperties.$storage;
 
 let containerHiddenSideBar = ref(options.hiddenSideBar);
 
-const set: setInter = reactive({
+const set: setType = reactive({
   sidebar: computed(() => {
-    return pureApp.sidebar;
+    return useAppStoreHook().sidebar;
   }),
 
   device: computed(() => {
-    return pureApp.device;
+    return useAppStoreHook().device;
   }),
 
   fixedHeader: computed(() => {
@@ -91,8 +88,22 @@ const set: setInter = reactive({
 });
 
 const handleClickOutside = (params: boolean) => {
-  pureApp.closeSideBar({ withoutAnimation: params });
+  useAppStoreHook().closeSideBar({ withoutAnimation: params });
 };
+
+function setTheme(layoutModel: string) {
+  let { layout } = storageLocal.getItem("responsive-layout");
+  let theme = layout.match(/-(.*)/)[1];
+  window.document.body.setAttribute("data-layout", layoutModel);
+  window.document.body.setAttribute("data-theme", theme);
+  instance.layout = { layout: `${layoutModel}-${theme}` };
+}
+
+// 监听容器
+emitter.on("resize", ({ detail }) => {
+  let { width } = detail;
+  width <= 670 ? setTheme("vertical") : setTheme(useAppStoreHook().layout);
+});
 
 watchEffect(() => {
   if (set.device === "mobile" && !set.sidebar.opened) {
@@ -102,13 +113,13 @@ watchEffect(() => {
 
 const $_isMobile = () => {
   const rect = document.body.getBoundingClientRect();
-  return rect.width - 1 < WIDTH.value;
+  return rect.width - 1 < 992;
 };
 
 const $_resizeHandler = () => {
   if (!document.hidden) {
     const isMobile = $_isMobile();
-    pureApp.toggleDevice(isMobile ? "mobile" : "desktop");
+    useAppStoreHook().toggleDevice(isMobile ? "mobile" : "desktop");
     if (isMobile) {
       handleClickOutside(true);
     }
@@ -136,7 +147,7 @@ function onFullScreen() {
 onMounted(() => {
   const isMobile = $_isMobile();
   if (isMobile) {
-    pureApp.toggleDevice("mobile");
+    useAppStoreHook().toggleDevice("mobile");
     handleClickOutside(true);
   }
   toggleClass(
@@ -152,7 +163,7 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <div :class="['app-wrapper', set.classes]">
+  <div :class="['app-wrapper', set.classes]" v-resize>
     <div
       v-show="
         set.device === 'mobile' &&

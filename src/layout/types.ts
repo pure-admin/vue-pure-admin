@@ -27,6 +27,21 @@ export type tagsViewsType = {
   };
 };
 
+export interface setType {
+  sidebar: {
+    opened: boolean;
+    withoutAnimation: boolean;
+  };
+  device: string;
+  fixedHeader: boolean;
+  classes: {
+    hideSidebar: boolean;
+    openSidebar: boolean;
+    withoutAnimation: boolean;
+    mobile: boolean;
+  };
+}
+
 export const routerArrays: Array<RouteConfigs> = [
   {
     path: "/welcome",
