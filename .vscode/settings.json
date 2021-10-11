@@ -1,0 +1,68 @@
+{
+  "explorer.confirmDelete": false,
+  "terminal.integrated.rendererType": "dom",
+  "git.enableSmartCommit": true,
+  "editor.formatOnType": true,
+  "editor.formatOnSave": true,
+  "editor.fontFamily": "Fira Code",
+  "editor.fontLigatures": true,
+  "window.zoomLevel": 1,
+  "git.autofetch": true,
+  "workbench.iconTheme": "vscode-icons",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "vsicons.dontShowNewVersionMessage": true,
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "editor.tabSize": 2,
+  "editor.formatOnPaste": true,
+  "files.autoSave": "afterDelay",
+  "git.confirmSync": false,
+  "workbench.startupEditor": "newUntitledFile",
+  "editor.suggestSelection": "first",
+  "vetur.completion.scaffoldSnippetSources": {
+    "vetur.experimental.templateInterpolationService": "true"
+  },
+  "vetur.validation.template": false,
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "vetur.format.defaultFormatter.js": "vscode-typescript",
+  "css.lint.propertyIgnoredDueToDisplay": "ignore",
+  // 防止行内样式自动格式化为全小写
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": true,
+    "strings": true
+  },
+  // 自动修复ts的一些语法报错
+  "tslint.autoFixOnSave": true,
+  "files.associations": {
+    // Specifies the location of snippets in the suggestion widget
+    "editor.snippetSuggestions": "top"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "cSpell.userWords": ["sourcemap", "vite"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+  },
+  "gitlens.advanced.messages": {
+    "suppressLineUncommittedWarning": true
+  },
+  "workbench.colorTheme": "One Dark Pro Darker",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+  }
+}
