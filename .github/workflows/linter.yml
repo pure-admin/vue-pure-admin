@@ -16,10 +16,8 @@ name: Lint Code Base
 #############################
 on:
   push:
-    branches-ignore: main
-    # Remove the line above to run when pushing to master
-  pull_request:
-    branches: main
+    branches:
+      - main
 
 ###############
 # Set the Job #
@@ -48,7 +46,7 @@ jobs:
         run: |
           yarn install
           yarn lint
-          yarn run build
+          yarn build
         env:
           VALIDATE_ALL_CODEBASE: false
           DEFAULT_BRANCH: main
