@@ -527,9 +527,9 @@
     fastq "^1.6.0"
 
 "@popperjs/core@^2.10.1":
-  version "2.10.1"
-  resolved "https://registry.npmjs.org/@popperjs/core/-/core-2.10.1.tgz#728ecd95ab207aab8a9a4e421f0422db329232be"
-  integrity sha512-HnUhk1Sy9IuKrxEMdIRCxpIqPw6BFsbYSEUO9p/hNw5sMld/+3OLMWQP80F8/db9qsv3qUjs7ZR5bS/R+iinXw==
+  version "2.10.2"
+  resolved "https://registry.npmjs.org/@popperjs/core/-/core-2.10.2.tgz#0798c03351f0dea1a5a4cabddf26a55a7cbee590"
+  integrity sha512-IXf3XA7+XyN7CP9gGh/XB0UxVMlvARGEgGXLubFICsUMGz6Q+DU+i4gGlpOxTjKvXjkJDJC8YdqdKkDj9qZHEQ==
 
 "@rollup/plugin-node-resolve@^13.0.4":
   version "13.0.4"
@@ -1768,10 +1768,10 @@ electron-to-chromium@^1.3.830:
   resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.3.840.tgz#3f2a1df97015d9b1db5d86a4c6bd4cdb920adcbb"
   integrity sha512-yRoUmTLDJnkIJx23xLY7GbSvnmDCq++NSuxHDQ0jiyDJ9YZBUGJcrdUqm+ZwZFzMbCciVzfem2N2AWiHJcWlbw==
 
-element-plus@1.1.0-beta.19:
-  version "1.1.0-beta.19"
-  resolved "https://registry.yarnpkg.com/element-plus/-/element-plus-1.1.0-beta.19.tgz#234f3bc3f1d822a7102045e7ee1239b675f27acc"
-  integrity sha512-eKJId8un12eoaL88lfLMBtDxRUJfrAQP3bav9p2QG2agOXu3cvYDGBtT773P0ZEm3/97t+itRbxYIYYLV4iNeQ==
+element-plus@1.1.0-beta.20:
+  version "1.1.0-beta.20"
+  resolved "https://registry.npmjs.org/element-plus/-/element-plus-1.1.0-beta.20.tgz#59523c99a88ca4881d899ba8bb81c4a9273ed822"
+  integrity sha512-5rBrLzfKGz4urSxqKi1tihylyotSswMCKdXpCAJAfRggMjtS1NfqVtrCYEPdjphmP2JHsj8TisDvbRTScRKF0Q==
   dependencies:
     "@popperjs/core" "^2.10.1"
     "@vueuse/core" "~6.1.0"
