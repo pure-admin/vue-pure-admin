@@ -129,7 +129,7 @@ If you think this project is helpful to you, you can help the author buy a cup o
 
 Please scan the code to join the WeChat exchange group, if you have any questions, you can communicate in the group!
 
-![group](https://yiming_chang.gitee.io/manages/wechat.jpg)
+![group](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0c5f882422bd47b5af691906ea994ccf~tplv-k3u1fbpfcp-watermark.awebp?)
 
 ## License
 

@@ -129,7 +129,7 @@ yarn build
 
 请扫码加入微信交流群，有问题可以在群里沟通!
 
-![group](https://yiming_chang.gitee.io/manages/wechat.jpg)
+![group](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0c5f882422bd47b5af691906ea994ccf~tplv-k3u1fbpfcp-watermark.awebp?)
 
 ## License
 
