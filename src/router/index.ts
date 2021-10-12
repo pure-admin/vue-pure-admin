@@ -49,6 +49,13 @@ export const constantRoutesArr: Array<RouteComponent> = ascending(
   constantRoutes
 ).concat(...remainingRouter);
 
+// 过滤meta中showLink为false的路由
+export const filterTree = data => {
+  const newTree = data.filter(v => v.meta.showLink);
+  newTree.forEach(v => v.children && (v.children = filterTree(v.children)));
+  return newTree;
+};
+
 // 过滤后端传来的动态路由 重新生成规范路由
 export const addAsyncRoutes = (arrRoutes: Array<RouteComponent>) => {
   if (!arrRoutes || !arrRoutes.length) return;
@@ -67,7 +74,7 @@ export const addAsyncRoutes = (arrRoutes: Array<RouteComponent>) => {
 
 export const router: Router = createRouter({
   history: createWebHashHistory(),
-  routes: ascending(constantRoutes).concat(...remainingRouter),
+  routes: filterTree(ascending(constantRoutes)).concat(...remainingRouter),
   scrollBehavior(to, from, savedPosition) {
     return new Promise(resolve => {
       if (savedPosition) {
