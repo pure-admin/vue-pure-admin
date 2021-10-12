@@ -86,13 +86,15 @@ export const handleAliveRoute = (
       });
       break;
     case "delete":
-      matched.forEach(v => {
-        usePermissionStoreHook().cacheOperate({ mode: "delete", name: v.name });
+      usePermissionStoreHook().cacheOperate({
+        mode: "delete",
+        name: matched[matched.length - 1].name
       });
       break;
     default:
-      matched.forEach(v => {
-        usePermissionStoreHook().cacheOperate({ mode: "delete", name: v.name });
+      usePermissionStoreHook().cacheOperate({
+        mode: "delete",
+        name: matched[matched.length - 1].name
       });
       useTimeoutFn(() => {
         matched.forEach(v => {

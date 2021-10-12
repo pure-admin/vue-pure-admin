@@ -49,6 +49,10 @@ export const usePermissionStore = defineStore({
           this.cachePageList.splice(delIndex, 1);
           break;
       }
+    },
+    // 清空缓存页面
+    clearAllCachePage() {
+      this.cachePageList = [];
     }
   }
 });

@@ -15,6 +15,7 @@ import { templateRef } from "@vueuse/core";
 import { handleAliveRoute } from "/@/router";
 import { storageLocal } from "/@/utils/storage";
 import { useRoute, useRouter } from "vue-router";
+import { usePermissionStoreHook } from "/@/store/modules/permission";
 import { toggleClass, removeClass, hasClass } from "/@/utils/operate";
 
 import close from "/@/assets/svg/close.svg";
@@ -256,7 +257,9 @@ function onClickDrop(key, item, selectRoute?: RouteConfigs) {
       // 关闭全部标签页
       routerArrays.splice(1, routerArrays.length);
       relativeStorage.routesInStorage = routerArrays;
+      usePermissionStoreHook().clearAllCachePage();
       router.push("/welcome");
+
       break;
   }
   setTimeout(() => {
