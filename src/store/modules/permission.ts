@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import { store } from "/@/store";
+import { cacheType } from "./types";
 import { constantRoutesArr, ascending, filterTree } from "/@/router/index";
 
 export const usePermissionStore = defineStore({
@@ -8,7 +9,9 @@ export const usePermissionStore = defineStore({
     // 静态路由
     constantRoutes: constantRoutesArr,
     wholeRoutes: [],
-    buttonAuth: []
+    buttonAuth: [],
+    // 缓存页面keepAlive
+    cachePageList: []
   }),
   actions: {
     asyncActionRoutes(routes) {
@@ -33,6 +36,19 @@ export const usePermissionStore = defineStore({
     },
     async changeSetting(routes) {
       await this.asyncActionRoutes(routes);
+    },
+    cacheOperate({ mode, name }: cacheType) {
+      switch (mode) {
+        case "add":
+          this.cachePageList.push(name);
+          this.cachePageList = [...new Set(this.cachePageList)];
+          break;
+        case "delete":
+          // eslint-disable-next-line no-case-declarations
+          const delIndex = this.cachePageList.findIndex(v => v === name);
+          this.cachePageList.splice(delIndex, 1);
+          break;
+      }
     }
   }
 });

@@ -20,6 +20,7 @@ const nestedRouter = {
       meta: {
         title: "message.hsmenu1",
         showLink: true,
+        keepAlive: true,
         savedPosition: false
       },
       redirect: "/nested/menu1/menu1-1",
@@ -31,6 +32,7 @@ const nestedRouter = {
           meta: {
             title: "message.hsmenu1-1",
             showLink: true,
+            keepAlive: true,
             savedPosition: false
           }
         },
@@ -42,6 +44,7 @@ const nestedRouter = {
           meta: {
             title: "message.hsmenu1-2",
             showLink: true,
+            keepAlive: true,
             savedPosition: false
           },
           children: [
@@ -53,6 +56,7 @@ const nestedRouter = {
               meta: {
                 title: "message.hsmenu1-2-1",
                 showLink: true,
+                keepAlive: true,
                 savedPosition: false
               }
             },
@@ -64,6 +68,7 @@ const nestedRouter = {
               meta: {
                 title: "message.hsmenu1-2-2",
                 showLink: true,
+                keepAlive: true,
                 savedPosition: false
               }
             }
@@ -76,6 +81,7 @@ const nestedRouter = {
           meta: {
             title: "message.hsmenu1-3",
             showLink: true,
+            keepAlive: true,
             savedPosition: false
           }
         }
@@ -88,6 +94,7 @@ const nestedRouter = {
       meta: {
         title: "message.hsmenu2",
         showLink: true,
+        keepAlive: true,
         savedPosition: false
       }
     }

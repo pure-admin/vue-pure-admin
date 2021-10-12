@@ -5,16 +5,13 @@ import { store } from "/@/store";
 interface SettingState {
   title: string;
   fixedHeader: boolean;
-  cachedPageList: string[];
 }
 
 export const useSettingStore = defineStore({
   id: "pure-setting",
   state: (): SettingState => ({
     title: defaultSettings.title,
-    fixedHeader: defaultSettings.fixedHeader,
-    // 需要开启keepalive的页面数组，里面放页面的name即可
-    cachedPageList: ["welcome", "reEditor"]
+    fixedHeader: defaultSettings.fixedHeader
   }),
   getters: {
     getTitle() {

@@ -12,6 +12,7 @@ import {
 import { RouteConfigs, relativeStorageType, tagsViewsType } from "../../types";
 import { emitter } from "/@/utils/mitt";
 import { templateRef } from "@vueuse/core";
+import { handleAliveRoute } from "/@/router";
 import { storageLocal } from "/@/utils/storage";
 import { useRoute, useRouter } from "vue-router";
 import { toggleClass, removeClass, hasClass } from "/@/utils/operate";
@@ -171,6 +172,8 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
       relativeStorage.routesInStorage = routerArrays;
     }
     router.push(obj.path);
+    // 删除缓存路由
+    handleAliveRoute(route.matched, "delete");
   };
 
   if (tag === "other") {
