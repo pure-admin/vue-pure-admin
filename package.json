@@ -92,7 +92,7 @@
     "stylelint-order": "^4.1.0",
     "typescript": "^4.4.2",
     "unplugin-element-plus": "^0.1.0",
-    "vite": "^2.6.5",
+    "vite": "^2.6.7",
     "vite-plugin-mock": "^2.9.6",
     "vite-plugin-style-import": "^1.2.1",
     "vite-svg-loader": "^2.2.0",

@@ -2,7 +2,7 @@ import Layout from "/@/layout/index.vue";
 
 const editorRouter = {
   path: "/editor",
-  name: "editor",
+  name: "reEditor",
   component: Layout,
   redirect: "/editor/index",
   meta: {
@@ -15,11 +15,12 @@ const editorRouter = {
   children: [
     {
       path: "/editor/index",
-      name: "editor",
+      name: "reEditor",
       component: () => import("/@/views/editor/index.vue"),
       meta: {
         title: "message.hseditor",
         showLink: true,
+        keepAlive: true,
         savedPosition: true
       }
     }

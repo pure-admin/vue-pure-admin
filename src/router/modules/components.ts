@@ -20,6 +20,7 @@ const componentsRouter = {
       meta: {
         title: "message.hsvideo",
         showLink: true,
+        keepAlive: true,
         savedPosition: true
       }
     },
@@ -30,6 +31,7 @@ const componentsRouter = {
       meta: {
         title: "message.hsmap",
         showLink: true,
+        keepAlive: true,
         savedPosition: true
       }
     },

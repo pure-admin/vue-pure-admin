@@ -12,8 +12,10 @@ import {
 import { RouteConfigs, relativeStorageType, tagsViewsType } from "../../types";
 import { emitter } from "/@/utils/mitt";
 import { templateRef } from "@vueuse/core";
+import { handleAliveRoute } from "/@/router";
 import { storageLocal } from "/@/utils/storage";
 import { useRoute, useRouter } from "vue-router";
+import { usePermissionStoreHook } from "/@/store/modules/permission";
 import { toggleClass, removeClass, hasClass } from "/@/utils/operate";
 
 import close from "/@/assets/svg/close.svg";
@@ -171,6 +173,8 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
       relativeStorage.routesInStorage = routerArrays;
     }
     router.push(obj.path);
+    // 删除缓存路由
+    handleAliveRoute(route.matched, "delete");
   };
 
   if (tag === "other") {
@@ -253,7 +257,9 @@ function onClickDrop(key, item, selectRoute?: RouteConfigs) {
       // 关闭全部标签页
       routerArrays.splice(1, routerArrays.length);
       relativeStorage.routesInStorage = routerArrays;
+      usePermissionStoreHook().clearAllCachePage();
       router.push("/welcome");
+
       break;
   }
   setTimeout(() => {
