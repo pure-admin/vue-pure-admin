@@ -29,7 +29,6 @@ const remainingRouter = [
       icon: "el-icon-s-home",
       title: "message.hshome",
       showLink: false,
-      savedPosition: false,
       rank: 104
     },
     children: [

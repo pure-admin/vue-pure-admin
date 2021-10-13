@@ -9,7 +9,6 @@ const flowChartRouter = {
     icon: "el-icon-set-up",
     title: "message.hsflowChart",
     showLink: true,
-    savedPosition: true,
     rank: 1
   },
   children: [
@@ -19,8 +18,7 @@ const flowChartRouter = {
       component: () => import("/@/views/flow-chart/index.vue"),
       meta: {
         title: "message.hsflowChart",
-        showLink: true,
-        savedPosition: true
+        showLink: true
       }
     }
   ]

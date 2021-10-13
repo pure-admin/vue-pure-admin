@@ -49,8 +49,7 @@ export const routerArrays: Array<RouteConfigs> = [
     meta: {
       title: "message.hshome",
       icon: "el-icon-s-home",
-      showLink: true,
-      savedPosition: false
+      showLink: true
     }
   }
 ];

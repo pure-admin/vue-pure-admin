@@ -8,7 +8,6 @@ const externalLink = {
     icon: "el-icon-link",
     title: "message.externalLink",
     showLink: true,
-    savedPosition: true,
     rank: 190
   },
   children: [
@@ -18,7 +17,6 @@ const externalLink = {
         icon: "el-icon-link",
         title: "message.externalLink",
         showLink: true,
-        savedPosition: true,
         rank: 191
       }
     }

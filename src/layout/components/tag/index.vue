@@ -42,8 +42,7 @@ let routerArrays: Array<RouteConfigs> = [
     meta: {
       title: "message.hshome",
       icon: "el-icon-s-home",
-      showLink: true,
-      savedPosition: false
+      showLink: true
     }
   }
 ];
@@ -161,8 +160,7 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
           meta: {
             title: "message.hshome",
             icon: "el-icon-s-home",
-            showLink: true,
-            savedPosition: false
+            showLink: true
           }
         },
         obj

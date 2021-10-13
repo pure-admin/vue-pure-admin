@@ -9,7 +9,6 @@ const nestedRouter = {
     title: "message.hsmenus",
     icon: "el-icon-s-data",
     showLink: true,
-    savedPosition: false,
     rank: 5
   },
   children: [
@@ -20,8 +19,7 @@ const nestedRouter = {
       meta: {
         title: "message.hsmenu1",
         showLink: true,
-        keepAlive: true,
-        savedPosition: false
+        keepAlive: true
       },
       redirect: "/nested/menu1/menu1-1",
       children: [
@@ -32,8 +30,7 @@ const nestedRouter = {
           meta: {
             title: "message.hsmenu1-1",
             showLink: true,
-            keepAlive: true,
-            savedPosition: false
+            keepAlive: true
           }
         },
         {
@@ -44,8 +41,7 @@ const nestedRouter = {
           meta: {
             title: "message.hsmenu1-2",
             showLink: true,
-            keepAlive: true,
-            savedPosition: false
+            keepAlive: true
           },
           children: [
             {
@@ -56,8 +52,7 @@ const nestedRouter = {
               meta: {
                 title: "message.hsmenu1-2-1",
                 showLink: true,
-                keepAlive: true,
-                savedPosition: false
+                keepAlive: true
               }
             },
             {
@@ -72,8 +67,7 @@ const nestedRouter = {
                 extraIcon: {
                   svg: true,
                   name: "team-iconxinpinrenqiwang"
-                },
-                savedPosition: false
+                }
               }
             }
           ]
@@ -85,8 +79,7 @@ const nestedRouter = {
           meta: {
             title: "message.hsmenu1-3",
             showLink: true,
-            keepAlive: true,
-            savedPosition: false
+            keepAlive: true
           }
         }
       ]
@@ -98,8 +91,7 @@ const nestedRouter = {
       meta: {
         title: "message.hsmenu2",
         showLink: true,
-        keepAlive: true,
-        savedPosition: false
+        keepAlive: true
       }
     }
   ]

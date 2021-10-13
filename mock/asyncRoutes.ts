@@ -10,7 +10,6 @@ const systemRouter = {
     icon: "el-icon-setting",
     title: "message.hssysManagement",
     showLink: true,
-    savedPosition: true,
     rank: 6
   },
   children: [
@@ -19,8 +18,7 @@ const systemRouter = {
       name: "user",
       meta: {
         title: "message.hsBaseinfo",
-        showLink: true,
-        savedPosition: true
+        showLink: true
       }
     },
     {
@@ -28,8 +26,7 @@ const systemRouter = {
       name: "dict",
       meta: {
         title: "message.hsDict",
-        showLink: true,
-        savedPosition: true
+        showLink: true
       }
     }
   ]
@@ -43,7 +40,6 @@ const permissionRouter = {
     title: "message.permission",
     icon: "el-icon-lollipop",
     showLink: true,
-    savedPosition: true,
     rank: 3
   },
   children: [
@@ -52,8 +48,7 @@ const permissionRouter = {
       name: "permissionPage",
       meta: {
         title: "message.permissionPage",
-        showLink: true,
-        savedPosition: true
+        showLink: true
       }
     },
     {
@@ -62,7 +57,6 @@ const permissionRouter = {
       meta: {
         title: "message.permissionButton",
         showLink: true,
-        savedPosition: true,
         authority: []
       }
     }
