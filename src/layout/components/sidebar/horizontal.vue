@@ -85,6 +85,7 @@ function backHome() {
 }
 
 function handleResize() {
+  // @ts-ignore
   menuRef.value.handleResize();
 }
 

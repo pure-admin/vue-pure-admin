@@ -3,7 +3,7 @@ import { ref } from "vue";
 import Selector from "/@/components/ReSelector";
 
 let selectRange = ref<string>("");
-let dataLists = ref<ForDataType<undefined>>([
+let dataLists = ref([
   {
     title: "基本使用",
     echo: [],

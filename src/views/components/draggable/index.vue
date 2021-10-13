@@ -21,7 +21,7 @@ let lists = ref<Array<Object>>([
   { people: "cn", id: 4, name: "www.google.com" }
 ]);
 
-let cutLists = ref<Array<Object>>([
+let cutLists = ref([
   { people: "cn", id: 1, name: "cut1" },
   { people: "cn", id: 2, name: "cut2" },
   { people: "cn", id: 3, name: "cut3" },

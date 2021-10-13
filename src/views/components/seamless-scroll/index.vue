@@ -6,7 +6,7 @@ import SeamlessScroll from "/@/components/ReSeamlessScroll";
 // eslint-disable-next-line no-undef
 const scroll = templateRef<ElRef | null>("scroll", null);
 
-let listData = ref<ForDataType<undefined>>([
+let listData = ref([
   {
     title: "无缝滚动第一行无缝滚动第一行！！！！！！！！！！"
   },

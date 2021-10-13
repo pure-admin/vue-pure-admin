@@ -5,7 +5,7 @@ import SeamlessScroll from "/@/components/ReSeamlessScroll";
 
 const scroll = templateRef<ElRef | null>("scroll", null);
 
-let listData = ref<ForDataType<undefined>>([
+let listData = ref([
   {
     date: "2021-09-01",
     name: "vue-pure-admin",

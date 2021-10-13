@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-const lists = ref<ForDataType<undefined>>([
+const lists = ref([
   { type: "", label: "善良" },
   { type: "success", label: "好学" },
   { type: "info", label: "幽默" },

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ref, shallowRef, computed, onBeforeMount } from "vue";
-import { useAppStoreHook } from "/@/store/modules/app";
 import {
   ReGithub,
   ReInfinite,
@@ -8,10 +6,12 @@ import {
   ReLine,
   ReBar
 } from "/@/components/ReCharts/index";
+import { useAppStoreHook } from "/@/store/modules/app";
+import { ref, shallowRef, computed, onBeforeMount } from "vue";
 
 const date: Date = new Date();
 let loading = ref<boolean>(true);
-const componentList = shallowRef<ForDataType<undefined>>([]);
+const componentList = shallowRef([]);
 
 setTimeout(() => {
   loading.value = !loading.value;
@@ -89,7 +89,6 @@ const openDepot = (): void => {
         <img
           src="https://avatars.githubusercontent.com/u/44761321?s=400&u=30907819abd29bb3779bc247910873e7c7f7c12f&v=4"
           title="直达仓库地址"
-          alt
           @click="openDepot"
         />
         <span>{{ greetings }}</span>

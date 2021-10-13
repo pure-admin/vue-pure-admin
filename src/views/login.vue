@@ -1,16 +1,17 @@
 <script setup lang="ts">
-import { reactive, onBeforeMount } from "vue";
-import info, { ContextProps } from "../components/ReInfo/index.vue";
-import { getVerify, getLogin } from "/@/api/user";
+import { infoType } from "./type";
 import { useRouter } from "vue-router";
+import { reactive, onBeforeMount } from "vue";
+import { getVerify, getLogin } from "/@/api/user";
 import { storageSession } from "/@/utils/storage";
 import { warnMessage, successMessage } from "/@/utils/message";
+import info, { ContextProps } from "../components/ReInfo/index.vue";
 
 const router = useRouter();
 
 // 刷新验证码
 const refreshGetVerify = async () => {
-  let { svg } = await getVerify();
+  let { svg }: infoType = await getVerify();
   contextInfo.svg = svg;
 };
 
@@ -29,7 +30,7 @@ const toPage = (info: Object): void => {
 // 登录
 const onLogin = async () => {
   let { userName, passWord, verify } = contextInfo;
-  let { code, info, accessToken } = await getLogin({
+  let { code, info, accessToken }: infoType = await getLogin({
     username: userName,
     password: passWord,
     verify: verify

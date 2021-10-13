@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import { storageSession } from "/@/utils/storage";
 
-const auth = ref<Boolean>(storageSession.getItem("info").username || "admin");
+const auth = ref<boolean>(storageSession.getItem("info").username || "admin");
 
 function changRole(value) {
   storageSession.setItem("info", {
