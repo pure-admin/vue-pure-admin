@@ -20,7 +20,6 @@ const componentsRouter = {
       meta: {
         title: "message.hsvideo",
         showLink: true,
-        keepAlive: true,
         savedPosition: true
       }
     },
@@ -32,6 +31,9 @@ const componentsRouter = {
         title: "message.hsmap",
         showLink: true,
         keepAlive: true,
+        transition: {
+          name: "fade"
+        },
         savedPosition: true
       }
     },
@@ -42,6 +44,10 @@ const componentsRouter = {
       meta: {
         title: "message.hsdraggable",
         showLink: true,
+        transition: {
+          enterTransition: "animate__zoomIn",
+          leaveTransition: "animate__zoomOut"
+        },
         savedPosition: true
       }
     },
