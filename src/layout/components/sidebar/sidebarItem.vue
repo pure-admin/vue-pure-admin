@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import path from "path";
 import { PropType, ref } from "vue";
+import Icon from "/@/components/ReIcon/src/Icon.vue";
 import { RouteRecordRaw } from "vue-router";
 
 const props = defineProps({
@@ -34,13 +35,8 @@ function hasOneShowingChild(
   parent: RouteRecordRaw
 ) {
   const showingChildren = children.filter((item: any) => {
-    if (item.hidden) {
-      // 不显示hidden属性为true的菜单
-      return false;
-    } else {
-      onlyOneChild.value = item;
-      return true;
-    }
+    onlyOneChild.value = item;
+    return true;
   });
 
   if (showingChildren.length === 1) {
@@ -78,6 +74,11 @@ function resolvePath(routePath) {
       />
       <template #title>
         <span>{{ $t(onlyOneChild.meta.title) }}</span>
+        <Icon
+          v-if="onlyOneChild.meta.extraIcon"
+          :svg="onlyOneChild.meta.extraIcon.svg ? true : false"
+          :content="`${onlyOneChild.meta.extraIcon.name}`"
+        />
       </template>
     </el-menu-item>
   </template>
@@ -91,6 +92,11 @@ function resolvePath(routePath) {
     <template #title>
       <i :class="props.item.meta.icon"></i>
       <span>{{ $t(props.item.meta.title) }}</span>
+      <Icon
+        v-if="props.item.meta.extraIcon"
+        :svg="props.item.meta.extraIcon.svg ? true : false"
+        :content="`${props.item.meta.extraIcon.name}`"
+      />
     </template>
     <sidebar-item
       v-for="child in props.item.children"

@@ -6,6 +6,27 @@
   "description": "pure-admin",
   "glyphs": [
     {
+      "icon_id": "2508809",
+      "name": "最新连载",
+      "font_class": "zuixinlianzai",
+      "unicode": "e6da",
+      "unicode_decimal": 59098
+    },
+    {
+      "icon_id": "7795613",
+      "name": "新品",
+      "font_class": "xinpin",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "7795615",
+      "name": "新品人气王",
+      "font_class": "xinpinrenqiwang",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
       "icon_id": "18367956",
       "name": "中英文2 中文",
       "font_class": "internationality",

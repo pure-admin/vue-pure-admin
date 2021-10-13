@@ -59,6 +59,10 @@ const componentsRouter = {
       meta: {
         title: "message.hssplitPane",
         showLink: true,
+        extraIcon: {
+          svg: true,
+          name: "team-iconxinpinrenqiwang"
+        },
         savedPosition: true
       }
     },

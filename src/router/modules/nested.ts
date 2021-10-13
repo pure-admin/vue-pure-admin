@@ -69,6 +69,10 @@ const nestedRouter = {
                 title: "message.hsmenu1-2-2",
                 showLink: true,
                 keepAlive: true,
+                extraIcon: {
+                  svg: true,
+                  name: "team-iconxinpinrenqiwang"
+                },
                 savedPosition: false
               }
             }

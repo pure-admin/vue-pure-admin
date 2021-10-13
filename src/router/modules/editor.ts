@@ -21,6 +21,10 @@ const editorRouter = {
         title: "message.hseditor",
         showLink: true,
         keepAlive: true,
+        extraIcon: {
+          svg: true,
+          name: "team-iconxinpin"
+        },
         savedPosition: true
       }
     }
