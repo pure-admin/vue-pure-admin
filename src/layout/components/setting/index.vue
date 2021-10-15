@@ -185,12 +185,7 @@ function setTheme(layout: string, theme: string) {
   <panel>
     <el-divider>主题风格</el-divider>
     <ul class="theme-stley">
-      <el-tooltip
-        class="item"
-        effect="dark"
-        content="左侧菜单暗色模式"
-        placement="bottom"
-      >
+      <el-tooltip class="item" content="左侧菜单暗色模式" placement="bottom">
         <li
           :class="dataTheme.layout === 'vertical-dark' ? $style.isSelect : ''"
           ref="verticalDarkDom"
@@ -201,12 +196,7 @@ function setTheme(layout: string, theme: string) {
         </li>
       </el-tooltip>
 
-      <el-tooltip
-        class="item"
-        effect="dark"
-        content="左侧菜单亮色模式"
-        placement="bottom"
-      >
+      <el-tooltip class="item" content="左侧菜单亮色模式" placement="bottom">
         <li
           :class="dataTheme.layout === 'vertical-light' ? $style.isSelect : ''"
           ref="verticalLightDom"
@@ -217,12 +207,7 @@ function setTheme(layout: string, theme: string) {
         </li>
       </el-tooltip>
 
-      <el-tooltip
-        class="item"
-        effect="dark"
-        content="顶部菜单暗色模式"
-        placement="bottom"
-      >
+      <el-tooltip class="item" content="顶部菜单暗色模式" placement="bottom">
         <li
           :class="dataTheme.layout === 'horizontal-dark' ? $style.isSelect : ''"
           ref="horizontalDarkDom"
@@ -233,12 +218,7 @@ function setTheme(layout: string, theme: string) {
         </li>
       </el-tooltip>
 
-      <el-tooltip
-        class="item"
-        effect="dark"
-        content="顶部菜单亮色模式"
-        placement="bottom"
-      >
+      <el-tooltip class="item" content="顶部菜单亮色模式" placement="bottom">
         <li
           :class="
             dataTheme.layout === 'horizontal-light' ? $style.isSelect : ''

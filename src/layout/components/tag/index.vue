@@ -274,13 +274,13 @@ function closeMenu() {
   visible.value = false;
 }
 
-function showMenus(value: Boolean) {
+function showMenus(value: boolean) {
   Array.of(1, 2, 3, 4, 5).forEach(v => {
     tagsViews.value[v].show = value;
   });
 }
 
-function disabledMenus(value: Boolean) {
+function disabledMenus(value: boolean) {
   Array.of(1, 2, 3, 4, 5).forEach(v => {
     tagsViews.value[v].disabled = value;
   });

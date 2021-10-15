@@ -16,15 +16,9 @@ export type relativeStorageType = {
 export type tagsViewsType = {
   icon: string;
   text: string;
-  divided: {
-    valueOf: () => boolean;
-  };
-  disabled: {
-    valueOf: () => boolean;
-  };
-  show: {
-    valueOf: () => boolean;
-  };
+  divided: boolean;
+  disabled: boolean;
+  show: boolean;
 };
 
 export interface setType {
@@ -53,3 +47,18 @@ export const routerArrays: Array<RouteConfigs> = [
     }
   }
 ];
+
+export type childrenType = {
+  path?: string;
+  noShowingChildren?: boolean;
+  children?: childrenType[];
+  value: unknown;
+  meta?: {
+    icon?: string;
+    title?: string;
+    extraIcon?: {
+      svg?: boolean;
+      name?: string;
+    };
+  };
+};
