@@ -43,5 +43,7 @@
   "cSpell.userWords": ["sourcemap", "vite"],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
-  }
+  },
+  "volar.tsPlugin": true,
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

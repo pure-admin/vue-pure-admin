@@ -84,10 +84,21 @@ declare global {
 
   declare interface ServerConfigs {
     Version?: string;
+    Title?: string;
+    FixedHeader?: boolean;
+    HiddenSideBar?: boolean;
     KeepAlive?: boolean;
     Locale?: string;
     Layout?: string;
-    MapConfigure?: any;
+    MapConfigure?: {
+      amapKey?: string;
+      baiduKey?: string;
+      options: {
+        resizeEnable?: boolean;
+        center?: number[];
+        zoom?: number;
+      };
+    };
   }
 
   function parseInt(s: string | number, radix?: number): number;

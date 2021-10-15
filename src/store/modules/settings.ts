@@ -1,6 +1,6 @@
-import defaultSettings from "../../settings";
 import { defineStore } from "pinia";
 import { store } from "/@/store";
+import { getConfig } from "/@/config";
 
 interface SettingState {
   title: string;
@@ -10,8 +10,8 @@ interface SettingState {
 export const useSettingStore = defineStore({
   id: "pure-setting",
   state: (): SettingState => ({
-    title: defaultSettings.title,
-    fixedHeader: defaultSettings.fixedHeader
+    title: getConfig().Title,
+    fixedHeader: getConfig().FixedHeader
   }),
   getters: {
     getTitle() {

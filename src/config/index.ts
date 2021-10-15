@@ -6,7 +6,7 @@ const setConfig = (cfg?: unknown) => {
   config = Object.assign(config, cfg);
 };
 
-const getConfig = (key?: string) => {
+const getConfig = (key?: string): ServerConfigs => {
   if (typeof key === "string") {
     const arr = key.split(".");
     if (arr && arr.length) {

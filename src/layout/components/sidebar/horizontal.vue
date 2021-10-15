@@ -8,7 +8,6 @@ import {
   getCurrentInstance
 } from "vue";
 import { useI18n } from "vue-i18n";
-import settings from "/@/settings";
 import { emitter } from "/@/utils/mitt";
 import { templateRef } from "@vueuse/core";
 import SidebarItem from "./sidebarItem.vue";
@@ -22,6 +21,10 @@ import { usePermissionStoreHook } from "/@/store/modules/permission";
 
 const instance =
   getCurrentInstance().appContext.config.globalProperties.$storage;
+
+const title =
+  getCurrentInstance().appContext.config.globalProperties.$config?.Title;
+
 const menuRef = templateRef<ElRef | null>("menu", null);
 const routeStore = usePermissionStoreHook();
 const route = useRoute();
@@ -114,7 +117,7 @@ onMounted(() => {
   <div class="horizontal-header">
     <div class="horizontal-header-left" @click="backHome">
       <i class="fa fa-optin-monster"></i>
-      <h4>{{ settings.title }}</h4>
+      <h4>{{ title }}</h4>
     </div>
     <el-menu
       ref="menu"

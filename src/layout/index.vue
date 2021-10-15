@@ -38,7 +38,6 @@ import {
   getCurrentInstance
 } from "vue";
 import { setType } from "./types";
-import options from "/@/settings";
 import { useI18n } from "vue-i18n";
 import { emitter } from "/@/utils/mitt";
 import { toggleClass } from "/@/utils/operate";
@@ -62,7 +61,9 @@ const { hiddenMainContainer } = useCssModule();
 const instance =
   getCurrentInstance().appContext.app.config.globalProperties.$storage;
 
-let containerHiddenSideBar = ref(options.hiddenSideBar);
+const hiddenSideBar = ref(
+  getCurrentInstance().appContext.config.globalProperties.$config?.HiddenSideBar
+);
 
 const set: setType = reactive({
   sidebar: computed(() => {
@@ -127,15 +128,15 @@ const $_resizeHandler = () => {
 };
 
 function onFullScreen() {
-  if (unref(containerHiddenSideBar)) {
-    containerHiddenSideBar.value = false;
+  if (unref(hiddenSideBar)) {
+    hiddenSideBar.value = false;
     toggleClass(
       false,
       hiddenMainContainer,
       document.querySelector(".main-container")
     );
   } else {
-    containerHiddenSideBar.value = true;
+    hiddenSideBar.value = true;
     toggleClass(
       true,
       hiddenMainContainer,
@@ -151,7 +152,7 @@ onMounted(() => {
     handleClickOutside(true);
   }
   toggleClass(
-    unref(containerHiddenSideBar),
+    unref(hiddenSideBar),
     hiddenMainContainer,
     document.querySelector(".main-container")
   );
@@ -173,20 +174,16 @@ onBeforeMount(() => {
       class="drawer-bg"
       @click="handleClickOutside(false)"
     />
-    <Vertical v-show="!containerHiddenSideBar && layout.includes('vertical')" />
+    <Vertical v-show="!hiddenSideBar && layout.includes('vertical')" />
     <div class="main-container">
       <div :class="{ 'fixed-header': set.fixedHeader }">
         <!-- 顶部导航栏 -->
-        <navbar
-          v-show="!containerHiddenSideBar && layout.includes('vertical')"
-        />
+        <navbar v-show="!hiddenSideBar && layout.includes('vertical')" />
         <!-- tabs标签页 -->
-        <Horizontal
-          v-show="!containerHiddenSideBar && layout.includes('horizontal')"
-        />
+        <Horizontal v-show="!hiddenSideBar && layout.includes('horizontal')" />
         <tag>
           <span @click="onFullScreen">
-            <fullScreen v-if="!containerHiddenSideBar" />
+            <fullScreen v-if="!hiddenSideBar" />
             <exitScreen v-else />
           </span>
         </tag>

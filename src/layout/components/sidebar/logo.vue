@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import settings from "/@/settings";
-
+import { getCurrentInstance } from "vue";
 const props = defineProps({
   collapse: Boolean
 });
+
+const title =
+  getCurrentInstance().appContext.config.globalProperties.$config?.Title;
 </script>
 
 <template>
@@ -12,22 +14,22 @@ const props = defineProps({
       <router-link
         v-if="props.collapse"
         key="props.collapse"
-        :title="settings.title"
+        :title="title"
         class="sidebar-logo-link"
         to="/"
       >
         <i class="fa fa-optin-monster"></i>
-        <h1 class="sidebar-title">{{ settings.title }}</h1>
+        <h1 class="sidebar-title">{{ title }}</h1>
       </router-link>
       <router-link
         v-else
         key="expand"
-        :title="settings.title"
+        :title="title"
         class="sidebar-logo-link"
         to="/"
       >
         <i class="fa fa-optin-monster"></i>
-        <h1 class="sidebar-title">{{ settings.title }}</h1>
+        <h1 class="sidebar-title">{{ title }}</h1>
       </router-link>
     </transition>
   </div>
