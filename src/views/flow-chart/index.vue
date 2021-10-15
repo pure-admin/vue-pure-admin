@@ -71,7 +71,12 @@ onMounted(() => {
     <!-- 画布 -->
     <div id="LF-Turbo"></div>
     <!-- 数据查看面板 -->
-    <el-dialog title="数据" v-model="dataVisible" width="50%">
+    <el-dialog
+      customClass="flow-dialog"
+      title="数据"
+      v-model="dataVisible"
+      width="50%"
+    >
       <DataDialog :graphData="graphData"></DataDialog>
     </el-dialog>
   </div>
