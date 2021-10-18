@@ -174,9 +174,6 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
       routerArrays.splice(start, end);
       relativeStorage.routesInStorage = routerArrays;
     }
-    router.push(obj.path);
-    // 删除缓存路由
-    handleAliveRoute(route.matched, "delete");
   };
 
   if (tag === "other") {
@@ -190,7 +187,9 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
     spliceRoute(valueIndex, 1);
   }
 
-  if (current === obj.path) {
+  if (current === route.path) {
+    // 删除缓存路由
+    handleAliveRoute(route.matched, "delete");
     // 如果删除当前激活tag就自动切换到最后一个tag
     let newRoute: any = routerArrays.slice(-1);
     nextTick(() => {
@@ -198,6 +197,14 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
         path: newRoute[0].path
       });
     });
+  } else {
+    //保存跳转之前的路径
+    let oldPath = route.path;
+    router.push(obj.path);
+    // 删除缓存路由
+    handleAliveRoute(route.matched, "delete");
+    if (!routerArrays.length) return;
+    router.push(oldPath);
   }
 }
 
