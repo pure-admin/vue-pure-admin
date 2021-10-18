@@ -50,22 +50,9 @@ const transition = computed(() => {
 
 <style scoped>
 .app-main {
-  min-height: calc(100vh - 70px);
   width: 100%;
-  height: 90vh;
+  height: 100vh;
   position: relative;
   overflow-x: hidden;
-}
-
-.fixed-header + .app-main {
-  padding-top: 50px;
-}
-</style>
-
-<style lang="scss">
-.el-popup-parent--hidden {
-  .fixed-header {
-    padding-right: 15px;
-  }
 }
 </style>
