@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import path from "path";
 import { PropType, ref } from "vue";
+import { childrenType } from "../../types";
 import Icon from "/@/components/ReIcon/src/Icon.vue";
-import { RouteRecordRaw } from "vue-router";
 
 const props = defineProps({
   item: {
-    type: Object as PropType<RouteRecordRaw>
+    type: Object as PropType<childrenType>
   },
   isNest: {
     type: Boolean,
@@ -18,21 +18,11 @@ const props = defineProps({
   }
 });
 
-type childrenType = {
-  path?: string;
-  noShowingChildren?: boolean;
-  children?: RouteRecordRaw[];
-  meta?: {
-    icon?: string;
-    title?: string;
-  };
-};
-
-const onlyOneChild = ref<RouteRecordRaw | childrenType>({} as any);
+const onlyOneChild: childrenType = ref(null);
 
 function hasOneShowingChild(
-  children: RouteRecordRaw[] = [],
-  parent: RouteRecordRaw
+  children: childrenType[] = [],
+  parent: childrenType
 ) {
   const showingChildren = children.filter((item: any) => {
     onlyOneChild.value = item;
@@ -59,8 +49,7 @@ function resolvePath(routePath) {
   <template
     v-if="
       hasOneShowingChild(props.item.children, props.item) &&
-      (!onlyOneChild.children || onlyOneChild.noShowingChildren) &&
-      !props.item.alwaysShow
+      (!onlyOneChild.children || onlyOneChild.noShowingChildren)
     "
   >
     <el-menu-item

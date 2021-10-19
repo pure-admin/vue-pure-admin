@@ -18,6 +18,7 @@ class DB {
       new LocalStorage<Data>(`${DB.env.VITE_TITLE}-${DB.env.VITE_VERSION}`)
     );
     this.initialization();
+    // @ts-ignore
     this.db.chain = chain(this.db.data);
   }
   private initialization() {
@@ -42,8 +43,11 @@ class DB {
     const currentPath = `${dbName}.${user ? `user.${uuid}` : "public"}${
       path ? `.${path}` : ""
     }`;
+    // @ts-ignore
     const value = this.db.chain.get(currentPath).value();
+    // @ts-ignore
     if (!(value !== undefined && validator(value))) {
+      // @ts-ignore
       this.db.chain.set(currentPath, defaultValue).value();
       this.db.write();
     }
@@ -61,6 +65,7 @@ class DB {
       path,
       user
     });
+    // @ts-ignore
     this.db.chain.set(currentPath, value).value();
     this.db.write();
   }
@@ -77,6 +82,7 @@ class DB {
     defaultValue = "",
     user = false
   }): any {
+    // @ts-ignore
     const values = this.db.chain
       .get(this.pathInit({ dbName, path, user, defaultValue }))
       .value();

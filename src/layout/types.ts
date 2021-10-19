@@ -1,3 +1,15 @@
+export const routerArrays: Array<RouteConfigs> = [
+  {
+    path: "/welcome",
+    parentPath: "/",
+    meta: {
+      title: "message.hshome",
+      icon: "el-icon-s-home",
+      showLink: true
+    }
+  }
+];
+
 export type RouteConfigs = {
   path?: string;
   parentPath?: string;
@@ -16,15 +28,9 @@ export type relativeStorageType = {
 export type tagsViewsType = {
   icon: string;
   text: string;
-  divided: {
-    valueOf: () => boolean;
-  };
-  disabled: {
-    valueOf: () => boolean;
-  };
-  show: {
-    valueOf: () => boolean;
-  };
+  divided: boolean;
+  disabled: boolean;
+  show: boolean;
 };
 
 export interface setType {
@@ -42,14 +48,17 @@ export interface setType {
   };
 }
 
-export const routerArrays: Array<RouteConfigs> = [
-  {
-    path: "/welcome",
-    parentPath: "/",
-    meta: {
-      title: "message.hshome",
-      icon: "el-icon-s-home",
-      showLink: true
-    }
-  }
-];
+export type childrenType = {
+  path?: string;
+  noShowingChildren?: boolean;
+  children?: childrenType[];
+  value: unknown;
+  meta?: {
+    icon?: string;
+    title?: string;
+    extraIcon?: {
+      svg?: boolean;
+      name?: string;
+    };
+  };
+};

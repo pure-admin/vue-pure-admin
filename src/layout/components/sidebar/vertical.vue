@@ -17,9 +17,10 @@ const showLogo = ref(storageLocal.getItem("logoVal") || "1");
 const isCollapse = computed(() => {
   return !pureApp.getSidebarStatus;
 });
-const activeMenu = computed(() => {
+const activeMenu = computed((): string => {
   const { meta, path } = route;
   if (meta.activeMenu) {
+    // @ts-ignore
     return meta.activeMenu;
   }
   return path;

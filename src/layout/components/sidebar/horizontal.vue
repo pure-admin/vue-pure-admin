@@ -52,9 +52,10 @@ function onPanel() {
   emitter.emit("openPanel");
 }
 
-const activeMenu = computed(() => {
+const activeMenu = computed((): string => {
   const { meta, path } = route;
   if (meta.activeMenu) {
+    // @ts-ignore
     return meta.activeMenu;
   }
   return path;

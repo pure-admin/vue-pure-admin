@@ -23,6 +23,15 @@
     position: relative;
   }
 
+  .fixed-header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 9;
+    width: calc(100% - 210px);
+    transition: width 0.28s;
+  }
+
   .el-popper.is-light {
     border: none !important;
   }
@@ -402,6 +411,11 @@
 
   // 手机端
   .mobile {
+    .fixed-header {
+      width: 100% !important;
+      transition: width 0.28s;
+    }
+
     .main-container {
       margin-left: 0 !important;
     }
@@ -429,9 +443,14 @@
 }
 
 body[data-layout="vertical"] {
+  .fixed-header + .app-main {
+    padding-top: 85px;
+  }
+
   .hideSidebar {
     .fixed-header {
-      width: calc(100% - 54px);
+      width: calc(100% - 54px) !important;
+      transition: width 0.28s;
     }
 
     .sidebar-container {
@@ -475,6 +494,17 @@ body[data-layout="vertical"] {
         }
       }
     }
+  }
+}
+
+body[data-layout="horizontal"] {
+  .fixed-header {
+    width: 100% !important;
+    transition: none !important;
+  }
+
+  .fixed-header + .app-main {
+    padding-top: 98px;
   }
 }
 

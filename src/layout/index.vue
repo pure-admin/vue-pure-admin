@@ -234,19 +234,6 @@ onBeforeMount(() => {
   z-index: 999;
 }
 
-.fixed-header {
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 9;
-  width: calc(100% - 210px);
-  transition: width 0.28s;
-}
-
-.mobile .fixed-header {
-  width: 100%;
-}
-
 .re-screen {
   margin-top: 12px;
 }

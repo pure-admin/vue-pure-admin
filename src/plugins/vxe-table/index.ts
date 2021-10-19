@@ -51,7 +51,7 @@ import {
 VXETable.setup({
   size: "medium",
   version: 0,
-  zIndex: 100,
+  zIndex: 1002,
   table: {
     // 自动监听父元素的变化去重新计算表格
     autoResize: true,
