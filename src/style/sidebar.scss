@@ -32,6 +32,18 @@
     transition: width 0.28s;
   }
 
+  .main-hidden {
+    margin-left: 0 !important;
+
+    .fixed-header {
+      width: 100% !important;
+
+      + .app-main {
+        padding-top: 37px;
+      }
+    }
+  }
+
   .el-popper.is-light {
     border: none !important;
   }
