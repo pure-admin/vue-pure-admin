@@ -5,7 +5,7 @@ import {
   createWebHashHistory,
   RouteRecordNormalized
 } from "vue-router";
-import { split } from "lodash-es";
+import { split, uniqBy } from "lodash-es";
 import { i18n } from "/@/plugins/i18n";
 import { openLink } from "/@/utils/link";
 import NProgress from "/@/utils/progress";
@@ -182,17 +182,6 @@ export function resetRouter() {
   });
 }
 
-//数组对象去重
-const uniqueObject = (arr, key) => {
-  const map = new Map();
-  for (const item of arr) {
-    if (!map.has(item[key])) {
-      map.set(item[key], item);
-    }
-  }
-  return [...map.values()];
-};
-
 // 路由白名单
 const whiteList = ["/login", "/register"];
 
@@ -241,7 +230,7 @@ router.beforeEach((to, _from, next) => {
           });
           storageLocal.setItem(
             "responsive-routesInStorage",
-            uniqueObject(newLocalRoutes, "path")
+            uniqBy(newLocalRoutes, "path")
           );
         });
       next();
