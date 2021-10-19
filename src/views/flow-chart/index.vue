@@ -123,4 +123,11 @@ onMounted(() => {
   margin-top: -30px;
   z-index: 3;
 }
+
+.logic-flow-view >>> .flow-dialog {
+  transform: none;
+  left: 0;
+  position: relative;
+  margin: 0 auto;
+}
 </style>
