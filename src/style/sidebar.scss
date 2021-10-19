@@ -334,6 +334,20 @@
         background-color: $menuHover !important;
       }
     }
+
+    .el-menu-item,
+    .el-sub-menu {
+      i {
+        width: 20px;
+        text-align: center;
+        font-size: 16px;
+      }
+
+      i.fa {
+        margin-right: 5px;
+        font-size: 16px;
+      }
+    }
   }
 
   // horizontal菜单折叠
