@@ -124,7 +124,7 @@ onMounted(() => {
   z-index: 3;
 }
 
-.logic-flow-view >>> .flow-dialog {
+:deep(.flow-dialog) {
   transform: none;
   left: 0;
   position: relative;

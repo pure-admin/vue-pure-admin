@@ -5,7 +5,7 @@ import {
   createWebHashHistory,
   RouteRecordNormalized
 } from "vue-router";
-import { split } from "lodash-es";
+import { split, uniqBy } from "lodash-es";
 import { i18n } from "/@/plugins/i18n";
 import { openLink } from "/@/utils/link";
 import NProgress from "/@/utils/progress";
@@ -228,7 +228,10 @@ router.beforeEach((to, _from, next) => {
               }
             });
           });
-          storageLocal.setItem("responsive-routesInStorage", newLocalRoutes);
+          storageLocal.setItem(
+            "responsive-routesInStorage",
+            uniqBy(newLocalRoutes, "path")
+          );
         });
       next();
     }
