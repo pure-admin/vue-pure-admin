@@ -1,3 +1,15 @@
+export const routerArrays: Array<RouteConfigs> = [
+  {
+    path: "/welcome",
+    parentPath: "/",
+    meta: {
+      title: "message.hshome",
+      icon: "el-icon-s-home",
+      showLink: true
+    }
+  }
+];
+
 export type RouteConfigs = {
   path?: string;
   parentPath?: string;
@@ -35,18 +47,6 @@ export interface setType {
     mobile: boolean;
   };
 }
-
-export const routerArrays: Array<RouteConfigs> = [
-  {
-    path: "/welcome",
-    parentPath: "/",
-    meta: {
-      title: "message.hshome",
-      icon: "el-icon-s-home",
-      showLink: true
-    }
-  }
-];
 
 export type childrenType = {
   path?: string;

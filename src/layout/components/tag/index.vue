@@ -1,3 +1,17 @@
+<script lang="ts">
+let routerArrays: Array<RouteConfigs> = [
+  {
+    path: "/welcome",
+    parentPath: "/",
+    meta: {
+      title: "message.hshome",
+      icon: "el-icon-s-home",
+      showLink: true
+    }
+  }
+];
+</script>
+
 <script setup lang="ts">
 import {
   ref,
@@ -35,17 +49,7 @@ const router = useRouter();
 const showTags = ref(storageLocal.getItem("tagsVal") || false);
 const containerDom = templateRef<HTMLElement | null>("containerDom", null);
 const activeIndex = ref(-1);
-let routerArrays: Array<RouteConfigs> = [
-  {
-    path: "/welcome",
-    parentPath: "/",
-    meta: {
-      title: "message.hshome",
-      icon: "el-icon-s-home",
-      showLink: true
-    }
-  }
-];
+
 const tagsViews = ref<Array<tagsViewsType>>([
   {
     icon: refresh,
