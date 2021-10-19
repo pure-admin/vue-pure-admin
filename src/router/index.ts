@@ -182,6 +182,17 @@ export function resetRouter() {
   });
 }
 
+//数组对象去重
+const uniqueObject = (arr, key) => {
+  const map = new Map();
+  for (const item of arr) {
+    if (!map.has(item[key])) {
+      map.set(item[key], item);
+    }
+  }
+  return [...map.values()];
+};
+
 // 路由白名单
 const whiteList = ["/login", "/register"];
 
@@ -228,7 +239,10 @@ router.beforeEach((to, _from, next) => {
               }
             });
           });
-          storageLocal.setItem("responsive-routesInStorage", newLocalRoutes);
+          storageLocal.setItem(
+            "responsive-routesInStorage",
+            uniqueObject(newLocalRoutes, "path")
+          );
         });
       next();
     }
