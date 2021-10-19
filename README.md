@@ -131,9 +131,9 @@ yarn build
 
 ## 交流群
 
-请扫码加入微信交流群，有问题可以在群里沟通!
+[微信交流群，点击扫码进群](https://juejin.cn/post/6948419379566477342/)
 
-![group](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0c5f882422bd47b5af691906ea994ccf~tplv-k3u1fbpfcp-watermark.awebp?)
+本人微信：18237613535，拉你进群
 
 ## License
 

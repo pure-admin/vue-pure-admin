@@ -33,14 +33,12 @@ import {
   computed,
   onMounted,
   watchEffect,
-  useCssModule,
   onBeforeMount,
   getCurrentInstance
 } from "vue";
 import { setType } from "./types";
 import { useI18n } from "vue-i18n";
 import { emitter } from "/@/utils/mitt";
-import { toggleClass } from "/@/utils/operate";
 import { useEventListener } from "@vueuse/core";
 import { storageLocal } from "/@/utils/storage";
 import { useAppStoreHook } from "/@/store/modules/app";
@@ -56,7 +54,6 @@ import Vertical from "./components/sidebar/vertical.vue";
 import Horizontal from "./components/sidebar/horizontal.vue";
 
 const pureSetting = useSettingStoreHook();
-const { hiddenMainContainer } = useCssModule();
 
 const instance =
   getCurrentInstance().appContext.app.config.globalProperties.$storage;
@@ -128,21 +125,9 @@ const $_resizeHandler = () => {
 };
 
 function onFullScreen() {
-  if (unref(hiddenSideBar)) {
-    hiddenSideBar.value = false;
-    toggleClass(
-      false,
-      hiddenMainContainer,
-      document.querySelector(".main-container")
-    );
-  } else {
-    hiddenSideBar.value = true;
-    toggleClass(
-      true,
-      hiddenMainContainer,
-      document.querySelector(".main-container")
-    );
-  }
+  unref(hiddenSideBar)
+    ? (hiddenSideBar.value = false)
+    : (hiddenSideBar.value = true);
 }
 
 onMounted(() => {
@@ -151,11 +136,6 @@ onMounted(() => {
     useAppStoreHook().toggleDevice("mobile");
     handleClickOutside(true);
   }
-  toggleClass(
-    unref(hiddenSideBar),
-    hiddenMainContainer,
-    document.querySelector(".main-container")
-  );
 });
 
 onBeforeMount(() => {
@@ -175,7 +155,7 @@ onBeforeMount(() => {
       @click="handleClickOutside(false)"
     />
     <Vertical v-show="!hiddenSideBar && layout.includes('vertical')" />
-    <div class="main-container">
+    <div :class="['main-container', hiddenSideBar ? 'main-hidden' : '']">
       <div :class="{ 'fixed-header': set.fixedHeader }">
         <!-- 顶部导航栏 -->
         <navbar v-show="!hiddenSideBar && layout.includes('vertical')" />
@@ -195,12 +175,6 @@ onBeforeMount(() => {
     <setting />
   </div>
 </template>
-
-<style scoped module>
-.hiddenMainContainer {
-  margin-left: 0 !important;
-}
-</style>
 
 <style lang="scss" scoped>
 @mixin clearfix {
@@ -222,6 +196,10 @@ onBeforeMount(() => {
     position: fixed;
     top: 0;
   }
+}
+
+.main-hidden {
+  margin-left: 0 !important;
 }
 
 .drawer-bg {
