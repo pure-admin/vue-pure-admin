@@ -677,7 +677,6 @@ onBeforeMount(() => {
   .contextmenu {
     margin: 0;
     background: #fff;
-    z-index: 3000;
     position: absolute;
     list-style-type: none;
     padding: 5px 0;
