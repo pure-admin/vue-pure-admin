@@ -19,6 +19,7 @@ export type RouteConfigs = {
     showLink?: boolean;
     savedPosition?: boolean;
   };
+  name?: string;
 };
 
 export type relativeStorageType = {
