@@ -46,7 +46,7 @@ export const usePermissionStore = defineStore({
         case "delete":
           // eslint-disable-next-line no-case-declarations
           const delIndex = this.cachePageList.findIndex(v => v === name);
-          this.cachePageList.splice(delIndex, 1);
+          delIndex !== -1 && this.cachePageList.splice(delIndex, 1);
           break;
       }
     },
