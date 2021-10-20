@@ -85,7 +85,7 @@ onMounted(() => {
 <style scoped>
 #LF-Turbo {
   width: 100vw;
-  height: 85vh;
+  height: 88.5vh;
   outline: none;
 }
 
