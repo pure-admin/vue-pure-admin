@@ -9,7 +9,7 @@ import svgLoader from "vite-svg-loader";
 import styleImport from "vite-plugin-style-import";
 import ElementPlus from "unplugin-element-plus/vite";
 
-const pathResolve = (dir: string): any => {
+const pathResolve = (dir: string): string => {
   return resolve(__dirname, ".", dir);
 };
 
