@@ -26,7 +26,7 @@ import {
 import { RouteConfigs, relativeStorageType, tagsViewsType } from "../../types";
 import { emitter } from "/@/utils/mitt";
 import { templateRef } from "@vueuse/core";
-import { handleAliveRoute } from "/@/router";
+import { handleAliveRoute, delAliveRoutes } from "/@/router";
 import { storageLocal } from "/@/utils/storage";
 import { useRoute, useRouter } from "vue-router";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
@@ -124,7 +124,8 @@ function dynamicRouteTag(value: string, parentPath: string): void {
           routerArrays.push({
             path: value,
             parentPath: `/${parentPath.split("/")[1]}`,
-            meta: arrItem.meta
+            meta: arrItem.meta,
+            name: arrItem.name
           });
           relativeStorage.routesInStorage = routerArrays;
         } else {
@@ -151,6 +152,8 @@ function onFresh() {
 }
 
 function deleteDynamicTag(obj: any, current: any, tag?: string) {
+  // 存放被删除的缓存路由
+  let delAliveRouteList = [];
   let valueIndex: number = routerArrays.findIndex((item: any) => {
     return item.path === obj.path;
   });
@@ -171,7 +174,7 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
       ];
       routerArrays = relativeStorage.routesInStorage;
     } else {
-      routerArrays.splice(start, end);
+      delAliveRouteList = routerArrays.splice(start, end);
       relativeStorage.routesInStorage = routerArrays;
     }
   };
@@ -189,7 +192,9 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
   let newRoute: any = routerArrays.slice(-1);
   if (current === route.path) {
     // 删除缓存路由
-    handleAliveRoute(route.matched, "delete");
+    tag
+      ? delAliveRoutes(delAliveRouteList)
+      : handleAliveRoute(route.matched, "delete");
     // 如果删除当前激活tag就自动切换到最后一个tag
     if (tag === "left") return;
     nextTick(() => {
@@ -198,20 +203,16 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
       });
     });
   } else {
-    //保存跳转之前的路径
-    let oldPath = route.path;
-    router.push(obj.path);
     // 删除缓存路由
-    handleAliveRoute(route.matched, "delete");
+    tag ? delAliveRoutes(delAliveRouteList) : delAliveRoutes([obj]);
     if (!routerArrays.length) return;
-    let isHasOldPath = routerArrays.some(item => {
-      return item.path === oldPath;
+    let isHasActiveTag = routerArrays.some(item => {
+      return item.path === route.path;
     });
-    isHasOldPath
-      ? router.push(oldPath)
-      : router.push({
-          path: newRoute[0].path
-        });
+    !isHasActiveTag &&
+      router.push({
+        path: newRoute[0].path
+      });
   }
 }
 
@@ -230,7 +231,11 @@ function onClickDrop(key, item, selectRoute?: RouteConfigs) {
     case 1:
       // 关闭当前标签页
       selectRoute
-        ? deleteMenu({ path: selectRoute.path, meta: selectRoute.meta })
+        ? deleteMenu({
+            path: selectRoute.path,
+            meta: selectRoute.meta,
+            name: selectRoute.name
+          })
         : deleteMenu({ path: route.path, meta: route.meta });
       break;
     case 2:

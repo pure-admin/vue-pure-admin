@@ -5,6 +5,7 @@ import {
   createWebHashHistory,
   RouteRecordNormalized
 } from "vue-router";
+import { RouteConfigs } from "/@/layout/types";
 import { split, uniqBy } from "lodash-es";
 import { i18n } from "/@/plugins/i18n";
 import { openLink } from "/@/utils/link";
@@ -72,6 +73,16 @@ export const getAliveRoute = () => {
   };
   recursiveSearch(router.options.routes);
   return alivePageList;
+};
+
+// 批量删除缓存路由
+export const delAliveRoutes = (delAliveRouteList: Array<RouteConfigs>) => {
+  delAliveRouteList.forEach(route => {
+    usePermissionStoreHook().cacheOperate({
+      mode: "delete",
+      name: route?.name
+    });
+  });
 };
 
 // 处理缓存路由（添加、删除、刷新）
