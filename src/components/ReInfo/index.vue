@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { FormRulesMap } from "element-plus/lib/components/form/src/form.type";
 import { ref, PropType, getCurrentInstance, watch, nextTick, toRef } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import { initRouter } from "/@/router";
@@ -44,7 +45,7 @@ watch(
   { immediate: true }
 );
 
-const rules: Object = ref({
+const rules = ref<FormRulesMap>({
   userName: [{ required: true, message: "请输入用户名", trigger: "blur" }],
   passWord: [
     { required: true, message: "请输入密码", trigger: "blur" },
