@@ -62,6 +62,7 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
           {
             libraryName: "vxe-table",
             esModule: true,
+            ensureStyleFile: true,
             resolveComponent: name => `vxe-table/es/${name}`,
             resolveStyle: name => `vxe-table/es/${name}/style.css`
           }
