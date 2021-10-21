@@ -142,8 +142,18 @@ yarn build
 
 ## 支持者
 
-非常感谢你们的支持，相信项目会越来越好！！！  
-<a href="https://github.com/xueyuheng"><img src="https://avatars.githubusercontent.com/u/48202935?v=4" style="width: 60px;height: 60px;border-radius: 50%;" /></a><a href="https://github.com/taolei1990"><img src="https://avatars.githubusercontent.com/u/23173640?v=4" style="width: 60px;height: 60px;border-radius: 50%;margin: 0 5px 0 5px" /></a>
+非常感谢你们的支持，相信项目会越来越好！！！
+
+<table border="1">
+  <tr>
+    <th>
+    <a href="https://github.com/xueyuheng"><img src="https://avatars.githubusercontent.com/u/48202935?v=4" width="60px" height="60px" /></a>
+    </th>
+    <th>
+    <a href="https://github.com/taolei1990"><img src="https://avatars.githubusercontent.com/u/23173640?v=4" width="60px" height="60px" /></a>
+    </th>
+  </tr>
+</table>
 
 ## 贡献者
 
