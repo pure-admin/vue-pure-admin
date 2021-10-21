@@ -135,6 +135,17 @@ yarn build
 
 本人微信：18237613535，拉你进群
 
-## License
+## 许可证
 
+原则上不收取任何费用及版权，可以放心使用  
 [MIT © xiaoxian521-2020](./LICENSE)
+
+## 支持者
+
+非常感谢你们的支持，相信项目会越来越好！！！  
+<a href="https://github.com/xueyuheng"><img src="https://avatars.githubusercontent.com/u/48202935?v=4" style="width: 60px;height: 60px;border-radius: 50%;" /></a><a href="https://github.com/taolei1990"><img src="https://avatars.githubusercontent.com/u/23173640?v=4" style="width: 60px;height: 60px;border-radius: 50%;margin: 0 5px 0 5px" /></a>
+
+## 贡献者
+
+这个项目的存在感谢所有做出贡献的人！！！  
+<a href="https://github.com/xiaoxian521/vue-pure-admin/graphs/contributors"><img src="https://contrib.rocks/image?repo=xiaoxian521/vue-pure-admin" /></a>

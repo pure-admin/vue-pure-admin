@@ -137,4 +137,15 @@ My WeChat: 18237613535, pull you into the group
 
 ## License
 
+In principle, no fees and copyrights are charged, so you can use it with confidence  
 [MIT © xiaoxian521-2020](./LICENSE)
+
+## Backers
+
+Thank you very much for your support, I believe the project will get better and better! ! !  
+<a href="https://github.com/xueyuheng"><img src="https://avatars.githubusercontent.com/u/48202935?v=4" style="width: 60px;height: 60px;border-radius: 50%;" /></a><a href="https://github.com/taolei1990"><img src="https://avatars.githubusercontent.com/u/23173640?v=4" style="width: 60px;height: 60px;border-radius: 50%;margin: 0 5px 0 5px" /></a>
+
+## Contributors
+
+This project exists thanks to all the people who contribute!!!  
+<a href="https://github.com/xiaoxian521/vue-pure-admin/graphs/contributors"><img src="https://contrib.rocks/image?repo=xiaoxian521/vue-pure-admin" /></a>
