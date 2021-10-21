@@ -127,7 +127,7 @@ yarn build
 
 如果你觉得这个项目对你有帮助，你可以帮作者买一杯咖啡表示支持!
 
-![donate](http://yiming_chang.gitee.io/manages/pay.jpg)
+<img src="http://yiming_chang.gitee.io/manages/pay.png" width="400px" height="480px" />
 
 ## 交流群
 
