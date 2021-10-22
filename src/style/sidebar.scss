@@ -91,8 +91,10 @@
 
     a {
       display: inline-block;
+      display: flex;
+      padding-left: 10px;
+      flex-wrap: wrap;
       width: 100%;
-      overflow: hidden;
     }
 
     .el-menu {
@@ -109,8 +111,6 @@
     // menu hover
     .submenu-title-noDropdown,
     .el-sub-menu__title {
-      // background: $menuBg;
-
       &:hover {
         background-color: $menuHover !important;
       }

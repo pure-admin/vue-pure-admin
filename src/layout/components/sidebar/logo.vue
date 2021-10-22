@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { getCurrentInstance } from "vue";
+import Icon from "/@/components/ReIcon/src/Icon.vue";
 const props = defineProps({
   collapse: Boolean
 });
@@ -18,8 +19,8 @@ const title =
         class="sidebar-logo-link"
         to="/"
       >
-        <i class="fa fa-optin-monster"></i>
-        <h1 class="sidebar-title">{{ title }}</h1>
+        <Icon svg :width="35" :height="35" content="team-iconshuiyuandi" />
+        <span class="sidebar-title">{{ title }}</span>
       </router-link>
       <router-link
         v-else
@@ -28,8 +29,8 @@ const title =
         class="sidebar-logo-link"
         to="/"
       >
-        <i class="fa fa-optin-monster"></i>
-        <h1 class="sidebar-title">{{ title }}</h1>
+        <Icon svg :width="35" :height="35" content="team-iconshuiyuandi" />
+        <span class="sidebar-title">{{ title }}</span>
       </router-link>
     </transition>
   </div>
@@ -39,27 +40,23 @@ const title =
 .sidebar-logo-container {
   position: relative;
   width: 100%;
-  height: 50px;
+  height: 48px;
   text-align: center;
   overflow: hidden;
 
   .sidebar-logo-link {
     height: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-top: 5px;
 
     .sidebar-title {
-      display: inline-block;
-      margin: 0;
       color: #1890ff;
       font-weight: 600;
       font-size: 20px;
-      margin-top: 16px;
+      margin-top: 10px;
       font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
-    }
-
-    .fa-optin-monster {
-      font-size: 30px;
-      color: #1890ff;
-      margin-top: 5px;
     }
   }
 

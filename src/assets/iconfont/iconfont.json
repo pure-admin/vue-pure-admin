@@ -6,6 +6,34 @@
   "description": "pure-admin",
   "glyphs": [
     {
+      "icon_id": "1715043",
+      "name": "水费",
+      "font_class": "shuifei",
+      "unicode": "e62d",
+      "unicode_decimal": 58925
+    },
+    {
+      "icon_id": "7873366",
+      "name": "水源地",
+      "font_class": "shuiyuandi",
+      "unicode": "e64e",
+      "unicode_decimal": 58958
+    },
+    {
+      "icon_id": "12257150",
+      "name": "水费",
+      "font_class": "shuifei1",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    },
+    {
+      "icon_id": "24810949",
+      "name": "水",
+      "font_class": "shui",
+      "unicode": "e61f",
+      "unicode_decimal": 58911
+    },
+    {
       "icon_id": "2508809",
       "name": "最新连载",
       "font_class": "zuixinlianzai",

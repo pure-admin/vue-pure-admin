@@ -15,6 +15,7 @@ import { algorithm } from "/@/utils/algorithm";
 import screenfull from "../screenfull/index.vue";
 import { useRoute, useRouter } from "vue-router";
 import { storageSession } from "/@/utils/storage";
+import Icon from "/@/components/ReIcon/src/Icon.vue";
 import { deviceDetection } from "/@/utils/deviceDetection";
 import globalization from "/@/assets/svg/globalization.svg";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
@@ -117,7 +118,7 @@ onMounted(() => {
 <template>
   <div class="horizontal-header">
     <div class="horizontal-header-left" @click="backHome">
-      <i class="fa fa-optin-monster"></i>
+      <Icon svg :width="35" :height="35" content="team-iconshuiyuandi" />
       <h4>{{ title }}</h4>
     </div>
     <el-menu
