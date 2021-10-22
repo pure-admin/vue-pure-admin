@@ -6,7 +6,7 @@
 
 ## 简介
 
-vue-pure-admin 是一个免费开源的中后台模版。使用了最新的`vue3`,`vite2`,`TypeScript`,`Element-Plus`等主流技术开发，开箱即用的中后台前端解决方案，也可用于学习参考。
+vue-pure-admin 是一个免费开源的中后台模版。使用了最新的`vue3`,`vite2`,`Element-Plus`,`TypeScript`等主流技术开发，开箱即用的中后台前端解决方案，也可用于学习参考。
 
 ## 配套视频教程
 
@@ -127,7 +127,7 @@ yarn build
 
 如果你觉得这个项目对你有帮助，你可以帮作者买一杯咖啡表示支持!
 
-<img src="http://yiming_chang.gitee.io/manages/pay.png" width="400px" height="480px" />
+<img src="http://yiming_chang.gitee.io/manages/pay.png" width="360px" height="480px" />
 
 ## 交流群
 
@@ -137,25 +137,20 @@ yarn build
 
 ## 许可证
 
-原则上不收取任何费用及版权，可以放心使用  
+原则上不收取任何费用及版权，可以放心使用
+
 [MIT © xiaoxian521-2020](./LICENSE)
 
 ## 捐赠者
 
-非常感谢你们的支持，相信项目会越来越好！！！
+非常感谢你们的支持，相信项目会越来越好！！！:heart:
 
-<table border="1">
-  <tr>
-    <th>
-    <a href="https://github.com/xueyuheng"><img src="https://avatars.githubusercontent.com/u/48202935?v=4" width="60px" height="60px" /></a>
-    </th>
-    <th>
-    <a href="https://github.com/taolei1990"><img src="https://avatars.githubusercontent.com/u/23173640?v=4" width="60px" height="60px" /></a>
-    </th>
-  </tr>
-</table>
+|                                                                xueyuheng                                                                 |                                                                taolei1990                                                                 |
+| :--------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------: |
+| <a href="https://github.com/xueyuheng"><img src="https://avatars.githubusercontent.com/u/48202935?v=4" width="60px" height="60px" /></a> | <a href="https://github.com/taolei1990"><img src="https://avatars.githubusercontent.com/u/23173640?v=4" width="60px" height="60px" /></a> |
 
 ## 贡献者
 
-这个项目的存在感谢所有做出贡献的人！！！  
+这个项目的存在感谢所有做出贡献的人！！！
+
 <a href="https://github.com/xiaoxian521/vue-pure-admin/graphs/contributors"><img src="https://contrib.rocks/image?repo=xiaoxian521/vue-pure-admin" /></a>

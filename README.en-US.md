@@ -6,7 +6,7 @@
 
 ## Introduction
 
-vue-pure-admin is a free and open source middle and back-end template. Using the latest `vue3`, `vite2`, `TypeScript`, `Element-Plus` and other mainstream technology development, the out-of-the-box middle and back-end front-end solutions can also be used for learning reference.
+vue-pure-admin is a free and open source middle and back-end template. Using the latest `vue3`, `vite2`, `Element-Plus`, `TypeScript` and other mainstream technology development, the out-of-the-box middle and back-end front-end solutions can also be used for learning reference.
 
 ## Supporting video tutorial
 
@@ -127,7 +127,7 @@ Support modern browsers, not IE
 
 If you think this project is helpful to you, you can help the author buy a cup of coffee to show your support!
 
-![donate](http://yiming_chang.gitee.io/manages/pay.jpg)
+<img src="http://yiming_chang.gitee.io/manages/pay.png" width="360px" height="480px" />
 
 ## Exchange Group
 
@@ -137,21 +137,17 @@ My WeChat: 18237613535, pull you into the group
 
 ## License
 
-In principle, no fees and copyrights are charged, so you can use it with confidence  
+In principle, no fees and copyrights are charged, so you can use it with confidence
+
 [MIT © xiaoxian521-2020](./LICENSE)
 
 ## Backers
 
-<table border="1">
-  <tr>
-    <th>
-    <a href="https://github.com/xueyuheng"><img src="https://avatars.githubusercontent.com/u/48202935?v=4" width="60px" height="60px" /></a>
-    </th>
-    <th>
-    <a href="https://github.com/taolei1990"><img src="https://avatars.githubusercontent.com/u/23173640?v=4" width="60px" height="60px" /></a>
-    </th>
-  </tr>
-</table>
+Thank you very much for your support, I believe the project will get better and better! ! ! :heart:
+
+|                                                                xueyuheng                                                                 |                                                                taolei1990                                                                 |
+| :--------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------: |
+| <a href="https://github.com/xueyuheng"><img src="https://avatars.githubusercontent.com/u/48202935?v=4" width="60px" height="60px" /></a> | <a href="https://github.com/taolei1990"><img src="https://avatars.githubusercontent.com/u/23173640?v=4" width="60px" height="60px" /></a> |
 
 ## Contributors
 
