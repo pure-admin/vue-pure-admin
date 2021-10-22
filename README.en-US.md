@@ -6,7 +6,7 @@
 
 ## Introduction
 
-vue-pure-admin is a free and open source middle and back-end template. Using the latest `vue3`, `vite2`, `Element-Plus`, `TypeScript` and other mainstream technology development, the out-of-the-box middle and back-end front-end solutions can also be used for learning reference.
+vue-pure-admin is a free and open source middle and back-end template. Using the latest `vue3` `vite2` `Element-Plus` `TypeScript` and other mainstream technology development, the out-of-the-box middle and back-end front-end solutions can also be used for learning reference.
 
 ## Supporting video tutorial
 
@@ -151,5 +151,5 @@ Thank you very much for your support, I believe the project will get better and 
 
 ## Contributors
 
-This project exists thanks to all the people who contribute!!!  
+This project exists thanks to all the people who contribute!!! :heart:
 <a href="https://github.com/xiaoxian521/vue-pure-admin/graphs/contributors"><img src="https://contrib.rocks/image?repo=xiaoxian521/vue-pure-admin" /></a>

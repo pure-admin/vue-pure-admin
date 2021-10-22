@@ -6,7 +6,7 @@
 
 ## 简介
 
-vue-pure-admin 是一个免费开源的中后台模版。使用了最新的`vue3`,`vite2`,`Element-Plus`,`TypeScript`等主流技术开发，开箱即用的中后台前端解决方案，也可用于学习参考。
+vue-pure-admin 是一个免费开源的中后台模版。使用了最新的`vue3` `vite2` `Element-Plus` `TypeScript`等主流技术开发，开箱即用的中后台前端解决方案，也可用于学习参考。
 
 ## 配套视频教程
 
@@ -151,6 +151,6 @@ yarn build
 
 ## 贡献者
 
-这个项目的存在感谢所有做出贡献的人！！！
+这个项目的存在感谢所有做出贡献的人！！！:heart:
 
 <a href="https://github.com/xiaoxian521/vue-pure-admin/graphs/contributors"><img src="https://contrib.rocks/image?repo=xiaoxian521/vue-pure-admin" /></a>
