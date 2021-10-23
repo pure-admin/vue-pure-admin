@@ -77,7 +77,9 @@ onMounted(() => {
       v-model="dataVisible"
       width="50%"
     >
-      <DataDialog :graphData="graphData"></DataDialog>
+      <el-scrollbar>
+        <DataDialog :graphData="graphData"></DataDialog>
+      </el-scrollbar>
     </el-dialog>
   </div>
 </template>
@@ -127,7 +129,13 @@ onMounted(() => {
 :deep(.flow-dialog) {
   transform: none;
   left: 0;
+  top: 5vh;
   position: relative;
   margin: 0 auto;
+}
+
+:deep(.flow-dialog) .el-dialog__body {
+  height: 85vh;
+  overflow: auto;
 }
 </style>
