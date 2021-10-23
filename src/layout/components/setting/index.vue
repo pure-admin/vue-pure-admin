@@ -53,9 +53,9 @@ if (settings.tagsVal === null) {
   settings.tagsVal = false;
 }
 nextTick(() => {
-  document
-    .getElementById("app-main")
-    .setAttribute("data-show-tag", settings.tagsVal);
+  window.document
+    .querySelector(".app-main")
+    ?.setAttribute("data-show-tag", settings.tagsVal);
 });
 
 function toggleClass(flag: boolean, clsName: string, target?: HTMLElement) {
