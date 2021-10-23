@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { split } from "lodash-es";
+import { nextTick } from "vue";
 import panel from "../panel/index.vue";
 import { useRouter } from "vue-router";
 import { emitter } from "/@/utils/mitt";
@@ -46,6 +47,16 @@ settings.greyVal === null
 settings.weekVal === null
   ? localOperate("weekVal", false, "set")
   : document.querySelector("html")?.setAttribute("class", "html-weakness");
+
+if (settings.tagsVal === null) {
+  localOperate("tagsVal", false, "set");
+  settings.tagsVal = false;
+}
+nextTick(() => {
+  window.document
+    .querySelector(".app-main")
+    ?.setAttribute("data-show-tag", settings.tagsVal);
+});
 
 function toggleClass(flag: boolean, clsName: string, target?: HTMLElement) {
   const targetEl = target || document.body;
