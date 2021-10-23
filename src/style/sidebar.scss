@@ -299,6 +299,11 @@
         color: $menuText;
         background-color: $subMenuBg;
 
+        span {
+          font-size: 12px;
+          margin-left: 10px;
+        }
+
         &:hover {
           background-color: $subMenuHover;
         }
@@ -306,6 +311,10 @@
 
       .el-sub-menu__title {
         color: $menuText;
+
+        span {
+          margin-left: 10px;
+        }
       }
     }
 
@@ -371,6 +380,11 @@
         color: $menuText;
         background-color: $subMenuBg;
 
+        span {
+          font-size: 12px;
+          margin-left: 10px;
+        }
+
         &:hover {
           background-color: $subMenuHover;
         }
@@ -378,6 +392,10 @@
 
       .el-sub-menu__title {
         color: $menuText;
+
+        span {
+          margin-left: 10px;
+        }
       }
     }
 
@@ -433,6 +451,32 @@
 
   .el-menu--collapse .el-menu .el-sub-menu {
     min-width: $sideBarWidth !important;
+  }
+
+  // 有子菜单
+  .el-menu--collapse
+    .is-active.outer-most.el-sub-menu
+    > .el-sub-menu__title::before {
+    position: absolute;
+    top: 0;
+    left: 5px;
+    width: 3px;
+    height: 100%;
+    background-color: #1890ff !important;
+    content: "";
+    clear: both;
+  }
+
+  // 无子菜单
+  .el-menu--collapse .is-active.submenu-title-noDropdown.outer-most::before {
+    position: absolute;
+    top: 0;
+    left: 5px;
+    width: 3px;
+    height: 100%;
+    background-color: #1890ff !important;
+    content: "";
+    clear: both;
   }
 
   // 手机端
