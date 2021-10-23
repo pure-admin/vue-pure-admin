@@ -14,7 +14,7 @@ const transition = computed(() => {
 </script>
 
 <template>
-  <section class="app-main">
+  <section class="app-main" id="app-main">
     <el-scrollbar>
       <router-view>
         <template #default="{ Component, route }">

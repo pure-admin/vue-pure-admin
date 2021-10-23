@@ -469,8 +469,12 @@
 }
 
 body[data-layout="vertical"] {
-  .fixed-header + .app-main {
+  .fixed-header + .app-main[data-show-tag="false"] {
     padding-top: 85px;
+  }
+
+  .fixed-header + .app-main[data-show-tag="true"] {
+    padding-top: 48px;
   }
 
   .hideSidebar {
@@ -529,8 +533,12 @@ body[data-layout="horizontal"] {
     transition: none !important;
   }
 
-  .fixed-header + .app-main {
-    padding-top: 98px;
+  .fixed-header + .app-main[data-show-tag="false"] {
+    padding-top: 100px;
+  }
+
+  .fixed-header + .app-main[data-show-tag="true"] {
+    padding-top: 62px;
   }
 }
 
