@@ -10,7 +10,7 @@ vue-pure-admin is a free and open source middle and back-end template. Using the
 
 ## Supporting video tutorial
 
-bilibili：https://www.bilibili.com/video/BV1534y1S7HV/
+bilibili：<https://www.bilibili.com/video/BV1534y1S7HV/>
 
 ## Preview
 
@@ -145,11 +145,12 @@ In principle, no fees and copyrights are charged, so you can use it with confide
 
 Thank you very much for your support, I believe the project will get better and better! ! ! :heart:
 
-|                                                                xueyuheng                                                                 |                                                                taolei1990                                                                 |
-| :--------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------: |
-| <a href="https://github.com/xueyuheng"><img src="https://avatars.githubusercontent.com/u/48202935?v=4" width="60px" height="60px" /></a> | <a href="https://github.com/taolei1990"><img src="https://avatars.githubusercontent.com/u/23173640?v=4" width="60px" height="60px" /></a> |
+|                                                                xueyuheng                                                                 |                                                                taolei1990                                                                 |                                                                hang-kim                                                                 |
+| :--------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------: |
+| <a href="https://github.com/xueyuheng"><img src="https://avatars.githubusercontent.com/u/48202935?v=4" width="60px" height="60px" /></a> | <a href="https://github.com/taolei1990"><img src="https://avatars.githubusercontent.com/u/23173640?v=4" width="60px" height="60px" /></a> | <a href="https://github.com/hang-kim"><img src="https://avatars.githubusercontent.com/u/52914259?v=4" width="60px" height="60px" /></a> |
 
 ## Contributors
 
 This project exists thanks to all the people who contribute!!! :heart:
+
 <a href="https://github.com/xiaoxian521/vue-pure-admin/graphs/contributors"><img src="https://contrib.rocks/image?repo=xiaoxian521/vue-pure-admin" /></a>
