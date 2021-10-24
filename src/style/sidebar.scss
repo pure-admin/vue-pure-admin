@@ -533,14 +533,6 @@
 }
 
 body[data-layout="vertical"] {
-  .fixed-header + .app-main[data-show-tag="false"] {
-    padding-top: 85px;
-  }
-
-  .fixed-header + .app-main[data-show-tag="true"] {
-    padding-top: 48px;
-  }
-
   .hideSidebar {
     .fixed-header {
       width: calc(100% - 54px) !important;
@@ -596,12 +588,36 @@ body[data-layout="horizontal"] {
     width: 100% !important;
     transition: none !important;
   }
+}
 
-  .fixed-header + .app-main[data-show-tag="false"] {
-    padding-top: 100px;
+// vertical模式下不隐藏标签页
+body[data-layout="vertical"][data-show-tag="false"] {
+  .fixed-header + .app-main {
+    padding-top: 85px;
+  }
+}
+
+// vertical模式下隐藏标签页
+body[data-layout="vertical"][data-show-tag="true"] {
+  .fixed-header + .app-main {
+    padding-top: 48px;
+  }
+}
+
+// horizontal模式下不隐藏标签页
+body[data-layout="horizontal"][data-show-tag="false"] {
+  .fixed-header + .app-main {
+    padding-top: 98px;
+  }
+}
+
+// horizontal模式下隐藏标签页
+body[data-layout="horizontal"][data-show-tag="true"] {
+  .fixed-header {
+    box-shadow: 0 1px 4px rgb(0 21 41 / 8%);
   }
 
-  .fixed-header + .app-main[data-show-tag="true"] {
+  .fixed-header + .app-main {
     padding-top: 62px;
   }
 }
