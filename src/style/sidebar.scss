@@ -465,6 +465,10 @@
     background-color: #1890ff !important;
     content: "";
     clear: both;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
   }
 
   // 无子菜单
@@ -477,6 +481,22 @@
     background-color: #1890ff !important;
     content: "";
     clear: both;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  .el-menu--collapse .outer-most.el-sub-menu > .el-sub-menu__title::before,
+  .el-menu--collapse .submenu-title-noDropdown.outer-most::before {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 0;
+    width: 3px;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    top: 50%;
   }
 
   // 手机端
