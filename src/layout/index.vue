@@ -156,12 +156,7 @@ onBeforeMount(() => {
     />
     <Vertical v-show="!hiddenSideBar && layout.includes('vertical')" />
     <div :class="['main-container', hiddenSideBar ? 'main-hidden' : '']">
-      <div
-        :class="{
-          'fixed-header': set.fixedHeader,
-          'no-fixed-header': !set.fixedHeader
-        }"
-      >
+      <div :class="[set.fixedHeader ? 'fixed-header' : 'no-fixed-header']">
         <!-- 顶部导航栏 -->
         <navbar v-show="!hiddenSideBar && layout.includes('vertical')" />
         <!-- tabs标签页 -->
