@@ -1,6 +1,6 @@
 @import "./mixin.scss";
 @import "./transition.scss";
-@import "./element-ui.scss";
+@import "./element-plus.scss";
 @import "./sidebar.scss";
 
 body {
@@ -75,7 +75,7 @@ ul {
   width: 100vw;
   height: 100vh;
   overflow-x: hidden;
-  background: url("../assets/bg.png") no-repeat center;
+  background: url("../assets/bg.jpg") no-repeat center;
   background-size: cover;
 }
 

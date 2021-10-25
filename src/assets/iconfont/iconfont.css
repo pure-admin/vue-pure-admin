@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 2208059 */
-  src: url("iconfont.woff2?t=1634092870259") format("woff2"),
-    url("iconfont.woff?t=1634092870259") format("woff"),
-    url("iconfont.ttf?t=1634092870259") format("truetype");
+  src: url("iconfont.woff2?t=1634903299890") format("woff2"),
+    url("iconfont.woff?t=1634903299890") format("woff"),
+    url("iconfont.ttf?t=1634903299890") format("truetype");
 }
 
 .iconfont {
@@ -11,6 +11,22 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.team-iconshuifei::before {
+  content: "\e62d";
+}
+
+.team-iconshuiyuandi::before {
+  content: "\e64e";
+}
+
+.team-iconshuifei1::before {
+  content: "\e616";
+}
+
+.team-iconshui::before {
+  content: "\e61f";
 }
 
 .team-iconzuixinlianzai::before {

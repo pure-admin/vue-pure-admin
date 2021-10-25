@@ -19,8 +19,8 @@
   },
   "dependencies": {
     "@amap/amap-jsapi-loader": "^1.0.1",
-    "@logicflow/core": "^0.7.0",
-    "@logicflow/extension": "^0.7.0",
+    "@logicflow/core": "^0.7.1",
+    "@logicflow/extension": "^0.7.1",
     "@vueuse/core": "^6.7.1",
     "animate.css": "^4.1.1",
     "await-to-js": "^3.0.0",

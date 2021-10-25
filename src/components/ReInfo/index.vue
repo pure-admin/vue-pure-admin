@@ -4,6 +4,9 @@ import { useRouter, useRoute } from "vue-router";
 import { initRouter } from "/@/router";
 import { storageSession } from "/@/utils/storage";
 
+import bgText from "/@/assets/bg-text.png";
+import bgLogo from "/@/assets/bg-logo.png";
+
 export interface ContextProps {
   userName: string;
   passWord: string;
@@ -95,71 +98,105 @@ const noSecret = (): void => {
 </script>
 
 <template>
-  <div class="info">
-    <el-form :model="model" :rules="rules" ref="ruleForm" class="rule-form">
-      <el-form-item prop="userName">
-        <el-input
-          clearable
-          v-model="model.userName"
-          placeholder="请输入用户名"
-          prefix-icon="el-icon-user"
-        ></el-input>
-      </el-form-item>
-      <el-form-item prop="passWord">
-        <el-input
-          clearable
-          type="password"
-          show-password
-          v-model="model.passWord"
-          placeholder="请输入密码"
-          prefix-icon="el-icon-lock"
-        ></el-input>
-      </el-form-item>
-      <el-form-item prop="verify">
-        <el-input
-          maxlength="2"
-          onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
-          v-model.number="model.verify"
-          placeholder="请输入验证码"
-        ></el-input>
-        <span
-          class="verify"
-          title="刷新"
-          v-html="model.svg"
-          @click.prevent="refreshVerify"
-        ></span>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click.prevent="onBehavior">{{
-          tipsFalse
-        }}</el-button>
-        <el-button @click="resetForm">重置</el-button>
-        <span class="tips" @click="changPage">{{ tips }}</span>
-      </el-form-item>
-      <span title="测试用户 直接登录" class="secret" @click="noSecret"
-        >免密登录</span
-      >
-    </el-form>
+  <div>
+    <div style="margin: 20px 0 0 10px">
+      <img :src="bgLogo" width="100" height="80" />
+      <img :src="bgText" width="180" height="30" style="margin-bottom: 6px" />
+    </div>
+    <div class="info">
+      <el-form :model="model" :rules="rules" ref="ruleForm" class="rule-form">
+        <el-form-item prop="userName">
+          <el-input
+            clearable
+            v-model="model.userName"
+            placeholder="请输入用户名"
+            prefix-icon="el-icon-user"
+          ></el-input>
+        </el-form-item>
+        <el-form-item prop="passWord">
+          <el-input
+            clearable
+            type="password"
+            show-password
+            v-model="model.passWord"
+            placeholder="请输入密码"
+            prefix-icon="el-icon-lock"
+          ></el-input>
+        </el-form-item>
+        <el-form-item prop="verify">
+          <el-input
+            maxlength="2"
+            onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
+            v-model.number="model.verify"
+            placeholder="请输入验证码"
+          ></el-input>
+          <span
+            class="verify"
+            title="刷新"
+            v-html="model.svg"
+            @click.prevent="refreshVerify"
+          ></span>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click.prevent="onBehavior">{{
+            tipsFalse
+          }}</el-button>
+          <el-button @click="resetForm">重置</el-button>
+          <span class="tips" @click="changPage">{{ tips }}</span>
+        </el-form-item>
+        <span title="测试用户 直接登录" class="secret" @click="noSecret"
+          >免密登录</span
+        >
+      </el-form>
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .info {
   width: 30vw;
-  height: 48vh;
-  background: url("../../assets/login.png") no-repeat center;
-  background-size: cover;
+  height: 41vh;
   position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba($color: #fff, $alpha: 0.2);
+  background-size: cover;
   border-radius: 20px;
   right: 100px;
   top: 30vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  @media screen and (max-width: 750px) {
-    width: 88vw;
-    right: 25px;
-    top: 22vh;
+
+  @media screen and (min-width: 800px) and (max-width: 1200px) {
+    height: 38vh;
+  }
+
+  @media screen and (min-width: 421px) and (max-width: 799px) {
+    width: 45vw;
+    height: 35vh;
+  }
+
+  @media screen and (min-width: 321px) and (max-width: 420px) {
+    width: 80vw;
+    height: 48vh;
+  }
+
+  @media screen and (min-width: 0) and (max-width: 320px) {
+    width: 90vw;
+    height: 55vh;
+  }
+
+  @media screen and (min-height: 600px) and (max-height: 800px) {
+    height: 48vh;
+  }
+
+  @media screen and (min-height: 400px) and (max-height: 599px) {
+    height: 58vh;
+  }
+
+  @media screen and (min-height: 0) and (max-height: 399px) {
+    height: 78vh;
   }
 
   .rule-form {
@@ -175,7 +212,7 @@ const noSecret = (): void => {
     }
 
     .tips {
-      color: #409eff;
+      color: #000;
       float: right;
 
       &:hover {
@@ -185,7 +222,7 @@ const noSecret = (): void => {
   }
 
   .secret {
-    color: #409eff;
+    color: #fff;
 
     &:hover {
       cursor: pointer;

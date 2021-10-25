@@ -68,12 +68,14 @@ onBeforeMount(() => {
         router
         :collapse-transition="false"
         mode="vertical"
+        class="outer-most"
         @select="menuSelect"
       >
         <sidebar-item
           v-for="route in routeStore.wholeRoutes"
           :key="route.path"
           :item="route"
+          class="outer-most"
           :base-path="route.path"
         />
       </el-menu>

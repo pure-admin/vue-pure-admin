@@ -47,6 +47,12 @@ settings.weekVal === null
   ? localOperate("weekVal", false, "set")
   : document.querySelector("html")?.setAttribute("class", "html-weakness");
 
+if (settings.tagsVal === null) {
+  localOperate("tagsVal", false, "set");
+  settings.tagsVal = false;
+}
+window.document.body.setAttribute("data-show-tag", settings.tagsVal);
+
 function toggleClass(flag: boolean, clsName: string, target?: HTMLElement) {
   const targetEl = target || document.body;
   let { className } = targetEl;

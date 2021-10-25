@@ -2,9 +2,15 @@
 import { ref, unref } from "vue";
 import { LogicFlow } from "@logicflow/core";
 
+type nodeListType = {
+  text: string;
+  class: string;
+  type: string;
+};
+
 interface Props {
   lf: LogicFlow;
-  nodeList: ForDataType<undefined>;
+  nodeList: Array<nodeListType>;
 }
 
 const props = withDefaults(defineProps<Props>(), {
