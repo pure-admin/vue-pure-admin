@@ -595,6 +595,10 @@ body[data-layout="vertical"][data-show-tag="false"] {
   .fixed-header + .app-main {
     padding-top: 85px;
   }
+
+  .no-fixed-header + .app-main {
+    height: calc(100vh - 86px);
+  }
 }
 
 // vertical模式下隐藏标签页
@@ -602,12 +606,20 @@ body[data-layout="vertical"][data-show-tag="true"] {
   .fixed-header + .app-main {
     padding-top: 48px;
   }
+
+  .no-fixed-header + .app-main {
+    height: calc(100vh - 48px);
+  }
 }
 
 // horizontal模式下不隐藏标签页
 body[data-layout="horizontal"][data-show-tag="false"] {
   .fixed-header + .app-main {
     padding-top: 98px;
+  }
+
+  .no-fixed-header + .app-main {
+    height: calc(100vh - 100px);
   }
 }
 
@@ -619,6 +631,10 @@ body[data-layout="horizontal"][data-show-tag="true"] {
 
   .fixed-header + .app-main {
     padding-top: 62px;
+  }
+
+  .no-fixed-header + .app-main {
+    height: calc(100vh - 62px);
   }
 }
 
