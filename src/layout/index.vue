@@ -156,20 +156,43 @@ onBeforeMount(() => {
     />
     <Vertical v-show="!hiddenSideBar && layout.includes('vertical')" />
     <div :class="['main-container', hiddenSideBar ? 'main-hidden' : '']">
-      <div :class="{ 'fixed-header': set.fixedHeader }">
-        <!-- 顶部导航栏 -->
-        <navbar v-show="!hiddenSideBar && layout.includes('vertical')" />
-        <!-- tabs标签页 -->
-        <Horizontal v-show="!hiddenSideBar && layout.includes('horizontal')" />
-        <tag>
-          <span @click="onFullScreen">
-            <fullScreen v-if="!hiddenSideBar" />
-            <exitScreen v-else />
-          </span>
-        </tag>
+      <div v-if="set.fixedHeader">
+        <div :class="{ 'fixed-header': set.fixedHeader }">
+          <!-- 顶部导航栏 -->
+          <navbar v-show="!hiddenSideBar && layout.includes('vertical')" />
+          <!-- tabs标签页 -->
+          <Horizontal
+            v-show="!hiddenSideBar && layout.includes('horizontal')"
+          />
+          <tag>
+            <span @click="onFullScreen">
+              <fullScreen v-if="!hiddenSideBar" />
+              <exitScreen v-else />
+            </span>
+          </tag>
+        </div>
+        <!-- 主体内容 -->
+        <app-main :fixed-header="set.fixedHeader" />
       </div>
-      <!-- 主体内容 -->
-      <app-main />
+      <el-scrollbar v-else>
+        <el-backtop target=".main-container .el-scrollbar__wrap"></el-backtop>
+        <div :class="{ 'fixed-header': set.fixedHeader }">
+          <!-- 顶部导航栏 -->
+          <navbar v-show="!hiddenSideBar && layout.includes('vertical')" />
+          <!-- tabs标签页 -->
+          <Horizontal
+            v-show="!hiddenSideBar && layout.includes('horizontal')"
+          />
+          <tag>
+            <span @click="onFullScreen">
+              <fullScreen v-if="!hiddenSideBar" />
+              <exitScreen v-else />
+            </span>
+          </tag>
+        </div>
+        <!-- 主体内容 -->
+        <app-main :fixed-header="set.fixedHeader" />
+      </el-scrollbar>
     </div>
     <!-- 系统设置 -->
     <setting />
