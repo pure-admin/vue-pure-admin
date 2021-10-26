@@ -16,6 +16,7 @@ const transition = computed(() => {
 <template>
   <section class="app-main">
     <el-scrollbar>
+      <el-backtop target=".app-main .el-scrollbar__wrap"></el-backtop>
       <router-view>
         <template #default="{ Component, route }">
           <transition
