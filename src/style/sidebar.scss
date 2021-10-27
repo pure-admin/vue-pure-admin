@@ -16,11 +16,33 @@
   $menuText: #7a80b4;
   $menuActiveText: #7a80b4;
 
+  @media screen and (min-width: 150px) and (max-width: 420px) {
+    .app-main-nofixed-header {
+      overflow-y: hidden;
+    }
+  }
+  @media screen and (min-width: 420px) {
+    .app-main-nofixed-header {
+      overflow: hidden;
+    }
+  }
+
   .main-container {
+    height: 100vh;
     min-height: 100%;
     transition: margin-left 0.28s;
     margin-left: $sideBarWidth;
     position: relative;
+    @media screen and (min-width: 150px) and (max-width: 420px) {
+      .el-scrollbar__view {
+        overflow-y: hidden;
+      }
+    }
+    @media screen and (min-width: 420px) {
+      .el-scrollbar__view {
+        overflow: hidden;
+      }
+    }
   }
 
   .fixed-header {
