@@ -55,7 +55,7 @@
     "wangeditor": "^4.7.7",
     "xe-ajax": "^4.0.5",
     "xe-utils": "^3.4.0",
-    "xgplayer": "^2.28.0"
+    "xgplayer": "^2.31.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
