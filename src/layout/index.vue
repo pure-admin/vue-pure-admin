@@ -16,7 +16,6 @@ import { useI18n } from "vue-i18n";
 import { routerArrays } from "./types";
 import { emitter } from "/@/utils/mitt";
 import { useEventListener } from "@vueuse/core";
-import { storageLocal } from "/@/utils/storage";
 import { useAppStoreHook } from "/@/store/modules/app";
 import fullScreen from "/@/assets/svg/full_screen.svg";
 import exitScreen from "/@/assets/svg/exit_screen.svg";
@@ -83,11 +82,8 @@ const handleClickOutside = (params: boolean) => {
 };
 
 function setTheme(layoutModel: string) {
-  let { layout } = storageLocal.getItem("responsive-layout");
-  let theme = layout.match(/-(.*)/)[1];
-  window.document.body.setAttribute("data-layout", layoutModel);
-  window.document.body.setAttribute("data-theme", theme);
-  instance.layout = { layout: `${layoutModel}-${theme}` };
+  window.document.body.setAttribute("layout", layoutModel);
+  instance.layout = { layout: `${layoutModel}` };
 }
 
 // 监听容器

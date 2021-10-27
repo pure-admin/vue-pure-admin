@@ -37,6 +37,9 @@ import {
   ElBacktop
 } from "element-plus";
 
+// https://element-plus.org/zh-CN/component/icon.html
+import { Menu } from "@element-plus/icons";
+
 const components = [
   ElTag,
   ElAffix,
@@ -71,7 +74,8 @@ const components = [
   ElRadioGroup,
   ElDescriptions,
   ElDescriptionsItem,
-  ElBacktop
+  ElBacktop,
+  Menu
 ];
 
 const plugins = [ElLoading];

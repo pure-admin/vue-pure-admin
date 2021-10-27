@@ -21,9 +21,7 @@ export const useAppStore = defineStore({
         : true,
       withoutAnimation: false
     },
-    layout:
-      storageLocal.getItem("responsive-layout")?.layout.match(/(.*)-/)[1] ??
-      "vertical",
+    layout: storageLocal.getItem("responsive-layout")?.layout ?? "vertical",
     device: deviceDetection() ? "mobile" : "desktop"
   }),
   getters: {

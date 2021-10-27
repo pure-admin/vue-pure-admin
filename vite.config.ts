@@ -8,6 +8,7 @@ import { viteMockServe } from "vite-plugin-mock";
 import svgLoader from "vite-svg-loader";
 import styleImport from "vite-plugin-style-import";
 import ElementPlus from "unplugin-element-plus/vite";
+import themePreprocessorPlugin from "@zougt/vite-plugin-theme-preprocessor";
 
 const pathResolve = (dir: string): string => {
   return resolve(__dirname, ".", dir);
@@ -55,6 +56,34 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
     plugins: [
       vue(),
       vueJsx(),
+      themePreprocessorPlugin({
+        scss: {
+          multipleScopeVars: [
+            {
+              scopeName: "layout-default",
+              path: pathResolve("src/layout/theme/default-vars.scss")
+            },
+            {
+              scopeName: "layout-light",
+              path: pathResolve("src/layout/theme/light-vars.scss")
+            }
+          ],
+          // 默认取 multipleScopeVars[0].scopeName
+          defaultScopeName: "",
+          // 在生产模式是否抽取独立的主题css文件，extract为true以下属性有效
+          extract: true,
+          // 独立主题css文件的输出路径，默认取 viteConfig.build.assetsDir 相对于 (viteConfig.build.outDir)
+          outputDir: "",
+          // 会选取defaultScopeName对应的主题css文件在html添加link
+          themeLinkTagId: "body",
+          // "head"||"head-prepend" || "body" ||"body-prepend"
+          themeLinkTagInjectTo: "body",
+          // 是否对抽取的css文件内对应scopeName的权重类名移除
+          removeCssScopeName: false,
+          // 可以自定义css文件名称的函数
+          customThemeCssFileName: scopeName => scopeName
+        }
+      }),
       svgLoader(),
       styleImport({
         libs: [

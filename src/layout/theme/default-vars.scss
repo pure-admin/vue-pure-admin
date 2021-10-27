@@ -1,0 +1,17 @@
+/**
+*此scss变量文件作为multipleScopeVars去编译时，会自动移除!default以达到变量提升
+*同时此scss变量文件作为默认主题变量文件，被其他.scss通过 @import 时，必需 !default
+*/
+
+// 菜单选中后字体样式
+$subMenuActiveText: #f4f4f5 !default;
+//菜单背景
+$menuBg: #1b2a47 !default;
+// 鼠标覆盖菜单时的背景
+$menuHover: #2a395b !default;
+// 子菜单背景
+$subMenuBg: #1f2d3d !default;
+// 鼠标覆盖子菜单时的背景
+$subMenuHover: #001528 !default;
+$navTextColor: #fff !default;
+$menuText: #7a80b4;

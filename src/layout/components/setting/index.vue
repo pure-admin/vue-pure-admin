@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { split } from "lodash-es";
 import panel from "../panel/index.vue";
 import { useRouter } from "vue-router";
 import { emitter } from "/@/utils/mitt";
@@ -99,36 +98,20 @@ function onChange({ label }) {
   emitter.emit("tagViewsShowModel", label);
 }
 
-const verticalDarkDom = templateRef<HTMLElement | null>(
-  "verticalDarkDom",
-  null
-);
-const verticalLightDom = templateRef<HTMLElement | null>(
-  "verticalLightDom",
-  null
-);
-const horizontalDarkDom = templateRef<HTMLElement | null>(
-  "horizontalDarkDom",
-  null
-);
-const horizontalLightDom = templateRef<HTMLElement | null>(
-  "horizontalLightDom",
-  null
-);
+const verticalRef = templateRef<HTMLElement | null>("verticalRef", null);
+const horizontalRef = templateRef<HTMLElement | null>("horizontalRef", null);
 
 let dataTheme =
   ref(storageLocal.getItem("responsive-layout")) ||
   ref({
-    layout: "horizontal-dark"
+    layout: "vertical"
   });
 
 if (unref(dataTheme)) {
   // 设置主题
-  let theme = split(unref(dataTheme).layout, "-")[1];
-  window.document.body.setAttribute("data-theme", theme);
   // 设置导航模式
-  let layout = split(unref(dataTheme).layout, "-")[0];
-  window.document.body.setAttribute("data-layout", layout);
+  let layout = unref(dataTheme).layout;
+  window.document.body.setAttribute("layout", layout);
 }
 
 // 侧边栏Logo
@@ -147,42 +130,21 @@ function setFalse(Doms): any {
 
 watch(instance, ({ layout }) => {
   switch (layout["layout"]) {
-    case "vertical-dark":
-      toggleClass(true, isSelect, unref(verticalDarkDom));
-      debounce(
-        setFalse([verticalLightDom, horizontalDarkDom, horizontalLightDom]),
-        50
-      );
+    case "vertical":
+      toggleClass(true, isSelect, unref(verticalRef));
+      debounce(setFalse([horizontalRef]), 50);
       break;
-    case "vertical-light":
-      toggleClass(true, isSelect, unref(verticalLightDom));
-      debounce(
-        setFalse([verticalDarkDom, horizontalDarkDom, horizontalLightDom]),
-        50
-      );
-      break;
-    case "horizontal-dark":
-      toggleClass(true, isSelect, unref(horizontalDarkDom));
-      debounce(
-        setFalse([verticalDarkDom, verticalLightDom, horizontalLightDom]),
-        50
-      );
-      break;
-    case "horizontal-light":
-      toggleClass(true, isSelect, unref(horizontalLightDom));
-      debounce(
-        setFalse([verticalDarkDom, verticalLightDom, horizontalDarkDom]),
-        50
-      );
+    case "horizontal":
+      toggleClass(true, isSelect, unref(horizontalRef));
+      debounce(setFalse([verticalRef]), 50);
       break;
   }
 });
 
-function setTheme(layout: string, theme: string) {
-  dataTheme.value.layout = `${layout}-${theme}`;
-  window.document.body.setAttribute("data-layout", layout);
-  window.document.body.setAttribute("data-theme", theme);
-  instance.layout = { layout: `${layout}-${theme}` };
+function setTheme(layout: string) {
+  dataTheme.value.layout = `${layout}`;
+  window.document.body.setAttribute("layout", layout);
+  instance.layout = { layout: `${layout}` };
   useAppStoreHook().setLayout(layout);
 }
 </script>
@@ -190,23 +152,12 @@ function setTheme(layout: string, theme: string) {
 <template>
   <panel>
     <el-divider>主题风格</el-divider>
-    <ul class="theme-stley">
+    <ul class="pure-theme">
       <el-tooltip class="item" content="左侧菜单暗色模式" placement="bottom">
         <li
-          :class="dataTheme.layout === 'vertical-dark' ? $style.isSelect : ''"
-          ref="verticalDarkDom"
-          @click="setTheme('vertical', 'dark')"
-        >
-          <div></div>
-          <div></div>
-        </li>
-      </el-tooltip>
-
-      <el-tooltip class="item" content="左侧菜单亮色模式" placement="bottom">
-        <li
-          :class="dataTheme.layout === 'vertical-light' ? $style.isSelect : ''"
-          ref="verticalLightDom"
-          @click="setTheme('vertical', 'light')"
+          :class="dataTheme.layout === 'vertical' ? $style.isSelect : ''"
+          ref="verticalRef"
+          @click="setTheme('vertical')"
         >
           <div></div>
           <div></div>
@@ -215,27 +166,19 @@ function setTheme(layout: string, theme: string) {
 
       <el-tooltip class="item" content="顶部菜单暗色模式" placement="bottom">
         <li
-          :class="dataTheme.layout === 'horizontal-dark' ? $style.isSelect : ''"
-          ref="horizontalDarkDom"
-          @click="setTheme('horizontal', 'dark')"
+          :class="dataTheme.layout === 'horizontal' ? $style.isSelect : ''"
+          ref="horizontalRef"
+          @click="setTheme('horizontal')"
         >
           <div></div>
           <div></div>
         </li>
       </el-tooltip>
+    </ul>
 
-      <el-tooltip class="item" content="顶部菜单亮色模式" placement="bottom">
-        <li
-          :class="
-            dataTheme.layout === 'horizontal-light' ? $style.isSelect : ''
-          "
-          ref="horizontalLightDom"
-          @click="setTheme('horizontal', 'light')"
-        >
-          <div></div>
-          <div></div>
-        </li>
-      </el-tooltip>
+    <el-divider>主题色</el-divider>
+    <ul>
+      <li>11</li>
     </ul>
 
     <el-divider>界面显示</el-divider>
@@ -322,10 +265,10 @@ function setTheme(layout: string, theme: string) {
   font-weight: 700;
 }
 
-.theme-stley {
+.pure-theme {
   margin-top: 25px;
   width: 100%;
-  height: 180px;
+  height: 100px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -364,42 +307,9 @@ function setTheme(layout: string, theme: string) {
     &:nth-child(2) {
       div {
         &:nth-child(1) {
-          width: 30%;
-          height: 100%;
-          box-shadow: 0 0 1px #888;
-          background: #fff;
-          border-radius: 4px 0 0 4px;
-        }
-
-        &:nth-child(2) {
-          width: 70%;
-          height: 30%;
-          top: 0;
-          right: 0;
-          background: #fff;
-          box-shadow: 0 0 1px #888;
-          position: absolute;
-        }
-      }
-    }
-
-    &:nth-child(3) {
-      div {
-        &:nth-child(1) {
           width: 100%;
           height: 30%;
           background: #1b2a47;
-          box-shadow: 0 0 1px #888;
-        }
-      }
-    }
-
-    &:nth-child(4) {
-      div {
-        &:nth-child(1) {
-          width: 100%;
-          height: 30%;
-          background: #fff;
           box-shadow: 0 0 1px #888;
         }
       }

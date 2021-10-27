@@ -1,17 +1,8 @@
+@import "../layout/theme/default-vars.scss";
+
 @mixin merge-style(
-  // 菜单选中后字体样式
-  $subMenuActiveText,
-  //菜单背景
-  $menuBg,
-  // 鼠标覆盖菜单时的背景
-  $menuHover,
-  // 子菜单背景
-  $subMenuBg,
-  // 鼠标覆盖子菜单时的背景
-  $subMenuHover,
   // vertical模式下主体内容距离网页文档左侧的距离
-  $sideBarWidth,
-  $navTextColor
+  $sideBarWidth
 ) {
   $menuText: #7a80b4;
   $menuActiveText: #7a80b4;
@@ -72,7 +63,7 @@
 
   .sidebar-container {
     transition: width 0.28s;
-    width: $sideBarWidth;
+    width: $sideBarWidth !important;
     background-color: $menuBg;
     height: 100%;
     position: fixed;
@@ -211,14 +202,14 @@
       display: flex;
       min-width: 280px;
       align-items: center;
-      color: $navTextColor;
+      color: $navTextColor !important;
       justify-content: flex-end;
 
       .screen-full {
         cursor: pointer;
 
         &:hover {
-          background: $menuHover;
+          background: $menuHover !important;
         }
       }
 
@@ -282,13 +273,13 @@
 
     .el-menu-item,
     .el-sub-menu__title {
-      color: $menuText;
+      color: $menuText !important;
     }
 
     .submenu-title-noDropdown,
     .el-sub-menu__title {
       height: 60px;
-      background: $menuBg;
+      background: $menuBg !important;
 
       &:hover {
         background-color: $menuHover !important;
@@ -529,7 +520,7 @@
     }
 
     .main-container {
-      margin-left: 0 !important;
+      margin-left: 0;
     }
 
     .sidebar-container {
@@ -554,10 +545,13 @@
   }
 }
 
-body[data-layout="vertical"] {
+body[layout="vertical"] {
+  $sideBarWidth: 210px;
+  @include merge-style($sideBarWidth);
+
   .hideSidebar {
     .fixed-header {
-      width: calc(100% - 54px) !important;
+      width: calc(100% - 54px);
       transition: width 0.28s;
     }
 
@@ -566,7 +560,7 @@ body[data-layout="vertical"] {
     }
 
     .main-container {
-      margin-left: 54px !important;
+      margin-left: 0 !important;
     }
 
     .submenu-title-noDropdown {
@@ -605,36 +599,39 @@ body[data-layout="vertical"] {
   }
 }
 
-body[data-layout="horizontal"] {
+body[layout="horizontal"] {
+  $sideBarWidth: 0;
+  @include merge-style($sideBarWidth);
+
   .fixed-header {
-    width: 100% !important;
+    width: 100%;
     transition: none !important;
   }
 }
 
 // vertical模式下不隐藏标签页
-body[data-layout="vertical"][data-show-tag="false"] {
+body[layout="vertical"][data-show-tag="false"] {
   .fixed-header + .app-main {
     padding-top: 85px;
   }
 }
 
 // vertical模式下隐藏标签页
-body[data-layout="vertical"][data-show-tag="true"] {
+body[layout="vertical"][data-show-tag="true"] {
   .fixed-header + .app-main {
     padding-top: 48px;
   }
 }
 
 // horizontal模式下不隐藏标签页
-body[data-layout="horizontal"][data-show-tag="false"] {
+body[layout="horizontal"][data-show-tag="false"] {
   .fixed-header + .app-main {
     padding-top: 98px;
   }
 }
 
 // horizontal模式下隐藏标签页
-body[data-layout="horizontal"][data-show-tag="true"] {
+body[layout="horizontal"][data-show-tag="true"] {
   .fixed-header {
     box-shadow: 0 1px 4px rgb(0 21 41 / 8%);
   }
@@ -642,88 +639,4 @@ body[data-layout="horizontal"][data-show-tag="true"] {
   .fixed-header + .app-main {
     padding-top: 62px;
   }
-}
-
-// vertical模式下暗色主题
-body[data-layout="vertical"][data-theme="dark"] {
-  $subMenuActiveText: #f4f4f5;
-  $menuBg: #1b2a47;
-  $menuHover: #2a395b;
-  $subMenuBg: #1f2d3d;
-  $subMenuHover: #001528;
-  $sideBarWidth: 210px;
-  $navTextColor: #fff;
-
-  @include merge-style(
-    $subMenuActiveText,
-    $menuBg,
-    $menuHover,
-    $subMenuBg,
-    $subMenuHover,
-    $sideBarWidth,
-    $navTextColor
-  );
-}
-
-// vertical模式下亮色主题
-body[data-layout="vertical"][data-theme="light"] {
-  $subMenuActiveText: #409eff;
-  $menuBg: #fff;
-  $menuHover: #e0ebf6;
-  $subMenuBg: #fff;
-  $subMenuHover: #e0ebf6;
-  $sideBarWidth: 210px;
-  $navTextColor: #7a80b4;
-
-  @include merge-style(
-    $subMenuActiveText,
-    $menuBg,
-    $menuHover,
-    $subMenuBg,
-    $subMenuHover,
-    $sideBarWidth,
-    $navTextColor
-  );
-}
-
-// horizontal模式下暗色主题
-body[data-layout="horizontal"][data-theme="dark"] {
-  $subMenuActiveText: #f4f4f5;
-  $menuBg: #1b2a47;
-  $menuHover: #2a395b;
-  $subMenuBg: #1f2d3d;
-  $subMenuHover: #001528;
-  $sideBarWidth: 0;
-  $navTextColor: #fff;
-
-  @include merge-style(
-    $subMenuActiveText,
-    $menuBg,
-    $menuHover,
-    $subMenuBg,
-    $subMenuHover,
-    $sideBarWidth,
-    $navTextColor
-  );
-}
-
-// horizontal模式下亮色主题
-body[data-layout="horizontal"][data-theme="light"] {
-  $subMenuActiveText: #409eff;
-  $menuBg: #fff;
-  $menuHover: #e0ebf6;
-  $subMenuBg: #fff;
-  $subMenuHover: #e0ebf6;
-  $sideBarWidth: 0;
-  $navTextColor: #7a80b4;
-
-  @include merge-style(
-    $subMenuActiveText,
-    $menuBg,
-    $menuHover,
-    $subMenuBg,
-    $subMenuHover,
-    $sideBarWidth,
-    $navTextColor
-  );
 }
