@@ -1,5 +1,13 @@
 <script setup lang="ts">
-import { ref, computed, getCurrentInstance } from "vue";
+import {
+  h,
+  ref,
+  computed,
+  Transition,
+  defineComponent,
+  getCurrentInstance
+} from "vue";
+import { RouterView } from "vue-router";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 
 const props = defineProps({
@@ -9,10 +17,44 @@ const keepAlive: Boolean = ref(
   getCurrentInstance().appContext.config.globalProperties.$config?.KeepAlive
 );
 
-const transition = computed(() => {
+const transitions = computed(() => {
   return route => {
     return route.meta.transition;
   };
+});
+
+const transitionMain = defineComponent({
+  render() {
+    return h(
+      Transition,
+      {
+        name:
+          transitions.value(this.route) &&
+          this.route.meta.transition.enterTransition
+            ? "pure-classes-transition"
+            : (transitions.value(this.route) &&
+                this.route.meta.transition.name) ||
+              "fade-transform",
+        enterActiveClass:
+          transitions.value(this.route) &&
+          `animate__animated ${this.route.meta.transition.enterTransition}`,
+        leaveActiveClass:
+          transitions.value(this.route) &&
+          `animate__animated ${this.route.meta.transition.leaveTransition}`,
+        mode: "out-in",
+        appear: true
+      },
+      {
+        default: () => [this.$slots.default()]
+      }
+    );
+  },
+  props: {
+    route: {
+      type: undefined,
+      required: true
+    }
+  }
 });
 </script>
 
@@ -22,26 +64,9 @@ const transition = computed(() => {
   >
     <router-view>
       <template #default="{ Component, route }">
-        <transition
-          :name="
-            transition(route) && route.meta.transition.enterTransition
-              ? 'pure-classes-transition'
-              : (transition(route) && route.meta.transition.name) ||
-                'fade-transform'
-          "
-          :enter-active-class="
-            transition(route) &&
-            `animate__animated ${route.meta.transition.enterTransition}`
-          "
-          :leave-active-class="
-            transition(route) &&
-            `animate__animated ${route.meta.transition.leaveTransition}`
-          "
-          mode="out-in"
-          appear
-        >
-          <el-scrollbar v-if="props.fixedHeader">
-            <el-backtop target=".app-main .el-scrollbar__wrap"></el-backtop>
+        <el-scrollbar v-if="props.fixedHeader">
+          <el-backtop target=".app-main .el-scrollbar__wrap"></el-backtop>
+          <transitionMain :route="route">
             <keep-alive
               v-if="keepAlive"
               :include="usePermissionStoreHook().cachePageList"
@@ -49,8 +74,10 @@ const transition = computed(() => {
               <component :is="Component" :key="route.fullPath" />
             </keep-alive>
             <component v-else :is="Component" :key="route.fullPath" />
-          </el-scrollbar>
-          <div v-else>
+          </transitionMain>
+        </el-scrollbar>
+        <div v-else>
+          <transitionMain :route="route">
             <keep-alive
               v-if="keepAlive"
               :include="usePermissionStoreHook().cachePageList"
@@ -58,8 +85,8 @@ const transition = computed(() => {
               <component :is="Component" :key="route.fullPath" />
             </keep-alive>
             <component v-else :is="Component" :key="route.fullPath" />
-          </div>
-        </transition>
+          </transitionMain>
+        </div>
       </template>
     </router-view>
   </section>
