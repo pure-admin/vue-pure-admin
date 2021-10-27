@@ -1,32 +1,6 @@
-<script lang="ts">
-import { routerArrays } from "./types";
-export default {
-  computed: {
-    layout() {
-      if (!this.$storage.layout) {
-        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-        this.$storage.layout = { layout: "vertical-dark" };
-      }
-      if (
-        !this.$storage.routesInStorage ||
-        this.$storage.routesInStorage.length === 0
-      ) {
-        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-        this.$storage.routesInStorage = routerArrays;
-      }
-      if (!this.$storage.locale) {
-        // eslint-disable-next-line
-        this.$storage.locale = { locale: "zh" };
-        useI18n().locale.value = "zh";
-      }
-      return this.$storage?.layout.layout;
-    }
-  }
-};
-</script>
-
 <script setup lang="ts">
 import {
+  h,
   ref,
   unref,
   reactive,
@@ -34,10 +8,12 @@ import {
   onMounted,
   watchEffect,
   onBeforeMount,
+  defineComponent,
   getCurrentInstance
 } from "vue";
 import { setType } from "./types";
 import { useI18n } from "vue-i18n";
+import { routerArrays } from "./types";
 import { emitter } from "/@/utils/mitt";
 import { useEventListener } from "@vueuse/core";
 import { storageLocal } from "/@/utils/storage";
@@ -61,6 +37,23 @@ const instance =
 const hiddenSideBar = ref(
   getCurrentInstance().appContext.config.globalProperties.$config?.HiddenSideBar
 );
+
+const layout = computed(() => {
+  if (!instance.layout) {
+    // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+    instance.layout = { layout: "vertical-dark" };
+  }
+  if (!instance.routesInStorage || instance.routesInStorage.length === 0) {
+    // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+    instance.routesInStorage = routerArrays;
+  }
+  if (!instance.locale) {
+    // eslint-disable-next-line
+    instance.locale = { locale: "zh" };
+    useI18n().locale.value = "zh";
+  }
+  return instance?.layout.layout;
+});
 
 const set: setType = reactive({
   sidebar: computed(() => {
@@ -141,6 +134,42 @@ onMounted(() => {
 onBeforeMount(() => {
   useEventListener("resize", $_resizeHandler);
 });
+
+const layoutHeader = defineComponent({
+  render() {
+    return h(
+      "div",
+      { class: { "fixed-header": set.fixedHeader } },
+      {
+        default: () => [
+          !hiddenSideBar.value && layout.value.includes("vertical")
+            ? h(navbar)
+            : h("div"),
+          !hiddenSideBar.value && layout.value.includes("horizontal")
+            ? h(Horizontal)
+            : h("div"),
+          h(
+            tag,
+            {},
+            {
+              default: () => [
+                h(
+                  "span",
+                  { onClick: onFullScreen },
+                  {
+                    default: () => [
+                      !hiddenSideBar.value ? h(fullScreen) : h(exitScreen)
+                    ]
+                  }
+                )
+              ]
+            }
+          )
+        ]
+      }
+    );
+  }
+});
 </script>
 
 <template>
@@ -157,39 +186,13 @@ onBeforeMount(() => {
     <Vertical v-show="!hiddenSideBar && layout.includes('vertical')" />
     <div :class="['main-container', hiddenSideBar ? 'main-hidden' : '']">
       <div v-if="set.fixedHeader">
-        <div :class="{ 'fixed-header': set.fixedHeader }">
-          <!-- 顶部导航栏 -->
-          <navbar v-show="!hiddenSideBar && layout.includes('vertical')" />
-          <!-- tabs标签页 -->
-          <Horizontal
-            v-show="!hiddenSideBar && layout.includes('horizontal')"
-          />
-          <tag>
-            <span @click="onFullScreen">
-              <fullScreen v-if="!hiddenSideBar" />
-              <exitScreen v-else />
-            </span>
-          </tag>
-        </div>
+        <layout-header />
         <!-- 主体内容 -->
         <app-main :fixed-header="set.fixedHeader" />
       </div>
       <el-scrollbar v-else>
         <el-backtop target=".main-container .el-scrollbar__wrap"></el-backtop>
-        <div :class="{ 'fixed-header': set.fixedHeader }">
-          <!-- 顶部导航栏 -->
-          <navbar v-show="!hiddenSideBar && layout.includes('vertical')" />
-          <!-- tabs标签页 -->
-          <Horizontal
-            v-show="!hiddenSideBar && layout.includes('horizontal')"
-          />
-          <tag>
-            <span @click="onFullScreen">
-              <fullScreen v-if="!hiddenSideBar" />
-              <exitScreen v-else />
-            </span>
-          </tag>
-        </div>
+        <layout-header />
         <!-- 主体内容 -->
         <app-main :fixed-header="set.fixedHeader" />
       </el-scrollbar>
