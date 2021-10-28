@@ -63,3 +63,8 @@ export type childrenType = {
     };
   };
 };
+
+export type themeColorsType = {
+  rgb: string;
+  themeColor: string;
+};

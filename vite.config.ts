@@ -60,11 +60,11 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
         scss: {
           multipleScopeVars: [
             {
-              scopeName: "layout-default",
+              scopeName: "layout-theme-default",
               path: pathResolve("src/layout/theme/default-vars.scss")
             },
             {
-              scopeName: "layout-light",
+              scopeName: "layout-theme-light",
               path: pathResolve("src/layout/theme/light-vars.scss")
             }
           ],

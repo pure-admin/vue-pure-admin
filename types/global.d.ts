@@ -90,6 +90,7 @@ declare global {
     KeepAlive?: boolean;
     Locale?: string;
     Layout?: string;
+    Theme?: string;
     MapConfigure?: {
       amapKey?: string;
       baiduKey?: string;

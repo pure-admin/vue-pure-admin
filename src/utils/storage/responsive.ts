@@ -30,7 +30,8 @@ export const injectResponsiveStorage = (app: App, config: ServerConfigs) => {
     layout: {
       type: Object,
       default: Storage.getData(undefined, "layout") ?? {
-        layout: config.Layout
+        layout: config.Layout,
+        theme: config.Theme
       }
     }
   });

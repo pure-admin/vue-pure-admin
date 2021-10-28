@@ -922,7 +922,7 @@
   dependencies:
     vue-demi "*"
 
-"@zougt/some-loader-utils@^1.1.0":
+"@zougt/some-loader-utils@^1.3.2":
   version "1.3.2"
   resolved "https://registry.npmjs.org/@zougt/some-loader-utils/-/some-loader-utils-1.3.2.tgz#362ad8158c3a95fa89ac61b2e6f9e61a32b2364a"
   integrity sha512-8cWH8yfQ10Fwh7Dc4kvPwFQ901KGUmGxKgNq1asfTsFdf6QSRZOQWWMX58LuV4XjqRqhMECWyd6fNvjPddQjTQ==
@@ -930,12 +930,12 @@
     parse-color "^1.0.0"
     postcss "^8.2.9"
 
-"@zougt/vite-plugin-theme-preprocessor@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.npmjs.org/@zougt/vite-plugin-theme-preprocessor/-/vite-plugin-theme-preprocessor-1.2.0.tgz#cf3443d9bfd8dc722e2bfe7556b993c1e03b2e28"
-  integrity sha512-CTt0UmvykY5QL6DGSs/gxOBfqdmN53p1cI4eRXjbfq+cpAJO4uvZfZTk/tuHgm4FOvOVOgJ7dPCm3xX9H5WIUQ==
+"@zougt/vite-plugin-theme-preprocessor@^1.3.1":
+  version "1.3.1"
+  resolved "https://registry.npmjs.org/@zougt/vite-plugin-theme-preprocessor/-/vite-plugin-theme-preprocessor-1.3.1.tgz#09971727583f5c07c6aae7775394cf02b8c04990"
+  integrity sha512-GKTHaxgndS70/BS1uoP+qY45dl2Gnq05pwJiyiytyVgz+jB7zmGWgqLnMoA58oE74Nx32zwuTRKnE6XJGY8N2w==
   dependencies:
-    "@zougt/some-loader-utils" "^1.1.0"
+    "@zougt/some-loader-utils" "^1.3.2"
     fs-extra "^9.1.0"
     string-hash "^1.1.3"
 

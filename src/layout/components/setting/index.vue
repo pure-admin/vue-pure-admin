@@ -4,6 +4,7 @@ import { useRouter } from "vue-router";
 import { emitter } from "/@/utils/mitt";
 import { templateRef } from "@vueuse/core";
 import { debounce } from "/@/utils/debounce";
+import { themeColorsType } from "../../types";
 import { useAppStoreHook } from "/@/store/modules/app";
 import { storageLocal, storageSession } from "/@/utils/storage";
 import {
@@ -17,6 +18,27 @@ import {
 
 const router = useRouter();
 const { isSelect } = useCssModule();
+
+let themeColors = ref<Array<themeColorsType>>([
+  // 暗雅（默认）
+  { rgb: "27, 42, 71", themeColor: "layout-theme-default" },
+  // 明亮
+  { rgb: "255, 255, 255", themeColor: "layout-theme-light" },
+  // 薄暮
+  { rgb: "245, 34, 45", themeColor: "layout-theme-dusk" },
+  // 火山
+  { rgb: "250, 84, 28", themeColor: "layout-theme-volcano" },
+  // 日暮
+  { rgb: "250, 84, 28", themeColor: "layout-theme-higurashi" },
+  // 明青
+  { rgb: "19, 194, 194", themeColor: "layout-theme-mingQing" },
+  // 极光绿
+  { rgb: "82, 196, 26", themeColor: "layout-theme-auroraGreen" },
+  // 极客蓝
+  { rgb: "47, 84, 235", themeColor: "layout-theme-geekBlue" },
+  // 酱紫
+  { rgb: "114, 46, 209", themeColor: "layout-theme-saucePurple" }
+]);
 
 const instance =
   getCurrentInstance().appContext.app.config.globalProperties.$storage;
@@ -177,8 +199,16 @@ function setTheme(layout: string) {
     </ul>
 
     <el-divider>主题色</el-divider>
-    <ul>
-      <li>11</li>
+    <ul class="theme-color">
+      <li
+        v-for="(item, index) in themeColors"
+        :key="index"
+        :style="{ background: `rgb(${item.rgb})` }"
+      >
+        <el-icon style="margin: 4px 3px 0 0">
+          <Check />
+        </el-icon>
+      </li>
     </ul>
 
     <el-divider>界面显示</el-divider>
@@ -313,6 +343,31 @@ function setTheme(layout: string) {
           box-shadow: 0 0 1px #888;
         }
       }
+    }
+  }
+}
+
+.theme-color {
+  width: 100%;
+  height: 40px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+
+  li {
+    float: left;
+    width: 20px;
+    height: 20px;
+    margin-top: 8px;
+    margin-right: 8px;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 2px;
+    cursor: pointer;
+
+    &:nth-child(2) {
+      border: 1px solid #ddd;
     }
   }
 }

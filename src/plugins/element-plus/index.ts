@@ -38,7 +38,7 @@ import {
 } from "element-plus";
 
 // https://element-plus.org/zh-CN/component/icon.html
-import { Menu } from "@element-plus/icons";
+import { Check } from "@element-plus/icons";
 
 const components = [
   ElTag,
@@ -75,7 +75,7 @@ const components = [
   ElDescriptions,
   ElDescriptionsItem,
   ElBacktop,
-  Menu
+  Check
 ];
 
 const plugins = [ElLoading];
