@@ -17,3 +17,5 @@ tests/**/coverage/
 *.ntvs*
 *.njsproj
 *.sln
+pnpm-lock.yaml
+yarn.lock

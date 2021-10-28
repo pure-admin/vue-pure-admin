@@ -60,12 +60,49 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
         scss: {
           multipleScopeVars: [
             {
+              // 暗雅（默认）
               scopeName: "layout-theme-default",
               path: pathResolve("src/layout/theme/default-vars.scss")
             },
             {
+              // 明亮
               scopeName: "layout-theme-light",
               path: pathResolve("src/layout/theme/light-vars.scss")
+            },
+            {
+              // 薄暮
+              scopeName: "layout-theme-dusk",
+              path: pathResolve("src/layout/theme/dusk-vars.scss")
+            },
+            {
+              // 火山
+              scopeName: "layout-theme-volcano",
+              path: pathResolve("src/layout/theme/volcano-vars.scss")
+            },
+            {
+              // 日暮
+              scopeName: "layout-theme-higurashi",
+              path: pathResolve("src/layout/theme/higurashi-vars.scss")
+            },
+            {
+              // 明青
+              scopeName: "layout-theme-mingQing",
+              path: pathResolve("src/layout/theme/mingQing-vars.scss")
+            },
+            {
+              // 极光绿
+              scopeName: "layout-theme-auroraGreen",
+              path: pathResolve("src/layout/theme/auroraGreen-vars.scss")
+            },
+            {
+              // 极客蓝
+              scopeName: "layout-theme-geekBlue",
+              path: pathResolve("src/layout/theme/geekBlue-vars.scss")
+            },
+            {
+              // 酱紫
+              scopeName: "layout-theme-saucePurple",
+              path: pathResolve("src/layout/theme/saucePurple-vars.scss")
             }
           ],
           // 默认取 multipleScopeVars[0].scopeName
