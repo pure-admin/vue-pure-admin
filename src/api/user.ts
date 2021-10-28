@@ -1,7 +1,13 @@
 import { http } from "../utils/http";
 
+interface userType extends Promise<any> {
+  svg?: string;
+  code?: number;
+  info?: object;
+}
+
 // 获取验证码
-export const getVerify = () => {
+export const getVerify = (): userType => {
   return http.request("get", "/captcha");
 };
 
@@ -11,6 +17,6 @@ export const getLogin = (data: object) => {
 };
 
 // 注册
-export const getRegist = (data: object) => {
+export const getRegist = (data: object): userType => {
   return http.request("post", "/register", data);
 };

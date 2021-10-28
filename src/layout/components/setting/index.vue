@@ -1,4 +1,13 @@
 <script setup lang="ts">
+import {
+  reactive,
+  ref,
+  unref,
+  watch,
+  computed,
+  useCssModule,
+  getCurrentInstance
+} from "vue";
 import panel from "../panel/index.vue";
 import { useRouter } from "vue-router";
 import { emitter } from "/@/utils/mitt";
@@ -7,41 +16,52 @@ import { debounce } from "/@/utils/debounce";
 import { themeColorsType } from "../../types";
 import { useAppStoreHook } from "/@/store/modules/app";
 import { storageLocal, storageSession } from "/@/utils/storage";
-import {
-  reactive,
-  ref,
-  unref,
-  watch,
-  useCssModule,
-  getCurrentInstance
-} from "vue";
+import { addClassNameToHtmlTag } from "@zougt/vite-plugin-theme-preprocessor/dist/browser-utils";
 
 const router = useRouter();
 const { isSelect } = useCssModule();
+const instance =
+  getCurrentInstance().appContext.app.config.globalProperties.$storage;
+
+const instanceConfig =
+  getCurrentInstance().appContext.app.config.globalProperties.$config;
 
 let themeColors = ref<Array<themeColorsType>>([
   // 暗雅（默认）
-  { rgb: "27, 42, 71", themeColor: "layout-theme-default" },
+  { rgb: "27, 42, 71", themeColor: "default" },
   // 明亮
-  { rgb: "255, 255, 255", themeColor: "layout-theme-light" },
+  { rgb: "255, 255, 255", themeColor: "light" },
   // 薄暮
-  { rgb: "245, 34, 45", themeColor: "layout-theme-dusk" },
+  { rgb: "245, 34, 45", themeColor: "dusk" },
   // 火山
-  { rgb: "250, 84, 28", themeColor: "layout-theme-volcano" },
+  { rgb: "250, 84, 28", themeColor: "volcano" },
   // 日暮
-  { rgb: "250, 84, 28", themeColor: "layout-theme-higurashi" },
+  { rgb: "250, 84, 28", themeColor: "higurashi" },
   // 明青
-  { rgb: "19, 194, 194", themeColor: "layout-theme-mingQing" },
+  { rgb: "19, 194, 194", themeColor: "mingQing" },
   // 极光绿
-  { rgb: "82, 196, 26", themeColor: "layout-theme-auroraGreen" },
+  { rgb: "82, 196, 26", themeColor: "auroraGreen" },
   // 极客蓝
-  { rgb: "47, 84, 235", themeColor: "layout-theme-geekBlue" },
+  { rgb: "47, 84, 235", themeColor: "geekBlue" },
   // 酱紫
-  { rgb: "114, 46, 209", themeColor: "layout-theme-saucePurple" }
+  { rgb: "114, 46, 209", themeColor: "saucePurple" }
 ]);
 
-const instance =
-  getCurrentInstance().appContext.app.config.globalProperties.$storage;
+const verticalRef = templateRef<HTMLElement | null>("verticalRef", null);
+const horizontalRef = templateRef<HTMLElement | null>("horizontalRef", null);
+
+let layoutTheme =
+  ref(storageLocal.getItem("responsive-layout")) ||
+  ref({
+    layout: instanceConfig?.Layout ?? "vertical",
+    theme: instanceConfig?.Theme ?? "default"
+  });
+
+// body添加layout属性，作用于src/style/sidebar.scss
+if (unref(layoutTheme)) {
+  let layout = unref(layoutTheme).layout;
+  window.document.body.setAttribute("layout", layout);
+}
 
 // 默认灵动模式
 const markValue = ref(storageLocal.getItem("showModel") || "smart");
@@ -109,6 +129,7 @@ const tagsChange = () => {
   emitter.emit("tagViewsChange", showVal);
 };
 
+// 清空缓存并返回登录页
 function onReset() {
   storageLocal.clear();
   storageSession.clear();
@@ -118,22 +139,6 @@ function onReset() {
 function onChange({ label }) {
   storageLocal.setItem("showModel", label);
   emitter.emit("tagViewsShowModel", label);
-}
-
-const verticalRef = templateRef<HTMLElement | null>("verticalRef", null);
-const horizontalRef = templateRef<HTMLElement | null>("horizontalRef", null);
-
-let dataTheme =
-  ref(storageLocal.getItem("responsive-layout")) ||
-  ref({
-    layout: "vertical"
-  });
-
-if (unref(dataTheme)) {
-  // 设置主题
-  // 设置导航模式
-  let layout = unref(dataTheme).layout;
-  window.document.body.setAttribute("layout", layout);
 }
 
 // 侧边栏Logo
@@ -163,11 +168,40 @@ watch(instance, ({ layout }) => {
   }
 });
 
-function setTheme(layout: string) {
-  dataTheme.value.layout = `${layout}`;
+// 主题色 激活选择项
+const getThemeColor = computed(() => {
+  return current => {
+    if (
+      current === layoutTheme.value.theme &&
+      layoutTheme.value.theme !== "light"
+    ) {
+      return "#fff";
+    } else if (
+      current === layoutTheme.value.theme &&
+      layoutTheme.value.theme === "light"
+    ) {
+      return "#1d2b45";
+    } else {
+      return "transparent";
+    }
+  };
+});
+
+// 设置导航模式
+function setLayoutModel(layout: string) {
+  layoutTheme.value.layout = layout;
   window.document.body.setAttribute("layout", layout);
-  instance.layout = { layout: `${layout}` };
+  instance.layout = { layout, theme: layoutTheme.value.theme };
   useAppStoreHook().setLayout(layout);
+}
+
+// 设置导航主题色
+function setLayoutThemeColor(theme: string) {
+  layoutTheme.value.theme = theme;
+  addClassNameToHtmlTag({
+    scopeName: `layout-theme-${theme}`
+  });
+  instance.layout = { layout: useAppStoreHook().layout, theme };
 }
 </script>
 
@@ -177,9 +211,9 @@ function setTheme(layout: string) {
     <ul class="pure-theme">
       <el-tooltip class="item" content="左侧菜单暗色模式" placement="bottom">
         <li
-          :class="dataTheme.layout === 'vertical' ? $style.isSelect : ''"
+          :class="layoutTheme.layout === 'vertical' ? $style.isSelect : ''"
           ref="verticalRef"
-          @click="setTheme('vertical')"
+          @click="setLayoutModel('vertical')"
         >
           <div></div>
           <div></div>
@@ -188,9 +222,9 @@ function setTheme(layout: string) {
 
       <el-tooltip class="item" content="顶部菜单暗色模式" placement="bottom">
         <li
-          :class="dataTheme.layout === 'horizontal' ? $style.isSelect : ''"
+          :class="layoutTheme.layout === 'horizontal' ? $style.isSelect : ''"
           ref="horizontalRef"
-          @click="setTheme('horizontal')"
+          @click="setLayoutModel('horizontal')"
         >
           <div></div>
           <div></div>
@@ -204,8 +238,13 @@ function setTheme(layout: string) {
         v-for="(item, index) in themeColors"
         :key="index"
         :style="{ background: `rgb(${item.rgb})` }"
+        @click="setLayoutThemeColor(item.themeColor)"
       >
-        <el-icon style="margin: 4px 3px 0 0">
+        <el-icon
+          style="margin: 0.1em 0.1em 0 0"
+          :size="17"
+          :color="getThemeColor(item.themeColor)"
+        >
           <Check />
         </el-icon>
       </li>
@@ -360,7 +399,6 @@ function setTheme(layout: string) {
     height: 20px;
     margin-top: 8px;
     margin-right: 8px;
-    color: #fff;
     font-weight: 700;
     text-align: center;
     border-radius: 2px;

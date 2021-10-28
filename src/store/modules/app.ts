@@ -21,6 +21,7 @@ export const useAppStore = defineStore({
         : true,
       withoutAnimation: false
     },
+    // 这里的layout用于监听容器拖拉后恢复对应的导航模式
     layout: storageLocal.getItem("responsive-layout")?.layout ?? "vertical",
     device: deviceDetection() ? "mobile" : "desktop"
   }),
