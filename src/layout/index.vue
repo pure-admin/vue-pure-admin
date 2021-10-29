@@ -88,7 +88,10 @@ const handleClickOutside = (params: boolean) => {
 
 function setTheme(layoutModel: string) {
   window.document.body.setAttribute("layout", layoutModel);
-  instance.$storage.layout = { layout: `${layoutModel}` };
+  instance.$storage.layout = {
+    layout: `${layoutModel}`,
+    theme: instance.$storage.layout?.theme
+  };
 }
 
 // 监听容器
