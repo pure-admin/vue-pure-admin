@@ -145,7 +145,9 @@ function resolvePath(routePath) {
           "
           @mouseover="hoverMenu(props.item)"
         >
-          {{ $t(props.item.meta.title) }}
+          <span style="overflow: hidden; text-overflow: ellipsis">
+            {{ $t(props.item.meta.title) }}
+          </span>
         </div>
       </el-tooltip>
       <Icon
