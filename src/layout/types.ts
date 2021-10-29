@@ -62,4 +62,5 @@ export type childrenType = {
       name?: string;
     };
   };
+  showTooltip?: boolean;
 };
