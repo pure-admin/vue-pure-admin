@@ -128,7 +128,6 @@ class EnclosureHttp {
         // 优先判断post/get等方法是否传入回掉，否则执行初始化设置等回掉
         if (typeof this.beforeRequestCallback === "function") {
           this.beforeRequestCallback($config);
-          this.beforeRequestCallback = undefined;
           return $config;
         }
         if (EnclosureHttp.initConfig.beforeRequestCallback) {
