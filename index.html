@@ -5,7 +5,7 @@
     <link rel="icon" href="/favicon.ico" />
     <link rel="stylesheet" href="/iconfont.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>vue-pure-admin</title>
+    <title>Awesome!</title>
     <script src="/sortable.min.js"></script>
     <script>
       window.process = {};
@@ -77,43 +77,43 @@
         }
       </style>
       <div class="g-container">
-        <p>Pure-Admin</p>
+        <p>AWESOME</p>
         <span class="_develop"></span>
       </div>
     </div>
     <script>
       // 此代码仅用于开发环境的友好提示，项目打包前请去掉这段js代码 This code is only used as a friendly reminder of the development environment, please remove this js code before packaging the project
-      window.onload = function () {
-        (function () {
-          const ua = navigator.userAgent.toLowerCase();
-          const re = /(msie|firefox|chrome|opera|version).*?([\d.]+)/;
-          const m = ua.match(re);
-          const Sys = {
-            browser: m[1].replace(/version/, "'safari"),
-            version: m[2]
-          };
+      // window.onload = function () {
+      //   (function () {
+      //     const ua = navigator.userAgent.toLowerCase();
+      //     const re = /(msie|firefox|chrome|opera|version).*?([\d.]+)/;
+      //     const m = ua.match(re);
+      //     const Sys = {
+      //       browser: m[1].replace(/version/, "'safari"),
+      //       version: m[2]
+      //     };
 
-          const browser = Array.of("chrome", "firefox").includes(Sys.browser);
-          const version = parseFloat(Sys.version);
+      //     const browser = Array.of("chrome", "firefox").includes(Sys.browser);
+      //     const version = parseFloat(Sys.version);
 
-          const el = document.querySelector("._develop");
+      //     const el = document.querySelector("._develop");
 
-          if (el) {
-            if (browser && version >= 90) {
-              let success =
-                document.createTextNode("当前浏览器版本很适合开发！！！ 😃");
-              el.appendChild(success);
-            } else {
-              let warn = document.createTextNode(
-                "当前浏览器版本不适合开发，建议使用最新版本的谷歌或者火狐浏览器！！！😯"
-              );
-              el.appendChild(warn);
-              el.style.color = "red";
-            }
-          }
-          return Sys;
-        })();
-      };
+      //     if (el) {
+      //       if (browser && version >= 90) {
+      //         let success =
+      //           document.createTextNode("当前浏览器版本很适合开发！！！ 😃");
+      //         el.appendChild(success);
+      //       } else {
+      //         let warn = document.createTextNode(
+      //           "当前浏览器版本不适合开发，建议使用最新版本的谷歌或者火狐浏览器！！！😯"
+      //         );
+      //         el.appendChild(warn);
+      //         el.style.color = "red";
+      //       }
+      //     }
+      //     return Sys;
+      //   })();
+      // };
     </script>
     <script type="module" src="/src/main.ts"></script>
   </body>
