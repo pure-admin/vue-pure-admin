@@ -28,30 +28,35 @@ import setting from "./components/setting/index.vue";
 import Vertical from "./components/sidebar/vertical.vue";
 import Horizontal from "./components/sidebar/horizontal.vue";
 
+const instance = getCurrentInstance().appContext.app.config.globalProperties;
+const hiddenSideBar = ref(instance.$config?.HiddenSideBar);
 const pureSetting = useSettingStoreHook();
 
-const instance =
-  getCurrentInstance().appContext.app.config.globalProperties.$storage;
-
-const hiddenSideBar = ref(
-  getCurrentInstance().appContext.config.globalProperties.$config?.HiddenSideBar
-);
-
+// 清空缓存后从serverConfig.json读取默认配置并赋值到storage中
 const layout = computed(() => {
-  if (!instance.layout) {
+  // 路由
+  if (
+    !instance.$storage.routesInStorage ||
+    instance.$storage.routesInStorage.length === 0
+  ) {
     // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-    instance.layout = { layout: "vertical-dark" };
+    instance.$storage.routesInStorage = routerArrays;
   }
-  if (!instance.routesInStorage || instance.routesInStorage.length === 0) {
-    // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-    instance.routesInStorage = routerArrays;
-  }
-  if (!instance.locale) {
+  // 国际化
+  if (!instance.$storage.locale) {
     // eslint-disable-next-line
-    instance.locale = { locale: "zh" };
-    useI18n().locale.value = "zh";
+    instance.$storage.locale = { locale: instance.$config?.Locale ?? "zh" };
+    useI18n().locale.value = instance.$config?.Locale ?? "zh";
   }
-  return instance?.layout.layout;
+  // 导航
+  if (!instance.$storage.layout) {
+    // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+    instance.$storage.layout = {
+      layout: instance.$config?.Layout ?? "vertical",
+      theme: instance.$config?.Theme ?? "default"
+    };
+  }
+  return instance.$storage?.layout.layout;
 });
 
 const set: setType = reactive({
@@ -83,7 +88,7 @@ const handleClickOutside = (params: boolean) => {
 
 function setTheme(layoutModel: string) {
   window.document.body.setAttribute("layout", layoutModel);
-  instance.layout = { layout: `${layoutModel}` };
+  instance.$storage.layout = { layout: `${layoutModel}` };
 }
 
 // 监听容器
