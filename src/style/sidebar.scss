@@ -202,14 +202,14 @@
       display: flex;
       min-width: 280px;
       align-items: center;
-      color: $navTextColor !important;
+      color: $navTextColor;
       justify-content: flex-end;
 
       .screen-full {
         cursor: pointer;
 
         &:hover {
-          background: $menuHover !important;
+          background: $menuHover;
         }
       }
 
@@ -273,13 +273,13 @@
 
     .el-menu-item,
     .el-sub-menu__title {
-      color: $menuText !important;
+      color: $menuText;
     }
 
     .submenu-title-noDropdown,
     .el-sub-menu__title {
       height: 60px;
-      background: $menuBg !important;
+      background: $menuBg;
 
       &:hover {
         background-color: $menuHover !important;
@@ -525,7 +525,7 @@
 
     .sidebar-container {
       transition: transform 0.28s;
-      width: $sideBarWidth !important;
+      width: $sideBarWidth;
     }
 
     &.hideSidebar {
@@ -560,7 +560,7 @@ body[layout="vertical"] {
     }
 
     .main-container {
-      margin-left: 0 !important;
+      margin-left: 0;
     }
 
     .submenu-title-noDropdown {
