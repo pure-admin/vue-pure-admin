@@ -16,7 +16,7 @@ import { debounce } from "/@/utils/debounce";
 import { themeColorsType } from "../../types";
 import { useAppStoreHook } from "/@/store/modules/app";
 import { storageLocal, storageSession } from "/@/utils/storage";
-import { toggleTheme } from "@zougt/vite-plugin-theme-preprocessor/dist/browser-utils";
+import { addClassNameToHtmlTag } from "@zougt/vite-plugin-theme-preprocessor/dist/browser-utils";
 
 const router = useRouter();
 const { isSelect } = useCssModule();
@@ -198,10 +198,8 @@ function setLayoutModel(layout: string) {
 // 设置导航主题色
 function setLayoutThemeColor(theme: string) {
   layoutTheme.value.theme = theme;
-  toggleTheme({
-    scopeName: `layout-theme-${theme}`,
-    hasRemoveScopeName: false,
-    themeLinkTagInjectTo: "head"
+  addClassNameToHtmlTag({
+    scopeName: `layout-theme-${theme}`
   });
   instance.layout = { layout: useAppStoreHook().layout, theme };
 }
