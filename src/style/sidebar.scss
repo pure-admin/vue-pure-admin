@@ -33,6 +33,7 @@
     transition: margin-left 0.28s;
     margin-left: $sideBarWidth;
     position: relative;
+    background: #f0f2f5;
     @media screen and (min-width: 150px) and (max-width: 420px) {
       .app-main .el-scrollbar__view:first-child {
         overflow-y: hidden;
