@@ -3,7 +3,7 @@ import AMapLoader from "@amap/amap-jsapi-loader";
 import { reactive, getCurrentInstance, onBeforeMount, onUnmounted } from "vue";
 import { mapJson } from "/@/api/mock";
 import { deviceDetection } from "/@/utils/deviceDetection";
-import greenCar from "/@/assets/green.png";
+import car from "/@/assets/car.png";
 
 export interface MapConfigureInter {
   on: Fn;
@@ -14,6 +14,10 @@ export interface MapConfigureInter {
   setZoom?: Fn;
   plugin?: Fn;
 }
+
+type resultType = {
+  info: Array<undefined>;
+};
 
 export interface mapInter {
   loading: boolean;
@@ -72,7 +76,7 @@ onBeforeMount(() => {
             var { driver, plateNumber, orientation } = data[0];
             var content = `<img style="transform: scale(1) rotate(${
               360 - Number(orientation)
-            }deg);" src='${greenCar}' />`;
+            }deg);" src='${car}' />`;
             marker.setContent(content);
             marker.setLabel({
               direction: "bottom",
@@ -92,7 +96,7 @@ onBeforeMount(() => {
 
       // 获取模拟车辆信息
       mapJson()
-        .then(res => {
+        .then((res: resultType) => {
           let points: object = res.info.map((v: any) => {
             return {
               lnglat: [v.lng, v.lat],

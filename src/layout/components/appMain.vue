@@ -8,6 +8,7 @@ import {
   getCurrentInstance
 } from "vue";
 import { RouterView } from "vue-router";
+import backTop from "/@/assets/svg/back_top.svg";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 
 const props = defineProps({
@@ -65,7 +66,9 @@ const transitionMain = defineComponent({
     <router-view>
       <template #default="{ Component, route }">
         <el-scrollbar v-if="props.fixedHeader">
-          <el-backtop target=".app-main .el-scrollbar__wrap"></el-backtop>
+          <el-backtop title="回到顶部" target=".app-main .el-scrollbar__wrap">
+            <backTop />
+          </el-backtop>
           <transitionMain :route="route">
             <keep-alive
               v-if="keepAlive"
