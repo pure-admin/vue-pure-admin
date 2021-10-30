@@ -102,17 +102,13 @@ const openDepot = (): void => {
         animated
         :rows="7"
         :loading="loading"
-        :class="$style.size"
         :style="{ width: item.width }"
       >
         <template #default>
-          <div
-            :class="['echart-card', $style.size]"
-            :style="{ width: item.width }"
-          >
+          <el-card class="box-card" :style="{ width: item.width }">
             <h4>{{ item.title }}</h4>
             <component :is="item.component"></component>
-          </div>
+          </el-card>
         </template>
       </el-skeleton>
     </el-space>
@@ -127,7 +123,6 @@ const openDepot = (): void => {
 
 <style lang="scss" scoped>
 .welcome {
-  width: 100%;
   height: 100%;
 
   .top-content {
