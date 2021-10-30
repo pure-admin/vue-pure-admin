@@ -162,6 +162,7 @@ class EnclosureHttp {
         // 请求每次成功一次就删除当前canceltoken标记
         const cancelKey = EnclosureHttp.genUniqueKey($config);
         this.deleteCancelTokenByCancelKey(cancelKey);
+        NProgress.done();
         // 优先判断post/get等方法是否传入回掉，否则执行初始化设置等回掉
         if (typeof $config.beforeResponseCallback === "function") {
           $config.beforeResponseCallback(response);
@@ -171,7 +172,6 @@ class EnclosureHttp {
           EnclosureHttp.initConfig.beforeResponseCallback(response);
           return response.data;
         }
-        NProgress.done();
         return response.data;
       },
       (error: EnclosureHttpError) => {
