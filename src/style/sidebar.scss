@@ -34,12 +34,12 @@
     margin-left: $sideBarWidth;
     position: relative;
     @media screen and (min-width: 150px) and (max-width: 420px) {
-      .el-scrollbar__view {
+      .app-main .el-scrollbar__view:first-child {
         overflow-y: hidden;
       }
     }
     @media screen and (min-width: 420px) {
-      .el-scrollbar__view {
+      .app-main .el-scrollbar__view:first-child {
         overflow: hidden;
       }
     }
