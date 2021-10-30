@@ -126,8 +126,8 @@ class EnclosureHttp {
         this.cancelRepeatRequest();
         this.currentCancelTokenKey = cancelKey;
         // 优先判断post/get等方法是否传入回掉，否则执行初始化设置等回掉
-        if (typeof this.beforeRequestCallback === "function") {
-          this.beforeRequestCallback($config);
+        if (typeof config.beforeRequestCallback === "function") {
+          config.beforeRequestCallback($config);
           return $config;
         }
         if (EnclosureHttp.initConfig.beforeRequestCallback) {
@@ -158,13 +158,13 @@ class EnclosureHttp {
     const instance = EnclosureHttp.axiosInstance;
     instance.interceptors.response.use(
       (response: EnclosureHttpResoponse) => {
+        const $config = response.config;
         // 请求每次成功一次就删除当前canceltoken标记
-        const cancelKey = EnclosureHttp.genUniqueKey(response.config);
+        const cancelKey = EnclosureHttp.genUniqueKey($config);
         this.deleteCancelTokenByCancelKey(cancelKey);
         // 优先判断post/get等方法是否传入回掉，否则执行初始化设置等回掉
-        if (typeof this.beforeResponseCallback === "function") {
-          this.beforeResponseCallback(response);
-          this.beforeResponseCallback = undefined;
+        if (typeof $config.beforeResponseCallback === "function") {
+          $config.beforeResponseCallback(response);
           return response.data;
         }
         if (EnclosureHttp.initConfig.beforeResponseCallback) {
