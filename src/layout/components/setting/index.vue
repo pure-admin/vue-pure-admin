@@ -35,14 +35,14 @@ let themeColors = ref<Array<themeColorsType>>([
   { rgb: "245, 34, 45", themeColor: "dusk" },
   // 火山
   { rgb: "250, 84, 28", themeColor: "volcano" },
-  // 日暮
-  { rgb: "250, 84, 28", themeColor: "higurashi" },
+  // 黄色
+  { rgb: "250, 219, 20", themeColor: "yellow" },
   // 明青
   { rgb: "19, 194, 194", themeColor: "mingQing" },
   // 极光绿
   { rgb: "82, 196, 26", themeColor: "auroraGreen" },
-  // 极客蓝
-  { rgb: "47, 84, 235", themeColor: "geekBlue" },
+  // 粉红
+  { rgb: "235, 47, 150", themeColor: "pink" },
   // 酱紫
   { rgb: "114, 46, 209", themeColor: "saucePurple" }
 ]);

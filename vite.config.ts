@@ -80,9 +80,9 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
               path: pathResolve("src/layout/theme/volcano-vars.scss")
             },
             {
-              // 日暮
-              scopeName: "layout-theme-higurashi",
-              path: pathResolve("src/layout/theme/higurashi-vars.scss")
+              // 黄色
+              scopeName: "layout-theme-yellow",
+              path: pathResolve("src/layout/theme/yellow-vars.scss")
             },
             {
               // 明青
@@ -95,9 +95,9 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
               path: pathResolve("src/layout/theme/auroraGreen-vars.scss")
             },
             {
-              // 极客蓝
-              scopeName: "layout-theme-geekBlue",
-              path: pathResolve("src/layout/theme/geekBlue-vars.scss")
+              // 粉红
+              scopeName: "layout-theme-pink",
+              path: pathResolve("src/layout/theme/pink-vars.scss")
             },
             {
               // 酱紫
