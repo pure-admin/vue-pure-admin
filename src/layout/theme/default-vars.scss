@@ -8,12 +8,16 @@
 // 菜单选中后字体样式
 $subMenuActiveText: #f4f4f5 !default;
 //菜单背景
-$menuBg: #1b2a47 !default;
-// 鼠标覆盖菜单时的背景
-$menuHover: #2a395b !default;
+$menuBg: #001529 !default;
+// 鼠标覆盖到菜单时的背景
+$menuHover: #4091f7 !default;
 // 子菜单背景
-$subMenuBg: #1f2d3d !default;
+$subMenuBg: #0f0303 !default;
 // 鼠标覆盖子菜单时的背景
-$subMenuHover: #001528 !default;
+$subMenuHover: #4091f7 !default;
 $navTextColor: #fff !default;
-$menuText: #7a80b4 !default;
+$menuText: rgba(254, 254, 254, 0.65) !default;
+// logo背景颜色
+$sidebarLogo: #002140 !default;
+// 鼠标覆盖到菜单时的字体颜色
+$menuTitleHover: #fff !default;
