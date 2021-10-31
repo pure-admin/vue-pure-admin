@@ -46,7 +46,7 @@ const openDepot = (): void => {
     <el-row :gutter="24" style="margin: 20px">
       <el-col
         :xs="24"
-        :sm="12"
+        :sm="24"
         :md="12"
         :lg="12"
         :xl="12"
@@ -64,7 +64,7 @@ const openDepot = (): void => {
 
       <el-col
         :xs="24"
-        :sm="12"
+        :sm="24"
         :md="12"
         :lg="12"
         :xl="12"
@@ -82,7 +82,7 @@ const openDepot = (): void => {
 
       <el-col
         :xs="24"
-        :sm="12"
+        :sm="24"
         :md="12"
         :lg="8"
         :xl="8"
@@ -100,7 +100,7 @@ const openDepot = (): void => {
 
       <el-col
         :xs="24"
-        :sm="12"
+        :sm="24"
         :md="12"
         :lg="8"
         :xl="8"
