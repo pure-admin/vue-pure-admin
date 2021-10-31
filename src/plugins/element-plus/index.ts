@@ -48,7 +48,11 @@ import {
   Lollipop,
   Link,
   Position,
-  Histogram
+  Histogram,
+  RefreshRight,
+  ArrowDown,
+  Close,
+  CloseBold
 } from "@element-plus/icons";
 
 const components = [
@@ -97,7 +101,11 @@ const components = [
   Lollipop,
   Link,
   Position,
-  Histogram
+  Histogram,
+  RefreshRight,
+  ArrowDown,
+  Close,
+  CloseBold
 ];
 
 const plugins = [ElLoading];

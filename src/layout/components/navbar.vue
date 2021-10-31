@@ -107,11 +107,13 @@ function translationEn() {
           </el-dropdown-menu>
         </template>
       </el-dropdown>
-      <i
+      <el-icon
         class="el-icon-setting"
         :title="$t('message.hssystemSet')"
         @click="onPanel"
-      ></i>
+      >
+        <Setting />
+      </el-icon>
     </div>
   </div>
 </template>
@@ -191,8 +193,8 @@ function translationEn() {
 
     .el-icon-setting {
       height: 48px;
-      width: 40px;
-      padding: 11px;
+      width: 38px;
+      padding: 12px;
       display: flex;
       cursor: pointer;
       align-items: center;

@@ -180,11 +180,13 @@ onMounted(() => {
           </el-dropdown-menu>
         </template>
       </el-dropdown>
-      <i
+      <el-icon
         class="el-icon-setting"
         :title="$t('message.hssystemSet')"
         @click="onPanel"
-      ></i>
+      >
+        <Setting />
+      </el-icon>
     </div>
   </div>
 </template>
