@@ -77,14 +77,14 @@ const transitionMain = defineComponent({
               <component
                 :is="Component"
                 :key="route.fullPath"
-                class="main-component"
+                class="main-content"
               />
             </keep-alive>
             <component
               v-else
               :is="Component"
               :key="route.fullPath"
-              class="main-component"
+              class="main-content"
             />
           </transitionMain>
         </el-scrollbar>
@@ -97,14 +97,14 @@ const transitionMain = defineComponent({
               <component
                 :is="Component"
                 :key="route.fullPath"
-                class="main-component"
+                class="main-content"
               />
             </keep-alive>
             <component
               v-else
               :is="Component"
               :key="route.fullPath"
-              class="main-component"
+              class="main-content"
             />
           </transitionMain>
         </div>
@@ -127,7 +127,7 @@ const transitionMain = defineComponent({
   position: relative;
 }
 
-.main-component {
-  margin: 24px !important;
+.main-content {
+  margin: 24px;
 }
 </style>
