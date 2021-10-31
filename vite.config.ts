@@ -152,7 +152,8 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
         "element-plus/lib/locale/lang/en",
         "vxe-table/lib/locale/lang/zh-CN",
         "vxe-table/lib/locale/lang/en-US"
-      ]
+      ],
+      exclude: ["@zougt/vite-plugin-theme-preprocessor/dist/browser-utils"]
     },
     build: {
       // @ts-ignore
