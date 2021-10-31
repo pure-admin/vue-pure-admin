@@ -17,13 +17,6 @@
     }
   }
 
-  .el-menu-item,
-  .el-sub-menu__title {
-    &:hover {
-      color: $menuTitleHover !important;
-    }
-  }
-
   .el-sub-menu__icon-arrow {
     position: absolute;
   }
@@ -129,6 +122,10 @@
     .el-menu-item,
     .el-sub-menu__title {
       color: $menuText;
+
+      &:hover {
+        color: $menuTitleHover !important;
+      }
     }
 
     // menu hover
@@ -364,6 +361,13 @@
 
       &:hover {
         background-color: $menuHover !important;
+      }
+    }
+
+    .el-menu-item,
+    .el-sub-menu__title {
+      &:hover {
+        color: $menuTitleHover !important;
       }
     }
 
