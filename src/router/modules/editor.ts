@@ -6,7 +6,7 @@ const editorRouter = {
   component: Layout,
   redirect: "/editor/index",
   meta: {
-    icon: "el-icon-edit-outline",
+    icon: "Edit",
     title: "message.hseditor",
     showLink: true,
     rank: 2

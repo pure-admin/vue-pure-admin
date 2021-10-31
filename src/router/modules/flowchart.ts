@@ -6,7 +6,7 @@ const flowChartRouter = {
   component: Layout,
   redirect: "/flowChart/index",
   meta: {
-    icon: "el-icon-set-up",
+    icon: "SetUp",
     title: "message.hsflowChart",
     showLink: true,
     rank: 1

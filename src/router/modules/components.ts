@@ -6,7 +6,7 @@ const componentsRouter = {
   component: Layout,
   redirect: "/components/split-pane",
   meta: {
-    icon: "el-icon-menu",
+    icon: "Menu",
     title: "message.hscomponents",
     showLink: true,
     rank: 4

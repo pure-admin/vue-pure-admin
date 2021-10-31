@@ -26,7 +26,7 @@ const remainingRouter = [
     name: "redirect",
     component: Layout,
     meta: {
-      icon: "el-icon-s-home",
+      icon: "HomeFilled",
       title: "message.hshome",
       showLink: false,
       rank: 104

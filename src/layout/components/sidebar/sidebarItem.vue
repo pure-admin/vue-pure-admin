@@ -57,12 +57,13 @@ function resolvePath(routePath) {
       :class="{ 'submenu-title-noDropdown': !isNest }"
       style="display: flex; align-items: center"
     >
-      <i
-        v-show="props.item.meta.icon"
-        :class="
-          onlyOneChild.meta.icon || (props.item.meta && props.item.meta.icon)
-        "
-      />
+      <el-icon v-show="props.item.meta.icon">
+        <component
+          :is="
+            onlyOneChild.meta.icon || (props.item.meta && props.item.meta.icon)
+          "
+        ></component>
+      </el-icon>
       <template #title>
         <div style="display: flex; align-items: center">
           <span>{{ $t(onlyOneChild.meta.title) }}</span>
@@ -83,7 +84,9 @@ function resolvePath(routePath) {
     popper-append-to-body
   >
     <template #title>
-      <i v-show="props.item.meta.icon" :class="props.item.meta.icon"></i>
+      <el-icon v-show="props.item.meta.icon">
+        <component :is="props.item.meta && props.item.meta.icon"></component>
+      </el-icon>
       <span>{{ $t(props.item.meta.title) }}</span>
       <Icon
         v-if="props.item.meta.extraIcon"

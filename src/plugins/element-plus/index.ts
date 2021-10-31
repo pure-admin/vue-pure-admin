@@ -38,7 +38,18 @@ import {
 } from "element-plus";
 
 // https://element-plus.org/zh-CN/component/icon.html
-import { Check } from "@element-plus/icons";
+import {
+  Check,
+  Menu,
+  HomeFilled,
+  SetUp,
+  Edit,
+  Setting,
+  Lollipop,
+  Link,
+  Position,
+  Histogram
+} from "@element-plus/icons";
 
 const components = [
   ElTag,
@@ -75,7 +86,18 @@ const components = [
   ElDescriptions,
   ElDescriptionsItem,
   ElBacktop,
-  Check
+
+  // icon
+  Check,
+  Menu,
+  HomeFilled,
+  SetUp,
+  Edit,
+  Setting,
+  Lollipop,
+  Link,
+  Position,
+  Histogram
 ];
 
 const plugins = [ElLoading];

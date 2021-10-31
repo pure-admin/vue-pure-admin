@@ -5,7 +5,7 @@ const externalLink = {
   name: "external",
   component: Layout,
   meta: {
-    icon: "el-icon-link",
+    icon: "Link",
     title: "message.externalLink",
     showLink: true,
     rank: 190
@@ -14,7 +14,6 @@ const externalLink = {
     {
       path: "https://github.com/xiaoxian521/vue-pure-admin",
       meta: {
-        icon: "el-icon-link",
         title: "message.externalLink",
         showLink: true,
         rank: 191
