@@ -25,7 +25,7 @@ const onCropper = (): void => {
 </script>
 
 <template>
-  <div style="margin: 10px">
+  <div>
     <div class="cropper-container">
       <Cropper ref="refCropper" :width="'40vw'" :src="img" />
       <img :src="cropperImg" class="croppered" v-if="cropperImg" />

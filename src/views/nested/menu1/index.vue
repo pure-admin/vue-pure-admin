@@ -1,5 +1,5 @@
 <template>
-  <div class="app-container">
+  <div>
     <p>{{ $t("message.hsmenu1") }}</p>
     <router-view>
       <template #default="{ Component, route }">

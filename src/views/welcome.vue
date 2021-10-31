@@ -6,12 +6,10 @@ import {
   ReLine,
   ReBar
 } from "/@/components/ReCharts/index";
-import { useAppStoreHook } from "/@/store/modules/app";
-import { ref, shallowRef, computed, onBeforeMount } from "vue";
+import { ref, computed } from "vue";
 
 const date: Date = new Date();
 let loading = ref<boolean>(true);
-const componentList = shallowRef([]);
 
 setTimeout(() => {
   loading.value = !loading.value;
@@ -24,56 +22,6 @@ let greetings = computed(() => {
     return "下午小风娇好，愿你青春不老😃！";
   } else {
     return "折一根天使羽毛，愿拂去您的疲惫烦恼忧伤🌛！";
-  }
-});
-
-onBeforeMount(() => {
-  if (useAppStoreHook().device === "mobile") {
-    componentList.value = [
-      {
-        width: "20em",
-        title: "GitHub饼图信息",
-        component: RePie
-      },
-      {
-        width: "20em",
-        title: "GitHub折线图信息",
-        component: ReLine
-      },
-      {
-        width: "20em",
-        title: "GitHub柱状图信息",
-        component: ReBar
-      }
-    ];
-  } else {
-    componentList.value = [
-      {
-        width: "43em",
-        title: "GitHub信息",
-        component: ReGithub
-      },
-      {
-        width: "43em",
-        title: "GitHub滚动信息",
-        component: ReInfinite
-      },
-      {
-        width: "28.28em",
-        title: "GitHub饼图信息",
-        component: RePie
-      },
-      {
-        width: "28.28em",
-        title: "GitHub折线图信息",
-        component: ReLine
-      },
-      {
-        width: "28.28em",
-        title: "GitHub柱状图信息",
-        component: ReBar
-      }
-    ];
   }
 });
 
@@ -95,27 +43,97 @@ const openDepot = (): void => {
       </div>
     </el-card>
 
-    <el-space class="space" wrap size="large">
-      <el-skeleton
-        v-for="(item, key) in componentList"
-        :key="key"
-        animated
-        :rows="7"
-        :loading="loading"
-        :class="$style.size"
-        :style="{ width: item.width }"
+    <el-row :gutter="24" style="margin: 20px">
+      <el-col
+        :xs="24"
+        :sm="12"
+        :md="12"
+        :lg="12"
+        :xl="12"
+        style="margin-bottom: 20px"
       >
-        <template #default>
-          <div
-            :class="['echart-card', $style.size]"
-            :style="{ width: item.width }"
-          >
-            <h4>{{ item.title }}</h4>
-            <component :is="item.component"></component>
-          </div>
-        </template>
-      </el-skeleton>
-    </el-space>
+        <el-skeleton animated :rows="7" :loading="false">
+          <template #default>
+            <el-card>
+              <h4>GitHub信息</h4>
+              <ReGithub />
+            </el-card>
+          </template>
+        </el-skeleton>
+      </el-col>
+
+      <el-col
+        :xs="24"
+        :sm="12"
+        :md="12"
+        :lg="12"
+        :xl="12"
+        style="margin-bottom: 20px"
+      >
+        <el-skeleton animated :rows="7" :loading="false">
+          <template #default>
+            <el-card>
+              <h4>GitHub滚动信息</h4>
+              <ReInfinite />
+            </el-card>
+          </template>
+        </el-skeleton>
+      </el-col>
+
+      <el-col
+        :xs="24"
+        :sm="12"
+        :md="12"
+        :lg="8"
+        :xl="8"
+        style="margin-bottom: 20px"
+      >
+        <el-skeleton animated :rows="7" :loading="false">
+          <template #default>
+            <el-card>
+              <h4>GitHub饼图信息</h4>
+              <RePie />
+            </el-card>
+          </template>
+        </el-skeleton>
+      </el-col>
+
+      <el-col
+        :xs="24"
+        :sm="12"
+        :md="12"
+        :lg="8"
+        :xl="8"
+        style="margin-bottom: 20px"
+      >
+        <el-skeleton animated :rows="7" :loading="false">
+          <template #default>
+            <el-card>
+              <h4>GitHub折线图信息</h4>
+              <ReLine />
+            </el-card>
+          </template>
+        </el-skeleton>
+      </el-col>
+
+      <el-col
+        :xs="24"
+        :sm="24"
+        :md="24"
+        :lg="8"
+        :xl="1"
+        style="margin-bottom: 20px"
+      >
+        <el-skeleton animated :rows="7" :loading="false">
+          <template #default>
+            <el-card>
+              <h4>GitHub柱状图信息</h4>
+              <ReBar />
+            </el-card>
+          </template>
+        </el-skeleton>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
@@ -126,8 +144,11 @@ const openDepot = (): void => {
 </style>
 
 <style lang="scss" scoped>
+.main-content {
+  margin: 0;
+}
+
 .welcome {
-  width: 100%;
   height: 100%;
 
   .top-content {
@@ -152,23 +173,6 @@ const openDepot = (): void => {
 
       span {
         font-size: 14px;
-      }
-    }
-  }
-
-  .space {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 8px;
-    padding: 10px;
-
-    .echart-card {
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
-
-      h4 {
-        margin: 0;
-        padding: 20px;
       }
     }
   }

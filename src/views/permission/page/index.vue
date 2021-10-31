@@ -22,7 +22,7 @@ function changRole() {
 </script>
 
 <template>
-  <div class="app-container">
+  <div>
     <h4>
       当前角色：
       <span style="font-size: 26px">{{ purview }}</span>

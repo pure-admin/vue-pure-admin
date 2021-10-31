@@ -1,5 +1,5 @@
 <template>
-  <div class="app-container">
+  <div>
     <p>{{ $t("message.hsmenu2") }}</p>
     <el-input v-model="input" />
   </div>

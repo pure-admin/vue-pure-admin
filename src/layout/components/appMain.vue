@@ -74,9 +74,18 @@ const transitionMain = defineComponent({
               v-if="keepAlive"
               :include="usePermissionStoreHook().cachePageList"
             >
-              <component :is="Component" :key="route.fullPath" />
+              <component
+                :is="Component"
+                :key="route.fullPath"
+                class="main-content"
+              />
             </keep-alive>
-            <component v-else :is="Component" :key="route.fullPath" />
+            <component
+              v-else
+              :is="Component"
+              :key="route.fullPath"
+              class="main-content"
+            />
           </transitionMain>
         </el-scrollbar>
         <div v-else>
@@ -85,9 +94,18 @@ const transitionMain = defineComponent({
               v-if="keepAlive"
               :include="usePermissionStoreHook().cachePageList"
             >
-              <component :is="Component" :key="route.fullPath" />
+              <component
+                :is="Component"
+                :key="route.fullPath"
+                class="main-content"
+              />
             </keep-alive>
-            <component v-else :is="Component" :key="route.fullPath" />
+            <component
+              v-else
+              :is="Component"
+              :key="route.fullPath"
+              class="main-content"
+            />
           </transitionMain>
         </div>
       </template>
@@ -107,5 +125,9 @@ const transitionMain = defineComponent({
   width: 100%;
   min-height: 100vh;
   position: relative;
+}
+
+.main-content {
+  margin: 24px;
 }
 </style>
