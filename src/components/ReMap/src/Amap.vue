@@ -28,7 +28,7 @@ let map: MapConfigureInter;
 
 const instance = getCurrentInstance();
 
-const mapSet: mapInter = reactive({
+const mapSet = reactive({
   loading: deviceDetection() ? false : true
 });
 
@@ -138,7 +138,7 @@ onUnmounted(() => {
 
 <style lang="scss" scoped>
 #mapview {
-  height: 100vh;
+  height: calc(100vh - 86px);
 }
 
 :deep(.amap-marker-label) {

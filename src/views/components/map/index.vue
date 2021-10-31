@@ -3,14 +3,11 @@ import { Amap } from "/@/components/ReMap";
 </script>
 
 <template>
-  <div class="map">
-    <Amap />
-  </div>
+  <Amap />
 </template>
 
 <style scoped>
-.map {
-  width: 100%;
-  height: 89vh;
+.main-content {
+  margin: 0;
 }
 </style>
