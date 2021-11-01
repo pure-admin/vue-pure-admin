@@ -14,7 +14,7 @@ function changRole(value) {
 </script>
 
 <template>
-  <div class="app-container">
+  <div>
     <el-radio-group v-model="auth" @change="changRole">
       <el-radio-button label="admin"></el-radio-button>
       <el-radio-button label="test"></el-radio-button>

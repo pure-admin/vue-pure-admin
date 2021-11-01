@@ -17,7 +17,11 @@ const toggleClick = () => {
 </script>
 
 <template>
-  <div :class="classes.container" @click="toggleClick">
+  <div
+    :class="classes.container"
+    :title="props.isActive ? '点击折叠' : '点击展开'"
+    @click="toggleClick"
+  >
     <svg
       :class="['hamburger', props.isActive ? 'is-active' : '']"
       viewBox="0 0 1024 1024"

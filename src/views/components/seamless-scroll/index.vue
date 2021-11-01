@@ -110,10 +110,6 @@ function changeDirection(val) {
 </template>
 
 <style lang="scss" scoped>
-.box-card {
-  margin: 10px;
-}
-
 .card-header {
   display: flex;
   justify-content: space-between;

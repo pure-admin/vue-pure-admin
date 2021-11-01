@@ -16,6 +16,7 @@ import { useI18n } from "vue-i18n";
 import { routerArrays } from "./types";
 import { emitter } from "/@/utils/mitt";
 import { useEventListener } from "@vueuse/core";
+import backTop from "/@/assets/svg/back_top.svg";
 import { useAppStoreHook } from "/@/store/modules/app";
 import fullScreen from "/@/assets/svg/full_screen.svg";
 import exitScreen from "/@/assets/svg/exit_screen.svg";
@@ -195,7 +196,11 @@ const layoutHeader = defineComponent({
         <app-main :fixed-header="set.fixedHeader" />
       </div>
       <el-scrollbar v-else>
-        <el-backtop target=".main-container .el-scrollbar__wrap"></el-backtop>
+        <el-backtop
+          title="回到顶部"
+          target=".main-container .el-scrollbar__wrap"
+          ><backTop />
+        </el-backtop>
         <layout-header />
         <!-- 主体内容 -->
         <app-main :fixed-header="set.fixedHeader" />

@@ -62,6 +62,7 @@ export type childrenType = {
       name?: string;
     };
   };
+  showTooltip?: boolean;
 };
 
 export type themeColorsType = {

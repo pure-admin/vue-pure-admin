@@ -3,7 +3,7 @@ import { ReNormalCountTo, ReboundCountTo } from "/@/components/ReCountTo";
 </script>
 
 <template>
-  <div style="margin: 10px">
+  <div>
     <el-row :gutter="24">
       <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
         <el-card shadow="always">

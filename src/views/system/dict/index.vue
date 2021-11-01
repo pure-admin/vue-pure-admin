@@ -197,7 +197,7 @@ function handleClose() {
 </script>
 
 <template>
-  <div class="dict-container">
+  <div>
     <!-- 工具栏 -->
     <vxe-toolbar>
       <template #buttons>
@@ -309,10 +309,6 @@ function handleClose() {
 </template>
 
 <style lang="scss" scoped>
-.dict-container {
-  margin: 10px;
-}
-
 .vxe-input + .vxe-button,
 .vxe-input + .vxe-button--dropdown,
 .vxe-button + .vxe-button,
@@ -322,6 +318,14 @@ function handleClose() {
 
 .vxe-button.type--button:not(.is--round) {
   border-radius: 0;
+}
+
+.vxe-toolbar.size--medium {
+  padding: 10px;
+}
+
+.vxe-table--render-default.size--medium {
+  margin-top: 12px;
 }
 
 .vxe-button.size--medium.type--button {

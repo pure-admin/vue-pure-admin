@@ -4,6 +4,7 @@ import { setupStore } from "/@/store";
 import { getServerConfig } from "./config";
 import { createApp, Directive } from "vue";
 import { usI18n } from "../src/plugins/i18n";
+import { MotionPlugin } from "@vueuse/motion";
 import { useTable } from "../src/plugins/vxe-table";
 import { useElementPlus } from "../src/plugins/element-plus";
 import { injectResponsiveStorage } from "/@/utils/storage/responsive";
@@ -27,7 +28,12 @@ Object.keys(directives).forEach(key => {
 getServerConfig(app).then(async config => {
   injectResponsiveStorage(app, config);
   setupStore(app);
-  app.use(router).use(useElementPlus).use(useTable).use(usI18n);
+  app
+    .use(router)
+    .use(MotionPlugin)
+    .use(useElementPlus)
+    .use(useTable)
+    .use(usI18n);
   await router.isReady();
   app.mount("#app");
 });

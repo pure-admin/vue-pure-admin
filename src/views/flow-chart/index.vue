@@ -86,9 +86,8 @@ onMounted(() => {
 
 <style scoped>
 #LF-Turbo {
-  width: 100vw;
-  height: 88.5vh;
-  outline: none;
+  width: 100%;
+  height: calc(100vh - 90px);
 }
 
 .logic-flow-view {
@@ -137,5 +136,9 @@ onMounted(() => {
 :deep(.flow-dialog) .el-dialog__body {
   height: 85vh;
   overflow: auto;
+}
+
+.main-content {
+  margin: 0;
 }
 </style>
