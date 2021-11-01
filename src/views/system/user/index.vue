@@ -6,7 +6,7 @@ const gridOptions = reactive({
   border: true,
   resizable: true,
   keepSource: true,
-  height: 500,
+  height: 578,
   printConfig: {},
   importConfig: {},
   exportConfig: {},
@@ -162,33 +162,6 @@ const gridOptions = reactive({
                 sex: "Man ",
                 age: 35,
                 address: "Guangzhou"
-              },
-              {
-                id: 100011,
-                name: "Test11",
-                nickname: "T11",
-                role: "Test",
-                sex: "Women ",
-                age: 26,
-                address: "vxe-table 从入门到放弃"
-              },
-              {
-                id: 100012,
-                name: "Test12",
-                nickname: "T12",
-                role: "Develop",
-                sex: "Man ",
-                age: 34,
-                address: "Guangzhou"
-              },
-              {
-                id: 100013,
-                name: "Test13",
-                nickname: "T13",
-                role: "Test",
-                sex: "Women ",
-                age: 22,
-                address: "Shenzhen"
               }
             ];
             resolve({
@@ -238,5 +211,5 @@ const gridOptions = reactive({
 </script>
 
 <template>
-  <vxe-grid v-bind="gridOptions" style="width: 98%"></vxe-grid>
+  <vxe-grid v-bind="gridOptions"></vxe-grid>
 </template>

@@ -111,7 +111,7 @@ let classOption = reactive({
 
   .warp {
     width: 95%;
-    height: 230px;
+    height: 215px;
     margin: 0 auto;
     overflow: hidden;
 

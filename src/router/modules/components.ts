@@ -4,7 +4,7 @@ const componentsRouter = {
   path: "/components",
   name: "components",
   component: Layout,
-  redirect: "/components/split-pane",
+  redirect: "/components/video",
   meta: {
     icon: "el-icon-menu",
     title: "message.hscomponents",
