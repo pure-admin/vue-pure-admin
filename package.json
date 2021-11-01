@@ -22,6 +22,7 @@
     "@logicflow/core": "^0.7.1",
     "@logicflow/extension": "^0.7.1",
     "@vueuse/core": "^6.7.1",
+    "@vueuse/motion": "^2.0.0-beta.4",
     "animate.css": "^4.1.1",
     "await-to-js": "^3.0.0",
     "axios": "^0.21.1",
