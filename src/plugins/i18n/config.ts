@@ -42,7 +42,20 @@ export const menusConfig = {
       permission: "权限管理",
       permissionPage: "页面权限",
       permissionButton: "按钮权限",
-      externalLink: "外链"
+      externalLink: "外链",
+      basic: {
+        dial: "基础信息",
+        goods: {
+          dial: "商品",
+          goodsList: "商品列表",
+          goodsDetails: "商品详情",
+          goodsLog: "修改日志",
+          goodsCategory: "商品类别"
+        },
+        express: {
+          expressCompanyList: "物流公司"
+        }
+      }
     }
   },
   en: {
@@ -78,7 +91,11 @@ export const menusConfig = {
       permission: "Permission Manage",
       permissionPage: "Page Permission",
       permissionButton: "Button Permission",
-      externalLink: "External Link"
+      externalLink: "External Link",
+      basic: {
+        dial: "基础信息",
+        goods: {}
+      }
     }
   }
 };

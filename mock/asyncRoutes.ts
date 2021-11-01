@@ -66,18 +66,17 @@ const goodsRoutes = {
   path: "/goods",
   name: "goods",
   redirect: "/goods/list",
+  component: "/goods/index",
   meta: {
-    title: "goods.basic",
-    icon: "el-icon-lollipop",
-    showLink: true,
-    rank: 3
+    title: "message.basic.goods.dial",
+    showLink: true
   },
   children: [
     {
       path: "/goods/list",
       name: "goodsList",
       meta: {
-        title: "goods.list",
+        title: "message.basic.goods.goodsList",
         showLink: true
       }
     },
@@ -85,7 +84,25 @@ const goodsRoutes = {
       path: "/goods/details",
       name: "goodsDetails",
       meta: {
-        title: "goods.details",
+        title: "message.basic.goods.goodsDetails",
+        showLink: false,
+        authority: []
+      }
+    },
+    {
+      path: "/goods/log",
+      name: "goodsLog",
+      meta: {
+        title: "message.basic.goods.goodsLog",
+        showLink: true,
+        authority: []
+      }
+    },
+    {
+      path: "/goods/category",
+      name: "category",
+      meta: {
+        title: "message.basic.goods.goodsCategory",
         showLink: true,
         authority: []
       }
@@ -97,17 +114,23 @@ const expressRoutes = {
   name: "express",
   redirect: "/express/list",
   meta: {
-    title: "express.basic",
-    icon: "el-icon-lollipop",
-    showLink: true,
-    rank: 3
+    title: "message.basic.express.expressCompanyList",
+    showLink: true
   },
   children: [
     {
       path: "/express/list",
       name: "expressList",
       meta: {
-        title: "express.list",
+        title: "message.basic.express.expressCompanyList",
+        showLink: true
+      }
+    },
+    {
+      path: "/express/route",
+      name: "expressRoute",
+      meta: {
+        title: "expressRouter",
         showLink: true
       }
     }
@@ -116,14 +139,22 @@ const expressRoutes = {
 const basicsRoutes = {
   path: "/basic",
   name: "basic",
-  redirect: "/basic/all",
+  redirect: "/basic/dial",
   meta: {
-    title: "basic.basic",
-    icon: "el-icon-lollipop",
+    title: "message.basic.dial",
+    icon: "el-icon-coin",
     showLink: true,
-    rank: 3
+    rank: 1
   },
-  children: [goodsRoutes, expressRoutes]
+  children: [
+    {
+      path: "/basic/dial",
+      name: "basicDial",
+      meta: { title: "message.basic.dial", showLink: false }
+    },
+    goodsRoutes,
+    expressRoutes
+  ]
 };
 
 // 添加不同按钮权限到/permission/button页面中
