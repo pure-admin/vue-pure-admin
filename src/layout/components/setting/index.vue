@@ -60,6 +60,10 @@ let layoutTheme =
 // body添加layout属性，作用于src/style/sidebar.scss
 if (unref(layoutTheme)) {
   let layout = unref(layoutTheme).layout;
+  let theme = unref(layoutTheme).theme;
+  addClassNameToHtmlTag({
+    scopeName: `layout-theme-${theme}`
+  });
   window.document.body.setAttribute("layout", layout);
 }
 
