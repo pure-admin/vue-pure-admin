@@ -13,7 +13,7 @@ let loading = ref<boolean>(true);
 
 setTimeout(() => {
   loading.value = !loading.value;
-}, 500);
+}, 800);
 
 let greetings = computed(() => {
   if (date.getHours() >= 0 && date.getHours() < 12) {
@@ -51,15 +51,31 @@ const openDepot = (): void => {
         :lg="12"
         :xl="12"
         style="margin-bottom: 20px"
+        v-motion
+        :initial="{
+          opacity: 0,
+          y: 100
+        }"
+        :enter="{
+          opacity: 1,
+          y: 0,
+          transition: {
+            delay: 200
+          }
+        }"
       >
-        <el-skeleton animated :rows="7" :loading="false">
-          <template #default>
-            <el-card>
-              <h4>GitHub信息</h4>
-              <ReGithub />
-            </el-card>
+        <el-card>
+          <template #header>
+            <div>
+              <span>GitHub信息</span>
+            </div>
           </template>
-        </el-skeleton>
+          <el-skeleton animated :rows="7" :loading="loading">
+            <template #default>
+              <ReGithub />
+            </template>
+          </el-skeleton>
+        </el-card>
       </el-col>
 
       <el-col
@@ -69,15 +85,31 @@ const openDepot = (): void => {
         :lg="12"
         :xl="12"
         style="margin-bottom: 20px"
+        v-motion
+        :initial="{
+          opacity: 0,
+          y: 100
+        }"
+        :enter="{
+          opacity: 1,
+          y: 0,
+          transition: {
+            delay: 200
+          }
+        }"
       >
-        <el-skeleton animated :rows="7" :loading="false">
-          <template #default>
-            <el-card>
-              <h4>GitHub滚动信息</h4>
+        <el-card>
+          <template #header>
+            <div>
+              <span>GitHub滚动信息</span>
+            </div>
+          </template>
+          <el-skeleton animated :rows="7" :loading="loading">
+            <template #default>
               <ReInfinite />
-            </el-card>
-          </template>
-        </el-skeleton>
+            </template>
+          </el-skeleton>
+        </el-card>
       </el-col>
 
       <el-col
@@ -87,15 +119,31 @@ const openDepot = (): void => {
         :lg="8"
         :xl="8"
         style="margin-bottom: 20px"
+        v-motion
+        :initial="{
+          opacity: 0,
+          y: 100
+        }"
+        :enter="{
+          opacity: 1,
+          y: 0,
+          transition: {
+            delay: 400
+          }
+        }"
       >
-        <el-skeleton animated :rows="7" :loading="false">
-          <template #default>
-            <el-card>
-              <h4>GitHub饼图信息</h4>
+        <el-card>
+          <template #header>
+            <div>
+              <span>GitHub饼图信息</span>
+            </div>
+          </template>
+          <el-skeleton animated :rows="7" :loading="loading">
+            <template #default>
               <RePie />
-            </el-card>
-          </template>
-        </el-skeleton>
+            </template>
+          </el-skeleton>
+        </el-card>
       </el-col>
 
       <el-col
@@ -105,15 +153,31 @@ const openDepot = (): void => {
         :lg="8"
         :xl="8"
         style="margin-bottom: 20px"
+        v-motion
+        :initial="{
+          opacity: 0,
+          y: 100
+        }"
+        :enter="{
+          opacity: 1,
+          y: 0,
+          transition: {
+            delay: 400
+          }
+        }"
       >
-        <el-skeleton animated :rows="7" :loading="false">
-          <template #default>
-            <el-card>
-              <h4>GitHub折线图信息</h4>
-              <ReLine />
-            </el-card>
+        <el-card>
+          <template #header>
+            <div>
+              <span>GitHub折线图信息</span>
+            </div>
           </template>
-        </el-skeleton>
+          <el-skeleton animated :rows="7" :loading="loading">
+            <template #default>
+              <ReLine />
+            </template>
+          </el-skeleton>
+        </el-card>
       </el-col>
 
       <el-col
@@ -123,15 +187,31 @@ const openDepot = (): void => {
         :lg="8"
         :xl="1"
         style="margin-bottom: 20px"
+        v-motion
+        :initial="{
+          opacity: 0,
+          y: 100
+        }"
+        :enter="{
+          opacity: 1,
+          y: 0,
+          transition: {
+            delay: 400
+          }
+        }"
       >
-        <el-skeleton animated :rows="7" :loading="false">
-          <template #default>
-            <el-card>
-              <h4>GitHub柱状图信息</h4>
-              <ReBar />
-            </el-card>
+        <el-card>
+          <template #header>
+            <div>
+              <span>GitHub柱状图信息</span>
+            </div>
           </template>
-        </el-skeleton>
+          <el-skeleton animated :rows="7" :loading="loading">
+            <template #default>
+              <ReBar />
+            </template>
+          </el-skeleton>
+        </el-card>
       </el-col>
     </el-row>
   </div>
