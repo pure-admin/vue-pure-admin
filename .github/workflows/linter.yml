@@ -60,7 +60,6 @@ jobs:
         run: |
           pnpm install
           pnpm lint
-          pnpm build
         env:
           VALIDATE_ALL_CODEBASE: false
           DEFAULT_BRANCH: main
