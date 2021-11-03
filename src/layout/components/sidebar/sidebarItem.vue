@@ -3,11 +3,13 @@ import path from "path";
 import { storageLocal } from "/@/utils/storage";
 import { PropType, ref, nextTick } from "vue";
 import { childrenType } from "../../types";
+import { useAppStoreHook } from "/@/store/modules/app";
 import Icon from "/@/components/ReIcon/src/Icon.vue";
 const layout = ref(
   storageLocal.getItem("responsive-layout") || "vertical-dark"
 );
 const menuMode = layout.value.layout.split("-")[0] === "vertical";
+const pureApp = useAppStoreHook();
 
 const props = defineProps({
   item: {
@@ -91,7 +93,15 @@ function resolvePath(routePath) {
         "
       />
       <template #title>
-        <div style="display: flex; align-items: center; overflow: hidden">
+        <div
+          style="
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            overflow: hidden;
+          "
+        >
           <span v-if="!menuMode">{{ $t(onlyOneChild.meta.title) }}</span>
           <el-tooltip
             v-else
@@ -103,6 +113,7 @@ function resolvePath(routePath) {
             <span
               ref="menuTextRef"
               style="overflow: hidden; text-overflow: ellipsis"
+              :style="pureApp.sidebar.opened ? 'width: 125px' : ''"
               @mouseover="hoverMenu(onlyOneChild)"
             >
               {{ $t(onlyOneChild.meta.title) }}
@@ -132,7 +143,7 @@ function resolvePath(routePath) {
         v-else
         placement="top"
         :offset="-10"
-        :disabled="!props.item.showTooltip"
+        :disabled="!pureApp.sidebar.opened || !props.item.showTooltip"
       >
         <template #content> {{ $t(props.item.meta.title) }} </template>
         <div
