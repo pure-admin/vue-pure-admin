@@ -112,8 +112,11 @@ function resolvePath(routePath) {
             <template #content> {{ $t(onlyOneChild.meta.title) }} </template>
             <span
               ref="menuTextRef"
-              style="overflow: hidden; text-overflow: ellipsis"
-              :style="pureApp.sidebar.opened ? 'width: 125px' : ''"
+              :style="{
+                width: pureApp.sidebar.opened ? '125px' : '',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis'
+              }"
               @mouseover="hoverMenu(onlyOneChild)"
             >
               {{ $t(onlyOneChild.meta.title) }}
@@ -148,12 +151,12 @@ function resolvePath(routePath) {
         <template #content> {{ $t(props.item.meta.title) }} </template>
         <div
           ref="menuTextRef"
-          style="
-            display: inline-block;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            width: 125px;
-          "
+          :style="{
+            width: pureApp.sidebar.opened ? '125px' : '',
+            display: 'inline-block',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis'
+          }"
           @mouseover="hoverMenu(props.item)"
         >
           <span style="overflow: hidden; text-overflow: ellipsis">
