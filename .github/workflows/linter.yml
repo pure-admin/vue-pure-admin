@@ -47,9 +47,9 @@ jobs:
 
       - name: Build
         run: |
-          yarn install
-          yarn lint
-          yarn build
+          pnpm install
+          pnpm lint
+          pnpm build
         env:
           VALIDATE_ALL_CODEBASE: false
           DEFAULT_BRANCH: main
