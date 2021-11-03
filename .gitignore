@@ -7,8 +7,8 @@ dist-ssr
 
 yarn.lock
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+.pnpm-error.log*
+.pnpm-debug.log
 tests/**/coverage/
 
 # Editor directories and files
@@ -17,5 +17,3 @@ tests/**/coverage/
 *.ntvs*
 *.njsproj
 *.sln
-pnpm-lock.yaml
-yarn.lock

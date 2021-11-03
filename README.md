@@ -59,20 +59,20 @@ git clone https://github.com.cnpmjs.org/xiaoxian521/vue-pure-admin.git
 ```bash
 cd vue-pure-admin
 
-yarn install
+pnpm install
 
 ```
 
 - 运行
 
 ```bash
-yarn serve
+pnpm serve
 ```
 
 - 打包
 
 ```bash
-yarn build
+pnpm build
 ```
 
 ## 更新日志

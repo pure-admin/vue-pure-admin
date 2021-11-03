@@ -45,11 +45,21 @@ jobs:
           # Full git history is needed to get a proper list of changed files within `super-linter`
           fetch-depth: 0
 
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16"
+          registry-url: https://registry.npmjs.com/
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+
       - name: Build
         run: |
-          yarn install
-          yarn lint
-          yarn build
+          pnpm install
+          pnpm lint
         env:
           VALIDATE_ALL_CODEBASE: false
           DEFAULT_BRANCH: main
