@@ -30,11 +30,13 @@ import {
   ElDrawer,
   ElPagination,
   ElAlert,
+  ElRadio,
   ElRadioButton,
   ElRadioGroup,
   ElDescriptions,
   ElDescriptionsItem,
-  ElBacktop
+  ElBacktop,
+  ElSwitch
 } from "element-plus";
 
 // https://element-plus.org/zh-CN/component/icon.html
@@ -85,11 +87,13 @@ const components = [
   ElDrawer,
   ElPagination,
   ElAlert,
+  ElRadio,
   ElRadioButton,
   ElRadioGroup,
   ElDescriptions,
   ElDescriptionsItem,
   ElBacktop,
+  ElSwitch,
 
   // icon
   Check,

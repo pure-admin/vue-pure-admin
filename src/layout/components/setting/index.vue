@@ -140,7 +140,7 @@ function onReset() {
   router.push("/login");
 }
 
-function onChange({ label }) {
+function onChange(label) {
   storageLocal.setItem("showModel", label);
   emitter.emit("tagViewsShowModel", label);
 }
@@ -258,60 +258,73 @@ function setLayoutThemeColor(theme: string) {
     <ul class="setting">
       <li>
         <span>灰色模式</span>
-        <vxe-switch
+        <el-switch
           v-model="settings.greyVal"
-          open-label="开"
-          close-label="关"
+          inline-prompt
+          inactive-color="#a6a6a6"
+          active-text="开"
+          inactive-text="关"
           @change="greyChange"
-        ></vxe-switch>
+        >
+        </el-switch>
       </li>
       <li>
         <span>色弱模式</span>
-        <vxe-switch
+        <el-switch
           v-model="settings.weekVal"
-          open-label="开"
-          close-label="关"
+          inline-prompt
+          inactive-color="#a6a6a6"
+          active-text="开"
+          inactive-text="关"
           @change="weekChange"
-        ></vxe-switch>
+        >
+        </el-switch>
       </li>
       <li>
         <span>隐藏标签页</span>
-        <vxe-switch
+        <el-switch
           v-model="settings.tagsVal"
-          open-label="开"
-          close-label="关"
+          inline-prompt
+          inactive-color="#a6a6a6"
+          active-text="开"
+          inactive-text="关"
           @change="tagsChange"
-        ></vxe-switch>
+        >
+        </el-switch>
       </li>
       <li>
         <span>侧边栏Logo</span>
-        <vxe-switch
+        <el-switch
           v-model="logoVal"
-          open-value="1"
-          close-value="-1"
-          open-label="开"
-          close-label="关"
+          inline-prompt
+          active-value="1"
+          inactive-value="-1"
+          inactive-color="#a6a6a6"
+          active-text="开"
+          inactive-text="关"
           @change="logoChange"
-        ></vxe-switch>
+        >
+        </el-switch>
       </li>
 
       <li>
         <span>标签风格</span>
-        <vxe-radio-group v-model="markValue" @change="onChange">
-          <vxe-radio label="card" content="卡片"></vxe-radio>
-          <vxe-radio label="smart" content="灵动"></vxe-radio>
-        </vxe-radio-group>
+        <el-radio-group v-model="markValue" size="small" @change="onChange">
+          <el-radio label="card">卡片</el-radio>
+          <el-radio label="smart">灵动</el-radio>
+        </el-radio-group>
       </li>
     </ul>
 
     <el-divider />
-    <vxe-button
-      status="danger"
+    <el-button
+      type="danger"
       style="width: 90%; margin: 24px 15px"
-      content="清空缓存并返回登录页"
-      icon="fa fa-sign-out"
       @click="onReset"
-    ></vxe-button>
+    >
+      <i class="fa fa-sign-out"></i>
+      清空缓存并返回登录页</el-button
+    >
   </panel>
 </template>
 
