@@ -6,8 +6,8 @@ dist-ssr
 .eslintcache
 
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+.pnpm-error.log*
+.pnpm-debug.log
 tests/**/coverage/
 
 # Editor directories and files
