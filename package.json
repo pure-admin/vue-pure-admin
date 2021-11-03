@@ -2,17 +2,12 @@
   "name": "vue-pure-admin",
   "version": "2.1.0",
   "private": true,
-  "packageManager": "pnpm@6.20.1",
   "workspaces": [
     "build/**",
     "mock/**",
     "src/**",
     "types/**"
   ],
-  "engines": {
-    "node": ">= 16",
-    "pnpm": ">= 6"
-  },
   "scripts": {
     "dev": "cross-env --max_old_space_size=4096 vite",
     "serve": "pnpm dev",
