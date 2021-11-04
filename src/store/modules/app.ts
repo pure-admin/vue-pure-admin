@@ -2,6 +2,7 @@ import { storageLocal } from "/@/utils/storage";
 import { deviceDetection } from "/@/utils/deviceDetection";
 import { defineStore } from "pinia";
 import { store } from "/@/store";
+import { getConfig } from "/@/config";
 
 interface AppState {
   sidebar: {
@@ -22,7 +23,9 @@ export const useAppStore = defineStore({
       withoutAnimation: false
     },
     // 这里的layout用于监听容器拖拉后恢复对应的导航模式
-    layout: storageLocal.getItem("responsive-layout")?.layout ?? "vertical",
+    layout:
+      storageLocal.getItem("responsive-layout")?.layout?.layout ??
+      getConfig().Layout,
     device: deviceDetection() ? "mobile" : "desktop"
   }),
   getters: {
