@@ -318,9 +318,6 @@
       background-color: $subMenuBg !important;
 
       .el-menu-item {
-        color: $menuText;
-        background-color: $subMenuBg;
-
         span {
           font-size: 12px;
           margin-left: 10px;
@@ -368,6 +365,9 @@
 
     .el-menu-item,
     .el-sub-menu__title {
+      color: $menuText;
+      background-color: $subMenuBg;
+
       &:hover {
         color: $menuTitleHover !important;
       }
@@ -580,7 +580,7 @@ body[layout="vertical"] {
     }
 
     .main-container {
-      margin-left: 54px !important;
+      margin-left: 0;
     }
 
     .submenu-title-noDropdown {
