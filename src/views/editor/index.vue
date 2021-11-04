@@ -36,6 +36,10 @@ onBeforeUnmount(() => {
 </template>
 
 <style lang="scss" scoped>
+.main-content {
+  margin: 40px;
+}
+
 :deep(.w-e-text-container) {
   z-index: 99 !important;
 }
