@@ -185,7 +185,7 @@ const openDepot = (): void => {
         :sm="24"
         :md="24"
         :lg="8"
-        :xl="1"
+        :xl="8"
         style="margin-bottom: 20px"
         v-motion
         :initial="{
