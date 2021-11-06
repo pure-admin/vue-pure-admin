@@ -123,7 +123,7 @@
     .el-menu-item,
     .el-sub-menu__title {
       color: $menuText;
-      padding: 0 16px 0 40px;
+      padding: 0 20px 0 40px;
 
       &:hover {
         color: $menuTitleHover !important;
@@ -339,7 +339,7 @@
 
     & > .el-menu {
       i {
-        margin-right: 16px;
+        margin-right: 20px;
       }
     }
 

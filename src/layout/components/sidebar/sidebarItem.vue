@@ -80,6 +80,7 @@ function resolvePath(routePath) {
     "
   >
     <el-menu-item
+      :hide-timeout="100000"
       :index="resolvePath(onlyOneChild.path)"
       :class="{ 'submenu-title-noDropdown': !isNest }"
       style="display: flex; align-items: center"
@@ -94,7 +95,6 @@ function resolvePath(routePath) {
       <template #title>
         <div
           style="
-            width: 100%;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -133,6 +133,7 @@ function resolvePath(routePath) {
 
   <el-sub-menu
     v-else
+    :hide-timeout="100000"
     ref="subMenu"
     :index="resolvePath(props.item.path)"
     popper-append-to-body
