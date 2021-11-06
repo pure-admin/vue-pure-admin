@@ -1,16 +1,40 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { ref, computed } from "vue";
 import { useRouter } from "vue-router";
 import { initRouter } from "/@/router";
+import avatar from "/@/assets/login/avatar.svg";
 import { storageSession } from "/@/utils/storage";
 import { addClass, removeClass } from "/@/utils/operate";
+import illustration0 from "/@/assets/login/illustration0.svg";
+import illustration1 from "/@/assets/login/illustration1.svg";
+import illustration2 from "/@/assets/login/illustration2.svg";
+import illustration3 from "/@/assets/login/illustration3.svg";
+import illustration4 from "/@/assets/login/illustration4.svg";
+import illustration5 from "/@/assets/login/illustration5.svg";
+import illustration6 from "/@/assets/login/illustration6.svg";
 
 const router = useRouter();
 
-const currentWeek = new Date().getDay();
-
-let illustration = computed(() => {
-  return `/@/assets/login/illustration${currentWeek}.svg`;
+// eslint-disable-next-line vue/return-in-computed-property
+const currentWeek = computed(() => {
+  switch (String(new Date().getDay())) {
+    case "0":
+      return illustration0;
+    case "1":
+      return illustration1;
+    case "2":
+      return illustration2;
+    case "3":
+      return illustration3;
+    case "4":
+      return illustration4;
+    case "5":
+      return illustration5;
+    case "6":
+      return illustration6;
+    default:
+      return illustration4;
+  }
 });
 
 let user = ref("admin");
@@ -47,10 +71,12 @@ function onPwdBlur() {
 <template>
   <img src="/@/assets/login/bg.png" class="wave" />
   <div class="container">
-    <div class="img"><img :src="illustration" /></div>
+    <div class="img">
+      <component :is="currentWeek"></component>
+    </div>
     <div class="login-box">
       <div class="login-form">
-        <img src="/@/assets/login/avatar.svg" class="avatar" />
+        <avatar class="avatar" />
         <h2
           v-motion
           :initial="{

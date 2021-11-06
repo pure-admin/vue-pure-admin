@@ -36,7 +36,8 @@
 }
 
 .avatar {
-  width: 100px;
+  width: 350px;
+  height: 80px;
 }
 
 .login-form h2 {
@@ -199,6 +200,11 @@ a:hover {
 
   .img img {
     width: 360px;
+  }
+
+  .avatar {
+    width: 280px;
+    height: 80px;
   }
 }
 
