@@ -9,8 +9,3 @@ export const getVerify = () => {
 export const getLogin = (data: object) => {
   return http.request("post", "/login", data);
 };
-
-// 注册
-export const getRegist = (data: object) => {
-  return http.request("post", "/register", data);
-};
