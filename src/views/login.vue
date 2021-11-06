@@ -51,8 +51,37 @@ function onPwdBlur() {
     <div class="login-box">
       <div class="login-form">
         <img src="/@/assets/login/avatar.svg" class="avatar" />
-        <h2>Pure Admin</h2>
-        <div class="input-group user focus">
+        <h2
+          v-motion
+          :initial="{
+            opacity: 0,
+            y: 100
+          }"
+          :enter="{
+            opacity: 1,
+            y: 0,
+            transition: {
+              delay: 100
+            }
+          }"
+        >
+          Pure Admin
+        </h2>
+        <div
+          class="input-group user focus"
+          v-motion
+          :initial="{
+            opacity: 0,
+            y: 100
+          }"
+          :enter="{
+            opacity: 1,
+            y: 0,
+            transition: {
+              delay: 200
+            }
+          }"
+        >
           <div class="icon">
             <i class="fa fa-user"></i>
           </div>
@@ -67,7 +96,21 @@ function onPwdBlur() {
             />
           </div>
         </div>
-        <div class="input-group pwd focus">
+        <div
+          class="input-group pwd focus"
+          v-motion
+          :initial="{
+            opacity: 0,
+            y: 100
+          }"
+          :enter="{
+            opacity: 1,
+            y: 0,
+            transition: {
+              delay: 300
+            }
+          }"
+        >
           <div class="icon">
             <i class="fa fa-lock"></i>
           </div>
@@ -82,7 +125,24 @@ function onPwdBlur() {
             />
           </div>
         </div>
-        <button class="btn" @click="onLogin">登录</button>
+        <button
+          class="btn"
+          v-motion
+          :initial="{
+            opacity: 0,
+            y: 10
+          }"
+          :enter="{
+            opacity: 1,
+            y: 0,
+            transition: {
+              delay: 400
+            }
+          }"
+          @click="onLogin"
+        >
+          登录
+        </button>
       </div>
     </div>
   </div>

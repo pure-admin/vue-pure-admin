@@ -40,10 +40,10 @@
 }
 
 .login-form h2 {
-  font-size: 2.9rem;
   text-transform: uppercase;
   margin: 15px 0;
   color: #999;
+  font: bold 200% Consolas, Monaco, monospace;
 }
 
 .input-group {
