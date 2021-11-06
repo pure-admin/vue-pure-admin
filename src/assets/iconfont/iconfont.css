@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 2208059 */
-  src: url("iconfont.woff2?t=1634903299890") format("woff2"),
-    url("iconfont.woff?t=1634903299890") format("woff"),
-    url("iconfont.ttf?t=1634903299890") format("truetype");
+  src: url("iconfont.woff2?t=1636197082361") format("woff2"),
+    url("iconfont.woff?t=1636197082361") format("woff"),
+    url("iconfont.ttf?t=1636197082361") format("truetype");
 }
 
 .iconfont {
@@ -13,24 +13,8 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.team-iconshuifei::before {
-  content: "\e62d";
-}
-
-.team-iconshuiyuandi::before {
-  content: "\e64e";
-}
-
-.team-iconshuifei1::before {
-  content: "\e616";
-}
-
-.team-iconshui::before {
-  content: "\e61f";
-}
-
-.team-iconzuixinlianzai::before {
-  content: "\e6da";
+.team-iconlogo::before {
+  content: "\e620";
 }
 
 .team-iconxinpin::before {
@@ -39,22 +23,6 @@
 
 .team-iconxinpinrenqiwang::before {
   content: "\e615";
-}
-
-.team-iconinternationality::before {
-  content: "\e67a";
-}
-
-.team-iconshanchu::before {
-  content: "\e617";
-}
-
-.team-iconshow-main-container::before {
-  content: "\e878";
-}
-
-.team-iconhidden-main-container::before {
-  content: "\e881";
 }
 
 .team-iconexit-fullscreen::before {

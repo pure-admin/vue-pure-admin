@@ -6,39 +6,11 @@
   "description": "pure-admin",
   "glyphs": [
     {
-      "icon_id": "1715043",
-      "name": "水费",
-      "font_class": "shuifei",
-      "unicode": "e62d",
-      "unicode_decimal": 58925
-    },
-    {
-      "icon_id": "7873366",
-      "name": "水源地",
-      "font_class": "shuiyuandi",
-      "unicode": "e64e",
-      "unicode_decimal": 58958
-    },
-    {
-      "icon_id": "12257150",
-      "name": "水费",
-      "font_class": "shuifei1",
-      "unicode": "e616",
-      "unicode_decimal": 58902
-    },
-    {
-      "icon_id": "24810949",
-      "name": "水",
-      "font_class": "shui",
-      "unicode": "e61f",
-      "unicode_decimal": 58911
-    },
-    {
-      "icon_id": "2508809",
-      "name": "最新连载",
-      "font_class": "zuixinlianzai",
-      "unicode": "e6da",
-      "unicode_decimal": 59098
+      "icon_id": "22129506",
+      "name": "水能",
+      "font_class": "logo",
+      "unicode": "e620",
+      "unicode_decimal": 58912
     },
     {
       "icon_id": "7795613",
@@ -53,34 +25,6 @@
       "font_class": "xinpinrenqiwang",
       "unicode": "e615",
       "unicode_decimal": 58901
-    },
-    {
-      "icon_id": "18367956",
-      "name": "中英文2 中文",
-      "font_class": "internationality",
-      "unicode": "e67a",
-      "unicode_decimal": 59002
-    },
-    {
-      "icon_id": "6184565",
-      "name": "删除",
-      "font_class": "shanchu",
-      "unicode": "e617",
-      "unicode_decimal": 58903
-    },
-    {
-      "icon_id": "9626913",
-      "name": "全屏",
-      "font_class": "show-main-container",
-      "unicode": "e878",
-      "unicode_decimal": 59512
-    },
-    {
-      "icon_id": "9626952",
-      "name": "退出全屏",
-      "font_class": "hidden-main-container",
-      "unicode": "e881",
-      "unicode_decimal": 59521
     },
     {
       "icon_id": "5698509",
