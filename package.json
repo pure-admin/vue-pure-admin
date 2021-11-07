@@ -2,13 +2,6 @@
   "name": "vue-pure-admin",
   "version": "2.1.0",
   "private": true,
-  "packageManager": "pnpm@6.20.1",
-  "workspaces": [
-    "build/**",
-    "mock/**",
-    "src/**",
-    "types/**"
-  ],
   "engines": {
     "node": ">= 16",
     "pnpm": ">= 6"
@@ -62,7 +55,7 @@
     "sortablejs": "1.13.0",
     "typescript-cookie": "^1.0.0",
     "v-contextmenu": "3.0.0",
-    "vue": "^3.2.20",
+    "vue": "^3.2.21",
     "vue-i18n": "^9.2.0-beta.3",
     "vue-json-pretty": "^2.0.2",
     "vue-router": "^4.0.11",
@@ -85,7 +78,7 @@
     "@typescript-eslint/parser": "4.31.0",
     "@vitejs/plugin-vue": "1.6.0",
     "@vitejs/plugin-vue-jsx": "1.1.7",
-    "@vue/compiler-sfc": "3.2.20",
+    "@vue/compiler-sfc": "^3.2.21",
     "@vue/eslint-config-prettier": "6.0.0",
     "@vue/eslint-config-typescript": "7.0.0",
     "autoprefixer": "10.2.4",
@@ -102,7 +95,7 @@
     "prettier": "2.3.2",
     "pretty-quick": "3.1.1",
     "rimraf": "3.0.2",
-    "sass": "1.38.0",
+    "sass": "1.32.8",
     "sass-loader": "12.1.0",
     "stylelint": "13.13.1",
     "stylelint-config-prettier": "8.0.2",

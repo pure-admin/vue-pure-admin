@@ -1,6 +1,0 @@
-#
-packages:
-  - "build/**"
-  - "mock/**"
-  - "src/**"
-  - "types/**"
