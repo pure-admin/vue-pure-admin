@@ -17,10 +17,6 @@
     }
   }
 
-  .el-sub-menu__icon-arrow {
-    position: absolute;
-  }
-
   .main-container {
     height: 100vh;
     min-height: 100%;
@@ -405,6 +401,11 @@
 
   // horizontal菜单折叠
   .el-menu--horizontal {
+    & > .el-sub-menu .el-sub-menu__icon-arrow {
+      position: static !important;
+      margin-top: 0;
+    }
+
     .el-menu--popup {
       background-color: $subMenuBg !important;
 
@@ -577,14 +578,6 @@ body[layout="vertical"] {
     .sidebar-container {
       width: 54px !important;
     }
-
-    // .mobile {
-    //   width: 0 !important;
-
-    //   .sidebar-container {
-    //     width: 0 !important;
-    //   }
-    // }
 
     .main-container {
       margin-left: 54px;
