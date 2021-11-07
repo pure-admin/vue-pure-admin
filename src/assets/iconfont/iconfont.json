@@ -6,16 +6,9 @@
   "description": "pure-admin",
   "glyphs": [
     {
-      "icon_id": "11758211",
-      "name": "水浸",
-      "font_class": "shuijin",
-      "unicode": "e621",
-      "unicode_decimal": 58913
-    },
-    {
       "icon_id": "22129506",
       "name": "水能",
-      "font_class": "zu2148",
+      "font_class": "logo",
       "unicode": "e620",
       "unicode_decimal": 58912
     },

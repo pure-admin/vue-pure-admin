@@ -15,8 +15,3 @@ export const getVerify = (): userType => {
 export const getLogin = (data: object) => {
   return http.request("post", "/login", data);
 };
-
-// 注册
-export const getRegist = (data: object): userType => {
-  return http.request("post", "/register", data);
-};

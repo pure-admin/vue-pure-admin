@@ -160,7 +160,8 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
       sourcemap: false,
       brotliSize: false,
       // 消除打包大小超过500kb警告
-      chunkSizeWarningLimit: 2000
+      chunkSizeWarningLimit: 2000,
+      minify: false
     },
     define: {
       __INTLIFY_PROD_DEVTOOLS__: false

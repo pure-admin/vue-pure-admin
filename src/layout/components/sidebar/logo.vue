@@ -19,7 +19,7 @@ const title =
         class="sidebar-logo-link"
         to="/"
       >
-        <Icon svg :width="35" :height="35" content="team-iconzu2148" />
+        <Icon svg :width="35" :height="35" content="team-iconlogo" />
         <span class="sidebar-title">{{ title }}</span>
       </router-link>
       <router-link
@@ -29,7 +29,7 @@ const title =
         class="sidebar-logo-link"
         to="/"
       >
-        <Icon svg :width="35" :height="35" content="team-iconzu2148" />
+        <Icon svg :width="35" :height="35" content="team-iconlogo" />
         <span class="sidebar-title">{{ title }}</span>
       </router-link>
     </transition>

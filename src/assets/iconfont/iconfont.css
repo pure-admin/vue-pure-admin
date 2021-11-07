@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 2208059 */
-  src: url("iconfont.woff2?t=1636070926069") format("woff2"),
-    url("iconfont.woff?t=1636070926069") format("woff"),
-    url("iconfont.ttf?t=1636070926069") format("truetype");
+  src: url("iconfont.woff2?t=1636197082361") format("woff2"),
+    url("iconfont.woff?t=1636197082361") format("woff"),
+    url("iconfont.ttf?t=1636197082361") format("truetype");
 }
 
 .iconfont {
@@ -13,11 +13,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.team-iconshuijin::before {
-  content: "\e621";
-}
-
-.team-iconzu2148::before {
+.team-iconlogo::before {
   content: "\e620";
 }
 
