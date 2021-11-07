@@ -56,7 +56,7 @@
       width: 100% !important;
 
       + .app-main {
-        padding-top: 37px;
+        padding-top: 37px !important;
       }
     }
   }
@@ -464,12 +464,12 @@
       color: $subMenuActiveText !important;
     }
 
-    // .nest-menu .el-sub-menu > .el-sub-menu__title,
-    // .el-menu-item {
-    //   &:hover {
-    //     background-color: transparent !important;
-    //   }
-    // }
+    .nest-menu .el-sub-menu > .el-sub-menu__title,
+    .el-menu-item {
+      &:hover {
+        background-color: transparent !important;
+      }
+    }
   }
 
   .el-scrollbar__wrap {
