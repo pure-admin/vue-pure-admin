@@ -535,7 +535,7 @@
     }
 
     .main-container {
-      margin-left: 0;
+      margin-left: 0 !important;
     }
 
     .sidebar-container {
@@ -578,8 +578,16 @@ body[layout="vertical"] {
       width: 54px !important;
     }
 
+    // .mobile {
+    //   width: 0 !important;
+
+    //   .sidebar-container {
+    //     width: 0 !important;
+    //   }
+    // }
+
     .main-container {
-      margin-left: 0;
+      margin-left: 54px;
     }
 
     .submenu-title-noDropdown {
