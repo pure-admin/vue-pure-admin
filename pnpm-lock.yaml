@@ -20,7 +20,7 @@ specifiers:
   "@vue/eslint-config-typescript": 7.0.0
   "@vueuse/core": ^6.7.1
   "@vueuse/motion": ^2.0.0-beta.4
-  "@zougt/vite-plugin-theme-preprocessor": ^1.3.4
+  "@zougt/vite-plugin-theme-preprocessor": ^1.3.5
   animate.css: ^4.1.1
   autoprefixer: 10.2.4
   await-to-js: ^3.0.0
@@ -54,8 +54,8 @@ specifiers:
   resize-observer-polyfill: ^1.5.1
   responsive-storage: ^1.0.11
   rimraf: 3.0.2
-  sass: 1.32.8
-  sass-loader: 12.1.0
+  sass: ^1.43.4
+  sass-loader: ^12.3.0
   sortablejs: 1.13.0
   stylelint: 13.13.1
   stylelint-config-prettier: 8.0.2
@@ -137,7 +137,7 @@ devDependencies:
   "@vue/compiler-sfc": 3.2.21
   "@vue/eslint-config-prettier": 6.0.0_82e4252401b0cc5be86f7c2133946f49
   "@vue/eslint-config-typescript": 7.0.0_e03d82996bd4a66fb128f33523d782ea
-  "@zougt/vite-plugin-theme-preprocessor": 1.3.5_sass@1.32.8
+  "@zougt/vite-plugin-theme-preprocessor": 1.3.5_sass@1.43.4
   autoprefixer: 10.2.4_postcss@8.2.6
   babel-plugin-transform-remove-console: 6.9.4
   chalk: 2.4.2
@@ -152,15 +152,15 @@ devDependencies:
   prettier: 2.3.2
   pretty-quick: 3.1.1_prettier@2.3.2
   rimraf: 3.0.2
-  sass: 1.32.8
-  sass-loader: 12.1.0_sass@1.32.8
+  sass: 1.43.4
+  sass-loader: 12.3.0_sass@1.43.4
   stylelint: 13.13.1
   stylelint-config-prettier: 8.0.2_stylelint@13.13.1
   stylelint-config-standard: 22.0.0_stylelint@13.13.1
   stylelint-order: 4.1.0_stylelint@13.13.1
   typescript: 4.4.2
   unplugin-element-plus: 0.1.3_vite@2.6.13+vue@3.2.21
-  vite: 2.6.13_sass@1.32.8
+  vite: 2.6.13_sass@1.43.4
   vite-plugin-mock: 2.9.6_mockjs@1.1.0+vite@2.6.13
   vite-plugin-style-import: 1.3.0_vite@2.6.13
   vite-svg-loader: 2.2.0
@@ -1289,7 +1289,7 @@ packages:
     peerDependencies:
       vite: ^2.5.10
     dependencies:
-      vite: 2.6.13_sass@1.32.8
+      vite: 2.6.13_sass@1.43.4
     dev: true
 
   /@vue/babel-helper-vue-transform-on/1.0.2:
@@ -1525,7 +1525,7 @@ packages:
       vue-demi: 0.12.1_vue@3.2.21
     dev: false
 
-  /@zougt/some-loader-utils/1.3.3_sass@1.32.8:
+  /@zougt/some-loader-utils/1.3.3_sass@1.43.4:
     resolution:
       {
         integrity: sha512-94xWLhku6OpnJeplK+oXH60ug5dsR8bxc0KPAN7QvM36/EpI4PqLCrgbHCdbozSPsRYwF5vKrGIyjkShN/2JIQ==
@@ -1537,17 +1537,17 @@ packages:
     dependencies:
       parse-color: 1.0.0
       postcss: 8.3.11
-      sass: 1.32.8
+      sass: 1.43.4
     dev: true
 
-  /@zougt/vite-plugin-theme-preprocessor/1.3.5_sass@1.32.8:
+  /@zougt/vite-plugin-theme-preprocessor/1.3.5_sass@1.43.4:
     resolution:
       {
         integrity: sha512-vOp/nIKLe3oKY6W50iJjPgh/vw5RwCX0hMcaDvBdEhTdQjw9jBLosvBCoe5LuM/Wx0eNmng0b/3Svw+/Iji4yw==
       }
     engines: { node: ">= 12.0.0" }
     dependencies:
-      "@zougt/some-loader-utils": 1.3.3_sass@1.32.8
+      "@zougt/some-loader-utils": 1.3.3_sass@1.43.4
       fs-extra: 9.1.0
       string-hash: 1.1.3
     transitivePeerDependencies:
@@ -5590,10 +5590,10 @@ packages:
       }
     dev: true
 
-  /sass-loader/12.1.0_sass@1.32.8:
+  /sass-loader/12.3.0_sass@1.43.4:
     resolution:
       {
-        integrity: sha512-FVJZ9kxVRYNZTIe2xhw93n3xJNYZADr+q69/s98l9nTCrWASo+DR2Ot0s5xTKQDDEosUkatsGeHxcH4QBp5bSg==
+        integrity: sha512-6l9qwhdOb7qSrtOu96QQ81LVl8v6Dp9j1w3akOm0aWHyrTYtagDt5+kS32N4yq4hHk3M+rdqoRMH+lIdqvW6HA==
       }
     engines: { node: ">= 12.13.0" }
     peerDependencies:
@@ -5611,13 +5611,13 @@ packages:
     dependencies:
       klona: 2.0.5
       neo-async: 2.6.2
-      sass: 1.32.8
+      sass: 1.43.4
     dev: true
 
-  /sass/1.32.8:
+  /sass/1.43.4:
     resolution:
       {
-        integrity: sha512-Sl6mIeGpzjIUZqvKnKETfMf0iDAswD9TNlv13A7aAF3XZlRPMq4VvJWBC2N2DXbp94MQVdNSFG6LfF/iOXrPHQ==
+        integrity: sha512-/ptG7KE9lxpGSYiXn7Ar+lKOv37xfWsZRtFYal2QHNigyVQDx685VFT/h7ejVr+R8w7H4tmUgtulsKl5YpveOg==
       }
     engines: { node: ">=8.9.0" }
     hasBin: true
@@ -6461,7 +6461,7 @@ packages:
       webpack:
         optional: true
     dependencies:
-      vite: 2.6.13_sass@1.32.8
+      vite: 2.6.13_sass@1.43.4
       webpack-virtual-modules: 0.4.3
     dev: true
 
@@ -6581,7 +6581,7 @@ packages:
       fast-glob: 3.2.7
       mockjs: 1.1.0
       path-to-regexp: 6.2.0
-      vite: 2.6.13_sass@1.32.8
+      vite: 2.6.13_sass@1.43.4
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -6600,7 +6600,7 @@ packages:
       debug: 4.3.2
       es-module-lexer: 0.9.3
       magic-string: 0.25.7
-      vite: 2.6.13_sass@1.32.8
+      vite: 2.6.13_sass@1.43.4
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -6615,7 +6615,7 @@ packages:
       svgo: 2.8.0
     dev: true
 
-  /vite/2.6.13_sass@1.32.8:
+  /vite/2.6.13_sass@1.43.4:
     resolution:
       {
         integrity: sha512-+tGZ1OxozRirTudl4M3N3UTNJOlxdVo/qBl2IlDEy/ZpTFcskp+k5ncNjayR3bRYTCbqSOFz2JWGN1UmuDMScA==
@@ -6638,7 +6638,7 @@ packages:
       postcss: 8.3.11
       resolve: 1.20.0
       rollup: 2.59.0
-      sass: 1.32.8
+      sass: 1.43.4
     optionalDependencies:
       fsevents: 2.3.2
     dev: true

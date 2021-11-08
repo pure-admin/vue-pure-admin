@@ -297,6 +297,11 @@
       }
     }
 
+    // .el-menu-item.is-active {
+    //   transition: color 0.3s;
+    //   color: #fff;
+    // }
+
     .is-active > .el-sub-menu__title,
     .is-active.submenu-title-noDropdown {
       color: $subMenuActiveText !important;
@@ -399,7 +404,13 @@
     }
   }
 
-  // horizontal菜单折叠
+  // todo
+  .el-menu--horizontal > .el-menu-item.is-active {
+    transition: color 0.3s;
+    color: $subMenuActiveText !important;
+  }
+
+  // horizontal菜单
   .el-menu--horizontal {
     & > .el-sub-menu .el-sub-menu__icon-arrow {
       position: static !important;
@@ -458,11 +469,6 @@
       i {
         color: $subMenuActiveText !important;
       }
-    }
-
-    .is-active {
-      transition: color 0.3s;
-      color: $subMenuActiveText !important;
     }
 
     .nest-menu .el-sub-menu > .el-sub-menu__title,
