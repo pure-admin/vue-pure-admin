@@ -1525,10 +1525,10 @@ packages:
       vue-demi: 0.12.1_vue@3.2.21
     dev: false
 
-  /@zougt/some-loader-utils/1.3.3_sass@1.43.4:
+  /@zougt/some-loader-utils/1.3.4_sass@1.43.4:
     resolution:
       {
-        integrity: sha512-94xWLhku6OpnJeplK+oXH60ug5dsR8bxc0KPAN7QvM36/EpI4PqLCrgbHCdbozSPsRYwF5vKrGIyjkShN/2JIQ==
+        integrity: sha512-HjlSsEVcpuDrOlUXRMZzLdoWvWAdhign3uNhuSBd4ydfoOnWBRcWNBWyt5ZvIT+CcqIRLli4LfQ3K6xSJxc6NA==
       }
     engines: { node: ">= 10.13.0" }
     peerDependencies:
@@ -1547,7 +1547,7 @@ packages:
       }
     engines: { node: ">= 12.0.0" }
     dependencies:
-      "@zougt/some-loader-utils": 1.3.3_sass@1.43.4
+      "@zougt/some-loader-utils": 1.3.4_sass@1.43.4
       fs-extra: 9.1.0
       string-hash: 1.1.3
     transitivePeerDependencies:
