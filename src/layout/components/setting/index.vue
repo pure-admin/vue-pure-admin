@@ -5,6 +5,7 @@ import {
   unref,
   watch,
   computed,
+  nextTick,
   useCssModule,
   getCurrentInstance
 } from "vue";
@@ -72,31 +73,11 @@ const markValue = ref(storageLocal.getItem("showModel") || "smart");
 
 const logoVal = ref(storageLocal.getItem("logoVal") || "1");
 
-const localOperate = (key: string, value?: any, model?: string): any => {
-  model && model === "set"
-    ? storageLocal.setItem(key, value)
-    : storageLocal.getItem(key);
-};
-
 const settings = reactive({
-  greyVal: storageLocal.getItem("greyVal"),
-  weekVal: storageLocal.getItem("weekVal"),
-  tagsVal: storageLocal.getItem("tagsVal")
+  greyVal: instance.sets.grey,
+  weakVal: instance.sets.weak,
+  tabsVal: instance.sets.hideTabs
 });
-
-settings.greyVal === null
-  ? localOperate("greyVal", false, "set")
-  : document.querySelector("html")?.setAttribute("class", "html-grey");
-
-settings.weekVal === null
-  ? localOperate("weekVal", false, "set")
-  : document.querySelector("html")?.setAttribute("class", "html-weakness");
-
-if (settings.tagsVal === null) {
-  localOperate("tagsVal", false, "set");
-  settings.tagsVal = false;
-}
-window.document.body.setAttribute("data-show-tag", settings.tagsVal);
 
 function toggleClass(flag: boolean, clsName: string, target?: HTMLElement) {
   const targetEl = target || document.body;
@@ -108,35 +89,52 @@ function toggleClass(flag: boolean, clsName: string, target?: HTMLElement) {
 // 灰色模式设置
 const greyChange = ({ value }): void => {
   toggleClass(settings.greyVal, "html-grey", document.querySelector("html"));
-  value
-    ? localOperate("greyVal", true, "set")
-    : localOperate("greyVal", false, "set");
+  instance.sets = {
+    grey: value,
+    weak: instance.sets.weak,
+    hideTabs: instance.sets.hideTabs
+  };
 };
 
 // 色弱模式设置
 const weekChange = ({ value }): void => {
   toggleClass(
-    settings.weekVal,
+    settings.weakVal,
     "html-weakness",
     document.querySelector("html")
   );
-  value
-    ? localOperate("weekVal", true, "set")
-    : localOperate("weekVal", false, "set");
+  instance.sets = {
+    grey: instance.sets.grey,
+    weak: value,
+    hideTabs: instance.sets.hideTabs
+  };
 };
 
 const tagsChange = () => {
-  let showVal = settings.tagsVal;
-  showVal
-    ? storageLocal.setItem("tagsVal", true)
-    : storageLocal.setItem("tagsVal", false);
+  let showVal = settings.tabsVal;
+  instance.sets = {
+    grey: instance.sets.grey,
+    weak: instance.sets.weak,
+    hideTabs: showVal
+  };
   emitter.emit("tagViewsChange", showVal);
 };
+
+//初始化项目配置
+nextTick(() => {
+  settings.greyVal &&
+    document.querySelector("html")?.setAttribute("class", "html-grey");
+  settings.weakVal &&
+    document.querySelector("html")?.setAttribute("class", "html-weakness");
+  settings.tabsVal && tagsChange();
+});
 
 // 清空缓存并返回登录页
 function onReset() {
   storageLocal.clear();
   storageSession.clear();
+  toggleClass(false, "html-grey", document.querySelector("html"));
+  toggleClass(false, "html-weakness", document.querySelector("html"));
   router.push("/login");
 }
 
@@ -271,7 +269,7 @@ function setLayoutThemeColor(theme: string) {
       <li>
         <span>色弱模式</span>
         <el-switch
-          v-model="settings.weekVal"
+          v-model="settings.weakVal"
           inline-prompt
           inactive-color="#a6a6a6"
           active-text="开"
@@ -283,7 +281,7 @@ function setLayoutThemeColor(theme: string) {
       <li>
         <span>隐藏标签页</span>
         <el-switch
-          v-model="settings.tagsVal"
+          v-model="settings.tabsVal"
           inline-prompt
           inactive-color="#a6a6a6"
           active-text="开"

@@ -57,6 +57,15 @@ const layout = computed(() => {
       theme: instance.$config?.Theme ?? "default"
     };
   }
+  // 灰色模式、色弱模式、隐藏标签页
+  if (!instance.$storage.sets) {
+    // eslint-disable-next-line
+    instance.$storage.sets = {
+      grey: instance.$config?.Grey ?? false,
+      weak: instance.$config?.Weak ?? false,
+      hideTabs: instance.$config?.HideTabs ?? false
+    };
+  }
   return instance.$storage?.layout.layout;
 });
 
@@ -80,6 +89,10 @@ const set: setType = reactive({
       withoutAnimation: set.sidebar.withoutAnimation,
       mobile: set.device === "mobile"
     };
+  }),
+
+  hideTabs: computed(() => {
+    return instance.$storage?.sets.hideTabs;
   })
 });
 
@@ -144,7 +157,14 @@ const layoutHeader = defineComponent({
   render() {
     return h(
       "div",
-      { class: { "fixed-header": set.fixedHeader } },
+      {
+        class: { "fixed-header": set.fixedHeader },
+        style: [
+          set.hideTabs && layout.value.includes("horizontal")
+            ? "box-shadow: 0 1px 4px rgb(0 21 41 / 8%);"
+            : ""
+        ]
+      },
       {
         default: () => [
           !hiddenSideBar.value && layout.value.includes("vertical")

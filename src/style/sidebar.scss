@@ -640,35 +640,3 @@ body[layout="horizontal"] {
     transition: none !important;
   }
 }
-
-// vertical模式下不隐藏标签页
-body[layout="vertical"][data-show-tag="false"] {
-  .fixed-header + .app-main {
-    padding-top: 85px;
-  }
-}
-
-// vertical模式下隐藏标签页
-body[layout="vertical"][data-show-tag="true"] {
-  .fixed-header + .app-main {
-    padding-top: 48px;
-  }
-}
-
-// horizontal模式下不隐藏标签页
-body[layout="horizontal"][data-show-tag="false"] {
-  .fixed-header + .app-main {
-    padding-top: 98px;
-  }
-}
-
-// horizontal模式下隐藏标签页
-body[layout="horizontal"][data-show-tag="true"] {
-  .fixed-header {
-    box-shadow: 0 1px 4px rgb(0 21 41 / 8%);
-  }
-
-  .fixed-header + .app-main {
-    padding-top: 62px;
-  }
-}

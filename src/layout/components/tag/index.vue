@@ -447,7 +447,6 @@ onBeforeMount(() => {
   emitter.on("tagViewsChange", key => {
     if (unref(showTags) === key) return;
     showTags.value = key;
-    window.document.body.setAttribute("data-show-tag", key);
   });
 
   // 改变标签风格

@@ -33,6 +33,14 @@ export const injectResponsiveStorage = (app: App, config: ServerConfigs) => {
         layout: config.Layout ?? "vertical",
         theme: config.Theme ?? "default"
       }
+    },
+    sets: {
+      type: Object,
+      default: Storage.getData(undefined, "sets") ?? {
+        grey: config.Grey,
+        weak: config.Weak,
+        hideTabs: config.HideTabs
+      }
     }
   });
 };
