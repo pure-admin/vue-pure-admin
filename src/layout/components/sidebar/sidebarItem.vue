@@ -93,13 +93,13 @@ function resolvePath(routePath) {
       </el-icon>
       <template #title>
         <div
-          style="
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            overflow: hidden;
-          "
+          :style="{
+            width: pureApp.sidebar.opened ? '' : '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            overflow: 'hidden'
+          }"
         >
           <span v-if="!menuMode">{{ $t(onlyOneChild.meta.title) }}</span>
           <el-tooltip
