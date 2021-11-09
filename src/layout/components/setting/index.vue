@@ -211,7 +211,7 @@ function setLayoutThemeColor(theme: string) {
   <panel>
     <el-divider>主题风格</el-divider>
     <ul class="pure-theme">
-      <el-tooltip class="item" content="左侧菜单暗色模式" placement="bottom">
+      <el-tooltip class="item" content="左侧菜单模式" placement="bottom">
         <li
           :class="layoutTheme.layout === 'vertical' ? $style.isSelect : ''"
           ref="verticalRef"
@@ -222,7 +222,7 @@ function setLayoutThemeColor(theme: string) {
         </li>
       </el-tooltip>
 
-      <el-tooltip class="item" content="顶部菜单暗色模式" placement="bottom">
+      <el-tooltip class="item" content="顶部菜单模式" placement="bottom">
         <li
           :class="layoutTheme.layout === 'horizontal' ? $style.isSelect : ''"
           ref="horizontalRef"

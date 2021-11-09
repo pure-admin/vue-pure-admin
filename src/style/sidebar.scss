@@ -193,7 +193,7 @@
       h4 {
         font-size: 16px;
         font-weight: 700;
-        color: $navTextColor;
+        color: $subMenuActiveText;
         transition: all 0.5s;
       }
     }
@@ -209,7 +209,7 @@
       display: flex;
       min-width: 280px;
       align-items: center;
-      color: $navTextColor;
+      color: $subMenuActiveText;
       justify-content: flex-end;
 
       .screen-full {
@@ -225,7 +225,7 @@
         width: 40px;
         padding: 11px;
         cursor: pointer;
-        color: $navTextColor;
+        color: $subMenuActiveText;
 
         &:hover {
           background: $menuHover;
@@ -240,7 +240,7 @@
         align-items: center;
         justify-content: space-around;
         cursor: pointer;
-        color: $navTextColor;
+        color: $subMenuActiveText;
 
         &:hover {
           background: $menuHover;
