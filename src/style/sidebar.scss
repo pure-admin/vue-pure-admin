@@ -184,10 +184,6 @@
       cursor: pointer;
       transition: all 0.2s ease;
 
-      // &:hover {
-      //   background: transparent;
-      // }
-
       i {
         font-size: 30px;
         color: #1890ff;
@@ -285,22 +281,17 @@
     .el-menu-item,
     .el-sub-menu__title {
       color: $menuText;
+
+      &:hover {
+        color: $menuTitleHover !important;
+      }
     }
 
     .submenu-title-noDropdown,
     .el-sub-menu__title {
       height: 60px;
       background: $menuBg;
-
-      &:hover {
-        // background-color: transparent !important;
-      }
     }
-
-    // .el-menu-item.is-active {
-    //   transition: color 0.3s;
-    //   color: #fff;
-    // }
 
     .is-active > .el-sub-menu__title,
     .is-active.submenu-title-noDropdown {
@@ -318,10 +309,6 @@
       border-bottom-color: #409eff;
     }
   }
-
-  // .is-active.submenu-title-noDropdown.outer-most {
-  //   background: transparent;
-  // }
 
   // vertical菜单折叠
   .el-menu--vertical {
@@ -364,10 +351,6 @@
       font-size: 12px;
       min-width: $sideBarWidth !important;
       background-color: $subMenuBg !important;
-
-      &:hover {
-        // background-color: transparent !important;
-      }
     }
 
     .el-menu-item,
@@ -402,12 +385,6 @@
         font-size: 16px;
       }
     }
-  }
-
-  // todo
-  .el-menu--horizontal > .el-menu-item.is-active {
-    transition: color 0.3s;
-    color: $subMenuActiveText !important;
   }
 
   // horizontal菜单
@@ -451,9 +428,9 @@
       min-width: $sideBarWidth !important;
       background-color: $subMenuBg !important;
 
-      // &:hover {
-      //   background-color: transparent !important;
-      // }
+      &:hover {
+        color: $menuTitleHover !important;
+      }
     }
 
     & > .el-menu {
@@ -474,8 +451,18 @@
     .nest-menu .el-sub-menu > .el-sub-menu__title,
     .el-menu-item {
       &:hover {
-        background-color: transparent !important;
+        color: $menuTitleHover !important;
       }
+    }
+
+    // 有子集的激活菜单背景
+    .is-active.nest-menu {
+      background: $subMenuActiveBg !important;
+    }
+
+    .el-menu-item.is-active {
+      transition: color 0.3s;
+      color: $subMenuActiveText !important;
     }
   }
 
