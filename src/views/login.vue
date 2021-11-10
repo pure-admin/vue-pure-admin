@@ -2,9 +2,10 @@
 import { ref, computed } from "vue";
 import { useRouter } from "vue-router";
 import { initRouter } from "/@/router";
-import avatar from "/@/assets/login/avatar.svg";
 import { storageSession } from "/@/utils/storage";
 import { addClass, removeClass } from "/@/utils/operate";
+import bg from "/@/assets/login/bg.png";
+import avatar from "/@/assets/login/avatar.svg";
 import illustration0 from "/@/assets/login/illustration0.svg";
 import illustration1 from "/@/assets/login/illustration1.svg";
 import illustration2 from "/@/assets/login/illustration2.svg";
@@ -69,7 +70,7 @@ function onPwdBlur() {
 </script>
 
 <template>
-  <img src="/@/assets/login/bg.png" class="wave" />
+  <img :src="bg" class="wave" />
   <div class="container">
     <div class="img">
       <component :is="currentWeek"></component>
