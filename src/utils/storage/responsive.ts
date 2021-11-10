@@ -37,9 +37,9 @@ export const injectResponsiveStorage = (app: App, config: ServerConfigs) => {
     sets: {
       type: Object,
       default: Storage.getData(undefined, "sets") ?? {
-        grey: config.Grey,
-        weak: config.Weak,
-        hideTabs: config.HideTabs
+        grey: config.Grey ?? false,
+        weak: config.Weak ?? false,
+        hideTabs: config.HideTabs ?? false
       }
     }
   });

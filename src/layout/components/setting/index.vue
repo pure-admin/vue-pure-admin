@@ -87,7 +87,7 @@ function toggleClass(flag: boolean, clsName: string, target?: HTMLElement) {
 }
 
 // 灰色模式设置
-const greyChange = ({ value }): void => {
+const greyChange = (value): void => {
   toggleClass(settings.greyVal, "html-grey", document.querySelector("html"));
   instance.sets = {
     grey: value,
@@ -97,7 +97,7 @@ const greyChange = ({ value }): void => {
 };
 
 // 色弱模式设置
-const weekChange = ({ value }): void => {
+const weekChange = (value): void => {
   toggleClass(
     settings.weakVal,
     "html-weakness",
