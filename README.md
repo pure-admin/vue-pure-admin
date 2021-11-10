@@ -16,26 +16,9 @@ bilibili：<https://www.bilibili.com/video/BV1534y1S7HV/>
 
 - [vue-pure-admin](http://yiming_chang.gitee.io/manages)
 
-点击免密登录
-
 <p align="center">
-   <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f5ee80eee1014fb4a53c5bb37574a5f5~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/dec0672a62e141f3b7f626c22ff6c7ef~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f586f1353de74b1b88cc9f89fce2146e~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a28fc0af7ac44e3b8f30469cba4a9993~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a17e54329cda4d76aa9c1c4f2a4715d3~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d884fb611da74ee0bdc17c29014d0260~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/abed44ac1f2744e897c28d1689bcb517~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cf2f068650f44a0787c699f5a20c75a6~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/73c575dd06474731ad8ab9d853f1ddfd~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/99389b90f5ac4db9b0d61d99dd9a1454~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f1546f1c6014446db6c9983934aedc86~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cfb0093b77c34e87b094daaa4304bc2d~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fe133cc6db3245f9b1b37f231d040550~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d3110a12d63e4f6fb314e60bf18bdb66~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/45b93ec453e3406a939affe65ddcc803~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cdc2dc88c1ef4aafbaaade820442c986~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f4c91b162206485b88cc58a72ff54a01~tplv-k3u1fbpfcp-watermark.image">
+  <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b4857fc7eb7d4c0f8deeefc644c1f7dd~tplv-k3u1fbpfcp-watermark.awebp?">
+  <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/549c3184697f4d268a78c9833e5ec2ea~tplv-k3u1fbpfcp-watermark.awebp?">
 </p>
 
 ### 使用 Gitpod
