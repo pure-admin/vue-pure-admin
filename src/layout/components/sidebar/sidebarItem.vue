@@ -1,14 +1,12 @@
 <script setup lang="ts">
 import path from "path";
-import { storageLocal } from "/@/utils/storage";
-import { PropType, ref, nextTick } from "vue";
+import { PropType, ref, nextTick, getCurrentInstance } from "vue";
 import { childrenType } from "../../types";
 import { useAppStoreHook } from "/@/store/modules/app";
 import Icon from "/@/components/ReIcon/src/Icon.vue";
-const layout = ref(
-  storageLocal.getItem("responsive-layout") || "vertical-dark"
-);
-const menuMode = layout.value.layout.split("-")[0] === "vertical";
+
+const instance = getCurrentInstance().appContext.app.config.globalProperties;
+const menuMode = instance.$storage.layout?.layout === "vertical";
 const pureApp = useAppStoreHook();
 
 const props = defineProps({
@@ -86,21 +84,22 @@ function resolvePath(routePath) {
       :class="{ 'submenu-title-noDropdown': !isNest }"
       style="display: flex; align-items: center"
     >
-      <i
-        v-show="props.item.meta.icon"
-        :class="
-          onlyOneChild.meta.icon || (props.item.meta && props.item.meta.icon)
-        "
-      />
+      <el-icon v-show="props.item.meta.icon">
+        <component
+          :is="
+            onlyOneChild.meta.icon || (props.item.meta && props.item.meta.icon)
+          "
+        ></component>
+      </el-icon>
       <template #title>
         <div
-          style="
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            overflow: hidden;
-          "
+          :style="{
+            width: pureApp.sidebar.opened ? '' : '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            overflow: 'hidden'
+          }"
         >
           <span v-if="!menuMode">{{ $t(onlyOneChild.meta.title) }}</span>
           <el-tooltip
@@ -139,9 +138,10 @@ function resolvePath(routePath) {
     popper-append-to-body
   >
     <template #title>
-      <i v-show="props.item.meta.icon" :class="props.item.meta.icon"></i>
+      <el-icon v-show="props.item.meta.icon" :class="props.item.meta.icon">
+        <component :is="props.item.meta && props.item.meta.icon"></component>
+      </el-icon>
       <span v-if="!menuMode">{{ $t(props.item.meta.title) }}</span>
-
       <el-tooltip
         v-else
         placement="top"

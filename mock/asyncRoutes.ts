@@ -7,7 +7,7 @@ const systemRouter = {
   name: "system",
   redirect: "/system/user",
   meta: {
-    icon: "el-icon-setting",
+    icon: "Setting",
     title: "message.hssysManagement",
     showLink: true,
     rank: 6
@@ -38,7 +38,7 @@ const permissionRouter = {
   redirect: "/permission/page",
   meta: {
     title: "message.permission",
-    icon: "el-icon-lollipop",
+    icon: "Lollipop",
     showLink: true,
     rank: 3
   },

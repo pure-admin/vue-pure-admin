@@ -126,14 +126,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div
-    id="mapview"
-    ref="mapview"
-    v-loading="mapSet.loading"
-    element-loading-text="地图加载中"
-    element-loading-spinner="el-icon-loading"
-    element-loading-background="rgba(0, 0, 0, 0.8)"
-  ></div>
+  <div id="mapview" ref="mapview" v-loading="mapSet.loading"></div>
 </template>
 
 <style lang="scss" scoped>

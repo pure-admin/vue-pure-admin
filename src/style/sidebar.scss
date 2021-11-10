@@ -1,19 +1,9 @@
+@import "../layout/theme/default-vars.scss";
+
 @mixin merge-style(
-  // 菜单选中后字体样式
-  $subMenuActiveText,
-  //菜单背景
-  $menuBg,
-  // 鼠标覆盖菜单时的背景
-  $menuHover,
-  // 子菜单背景
-  $subMenuBg,
-  // 鼠标覆盖子菜单时的背景
-  $subMenuHover,
   // vertical模式下主体内容距离网页文档左侧的距离
-  $sideBarWidth,
-  $navTextColor
+  $sideBarWidth
 ) {
-  $menuText: #7a80b4;
   $menuActiveText: #7a80b4;
 
   @media screen and (min-width: 150px) and (max-width: 420px) {
@@ -62,7 +52,7 @@
       width: 100% !important;
 
       + .app-main {
-        padding-top: 37px;
+        padding-top: 37px !important;
       }
     }
   }
@@ -73,8 +63,8 @@
 
   .sidebar-container {
     transition: width 0.28s;
-    width: $sideBarWidth;
-    background-color: $menuBg;
+    width: $sideBarWidth !important;
+    background: $menuBg;
     height: 100%;
     position: fixed;
     font-size: 0;
@@ -129,14 +119,18 @@
     .el-menu-item,
     .el-sub-menu__title {
       color: $menuText;
-      padding: 0 16px 0 40px;
+      padding: 0 20px 0 40px;
+
+      &:hover {
+        color: $menuTitleHover !important;
+      }
     }
 
     // menu hover
     .submenu-title-noDropdown,
     .el-sub-menu__title {
       &:hover {
-        background-color: $menuHover !important;
+        background-color: transparent;
       }
     }
 
@@ -159,17 +153,23 @@
       font-size: 12px;
       min-width: $sideBarWidth !important;
       background-color: $subMenuBg !important;
+    }
 
-      &:hover {
-        background-color: $subMenuHover !important;
-      }
+    // 无子集的激活菜单背景
+    .is-active.submenu-title-noDropdown.outer-most {
+      background: $subMenuActiveBg;
+    }
+
+    // 有子集的激活菜单背景
+    .is-active.nest-menu {
+      background: $subMenuActiveBg !important;
     }
   }
 
   .horizontal-header {
     display: flex;
     justify-content: space-around;
-    background-color: $menuBg;
+    background: $menuBg;
     width: 100%;
     height: 62px;
     align-items: center;
@@ -184,10 +184,6 @@
       cursor: pointer;
       transition: all 0.2s ease;
 
-      &:hover {
-        background: $menuHover;
-      }
-
       i {
         font-size: 30px;
         color: #1890ff;
@@ -197,7 +193,7 @@
       h4 {
         font-size: 16px;
         font-weight: 700;
-        color: $navTextColor;
+        color: $subMenuActiveText;
         transition: all 0.5s;
       }
     }
@@ -213,7 +209,7 @@
       display: flex;
       min-width: 280px;
       align-items: center;
-      color: $navTextColor;
+      color: $subMenuActiveText;
       justify-content: flex-end;
 
       .screen-full {
@@ -229,7 +225,7 @@
         width: 40px;
         padding: 11px;
         cursor: pointer;
-        color: $navTextColor;
+        color: $subMenuActiveText;
 
         &:hover {
           background: $menuHover;
@@ -244,7 +240,7 @@
         align-items: center;
         justify-content: space-around;
         cursor: pointer;
-        color: $navTextColor;
+        color: $subMenuActiveText;
 
         &:hover {
           background: $menuHover;
@@ -264,7 +260,7 @@
       .el-icon-setting {
         height: 62px;
         width: 40px;
-        padding: 11px;
+        padding: 12px;
         display: flex;
         cursor: pointer;
         align-items: center;
@@ -285,16 +281,16 @@
     .el-menu-item,
     .el-sub-menu__title {
       color: $menuText;
+
+      &:hover {
+        color: $menuTitleHover !important;
+      }
     }
 
     .submenu-title-noDropdown,
     .el-sub-menu__title {
       height: 60px;
       background: $menuBg;
-
-      &:hover {
-        background-color: $menuHover !important;
-      }
     }
 
     .is-active > .el-sub-menu__title,
@@ -320,16 +316,9 @@
       background-color: $subMenuBg !important;
 
       .el-menu-item {
-        color: $menuText;
-        background-color: $subMenuBg;
-
         span {
           font-size: 12px;
           margin-left: 10px;
-        }
-
-        &:hover {
-          background-color: $subMenuHover;
         }
       }
 
@@ -344,7 +333,7 @@
 
     & > .el-menu {
       i {
-        margin-right: 16px;
+        margin-right: 20px;
       }
     }
 
@@ -362,9 +351,15 @@
       font-size: 12px;
       min-width: $sideBarWidth !important;
       background-color: $subMenuBg !important;
+    }
+
+    .el-menu-item,
+    .el-sub-menu__title {
+      color: $menuText;
+      background-color: $subMenuBg;
 
       &:hover {
-        background-color: $menuHover !important;
+        color: $menuTitleHover !important;
       }
     }
 
@@ -373,11 +368,8 @@
       color: $subMenuActiveText !important;
     }
 
-    .nest-menu .el-sub-menu > .el-sub-menu__title,
-    .el-menu-item {
-      &:hover {
-        background-color: $menuHover !important;
-      }
+    .el-menu-item.is-active.nest-menu {
+      background: $subMenuActiveBg !important;
     }
 
     .el-menu-item,
@@ -395,8 +387,13 @@
     }
   }
 
-  // horizontal菜单折叠
+  // horizontal菜单
   .el-menu--horizontal {
+    & > .el-sub-menu .el-sub-menu__icon-arrow {
+      position: static !important;
+      margin-top: 0;
+    }
+
     .el-menu--popup {
       background-color: $subMenuBg !important;
 
@@ -407,10 +404,6 @@
         span {
           font-size: 12px;
           margin-left: 10px;
-        }
-
-        &:hover {
-          background-color: $subMenuHover;
         }
       }
 
@@ -436,7 +429,7 @@
       background-color: $subMenuBg !important;
 
       &:hover {
-        background-color: $menuHover !important;
+        color: $menuTitleHover !important;
       }
     }
 
@@ -455,16 +448,21 @@
       }
     }
 
-    .is-active {
-      transition: color 0.3s;
-      color: $subMenuActiveText !important;
-    }
-
     .nest-menu .el-sub-menu > .el-sub-menu__title,
     .el-menu-item {
       &:hover {
-        background-color: $menuHover !important;
+        color: $menuTitleHover !important;
       }
+    }
+
+    // 有子集的激活菜单背景
+    .is-active.nest-menu {
+      background: $subMenuActiveBg !important;
+    }
+
+    .el-menu-item.is-active {
+      transition: color 0.3s;
+      color: $subMenuActiveText !important;
     }
   }
 
@@ -486,7 +484,7 @@
     left: 5px;
     width: 3px;
     height: 100%;
-    background-color: #1890ff !important;
+    background-color: $menuActiveBefore;
     content: "";
     clear: both;
     -webkit-transition: all 0.2s ease-in-out;
@@ -502,7 +500,7 @@
     left: 5px;
     width: 3px;
     height: 100%;
-    background-color: #1890ff !important;
+    background-color: $menuActiveBefore;
     content: "";
     clear: both;
     -webkit-transition: all 0.2s ease-in-out;
@@ -536,7 +534,7 @@
 
     .sidebar-container {
       transition: transform 0.28s;
-      width: $sideBarWidth !important;
+      width: $sideBarWidth;
     }
 
     &.hideSidebar {
@@ -556,10 +554,17 @@
   }
 }
 
-body[data-layout="vertical"] {
+body[layout="vertical"] {
+  $sideBarWidth: 210px;
+  @include merge-style($sideBarWidth);
+
+  .sidebar-logo-container {
+    background: $sidebarLogo;
+  }
+
   .hideSidebar {
     .fixed-header {
-      width: calc(100% - 54px) !important;
+      width: calc(100% - 54px);
       transition: width 0.28s;
     }
 
@@ -568,7 +573,7 @@ body[data-layout="vertical"] {
     }
 
     .main-container {
-      margin-left: 54px !important;
+      margin-left: 54px;
     }
 
     .submenu-title-noDropdown {
@@ -590,8 +595,10 @@ body[data-layout="vertical"] {
       }
     }
 
+    // 菜单折叠
     .el-menu--collapse {
-      margin-left: -5px; //需优化的地方
+      margin-left: -5px;
+
       .el-sub-menu {
         & > .el-sub-menu__title {
           & > span {
@@ -603,129 +610,20 @@ body[data-layout="vertical"] {
           }
         }
       }
+
+      .submenu-title-noDropdown {
+        background: transparent !important;
+      }
     }
   }
 }
 
-body[data-layout="horizontal"] {
+body[layout="horizontal"] {
+  $sideBarWidth: 0;
+  @include merge-style($sideBarWidth);
+
   .fixed-header {
-    width: 100% !important;
+    width: 100%;
     transition: none !important;
   }
-}
-
-// vertical模式下不隐藏标签页
-body[data-layout="vertical"][data-show-tag="false"] {
-  .fixed-header + .app-main {
-    padding-top: 85px;
-  }
-}
-
-// vertical模式下隐藏标签页
-body[data-layout="vertical"][data-show-tag="true"] {
-  .fixed-header + .app-main {
-    padding-top: 48px;
-  }
-}
-
-// horizontal模式下不隐藏标签页
-body[data-layout="horizontal"][data-show-tag="false"] {
-  .fixed-header + .app-main {
-    padding-top: 98px;
-  }
-}
-
-// horizontal模式下隐藏标签页
-body[data-layout="horizontal"][data-show-tag="true"] {
-  .fixed-header {
-    box-shadow: 0 1px 4px rgb(0 21 41 / 8%);
-  }
-
-  .fixed-header + .app-main {
-    padding-top: 62px;
-  }
-}
-
-// vertical模式下暗色主题
-body[data-layout="vertical"][data-theme="dark"] {
-  $subMenuActiveText: #f4f4f5;
-  $menuBg: #1b2a47;
-  $menuHover: #2a395b;
-  $subMenuBg: #1f2d3d;
-  $subMenuHover: #001528;
-  $sideBarWidth: 210px;
-  $navTextColor: #fff;
-
-  @include merge-style(
-    $subMenuActiveText,
-    $menuBg,
-    $menuHover,
-    $subMenuBg,
-    $subMenuHover,
-    $sideBarWidth,
-    $navTextColor
-  );
-}
-
-// vertical模式下亮色主题
-body[data-layout="vertical"][data-theme="light"] {
-  $subMenuActiveText: #409eff;
-  $menuBg: #fff;
-  $menuHover: #e0ebf6;
-  $subMenuBg: #fff;
-  $subMenuHover: #e0ebf6;
-  $sideBarWidth: 210px;
-  $navTextColor: #7a80b4;
-
-  @include merge-style(
-    $subMenuActiveText,
-    $menuBg,
-    $menuHover,
-    $subMenuBg,
-    $subMenuHover,
-    $sideBarWidth,
-    $navTextColor
-  );
-}
-
-// horizontal模式下暗色主题
-body[data-layout="horizontal"][data-theme="dark"] {
-  $subMenuActiveText: #f4f4f5;
-  $menuBg: #1b2a47;
-  $menuHover: #2a395b;
-  $subMenuBg: #1f2d3d;
-  $subMenuHover: #001528;
-  $sideBarWidth: 0;
-  $navTextColor: #fff;
-
-  @include merge-style(
-    $subMenuActiveText,
-    $menuBg,
-    $menuHover,
-    $subMenuBg,
-    $subMenuHover,
-    $sideBarWidth,
-    $navTextColor
-  );
-}
-
-// horizontal模式下亮色主题
-body[data-layout="horizontal"][data-theme="light"] {
-  $subMenuActiveText: #409eff;
-  $menuBg: #fff;
-  $menuHover: #e0ebf6;
-  $subMenuBg: #fff;
-  $subMenuHover: #e0ebf6;
-  $sideBarWidth: 0;
-  $navTextColor: #7a80b4;
-
-  @include merge-style(
-    $subMenuActiveText,
-    $menuBg,
-    $menuHover,
-    $subMenuBg,
-    $subMenuHover,
-    $sideBarWidth,
-    $navTextColor
-  );
 }

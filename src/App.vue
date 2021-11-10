@@ -14,14 +14,8 @@ export default {
     [ElConfigProvider.name]: ElConfigProvider
   },
   computed: {
-    // eslint-disable-next-line vue/return-in-computed-property
     currentLocale() {
-      switch (this.$storage.locale?.locale) {
-        case "zh":
-          return zhCn;
-        case "en":
-          return en;
-      }
+      return this.$storage.locale?.locale === "zh" ? zhCn : en;
     }
   }
 };

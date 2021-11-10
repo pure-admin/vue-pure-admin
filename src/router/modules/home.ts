@@ -6,7 +6,7 @@ const homeRouter = {
   component: Layout,
   redirect: "/welcome",
   meta: {
-    icon: "el-icon-s-home",
+    icon: "HomeFilled",
     showLink: true,
     rank: 0
   },

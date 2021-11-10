@@ -1,11 +1,15 @@
 {
-  "Version": "2.0.0",
+  "Version": "2.6.0",
   "Title": "PureAdmin",
   "FixedHeader": true,
   "HiddenSideBar": false,
   "KeepAlive": true,
   "Locale": "zh",
-  "Layout": "vertical-dark",
+  "Layout": "vertical",
+  "Theme": "default",
+  "Grey": false,
+  "Weak": false,
+  "HideTabs": false,
   "MapConfigure": {
     "amapKey": "97b3248d1553172e81f168cf94ea667e",
     "baiduKey": "wTHbkkEweiFqZLKunMIjcrb2RcqNXkhc",

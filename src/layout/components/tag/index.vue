@@ -447,7 +447,6 @@ onBeforeMount(() => {
   emitter.on("tagViewsChange", key => {
     if (unref(showTags) === key) return;
     showTags.value = key;
-    window.document.body.setAttribute("data-show-tag", key);
   });
 
   // 改变标签风格
@@ -484,14 +483,16 @@ onBeforeMount(() => {
         <router-link :to="item.path" @click="tagOnClick(item)">{{
           $t(item.meta.title)
         }}</router-link>
-        <span
+        <el-icon
           v-if="
             ($route.path === item.path && index !== 0) ||
             (index === activeIndex && index !== 0)
           "
           class="el-icon-close"
           @click="deleteMenu(item)"
-        ></span>
+        >
+          <CloseBold />
+        </el-icon>
         <div
           :ref="'schedule' + index"
           v-if="showModel !== 'card'"
@@ -522,15 +523,19 @@ onBeforeMount(() => {
     <!-- 右侧功能按钮 -->
     <ul class="right-button">
       <li>
-        <i
+        <el-icon
           :title="$t('message.hsrefreshRoute')"
           class="el-icon-refresh-right rotate"
           @click="onFresh"
-        ></i>
+        >
+          <RefreshRight />
+        </el-icon>
       </li>
       <li>
         <el-dropdown trigger="click" placement="bottom-end">
-          <i class="el-icon-arrow-down"></i>
+          <el-icon>
+            <ArrowDown />
+          </el-icon>
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item
@@ -630,6 +635,7 @@ onBeforeMount(() => {
       font-size: 10px;
       color: #1890ff;
       cursor: pointer;
+      transform: fontsize3s;
 
       &:hover {
         border-radius: 50%;

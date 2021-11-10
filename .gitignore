@@ -5,6 +5,7 @@ dist-ssr
 *.local
 .eslintcache
 
+yarn.lock
 npm-debug.log*
 .pnpm-error.log*
 .pnpm-debug.log
