@@ -6,7 +6,7 @@ const componentsRouter = {
   component: Layout,
   redirect: "/components/video",
   meta: {
-    icon: "el-icon-menu",
+    icon: "Menu",
     title: "message.hscomponents",
     showLink: true,
     rank: 4

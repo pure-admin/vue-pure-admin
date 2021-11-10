@@ -47,6 +47,7 @@ export interface setType {
     withoutAnimation: boolean;
     mobile: boolean;
   };
+  hideTabs: boolean;
 }
 
 export type childrenType = {
@@ -63,4 +64,9 @@ export type childrenType = {
     };
   };
   showTooltip?: boolean;
+};
+
+export type themeColorsType = {
+  rgb: string;
+  themeColor: string;
 };

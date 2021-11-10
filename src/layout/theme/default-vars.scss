@@ -1,0 +1,24 @@
+/**
+*此scss变量文件作为multipleScopeVars去编译时，会自动移除!default以达到变量提升
+*同时此scss变量文件作为默认主题变量文件，被其他.scss通过 @import 时，必需 !default
+*/
+
+// 暗雅（默认）
+
+// 菜单选中后字体样式
+$subMenuActiveText: #fff !default;
+//菜单背景
+$menuBg: #001529 !default;
+// 鼠标覆盖到菜单时的背景
+$menuHover: #4091f7 !default;
+// 子菜单背景
+$subMenuBg: #0f0303 !default;
+// 有无子集的激活菜单背景
+$subMenuActiveBg: #4091f7 !default;
+$navTextColor: #fff !default;
+$menuText: rgba(254, 254, 254, 0.65) !default;
+// logo背景颜色
+$sidebarLogo: #002140 !default;
+// 鼠标覆盖到菜单时的字体颜色
+$menuTitleHover: #fff !default;
+$menuActiveBefore: #4091f7 !default;

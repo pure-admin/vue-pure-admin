@@ -22,7 +22,9 @@ emitter.on("openPanel", () => {
       <div class="right-panel-items">
         <div class="project-configuration">
           <h3>项目配置</h3>
-          <i class="el-icon-close" @click="show = !show"></i>
+          <el-icon title="关闭配置" class="el-icon-close" @click="show = !show">
+            <Close />
+          </el-icon>
         </div>
         <div style="border-bottom: 1px solid #dcdfe6"></div>
         <slot />

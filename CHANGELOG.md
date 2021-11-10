@@ -1,3 +1,16 @@
+# 2.6.0(2021-11-10)
+
+### 🎫 Feat
+
+- Refactored navigation theme color, supports multiple color schemes
+- Refactored login page, illustration style
+
+### 🍏 Perf
+
+- Optimize the navigation style
+- Eliminate strong navigation dependence on vxe-table
+- Synchronously update element-plus, replace Font Icon with SVG Icon
+
 # 2.1.0(2021-10-14)
 
 ### 🎫 Feat

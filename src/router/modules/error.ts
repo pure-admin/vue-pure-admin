@@ -6,7 +6,7 @@ const errorRouter = {
   component: Layout,
   redirect: "/error/401",
   meta: {
-    icon: "el-icon-position",
+    icon: "Position",
     title: "message.hserror",
     showLink: true,
     rank: 7

@@ -118,7 +118,7 @@ onMounted(() => {
 <template>
   <div class="horizontal-header">
     <div class="horizontal-header-left" @click="backHome">
-      <Icon svg :width="35" :height="35" content="team-iconshuiyuandi" />
+      <Icon svg :width="35" :height="35" content="team-iconlogo" />
       <h4>{{ title }}</h4>
     </div>
     <el-menu
@@ -151,6 +151,8 @@ onMounted(() => {
                 color: locale === 'zh' ? '#f4f4f5' : '#000'
               }"
               @click="translationCh"
+              ><el-icon class="check-zh" v-show="locale === 'zh'"
+                ><check /></el-icon
               >简体中文</el-dropdown-item
             >
             <el-dropdown-item
@@ -159,6 +161,8 @@ onMounted(() => {
                 color: locale === 'en' ? '#f4f4f5' : '#000'
               }"
               @click="translationEn"
+              ><el-icon class="check-en" v-show="locale === 'en'"
+                ><check /></el-icon
               >English</el-dropdown-item
             >
           </el-dropdown-menu>
@@ -180,11 +184,13 @@ onMounted(() => {
           </el-dropdown-menu>
         </template>
       </el-dropdown>
-      <i
+      <el-icon
         class="el-icon-setting"
         :title="$t('message.hssystemSet')"
         @click="onPanel"
-      ></i>
+      >
+        <Setting />
+      </el-icon>
     </div>
   </div>
 </template>
@@ -199,6 +205,18 @@ onMounted(() => {
   .el-dropdown-menu__item:not(.is-disabled):hover {
     color: #606266;
     background: #f0f0f0;
+  }
+
+  .check-zh {
+    position: absolute;
+    left: 20px;
+    top: 13px;
+  }
+
+  .check-en {
+    position: absolute;
+    bottom: 13px;
+    left: 20px;
   }
 }
 

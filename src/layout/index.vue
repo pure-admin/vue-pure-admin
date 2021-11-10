@@ -16,7 +16,6 @@ import { useI18n } from "vue-i18n";
 import { routerArrays } from "./types";
 import { emitter } from "/@/utils/mitt";
 import { useEventListener } from "@vueuse/core";
-import { storageLocal } from "/@/utils/storage";
 import backTop from "/@/assets/svg/back_top.svg";
 import { useAppStoreHook } from "/@/store/modules/app";
 import fullScreen from "/@/assets/svg/full_screen.svg";
@@ -30,30 +29,44 @@ import setting from "./components/setting/index.vue";
 import Vertical from "./components/sidebar/vertical.vue";
 import Horizontal from "./components/sidebar/horizontal.vue";
 
+const instance = getCurrentInstance().appContext.app.config.globalProperties;
+const hiddenSideBar = ref(instance.$config?.HiddenSideBar);
 const pureSetting = useSettingStoreHook();
 
-const instance =
-  getCurrentInstance().appContext.app.config.globalProperties.$storage;
-
-const hiddenSideBar = ref(
-  getCurrentInstance().appContext.config.globalProperties.$config?.HiddenSideBar
-);
-
+// 清空缓存后从serverConfig.json读取默认配置并赋值到storage中
 const layout = computed(() => {
-  if (!instance.layout) {
+  // 路由
+  if (
+    !instance.$storage.routesInStorage ||
+    instance.$storage.routesInStorage.length === 0
+  ) {
     // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-    instance.layout = { layout: "vertical-dark" };
+    instance.$storage.routesInStorage = routerArrays;
   }
-  if (!instance.routesInStorage || instance.routesInStorage.length === 0) {
-    // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-    instance.routesInStorage = routerArrays;
-  }
-  if (!instance.locale) {
+  // 国际化
+  if (!instance.$storage.locale) {
     // eslint-disable-next-line
-    instance.locale = { locale: "zh" };
-    useI18n().locale.value = "zh";
+    instance.$storage.locale = { locale: instance.$config?.Locale ?? "zh" };
+    useI18n().locale.value = instance.$config?.Locale ?? "zh";
   }
-  return instance?.layout.layout;
+  // 导航
+  if (!instance.$storage.layout) {
+    // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+    instance.$storage.layout = {
+      layout: instance.$config?.Layout ?? "vertical",
+      theme: instance.$config?.Theme ?? "default"
+    };
+  }
+  // 灰色模式、色弱模式、隐藏标签页
+  if (!instance.$storage.sets) {
+    // eslint-disable-next-line
+    instance.$storage.sets = {
+      grey: instance.$config?.Grey ?? false,
+      weak: instance.$config?.Weak ?? false,
+      hideTabs: instance.$config?.HideTabs ?? false
+    };
+  }
+  return instance.$storage?.layout.layout;
 });
 
 const set: setType = reactive({
@@ -76,6 +89,10 @@ const set: setType = reactive({
       withoutAnimation: set.sidebar.withoutAnimation,
       mobile: set.device === "mobile"
     };
+  }),
+
+  hideTabs: computed(() => {
+    return instance.$storage?.sets.hideTabs;
   })
 });
 
@@ -84,11 +101,11 @@ const handleClickOutside = (params: boolean) => {
 };
 
 function setTheme(layoutModel: string) {
-  let { layout } = storageLocal.getItem("responsive-layout");
-  let theme = layout.match(/-(.*)/)[1];
-  window.document.body.setAttribute("data-layout", layoutModel);
-  window.document.body.setAttribute("data-theme", theme);
-  instance.layout = { layout: `${layoutModel}-${theme}` };
+  window.document.body.setAttribute("layout", layoutModel);
+  instance.$storage.layout = {
+    layout: `${layoutModel}`,
+    theme: instance.$storage.layout?.theme
+  };
 }
 
 // 监听容器
@@ -140,7 +157,14 @@ const layoutHeader = defineComponent({
   render() {
     return h(
       "div",
-      { class: { "fixed-header": set.fixedHeader } },
+      {
+        class: { "fixed-header": set.fixedHeader },
+        style: [
+          set.hideTabs && layout.value.includes("horizontal")
+            ? "box-shadow: 0 1px 4px rgb(0 21 41 / 8%);"
+            : ""
+        ]
+      },
       {
         default: () => [
           !hiddenSideBar.value && layout.value.includes("vertical")
