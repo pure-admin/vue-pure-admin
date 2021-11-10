@@ -20,7 +20,7 @@ specifiers:
   "@vue/eslint-config-typescript": 7.0.0
   "@vueuse/core": ^6.7.1
   "@vueuse/motion": ^2.0.0-beta.4
-  "@zougt/vite-plugin-theme-preprocessor": ^1.3.10
+  "@zougt/vite-plugin-theme-preprocessor": ^1.3.12
   animate.css: ^4.1.1
   autoprefixer: 10.2.4
   await-to-js: ^3.0.0
@@ -137,7 +137,7 @@ devDependencies:
   "@vue/compiler-sfc": 3.2.21
   "@vue/eslint-config-prettier": 6.0.0_82e4252401b0cc5be86f7c2133946f49
   "@vue/eslint-config-typescript": 7.0.0_e03d82996bd4a66fb128f33523d782ea
-  "@zougt/vite-plugin-theme-preprocessor": 1.3.10_sass@1.43.4
+  "@zougt/vite-plugin-theme-preprocessor": 1.3.12_sass@1.43.4
   autoprefixer: 10.2.4_postcss@8.2.6
   babel-plugin-transform-remove-console: 6.9.4
   chalk: 2.4.2
@@ -1540,10 +1540,10 @@ packages:
       sass: 1.43.4
     dev: true
 
-  /@zougt/vite-plugin-theme-preprocessor/1.3.10_sass@1.43.4:
+  /@zougt/vite-plugin-theme-preprocessor/1.3.12_sass@1.43.4:
     resolution:
       {
-        integrity: sha512-HHSTUYBv3quM8yRv57RJoDWqSm9cn9njCFk3ziSY+MALr7WT2uD5AmSnH9QBMVIU5jRcyPiuF3zDKbh8bifI+A==
+        integrity: sha512-QvHx6lDgzOvunZ2jG5Xerb/GDfvxrEPPwfK3GmcHbsvDuXy68nS66ezls2YM1qETp2lChaHYx1eynhdHqQhtzQ==
       }
     engines: { node: ">= 12.0.0" }
     dependencies:
