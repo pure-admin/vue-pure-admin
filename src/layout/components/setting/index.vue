@@ -65,7 +65,7 @@ if (unref(layoutTheme)) {
   toggleTheme({
     scopeName: `layout-theme-${theme}`
   });
-  window.document.body.setAttribute("layout", layout);
+  setLayoutModel(layout);
 }
 
 // 默认灵动模式
