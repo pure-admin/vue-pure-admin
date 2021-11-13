@@ -5,6 +5,9 @@ specifiers:
   "@commitlint/cli": 13.1.0
   "@commitlint/config-conventional": 13.1.0
   "@element-plus/icons": ^0.0.11
+  "@fortawesome/fontawesome-svg-core": ^1.2.36
+  "@fortawesome/free-solid-svg-icons": ^5.15.4
+  "@fortawesome/vue-fontawesome": ^3.0.0-5
   "@logicflow/core": 0.7.1
   "@logicflow/extension": 0.7.1
   "@types/element-resize-detector": 1.1.3
@@ -85,6 +88,9 @@ specifiers:
 dependencies:
   "@amap/amap-jsapi-loader": 1.0.1
   "@element-plus/icons": 0.0.11
+  "@fortawesome/fontawesome-svg-core": 1.2.36
+  "@fortawesome/free-solid-svg-icons": 5.15.4
+  "@fortawesome/vue-fontawesome": 3.0.0-5_a4ef6aa86ab1c63b266771040e7bf2c7
   "@logicflow/core": 0.7.1
   "@logicflow/extension": 0.7.1
   "@vueuse/core": 6.7.5_vue@3.2.21
@@ -811,6 +817,50 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /@fortawesome/fontawesome-common-types/0.2.36:
+    resolution:
+      {
+        integrity: sha512-a/7BiSgobHAgBWeN7N0w+lAhInrGxksn13uK7231n2m8EDPE3BMCl9NZLTGrj9ZXfCmC6LM0QLqXidIizVQ6yg==
+      }
+    engines: { node: ">=6" }
+    requiresBuild: true
+    dev: false
+
+  /@fortawesome/fontawesome-svg-core/1.2.36:
+    resolution:
+      {
+        integrity: sha512-YUcsLQKYb6DmaJjIHdDWpBIGCcyE/W+p/LMGvjQem55Mm2XWVAP5kWTMKWLv9lwpCVjpLxPyOMOyUocP1GxrtA==
+      }
+    engines: { node: ">=6" }
+    requiresBuild: true
+    dependencies:
+      "@fortawesome/fontawesome-common-types": 0.2.36
+    dev: false
+
+  /@fortawesome/free-solid-svg-icons/5.15.4:
+    resolution:
+      {
+        integrity: sha512-JLmQfz6tdtwxoihXLg6lT78BorrFyCf59SAwBM6qV/0zXyVeDygJVb3fk+j5Qat+Yvcxp1buLTY5iDh1ZSAQ8w==
+      }
+    engines: { node: ">=6" }
+    requiresBuild: true
+    dependencies:
+      "@fortawesome/fontawesome-common-types": 0.2.36
+    dev: false
+
+  /@fortawesome/vue-fontawesome/3.0.0-5_a4ef6aa86ab1c63b266771040e7bf2c7:
+    resolution:
+      {
+        integrity: sha512-aNmBT4bOecrFsZTog1l6AJDQHPP3ocXV+WQ3Ogy8WZCqstB/ahfhH4CPu5i4N9Hw0MBKXqE+LX+NbUxcj8cVTw==
+      }
+    peerDependencies:
+      "@fortawesome/fontawesome-svg-core": ~1 || >=1.3.0-beta1
+      vue: ">= 3.0.0 < 4"
+    dependencies:
+      "@fortawesome/fontawesome-svg-core": 1.2.36
+      vue: 3.2.21
+    dev: false
 
   /@humanwhocodes/config-array/0.5.0:
     resolution:

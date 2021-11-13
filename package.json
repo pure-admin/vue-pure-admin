@@ -30,6 +30,9 @@
   "dependencies": {
     "@amap/amap-jsapi-loader": "^1.0.1",
     "@element-plus/icons": "^0.0.11",
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/vue-fontawesome": "^3.0.0-5",
     "@logicflow/core": "0.7.1",
     "@logicflow/extension": "0.7.1",
     "@vueuse/core": "^6.7.1",
