@@ -119,8 +119,6 @@ If you think this project is helpful to you, you can help the author buy a cup o
 
 ## Exchange Group
 
-[WeChat exchange group, click to scan the code to enter the group](https://juejin.cn/post/6948419379566477342/)
-
 My WeChat: 18237613535, pull you into the group
 
 ## License

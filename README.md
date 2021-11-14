@@ -117,9 +117,7 @@ pnpm build
 
 <img src="http://yiming_chang.gitee.io/manages/pay.png" width="360px" height="480px" />
 
-## 交流群
-
-[微信交流群，点击扫码进群](https://juejin.cn/post/6948419379566477342/)
+## 微信交流群
 
 本人微信：18237613535，拉你进群
 
