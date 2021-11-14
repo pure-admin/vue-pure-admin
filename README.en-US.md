@@ -8,9 +8,10 @@
 
 vue-pure-admin is a free and open source middle and back-end template. Using the latest `vue3` `vite2` `Element-Plus` `TypeScript` and other mainstream technology development, the out-of-the-box middle and back-end front-end solutions can also be used for learning reference.
 
-## Supporting video tutorial
+## Supporting Video
 
-bilibili：<https://www.bilibili.com/video/BV1534y1S7HV/>
+Tutorial: <https://www.bilibili.com/video/BV1534y1S7HV/>  
+UI Design: <https://www.bilibili.com/video/BV17g411T7rq/>
 
 ## Preview
 

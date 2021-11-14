@@ -8,9 +8,10 @@
 
 vue-pure-admin 是一个免费开源的中后台模版。使用了最新的`vue3` `vite2` `Element-Plus` `TypeScript`等主流技术开发，开箱即用的中后台前端解决方案，也可用于学习参考。
 
-## 配套视频教程
+## 配套视频
 
-bilibili：<https://www.bilibili.com/video/BV1534y1S7HV/>
+教程：<https://www.bilibili.com/video/BV1534y1S7HV/>  
+UI 设计：<https://www.bilibili.com/video/BV17g411T7rq/>
 
 ## 预览
 
