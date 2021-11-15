@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
 import { useRoute, useRouter, RouteLocationMatched } from "vue-router";
+import { getMessage } from "/@/utils/i18n";
 
 const levelList = ref([]);
 const route = useRoute();
@@ -22,7 +23,7 @@ const getBreadcrumb = (): void => {
       {
         path: "/welcome",
         parentPath: "/",
-        meta: { title: "message.hshome" }
+        meta: { title: "message.hshome", i18n: true }
       } as unknown as RouteLocationMatched
     ].concat(matched);
   }
@@ -37,6 +38,9 @@ watch(
   () => route.path,
   () => getBreadcrumb()
 );
+const getI18nMessage = meta => {
+  return getMessage(meta.title, meta.i18n);
+};
 
 const handleLink = (item: RouteLocationMatched): any => {
   const { redirect, path } = item;
@@ -55,10 +59,10 @@ const handleLink = (item: RouteLocationMatched): any => {
         <span
           v-if="item.redirect === 'noRedirect' || index == levelList.length - 1"
           class="no-redirect"
-          >{{ $t(item.meta.title) }}</span
+          >{{ getI18nMessage(item.meta) }}</span
         >
         <a v-else @click.prevent="handleLink(item)">
-          {{ $t(item.meta.title) }}
+          {{ getI18nMessage(item.meta) }}
         </a>
       </el-breadcrumb-item>
     </transition-group>

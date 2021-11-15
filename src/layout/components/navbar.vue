@@ -10,6 +10,7 @@ import { unref, watch, getCurrentInstance } from "vue";
 import { deviceDetection } from "/@/utils/deviceDetection";
 import screenfull from "../components/screenfull/index.vue";
 import globalization from "/@/assets/svg/globalization.svg";
+import { getMessage } from "/@/utils/i18n";
 
 const instance =
   getCurrentInstance().appContext.config.globalProperties.$storage;
@@ -17,13 +18,17 @@ const pureApp = useAppStoreHook();
 const router = useRouter();
 const route = useRoute();
 let usename = storageSession.getItem("info")?.username;
-const { locale, t } = useI18n();
+const { locale } = useI18n();
 
 watch(
   () => locale.value,
   () => {
     //@ts-ignore
-    document.title = t(unref(route.meta.title)); // 动态title
+    document.title = getMessage(
+      //@ts-ignore
+      unref(route.meta.title),
+      unref(route.meta.i18n)
+    ); // 动态title
   }
 );
 
