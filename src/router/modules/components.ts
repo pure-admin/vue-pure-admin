@@ -8,6 +8,7 @@ const componentsRouter = {
   meta: {
     icon: "Menu",
     title: "message.hscomponents",
+    i18n: true,
     showLink: true,
     rank: 4
   },

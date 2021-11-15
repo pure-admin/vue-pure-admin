@@ -152,7 +152,7 @@ function resolvePath(routePath) {
         <component :is="props.item.meta && props.item.meta.icon"></component>
       </el-icon>
       <span v-if="!menuMode">{{
-        getMessage(onlyOneChild.meta.title, onlyOneChild.meta.i18n)
+        getMessage(props.item.meta.title, props.item.meta.i18n)
       }}</span>
       <el-tooltip
         v-else
@@ -161,7 +161,7 @@ function resolvePath(routePath) {
         :disabled="!pureApp.sidebar.opened || !props.item.showTooltip"
       >
         <template #content>
-          {{ getMessage(onlyOneChild.meta.title, onlyOneChild.meta.i18n) }}
+          {{ getMessage(props.item.meta.title, props.item.meta.i18n) }}
         </template>
         <div
           ref="menuTextRef"
@@ -174,7 +174,7 @@ function resolvePath(routePath) {
           @mouseover="hoverMenu(props.item)"
         >
           <span style="overflow: hidden; text-overflow: ellipsis">
-            {{ getMessage(onlyOneChild.meta.title, onlyOneChild.meta.i18n) }}
+            {{ getMessage(props.item.meta.title, props.item.meta.i18n) }}
           </span>
         </div>
       </el-tooltip>
