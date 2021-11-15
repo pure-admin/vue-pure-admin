@@ -8,6 +8,7 @@ const remainingRouter = [
     meta: {
       title: "message.hslogin",
       showLink: false,
+      i18n: true,
       rank: 101
     }
   },
@@ -18,6 +19,7 @@ const remainingRouter = [
     meta: {
       icon: "HomeFilled",
       title: "message.hshome",
+      i18n: true,
       showLink: false,
       rank: 104
     },

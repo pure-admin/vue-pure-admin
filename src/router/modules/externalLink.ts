@@ -8,6 +8,7 @@ const externalLink = {
     icon: "Link",
     title: "message.externalLink",
     showLink: true,
+    i18n: true,
     rank: 190
   },
   children: [
@@ -16,6 +17,7 @@ const externalLink = {
       meta: {
         title: "message.externalLink",
         showLink: true,
+        i18n: true,
         rank: 191
       }
     }

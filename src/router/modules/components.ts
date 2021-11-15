@@ -8,6 +8,7 @@ const componentsRouter = {
   meta: {
     icon: "Menu",
     title: "message.hscomponents",
+    i18n: true,
     showLink: true,
     rank: 4
   },
@@ -18,7 +19,8 @@ const componentsRouter = {
       component: () => import("/@/views/components/video/index.vue"),
       meta: {
         title: "message.hsvideo",
-        showLink: true
+        showLink: true,
+        i18n: true
       }
     },
     {
@@ -29,6 +31,7 @@ const componentsRouter = {
         title: "message.hsmap",
         showLink: true,
         keepAlive: true,
+        i18n: true,
         transition: {
           name: "fade"
         }
@@ -41,6 +44,7 @@ const componentsRouter = {
       meta: {
         title: "message.hsdraggable",
         showLink: true,
+        i18n: true,
         transition: {
           enterTransition: "animate__zoomIn",
           leaveTransition: "animate__zoomOut"
@@ -55,6 +59,7 @@ const componentsRouter = {
       meta: {
         title: "message.hssplitPane",
         showLink: true,
+        i18n: true,
         extraIcon: {
           svg: true,
           name: "team-iconxinpinrenqiwang"
@@ -67,6 +72,7 @@ const componentsRouter = {
       component: () => import("/@/views/components/button/index.vue"),
       meta: {
         title: "message.hsbutton",
+        i18n: true,
         showLink: true
       }
     },
@@ -76,6 +82,7 @@ const componentsRouter = {
       component: () => import("/@/views/components/cropping/index.vue"),
       meta: {
         title: "message.hscropping",
+        i18n: true,
         showLink: true
       }
     },
@@ -85,6 +92,7 @@ const componentsRouter = {
       component: () => import("/@/views/components/count-to/index.vue"),
       meta: {
         title: "message.hscountTo",
+        i18n: true,
         showLink: true
       }
     },
@@ -94,6 +102,7 @@ const componentsRouter = {
       component: () => import("/@/views/components/selector/index.vue"),
       meta: {
         title: "message.hsselector",
+        i18n: true,
         showLink: true
       }
     },
@@ -103,6 +112,7 @@ const componentsRouter = {
       component: () => import("/@/views/components/seamless-scroll/index.vue"),
       meta: {
         title: "message.hsseamless",
+        i18n: true,
         showLink: true
       }
     },
@@ -112,6 +122,7 @@ const componentsRouter = {
       component: () => import("/@/views/components/contextmenu/index.vue"),
       meta: {
         title: "message.hscontextmenu",
+        i18n: true,
         showLink: true
       }
     }

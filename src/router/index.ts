@@ -7,7 +7,6 @@ import {
 } from "vue-router";
 import { RouteConfigs } from "/@/layout/types";
 import { split, uniqBy } from "lodash-es";
-import { i18n } from "/@/plugins/i18n";
 import { openLink } from "/@/utils/link";
 import NProgress from "/@/utils/progress";
 import { useTimeoutFn } from "@vueuse/core";
@@ -26,6 +25,7 @@ import flowChartRouter from "./modules/flowchart";
 import componentsRouter from "./modules/components";
 // 动态路由
 import { getAsyncRoutes } from "/@/api/routes";
+import { getMessage } from "../utils/i18n";
 
 // https://cn.vitejs.dev/guide/features.html#glob-import
 const modulesRoutes = import.meta.glob("/src/views/*/*/*.vue");
@@ -209,9 +209,13 @@ router.beforeEach((to, _from, next) => {
   NProgress.start();
   const externalLink = to?.redirectedFrom?.fullPath;
   // @ts-ignore
-  const { t } = i18n.global;
+  // const { t } = i18n.global;
   // @ts-ignore
-  if (!externalLink) to.meta.title ? (document.title = t(to.meta.title)) : "";
+  if (!externalLink)
+    to.meta.title
+      ? // @ts-ignore
+        (document.title = getMessage(to.meta.title, to.meta.i18n))
+      : "";
   if (name) {
     if (_from?.name) {
       // 如果路由包含http 则是超链接 反之是普通路由
