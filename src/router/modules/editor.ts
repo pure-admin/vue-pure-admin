@@ -8,6 +8,7 @@ const editorRouter = {
   meta: {
     icon: "Edit",
     title: "message.hseditor",
+    i18n: true,
     showLink: true,
     rank: 2
   },
@@ -19,6 +20,7 @@ const editorRouter = {
       meta: {
         title: "message.hseditor",
         showLink: true,
+        i18n: true,
         keepAlive: true,
         extraIcon: {
           svg: true,

@@ -9,6 +9,7 @@ const errorRouter = {
     icon: "Position",
     title: "message.hserror",
     showLink: true,
+    i18n: true,
     rank: 7
   },
   children: [
@@ -18,6 +19,7 @@ const errorRouter = {
       component: () => import("/@/views/error/401.vue"),
       meta: {
         title: "message.hsfourZeroOne",
+        i18n: true,
         showLink: true
       }
     },
@@ -27,6 +29,7 @@ const errorRouter = {
       component: () => import("/@/views/error/404.vue"),
       meta: {
         title: "message.hsfourZeroFour",
+        i18n: true,
         showLink: true
       }
     }

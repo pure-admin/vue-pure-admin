@@ -9,6 +9,7 @@ const nestedRouter = {
     title: "message.hsmenus",
     icon: "Histogram",
     showLink: true,
+    i18n: true,
     rank: 5
   },
   children: [
@@ -19,6 +20,7 @@ const nestedRouter = {
       meta: {
         title: "message.hsmenu1",
         showLink: true,
+        i18n: true,
         keepAlive: true
       },
       redirect: "/nested/menu1/menu1-1",
@@ -30,6 +32,7 @@ const nestedRouter = {
           meta: {
             title: "message.hsmenu1-1",
             showLink: true,
+            i18n: true,
             keepAlive: true
           }
         },
@@ -41,6 +44,7 @@ const nestedRouter = {
           meta: {
             title: "message.hsmenu1-2",
             showLink: true,
+            i18n: true,
             keepAlive: true
           },
           children: [
@@ -52,6 +56,7 @@ const nestedRouter = {
               meta: {
                 title: "message.hsmenu1-2-1",
                 showLink: true,
+                i18n: true,
                 keepAlive: true
               }
             },
@@ -64,6 +69,7 @@ const nestedRouter = {
                 title: "message.hsmenu1-2-2",
                 showLink: true,
                 keepAlive: true,
+                i18n: true,
                 extraIcon: {
                   svg: true,
                   name: "team-iconxinpinrenqiwang"
@@ -79,6 +85,7 @@ const nestedRouter = {
           meta: {
             title: "message.hsmenu1-3",
             showLink: true,
+            i18n: true,
             keepAlive: true
           }
         }
@@ -91,6 +98,7 @@ const nestedRouter = {
       meta: {
         title: "message.hsmenu2",
         showLink: true,
+        i18n: true,
         keepAlive: true
       }
     }

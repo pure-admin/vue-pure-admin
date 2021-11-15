@@ -58,6 +58,7 @@ export type childrenType = {
   meta?: {
     icon?: string;
     title?: string;
+    i18n?: boolean;
     extraIcon?: {
       svg?: boolean;
       name?: string;

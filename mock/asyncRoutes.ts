@@ -9,6 +9,7 @@ const systemRouter = {
   meta: {
     icon: "Setting",
     title: "message.hssysManagement",
+    i18n: true,
     showLink: true,
     rank: 6
   },
@@ -18,6 +19,7 @@ const systemRouter = {
       name: "user",
       meta: {
         title: "message.hsBaseinfo",
+        i18n: true,
         showLink: true
       }
     },
@@ -26,6 +28,7 @@ const systemRouter = {
       name: "dict",
       meta: {
         title: "message.hsDict",
+        i18n: true,
         showLink: true
       }
     }
@@ -39,6 +42,7 @@ const permissionRouter = {
   meta: {
     title: "message.permission",
     icon: "Lollipop",
+    i18n: true,
     showLink: true,
     rank: 3
   },
@@ -48,6 +52,7 @@ const permissionRouter = {
       name: "permissionPage",
       meta: {
         title: "message.permissionPage",
+        i18n: true,
         showLink: true
       }
     },
@@ -56,6 +61,7 @@ const permissionRouter = {
       name: "permissionButton",
       meta: {
         title: "message.permissionButton",
+        i18n: true,
         showLink: true,
         authority: []
       }
