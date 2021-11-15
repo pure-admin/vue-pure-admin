@@ -30,9 +30,9 @@ const componentsRouter = {
         title: "message.hsmap",
         showLink: true,
         keepAlive: true,
+        i18n: true,
         transition: {
-          name: "fade",
-          i18n: true
+          name: "fade"
         }
       }
     },
