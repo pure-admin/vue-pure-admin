@@ -4,7 +4,7 @@ import { PropType, ref, nextTick, getCurrentInstance } from "vue";
 import { childrenType } from "../../types";
 import { useAppStoreHook } from "/@/store/modules/app";
 import Icon from "/@/components/ReIcon/src/Icon.vue";
-
+import { findIconReg } from "/@/components/ReIcon";
 const instance = getCurrentInstance().appContext.app.config.globalProperties;
 const menuMode = instance.$storage.layout?.layout === "vertical";
 const pureApp = useAppStoreHook();
@@ -92,7 +92,10 @@ function resolvePath(routePath) {
       <el-icon v-show="props.item.meta.icon">
         <component
           :is="
-            onlyOneChild.meta.icon || (props.item.meta && props.item.meta.icon)
+            findIconReg(
+              onlyOneChild.meta.icon ||
+                (props.item.meta && props.item.meta.icon)
+            )
           "
         ></component>
       </el-icon>
@@ -144,7 +147,9 @@ function resolvePath(routePath) {
   >
     <template #title>
       <el-icon v-show="props.item.meta.icon" :class="props.item.meta.icon">
-        <component :is="props.item.meta && props.item.meta.icon"></component>
+        <component
+          :is="findIconReg(props.item.meta && props.item.meta.icon)"
+        ></component>
       </el-icon>
       <span v-if="!menuMode">{{ $t(props.item.meta.title) }}</span>
       <el-tooltip
