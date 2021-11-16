@@ -20,7 +20,7 @@ class sessionStorageProxy implements ProxyStorage {
 
   // 取
   public getItem(key: string): any {
-    return JSON.parse(this.storage.getItem(key)) || null;
+    return JSON.parse(this.storage.getItem(key));
   }
 
   // 删
