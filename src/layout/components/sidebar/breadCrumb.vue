@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
 import { useRoute, useRouter, RouteLocationMatched } from "vue-router";
-import { transformI18n } from "/@/utils/i18n";
+import { transformRouteTitleI18n } from "/@/router";
 
 const levelList = ref([]);
 const route = useRoute();
@@ -19,13 +19,13 @@ const getBreadcrumb = (): void => {
   let matched = route.matched.filter(item => item.meta && item.meta.title);
   const first = matched[0];
   if (!isDashboard(first)) {
-    matched = [
+    matched = transformRouteTitleI18n([
       {
         path: "/welcome",
         parentPath: "/",
         meta: { title: "message.hshome", i18n: true }
-      } as unknown as RouteLocationMatched
-    ].concat(matched);
+      }
+    ]).concat(matched) as Array<RouteLocationMatched>;
   }
   levelList.value = matched.filter(
     item => item.meta && item.meta.title && item.meta.breadcrumb !== false
@@ -56,10 +56,10 @@ const handleLink = (item: RouteLocationMatched): any => {
         <span
           v-if="item.redirect === 'noRedirect' || index == levelList.length - 1"
           class="no-redirect"
-          >{{ transformI18n(item.meta.title, item.meta.i18n) }}</span
+          >{{ item.meta.title }}</span
         >
         <a v-else @click.prevent="handleLink(item)">
-          {{ transformI18n(item.meta.title, item.meta.i18n) }}
+          {{ item.meta.title }}
         </a>
       </el-breadcrumb-item>
     </transition-group>

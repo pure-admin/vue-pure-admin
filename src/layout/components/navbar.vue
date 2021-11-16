@@ -10,7 +10,6 @@ import { unref, watch, getCurrentInstance } from "vue";
 import { deviceDetection } from "/@/utils/deviceDetection";
 import screenfull from "../components/screenfull/index.vue";
 import globalization from "/@/assets/svg/globalization.svg";
-import { transformI18n } from "/@/utils/i18n";
 
 const instance =
   getCurrentInstance().appContext.config.globalProperties.$storage;
@@ -24,11 +23,7 @@ watch(
   () => locale.value,
   () => {
     //@ts-ignore
-    document.title = transformI18n(
-      //@ts-ignore
-      unref(route.meta.title),
-      unref(route.meta.i18n)
-    ); // 动态title
+    document.title = unref(route.meta.title); // 动态title
   }
 );
 

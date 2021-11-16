@@ -49,13 +49,16 @@ const constantRoutes: Array<customRouteComponent> = [
 ];
 export const transformRouteTitleI18n = (
   routes: Array<customRouteComponent>
-) => {
+): Array<customRouteComponent> => {
   if (!routes || routes.length === 0) return;
   routes.forEach((route: customRouteComponent) => {
-    if (route.meta)
+    if (route.meta) {
       route.meta.title = transformI18n(route.meta.title, route.meta.i18n);
+      route.meta.i18n = false;
+    }
     transformRouteTitleI18n(route.children);
   });
+  return routes;
 };
 transformRouteTitleI18n(constantRoutes);
 transformRouteTitleI18n(remainingRouter as Array<customRouteComponent>);

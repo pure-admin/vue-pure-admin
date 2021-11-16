@@ -32,7 +32,7 @@ import { storageLocal } from "/@/utils/storage";
 import { useRoute, useRouter } from "vue-router";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 import { toggleClass, removeClass, hasClass } from "/@/utils/operate";
-import { transformI18n } from "/@/utils/i18n";
+import { transformRouteTitleI18n } from "/@/router";
 
 import close from "/@/assets/svg/close.svg";
 import refresh from "/@/assets/svg/refresh.svg";
@@ -97,7 +97,7 @@ const tagsViews = ref<Array<tagsViewsType>>([
   }
 ]);
 const dynamicTagList: ComputedRef<Array<RouteConfigs>> = computed(() => {
-  return relativeStorage.routesInStorage;
+  return transformRouteTitleI18n(relativeStorage.routesInStorage);
 });
 
 // 显示模式，默认灵动模式显示
@@ -484,7 +484,7 @@ onBeforeMount(() => {
         @mouseleave.prevent="onMouseleave(item, index)"
       >
         <router-link :to="item.path" @click="tagOnClick(item)">{{
-          transformI18n(item.meta.title, item.meta.i18n)
+          item.meta.title
         }}</router-link>
         <el-icon
           v-if="

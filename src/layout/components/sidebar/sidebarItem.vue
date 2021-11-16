@@ -4,7 +4,6 @@ import { PropType, ref, nextTick, getCurrentInstance } from "vue";
 import { childrenType } from "../../types";
 import { useAppStoreHook } from "/@/store/modules/app";
 import Icon from "/@/components/ReIcon/src/Icon.vue";
-import { transformI18n } from "/@/utils/i18n";
 import { findIconReg } from "/@/components/ReIcon";
 const instance = getCurrentInstance().appContext.app.config.globalProperties;
 const menuMode = instance.$storage.layout?.layout === "vertical";
@@ -110,9 +109,7 @@ function resolvePath(routePath) {
             overflow: 'hidden'
           }"
         >
-          <span v-if="!menuMode">{{
-            transformI18n(onlyOneChild.meta.title, onlyOneChild.meta.i18n)
-          }}</span>
+          <span v-if="!menuMode">{{ onlyOneChild.meta.title }}</span>
           <el-tooltip
             v-else
             placement="top"
@@ -120,9 +117,7 @@ function resolvePath(routePath) {
             :disabled="!onlyOneChild.showTooltip"
           >
             <template #content>
-              {{
-                transformI18n(onlyOneChild.meta.title, onlyOneChild.meta.i18n)
-              }}
+              {{ onlyOneChild.meta.title }}
             </template>
             <span
               ref="menuTextRef"
@@ -133,9 +128,7 @@ function resolvePath(routePath) {
               }"
               @mouseover="hoverMenu(onlyOneChild)"
             >
-              {{
-                transformI18n(onlyOneChild.meta.title, onlyOneChild.meta.i18n)
-              }}
+              {{ onlyOneChild.meta.title }}
             </span>
           </el-tooltip>
           <Icon
@@ -160,9 +153,7 @@ function resolvePath(routePath) {
           :is="findIconReg(props.item.meta && props.item.meta.icon)"
         ></component>
       </el-icon>
-      <span v-if="!menuMode">{{
-        transformI18n(props.item.meta.title, props.item.meta.i18n)
-      }}</span>
+      <span v-if="!menuMode">{{ props.item.meta.title }}</span>
       <el-tooltip
         v-else
         placement="top"
@@ -170,7 +161,7 @@ function resolvePath(routePath) {
         :disabled="!pureApp.sidebar.opened || !props.item.showTooltip"
       >
         <template #content>
-          {{ transformI18n(props.item.meta.title, props.item.meta.i18n) }}
+          {{ props.item.meta.title }}
         </template>
         <div
           ref="menuTextRef"
@@ -183,7 +174,7 @@ function resolvePath(routePath) {
           @mouseover="hoverMenu(props.item)"
         >
           <span style="overflow: hidden; text-overflow: ellipsis">
-            {{ transformI18n(props.item.meta.title, props.item.meta.i18n) }}
+            {{ props.item.meta.title }}
           </span>
         </div>
       </el-tooltip>
