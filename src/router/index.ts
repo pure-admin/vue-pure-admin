@@ -30,7 +30,15 @@ import { transformI18n } from "../utils/i18n";
 // https://cn.vitejs.dev/guide/features.html#glob-import
 const modulesRoutes = import.meta.glob("/src/views/*/*/*.vue");
 
-const constantRoutes: Array<RouteComponent> = [
+type customRouteComponent = {
+  meta?: {
+    title?: string;
+    i18n?: boolean;
+  };
+  children?: Array<RouteComponent & customRouteComponent>;
+} & RouteComponent;
+
+const constantRoutes: Array<customRouteComponent> = [
   homeRouter,
   flowChartRouter,
   editorRouter,
@@ -39,6 +47,18 @@ const constantRoutes: Array<RouteComponent> = [
   externalLink,
   errorRouter
 ];
+export const transformRouteTitleI18n = (
+  routes: Array<customRouteComponent>
+) => {
+  if (!routes || routes.length === 0) return;
+  routes.forEach((route: customRouteComponent) => {
+    if (route.meta)
+      route.meta.title = transformI18n(route.meta.title, route.meta.i18n);
+    transformRouteTitleI18n(route.children);
+  });
+};
+transformRouteTitleI18n(constantRoutes);
+transformRouteTitleI18n(remainingRouter as Array<customRouteComponent>);
 
 // 按照路由中meta下的rank等级升序来排序路由
 export const ascending = arr => {
@@ -157,6 +177,7 @@ export const initRouter = name => {
       if (info.length === 0) {
         usePermissionStoreHook().changeSetting(info);
       } else {
+        transformRouteTitleI18n(info);
         addAsyncRoutes(info).map((v: any) => {
           // 防止重复添加路由
           if (
@@ -210,12 +231,7 @@ router.beforeEach((to, _from, next) => {
   const externalLink = to?.redirectedFrom?.fullPath;
   if (!externalLink)
     to.matched.some(item => {
-      item.meta.title
-        ? (document.title = transformI18n(
-            item.meta.title as string,
-            item.meta?.i18n as boolean
-          ))
-        : "";
+      item.meta.title ? (document.title = item.meta.title as string) : "";
     });
   if (name) {
     if (_from?.name) {
