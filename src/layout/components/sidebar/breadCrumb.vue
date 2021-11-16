@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
 import { useRoute, useRouter, RouteLocationMatched } from "vue-router";
-import { transformRouteTitleI18n } from "/@/router";
+import { transformI18n } from "/@/utils/i18n";
 
 const levelList = ref([]);
 const route = useRoute();
@@ -19,13 +19,13 @@ const getBreadcrumb = (): void => {
   let matched = route.matched.filter(item => item.meta && item.meta.title);
   const first = matched[0];
   if (!isDashboard(first)) {
-    matched = transformRouteTitleI18n([
+    matched = [
       {
         path: "/welcome",
         parentPath: "/",
-        meta: { title: "message.hshome", i18n: true }
-      }
-    ]).concat(matched) as Array<RouteLocationMatched>;
+        meta: { title: transformI18n("message.hshome", true) }
+      } as unknown as RouteLocationMatched
+    ].concat(matched);
   }
   levelList.value = matched.filter(
     item => item.meta && item.meta.title && item.meta.breadcrumb !== false
