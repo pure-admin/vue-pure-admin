@@ -4,6 +4,7 @@ export const routerArrays: Array<RouteConfigs> = [
     parentPath: "/",
     meta: {
       title: "message.hshome",
+      i18n: true,
       icon: "el-icon-s-home",
       showLink: true
     }
@@ -15,6 +16,7 @@ export type RouteConfigs = {
   parentPath?: string;
   meta?: {
     title?: string;
+    i18n?: boolean;
     icon?: string;
     showLink?: boolean;
     savedPosition?: boolean;

@@ -25,7 +25,7 @@ import flowChartRouter from "./modules/flowchart";
 import componentsRouter from "./modules/components";
 // 动态路由
 import { getAsyncRoutes } from "/@/api/routes";
-import { getMessage } from "../utils/i18n";
+import { transformI18n } from "../utils/i18n";
 
 // https://cn.vitejs.dev/guide/features.html#glob-import
 const modulesRoutes = import.meta.glob("/src/views/*/*/*.vue");
@@ -214,7 +214,7 @@ router.beforeEach((to, _from, next) => {
   if (!externalLink)
     to.meta.title
       ? // @ts-ignore
-        (document.title = getMessage(to.meta.title, to.meta.i18n))
+        (document.title = transformI18n(to.meta.title, to.meta.i18n))
       : "";
   if (name) {
     if (_from?.name) {
