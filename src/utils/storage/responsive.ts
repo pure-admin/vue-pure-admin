@@ -13,7 +13,8 @@ export const injectResponsiveStorage = (app: App, config: ServerConfigs) => {
           parentPath: "/",
           meta: {
             title: "message.hshome",
-            icon: "el-icon-s-home",
+            i18n: true,
+            icon: "HomeFilled",
             showLink: true
           }
         }
