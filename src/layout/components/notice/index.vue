@@ -1,74 +1,30 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import NoticeList from "./noticeList.vue";
+import { noticesData } from "./data";
 
-const loading = ref(false);
-const activeName = ref("first");
-
-function visibleChange(val) {
-  if (loading.value) {
-    loading.value = false;
-    return;
-  }
-  if (!val) return; //防止加载完成后再次点击出现loading
-  loading.value = true;
-  setTimeout(() => {
-    loading.value = false;
-  }, 1000);
-}
-
-const noticeList = [
-  {
-    imgUrl:
-      "https://gw.alipayobjects.com/zos/rmsportal/ThXAXghbEsBCCSDihZxY.png",
-    title: "你收到了 12 份新周报",
-    description: "一年前"
-  },
-  {
-    imgUrl:
-      "https://gw.alipayobjects.com/zos/rmsportal/OKJXDXrmkNshAMvwtvhu.png",
-    title: "你推荐的 前端高手 已通过第三轮面试",
-    description: "一年前"
-  },
-  {
-    imgUrl:
-      "https://gw.alipayobjects.com/zos/rmsportal/kISTdvpyTAhtGxpovNWd.png",
-    title: "这种模板可以区分多种通知类型",
-    description: "一年前"
-  }
-];
-const newsList = [];
-const agencyList = [];
+const activeName = ref(noticesData[0].name);
+const notices = ref(noticesData);
 </script>
 
 <template>
-  <el-dropdown
-    trigger="click"
-    placement="bottom-end"
-    @visible-change="visibleChange"
-  >
+  <el-dropdown trigger="click" placement="bottom-end">
     <span class="dropdown-badge">
-      <el-badge :value="12" :max="99">
+      <el-badge :value="10" :max="99">
         <el-icon class="header-notice-icon"><bell /></el-icon>
       </el-badge>
     </span>
     <template #dropdown>
       <el-dropdown-menu>
-        <el-tabs
-          v-model="activeName"
-          v-loading="loading"
-          class="dropdown-tabs"
-          :style="{ width: '297px' }"
-        >
-          <el-tab-pane label="通知" name="first">
-            <NoticeList :list="noticeList" />
-          </el-tab-pane>
-          <el-tab-pane label="消息" name="second">
-            <NoticeList :list="newsList" />
-          </el-tab-pane>
-          <el-tab-pane label="代办" name="third">
-            <NoticeList :list="agencyList" />
-          </el-tab-pane>
+        <el-tabs v-model="activeName" class="dropdown-tabs">
+          <template v-for="item in notices" :key="item.key">
+            <el-tab-pane
+              :label="`${item.name}(${item.list.length})`"
+              :name="item.name"
+            >
+              <NoticeList :list="item.list" />
+            </el-tab-pane>
+          </template>
         </el-tabs>
       </el-dropdown-menu>
     </template>
@@ -90,6 +46,7 @@ const agencyList = [];
 }
 
 .dropdown-tabs {
+  width: 336px;
   background-color: #fff;
   box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
   border-radius: 4px;

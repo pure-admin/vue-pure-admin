@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { PropType } from "vue";
 import NoticeItem from "./noticeItem.vue";
-import { noticeItemType } from "../../types";
+import { ListItem } from "./data";
 
 const props = defineProps({
   list: {
-    type: Array as PropType<Array<noticeItemType>>,
+    type: Array as PropType<Array<ListItem>>,
     default: () => []
   }
 });

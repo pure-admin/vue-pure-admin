@@ -73,9 +73,3 @@ export type themeColorsType = {
   rgb: string;
   themeColor: string;
 };
-
-export type noticeItemType = {
-  imgUrl: string;
-  title: string;
-  description: string;
-};
