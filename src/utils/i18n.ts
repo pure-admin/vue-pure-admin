@@ -1,11 +1,11 @@
 import { i18n } from "../plugins/i18n";
 /**
- * 获取对应的消息
+ * 消息转换
  * @param message message
  * @param isI18n  如果true,获取对应的消息,否则返回this
  * @returns message
  */
-export function getMessage(message = "", isI18n: Boolean = false) {
+export function transformI18n(message = "", isI18n: Boolean = false) {
   if (!message) {
     return "";
   }

@@ -6,6 +6,7 @@ let routerArrays: Array<RouteConfigs> = [
     meta: {
       title: "message.hshome",
       icon: "el-icon-s-home",
+      i18n: true,
       showLink: true
     }
   }
@@ -31,6 +32,7 @@ import { storageLocal } from "/@/utils/storage";
 import { useRoute, useRouter } from "vue-router";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 import { toggleClass, removeClass, hasClass } from "/@/utils/operate";
+import { transformI18n } from "/@/utils/i18n";
 
 import close from "/@/assets/svg/close.svg";
 import refresh from "/@/assets/svg/refresh.svg";
@@ -166,6 +168,7 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
           parentPath: "/",
           meta: {
             title: "message.hshome",
+            i18n: true,
             icon: "el-icon-s-home",
             showLink: true
           }
@@ -481,7 +484,7 @@ onBeforeMount(() => {
         @mouseleave.prevent="onMouseleave(item, index)"
       >
         <router-link :to="item.path" @click="tagOnClick(item)">{{
-          $t(item.meta.title)
+          transformI18n(item.meta.title, item.meta.i18n)
         }}</router-link>
         <el-icon
           v-if="
