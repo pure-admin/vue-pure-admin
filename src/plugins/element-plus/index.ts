@@ -23,7 +23,6 @@ import {
   ElInput,
   ElForm,
   ElFormItem,
-  ElLoading,
   ElPopover,
   ElPopper,
   ElTooltip,
@@ -36,7 +35,15 @@ import {
   ElDescriptions,
   ElDescriptionsItem,
   ElBacktop,
-  ElSwitch
+  ElSwitch,
+  ElBadge,
+  ElTabs,
+  ElTabPane,
+  ElAvatar,
+  ElEmpty,
+  // 指令
+  ElLoading,
+  ElInfiniteScroll
 } from "element-plus";
 
 // https://element-plus.org/zh-CN/component/icon.html
@@ -54,7 +61,8 @@ import {
   RefreshRight,
   ArrowDown,
   Close,
-  CloseBold
+  CloseBold,
+  Bell
 } from "@element-plus/icons";
 
 const components = [
@@ -93,7 +101,12 @@ const components = [
   ElDescriptions,
   ElDescriptionsItem,
   ElBacktop,
-  ElSwitch
+  ElSwitch,
+  ElBadge,
+  ElTabs,
+  ElTabPane,
+  ElAvatar,
+  ElEmpty
 ];
 // icon
 export const iconComponents = [
@@ -110,10 +123,11 @@ export const iconComponents = [
   RefreshRight,
   ArrowDown,
   Close,
-  CloseBold
+  CloseBold,
+  Bell
 ];
 
-const plugins = [ElLoading];
+const plugins = [ElLoading, ElInfiniteScroll];
 
 export function useElementPlus(app: App) {
   components.push(...iconComponents);

@@ -212,6 +212,15 @@
       color: $subMenuActiveText;
       justify-content: flex-end;
 
+      .dropdown-badge {
+        height: 62px;
+        color: $subMenuActiveText;
+
+        &:hover {
+          background: $menuHover;
+        }
+      }
+
       .screen-full {
         cursor: pointer;
 

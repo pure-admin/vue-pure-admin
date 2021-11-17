@@ -9,6 +9,7 @@ import {
 } from "vue";
 import { useI18n } from "vue-i18n";
 import { emitter } from "/@/utils/mitt";
+import Notice from "../notice/index.vue";
 import { templateRef } from "@vueuse/core";
 import SidebarItem from "./sidebarItem.vue";
 import { algorithm } from "/@/utils/algorithm";
@@ -138,6 +139,8 @@ onMounted(() => {
       />
     </el-menu>
     <div class="horizontal-header-right">
+      <!-- 通知 -->
+      <Notice />
       <!-- 全屏 -->
       <screenfull v-show="!deviceDetection()" />
       <!-- 国际化 -->

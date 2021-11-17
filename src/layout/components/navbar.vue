@@ -5,6 +5,7 @@ import Hamburger from "./sidebar/hamBurger.vue";
 import { useRouter, useRoute } from "vue-router";
 import { storageSession } from "/@/utils/storage";
 import Breadcrumb from "./sidebar/breadCrumb.vue";
+import Notice from "./notice/index.vue";
 import { useAppStoreHook } from "/@/store/modules/app";
 import { unref, watch, getCurrentInstance } from "vue";
 import { deviceDetection } from "/@/utils/deviceDetection";
@@ -70,6 +71,8 @@ function translationEn() {
     <Breadcrumb class="breadcrumb-container" />
 
     <div class="vertical-header-right">
+      <!-- 通知 -->
+      <Notice />
       <!-- 全屏 -->
       <screenfull v-show="!deviceDetection()" />
       <!-- 国际化 -->
@@ -155,6 +158,12 @@ function translationEn() {
     align-items: center;
     color: #000000d9;
     justify-content: flex-end;
+
+    :deep(.dropdown-badge) {
+      &:hover {
+        background: #f6f6f6;
+      }
+    }
 
     .screen-full {
       cursor: pointer;
