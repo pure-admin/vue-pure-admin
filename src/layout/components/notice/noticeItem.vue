@@ -15,7 +15,6 @@ const titleTooltip = ref(false);
 const descriptionTooltip = ref(false);
 
 function hoverTitle() {
-  titleTooltip.value = false;
   nextTick(() => {
     titleRef.value?.scrollWidth > titleRef.value?.clientWidth
       ? (titleTooltip.value = true)

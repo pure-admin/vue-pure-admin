@@ -5,12 +5,17 @@ import { noticesData } from "./data";
 
 const activeName = ref(noticesData[0].name);
 const notices = ref(noticesData);
+
+let noticesNum = ref(0);
+notices.value.forEach(notice => {
+  noticesNum.value += notice.list.length;
+});
 </script>
 
 <template>
   <el-dropdown trigger="click" placement="bottom-end">
     <span class="dropdown-badge">
-      <el-badge :value="10" :max="99">
+      <el-badge :value="noticesNum" :max="99">
         <el-icon class="header-notice-icon"><bell /></el-icon>
       </el-badge>
     </span>
@@ -22,7 +27,11 @@ const notices = ref(noticesData);
               :label="`${item.name}(${item.list.length})`"
               :name="item.name"
             >
-              <NoticeList :list="item.list" />
+              <el-scrollbar max-height="404px">
+                <div class="noticeList-container">
+                  <NoticeList :list="item.list" />
+                </div>
+              </el-scrollbar>
             </el-tab-pane>
           </template>
         </el-tabs>
@@ -51,6 +60,10 @@ const notices = ref(noticesData);
   box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
   border-radius: 4px;
 
+  :deep(.el-tabs__header) {
+    margin: 0;
+  }
+
   :deep(.el-tabs__nav-scroll) {
     display: flex;
     justify-content: center;
@@ -60,8 +73,8 @@ const notices = ref(noticesData);
     height: 1px;
   }
 
-  :deep(.el-tabs__content) {
-    padding: 0 24px;
+  :deep(.noticeList-container) {
+    padding: 15px 24px 0 24px;
   }
 }
 </style>
