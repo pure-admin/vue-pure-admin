@@ -34,6 +34,7 @@ type customRouteComponent = {
   meta?: {
     title?: string;
     i18n?: boolean;
+    sourceTitle?: string;
   };
   children?: Array<RouteComponent & customRouteComponent>;
 } & RouteComponent;
@@ -53,8 +54,8 @@ export const transformRouteTitleI18n = (
   if (!routes || routes.length === 0) return;
   routes.forEach((route: customRouteComponent) => {
     if (route.meta) {
-      route.meta.title = transformI18n(route.meta.title, route.meta.i18n);
-      route.meta.i18n = false;
+      route.meta.sourceTitle = route.meta.sourceTitle || route.meta.title;
+      route.meta.title = transformI18n(route.meta.sourceTitle, route.meta.i18n);
     }
     transformRouteTitleI18n(route.children);
   });

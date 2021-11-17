@@ -45,12 +45,14 @@ function toggleSideBar() {
 function translationCh() {
   instance.locale = { locale: "zh" };
   locale.value = "zh";
+  location.reload();
 }
 
 // English
 function translationEn() {
   instance.locale = { locale: "en" };
   locale.value = "en";
+  location.reload();
 }
 </script>
 
