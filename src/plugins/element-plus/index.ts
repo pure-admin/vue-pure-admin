@@ -23,7 +23,6 @@ import {
   ElInput,
   ElForm,
   ElFormItem,
-  ElLoading,
   ElPopover,
   ElPopper,
   ElTooltip,
@@ -41,7 +40,10 @@ import {
   ElTabs,
   ElTabPane,
   ElAvatar,
-  ElEmpty
+  ElEmpty,
+  // 指令
+  ElLoading,
+  ElInfiniteScroll
 } from "element-plus";
 
 // https://element-plus.org/zh-CN/component/icon.html
@@ -125,7 +127,7 @@ export const iconComponents = [
   Bell
 ];
 
-const plugins = [ElLoading];
+const plugins = [ElLoading, ElInfiniteScroll];
 
 export function useElementPlus(app: App) {
   components.push(...iconComponents);

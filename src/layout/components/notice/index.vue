@@ -27,7 +27,7 @@ notices.value.forEach(notice => {
               :label="`${item.name}(${item.list.length})`"
               :name="item.name"
             >
-              <el-scrollbar max-height="404px">
+              <el-scrollbar max-height="330px">
                 <div class="noticeList-container">
                   <NoticeList :list="item.list" />
                 </div>
