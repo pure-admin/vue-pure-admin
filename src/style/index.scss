@@ -70,7 +70,7 @@ ul {
   display: none !important;
 }
 
-// 灰色模式
+/* 灰色模式 */
 .html-grey {
   filter: grayscale(100%);
   -webkit-filter: grayscale(100%);
@@ -79,7 +79,7 @@ ul {
   -o-filter: grayscale(100%);
 }
 
-// 色弱模式
+/* 色弱模式 */
 .html-weakness {
   filter: invert(80%);
   -webkit-filter: invert(80%);

@@ -1,5 +1,3 @@
-// cover some element-plus styles
-
 .el-breadcrumb__inner,
 .el-breadcrumb__inner a {
   font-weight: 400 !important;
@@ -15,7 +13,6 @@
   display: none;
 }
 
-// refine element ui upload
 .upload-container {
   .el-upload {
     width: 100%;
@@ -27,17 +24,14 @@
   }
 }
 
-// dropdown
 .el-dropdown-menu {
   padding: 2px 0 2px 0 !important;
 }
 
-// to fix el-date-picker css style
 .el-range-separator {
   box-sizing: content-box;
 }
 
-// el-tooltip的权重
 .is-dark {
   z-index: 99999 !important;
 }
