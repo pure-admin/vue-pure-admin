@@ -129,7 +129,8 @@ function resolvePath(routePath) {
               :style="{
                 width: pureApp.sidebar.opened ? '125px' : '',
                 overflow: 'hidden',
-                textOverflow: 'ellipsis'
+                textOverflow: 'ellipsis',
+                outline: 'none'
               }"
               @mouseover="hoverMenu(onlyOneChild)"
             >
