@@ -60,47 +60,38 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
         scss: {
           multipleScopeVars: [
             {
-              // 暗雅（默认）
               scopeName: "layout-theme-default",
               path: pathResolve("src/layout/theme/default-vars.scss")
             },
             {
-              // 明亮
               scopeName: "layout-theme-light",
               path: pathResolve("src/layout/theme/light-vars.scss")
             },
             {
-              // 薄暮
               scopeName: "layout-theme-dusk",
               path: pathResolve("src/layout/theme/dusk-vars.scss")
             },
             {
-              // 火山
               scopeName: "layout-theme-volcano",
               path: pathResolve("src/layout/theme/volcano-vars.scss")
             },
             {
-              // 黄色
               scopeName: "layout-theme-yellow",
               path: pathResolve("src/layout/theme/yellow-vars.scss")
             },
             {
-              // 明青
               scopeName: "layout-theme-mingQing",
               path: pathResolve("src/layout/theme/mingQing-vars.scss")
             },
             {
-              // 极光绿
               scopeName: "layout-theme-auroraGreen",
               path: pathResolve("src/layout/theme/auroraGreen-vars.scss")
             },
             {
-              // 粉红
               scopeName: "layout-theme-pink",
               path: pathResolve("src/layout/theme/pink-vars.scss")
             },
             {
-              // 酱紫
               scopeName: "layout-theme-saucePurple",
               path: pathResolve("src/layout/theme/saucePurple-vars.scss")
             }

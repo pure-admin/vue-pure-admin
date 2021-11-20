@@ -1,0 +1,318 @@
+@keyframes scheduleInWidth {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes scheduleOutWidth {
+  from {
+    width: 100%;
+  }
+
+  to {
+    width: 0;
+  }
+}
+
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes rotate {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+
+  to {
+    -moz-transform: rotate(360deg);
+  }
+}
+
+@-o-keyframes rotate {
+  from {
+    -o-transform: rotate(0deg);
+  }
+
+  to {
+    -o-transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.tags-view {
+  width: 100%;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 1px #888;
+  color: var(--el-text-color-regular);
+  background: #fff;
+
+  .scroll-item {
+    border-radius: 3px 3px 0 0;
+    padding: 2px 6px;
+    display: inline-block;
+    position: relative;
+    margin-right: 4px;
+    height: 28px;
+    line-height: 25px;
+    transition: all 0.4s;
+
+    .el-icon-close {
+      font-size: 10px;
+      color: #1890ff;
+      cursor: pointer;
+
+      &:hover {
+        border-radius: 50%;
+        color: #fff;
+        background: #b4bccc;
+        font-size: 14px;
+      }
+    }
+
+    &.is-closable:not(:first-child) {
+      &:hover {
+        padding-right: 8px;
+      }
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: #666;
+    padding: 0 4px 0 4px;
+  }
+
+  .scroll-container {
+    flex: 1;
+    overflow: hidden;
+    padding: 5px 0;
+    white-space: nowrap;
+    position: relative;
+
+    .tab {
+      position: relative;
+      float: left;
+      list-style: none;
+      overflow: visible;
+      white-space: nowrap;
+      transition: transform 0.5s ease-in-out;
+
+      .scroll-item {
+        transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+        &:nth-child(1) {
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+
+  .right-button {
+    display: flex;
+    font-size: 16px;
+
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 38px;
+      border-right: 1px solid #ccc;
+      cursor: pointer;
+    }
+  }
+
+  /* 右键菜单 */
+  .contextmenu {
+    margin: 0;
+    background: #fff;
+    position: absolute;
+    list-style-type: none;
+    padding: 5px 0;
+    border-radius: 4px;
+    color: #000000d9;
+    font-weight: normal;
+    font-size: 13px;
+    white-space: nowrap;
+    outline: 0;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
+
+    li {
+      width: 100%;
+      margin: 0;
+      padding: 7px 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        background: #eee;
+      }
+
+      svg {
+        display: block;
+        margin-right: 0.5em;
+      }
+    }
+  }
+}
+
+.el-dropdown-menu {
+  padding: 0;
+
+  li {
+    width: 100%;
+    margin: 0;
+    padding: 0 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    svg {
+      display: block;
+      margin-right: 0.5em;
+    }
+  }
+}
+
+.el-dropdown-menu__item:not(.is-disabled):hover {
+  color: #606266;
+  background: #f0f0f0;
+}
+
+:deep(.el-dropdown-menu__item) i {
+  margin-right: 10px;
+}
+
+.el-dropdown-menu__item--divided::before {
+  margin: 0;
+}
+
+.el-dropdown-menu__item.is-disabled {
+  cursor: not-allowed;
+}
+
+.is-active {
+  background-color: #eaf4fe;
+  position: relative;
+  color: #fff;
+
+  a {
+    color: #1890ff;
+  }
+}
+
+.ri-arrow-left-s-line {
+  width: 40px;
+  height: 38px;
+  line-height: 38px;
+  text-align: center;
+  font-size: 20px;
+  color: #00000073;
+  box-shadow: 5px 0 5px -6px #ccc;
+
+  &:hover {
+    cursor: w-resize;
+  }
+}
+
+.ri-arrow-right-s-line {
+  width: 40px;
+  height: 38px;
+  line-height: 38px;
+  text-align: center;
+  font-size: 20px;
+  border-right: 1px solid #ccc;
+  color: #00000073;
+  box-shadow: -5px 0 5px -6px #ccc;
+
+  &:hover {
+    cursor: e-resize;
+  }
+}
+
+/* 卡片模式 */
+.card-active {
+  border: 1px solid #1890ff;
+}
+
+/* 卡片模式下鼠标移入显示蓝色边框 */
+.card-in {
+  border: 1px solid #1890ff;
+  color: #1890ff;
+
+  a {
+    color: #1890ff;
+  }
+}
+
+/* 卡片模式下鼠标移出隐藏蓝色边框 */
+.card-out {
+  border: none;
+  color: #666;
+
+  a {
+    color: #666;
+  }
+}
+
+/* 灵动模式 */
+.schedule-active {
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: #1890ff;
+}
+
+/* 灵动模式下鼠标移入显示蓝色进度条 */
+.schedule-in {
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: #1890ff;
+  animation: scheduleInWidth 400ms ease-in;
+}
+
+/* 灵动模式下鼠标移出隐藏蓝色进度条 */
+.schedule-out {
+  width: 0;
+  height: 2px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: #1890ff;
+  animation: scheduleOutWidth 400ms ease-in;
+}
+
+/* 刷新按钮动画效果 */
+.refresh-button {
+  -webkit-animation: rotate 600ms linear infinite;
+  -moz-animation: rotate 600ms linear infinite;
+  -o-animation: rotate 600ms linear infinite;
+  animation: rotate 600ms linear infinite;
+}
