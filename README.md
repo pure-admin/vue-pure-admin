@@ -13,6 +13,10 @@ vue-pure-admin 是一个免费开源的中后台模版。使用了最新的`vue3
 教程：<https://www.bilibili.com/video/BV1534y1S7HV/>  
 UI 设计：<https://www.bilibili.com/video/BV17g411T7rq/>
 
+## 配套文档
+
+正在编写中，预计发布时间 2021 年 11 月 28 日
+
 ## 精简版
 
 仓库地址：<https://github.com/xiaoxian521/pure-admin-thin>
