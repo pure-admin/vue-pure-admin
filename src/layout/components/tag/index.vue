@@ -33,7 +33,7 @@ import closeOther from "/@/assets/svg/close_other.svg";
 import closeRight from "/@/assets/svg/close_right.svg";
 
 import { emitter } from "/@/utils/mitt";
-import { templateRef } from "@vueuse/core";
+import { templateRef, useResizeObserver, useDebounceFn } from "@vueuse/core";
 import { transformI18n } from "/@/utils/i18n";
 import { storageLocal } from "/@/utils/storage";
 import { useRoute, useRouter } from "vue-router";
@@ -54,12 +54,24 @@ const tabDom = templateRef<HTMLElement | null>("tabDom", null);
 const containerDom = templateRef<HTMLElement | null>("containerDom", null);
 const scrollbarDom = templateRef<HTMLElement | null>("scrollbarDom", null);
 
-watch([route], () => {
+const dynamicTagView = () => {
   const index = dynamicTagList.value.findIndex(item => {
     return item.path === route.path;
   });
   moveToView(index);
+};
+
+watch([route], () => {
+  dynamicTagView();
 });
+
+useResizeObserver(
+  scrollbarDom,
+  useDebounceFn(() => {
+    dynamicTagView();
+  }, 200)
+);
+
 const tabNavPadding = 10;
 const moveToView = (index: number): void => {
   if (!instance.refs["dynamic" + index]) {
@@ -72,7 +84,7 @@ const moveToView = (index: number): void => {
   const scrollbarDomWidth = scrollbarDom.value
     ? scrollbarDom.value.offsetWidth
     : 0;
-  // 标签页导航栏总长度（包含溢出部分）
+  // 已有标签页总长度（包含溢出部分）
   const tabDomWidth = tabDom.value ? tabDom.value.offsetWidth : 0;
 
   if (tabDomWidth < scrollbarDomWidth || tabItemElOffsetLeft === 0) {
@@ -389,7 +401,6 @@ function showMenuModel(currentPath: string, refresh = false) {
   let routeLength = unref(relativeStorage.routesInStorage).length;
   // currentIndex为1时，左侧的菜单是首页，则不显示关闭左侧标签页
   let currentIndex = allRoute.findIndex(v => v.path === currentPath);
-  moveToView(currentIndex);
   // 如果currentIndex等于routeLength-1，右侧没有菜单，则不显示关闭右侧标签页
   showMenus(true);
 
