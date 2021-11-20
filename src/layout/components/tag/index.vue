@@ -40,12 +40,7 @@ import { useRoute, useRouter } from "vue-router";
 import { handleAliveRoute, delAliveRoutes } from "/@/router";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 import { toggleClass, removeClass, hasClass } from "/@/utils/operate";
-import {
-  RouteConfigs,
-  relativeStorageType,
-  tagsViewsType,
-  scrollbarDomType
-} from "../../types";
+import { RouteConfigs, relativeStorageType, tagsViewsType } from "../../types";
 
 const route = useRoute();
 const router = useRouter();
@@ -57,11 +52,11 @@ let relativeStorage: relativeStorageType;
 const showTags = ref(storageLocal.getItem("tagsVal") || false);
 const tabDom = templateRef<HTMLElement | null>("tabDom", null);
 const containerDom = templateRef<HTMLElement | null>("containerDom", null);
-const scrollbarDom = templateRef<scrollbarDomType>("scrollbarDom", null);
+const scrollbarDom = templateRef<HTMLElement | null>("scrollbarDom", null);
 
 const handleScroll = (offset: number): void => {
-  const scrollbarDomWidth = scrollbarDom.value?.wrap
-    ? scrollbarDom.value?.wrap.offsetWidth
+  const scrollbarDomWidth = scrollbarDom.value
+    ? scrollbarDom.value?.offsetWidth
     : 0;
   const tabDomWidth = tabDom.value ? tabDom.value.offsetWidth : 0;
   if (offset > 0) {
@@ -498,12 +493,7 @@ onBeforeMount(() => {
 <template>
   <div ref="containerDom" class="tags-view" v-if="!showTags">
     <i class="ri-arrow-left-s-line" @click="handleScroll(200)"></i>
-    <el-scrollbar
-      tag="span"
-      ref="scrollbarDom"
-      wrap-class="scrollbar-wrapper"
-      class="scroll-container"
-    >
+    <div ref="scrollbarDom" class="scroll-container">
       <div
         class="tab"
         ref="tabDom"
@@ -544,7 +534,7 @@ onBeforeMount(() => {
           ></div>
         </div>
       </div>
-    </el-scrollbar>
+    </div>
     <i class="ri-arrow-right-s-line" @click="handleScroll(-200)"></i>
     <!-- 右键菜单按钮 -->
     <transition name="el-zoom-in-top">
