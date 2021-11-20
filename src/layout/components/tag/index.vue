@@ -29,8 +29,6 @@ import close from "/@/assets/svg/close.svg";
 import refresh from "/@/assets/svg/refresh.svg";
 import closeAll from "/@/assets/svg/close_all.svg";
 import closeLeft from "/@/assets/svg/close_left.svg";
-import arrowLeft from "/@/assets/svg/arrow-left.svg";
-import arrowRight from "/@/assets/svg/arrow-right.svg";
 import closeOther from "/@/assets/svg/close_other.svg";
 import closeRight from "/@/assets/svg/close_right.svg";
 
@@ -499,7 +497,7 @@ onBeforeMount(() => {
 
 <template>
   <div ref="containerDom" class="tags-view" v-if="!showTags">
-    <arrowLeft @click="handleScroll(200)" />
+    <i class="ri-arrow-left-s-line" @click="handleScroll(200)"></i>
     <el-scrollbar
       tag="span"
       ref="scrollbarDom"
@@ -547,7 +545,7 @@ onBeforeMount(() => {
         </div>
       </div>
     </el-scrollbar>
-    <arrowRight @click="handleScroll(-200)" />
+    <i class="ri-arrow-right-s-line" @click="handleScroll(-200)"></i>
     <!-- 右键菜单按钮 -->
     <transition name="el-zoom-in-top">
       <ul
