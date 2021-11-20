@@ -54,6 +54,54 @@ const tabDom = templateRef<HTMLElement | null>("tabDom", null);
 const containerDom = templateRef<HTMLElement | null>("containerDom", null);
 const scrollbarDom = templateRef<HTMLElement | null>("scrollbarDom", null);
 
+watch([route], () => {
+  const index = dynamicTagList.value.findIndex(item => {
+    return item.path === route.path;
+  });
+  moveToView(index);
+});
+const tabNavPadding = 10;
+const moveToView = (index: number): void => {
+  if (!instance.refs["dynamic" + index]) {
+    return;
+  }
+  const tabItemEl = instance.refs["dynamic" + index];
+  const tabItemElOffsetLeft = (tabItemEl as HTMLElement).offsetLeft;
+  const tabItemOffsetWidth = (tabItemEl as HTMLElement).offsetWidth;
+  // 标签页导航栏可视长度（不包含溢出部分）
+  const scrollbarDomWidth = scrollbarDom.value
+    ? scrollbarDom.value.offsetWidth
+    : 0;
+  // 标签页导航栏总长度（包含溢出部分）
+  const tabDomWidth = tabDom.value ? tabDom.value.offsetWidth : 0;
+
+  if (tabDomWidth < scrollbarDomWidth || tabItemElOffsetLeft === 0) {
+    translateX.value = 0;
+  } else if (tabItemElOffsetLeft < -translateX.value) {
+    // 标签在可视区域左侧
+    translateX.value = -tabItemElOffsetLeft + tabNavPadding;
+  } else if (
+    tabItemElOffsetLeft > -translateX.value &&
+    tabItemElOffsetLeft + tabItemOffsetWidth <
+      -translateX.value + scrollbarDomWidth
+  ) {
+    // 标签在可视区域
+    translateX.value = Math.min(
+      0,
+      scrollbarDomWidth -
+        tabItemOffsetWidth -
+        tabItemElOffsetLeft -
+        tabNavPadding
+    );
+  } else {
+    // 标签在可视区域右侧
+    translateX.value = -(
+      tabItemElOffsetLeft -
+      (scrollbarDomWidth - tabNavPadding - tabItemOffsetWidth)
+    );
+  }
+};
+
 const handleScroll = (offset: number): void => {
   const scrollbarDomWidth = scrollbarDom.value
     ? scrollbarDom.value?.offsetWidth
@@ -341,6 +389,7 @@ function showMenuModel(currentPath: string, refresh = false) {
   let routeLength = unref(relativeStorage.routesInStorage).length;
   // currentIndex为1时，左侧的菜单是首页，则不显示关闭左侧标签页
   let currentIndex = allRoute.findIndex(v => v.path === currentPath);
+  moveToView(currentIndex);
   // 如果currentIndex等于routeLength-1，右侧没有菜单，则不显示关闭右侧标签页
   showMenus(true);
 
