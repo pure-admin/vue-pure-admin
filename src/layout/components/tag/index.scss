@@ -58,41 +58,64 @@
   }
 }
 
+@keyframes close {
+  from {
+    transform: translate(-50%, -50%);
+  }
+
+  to {
+    transform: translate(0, -50%);
+  }
+}
+
 .tags-view {
   width: 100%;
   font-size: 14px;
   display: flex;
   align-items: center;
-  box-shadow: 0 0 1px #888;
   color: var(--el-text-color-regular);
   background: #fff;
+  position: relative;
+  box-shadow: 0 0 1px #888;
 
   .scroll-item {
     border-radius: 3px 3px 0 0;
-    padding: 2px 6px;
-    display: inline-block;
+    padding: 0 6px 0 6px;
+    box-shadow: 0 0 1px #888;
     position: relative;
     margin-right: 4px;
     height: 28px;
-    line-height: 25px;
+    display: inline-block;
+    line-height: 28px;
     transition: all 0.4s;
+    cursor: pointer;
 
     .el-icon-close {
       font-size: 10px;
       color: #1890ff;
       cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      transition: font-size 0.2s;
 
       &:hover {
         border-radius: 50%;
         color: #fff;
         background: #b4bccc;
-        font-size: 14px;
+        font-size: 13px;
       }
     }
 
     &.is-closable:not(:first-child) {
       &:hover {
-        padding-right: 8px;
+        padding-right: 18px;
+
+        &:not(.is-active) {
+          .el-icon-close {
+            animation: close 200ms ease-in forwards;
+          }
+        }
       }
     }
   }
@@ -213,10 +236,18 @@
   cursor: not-allowed;
 }
 
-.is-active {
+.scroll-item.is-active {
   background-color: #eaf4fe;
   position: relative;
   color: #fff;
+
+  &:not(:first-child) {
+    padding-right: 18px;
+  }
+
+  .el-icon-close {
+    transform: translate(0, -50%);
+  }
 
   a {
     color: #1890ff;
@@ -252,14 +283,8 @@
   }
 }
 
-/* 卡片模式 */
-.card-active {
-  border: 1px solid #1890ff;
-}
-
 /* 卡片模式下鼠标移入显示蓝色边框 */
 .card-in {
-  border: 1px solid #1890ff;
   color: #1890ff;
 
   a {

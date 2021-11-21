@@ -170,7 +170,7 @@
     justify-content: space-around;
     background: $menuBg;
     width: 100%;
-    height: 62px;
+    height: 48px;
     align-items: center;
 
     .horizontal-header-left {
@@ -212,7 +212,7 @@
       justify-content: flex-end;
 
       .dropdown-badge {
-        height: 62px;
+        height: 48px;
         color: $subMenuActiveText;
 
         &:hover {
@@ -229,7 +229,7 @@
       }
 
       .globalization {
-        height: 62px;
+        height: 48px;
         width: 40px;
         padding: 11px;
         cursor: pointer;
@@ -242,7 +242,7 @@
 
       .el-dropdown-link {
         width: 100px;
-        height: 62px;
+        height: 48px;
         padding: 10px;
         display: flex;
         align-items: center;
@@ -266,7 +266,7 @@
       }
 
       .el-icon-setting {
-        height: 62px;
+        height: 48px;
         width: 40px;
         padding: 12px;
         display: flex;
@@ -297,7 +297,8 @@
 
     .submenu-title-noDropdown,
     .el-sub-menu__title {
-      height: 60px;
+      height: 48px;
+      line-height: 48px;
       background: $menuBg;
     }
 
@@ -363,6 +364,8 @@
 
     .el-menu-item,
     .el-sub-menu__title {
+      height: 50px;
+      line-height: 50px;
       color: $menuText;
       background-color: $subMenuBg;
 

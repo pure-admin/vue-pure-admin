@@ -38,6 +38,7 @@ import { transformI18n } from "/@/utils/i18n";
 import { storageLocal } from "/@/utils/storage";
 import { useRoute, useRouter } from "vue-router";
 import { handleAliveRoute, delAliveRoutes } from "/@/router";
+import { useSettingStoreHook } from "/@/store/modules/settings";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 import { toggleClass, removeClass, hasClass } from "/@/utils/operate";
 import { RouteConfigs, relativeStorageType, tagsViewsType } from "../../types";
@@ -49,6 +50,7 @@ const activeIndex = ref<number>(-1);
 let refreshButton = "refresh-button";
 const instance = getCurrentInstance();
 let relativeStorage: relativeStorageType;
+const pureSetting = useSettingStoreHook();
 const showTags = ref(storageLocal.getItem("tagsVal") || false);
 const tabDom = templateRef<HTMLElement | null>("tabDom", null);
 const containerDom = templateRef<HTMLElement | null>("containerDom", null);
@@ -471,7 +473,9 @@ function openMenu(tag, e) {
   } else {
     buttonLeft.value = left;
   }
-  buttonTop.value = e.clientY + 10;
+  pureSetting.hiddenSideBar
+    ? (buttonTop.value = e.clientY)
+    : (buttonTop.value = e.clientY - 40);
   setTimeout(() => {
     visible.value = true;
   }, 10);
@@ -479,7 +483,10 @@ function openMenu(tag, e) {
 
 // 触发tags标签切换
 function tagOnClick(item) {
-  showMenuModel(item.path);
+  router.push({
+    path: item?.path
+  });
+  showMenuModel(item?.path);
 }
 
 // 鼠标移入
@@ -573,8 +580,9 @@ onBeforeMount(() => {
           @contextmenu.prevent="openMenu(item, $event)"
           @mouseenter.prevent="onMouseenter(item, index)"
           @mouseleave.prevent="onMouseleave(item, index)"
+          @click="tagOnClick(item)"
         >
-          <router-link :to="item.path" @click="tagOnClick(item)">{{
+          <router-link :to="item.path">{{
             transformI18n(item.meta.title, item.meta.i18n)
           }}</router-link>
           <el-icon

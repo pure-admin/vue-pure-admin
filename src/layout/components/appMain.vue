@@ -74,7 +74,7 @@ const transitionMain = defineComponent({
     :style="[
       hideTabs && layout ? 'padding-top: 48px;' : '',
       !hideTabs && layout ? 'padding-top: 85px;' : '',
-      hideTabs && !layout ? 'padding-top: 62px' : '',
+      hideTabs && !layout ? 'padding-top: 48px' : '',
       !hideTabs && !layout ? 'padding-top: 98px;' : ''
     ]"
   >

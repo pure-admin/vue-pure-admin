@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import {
   h,
-  ref,
-  unref,
   reactive,
   computed,
   onMounted,
@@ -29,9 +27,8 @@ import setting from "./components/setting/index.vue";
 import Vertical from "./components/sidebar/vertical.vue";
 import Horizontal from "./components/sidebar/horizontal.vue";
 
-const instance = getCurrentInstance().appContext.app.config.globalProperties;
-const hiddenSideBar = ref(instance.$config?.HiddenSideBar);
 const pureSetting = useSettingStoreHook();
+const instance = getCurrentInstance().appContext.app.config.globalProperties;
 
 // 清空缓存后从serverConfig.json读取默认配置并赋值到storage中
 const layout = computed(() => {
@@ -136,9 +133,9 @@ const $_resizeHandler = () => {
 };
 
 function onFullScreen() {
-  unref(hiddenSideBar)
-    ? (hiddenSideBar.value = false)
-    : (hiddenSideBar.value = true);
+  pureSetting.hiddenSideBar
+    ? pureSetting.changeSetting({ key: "hiddenSideBar", value: false })
+    : pureSetting.changeSetting({ key: "hiddenSideBar", value: true });
 }
 
 onMounted(() => {
@@ -167,10 +164,10 @@ const layoutHeader = defineComponent({
       },
       {
         default: () => [
-          !hiddenSideBar.value && layout.value.includes("vertical")
+          !pureSetting.hiddenSideBar && layout.value.includes("vertical")
             ? h(navbar)
             : h("div"),
-          !hiddenSideBar.value && layout.value.includes("horizontal")
+          !pureSetting.hiddenSideBar && layout.value.includes("horizontal")
             ? h(Horizontal)
             : h("div"),
           h(
@@ -183,7 +180,7 @@ const layoutHeader = defineComponent({
                   { onClick: onFullScreen },
                   {
                     default: () => [
-                      !hiddenSideBar.value ? h(fullScreen) : h(exitScreen)
+                      !pureSetting.hiddenSideBar ? h(fullScreen) : h(exitScreen)
                     ]
                   }
                 )
@@ -208,8 +205,15 @@ const layoutHeader = defineComponent({
       class="drawer-bg"
       @click="handleClickOutside(false)"
     />
-    <Vertical v-show="!hiddenSideBar && layout.includes('vertical')" />
-    <div :class="['main-container', hiddenSideBar ? 'main-hidden' : '']">
+    <Vertical
+      v-show="!pureSetting.hiddenSideBar && layout.includes('vertical')"
+    />
+    <div
+      :class="[
+        'main-container',
+        pureSetting.hiddenSideBar ? 'main-hidden' : ''
+      ]"
+    >
       <div v-if="set.fixedHeader">
         <layout-header />
         <!-- 主体内容 -->

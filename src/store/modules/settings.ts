@@ -5,13 +5,15 @@ import { getConfig } from "/@/config";
 interface SettingState {
   title: string;
   fixedHeader: boolean;
+  hiddenSideBar: boolean;
 }
 
 export const useSettingStore = defineStore({
   id: "pure-setting",
   state: (): SettingState => ({
     title: getConfig().Title,
-    fixedHeader: getConfig().FixedHeader
+    fixedHeader: getConfig().FixedHeader,
+    hiddenSideBar: getConfig().HiddenSideBar
   }),
   getters: {
     getTitle() {
@@ -19,6 +21,9 @@ export const useSettingStore = defineStore({
     },
     getFixedHeader() {
       return this.fixedHeader;
+    },
+    getHiddenSideBar() {
+      return this.HiddenSideBar;
     }
   },
   actions: {
