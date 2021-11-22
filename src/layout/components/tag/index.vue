@@ -64,6 +64,7 @@ const dynamicTagView = () => {
 };
 
 watch([route], () => {
+  activeIndex.value = -1;
   dynamicTagView();
 });
 
@@ -591,7 +592,7 @@ onBeforeMount(() => {
               (index === activeIndex && index !== 0)
             "
             class="el-icon-close"
-            @click="deleteMenu(item)"
+            @click.stop="deleteMenu(item)"
           >
             <CloseBold />
           </el-icon>
