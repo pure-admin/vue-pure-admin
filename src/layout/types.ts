@@ -73,3 +73,9 @@ export type themeColorsType = {
   rgb: string;
   themeColor: string;
 };
+
+export interface scrollbarDomType extends HTMLElement {
+  wrap?: {
+    offsetWidth: number;
+  };
+}

@@ -54,6 +54,7 @@ specifiers:
   postcss-import: 14.0.0
   prettier: 2.3.2
   pretty-quick: 3.1.1
+  remixicon: ^2.5.0
   resize-observer-polyfill: ^1.5.1
   responsive-storage: ^1.0.11
   rimraf: 3.0.2
@@ -112,6 +113,7 @@ dependencies:
   path: 0.12.7
   path-to-regexp: 6.2.0
   pinia: 2.0.2_typescript@4.4.2+vue@3.2.21
+  remixicon: 2.5.0
   resize-observer-polyfill: 1.5.1
   responsive-storage: 1.0.11_vue@3.2.21
   sortablejs: 1.13.0
@@ -5495,6 +5497,13 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /remixicon/2.5.0:
+    resolution:
+      {
+        integrity: sha512-q54ra2QutYDZpuSnFjmeagmEiN9IMo56/zz5dDNitzKD23oFRw77cWo4TsrAdmdkPiEn8mxlrTqxnkujDbEGww==
+      }
+    dev: false
 
   /repeat-string/1.6.1:
     resolution: { integrity: sha1-jcrkcOHIirwtYA//Sndihtp15jc= }

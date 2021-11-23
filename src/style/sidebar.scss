@@ -1,8 +1,7 @@
 @import "../layout/theme/default-vars.scss";
 
 @mixin merge-style(
-  // vertical模式下主体内容距离网页文档左侧的距离
-  $sideBarWidth
+  /* vertical模式下主体内容距离网页文档左侧的距离 */ $sideBarWidth
 ) {
   $menuActiveText: #7a80b4;
 
@@ -118,6 +117,7 @@
 
     .el-menu-item,
     .el-sub-menu__title {
+      height: 50px;
       color: $menuText;
       padding: 0 20px 0 40px;
 
@@ -126,7 +126,6 @@
       }
     }
 
-    // menu hover
     .submenu-title-noDropdown,
     .el-sub-menu__title {
       &:hover {
@@ -155,12 +154,12 @@
       background-color: $subMenuBg !important;
     }
 
-    // 无子集的激活菜单背景
+    /* 无子集的激活菜单背景 */
     .is-active.submenu-title-noDropdown.outer-most {
       background: $subMenuActiveBg;
     }
 
-    // 有子集的激活菜单背景
+    /* 有子集的激活菜单背景 */
     .is-active.nest-menu {
       background: $subMenuActiveBg !important;
     }
@@ -171,7 +170,7 @@
     justify-content: space-around;
     background: $menuBg;
     width: 100%;
-    height: 62px;
+    height: 48px;
     align-items: center;
 
     .horizontal-header-left {
@@ -213,7 +212,7 @@
       justify-content: flex-end;
 
       .dropdown-badge {
-        height: 62px;
+        height: 48px;
         color: $subMenuActiveText;
 
         &:hover {
@@ -230,7 +229,7 @@
       }
 
       .globalization {
-        height: 62px;
+        height: 48px;
         width: 40px;
         padding: 11px;
         cursor: pointer;
@@ -243,7 +242,7 @@
 
       .el-dropdown-link {
         width: 100px;
-        height: 62px;
+        height: 48px;
         padding: 10px;
         display: flex;
         align-items: center;
@@ -267,7 +266,7 @@
       }
 
       .el-icon-setting {
-        height: 62px;
+        height: 48px;
         width: 40px;
         padding: 12px;
         display: flex;
@@ -298,7 +297,8 @@
 
     .submenu-title-noDropdown,
     .el-sub-menu__title {
-      height: 60px;
+      height: 48px;
+      line-height: 48px;
       background: $menuBg;
     }
 
@@ -319,7 +319,7 @@
     }
   }
 
-  // vertical菜单折叠
+  /* vertical菜单折叠 */
   .el-menu--vertical {
     .el-menu--popup {
       background-color: $subMenuBg !important;
@@ -355,7 +355,7 @@
       }
     }
 
-    // 子菜单中还有子菜单
+    /* 子菜单中还有子菜单 */
     .el-menu .el-sub-menu__title {
       font-size: 12px;
       min-width: $sideBarWidth !important;
@@ -364,6 +364,8 @@
 
     .el-menu-item,
     .el-sub-menu__title {
+      height: 50px;
+      line-height: 50px;
       color: $menuText;
       background-color: $subMenuBg;
 
@@ -396,7 +398,7 @@
     }
   }
 
-  // horizontal菜单
+  /* horizontal菜单 */
   .el-menu--horizontal {
     & > .el-sub-menu .el-sub-menu__icon-arrow {
       position: static !important;
@@ -425,13 +427,13 @@
       }
     }
 
-    // 无子菜单时激活border-bottom
+    /* 无子菜单时激活border-bottom */
     .router-link-exact-active > .submenu-title-noDropdown {
       height: 60px;
       border-bottom: 2px solid var(--el-menu-active-color);
     }
 
-    // 子菜单中还有子菜单
+    /* 子菜单中还有子菜单 */
     .el-menu .el-sub-menu__title {
       font-size: 12px;
       min-width: $sideBarWidth !important;
@@ -464,7 +466,7 @@
       }
     }
 
-    // 有子集的激活菜单背景
+    /* 有子集的激活菜单背景 */
     .is-active.nest-menu {
       background: $subMenuActiveBg !important;
     }
@@ -484,7 +486,7 @@
     min-width: $sideBarWidth !important;
   }
 
-  // 有子菜单
+  /* 有子菜单 */
   .el-menu--collapse
     .is-active.outer-most.el-sub-menu
     > .el-sub-menu__title::before {
@@ -502,7 +504,7 @@
     transform: translateY(0);
   }
 
-  // 无子菜单
+  /* 无子菜单 */
   .el-menu--collapse .is-active.submenu-title-noDropdown.outer-most::before {
     position: absolute;
     top: 0;
@@ -530,7 +532,7 @@
     top: 50%;
   }
 
-  // 手机端
+  /* 手机端 */
   .mobile {
     .fixed-header {
       width: 100% !important;
@@ -604,7 +606,7 @@ body[layout="vertical"] {
       }
     }
 
-    // 菜单折叠
+    /* 菜单折叠 */
     .el-menu--collapse {
       margin-left: -5px;
 
