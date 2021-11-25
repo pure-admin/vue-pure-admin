@@ -105,6 +105,9 @@ function toggle(device: string, bool: boolean) {
   useAppStoreHook().toggleSideBar(bool, "resize");
 }
 
+// 判断是否可自动关闭菜单栏
+let isAutoCloseSidebar = true;
+
 // 监听容器
 emitter.on("resize", ({ detail }) => {
   if (isMobile) return;
@@ -117,11 +120,16 @@ emitter.on("resize", ({ detail }) => {
    */
   if (width > 0 && width <= 760) {
     toggle("mobile", false);
+    isAutoCloseSidebar = true;
   } else if (width > 760 && width <= 990) {
-    toggle("desktop", false);
+    if (isAutoCloseSidebar) {
+      toggle("desktop", false);
+      isAutoCloseSidebar = false;
+    }
   } else if (width > 990) {
     if (!set.sidebar.isClickHamburger) {
       toggle("desktop", true);
+      isAutoCloseSidebar = true;
     }
   }
 });
