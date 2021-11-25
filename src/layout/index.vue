@@ -4,8 +4,6 @@ import {
   reactive,
   computed,
   onMounted,
-  watchEffect,
-  onBeforeMount,
   defineComponent,
   getCurrentInstance
 } from "vue";
@@ -13,11 +11,11 @@ import { setType } from "./types";
 import { useI18n } from "vue-i18n";
 import { routerArrays } from "./types";
 import { emitter } from "/@/utils/mitt";
-import { useEventListener } from "@vueuse/core";
 import backTop from "/@/assets/svg/back_top.svg";
 import { useAppStoreHook } from "/@/store/modules/app";
 import fullScreen from "/@/assets/svg/full_screen.svg";
 import exitScreen from "/@/assets/svg/exit_screen.svg";
+import { deviceDetection } from "/@/utils/deviceDetection";
 import { useSettingStoreHook } from "/@/store/modules/settings";
 
 import navbar from "./components/navbar.vue";
@@ -27,6 +25,7 @@ import setting from "./components/setting/index.vue";
 import Vertical from "./components/sidebar/vertical.vue";
 import Horizontal from "./components/sidebar/horizontal.vue";
 
+const isMobile = deviceDetection();
 const pureSetting = useSettingStoreHook();
 const instance = getCurrentInstance().appContext.app.config.globalProperties;
 
@@ -93,10 +92,6 @@ const set: setType = reactive({
   })
 });
 
-const handleClickOutside = (params: boolean) => {
-  useAppStoreHook().closeSideBar({ withoutAnimation: params });
-};
-
 function setTheme(layoutModel: string) {
   window.document.body.setAttribute("layout", layoutModel);
   instance.$storage.layout = {
@@ -105,50 +100,43 @@ function setTheme(layoutModel: string) {
   };
 }
 
+function toggle(device: string, bool: boolean) {
+  useAppStoreHook().toggleDevice(device);
+  useAppStoreHook().toggleSideBar(bool, "resize");
+}
+
 // 监听容器
 emitter.on("resize", ({ detail }) => {
+  if (isMobile) return;
   let { width } = detail;
   width <= 670 ? setTheme("vertical") : setTheme(useAppStoreHook().layout);
-});
-
-watchEffect(() => {
-  if (set.device === "mobile" && !set.sidebar.opened) {
-    handleClickOutside(false);
-  }
-});
-
-const $_isMobile = () => {
-  const rect = document.body.getBoundingClientRect();
-  return rect.width - 1 < 992;
-};
-
-const $_resizeHandler = () => {
-  if (!document.hidden) {
-    const isMobile = $_isMobile();
-    useAppStoreHook().toggleDevice(isMobile ? "mobile" : "desktop");
-    if (isMobile) {
-      handleClickOutside(true);
+  /** width app-wrapper类容器宽度
+   * 0 < width <= 760 隐藏侧边栏
+   * 760 < width <= 990 折叠侧边栏
+   * width > 990 展开侧边栏
+   */
+  if (width > 0 && width <= 760) {
+    toggle("mobile", false);
+  } else if (width > 760 && width <= 990) {
+    toggle("desktop", false);
+  } else if (width > 990) {
+    if (!set.sidebar.isClickHamburger) {
+      toggle("desktop", true);
     }
   }
-};
+});
+
+onMounted(() => {
+  if (isMobile) {
+    toggle("mobile", false);
+  }
+});
 
 function onFullScreen() {
   pureSetting.hiddenSideBar
     ? pureSetting.changeSetting({ key: "hiddenSideBar", value: false })
     : pureSetting.changeSetting({ key: "hiddenSideBar", value: true });
 }
-
-onMounted(() => {
-  const isMobile = $_isMobile();
-  if (isMobile) {
-    useAppStoreHook().toggleDevice("mobile");
-    handleClickOutside(true);
-  }
-});
-
-onBeforeMount(() => {
-  useEventListener("resize", $_resizeHandler);
-});
 
 const layoutHeader = defineComponent({
   render() {
@@ -202,8 +190,8 @@ const layoutHeader = defineComponent({
         set.sidebar.opened &&
         layout.includes('vertical')
       "
-      class="drawer-bg"
-      @click="handleClickOutside(false)"
+      class="app-mask"
+      @click="useAppStoreHook().toggleSideBar()"
     />
     <Vertical
       v-show="!pureSetting.hiddenSideBar && layout.includes('vertical')"
@@ -261,7 +249,7 @@ const layoutHeader = defineComponent({
   margin-left: 0 !important;
 }
 
-.drawer-bg {
+.app-mask {
   background: #000;
   opacity: 0.3;
   width: 100%;

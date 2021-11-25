@@ -39,7 +39,7 @@
     position: fixed;
     top: 0;
     right: 0;
-    z-index: 1000;
+    z-index: 998;
     width: calc(100% - 210px);
     transition: width 0.28s;
   }
@@ -557,6 +557,7 @@
     }
   }
 
+  /* vertical菜单下hideSidebar去除动画 */
   .withoutAnimation {
     .main-container,
     .sidebar-container {

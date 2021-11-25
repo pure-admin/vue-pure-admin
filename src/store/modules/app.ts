@@ -8,6 +8,8 @@ interface AppState {
   sidebar: {
     opened: boolean;
     withoutAnimation: boolean;
+    // 判断是否手动点击Hamburger
+    isClickHamburger: boolean;
   };
   layout: string;
   device: string;
@@ -20,7 +22,8 @@ export const useAppStore = defineStore({
       opened: storageLocal.getItem("sidebarStatus")
         ? !!+storageLocal.getItem("sidebarStatus")
         : true,
-      withoutAnimation: false
+      withoutAnimation: false,
+      isClickHamburger: false
     },
     // 这里的layout用于监听容器拖拉后恢复对应的导航模式
     layout:
@@ -36,28 +39,27 @@ export const useAppStore = defineStore({
     }
   },
   actions: {
-    TOGGLE_SIDEBAR() {
-      this.sidebar.opened = !this.sidebar.opened;
-      this.sidebar.withoutAnimation = false;
-      if (this.sidebar.opened) {
-        storageLocal.setItem("sidebarStatus", 1);
-      } else {
-        storageLocal.setItem("sidebarStatus", 0);
+    TOGGLE_SIDEBAR(opened?: boolean, resize?: string) {
+      if (opened && resize) {
+        this.sidebar.withoutAnimation = true;
+        this.sidebar.opened = true;
+        storageLocal.setItem("sidebarStatus", true);
+      } else if (!opened && resize) {
+        this.sidebar.withoutAnimation = true;
+        this.sidebar.opened = false;
+        storageLocal.setItem("sidebarStatus", false);
+      } else if (!opened && !resize) {
+        this.sidebar.withoutAnimation = false;
+        this.sidebar.opened = !this.sidebar.opened;
+        this.sidebar.isClickHamburger = !this.sidebar.opened;
+        storageLocal.setItem("sidebarStatus", this.sidebar.opened);
       }
-    },
-    CLOSE_SIDEBAR(withoutAnimation: boolean) {
-      storageLocal.setItem("sidebarStatus", 0);
-      this.sidebar.opened = false;
-      this.sidebar.withoutAnimation = withoutAnimation;
     },
     TOGGLE_DEVICE(device: string) {
       this.device = device;
     },
-    async toggleSideBar() {
-      await this.TOGGLE_SIDEBAR();
-    },
-    closeSideBar(withoutAnimation) {
-      this.CLOSE_SIDEBAR(withoutAnimation);
+    async toggleSideBar(opened?: boolean, resize?: string) {
+      await this.TOGGLE_SIDEBAR(opened, resize);
     },
     toggleDevice(device) {
       this.TOGGLE_DEVICE(device);
