@@ -24,7 +24,7 @@ export type RouteConfigs = {
   name?: string;
 };
 
-export type relativeStorageType = {
+export type multiTagsType = {
   routesInStorage: Array<RouteConfigs>;
 };
 

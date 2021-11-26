@@ -41,7 +41,7 @@ import { handleAliveRoute, delAliveRoutes } from "/@/router";
 import { useSettingStoreHook } from "/@/store/modules/settings";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 import { toggleClass, removeClass, hasClass } from "/@/utils/operate";
-import { RouteConfigs, relativeStorageType, tagsViewsType } from "../../types";
+import { RouteConfigs, multiTagsType, tagsViewsType } from "../../types";
 
 const route = useRoute();
 const router = useRouter();
@@ -49,7 +49,7 @@ const translateX = ref<number>(0);
 const activeIndex = ref<number>(-1);
 let refreshButton = "refresh-button";
 const instance = getCurrentInstance();
-let relativeStorage: relativeStorageType;
+let multiTags: multiTagsType;
 const pureSetting = useSettingStoreHook();
 const showTags = ref(storageLocal.getItem("tagsVal") || false);
 const tabDom = templateRef<HTMLElement | null>("tabDom", null);
@@ -183,7 +183,7 @@ const tagsViews = ref<Array<tagsViewsType>>([
   }
 ]);
 const dynamicTagList: ComputedRef<Array<RouteConfigs>> = computed(() => {
-  return relativeStorage.routesInStorage;
+  return multiTags.routesInStorage;
 });
 
 // 显示模式，默认灵动模式显示
@@ -200,7 +200,7 @@ let buttonTop = ref(0);
 let currentSelect = ref({});
 
 function dynamicRouteTag(value: string, parentPath: string): void {
-  const hasValue = relativeStorage.routesInStorage.some((item: any) => {
+  const hasValue = multiTags.routesInStorage.some((item: any) => {
     return item.path === value;
   });
 
@@ -215,7 +215,7 @@ function dynamicRouteTag(value: string, parentPath: string): void {
             meta: arrItem.meta,
             name: arrItem.name
           });
-          relativeStorage.routesInStorage = routerArrays;
+          multiTags.routesInStorage = routerArrays;
         } else {
           if (arrItem.children && arrItem.children.length > 0) {
             concatPath(arrItem.children, value, parentPath);
@@ -248,7 +248,7 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
 
   const spliceRoute = (start?: number, end?: number, other?: boolean): void => {
     if (other) {
-      relativeStorage.routesInStorage = [
+      multiTags.routesInStorage = [
         {
           path: "/welcome",
           parentPath: "/",
@@ -261,10 +261,10 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
         },
         obj
       ];
-      routerArrays = relativeStorage.routesInStorage;
+      routerArrays = multiTags.routesInStorage;
     } else {
       delAliveRouteList = routerArrays.splice(start, end);
-      relativeStorage.routesInStorage = routerArrays;
+      multiTags.routesInStorage = routerArrays;
     }
   };
 
@@ -366,7 +366,7 @@ function onClickDrop(key, item, selectRoute?: RouteConfigs) {
     case 5:
       // 关闭全部标签页
       routerArrays.splice(1, routerArrays.length);
-      relativeStorage.routesInStorage = routerArrays;
+      multiTags.routesInStorage = routerArrays;
       usePermissionStoreHook().clearAllCachePage();
       router.push("/welcome");
 
@@ -400,8 +400,8 @@ function disabledMenus(value: boolean) {
 
 // 检查当前右键的菜单两边是否存在别的菜单，如果左侧的菜单是首页，则不显示关闭左侧标签页，如果右侧没有菜单，则不显示关闭右侧标签页
 function showMenuModel(currentPath: string, refresh = false) {
-  let allRoute = unref(relativeStorage.routesInStorage);
-  let routeLength = unref(relativeStorage.routesInStorage).length;
+  let allRoute = unref(multiTags.routesInStorage);
+  let routeLength = unref(multiTags.routesInStorage).length;
   // currentIndex为1时，左侧的菜单是首页，则不显示关闭左侧标签页
   let currentIndex = allRoute.findIndex(v => v.path === currentPath);
   // 如果currentIndex等于routeLength-1，右侧没有菜单，则不显示关闭右侧标签页
@@ -452,7 +452,7 @@ function openMenu(tag, e) {
     showMenuModel(tag.path);
   } else if (
     // eslint-disable-next-line no-dupe-else-if
-    relativeStorage.routesInStorage.length === 2 &&
+    multiTags.routesInStorage.length === 2 &&
     route.path !== tag.path
   ) {
     showMenus(true);
@@ -531,8 +531,8 @@ watch(
 
 onBeforeMount(() => {
   if (!instance) return;
-  relativeStorage = instance.appContext.app.config.globalProperties.$storage;
-  routerArrays = relativeStorage.routesInStorage ?? routerArrays;
+  multiTags = instance.appContext.app.config.globalProperties.$storage;
+  routerArrays = multiTags.routesInStorage ?? routerArrays;
 
   // 根据当前路由初始化操作标签页的禁用状态
   showMenuModel(route.fullPath);
