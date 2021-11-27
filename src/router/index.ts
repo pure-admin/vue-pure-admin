@@ -12,6 +12,7 @@ import NProgress from "/@/utils/progress";
 import { useTimeoutFn } from "@vueuse/core";
 import { storageSession, storageLocal } from "/@/utils/storage";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
+import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
 
 // 静态路由
 import homeRouter from "./modules/home";
@@ -230,11 +231,12 @@ router.beforeEach((to, _from, next) => {
       // 刷新
       if (usePermissionStoreHook().wholeRoutes.length === 0)
         initRouter(name.username).then((router: Router) => {
+          if (!useMultiTagsStoreHook().getMultiTagsCache) {
+            return router.push("/");
+          }
           router.push(to.path);
           // 刷新页面更新标签栏与页面路由匹配
-          const localRoutes = storageLocal.getItem(
-            "responsive-routesInStorage"
-          );
+          const localRoutes = storageLocal.getItem("responsive-tags");
           const optionsRoutes = router.options?.routes;
           const newLocalRoutes = [];
           optionsRoutes.forEach(ors => {
@@ -245,7 +247,7 @@ router.beforeEach((to, _from, next) => {
             });
           });
           storageLocal.setItem(
-            "responsive-routesInStorage",
+            "responsive-tags",
             uniqBy(newLocalRoutes, "path")
           );
         });

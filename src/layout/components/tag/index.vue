@@ -1,18 +1,3 @@
-<script lang="ts">
-let routerArrays: Array<RouteConfigs> = [
-  {
-    path: "/welcome",
-    parentPath: "/",
-    meta: {
-      title: "message.hshome",
-      icon: "el-icon-s-home",
-      i18n: true,
-      showLink: true
-    }
-  }
-];
-</script>
-
 <script setup lang="ts">
 import {
   ref,
@@ -33,15 +18,16 @@ import closeOther from "/@/assets/svg/close_other.svg";
 import closeRight from "/@/assets/svg/close_right.svg";
 
 import { emitter } from "/@/utils/mitt";
-import { templateRef, useResizeObserver, useDebounceFn } from "@vueuse/core";
 import { transformI18n } from "/@/utils/i18n";
 import { storageLocal } from "/@/utils/storage";
 import { useRoute, useRouter } from "vue-router";
+import { RouteConfigs, tagsViewsType } from "../../types";
 import { handleAliveRoute, delAliveRoutes } from "/@/router";
 import { useSettingStoreHook } from "/@/store/modules/settings";
+import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 import { toggleClass, removeClass, hasClass } from "/@/utils/operate";
-import { RouteConfigs, relativeStorageType, tagsViewsType } from "../../types";
+import { templateRef, useResizeObserver, useDebounceFn } from "@vueuse/core";
 
 const route = useRoute();
 const router = useRouter();
@@ -49,15 +35,18 @@ const translateX = ref<number>(0);
 const activeIndex = ref<number>(-1);
 let refreshButton = "refresh-button";
 const instance = getCurrentInstance();
-let relativeStorage: relativeStorageType;
 const pureSetting = useSettingStoreHook();
 const showTags = ref(storageLocal.getItem("tagsVal") || false);
 const tabDom = templateRef<HTMLElement | null>("tabDom", null);
 const containerDom = templateRef<HTMLElement | null>("containerDom", null);
 const scrollbarDom = templateRef<HTMLElement | null>("scrollbarDom", null);
 
+let multiTags: ComputedRef<Array<RouteConfigs>> = computed(() => {
+  return useMultiTagsStoreHook()?.multiTags;
+});
+
 const dynamicTagView = () => {
-  const index = dynamicTagList.value.findIndex(item => {
+  const index = multiTags.value.findIndex(item => {
     return item.path === route.path;
   });
   moveToView(index);
@@ -150,41 +139,38 @@ const tagsViews = ref<Array<tagsViewsType>>([
     icon: close,
     text: "message.hscloseCurrentTab",
     divided: false,
-    disabled: routerArrays.length > 1 ? false : true,
+    disabled: multiTags.value.length > 1 ? false : true,
     show: true
   },
   {
     icon: closeLeft,
     text: "message.hscloseLeftTabs",
     divided: true,
-    disabled: routerArrays.length > 1 ? false : true,
+    disabled: multiTags.value.length > 1 ? false : true,
     show: true
   },
   {
     icon: closeRight,
     text: "message.hscloseRightTabs",
     divided: false,
-    disabled: routerArrays.length > 1 ? false : true,
+    disabled: multiTags.value.length > 1 ? false : true,
     show: true
   },
   {
     icon: closeOther,
     text: "message.hscloseOtherTabs",
     divided: true,
-    disabled: routerArrays.length > 2 ? false : true,
+    disabled: multiTags.value.length > 2 ? false : true,
     show: true
   },
   {
     icon: closeAll,
     text: "message.hscloseAllTabs",
     divided: false,
-    disabled: routerArrays.length > 1 ? false : true,
+    disabled: multiTags.value.length > 1 ? false : true,
     show: true
   }
 ]);
-const dynamicTagList: ComputedRef<Array<RouteConfigs>> = computed(() => {
-  return relativeStorage.routesInStorage;
-});
 
 // 显示模式，默认灵动模式显示
 const showModel = ref(storageLocal.getItem("showModel") || "smart");
@@ -200,7 +186,7 @@ let buttonTop = ref(0);
 let currentSelect = ref({});
 
 function dynamicRouteTag(value: string, parentPath: string): void {
-  const hasValue = relativeStorage.routesInStorage.some((item: any) => {
+  const hasValue = multiTags.value.some(item => {
     return item.path === value;
   });
 
@@ -209,13 +195,12 @@ function dynamicRouteTag(value: string, parentPath: string): void {
       arr.forEach((arrItem: any) => {
         let pathConcat = parentPath + arrItem.path;
         if (arrItem.path === value || pathConcat === value) {
-          routerArrays.push({
+          useMultiTagsStoreHook().handleTags("push", {
             path: value,
             parentPath: `/${parentPath.split("/")[1]}`,
             meta: arrItem.meta,
             name: arrItem.name
           });
-          relativeStorage.routesInStorage = routerArrays;
         } else {
           if (arrItem.children && arrItem.children.length > 0) {
             concatPath(arrItem.children, value, parentPath);
@@ -242,13 +227,17 @@ function onFresh() {
 function deleteDynamicTag(obj: any, current: any, tag?: string) {
   // 存放被删除的缓存路由
   let delAliveRouteList = [];
-  let valueIndex: number = routerArrays.findIndex((item: any) => {
+  let valueIndex: number = multiTags.value.findIndex((item: any) => {
     return item.path === obj.path;
   });
 
-  const spliceRoute = (start?: number, end?: number, other?: boolean): void => {
+  const spliceRoute = (
+    startIndex?: number,
+    length?: number,
+    other?: boolean
+  ): void => {
     if (other) {
-      relativeStorage.routesInStorage = [
+      useMultiTagsStoreHook().handleTags("equal", [
         {
           path: "/welcome",
           parentPath: "/",
@@ -260,11 +249,12 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
           }
         },
         obj
-      ];
-      routerArrays = relativeStorage.routesInStorage;
+      ]);
     } else {
-      delAliveRouteList = routerArrays.splice(start, end);
-      relativeStorage.routesInStorage = routerArrays;
+      delAliveRouteList = useMultiTagsStoreHook().handleTags("splice", "", {
+        startIndex,
+        length
+      });
     }
   };
 
@@ -273,12 +263,12 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
   } else if (tag === "left") {
     spliceRoute(1, valueIndex - 1);
   } else if (tag === "right") {
-    spliceRoute(valueIndex + 1, routerArrays.length);
+    spliceRoute(valueIndex + 1, multiTags.value.length);
   } else {
     // 从当前匹配到的路径中删除
     spliceRoute(valueIndex, 1);
   }
-  let newRoute: any = routerArrays.slice(-1);
+  let newRoute = useMultiTagsStoreHook().handleTags("slice");
   if (current === route.path) {
     // 删除缓存路由
     tag
@@ -294,8 +284,8 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
   } else {
     // 删除缓存路由
     tag ? delAliveRoutes(delAliveRouteList) : delAliveRoutes([obj]);
-    if (!routerArrays.length) return;
-    let isHasActiveTag = routerArrays.some(item => {
+    if (!multiTags.value.length) return;
+    let isHasActiveTag = multiTags.value.some(item => {
       return item.path === route.path;
     });
     !isHasActiveTag &&
@@ -365,11 +355,12 @@ function onClickDrop(key, item, selectRoute?: RouteConfigs) {
       break;
     case 5:
       // 关闭全部标签页
-      routerArrays.splice(1, routerArrays.length);
-      relativeStorage.routesInStorage = routerArrays;
+      useMultiTagsStoreHook().handleTags("splice", "", {
+        startIndex: 1,
+        length: multiTags.value.length
+      });
       usePermissionStoreHook().clearAllCachePage();
       router.push("/welcome");
-
       break;
   }
   setTimeout(() => {
@@ -400,8 +391,8 @@ function disabledMenus(value: boolean) {
 
 // 检查当前右键的菜单两边是否存在别的菜单，如果左侧的菜单是首页，则不显示关闭左侧标签页，如果右侧没有菜单，则不显示关闭右侧标签页
 function showMenuModel(currentPath: string, refresh = false) {
-  let allRoute = unref(relativeStorage.routesInStorage);
-  let routeLength = unref(relativeStorage.routesInStorage).length;
+  let allRoute = multiTags.value;
+  let routeLength = multiTags.value.length;
   // currentIndex为1时，左侧的菜单是首页，则不显示关闭左侧标签页
   let currentIndex = allRoute.findIndex(v => v.path === currentPath);
   // 如果currentIndex等于routeLength-1，右侧没有菜单，则不显示关闭右侧标签页
@@ -452,7 +443,7 @@ function openMenu(tag, e) {
     showMenuModel(tag.path);
   } else if (
     // eslint-disable-next-line no-dupe-else-if
-    relativeStorage.routesInStorage.length === 2 &&
+    multiTags.value.length === 2 &&
     route.path !== tag.path
   ) {
     showMenus(true);
@@ -531,8 +522,6 @@ watch(
 
 onBeforeMount(() => {
   if (!instance) return;
-  relativeStorage = instance.appContext.app.config.globalProperties.$storage;
-  routerArrays = relativeStorage.routesInStorage ?? routerArrays;
 
   // 根据当前路由初始化操作标签页的禁用状态
   showMenuModel(route.fullPath);
@@ -569,7 +558,7 @@ onBeforeMount(() => {
       >
         <div
           :ref="'dynamic' + index"
-          v-for="(item, index) in dynamicTagList"
+          v-for="(item, index) in multiTags"
           :key="index"
           :class="[
             'scroll-item is-closable',

@@ -17,6 +17,7 @@ import fullScreen from "/@/assets/svg/full_screen.svg";
 import exitScreen from "/@/assets/svg/exit_screen.svg";
 import { deviceDetection } from "/@/utils/deviceDetection";
 import { useSettingStoreHook } from "/@/store/modules/settings";
+import { useMultiTagsStore } from "/@/store/modules/multiTags";
 
 import navbar from "./components/navbar.vue";
 import tag from "./components/tag/index.vue";
@@ -33,11 +34,11 @@ const instance = getCurrentInstance().appContext.app.config.globalProperties;
 const layout = computed(() => {
   // 路由
   if (
-    !instance.$storage.routesInStorage ||
-    instance.$storage.routesInStorage.length === 0
+    useMultiTagsStore().multiTagsCache &&
+    (!instance.$storage.tags || instance.$storage.tags.length === 0)
   ) {
     // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-    instance.$storage.routesInStorage = routerArrays;
+    instance.$storage.tags = routerArrays;
   }
   // 国际化
   if (!instance.$storage.locale) {
