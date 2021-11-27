@@ -231,9 +231,10 @@ router.beforeEach((to, _from, next) => {
       // 刷新
       if (usePermissionStoreHook().wholeRoutes.length === 0)
         initRouter(name.username).then((router: Router) => {
-          useMultiTagsStoreHook().getMultiTagsCache
-            ? router.push(to.path)
-            : router.push("/");
+          if (!useMultiTagsStoreHook().getMultiTagsCache) {
+            return router.push("/");
+          }
+          router.push(to.path);
           // 刷新页面更新标签栏与页面路由匹配
           const localRoutes = storageLocal.getItem("responsive-tags");
           const optionsRoutes = router.options?.routes;

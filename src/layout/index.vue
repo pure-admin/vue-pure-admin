@@ -17,6 +17,7 @@ import fullScreen from "/@/assets/svg/full_screen.svg";
 import exitScreen from "/@/assets/svg/exit_screen.svg";
 import { deviceDetection } from "/@/utils/deviceDetection";
 import { useSettingStoreHook } from "/@/store/modules/settings";
+import { useMultiTagsStore } from "/@/store/modules/multiTags";
 
 import navbar from "./components/navbar.vue";
 import tag from "./components/tag/index.vue";
@@ -32,7 +33,10 @@ const instance = getCurrentInstance().appContext.app.config.globalProperties;
 // 清空缓存后从serverConfig.json读取默认配置并赋值到storage中
 const layout = computed(() => {
   // 路由
-  if (!instance.$storage.tags || instance.$storage.tags.length === 0) {
+  if (
+    useMultiTagsStore().multiTagsCache &&
+    (!instance.$storage.tags || instance.$storage.tags.length === 0)
+  ) {
     // eslint-disable-next-line vue/no-side-effects-in-computed-properties
     instance.$storage.tags = routerArrays;
   }
