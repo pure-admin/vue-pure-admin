@@ -255,18 +255,6 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
         startIndex,
         length
       });
-      useMultiTagsStoreHook().handleTags("equal", [
-        {
-          path: "/welcome",
-          parentPath: "/",
-          meta: {
-            title: "message.hshome",
-            icon: "el-icon-s-home",
-            i18n: true,
-            showLink: true
-          }
-        }
-      ]);
     }
   };
 

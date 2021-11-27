@@ -17,6 +17,7 @@ import { debounce } from "/@/utils/debounce";
 import { themeColorsType } from "../../types";
 import { useAppStoreHook } from "/@/store/modules/app";
 import { storageLocal, storageSession } from "/@/utils/storage";
+import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
 import { toggleTheme } from "@zougt/vite-plugin-theme-preprocessor/dist/browser-utils";
 
 const router = useRouter();
@@ -135,6 +136,18 @@ function onReset() {
   storageSession.clear();
   toggleClass(false, "html-grey", document.querySelector("html"));
   toggleClass(false, "html-weakness", document.querySelector("html"));
+  useMultiTagsStoreHook().handleTags("equal", [
+    {
+      path: "/welcome",
+      parentPath: "/",
+      meta: {
+        title: "message.hshome",
+        icon: "el-icon-s-home",
+        i18n: true,
+        showLink: true
+      }
+    }
+  ]);
   router.push("/login");
 }
 
