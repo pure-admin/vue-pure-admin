@@ -5,9 +5,9 @@ import Storage from "responsive-storage";
 export const injectResponsiveStorage = (app: App, config: ServerConfigs) => {
   app.use(Storage, {
     // 默认显示首页tag
-    routesInStorage: {
+    tags: {
       type: Array,
-      default: Storage.getData(undefined, "routesInStorage") ?? [
+      default: Storage.getData(undefined, "tags") ?? [
         {
           path: "/welcome",
           parentPath: "/",

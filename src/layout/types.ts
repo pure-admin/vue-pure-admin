@@ -25,7 +25,7 @@ export type RouteConfigs = {
 };
 
 export type multiTagsType = {
-  routesInStorage: Array<RouteConfigs>;
+  tags: Array<RouteConfigs>;
 };
 
 export type tagsViewsType = {

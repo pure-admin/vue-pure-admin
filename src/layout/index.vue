@@ -32,12 +32,9 @@ const instance = getCurrentInstance().appContext.app.config.globalProperties;
 // 清空缓存后从serverConfig.json读取默认配置并赋值到storage中
 const layout = computed(() => {
   // 路由
-  if (
-    !instance.$storage.routesInStorage ||
-    instance.$storage.routesInStorage.length === 0
-  ) {
+  if (!instance.$storage.tags || instance.$storage.tags.length === 0) {
     // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-    instance.$storage.routesInStorage = routerArrays;
+    instance.$storage.tags = routerArrays;
   }
   // 国际化
   if (!instance.$storage.locale) {
