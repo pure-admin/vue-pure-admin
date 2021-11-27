@@ -15,6 +15,7 @@ import { usePermissionStoreHook } from "/@/store/modules/permission";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
 
 // 静态路由
+import tabsRouter from "./modules/tabs";
 import homeRouter from "./modules/home";
 import Layout from "/@/layout/index.vue";
 import errorRouter from "./modules/error";
@@ -32,6 +33,7 @@ import { transformI18n } from "../utils/i18n";
 const modulesRoutes = import.meta.glob("/src/views/*/*/*.vue");
 
 const constantRoutes: Array<RouteComponent> = [
+  tabsRouter,
   homeRouter,
   flowChartRouter,
   editorRouter,

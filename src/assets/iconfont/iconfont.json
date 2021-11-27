@@ -6,6 +6,13 @@
   "description": "pure-admin",
   "glyphs": [
     {
+      "icon_id": "20594647",
+      "name": "标签页",
+      "font_class": "tabs",
+      "unicode": "e63e",
+      "unicode_decimal": 58942
+    },
+    {
       "icon_id": "22129506",
       "name": "水能",
       "font_class": "logo",
