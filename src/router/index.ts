@@ -137,7 +137,7 @@ export const addAsyncRoutes = (arrRoutes: Array<RouteComponent>) => {
 // 创建路由实例
 export const router: Router = createRouter({
   history: createWebHashHistory(),
-  routes: filterTree(ascending(constantRoutes)).concat(...remainingRouter),
+  routes: ascending(constantRoutes).concat(...remainingRouter),
   scrollBehavior(to, from, savedPosition) {
     return new Promise(resolve => {
       if (savedPosition) {

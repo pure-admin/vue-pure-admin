@@ -22,6 +22,18 @@ const tabsRouter = {
         showLink: true,
         i18n: true
       }
+    },
+    {
+      path: "/tabs/detail/:id",
+      name: "tabDetail",
+      component: () => import("/@/views/tabs/tabDetail.vue"),
+      meta: {
+        title: "",
+        showLink: false,
+        i18n: false,
+        dynamicLevel: 3,
+        realPath: "/tabs/detail"
+      }
     }
   ]
 };
