@@ -1,0 +1,50 @@
+<script setup lang="ts">
+import { ref } from "vue";
+import { useRouter, useRoute } from "vue-router";
+import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
+
+const router = useRouter();
+const route = useRoute();
+const activeName = ref("tag");
+
+function toDetail(index: number) {
+  useMultiTagsStoreHook().handleTags("push", {
+    path: `/tabs/detail/${index}`,
+    parentPath: route.matched[0].path,
+    name: "tabDetail",
+    meta: {
+      title: `No.${index} - 详情信息`,
+      showLink: false,
+      i18n: false,
+      dynamicLevel: 3,
+      realPath: "/tabs/detail"
+    }
+  });
+  router.push(`/tabs/detail/${index}`);
+}
+</script>
+
+<template>
+  <el-collapse v-model="activeName" class="tabs-container">
+    <el-collapse-item
+      title="标签页复用超出限制自动关闭(使用场景: 动态路由)"
+      name="tag"
+    >
+      <el-button
+        v-for="index in 6"
+        :key="index"
+        size="medium"
+        @click="toDetail(index)"
+      >
+        打开{{ index }}详情页
+      </el-button>
+    </el-collapse-item>
+  </el-collapse>
+</template>
+
+<style lang="scss" scoped>
+.tabs-container {
+  padding: 10px;
+  background: #fff;
+}
+</style>

@@ -41,6 +41,8 @@ import {
   ElTabPane,
   ElAvatar,
   ElEmpty,
+  ElCollapse,
+  ElCollapseItem,
   // 指令
   ElLoading,
   ElInfiniteScroll
@@ -106,7 +108,9 @@ const components = [
   ElTabs,
   ElTabPane,
   ElAvatar,
-  ElEmpty
+  ElEmpty,
+  ElCollapse,
+  ElCollapseItem
 ];
 // icon
 export const iconComponents = [
