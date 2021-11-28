@@ -13,6 +13,10 @@ vue-pure-admin is a free and open source middle and back-end template. Using the
 Tutorial: <https://www.bilibili.com/video/BV1534y1S7HV/>  
 UI Design: <https://www.bilibili.com/video/BV17g411T7rq/>
 
+## Docs
+
+<https://pure-admin-doc.vercel.app/>
+
 ## Thin
 
 Github Address: <https://github.com/xiaoxian521/pure-admin-thin>

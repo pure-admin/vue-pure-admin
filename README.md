@@ -15,7 +15,7 @@ UI 设计：<https://www.bilibili.com/video/BV17g411T7rq/>
 
 ## 配套文档
 
-正在编写中，预计发布时间 2021 年 11 月 28 日
+<https://pure-admin-doc.vercel.app/>
 
 ## 精简版
 
