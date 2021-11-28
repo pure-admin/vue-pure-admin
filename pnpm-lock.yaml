@@ -81,7 +81,7 @@ specifiers:
   vue-types: ^4.1.0
   vuedraggable: 4.1.0
   vxe-table: 4.0.30
-  wangeditor: 4.7.7
+  wangeditor: ^4.7.9
   xe-ajax: 4.0.5
   xe-utils: 3.4.0
   xgplayer: 2.28.0
@@ -126,7 +126,7 @@ dependencies:
   vue-types: 4.1.1_vue@3.2.21
   vuedraggable: 4.1.0_vue@3.2.21
   vxe-table: 4.0.30_vue@3.2.21+xe-utils@3.4.0
-  wangeditor: 4.7.7
+  wangeditor: 4.7.9
   xe-ajax: 4.0.5
   xe-utils: 3.4.0
   xgplayer: 2.28.0
@@ -522,10 +522,10 @@ packages:
       - supports-color
     dev: true
 
-  /@babel/runtime-corejs3/7.16.0:
+  /@babel/runtime-corejs3/7.16.3:
     resolution:
       {
-        integrity: sha512-Oi2qwQ21X7/d9gn3WiwkDTJmq3TQtYNz89lRnoFy8VeZpWlsyXvzSwiRrRZ8cXluvSwqKxqHJ6dBd9Rv+p0ZGQ==
+        integrity: sha512-IAdDC7T0+wEB4y2gbIL0uOXEYpiZEeuFUTVbdGq+UwCcF35T/tS8KrmMomEwEc5wBbyfH3PJVpTSUqrhPDXFcQ==
       }
     engines: { node: ">=6.9.0" }
     dependencies:
@@ -533,10 +533,10 @@ packages:
       regenerator-runtime: 0.13.9
     dev: false
 
-  /@babel/runtime/7.16.0:
+  /@babel/runtime/7.16.3:
     resolution:
       {
-        integrity: sha512-Nht8L0O8YCktmsDV6FqFue7vQLRx3Hb0B37lS5y0jDRqRxlBG4wIJHnf9/bgSE2UyipKFA01YtS+npRdTWBUyw==
+        integrity: sha512-WBwekcqacdY2e9AF/Q7WLFUWmdJGJTkbjqTjoMDgXkVZ3ZRUvOPsLb5KdwISoQVsbP+DQzVZW4Zhci0DvpbNTQ==
       }
     engines: { node: ">=6.9.0" }
     dependencies:
@@ -6832,14 +6832,14 @@ packages:
       xe-utils: 3.4.0
     dev: false
 
-  /wangeditor/4.7.7:
+  /wangeditor/4.7.9:
     resolution:
       {
-        integrity: sha512-eUpgP7i4pCYIjxjGMMcSUtkHUCkdX7BBwLZE6umseoK9hs3qIMu1tQ95FG48NJwL71JyAjt5c1gB56PzducL3Q==
+        integrity: sha512-x8u/SJQ4pHLp597CzWm/0DrITUGpNaPk4jms03VYSaIt1mSoF5wd+dAxBsfPgmaYrYWx6CZtyGZA4Kv6s1vvlw==
       }
     dependencies:
-      "@babel/runtime": 7.16.0
-      "@babel/runtime-corejs3": 7.16.0
+      "@babel/runtime": 7.16.3
+      "@babel/runtime-corejs3": 7.16.3
       tslib: 2.3.1
     dev: false
 
