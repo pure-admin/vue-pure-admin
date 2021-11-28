@@ -444,12 +444,6 @@
       }
     }
 
-    & > .el-menu {
-      i {
-        margin-right: 16px;
-      }
-    }
-
     .is-active > .el-sub-menu__title,
     .is-active.submenu-title-noDropdown {
       color: $subMenuActiveText !important;
