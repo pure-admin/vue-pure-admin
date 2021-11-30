@@ -234,7 +234,13 @@ router.beforeEach((to, _from, next) => {
       if (usePermissionStoreHook().wholeRoutes.length === 0)
         initRouter(name.username).then((router: Router) => {
           if (!useMultiTagsStoreHook().getMultiTagsCache) {
-            return router.push("/");
+            useMultiTagsStoreHook().handleTags("push", {
+              path: to.path,
+              parentPath: to.matched[0]?.path,
+              name: to.name,
+              meta: to.meta
+            });
+            return router.push(to.path);
           }
           router.push(to.path);
           // 刷新页面更新标签栏与页面路由匹配
