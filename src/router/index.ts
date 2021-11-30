@@ -234,6 +234,9 @@ router.beforeEach((to, _from, next) => {
       if (usePermissionStoreHook().wholeRoutes.length === 0)
         initRouter(name.username).then((router: Router) => {
           if (!useMultiTagsStoreHook().getMultiTagsCache) {
+            if (to.meta?.realPath) {
+              to.meta.title = `No.${to.params?.id} - 详情信息`;
+            }
             useMultiTagsStoreHook().handleTags("push", {
               path: to.path,
               parentPath: to.matched[0]?.path,
