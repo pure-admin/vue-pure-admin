@@ -1,15 +1,17 @@
 import {
   Router,
+  RouteMeta,
   createRouter,
   RouteComponent,
+  RouteRecordName,
   createWebHashHistory,
   RouteRecordNormalized
 } from "vue-router";
-import { RouteConfigs } from "/@/layout/types";
-import { split, uniqBy } from "lodash-es";
 import { openLink } from "/@/utils/link";
 import NProgress from "/@/utils/progress";
+import { split, uniqBy } from "lodash-es";
 import { useTimeoutFn } from "@vueuse/core";
+import { RouteConfigs } from "/@/layout/types";
 import { storageSession, storageLocal } from "/@/utils/storage";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
@@ -25,6 +27,7 @@ import externalLink from "./modules/externalLink";
 import remainingRouter from "./modules/remaining";
 import flowChartRouter from "./modules/flowchart";
 import componentsRouter from "./modules/components";
+
 // 动态路由
 import { getAsyncRoutes } from "/@/api/routes";
 import { transformI18n } from "/@/plugins/i18n";
@@ -234,16 +237,29 @@ router.beforeEach((to, _from, next) => {
       if (usePermissionStoreHook().wholeRoutes.length === 0)
         initRouter(name.username).then((router: Router) => {
           if (!useMultiTagsStoreHook().getMultiTagsCache) {
+            const handTag = (
+              path: string,
+              parentPath: string,
+              name: RouteRecordName,
+              meta: RouteMeta
+            ): void => {
+              useMultiTagsStoreHook().handleTags("push", {
+                path,
+                parentPath,
+                name,
+                meta
+              });
+            };
+            const parentPath = to.matched[0]?.path;
             if (to.meta?.realPath) {
-              to.meta.title = `No.${to.params?.id} - 详情信息`;
+              const { path, name, meta } = to.matched[0]?.children[0];
+              handTag(path, parentPath, name, meta);
+              return router.push(path);
+            } else {
+              const { path, name, meta } = to;
+              handTag(path, parentPath, name, meta);
+              return router.push(to.path);
             }
-            useMultiTagsStoreHook().handleTags("push", {
-              path: to.path,
-              parentPath: to.matched[0]?.path,
-              name: to.name,
-              meta: to.meta
-            });
-            return router.push(to.path);
           }
           router.push(to.path);
           // 刷新页面更新标签栏与页面路由匹配

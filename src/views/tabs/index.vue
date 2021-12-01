@@ -13,7 +13,7 @@ function toDetail(index: number) {
     parentPath: route.matched[0].path,
     name: "tabDetail",
     meta: {
-      title: `No.${index} - 详情信息`,
+      title: { zh: `No.${index} - 详情信息`, en: `No.${index} - DetailInfo` },
       showLink: false,
       i18n: false,
       dynamicLevel: 3,
@@ -46,5 +46,17 @@ function toDetail(index: number) {
 .tabs-container {
   padding: 10px;
   background: #fff;
+
+  ::v-deep(.el-collapse-item__header) {
+    line-height: 20px;
+  }
+
+  ::v-deep(.el-collapse-item__wrap) {
+    border-bottom: none;
+  }
+
+  button {
+    margin: 10px;
+  }
 }
 </style>
