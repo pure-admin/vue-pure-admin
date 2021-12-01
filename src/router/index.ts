@@ -27,7 +27,7 @@ import flowChartRouter from "./modules/flowchart";
 import componentsRouter from "./modules/components";
 // 动态路由
 import { getAsyncRoutes } from "/@/api/routes";
-import { transformI18n } from "../utils/i18n";
+import { transformI18n } from "/@/plugins/i18n";
 
 // https://cn.vitejs.dev/guide/features.html#glob-import
 const modulesRoutes = import.meta.glob("/src/views/*/*/*.vue");

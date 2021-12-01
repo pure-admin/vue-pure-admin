@@ -18,7 +18,7 @@ import closeOther from "/@/assets/svg/close_other.svg";
 import closeRight from "/@/assets/svg/close_right.svg";
 
 import { emitter } from "/@/utils/mitt";
-import { transformI18n } from "/@/utils/i18n";
+import { transformI18n } from "/@/plugins/i18n";
 import { storageLocal } from "/@/utils/storage";
 import { useRoute, useRouter } from "vue-router";
 import { RouteConfigs, tagsViewsType } from "../../types";

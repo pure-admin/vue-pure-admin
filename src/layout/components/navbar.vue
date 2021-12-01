@@ -11,7 +11,7 @@ import { unref, watch, getCurrentInstance } from "vue";
 import { deviceDetection } from "/@/utils/deviceDetection";
 import screenfull from "../components/screenfull/index.vue";
 import globalization from "/@/assets/svg/globalization.svg";
-import { transformI18n } from "/@/utils/i18n";
+import { transformI18n } from "/@/plugins/i18n";
 
 const instance =
   getCurrentInstance().appContext.config.globalProperties.$storage;

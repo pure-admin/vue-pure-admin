@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
 import { useRoute, useRouter, RouteLocationMatched } from "vue-router";
-import { transformI18n } from "/@/utils/i18n";
+import { transformI18n } from "/@/plugins/i18n";
 
 const levelList = ref([]);
 const route = useRoute();

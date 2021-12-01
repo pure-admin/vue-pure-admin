@@ -1,15 +1,8 @@
 import { defineStore } from "pinia";
 import { store } from "/@/store";
 import { getConfig } from "/@/config";
-import { positionType } from "./types";
 import { storageLocal } from "/@/utils/storage";
-
-interface Itag {
-  path: string;
-  parentPath: string;
-  name: string;
-  meta: any;
-}
+import { multiType, positionType } from "./types";
 
 export const useMultiTagsStore = defineStore({
   id: "pure-multiTags",
@@ -43,16 +36,16 @@ export const useMultiTagsStore = defineStore({
     },
     handleTags<T>(
       mode: string,
-      value?: T | Itag,
+      value?: T | multiType,
       position?: positionType
-    ): any {
+    ): T {
       switch (mode) {
         case "equal":
           this.multiTags = value;
           break;
         case "push":
           {
-            const tagVal = value as Itag;
+            const tagVal = value as multiType;
             // 判断tag是否已存在:
             const tagHasExits = this.multiTags.some(tag => {
               return tag.path === tagVal?.path;

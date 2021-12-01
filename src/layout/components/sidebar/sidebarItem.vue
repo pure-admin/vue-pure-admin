@@ -4,7 +4,7 @@ import { PropType, ref, nextTick, getCurrentInstance } from "vue";
 import { childrenType } from "../../types";
 import { useAppStoreHook } from "/@/store/modules/app";
 import Icon from "/@/components/ReIcon/src/Icon.vue";
-import { transformI18n } from "/@/utils/i18n";
+import { transformI18n } from "/@/plugins/i18n";
 import { findIconReg } from "/@/components/ReIcon";
 const instance = getCurrentInstance().appContext.app.config.globalProperties;
 const menuMode = instance.$storage.layout?.layout === "vertical";

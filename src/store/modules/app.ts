@@ -1,23 +1,13 @@
 import { storageLocal } from "/@/utils/storage";
 import { deviceDetection } from "/@/utils/deviceDetection";
-import { defineStore } from "pinia";
 import { store } from "/@/store";
+import { appType } from "./types";
+import { defineStore } from "pinia";
 import { getConfig } from "/@/config";
-
-interface AppState {
-  sidebar: {
-    opened: boolean;
-    withoutAnimation: boolean;
-    // 判断是否手动点击Hamburger
-    isClickHamburger: boolean;
-  };
-  layout: string;
-  device: string;
-}
 
 export const useAppStore = defineStore({
   id: "pure-app",
-  state: (): AppState => ({
+  state: (): appType => ({
     sidebar: {
       opened: storageLocal.getItem("sidebarStatus")
         ? !!+storageLocal.getItem("sidebarStatus")
