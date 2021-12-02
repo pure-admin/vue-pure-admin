@@ -251,6 +251,7 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
         obj
       ]);
     } else {
+      // @ts-ignore
       delAliveRouteList = useMultiTagsStoreHook().handleTags("splice", "", {
         startIndex,
         length
