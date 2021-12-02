@@ -25,7 +25,8 @@ export const injectResponsiveStorage = (app: App, config: ServerConfigs) => {
         default: Storage.getData(undefined, "sets") ?? {
           grey: config.Grey ?? false,
           weak: config.Weak ?? false,
-          hideTabs: config.HideTabs ?? false
+          hideTabs: config.HideTabs ?? false,
+          multiTagsCache: config.MultiTagsCache ?? false
         }
       }
     },

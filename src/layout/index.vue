@@ -60,7 +60,8 @@ const layout = computed(() => {
     instance.$storage.sets = {
       grey: instance.$config?.Grey ?? false,
       weak: instance.$config?.Weak ?? false,
-      hideTabs: instance.$config?.HideTabs ?? false
+      hideTabs: instance.$config?.HideTabs ?? false,
+      multiTagsCache: instance.$config?.MultiTagsCache ?? false
     };
   }
   return instance.$storage?.layout.layout;

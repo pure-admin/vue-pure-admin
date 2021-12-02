@@ -10,6 +10,7 @@ import {
   getCurrentInstance
 } from "vue";
 import panel from "../panel/index.vue";
+import { getConfig } from "/@/config";
 import { useRouter } from "vue-router";
 import { emitter } from "/@/utils/mitt";
 import { templateRef } from "@vueuse/core";
@@ -77,7 +78,8 @@ const logoVal = ref(storageLocal.getItem("logoVal") || "1");
 const settings = reactive({
   greyVal: instance.sets.grey,
   weakVal: instance.sets.weak,
-  tabsVal: instance.sets.hideTabs
+  tabsVal: instance.sets.hideTabs,
+  multiTagsCache: instance.sets.multiTagsCache
 });
 
 function toggleClass(flag: boolean, clsName: string, target?: HTMLElement) {
@@ -93,7 +95,8 @@ const greyChange = (value): void => {
   instance.sets = {
     grey: value,
     weak: instance.sets.weak,
-    hideTabs: instance.sets.hideTabs
+    hideTabs: instance.sets.hideTabs,
+    multiTagsCache: instance.sets.multiTagsCache
   };
 };
 
@@ -107,7 +110,8 @@ const weekChange = (value): void => {
   instance.sets = {
     grey: instance.sets.grey,
     weak: value,
-    hideTabs: instance.sets.hideTabs
+    hideTabs: instance.sets.hideTabs,
+    multiTagsCache: instance.sets.multiTagsCache
   };
 };
 
@@ -116,9 +120,21 @@ const tagsChange = () => {
   instance.sets = {
     grey: instance.sets.grey,
     weak: instance.sets.weak,
-    hideTabs: showVal
+    hideTabs: showVal,
+    multiTagsCache: instance.sets.multiTagsCache
   };
   emitter.emit("tagViewsChange", showVal);
+};
+
+const multiTagsCacheChange = () => {
+  let multiTagsCache = settings.multiTagsCache;
+  instance.sets = {
+    grey: instance.sets.grey,
+    weak: instance.sets.weak,
+    hideTabs: instance.sets.hideTabs,
+    multiTagsCache: multiTagsCache
+  };
+  useMultiTagsStoreHook().multiTagsCacheChange(multiTagsCache);
 };
 
 //初始化项目配置
@@ -148,6 +164,7 @@ function onReset() {
       }
     }
   ]);
+  useMultiTagsStoreHook().multiTagsCacheChange(getConfig().MultiTagsCache);
   router.push("/login");
 }
 
@@ -314,6 +331,18 @@ function setLayoutThemeColor(theme: string) {
           active-text="开"
           inactive-text="关"
           @change="logoChange"
+        >
+        </el-switch>
+      </li>
+      <li>
+        <span>标签页持久化</span>
+        <el-switch
+          v-model="settings.multiTagsCache"
+          inline-prompt
+          inactive-color="#a6a6a6"
+          active-text="开"
+          inactive-text="关"
+          @change="multiTagsCacheChange"
         >
         </el-switch>
       </li>
