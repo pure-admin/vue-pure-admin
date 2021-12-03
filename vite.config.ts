@@ -1,41 +1,40 @@
 import { resolve } from "path";
-import { UserConfigExport, ConfigEnv, loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
-import vueJsx from "@vitejs/plugin-vue-jsx";
-import { warpperEnv } from "./build/utils";
-import { createProxy } from "./build/proxy";
-import { viteMockServe } from "vite-plugin-mock";
 import svgLoader from "vite-svg-loader";
+import vueJsx from "@vitejs/plugin-vue-jsx";
+import { warpperEnv, regExps } from "./build";
+import { viteMockServe } from "vite-plugin-mock";
 import styleImport from "vite-plugin-style-import";
 import ElementPlus from "unplugin-element-plus/vite";
+import { UserConfigExport, ConfigEnv, loadEnv } from "vite";
 import themePreprocessorPlugin from "@zougt/vite-plugin-theme-preprocessor";
 
+// 当前执行node命令时文件夹的地址（工作目录）
+const root: string = process.cwd();
+
+// 路径查找
 const pathResolve = (dir: string): string => {
   return resolve(__dirname, ".", dir);
 };
 
+// 设置别名
 const alias: Record<string, string> = {
   "/@": pathResolve("src"),
   "@build": pathResolve("build"),
-  //解决开发环境下的警告 You are running the esm-bundler build of vue-i18n. It is recommended to configure your bundler to explicitly replace feature flag globals with boolean literals to get proper tree-shaking in the final bundle.
+  //解决开发环境下的警告
   "vue-i18n": "vue-i18n/dist/vue-i18n.cjs.js"
 };
 
-const root: string = process.cwd();
-
 export default ({ command, mode }: ConfigEnv): UserConfigExport => {
-  const { VITE_PORT, VITE_PUBLIC_PATH, VITE_PROXY } = warpperEnv(
-    loadEnv(mode, root)
-  );
+  const {
+    VITE_PORT,
+    VITE_PUBLIC_PATH,
+    VITE_PROXY_DOMAIN,
+    VITE_PROXY_DOMAIN_REAL
+  } = warpperEnv(loadEnv(mode, root));
   const prodMock = true;
   return {
-    /**
-     * 基本公共路径
-     * /manages/ 可根据项目部署域名的后缀自行填写（全局搜/manages/替换）
-     * @default '/'
-     */
-    base:
-      process.env.NODE_ENV === "production" ? "/manages/" : VITE_PUBLIC_PATH,
+    base: VITE_PUBLIC_PATH,
     root,
     resolve: {
       alias
@@ -44,18 +43,27 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
     server: {
       // 是否开启 https
       https: false,
-      /**
-       * 端口号
-       * @default 3000
-       */
+      // 端口号
       port: VITE_PORT,
       host: "0.0.0.0",
       // 本地跨域代理
-      proxy: createProxy(VITE_PROXY)
+      proxy:
+        VITE_PROXY_DOMAIN_REAL.length > 0
+          ? {
+              [VITE_PROXY_DOMAIN]: {
+                target: VITE_PROXY_DOMAIN_REAL,
+                // ws: true,
+                changeOrigin: true,
+                rewrite: (path: string) => regExps(path, VITE_PROXY_DOMAIN)
+              }
+            }
+          : null
     },
     plugins: [
       vue(),
+      // jsx、tsx语法支持
       vueJsx(),
+      // 自定义主题
       themePreprocessorPlugin({
         scss: {
           multipleScopeVars: [
@@ -112,10 +120,11 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
           customThemeCssFileName: scopeName => scopeName
         }
       }),
+      // svg组件化支持
       svgLoader(),
+      // 按需加载vxe-table
       styleImport({
         libs: [
-          // 按需加载vxe-table
           {
             libraryName: "vxe-table",
             esModule: true,
@@ -126,6 +135,7 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
         ]
       }),
       ElementPlus({}),
+      // mock支持
       viteMockServe({
         mockPath: "mock",
         localEnabled: command === "serve",
@@ -147,7 +157,6 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
       exclude: ["@zougt/vite-plugin-theme-preprocessor/dist/browser-utils"]
     },
     build: {
-      // @ts-ignore
       sourcemap: false,
       brotliSize: false,
       // 消除打包大小超过500kb警告

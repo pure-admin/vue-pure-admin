@@ -1,5 +1,12 @@
+// 处理环境变量
 const warpperEnv = (envConf: Recordable): ViteEnv => {
-  const ret: any = {};
+  // 此处为默认值，无需修改
+  const ret: ViteEnv = {
+    VITE_PORT: 8848,
+    VITE_PUBLIC_PATH: "",
+    VITE_PROXY_DOMAIN: "",
+    VITE_PROXY_DOMAIN_REAL: ""
+  };
 
   for (const envName of Object.keys(envConf)) {
     let realName = envConf[envName].replace(/\\n/g, "\n");
@@ -8,13 +15,6 @@ const warpperEnv = (envConf: Recordable): ViteEnv => {
 
     if (envName === "VITE_PORT") {
       realName = Number(realName);
-    }
-    if (envName === "VITE_PROXY" && realName) {
-      try {
-        realName = JSON.parse(realName.replace(/'/g, '"'));
-      } catch (error) {
-        realName = "";
-      }
     }
     ret[envName] = realName;
     if (typeof realName === "string") {
@@ -25,8 +25,15 @@ const warpperEnv = (envConf: Recordable): ViteEnv => {
   }
   return ret;
 };
+
+// 跨域代理重写
+const regExps = (value: string, reg: string): string => {
+  return value.replace(new RegExp(reg, "g"), "");
+};
+
+// 环境变量
 const loadEnv = (): ViteEnv => {
   return import.meta.env;
 };
 
-export { loadEnv, warpperEnv };
+export { warpperEnv, regExps, loadEnv };

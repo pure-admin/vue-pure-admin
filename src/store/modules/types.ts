@@ -33,3 +33,8 @@ export type setType = {
   fixedHeader: boolean;
   hiddenSideBar: boolean;
 };
+
+export type userType = {
+  token: string;
+  name?: string;
+};

@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { loadEnv } from "@build/index";
+const { VITE_PUBLIC_PATH } = loadEnv();
 
-const url = ref(
-  process.env.NODE_ENV === "production"
-    ? "/manages/html/button.html"
-    : "/html/button.html"
-);
+const url = ref(`${VITE_PUBLIC_PATH}html/button.html`);
 </script>
 
 <template>

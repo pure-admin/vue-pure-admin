@@ -11,9 +11,11 @@ specifiers:
   "@logicflow/core": 0.7.1
   "@logicflow/extension": 0.7.1
   "@types/element-resize-detector": 1.1.3
+  "@types/js-cookie": ^3.0.1
   "@types/mockjs": 1.0.3
   "@types/node": 14.14.14
   "@types/nprogress": 0.2.0
+  "@types/qs": ^6.9.7
   "@typescript-eslint/eslint-plugin": 4.31.0
   "@typescript-eslint/parser": 4.31.0
   "@vitejs/plugin-vue": ^1.9.4
@@ -41,6 +43,7 @@ specifiers:
   eslint-plugin-vue: 7.17.0
   font-awesome: ^4.7.0
   husky: 7.0.2
+  js-cookie: ^3.0.1
   lint-staged: 11.1.2
   lodash-es: ^4.17.21
   lowdb: ^3.0.0
@@ -54,6 +57,7 @@ specifiers:
   postcss-import: 14.0.0
   prettier: 2.3.2
   pretty-quick: 3.1.1
+  qs: ^6.10.1
   remixicon: ^2.5.0
   resize-observer-polyfill: ^1.5.1
   responsive-storage: ^1.0.11
@@ -105,6 +109,7 @@ dependencies:
   element-plus: 1.2.0-beta.3_vue@3.2.21
   element-resize-detector: 1.2.3
   font-awesome: 4.7.0
+  js-cookie: 3.0.1
   lodash-es: 4.17.21
   lowdb: 3.0.0
   mitt: 3.0.0
@@ -113,6 +118,7 @@ dependencies:
   path: 0.12.7
   path-to-regexp: 6.2.0
   pinia: 2.0.2_typescript@4.4.2+vue@3.2.21
+  qs: 6.10.1
   remixicon: 2.5.0
   resize-observer-polyfill: 1.5.1
   responsive-storage: 1.0.11_vue@3.2.21
@@ -135,9 +141,11 @@ devDependencies:
   "@commitlint/cli": 13.1.0
   "@commitlint/config-conventional": 13.1.0
   "@types/element-resize-detector": 1.1.3
+  "@types/js-cookie": 3.0.1
   "@types/mockjs": 1.0.3
   "@types/node": 14.14.14
   "@types/nprogress": 0.2.0
+  "@types/qs": 6.9.7
   "@typescript-eslint/eslint-plugin": 4.31.0_f4e6dc0776b3600ef484e3c64a523136
   "@typescript-eslint/parser": 4.31.0_eslint@7.30.0+typescript@4.4.2
   "@vitejs/plugin-vue": 1.9.4_vite@2.6.14
@@ -1094,6 +1102,13 @@ packages:
       }
     dev: true
 
+  /@types/js-cookie/3.0.1:
+    resolution:
+      {
+        integrity: sha512-7wg/8gfHltklehP+oyJnZrz9XBuX5ZPP4zB6UsI84utdlkRYLnOm2HfpLXazTwZA+fpGn0ir8tGNgVnMEleBGQ==
+      }
+    dev: true
+
   /@types/json-schema/7.0.9:
     resolution:
       {
@@ -1170,6 +1185,13 @@ packages:
     resolution:
       {
         integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==
+      }
+    dev: true
+
+  /@types/qs/6.9.7:
+    resolution:
+      {
+        integrity: sha512-FGa1F62FT09qcrueBA6qYTrJPVDzah9a+493+o2PCXsesWHIn27G98TsSMs3WPNbZIEj4+VJf6saSFpvD+3Zsw==
       }
     dev: true
 
@@ -1957,6 +1979,16 @@ packages:
       }
     engines: { node: ">=6" }
     dev: true
+
+  /call-bind/1.0.2:
+    resolution:
+      {
+        integrity: sha512-7O+FbCihrB5WGbFYesctwmTKae6rOiIzmz1icreWJ+0aA7LJfuqhEso2T9ncpcFtzMQtzXf2QGGueWJGTYsqrA==
+      }
+    dependencies:
+      function-bind: 1.1.1
+      get-intrinsic: 1.1.1
+    dev: false
 
   /callsites/3.1.0:
     resolution:
@@ -3604,7 +3636,6 @@ packages:
       {
         integrity: sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==
       }
-    dev: true
 
   /functional-red-black-tree/1.0.1:
     resolution: { integrity: sha1-GwqzvVU7Kg1jmdKcDj6gslIHgyc= }
@@ -3632,6 +3663,17 @@ packages:
       }
     engines: { node: 6.* || 8.* || >= 10.* }
     dev: true
+
+  /get-intrinsic/1.1.1:
+    resolution:
+      {
+        integrity: sha512-kWZrnVM42QCiEA2Ig1bG8zjoIMOgxWwYCEeNdwY6Tv/cOSeGpcoX4pXHfKUxNKVoArnrEr2e9srnAxxGIraS9Q==
+      }
+    dependencies:
+      function-bind: 1.1.1
+      has: 1.0.3
+      has-symbols: 1.0.2
+    dev: false
 
   /get-own-enumerable-property-symbols/3.0.2:
     resolution:
@@ -3823,6 +3865,14 @@ packages:
     engines: { node: ">=8" }
     dev: true
 
+  /has-symbols/1.0.2:
+    resolution:
+      {
+        integrity: sha512-chXa79rL/UC2KlX17jo3vRGz0azaWEx5tGqZg5pO3NUyEJVB17dMruQlzCCOfUvElghKcm5194+BCRvi2Rv/Gw==
+      }
+    engines: { node: ">= 0.4" }
+    dev: false
+
   /has/1.0.3:
     resolution:
       {
@@ -3831,7 +3881,6 @@ packages:
     engines: { node: ">= 0.4.0" }
     dependencies:
       function-bind: 1.1.1
-    dev: true
 
   /hash-sum/2.0.0:
     resolution:
@@ -4175,6 +4224,14 @@ packages:
   /isexe/2.0.0:
     resolution: { integrity: sha1-6PvzdNxVb/iUehDcsFctYz8s+hA= }
     dev: true
+
+  /js-cookie/3.0.1:
+    resolution:
+      {
+        integrity: sha512-+0rgsUXZu4ncpPxRL+lNEptWMOWl9etvPHc/koSRp6MPwpRYAhmk0dUG00J4bxVV3r9uUzfo24wW0knS07SKSw==
+      }
+    engines: { node: ">=12" }
+    dev: false
 
   /js-tokens/4.0.0:
     resolution:
@@ -4837,6 +4894,13 @@ packages:
     resolution: { integrity: sha1-b2gragJ6Tp3fpFZM0lidHU5mnt4= }
     dev: true
 
+  /object-inspect/1.11.0:
+    resolution:
+      {
+        integrity: sha512-jp7ikS6Sd3GxQfZJPyH3cjcbJF6GZPClgdV+EFygjFLQ5FmW/dRUnTd9PQ9k0JhoNDabWFbpF1yCdSWCC6gexg==
+      }
+    dev: false
+
   /on-finished/2.3.0:
     resolution: { integrity: sha1-IPEzZIGwg811M3mSoWlxqi2QaUc= }
     engines: { node: ">= 0.8" }
@@ -5371,6 +5435,16 @@ packages:
     engines: { node: ">=0.6.0", teleport: ">=0.2.0" }
     dev: true
 
+  /qs/6.10.1:
+    resolution:
+      {
+        integrity: sha512-M528Hph6wsSVOBiYUnGf+K/7w0hNshs/duGsNXPUCLH5XAqjEtiPGwNONLV0tBH8NoGb0mvD5JubnUTrujKDTg==
+      }
+    engines: { node: ">=0.6" }
+    dependencies:
+      side-channel: 1.0.4
+    dev: false
+
   /queue-microtask/1.2.3:
     resolution:
       {
@@ -5743,6 +5817,17 @@ packages:
       }
     engines: { node: ">=8" }
     dev: true
+
+  /side-channel/1.0.4:
+    resolution:
+      {
+        integrity: sha512-q5XPytqFEIKHkGdiMIrY10mvLRvnQh42/+GoBlFW3b2LXLE2xxJpZFdm94we0BaoV3RwJyGqg5wS7epxTv0Zvw==
+      }
+    dependencies:
+      call-bind: 1.0.2
+      get-intrinsic: 1.1.1
+      object-inspect: 1.11.0
+    dev: false
 
   /signal-exit/3.0.5:
     resolution:
