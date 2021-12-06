@@ -17,7 +17,7 @@ export function findIconReg(icon: string) {
   if (faReg.test(icon)) {
     const text = icon.split(faReg)[1];
     return findIcon(
-      text.slice(0, text.indexOf(" ")),
+      text.slice(0, text.indexOf(" ") == -1 ? text.length : text.indexOf(" ")),
       "FA",
       text.slice(text.indexOf(" ") + 1, text.length)
     );
