@@ -113,9 +113,10 @@ function translationEn() {
         </span>
         <template #dropdown>
           <el-dropdown-menu class="logout">
-            <el-dropdown-item icon="el-icon-switch-button" @click="logout">{{
-              $t("message.hsLoginOut")
-            }}</el-dropdown-item>
+            <el-dropdown-item @click="logout">
+              <i class="ri-logout-circle-r-line"></i
+              >{{ $t("message.hsLoginOut") }}</el-dropdown-item
+            >
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -254,6 +255,7 @@ function translationEn() {
 
 .logout {
   .el-dropdown-menu__item {
+    display: inline-flex;
     padding: 0 18px !important;
   }
 
