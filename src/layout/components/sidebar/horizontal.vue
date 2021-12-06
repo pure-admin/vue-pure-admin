@@ -12,6 +12,7 @@ import { emitter } from "/@/utils/mitt";
 import Notice from "../notice/index.vue";
 import { templateRef } from "@vueuse/core";
 import SidebarItem from "./sidebarItem.vue";
+import avatars from "/@/assets/avatars.jpg";
 import { algorithm } from "/@/utils/algorithm";
 import screenfull from "../screenfull/index.vue";
 import { useRoute, useRouter } from "vue-router";
@@ -174,16 +175,15 @@ onMounted(() => {
       <!-- 退出登陆 -->
       <el-dropdown trigger="click">
         <span class="el-dropdown-link">
-          <img
-            src="https://avatars.githubusercontent.com/u/44761321?s=400&u=30907819abd29bb3779bc247910873e7c7f7c12f&v=4"
-          />
+          <img :src="avatars" />
           <p>{{ usename }}</p>
         </span>
         <template #dropdown>
           <el-dropdown-menu class="logout">
-            <el-dropdown-item icon="el-icon-switch-button" @click="logout">{{
-              $t("message.hsLoginOut")
-            }}</el-dropdown-item>
+            <el-dropdown-item @click="logout">
+              <i class="ri-logout-circle-r-line"></i
+              >{{ $t("message.hsLoginOut") }}</el-dropdown-item
+            >
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -225,6 +225,7 @@ onMounted(() => {
 
 .logout {
   .el-dropdown-menu__item {
+    display: inline-flex;
     padding: 0 18px !important;
   }
 

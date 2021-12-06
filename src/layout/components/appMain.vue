@@ -75,7 +75,7 @@ const transitionMain = defineComponent({
       hideTabs && layout ? 'padding-top: 48px;' : '',
       !hideTabs && layout ? 'padding-top: 85px;' : '',
       hideTabs && !layout ? 'padding-top: 48px' : '',
-      !hideTabs && !layout ? 'padding-top: 98px;' : ''
+      !hideTabs && !layout ? 'padding-top: 85px;' : ''
     ]"
   >
     <router-view>
