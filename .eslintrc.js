@@ -70,6 +70,12 @@ module.exports = {
         argsIgnorePattern: "^_",
         varsIgnorePattern: "^_"
       }
+    ],
+    "prettier/prettier": [
+      "error",
+      {
+        endOfLine: "auto"
+      }
     ]
   }
 };
