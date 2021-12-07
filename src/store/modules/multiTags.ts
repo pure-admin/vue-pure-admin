@@ -1,6 +1,5 @@
 import { defineStore } from "pinia";
 import { store } from "/@/store";
-import { getConfig } from "/@/config";
 import { storageLocal } from "/@/utils/storage";
 import { multiType, positionType } from "./types";
 
@@ -8,7 +7,7 @@ export const useMultiTagsStore = defineStore({
   id: "pure-multiTags",
   state: () => ({
     // 存储标签页信息（路由信息）
-    multiTags: getConfig().MultiTagsCache
+    multiTags: storageLocal.getItem("responsive-sets").multiTagsCache
       ? storageLocal.getItem("responsive-tags")
       : [
           {
@@ -22,7 +21,7 @@ export const useMultiTagsStore = defineStore({
             }
           }
         ],
-    multiTagsCache: getConfig().MultiTagsCache
+    multiTagsCache: storageLocal.getItem("responsive-sets").multiTagsCache
   }),
   getters: {
     getMultiTagsCache() {
@@ -30,6 +29,14 @@ export const useMultiTagsStore = defineStore({
     }
   },
   actions: {
+    multiTagsCacheChange(multiTagsCache: boolean) {
+      this.multiTagsCache = multiTagsCache;
+      if (multiTagsCache) {
+        storageLocal.setItem("responsive-tags", this.multiTags);
+      } else {
+        storageLocal.removeItem("responsive-tags");
+      }
+    },
     tagsCache(multiTags) {
       this.getMultiTagsCache &&
         storageLocal.setItem("responsive-tags", multiTags);
@@ -42,6 +49,7 @@ export const useMultiTagsStore = defineStore({
       switch (mode) {
         case "equal":
           this.multiTags = value;
+          this.tagsCache(this.multiTags);
           break;
         case "push":
           {
