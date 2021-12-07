@@ -29,23 +29,23 @@ const instanceConfig =
   getCurrentInstance().appContext.app.config.globalProperties.$config;
 
 let themeColors = ref<Array<themeColorsType>>([
-  // 暗雅（默认）
+  // 道奇蓝（默认）
   { rgb: "27, 42, 71", themeColor: "default" },
-  // 明亮
+  // 亮白色
   { rgb: "255, 255, 255", themeColor: "light" },
-  // 薄暮
+  // 猩红色
   { rgb: "245, 34, 45", themeColor: "dusk" },
-  // 火山
+  // 橙红色
   { rgb: "250, 84, 28", themeColor: "volcano" },
-  // 黄色
+  // 金色
   { rgb: "250, 219, 20", themeColor: "yellow" },
-  // 明青
+  // 绿宝石
   { rgb: "19, 194, 194", themeColor: "mingQing" },
-  // 极光绿
+  // 酸橙绿
   { rgb: "82, 196, 26", themeColor: "auroraGreen" },
-  // 粉红
+  // 深粉色
   { rgb: "235, 47, 150", themeColor: "pink" },
-  // 酱紫
+  // 深紫罗兰色
   { rgb: "114, 46, 209", themeColor: "saucePurple" }
 ]);
 

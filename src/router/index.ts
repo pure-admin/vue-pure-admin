@@ -12,6 +12,7 @@ import NProgress from "/@/utils/progress";
 import { split, uniqBy } from "lodash-es";
 import { useTimeoutFn } from "@vueuse/core";
 import { RouteConfigs } from "/@/layout/types";
+import { transformI18n } from "/@/plugins/i18n";
 import { storageSession, storageLocal } from "/@/utils/storage";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
@@ -30,7 +31,6 @@ import componentsRouter from "./modules/components";
 
 // 动态路由
 import { getAsyncRoutes } from "/@/api/routes";
-import { transformI18n } from "/@/plugins/i18n";
 
 // https://cn.vitejs.dev/guide/features.html#glob-import
 const modulesRoutes = import.meta.glob("/src/views/*/*/*.vue");
