@@ -39,6 +39,23 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
     resolve: {
       alias
     },
+    css: {
+      // https://github.com/vitejs/vite/issues/5833
+      postcss: {
+        plugins: [
+          {
+            postcssPlugin: "internal:charset-removal",
+            AtRule: {
+              charset: atRule => {
+                if (atRule.name === "charset") {
+                  atRule.remove();
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
     // 服务端渲染
     server: {
       // 是否开启 https
@@ -160,8 +177,7 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
       sourcemap: false,
       brotliSize: false,
       // 消除打包大小超过500kb警告
-      chunkSizeWarningLimit: 2000,
-      minify: false
+      chunkSizeWarningLimit: 2000
     },
     define: {
       __INTLIFY_PROD_DEVTOOLS__: false
