@@ -224,8 +224,12 @@ onMounted(() => {
 }
 
 .logout {
+  max-width: 120px;
+
   .el-dropdown-menu__item {
+    min-width: 100%;
     display: inline-flex;
+    flex-wrap: wrap;
     padding: 0 18px !important;
   }
 
