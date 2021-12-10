@@ -77,7 +77,7 @@ export const getAliveRoute = () => {
       recursiveSearch(treeLists[i].children);
     }
   };
-  recursiveSearch(router.options.routes);
+  recursiveSearch(router.options.routes[0].children);
   return alivePageList;
 };
 
@@ -137,10 +137,14 @@ export const addAsyncRoutes = (arrRoutes: Array<RouteComponent>) => {
   return arrRoutes;
 };
 
+const constRoutes = formatTwoStageRoutes(
+  formatFlatteningRoutes(ascending(constantRoutes))
+);
+
 // 创建路由实例
 export const router: Router = createRouter({
   history: createWebHashHistory(),
-  routes: ascending(constantRoutes).concat(...remainingRouter),
+  routes: constRoutes.concat(...remainingRouter),
   scrollBehavior(to, from, savedPosition) {
     return new Promise(resolve => {
       if (savedPosition) {
@@ -156,6 +160,46 @@ export const router: Router = createRouter({
   }
 });
 
+/**
+ * 路由多级嵌套数组处理成一维数组
+ * @param arr 传入路由菜单数据数组
+ * @returns 返回处理后的一维路由菜单数组
+ */
+export function formatFlatteningRoutes(arr: any) {
+  if (arr.length <= 0) return false;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].children) {
+      arr = arr.slice(0, i + 1).concat(arr[i].children, arr.slice(i + 1));
+    }
+  }
+  return arr;
+}
+
+/**
+ * 一维数组处理成多级嵌套数组（只保留二级：也就是二级以上全部处理成只有二级，keep-alive 支持二级缓存）
+ * @param arr 处理后的一维路由菜单数组
+ * @returns 返回将一维数组重新处理成规定路由的格式
+ */
+export function formatTwoStageRoutes(arr: any) {
+  if (arr.length <= 0) return false;
+  const newArr: any = [];
+  arr.forEach((v: any) => {
+    if (v.path === "/") {
+      newArr.push({
+        component: v.component,
+        name: v.name,
+        path: v.path,
+        redirect: v.redirect,
+        meta: v.meta,
+        children: []
+      });
+    } else {
+      newArr[0].children.push({ ...v });
+    }
+  });
+  return newArr;
+}
+
 // 初始化路由
 export const initRouter = name => {
   return new Promise(resolve => {
@@ -163,23 +207,24 @@ export const initRouter = name => {
       if (info.length === 0) {
         usePermissionStoreHook().changeSetting(info);
       } else {
-        addAsyncRoutes(info).map((v: any) => {
+        formatFlatteningRoutes(addAsyncRoutes(info)).map((v: any) => {
           // 防止重复添加路由
           if (
-            router.options.routes.findIndex(value => value.path === v.path) !==
-            -1
+            router.options.routes[0].children.findIndex(
+              value => value.path === v.path
+            ) !== -1
           ) {
             return;
           } else {
             // 切记将路由push到routes后还需要使用addRoute，这样路由才能正常跳转
-            router.options.routes.push(v);
+            router.options.routes[0].children.push(v);
             // 最终路由进行升序
-            ascending(router.options.routes);
-            router.addRoute(v.name, v);
-            usePermissionStoreHook().changeSetting(info);
+            ascending(router.options.routes[0].children);
+            router.addRoute("home", v);
           }
           resolve(router);
         });
+        usePermissionStoreHook().changeSetting(info);
       }
       router.addRoute({
         path: "/:pathMatch(.*)",
@@ -300,7 +345,13 @@ router.beforeEach((to, _from, next) => {
               return router.push(path);
             } else {
               const { path } = to;
-              const routes = router.options.routes;
+              const index = remainingRouter.findIndex(v => {
+                return v.path == path;
+              });
+              const routes =
+                index === -1
+                  ? router.options.routes[0].children
+                  : router.options.routes;
               const route = findRouteByPath(path, routes);
               const routePartent = getParentPaths(path, routes);
               handTag(
@@ -315,7 +366,7 @@ router.beforeEach((to, _from, next) => {
           router.push(to.path);
           // 刷新页面更新标签栏与页面路由匹配
           const localRoutes = storageLocal.getItem("responsive-tags");
-          const optionsRoutes = router.options?.routes;
+          const optionsRoutes = router.options?.routes[0].children;
           const newLocalRoutes = [];
           optionsRoutes.forEach(ors => {
             localRoutes.forEach(lrs => {
