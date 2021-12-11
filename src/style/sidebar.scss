@@ -124,6 +124,12 @@
       &:hover {
         color: $menuTitleHover !important;
       }
+
+      div,
+      span {
+        height: 50px;
+        line-height: 50px;
+      }
     }
 
     .submenu-title-noDropdown,
@@ -486,7 +492,7 @@
     > .el-sub-menu__title::before {
     position: absolute;
     top: 0;
-    left: 5px;
+    left: 0;
     width: 3px;
     height: 100%;
     background-color: $menuActiveBefore;
@@ -502,7 +508,6 @@
   .el-menu--collapse .is-active.submenu-title-noDropdown.outer-most::before {
     position: absolute;
     top: 0;
-    left: 5px;
     width: 3px;
     height: 100%;
     background-color: $menuActiveBefore;
@@ -563,6 +568,9 @@
 body[layout="vertical"] {
   $sideBarWidth: 210px;
   @include merge-style($sideBarWidth);
+  .el-menu--collapse {
+    width: 54px;
+  }
 
   .sidebar-logo-container {
     background: $sidebarLogo;
@@ -603,8 +611,6 @@ body[layout="vertical"] {
 
     /* 菜单折叠 */
     .el-menu--collapse {
-      margin-left: -5px;
-
       .el-sub-menu {
         & > .el-sub-menu__title {
           & > span {
@@ -615,6 +621,15 @@ body[layout="vertical"] {
             display: inline-block;
           }
         }
+      }
+
+      /* 无子菜单 */
+      .el-menu-item [class^="el-icon"] {
+        right: 5px;
+      }
+
+      .el-sub-menu__title [class^="el-icon"] {
+        right: 2px;
       }
 
       .submenu-title-noDropdown {
