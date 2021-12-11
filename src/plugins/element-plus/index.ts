@@ -48,24 +48,8 @@ import {
   ElInfiniteScroll
 } from "element-plus";
 
-// https://element-plus.org/zh-CN/component/icon.html
-import {
-  Check,
-  Menu,
-  HomeFilled,
-  SetUp,
-  Edit,
-  Setting,
-  Lollipop,
-  Link,
-  Position,
-  Histogram,
-  RefreshRight,
-  ArrowDown,
-  Close,
-  CloseBold,
-  Bell
-} from "@element-plus/icons";
+// Directives
+const plugins = [ElLoading, ElInfiniteScroll];
 
 const components = [
   ElTag,
@@ -112,7 +96,27 @@ const components = [
   ElCollapse,
   ElCollapseItem
 ];
-// icon
+
+// https://element-plus.org/zh-CN/component/icon.html
+import {
+  Check,
+  Menu,
+  HomeFilled,
+  SetUp,
+  Edit,
+  Setting,
+  Lollipop,
+  Link,
+  Position,
+  Histogram,
+  RefreshRight,
+  ArrowDown,
+  Close,
+  CloseBold,
+  Bell
+} from "@element-plus/icons-vue";
+
+// Icon
 export const iconComponents = [
   Check,
   Menu,
@@ -131,14 +135,17 @@ export const iconComponents = [
   Bell
 ];
 
-const plugins = [ElLoading, ElInfiniteScroll];
-
 export function useElementPlus(app: App) {
-  components.push(...iconComponents);
+  // 注册组件
   components.forEach((component: Component) => {
     app.component(component.name, component);
   });
+  // 注册指令
   plugins.forEach(plugin => {
     app.use(plugin);
+  });
+  // 注册图标
+  iconComponents.forEach((component: Component) => {
+    app.component(component.name, component);
   });
 }
