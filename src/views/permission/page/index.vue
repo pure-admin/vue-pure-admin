@@ -1,3 +1,9 @@
+<script lang="ts">
+export default {
+  name: "permissionPage"
+};
+</script>
+
 <script setup lang="ts">
 import { ref, unref } from "vue";
 import { storageSession } from "/@/utils/storage";

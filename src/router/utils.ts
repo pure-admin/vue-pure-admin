@@ -120,7 +120,7 @@ const initRouter = (name: string) => {
               router.options.routes[0].children.push(v);
               // 最终路由进行升序
               ascending(router.options.routes[0].children);
-              router.addRoute("home", v);
+              if (!router.hasRoute(v?.name)) router.addRoute(v);
             }
             resolve(router);
           }

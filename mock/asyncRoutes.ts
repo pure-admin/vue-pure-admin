@@ -29,7 +29,8 @@ const systemRouter = {
       meta: {
         title: "message.hsDict",
         i18n: true,
-        showLink: true
+        showLink: true,
+        keepAlive: true
       }
     }
   ]

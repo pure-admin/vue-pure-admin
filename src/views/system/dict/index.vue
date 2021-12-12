@@ -1,3 +1,9 @@
+<script lang="ts">
+export default {
+  name: "dict"
+};
+</script>
+
 <script setup lang="ts">
 import Config from "./config.vue";
 import { reactive, ref, unref, nextTick } from "vue";

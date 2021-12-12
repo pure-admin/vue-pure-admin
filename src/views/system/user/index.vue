@@ -1,3 +1,9 @@
+<script lang="ts">
+export default {
+  name: "user"
+};
+</script>
+
 <script setup lang="ts">
 import { reactive } from "vue";
 import { VxeGridProps } from "vxe-table";
