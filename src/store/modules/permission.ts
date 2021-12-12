@@ -1,28 +1,32 @@
 import { defineStore } from "pinia";
 import { store } from "/@/store";
 import { cacheType } from "./types";
-import { constantRoutesArr, ascending, filterTree } from "/@/router/index";
+import { RouteConfigs } from "/@/layout/types";
+import { constantMenus } from "/@/router/modules";
+import { ascending, filterTree } from "/@/router/utils";
 
 export const usePermissionStore = defineStore({
   id: "pure-permission",
   state: () => ({
-    // 静态路由
-    constantRoutes: constantRoutesArr,
-    wholeRoutes: [],
+    // 静态路由生成的菜单
+    constantMenus,
+    // 整体路由生成的菜单（静态、动态）
+    wholeMenus: [],
     buttonAuth: [],
     // 缓存页面keepAlive
     cachePageList: []
   }),
   actions: {
+    // 获取异步路由菜单
     asyncActionRoutes(routes) {
-      if (this.wholeRoutes.length > 0) return;
-      this.wholeRoutes = filterTree(
-        ascending(this.constantRoutes.concat(routes))
+      if (this.wholeMenus.length > 0) return;
+      this.wholeMenus = filterTree(
+        ascending(this.constantMenus.concat(routes))
       );
 
-      const getButtonAuth = (arrRoutes: Array<string>) => {
+      const getButtonAuth = (arrRoutes: Array<RouteConfigs>) => {
         if (!arrRoutes || !arrRoutes.length) return;
-        arrRoutes.forEach((v: any) => {
+        arrRoutes.forEach((v: RouteConfigs) => {
           if (v.meta && v.meta.authority) {
             this.buttonAuth.push(...v.meta.authority);
           }
@@ -32,7 +36,7 @@ export const usePermissionStore = defineStore({
         });
       };
 
-      getButtonAuth(this.wholeRoutes);
+      getButtonAuth(this.wholeMenus);
     },
     async changeSetting(routes) {
       await this.asyncActionRoutes(routes);

@@ -20,7 +20,9 @@ export type RouteConfigs = {
     icon?: string;
     showLink?: boolean;
     savedPosition?: boolean;
+    authority?: Array<string>;
   };
+  children?: RouteConfigs[];
   name?: string;
 };
 

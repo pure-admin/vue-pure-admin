@@ -29,7 +29,6 @@ const title =
   getCurrentInstance().appContext.config.globalProperties.$config?.Title;
 
 const menuRef = templateRef<ElRef | null>("menu", null);
-const routeStore = usePermissionStoreHook();
 const route = useRoute();
 const router = useRouter();
 const routers = useRouter().options.routes;
@@ -133,7 +132,7 @@ onMounted(() => {
       @select="menuSelect"
     >
       <sidebar-item
-        v-for="route in routeStore.wholeRoutes"
+        v-for="route in usePermissionStoreHook().wholeMenus"
         :key="route.path"
         :item="route"
         :base-path="route.path"
