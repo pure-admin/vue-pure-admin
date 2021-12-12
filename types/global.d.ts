@@ -85,7 +85,6 @@ declare global {
     HideTabs?: boolean;
     MapConfigure?: {
       amapKey?: string;
-      baiduKey?: string;
       options: {
         resizeEnable?: boolean;
         center?: number[];

@@ -4,7 +4,7 @@ const tabsRouter = {
   path: "/tabs",
   name: "reTabs",
   component: Layout,
-  redirect: "/tags/index",
+  redirect: "/tabs/index",
   meta: {
     icon: "IF-team-icontabs",
     title: "message.hstabs",
@@ -32,7 +32,8 @@ const tabsRouter = {
         showLink: false,
         i18n: false,
         dynamicLevel: 3,
-        realPath: "/tabs/detail"
+        realPath: "/tabs/detail",
+        refreshRedirect: "/tabs/index"
       }
     }
   ]

@@ -5,6 +5,7 @@ import {
   RouteRecordName,
   createWebHashHistory
 } from "vue-router";
+import { toRouteType } from "./types";
 import { openLink } from "/@/utils/link";
 import NProgress from "/@/utils/progress";
 import { split, uniqBy } from "lodash-es";
@@ -43,7 +44,7 @@ export const router: Router = createRouter({
 // 路由白名单
 const whiteList = ["/login"];
 
-router.beforeEach((to, _from, next) => {
+router.beforeEach((to: toRouteType, _from, next) => {
   if (to.meta?.keepAlive) {
     const newMatched = to.matched;
     handleAliveRoute(newMatched, "add");
@@ -91,11 +92,18 @@ router.beforeEach((to, _from, next) => {
                 meta
               });
             };
-            const parentPath = to.matched[0]?.path;
+            // 未开启标签页缓存，刷新页面重定向到顶级路由（参考标签页操作例子）
             if (to.meta?.realPath) {
-              const { path, name, meta } = to.matched[0]?.children[0];
-              handTag(path, parentPath, name, meta);
-              return router.push(path);
+              const routes = router.options.routes;
+              const { refreshRedirect } = to.meta;
+              const { name, meta } = findRouteByPath(refreshRedirect, routes);
+              handTag(
+                refreshRedirect,
+                getParentPaths(refreshRedirect, routes)[1],
+                name,
+                meta
+              );
+              return router.push(refreshRedirect);
             } else {
               const { path } = to;
               const index = remainingRouter.findIndex(v => {
