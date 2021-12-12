@@ -1,5 +1,6 @@
 <template>
   <div>
+    <p>{{ $t("message.hsmenu1") }}</p>
     <p style="text-indent: 2em">{{ $t("message.hsmenu1-3") }}</p>
     <el-input v-model="input" />
   </div>
