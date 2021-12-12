@@ -12,7 +12,6 @@ import { usePermissionStoreHook } from "/@/store/modules/permission";
 const route = useRoute();
 const pureApp = useAppStoreHook();
 const router = useRouter().options.routes;
-const routeStore = usePermissionStoreHook();
 const showLogo = ref(storageLocal.getItem("logoVal") || "1");
 const isCollapse = computed(() => {
   return !pureApp.getSidebarStatus;
@@ -72,7 +71,7 @@ onBeforeMount(() => {
         @select="menuSelect"
       >
         <sidebar-item
-          v-for="route in routeStore.wholeRoutes"
+          v-for="route in usePermissionStoreHook().wholeMenus"
           :key="route.path"
           :item="route"
           class="outer-most"

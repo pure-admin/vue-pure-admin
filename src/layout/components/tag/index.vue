@@ -22,11 +22,12 @@ import { transformI18n } from "/@/plugins/i18n";
 import { storageLocal } from "/@/utils/storage";
 import { useRoute, useRouter } from "vue-router";
 import { RouteConfigs, tagsViewsType } from "../../types";
-import { handleAliveRoute, delAliveRoutes } from "/@/router";
 import { useSettingStoreHook } from "/@/store/modules/settings";
+import { handleAliveRoute, delAliveRoutes } from "/@/router/utils";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 import { toggleClass, removeClass, hasClass } from "/@/utils/operate";
+
 import { templateRef, useResizeObserver, useDebounceFn } from "@vueuse/core";
 
 const route = useRoute();

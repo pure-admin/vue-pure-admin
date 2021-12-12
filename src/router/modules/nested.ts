@@ -15,7 +15,7 @@ const nestedRouter = {
   children: [
     {
       path: "/nested/menu1",
-      component: () => import("/@/views/nested/menu1/index.vue"),
+      component: () => import("/@/layout/routerView/parent.vue"),
       name: "Menu1",
       meta: {
         title: "message.hsmenu1",
@@ -38,7 +38,7 @@ const nestedRouter = {
         },
         {
           path: "/nested/menu1/menu1-2",
-          component: () => import("/@/views/nested/menu1/menu1-2/index.vue"),
+          component: () => import("/@/layout/routerView/parent.vue"),
           name: "Menu1-2",
           redirect: "/nested/menu1/menu1-2/menu1-2-1",
           meta: {
