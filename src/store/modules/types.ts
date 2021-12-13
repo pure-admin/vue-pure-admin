@@ -25,6 +25,7 @@ export type multiType = {
   path: string;
   parentPath: string;
   name: string;
+  query: object;
   meta: any;
 };
 

@@ -2,7 +2,7 @@ import { Router, RouteMeta, createRouter, RouteRecordName } from "vue-router";
 import { toRouteType } from "./types";
 import { openLink } from "/@/utils/link";
 import NProgress from "/@/utils/progress";
-import { split, uniqBy } from "lodash-es";
+import { split, uniqBy, find, findIndex } from "lodash-es";
 import { constantRoutes } from "./modules";
 import { transformI18n } from "/@/plugins/i18n";
 import remainingRouter from "./modules/remaining";
@@ -102,7 +102,7 @@ router.beforeEach((to: toRouteType, _from, next) => {
               return router.push(refreshRedirect);
             } else {
               const { path } = to;
-              const index = remainingRouter.findIndex(v => {
+              const index = findIndex(remainingRouter, v => {
                 return v.path == path;
               });
               const routes =
@@ -135,10 +135,13 @@ router.beforeEach((to: toRouteType, _from, next) => {
               }
             }
           }
-          router.push(to.path);
+          router.push(to.fullPath);
           // 刷新页面更新标签栏与页面路由匹配
           const localRoutes = storageLocal.getItem("responsive-tags");
-          const optionsRoutes = router.options?.routes[0].children;
+          const home = find(router.options?.routes, function (route) {
+            return route.path === "/";
+          });
+          const optionsRoutes = [home, ...router.options?.routes[0].children];
           const newLocalRoutes = [];
           optionsRoutes.forEach(ors => {
             localRoutes.forEach(lrs => {
