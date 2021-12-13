@@ -1,14 +1,14 @@
-import { Router, RouteMeta, createRouter, RouteRecordName } from "vue-router";
 import { toRouteType } from "./types";
 import { openLink } from "/@/utils/link";
 import NProgress from "/@/utils/progress";
-import { split, uniqBy, find, findIndex } from "lodash-es";
 import { constantRoutes } from "./modules";
 import { transformI18n } from "/@/plugins/i18n";
 import remainingRouter from "./modules/remaining";
+import { split, find, findIndex } from "lodash-es";
 import { storageSession, storageLocal } from "/@/utils/storage";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
+import { Router, RouteMeta, createRouter, RouteRecordName } from "vue-router";
 import {
   initRouter,
   getHistoryMode,
@@ -138,7 +138,7 @@ router.beforeEach((to: toRouteType, _from, next) => {
           router.push(to.fullPath);
           // 刷新页面更新标签栏与页面路由匹配
           const localRoutes = storageLocal.getItem("responsive-tags");
-          const home = find(router.options?.routes, function (route) {
+          const home = find(router.options?.routes, route => {
             return route.path === "/";
           });
           const optionsRoutes = [home, ...router.options?.routes[0].children];
@@ -150,10 +150,6 @@ router.beforeEach((to: toRouteType, _from, next) => {
               }
             });
           });
-          storageLocal.setItem(
-            "responsive-tags",
-            uniqBy(newLocalRoutes, "path")
-          );
         });
       next();
     }

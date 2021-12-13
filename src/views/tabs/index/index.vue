@@ -12,7 +12,7 @@ function toDetail(index: number) {
     path: `/tabs/detail`,
     parentPath: route.matched[0].path,
     name: "tabDetail",
-    query: { id: index },
+    query: { id: String(index) },
     meta: {
       title: { zh: `No.${index} - 详情信息`, en: `No.${index} - DetailInfo` },
       showLink: false,
@@ -21,7 +21,7 @@ function toDetail(index: number) {
       realPath: "/tabs/detail"
     }
   });
-  router.push({ name: "tabDetail", query: { id: index } });
+  router.push({ name: "tabDetail", query: { id: String(index) } });
 }
 </script>
 

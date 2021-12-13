@@ -14,6 +14,7 @@ export const routerArrays: Array<RouteConfigs> = [
 export type RouteConfigs = {
   path?: string;
   parentPath?: string;
+  query?: object;
   meta?: {
     title?: string;
     i18n?: boolean;

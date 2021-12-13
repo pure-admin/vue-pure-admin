@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import { store } from "/@/store";
+import { isEqual } from "lodash-es";
 import { storageLocal } from "/@/utils/storage";
 import { multiType, positionType } from "./types";
 
@@ -54,12 +55,18 @@ export const useMultiTagsStore = defineStore({
         case "push":
           {
             const tagVal = value as multiType;
-            // 判断tag是否已存在:
+            // 判断tag是否已存在
             const tagHasExits = this.multiTags.some(tag => {
               return tag.path === tagVal?.path;
             });
 
-            if (tagHasExits && !tagVal.query) return;
+            // 判断tag中的query键值是否相等
+            const tagQueryHasExits = this.multiTags.some(tag => {
+              return isEqual(tag.query, tagVal.query);
+            });
+
+            if (tagHasExits && tagQueryHasExits) return;
+
             const meta = tagVal?.meta;
             const dynamicLevel = meta?.dynamicLevel ?? -1;
             if (dynamicLevel > 0) {
@@ -85,10 +92,8 @@ export const useMultiTagsStore = defineStore({
           this.multiTags.splice(position?.startIndex, position?.length);
           this.tagsCache(this.multiTags);
           return this.multiTags;
-          break;
         case "slice":
           return this.multiTags.slice(-1);
-          break;
       }
     }
   }
