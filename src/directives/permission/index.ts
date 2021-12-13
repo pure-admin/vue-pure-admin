@@ -9,7 +9,7 @@ export const auth: Directive = {
       const authRoles = value;
       const hasAuth = usePermissionStoreHook().buttonAuth.includes(authRoles);
       if (!hasAuth) {
-        el.style.display = "none";
+        el.parentNode.removeChild(el);
       }
     } else {
       throw new Error("need roles! Like v-auth=\"['admin','test']\"");
