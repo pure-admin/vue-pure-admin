@@ -249,11 +249,31 @@ const getHistoryMode = (): RouterHistory => {
   }
 };
 
+// 是否有权限
+const hasPermissions = (value: Array<string>): boolean => {
+  if (value && value instanceof Array && value.length > 0) {
+    const roles = usePermissionStoreHook().buttonAuth;
+    const permissionRoles = value;
+
+    const hasPermission = roles.some(role => {
+      return permissionRoles.includes(role);
+    });
+
+    if (!hasPermission) {
+      return false;
+    }
+    return true;
+  } else {
+    return false;
+  }
+};
+
 export {
   ascending,
   filterTree,
   initRouter,
   resetRouter,
+  hasPermissions,
   getHistoryMode,
   addAsyncRoutes,
   delAliveRoutes,
