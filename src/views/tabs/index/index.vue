@@ -12,6 +12,7 @@ function toDetail(index: number) {
     path: `/tabs/detail`,
     parentPath: route.matched[0].path,
     name: "tabDetail",
+    query: { id: index },
     meta: {
       title: { zh: `No.${index} - 详情信息`, en: `No.${index} - DetailInfo` },
       showLink: false,

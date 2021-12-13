@@ -59,7 +59,7 @@ export const useMultiTagsStore = defineStore({
               return tag.path === tagVal?.path;
             });
 
-            if (tagHasExits) return;
+            if (tagHasExits && !tagVal.query) return;
             const meta = tagVal?.meta;
             const dynamicLevel = meta?.dynamicLevel ?? -1;
             if (dynamicLevel > 0) {
