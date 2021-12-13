@@ -1,10 +1,4 @@
-import {
-  Router,
-  RouteMeta,
-  createRouter,
-  RouteRecordName,
-  createWebHashHistory
-} from "vue-router";
+import { Router, RouteMeta, createRouter, RouteRecordName } from "vue-router";
 import { toRouteType } from "./types";
 import { openLink } from "/@/utils/link";
 import NProgress from "/@/utils/progress";
@@ -17,6 +11,7 @@ import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 import {
   initRouter,
+  getHistoryMode,
   getParentPaths,
   findRouteByPath,
   handleAliveRoute
@@ -24,8 +19,9 @@ import {
 
 // 创建路由实例
 export const router: Router = createRouter({
-  history: createWebHashHistory(),
+  history: getHistoryMode(),
   routes: constantRoutes.concat(...remainingRouter),
+  strict: true,
   scrollBehavior(to, from, savedPosition) {
     return new Promise(resolve => {
       if (savedPosition) {
