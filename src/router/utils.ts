@@ -216,7 +216,11 @@ const addAsyncRoutes = (arrRoutes: Array<RouteRecordRaw>) => {
     if (v.redirect) {
       v.component = Layout;
     } else {
-      v.component = modulesRoutes[`/src/views${v.path}/index.vue`];
+      if (v.meta.realPath) {
+        v.component = modulesRoutes[`/src/views${v.meta.realPath}/index.vue`];
+      } else {
+        v.component = modulesRoutes[`/src/views${v.path}/index.vue`];
+      }
     }
     if (v.children) {
       addAsyncRoutes(v.children);

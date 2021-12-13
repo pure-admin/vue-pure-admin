@@ -88,7 +88,7 @@ router.beforeEach((to: toRouteType, _from, next) => {
                 meta
               });
             };
-            // 未开启标签页缓存，刷新页面重定向到顶级路由（参考标签页操作例子）
+            // 未开启标签页缓存，刷新页面重定向到顶级路由（参考标签页操作例子，只针对静态路由）
             if (to.meta?.realPath) {
               const routes = router.options.routes;
               const { refreshRedirect } = to.meta;
@@ -111,13 +111,28 @@ router.beforeEach((to: toRouteType, _from, next) => {
                   : router.options.routes;
               const route = findRouteByPath(path, routes);
               const routePartent = getParentPaths(path, routes);
-              handTag(
-                route.path,
-                routePartent[routePartent.length - 1],
-                route.name,
-                route.meta
-              );
-              return router.push(path);
+              // 未开启标签页缓存，刷新页面重定向到顶级路由（参考标签页操作例子，只针对动态路由）
+              if (routePartent.length === 0) {
+                const { name, meta } = findRouteByPath(
+                  route?.meta?.refreshRedirect,
+                  routes
+                );
+                handTag(
+                  route.meta?.refreshRedirect,
+                  getParentPaths(route.meta?.refreshRedirect, routes)[0],
+                  name,
+                  meta
+                );
+                return router.push(route.meta?.refreshRedirect);
+              } else {
+                handTag(
+                  route.path,
+                  routePartent[routePartent.length - 1],
+                  route.name,
+                  route.meta
+                );
+                return router.push(path);
+              }
             }
           }
           router.push(to.path);

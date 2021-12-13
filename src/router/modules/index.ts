@@ -1,5 +1,4 @@
 // 静态路由
-import tabsRouter from "./tabs";
 import homeRouter from "./home";
 import errorRouter from "./error";
 import editorRouter from "./editor";
@@ -18,7 +17,6 @@ import {
 
 // 原始静态路由（未做任何处理）
 const routes = [
-  tabsRouter,
   homeRouter,
   errorRouter,
   nestedRouter,

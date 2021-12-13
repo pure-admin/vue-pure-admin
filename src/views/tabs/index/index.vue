@@ -9,7 +9,7 @@ const activeName = ref("tag");
 
 function toDetail(index: number) {
   useMultiTagsStoreHook().handleTags("push", {
-    path: `/tabs/detail/${index}`,
+    path: `/tabs/detail`,
     parentPath: route.matched[0].path,
     name: "tabDetail",
     meta: {
@@ -20,7 +20,7 @@ function toDetail(index: number) {
       realPath: "/tabs/detail"
     }
   });
-  router.push(`/tabs/detail/${index}`);
+  router.push({ name: "tabDetail", query: { id: index } });
 }
 </script>
 
