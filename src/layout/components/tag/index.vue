@@ -272,9 +272,10 @@ function dynamicRouteTag(value: string, parentPath: string): void {
 // 重新加载
 function onFresh() {
   toggleClass(true, refreshButton, document.querySelector(".rotate"));
-  const { fullPath } = unref(route);
+  const { fullPath, query } = unref(route);
   router.replace({
-    path: "/redirect" + fullPath
+    path: "/redirect" + fullPath,
+    query: query
   });
   setTimeout(() => {
     removeClass(document.querySelector(".rotate"), refreshButton);
