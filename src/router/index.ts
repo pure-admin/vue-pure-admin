@@ -111,8 +111,8 @@ router.beforeEach((to: toRouteType, _from, next) => {
                   : router.options.routes;
               const route = findRouteByPath(path, routes);
               const routePartent = getParentPaths(path, routes);
-              // 未开启标签页缓存，刷新页面重定向到顶级路由（参考标签页操作例子，只针对动态路由）
-              if (routePartent.length === 0) {
+              // 未开启标签页缓存，刷新页面重定向到顶级路由（参考标签页操作例子，只针对动态路由
+              if (path !== routes[0].path && routePartent.length === 0) {
                 const { name, meta } = findRouteByPath(
                   route?.meta?.refreshRedirect,
                   routes
