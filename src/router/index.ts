@@ -2,10 +2,10 @@ import { toRouteType } from "./types";
 import { openLink } from "/@/utils/link";
 import NProgress from "/@/utils/progress";
 import { constantRoutes } from "./modules";
+import { split, findIndex } from "lodash-es";
 import { transformI18n } from "/@/plugins/i18n";
 import remainingRouter from "./modules/remaining";
-import { split, find, findIndex } from "lodash-es";
-import { storageSession, storageLocal } from "/@/utils/storage";
+import { storageSession } from "/@/utils/storage";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 import { Router, RouteMeta, createRouter, RouteRecordName } from "vue-router";
@@ -111,7 +111,7 @@ router.beforeEach((to: toRouteType, _from, next) => {
                   : router.options.routes;
               const route = findRouteByPath(path, routes);
               const routePartent = getParentPaths(path, routes);
-              // 未开启标签页缓存，刷新页面重定向到顶级路由（参考标签页操作例子，只针对动态路由
+              // 未开启标签页缓存，刷新页面重定向到顶级路由（参考标签页操作例子，只针对动态路由）
               if (path !== routes[0].path && routePartent.length === 0) {
                 const { name, meta } = findRouteByPath(
                   route?.meta?.refreshRedirect,
@@ -136,20 +136,6 @@ router.beforeEach((to: toRouteType, _from, next) => {
             }
           }
           router.push(to.fullPath);
-          // 刷新页面更新标签栏与页面路由匹配
-          const localRoutes = storageLocal.getItem("responsive-tags");
-          const home = find(router.options?.routes, route => {
-            return route.path === "/";
-          });
-          const optionsRoutes = [home, ...router.options?.routes[0].children];
-          const newLocalRoutes = [];
-          optionsRoutes.forEach(ors => {
-            localRoutes.forEach(lrs => {
-              if (ors.path === lrs.parentPath) {
-                newLocalRoutes.push(lrs);
-              }
-            });
-          });
         });
       next();
     }
