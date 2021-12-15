@@ -17,8 +17,8 @@ import closeLeft from "/@/assets/svg/close_left.svg";
 import closeOther from "/@/assets/svg/close_other.svg";
 import closeRight from "/@/assets/svg/close_right.svg";
 
-import { isEqual } from "lodash-es";
 import { emitter } from "/@/utils/mitt";
+import { isEqual, isEmpty } from "lodash-es";
 import { transformI18n } from "/@/plugins/i18n";
 import { storageLocal } from "/@/utils/storage";
 import { useRoute, useRouter } from "vue-router";
@@ -272,9 +272,10 @@ function dynamicRouteTag(value: string, parentPath: string): void {
 // 重新加载
 function onFresh() {
   toggleClass(true, refreshButton, document.querySelector(".rotate"));
-  const { fullPath } = unref(route);
+  const { fullPath, query } = unref(route);
   router.replace({
-    path: "/redirect" + fullPath
+    path: "/redirect" + fullPath,
+    query: query
   });
   setTimeout(() => {
     removeClass(document.querySelector(".rotate"), refreshButton);
@@ -367,6 +368,19 @@ function deleteMenu(item, tag?: string) {
 
 function onClickDrop(key, item, selectRoute?: RouteConfigs) {
   if (item && item.disabled) return;
+
+  let selectTagRoute;
+  if (selectRoute) {
+    selectTagRoute = {
+      path: selectRoute.path,
+      meta: selectRoute.meta,
+      name: selectRoute.name,
+      query: selectRoute.query
+    };
+  } else {
+    selectTagRoute = { path: route.path, meta: route.meta };
+  }
+
   // 当前路由信息
   switch (key) {
     case 0:
@@ -375,49 +389,19 @@ function onClickDrop(key, item, selectRoute?: RouteConfigs) {
       break;
     case 1:
       // 关闭当前标签页
-      selectRoute
-        ? deleteMenu({
-            path: selectRoute.path,
-            meta: selectRoute.meta,
-            name: selectRoute.name
-          })
-        : deleteMenu({ path: route.path, meta: route.meta });
+      deleteMenu(selectTagRoute);
       break;
     case 2:
       // 关闭左侧标签页
-      selectRoute
-        ? deleteMenu(
-            {
-              path: selectRoute.path,
-              meta: selectRoute.meta
-            },
-            "left"
-          )
-        : deleteMenu({ path: route.path, meta: route.meta }, "left");
+      deleteMenu(selectTagRoute, "left");
       break;
     case 3:
       // 关闭右侧标签页
-      selectRoute
-        ? deleteMenu(
-            {
-              path: selectRoute.path,
-              meta: selectRoute.meta
-            },
-            "right"
-          )
-        : deleteMenu({ path: route.path, meta: route.meta }, "right");
+      deleteMenu(selectTagRoute, "right");
       break;
     case 4:
       // 关闭其他标签页
-      selectRoute
-        ? deleteMenu(
-            {
-              path: selectRoute.path,
-              meta: selectRoute.meta
-            },
-            "other"
-          )
-        : deleteMenu({ path: route.path, meta: route.meta }, "other");
+      deleteMenu(selectTagRoute, "other");
       break;
     case 5:
       // 关闭全部标签页
@@ -430,7 +414,7 @@ function onClickDrop(key, item, selectRoute?: RouteConfigs) {
       break;
   }
   setTimeout(() => {
-    showMenuModel(route.fullPath);
+    showMenuModel(route.fullPath, route.query);
   });
 }
 
@@ -456,17 +440,30 @@ function disabledMenus(value: boolean) {
 }
 
 // 检查当前右键的菜单两边是否存在别的菜单，如果左侧的菜单是首页，则不显示关闭左侧标签页，如果右侧没有菜单，则不显示关闭右侧标签页
-function showMenuModel(currentPath: string, refresh = false) {
+function showMenuModel(
+  currentPath: string,
+  query: object = {},
+  refresh = false
+) {
   let allRoute = multiTags.value;
   let routeLength = multiTags.value.length;
-  // currentIndex为1时，左侧的菜单是首页，则不显示关闭左侧标签页
-  let currentIndex = allRoute.findIndex(v => v.path === currentPath);
-  // 如果currentIndex等于routeLength-1，右侧没有菜单，则不显示关闭右侧标签页
+  let currentIndex = -1;
+  if (isEmpty(query)) {
+    currentIndex = allRoute.findIndex(v => v.path === currentPath);
+  } else {
+    currentIndex = allRoute.findIndex(v => isEqual(v.query, query));
+  }
+
   showMenus(true);
 
   if (refresh) {
     tagsViews.value[0].show = true;
   }
+
+  /**
+   * currentIndex为1时，左侧的菜单是首页，则不显示关闭左侧标签页
+   * 如果currentIndex等于routeLength-1，右侧没有菜单，则不显示关闭右侧标签页
+   */
 
   if (currentIndex === 1 && routeLength !== 2) {
     // 左侧的菜单是首页，右侧存在别的菜单
@@ -506,7 +503,7 @@ function openMenu(tag, e) {
   } else if (route.path !== tag.path) {
     // 右键菜单不匹配当前路由，隐藏刷新
     tagsViews.value[0].show = false;
-    showMenuModel(tag.path);
+    showMenuModel(tag.path, tag.query);
   } else if (
     // eslint-disable-next-line no-dupe-else-if
     multiTags.value.length === 2 &&
@@ -517,7 +514,7 @@ function openMenu(tag, e) {
     tagsViews.value[4].show = false;
   } else if (route.path === tag.path) {
     // 右键当前激活的菜单
-    showMenuModel(tag.path, true);
+    showMenuModel(tag.path, tag.query, true);
   }
 
   currentSelect.value = tag;
@@ -545,7 +542,7 @@ function tagOnClick(item) {
     path: item?.path,
     query: item?.query
   });
-  showMenuModel(item?.path);
+  showMenuModel(item?.path, item?.query);
 }
 
 // 鼠标移入
