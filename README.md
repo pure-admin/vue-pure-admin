@@ -119,7 +119,7 @@ pnpm build
 
 如果你觉得这个项目对你有帮助，你可以帮作者买一杯咖啡表示支持
 
-<img src="http://yiming_chang.gitee.io/manages/pay.png" width="150px" height="150px" />
+<img src="http://yiming_chang.gitee.io/manages/pay.jpg" width="150px" height="150px" />
 
 ## 微信交流群
 
@@ -129,7 +129,7 @@ pnpm build
 
 ## 付费咨询、需求定制
 
-作者精力有限，需要提供服务的可扫下面的二维码加微信
+作者精力有限，需要提供技术服务的可扫下面的二维码加微信
 
 <img src="http://yiming_chang.gitee.io/manages/cost.jpg" width="150px" height="150px" />
 
