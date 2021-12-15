@@ -1,6 +1,7 @@
 import { resolve } from "path";
 import vue from "@vitejs/plugin-vue";
 import svgLoader from "vite-svg-loader";
+import legacy from "@vitejs/plugin-legacy";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 import { warpperEnv, regExps } from "./build";
 import { viteMockServe } from "vite-plugin-mock";
@@ -28,6 +29,7 @@ const alias: Record<string, string> = {
 export default ({ command, mode }: ConfigEnv): UserConfigExport => {
   const {
     VITE_PORT,
+    VITE_LEGACY,
     VITE_PUBLIC_PATH,
     VITE_PROXY_DOMAIN,
     VITE_PROXY_DOMAIN_REAL
@@ -162,7 +164,14 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
           setupProdMockServer();
         `,
         logger: true
-      })
+      }),
+      // 是否为打包后的文件提供传统浏览器兼容性支持
+      VITE_LEGACY
+        ? legacy({
+            targets: ["ie >= 11"],
+            additionalLegacyPolyfills: ["regenerator-runtime/runtime"]
+          })
+        : null
     ],
     optimizeDeps: {
       include: [
