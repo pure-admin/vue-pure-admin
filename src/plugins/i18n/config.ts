@@ -43,6 +43,7 @@ export const menusConfig = {
       permissionPage: "页面权限",
       permissionButton: "按钮权限",
       hstabs: "标签页操作",
+      hsMenuTree: "菜单树结构",
       externalLink: "外链"
     }
   },
@@ -80,6 +81,7 @@ export const menusConfig = {
       permissionPage: "Page Permission",
       permissionButton: "Button Permission",
       hstabs: "Tabs Operate",
+      hsMenuTree: "Menu Tree",
       externalLink: "External Link"
     }
   }

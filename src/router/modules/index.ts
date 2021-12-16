@@ -3,6 +3,7 @@ import homeRouter from "./home";
 import errorRouter from "./error";
 import editorRouter from "./editor";
 import nestedRouter from "./nested";
+import menuTreeRouter from "./menuTree";
 import externalLink from "./externalLink";
 import flowChartRouter from "./flowchart";
 import remainingRouter from "./remaining";
@@ -22,6 +23,7 @@ const routes = [
   nestedRouter,
   externalLink,
   editorRouter,
+  menuTreeRouter,
   flowChartRouter,
   componentsRouter
 ];

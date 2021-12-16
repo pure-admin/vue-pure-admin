@@ -13,6 +13,8 @@ export function findIconReg(icon: string) {
   const faReg = /^FA-/;
   // iconfont
   const iFReg = /^IF-/;
+  // remixicon
+  const riReg = /^RI-/;
   // typeof icon === "function" 属于SVG
   if (faReg.test(icon)) {
     const text = icon.split(faReg)[1];
@@ -25,12 +27,14 @@ export function findIconReg(icon: string) {
     return findIcon(icon.split(iFReg)[1], "IF");
   } else if (typeof icon === "function") {
     return findIcon(icon, "SVG");
+  } else if (riReg.test(icon)) {
+    return findIcon(icon.split(riReg)[1], "RI");
   } else {
     return findIcon(icon, "EL");
   }
 }
 
-// 支持fontawesome、iconfont、element-plus/icons、自定义svg
+// 支持fontawesome、iconfont、remixicon、element-plus/icons、自定义svg
 export function findIcon(icon: String, type = "EL", property?: string) {
   if (type === "FA") {
     return defineComponent({
@@ -46,6 +50,14 @@ export function findIcon(icon: String, type = "EL", property?: string) {
       name: "IfIcon",
       data() {
         return { icon: `iconfont ${icon}` };
+      },
+      template: `<i :class="icon" />`
+    });
+  } else if (type === "RI") {
+    return defineComponent({
+      name: "RIIcon",
+      data() {
+        return { icon: `ri-${icon}` };
       },
       template: `<i :class="icon" />`
     });

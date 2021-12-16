@@ -7,6 +7,7 @@ const homeRouter = {
   redirect: "/welcome",
   meta: {
     icon: "HomeFilled",
+    title: "message.hshome",
     showLink: true,
     i18n: true,
     rank: 0

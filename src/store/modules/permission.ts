@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import { store } from "/@/store";
 import { cacheType } from "./types";
+import { cloneDeep } from "lodash-es";
 import { RouteConfigs } from "/@/layout/types";
 import { constantMenus } from "/@/router/modules";
 import { ascending, filterTree } from "/@/router/utils";
@@ -12,6 +13,8 @@ export const usePermissionStore = defineStore({
     constantMenus,
     // 整体路由生成的菜单（静态、动态）
     wholeMenus: [],
+    // 深拷贝一个菜单树，与导航菜单不突出
+    menusTree: [],
     buttonAuth: [],
     // 缓存页面keepAlive
     cachePageList: []
@@ -22,6 +25,10 @@ export const usePermissionStore = defineStore({
       if (this.wholeMenus.length > 0) return;
       this.wholeMenus = filterTree(
         ascending(this.constantMenus.concat(routes))
+      );
+
+      this.menusTree = cloneDeep(
+        filterTree(ascending(this.constantMenus.concat(routes)))
       );
 
       const getButtonAuth = (arrRoutes: Array<RouteConfigs>) => {
