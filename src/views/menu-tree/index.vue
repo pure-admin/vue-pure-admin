@@ -10,7 +10,7 @@ import { extractPathList, deleteChildren } from "/@/utils/tree";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 
 let dataProps = ref({
-  value: "path",
+  value: "uniqueId",
   children: "children"
 });
 
