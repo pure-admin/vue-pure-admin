@@ -121,17 +121,11 @@ pnpm build
 
 <img src="http://yiming_chang.gitee.io/manages/pay.jpg" width="150px" height="150px" />
 
-## 微信交流群
-
-扫下面的二维码加微信，拉你进群，有什么问题你可以和群友交流
-
-<img src="http://yiming_chang.gitee.io/manages/wechat.jpg" width="150px" height="150px" />
-
 ## 付费咨询、需求定制
 
-作者精力有限，需要提供技术服务的可扫下面的二维码加微信
+作者精力有限，需要提供技术服务的可扫下面的二维码加微信，添加请备注来意，否则一律不加
 
-<img src="http://yiming_chang.gitee.io/manages/cost.jpg" width="150px" height="150px" />
+<img src="http://yiming_chang.gitee.io/manages/wechat.jpg" width="150px" height="150px" />
 
 ## 许可证
 

@@ -121,10 +121,6 @@ If you think this project is helpful to you, you can help the author buy a cup o
 
 <img src="http://yiming_chang.gitee.io/manages/pay.png" width="360px" height="480px" />
 
-## Exchange Group
-
-My WeChat: 18237613535, pull you into the group
-
 ## License
 
 In principle, no fees and copyrights are charged, so you can use it with confidence
