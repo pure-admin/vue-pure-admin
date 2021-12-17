@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
+import { isEqual } from "lodash-es";
 import { transformI18n } from "/@/plugins/i18n";
-import { isEqual, findIndex } from "lodash-es";
-import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
 import { getParentPaths, findRouteByPath } from "/@/router/utils";
+import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
 import { useRoute, useRouter, RouteLocationMatched } from "vue-router";
 
-const levelList = ref([]);
 const route = useRoute();
+const levelList = ref([]);
 const router = useRouter();
 const routes = router.options.routes;
 const multiTags = useMultiTagsStoreHook().multiTags;
@@ -20,34 +20,20 @@ const isDashboard = (route: RouteLocationMatched): boolean | string => {
   return name.trim().toLocaleLowerCase() === "welcome".toLocaleLowerCase();
 };
 
-// 获取动态路由信息
-const getDynamicRoute = (path, tags) => {
-  const dynamicRoute = findRouteByPath(path, tags);
-  if (!dynamicRoute) {
-    return null;
-  } else if (isEqual(dynamicRoute.query, route.query)) {
-    return dynamicRoute;
-  } else {
-    const index = findIndex(
-      tags,
-      v => v.path === dynamicRoute.path && isEqual(v.query, dynamicRoute.query)
-    );
-    // 去掉不符合当前路由query的路由
-    const newTags = tags.slice(index + 1);
-    return getDynamicRoute(path, newTags);
-  }
-};
-
 const getBreadcrumb = (): void => {
   // 当前路由信息
   let currentRoute;
-  if (route.meta?.realPath) {
-    currentRoute = getDynamicRoute(route.path, multiTags);
+  if (Object.keys(route.query).length > 0) {
+    multiTags.forEach(item => {
+      if (isEqual(route.query, item?.query)) {
+        currentRoute = item;
+      }
+    });
   } else {
-    currentRoute = findRouteByPath(route.path, multiTags);
+    currentRoute = findRouteByPath(router.currentRoute.value.path, multiTags);
   }
   // 当前路由的父级路径组成的数组
-  const parentRoutes = getParentPaths(route.path, routes);
+  const parentRoutes = getParentPaths(router.currentRoute.value.path, routes);
   // 存放组成面包屑的数组
   let matched = [];
   // 获取每个父级路径对应的路由信息
@@ -56,9 +42,12 @@ const getBreadcrumb = (): void => {
       matched.push(findRouteByPath(path, routes));
     }
   });
-  if (route.meta.refreshRedirect) {
+  if (router.currentRoute.value.meta?.refreshRedirect) {
     matched.unshift(
-      findRouteByPath(route.meta.refreshRedirect as string, routes)
+      findRouteByPath(
+        router.currentRoute.value.meta.refreshRedirect as string,
+        routes
+      )
     );
   } else {
     // 过滤与子级相同标题的父级路由
@@ -66,7 +55,7 @@ const getBreadcrumb = (): void => {
       return !item.redirect || (item.redirect && item.children.length !== 1);
     });
   }
-  if (currentRoute.path !== "/welcome") {
+  if (currentRoute?.path !== "/welcome") {
     matched.push(currentRoute);
   }
 
@@ -82,7 +71,7 @@ const getBreadcrumb = (): void => {
   }
 
   levelList.value = matched.filter(
-    item => item.meta && item.meta.title && item.meta.breadcrumb !== false
+    item => item?.meta && item?.meta.title !== false
   );
 };
 
@@ -90,6 +79,11 @@ getBreadcrumb();
 
 watch(
   () => route.path,
+  () => getBreadcrumb()
+);
+
+watch(
+  () => route.query,
   () => getBreadcrumb()
 );
 
