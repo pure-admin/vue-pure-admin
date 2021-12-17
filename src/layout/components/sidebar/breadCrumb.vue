@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
 import { transformI18n } from "/@/plugins/i18n";
-import { isEmpty, isEqual, findIndex } from "lodash-es";
+import { isEqual, findIndex } from "lodash-es";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
 import { getParentPaths, findRouteByPath } from "/@/router/utils";
 import { useRoute, useRouter, RouteLocationMatched } from "vue-router";
@@ -25,11 +25,7 @@ const getDynamicRoute = (path, tags) => {
   const dynamicRoute = findRouteByPath(path, tags);
   if (!dynamicRoute) {
     return null;
-  } else if (isEmpty(route.query) || isEqual(dynamicRoute.query, route.query)) {
-    /**
-     * isEmpty(route.query) 动态标签页已存在，切换标签页时不需要判断route.query
-     * isEqual(dynamicRoute.query, route.query) 新开动态标签页, 匹配与新开标签页相符的query
-     */
+  } else if (isEqual(dynamicRoute.query, route.query)) {
     return dynamicRoute;
   } else {
     const index = findIndex(
