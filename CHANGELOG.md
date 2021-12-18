@@ -1,3 +1,23 @@
+# 2.7.0(2021-12-18)
+
+### 🎫 Feat
+
+- New tab reuse
+- New message reminder template
+- Added front-end menu tree structure example
+- Refactor routing, optimize permissions modules, and bring a more convenient experience
+- Refactor the env environment and http request to bring a more convenient experience
+- Currently, the tabs of the platform are forced to associate with local storage. The next step is to put the tabs in the memory by default and support configurable persistent tabs
+- Navigation menu icons support fontawesome, iconfont, remixicon, element-plus/icons, custom svg
+- Update font-awesome to version 5.0, because versions below 5.0 are no longer officially maintained, but the platform will still be compatible with font-awesome4 version
+
+### 🍏 Perf
+
+- Optimize the tab page to bring a better interactive experience
+- Routing title supports direct writing in Chinese, which can be separated from internationalization
+- Route history mode is read from env and supports base parameter
+- Packaged files provide traditional browser compatibility support, configure VITE_LEGACY to true
+
 # 2.6.0(2021-11-10)
 
 ### 🎫 Feat
