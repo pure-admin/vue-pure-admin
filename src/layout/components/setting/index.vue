@@ -16,7 +16,9 @@ import { getConfig } from "/@/config";
 import { useRouter } from "vue-router";
 import { emitter } from "/@/utils/mitt";
 import { templateRef } from "@vueuse/core";
+import dayIcon from "/@/assets/svg/day.svg";
 import { debounce } from "/@/utils/debounce";
+import darkIcon from "/@/assets/svg/dark.svg";
 import { themeColorsType } from "../../types";
 import { useAppStoreHook } from "/@/store/modules/app";
 import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
@@ -258,11 +260,33 @@ const setEpThemeColor = (color: string) => {
   writeNewStyle(createNewStyle(color));
   useEpThemeStoreHook().setEpThemeColor(color);
 };
+
+let dataTheme = ref<boolean>(false);
+
+// 日间、夜间主题切换
+function dataThemeChange() {
+  const body = document.documentElement as HTMLElement;
+  if (dataTheme.value) {
+    body.setAttribute("data-theme", "dark");
+    setLayoutThemeColor("light");
+  } else body.setAttribute("data-theme", "");
+}
 </script>
 
 <template>
   <panel>
-    <el-divider>主题风格</el-divider>
+    <el-divider>主题</el-divider>
+    <el-switch
+      v-model="dataTheme"
+      inline-prompt
+      class="pure-datatheme"
+      :active-icon="dayIcon"
+      :inactive-icon="darkIcon"
+      @change="dataThemeChange"
+    >
+    </el-switch>
+
+    <el-divider>导航栏模式</el-divider>
     <ul class="pure-theme">
       <el-tooltip class="item" content="左侧菜单模式" placement="bottom">
         <li
@@ -287,8 +311,8 @@ const setEpThemeColor = (color: string) => {
       </el-tooltip>
     </ul>
 
-    <el-divider>主题色</el-divider>
-    <ul class="theme-color">
+    <el-divider v-if="!dataTheme">主题色</el-divider>
+    <ul class="theme-color" v-if="!dataTheme">
       <li
         v-for="(item, index) in themeColors"
         :key="index"
@@ -412,6 +436,14 @@ const setEpThemeColor = (color: string) => {
 :deep(.el-divider__text) {
   font-size: 16px;
   font-weight: 700;
+}
+
+.pure-datatheme {
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  display: block;
+  padding-top: 25px;
 }
 
 .pure-theme {

@@ -1,0 +1,29 @@
+/* 暗黑模式 */
+[data-theme="dark"] {
+  filter: invert(0.9) hue-rotate(180deg);
+
+  #mse,
+  img,
+  .icon-svg,
+  .login-container {
+    filter: invert(1) hue-rotate(180deg);
+  }
+
+  // element plus
+  .el-radio-button__original-radio:checked + .el-radio-button__inner,
+  .el-image-viewer__close,
+  .el-image-viewer__actions__inner,
+  .el-image-viewer__next,
+  .el-image-viewer__prev {
+    color: #000 !important;
+  }
+
+  .el-overlay {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+  }
+
+  .el-drawer {
+    box-shadow: 0 8px 10px -5px rgb(0 0 0 / 1%), 0 16px 24px 2px rgb(0 0 0 / 2%),
+      0 6px 30px 5px rgb(0 0 0 / 1%);
+  }
+}

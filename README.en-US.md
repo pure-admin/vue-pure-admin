@@ -28,6 +28,7 @@ Github Address: <https://github.com/xiaoxian521/pure-admin-thin>
 <p align="center">
   <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b4857fc7eb7d4c0f8deeefc644c1f7dd~tplv-k3u1fbpfcp-watermark.awebp?">
   <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/549c3184697f4d268a78c9833e5ec2ea~tplv-k3u1fbpfcp-watermark.awebp?">
+  <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/381fc957fac143db9f06efdd389d88a3~tplv-k3u1fbpfcp-watermark.awebp?">
 </p>
 
 ### Use Gitpod
