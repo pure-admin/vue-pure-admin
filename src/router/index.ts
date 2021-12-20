@@ -89,7 +89,7 @@ router.beforeEach((to: toRouteType, _from, next) => {
               });
             };
             // 未开启标签页缓存，刷新页面重定向到顶级路由（参考标签页操作例子，只针对静态路由）
-            if (to.meta?.realPath) {
+            if (to.meta?.dynamicLevel) {
               const routes = router.options.routes;
               const { refreshRedirect } = to.meta;
               const { name, meta } = findRouteByPath(refreshRedirect, routes);
