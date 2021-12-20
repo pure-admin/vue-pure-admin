@@ -6,7 +6,7 @@
   z-index: -1;
 }
 
-.container {
+.login-container {
   width: 100vw;
   height: 100vh;
   display: grid;
@@ -183,7 +183,7 @@ a:hover {
 }
 
 @media screen and (max-width: 1080px) {
-  .container {
+  .login-container {
     grid-gap: 9rem;
   }
 }
@@ -217,7 +217,7 @@ a:hover {
     display: none;
   }
 
-  .container {
+  .login-container {
     grid-template-columns: 1fr;
   }
 
