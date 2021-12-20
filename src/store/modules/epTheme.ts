@@ -5,17 +5,17 @@ import { storageLocal } from "/@/utils/storage";
 export const useEpThemeStore = defineStore({
   id: "pure-epTheme",
   state: () => ({
-    mainColor: storageLocal.getItem("mainColor") || "#409EFF"
+    epThemeColor: storageLocal.getItem("epThemeColor") || "#409EFF"
   }),
   getters: {
-    getMainColor() {
-      return this.mainColor;
+    getEpThemeColor() {
+      return this.epThemeColor;
     }
   },
   actions: {
-    setMainColor(newColor) {
-      this.mainColor = newColor;
-      storageLocal.setItem("mainColor", newColor);
+    setEpThemeColor(newColor) {
+      this.epThemeColor = newColor;
+      storageLocal.setItem("epThemeColor", newColor);
     }
   }
 });

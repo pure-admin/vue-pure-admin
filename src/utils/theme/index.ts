@@ -1,7 +1,6 @@
-import axios from "axios";
 import rgbHex from "rgb-hex";
 import color from "css-color-function";
-import config from "../../../package.json";
+import epCss from "element-plus/dist/index.css";
 
 const formula = {
   "shade-1": "color(primary shade(10%))",
@@ -22,9 +21,9 @@ export const writeNewStyle = newStyle => {
   window.document.head.appendChild(style);
 };
 
-export const createNewStyle = async primaryStyle => {
+export const createNewStyle = primaryStyle => {
   const colors = createColors(primaryStyle);
-  let cssText = await getOriginStyle();
+  let cssText = getOriginStyle();
   Object.keys(colors).forEach(key => {
     cssText = cssText.replace(
       new RegExp("(:|\\s+)" + key, "g"),
@@ -46,11 +45,8 @@ export const createColors = primary => {
   return colors;
 };
 
-export const getOriginStyle = async () => {
-  const version = config.dependencies["element-plus"];
-  const url = `https://unpkg.com/element-plus@${version}/dist/index.css`;
-  const { data } = await axios(url);
-  return getStyleTemplate(data);
+export const getOriginStyle = () => {
+  return getStyleTemplate(epCss);
 };
 
 const getStyleTemplate = data => {

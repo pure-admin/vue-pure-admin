@@ -9,6 +9,8 @@ import {
   useCssModule,
   getCurrentInstance
 } from "vue";
+import rgbHex from "rgb-hex";
+import { find } from "lodash-es";
 import panel from "../panel/index.vue";
 import { getConfig } from "/@/config";
 import { useRouter } from "vue-router";
@@ -17,10 +19,10 @@ import { templateRef } from "@vueuse/core";
 import { debounce } from "/@/utils/debounce";
 import { themeColorsType } from "../../types";
 import { useAppStoreHook } from "/@/store/modules/app";
-import { createNewStyle, writeNewStyle } from "/@/utils/theme";
 import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
 import { storageLocal, storageSession } from "/@/utils/storage";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
+import { createNewStyle, writeNewStyle } from "/@/utils/theme";
 import { toggleTheme } from "@zougt/vite-plugin-theme-preprocessor/dist/browser-utils";
 
 const router = useRouter();
@@ -76,6 +78,8 @@ if (unref(layoutTheme)) {
 const markValue = ref(storageLocal.getItem("showModel") || "smart");
 
 const logoVal = ref(storageLocal.getItem("logoVal") || "1");
+
+const epThemeColor = ref(useEpThemeStoreHook().getEpThemeColor);
 
 const settings = reactive({
   greyVal: instance.sets.grey,
@@ -147,9 +151,7 @@ nextTick(() => {
     document.querySelector("html")?.setAttribute("class", "html-weakness");
   settings.tabsVal && tagsChange();
 
-  createNewStyle(useEpThemeStoreHook().getMainColor).then(newStyle => {
-    writeNewStyle(newStyle);
-  });
+  writeNewStyle(createNewStyle(epThemeColor.value));
 });
 
 // 清空缓存并返回登录页
@@ -171,7 +173,7 @@ function onReset() {
     }
   ]);
   useMultiTagsStoreHook().multiTagsCacheChange(getConfig().MultiTagsCache);
-  useEpThemeStoreHook().setMainColor("#409EFF");
+  useEpThemeStoreHook().setEpThemeColor("#409EFF");
   router.push("/login");
 }
 
@@ -241,30 +243,20 @@ function setLayoutThemeColor(theme: string) {
     scopeName: `layout-theme-${theme}`
   });
   instance.layout = { layout: useAppStoreHook().layout, theme };
+
+  if (theme === "default" || theme === "light") {
+    setEpThemeColor("#409EFF");
+  } else {
+    const colors = find(themeColors.value, { themeColor: theme });
+    const color = "#" + rgbHex(colors.rgb);
+    setEpThemeColor(color);
+  }
 }
 
-// ep主题
-const mainColor = ref(useEpThemeStoreHook().getMainColor);
-const predefineColors = ref([
-  "#ff4500",
-  "#ff8c00",
-  "#ffd700",
-  "#90ee90",
-  "#00ced1",
-  "#1e90ff",
-  "#c71585",
-  "rgba(255, 69, 0, 0.68)",
-  "rgb(255, 120, 0)",
-  "hsv(51, 100, 98)",
-  "hsva(120, 40, 94, 0.5)",
-  "hsl(181, 100%, 37%)",
-  "hsla(209, 100%, 56%, 0.73)",
-  "#c7158577"
-]);
-const changeMainColor = async () => {
-  const newStyle = await createNewStyle(mainColor.value);
-  writeNewStyle(newStyle);
-  useEpThemeStoreHook().setMainColor(mainColor.value);
+// 设置ep主题色
+const setEpThemeColor = (color: string) => {
+  writeNewStyle(createNewStyle(color));
+  useEpThemeStoreHook().setEpThemeColor(color);
 };
 </script>
 
@@ -296,12 +288,6 @@ const changeMainColor = async () => {
     </ul>
 
     <el-divider>主题色</el-divider>
-    <el-color-picker
-      v-model="mainColor"
-      :predefine="predefineColors"
-      @change="changeMainColor"
-      popper-class="ep-theme--color-picker"
-    />
     <ul class="theme-color">
       <li
         v-for="(item, index) in themeColors"
@@ -404,12 +390,6 @@ const changeMainColor = async () => {
     >
   </panel>
 </template>
-
-<style>
-.ep-theme--color-picker {
-  z-index: 40001 !important;
-}
-</style>
 
 <style scoped module>
 .isSelect {
