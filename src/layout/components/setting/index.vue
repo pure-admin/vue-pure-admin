@@ -9,6 +9,8 @@ import {
   useCssModule,
   getCurrentInstance
 } from "vue";
+import rgbHex from "rgb-hex";
+import { find } from "lodash-es";
 import panel from "../panel/index.vue";
 import { getConfig } from "/@/config";
 import { useRouter } from "vue-router";
@@ -19,8 +21,10 @@ import { debounce } from "/@/utils/debounce";
 import darkIcon from "/@/assets/svg/dark.svg";
 import { themeColorsType } from "../../types";
 import { useAppStoreHook } from "/@/store/modules/app";
+import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
 import { storageLocal, storageSession } from "/@/utils/storage";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
+import { createNewStyle, writeNewStyle } from "/@/utils/theme";
 import { toggleTheme } from "@zougt/vite-plugin-theme-preprocessor/dist/browser-utils";
 
 const router = useRouter();
@@ -76,6 +80,8 @@ if (unref(layoutTheme)) {
 const markValue = ref(storageLocal.getItem("showModel") || "smart");
 
 const logoVal = ref(storageLocal.getItem("logoVal") || "1");
+
+const epThemeColor = ref(useEpThemeStoreHook().getEpThemeColor);
 
 const settings = reactive({
   greyVal: instance.sets.grey,
@@ -146,6 +152,8 @@ nextTick(() => {
   settings.weakVal &&
     document.querySelector("html")?.setAttribute("class", "html-weakness");
   settings.tabsVal && tagsChange();
+
+  writeNewStyle(createNewStyle(epThemeColor.value));
 });
 
 // 清空缓存并返回登录页
@@ -167,6 +175,7 @@ function onReset() {
     }
   ]);
   useMultiTagsStoreHook().multiTagsCacheChange(getConfig().MultiTagsCache);
+  useEpThemeStoreHook().setEpThemeColor("#409EFF");
   router.push("/login");
 }
 
@@ -236,7 +245,21 @@ function setLayoutThemeColor(theme: string) {
     scopeName: `layout-theme-${theme}`
   });
   instance.layout = { layout: useAppStoreHook().layout, theme };
+
+  if (theme === "default" || theme === "light") {
+    setEpThemeColor("#409EFF");
+  } else {
+    const colors = find(themeColors.value, { themeColor: theme });
+    const color = "#" + rgbHex(colors.rgb);
+    setEpThemeColor(color);
+  }
 }
+
+// 设置ep主题色
+const setEpThemeColor = (color: string) => {
+  writeNewStyle(createNewStyle(color));
+  useEpThemeStoreHook().setEpThemeColor(color);
+};
 
 let dataTheme = ref<boolean>(false);
 
