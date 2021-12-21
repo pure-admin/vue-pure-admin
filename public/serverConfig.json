@@ -8,6 +8,7 @@
   "Locale": "zh",
   "Layout": "vertical",
   "Theme": "default",
+  "DarkMode": false,
   "Grey": false,
   "Weak": false,
   "HideTabs": false,

@@ -3,6 +3,7 @@ import rgbHex from "rgb-hex";
 import color from "css-color-function";
 import epCss from "element-plus/dist/index.css";
 
+// 色值表
 const formula = {
   "shade-1": "color(primary shade(10%))",
   "light-1": "color(primary tint(10%))",
@@ -16,15 +17,20 @@ const formula = {
   "light-9": "color(primary tint(90%))"
 };
 
+// 把生成的样式表写入到style中
 export const writeNewStyle = (newStyle: string): void => {
   const style = window.document.createElement("style");
   style.innerText = newStyle;
   window.document.head.appendChild(style);
 };
 
+// 根据主题色，生成最新的样式表
 export const createNewStyle = (primaryStyle: string): string => {
+  // 根据主色生成色值表
   const colors = createColors(primaryStyle);
-  let cssText = getOriginStyle();
+  // 在当前ep的默认样式表中标记需要替换的色值
+  let cssText = getStyleTemplate(epCss);
+  // 遍历生成的色值表，在 默认样式表 进行全局替换
   Object.keys(colors).forEach(key => {
     cssText = cssText.replace(
       new RegExp("(:|\\s+)" + key, "g"),
@@ -44,10 +50,6 @@ export const createColors = (primary: string) => {
     colors[key] = "#" + rgbHex(color.convert(value));
   });
   return colors;
-};
-
-export const getOriginStyle = () => {
-  return getStyleTemplate(epCss);
 };
 
 const getStyleTemplate = (data: string): string => {

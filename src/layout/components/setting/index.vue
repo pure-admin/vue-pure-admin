@@ -145,23 +145,14 @@ const multiTagsCacheChange = () => {
   useMultiTagsStoreHook().multiTagsCacheChange(multiTagsCache);
 };
 
-//初始化项目配置
-nextTick(() => {
-  settings.greyVal &&
-    document.querySelector("html")?.setAttribute("class", "html-grey");
-  settings.weakVal &&
-    document.querySelector("html")?.setAttribute("class", "html-weakness");
-  settings.tabsVal && tagsChange();
-
-  writeNewStyle(createNewStyle(epThemeColor.value));
-});
-
 // 清空缓存并返回登录页
 function onReset() {
-  storageLocal.clear();
-  storageSession.clear();
-  toggleClass(false, "html-grey", document.querySelector("html"));
-  toggleClass(false, "html-weakness", document.querySelector("html"));
+  toggleClass(getConfig().Grey, "html-grey", document.querySelector("html"));
+  toggleClass(
+    getConfig().Weak,
+    "html-weakness",
+    document.querySelector("html")
+  );
   useMultiTagsStoreHook().handleTags("equal", [
     {
       path: "/welcome",
@@ -176,6 +167,8 @@ function onReset() {
   ]);
   useMultiTagsStoreHook().multiTagsCacheChange(getConfig().MultiTagsCache);
   useEpThemeStoreHook().setEpThemeColor("#409EFF");
+  storageLocal.clear();
+  storageSession.clear();
   router.push("/login");
 }
 
@@ -234,7 +227,11 @@ const getThemeColor = computed(() => {
 function setLayoutModel(layout: string) {
   layoutTheme.value.layout = layout;
   window.document.body.setAttribute("layout", layout);
-  instance.layout = { layout, theme: layoutTheme.value.theme };
+  instance.layout = {
+    layout,
+    theme: layoutTheme.value.theme,
+    darkMode: instance.layout.darkMode
+  };
   useAppStoreHook().setLayout(layout);
 }
 
@@ -244,7 +241,11 @@ function setLayoutThemeColor(theme: string) {
   toggleTheme({
     scopeName: `layout-theme-${theme}`
   });
-  instance.layout = { layout: useAppStoreHook().layout, theme };
+  instance.layout = {
+    layout: useAppStoreHook().layout,
+    theme,
+    darkMode: dataTheme.value
+  };
 
   if (theme === "default" || theme === "light") {
     setEpThemeColor("#409EFF");
@@ -261,7 +262,7 @@ const setEpThemeColor = (color: string) => {
   useEpThemeStoreHook().setEpThemeColor(color);
 };
 
-let dataTheme = ref<boolean>(false);
+let dataTheme = ref<boolean>(instance.layout.darkMode);
 
 // 日间、夜间主题切换
 function dataThemeChange() {
@@ -269,8 +270,27 @@ function dataThemeChange() {
   if (dataTheme.value) {
     body.setAttribute("data-theme", "dark");
     setLayoutThemeColor("light");
-  } else body.setAttribute("data-theme", "");
+  } else {
+    body.setAttribute("data-theme", "");
+    instance.layout = {
+      layout: useAppStoreHook().layout,
+      theme: instance.layout.theme,
+      darkMode: dataTheme.value
+    };
+  }
 }
+
+//初始化项目配置
+nextTick(() => {
+  settings.greyVal &&
+    document.querySelector("html")?.setAttribute("class", "html-grey");
+  settings.weakVal &&
+    document.querySelector("html")?.setAttribute("class", "html-weakness");
+  settings.tabsVal && tagsChange();
+
+  writeNewStyle(createNewStyle(epThemeColor.value));
+  dataThemeChange();
+});
 </script>
 
 <template>
