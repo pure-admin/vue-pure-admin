@@ -24,7 +24,7 @@ import { useAppStoreHook } from "/@/store/modules/app";
 import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
 import { storageLocal, storageSession } from "/@/utils/storage";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
-import { createNewStyle, writeNewStyle } from "/@/utils/theme";
+import { createNewStyle, writeNewStyle } from "../../theme/element-plus";
 import { toggleTheme } from "@zougt/vite-plugin-theme-preprocessor/dist/browser-utils";
 
 const router = useRouter();

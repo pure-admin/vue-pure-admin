@@ -1,3 +1,4 @@
+/* 动态改变element-plus主题色 */
 import rgbHex from "rgb-hex";
 import color from "css-color-function";
 import epCss from "element-plus/dist/index.css";
@@ -15,13 +16,13 @@ const formula = {
   "light-9": "color(primary tint(90%))"
 };
 
-export const writeNewStyle = newStyle => {
+export const writeNewStyle = (newStyle: string): void => {
   const style = window.document.createElement("style");
   style.innerText = newStyle;
   window.document.head.appendChild(style);
 };
 
-export const createNewStyle = primaryStyle => {
+export const createNewStyle = (primaryStyle: string): string => {
   const colors = createColors(primaryStyle);
   let cssText = getOriginStyle();
   Object.keys(colors).forEach(key => {
@@ -33,7 +34,7 @@ export const createNewStyle = primaryStyle => {
   return cssText;
 };
 
-export const createColors = primary => {
+export const createColors = (primary: string) => {
   if (!primary) return;
   const colors = {
     primary
@@ -49,7 +50,7 @@ export const getOriginStyle = () => {
   return getStyleTemplate(epCss);
 };
 
-const getStyleTemplate = data => {
+const getStyleTemplate = (data: string): string => {
   const colorMap = {
     "#3a8ee6": "shade-1",
     "#409eff": "primary",
