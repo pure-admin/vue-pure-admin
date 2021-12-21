@@ -99,7 +99,6 @@ const tabsRouter = {
         showLink: false,
         i18n: false,
         dynamicLevel: 3,
-        realPath: "/tabs/detail",
         refreshRedirect: "/tabs/index"
       }
     }

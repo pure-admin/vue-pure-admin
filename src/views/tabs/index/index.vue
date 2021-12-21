@@ -17,8 +17,7 @@ function toDetail(index: number) {
       title: { zh: `No.${index} - 详情信息`, en: `No.${index} - DetailInfo` },
       showLink: false,
       i18n: false,
-      dynamicLevel: 3,
-      realPath: "/tabs/detail"
+      dynamicLevel: 3
     }
   });
   router.push({ name: "tabDetail", query: { id: String(index) } });

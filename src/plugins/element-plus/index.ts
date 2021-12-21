@@ -44,7 +44,6 @@ import {
   ElCollapse,
   ElCollapseItem,
   ElTreeV2,
-  ElColorPicker,
   // 指令
   ElLoading,
   ElInfiniteScroll
@@ -97,8 +96,7 @@ const components = [
   ElEmpty,
   ElCollapse,
   ElCollapseItem,
-  ElTreeV2,
-  ElColorPicker
+  ElTreeV2
 ];
 
 // https://element-plus.org/zh-CN/component/icon.html
