@@ -51,7 +51,8 @@ const layout = computed(() => {
     // eslint-disable-next-line vue/no-side-effects-in-computed-properties
     instance.$storage.layout = {
       layout: instance.$config?.Layout ?? "vertical",
-      theme: instance.$config?.Theme ?? "default"
+      theme: instance.$config?.Theme ?? "default",
+      darkMode: instance.$config?.DarkMode ?? false
     };
   }
   // 灰色模式、色弱模式、隐藏标签页
@@ -98,7 +99,8 @@ function setTheme(layoutModel: string) {
   window.document.body.setAttribute("layout", layoutModel);
   instance.$storage.layout = {
     layout: `${layoutModel}`,
-    theme: instance.$storage.layout?.theme
+    theme: instance.$storage.layout?.theme,
+    darkMode: instance.$storage.layout?.darkMode
   };
 }
 

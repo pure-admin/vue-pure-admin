@@ -81,6 +81,7 @@ declare global {
     KeepAlive?: boolean;
     Locale?: string;
     Layout?: string;
+    DarkMode?: boolean;
     Theme?: string;
     Grey?: boolean;
     Weak?: boolean;
