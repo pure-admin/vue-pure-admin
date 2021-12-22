@@ -331,8 +331,8 @@ nextTick(() => {
       </el-tooltip>
     </ul>
 
-    <el-divider v-if="!dataTheme">主题色</el-divider>
-    <ul class="theme-color" v-if="!dataTheme">
+    <el-divider v-show="!dataTheme">主题色</el-divider>
+    <ul class="theme-color" v-show="!dataTheme">
       <li
         v-for="(item, index) in themeColors"
         :key="index"
@@ -351,7 +351,7 @@ nextTick(() => {
 
     <el-divider>界面显示</el-divider>
     <ul class="setting">
-      <li>
+      <li v-show="!dataTheme">
         <span>灰色模式</span>
         <el-switch
           v-model="settings.greyVal"
@@ -363,7 +363,7 @@ nextTick(() => {
         >
         </el-switch>
       </li>
-      <li>
+      <li v-show="!dataTheme">
         <span>色弱模式</span>
         <el-switch
           v-model="settings.weakVal"
