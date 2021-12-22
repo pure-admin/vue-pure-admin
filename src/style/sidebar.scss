@@ -568,6 +568,7 @@
 body[layout="vertical"] {
   $sideBarWidth: 210px;
   @include merge-style($sideBarWidth);
+
   .el-menu--collapse {
     width: 54px;
   }

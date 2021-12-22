@@ -12,8 +12,15 @@ import { useEventListener, tryOnUnmounted, useTimeoutFn } from "@vueuse/core";
 
 let echartInstance: ECharts;
 
+const props = defineProps({
+  index: {
+    type: Number,
+    default: 0
+  }
+});
+
 function initechartInstance() {
-  const echartDom = document.querySelector(".line");
+  const echartDom = document.querySelector(".line" + props.index);
   if (!echartDom) return;
   // @ts-ignore
   echartInstance = echarts.init(echartDom);
@@ -73,12 +80,5 @@ tryOnUnmounted(() => {
 </script>
 
 <template>
-  <div class="line"></div>
+  <div :class="'line' + props.index" style="width: 100%; height: 35vh"></div>
 </template>
-
-<style scoped>
-.line {
-  width: 100%;
-  height: 35vh;
-}
-</style>
