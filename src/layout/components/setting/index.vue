@@ -21,6 +21,7 @@ import { debounce } from "/@/utils/debounce";
 import darkIcon from "/@/assets/svg/dark.svg";
 import { themeColorsType } from "../../types";
 import { useAppStoreHook } from "/@/store/modules/app";
+import { shadeBgColor } from "../../theme/element-plus";
 import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
 import { storageLocal, storageSession } from "/@/utils/storage";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
@@ -29,6 +30,7 @@ import { toggleTheme } from "@zougt/vite-plugin-theme-preprocessor/dist/browser-
 
 const router = useRouter();
 const { isSelect } = useCssModule();
+const body = document.documentElement as HTMLElement;
 const instance =
   getCurrentInstance().appContext.app.config.globalProperties.$storage;
 
@@ -260,13 +262,13 @@ function setLayoutThemeColor(theme: string) {
 const setEpThemeColor = (color: string) => {
   writeNewStyle(createNewStyle(color));
   useEpThemeStoreHook().setEpThemeColor(color);
+  body.style.setProperty("--el-color-primary-active", shadeBgColor(color));
 };
 
 let dataTheme = ref<boolean>(instance.layout.darkMode);
 
 // 日间、夜间主题切换
 function dataThemeChange() {
-  const body = document.documentElement as HTMLElement;
   if (dataTheme.value) {
     body.setAttribute("data-theme", "dark");
     setLayoutThemeColor("light");

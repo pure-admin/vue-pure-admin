@@ -35,3 +35,30 @@
 .is-dark {
   z-index: 99999 !important;
 }
+
+/* 动态改变cssvar 用于主题切换 https://github.com/element-plus/element-plus/issues/4856#issuecomment-1000174357 */
+.el-button--primary {
+  --el-button-bg-color: var(--el-color-primary) !important;
+  --el-button-border-color: var(--el-color-primary) !important;
+  --el-button-hover-bg-color: var(--el-color-primary-light-2) !important;
+  --el-button-hover-border-color: var(--el-color-primary-light-2) !important;
+  --el-button-active-bg-color: var(--el-color-primary-active) !important;
+  --el-button-active-border-color: var(--el-color-primary-active) !important;
+}
+
+/* nprogress适配ep的primary */
+#nprogress {
+  & .bar {
+    background-color: var(--el-color-primary) !important;
+  }
+
+  & .peg {
+    box-shadow: 0 0 10px var(--el-color-primary),
+      0 0 5px var(--el-color-primary) !important;
+  }
+
+  & .spinner-icon {
+    border-top-color: var(--el-color-primary);
+    border-left-color: var(--el-color-primary);
+  }
+}

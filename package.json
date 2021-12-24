@@ -29,6 +29,7 @@
   ],
   "dependencies": {
     "@amap/amap-jsapi-loader": "^1.0.1",
+    "@ctrl/tinycolor": "^3.4.0",
     "@element-plus/icons-vue": "^0.2.4",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",

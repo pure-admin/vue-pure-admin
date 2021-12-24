@@ -18,8 +18,8 @@ http.request('get', '/xxx?message=' + msg);
 import { http } from "/@/utils/http";
 
 // params传参
-http.request('get', '/xxx', { params: param });
+http.request('post', '/xxx', { params: param });
 
 // data传参
-http.request('get', '/xxx', { data: param });
+http.request('post', '/xxx', { data: param });
 ```

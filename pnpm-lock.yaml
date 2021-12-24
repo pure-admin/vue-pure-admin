@@ -4,6 +4,7 @@ specifiers:
   "@amap/amap-jsapi-loader": ^1.0.1
   "@commitlint/cli": 13.1.0
   "@commitlint/config-conventional": 13.1.0
+  "@ctrl/tinycolor": ^3.4.0
   "@element-plus/icons-vue": ^0.2.4
   "@fortawesome/fontawesome-svg-core": ^1.2.36
   "@fortawesome/free-solid-svg-icons": ^5.15.4
@@ -89,6 +90,7 @@ specifiers:
 
 dependencies:
   "@amap/amap-jsapi-loader": 1.0.1
+  "@ctrl/tinycolor": 3.4.0
   "@element-plus/icons-vue": 0.2.4_vue@3.2.24
   "@fortawesome/fontawesome-svg-core": 1.2.36
   "@fortawesome/free-solid-svg-icons": 5.15.4
@@ -784,6 +786,14 @@ packages:
     dependencies:
       chalk: 4.1.2
     dev: true
+
+  /@ctrl/tinycolor/3.4.0:
+    resolution:
+      {
+        integrity: sha512-JZButFdZ1+/xAfpguQHoabIXkcqRRKpMrWKBkpEZZyxfY9C1DpADFB8PEqGSTeFr135SaTRfKqGKx5xSCLI7ZQ==
+      }
+    engines: { node: ">=10" }
+    dev: false
 
   /@element-plus/icons-vue/0.2.4_vue@3.2.24:
     resolution:
