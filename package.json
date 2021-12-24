@@ -43,6 +43,7 @@
     "cropperjs": "^1.5.11",
     "css-color-function": "^1.3.3",
     "dayjs": "^1.10.7",
+    "driver.js": "^0.9.8",
     "echarts": "^5.2.1",
     "element-plus": "1.2.0-beta.6",
     "element-resize-detector": "^1.2.3",
