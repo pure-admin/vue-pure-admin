@@ -77,7 +77,7 @@ function translationEn() {
       <!-- 全屏 -->
       <screenfull id="header-screenfull" v-show="!deviceDetection()" />
       <!-- 国际化 -->
-      <el-dropdown trigger="click">
+      <el-dropdown id="header-translation" trigger="click">
         <globalization />
         <template #dropdown>
           <el-dropdown-menu class="translation">

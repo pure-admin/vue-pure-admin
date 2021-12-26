@@ -27,11 +27,27 @@ const steps = [
     }
   },
   {
+    element: "#header-translation",
+    popover: {
+      title: "国际化",
+      description: "你可以在这里进行语言切换",
+      position: "left"
+    }
+  },
+  {
     element: ".el-icon-setting",
     popover: {
       title: "项目配置",
       description: "你可以在这里查看项目配置",
       position: "left"
+    }
+  },
+  {
+    element: ".tags-view",
+    popover: {
+      title: "多标签页",
+      description: "这里是你访问过的页面的历史",
+      position: "buttom"
     }
   }
 ];
