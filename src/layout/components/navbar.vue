@@ -73,11 +73,11 @@ function translationEn() {
 
     <div class="vertical-header-right">
       <!-- 通知 -->
-      <Notice />
+      <Notice id="header-notice" />
       <!-- 全屏 -->
-      <screenfull v-show="!deviceDetection()" />
+      <screenfull id="header-screenfull" v-show="!deviceDetection()" />
       <!-- 国际化 -->
-      <el-dropdown trigger="click">
+      <el-dropdown id="header-translation" trigger="click">
         <globalization />
         <template #dropdown>
           <el-dropdown-menu class="translation">
