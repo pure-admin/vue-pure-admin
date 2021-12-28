@@ -118,9 +118,15 @@ Support modern browsers, not IE
 
 ## Donate
 
-If you think this project is helpful to you, you can help the author buy a cup of coffee to show your support!
+If you think this project is helpful to you, you can help the author buy a cup of coffee to show your support
 
-<img src="http://yiming_chang.gitee.io/manages/pay.png" width="360px" height="480px" />
+<img src="http://yiming_chang.gitee.io/manages/pay.jpg" width="150px" height="150px" />
+
+## WeChat Exchange Group
+
+For the better development of the project, you can choose to donate 10 yuan and add the following WeChat to pull you into the group. After adding, please consciously send a screenshot of the donation
+
+<img src="http://yiming_chang.gitee.io/manages/wechat.jpg" width="150px" height="195px" />
 
 ## License
 
