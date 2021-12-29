@@ -209,28 +209,28 @@ function handleClose() {
       <template #buttons>
         <vxe-input
           v-model="dictData.filterName"
-          :placeholder="$t('message.hssearch')"
+          :placeholder="$t('buttons.hssearch')"
           @keyup="searchEvent"
         ></vxe-input>
       </template>
       <template #tools>
         <vxe-button
-          icon="el-icon-circle-plus-outline"
+          icon="fa fa-plus-square-o"
           status="primary"
           @click="onAdd"
-          >{{ $t("message.hsadd") }}</vxe-button
+          >{{ $t("buttons.hsadd") }}</vxe-button
         >
         <vxe-button
-          icon="el-icon-folder-opened"
+          icon="fa fa-folder-open-o"
           status="primary"
           @click="$refs.xTree.setAllTreeExpand(true)"
-          >{{ $t("message.hsexpendAll") }}</vxe-button
+          >{{ $t("buttons.hsexpendAll") }}</vxe-button
         >
         <vxe-button
-          icon="el-icon-folder"
+          icon="fa fa-folder-o"
           status="primary"
           @click="$refs.xTree.clearTreeExpand()"
-          >{{ $t("message.hscollapseAll") }}</vxe-button
+          >{{ $t("buttons.hscollapseAll") }}</vxe-button
         >
       </template>
     </vxe-toolbar>
@@ -266,23 +266,26 @@ function handleClose() {
       </vxe-table-column>
       <vxe-table-column title="操作" width="330" fixed="right">
         <template #default="{ row }">
-          <vxe-button type="text" icon="el-icon-edit" @click="onEdit(row)"
+          <vxe-button
+            type="text"
+            icon="fa fa-pencil-square-o"
+            @click="onEdit(row)"
             >编辑</vxe-button
           >
           <vxe-button
             type="text"
-            icon="el-icon-circle-plus-outline"
+            icon="fa fa-plus-square-o"
             @click="onAddChild(row)"
             >新增子类型</vxe-button
           >
           <vxe-button
             v-show="row.model"
             type="text"
-            icon="el-icon-setting"
+            icon="fa fa-cog"
             @click="onDeploy(row)"
             >字典配置</vxe-button
           >
-          <vxe-button type="text" icon="el-icon-delete" @click="confirmEvent"
+          <vxe-button type="text" icon="fa fa-trash-o" @click="confirmEvent"
             >删除</vxe-button
           >
         </template>

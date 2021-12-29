@@ -1,3 +1,4 @@
+import { $t } from "/@/plugins/i18n";
 import Layout from "/@/layout/index.vue";
 
 const menuTreeRouter = {
@@ -7,7 +8,7 @@ const menuTreeRouter = {
   redirect: "/menuTree/index",
   meta: {
     icon: "RI-node-tree",
-    title: "message.hsMenuTree",
+    title: $t("menus.hsMenuTree"),
     i18n: true,
     showLink: true,
     rank: 9
@@ -18,7 +19,7 @@ const menuTreeRouter = {
       name: "reMenuTree",
       component: () => import("/@/views/menu-tree/index.vue"),
       meta: {
-        title: "message.hsMenuTree",
+        title: $t("menus.hsMenuTree"),
         showLink: true,
         i18n: true
       }

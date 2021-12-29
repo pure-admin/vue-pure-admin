@@ -3,9 +3,9 @@ export const routerArrays: Array<RouteConfigs> = [
     path: "/welcome",
     parentPath: "/",
     meta: {
-      title: "message.hshome",
+      title: "menus.hshome",
       i18n: true,
-      icon: "el-icon-s-home",
+      icon: "HomeFilled",
       showLink: true
     }
   }

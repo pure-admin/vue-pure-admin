@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>{{ $t("message.hsmenu2") }}</p>
+    <p>{{ $t("menus.hsmenu2") }}</p>
     <el-input v-model="input" />
   </div>
 </template>

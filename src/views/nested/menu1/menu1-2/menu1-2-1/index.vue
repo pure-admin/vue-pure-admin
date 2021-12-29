@@ -1,8 +1,8 @@
 <template>
   <div>
-    <p>{{ $t("message.hsmenu1") }}</p>
-    <p style="text-indent: 2em">{{ $t("message.hsmenu1-2") }}</p>
-    <p style="text-indent: 4em">{{ $t("message.hsmenu1-2-1") }}</p>
+    <p>{{ $t("menus.hsmenu1") }}</p>
+    <p style="text-indent: 2em">{{ $t("menus.hsmenu1-2") }}</p>
+    <p style="text-indent: 4em">{{ $t("menus.hsmenu1-2-1") }}</p>
     <el-input v-model="input" />
   </div>
 </template>

@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "stylelint.vscode-stylelint",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "johnsoncodehk.volar",
+    "lokalise.i18n-ally",
+    "mikestead.dotenv",
+    "antfu.iconify"
+  ]
+}

@@ -101,13 +101,13 @@ const checkboxChangeEvent: VxeTableEvents.CheckboxChange = ({ records }) => {
             <template #default="{ row }">
               <vxe-button
                 type="text"
-                icon="el-icon-edit"
+                icon="fa fa-pencil-square-o"
                 @click="editConfig(row)"
                 >编辑</vxe-button
               >
               <vxe-button
                 type="text"
-                icon="el-icon-delete"
+                icon="fa fa-trash-o"
                 @click="delConfig(row)"
                 >删除</vxe-button
               >
@@ -140,7 +140,7 @@ const checkboxChangeEvent: VxeTableEvents.CheckboxChange = ({ records }) => {
               <span class="select-count"
                 >已选中{{ configData.selectRecords.length }}条</span
               >
-              <vxe-button size="small">{{ $t("message.hsdelete") }}</vxe-button>
+              <vxe-button size="small">{{ $t("buttons.hsdelete") }}</vxe-button>
             </span>
           </template>
         </vxe-pager>
@@ -178,11 +178,5 @@ const checkboxChangeEvent: VxeTableEvents.CheckboxChange = ({ records }) => {
 
 :deep(.el-divider--horizontal) {
   margin: 13px 0;
-}
-
-:deep(.el-icon-close) {
-  &:hover {
-    color: red;
-  }
 }
 </style>

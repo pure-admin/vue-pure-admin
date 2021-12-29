@@ -8,8 +8,8 @@ const { isFullscreen, toggle } = useFullscreen();
     <i
       :title="
         isFullscreen
-          ? $t('message.hsexitfullscreen')
-          : $t('message.hsfullscreen')
+          ? $t('buttons.hsexitfullscreen')
+          : $t('buttons.hsfullscreen')
       "
       :class="
         isFullscreen

@@ -65,7 +65,7 @@ const getBreadcrumb = (): void => {
       {
         path: "/welcome",
         parentPath: "/",
-        meta: { title: "message.hshome", i18n: true }
+        meta: { title: "menus.hshome", i18n: true }
       } as unknown as RouteLocationMatched
     ].concat(matched);
   }

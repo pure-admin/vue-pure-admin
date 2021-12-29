@@ -8,7 +8,7 @@ const systemRouter = {
   redirect: "/system/user",
   meta: {
     icon: "Setting",
-    title: "message.hssysManagement",
+    title: "menus.hssysManagement",
     i18n: true,
     showLink: true,
     rank: 6
@@ -18,7 +18,7 @@ const systemRouter = {
       path: "/system/user",
       name: "user",
       meta: {
-        title: "message.hsBaseinfo",
+        title: "menus.hsBaseinfo",
         i18n: true,
         showLink: true
       }
@@ -27,7 +27,7 @@ const systemRouter = {
       path: "/system/dict",
       name: "dict",
       meta: {
-        title: "message.hsDict",
+        title: "menus.hsDict",
         i18n: true,
         showLink: true,
         keepAlive: true
@@ -41,7 +41,7 @@ const permissionRouter = {
   name: "permission",
   redirect: "/permission/page",
   meta: {
-    title: "message.permission",
+    title: "menus.permission",
     icon: "Lollipop",
     i18n: true,
     showLink: true,
@@ -52,7 +52,7 @@ const permissionRouter = {
       path: "/permission/page",
       name: "permissionPage",
       meta: {
-        title: "message.permissionPage",
+        title: "menus.permissionPage",
         i18n: true,
         showLink: true
       }
@@ -61,7 +61,7 @@ const permissionRouter = {
       path: "/permission/button",
       name: "permissionButton",
       meta: {
-        title: "message.permissionButton",
+        title: "menus.permissionButton",
         i18n: true,
         showLink: true,
         authority: []
@@ -76,7 +76,7 @@ const tabsRouter = {
   redirect: "/tabs/index",
   meta: {
     icon: "IF-team-icontabs",
-    title: "message.hstabs",
+    title: "menus.hstabs",
     i18n: true,
     showLink: true,
     rank: 8
@@ -86,7 +86,7 @@ const tabsRouter = {
       path: "/tabs/index",
       name: "reTabs",
       meta: {
-        title: "message.hstabs",
+        title: "menus.hstabs",
         showLink: true,
         i18n: true
       }

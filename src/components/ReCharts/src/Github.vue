@@ -19,21 +19,21 @@ const lists = ref([
   >
     <el-descriptions-item>
       <template #label>
-        <i class="el-icon-user"></i>
+        <el-icon><user /></el-icon>
         用户名
       </template>
       xiaoxian
     </el-descriptions-item>
     <el-descriptions-item>
       <template #label>
-        <i class="el-icon-mobile-phone"></i>
+        <el-icon><iphone /></el-icon>
         手机号
       </template>
       123456789
     </el-descriptions-item>
     <el-descriptions-item>
       <template #label>
-        <i class="el-icon-location-outline"></i>
+        <el-icon><location /></el-icon>
         居住地
       </template>
       上海
@@ -48,7 +48,7 @@ const lists = ref([
   >
     <el-descriptions-item>
       <template #label>
-        <i class="el-icon-tickets"></i>
+        <el-icon><tickets /></el-icon>
         标签
       </template>
       <el-tag
@@ -63,7 +63,7 @@ const lists = ref([
     </el-descriptions-item>
     <el-descriptions-item>
       <template #label>
-        <i class="el-icon-office-building"></i>
+        <el-icon><office-building /></el-icon>
         联系地址
       </template>
       上海市徐汇区
@@ -78,7 +78,7 @@ const lists = ref([
   >
     <el-descriptions-item>
       <template #label>
-        <i class="el-icon-notebook-1"></i>
+        <el-icon><notebook /></el-icon>
         留言
       </template>
       好好学习，天天向上

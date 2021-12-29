@@ -181,14 +181,14 @@ onMounted(() => {
           <el-dropdown-menu class="logout">
             <el-dropdown-item @click="logout">
               <i class="ri-logout-circle-r-line"></i
-              >{{ $t("message.hsLoginOut") }}</el-dropdown-item
+              >{{ $t("buttons.hsLoginOut") }}</el-dropdown-item
             >
           </el-dropdown-menu>
         </template>
       </el-dropdown>
       <el-icon
         class="el-icon-setting"
-        :title="$t('message.hssystemSet')"
+        :title="$t('buttons.hssystemSet')"
         @click="onPanel"
       >
         <Setting />

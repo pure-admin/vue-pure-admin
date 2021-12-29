@@ -1,3 +1,4 @@
+import { $t } from "/@/plugins/i18n";
 import Layout from "/@/layout/index.vue";
 
 const componentsRouter = {
@@ -7,7 +8,7 @@ const componentsRouter = {
   redirect: "/components/video",
   meta: {
     icon: "Menu",
-    title: "message.hscomponents",
+    title: $t("menus.hscomponents"),
     i18n: true,
     showLink: true,
     rank: 4
@@ -18,7 +19,7 @@ const componentsRouter = {
       name: "video",
       component: () => import("/@/views/components/video/index.vue"),
       meta: {
-        title: "message.hsvideo",
+        title: $t("menus.hsvideo"),
         showLink: true,
         i18n: true
       }
@@ -28,7 +29,7 @@ const componentsRouter = {
       name: "map",
       component: () => import("/@/views/components/map/index.vue"),
       meta: {
-        title: "message.hsmap",
+        title: $t("menus.hsmap"),
         showLink: true,
         keepAlive: true,
         i18n: true,
@@ -42,7 +43,7 @@ const componentsRouter = {
       name: "draggable",
       component: () => import("/@/views/components/draggable/index.vue"),
       meta: {
-        title: "message.hsdraggable",
+        title: $t("menus.hsdraggable"),
         showLink: true,
         i18n: true,
         transition: {
@@ -57,7 +58,7 @@ const componentsRouter = {
       name: "splitPane",
       component: () => import("/@/views/components/split-pane/index.vue"),
       meta: {
-        title: "message.hssplitPane",
+        title: $t("menus.hssplitPane"),
         showLink: true,
         i18n: true,
         extraIcon: {
@@ -71,7 +72,7 @@ const componentsRouter = {
       name: "button",
       component: () => import("/@/views/components/button/index.vue"),
       meta: {
-        title: "message.hsbutton",
+        title: $t("menus.hsbutton"),
         i18n: true,
         showLink: true
       }
@@ -81,7 +82,7 @@ const componentsRouter = {
       name: "cropping",
       component: () => import("/@/views/components/cropping/index.vue"),
       meta: {
-        title: "message.hscropping",
+        title: $t("menus.hscropping"),
         i18n: true,
         showLink: true
       }
@@ -91,7 +92,7 @@ const componentsRouter = {
       name: "countTo",
       component: () => import("/@/views/components/count-to/index.vue"),
       meta: {
-        title: "message.hscountTo",
+        title: $t("menus.hscountTo"),
         i18n: true,
         showLink: true
       }
@@ -101,7 +102,7 @@ const componentsRouter = {
       name: "selector",
       component: () => import("/@/views/components/selector/index.vue"),
       meta: {
-        title: "message.hsselector",
+        title: $t("menus.hsselector"),
         i18n: true,
         showLink: true
       }
@@ -111,7 +112,7 @@ const componentsRouter = {
       name: "seamlessScroll",
       component: () => import("/@/views/components/seamless-scroll/index.vue"),
       meta: {
-        title: "message.hsseamless",
+        title: $t("menus.hsseamless"),
         i18n: true,
         showLink: true
       }
@@ -121,7 +122,7 @@ const componentsRouter = {
       name: "contextmenu",
       component: () => import("/@/views/components/contextmenu/index.vue"),
       meta: {
-        title: "message.hscontextmenu",
+        title: $t("menus.hscontextmenu"),
         i18n: true,
         showLink: true
       }

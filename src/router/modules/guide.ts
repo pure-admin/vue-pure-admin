@@ -1,3 +1,4 @@
+import { $t } from "/@/plugins/i18n";
 import Layout from "/@/layout/index.vue";
 
 const guideRouter = {
@@ -7,7 +8,7 @@ const guideRouter = {
   redirect: "/guide/index",
   meta: {
     icon: "Guide",
-    title: "message.hsguide",
+    title: $t("menus.hsguide"),
     i18n: true,
     showLink: true,
     rank: 10
@@ -18,7 +19,7 @@ const guideRouter = {
       name: "reGuide",
       component: () => import("/@/views/guide/index.vue"),
       meta: {
-        title: "message.hsguide",
+        title: $t("menus.hsguide"),
         showLink: true,
         i18n: true
       }
