@@ -1,17 +1,17 @@
-import { storageLocal } from "/@/utils/storage";
-import { deviceDetection } from "/@/utils/deviceDetection";
 import { store } from "/@/store";
 import { appType } from "./types";
 import { defineStore } from "pinia";
 import { getConfig } from "/@/config";
+import { storageLocal } from "/@/utils/storage";
+import { deviceDetection } from "/@/utils/deviceDetection";
 
 export const useAppStore = defineStore({
   id: "pure-app",
   state: (): appType => ({
     sidebar: {
-      opened: storageLocal.getItem("sidebarStatus")
-        ? !!+storageLocal.getItem("sidebarStatus")
-        : true,
+      opened:
+        storageLocal.getItem("responsive-layout")?.sidebarStatus ??
+        getConfig().SidebarStatus,
       withoutAnimation: false,
       isClickHamburger: false
     },
@@ -30,20 +30,22 @@ export const useAppStore = defineStore({
   },
   actions: {
     TOGGLE_SIDEBAR(opened?: boolean, resize?: string) {
+      const layout = storageLocal.getItem("responsive-layout");
       if (opened && resize) {
         this.sidebar.withoutAnimation = true;
         this.sidebar.opened = true;
-        storageLocal.setItem("sidebarStatus", true);
+        layout.sidebarStatus = true;
       } else if (!opened && resize) {
         this.sidebar.withoutAnimation = true;
         this.sidebar.opened = false;
-        storageLocal.setItem("sidebarStatus", false);
+        layout.sidebarStatus = false;
       } else if (!opened && !resize) {
         this.sidebar.withoutAnimation = false;
         this.sidebar.opened = !this.sidebar.opened;
         this.sidebar.isClickHamburger = !this.sidebar.opened;
-        storageLocal.setItem("sidebarStatus", this.sidebar.opened);
+        layout.sidebarStatus = this.sidebar.opened;
       }
+      storageLocal.setItem("responsive-layout", layout);
     },
     TOGGLE_DEVICE(device: string) {
       this.device = device;

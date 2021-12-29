@@ -86,6 +86,10 @@ declare global {
     Grey?: boolean;
     Weak?: boolean;
     HideTabs?: boolean;
+    SidebarStatus?: boolean;
+    EpThemeColor?: string;
+    ShowLogo?: string;
+    ShowModel?: string;
     MapConfigure?: {
       amapKey?: string;
       options: {

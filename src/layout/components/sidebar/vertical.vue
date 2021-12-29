@@ -12,7 +12,9 @@ import { usePermissionStoreHook } from "/@/store/modules/permission";
 const route = useRoute();
 const pureApp = useAppStoreHook();
 const router = useRouter().options.routes;
-const showLogo = ref(storageLocal.getItem("logoVal") || "1");
+const showLogo = ref(
+  storageLocal.getItem("responsive-configure")?.showLogo || "1"
+);
 const isCollapse = computed(() => {
   return !pureApp.getSidebarStatus;
 });

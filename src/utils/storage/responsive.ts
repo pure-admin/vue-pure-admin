@@ -18,15 +18,19 @@ export const injectResponsiveStorage = (app: App, config: ServerConfigs) => {
         default: Storage.getData(undefined, "layout") ?? {
           layout: config.Layout ?? "vertical",
           theme: config.Theme ?? "default",
-          darkMode: config.DarkMode ?? false
+          darkMode: config.DarkMode ?? false,
+          sidebarStatus: config.SidebarStatus ?? true,
+          epThemeColor: config.EpThemeColor ?? "409EFF"
         }
       },
-      sets: {
+      configure: {
         type: Object,
-        default: Storage.getData(undefined, "sets") ?? {
+        default: Storage.getData(undefined, "configure") ?? {
           grey: config.Grey ?? false,
           weak: config.Weak ?? false,
           hideTabs: config.HideTabs ?? false,
+          showLogo: config.ShowLogo ?? "1",
+          showModel: config.ShowModel ?? "smart",
           multiTagsCache: config.MultiTagsCache ?? false
         }
       }

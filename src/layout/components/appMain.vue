@@ -27,7 +27,7 @@ const transitions = computed(() => {
 });
 
 const hideTabs = computed(() => {
-  return instance?.sets.hideTabs;
+  return instance?.configure.hideTabs;
 });
 
 const layout = computed(() => {

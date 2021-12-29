@@ -79,17 +79,19 @@ if (unref(layoutTheme)) {
 }
 
 // 默认灵动模式
-const markValue = ref(storageLocal.getItem("showModel") || "smart");
+const markValue = ref(instance.configure?.showModel || "smart");
 
-const logoVal = ref(storageLocal.getItem("logoVal") || "1");
+const logoVal = ref(instance.configure?.showLogo || "1");
 
 const epThemeColor = ref(useEpThemeStoreHook().getEpThemeColor);
 
 const settings = reactive({
-  greyVal: instance.sets.grey,
-  weakVal: instance.sets.weak,
-  tabsVal: instance.sets.hideTabs,
-  multiTagsCache: instance.sets.multiTagsCache
+  greyVal: instance.configure.grey,
+  weakVal: instance.configure.weak,
+  tabsVal: instance.configure.hideTabs,
+  showLogo: instance.configure.showLogo,
+  showModel: instance.configure.showModel,
+  multiTagsCache: instance.configure.multiTagsCache
 });
 
 const getThemeColorStyle = computed(() => {
@@ -97,6 +99,12 @@ const getThemeColorStyle = computed(() => {
     return { background: `rgb(${rgb})` };
   };
 });
+
+function changeStorageConfigure(key, val) {
+  const storageConfigure = instance.configure;
+  storageConfigure[key] = val;
+  instance.configure = storageConfigure;
+}
 
 function toggleClass(flag: boolean, clsName: string, target?: HTMLElement) {
   const targetEl = target || document.body;
@@ -108,12 +116,7 @@ function toggleClass(flag: boolean, clsName: string, target?: HTMLElement) {
 // 灰色模式设置
 const greyChange = (value): void => {
   toggleClass(settings.greyVal, "html-grey", document.querySelector("html"));
-  instance.sets = {
-    grey: value,
-    weak: instance.sets.weak,
-    hideTabs: instance.sets.hideTabs,
-    multiTagsCache: instance.sets.multiTagsCache
-  };
+  changeStorageConfigure("grey", value);
 };
 
 // 色弱模式设置
@@ -123,33 +126,18 @@ const weekChange = (value): void => {
     "html-weakness",
     document.querySelector("html")
   );
-  instance.sets = {
-    grey: instance.sets.grey,
-    weak: value,
-    hideTabs: instance.sets.hideTabs,
-    multiTagsCache: instance.sets.multiTagsCache
-  };
+  changeStorageConfigure("weak", value);
 };
 
 const tagsChange = () => {
   let showVal = settings.tabsVal;
-  instance.sets = {
-    grey: instance.sets.grey,
-    weak: instance.sets.weak,
-    hideTabs: showVal,
-    multiTagsCache: instance.sets.multiTagsCache
-  };
+  changeStorageConfigure("hideTabs", showVal);
   emitter.emit("tagViewsChange", showVal);
 };
 
 const multiTagsCacheChange = () => {
   let multiTagsCache = settings.multiTagsCache;
-  instance.sets = {
-    grey: instance.sets.grey,
-    weak: instance.sets.weak,
-    hideTabs: instance.sets.hideTabs,
-    multiTagsCache: multiTagsCache
-  };
+  changeStorageConfigure("multiTagsCache", multiTagsCache);
   useMultiTagsStoreHook().multiTagsCacheChange(multiTagsCache);
 };
 
@@ -174,22 +162,22 @@ function onReset() {
     }
   ]);
   useMultiTagsStoreHook().multiTagsCacheChange(getConfig().MultiTagsCache);
-  useEpThemeStoreHook().setEpThemeColor("#409EFF");
+  useEpThemeStoreHook().setEpThemeColor(getConfig().EpThemeColor);
   storageLocal.clear();
   storageSession.clear();
   router.push("/login");
 }
 
 function onChange(label) {
-  storageLocal.setItem("showModel", label);
+  changeStorageConfigure("showModel", label);
   emitter.emit("tagViewsShowModel", label);
 }
 
 // 侧边栏Logo
 function logoChange() {
   unref(logoVal) === "1"
-    ? storageLocal.setItem("logoVal", "1")
-    : storageLocal.setItem("logoVal", "-1");
+    ? changeStorageConfigure("showLogo", "1")
+    : changeStorageConfigure("showLogo", "-1");
   emitter.emit("logoChange", unref(logoVal));
 }
 
@@ -238,13 +226,19 @@ function setLayoutModel(layout: string) {
   instance.layout = {
     layout,
     theme: layoutTheme.value.theme,
-    darkMode: instance.layout.darkMode
+    darkMode: instance.layout.darkMode,
+    sidebarStatus: instance.layout.sidebarStatus,
+    epThemeColor: instance.layout.epThemeColor
   };
   useAppStoreHook().setLayout(layout);
 }
 
+// 存放夜间主题切换前的导航主题色
+let tempLayoutThemeColor;
+
 // 设置导航主题色
 function setLayoutThemeColor(theme: string) {
+  tempLayoutThemeColor = instance.layout.theme;
   layoutTheme.value.theme = theme;
   toggleTheme({
     scopeName: `layout-theme-${theme}`
@@ -252,11 +246,13 @@ function setLayoutThemeColor(theme: string) {
   instance.layout = {
     layout: useAppStoreHook().layout,
     theme,
-    darkMode: dataTheme.value
+    darkMode: dataTheme.value,
+    sidebarStatus: instance.layout.sidebarStatus,
+    epThemeColor: instance.layout.epThemeColor
   };
 
   if (theme === "default" || theme === "light") {
-    setEpThemeColor("#409EFF");
+    setEpThemeColor(getConfig().EpThemeColor);
   } else {
     const colors = find(themeColors.value, { themeColor: theme });
     const color = "#" + rgbHex(colors.rgb);
@@ -280,10 +276,13 @@ function dataThemeChange() {
     setLayoutThemeColor("light");
   } else {
     body.setAttribute("data-theme", "");
+    tempLayoutThemeColor && setLayoutThemeColor(tempLayoutThemeColor);
     instance.layout = {
       layout: useAppStoreHook().layout,
       theme: instance.layout.theme,
-      darkMode: dataTheme.value
+      darkMode: dataTheme.value,
+      sidebarStatus: instance.layout.sidebarStatus,
+      epThemeColor: instance.layout.epThemeColor
     };
   }
 }
