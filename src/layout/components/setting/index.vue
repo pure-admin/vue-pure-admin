@@ -11,9 +11,9 @@ import {
 } from "vue";
 import rgbHex from "rgb-hex";
 import { find } from "lodash-es";
-import panel from "../panel/index.vue";
 import { getConfig } from "/@/config";
 import { useRouter } from "vue-router";
+import panel from "../panel/index.vue";
 import { emitter } from "/@/utils/mitt";
 import { templateRef } from "@vueuse/core";
 import dayIcon from "/@/assets/svg/day.svg";
@@ -90,6 +90,12 @@ const settings = reactive({
   weakVal: instance.sets.weak,
   tabsVal: instance.sets.hideTabs,
   multiTagsCache: instance.sets.multiTagsCache
+});
+
+const getThemeColorStyle = computed(() => {
+  return rgb => {
+    return { background: `rgb(${rgb})` };
+  };
 });
 
 function toggleClass(flag: boolean, clsName: string, target?: HTMLElement) {
@@ -338,7 +344,7 @@ nextTick(() => {
       <li
         v-for="(item, index) in themeColors"
         :key="index"
-        :style="{ background: `rgb(${item.rgb})` }"
+        :style="getThemeColorStyle(item.rgb)"
         @click="setLayoutThemeColor(item.themeColor)"
       >
         <el-icon

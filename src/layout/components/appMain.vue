@@ -29,8 +29,19 @@ const transitions = computed(() => {
 const hideTabs = computed(() => {
   return instance?.sets.hideTabs;
 });
+
 const layout = computed(() => {
   return instance?.layout.layout === "vertical";
+});
+
+const getSectionStyle = computed(() => {
+  return [
+    hideTabs.value && layout ? "padding-top: 48px;" : "",
+    !hideTabs.value && layout ? "padding-top: 85px;" : "",
+    hideTabs.value && !layout.value ? "padding-top: 48px" : "",
+    !hideTabs.value && !layout.value ? "padding-top: 85px;" : "",
+    props.fixedHeader ? "" : "padding-top: 0;"
+  ];
 });
 
 const transitionMain = defineComponent({
@@ -71,12 +82,7 @@ const transitionMain = defineComponent({
 <template>
   <section
     :class="[props.fixedHeader ? 'app-main' : 'app-main-nofixed-header']"
-    :style="[
-      hideTabs && layout ? 'padding-top: 48px;' : '',
-      !hideTabs && layout ? 'padding-top: 85px;' : '',
-      hideTabs && !layout ? 'padding-top: 48px' : '',
-      !hideTabs && !layout ? 'padding-top: 85px;' : ''
-    ]"
+    :style="getSectionStyle"
   >
     <router-view>
       <template #default="{ Component, route }">

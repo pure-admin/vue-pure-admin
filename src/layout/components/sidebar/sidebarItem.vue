@@ -1,11 +1,19 @@
 <script setup lang="ts">
+import {
+  ref,
+  PropType,
+  nextTick,
+  computed,
+  CSSProperties,
+  getCurrentInstance
+} from "vue";
 import path from "path";
-import { PropType, ref, nextTick, getCurrentInstance } from "vue";
 import { childrenType } from "../../types";
-import { useAppStoreHook } from "/@/store/modules/app";
-import Icon from "/@/components/ReIcon/src/Icon.vue";
 import { transformI18n } from "/@/plugins/i18n";
 import { findIconReg } from "/@/components/ReIcon";
+import Icon from "/@/components/ReIcon/src/Icon.vue";
+import { useAppStoreHook } from "/@/store/modules/app";
+
 const instance = getCurrentInstance().appContext.app.config.globalProperties;
 const menuMode = instance.$storage.layout?.layout === "vertical";
 const pureApp = useAppStoreHook();
@@ -22,6 +30,48 @@ const props = defineProps({
     type: String,
     default: ""
   }
+});
+
+const getNoDropdownStyle = computed((): CSSProperties => {
+  return {
+    display: "flex",
+    alignItems: "center"
+  };
+});
+
+const getDivStyle = computed((): CSSProperties => {
+  return {
+    width: pureApp.sidebar.opened ? "" : "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    overflow: "hidden"
+  };
+});
+
+const getMenuTextStyle = computed((): CSSProperties => {
+  return {
+    width: pureApp.sidebar.opened ? "125px" : "",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    outline: "none"
+  };
+});
+
+const getSubTextStyle = computed((): CSSProperties => {
+  return {
+    width: pureApp.sidebar.opened ? "125px" : "",
+    display: "inline-block",
+    overflow: "hidden",
+    textOverflow: "ellipsis"
+  };
+});
+
+const getSpanStyle = computed((): CSSProperties => {
+  return {
+    overflow: "hidden",
+    textOverflow: "ellipsis"
+  };
 });
 
 const onlyOneChild: childrenType = ref(null);
@@ -88,7 +138,7 @@ function resolvePath(routePath) {
     <el-menu-item
       :index="resolvePath(onlyOneChild.path)"
       :class="{ 'submenu-title-noDropdown': !isNest }"
-      style="display: flex; align-items: center"
+      :style="getNoDropdownStyle"
     >
       <el-icon v-show="props.item.meta.icon">
         <component
@@ -101,15 +151,7 @@ function resolvePath(routePath) {
         ></component>
       </el-icon>
       <template #title>
-        <div
-          :style="{
-            width: pureApp.sidebar.opened ? '' : '100%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            overflow: 'hidden'
-          }"
-        >
+        <div :style="getDivStyle">
           <span v-if="!menuMode">{{
             transformI18n(onlyOneChild.meta.title, onlyOneChild.meta.i18n)
           }}</span>
@@ -126,12 +168,7 @@ function resolvePath(routePath) {
             </template>
             <span
               ref="menuTextRef"
-              :style="{
-                width: pureApp.sidebar.opened ? '125px' : '',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                outline: 'none'
-              }"
+              :style="getMenuTextStyle"
               @mouseover="hoverMenu(onlyOneChild)"
             >
               {{
@@ -175,15 +212,10 @@ function resolvePath(routePath) {
         </template>
         <div
           ref="menuTextRef"
-          :style="{
-            width: pureApp.sidebar.opened ? '125px' : '',
-            display: 'inline-block',
-            overflow: 'hidden',
-            textOverflow: 'ellipsis'
-          }"
+          :style="getSubTextStyle"
           @mouseover="hoverMenu(props.item)"
         >
-          <span style="overflow: hidden; text-overflow: ellipsis">
+          <span :style="getSpanStyle">
             {{ transformI18n(props.item.meta.title, props.item.meta.i18n) }}
           </span>
         </div>

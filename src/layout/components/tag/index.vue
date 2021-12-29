@@ -2,12 +2,13 @@
 import {
   ref,
   watch,
-  onBeforeMount,
   unref,
   nextTick,
   computed,
-  getCurrentInstance,
-  ComputedRef
+  ComputedRef,
+  CSSProperties,
+  onBeforeMount,
+  getCurrentInstance
 } from "vue";
 
 import close from "/@/assets/svg/close.svg";
@@ -610,17 +611,23 @@ onBeforeMount(() => {
     });
   });
 });
+
+const getTabStyle = computed((): CSSProperties => {
+  return {
+    transform: `translateX(${translateX.value}px)`
+  };
+});
+
+const getContextMenuStyle = computed((): CSSProperties => {
+  return { left: buttonLeft.value + "px", top: buttonTop.value + "px" };
+});
 </script>
 
 <template>
   <div ref="containerDom" class="tags-view" v-if="!showTags">
     <i class="ri-arrow-left-s-line" @click="handleScroll(200)"></i>
     <div ref="scrollbarDom" class="scroll-container">
-      <div
-        class="tab"
-        ref="tabDom"
-        :style="{ transform: `translateX(${translateX}px)` }"
-      >
+      <div class="tab" ref="tabDom" :style="getTabStyle">
         <div
           :ref="'dynamic' + index"
           v-for="(item, index) in multiTags"
@@ -664,7 +671,7 @@ onBeforeMount(() => {
       <ul
         v-show="visible"
         :key="Math.random()"
-        :style="{ left: buttonLeft + 'px', top: buttonTop + 'px' }"
+        :style="getContextMenuStyle"
         class="contextmenu"
       >
         <div

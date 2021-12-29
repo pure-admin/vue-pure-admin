@@ -35,6 +35,15 @@ const routers = useRouter().options.routes;
 let usename = storageSession.getItem("info")?.username;
 const { locale, t } = useI18n();
 
+const getDropdownItemStyle = computed(() => {
+  return t => {
+    return {
+      background: locale.value === t ? "#1b2a47" : "",
+      color: locale.value === t ? "#f4f4f5" : "#000"
+    };
+  };
+});
+
 watch(
   () => locale.value,
   () => {
@@ -149,20 +158,14 @@ onMounted(() => {
         <template #dropdown>
           <el-dropdown-menu class="translation">
             <el-dropdown-item
-              :style="{
-                background: locale === 'zh' ? '#1b2a47' : '',
-                color: locale === 'zh' ? '#f4f4f5' : '#000'
-              }"
+              :style="getDropdownItemStyle('zh')"
               @click="translationCh"
               ><el-icon class="check-zh" v-show="locale === 'zh'"
                 ><check /></el-icon
               >简体中文</el-dropdown-item
             >
             <el-dropdown-item
-              :style="{
-                background: locale === 'en' ? '#1b2a47' : '',
-                color: locale === 'en' ? '#f4f4f5' : '#000'
-              }"
+              :style="getDropdownItemStyle('en')"
               @click="translationEn"
               ><el-icon class="check-en" v-show="locale === 'en'"
                 ><check /></el-icon
