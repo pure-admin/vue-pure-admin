@@ -14,7 +14,7 @@
   "HideTabs": false,
   "SidebarStatus": true,
   "EpThemeColor": "#409EFF",
-  "ShowLogo": "1",
+  "ShowLogo": true,
   "ShowModel": "smart",
   "MapConfigure": {
     "amapKey": "97b3248d1553172e81f168cf94ea667e",

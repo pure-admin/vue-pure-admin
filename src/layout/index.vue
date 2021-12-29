@@ -64,7 +64,7 @@ const layout = computed(() => {
       grey: instance.$config?.Grey ?? false,
       weak: instance.$config?.Weak ?? false,
       hideTabs: instance.$config?.HideTabs ?? false,
-      showLogo: instance.$config?.ShowLogo ?? "1",
+      showLogo: instance.$config?.ShowLogo ?? true,
       showModel: instance.$config?.ShowModel ?? "smart",
       multiTagsCache: instance.$config?.MultiTagsCache ?? false
     };

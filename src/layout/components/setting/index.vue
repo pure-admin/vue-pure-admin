@@ -79,9 +79,9 @@ if (unref(layoutTheme)) {
 }
 
 // 默认灵动模式
-const markValue = ref(instance.configure?.showModel || "smart");
+const markValue = ref(instance.configure?.showModel ?? "smart");
 
-const logoVal = ref(instance.configure?.showLogo || "1");
+const logoVal = ref(instance.configure?.showLogo ?? true);
 
 const epThemeColor = ref(useEpThemeStoreHook().getEpThemeColor);
 
@@ -175,9 +175,9 @@ function onChange(label) {
 
 // 侧边栏Logo
 function logoChange() {
-  unref(logoVal) === "1"
-    ? changeStorageConfigure("showLogo", "1")
-    : changeStorageConfigure("showLogo", "-1");
+  unref(logoVal)
+    ? changeStorageConfigure("showLogo", true)
+    : changeStorageConfigure("showLogo", false);
   emitter.emit("logoChange", unref(logoVal));
 }
 
@@ -399,8 +399,8 @@ nextTick(() => {
         <el-switch
           v-model="logoVal"
           inline-prompt
-          active-value="1"
-          inactive-value="-1"
+          :active-value="true"
+          :inactive-value="false"
           inactive-color="#a6a6a6"
           active-text="开"
           inactive-text="关"
