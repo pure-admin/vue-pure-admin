@@ -1,11 +1,14 @@
 import { store } from "/@/store";
 import { defineStore } from "pinia";
+import { getConfig } from "/@/config";
 import { storageLocal } from "/@/utils/storage";
 
 export const useEpThemeStore = defineStore({
   id: "pure-epTheme",
   state: () => ({
-    epThemeColor: storageLocal.getItem("epThemeColor") || "#409EFF"
+    epThemeColor:
+      storageLocal.getItem("responsive-layout")?.epThemeColor ??
+      getConfig().EpThemeColor
   }),
   getters: {
     getEpThemeColor() {
@@ -14,8 +17,10 @@ export const useEpThemeStore = defineStore({
   },
   actions: {
     setEpThemeColor(newColor) {
+      const layout = storageLocal.getItem("responsive-layout");
       this.epThemeColor = newColor;
-      storageLocal.setItem("epThemeColor", newColor);
+      layout.epThemeColor = newColor;
+      storageLocal.setItem("responsive-layout", layout);
     }
   }
 });

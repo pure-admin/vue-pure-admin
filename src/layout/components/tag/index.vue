@@ -232,9 +232,13 @@ const tagsViews = ref<Array<tagsViewsType>>([
 ]);
 
 // 显示模式，默认灵动模式显示
-const showModel = ref(storageLocal.getItem("showModel") || "smart");
+const showModel = ref(
+  storageLocal.getItem("responsive-configure")?.showModel || "smart"
+);
 if (!showModel.value) {
-  storageLocal.setItem("showModel", "card");
+  const configure = storageLocal.getItem("responsive-configure");
+  configure.showModel = "card";
+  storageLocal.setItem("responsive-configure", configure);
 }
 
 let visible = ref(false);

@@ -16,8 +16,8 @@ import { useAppStoreHook } from "/@/store/modules/app";
 import fullScreen from "/@/assets/svg/full_screen.svg";
 import exitScreen from "/@/assets/svg/exit_screen.svg";
 import { deviceDetection } from "/@/utils/deviceDetection";
-import { useSettingStoreHook } from "/@/store/modules/settings";
 import { useMultiTagsStore } from "/@/store/modules/multiTags";
+import { useSettingStoreHook } from "/@/store/modules/settings";
 
 import navbar from "./components/navbar.vue";
 import tag from "./components/tag/index.vue";
@@ -52,16 +52,20 @@ const layout = computed(() => {
     instance.$storage.layout = {
       layout: instance.$config?.Layout ?? "vertical",
       theme: instance.$config?.Theme ?? "default",
-      darkMode: instance.$config?.DarkMode ?? false
+      darkMode: instance.$config?.DarkMode ?? false,
+      sidebarStatus: instance.$config?.SidebarStatus ?? true,
+      epThemeColor: instance.$config?.EpThemeColor ?? "#409EFF"
     };
   }
   // 灰色模式、色弱模式、隐藏标签页
-  if (!instance.$storage.sets) {
+  if (!instance.$storage.configure) {
     // eslint-disable-next-line
-    instance.$storage.sets = {
+    instance.$storage.configure = {
       grey: instance.$config?.Grey ?? false,
       weak: instance.$config?.Weak ?? false,
       hideTabs: instance.$config?.HideTabs ?? false,
+      showLogo: instance.$config?.ShowLogo ?? true,
+      showModel: instance.$config?.ShowModel ?? "smart",
       multiTagsCache: instance.$config?.MultiTagsCache ?? false
     };
   }
@@ -91,7 +95,7 @@ const set: setType = reactive({
   }),
 
   hideTabs: computed(() => {
-    return instance.$storage?.sets.hideTabs;
+    return instance.$storage?.configure.hideTabs;
   })
 });
 
@@ -100,7 +104,9 @@ function setTheme(layoutModel: string) {
   instance.$storage.layout = {
     layout: `${layoutModel}`,
     theme: instance.$storage.layout?.theme,
-    darkMode: instance.$storage.layout?.darkMode
+    darkMode: instance.$storage.layout?.darkMode,
+    sidebarStatus: instance.$storage.layout?.sidebarStatus,
+    epThemeColor: instance.$storage.layout?.epThemeColor
   };
 }
 
