@@ -63,9 +63,7 @@ const openDepot = (): void => {
       >
         <el-card>
           <template #header>
-            <div>
-              <span>GitHub信息</span>
-            </div>
+            <span style="font-size: 16px; font-weight: 500">GitHub信息</span>
           </template>
           <el-skeleton animated :rows="7" :loading="loading">
             <template #default>
@@ -97,9 +95,9 @@ const openDepot = (): void => {
       >
         <el-card>
           <template #header>
-            <div>
-              <span>GitHub滚动信息</span>
-            </div>
+            <span style="font-size: 16px; font-weight: 500"
+              >GitHub滚动信息</span
+            >
           </template>
           <el-skeleton animated :rows="7" :loading="loading">
             <template #default>
@@ -131,9 +129,9 @@ const openDepot = (): void => {
       >
         <el-card>
           <template #header>
-            <div>
-              <span>GitHub饼图信息</span>
-            </div>
+            <span style="font-size: 16px; font-weight: 500"
+              >GitHub饼图信息</span
+            >
           </template>
           <el-skeleton animated :rows="7" :loading="loading">
             <template #default>
@@ -165,9 +163,9 @@ const openDepot = (): void => {
       >
         <el-card>
           <template #header>
-            <div>
-              <span>GitHub折线图信息</span>
-            </div>
+            <span style="font-size: 16px; font-weight: 500"
+              >GitHub折线图信息</span
+            >
           </template>
           <el-skeleton animated :rows="7" :loading="loading">
             <template #default>
@@ -199,9 +197,9 @@ const openDepot = (): void => {
       >
         <el-card>
           <template #header>
-            <div>
-              <span>GitHub柱状图信息</span>
-            </div>
+            <span style="font-size: 16px; font-weight: 500"
+              >GitHub柱状图信息</span
+            >
           </template>
           <el-skeleton animated :rows="7" :loading="loading">
             <template #default>

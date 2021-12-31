@@ -10,13 +10,7 @@ const lists = ref([
 </script>
 
 <template>
-  <el-descriptions
-    class="margin-top"
-    direction="vertical"
-    :column="3"
-    size="medium"
-    border
-  >
+  <el-descriptions class="margin-top" direction="vertical" :column="3" border>
     <el-descriptions-item>
       <template #label>
         <el-icon><user /></el-icon>
@@ -39,13 +33,7 @@ const lists = ref([
       上海
     </el-descriptions-item>
   </el-descriptions>
-  <el-descriptions
-    class="margin-top"
-    direction="vertical"
-    :column="2"
-    size="medium"
-    border
-  >
+  <el-descriptions class="margin-top" direction="vertical" :column="2" border>
     <el-descriptions-item>
       <template #label>
         <el-icon><tickets /></el-icon>
@@ -55,7 +43,7 @@ const lists = ref([
         v-for="item in lists"
         :key="item.label"
         :type="item.type"
-        size="mini"
+        size="small"
         effect="dark"
       >
         {{ item.label }}
@@ -69,13 +57,7 @@ const lists = ref([
       上海市徐汇区
     </el-descriptions-item>
   </el-descriptions>
-  <el-descriptions
-    class="margin-top"
-    direction="vertical"
-    :column="1"
-    size="medium"
-    border
-  >
+  <el-descriptions class="margin-top" direction="vertical" :column="1" border>
     <el-descriptions-item>
       <template #label>
         <el-icon><notebook /></el-icon>
@@ -87,7 +69,7 @@ const lists = ref([
 </template>
 
 <style scoped>
-.el-tag--mini {
+.el-tag {
   margin-right: 10px !important;
 }
 </style>

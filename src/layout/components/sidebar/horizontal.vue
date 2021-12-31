@@ -203,7 +203,7 @@ onMounted(() => {
 <style lang="scss" scoped>
 .translation {
   .el-dropdown-menu__item {
-    padding: 0 40px !important;
+    padding: 5px 40px !important;
   }
 
   .el-dropdown-menu__item:focus,
@@ -215,12 +215,10 @@ onMounted(() => {
   .check-zh {
     position: absolute;
     left: 20px;
-    top: 13px;
   }
 
   .check-en {
     position: absolute;
-    bottom: 13px;
     left: 20px;
   }
 }
@@ -232,7 +230,6 @@ onMounted(() => {
     min-width: 100%;
     display: inline-flex;
     flex-wrap: wrap;
-    padding: 0 18px !important;
   }
 
   .el-dropdown-menu__item:focus,

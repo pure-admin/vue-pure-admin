@@ -38,7 +38,7 @@ specifiers:
   dayjs: ^1.10.7
   driver.js: ^0.9.8
   echarts: ^5.2.1
-  element-plus: 1.2.0-beta.6
+  element-plus: 1.3.0-beta.1
   element-resize-detector: ^1.2.3
   eslint: 7.30.0
   eslint-plugin-prettier: 3.4.0
@@ -83,10 +83,9 @@ specifiers:
   vue-router: ^4.0.12
   vue-types: ^4.1.0
   vuedraggable: 4.1.0
-  vxe-table: 4.0.30
+  vxe-table: ^4.1.18
   wangeditor: ^4.7.9
-  xe-ajax: 4.0.5
-  xe-utils: 3.4.0
+  xe-utils: ^3.5.2
   xgplayer: 2.28.0
 
 dependencies:
@@ -107,7 +106,7 @@ dependencies:
   dayjs: 1.10.7
   driver.js: 0.9.8
   echarts: 5.2.2
-  element-plus: 1.2.0-beta.6_vue@3.2.24
+  element-plus: 1.3.0-beta.1_vue@3.2.24
   element-resize-detector: 1.2.3
   font-awesome: 4.7.0
   js-cookie: 3.0.1
@@ -129,10 +128,9 @@ dependencies:
   vue-router: 4.0.12_vue@3.2.24
   vue-types: 4.1.1_vue@3.2.24
   vuedraggable: 4.1.0_vue@3.2.24
-  vxe-table: 4.0.30_vue@3.2.24+xe-utils@3.4.0
+  vxe-table: 4.1.18_vue@3.2.24+xe-utils@3.5.2
   wangeditor: 4.7.9
-  xe-ajax: 4.0.5
-  xe-utils: 3.4.0
+  xe-utils: 3.5.2
   xgplayer: 2.28.0
 
 devDependencies:
@@ -1598,10 +1596,10 @@ packages:
       vue-demi: 0.12.1_vue@3.2.24
     dev: false
 
-  /@vueuse/core/7.4.0_vue@3.2.24:
+  /@vueuse/core/7.4.3_vue@3.2.24:
     resolution:
       {
-        integrity: sha512-CgYouxjXOE63gMn3l9cOsgzPTEAk3yoncsSmJUxXAi/to25rCPVWB/39jXTPhWZboR43EDDMWoEhHaSoMzaldg==
+        integrity: sha512-OflPLlQ7eqaDJgKYw9DpRCbtfpkFkg1EqHFq7CFrbIEElB39wIfB9ccNypCar8e5KRDrAbOJLIOOvDZO6aC2Gg==
       }
     peerDependencies:
       "@vue/composition-api": ^1.1.0
@@ -1612,7 +1610,7 @@ packages:
       vue:
         optional: true
     dependencies:
-      "@vueuse/shared": 7.4.0_vue@3.2.24
+      "@vueuse/shared": 7.4.3_vue@3.2.24
       vue: 3.2.24
       vue-demi: 0.12.1_vue@3.2.24
     dev: false
@@ -1653,10 +1651,10 @@ packages:
       vue-demi: 0.12.1_vue@3.2.24
     dev: false
 
-  /@vueuse/shared/7.4.0_vue@3.2.24:
+  /@vueuse/shared/7.4.3_vue@3.2.24:
     resolution:
       {
-        integrity: sha512-x5Jn6jUB8gS1mGnVCoNWFEpAoDkm2QwtacZTUgKMn0Ow8tlUBKIfGVOt4vn9qZB10froED/ARHEj79WKLXRieA==
+        integrity: sha512-tNOCbpD3uZyzxNuw2GX5LTVkMB//IZ7GS452F7TwlY07aIoGjPgixi2Yfk/xSR4CcC9iU56zprZW33aEGj1O1Q==
       }
     peerDependencies:
       "@vue/composition-api": ^1.1.0
@@ -2990,17 +2988,18 @@ packages:
       }
     dev: true
 
-  /element-plus/1.2.0-beta.6_vue@3.2.24:
+  /element-plus/1.3.0-beta.1_vue@3.2.24:
     resolution:
       {
-        integrity: sha512-8EdSIR/5/FHcSB8w1diAh+gJMHgxIvxuZoayY99k6taAR1QyEFHuPTgFccZLopJ1+iP4UEsZFz49l57qS08Utw==
+        integrity: sha512-q3vMaKElPpuSTeIF7kuDmMOE+N1YVCCIG3fshXpz6qgjnxPbgZumVM0qGfhr8DTu9JxRbBoDok49dqtX/BWn3w==
       }
     peerDependencies:
       vue: ^3.2.0
     dependencies:
+      "@ctrl/tinycolor": 3.4.0
       "@element-plus/icons-vue": 0.2.4_vue@3.2.24
       "@popperjs/core": 2.11.0
-      "@vueuse/core": 7.4.0_vue@3.2.24
+      "@vueuse/core": 7.4.3_vue@3.2.24
       async-validator: 4.0.7
       dayjs: 1.10.7
       lodash: 4.17.21
@@ -7608,17 +7607,17 @@ packages:
       vue: 3.2.24
     dev: false
 
-  /vxe-table/4.0.30_vue@3.2.24+xe-utils@3.4.0:
+  /vxe-table/4.1.18_vue@3.2.24+xe-utils@3.5.2:
     resolution:
       {
-        integrity: sha512-sHUJL+XazADSTJlAZDwIAVeOMB3hBSj+5IeAUKHH+eKmSYju+l31og7NbgYsgRVTpG959F9EpUOnMMXvWptq/w==
+        integrity: sha512-hiaJv45rl8swU8YrtZVM7UhVMCrlkhxnZKuyjM1zcFhSNhuQWIy7KkewZctk83foAxlTBjEzwGNsXDuWjBW3vQ==
       }
     peerDependencies:
       vue: ^3.2.2
-      xe-utils: ^3.2.0
+      xe-utils: ^3.5.0
     dependencies:
       vue: 3.2.24
-      xe-utils: 3.4.0
+      xe-utils: 3.5.2
     dev: false
 
   /wangeditor/4.7.9:
@@ -7708,17 +7707,10 @@ packages:
       typedarray-to-buffer: 3.1.5
     dev: true
 
-  /xe-ajax/4.0.5:
+  /xe-utils/3.5.2:
     resolution:
       {
-        integrity: sha512-SlVaSfOyBH2Dy51zevNbTIY1EcRlIjoP25YXcN+l9gYfl1rsQ68EsVPD6gw47sM/zzQhiPvqmzM4RzOUggbgaw==
-      }
-    dev: false
-
-  /xe-utils/3.4.0:
-    resolution:
-      {
-        integrity: sha512-V2o/Ew/iXBduWbj0ixqA7atUe4HFxo0HcpBsxnrLHbKVspfZ2O/7+m325AHcN2xxPZtBZGQVg1w/cQ5Q8WmcTA==
+        integrity: sha512-TIQct9Ed43O5J0YYRMmD15KHKUzGIW+Hetv9/diEMHT5YQVr0csC0FCFOfSgsIcuamziPVAWNFLl1QKYJE2oxA==
       }
     dev: false
 

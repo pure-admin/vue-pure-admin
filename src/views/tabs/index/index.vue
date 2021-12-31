@@ -30,12 +30,7 @@ function toDetail(index: number) {
       title="标签页复用超出限制自动关闭(使用场景: 动态路由)"
       name="tag"
     >
-      <el-button
-        v-for="index in 6"
-        :key="index"
-        size="medium"
-        @click="toDetail(index)"
-      >
+      <el-button v-for="index in 6" :key="index" @click="toDetail(index)">
         打开{{ index }}详情页
       </el-button>
     </el-collapse-item>

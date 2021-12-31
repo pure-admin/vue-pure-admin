@@ -73,9 +73,7 @@ const guide = () => {
 
 <template>
   <div>
-    <div style="font-size: 18px">
-      引导页对于一些第一次进入项目的人很有用，你可以简单介绍下项目的功能
-    </div>
+    <p>引导页对于一些第一次进入项目的人很有用，你可以简单介绍下项目的功能</p>
     <el-button
       type="primary"
       style="margin-top: 10px"
