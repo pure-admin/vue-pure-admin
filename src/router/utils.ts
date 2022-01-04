@@ -13,7 +13,7 @@ import { useTimeoutFn } from "@vueuse/core";
 import { RouteConfigs } from "/@/layout/types";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 // https://cn.vitejs.dev/guide/features.html#glob-import
-const modulesRoutes = import.meta.glob("/src/views/*/*/*.vue");
+const modulesRoutes = import.meta.glob("/src/views/**/*.{vue,tsx}");
 
 // 动态路由
 import { getAsyncRoutes } from "/@/api/routes";
@@ -212,11 +212,13 @@ const handleAliveRoute = (matched: RouteRecordNormalized[], mode?: string) => {
 // 过滤后端传来的动态路由 重新生成规范路由
 const addAsyncRoutes = (arrRoutes: Array<RouteRecordRaw>) => {
   if (!arrRoutes || !arrRoutes.length) return;
+  const modulesRoutesKeys = Object.keys(modulesRoutes);
   arrRoutes.forEach((v: RouteRecordRaw) => {
     if (v.redirect) {
       v.component = Layout;
     } else {
-      v.component = modulesRoutes[`/src/views${v.path}/index.vue`];
+      const index = modulesRoutesKeys.findIndex(ev => ev.includes(v.path));
+      v.component = modulesRoutes[modulesRoutesKeys[index]];
     }
     if (v.children) {
       addAsyncRoutes(v.children);

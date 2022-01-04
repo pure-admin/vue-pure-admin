@@ -18,7 +18,7 @@ import closeLeft from "/@/assets/svg/close_left.svg";
 import closeOther from "/@/assets/svg/close_other.svg";
 import closeRight from "/@/assets/svg/close_right.svg";
 
-import { $t } from "/@/plugins/i18n";
+import { $t as t } from "/@/plugins/i18n";
 import { emitter } from "/@/utils/mitt";
 import { isEqual, isEmpty } from "lodash-es";
 import { transformI18n } from "/@/plugins/i18n";
@@ -189,42 +189,42 @@ const handleScroll = (offset: number): void => {
 const tagsViews = ref<Array<tagsViewsType>>([
   {
     icon: refresh,
-    text: $t("buttons.hsreload"),
+    text: t("buttons.hsreload"),
     divided: false,
     disabled: false,
     show: true
   },
   {
     icon: close,
-    text: $t("buttons.hscloseCurrentTab"),
+    text: t("buttons.hscloseCurrentTab"),
     divided: false,
     disabled: multiTags.value.length > 1 ? false : true,
     show: true
   },
   {
     icon: closeLeft,
-    text: $t("buttons.hscloseLeftTabs"),
+    text: t("buttons.hscloseLeftTabs"),
     divided: true,
     disabled: multiTags.value.length > 1 ? false : true,
     show: true
   },
   {
     icon: closeRight,
-    text: $t("buttons.hscloseRightTabs"),
+    text: t("buttons.hscloseRightTabs"),
     divided: false,
     disabled: multiTags.value.length > 1 ? false : true,
     show: true
   },
   {
     icon: closeOther,
-    text: $t("buttons.hscloseOtherTabs"),
+    text: t("buttons.hscloseOtherTabs"),
     divided: true,
     disabled: multiTags.value.length > 2 ? false : true,
     show: true
   },
   {
     icon: closeAll,
-    text: $t("buttons.hscloseAllTabs"),
+    text: t("buttons.hscloseAllTabs"),
     divided: false,
     disabled: multiTags.value.length > 1 ? false : true,
     show: true

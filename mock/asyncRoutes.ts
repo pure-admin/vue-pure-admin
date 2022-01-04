@@ -5,7 +5,7 @@ import { MockMethod } from "vite-plugin-mock";
 const systemRouter = {
   path: "/system",
   name: "system",
-  redirect: "/system/user",
+  redirect: "/system/user/index",
   meta: {
     icon: "Setting",
     title: "menus.hssysManagement",
@@ -15,7 +15,7 @@ const systemRouter = {
   },
   children: [
     {
-      path: "/system/user",
+      path: "/system/user/index",
       name: "user",
       meta: {
         title: "menus.hsBaseinfo",
@@ -24,7 +24,7 @@ const systemRouter = {
       }
     },
     {
-      path: "/system/dict",
+      path: "/system/dict/index",
       name: "dict",
       meta: {
         title: "menus.hsDict",
@@ -39,7 +39,7 @@ const systemRouter = {
 const permissionRouter = {
   path: "/permission",
   name: "permission",
-  redirect: "/permission/page",
+  redirect: "/permission/page/index",
   meta: {
     title: "menus.permission",
     icon: "Lollipop",
@@ -49,7 +49,7 @@ const permissionRouter = {
   },
   children: [
     {
-      path: "/permission/page",
+      path: "/permission/page/index",
       name: "permissionPage",
       meta: {
         title: "menus.permissionPage",
@@ -58,7 +58,7 @@ const permissionRouter = {
       }
     },
     {
-      path: "/permission/button",
+      path: "/permission/button/index",
       name: "permissionButton",
       meta: {
         title: "menus.permissionButton",

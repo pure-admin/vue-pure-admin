@@ -117,8 +117,9 @@ router.beforeEach((to: toRouteType, _from, next) => {
                 route?.meta?.rank !== 0 &&
                 routePartent.length === 0
               ) {
+                if (!route?.meta?.refreshRedirect) return;
                 const { name, meta } = findRouteByPath(
-                  route?.meta?.refreshRedirect,
+                  route.meta.refreshRedirect,
                   routes
                 );
                 handTag(
