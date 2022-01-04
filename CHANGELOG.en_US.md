@@ -1,3 +1,17 @@
+# 2.8.0(2022-1-4)
+
+### 🎫 Feat
+
+-Added dark theme
+-Add element-plus custom theme
+-Add guide page
+
+### 🍏 Perf
+
+-Optimize internationalization, compatible with the vscode plug-in i18n Ally smart reminder
+-Optimize the back-end return routing structure
+-Optimize local storage, with four built-in buttons `responsive-configure`, `responsive-locale`, `responsive-layout`, `responsive-tags`, which are basic configuration, international configuration, layout configuration, and tab persistent configuration
+
 # 2.7.0(2021-12-18)
 
 ### 🎫 Feat

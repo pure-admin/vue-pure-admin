@@ -1,3 +1,17 @@
+# 2.8.0(2022-1-4)
+
+### 🎫 Feat
+
+- 添加暗黑主题
+- 添加 element-plus 自定义主题
+- 添加引导页
+
+### 🍏 Perf
+
+- 优化国际化，兼容 vscode 插件 i18n Ally 智能提醒
+- 优化后端返回路由结构
+- 优化本地存储，内置四个键`responsive-configure`、`responsive-locale`、`responsive-layout`、`responsive-tags`，分别为基本配置、国际化配置、布局配置、标签页持久化配置
+
 # 2.7.0(2021-12-18)
 
 ### 🎫 Feat
