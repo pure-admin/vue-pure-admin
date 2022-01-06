@@ -1,13 +1,5 @@
 <script setup lang="ts">
-import {
-  h,
-  ref,
-  computed,
-  Transition,
-  defineComponent,
-  getCurrentInstance
-} from "vue";
-import { RouterView } from "vue-router";
+import { Transition } from "vue";
 import backTop from "/@/assets/svg/back_top.svg";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 

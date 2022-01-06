@@ -1,21 +1,10 @@
 <script setup lang="ts">
-import {
-  computed,
-  unref,
-  watch,
-  nextTick,
-  onMounted,
-  getCurrentInstance
-} from "vue";
-import { useI18n } from "vue-i18n";
 import { emitter } from "/@/utils/mitt";
 import Notice from "../notice/index.vue";
-import { templateRef } from "@vueuse/core";
 import SidebarItem from "./sidebarItem.vue";
 import avatars from "/@/assets/avatars.jpg";
 import { algorithm } from "/@/utils/algorithm";
 import screenfull from "../screenfull/index.vue";
-import { useRoute, useRouter } from "vue-router";
 import { storageSession } from "/@/utils/storage";
 import Icon from "/@/components/ReIcon/src/Icon.vue";
 import { deviceDetection } from "/@/utils/deviceDetection";

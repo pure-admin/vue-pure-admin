@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ListItem } from "./data";
-import { ref, PropType, nextTick } from "vue";
 
 const props = defineProps({
   noticeItem: {
@@ -10,8 +9,8 @@ const props = defineProps({
 });
 
 const titleRef = ref(null);
-const descriptionRef = ref(null);
 const titleTooltip = ref(false);
+const descriptionRef = ref(null);
 const descriptionTooltip = ref(false);
 
 function hoverTitle() {

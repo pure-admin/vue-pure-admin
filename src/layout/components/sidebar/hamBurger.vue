@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
 export interface Props {
   isActive: boolean;

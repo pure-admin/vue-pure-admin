@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import { onClickOutside } from "@vueuse/core";
 import { emitter } from "/@/utils/mitt";
 
-let show = ref<Boolean>(false);
 const target = ref(null);
+let show = ref<Boolean>(false);
+
 onClickOutside(target, event => {
   if (event.clientX > target.value.offsetLeft) return;
   show.value = false;

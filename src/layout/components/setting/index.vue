@@ -1,21 +1,9 @@
 <script setup lang="ts">
-import {
-  reactive,
-  ref,
-  unref,
-  watch,
-  computed,
-  nextTick,
-  useCssModule,
-  getCurrentInstance
-} from "vue";
 import rgbHex from "rgb-hex";
 import { find } from "lodash-es";
 import { getConfig } from "/@/config";
-import { useRouter } from "vue-router";
 import panel from "../panel/index.vue";
 import { emitter } from "/@/utils/mitt";
-import { templateRef } from "@vueuse/core";
 import dayIcon from "/@/assets/svg/day.svg";
 import { debounce } from "/@/utils/debounce";
 import darkIcon from "/@/assets/svg/dark.svg";

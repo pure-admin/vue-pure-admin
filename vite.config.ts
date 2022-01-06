@@ -1,12 +1,15 @@
 import { resolve } from "path";
 import vue from "@vitejs/plugin-vue";
 import svgLoader from "vite-svg-loader";
+import Inspect from "vite-plugin-inspect";
 import legacy from "@vitejs/plugin-legacy";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 import { warpperEnv, regExps } from "./build";
 import { viteMockServe } from "vite-plugin-mock";
 import styleImport from "vite-plugin-style-import";
+import AutoImport from "unplugin-auto-import/vite";
 import ElementPlus from "unplugin-element-plus/vite";
+
 import { UserConfigExport, ConfigEnv, loadEnv } from "vite";
 import themePreprocessorPlugin from "@zougt/vite-plugin-theme-preprocessor";
 
@@ -80,6 +83,14 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
     },
     plugins: [
       vue(),
+      AutoImport({
+        imports: ["vue", "vue-router", "vue-i18n", "@vueuse/core"],
+        dts: "src/auto-imports.d.ts"
+      }),
+      Inspect({
+        // change this to enable inspect for debugging
+        enabled: false
+      }),
       // jsx、tsx语法支持
       vueJsx(),
       // 自定义主题
@@ -175,6 +186,8 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
     ],
     optimizeDeps: {
       include: [
+        "vue",
+        "@vueuse/core",
         "element-plus/lib/locale/lang/zh-cn",
         "element-plus/lib/locale/lang/en",
         "vxe-table/lib/locale/lang/zh-CN",

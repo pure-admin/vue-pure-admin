@@ -1,16 +1,4 @@
 <script setup lang="ts">
-import {
-  ref,
-  watch,
-  unref,
-  nextTick,
-  computed,
-  ComputedRef,
-  CSSProperties,
-  onBeforeMount,
-  getCurrentInstance
-} from "vue";
-
 import close from "/@/assets/svg/close.svg";
 import refresh from "/@/assets/svg/refresh.svg";
 import closeAll from "/@/assets/svg/close_all.svg";
@@ -18,20 +6,18 @@ import closeLeft from "/@/assets/svg/close_left.svg";
 import closeOther from "/@/assets/svg/close_other.svg";
 import closeRight from "/@/assets/svg/close_right.svg";
 
-import { $t as t } from "/@/plugins/i18n";
 import { emitter } from "/@/utils/mitt";
+import { $t as t } from "/@/plugins/i18n";
 import { isEqual, isEmpty } from "lodash-es";
 import { transformI18n } from "/@/plugins/i18n";
 import { storageLocal } from "/@/utils/storage";
-import { useRoute, useRouter } from "vue-router";
+import type { ComputedRef, CSSProperties } from "vue";
 import { RouteConfigs, tagsViewsType } from "../../types";
 import { useSettingStoreHook } from "/@/store/modules/settings";
 import { handleAliveRoute, delAliveRoutes } from "/@/router/utils";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 import { toggleClass, removeClass, hasClass } from "/@/utils/operate";
-
-import { templateRef, useResizeObserver, useDebounceFn } from "@vueuse/core";
 
 const route = useRoute();
 const router = useRouter();

@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import NoticeList from "./noticeList.vue";
 import { noticesData } from "./data";
 
-const activeName = ref(noticesData[0].name);
+let noticesNum = ref<number>(0);
 const notices = ref(noticesData);
+const activeName = ref(noticesData[0].name);
 
-let noticesNum = ref(0);
 notices.value.forEach(notice => {
   noticesNum.value += notice.list.length;
 });

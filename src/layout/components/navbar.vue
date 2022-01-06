@@ -1,16 +1,12 @@
 <script setup lang="ts">
-import { computed } from "vue";
-import { useI18n } from "vue-i18n";
 import { emitter } from "/@/utils/mitt";
 import Notice from "./notice/index.vue";
 import avatars from "/@/assets/avatars.jpg";
 import { transformI18n } from "/@/plugins/i18n";
 import Hamburger from "./sidebar/hamBurger.vue";
-import { useRouter, useRoute } from "vue-router";
 import { storageSession } from "/@/utils/storage";
 import Breadcrumb from "./sidebar/breadCrumb.vue";
 import { useAppStoreHook } from "/@/store/modules/app";
-import { unref, watch, getCurrentInstance } from "vue";
 import { deviceDetection } from "/@/utils/deviceDetection";
 import screenfull from "../components/screenfull/index.vue";
 import globalization from "/@/assets/svg/globalization.svg";

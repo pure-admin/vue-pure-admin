@@ -1,14 +1,5 @@
 <script setup lang="ts">
-import {
-  h,
-  reactive,
-  computed,
-  onMounted,
-  defineComponent,
-  getCurrentInstance
-} from "vue";
 import { setType } from "./types";
-import { useI18n } from "vue-i18n";
 import { routerArrays } from "./types";
 import { emitter } from "/@/utils/mitt";
 import backTop from "/@/assets/svg/back_top.svg";

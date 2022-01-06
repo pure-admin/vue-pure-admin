@@ -1,13 +1,6 @@
 <script setup lang="ts">
-import {
-  ref,
-  PropType,
-  nextTick,
-  computed,
-  CSSProperties,
-  getCurrentInstance
-} from "vue";
-import path from "path";
+import { resolve } from "path";
+import type { CSSProperties } from "vue";
 import { childrenType } from "../../types";
 import { transformI18n } from "/@/plugins/i18n";
 import { findIconReg } from "/@/components/ReIcon";
@@ -123,7 +116,7 @@ function resolvePath(routePath) {
   if (httpReg.test(routePath)) {
     return props.basePath + "/" + routePath;
   } else {
-    return path.resolve(props.basePath, routePath);
+    return resolve(props.basePath, routePath);
   }
 }
 </script>

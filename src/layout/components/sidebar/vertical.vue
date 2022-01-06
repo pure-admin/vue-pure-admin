@@ -4,8 +4,6 @@ import { emitter } from "/@/utils/mitt";
 import SidebarItem from "./sidebarItem.vue";
 import { algorithm } from "/@/utils/algorithm";
 import { storageLocal } from "/@/utils/storage";
-import { useRoute, useRouter } from "vue-router";
-import { computed, ref, onBeforeMount } from "vue";
 import { useAppStoreHook } from "/@/store/modules/app";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 
