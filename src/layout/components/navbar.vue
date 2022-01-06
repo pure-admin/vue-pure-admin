@@ -14,6 +14,7 @@ import { unref, watch, getCurrentInstance } from "vue";
 import { deviceDetection } from "/@/utils/deviceDetection";
 import screenfull from "../components/screenfull/index.vue";
 import globalization from "/@/assets/svg/globalization.svg";
+import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
 
 const instance =
   getCurrentInstance().appContext.config.globalProperties.$storage;
@@ -26,7 +27,7 @@ const { locale } = useI18n();
 const getDropdownItemStyle = computed(() => {
   return t => {
     return {
-      background: locale.value === t ? "#1b2a47" : "",
+      background: locale.value === t ? useEpThemeStoreHook().epThemeColor : "",
       color: locale.value === t ? "#f4f4f5" : "#000"
     };
   };
@@ -149,10 +150,6 @@ function translationEn() {
     cursor: pointer;
     transition: background 0.3s;
     -webkit-tap-highlight-color: transparent;
-
-    &:hover {
-      background: rgba(0, 0, 0, 0.025);
-    }
   }
 
   .vertical-header-right {
