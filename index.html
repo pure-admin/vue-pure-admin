@@ -27,94 +27,78 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          background: #000;
           overflow: hidden;
           font-family: "Reggae One", cursive;
         }
 
-        p {
-          font-size: 8vw;
-          overflow: hidden;
-          -webkit-text-stroke: 3px #7272a5;
+        .loader,
+        .loader:before,
+        .loader:after {
+          border-radius: 50%;
+          width: 2.5em;
+          height: 2.5em;
+          -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+          -webkit-animation: loadAnimation 1.8s infinite ease-in-out;
+          animation: loadAnimation 1.8s infinite ease-in-out;
         }
 
-        span {
-          display: block;
-          font-size: 20px;
-          overflow: hidden;
-          color: green;
-          text-align: center;
+        .loader {
+          color: #406eeb;
+          font-size: 10px;
+          margin: 80px auto;
+          position: relative;
+          text-indent: -9999em;
+          -webkit-transform: translateZ(0);
+          -ms-transform: translateZ(0);
+          transform: translateZ(0);
+          -webkit-animation-delay: -0.16s;
+          animation-delay: -0.16s;
         }
 
-        p::before {
-          content: " ";
-          width: 100%;
-          height: 100%;
-          position: absolute;
-          left: 0;
-          top: 0;
-          background-image: linear-gradient(45deg, #ff269b, #2ab5f5, #ffbf00);
-          mix-blend-mode: multiply;
-        }
-
-        p::after {
+        .loader:before,
+        .loader:after {
           content: "";
-          background: radial-gradient(circle, #fff, #000 50%);
-          background-size: 25% 25%;
           position: absolute;
-          top: -100%;
-          left: -100%;
-          right: 0;
-          bottom: 0;
-          mix-blend-mode: color-dodge;
-          animation: mix 2s linear infinite;
+          top: 0;
         }
 
-        @keyframes mix {
-          to {
-            transform: translate(50%, 50%);
+        .loader:before {
+          left: -3.5em;
+          -webkit-animation-delay: -0.32s;
+          animation-delay: -0.32s;
+        }
+
+        .loader:after {
+          left: 3.5em;
+        }
+
+        @-webkit-keyframes loadAnimation {
+          0%,
+          80%,
+          100% {
+            box-shadow: 0 2.5em 0 -1.3em;
+          }
+
+          40% {
+            box-shadow: 0 2.5em 0 0;
+          }
+        }
+
+        @keyframes loadAnimation {
+          0%,
+          80%,
+          100% {
+            box-shadow: 0 2.5em 0 -1.3em;
+          }
+
+          40% {
+            box-shadow: 0 2.5em 0 0;
           }
         }
       </style>
-      <div class="g-container">
-        <p>Pure-Admin</p>
-        <span class="_develop"></span>
-      </div>
+      <div class="loader">Loading...</div>
     </div>
-    <script>
-      // 此代码仅用于开发环境的友好提示，项目打包前请去掉这段js代码 This code is only used as a friendly reminder of the development environment, please remove this js code before packaging the project
-      window.onload = function () {
-        (function () {
-          const ua = navigator.userAgent.toLowerCase();
-          const re = /(msie|firefox|chrome|opera|version).*?([\d.]+)/;
-          const m = ua.match(re);
-          const Sys = {
-            browser: m[1].replace(/version/, "'safari"),
-            version: m[2]
-          };
-
-          const browser = Array.of("chrome", "firefox").includes(Sys.browser);
-          const version = parseFloat(Sys.version);
-
-          const el = document.querySelector("._develop");
-
-          if (el) {
-            if (browser && version >= 90) {
-              let success =
-                document.createTextNode("当前浏览器版本很适合开发！！！ 😃");
-              el.appendChild(success);
-            } else {
-              let warn = document.createTextNode(
-                "当前浏览器版本不适合开发，建议使用最新版本的谷歌或者火狐浏览器！！！😯"
-              );
-              el.appendChild(warn);
-              el.style.color = "red";
-            }
-          }
-          return Sys;
-        })();
-      };
-    </script>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

@@ -31,7 +31,6 @@ specifiers:
   animate.css: ^4.1.1
   autoprefixer: 10.2.4
   axios: ^0.21.1
-  babel-plugin-transform-remove-console: 6.9.4
   cropperjs: ^1.5.11
   cross-env: 7.0.3
   css-color-function: ^1.3.3
@@ -52,7 +51,7 @@ specifiers:
   mockjs: ^1.1.0
   nprogress: ^0.2.0
   path: ^0.12.7
-  pinia: ^2.0.0-rc.14
+  pinia: ^2.0.9
   postcss: 8.2.6
   postcss-import: 14.0.0
   prettier: 2.3.2
@@ -73,6 +72,7 @@ specifiers:
   unplugin-element-plus: ^0.1.3
   v-contextmenu: 3.0.0
   vite: 2.6.14
+  vite-plugin-full-reload: ^1.0.0
   vite-plugin-mock: ^2.9.6
   vite-plugin-style-import: ^1.2.1
   vite-svg-loader: ^2.2.0
@@ -115,7 +115,7 @@ dependencies:
   mockjs: 1.1.0
   nprogress: 0.2.0
   path: 0.12.7
-  pinia: 2.0.2_typescript@4.4.2+vue@3.2.24
+  pinia: 2.0.9_typescript@4.4.2+vue@3.2.24
   qs: 6.10.1
   remixicon: 2.5.0
   resize-observer-polyfill: 1.5.1
@@ -152,7 +152,6 @@ devDependencies:
   "@vue/eslint-config-typescript": 7.0.0_e03d82996bd4a66fb128f33523d782ea
   "@zougt/vite-plugin-theme-preprocessor": 1.4.0_sass@1.45.0
   autoprefixer: 10.2.4_postcss@8.2.6
-  babel-plugin-transform-remove-console: 6.9.4
   cross-env: 7.0.3
   eslint: 7.30.0
   eslint-plugin-prettier: 3.4.0_eslint@7.30.0+prettier@2.3.2
@@ -173,6 +172,7 @@ devDependencies:
   typescript: 4.4.2
   unplugin-element-plus: 0.1.3_vite@2.6.14+vue@3.2.24
   vite: 2.6.14_sass@1.45.0
+  vite-plugin-full-reload: 1.0.0
   vite-plugin-mock: 2.9.6_mockjs@1.1.0+vite@2.6.14
   vite-plugin-style-import: 1.3.0_vite@2.6.14
   vite-svg-loader: 2.2.0
@@ -1048,7 +1048,7 @@ packages:
     dependencies:
       "@types/estree": 0.0.39
       estree-walker: 1.0.1
-      picomatch: 2.3.0
+      picomatch: 2.3.1
     dev: true
 
   /@rollup/pluginutils/4.1.1:
@@ -1479,6 +1479,13 @@ packages:
       }
     dev: false
 
+  /@vue/devtools-api/6.0.0-beta.21.1:
+    resolution:
+      {
+        integrity: sha512-FqC4s3pm35qGVeXRGOjTsRzlkJjrBLriDS9YXbflHLsfA9FrcKzIyWnLXoNm+/7930E8rRakXuAc2QkC50swAw==
+      }
+    dev: false
+
   /@vue/eslint-config-prettier/6.0.0_82e4252401b0cc5be86f7c2133946f49:
     resolution:
       {
@@ -1843,7 +1850,7 @@ packages:
     engines: { node: ">= 8" }
     dependencies:
       normalize-path: 3.0.0
-      picomatch: 2.3.0
+      picomatch: 2.3.1
     dev: true
 
   /arg/4.1.3:
@@ -1955,10 +1962,6 @@ packages:
     transitivePeerDependencies:
       - debug
     dev: false
-
-  /babel-plugin-transform-remove-console/6.9.4:
-    resolution: { integrity: sha1-uYA2DAZzhOJLNXpYjYB9PINSd4A= }
-    dev: true
 
   /bail/1.0.5:
     resolution:
@@ -5436,19 +5439,27 @@ packages:
     engines: { node: ">=8.6" }
     dev: true
 
+  /picomatch/2.3.1:
+    resolution:
+      {
+        integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==
+      }
+    engines: { node: ">=8.6" }
+    dev: true
+
   /pify/2.3.0:
     resolution: { integrity: sha1-7RQaasBDqEnqWISY59yosVMw6Qw= }
     engines: { node: ">=0.10.0" }
     dev: true
 
-  /pinia/2.0.2_typescript@4.4.2+vue@3.2.24:
+  /pinia/2.0.9_typescript@4.4.2+vue@3.2.24:
     resolution:
       {
-        integrity: sha512-ljN+9p9XHE8YrMBgxLbpo5rdVPj7Fri4Bl9qswz5dJPeoK6ra66YOLrGpBoCsHjAqu9jOBC3oJeErocicf51oA==
+        integrity: sha512-iuYdxLJKQ07YPyOHYH05wNG9eKWqkP/4y4GE8+RqEYtz5fwHgPA5kr6zQbg/DoEJGnR2XCm1w1vdt6ppzL9ATg==
       }
     peerDependencies:
-      "@vue/composition-api": ^1.3.0
-      typescript: ^4.4.4
+      "@vue/composition-api": ^1.4.0
+      typescript: ">=4.4.4"
       vue: ^2.6.14 || ^3.2.0
     peerDependenciesMeta:
       "@vue/composition-api":
@@ -5456,7 +5467,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      "@vue/devtools-api": 6.0.0-beta.20
+      "@vue/devtools-api": 6.0.0-beta.21.1
       typescript: 4.4.2
       vue: 3.2.24
       vue-demi: 0.12.1_vue@3.2.24
@@ -6183,7 +6194,7 @@ packages:
       }
     engines: { node: ">=8.10.0" }
     dependencies:
-      picomatch: 2.3.0
+      picomatch: 2.3.1
     dev: true
 
   /redent/3.0.0:
@@ -7406,6 +7417,16 @@ packages:
       is-buffer: 2.0.5
       unist-util-stringify-position: 2.0.3
       vfile-message: 2.0.4
+    dev: true
+
+  /vite-plugin-full-reload/1.0.0:
+    resolution:
+      {
+        integrity: sha512-GUhQ4wSm+H6yAlz7d2JwLu+BEcsFqZu1SUH0CNG+uyP4ALXGofUjHi+eGdLX19bYhMuOUWW3EwMt68jFkBsMew==
+      }
+    dependencies:
+      picocolors: 1.0.0
+      picomatch: 2.3.1
     dev: true
 
   /vite-plugin-mock/2.9.6_mockjs@1.1.0+vite@2.6.14:

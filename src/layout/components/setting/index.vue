@@ -444,7 +444,7 @@ nextTick(() => {
 
 <style scoped module>
 .isSelect {
-  border: 2px solid #0960bd;
+  border: 2px solid var(--el-color-primary);
 }
 </style>
 
