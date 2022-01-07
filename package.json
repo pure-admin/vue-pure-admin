@@ -113,6 +113,7 @@
     "vite": "2.6.14",
     "vite-plugin-full-reload": "^1.0.0",
     "vite-plugin-mock": "^2.9.6",
+    "vite-plugin-remove-console": "^0.0.6",
     "vite-plugin-style-import": "^1.2.1",
     "vite-plugin-windicss": "^1.6.1",
     "vite-svg-loader": "^2.2.0",
