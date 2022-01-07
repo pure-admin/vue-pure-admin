@@ -1,5 +1,6 @@
 {
   "recommendations": [
+    "voorjaar.windicss-intellisense",
     "stylelint.vscode-stylelint",
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",

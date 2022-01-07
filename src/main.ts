@@ -11,6 +11,7 @@ import { useElementPlus } from "../src/plugins/element-plus";
 import { injectResponsiveStorage } from "/@/utils/storage/responsive";
 
 import "animate.css";
+import "virtual:windi.css";
 // 导入公共样式
 import "./style/index.scss";
 // 导入字体图标

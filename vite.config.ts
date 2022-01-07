@@ -3,6 +3,7 @@ import vue from "@vitejs/plugin-vue";
 import svgLoader from "vite-svg-loader";
 import legacy from "@vitejs/plugin-legacy";
 import vueJsx from "@vitejs/plugin-vue-jsx";
+import WindiCSS from "vite-plugin-windicss";
 import { warpperEnv, regExps } from "./build";
 import fullReload from "vite-plugin-full-reload";
 import { viteMockServe } from "vite-plugin-mock";
@@ -83,6 +84,7 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
       vue(),
       // jsx、tsx语法支持
       vueJsx(),
+      WindiCSS(),
       // 修改layout文件夹下的文件时自动重载浏览器 解决 https://github.com/xiaoxian521/vue-pure-admin/issues/170
       fullReload(["src/layout/**/*"]),
       // 自定义主题

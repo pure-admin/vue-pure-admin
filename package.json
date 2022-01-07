@@ -114,8 +114,10 @@
     "vite-plugin-full-reload": "^1.0.0",
     "vite-plugin-mock": "^2.9.6",
     "vite-plugin-style-import": "^1.2.1",
+    "vite-plugin-windicss": "^1.6.1",
     "vite-svg-loader": "^2.2.0",
-    "vue-eslint-parser": "7.10.0"
+    "vue-eslint-parser": "7.10.0",
+    "windicss": "^3.4.2"
   },
   "repository": "git@github.com:xiaoxian521/vue-pure-admin.git",
   "author": "xiaoxian521",
