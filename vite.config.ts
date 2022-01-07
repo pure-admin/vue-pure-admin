@@ -5,11 +5,11 @@ import Inspect from "vite-plugin-inspect";
 import legacy from "@vitejs/plugin-legacy";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 import { warpperEnv, regExps } from "./build";
+import fullReload from "vite-plugin-full-reload";
 import { viteMockServe } from "vite-plugin-mock";
 import styleImport from "vite-plugin-style-import";
 import AutoImport from "unplugin-auto-import/vite";
 import ElementPlus from "unplugin-element-plus/vite";
-
 import { UserConfigExport, ConfigEnv, loadEnv } from "vite";
 import themePreprocessorPlugin from "@zougt/vite-plugin-theme-preprocessor";
 
@@ -88,9 +88,11 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
         dts: "src/auto-imports.d.ts"
       }),
       Inspect({
-        // change this to enable inspect for debugging
+        // 更改此项以启用检查以进行调试
         enabled: false
       }),
+      // 修改layout文件夹下的文件时自动重载浏览器 解决 https://github.com/xiaoxian521/vue-pure-admin/issues/170
+      fullReload(["src/layout/**/*"]),
       // jsx、tsx语法支持
       vueJsx(),
       // 自定义主题
