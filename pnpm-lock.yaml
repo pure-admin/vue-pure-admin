@@ -72,7 +72,7 @@ specifiers:
   unplugin-element-plus: ^0.1.3
   v-contextmenu: 3.0.0
   vite: 2.6.14
-  vite-plugin-full-reload: ^1.0.0
+  vite-plugin-live-reload: ^2.1.0
   vite-plugin-mock: ^2.9.6
   vite-plugin-remove-console: ^0.0.6
   vite-plugin-style-import: ^1.2.1
@@ -175,7 +175,7 @@ devDependencies:
   typescript: 4.4.2
   unplugin-element-plus: 0.1.3_vite@2.6.14+vue@3.2.24
   vite: 2.6.14_sass@1.45.0
-  vite-plugin-full-reload: 1.0.0
+  vite-plugin-live-reload: 2.1.0
   vite-plugin-mock: 2.9.6_mockjs@1.1.0+vite@2.6.14
   vite-plugin-remove-console: 0.0.6
   vite-plugin-style-import: 1.3.0_vite@2.6.14
@@ -5549,11 +5549,11 @@ packages:
       vfile-message: 2.0.4
     dev: true
 
-  /vite-plugin-full-reload/1.0.0:
-    resolution: {integrity: sha512-GUhQ4wSm+H6yAlz7d2JwLu+BEcsFqZu1SUH0CNG+uyP4ALXGofUjHi+eGdLX19bYhMuOUWW3EwMt68jFkBsMew==}
+  /vite-plugin-live-reload/2.1.0:
+    resolution: {integrity: sha512-NKIcVqrraPUZbsUKCKs+0StqKAmbAh2csbFxMWTXGDUeOoHAFni9H0CxtQelrYT5bQCV9FT/RveAM8q8bMdnQQ==}
     dependencies:
-      picocolors: 1.0.0
-      picomatch: 2.3.1
+      chalk: 4.1.2
+      chokidar: 3.5.2
     dev: true
 
   /vite-plugin-mock/2.9.6_mockjs@1.1.0+vite@2.6.14:
