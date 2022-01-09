@@ -1,6 +1,8 @@
 <h1>vue-pure-admin</h1>
 
-[![license](https://img.shields.io/github/license/xiaoxian521/vue-pure-admin.svg)](LICENSE)
+![GitHub license](https://img.shields.io/github/license/xiaoxian521/vue-pure-admin?style=flat)
+![GitHub stars](https://img.shields.io/github/stars/xiaoxian521/vue-pure-admin?color=fa6470&style=flat)
+![GitHub forks](https://img.shields.io/github/forks/xiaoxian521/vue-pure-admin?style=flat)
 
 **English** | [中文](./README.md)
 
@@ -10,16 +12,16 @@ vue-pure-admin is a free and open source middle and back-end template. Using the
 
 ## Supporting Video
 
-Tutorial: <https://www.bilibili.com/video/BV1534y1S7HV/>  
-UI Design: <https://www.bilibili.com/video/BV17g411T7rq/>
+- [Click Watch Tutorial](https://www.bilibili.com/video/BV1534y1S7HV)
+- [Click Watch UI Design](https://www.bilibili.com/video/BV17g411T7rq)
 
 ## Docs
 
-<https://pure-admin-doc.vercel.app/>
+- [Click Watch Docs](https://pure-admin-doc.vercel.app)
 
 ## Thin
 
-Github Address: <https://github.com/xiaoxian521/pure-admin-thin>
+- [Click Watch Thin](https://github.com/xiaoxian521/pure-admin-thin)
 
 ## Preview
 
