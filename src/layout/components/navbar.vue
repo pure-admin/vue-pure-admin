@@ -3,6 +3,7 @@ import { computed } from "vue";
 import { useI18n } from "vue-i18n";
 import { emitter } from "/@/utils/mitt";
 import Notice from "./notice/index.vue";
+import mixNav from "./sidebar/mixNav.vue";
 import avatars from "/@/assets/avatars.jpg";
 import { transformI18n } from "/@/plugins/i18n";
 import Hamburger from "./sidebar/hamBurger.vue";
@@ -74,13 +75,20 @@ function translationEn() {
 
 <template>
   <div class="navbar">
-    <Hamburger
-      :is-active="pureApp.sidebar.opened"
-      class="hamburger-container"
-      @toggleClick="toggleSideBar"
-    />
+    <div class="flex">
+      <Hamburger
+        :is-active="pureApp.sidebar.opened"
+        class="hamburger-container"
+        @toggleClick="toggleSideBar"
+      />
 
-    <Breadcrumb class="breadcrumb-container" />
+      <Breadcrumb
+        v-if="pureApp.layout !== 'mixin'"
+        class="breadcrumb-container"
+      />
+    </div>
+
+    <mixNav v-if="pureApp.layout === 'mixin'" />
 
     <div class="vertical-header-right">
       <!-- 通知 -->
@@ -137,6 +145,8 @@ function translationEn() {
 
 <style lang="scss" scoped>
 .navbar {
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   height: 48px;
   overflow: hidden;

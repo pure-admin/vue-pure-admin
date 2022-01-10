@@ -315,7 +315,7 @@ nextTick(() => {
 
     <el-divider>导航栏模式</el-divider>
     <ul class="pure-theme">
-      <el-tooltip class="item" content="左侧菜单模式" placement="bottom">
+      <el-tooltip class="item" content="左侧模式" placement="bottom">
         <li
           :class="layoutTheme.layout === 'vertical' ? $style.isSelect : ''"
           ref="verticalRef"
@@ -326,11 +326,22 @@ nextTick(() => {
         </li>
       </el-tooltip>
 
-      <el-tooltip class="item" content="顶部菜单模式" placement="bottom">
+      <el-tooltip class="item" content="顶部模式" placement="bottom">
         <li
           :class="layoutTheme.layout === 'horizontal' ? $style.isSelect : ''"
           ref="horizontalRef"
           @click="setLayoutModel('horizontal')"
+        >
+          <div></div>
+          <div></div>
+        </li>
+      </el-tooltip>
+
+      <el-tooltip class="item" content="混合模式" placement="bottom">
+        <li
+          :class="layoutTheme.layout === 'mixin' ? $style.isSelect : ''"
+          ref="mixinRef"
+          @click="setLayoutModel('mixin')"
         >
           <div></div>
           <div></div>
@@ -483,7 +494,7 @@ nextTick(() => {
 
   li {
     margin: 10px;
-    width: 36%;
+    width: 26%;
     height: 70px;
     background: #f0f2f5;
     position: relative;
@@ -519,6 +530,27 @@ nextTick(() => {
           height: 30%;
           background: #1b2a47;
           box-shadow: 0 0 1px #888;
+        }
+      }
+    }
+
+    &:nth-child(3) {
+      div {
+        &:nth-child(1) {
+          width: 100%;
+          height: 30%;
+          background: #1b2a47;
+          box-shadow: 0 0 1px #888;
+        }
+
+        &:nth-child(2) {
+          width: 30%;
+          height: 70%;
+          bottom: 0;
+          left: 0;
+          background: #fff;
+          box-shadow: 0 0 1px #888;
+          position: absolute;
         }
       }
     }

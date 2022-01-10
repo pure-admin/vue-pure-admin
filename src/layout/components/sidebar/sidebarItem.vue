@@ -15,7 +15,9 @@ import Icon from "/@/components/ReIcon/src/Icon.vue";
 import { useAppStoreHook } from "/@/store/modules/app";
 
 const instance = getCurrentInstance().appContext.app.config.globalProperties;
-const menuMode = instance.$storage.layout?.layout === "vertical";
+const menuMode = ["vertical", "mixin"].includes(
+  instance.$storage.layout?.layout
+);
 const pureApp = useAppStoreHook();
 
 const props = defineProps({

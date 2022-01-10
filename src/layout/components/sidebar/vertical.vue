@@ -5,8 +5,9 @@ import SidebarItem from "./sidebarItem.vue";
 import { algorithm } from "/@/utils/algorithm";
 import { storageLocal } from "/@/utils/storage";
 import { useRoute, useRouter } from "vue-router";
-import { computed, ref, onBeforeMount } from "vue";
 import { useAppStoreHook } from "/@/store/modules/app";
+import { computed, ref, onBeforeMount, watch } from "vue";
+import { findRouteByPath, getParentPaths } from "/@/router/utils";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 
 const route = useRoute();
@@ -15,6 +16,7 @@ const router = useRouter().options.routes;
 const showLogo = ref(
   storageLocal.getItem("responsive-configure")?.showLogo ?? true
 );
+
 const isCollapse = computed(() => {
   return !pureApp.getSidebarStatus;
 });
@@ -25,6 +27,36 @@ const activeMenu = computed((): string => {
     return meta.activeMenu;
   }
   return path;
+});
+
+let subMenuData = ref([]);
+
+function getSubMenuData() {
+  // 所有上级路由组成的数组
+  const parentPathArr = getParentPaths(
+    route.path,
+    usePermissionStoreHook().wholeMenus
+  );
+  // 当前路由的父级路由信息
+  const parenetRoute = findRouteByPath(
+    parentPathArr[parentPathArr.length - 1],
+    usePermissionStoreHook().wholeMenus
+  );
+  if (!parenetRoute?.children) return;
+  subMenuData.value = parenetRoute?.children;
+}
+
+getSubMenuData();
+
+watch(
+  () => route.path,
+  () => getSubMenuData()
+);
+
+const menuData = computed(() => {
+  return pureApp.layout === "mixin"
+    ? subMenuData.value
+    : usePermissionStoreHook().wholeMenus;
 });
 
 const menuSelect = (indexPath: string): void => {
@@ -49,6 +81,7 @@ const menuSelect = (indexPath: string): void => {
     });
   }
   findCurrentRoute(algorithm.increaseIndexes(router));
+  getSubMenuData();
 };
 
 onBeforeMount(() => {
@@ -73,7 +106,7 @@ onBeforeMount(() => {
         @select="menuSelect"
       >
         <sidebar-item
-          v-for="route in usePermissionStoreHook().wholeMenus"
+          v-for="route in menuData"
           :key="route.path"
           :item="route"
           class="outer-most"
