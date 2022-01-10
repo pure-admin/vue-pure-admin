@@ -133,11 +133,10 @@ onMounted(() => {
     </div>
     <el-menu
       ref="menu"
-      :default-active="activeMenu"
-      unique-opened
-      router
       class="horizontal-header-menu"
       mode="horizontal"
+      :default-active="activeMenu"
+      router
       @select="menuSelect"
     >
       <sidebar-item

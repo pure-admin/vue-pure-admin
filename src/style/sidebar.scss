@@ -650,9 +650,15 @@ body[layout="horizontal"] {
   }
 }
 
-body[layout="mixin"] {
+body[layout="mix"] {
   $sideBarWidth: 210px;
   @include merge-style($sideBarWidth);
+
+  .el-menu-item {
+    &:hover {
+      background: transparent !important;
+    }
+  }
 
   .el-menu--collapse {
     width: 54px;

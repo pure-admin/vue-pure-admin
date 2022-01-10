@@ -75,22 +75,18 @@ function translationEn() {
 
 <template>
   <div class="navbar">
-    <div class="flex">
-      <Hamburger
-        :is-active="pureApp.sidebar.opened"
-        class="hamburger-container"
-        @toggleClick="toggleSideBar"
-      />
+    <Hamburger
+      v-if="pureApp.layout !== 'mix'"
+      :is-active="pureApp.sidebar.opened"
+      class="hamburger-container"
+      @toggleClick="toggleSideBar"
+    />
 
-      <Breadcrumb
-        v-if="pureApp.layout !== 'mixin'"
-        class="breadcrumb-container"
-      />
-    </div>
+    <Breadcrumb v-if="pureApp.layout !== 'mix'" class="breadcrumb-container" />
 
-    <mixNav v-if="pureApp.layout === 'mixin'" />
+    <mixNav v-if="pureApp.layout === 'mix'" />
 
-    <div class="vertical-header-right">
+    <div v-if="pureApp.layout === 'vertical'" class="vertical-header-right">
       <!-- 通知 -->
       <Notice id="header-notice" />
       <!-- 全屏 -->
@@ -145,8 +141,6 @@ function translationEn() {
 
 <style lang="scss" scoped>
 .navbar {
-  display: flex;
-  justify-content: space-between;
   width: 100%;
   height: 48px;
   overflow: hidden;

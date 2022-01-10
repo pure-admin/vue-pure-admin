@@ -339,9 +339,9 @@ nextTick(() => {
 
       <el-tooltip class="item" content="混合模式" placement="bottom">
         <li
-          :class="layoutTheme.layout === 'mixin' ? $style.isSelect : ''"
-          ref="mixinRef"
-          @click="setLayoutModel('mixin')"
+          :class="layoutTheme.layout === 'mix' ? $style.isSelect : ''"
+          ref="mixRef"
+          @click="setLayoutModel('mix')"
         >
           <div></div>
           <div></div>
@@ -487,15 +487,14 @@ nextTick(() => {
 .pure-theme {
   margin-top: 25px;
   width: 100%;
-  height: 100px;
+  height: 50px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 
   li {
-    margin: 10px;
-    width: 26%;
-    height: 70px;
+    width: 18%;
+    height: 45px;
     background: #f0f2f5;
     position: relative;
     overflow: hidden;

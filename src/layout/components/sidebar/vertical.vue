@@ -54,7 +54,7 @@ watch(
 );
 
 const menuData = computed(() => {
-  return pureApp.layout === "mixin"
+  return pureApp.layout === "mix"
     ? subMenuData.value
     : usePermissionStoreHook().wholeMenus;
 });

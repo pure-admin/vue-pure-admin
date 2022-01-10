@@ -171,7 +171,7 @@ const layoutHeader = defineComponent({
       {
         default: () => [
           !pureSetting.hiddenSideBar &&
-          (layout.value.includes("vertical") || layout.value.includes("mixin"))
+          (layout.value.includes("vertical") || layout.value.includes("mix"))
             ? h(navbar)
             : h("div"),
           !pureSetting.hiddenSideBar && layout.value.includes("horizontal")
@@ -215,7 +215,7 @@ const layoutHeader = defineComponent({
     <Vertical
       v-show="
         !pureSetting.hiddenSideBar &&
-        (layout.includes('vertical') || layout.includes('mixin'))
+        (layout.includes('vertical') || layout.includes('mix'))
       "
     />
     <div
