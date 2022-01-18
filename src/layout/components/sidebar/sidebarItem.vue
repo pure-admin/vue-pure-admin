@@ -120,8 +120,8 @@ function hasOneShowingChild(
 
 function resolvePath(routePath) {
   const httpReg = /^http(s?):\/\//;
-  if (httpReg.test(routePath)) {
-    return props.basePath + "/" + routePath;
+  if (httpReg.test(routePath) || httpReg.test(props.basePath)) {
+    return routePath || props.basePath;
   } else {
     return path.resolve(props.basePath, routePath);
   }

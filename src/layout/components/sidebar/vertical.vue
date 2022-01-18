@@ -6,7 +6,7 @@ import { algorithm } from "/@/utils/algorithm";
 import { storageLocal } from "/@/utils/storage";
 import { useRoute, useRouter } from "vue-router";
 import { useAppStoreHook } from "/@/store/modules/app";
-import { computed, ref, onBeforeMount, watch } from "vue";
+import { ref, computed, watch, onBeforeMount } from "vue";
 import { findRouteByPath, getParentPaths } from "/@/router/utils";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 
@@ -31,26 +31,26 @@ const activeMenu = computed((): string => {
 
 let subMenuData = ref([]);
 
-function getSubMenuData() {
-  // 所有上级路由组成的数组
+function getSubMenuData(path) {
+  // path的上级路由组成的数组
   const parentPathArr = getParentPaths(
-    route.path,
+    path,
     usePermissionStoreHook().wholeMenus
   );
   // 当前路由的父级路由信息
   const parenetRoute = findRouteByPath(
-    parentPathArr[parentPathArr.length - 1],
+    parentPathArr[0] || path,
     usePermissionStoreHook().wholeMenus
   );
-  if (!parenetRoute?.children) return;
+  if (!parenetRoute?.children) return true;
   subMenuData.value = parenetRoute?.children;
 }
 
-getSubMenuData();
+getSubMenuData(route.path);
 
 watch(
   () => route.path,
-  () => getSubMenuData()
+  () => getSubMenuData(route.path)
 );
 
 const menuData = computed(() => {
@@ -81,7 +81,6 @@ const menuSelect = (indexPath: string): void => {
     });
   }
   findCurrentRoute(algorithm.increaseIndexes(router));
-  getSubMenuData();
 };
 
 onBeforeMount(() => {

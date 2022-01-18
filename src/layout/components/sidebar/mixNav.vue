@@ -119,6 +119,16 @@ function translationEn() {
   handleResize();
 }
 
+function resolvePath(route) {
+  const httpReg = /^http(s?):\/\//;
+  const routeChildPath = route.children[0]?.path;
+  if (httpReg.test(routeChildPath)) {
+    return route.path + "/" + routeChildPath;
+  } else {
+    return routeChildPath;
+  }
+}
+
 onMounted(() => {
   nextTick(() => {
     handleResize();
@@ -160,7 +170,7 @@ onMounted(() => {
       <el-menu-item
         v-for="route in usePermissionStoreHook().wholeMenus"
         :key="route.path"
-        :index="route.redirect || route.path"
+        :index="route.redirect || resolvePath(route)"
       >
         <template #title>
           <el-icon v-show="route.meta.icon" :class="route.meta.icon">

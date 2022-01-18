@@ -16,7 +16,6 @@ type Events = {
     indexPath: string;
     parentPath: string;
   };
-  mixMenuSelect: string;
 };
 
 export const emitter: Emitter<Events> = mitt<Events>();
