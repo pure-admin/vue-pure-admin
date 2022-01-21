@@ -109,7 +109,7 @@
     "stylelint-config-prettier": "8.0.2",
     "stylelint-config-standard": "22.0.0",
     "stylelint-order": "4.1.0",
-    "typescript": "4.4.2",
+    "typescript": "^4.5.5",
     "unplugin-element-plus": "^0.2.0",
     "vite": "^2.7.13",
     "vite-plugin-live-reload": "^2.1.0",
