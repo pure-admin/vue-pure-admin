@@ -1,4 +1,4 @@
-import { App, defineComponent } from "vue";
+import { h, App, defineComponent } from "vue";
 import icon from "./src/Icon.vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import iconifyIconOffline from "./src/iconifyIconOffline";
@@ -44,11 +44,22 @@ export function findIcon(icon: String, type = "EL", property?: string) {
   if (type === "FA") {
     return defineComponent({
       name: "FaIcon",
-      setup() {
+      data() {
         return { icon, property };
       },
       components: { FontAwesomeIcon },
-      template: `<font-awesome-icon :icon="icon" v-bind:[property]="true" />`
+      render() {
+        return h(
+          FontAwesomeIcon,
+          {
+            icon: `${this.icon}`,
+            [property]: true
+          },
+          {
+            default: () => []
+          }
+        );
+      }
     });
   } else if (type === "fa") {
     return defineComponent({
@@ -56,7 +67,17 @@ export function findIcon(icon: String, type = "EL", property?: string) {
       data() {
         return { icon: `fa ${icon}` };
       },
-      template: `<i :class="icon" />`
+      render() {
+        return h(
+          "i",
+          {
+            class: `${this.icon}`
+          },
+          {
+            default: () => []
+          }
+        );
+      }
     });
   } else if (type === "IF") {
     return defineComponent({
@@ -64,7 +85,17 @@ export function findIcon(icon: String, type = "EL", property?: string) {
       data() {
         return { icon: `iconfont ${icon}` };
       },
-      template: `<i :class="icon" />`
+      render() {
+        return h(
+          "i",
+          {
+            class: `${this.icon}`
+          },
+          {
+            default: () => []
+          }
+        );
+      }
     });
   } else if (type === "RI") {
     return defineComponent({
@@ -72,7 +103,17 @@ export function findIcon(icon: String, type = "EL", property?: string) {
       data() {
         return { icon: `ri-${icon}` };
       },
-      template: `<i :class="icon" />`
+      render() {
+        return h(
+          "i",
+          {
+            class: `${this.icon}`
+          },
+          {
+            default: () => []
+          }
+        );
+      }
     });
   } else if (type === "EL") {
     return defineComponent({
@@ -80,7 +121,17 @@ export function findIcon(icon: String, type = "EL", property?: string) {
       data() {
         return { icon };
       },
-      template: `<IconifyIconOffline :icon="icon" />`
+      render() {
+        return h(
+          IconifyIconOffline,
+          {
+            icon: `${this.icon}`
+          },
+          {
+            default: () => []
+          }
+        );
+      }
     });
   } else if (type === "SVG") {
     return icon;
