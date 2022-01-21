@@ -1,3 +1,14 @@
+# 2.8.5(2022-1-21)
+
+### 🎫 Feat
+
+- 添加 `WindiCSS` 支持
+- 添加线上环境删 console 插件`vite-plugin-remove-console`
+
+### ✔️ refactor
+
+- 使用`@iconify-icons/ep`替换`@element-plus/icons-vue`
+
 # 2.8.0(2022-1-4)
 
 ### 🎫 Feat

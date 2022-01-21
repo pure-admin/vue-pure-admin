@@ -1,3 +1,14 @@
+# 2.8.5 (2022-1-21)
+
+### 🎫 Feat
+
+- Added `WindiCSS` support
+- Add online environment remove console plugin `vite-plugin-remove-console`
+
+### ✔️ refactor
+
+- Replace `@element-plus/icons-vue` with `@iconify-icons/ep`
+
 # 2.8.0(2022-1-4)
 
 ### 🎫 Feat
