@@ -7,7 +7,7 @@ const componentsRouter = {
   component: Layout,
   redirect: "/components/video",
   meta: {
-    icon: "Menu",
+    icon: "menu",
     title: $t("menus.hscomponents"),
     i18n: true,
     showLink: true,

@@ -1,7 +1,8 @@
 import { App, defineComponent } from "vue";
 import icon from "./src/Icon.vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { iconComponents } from "/@/plugins/element-plus";
+import iconifyIconOffline from "./src/iconifyIconOffline";
+import iconifyIconOnline from "./src/iconifyIconOnline";
 
 /**
  * find icon component
@@ -67,21 +68,20 @@ export function findIcon(icon: String, type = "EL", property?: string) {
     });
   } else if (type === "RI") {
     return defineComponent({
-      name: "RIIcon",
+      name: "RiIcon",
       data() {
         return { icon: `ri-${icon}` };
       },
       template: `<i :class="icon" />`
     });
   } else if (type === "EL") {
-    const components = iconComponents.filter(
-      component => component.name === icon
-    );
-    if (components.length > 0) {
-      return components[0];
-    } else {
-      return null;
-    }
+    return defineComponent({
+      name: "ElIcon",
+      data() {
+        return { icon };
+      },
+      template: `<IconifyIconOffline :icon="icon" />`
+    });
   } else if (type === "SVG") {
     return icon;
   }
@@ -93,6 +93,11 @@ export const Icon = Object.assign(icon, {
   }
 });
 
+export const IconifyIconOffline = iconifyIconOffline;
+export const IconifyIconOnline = iconifyIconOnline;
+
 export default {
-  Icon
+  Icon,
+  IconifyIconOffline,
+  IconifyIconOnline
 };

@@ -6,16 +6,15 @@ import type {
   PropType as VuePropType
 } from "vue";
 
+// GlobalComponents for Volar
+declare module "vue" {
+  export interface GlobalComponents {
+    IconifyIconOffline: typeof import("../src/components/ReIcon")["IconifyIconOffline"];
+    IconifyIconOnline: typeof import("../src/components/ReIcon")["IconifyIconOnline"];
+  }
+}
+
 declare global {
-  const __APP_INFO__: {
-    pkg: {
-      name: string;
-      version: string;
-      dependencies: Recordable<string>;
-      devDependencies: Recordable<string>;
-    };
-    lastBuildTime: string;
-  };
   interface Window {
     // Global vue app instance
     __APP__: App<Element>;

@@ -16,7 +16,9 @@ notices.value.forEach(notice => {
   <el-dropdown trigger="click" placement="bottom-end">
     <span class="dropdown-badge">
       <el-badge :value="noticesNum" :max="99">
-        <el-icon class="header-notice-icon"><bell /></el-icon>
+        <el-icon class="header-notice-icon"
+          ><IconifyIconOffline icon="bell"
+        /></el-icon>
       </el-badge>
     </span>
     <template #dropdown>

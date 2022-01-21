@@ -7,7 +7,7 @@ const systemRouter = {
   name: "system",
   redirect: "/system/user/index",
   meta: {
-    icon: "Setting",
+    icon: "setting",
     title: "menus.hssysManagement",
     i18n: true,
     showLink: true,
@@ -42,7 +42,7 @@ const permissionRouter = {
   redirect: "/permission/page/index",
   meta: {
     title: "menus.permission",
-    icon: "Lollipop",
+    icon: "lollipop",
     i18n: true,
     showLink: true,
     rank: 3

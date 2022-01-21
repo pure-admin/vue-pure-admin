@@ -1,12 +1,16 @@
 {
   "recommendations": [
+    "johnsoncodehk.vscode-typescript-vue-plugin",
     "voorjaar.windicss-intellisense",
+    "vscode-icons-team.vscode-icons",
+    "davidanson.vscode-markdownlint",
     "stylelint.vscode-stylelint",
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "johnsoncodehk.volar",
     "lokalise.i18n-ally",
     "mikestead.dotenv",
+    "eamodio.gitlens",
     "antfu.iconify"
   ]
 }

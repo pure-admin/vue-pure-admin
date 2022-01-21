@@ -19,8 +19,8 @@ import { useRoute, useRouter } from "vue-router";
 import { storageSession } from "/@/utils/storage";
 import Icon from "/@/components/ReIcon/src/Icon.vue";
 import { deviceDetection } from "/@/utils/deviceDetection";
-import globalization from "/@/assets/svg/globalization.svg";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
+import globalization from "/@/assets/svg/globalization.svg?component";
 
 const instance =
   getCurrentInstance().appContext.config.globalProperties.$storage;
@@ -161,14 +161,14 @@ onMounted(() => {
               :style="getDropdownItemStyle('zh')"
               @click="translationCh"
               ><el-icon class="check-zh" v-show="locale === 'zh'"
-                ><check /></el-icon
+                ><IconifyIconOffline icon="check" /></el-icon
               >简体中文</el-dropdown-item
             >
             <el-dropdown-item
               :style="getDropdownItemStyle('en')"
               @click="translationEn"
               ><el-icon class="check-en" v-show="locale === 'en'"
-                ><check /></el-icon
+                ><IconifyIconOffline icon="check" /></el-icon
               >English</el-dropdown-item
             >
           </el-dropdown-menu>
@@ -194,7 +194,7 @@ onMounted(() => {
         :title="$t('buttons.hssystemSet')"
         @click="onPanel"
       >
-        <Setting />
+        <IconifyIconOffline icon="setting" />
       </el-icon>
     </div>
   </div>

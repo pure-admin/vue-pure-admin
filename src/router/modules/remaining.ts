@@ -18,7 +18,7 @@ const remainingRouter = [
     name: "redirect",
     component: Layout,
     meta: {
-      icon: "HomeFilled",
+      icon: "home-filled",
       title: $t("menus.hshome"),
       i18n: true,
       showLink: false,

@@ -6,7 +6,7 @@ const externalLink = {
   name: "external",
   component: Layout,
   meta: {
-    icon: "Link",
+    icon: "link",
     title: $t("menus.externalLink"),
     showLink: true,
     i18n: true,

@@ -7,7 +7,7 @@ const editorRouter = {
   component: Layout,
   redirect: "/editor/index",
   meta: {
-    icon: "Edit",
+    icon: "edit",
     title: $t("menus.hseditor"),
     i18n: true,
     showLink: true,

@@ -27,6 +27,11 @@ Object.keys(directives).forEach(key => {
   app.directive(key, (directives as { [key: string]: Directive })[key]);
 });
 
+// 全局注册`@iconify/vue`图标库
+import { IconifyIconOffline, IconifyIconOnline } from "./components/ReIcon";
+app.component("IconifyIconOffline", IconifyIconOffline);
+app.component("IconifyIconOnline", IconifyIconOnline);
+
 getServerConfig(app).then(async config => {
   injectResponsiveStorage(app, config);
   setupStore(app);
