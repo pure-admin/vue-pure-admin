@@ -3,6 +3,7 @@ import {
   ref,
   watch,
   unref,
+  reactive,
   nextTick,
   computed,
   ComputedRef,
@@ -11,15 +12,15 @@ import {
   getCurrentInstance
 } from "vue";
 
-import close from "/@/assets/svg/close.svg";
-import refresh from "/@/assets/svg/refresh.svg";
-import closeAll from "/@/assets/svg/close_all.svg";
-import closeLeft from "/@/assets/svg/close_left.svg";
-import closeOther from "/@/assets/svg/close_other.svg";
-import closeRight from "/@/assets/svg/close_right.svg";
+import close from "/@/assets/svg/close.svg?component";
+import refresh from "/@/assets/svg/refresh.svg?component";
+import closeAll from "/@/assets/svg/close_all.svg?component";
+import closeLeft from "/@/assets/svg/close_left.svg?component";
+import closeOther from "/@/assets/svg/close_other.svg?component";
+import closeRight from "/@/assets/svg/close_right.svg?component";
 
-import { $t as t } from "/@/plugins/i18n";
 import { emitter } from "/@/utils/mitt";
+import { $t as t } from "/@/plugins/i18n";
 import { isEqual, isEmpty } from "lodash-es";
 import { transformI18n } from "/@/plugins/i18n";
 import { storageLocal } from "/@/utils/storage";
@@ -30,7 +31,6 @@ import { handleAliveRoute, delAliveRoutes } from "/@/router/utils";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 import { toggleClass, removeClass, hasClass } from "/@/utils/operate";
-
 import { templateRef, useResizeObserver, useDebounceFn } from "@vueuse/core";
 
 const route = useRoute();
@@ -128,7 +128,7 @@ const moveToView = (index: number): void => {
   if (!instance.refs["dynamic" + index]) {
     return;
   }
-  const tabItemEl = instance.refs["dynamic" + index];
+  const tabItemEl = instance.refs["dynamic" + index][0];
   const tabItemElOffsetLeft = (tabItemEl as HTMLElement).offsetLeft;
   const tabItemOffsetWidth = (tabItemEl as HTMLElement).offsetWidth;
   // 标签页导航栏可视长度（不包含溢出部分）
@@ -186,7 +186,7 @@ const handleScroll = (offset: number): void => {
   }
 };
 
-const tagsViews = ref<Array<tagsViewsType>>([
+const tagsViews = reactive<Array<tagsViewsType>>([
   {
     icon: refresh,
     text: t("buttons.hsreload"),
@@ -435,13 +435,13 @@ function closeMenu() {
 
 function showMenus(value: boolean) {
   Array.of(1, 2, 3, 4, 5).forEach(v => {
-    tagsViews.value[v].show = value;
+    tagsViews[v].show = value;
   });
 }
 
 function disabledMenus(value: boolean) {
   Array.of(1, 2, 3, 4, 5).forEach(v => {
-    tagsViews.value[v].disabled = value;
+    tagsViews[v].disabled = value;
   });
 }
 
@@ -463,7 +463,7 @@ function showMenuModel(
   showMenus(true);
 
   if (refresh) {
-    tagsViews.value[0].show = true;
+    tagsViews[0].show = true;
   }
 
   /**
@@ -473,25 +473,25 @@ function showMenuModel(
 
   if (currentIndex === 1 && routeLength !== 2) {
     // 左侧的菜单是首页，右侧存在别的菜单
-    tagsViews.value[2].show = false;
+    tagsViews[2].show = false;
     Array.of(1, 3, 4, 5).forEach(v => {
-      tagsViews.value[v].disabled = false;
+      tagsViews[v].disabled = false;
     });
-    tagsViews.value[2].disabled = true;
+    tagsViews[2].disabled = true;
   } else if (currentIndex === 1 && routeLength === 2) {
     disabledMenus(false);
     // 左侧的菜单是首页，右侧不存在别的菜单
     Array.of(2, 3, 4).forEach(v => {
-      tagsViews.value[v].show = false;
-      tagsViews.value[v].disabled = true;
+      tagsViews[v].show = false;
+      tagsViews[v].disabled = true;
     });
   } else if (routeLength - 1 === currentIndex && currentIndex !== 0) {
     // 当前路由是所有路由中的最后一个
-    tagsViews.value[3].show = false;
+    tagsViews[3].show = false;
     Array.of(1, 2, 4, 5).forEach(v => {
-      tagsViews.value[v].disabled = false;
+      tagsViews[v].disabled = false;
     });
-    tagsViews.value[3].disabled = true;
+    tagsViews[3].disabled = true;
   } else if (currentIndex === 0 || currentPath === "/redirect/welcome") {
     // 当前路由为首页
     disabledMenus(true);
@@ -505,10 +505,10 @@ function openMenu(tag, e) {
   if (tag.path === "/welcome") {
     // 右键菜单为首页，只显示刷新
     showMenus(false);
-    tagsViews.value[0].show = true;
+    tagsViews[0].show = true;
   } else if (route.path !== tag.path) {
     // 右键菜单不匹配当前路由，隐藏刷新
-    tagsViews.value[0].show = false;
+    tagsViews[0].show = false;
     showMenuModel(tag.path, tag.query);
   } else if (
     // eslint-disable-next-line no-dupe-else-if
@@ -517,7 +517,7 @@ function openMenu(tag, e) {
   ) {
     showMenus(true);
     // 只有两个标签时不显示关闭其他标签页
-    tagsViews.value[4].show = false;
+    tagsViews[4].show = false;
   } else if (route.path === tag.path) {
     // 右键当前激活的菜单
     showMenuModel(tag.path, tag.query, true);
@@ -552,30 +552,32 @@ function tagOnClick(item) {
 }
 
 // 鼠标移入
-function onMouseenter(item, index) {
+function onMouseenter(index) {
   if (index) activeIndex.value = index;
   if (unref(showModel) === "smart") {
-    if (hasClass(instance.refs["schedule" + index], "schedule-active")) return;
-    toggleClass(true, "schedule-in", instance.refs["schedule" + index]);
-    toggleClass(false, "schedule-out", instance.refs["schedule" + index]);
+    if (hasClass(instance.refs["schedule" + index][0], "schedule-active"))
+      return;
+    toggleClass(true, "schedule-in", instance.refs["schedule" + index][0]);
+    toggleClass(false, "schedule-out", instance.refs["schedule" + index][0]);
   } else {
-    if (hasClass(instance.refs["dynamic" + index], "card-active")) return;
-    toggleClass(true, "card-in", instance.refs["dynamic" + index]);
-    toggleClass(false, "card-out", instance.refs["dynamic" + index]);
+    if (hasClass(instance.refs["dynamic" + index][0], "card-active")) return;
+    toggleClass(true, "card-in", instance.refs["dynamic" + index][0]);
+    toggleClass(false, "card-out", instance.refs["dynamic" + index][0]);
   }
 }
 
 // 鼠标移出
-function onMouseleave(item, index) {
+function onMouseleave(index) {
   activeIndex.value = -1;
   if (unref(showModel) === "smart") {
-    if (hasClass(instance.refs["schedule" + index], "schedule-active")) return;
-    toggleClass(false, "schedule-in", instance.refs["schedule" + index]);
-    toggleClass(true, "schedule-out", instance.refs["schedule" + index]);
+    if (hasClass(instance.refs["schedule" + index][0], "schedule-active"))
+      return;
+    toggleClass(false, "schedule-in", instance.refs["schedule" + index][0]);
+    toggleClass(true, "schedule-out", instance.refs["schedule" + index][0]);
   } else {
-    if (hasClass(instance.refs["dynamic" + index], "card-active")) return;
-    toggleClass(false, "card-in", instance.refs["dynamic" + index]);
-    toggleClass(true, "card-out", instance.refs["dynamic" + index]);
+    if (hasClass(instance.refs["dynamic" + index][0], "card-active")) return;
+    toggleClass(false, "card-in", instance.refs["dynamic" + index][0]);
+    toggleClass(true, "card-out", instance.refs["dynamic" + index][0]);
   }
 }
 
@@ -644,8 +646,8 @@ const getContextMenuStyle = computed((): CSSProperties => {
               : ''
           ]"
           @contextmenu.prevent="openMenu(item, $event)"
-          @mouseenter.prevent="onMouseenter(item, index)"
-          @mouseleave.prevent="onMouseleave(item, index)"
+          @mouseenter.prevent="onMouseenter(index)"
+          @mouseleave.prevent="onMouseleave(index)"
           @click="tagOnClick(item)"
         >
           <router-link :to="item.path"
@@ -659,7 +661,7 @@ const getContextMenuStyle = computed((): CSSProperties => {
             class="el-icon-close"
             @click.stop="deleteMenu(item)"
           >
-            <CloseBold />
+            <IconifyIconOffline icon="close-bold" />
           </el-icon>
           <div
             :ref="'schedule' + index"
@@ -698,13 +700,13 @@ const getContextMenuStyle = computed((): CSSProperties => {
           class="el-icon-refresh-right rotate"
           @click="onFresh"
         >
-          <RefreshRight />
+          <IconifyIconOffline icon="refresh-right" />
         </el-icon>
       </li>
       <li>
         <el-dropdown trigger="click" placement="bottom-end">
           <el-icon>
-            <ArrowDown />
+            <IconifyIconOffline icon="arrow-down" />
           </el-icon>
           <template #dropdown>
             <el-dropdown-menu>

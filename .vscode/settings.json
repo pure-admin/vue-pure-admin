@@ -1,15 +1,4 @@
 {
-  /** 你需要安装这些插件，以便带来更好的提示体验
-   * ESLint
-   * Prettier - Code formatter
-   * stylelint
-   * vscode-icons
-   * i18n Ally
-   * Iconify IntelliSense
-   * WindiCSS IntelliSense
-   * TypeScript Vue Plugin (Volar)
-   * Vue Language Features (Volar)
-   */
   "editor.formatOnType": true,
   "editor.formatOnSave": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
@@ -27,14 +16,12 @@
   "editor.suggestSelection": "first",
   "editor.acceptSuggestionOnCommitCharacter": false,
   "css.lint.propertyIgnoredDueToDisplay": "ignore",
-  // Prevent inline styles from being automatically formatted to all lowercase
   "editor.quickSuggestions": {
     "other": true,
     "comments": true,
     "strings": true
   },
   "files.associations": {
-    // Specifies the location of snippets in the suggestion widget
     "editor.snippetSuggestions": "top"
   },
   "[css]": {

@@ -99,58 +99,6 @@ const components = [
   ElTreeV2
 ];
 
-// https://element-plus.org/zh-CN/component/icon.html
-import {
-  Check,
-  Menu,
-  HomeFilled,
-  SetUp,
-  Edit,
-  Setting,
-  Lollipop,
-  Link,
-  Position,
-  Histogram,
-  RefreshRight,
-  ArrowDown,
-  Close,
-  CloseBold,
-  Bell,
-  Guide,
-  User,
-  Iphone,
-  Location,
-  Tickets,
-  OfficeBuilding,
-  Notebook
-} from "@element-plus/icons-vue";
-
-// Icon
-export const iconComponents = [
-  Check,
-  Menu,
-  HomeFilled,
-  SetUp,
-  Edit,
-  Setting,
-  Lollipop,
-  Link,
-  Position,
-  Histogram,
-  RefreshRight,
-  ArrowDown,
-  Close,
-  CloseBold,
-  Bell,
-  Guide,
-  User,
-  Iphone,
-  Location,
-  Tickets,
-  OfficeBuilding,
-  Notebook
-];
-
 export function useElementPlus(app: App) {
   // 注册组件
   components.forEach((component: Component) => {
@@ -158,10 +106,7 @@ export function useElementPlus(app: App) {
   });
   // 注册指令
   plugins.forEach(plugin => {
+    // @ts-ignore
     app.use(plugin);
-  });
-  // 注册图标
-  iconComponents.forEach((component: Component) => {
-    app.component(component.name, component);
   });
 }

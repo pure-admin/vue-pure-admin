@@ -1,7 +1,8 @@
-import { App, defineComponent } from "vue";
+import { h, App, defineComponent } from "vue";
 import icon from "./src/Icon.vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { iconComponents } from "/@/plugins/element-plus";
+import iconifyIconOffline from "./src/iconifyIconOffline";
+import iconifyIconOnline from "./src/iconifyIconOnline";
 
 /**
  * find icon component
@@ -43,11 +44,22 @@ export function findIcon(icon: String, type = "EL", property?: string) {
   if (type === "FA") {
     return defineComponent({
       name: "FaIcon",
-      setup() {
+      data() {
         return { icon, property };
       },
       components: { FontAwesomeIcon },
-      template: `<font-awesome-icon :icon="icon" v-bind:[property]="true" />`
+      render() {
+        return h(
+          FontAwesomeIcon,
+          {
+            icon: `${this.icon}`,
+            [property]: true
+          },
+          {
+            default: () => []
+          }
+        );
+      }
     });
   } else if (type === "fa") {
     return defineComponent({
@@ -55,7 +67,17 @@ export function findIcon(icon: String, type = "EL", property?: string) {
       data() {
         return { icon: `fa ${icon}` };
       },
-      template: `<i :class="icon" />`
+      render() {
+        return h(
+          "i",
+          {
+            class: `${this.icon}`
+          },
+          {
+            default: () => []
+          }
+        );
+      }
     });
   } else if (type === "IF") {
     return defineComponent({
@@ -63,25 +85,54 @@ export function findIcon(icon: String, type = "EL", property?: string) {
       data() {
         return { icon: `iconfont ${icon}` };
       },
-      template: `<i :class="icon" />`
+      render() {
+        return h(
+          "i",
+          {
+            class: `${this.icon}`
+          },
+          {
+            default: () => []
+          }
+        );
+      }
     });
   } else if (type === "RI") {
     return defineComponent({
-      name: "RIIcon",
+      name: "RiIcon",
       data() {
         return { icon: `ri-${icon}` };
       },
-      template: `<i :class="icon" />`
+      render() {
+        return h(
+          "i",
+          {
+            class: `${this.icon}`
+          },
+          {
+            default: () => []
+          }
+        );
+      }
     });
   } else if (type === "EL") {
-    const components = iconComponents.filter(
-      component => component.name === icon
-    );
-    if (components.length > 0) {
-      return components[0];
-    } else {
-      return null;
-    }
+    return defineComponent({
+      name: "ElIcon",
+      data() {
+        return { icon };
+      },
+      render() {
+        return h(
+          IconifyIconOffline,
+          {
+            icon: `${this.icon}`
+          },
+          {
+            default: () => []
+          }
+        );
+      }
+    });
   } else if (type === "SVG") {
     return icon;
   }
@@ -93,6 +144,11 @@ export const Icon = Object.assign(icon, {
   }
 });
 
+export const IconifyIconOffline = iconifyIconOffline;
+export const IconifyIconOnline = iconifyIconOnline;
+
 export default {
-  Icon
+  Icon,
+  IconifyIconOffline,
+  IconifyIconOnline
 };

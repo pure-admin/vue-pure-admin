@@ -11,13 +11,14 @@ import { setType } from "./types";
 import { useI18n } from "vue-i18n";
 import { routerArrays } from "./types";
 import { emitter } from "/@/utils/mitt";
-import backTop from "/@/assets/svg/back_top.svg";
 import { useAppStoreHook } from "/@/store/modules/app";
-import fullScreen from "/@/assets/svg/full_screen.svg";
-import exitScreen from "/@/assets/svg/exit_screen.svg";
 import { deviceDetection } from "/@/utils/deviceDetection";
 import { useMultiTagsStore } from "/@/store/modules/multiTags";
 import { useSettingStoreHook } from "/@/store/modules/settings";
+
+import backTop from "/@/assets/svg/back_top.svg?component";
+import fullScreen from "/@/assets/svg/full_screen.svg?component";
+import exitScreen from "/@/assets/svg/exit_screen.svg?component";
 
 import navbar from "./components/navbar.vue";
 import tag from "./components/tag/index.vue";

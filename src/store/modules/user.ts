@@ -59,7 +59,7 @@ export const useUserStore = defineStore({
           parentPath: "/",
           meta: {
             title: "menus.hshome",
-            icon: "HomeFilled",
+            icon: "home-filled",
             i18n: true,
             showLink: true
           }

@@ -7,7 +7,7 @@ const errorRouter = {
   component: Layout,
   redirect: "/error/401",
   meta: {
-    icon: "Position",
+    icon: "position",
     title: $t("menus.hserror"),
     showLink: true,
     i18n: true,

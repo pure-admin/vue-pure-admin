@@ -8,7 +8,7 @@ const nestedRouter = {
   name: "Nested",
   meta: {
     title: $t("menus.hsmenus"),
-    icon: "Histogram",
+    icon: "histogram",
     showLink: true,
     i18n: true,
     rank: 5
