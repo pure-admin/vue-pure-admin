@@ -16,6 +16,7 @@ import {
   findRouteByPath,
   handleAliveRoute
 } from "./utils";
+import { loadEnv } from "@build/index";
 
 // 创建路由实例
 export const router: Router = createRouter({
@@ -51,6 +52,7 @@ router.beforeEach((to: toRouteType, _from, next) => {
   }
   const name = storageSession.getItem("info");
   NProgress.start();
+  const { VITE_WEB_TITLE } = loadEnv();
   const externalLink = to?.redirectedFrom?.fullPath;
   if (!externalLink)
     to.matched.some(item => {
@@ -58,7 +60,7 @@ router.beforeEach((to: toRouteType, _from, next) => {
         ? (document.title = transformI18n(
             item.meta.title as string,
             item.meta?.i18n as boolean
-          ))
+          )) + ' - ' + VITE_WEB_TITLE
         : "";
     });
   if (name) {
