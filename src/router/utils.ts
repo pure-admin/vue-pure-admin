@@ -17,6 +17,7 @@ const modulesRoutes = import.meta.glob("/src/views/**/*.{vue,tsx}");
 
 // 动态路由
 import { getAsyncRoutes } from "/@/api/routes";
+import { storageSession } from "../utils/storage";
 
 // 按照路由中meta下的rank等级升序来排序路由
 function ascending(arr: any[]) {
@@ -251,14 +252,34 @@ function getHistoryMode(): RouterHistory {
   }
 }
 
+// 是否有角色
+function hasRoles(value: Array<string>): boolean {
+  if (value && value instanceof Array && value.length > 0) {
+    const roles = storageSession.getItem("info")?.roles;
+    const requiredRoles = value;
+
+    const hasPermission = roles.some(role => {
+      return requiredRoles.includes(role);
+    });
+
+    if (!hasPermission) {
+      return false;
+    }
+    return true;
+  } else {
+    return false;
+  }
+}
+
 // 是否有权限
 function hasPermissions(value: Array<string>): boolean {
   if (value && value instanceof Array && value.length > 0) {
-    const roles = usePermissionStoreHook().buttonAuth;
-    const permissionRoles = value;
+    const permissions = storageSession.getItem("info")?.permissions;
 
-    const hasPermission = roles.some(role => {
-      return permissionRoles.includes(role);
+    const requiredPermissions = value;
+
+    const hasPermission = permissions.some(permission => {
+      return requiredPermissions.includes(permission);
     });
 
     if (!hasPermission) {
