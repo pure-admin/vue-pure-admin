@@ -120,8 +120,10 @@ function translationEn() {
         <template #dropdown>
           <el-dropdown-menu class="logout">
             <el-dropdown-item @click="logout">
-              <i class="ri-logout-circle-r-line"></i
-              >{{ $t("buttons.hsLoginOut") }}</el-dropdown-item
+              <IconifyIconOffline
+                icon="logout-circle-r-line"
+                style="margin: 5px"
+              />{{ $t("buttons.hsLoginOut") }}</el-dropdown-item
             >
           </el-dropdown-menu>
         </template>

@@ -9,7 +9,6 @@ const errorRouter = {
   meta: {
     icon: "position",
     title: $t("menus.hserror"),
-    showLink: true,
     i18n: true,
     rank: 7
   },
@@ -20,8 +19,7 @@ const errorRouter = {
       component: () => import("/@/views/error/401.vue"),
       meta: {
         title: $t("menus.hsfourZeroOne"),
-        i18n: true,
-        showLink: true
+        i18n: true
       }
     },
     {
@@ -30,8 +28,7 @@ const errorRouter = {
       component: () => import("/@/views/error/404.vue"),
       meta: {
         title: $t("menus.hsfourZeroFour"),
-        i18n: true,
-        showLink: true
+        i18n: true
       }
     }
   ]

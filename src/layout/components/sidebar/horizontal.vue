@@ -13,11 +13,9 @@ import Notice from "../notice/index.vue";
 import { templateRef } from "@vueuse/core";
 import SidebarItem from "./sidebarItem.vue";
 import avatars from "/@/assets/avatars.jpg";
-import { algorithm } from "/@/utils/algorithm";
 import screenfull from "../screenfull/index.vue";
 import { useRoute, useRouter } from "vue-router";
 import { storageSession } from "/@/utils/storage";
-import Icon from "/@/components/ReIcon/src/Icon.vue";
 import { deviceDetection } from "/@/utils/deviceDetection";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 import globalization from "/@/assets/svg/globalization.svg?component";
@@ -92,7 +90,7 @@ const menuSelect = (indexPath: string): void => {
       }
     });
   }
-  findCurrentRoute(algorithm.increaseIndexes(routers));
+  findCurrentRoute(routers);
 };
 
 function backHome() {
@@ -128,7 +126,11 @@ onMounted(() => {
 <template>
   <div class="horizontal-header">
     <div class="horizontal-header-left" @click="backHome">
-      <Icon svg :width="35" :height="35" content="team-iconlogo" />
+      <FontIcon
+        icon="team-iconlogo"
+        svg
+        style="width: 35px; height: 35px"
+      ></FontIcon>
       <h4>{{ title }}</h4>
     </div>
     <el-menu
@@ -183,8 +185,11 @@ onMounted(() => {
         <template #dropdown>
           <el-dropdown-menu class="logout">
             <el-dropdown-item @click="logout">
-              <i class="ri-logout-circle-r-line"></i
-              >{{ $t("buttons.hsLoginOut") }}</el-dropdown-item
+              <IconifyIconOffline
+                icon="logout-circle-r-line"
+                style="margin: 5px"
+              />
+              {{ $t("buttons.hsLoginOut") }}</el-dropdown-item
             >
           </el-dropdown-menu>
         </template>

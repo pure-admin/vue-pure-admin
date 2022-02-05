@@ -1,5 +1,7 @@
 import { h, defineComponent } from "vue";
 import { Icon as IconifyIcon, addIcon } from "@iconify/vue/dist/offline";
+
+// element-plus icon
 import Check from "@iconify-icons/ep/check";
 import Menu from "@iconify-icons/ep/menu";
 import HomeFilled from "@iconify-icons/ep/home-filled";
@@ -45,8 +47,25 @@ addIcon("tickets", Tickets);
 addIcon("office-building", OfficeBuilding);
 addIcon("notebook", Notebook);
 
-// Iconify Icon在Vue里离线使用（用于内网环境）
-// https://docs.iconify.design/icon-components/vue/offline.html
+// remixicon
+import arrowRightSLine from "@iconify-icons/ri/arrow-right-s-line";
+import arrowLeftSLine from "@iconify-icons/ri/arrow-left-s-line";
+import logoutCircleRLine from "@iconify-icons/ri/logout-circle-r-line";
+import nodeTree from "@iconify-icons/ri/node-tree";
+addIcon("arrow-right-s-line", arrowRightSLine);
+addIcon("arrow-left-s-line", arrowLeftSLine);
+addIcon("logout-circle-r-line", logoutCircleRLine);
+addIcon("node-tree", nodeTree);
+
+// Font Awesome 4
+import faUser from "@iconify-icons/fa/user";
+import faLock from "@iconify-icons/fa/lock";
+import faSignOut from "@iconify-icons/fa/sign-out";
+addIcon("fa-user", faUser);
+addIcon("fa-lock", faLock);
+addIcon("fa-sign-out", faSignOut);
+
+// Iconify Icon在Vue里离线使用（用于内网环境）https://docs.iconify.design/icon-components/vue/offline.html
 export default defineComponent({
   name: "IconifyIcon",
   components: { IconifyIcon },
@@ -57,10 +76,12 @@ export default defineComponent({
     }
   },
   render() {
+    const attrs = this.$attrs;
     return h(
       IconifyIcon,
       {
-        icon: `${this.icon}`
+        icon: `${this.icon}`,
+        ...attrs
       },
       {
         default: () => []

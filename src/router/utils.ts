@@ -30,7 +30,7 @@ function ascending(arr: any[]) {
 // 过滤meta中showLink为false的路由
 function filterTree(data: RouteComponent[]) {
   const newTree = data.filter(
-    (v: { meta: { showLink: boolean } }) => v.meta.showLink
+    (v: { meta: { showLink: boolean } }) => v.meta?.showLink !== false
   );
   newTree.forEach(
     (v: { children }) => v.children && (v.children = filterTree(v.children))

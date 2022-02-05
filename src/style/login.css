@@ -85,7 +85,7 @@
   align-items: center;
 }
 
-.icon i {
+.icon svg {
   color: #d9d9d9;
   transition: 0.5s;
 }
@@ -107,7 +107,7 @@
   padding: 0;
 }
 
-.input-group.focus .icon i {
+.input-group.focus .icon svg {
   color: #5392f0;
 }
 
