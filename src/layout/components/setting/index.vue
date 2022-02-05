@@ -101,7 +101,7 @@ const getThemeColorStyle = computed(() => {
   };
 });
 
-function changeStorageConfigure(key, val) {
+function storageConfigureChange<T>(key: string, val: T): void {
   const storageConfigure = instance.configure;
   storageConfigure[key] = val;
   instance.configure = storageConfigure;
@@ -117,7 +117,7 @@ function toggleClass(flag: boolean, clsName: string, target?: HTMLElement) {
 // 灰色模式设置
 const greyChange = (value): void => {
   toggleClass(settings.greyVal, "html-grey", document.querySelector("html"));
-  changeStorageConfigure("grey", value);
+  storageConfigureChange("grey", value);
 };
 
 // 色弱模式设置
@@ -127,29 +127,30 @@ const weekChange = (value): void => {
     "html-weakness",
     document.querySelector("html")
   );
-  changeStorageConfigure("weak", value);
+  storageConfigureChange("weak", value);
 };
 
 const tagsChange = () => {
   let showVal = settings.tabsVal;
-  changeStorageConfigure("hideTabs", showVal);
+  storageConfigureChange("hideTabs", showVal);
   emitter.emit("tagViewsChange", showVal);
 };
 
 const multiTagsCacheChange = () => {
   let multiTagsCache = settings.multiTagsCache;
-  changeStorageConfigure("multiTagsCache", multiTagsCache);
+  storageConfigureChange("multiTagsCache", multiTagsCache);
   useMultiTagsStoreHook().multiTagsCacheChange(multiTagsCache);
 };
 
 // 清空缓存并返回登录页
 function onReset() {
-  toggleClass(getConfig().Grey, "html-grey", document.querySelector("html"));
-  toggleClass(
-    getConfig().Weak,
-    "html-weakness",
-    document.querySelector("html")
-  );
+  router.push("/login");
+  const { Grey, Weak, MultiTagsCache, EpThemeColor, Layout } = getConfig();
+  useAppStoreHook().setLayout(Layout);
+  useEpThemeStoreHook().setEpThemeColor(EpThemeColor);
+  useMultiTagsStoreHook().multiTagsCacheChange(MultiTagsCache);
+  toggleClass(Grey, "html-grey", document.querySelector("html"));
+  toggleClass(Weak, "html-weakness", document.querySelector("html"));
   useMultiTagsStoreHook().handleTags("equal", [
     {
       path: "/welcome",
@@ -161,23 +162,20 @@ function onReset() {
       }
     }
   ]);
-  useMultiTagsStoreHook().multiTagsCacheChange(getConfig().MultiTagsCache);
-  useEpThemeStoreHook().setEpThemeColor(getConfig().EpThemeColor);
   storageLocal.clear();
   storageSession.clear();
-  router.push("/login");
 }
 
 function onChange(label) {
-  changeStorageConfigure("showModel", label);
+  storageConfigureChange("showModel", label);
   emitter.emit("tagViewsShowModel", label);
 }
 
 // 侧边栏Logo
 function logoChange() {
   unref(logoVal)
-    ? changeStorageConfigure("showLogo", true)
-    : changeStorageConfigure("showLogo", false);
+    ? storageConfigureChange("showLogo", true)
+    : storageConfigureChange("showLogo", false);
   emitter.emit("logoChange", unref(logoVal));
 }
 

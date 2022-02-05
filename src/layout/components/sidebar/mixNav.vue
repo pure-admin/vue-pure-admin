@@ -177,11 +177,6 @@ onMounted(() => {
             ></component>
           </el-icon>
           <span>{{ transformI18n(route.meta.title, route.meta.i18n) }}</span>
-          <Icon
-            v-if="route.meta.extraIcon"
-            :svg="route.meta.extraIcon.svg ? true : false"
-            :content="`${route.meta.extraIcon.name}`"
-          />
 
           <FontIcon
             v-if="route.meta.extraIcon"
@@ -241,7 +236,7 @@ onMounted(() => {
         :title="$t('buttons.hssystemSet')"
         @click="onPanel"
       >
-        <Setting />
+        <IconifyIconOffline icon="setting" />
       </el-icon>
     </div>
   </div>
