@@ -1,3 +1,14 @@
+# 2.9.0 (2022-2-5)
+
+### 🎫 Feat
+
+- Added package size analysis, command `pnpm report`
+
+### 🍏 Perf
+
+- Use `iconify` to introduce icons on demand, optimize icon size, and reduce network requests
+- Optimize the route, the route can not pass `showLink: true`, it is displayed by default
+
 # 2.8.5 (2022-1-21)
 
 ### 🎫 Feat

@@ -12,18 +12,16 @@ import { emitter } from "/@/utils/mitt";
 import Notice from "../notice/index.vue";
 import { templateRef } from "@vueuse/core";
 import avatars from "/@/assets/avatars.jpg";
-import { algorithm } from "/@/utils/algorithm";
 import { transformI18n } from "/@/plugins/i18n";
 import screenfull from "../screenfull/index.vue";
 import { useRoute, useRouter } from "vue-router";
 import { storageSession } from "/@/utils/storage";
-import { findIconReg } from "/@/components/ReIcon";
-import Icon from "/@/components/ReIcon/src/Icon.vue";
 import { useAppStoreHook } from "/@/store/modules/app";
 import { deviceDetection } from "/@/utils/deviceDetection";
 import globalization from "/@/assets/svg/globalization.svg";
-import { usePermissionStoreHook } from "/@/store/modules/permission";
+import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
+import { usePermissionStoreHook } from "/@/store/modules/permission";
 
 const instance =
   getCurrentInstance().appContext.config.globalProperties.$storage;
@@ -97,7 +95,7 @@ const menuSelect = (indexPath: string): void => {
       }
     });
   }
-  findCurrentRoute(algorithm.increaseIndexes(routers));
+  findCurrentRoute(routers);
 };
 
 function handleResize() {
@@ -175,7 +173,7 @@ onMounted(() => {
         <template #title>
           <el-icon v-show="route.meta.icon" :class="route.meta.icon">
             <component
-              :is="findIconReg(route.meta && route.meta.icon)"
+              :is="useRenderIcon(route.meta && route.meta.icon)"
             ></component>
           </el-icon>
           <span>{{ transformI18n(route.meta.title, route.meta.i18n) }}</span>
@@ -184,6 +182,15 @@ onMounted(() => {
             :svg="route.meta.extraIcon.svg ? true : false"
             :content="`${route.meta.extraIcon.name}`"
           />
+
+          <FontIcon
+            v-if="route.meta.extraIcon"
+            width="30px"
+            height="30px"
+            style="position: absolute; right: 10px"
+            :icon="route.meta.extraIcon.name"
+            :svg="route.meta.extraIcon.svg ? true : false"
+          ></FontIcon>
         </template>
       </el-menu-item>
     </el-menu>

@@ -306,6 +306,10 @@
       height: 48px;
       line-height: 48px;
       background: $menuBg;
+
+      svg {
+        position: static !important;
+      }
     }
 
     .is-active > .el-sub-menu__title,
@@ -597,16 +601,6 @@ body[layout="vertical"] {
 
       .el-tooltip {
         padding: 0 !important;
-      }
-    }
-
-    .el-sub-menu {
-      overflow: hidden;
-
-      & > .el-sub-menu__title {
-        .el-sub-menu__icon-arrow {
-          display: none;
-        }
       }
     }
 

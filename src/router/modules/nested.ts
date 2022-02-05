@@ -9,7 +9,6 @@ const nestedRouter = {
   meta: {
     title: $t("menus.hsmenus"),
     icon: "histogram",
-    showLink: true,
     i18n: true,
     rank: 5
   },
@@ -20,7 +19,6 @@ const nestedRouter = {
       name: "Menu1",
       meta: {
         title: $t("menus.hsmenu1"),
-        showLink: true,
         i18n: true,
         keepAlive: true
       },
@@ -32,7 +30,6 @@ const nestedRouter = {
           name: "Menu1-1",
           meta: {
             title: $t("menus.hsmenu1-1"),
-            showLink: true,
             i18n: true,
             keepAlive: true
           }
@@ -44,7 +41,6 @@ const nestedRouter = {
           redirect: "/nested/menu1/menu1-2/menu1-2-1",
           meta: {
             title: $t("menus.hsmenu1-2"),
-            showLink: true,
             i18n: true,
             keepAlive: true
           },
@@ -56,7 +52,6 @@ const nestedRouter = {
               name: "Menu1-2-1",
               meta: {
                 title: $t("menus.hsmenu1-2-1"),
-                showLink: true,
                 i18n: true,
                 keepAlive: true
               }
@@ -68,7 +63,6 @@ const nestedRouter = {
               name: "Menu1-2-2",
               meta: {
                 title: $t("menus.hsmenu1-2-2"),
-                showLink: true,
                 keepAlive: true,
                 i18n: true,
                 extraIcon: {
@@ -85,7 +79,6 @@ const nestedRouter = {
           name: "Menu1-3",
           meta: {
             title: $t("menus.hsmenu1-3"),
-            showLink: true,
             i18n: true,
             keepAlive: true
           }
@@ -98,7 +91,6 @@ const nestedRouter = {
       component: () => import("/@/views/nested/menu2/index.vue"),
       meta: {
         title: $t("menus.hsmenu2"),
-        showLink: true,
         i18n: true,
         keepAlive: true
       }

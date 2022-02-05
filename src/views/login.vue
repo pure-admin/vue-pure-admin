@@ -110,7 +110,7 @@ function onPwdBlur() {
           }"
         >
           <div class="icon">
-            <i class="fa fa-user"></i>
+            <IconifyIconOffline icon="fa-user" width="14" height="14" />
           </div>
           <div>
             <h5>用户名</h5>
@@ -139,7 +139,7 @@ function onPwdBlur() {
           }"
         >
           <div class="icon">
-            <i class="fa fa-lock"></i>
+            <IconifyIconOffline icon="fa-lock" width="14" height="14" />
           </div>
           <div>
             <h5>密码</h5>

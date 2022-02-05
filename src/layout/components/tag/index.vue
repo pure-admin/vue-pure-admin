@@ -40,11 +40,11 @@ const activeIndex = ref<number>(-1);
 let refreshButton = "refresh-button";
 const instance = getCurrentInstance();
 const pureSetting = useSettingStoreHook();
-const showTags = ref(storageLocal.getItem("tagsVal") || false);
 const tabDom = templateRef<HTMLElement | null>("tabDom", null);
 const containerDom = templateRef<HTMLElement | null>("containerDom", null);
 const scrollbarDom = templateRef<HTMLElement | null>("scrollbarDom", null);
-
+const showTags =
+  ref(storageLocal.getItem("responsive-configure").hideTabs) ?? "false";
 let multiTags: ComputedRef<Array<RouteConfigs>> = computed(() => {
   return useMultiTagsStoreHook()?.multiTags;
 });
@@ -129,14 +129,14 @@ const moveToView = (index: number): void => {
     return;
   }
   const tabItemEl = instance.refs["dynamic" + index][0];
-  const tabItemElOffsetLeft = (tabItemEl as HTMLElement).offsetLeft;
-  const tabItemOffsetWidth = (tabItemEl as HTMLElement).offsetWidth;
+  const tabItemElOffsetLeft = (tabItemEl as HTMLElement)?.offsetLeft;
+  const tabItemOffsetWidth = (tabItemEl as HTMLElement)?.offsetWidth;
   // 标签页导航栏可视长度（不包含溢出部分）
   const scrollbarDomWidth = scrollbarDom.value
-    ? scrollbarDom.value.offsetWidth
+    ? scrollbarDom.value?.offsetWidth
     : 0;
   // 已有标签页总长度（包含溢出部分）
-  const tabDomWidth = tabDom.value ? tabDom.value.offsetWidth : 0;
+  const tabDomWidth = tabDom.value ? tabDom.value?.offsetWidth : 0;
 
   if (tabDomWidth < scrollbarDomWidth || tabItemElOffsetLeft === 0) {
     translateX.value = 0;
@@ -314,8 +314,7 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
           meta: {
             title: "menus.hshome",
             i18n: true,
-            icon: "el-icon-s-home",
-            showLink: true
+            icon: "home-filled"
           }
         },
         obj
@@ -470,7 +469,6 @@ function showMenuModel(
    * currentIndex为1时，左侧的菜单是首页，则不显示关闭左侧标签页
    * 如果currentIndex等于routeLength-1，右侧没有菜单，则不显示关闭右侧标签页
    */
-
   if (currentIndex === 1 && routeLength !== 2) {
     // 左侧的菜单是首页，右侧存在别的菜单
     tagsViews[2].show = false;
@@ -631,7 +629,9 @@ const getContextMenuStyle = computed((): CSSProperties => {
 
 <template>
   <div ref="containerDom" class="tags-view" v-if="!showTags">
-    <i class="ri-arrow-left-s-line" @click="handleScroll(200)"></i>
+    <div class="arrow-left">
+      <IconifyIconOffline icon="arrow-left-s-line" @click="handleScroll(200)" />
+    </div>
     <div ref="scrollbarDom" class="scroll-container">
       <div class="tab" ref="tabDom" :style="getTabStyle">
         <div
@@ -671,7 +671,12 @@ const getContextMenuStyle = computed((): CSSProperties => {
         </div>
       </div>
     </div>
-    <i class="ri-arrow-right-s-line" @click="handleScroll(-200)"></i>
+    <span class="arrow-right">
+      <IconifyIconOffline
+        icon="arrow-right-s-line"
+        @click="handleScroll(-200)"
+      />
+    </span>
     <!-- 右键菜单按钮 -->
     <transition name="el-zoom-in-top">
       <ul

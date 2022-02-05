@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { getCurrentInstance } from "vue";
-import Icon from "/@/components/ReIcon/src/Icon.vue";
 const props = defineProps({
   collapse: Boolean
 });
@@ -19,7 +18,11 @@ const title =
         class="sidebar-logo-link"
         to="/"
       >
-        <Icon svg :width="35" :height="35" content="team-iconlogo" />
+        <FontIcon
+          icon="team-iconlogo"
+          svg
+          style="width: 35px; height: 35px"
+        ></FontIcon>
         <span class="sidebar-title">{{ title }}</span>
       </router-link>
       <router-link
@@ -29,7 +32,11 @@ const title =
         class="sidebar-logo-link"
         to="/"
       >
-        <Icon svg :width="35" :height="35" content="team-iconlogo" />
+        <FontIcon
+          icon="team-iconlogo"
+          svg
+          style="width: 35px; height: 35px"
+        ></FontIcon>
         <span class="sidebar-title">{{ title }}</span>
       </router-link>
     </transition>

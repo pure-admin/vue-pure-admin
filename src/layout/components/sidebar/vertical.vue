@@ -2,7 +2,6 @@
 import Logo from "./logo.vue";
 import { emitter } from "/@/utils/mitt";
 import SidebarItem from "./sidebarItem.vue";
-import { algorithm } from "/@/utils/algorithm";
 import { storageLocal } from "/@/utils/storage";
 import { useRoute, useRouter } from "vue-router";
 import { useAppStoreHook } from "/@/store/modules/app";
@@ -80,7 +79,7 @@ const menuSelect = (indexPath: string): void => {
       }
     });
   }
-  findCurrentRoute(algorithm.increaseIndexes(router));
+  findCurrentRoute(router);
 };
 
 onBeforeMount(() => {

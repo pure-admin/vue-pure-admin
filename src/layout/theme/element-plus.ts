@@ -1,6 +1,6 @@
 /* 动态改变element-plus主题色 */
 import rgbHex from "rgb-hex";
-import color from "css-color-function";
+import { convert } from "css-color-function";
 import { TinyColor } from "@ctrl/tinycolor";
 import epCss from "element-plus/dist/index.css";
 
@@ -48,7 +48,7 @@ export const createColors = (primary: string) => {
   };
   Object.keys(formula).forEach(key => {
     const value = formula[key].replace(/primary/, primary);
-    colors[key] = "#" + rgbHex(color.convert(value));
+    colors[key] = "#" + rgbHex(convert(value));
   });
   return colors;
 };
