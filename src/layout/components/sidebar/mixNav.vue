@@ -18,10 +18,10 @@ import { useRoute, useRouter } from "vue-router";
 import { storageSession } from "/@/utils/storage";
 import { useAppStoreHook } from "/@/store/modules/app";
 import { deviceDetection } from "/@/utils/deviceDetection";
-import globalization from "/@/assets/svg/globalization.svg";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
+import globalization from "/@/assets/svg/globalization.svg?component";
 
 const instance =
   getCurrentInstance().appContext.config.globalProperties.$storage;
@@ -177,7 +177,6 @@ onMounted(() => {
             ></component>
           </el-icon>
           <span>{{ transformI18n(route.meta.title, route.meta.i18n) }}</span>
-
           <FontIcon
             v-if="route.meta.extraIcon"
             width="30px"
@@ -203,14 +202,14 @@ onMounted(() => {
               :style="getDropdownItemStyle('zh')"
               @click="translationCh"
               ><el-icon class="check-zh" v-show="locale === 'zh'"
-                ><check /></el-icon
+                ><IconifyIconOffline icon="check" /></el-icon
               >简体中文</el-dropdown-item
             >
             <el-dropdown-item
               :style="getDropdownItemStyle('en')"
               @click="translationEn"
               ><el-icon class="check-en" v-show="locale === 'en'"
-                ><check /></el-icon
+                ><IconifyIconOffline icon="check" /></el-icon
               >English</el-dropdown-item
             >
           </el-dropdown-menu>
@@ -225,8 +224,11 @@ onMounted(() => {
         <template #dropdown>
           <el-dropdown-menu class="logout">
             <el-dropdown-item @click="logout">
-              <i class="ri-logout-circle-r-line"></i
-              >{{ $t("buttons.hsLoginOut") }}</el-dropdown-item
+              <IconifyIconOffline
+                icon="logout-circle-r-line"
+                style="margin: 5px"
+              />
+              {{ $t("buttons.hsLoginOut") }}</el-dropdown-item
             >
           </el-dropdown-menu>
         </template>

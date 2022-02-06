@@ -648,18 +648,8 @@ body[layout="mix"] {
   $sideBarWidth: 210px;
   @include merge-style($sideBarWidth);
 
-  .el-menu-item {
-    &:hover {
-      background: transparent !important;
-    }
-  }
-
-  .el-menu--collapse {
-    width: 54px;
-  }
-
-  .sidebar-logo-container {
-    background: $sidebarLogo;
+  .el-menu {
+    --el-menu-hover-bg-color: transparent !important;
   }
 
   .hideSidebar {
@@ -682,16 +672,6 @@ body[layout="mix"] {
 
       .el-tooltip {
         padding: 0 !important;
-      }
-    }
-
-    .el-sub-menu {
-      overflow: hidden;
-
-      & > .el-sub-menu__title {
-        .el-sub-menu__icon-arrow {
-          display: none;
-        }
       }
     }
 

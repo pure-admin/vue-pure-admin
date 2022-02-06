@@ -140,6 +140,7 @@ onMounted(() => {
 .item-cut {
   font-size: 1.5em;
   height: 77px;
+  line-height: 77px;
   text-align: center;
   border: 1px solid #e5e4e9;
   cursor: move;
