@@ -1,21 +1,13 @@
 <script setup lang="ts">
-import {
-  ref,
-  PropType,
-  nextTick,
-  computed,
-  CSSProperties,
-  getCurrentInstance
-} from "vue";
+import { ref, PropType, nextTick, computed, CSSProperties } from "vue";
 import path from "path";
 import { childrenType } from "../../types";
 import { transformI18n } from "/@/plugins/i18n";
 import { useAppStoreHook } from "/@/store/modules/app";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 
-const instance = getCurrentInstance().appContext.app.config.globalProperties;
-const menuMode = ["vertical", "mix"].includes(instance.$storage.layout?.layout);
 const pureApp = useAppStoreHook();
+const menuMode = ["vertical", "mix"].includes(pureApp.layout);
 
 const props = defineProps({
   item: {
@@ -105,7 +97,6 @@ function hoverMenu(key) {
       : Object.assign(key, {
           showTooltip: false
         });
-
     hoverMenuMap.set(key, true);
   });
 }
@@ -162,6 +153,14 @@ function resolvePath(routePath) {
           "
         ></component>
       </el-icon>
+      <div
+        v-if="!pureApp.sidebar.opened && pureApp.layout === 'mix'"
+        :style="getDivStyle"
+      >
+        <span :style="getMenuTextStyle">
+          {{ transformI18n(onlyOneChild.meta.title, onlyOneChild.meta.i18n) }}
+        </span>
+      </div>
       <template #title>
         <div :style="getDivStyle">
           <span v-if="!menuMode">{{
