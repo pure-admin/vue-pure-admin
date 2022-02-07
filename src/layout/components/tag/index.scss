@@ -92,7 +92,7 @@
 
     .el-icon-close {
       font-size: 10px;
-      color: #1890ff;
+      color: var(--el-color-primary);
       cursor: pointer;
       position: absolute;
       top: 50%;
@@ -190,7 +190,8 @@
       align-items: center;
 
       &:hover {
-        background: #eee;
+        background: var(--el-color-primary-light-9);
+        color: var(--el-color-primary);
       }
 
       svg {
@@ -236,7 +237,7 @@
 }
 
 .scroll-item.is-active {
-  background-color: #eaf4fe;
+  background-color: var(--el-color-primary-light-9);
   position: relative;
   color: #fff;
 
@@ -249,7 +250,7 @@
   }
 
   a {
-    color: #1890ff;
+    color: var(--el-color-primary);
   }
 }
 
@@ -288,10 +289,10 @@
 
 /* 卡片模式下鼠标移入显示蓝色边框 */
 .card-in {
-  color: #1890ff;
+  color: var(--el-color-primary);
 
   a {
-    color: #1890ff;
+    color: var(--el-color-primary);
   }
 }
 
@@ -312,7 +313,7 @@
   position: absolute;
   left: 0;
   bottom: 0;
-  background: #1890ff;
+  background: var(--el-color-primary);
 }
 
 /* 灵动模式下鼠标移入显示蓝色进度条 */
@@ -322,7 +323,7 @@
   position: absolute;
   left: 0;
   bottom: 0;
-  background: #1890ff;
+  background: var(--el-color-primary);
   animation: scheduleInWidth 400ms ease-in;
 }
 
@@ -333,7 +334,7 @@
   position: absolute;
   left: 0;
   bottom: 0;
-  background: #1890ff;
+  background: var(--el-color-primary);
   animation: scheduleOutWidth 400ms ease-in;
 }
 

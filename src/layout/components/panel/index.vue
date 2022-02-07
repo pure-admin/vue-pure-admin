@@ -125,7 +125,7 @@ emitter.on("openPanel", () => {
 
     &:hover {
       cursor: pointer;
-      color: red;
+      color: var(--el-color-primary);
     }
   }
 }
