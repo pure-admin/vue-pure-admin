@@ -61,15 +61,6 @@ function onPanel() {
   emitter.emit("openPanel");
 }
 
-const activeMenu = computed((): string => {
-  const { meta, path } = route;
-  if (meta.activeMenu) {
-    // @ts-ignore
-    return meta.activeMenu;
-  }
-  return path;
-});
-
 const menuSelect = (indexPath: string): void => {
   let parentPath = "";
   let parentPathIndex = indexPath.lastIndexOf("/");
@@ -137,7 +128,7 @@ onMounted(() => {
       ref="menu"
       class="horizontal-header-menu"
       mode="horizontal"
-      :default-active="activeMenu"
+      :default-active="route.path"
       router
       @select="menuSelect"
     >

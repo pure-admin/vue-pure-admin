@@ -8,6 +8,7 @@ import {
   getCurrentInstance
 } from "vue";
 import path from "path";
+import { useRoute } from "vue-router";
 import { childrenType } from "../../types";
 import { transformI18n } from "/@/plugins/i18n";
 import { useAppStoreHook } from "/@/store/modules/app";
@@ -16,6 +17,7 @@ import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 const instance = getCurrentInstance().appContext.app.config.globalProperties;
 const menuMode = ["vertical", "mix"].includes(instance.$storage.layout?.layout);
 const pureApp = useAppStoreHook();
+const route = useRoute();
 
 const props = defineProps({
   item: {
@@ -250,7 +252,7 @@ function resolvePath(routePath) {
       :is-nest="true"
       :item="child"
       :base-path="resolvePath(child.path)"
-      class="nest-menu"
+      :class="['nest-menu', route.path === child.path ? 'is-active' : '']"
     />
   </el-sub-menu>
 </template>

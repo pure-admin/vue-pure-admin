@@ -19,14 +19,6 @@ const showLogo = ref(
 const isCollapse = computed(() => {
   return !pureApp.getSidebarStatus;
 });
-const activeMenu = computed((): string => {
-  const { meta, path } = route;
-  if (meta.activeMenu) {
-    // @ts-ignore
-    return meta.activeMenu;
-  }
-  return path;
-});
 
 let subMenuData = ref([]);
 
@@ -94,21 +86,23 @@ onBeforeMount(() => {
     <Logo v-if="showLogo" :collapse="isCollapse" />
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu
-        :default-active="activeMenu"
+        :default-active="route.path"
         :collapse="isCollapse"
         unique-opened
-        router
         :collapse-transition="false"
         mode="vertical"
         class="outer-most"
         @select="menuSelect"
       >
         <sidebar-item
-          v-for="route in menuData"
-          :key="route.path"
-          :item="route"
-          class="outer-most"
-          :base-path="route.path"
+          v-for="routes in menuData"
+          :key="routes.path"
+          :item="routes"
+          :class="[
+            'outer-most',
+            routes.path === route.fullPath ? 'is-active' : ''
+          ]"
+          :base-path="routes.path"
         />
       </el-menu>
     </el-scrollbar>
