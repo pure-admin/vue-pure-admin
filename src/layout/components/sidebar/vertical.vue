@@ -33,7 +33,7 @@ function getSubMenuData(path) {
     parentPathArr[0] || path,
     usePermissionStoreHook().wholeMenus
   );
-  if (!parenetRoute?.children) return true;
+  if (!parenetRoute?.children) return;
   subMenuData.value = parenetRoute?.children;
 }
 
