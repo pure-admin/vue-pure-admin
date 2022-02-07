@@ -1,18 +1,20 @@
 module.exports = {
   root: true,
   plugins: ["stylelint-order"],
+  customSyntax: "postcss-html",
   extends: ["stylelint-config-standard", "stylelint-config-prettier"],
   rules: {
+    "selector-class-pattern": null,
     "selector-pseudo-class-no-unknown": [
       true,
       {
-        ignorePseudoClasses: ["deep"]
+        ignorePseudoClasses: ["global"]
       }
     ],
     "selector-pseudo-element-no-unknown": [
       true,
       {
-        ignorePseudoElements: ["v-deep", ":deep"]
+        ignorePseudoElements: ["v-deep"]
       }
     ],
     "at-rule-no-unknown": [
@@ -65,5 +67,26 @@ module.exports = {
       { severity: "warning" }
     ]
   },
-  ignoreFiles: ["**/*.js", "**/*.jsx", "**/*.tsx", "**/*.ts", "**/*.json"]
+  ignoreFiles: ["**/*.js", "**/*.jsx", "**/*.tsx", "**/*.ts", "**/*.json"],
+  overrides: [
+    {
+      files: ["*.vue", "**/*.vue", "*.html", "**/*.html"],
+      extends: ["stylelint-config-recommended", "stylelint-config-html"],
+      rules: {
+        "keyframes-name-pattern": null,
+        "selector-pseudo-class-no-unknown": [
+          true,
+          {
+            ignorePseudoClasses: ["deep", "global"]
+          }
+        ],
+        "selector-pseudo-element-no-unknown": [
+          true,
+          {
+            ignorePseudoElements: ["v-deep", "v-global", "v-slotted"]
+          }
+        ]
+      }
+    }
+  ]
 };

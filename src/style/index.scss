@@ -11,7 +11,7 @@ body {
   padding: 0;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+  text-rendering: optimizelegibility;
   font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB,
     Microsoft YaHei, Arial, sans-serif;
 }
@@ -74,19 +74,11 @@ ul {
 /* 灰色模式 */
 .html-grey {
   filter: grayscale(100%);
-  -webkit-filter: grayscale(100%);
-  -moz-filter: grayscale(100%);
-  -ms-filter: grayscale(100%);
-  -o-filter: grayscale(100%);
 }
 
 /* 色弱模式 */
 .html-weakness {
   filter: invert(80%);
-  -webkit-filter: invert(80%);
-  -moz-filter: invert(80%);
-  -ms-filter: invert(80%);
-  -o-filter: invert(80%);
 }
 
 .pc-spacing {

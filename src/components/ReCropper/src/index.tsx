@@ -133,7 +133,8 @@ export default defineComponent({
       <>
         <div
           class={useAttrs({ excludeListeners: true, excludeKeys: ["class"] })}
-          style={this.getWrapperStyle}>
+          style={this.getWrapperStyle}
+        >
           <img
             ref="imgElRef"
             src={this.props.src}

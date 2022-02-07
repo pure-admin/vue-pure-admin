@@ -18,36 +18,6 @@
   }
 }
 
-@-webkit-keyframes rotate {
-  from {
-    -webkit-transform: rotate(0deg);
-  }
-
-  to {
-    -webkit-transform: rotate(360deg);
-  }
-}
-
-@-moz-keyframes rotate {
-  from {
-    -moz-transform: rotate(0deg);
-  }
-
-  to {
-    -moz-transform: rotate(360deg);
-  }
-}
-
-@-o-keyframes rotate {
-  from {
-    -o-transform: rotate(0deg);
-  }
-
-  to {
-    -o-transform: rotate(360deg);
-  }
-}
-
 @keyframes rotate {
   from {
     transform: rotate(0deg);
@@ -80,7 +50,7 @@
 
   .scroll-item {
     border-radius: 3px 3px 0 0;
-    padding: 0 6px 0 6px;
+    padding: 0 6px;
     box-shadow: 0 0 1px #888;
     position: relative;
     margin-right: 4px;
@@ -123,7 +93,7 @@
   a {
     text-decoration: none;
     color: #666;
-    padding: 0 4px 0 4px;
+    padding: 0 4px;
   }
 
   .scroll-container {
@@ -340,8 +310,5 @@
 
 /* 刷新按钮动画效果 */
 .refresh-button {
-  -webkit-animation: rotate 600ms linear infinite;
-  -moz-animation: rotate 600ms linear infinite;
-  -o-animation: rotate 600ms linear infinite;
   animation: rotate 600ms linear infinite;
 }

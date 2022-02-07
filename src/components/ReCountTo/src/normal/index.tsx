@@ -169,7 +169,8 @@ export default defineComponent({
           style={{
             color: props.color,
             fontSize: props.fontSize
-          }}>
+          }}
+        >
           {state.displayValue}
         </span>
       </>

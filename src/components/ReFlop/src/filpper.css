@@ -9,7 +9,7 @@
   background: #fff;
   font-size: 66px;
   color: #fff;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 6px rgb(0 0 0 / 50%);
   text-align: center;
   font-family: "Helvetica Neue";
 }
@@ -58,7 +58,7 @@
 .m-flipper.down.go .front::before {
   transform-origin: 50% 100%;
   animation: frontFlipDown 0.6s ease-in-out both;
-  box-shadow: 0 -2px 6px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 -2px 6px rgb(255 255 255 / 30%);
   backface-visibility: hidden;
 }
 
@@ -85,7 +85,7 @@
 .m-flipper.up.go .front::after {
   transform-origin: 50% 0;
   animation: frontFlipUp 0.6s ease-in-out both;
-  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2px 6px rgb(255 255 255 / 30%);
   backface-visibility: hidden;
 }
 
