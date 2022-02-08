@@ -722,7 +722,11 @@ const getContextMenuStyle = computed((): CSSProperties => {
                 :disabled="item.disabled"
                 @click="onClickDrop(key, item)"
               >
-                <component :is="item.icon" :key="key" />
+                <component
+                  :is="item.icon"
+                  :key="key"
+                  style="margin-right: 6px"
+                />
                 {{ $t(item.text) }}
               </el-dropdown-item>
             </el-dropdown-menu>

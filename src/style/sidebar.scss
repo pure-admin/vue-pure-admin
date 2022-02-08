@@ -502,9 +502,7 @@
     background-color: $menuActiveBefore;
     content: "";
     clear: both;
-    -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
-    -webkit-transform: translateY(0);
     transform: translateY(0);
   }
 
@@ -517,9 +515,7 @@
     background-color: $menuActiveBefore;
     content: "";
     clear: both;
-    -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
-    -webkit-transform: translateY(0);
     transform: translateY(0);
   }
 
@@ -530,7 +526,6 @@
     position: absolute;
     height: 0;
     width: 3px;
-    -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
     top: 50%;
   }

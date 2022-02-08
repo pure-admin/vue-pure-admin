@@ -299,10 +299,12 @@ export default defineComponent({
                       cursor: unref(rateDisabled) ? "auto" : "pointer",
                       textAlign: "center"
                     }}
-                    key={key}>
+                    key={key}
+                  >
                     <div
                       ref={`hsdiv${props.HsKey}${key}`}
-                      class={`hs-item ${[unref(classes)[key] + key]}`}>
+                      class={`hs-item ${[unref(classes)[key] + key]}`}
+                    >
                       <span>{item}</span>
                     </div>
                   </td>
