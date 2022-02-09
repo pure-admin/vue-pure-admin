@@ -71,6 +71,8 @@ export type childrenType = {
     };
   };
   showTooltip?: boolean;
+  parentId?: number;
+  pathList?: number[];
 };
 
 export type themeColorsType = {

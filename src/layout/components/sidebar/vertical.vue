@@ -89,6 +89,7 @@ onBeforeMount(() => {
         :default-active="route.path"
         :collapse="isCollapse"
         unique-opened
+        router
         :collapse-transition="false"
         mode="vertical"
         class="outer-most"
@@ -98,10 +99,7 @@ onBeforeMount(() => {
           v-for="routes in menuData"
           :key="routes.path"
           :item="routes"
-          :class="[
-            'outer-most',
-            routes.path === route.fullPath ? 'is-active' : ''
-          ]"
+          class="outer-most"
           :base-path="routes.path"
         />
       </el-menu>

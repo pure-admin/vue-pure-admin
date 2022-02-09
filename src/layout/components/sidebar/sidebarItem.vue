@@ -1,14 +1,12 @@
 <script setup lang="ts">
 import { ref, PropType, nextTick, computed, CSSProperties } from "vue";
 import path from "path";
-import { useRoute } from "vue-router";
 import { childrenType } from "../../types";
 import { transformI18n } from "/@/plugins/i18n";
 import { useAppStoreHook } from "/@/store/modules/app";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 
 const pureApp = useAppStoreHook();
-const route = useRoute();
 const menuMode = ["vertical", "mix"].includes(pureApp.layout);
 
 const props = defineProps({
@@ -156,7 +154,11 @@ function resolvePath(routePath) {
         ></component>
       </el-icon>
       <div
-        v-if="!pureApp.sidebar.opened && pureApp.layout === 'mix'"
+        v-if="
+          !pureApp.sidebar.opened &&
+          pureApp.layout === 'mix' &&
+          props.item?.pathList?.length === 2
+        "
         :style="getDivStyle"
       >
         <span :style="getMenuTextStyle">
@@ -251,7 +253,7 @@ function resolvePath(routePath) {
       :is-nest="true"
       :item="child"
       :base-path="resolvePath(child.path)"
-      :class="['nest-menu', route.path === child.path ? 'is-active' : '']"
+      class="nest-menu"
     />
   </el-sub-menu>
 </template>
