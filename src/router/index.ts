@@ -6,6 +6,7 @@ import { split, findIndex } from "lodash-es";
 import { transformI18n } from "/@/plugins/i18n";
 import remainingRouter from "./modules/remaining";
 import { storageSession } from "/@/utils/storage";
+import { Title } from "../../public/serverConfig.json";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 import { Router, RouteMeta, createRouter, RouteRecordName } from "vue-router";
@@ -54,12 +55,13 @@ router.beforeEach((to: toRouteType, _from, next) => {
   const externalLink = to?.redirectedFrom?.fullPath;
   if (!externalLink)
     to.matched.some(item => {
-      item.meta.title
-        ? (document.title = transformI18n(
-            item.meta.title as string,
-            item.meta?.i18n as boolean
-          ))
-        : "";
+      if (!item.meta.title) return "";
+      if (Title)
+        document.title = `${transformI18n(
+          item.meta.title,
+          item.meta?.i18n
+        )} | ${Title}`;
+      else document.title = transformI18n(item.meta.title, item.meta?.i18n);
     });
   if (name) {
     if (_from?.name) {
