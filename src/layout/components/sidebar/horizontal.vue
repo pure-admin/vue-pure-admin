@@ -1,117 +1,61 @@
 <script setup lang="ts">
-import {
-  computed,
-  unref,
-  watch,
-  nextTick,
-  onMounted,
-  getCurrentInstance
-} from "vue";
 import { useI18n } from "vue-i18n";
-import { emitter } from "/@/utils/mitt";
+import { useNav } from "../../hooks/nav";
 import Notice from "../notice/index.vue";
 import { templateRef } from "@vueuse/core";
 import SidebarItem from "./sidebarItem.vue";
 import avatars from "/@/assets/avatars.jpg";
 import screenfull from "../screenfull/index.vue";
 import { useRoute, useRouter } from "vue-router";
-import { storageSession } from "/@/utils/storage";
 import { deviceDetection } from "/@/utils/deviceDetection";
+import { watch, nextTick, onMounted, getCurrentInstance } from "vue";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 import globalization from "/@/assets/svg/globalization.svg?component";
 
+const route = useRoute();
+const { locale } = useI18n();
+const routers = useRouter().options.routes;
+const menuRef = templateRef<ElRef | null>("menu", null);
 const instance =
   getCurrentInstance().appContext.config.globalProperties.$storage;
-
 const title =
   getCurrentInstance().appContext.config.globalProperties.$config?.Title;
 
-const menuRef = templateRef<ElRef | null>("menu", null);
-const route = useRoute();
-const router = useRouter();
-const routers = useRouter().options.routes;
-let usename = storageSession.getItem("info")?.username;
-const { locale, t } = useI18n();
+const {
+  logout,
+  backHome,
+  onPanel,
+  changeTitle,
+  handleResize,
+  menuSelect,
+  usename,
+  getDropdownItemStyle
+} = useNav();
 
-const getDropdownItemStyle = computed(() => {
-  return t => {
-    return {
-      background: locale.value === t ? "#1b2a47" : "",
-      color: locale.value === t ? "#f4f4f5" : "#000"
-    };
-  };
+onMounted(() => {
+  nextTick(() => {
+    handleResize(menuRef.value);
+  });
 });
 
 watch(
   () => locale.value,
   () => {
-    //@ts-ignore
-    // 动态title
-    document.title = t(unref(route.meta.title));
+    changeTitle(route.meta);
   }
 );
 
-// 退出登录
-const logout = (): void => {
-  storageSession.removeItem("info");
-  router.push("/login");
-};
-
-function onPanel() {
-  emitter.emit("openPanel");
-}
-
-const menuSelect = (indexPath: string): void => {
-  let parentPath = "";
-  let parentPathIndex = indexPath.lastIndexOf("/");
-  if (parentPathIndex > 0) {
-    parentPath = indexPath.slice(0, parentPathIndex);
-  }
-  // 找到当前路由的信息
-  function findCurrentRoute(routes) {
-    return routes.map(item => {
-      if (item.path === indexPath) {
-        // 切换左侧菜单 通知标签页
-        emitter.emit("changLayoutRoute", {
-          indexPath,
-          parentPath
-        });
-      } else {
-        if (item.children) findCurrentRoute(item.children);
-      }
-    });
-  }
-  findCurrentRoute(routers);
-};
-
-function backHome() {
-  router.push("/welcome");
-}
-
-function handleResize() {
-  // @ts-ignore
-  menuRef.value.handleResize();
-}
-
-// 简体中文
 function translationCh() {
   instance.locale = { locale: "zh" };
   locale.value = "zh";
-  handleResize();
+  handleResize(menuRef.value);
 }
 
-// English
 function translationEn() {
   instance.locale = { locale: "en" };
   locale.value = "en";
-  handleResize();
+  handleResize(menuRef.value);
 }
-
-onMounted(() => {
-  nextTick(() => {
-    handleResize();
-  });
-});
 </script>
 
 <template>
@@ -130,7 +74,7 @@ onMounted(() => {
       mode="horizontal"
       :default-active="route.path"
       router
-      @select="menuSelect"
+      @select="indexPath => menuSelect(indexPath, routers)"
     >
       <sidebar-item
         v-for="route in usePermissionStoreHook().wholeMenus"
@@ -150,14 +94,14 @@ onMounted(() => {
         <template #dropdown>
           <el-dropdown-menu class="translation">
             <el-dropdown-item
-              :style="getDropdownItemStyle('zh')"
+              :style="getDropdownItemStyle(locale, 'zh')"
               @click="translationCh"
               ><el-icon class="check-zh" v-show="locale === 'zh'"
                 ><IconifyIconOffline icon="check" /></el-icon
               >简体中文</el-dropdown-item
             >
             <el-dropdown-item
-              :style="getDropdownItemStyle('en')"
+              :style="getDropdownItemStyle(locale, 'en')"
               @click="translationEn"
               ><el-icon class="check-en" v-show="locale === 'en'"
                 ><IconifyIconOffline icon="check" /></el-icon

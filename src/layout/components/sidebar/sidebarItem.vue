@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { ref, PropType, nextTick, computed, CSSProperties } from "vue";
 import path from "path";
+import { useNav } from "../../hooks/nav";
 import { childrenType } from "../../types";
 import { transformI18n } from "/@/plugins/i18n";
 import { useAppStoreHook } from "/@/store/modules/app";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 
-const pureApp = useAppStoreHook();
+const { pureApp } = useNav();
 const menuMode = ["vertical", "mix"].includes(pureApp.layout);
 
 const props = defineProps({
