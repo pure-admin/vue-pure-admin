@@ -132,7 +132,7 @@ For the better development of the project, you can choose to donate 10 yuan and 
 
 ## License
 
-In principle, no fees and copyrights are charged, so you can use it with confidence
+In principle, no fees and copyrights are charged, and you can use it with confidence, but if you need secondary open source, please contact the author for permission!
 
 [MIT © xiaoxian521-2020](./LICENSE)
 
