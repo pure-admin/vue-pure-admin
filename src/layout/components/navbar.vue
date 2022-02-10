@@ -120,8 +120,10 @@ function translationEn() {
         <template #dropdown>
           <el-dropdown-menu class="logout">
             <el-dropdown-item @click="logout">
-              <i class="ri-logout-circle-r-line"></i
-              >{{ $t("buttons.hsLoginOut") }}</el-dropdown-item
+              <IconifyIconOffline
+                icon="logout-circle-r-line"
+                style="margin: 5px"
+              />{{ $t("buttons.hsLoginOut") }}</el-dropdown-item
             >
           </el-dropdown-menu>
         </template>
@@ -232,14 +234,8 @@ function translationEn() {
 }
 
 .translation {
-  .el-dropdown-menu__item {
-    padding: 5px 40px !important;
-  }
-
-  .el-dropdown-menu__item:focus,
-  .el-dropdown-menu__item:not(.is-disabled):hover {
-    color: #606266;
-    background: #f0f0f0;
+  ::v-deep(.el-dropdown-menu__item) {
+    padding: 5px 40px;
   }
 
   .check-zh {
@@ -256,16 +252,10 @@ function translationEn() {
 .logout {
   max-width: 120px;
 
-  .el-dropdown-menu__item {
+  ::v-deep(.el-dropdown-menu__item) {
     min-width: 100%;
     display: inline-flex;
     flex-wrap: wrap;
-  }
-
-  .el-dropdown-menu__item:focus,
-  .el-dropdown-menu__item:not(.is-disabled):hover {
-    color: #606266;
-    background: #f0f0f0;
   }
 }
 </style>

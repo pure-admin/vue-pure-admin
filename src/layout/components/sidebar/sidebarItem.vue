@@ -10,9 +10,8 @@ import {
 import path from "path";
 import { childrenType } from "../../types";
 import { transformI18n } from "/@/plugins/i18n";
-import { findIconReg } from "/@/components/ReIcon";
-import Icon from "/@/components/ReIcon/src/Icon.vue";
 import { useAppStoreHook } from "/@/store/modules/app";
+import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 
 const instance = getCurrentInstance().appContext.app.config.globalProperties;
 const menuMode = instance.$storage.layout?.layout === "vertical";
@@ -29,6 +28,19 @@ const props = defineProps({
   basePath: {
     type: String,
     default: ""
+  }
+});
+
+const getExtraIconStyle = computed((): CSSProperties => {
+  if (useAppStoreHook().getSidebarStatus) {
+    return {
+      position: "absolute",
+      right: "10px"
+    };
+  } else {
+    return {
+      position: "static"
+    };
   }
 });
 
@@ -143,7 +155,7 @@ function resolvePath(routePath) {
       <el-icon v-show="props.item.meta.icon">
         <component
           :is="
-            findIconReg(
+            useRenderIcon(
               onlyOneChild.meta.icon ||
                 (props.item.meta && props.item.meta.icon)
             )
@@ -176,11 +188,14 @@ function resolvePath(routePath) {
               }}
             </span>
           </el-tooltip>
-          <Icon
+          <FontIcon
             v-if="onlyOneChild.meta.extraIcon"
+            width="30px"
+            height="30px"
+            :style="getExtraIconStyle"
+            :icon="onlyOneChild.meta.extraIcon.name"
             :svg="onlyOneChild.meta.extraIcon.svg ? true : false"
-            :content="`${onlyOneChild.meta.extraIcon.name}`"
-          />
+          ></FontIcon>
         </div>
       </template>
     </el-menu-item>
@@ -195,7 +210,7 @@ function resolvePath(routePath) {
     <template #title>
       <el-icon v-show="props.item.meta.icon" :class="props.item.meta.icon">
         <component
-          :is="findIconReg(props.item.meta && props.item.meta.icon)"
+          :is="useRenderIcon(props.item.meta && props.item.meta.icon)"
         ></component>
       </el-icon>
       <span v-if="!menuMode">{{
@@ -220,11 +235,14 @@ function resolvePath(routePath) {
           </span>
         </div>
       </el-tooltip>
-      <Icon
+      <FontIcon
         v-if="props.item.meta.extraIcon"
+        width="30px"
+        height="30px"
+        style="position: absolute; right: 10px"
+        :icon="props.item.meta.extraIcon.name"
         :svg="props.item.meta.extraIcon.svg ? true : false"
-        :content="`${props.item.meta.extraIcon.name}`"
-      />
+      ></FontIcon>
     </template>
     <sidebar-item
       v-for="child in props.item.children"

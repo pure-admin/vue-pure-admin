@@ -43,7 +43,8 @@ export default defineComponent({
         <div
           class="scroll-num"
           // @ts-ignore
-          style={{ "--i": props.i, "--delay": props.delay }}>
+          style={{ "--i": props.i, "--delay": props.delay }}
+        >
           <ul ref="ul" style={{ fontSize: "32px" }}>
             <li>0</li>
             <li>1</li>

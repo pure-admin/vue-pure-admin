@@ -11,6 +11,7 @@ declare module "vue" {
   export interface GlobalComponents {
     IconifyIconOffline: typeof import("../src/components/ReIcon")["IconifyIconOffline"];
     IconifyIconOnline: typeof import("../src/components/ReIcon")["IconifyIconOnline"];
+    FontIcon: typeof import("../src/components/ReIcon")["FontIcon"];
   }
 }
 
@@ -22,7 +23,6 @@ declare global {
     mozCancelAnimationFrame: (handle: number) => void;
     oCancelAnimationFrame: (handle: number) => void;
     msCancelAnimationFrame: (handle: number) => void;
-
     webkitRequestAnimationFrame: (callback: FrameRequestCallback) => number;
     mozRequestAnimationFrame: (callback: FrameRequestCallback) => number;
     oRequestAnimationFrame: (callback: FrameRequestCallback) => number;

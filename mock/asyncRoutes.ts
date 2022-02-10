@@ -10,7 +10,6 @@ const systemRouter = {
     icon: "setting",
     title: "menus.hssysManagement",
     i18n: true,
-    showLink: true,
     rank: 6
   },
   children: [
@@ -19,8 +18,7 @@ const systemRouter = {
       name: "user",
       meta: {
         title: "menus.hsBaseinfo",
-        i18n: true,
-        showLink: true
+        i18n: true
       }
     },
     {
@@ -29,7 +27,6 @@ const systemRouter = {
       meta: {
         title: "menus.hsDict",
         i18n: true,
-        showLink: true,
         keepAlive: true
       }
     }
@@ -44,7 +41,6 @@ const permissionRouter = {
     title: "menus.permission",
     icon: "lollipop",
     i18n: true,
-    showLink: true,
     rank: 3
   },
   children: [
@@ -53,8 +49,7 @@ const permissionRouter = {
       name: "permissionPage",
       meta: {
         title: "menus.permissionPage",
-        i18n: true,
-        showLink: true
+        i18n: true
       }
     },
     {
@@ -63,7 +58,6 @@ const permissionRouter = {
       meta: {
         title: "menus.permissionButton",
         i18n: true,
-        showLink: true,
         authority: []
       }
     }
@@ -78,7 +72,6 @@ const tabsRouter = {
     icon: "IF-team-icontabs",
     title: "menus.hstabs",
     i18n: true,
-    showLink: true,
     rank: 8
   },
   children: [
@@ -87,7 +80,6 @@ const tabsRouter = {
       name: "reTabs",
       meta: {
         title: "menus.hstabs",
-        showLink: true,
         i18n: true
       }
     },

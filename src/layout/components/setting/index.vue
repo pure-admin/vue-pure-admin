@@ -157,8 +157,7 @@ function onReset() {
       meta: {
         title: "menus.hshome",
         icon: "home-filled",
-        i18n: true,
-        showLink: true
+        i18n: true
       }
     }
   ]);
@@ -437,7 +436,12 @@ nextTick(() => {
       style="width: 90%; margin: 24px 15px"
       @click="onReset"
     >
-      <i class="fa fa-sign-out"></i>
+      <IconifyIconOffline
+        icon="fa-sign-out"
+        width="15"
+        height="15"
+        style="margin-right: 4px"
+      />
       清空缓存并返回登录页</el-button
     >
   </panel>

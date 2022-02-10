@@ -7,10 +7,9 @@ const menuTreeRouter = {
   component: Layout,
   redirect: "/menuTree/index",
   meta: {
-    icon: "RI-node-tree",
+    icon: "node-tree",
     title: $t("menus.hsMenuTree"),
     i18n: true,
-    showLink: true,
     rank: 9
   },
   children: [
@@ -20,7 +19,6 @@ const menuTreeRouter = {
       component: () => import("/@/views/menu-tree/index.vue"),
       meta: {
         title: $t("menus.hsMenuTree"),
-        showLink: true,
         i18n: true
       }
     }

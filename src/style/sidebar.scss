@@ -306,6 +306,10 @@
       height: 48px;
       line-height: 48px;
       background: $menuBg;
+
+      svg {
+        position: static !important;
+      }
     }
 
     .is-active > .el-sub-menu__title,
@@ -498,9 +502,7 @@
     background-color: $menuActiveBefore;
     content: "";
     clear: both;
-    -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
-    -webkit-transform: translateY(0);
     transform: translateY(0);
   }
 
@@ -513,9 +515,7 @@
     background-color: $menuActiveBefore;
     content: "";
     clear: both;
-    -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
-    -webkit-transform: translateY(0);
     transform: translateY(0);
   }
 
@@ -526,7 +526,6 @@
     position: absolute;
     height: 0;
     width: 3px;
-    -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
     top: 50%;
   }
@@ -597,16 +596,6 @@ body[layout="vertical"] {
 
       .el-tooltip {
         padding: 0 !important;
-      }
-    }
-
-    .el-sub-menu {
-      overflow: hidden;
-
-      & > .el-sub-menu__title {
-        .el-sub-menu__icon-arrow {
-          display: none;
-        }
       }
     }
 

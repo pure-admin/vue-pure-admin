@@ -6,8 +6,7 @@ export const routerArrays: Array<RouteConfigs> = [
     meta: {
       title: "menus.hshome",
       i18n: true,
-      icon: "home-filled",
-      showLink: true
+      icon: "home-filled"
     }
   }
 ];

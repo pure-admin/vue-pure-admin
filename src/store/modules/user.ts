@@ -60,8 +60,7 @@ export const useUserStore = defineStore({
           meta: {
             title: "menus.hshome",
             icon: "home-filled",
-            i18n: true,
-            showLink: true
+            i18n: true
           }
         }
       ]);

@@ -111,20 +111,24 @@ export default defineComponent({
           class="vue-splitter-container clearfix"
           style={(unref(cursor), unref(userSelect))}
           onMouseup={() => onMouseUp()}
-          onMousemove={() => onMouseMove(event)}>
+          onMousemove={() => onMouseMove(event)}
+        >
           <div
             class={unref(leftClass)}
-            style={{ [unref(type)]: unref(percent) + "%" }}>
+            style={{ [unref(type)]: unref(percent) + "%" }}
+          >
             {ctx.slots.paneL()}
           </div>
           <resizer
             style={`${unref([resizeType])}:${unref(percent)}%`}
             split={props.splitSet?.split}
             onMousedown={() => onMouseDown()}
-            onClick={() => onClick()}></resizer>
+            onClick={() => onClick()}
+          ></resizer>
           <div
             class={unref(rightClass)}
-            style={{ [unref(type)]: 100 - unref(percent) + "%" }}>
+            style={{ [unref(type)]: 100 - unref(percent) + "%" }}
+          >
             {ctx.slots.paneR()}
           </div>
           <div v-show={unref(active)} class="vue-splitter-container-mask"></div>

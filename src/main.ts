@@ -6,7 +6,6 @@ import { createApp, Directive } from "vue";
 import { usI18n } from "../src/plugins/i18n";
 import { MotionPlugin } from "@vueuse/motion";
 import { useTable } from "../src/plugins/vxe-table";
-import { useFontawesome } from "../src/plugins/fontawesome";
 import { useElementPlus } from "../src/plugins/element-plus";
 import { injectResponsiveStorage } from "/@/utils/storage/responsive";
 
@@ -28,9 +27,14 @@ Object.keys(directives).forEach(key => {
 });
 
 // 全局注册`@iconify/vue`图标库
-import { IconifyIconOffline, IconifyIconOnline } from "./components/ReIcon";
+import {
+  IconifyIconOffline,
+  IconifyIconOnline,
+  FontIcon
+} from "./components/ReIcon";
 app.component("IconifyIconOffline", IconifyIconOffline);
 app.component("IconifyIconOnline", IconifyIconOnline);
+app.component("FontIcon", FontIcon);
 
 getServerConfig(app).then(async config => {
   injectResponsiveStorage(app, config);
@@ -40,8 +44,7 @@ getServerConfig(app).then(async config => {
     .use(MotionPlugin)
     .use(useElementPlus)
     .use(useTable)
-    .use(usI18n)
-    .use(useFontawesome);
+    .use(usI18n);
   await router.isReady();
   app.mount("#app");
 });
