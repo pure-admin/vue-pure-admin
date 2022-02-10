@@ -124,6 +124,12 @@ pnpm build
 
 <img src="http://yiming_chang.gitee.io/manages/pay.jpg" width="150px" height="150px" />
 
+## QQ 交流群
+
+群里严禁`黄`、`赌`、`毒`、`vpn`等违法行为！
+
+<img src="http://yiming_chang.gitee.io/manages/qq.jpg" width="150px" height="225px" />
+
 ## 许可证
 
 原则上不收取任何费用及版权，可以放心使用
