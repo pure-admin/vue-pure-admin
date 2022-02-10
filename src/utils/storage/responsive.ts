@@ -20,7 +20,7 @@ export const injectResponsiveStorage = (app: App, config: ServerConfigs) => {
           theme: config.Theme ?? "default",
           darkMode: config.DarkMode ?? false,
           sidebarStatus: config.SidebarStatus ?? true,
-          epThemeColor: config.EpThemeColor ?? "409EFF"
+          epThemeColor: config.EpThemeColor ?? "#409EFF"
         }
       },
       configure: {
@@ -47,8 +47,7 @@ export const injectResponsiveStorage = (app: App, config: ServerConfigs) => {
                 meta: {
                   title: "menus.hshome",
                   i18n: true,
-                  icon: "home-filled",
-                  showLink: true
+                  icon: "home-filled"
                 }
               }
             ]

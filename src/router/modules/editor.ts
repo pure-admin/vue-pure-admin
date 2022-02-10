@@ -10,7 +10,6 @@ const editorRouter = {
     icon: "edit",
     title: $t("menus.hseditor"),
     i18n: true,
-    showLink: true,
     rank: 2
   },
   children: [
@@ -20,7 +19,6 @@ const editorRouter = {
       component: () => import("/@/views/editor/index.vue"),
       meta: {
         title: $t("menus.hseditor"),
-        showLink: true,
         i18n: true,
         keepAlive: true,
         extraIcon: {

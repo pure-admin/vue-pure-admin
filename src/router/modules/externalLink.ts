@@ -8,7 +8,6 @@ const externalLink = {
   meta: {
     icon: "link",
     title: $t("menus.externalLink"),
-    showLink: true,
     i18n: true,
     rank: 190
   },
@@ -17,7 +16,6 @@ const externalLink = {
       path: "https://github.com/xiaoxian521/vue-pure-admin",
       meta: {
         title: $t("menus.externalLink"),
-        showLink: true,
         i18n: true,
         rank: 191
       }

@@ -124,11 +124,11 @@ pnpm build
 
 <img src="http://yiming_chang.gitee.io/manages/pay.jpg" width="150px" height="150px" />
 
-## 微信交流群
+## QQ 交流群
 
-为了项目更好的发展，你可选择捐赠 10 元后添加下图微信拉你进群，添加后请自觉发捐赠截图
+群里严禁`黄`、`赌`、`毒`、`vpn`等违法行为！
 
-<img src="http://yiming_chang.gitee.io/manages/kf.jpg" width="150px" height="195px" />
+<img src="http://yiming_chang.gitee.io/manages/qq.jpg" width="150px" height="225px" />
 
 ## 许可证
 

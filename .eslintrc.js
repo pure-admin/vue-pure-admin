@@ -37,7 +37,7 @@ module.exports = {
     "eslint:recommended",
     "@vue/typescript/recommended",
     "@vue/prettier",
-    "@vue/prettier/@typescript-eslint"
+    "@vue/eslint-config-typescript"
   ],
   parser: "vue-eslint-parser",
   parserOptions: {
@@ -50,6 +50,10 @@ module.exports = {
     }
   },
   rules: {
+    "vue/no-v-html": "off",
+    "vue/require-default-prop": "off",
+    "vue/require-explicit-emits": "off",
+    "vue/multi-word-component-names": "off",
     "@typescript-eslint/no-explicit-any": "off", // any
     "no-debugger": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off", // setup()
