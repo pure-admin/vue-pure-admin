@@ -124,12 +124,6 @@ pnpm build
 
 <img src="http://yiming_chang.gitee.io/manages/pay.jpg" width="150px" height="150px" />
 
-## 微信交流群
-
-为了项目更好的发展，你可选择捐赠 10 元后添加下图微信拉你进群，添加后请自觉发捐赠截图
-
-<img src="http://yiming_chang.gitee.io/manages/kf.jpg" width="150px" height="195px" />
-
 ## 许可证
 
 原则上不收取任何费用及版权，可以放心使用
