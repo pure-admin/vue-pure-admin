@@ -258,11 +258,11 @@ function hasRoles(value: Array<string>): boolean {
     const roles = storageSession.getItem("info")?.roles;
     const requiredRoles = value;
 
-    const hasPermission = roles.some(role => {
+    const hasRole = roles.some(role => {
       return requiredRoles.includes(role);
     });
 
-    if (!hasPermission) {
+    if (!hasRole) {
       return false;
     }
     return true;
@@ -296,6 +296,7 @@ export {
   filterTree,
   initRouter,
   resetRouter,
+  hasRoles,
   hasPermissions,
   getHistoryMode,
   addAsyncRoutes,
