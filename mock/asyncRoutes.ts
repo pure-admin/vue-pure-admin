@@ -64,6 +64,37 @@ const permissionRouter = {
   ]
 };
 
+const archiveRouter = {
+  path: "/archive",
+  name: "archive",
+  redirect: "/archive/article",
+  meta: {
+    title: "内容",
+    rank: 8
+  },
+  children: [
+    {
+      path: "/archive/article/index",
+      name: "reArticle",
+      meta: {
+        title: "文章管理",
+        i18n: true
+      },
+      children: [
+        {
+          path: "/archive/article/edit",
+          name: "articleEdit",
+          meta: {
+            title: "文章编辑",
+            showLink: false,
+            refreshRedirect: "/archive/article/edit"
+          }
+        }
+      ]
+    }
+  ]
+};
+
 const tabsRouter = {
   path: "/tabs",
   name: "reTabs",
@@ -113,6 +144,7 @@ export default [
           code: 0,
           info: [
             tabsRouter,
+            archiveRouter,
             systemRouter,
             setDifAuthority("v-admin", permissionRouter)
           ]
