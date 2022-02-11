@@ -10,9 +10,10 @@ import { useRoute, useRouter } from "vue-router";
 import { deviceDetection } from "/@/utils/deviceDetection";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
-import { watch, nextTick, onMounted, getCurrentInstance } from "vue";
+import { getParentPaths, findRouteByPath } from "/@/router/utils";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 import globalization from "/@/assets/svg/globalization.svg?component";
+import { ref, watch, nextTick, onMounted, getCurrentInstance } from "vue";
 
 const route = useRoute();
 const { locale } = useI18n();
@@ -20,6 +21,7 @@ const routers = useRouter().options.routes;
 const menuRef = templateRef<ElRef | null>("menu", null);
 const instance =
   getCurrentInstance().appContext.config.globalProperties.$storage;
+const wholeMenus = usePermissionStoreHook().wholeMenus;
 
 const {
   logout,
@@ -34,7 +36,19 @@ const {
   getDropdownItemStyle
 } = useNav();
 
+let defaultActive = ref(null);
+
+function getDefaultActive(routePath) {
+  // 当前路由的父级路径
+  const parentRoutes = getParentPaths(routePath, wholeMenus)[0];
+  defaultActive.value = findRouteByPath(
+    parentRoutes,
+    wholeMenus
+  ).children[0].path;
+}
+
 onMounted(() => {
+  getDefaultActive(route.path);
   nextTick(() => {
     handleResize(menuRef.value);
   });
@@ -44,6 +58,13 @@ watch(
   () => locale.value,
   () => {
     changeTitle(route.meta);
+  }
+);
+
+watch(
+  () => route.path,
+  () => {
+    getDefaultActive(route.path);
   }
 );
 
@@ -87,12 +108,12 @@ function translationEn() {
       ref="menu"
       class="horizontal-header-menu"
       mode="horizontal"
-      :default-active="route.path"
+      :default-active="defaultActive"
       router
       @select="indexPath => menuSelect(indexPath, routers)"
     >
       <el-menu-item
-        v-for="route in usePermissionStoreHook().wholeMenus"
+        v-for="route in wholeMenus"
         :key="route.path"
         :index="resolvePath(route) || route.redirect"
       >
