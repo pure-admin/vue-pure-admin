@@ -124,12 +124,6 @@ If you think this project is helpful to you, you can help the author buy a cup o
 
 <img src="http://yiming_chang.gitee.io/manages/pay.jpg" width="150px" height="150px" />
 
-## WeChat Exchange Group
-
-For the better development of the project, you can choose to donate 10 yuan and add the following WeChat to pull you into the group. After adding, please consciously send a screenshot of the donation
-
-<img src="http://yiming_chang.gitee.io/manages/kf.jpg" width="150px" height="195px" />
-
 ## License
 
 In principle, no fees and copyrights are charged, and you can use it with confidence, but if you need secondary open source, please contact the author for permission!
