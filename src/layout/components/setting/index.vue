@@ -61,6 +61,7 @@ let themeColors = ref<Array<themeColorsType>>([
 
 const verticalRef = templateRef<HTMLElement | null>("verticalRef", null);
 const horizontalRef = templateRef<HTMLElement | null>("horizontalRef", null);
+const mixRef = templateRef<HTMLElement | null>("mixRef", null);
 
 let layoutTheme =
   ref(storageLocal.getItem("responsive-layout")) ||
@@ -190,10 +191,17 @@ watch(instance, ({ layout }) => {
     case "vertical":
       toggleClass(true, isSelect, unref(verticalRef));
       debounce(setFalse([horizontalRef]), 50);
+      debounce(setFalse([mixRef]), 50);
       break;
     case "horizontal":
       toggleClass(true, isSelect, unref(horizontalRef));
       debounce(setFalse([verticalRef]), 50);
+      debounce(setFalse([mixRef]), 50);
+      break;
+    case "mix":
+      toggleClass(true, isSelect, unref(mixRef));
+      debounce(setFalse([verticalRef]), 50);
+      debounce(setFalse([horizontalRef]), 50);
       break;
   }
 });
