@@ -21,7 +21,6 @@ const routers = useRouter().options.routes;
 const menuRef = templateRef<ElRef | null>("menu", null);
 const instance =
   getCurrentInstance().appContext.config.globalProperties.$storage;
-const wholeMenus = usePermissionStoreHook().wholeMenus;
 
 const {
   logout,
@@ -39,6 +38,7 @@ const {
 let defaultActive = ref(null);
 
 function getDefaultActive(routePath) {
+  const wholeMenus = usePermissionStoreHook().wholeMenus;
   // 当前路由的父级路径
   const parentRoutes = getParentPaths(routePath, wholeMenus)[0];
   defaultActive.value = findRouteByPath(
@@ -113,7 +113,7 @@ function translationEn() {
       @select="indexPath => menuSelect(indexPath, routers)"
     >
       <el-menu-item
-        v-for="route in wholeMenus"
+        v-for="route in usePermissionStoreHook().wholeMenus"
         :key="route.path"
         :index="resolvePath(route) || route.redirect"
       >
