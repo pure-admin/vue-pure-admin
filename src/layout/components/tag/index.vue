@@ -720,14 +720,18 @@ const getContextMenuStyle = computed((): CSSProperties => {
                 :key="key"
                 :divided="item.divided"
                 :disabled="item.disabled"
-                @click="onClickDrop(key, item)"
               >
-                <component
-                  :is="item.icon"
-                  :key="key"
-                  style="margin-right: 6px"
-                />
-                {{ $t(item.text) }}
+                <div
+                  @click="onClickDrop(key, item)"
+                  style="display: flex; align-items: center"
+                >
+                  <component
+                    :is="item.icon"
+                    :key="key"
+                    style="margin-right: 6px"
+                  />
+                  {{ $t(item.text) }}
+                </div>
               </el-dropdown-item>
             </el-dropdown-menu>
           </template>
