@@ -115,7 +115,7 @@
     "stylelint-order": "^5.0.0",
     "typescript": "^4.5.5",
     "unplugin-element-plus": "^0.2.0",
-    "vite": "^2.8.1",
+    "vite": "2.7.13",
     "vite-plugin-live-reload": "^2.1.0",
     "vite-plugin-mock": "^2.9.6",
     "vite-plugin-remove-console": "^0.0.6",
