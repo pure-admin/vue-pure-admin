@@ -106,7 +106,11 @@ const iconIsActive = computed(() => {
 
 const dynamicTagView = () => {
   const index = multiTags.value.findIndex(item => {
-    return item.path === route.path;
+    if (item?.query) {
+      return isEqual(route?.query, item?.query);
+    } else {
+      return item.path === route.path;
+    }
   });
   moveToView(index);
 };
@@ -125,10 +129,20 @@ useResizeObserver(
 
 const tabNavPadding = 10;
 const moveToView = (index: number): void => {
+  console.log(
+    "%cindex===>>>: ",
+    "color: MidnightBlue; background: Aquamarine; font-size: 20px;",
+    index
+  );
   if (!instance.refs["dynamic" + index]) {
     return;
   }
   const tabItemEl = instance.refs["dynamic" + index][0];
+  console.log(
+    "%ctabItemEl===>>>: ",
+    "color: MidnightBlue; background: Aquamarine; font-size: 20px;",
+    tabItemEl
+  );
   const tabItemElOffsetLeft = (tabItemEl as HTMLElement)?.offsetLeft;
   const tabItemOffsetWidth = (tabItemEl as HTMLElement)?.offsetWidth;
   // 标签页导航栏可视长度（不包含溢出部分）
