@@ -73,20 +73,24 @@ export function useNav() {
       parentPath = indexPath.slice(0, parentPathIndex);
     }
     // 找到当前路由的信息
-    function findCurrentRoute(routes) {
+    function findCurrentRoute(indexPath: string, routes) {
       return routes.map(item => {
         if (item.path === indexPath) {
-          // 切换左侧菜单 通知标签页
-          emitter.emit("changLayoutRoute", {
-            indexPath,
-            parentPath
-          });
+          if (item.redirect) {
+            findCurrentRoute(item.redirect, item.children);
+          } else {
+            // 切换左侧菜单 通知标签页
+            emitter.emit("changLayoutRoute", {
+              indexPath,
+              parentPath
+            });
+          }
         } else {
-          if (item.children) findCurrentRoute(item.children);
+          if (item.children) findCurrentRoute(indexPath, item.children);
         }
       });
     }
-    findCurrentRoute(routers);
+    findCurrentRoute(indexPath, routers);
   }
 
   return {
