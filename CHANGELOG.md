@@ -1,3 +1,13 @@
+# 3.0 (2022-2-14)
+
+### 🎫 Feat
+
+- Added mix navigation
+
+### 🐞 Bug fixes
+
+- Fix tab page bug
+
 # 2.9.0 (2022-2-5)
 
 ### 🎫 Feat
