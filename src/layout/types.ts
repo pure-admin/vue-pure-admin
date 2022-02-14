@@ -11,18 +11,20 @@ export const routerArrays: Array<RouteConfigs> = [
   }
 ];
 
+export type routeMetaType = {
+  title?: string;
+  i18n?: boolean;
+  icon?: string;
+  showLink?: boolean;
+  savedPosition?: boolean;
+  authority?: Array<string>;
+};
+
 export type RouteConfigs = {
   path?: string;
   parentPath?: string;
   query?: object;
-  meta?: {
-    title?: string;
-    i18n?: boolean;
-    icon?: string;
-    showLink?: boolean;
-    savedPosition?: boolean;
-    authority?: Array<string>;
-  };
+  meta?: routeMetaType;
   children?: RouteConfigs[];
   name?: string;
 };
@@ -71,6 +73,8 @@ export type childrenType = {
     };
   };
   showTooltip?: boolean;
+  parentId?: number;
+  pathList?: number[];
 };
 
 export type themeColorsType = {

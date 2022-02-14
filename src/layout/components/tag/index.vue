@@ -106,7 +106,11 @@ const iconIsActive = computed(() => {
 
 const dynamicTagView = () => {
   const index = multiTags.value.findIndex(item => {
-    return item.path === route.path;
+    if (item?.query) {
+      return isEqual(route?.query, item?.query);
+    } else {
+      return item.path === route.path;
+    }
   });
   moveToView(index);
 };
@@ -423,6 +427,11 @@ function onClickDrop(key, item, selectRoute?: RouteConfigs) {
   });
 }
 
+function handleCommand(command: object) {
+  const { key, item } = command;
+  onClickDrop(key, item);
+}
+
 // 触发右键中菜单的点击事件
 function selectTag(key, item) {
   onClickDrop(key, item, currentSelect.value);
@@ -709,7 +718,11 @@ const getContextMenuStyle = computed((): CSSProperties => {
         </el-icon>
       </li>
       <li>
-        <el-dropdown trigger="click" placement="bottom-end">
+        <el-dropdown
+          trigger="click"
+          placement="bottom-end"
+          @command="handleCommand"
+        >
           <el-icon>
             <IconifyIconOffline icon="arrow-down" />
           </el-icon>
@@ -718,9 +731,9 @@ const getContextMenuStyle = computed((): CSSProperties => {
               <el-dropdown-item
                 v-for="(item, key) in tagsViews"
                 :key="key"
+                :command="{ key, item }"
                 :divided="item.divided"
                 :disabled="item.disabled"
-                @click="onClickDrop(key, item)"
               >
                 <component
                   :is="item.icon"

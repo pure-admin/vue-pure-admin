@@ -1,71 +1,43 @@
 <script setup lang="ts">
-import { computed } from "vue";
 import { useI18n } from "vue-i18n";
-import { emitter } from "/@/utils/mitt";
+import { useNav } from "../hooks/nav";
+import { useRoute } from "vue-router";
 import Notice from "./notice/index.vue";
+import mixNav from "./sidebar/mixNav.vue";
 import avatars from "/@/assets/avatars.jpg";
-import { transformI18n } from "/@/plugins/i18n";
 import Hamburger from "./sidebar/hamBurger.vue";
-import { useRouter, useRoute } from "vue-router";
-import { storageSession } from "/@/utils/storage";
+import { watch, getCurrentInstance } from "vue";
 import Breadcrumb from "./sidebar/breadCrumb.vue";
-import { useAppStoreHook } from "/@/store/modules/app";
-import { unref, watch, getCurrentInstance } from "vue";
 import { deviceDetection } from "/@/utils/deviceDetection";
 import screenfull from "../components/screenfull/index.vue";
-import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
 import globalization from "/@/assets/svg/globalization.svg?component";
 
+const route = useRoute();
+const { locale } = useI18n();
 const instance =
   getCurrentInstance().appContext.config.globalProperties.$storage;
-const pureApp = useAppStoreHook();
-const router = useRouter();
-const route = useRoute();
-let usename = storageSession.getItem("info")?.username;
-const { locale } = useI18n();
-
-const getDropdownItemStyle = computed(() => {
-  return t => {
-    return {
-      background: locale.value === t ? useEpThemeStoreHook().epThemeColor : "",
-      color: locale.value === t ? "#f4f4f5" : "#000"
-    };
-  };
-});
+const {
+  logout,
+  onPanel,
+  changeTitle,
+  toggleSideBar,
+  pureApp,
+  usename,
+  getDropdownItemStyle
+} = useNav();
 
 watch(
   () => locale.value,
   () => {
-    //@ts-ignore
-    document.title = transformI18n(
-      //@ts-ignore
-      unref(route.meta.title),
-      unref(route.meta.i18n)
-    ); // 动态title
+    changeTitle(route.meta);
   }
 );
 
-// 退出登录
-const logout = (): void => {
-  storageSession.removeItem("info");
-  router.push("/login");
-};
-
-function onPanel() {
-  emitter.emit("openPanel");
-}
-
-function toggleSideBar() {
-  pureApp.toggleSideBar();
-}
-
-// 简体中文
 function translationCh() {
   instance.locale = { locale: "zh" };
   locale.value = "zh";
 }
 
-// English
 function translationEn() {
   instance.locale = { locale: "en" };
   locale.value = "en";
@@ -75,14 +47,17 @@ function translationEn() {
 <template>
   <div class="navbar">
     <Hamburger
+      v-if="pureApp.layout !== 'mix'"
       :is-active="pureApp.sidebar.opened"
       class="hamburger-container"
       @toggleClick="toggleSideBar"
     />
 
-    <Breadcrumb class="breadcrumb-container" />
+    <Breadcrumb v-if="pureApp.layout !== 'mix'" class="breadcrumb-container" />
 
-    <div class="vertical-header-right">
+    <mixNav v-if="pureApp.layout === 'mix'" />
+
+    <div v-if="pureApp.layout === 'vertical'" class="vertical-header-right">
       <!-- 通知 -->
       <Notice id="header-notice" />
       <!-- 全屏 -->
@@ -93,7 +68,7 @@ function translationEn() {
         <template #dropdown>
           <el-dropdown-menu class="translation">
             <el-dropdown-item
-              :style="getDropdownItemStyle('zh')"
+              :style="getDropdownItemStyle(locale, 'zh')"
               @click="translationCh"
               ><IconifyIconOffline
                 class="check-zh"
@@ -102,7 +77,7 @@ function translationEn() {
               />简体中文</el-dropdown-item
             >
             <el-dropdown-item
-              :style="getDropdownItemStyle('en')"
+              :style="getDropdownItemStyle(locale, 'en')"
               @click="translationEn"
               ><el-icon class="check-en" v-show="locale === 'en'"
                 ><IconifyIconOffline icon="check" /></el-icon

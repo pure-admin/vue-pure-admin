@@ -61,6 +61,7 @@ let themeColors = ref<Array<themeColorsType>>([
 
 const verticalRef = templateRef<HTMLElement | null>("verticalRef", null);
 const horizontalRef = templateRef<HTMLElement | null>("horizontalRef", null);
+const mixRef = templateRef<HTMLElement | null>("mixRef", null);
 
 let layoutTheme =
   ref(storageLocal.getItem("responsive-layout")) ||
@@ -101,7 +102,7 @@ const getThemeColorStyle = computed(() => {
   };
 });
 
-function changeStorageConfigure(key, val) {
+function storageConfigureChange<T>(key: string, val: T): void {
   const storageConfigure = instance.configure;
   storageConfigure[key] = val;
   instance.configure = storageConfigure;
@@ -117,7 +118,7 @@ function toggleClass(flag: boolean, clsName: string, target?: HTMLElement) {
 // 灰色模式设置
 const greyChange = (value): void => {
   toggleClass(settings.greyVal, "html-grey", document.querySelector("html"));
-  changeStorageConfigure("grey", value);
+  storageConfigureChange("grey", value);
 };
 
 // 色弱模式设置
@@ -127,29 +128,30 @@ const weekChange = (value): void => {
     "html-weakness",
     document.querySelector("html")
   );
-  changeStorageConfigure("weak", value);
+  storageConfigureChange("weak", value);
 };
 
 const tagsChange = () => {
   let showVal = settings.tabsVal;
-  changeStorageConfigure("hideTabs", showVal);
+  storageConfigureChange("hideTabs", showVal);
   emitter.emit("tagViewsChange", showVal);
 };
 
 const multiTagsCacheChange = () => {
   let multiTagsCache = settings.multiTagsCache;
-  changeStorageConfigure("multiTagsCache", multiTagsCache);
+  storageConfigureChange("multiTagsCache", multiTagsCache);
   useMultiTagsStoreHook().multiTagsCacheChange(multiTagsCache);
 };
 
 // 清空缓存并返回登录页
 function onReset() {
-  toggleClass(getConfig().Grey, "html-grey", document.querySelector("html"));
-  toggleClass(
-    getConfig().Weak,
-    "html-weakness",
-    document.querySelector("html")
-  );
+  router.push("/login");
+  const { Grey, Weak, MultiTagsCache, EpThemeColor, Layout } = getConfig();
+  useAppStoreHook().setLayout(Layout);
+  useEpThemeStoreHook().setEpThemeColor(EpThemeColor);
+  useMultiTagsStoreHook().multiTagsCacheChange(MultiTagsCache);
+  toggleClass(Grey, "html-grey", document.querySelector("html"));
+  toggleClass(Weak, "html-weakness", document.querySelector("html"));
   useMultiTagsStoreHook().handleTags("equal", [
     {
       path: "/welcome",
@@ -161,23 +163,20 @@ function onReset() {
       }
     }
   ]);
-  useMultiTagsStoreHook().multiTagsCacheChange(getConfig().MultiTagsCache);
-  useEpThemeStoreHook().setEpThemeColor(getConfig().EpThemeColor);
   storageLocal.clear();
   storageSession.clear();
-  router.push("/login");
 }
 
 function onChange(label) {
-  changeStorageConfigure("showModel", label);
+  storageConfigureChange("showModel", label);
   emitter.emit("tagViewsShowModel", label);
 }
 
 // 侧边栏Logo
 function logoChange() {
   unref(logoVal)
-    ? changeStorageConfigure("showLogo", true)
-    : changeStorageConfigure("showLogo", false);
+    ? storageConfigureChange("showLogo", true)
+    : storageConfigureChange("showLogo", false);
   emitter.emit("logoChange", unref(logoVal));
 }
 
@@ -192,10 +191,17 @@ watch(instance, ({ layout }) => {
     case "vertical":
       toggleClass(true, isSelect, unref(verticalRef));
       debounce(setFalse([horizontalRef]), 50);
+      debounce(setFalse([mixRef]), 50);
       break;
     case "horizontal":
       toggleClass(true, isSelect, unref(horizontalRef));
       debounce(setFalse([verticalRef]), 50);
+      debounce(setFalse([mixRef]), 50);
+      break;
+    case "mix":
+      toggleClass(true, isSelect, unref(mixRef));
+      debounce(setFalse([verticalRef]), 50);
+      debounce(setFalse([horizontalRef]), 50);
       break;
   }
 });
@@ -315,7 +321,7 @@ nextTick(() => {
 
     <el-divider>导航栏模式</el-divider>
     <ul class="pure-theme">
-      <el-tooltip class="item" content="左侧菜单模式" placement="bottom">
+      <el-tooltip class="item" content="左侧模式" placement="bottom">
         <li
           :class="layoutTheme.layout === 'vertical' ? $style.isSelect : ''"
           ref="verticalRef"
@@ -326,11 +332,22 @@ nextTick(() => {
         </li>
       </el-tooltip>
 
-      <el-tooltip class="item" content="顶部菜单模式" placement="bottom">
+      <el-tooltip class="item" content="顶部模式" placement="bottom">
         <li
           :class="layoutTheme.layout === 'horizontal' ? $style.isSelect : ''"
           ref="horizontalRef"
           @click="setLayoutModel('horizontal')"
+        >
+          <div></div>
+          <div></div>
+        </li>
+      </el-tooltip>
+
+      <el-tooltip class="item" content="混合模式" placement="bottom">
+        <li
+          :class="layoutTheme.layout === 'mix' ? $style.isSelect : ''"
+          ref="mixRef"
+          @click="setLayoutModel('mix')"
         >
           <div></div>
           <div></div>
@@ -481,15 +498,14 @@ nextTick(() => {
 .pure-theme {
   margin-top: 25px;
   width: 100%;
-  height: 100px;
+  height: 50px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 
   li {
-    margin: 10px;
-    width: 36%;
-    height: 70px;
+    width: 18%;
+    height: 45px;
     background: #f0f2f5;
     position: relative;
     overflow: hidden;
@@ -524,6 +540,27 @@ nextTick(() => {
           height: 30%;
           background: #1b2a47;
           box-shadow: 0 0 1px #888;
+        }
+      }
+    }
+
+    &:nth-child(3) {
+      div {
+        &:nth-child(1) {
+          width: 100%;
+          height: 30%;
+          background: #1b2a47;
+          box-shadow: 0 0 1px #888;
+        }
+
+        &:nth-child(2) {
+          width: 30%;
+          height: 70%;
+          bottom: 0;
+          left: 0;
+          background: #fff;
+          box-shadow: 0 0 1px #888;
+          position: absolute;
         }
       }
     }

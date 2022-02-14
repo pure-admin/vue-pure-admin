@@ -11,7 +11,10 @@ import { storageLocal } from "/@/utils/storage";
  * @param isI18n  如果true,获取对应的消息,否则返回本身
  * @returns message
  */
-export function transformI18n(message: string | object = "", isI18n = false) {
+export function transformI18n(
+  message: string | unknown | object = "",
+  isI18n: boolean | unknown = false
+) {
   if (!message) {
     return "";
   }
