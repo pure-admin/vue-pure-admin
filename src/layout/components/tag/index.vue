@@ -427,6 +427,11 @@ function onClickDrop(key, item, selectRoute?: RouteConfigs) {
   });
 }
 
+function handleCommand(command: object) {
+  const { key, item } = command;
+  onClickDrop(key, item);
+}
+
 // 触发右键中菜单的点击事件
 function selectTag(key, item) {
   onClickDrop(key, item, currentSelect.value);
@@ -713,7 +718,11 @@ const getContextMenuStyle = computed((): CSSProperties => {
         </el-icon>
       </li>
       <li>
-        <el-dropdown trigger="click" placement="bottom-end">
+        <el-dropdown
+          trigger="click"
+          placement="bottom-end"
+          @command="handleCommand"
+        >
           <el-icon>
             <IconifyIconOffline icon="arrow-down" />
           </el-icon>
@@ -722,20 +731,16 @@ const getContextMenuStyle = computed((): CSSProperties => {
               <el-dropdown-item
                 v-for="(item, key) in tagsViews"
                 :key="key"
+                :command="{ key, item }"
                 :divided="item.divided"
                 :disabled="item.disabled"
               >
-                <div
-                  @click="onClickDrop(key, item)"
-                  style="display: flex; align-items: center"
-                >
-                  <component
-                    :is="item.icon"
-                    :key="key"
-                    style="margin-right: 6px"
-                  />
-                  {{ $t(item.text) }}
-                </div>
+                <component
+                  :is="item.icon"
+                  :key="key"
+                  style="margin-right: 6px"
+                />
+                {{ $t(item.text) }}
               </el-dropdown-item>
             </el-dropdown-menu>
           </template>
