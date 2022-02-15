@@ -2,15 +2,12 @@
   "name": "vue-pure-admin",
   "version": "3.0",
   "private": true,
-  "engines": {
-    "node": ">= 16",
-    "pnpm": ">= 6"
-  },
   "scripts": {
     "dev": "cross-env --max_old_space_size=4096 vite",
     "serve": "pnpm dev",
     "build": "rimraf dist && cross-env vite build",
     "report": "rimraf dist && cross-env vite build",
+    "deploy": "bash deploy.sh",
     "preview": "vite preview",
     "preview:build": "pnpm build && vite preview",
     "clean:cache": "rm -rf node_modules && rm -rf .eslintcache && pnpm install",
