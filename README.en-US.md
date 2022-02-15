@@ -25,7 +25,7 @@ vue-pure-admin is a free and open source middle and back-end template. Using the
 
 ## Preview
 
-- [vue-pure-admin](http://yiming_chang.gitee.io/manages)
+- [vue-pure-admin](https://vue-pure-admin.vercel.app)
 
 <p align="center">
   <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b4857fc7eb7d4c0f8deeefc644c1f7dd~tplv-k3u1fbpfcp-watermark.awebp?">
