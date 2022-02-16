@@ -1,6 +1,7 @@
 import "xe-utils";
 import { App } from "vue";
 import { i18n } from "../i18n/index";
+import "font-awesome/css/font-awesome.min.css";
 import {
   // 核心
   VXETable,
