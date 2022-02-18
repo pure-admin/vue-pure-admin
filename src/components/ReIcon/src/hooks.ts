@@ -1,8 +1,14 @@
+import { iconType } from "./types";
 import { h, defineComponent, Component } from "vue";
 import { IconifyIconOffline, FontIcon } from "../index";
 
-// 支持fontawesome4、5+、iconfont、remixicon、element-plus的icons、自定义svg
-export function useRenderIcon(icon: string): Component {
+/**
+ * 支持fontawesome4、5+、iconfont、remixicon、element-plus的icons、自定义svg
+ * @param icon 必传 string 图标
+ * @param attrs 可选 iconType 属性
+ * @returns Component
+ */
+export function useRenderIcon(icon: string, attrs?: iconType): Component {
   // iconfont
   const ifReg = /^IF-/;
   // typeof icon === "function" 属于SVG
@@ -19,7 +25,8 @@ export function useRenderIcon(icon: string): Component {
       render() {
         return h(FontIcon, {
           icon: iconName,
-          iconType
+          iconType,
+          ...attrs
         });
       }
     });
@@ -31,7 +38,8 @@ export function useRenderIcon(icon: string): Component {
       name: "Icon",
       render() {
         return h(IconifyIconOffline, {
-          icon: icon
+          icon: icon,
+          ...attrs
         });
       }
     });

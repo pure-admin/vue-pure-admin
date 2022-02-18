@@ -7,6 +7,7 @@ export default {
 <script setup lang="ts">
 import { ref, unref } from "vue";
 import { storageSession } from "/@/utils/storage";
+import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 
 let purview = ref<string>(storageSession.getItem("info").username);
 
@@ -36,6 +37,11 @@ function changRole() {
         查看左侧菜单变化(系统管理)，模拟后台根据不同角色返回对应路由
       </p>
     </h4>
-    <el-button type="primary" @click="changRole">切换角色</el-button>
+    <el-button
+      type="primary"
+      @click="changRole"
+      :icon="useRenderIcon('user', { color: '#fff' })"
+      >切换角色</el-button
+    >
   </div>
 </template>
