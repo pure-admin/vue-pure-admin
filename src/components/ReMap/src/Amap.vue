@@ -19,10 +19,6 @@ type resultType = {
   info: Array<undefined>;
 };
 
-export interface mapInter {
-  loading: boolean;
-}
-
 let MarkerCluster;
 let map: MapConfigureInter;
 

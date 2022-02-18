@@ -90,7 +90,7 @@ specifiers:
   vue-router: ^4.0.12
   vue-types: ^4.1.1
   vuedraggable: 4.1.0
-  vxe-table: ^4.1.18
+  vxe-table: ^4.1.21
   wangeditor: ^4.7.9
   windicss: ^3.4.3
   xe-utils: ^3.5.2
