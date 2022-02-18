@@ -46,7 +46,7 @@ vue-pure-admin 是一个免费开源的中后台模版。使用了最新的`vue3
 ```bash
 git clone https://github.com/xiaoxian521/vue-pure-admin.git
 or
-git clone https://github.com.cnpmjs.org/xiaoxian521/vue-pure-admin.git
+git clone https://gitee.com/yiming_chang/vue-pure-admin.git
 ```
 
 - 安装依赖
