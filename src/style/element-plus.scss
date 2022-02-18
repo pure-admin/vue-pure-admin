@@ -46,6 +46,19 @@
   --el-button-active-border-color: var(--el-color-primary-active) !important;
 }
 
+// button--primary plain
+.el-button--primary.is-plain {
+  --el-button-bg-color: var(--el-color-primary-light-9) !important;
+  --el-button-border-color: var(--el-color-primary-light-6) !important;
+  --el-button-hover-bg-color: var(--el-color-primary-light-1) !important;
+  --el-button-hover-border-color: var(--el-color-primary) !important;
+  --el-button-active-bg-color: var(--el-color-primary) !important;
+  --el-button-active-border-color: var(--el-color-primary) !important;
+  --el-button-text-color: var(--el-color-primary) !important;
+  --el-button-hover-text-color: var(--el-color-white) !important;
+  --el-button-active-text-color: var(--el-color-white) !important;
+}
+
 /* nprogress适配ep的primary */
 #nprogress {
   & .bar {
