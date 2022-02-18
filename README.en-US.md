@@ -46,7 +46,7 @@ Open the project in Gitpod (free online dev environment for GitHub) and start co
 ```bash
 git clone https://github.com/xiaoxian521/vue-pure-admin.git
 or
-git clone https://github.com.cnpmjs.org/xiaoxian521/vue-pure-admin.git
+git clone https://gitee.com/yiming_chang/vue-pure-admin.git
 ```
 
 - Installation dependencies
