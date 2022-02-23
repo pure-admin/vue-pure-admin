@@ -7,7 +7,6 @@ import {
   defineComponent,
   getCurrentInstance
 } from "vue";
-import { RouterView } from "vue-router";
 import backTop from "/@/assets/svg/back_top.svg?component";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 
