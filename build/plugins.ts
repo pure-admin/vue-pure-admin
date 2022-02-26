@@ -1,4 +1,5 @@
 import vue from "@vitejs/plugin-vue";
+import { viteBuildInfo } from "./info";
 import svgLoader from "vite-svg-loader";
 import legacy from "@vitejs/plugin-legacy";
 import vueJsx from "@vitejs/plugin-vue-jsx";
@@ -21,6 +22,7 @@ export function getPluginsList(command, VITE_LEGACY) {
     WindiCSS(),
     // 线上环境删除console
     removeConsole(),
+    viteBuildInfo(),
     // 修改layout文件夹下的文件时自动重载浏览器 解决 https://github.com/xiaoxian521/vue-pure-admin/issues/170
     liveReload(["src/layout/**/*", "src/router/**/*"]),
     // 自定义主题

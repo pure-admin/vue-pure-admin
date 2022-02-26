@@ -10,7 +10,7 @@ import {
   getCurrentInstance
 } from "vue";
 import rgbHex from "rgb-hex";
-import { find } from "lodash-es";
+import { find } from "lodash-unified";
 import { getConfig } from "/@/config";
 import { useRouter } from "vue-router";
 import panel from "../panel/index.vue";

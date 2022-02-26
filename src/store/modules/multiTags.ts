@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { store } from "/@/store";
-import { isEqual } from "lodash-es";
+import { isEqual } from "lodash-unified";
 import { storageLocal } from "/@/utils/storage";
 import { multiType, positionType } from "./types";
 

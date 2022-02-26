@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
-import { isEqual } from "lodash-es";
+import { isEqual } from "lodash-unified";
 import { transformI18n } from "/@/plugins/i18n";
 import { getParentPaths, findRouteByPath } from "/@/router/utils";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";

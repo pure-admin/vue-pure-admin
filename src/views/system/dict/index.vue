@@ -5,11 +5,11 @@ export default {
 </script>
 
 <script setup lang="ts">
-import Config from "./config.vue";
-import { reactive, ref, unref, nextTick } from "vue";
 import XEUtils from "xe-utils";
-import { cloneDeep } from "lodash-es";
+import Config from "./config.vue";
+import { cloneDeep } from "lodash-unified";
 import { templateRef } from "@vueuse/core";
+import { reactive, ref, unref, nextTick } from "vue";
 import { useCopyToClipboard } from "/@/utils/useCopyToClipboard";
 import {
   VXETable,

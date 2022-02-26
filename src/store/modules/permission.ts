@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { store } from "/@/store";
 import { cacheType } from "./types";
-import { cloneDeep } from "lodash-es";
+import { cloneDeep } from "lodash-unified";
 import { RouteConfigs } from "/@/layout/types";
 import { constantMenus } from "/@/router/modules";
 import { ascending, filterTree } from "/@/router/utils";

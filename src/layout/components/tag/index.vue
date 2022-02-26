@@ -21,10 +21,10 @@ import closeRight from "/@/assets/svg/close_right.svg?component";
 
 import { emitter } from "/@/utils/mitt";
 import { $t as t } from "/@/plugins/i18n";
-import { isEqual, isEmpty } from "lodash-es";
 import { transformI18n } from "/@/plugins/i18n";
 import { storageLocal } from "/@/utils/storage";
 import { useRoute, useRouter } from "vue-router";
+import { isEqual, isEmpty } from "lodash-unified";
 import { RouteConfigs, tagsViewsType } from "../../types";
 import { useSettingStoreHook } from "/@/store/modules/settings";
 import { handleAliveRoute, delAliveRoutes } from "/@/router/utils";

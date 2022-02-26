@@ -1,6 +1,6 @@
 // 多组件库的国际化和本地项目国际化兼容
 import { App } from "vue";
-import { set } from "lodash-es";
+import { set } from "lodash-unified";
 import { createI18n } from "vue-i18n";
 import { localesConfigs } from "./config";
 import { storageLocal } from "/@/utils/storage";
