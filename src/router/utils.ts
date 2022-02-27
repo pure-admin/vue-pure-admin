@@ -11,6 +11,7 @@ import { loadEnv } from "../../build";
 import Layout from "/@/layout/index.vue";
 import { useTimeoutFn } from "@vueuse/core";
 import { RouteConfigs } from "/@/layout/types";
+import { buildHierarchyTree } from "/@/utils/tree";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 // https://cn.vitejs.dev/guide/features.html#glob-import
 const modulesRoutes = import.meta.glob("/src/views/**/*.{vue,tsx}");
@@ -146,14 +147,15 @@ function initRouter(name: string) {
  */
 function formatFlatteningRoutes(routesList: RouteRecordRaw[]) {
   if (routesList.length === 0) return routesList;
-  for (let i = 0; i < routesList.length; i++) {
-    if (routesList[i].children) {
-      routesList = routesList
+  let hierarchyList = buildHierarchyTree(routesList);
+  for (let i = 0; i < hierarchyList.length; i++) {
+    if (hierarchyList[i].children) {
+      hierarchyList = hierarchyList
         .slice(0, i + 1)
-        .concat(routesList[i].children, routesList.slice(i + 1));
+        .concat(hierarchyList[i].children, hierarchyList.slice(i + 1));
     }
   }
-  return routesList;
+  return hierarchyList;
 }
 
 /**
