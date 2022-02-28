@@ -8,7 +8,13 @@ import avatars from "/@/assets/avatars.jpg";
 import screenfull from "../screenfull/index.vue";
 import { useRoute, useRouter } from "vue-router";
 import { deviceDetection } from "/@/utils/deviceDetection";
-import { watch, nextTick, onMounted, getCurrentInstance } from "vue";
+import {
+  watch,
+  nextTick,
+  onMounted,
+  onBeforeUnmount,
+  getCurrentInstance
+} from "vue";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 import globalization from "/@/assets/svg/globalization.svg?component";
 
@@ -44,6 +50,17 @@ watch(
     changeTitle(route.meta);
   }
 );
+
+const unwatch = watch(
+  () => route.path,
+  () => {
+    menuSelect(route.path, routers);
+  }
+);
+
+onBeforeUnmount(() => {
+  unwatch();
+});
 
 function translationCh() {
   instance.locale = { locale: "zh" };
