@@ -1,3 +1,5 @@
+import type { FunctionArgs } from "@vueuse/core";
+
 export const hasClass = (ele: RefType<any>, cls: string): any => {
   return !!ele.className.match(new RegExp("(\\s|^)" + cls + "(\\s|$)"));
 };
@@ -40,3 +42,16 @@ export const toggleClass = (
   className = className.replace(clsName, "");
   targetEl.className = flag ? `${className} ${clsName} ` : className;
 };
+
+export function useRafThrottle<T extends FunctionArgs>(fn: T): T {
+  let locked = false;
+  // @ts-ignore
+  return function (...args) {
+    if (locked) return;
+    locked = true;
+    window.requestAnimationFrame(() => {
+      fn.apply(this, args);
+      locked = false;
+    });
+  };
+}

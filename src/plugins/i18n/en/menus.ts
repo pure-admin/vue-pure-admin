@@ -32,7 +32,9 @@ export default {
   permissionPage: "Page Permission",
   permissionButton: "Button Permission",
   hstabs: "Tabs Operate",
-  hsMenuTree: "Menu Tree",
   hsguide: "Guide",
-  externalLink: "External Link"
+  externalLink: "External Link",
+  hsAble: "Able",
+  hsMenuTree: "Menu Tree",
+  hsWatermark: "Water Mark"
 };
