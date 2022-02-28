@@ -40,3 +40,8 @@ export const constantRoutes: Array<RouteRecordRaw> = formatTwoStageRoutes(
 export const constantMenus: Array<RouteComponent> = ascending(routes).concat(
   ...remainingRouter
 );
+
+// 不参与菜单的路由
+export const remainingPaths = Object.keys(remainingRouter).map(v => {
+  return remainingRouter[v].path;
+});

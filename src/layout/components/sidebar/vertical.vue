@@ -49,7 +49,10 @@ onBeforeMount(() => {
 
 watch(
   () => route.path,
-  () => getSubMenuData(route.path)
+  () => {
+    getSubMenuData(route.path);
+    menuSelect(route.path, routers);
+  }
 );
 </script>
 

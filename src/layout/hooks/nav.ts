@@ -7,6 +7,7 @@ import { storageSession } from "/@/utils/storage";
 import { useAppStoreHook } from "/@/store/modules/app";
 import { Title } from "../../../public/serverConfig.json";
 import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
+import { remainingPaths } from "/@/router/modules/index";
 
 export function useNav() {
   const pureApp = useAppStoreHook();
@@ -67,6 +68,7 @@ export function useNav() {
   }
 
   function menuSelect(indexPath: string, routers): void {
+    if (isRemaining(indexPath)) return;
     let parentPath = "";
     const parentPathIndex = indexPath.lastIndexOf("/");
     if (parentPathIndex > 0) {
@@ -91,6 +93,11 @@ export function useNav() {
       });
     }
     findCurrentRoute(indexPath, routers);
+  }
+
+  // 判断路径是否参与菜单
+  function isRemaining(path: string): boolean {
+    return remainingPaths.includes(path);
   }
 
   return {
