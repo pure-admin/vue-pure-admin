@@ -12,6 +12,11 @@ import { addResizeListener, removeResizeListener } from "/@/utils/resize";
 
 const domSymbol = Symbol("watermark-dom");
 
+type attr = {
+  font?: string;
+  fillStyle?: string;
+};
+
 export function useWatermark(
   appendEl: Ref<HTMLElement | null> = ref(document.body) as Ref<HTMLElement>
 ) {
@@ -33,7 +38,7 @@ export function useWatermark(
     removeResizeListener(el, func);
   };
 
-  function createBase64(str: string) {
+  function createBase64(str: string, attr?: attr) {
     const can = document.createElement("canvas");
     const width = 300;
     const height = 240;
@@ -42,8 +47,8 @@ export function useWatermark(
     const cans = can.getContext("2d");
     if (cans) {
       cans.rotate((-20 * Math.PI) / 120);
-      cans.font = "15px Vedana";
-      cans.fillStyle = "rgba(0, 0, 0, 0.15)";
+      cans.font = attr?.font ?? "15px Reggae One";
+      cans.fillStyle = attr?.fillStyle ?? "rgba(0, 0, 0, 0.15)";
       cans.textAlign = "left";
       cans.textBaseline = "middle";
       cans.fillText(str, width / 20, height);
@@ -56,6 +61,7 @@ export function useWatermark(
       width?: number;
       height?: number;
       str?: string;
+      attr?: attr;
     } = {}
   ) {
     const el = unref(watermarkEl);
@@ -67,13 +73,16 @@ export function useWatermark(
       el.style.height = `${options.height}px`;
     }
     if (isDef(options.str)) {
-      el.style.background = `url(${createBase64(options.str)}) left top repeat`;
+      el.style.background = `url(${createBase64(
+        options.str,
+        options.attr
+      )}) left top repeat`;
     }
   }
 
-  const createWatermark = (str: string) => {
+  const createWatermark = (str: string, attr?: attr) => {
     if (unref(watermarkEl)) {
-      updateWatermark({ str });
+      updateWatermark({ str, attr });
       return id;
     }
     const div = document.createElement("div");
@@ -87,13 +96,13 @@ export function useWatermark(
     const el = unref(appendEl);
     if (!el) return id;
     const { clientHeight: height, clientWidth: width } = el;
-    updateWatermark({ str, width, height });
+    updateWatermark({ str, width, height, attr });
     el.appendChild(div);
     return id;
   };
 
-  function setWatermark(str: string) {
-    createWatermark(str);
+  function setWatermark(str: string, attr?: attr) {
+    createWatermark(str, attr);
     addResizeListener(document.documentElement, func);
     const instance = getCurrentInstance();
     if (instance) {
