@@ -36,5 +36,6 @@ export default {
   externalLink: "外链",
   hsAble: "功能",
   hsMenuTree: "菜单树结构",
-  hsWatermark: "水印"
+  hsWatermark: "水印",
+  hsProjectDocument: "项目文档"
 };

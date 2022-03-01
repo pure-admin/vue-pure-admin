@@ -3,6 +3,7 @@ import homeRouter from "./home";
 import ableRouter from "./able";
 import errorRouter from "./error";
 import guideRouter from "./guide";
+import frameRouter from "./frame";
 import editorRouter from "./editor";
 import nestedRouter from "./nested";
 import externalLink from "./externalLink";
@@ -24,6 +25,7 @@ const routes = [
   ableRouter,
   errorRouter,
   guideRouter,
+  frameRouter,
   nestedRouter,
   externalLink,
   editorRouter,

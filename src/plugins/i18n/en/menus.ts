@@ -36,5 +36,6 @@ export default {
   externalLink: "External Link",
   hsAble: "Able",
   hsMenuTree: "Menu Tree",
-  hsWatermark: "Water Mark"
+  hsWatermark: "Water Mark",
+  hsProjectDocument: "Project Document"
 };
