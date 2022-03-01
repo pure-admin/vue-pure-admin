@@ -52,10 +52,12 @@ import arrowRightSLine from "@iconify-icons/ri/arrow-right-s-line";
 import arrowLeftSLine from "@iconify-icons/ri/arrow-left-s-line";
 import logoutCircleRLine from "@iconify-icons/ri/logout-circle-r-line";
 import nodeTree from "@iconify-icons/ri/node-tree";
+import ubuntuFill from "@iconify-icons/ri/ubuntu-fill";
 addIcon("arrow-right-s-line", arrowRightSLine);
 addIcon("arrow-left-s-line", arrowLeftSLine);
 addIcon("logout-circle-r-line", logoutCircleRLine);
 addIcon("node-tree", nodeTree);
+addIcon("ubuntu-fill", ubuntuFill);
 
 // Font Awesome 4
 import faUser from "@iconify-icons/fa/user";

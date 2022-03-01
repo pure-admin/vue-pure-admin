@@ -1,5 +1,5 @@
 import { $t } from "/@/plugins/i18n";
-import Layout from "/@/layout/index.vue";
+const Layout = () => import("/@/layout/index.vue");
 
 const nestedRouter = {
   path: "/nested",
@@ -10,7 +10,7 @@ const nestedRouter = {
     title: $t("menus.hsmenus"),
     icon: "histogram",
     i18n: true,
-    rank: 5
+    rank: 8
   },
   children: [
     {

@@ -32,7 +32,9 @@ export default {
   permissionPage: "页面权限",
   permissionButton: "按钮权限",
   hstabs: "标签页操作",
-  hsMenuTree: "菜单树结构",
   hsguide: "引导页",
-  externalLink: "外链"
+  externalLink: "外链",
+  hsAble: "功能",
+  hsMenuTree: "菜单树结构",
+  hsWatermark: "水印"
 };

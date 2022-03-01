@@ -1,5 +1,5 @@
 import { $t } from "/@/plugins/i18n";
-import Layout from "/@/layout/index.vue";
+const Layout = () => import("/@/layout/index.vue");
 
 const guideRouter = {
   path: "/guide",
@@ -10,7 +10,7 @@ const guideRouter = {
     icon: "guide",
     title: $t("menus.hsguide"),
     i18n: true,
-    rank: 10
+    rank: 11
   },
   children: [
     {

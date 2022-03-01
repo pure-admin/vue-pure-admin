@@ -8,11 +8,11 @@ import {
 } from "vue-router";
 import { router } from "./index";
 import { loadEnv } from "../../build";
-import Layout from "/@/layout/index.vue";
 import { useTimeoutFn } from "@vueuse/core";
 import { RouteConfigs } from "/@/layout/types";
 import { buildHierarchyTree } from "/@/utils/tree";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
+const Layout = () => import("/@/layout/index.vue");
 // https://cn.vitejs.dev/guide/features.html#glob-import
 const modulesRoutes = import.meta.glob("/src/views/**/*.{vue,tsx}");
 
