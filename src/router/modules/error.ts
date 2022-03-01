@@ -10,7 +10,7 @@ const errorRouter = {
     icon: "position",
     title: $t("menus.hserror"),
     i18n: true,
-    rank: 7
+    rank: 9
   },
   children: [
     {

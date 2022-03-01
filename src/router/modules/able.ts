@@ -7,7 +7,7 @@ const ableRouter = {
   component: Layout,
   redirect: "/able/menuTree",
   meta: {
-    icon: "menu",
+    icon: "ubuntu-fill",
     title: $t("menus.hsAble"),
     i18n: true,
     rank: 3

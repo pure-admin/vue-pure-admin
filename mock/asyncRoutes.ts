@@ -41,7 +41,7 @@ const permissionRouter = {
     title: "menus.permission",
     icon: "lollipop",
     i18n: true,
-    rank: 8
+    rank: 7
   },
   children: [
     {
@@ -72,7 +72,7 @@ const tabsRouter = {
     icon: "IF-team-icontabs",
     title: "menus.hstabs",
     i18n: true,
-    rank: 9
+    rank: 10
   },
   children: [
     {

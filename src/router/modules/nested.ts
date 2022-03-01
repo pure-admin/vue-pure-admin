@@ -10,7 +10,7 @@ const nestedRouter = {
     title: $t("menus.hsmenus"),
     icon: "histogram",
     i18n: true,
-    rank: 5
+    rank: 8
   },
   children: [
     {
