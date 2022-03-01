@@ -8,7 +8,7 @@ import {
 } from "vue-router";
 import { router } from "./index";
 import { loadEnv } from "../../build";
-import Layout from "/@/layout/index.vue";
+import { Layout } from "/@/router/modules";
 import { useTimeoutFn } from "@vueuse/core";
 import { RouteConfigs } from "/@/layout/types";
 import { buildHierarchyTree } from "/@/utils/tree";

@@ -1,5 +1,5 @@
+import { Layout } from "./index";
 import { $t } from "/@/plugins/i18n";
-import Layout from "/@/layout/index.vue";
 
 const homeRouter = {
   path: "/",
