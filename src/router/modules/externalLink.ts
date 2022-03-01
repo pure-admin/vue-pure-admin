@@ -1,5 +1,5 @@
-import { Layout } from "./index";
 import { $t } from "/@/plugins/i18n";
+const Layout = () => import("/@/layout/index.vue");
 
 const externalLink = {
   path: "/external",
