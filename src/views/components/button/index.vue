@@ -7,13 +7,19 @@ const url = ref(`${VITE_PUBLIC_PATH}html/button.html`);
 </script>
 
 <template>
-  <iframe :src="url" frameborder="0" class="iframe"></iframe>
+  <el-card>
+    <template #header>
+      <div class="card-header">
+        <span class="font-medium">通过iframe引入按钮页面</span>
+      </div>
+    </template>
+    <iframe :src="url" frameborder="0" class="iframe"></iframe>
+  </el-card>
 </template>
 
 <style scoped>
 .iframe {
-  width: 98%;
-  height: 90vh;
-  border-radius: 6px;
+  width: 100%;
+  height: 60vh;
 }
 </style>

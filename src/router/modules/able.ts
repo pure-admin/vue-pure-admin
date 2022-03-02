@@ -30,6 +30,15 @@ const ableRouter = {
         title: $t("menus.hsWatermark"),
         i18n: true
       }
+    },
+    {
+      path: "/able/print",
+      name: "rePrint",
+      component: () => import("/@/views/able/print.vue"),
+      meta: {
+        title: $t("menus.hsPrint"),
+        i18n: true
+      }
     }
   ]
 };

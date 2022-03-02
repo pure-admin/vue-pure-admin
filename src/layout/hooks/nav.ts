@@ -8,7 +8,6 @@ import { useAppStoreHook } from "/@/store/modules/app";
 import { remainingPaths } from "/@/router/modules/index";
 import { Title } from "../../../public/serverConfig.json";
 import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
-import { remainingPaths } from "/@/router/modules/index";
 
 export function useNav() {
   const pureApp = useAppStoreHook();

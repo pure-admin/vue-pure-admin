@@ -61,7 +61,7 @@ const openDepot = (): void => {
           }
         }"
       >
-        <el-card>
+        <el-card style="height: 360px">
           <template #header>
             <span style="font-size: 16px; font-weight: 500">GitHub信息</span>
           </template>
@@ -93,7 +93,7 @@ const openDepot = (): void => {
           }
         }"
       >
-        <el-card>
+        <el-card style="height: 360px">
           <template #header>
             <span style="font-size: 16px; font-weight: 500"
               >GitHub滚动信息</span

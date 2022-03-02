@@ -37,6 +37,7 @@ export default {
   hsAble: "功能",
   hsMenuTree: "菜单树结构",
   hsWatermark: "水印",
+  hsPrint: "打印",
   hsExternalPage: "外部页面",
   hsPureDocument: "平台文档",
   hsEpDocument: "Element Plus文档"

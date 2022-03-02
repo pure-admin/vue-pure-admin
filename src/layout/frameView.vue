@@ -55,4 +55,8 @@ onMounted(() => {
     box-sizing: border-box;
   }
 }
+
+.main-content {
+  margin: 0;
+}
 </style>

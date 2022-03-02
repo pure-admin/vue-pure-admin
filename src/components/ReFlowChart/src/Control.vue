@@ -126,7 +126,7 @@ onMounted(() => {
 }
 
 .iconfont {
-  font-size: 25px;
+  font-size: 18px;
 }
 
 .control-container p {

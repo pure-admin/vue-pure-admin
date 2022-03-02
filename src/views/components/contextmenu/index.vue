@@ -5,7 +5,12 @@ import menuDynamic from "./menuDynamic.vue";
 </script>
 
 <template>
-  <div>
+  <el-card>
+    <template #header>
+      <div class="card-header">
+        <span class="font-medium">右键菜单组件</span>
+      </div>
+    </template>
     <el-row :gutter="24">
       <el-col :xs="24" :sm="10" :md="10" :lg="8" :xl="10">
         <!-- 基本使用 -->
@@ -20,5 +25,5 @@ import menuDynamic from "./menuDynamic.vue";
         <menuDynamic />
       </el-col>
     </el-row>
-  </div>
+  </el-card>
 </template>

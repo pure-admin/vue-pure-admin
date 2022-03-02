@@ -1,14 +1,7 @@
-<script lang="ts">
-export default {
-  name: "reGuide"
-};
-</script>
-
 <script setup lang="ts">
 import Driver from "driver.js";
 import "driver.js/dist/driver.min.css";
 
-// 步骤
 const steps = [
   {
     element: "#header-notice",
@@ -72,8 +65,14 @@ const guide = () => {
 </script>
 
 <template>
-  <div>
-    <p>引导页对于一些第一次进入项目的人很有用，你可以简单介绍下项目的功能</p>
+  <el-card>
+    <template #header>
+      <div class="card-header">
+        <span class="font-medium"
+          >引导页对于一些第一次进入项目的人很有用，你可以简单介绍下项目的功能</span
+        >
+      </div>
+    </template>
     <el-button
       type="primary"
       style="margin-top: 10px"
@@ -81,7 +80,7 @@ const guide = () => {
     >
       打开引导页
     </el-button>
-  </div>
+  </el-card>
 </template>
 
 <style>

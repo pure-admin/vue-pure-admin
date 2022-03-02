@@ -1,13 +1,15 @@
 <script setup lang="ts">
-import { ref, unref, onMounted } from "vue";
-import LogicFlow from "@logicflow/core";
-import { Snapshot, BpmnElement, Menu } from "@logicflow/extension";
+import demoData from "./dataTurbo.json";
 import "@logicflow/core/dist/style/index.css";
 import "@logicflow/extension/lib/style/index.css";
+
+import LogicFlow from "@logicflow/core";
+import { ref, unref, onMounted } from "vue";
+import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
+import { BpmnNode } from "/@/components/ReFlowChart/src/config";
+import { Snapshot, BpmnElement, Menu } from "@logicflow/extension";
 import { Control, NodePanel, DataDialog } from "/@/components/ReFlowChart";
 import { toLogicflowData } from "/@/components/ReFlowChart/src/adpterForTurbo";
-import { BpmnNode } from "/@/components/ReFlowChart/src/config";
-import demoData from "./dataTurbo.json";
 
 let lf = ref(null);
 let graphData = ref(null);
@@ -57,37 +59,52 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="logic-flow-view">
-    <!-- 辅助工具栏 -->
-    <Control
-      class="demo-control"
-      v-if="lf"
-      :lf="lf"
-      :catTurboData="false"
-      @catData="catData"
-    ></Control>
-    <!-- 节点面板 -->
-    <NodePanel :lf="lf" :nodeList="nodeList"></NodePanel>
-    <!-- 画布 -->
-    <div id="LF-Turbo"></div>
-    <!-- 数据查看面板 -->
-    <el-dialog
-      customClass="flow-dialog"
-      title="数据"
-      v-model="dataVisible"
-      width="50%"
-    >
-      <el-scrollbar>
-        <DataDialog :graphData="graphData"></DataDialog>
-      </el-scrollbar>
-    </el-dialog>
-  </div>
+  <el-card>
+    <template #header>
+      <div class="card-header">
+        <span class="font-medium"
+          >流程图组件，采用开源的<el-link
+            href="http://logic-flow.org/"
+            target="_blank"
+            :icon="useRenderIcon('set-up')"
+            style="font-size: 16px; margin: 0 4px 5px"
+            >LogicFlow</el-link
+          ></span
+        >
+      </div>
+    </template>
+    <div class="logic-flow-view">
+      <!-- 辅助工具栏 -->
+      <Control
+        class="demo-control"
+        v-if="lf"
+        :lf="lf"
+        :catTurboData="false"
+        @catData="catData"
+      ></Control>
+      <!-- 节点面板 -->
+      <NodePanel :lf="lf" :nodeList="nodeList"></NodePanel>
+      <!-- 画布 -->
+      <div id="LF-Turbo"></div>
+      <!-- 数据查看面板 -->
+      <el-dialog
+        customClass="flow-dialog"
+        title="数据"
+        v-model="dataVisible"
+        width="50%"
+      >
+        <el-scrollbar>
+          <DataDialog :graphData="graphData"></DataDialog>
+        </el-scrollbar>
+      </el-dialog>
+    </div>
+  </el-card>
 </template>
 
 <style scoped>
 #LF-Turbo {
   width: 100%;
-  height: calc(100vh - 90px);
+  height: 70vh;
 }
 
 .logic-flow-view {
@@ -136,9 +153,5 @@ onMounted(() => {
 :deep(.flow-dialog) .el-dialog__body {
   height: 85vh;
   overflow: auto;
-}
-
-.main-content {
-  margin: 0;
 }
 </style>

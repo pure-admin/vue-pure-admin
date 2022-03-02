@@ -37,6 +37,7 @@ export default {
   hsAble: "Able",
   hsMenuTree: "Menu Tree",
   hsWatermark: "Water Mark",
+  hsPrint: "Print",
   hsExternalPage: "External Page",
   hsPureDocument: "Pure Document",
   hsEpDocument: "Element Plus Document"

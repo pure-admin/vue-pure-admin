@@ -5,12 +5,12 @@ export default {
 </script>
 
 <script setup lang="ts">
-import { onMounted, onBeforeUnmount, ref, unref } from "vue";
 import WangEditor from "wangeditor";
+import { onMounted, onBeforeUnmount, ref, unref } from "vue";
+import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 
-// eslint-disable-next-line no-undef
-const editor = ref(null);
 const html = ref(null);
+const editor = ref(null);
 let instance: WangEditor;
 
 onMounted(() => {
@@ -29,17 +29,26 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div>
+  <el-card>
+    <template #header>
+      <div class="card-header">
+        <span class="font-medium"
+          >编辑器组件，采用开源的<el-link
+            href="https://www.wangeditor.com"
+            target="_blank"
+            :icon="useRenderIcon('edit')"
+            style="font-size: 16px; margin: 0 4px 5px"
+            >wangeditor</el-link
+          ></span
+        >
+      </div>
+    </template>
     <div ref="editor"></div>
     <div :innerHTML="html"></div>
-  </div>
+  </el-card>
 </template>
 
 <style lang="scss" scoped>
-.main-content {
-  margin: 40px;
-}
-
 :deep(.w-e-text-container) {
   z-index: 99 !important;
 }

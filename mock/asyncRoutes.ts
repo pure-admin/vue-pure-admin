@@ -76,7 +76,7 @@ const frameRouter = {
   },
   children: [
     {
-      path: "/frame/pure",
+      path: "/iframe/pure",
       name: "reFramePure",
       meta: {
         i18n: true,

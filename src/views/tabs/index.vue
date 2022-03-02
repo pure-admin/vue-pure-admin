@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
 
 const router = useRouter();
 const route = useRoute();
-const activeName = ref("tag");
 
 function toDetail(index: number) {
   useMultiTagsStoreHook().handleTags("push", {
@@ -25,33 +23,16 @@ function toDetail(index: number) {
 </script>
 
 <template>
-  <el-collapse v-model="activeName" class="tabs-container">
-    <el-collapse-item
-      title="标签页复用超出限制自动关闭(使用场景: 动态路由)"
-      name="tag"
-    >
-      <el-button v-for="index in 6" :key="index" @click="toDetail(index)">
-        打开{{ index }}详情页
-      </el-button>
-    </el-collapse-item>
-  </el-collapse>
+  <el-card>
+    <template #header>
+      <div class="card-header">
+        <span class="font-medium"
+          >标签页复用，超出限制自动关闭（使用场景: 动态路由）</span
+        >
+      </div>
+    </template>
+    <el-button v-for="index in 6" :key="index" @click="toDetail(index)">
+      打开{{ index }}详情页
+    </el-button>
+  </el-card>
 </template>
-
-<style lang="scss" scoped>
-.tabs-container {
-  padding: 10px;
-  background: #fff;
-
-  ::v-deep(.el-collapse-item__header) {
-    line-height: 20px;
-  }
-
-  ::v-deep(.el-collapse-item__wrap) {
-    border-bottom: none;
-  }
-
-  button {
-    margin: 10px;
-  }
-}
-</style>

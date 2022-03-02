@@ -44,6 +44,12 @@ import {
   ElCollapse,
   ElCollapseItem,
   ElTreeV2,
+  ElTable,
+  ElTableColumn,
+  ElLink,
+  ElColorPicker,
+  ElSelect,
+  ElOption,
   // 指令
   ElLoading,
   ElInfiniteScroll
@@ -96,7 +102,13 @@ const components = [
   ElEmpty,
   ElCollapse,
   ElCollapseItem,
-  ElTreeV2
+  ElTreeV2,
+  ElTable,
+  ElTableColumn,
+  ElLink,
+  ElColorPicker,
+  ElSelect,
+  ElOption
 ];
 
 export function useElementPlus(app: App) {
