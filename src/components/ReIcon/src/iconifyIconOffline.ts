@@ -24,7 +24,6 @@ import Location from "@iconify-icons/ep/location";
 import Tickets from "@iconify-icons/ep/tickets";
 import OfficeBuilding from "@iconify-icons/ep/office-building";
 import Notebook from "@iconify-icons/ep/notebook";
-import Document from "@iconify-icons/ep/Document";
 import Monitor from "@iconify-icons/ep/monitor";
 addIcon("check", Check);
 addIcon("menu", Menu);
@@ -48,7 +47,6 @@ addIcon("location", Location);
 addIcon("tickets", Tickets);
 addIcon("office-building", OfficeBuilding);
 addIcon("notebook", Notebook);
-addIcon("document", Document);
 addIcon("monitor", Monitor);
 
 // remixicon
