@@ -3,7 +3,7 @@ import {
   resultType,
   PureHttpError,
   RequestMethods,
-  PureHttpResoponse,
+  PureHttpResponse,
   PureHttpRequestConfig
 } from "./types.d";
 import qs from "qs";
@@ -91,7 +91,7 @@ class PureHttp {
   private httpInterceptorsResponse(): void {
     const instance = PureHttp.axiosInstance;
     instance.interceptors.response.use(
-      (response: PureHttpResoponse) => {
+      (response: PureHttpResponse) => {
         const $config = response.config;
         // 关闭进度条动画
         NProgress.done();
