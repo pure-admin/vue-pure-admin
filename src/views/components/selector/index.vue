@@ -22,20 +22,22 @@ const selectedVal = ({ left, right }): void => {
 </script>
 
 <template>
-  <el-card class="box-card" v-for="(item, key) in dataLists" :key="key">
-    <template #header>
-      <div class="card-header">
-        <span>{{ item.title }}</span>
-      </div>
-    </template>
-    <Selector
-      :HsKey="key"
-      :echo="item.echo"
-      @selectedVal="selectedVal"
-      :disabled="item.disabled"
-    />
-    <h4 v-if="!item.disabled">选中范围：{{ selectRange }}</h4>
-  </el-card>
+  <div>
+    <el-card class="box-card" v-for="(item, key) in dataLists" :key="key">
+      <template #header>
+        <div class="card-header">
+          <span>{{ item.title }}</span>
+        </div>
+      </template>
+      <Selector
+        :HsKey="key"
+        :echo="item.echo"
+        @selectedVal="selectedVal"
+        :disabled="item.disabled"
+      />
+      <h4 v-if="!item.disabled">选中范围：{{ selectRange }}</h4>
+    </el-card>
+  </div>
 </template>
 
 <style scoped>

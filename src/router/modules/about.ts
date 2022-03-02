@@ -20,10 +20,6 @@ const aboutRouter = {
       meta: {
         title: $t("menus.hsAbout"),
         i18n: true
-        // extraIcon: {
-        //   svg: true,
-        //   name: "team-iconxinpin"
-        // }
       }
     }
   ]
