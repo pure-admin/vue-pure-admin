@@ -85,6 +85,14 @@ const frameRouter = {
       }
     },
     {
+      path: "/external",
+      name: "https://pure-admin-doc.vercel.app",
+      meta: {
+        title: "menus.externalLink",
+        i18n: true
+      }
+    },
+    {
       path: "/iframe/ep",
       name: "reFrameEp",
       meta: {

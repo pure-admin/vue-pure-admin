@@ -33,12 +33,13 @@ export default {
   permissionButton: "Button Permission",
   hstabs: "Tabs Operate",
   hsguide: "Guide",
-  externalLink: "External Link",
   hsAble: "Able",
   hsMenuTree: "Menu Tree",
   hsWatermark: "Water Mark",
   hsPrint: "Print",
   hsExternalPage: "External Page",
-  hsPureDocument: "Pure Document",
-  hsEpDocument: "Element Plus Document"
+  hsPureDocument: "Pure Doc(Embedded)",
+  externalLink: "Pure Doc(External)",
+  hsEpDocument: "Element Plus Doc(Embedded)",
+  hsAbout: "About"
 };

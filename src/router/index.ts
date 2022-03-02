@@ -1,9 +1,10 @@
+import { isUrl } from "/@/utils/is";
 import { toRouteType } from "./types";
 import { openLink } from "/@/utils/link";
 import NProgress from "/@/utils/progress";
 import { constantRoutes } from "./modules";
+import { findIndex } from "lodash-unified";
 import { transformI18n } from "/@/plugins/i18n";
-import { split, findIndex } from "lodash-unified";
 import remainingRouter from "./modules/remaining";
 import { storageSession } from "/@/utils/storage";
 import { Title } from "../../public/serverConfig.json";
@@ -52,7 +53,7 @@ router.beforeEach((to: toRouteType, _from, next) => {
   }
   const name = storageSession.getItem("info");
   NProgress.start();
-  const externalLink = to?.redirectedFrom?.fullPath;
+  const externalLink = isUrl(to?.name);
   if (!externalLink)
     to.matched.some(item => {
       if (!item.meta.title) return "";
@@ -65,9 +66,9 @@ router.beforeEach((to: toRouteType, _from, next) => {
     });
   if (name) {
     if (_from?.name) {
-      // 如果路由包含http 则是超链接 反之是普通路由
-      if (externalLink && externalLink.includes("http")) {
-        openLink(`http${split(externalLink, "http")[1]}`);
+      // name为超链接
+      if (externalLink) {
+        openLink(to?.name);
         NProgress.done();
       } else {
         next();

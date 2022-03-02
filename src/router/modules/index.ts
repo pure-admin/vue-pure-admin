@@ -1,11 +1,11 @@
 // 静态路由
+import about from "./about";
 import homeRouter from "./home";
 import ableRouter from "./able";
 import errorRouter from "./error";
 import guideRouter from "./guide";
 import editorRouter from "./editor";
 import nestedRouter from "./nested";
-import externalLink from "./externalLink";
 import flowChartRouter from "./flowchart";
 import remainingRouter from "./remaining";
 import componentsRouter from "./components";
@@ -20,12 +20,12 @@ import { buildHierarchyTree } from "/@/utils/tree";
 
 // 原始静态路由（未做任何处理）
 const routes = [
+  about,
   homeRouter,
   ableRouter,
   errorRouter,
   guideRouter,
   nestedRouter,
-  externalLink,
   editorRouter,
   flowChartRouter,
   componentsRouter

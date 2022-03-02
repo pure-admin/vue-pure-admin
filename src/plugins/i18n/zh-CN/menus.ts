@@ -33,12 +33,13 @@ export default {
   permissionButton: "按钮权限",
   hstabs: "标签页操作",
   hsguide: "引导页",
-  externalLink: "外链",
   hsAble: "功能",
   hsMenuTree: "菜单树结构",
   hsWatermark: "水印",
   hsPrint: "打印",
   hsExternalPage: "外部页面",
-  hsPureDocument: "平台文档",
-  hsEpDocument: "Element Plus文档"
+  hsPureDocument: "平台文档(内嵌)",
+  externalLink: "平台文档(外链)",
+  hsEpDocument: "Element Plus文档(内嵌)",
+  hsAbout: "关于"
 };

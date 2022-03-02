@@ -4,13 +4,13 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { ref, unref, onMounted, nextTick } from "vue";
 import { useRoute } from "vue-router";
+import { ref, unref, onMounted, nextTick } from "vue";
 
-const currentRoute = useRoute();
 const loading = ref(false);
-const frameRef = ref<HTMLElement | null>(null);
+const currentRoute = useRoute();
 const frameSrc = ref<string>("");
+const frameRef = ref<HTMLElement | null>(null);
 
 if (unref(currentRoute.meta)?.frameSrc) {
   frameSrc.value = unref(currentRoute.meta)?.frameSrc as string;
@@ -46,8 +46,9 @@ onMounted(() => {
 <style lang="scss" scoped>
 .frame {
   height: 100vh;
+  z-index: 998;
 
-  &-iframe {
+  .frame-iframe {
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -57,6 +58,6 @@ onMounted(() => {
 }
 
 .main-content {
-  margin: 0;
+  margin: 0 !important;
 }
 </style>

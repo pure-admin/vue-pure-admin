@@ -1,4 +1,6 @@
+import dayjs from "dayjs";
 import { resolve } from "path";
+import pkg from "./package.json";
 import { warpperEnv, regExps } from "./build";
 import { getPluginsList } from "./build/plugins";
 import { UserConfigExport, ConfigEnv, loadEnv } from "vite";
@@ -17,6 +19,12 @@ const alias: Record<string, string> = {
   "@build": pathResolve("build"),
   //解决开发环境下的警告
   "vue-i18n": "vue-i18n/dist/vue-i18n.cjs.js"
+};
+
+const { dependencies, devDependencies, name, version } = pkg;
+const __APP_INFO__ = {
+  pkg: { dependencies, devDependencies, name, version },
+  lastBuildTime: dayjs(new Date()).format("YYYY-MM-DD HH:mm:ss")
 };
 
 export default ({ command, mode }: ConfigEnv): UserConfigExport => {
@@ -92,7 +100,8 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
       chunkSizeWarningLimit: 2000
     },
     define: {
-      __INTLIFY_PROD_DEVTOOLS__: false
+      __INTLIFY_PROD_DEVTOOLS__: false,
+      __APP_INFO__: JSON.stringify(__APP_INFO__)
     }
   };
 };

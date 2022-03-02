@@ -220,7 +220,7 @@ const openDepot = (): void => {
 
 <style lang="scss" scoped>
 .main-content {
-  margin: 0;
+  margin: 0 !important;
 }
 
 .welcome {
