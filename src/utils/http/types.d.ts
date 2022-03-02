@@ -18,13 +18,13 @@ export interface PureHttpError extends AxiosError {
   isCancelRequest?: boolean;
 }
 
-export interface PureHttpResoponse extends AxiosResponse {
+export interface PureHttpResponse extends AxiosResponse {
   config: PureHttpRequestConfig;
 }
 
 export interface PureHttpRequestConfig extends AxiosRequestConfig {
   beforeRequestCallback?: (request: PureHttpRequestConfig) => void;
-  beforeResponseCallback?: (response: PureHttpResoponse) => void;
+  beforeResponseCallback?: (response: PureHttpResponse) => void;
 }
 
 export default class PureHttp {
