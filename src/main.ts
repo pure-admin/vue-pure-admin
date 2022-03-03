@@ -37,14 +37,10 @@ app.component("IconifyIconOnline", IconifyIconOnline);
 app.component("FontIcon", FontIcon);
 
 getServerConfig(app).then(async config => {
+  app.use(router);
+  await router.isReady();
   injectResponsiveStorage(app, config);
   setupStore(app);
-  app
-    .use(router)
-    .use(MotionPlugin)
-    .use(useElementPlus)
-    .use(useTable)
-    .use(usI18n);
-  await router.isReady();
+  app.use(MotionPlugin).use(useElementPlus).use(useTable).use(usI18n);
   app.mount("#app");
 });
