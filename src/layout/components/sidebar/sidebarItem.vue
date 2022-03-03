@@ -111,6 +111,10 @@ function hasOneShowingChild(
     return true;
   });
 
+  if (showingChildren[0]?.meta?.showParent) {
+    return false;
+  }
+
   if (showingChildren.length === 1) {
     return true;
   }

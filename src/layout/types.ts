@@ -67,6 +67,7 @@ export type childrenType = {
     icon?: string;
     title?: string;
     i18n?: boolean;
+    showParent?: boolean;
     extraIcon?: {
       svg?: boolean;
       name?: string;
