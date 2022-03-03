@@ -127,6 +127,10 @@ function initRouter(name: string) {
               // 最终路由进行升序
               ascending(router.options.routes[0].children);
               if (!router.hasRoute(v?.name)) router.addRoute(v);
+              const flattenRouters = router
+                .getRoutes()
+                .find(n => n.path === "/");
+              router.addRoute(flattenRouters);
             }
             resolve(router);
           }
