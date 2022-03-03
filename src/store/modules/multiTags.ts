@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import { store } from "/@/store";
+import { isUrl } from "/@/utils/is";
 import { isEqual } from "lodash-unified";
 import { storageLocal } from "/@/utils/storage";
 import { multiType, positionType } from "./types";
@@ -54,6 +55,7 @@ export const useMultiTagsStore = defineStore({
         case "push":
           {
             const tagVal = value as multiType;
+            if (isUrl(tagVal?.name)) return;
             const tagPath = tagVal?.path;
             // 判断tag是否已存在
             const tagHasExits = this.multiTags.some(tag => {
