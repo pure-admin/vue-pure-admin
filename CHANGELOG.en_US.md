@@ -1,3 +1,17 @@
+# 3.1.0 (2022-3-3)
+
+### 🎫 Feat
+
+- iframe supports dynamic loading
+- Watermark example
+- Print examples (pictures, tables, echarts)
+- Add running and packaging information, use `lodash-unified` to replace `lodash-es`, `lodash-unified` supports `ESM` and is compatible with `CJS`
+
+### 🐞 Bug fixes
+
+- Fixed jumping to another menu page alone in one menu page, the routing page jumped but the tab page was not displayed
+- Fixed the route that returns dynamic level 3 and above in the background, and the menu does not correspond to the page
+
 # 3.0 (2022-2-14)
 
 ### 🎫 Feat
