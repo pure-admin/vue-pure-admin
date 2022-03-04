@@ -5,7 +5,7 @@ const errorRouter = {
   path: "/error",
   name: "error",
   component: Layout,
-  redirect: "/error/401",
+  redirect: "/error/403",
   meta: {
     icon: "position",
     title: $t("menus.hserror"),
@@ -14,9 +14,9 @@ const errorRouter = {
   },
   children: [
     {
-      path: "/error/401",
-      name: "401",
-      component: () => import("/@/views/error/401.vue"),
+      path: "/error/403",
+      name: "403",
+      component: () => import("/@/views/error/403.vue"),
       meta: {
         title: $t("menus.hsfourZeroOne"),
         i18n: true
@@ -28,6 +28,15 @@ const errorRouter = {
       component: () => import("/@/views/error/404.vue"),
       meta: {
         title: $t("menus.hsfourZeroFour"),
+        i18n: true
+      }
+    },
+    {
+      path: "/error/500",
+      name: "500",
+      component: () => import("/@/views/error/500.vue"),
+      meta: {
+        title: $t("menus.hsFive"),
         i18n: true
       }
     }
