@@ -50,6 +50,8 @@ import {
   ElColorPicker,
   ElSelect,
   ElOption,
+  ElTimeline,
+  ElTimelineItem,
   // 指令
   ElLoading,
   ElInfiniteScroll
@@ -108,7 +110,9 @@ const components = [
   ElLink,
   ElColorPicker,
   ElSelect,
-  ElOption
+  ElOption,
+  ElTimeline,
+  ElTimelineItem
 ];
 
 export function useElementPlus(app: App) {

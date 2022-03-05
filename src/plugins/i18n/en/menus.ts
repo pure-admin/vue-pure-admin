@@ -46,5 +46,6 @@ export default {
   hsResult: "Result Page",
   hsSuccess: "Success Page",
   hsFail: "Fail Page",
-  hsIconSelect: "Icon Select"
+  hsIconSelect: "Icon Select",
+  hsTimeline: "Time Line"
 };

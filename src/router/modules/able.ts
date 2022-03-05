@@ -48,6 +48,15 @@ const ableRouter = {
         title: $t("menus.hsIconSelect"),
         i18n: true
       }
+    },
+    {
+      path: "/able/timeline",
+      name: "reTimeline",
+      component: () => import("/@/views/able/timeline.vue"),
+      meta: {
+        title: $t("menus.hsTimeline"),
+        i18n: true
+      }
     }
   ]
 };
