@@ -39,6 +39,15 @@ const ableRouter = {
         title: $t("menus.hsPrint"),
         i18n: true
       }
+    },
+    {
+      path: "/able/iconSelect",
+      name: "reIconSelect",
+      component: () => import("/@/views/able/icon-select.vue"),
+      meta: {
+        title: $t("menus.hsIconSelect"),
+        i18n: true
+      }
     }
   ]
 };

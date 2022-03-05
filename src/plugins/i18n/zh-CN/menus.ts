@@ -42,5 +42,9 @@ export default {
   hsPureDocument: "平台文档(内嵌)",
   externalLink: "平台文档(外链)",
   hsEpDocument: "Element Plus文档(内嵌)",
-  hsAbout: "关于"
+  hsAbout: "关于",
+  hsResult: "结果页面",
+  hsSuccess: "成功页面",
+  hsFail: "失败页面",
+  hsIconSelect: "图标选择器"
 };

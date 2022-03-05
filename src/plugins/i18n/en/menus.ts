@@ -42,5 +42,9 @@ export default {
   hsPureDocument: "Pure Doc(Embedded)",
   externalLink: "Pure Doc(External)",
   hsEpDocument: "Element Plus Doc(Embedded)",
-  hsAbout: "About"
+  hsAbout: "About",
+  hsResult: "Result Page",
+  hsSuccess: "Success Page",
+  hsFail: "Fail Page",
+  hsIconSelect: "Icon Select"
 };

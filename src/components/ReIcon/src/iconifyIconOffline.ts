@@ -60,12 +60,16 @@ import logoutCircleRLine from "@iconify-icons/ri/logout-circle-r-line";
 import nodeTree from "@iconify-icons/ri/node-tree";
 import ubuntuFill from "@iconify-icons/ri/ubuntu-fill";
 import questionLine from "@iconify-icons/ri/question-line";
+import checkboxCircleLine from "@iconify-icons/ri/checkbox-circle-line";
+import informationLine from "@iconify-icons/ri/information-line";
 addIcon("arrow-right-s-line", arrowRightSLine);
 addIcon("arrow-left-s-line", arrowLeftSLine);
 addIcon("logout-circle-r-line", logoutCircleRLine);
 addIcon("node-tree", nodeTree);
 addIcon("ubuntu-fill", ubuntuFill);
 addIcon("question-line", questionLine);
+addIcon("checkbox-circle-line", checkboxCircleLine);
+addIcon("information-line", informationLine);
 
 // Font Awesome 4
 import faUser from "@iconify-icons/fa/user";

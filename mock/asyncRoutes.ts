@@ -112,7 +112,7 @@ const tabsRouter = {
     icon: "IF-team-icontabs",
     title: "menus.hstabs",
     i18n: true,
-    rank: 11
+    rank: 12
   },
   children: [
     {

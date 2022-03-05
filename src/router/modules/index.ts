@@ -4,6 +4,7 @@ import homeRouter from "./home";
 import ableRouter from "./able";
 import errorRouter from "./error";
 import guideRouter from "./guide";
+import resultRouter from "./result";
 import editorRouter from "./editor";
 import nestedRouter from "./nested";
 import flowChartRouter from "./flowchart";
@@ -25,6 +26,7 @@ const routes = [
   ableRouter,
   errorRouter,
   guideRouter,
+  resultRouter,
   nestedRouter,
   editorRouter,
   flowChartRouter,

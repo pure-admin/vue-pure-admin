@@ -10,7 +10,7 @@ const guideRouter = {
     icon: "guide",
     title: $t("menus.hsguide"),
     i18n: true,
-    rank: 11
+    rank: 13
   },
   children: [
     {
