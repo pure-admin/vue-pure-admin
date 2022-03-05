@@ -23,24 +23,12 @@ let tabsList = [
     name: "ep:"
   },
   {
-    label: "Remix Icon",
-    name: "ri:"
-  },
-  {
     label: "Font Awesome 4",
     name: "fa:"
   },
   {
     label: "Font Awesome 5 Solid",
     name: "fa-solid:"
-  },
-  {
-    label: "Ant Design Icons",
-    name: "ant-design:"
-  },
-  {
-    label: "VSCode Icons",
-    name: "vscode-icons:"
   }
 ];
 
