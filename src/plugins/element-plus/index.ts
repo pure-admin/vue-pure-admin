@@ -52,6 +52,9 @@ import {
   ElOption,
   ElTimeline,
   ElTimelineItem,
+  ElResult,
+  ElSteps,
+  ElStep,
   // 指令
   ElLoading,
   ElInfiniteScroll
@@ -112,7 +115,10 @@ const components = [
   ElSelect,
   ElOption,
   ElTimeline,
-  ElTimelineItem
+  ElTimelineItem,
+  ElResult,
+  ElSteps,
+  ElStep
 ];
 
 export function useElementPlus(app: App) {
