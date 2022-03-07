@@ -120,9 +120,9 @@ Support modern browsers, not IE
 
 ## Donate
 
-If you think this project is helpful to you, you can help the author buy a cup of coffee to show your support
+If you think this project is helpful to you, you can help the author buy a glass of juice 🍹 Show your support
 
-<img src="http://yiming_chang.gitee.io/manages/pay.jpg" width="150px" height="150px" />
+<img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f69bf13c5b854ed5b699807cafa0e3ce~tplv-k3u1fbpfcp-zoom-in-crop-mark:1304:0:0:0.awebp?" width="150px" height="150px" />
 
 ## License
 
