@@ -47,5 +47,6 @@ export default {
   hsSuccess: "成功页面",
   hsFail: "失败页面",
   hsIconSelect: "图标选择器",
-  hsTimeline: "时间线"
+  hsTimeline: "时间线",
+  hsLineTree: "树形连接线"
 };

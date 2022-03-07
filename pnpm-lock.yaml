@@ -6200,10 +6200,10 @@ packages:
       yargs: 17.3.1
     dev: true
 
-  /rollup/2.69.2:
+  /rollup/2.70.0:
     resolution:
       {
-        integrity: sha512-KghktpWg3Wd+nYCsx3Griidm2/CKIJYG2yyaaKspo0TXSoGdW+0duwzKl4wWIu62oN3mFg3zCDbwVRPwuNPPlA==
+        integrity: sha512-iEzYw+syFxQ0X9RefVwhr8BA2TNJsTaX8L8dhyeyMECDbmiba+8UQzcu+xZdji0+JQ+s7kouQnw+9Oz5M19XKA==
       }
     engines: { node: ">=10.0.0" }
     hasBin: true
@@ -7292,7 +7292,7 @@ packages:
       esbuild: 0.13.15
       postcss: 8.4.6
       resolve: 1.22.0
-      rollup: 2.69.2
+      rollup: 2.70.0
       sass: 1.49.9
     optionalDependencies:
       fsevents: 2.3.2
