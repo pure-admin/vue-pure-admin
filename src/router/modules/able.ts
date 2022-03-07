@@ -14,15 +14,6 @@ const ableRouter = {
   },
   children: [
     {
-      path: "/able/menuTree",
-      name: "reMenuTree",
-      component: () => import("/@/views/able/menu-tree.vue"),
-      meta: {
-        title: $t("menus.hsMenuTree"),
-        i18n: true
-      }
-    },
-    {
       path: "/able/watermark",
       name: "reWatermark",
       component: () => import("/@/views/able/watermark.vue"),
@@ -55,6 +46,24 @@ const ableRouter = {
       component: () => import("/@/views/able/timeline.vue"),
       meta: {
         title: $t("menus.hsTimeline"),
+        i18n: true
+      }
+    },
+    {
+      path: "/able/menuTree",
+      name: "reMenuTree",
+      component: () => import("/@/views/able/menu-tree.vue"),
+      meta: {
+        title: $t("menus.hsMenuTree"),
+        i18n: true
+      }
+    },
+    {
+      path: "/able/lineTree",
+      name: "reLineTree",
+      component: () => import("/@/views/able/line-tree.vue"),
+      meta: {
+        title: $t("menus.hsLineTree"),
         i18n: true
       }
     }

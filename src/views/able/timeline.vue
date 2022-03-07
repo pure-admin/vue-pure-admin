@@ -26,6 +26,7 @@ const activities = [
   {
     content: "支持自定义图标",
     timestamp: lastBuildTime,
+    color: "transparent",
     icon: useRenderIcon("iphone", {
       color: "#0bbd87"
     })
