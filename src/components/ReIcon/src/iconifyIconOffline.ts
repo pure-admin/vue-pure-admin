@@ -27,6 +27,7 @@ import Notebook from "@iconify-icons/ep/notebook";
 import Rank from "@iconify-icons/ep/rank";
 import videoPlay from "@iconify-icons/ep/video-play";
 import Monitor from "@iconify-icons/ep/monitor";
+import Search from "@iconify-icons/ep/search";
 addIcon("check", Check);
 addIcon("menu", Menu);
 addIcon("home-filled", HomeFilled);
@@ -52,6 +53,7 @@ addIcon("notebook", Notebook);
 addIcon("video-play", videoPlay);
 addIcon("rank", Rank);
 addIcon("monitor", Monitor);
+addIcon("search", Search);
 
 // remixicon
 import arrowRightSLine from "@iconify-icons/ri/arrow-right-s-line";
@@ -63,6 +65,9 @@ import questionLine from "@iconify-icons/ri/question-line";
 import checkboxCircleLine from "@iconify-icons/ri/checkbox-circle-line";
 import informationLine from "@iconify-icons/ri/information-line";
 import closeCircleLine from "@iconify-icons/ri/close-circle-line";
+import arrowUpLine from "@iconify-icons/ri/arrow-up-line";
+import arrowDownLine from "@iconify-icons/ri/arrow-down-line";
+import bookmark2Line from "@iconify-icons/ri/bookmark-2-line";
 addIcon("arrow-right-s-line", arrowRightSLine);
 addIcon("arrow-left-s-line", arrowLeftSLine);
 addIcon("logout-circle-r-line", logoutCircleRLine);
@@ -72,6 +77,9 @@ addIcon("question-line", questionLine);
 addIcon("checkbox-circle-line", checkboxCircleLine);
 addIcon("information-line", informationLine);
 addIcon("close-circle-line", closeCircleLine);
+addIcon("arrow-up-line", arrowUpLine);
+addIcon("arrow-down-line", arrowDownLine);
+addIcon("bookmark-2-line", bookmark2Line);
 
 // Font Awesome 4
 import faUser from "@iconify-icons/fa/user";
