@@ -48,5 +48,8 @@ export default {
   hsFail: "失败页面",
   hsIconSelect: "图标选择器",
   hsTimeline: "时间线",
-  hsLineTree: "树形连接线"
+  hsLineTree: "树形连接线",
+  hsAntTabs: "仿antdv标签页",
+  hsAntAnchor: "仿antdv锚点",
+  hsAntTreeSelect: "仿antdv树型选择器"
 };
