@@ -216,6 +216,12 @@
         }
       }
 
+      .search-container {
+        &:hover {
+          background: $menuHover;
+        }
+      }
+
       .screen-full {
         cursor: pointer;
 
