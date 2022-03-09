@@ -10,8 +10,8 @@ const props = defineProps({
 });
 
 const titleRef = ref(null);
-const descriptionRef = ref(null);
 const titleTooltip = ref(false);
+const descriptionRef = ref(null);
 const descriptionTooltip = ref(false);
 
 function hoverTitle() {
