@@ -144,7 +144,7 @@ onKeyStroke("ArrowDown", handleDown);
         </el-icon>
       </template>
     </el-input>
-    <div class="mt-20px">
+    <div class="search-result-container">
       <el-empty v-if="resultOptions.length === 0" description="暂无搜索结果" />
       <SearchResult
         v-else
@@ -158,4 +158,8 @@ onKeyStroke("ArrowDown", handleDown);
     </template>
   </el-dialog>
 </template>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.search-result-container {
+  margin-top: 20px;
+}
+</style>

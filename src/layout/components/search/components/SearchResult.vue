@@ -14,7 +14,7 @@
         <component
           :is="useRenderIcon(item.meta?.icon ?? 'bookmark-2-line')"
         ></component>
-        <span class="flex-1 ml-5px">{{ $t(item.meta?.title) }}</span>
+        <span class="result-item-title">{{ $t(item.meta?.title) }}</span>
         <enterOutlined />
       </div>
     </template>
@@ -79,6 +79,12 @@ function handleTo() {
     border-radius: 4px;
     background: #e5e7eb;
     cursor: pointer;
+
+    &-title {
+      display: flex;
+      flex: 1;
+      margin-left: 5px;
+    }
   }
 }
 </style>
