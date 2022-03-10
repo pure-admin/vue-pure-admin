@@ -12,6 +12,7 @@ specifiers:
   "@iconify/vue": ^3.1.3
   "@logicflow/core": 0.7.1
   "@logicflow/extension": 0.7.1
+  "@pureadmin/components": ^1.0.0
   "@types/element-resize-detector": 1.1.3
   "@types/js-cookie": ^3.0.1
   "@types/lodash-es": ^4.17.6
@@ -104,6 +105,7 @@ dependencies:
   "@ctrl/tinycolor": 3.4.0
   "@logicflow/core": 0.7.1
   "@logicflow/extension": 0.7.1
+  "@pureadmin/components": 1.0.0_vue@3.2.31
   "@vueuse/core": 7.7.0_vue@3.2.31
   "@vueuse/motion": 2.0.0-beta.9_vue@3.2.31
   "@vueuse/shared": 7.7.0_vue@3.2.31
@@ -217,6 +219,37 @@ packages:
     dependencies:
       "@jridgewell/trace-mapping": 0.3.4
     dev: true
+
+  /@ant-design/colors/5.1.1:
+    resolution:
+      {
+        integrity: sha512-Txy4KpHrp3q4XZdfgOBqLl+lkQIc3tEvHXOimRN1giX1AEC7mGtyrO9p8iRGJ3FLuVMGa2gNEzQyghVymLttKQ==
+      }
+    dependencies:
+      "@ctrl/tinycolor": 3.4.0
+    dev: false
+
+  /@ant-design/icons-svg/4.2.1:
+    resolution:
+      {
+        integrity: sha512-EB0iwlKDGpG93hW8f85CTJTs4SvMX7tt5ceupvhALp1IF44SeUFOMhKUOYqpsoYWQKAOuTRDMqn75rEaKDp0Xw==
+      }
+    dev: false
+
+  /@ant-design/icons-vue/6.0.1_vue@3.2.31:
+    resolution:
+      {
+        integrity: sha512-HigIgEVV6bbcrz2A92/qDzi/aKWB5EC6b6E1mxMB6aQA7ksiKY+gi4U94TpqyEIIhR23uaDrjufJ+xCZQ+vx6Q==
+      }
+    peerDependencies:
+      vue: ">=3.0.3"
+    dependencies:
+      "@ant-design/colors": 5.1.1
+      "@ant-design/icons-svg": 4.2.1
+      "@types/lodash": 4.14.179
+      lodash: 4.17.21
+      vue: 3.2.31
+    dev: false
 
   /@antfu/utils/0.5.0:
     resolution:
@@ -1110,6 +1143,19 @@ packages:
       }
     dev: false
 
+  /@pureadmin/components/1.0.0_vue@3.2.31:
+    resolution:
+      {
+        integrity: sha512-XQAKuGo5ybJsiAiP4JQNJCzS04u6P0B2iQ+3n+h5yEfMQIestmGPomF0pFa0ho/Wp1JpqBxvct9ZcVK7xmNW7w==
+      }
+    peerDependencies:
+      vue: ^3.2.0
+    dependencies:
+      "@ant-design/icons-svg": 4.2.1
+      "@ant-design/icons-vue": 6.0.1_vue@3.2.31
+      vue: 3.2.31
+    dev: false
+
   /@rollup/plugin-node-resolve/13.1.3:
     resolution:
       {
@@ -1202,7 +1248,6 @@ packages:
       {
         integrity: sha512-uwc1x90yCKqGcIOAT6DwOSuxnrAbpkdPsUOZtwrXb4D/6wZs+6qG7QnIawDuZWg0sWpxl+ltIKCaLoMlna678w==
       }
-    dev: true
 
   /@types/minimatch/3.0.5:
     resolution:

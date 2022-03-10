@@ -2,6 +2,7 @@
 import { useI18n } from "vue-i18n";
 import { useNav } from "../hooks/nav";
 import { useRoute } from "vue-router";
+import Search from "./search/index.vue";
 import Notice from "./notice/index.vue";
 import mixNav from "./sidebar/mixNav.vue";
 import avatars from "/@/assets/avatars.jpg";
@@ -58,6 +59,8 @@ function translationEn() {
     <mixNav v-if="pureApp.layout === 'mix'" />
 
     <div v-if="pureApp.layout === 'vertical'" class="vertical-header-right">
+      <!-- 菜单搜索 -->
+      <Search />
       <!-- 通知 -->
       <Notice id="header-notice" />
       <!-- 全屏 -->

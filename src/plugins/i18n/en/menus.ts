@@ -48,5 +48,8 @@ export default {
   hsFail: "Fail Page",
   hsIconSelect: "Icon Select",
   hsTimeline: "Time Line",
-  hsLineTree: "LineTree"
+  hsLineTree: "LineTree",
+  hsAntTabs: "Imitate Antdv Tabs",
+  hsAntAnchor: "Imitate Antdv Anchor",
+  hsAntTreeSelect: "Imitate Antdv TreeSelector"
 };

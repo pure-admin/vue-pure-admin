@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import NoticeList from "./noticeList.vue";
 import { noticesData } from "./data";
+import NoticeList from "./noticeList.vue";
+import { templateRef } from "@vueuse/core";
+import { Tabs, TabPane } from "@pureadmin/components";
 
+const dropdownDom = templateRef<ElRef | null>("dropdownDom", null);
 const activeName = ref(noticesData[0].name);
 const notices = ref(noticesData);
 
@@ -10,10 +13,15 @@ let noticesNum = ref(0);
 notices.value.forEach(notice => {
   noticesNum.value += notice.list.length;
 });
+
+function tabClick() {
+  // @ts-expect-error
+  dropdownDom.value.handleOpen();
+}
 </script>
 
 <template>
-  <el-dropdown trigger="click" placement="bottom-end">
+  <el-dropdown ref="dropdownDom" trigger="click" placement="bottom-end">
     <span class="dropdown-badge">
       <el-badge :value="noticesNum" :max="99">
         <el-icon class="header-notice-icon"
@@ -23,24 +31,32 @@ notices.value.forEach(notice => {
     </span>
     <template #dropdown>
       <el-dropdown-menu>
-        <el-tabs v-model="activeName" class="dropdown-tabs">
+        <Tabs
+          centered
+          class="dropdown-tabs"
+          v-model:activeName="activeName"
+          @tabClick="tabClick"
+        >
           <template v-for="item in notices" :key="item.key">
-            <el-tab-pane
-              :label="`${item.name}(${item.list.length})`"
-              :name="item.name"
-            >
+            <TabPane :tab="`${item.name}(${item.list.length})`">
               <el-scrollbar max-height="330px">
                 <div class="noticeList-container">
                   <NoticeList :list="item.list" />
                 </div>
               </el-scrollbar>
-            </el-tab-pane>
+            </TabPane>
           </template>
-        </el-tabs>
+        </Tabs>
       </el-dropdown-menu>
     </template>
   </el-dropdown>
 </template>
+
+<style>
+.ant-tabs-dropdown {
+  z-index: 2900 !important;
+}
+</style>
 
 <style lang="scss" scoped>
 .dropdown-badge {
@@ -78,5 +94,9 @@ notices.value.forEach(notice => {
   :deep(.noticeList-container) {
     padding: 15px 24px 0 24px;
   }
+}
+
+:deep(.ant-tabs-nav) {
+  margin-bottom: 0;
 }
 </style>

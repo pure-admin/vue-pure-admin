@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
 import { useNav } from "../../hooks/nav";
+import Search from "../search/index.vue";
 import Notice from "../notice/index.vue";
 import { templateRef } from "@vueuse/core";
 import SidebarItem from "./sidebarItem.vue";
@@ -91,6 +92,8 @@ function translationEn() {
       />
     </el-menu>
     <div class="horizontal-header-right">
+      <!-- 菜单搜索 -->
+      <Search />
       <!-- 通知 -->
       <Notice id="header-notice" />
       <!-- 全屏 -->

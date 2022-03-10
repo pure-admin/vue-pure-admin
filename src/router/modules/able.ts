@@ -66,6 +66,33 @@ const ableRouter = {
         title: $t("menus.hsLineTree"),
         i18n: true
       }
+    },
+    {
+      path: "/able/antTabs",
+      name: "reAntTabs",
+      component: () => import("/@/views/able/ant-tabs.vue"),
+      meta: {
+        title: $t("menus.hsAntTabs"),
+        i18n: true
+      }
+    },
+    {
+      path: "/able/antAnchor",
+      name: "reAntAnchor",
+      component: () => import("/@/views/able/ant-anchor.vue"),
+      meta: {
+        title: $t("menus.hsAntAnchor"),
+        i18n: true
+      }
+    },
+    {
+      path: "/able/antTreeSelect",
+      name: "reAntTreeSelect",
+      component: () => import("/@/views/able/ant-treeSelect.vue"),
+      meta: {
+        title: $t("menus.hsAntTreeSelect"),
+        i18n: true
+      }
     }
   ]
 };
