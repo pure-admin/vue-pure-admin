@@ -14,6 +14,7 @@ import "virtual:windi.css";
 // 导入公共样式
 import "./style/index.scss";
 import "@pureadmin/components/dist/index.min.css";
+import "@pureadmin/components/dist/theme.min.css";
 // 导入字体图标
 import "./assets/iconfont/iconfont.js";
 import "./assets/iconfont/iconfont.css";

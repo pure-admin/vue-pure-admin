@@ -12,7 +12,7 @@ specifiers:
   "@iconify/vue": ^3.1.3
   "@logicflow/core": 0.7.1
   "@logicflow/extension": 0.7.1
-  "@pureadmin/components": ^0.0.9
+  "@pureadmin/components": ^1.0.0
   "@types/element-resize-detector": 1.1.3
   "@types/js-cookie": ^3.0.1
   "@types/lodash-es": ^4.17.6
@@ -105,7 +105,7 @@ dependencies:
   "@ctrl/tinycolor": 3.4.0
   "@logicflow/core": 0.7.1
   "@logicflow/extension": 0.7.1
-  "@pureadmin/components": 0.0.9_vue@3.2.31
+  "@pureadmin/components": 1.0.0_vue@3.2.31
   "@vueuse/core": 7.7.0_vue@3.2.31
   "@vueuse/motion": 2.0.0-beta.9_vue@3.2.31
   "@vueuse/shared": 7.7.0_vue@3.2.31
@@ -1143,10 +1143,10 @@ packages:
       }
     dev: false
 
-  /@pureadmin/components/0.0.9_vue@3.2.31:
+  /@pureadmin/components/1.0.0_vue@3.2.31:
     resolution:
       {
-        integrity: sha512-WCxmnKRDwB+51aEFHr5snIytDCjJuovucfQhVJroQleFYsFga+aYKwmvIRFutOkqVa5hndUXLcUm9k8oTKngcQ==
+        integrity: sha512-XQAKuGo5ybJsiAiP4JQNJCzS04u6P0B2iQ+3n+h5yEfMQIestmGPomF0pFa0ho/Wp1JpqBxvct9ZcVK7xmNW7w==
       }
     peerDependencies:
       vue: ^3.2.0

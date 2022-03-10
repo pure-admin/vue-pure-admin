@@ -93,17 +93,3 @@ ul {
 .mobile-spacing {
   margin: 0;
 }
-
-// @pureadmin/components 样式覆盖
-.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
-  color: var(--el-color-primary) !important;
-}
-.ant-tabs-ink-bar {
-  background: var(--el-color-primary) !important;
-}
-.ant-tabs-tab,
-.ant-tabs-tab-btn {
-  &:hover {
-    color: var(--el-color-primary) !important;
-  }
-}
