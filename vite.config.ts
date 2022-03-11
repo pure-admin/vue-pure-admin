@@ -16,9 +16,7 @@ const pathResolve = (dir: string): string => {
 // 设置别名
 const alias: Record<string, string> = {
   "/@": pathResolve("src"),
-  "@build": pathResolve("build"),
-  //解决开发环境下的警告
-  "vue-i18n": "vue-i18n/dist/vue-i18n.cjs.js"
+  "@build": pathResolve("build")
 };
 
 const { dependencies, devDependencies, name, version } = pkg;

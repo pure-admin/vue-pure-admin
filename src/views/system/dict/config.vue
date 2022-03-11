@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { reactive } from "vue";
+import { useI18n } from "vue-i18n";
 import { VxeTableEvents } from "vxe-table";
 import { templateRef } from "@vueuse/core";
 
@@ -18,6 +19,8 @@ withDefaults(defineProps<Props>(), {
 const emit = defineEmits<{
   (e: "handleClose"): void;
 }>();
+
+const { t } = useI18n();
 
 const xTable = templateRef<any>("xTable", null);
 
@@ -140,7 +143,7 @@ const checkboxChangeEvent: VxeTableEvents.CheckboxChange = ({ records }) => {
               <span class="select-count"
                 >已选中{{ configData.selectRecords.length }}条</span
               >
-              <vxe-button size="small">{{ $t("buttons.hsdelete") }}</vxe-button>
+              <vxe-button size="small">{{ t("buttons.hsdelete") }}</vxe-button>
             </span>
           </template>
         </vxe-pager>

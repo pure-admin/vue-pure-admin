@@ -1,12 +1,8 @@
 {
   "editor.formatOnType": true,
   "editor.formatOnSave": true,
-  "javascript.updateImportsOnFileMove.enabled": "always",
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "editor.tabSize": 2,
   "editor.formatOnPaste": true,
@@ -30,14 +26,12 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "i18n-ally.localesPaths": ["src/plugins/i18n"],
+  "i18n-ally.localesPaths": "locales",
   "i18n-ally.keystyle": "nested",
   "i18n-ally.sortKeys": true,
   "i18n-ally.namespace": true,
-  "i18n-ally.pathMatcher": "{locale}/{namespaces}.{ext}",
-  "i18n-ally.enabledParsers": ["ts"],
+  "i18n-ally.enabledParsers": ["yaml", "js"],
   "i18n-ally.sourceLanguage": "en",
   "i18n-ally.displayLanguage": "zh-CN",
-  "i18n-ally.enabledFrameworks": ["vue", "react"]
+  "i18n-ally.enabledFrameworks": ["vue"]
 }

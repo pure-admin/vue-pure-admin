@@ -7,6 +7,7 @@ export default {
 <script setup lang="ts">
 import XEUtils from "xe-utils";
 import Config from "./config.vue";
+import { useI18n } from "vue-i18n";
 import { cloneDeep } from "lodash-unified";
 import { templateRef } from "@vueuse/core";
 import { reactive, ref, unref, nextTick } from "vue";
@@ -21,6 +22,8 @@ type onEditNRow = {
   name: string;
   model: string;
 };
+
+const { t } = useI18n();
 
 const dictData = reactive({
   submitLoading: false,
@@ -209,7 +212,7 @@ function handleClose() {
       <template #buttons>
         <vxe-input
           v-model="dictData.filterName"
-          :placeholder="$t('buttons.hssearch')"
+          :placeholder="t('buttons.hssearch')"
           @keyup="searchEvent"
         ></vxe-input>
       </template>
@@ -218,19 +221,19 @@ function handleClose() {
           icon="fa fa-plus-square-o"
           status="primary"
           @click="onAdd"
-          >{{ $t("buttons.hsadd") }}</vxe-button
+          >{{ t("buttons.hsadd") }}</vxe-button
         >
         <vxe-button
           icon="fa fa-folder-open-o"
           status="primary"
           @click="$refs.xTree.setAllTreeExpand(true)"
-          >{{ $t("buttons.hsexpendAll") }}</vxe-button
+          >{{ t("buttons.hsexpendAll") }}</vxe-button
         >
         <vxe-button
           icon="fa fa-folder-o"
           status="primary"
           @click="$refs.xTree.clearTreeExpand()"
-          >{{ $t("buttons.hscollapseAll") }}</vxe-button
+          >{{ t("buttons.hscollapseAll") }}</vxe-button
         >
       </template>
     </vxe-toolbar>
