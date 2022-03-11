@@ -19,12 +19,12 @@ import closeLeft from "/@/assets/svg/close_left.svg?component";
 import closeOther from "/@/assets/svg/close_other.svg?component";
 import closeRight from "/@/assets/svg/close_right.svg?component";
 
+import { useI18n } from "vue-i18n";
 import { emitter } from "/@/utils/mitt";
-import { $t as t } from "/@/plugins/i18n";
-import { transformI18n } from "/@/plugins/i18n";
 import { storageLocal } from "/@/utils/storage";
 import { useRoute, useRouter } from "vue-router";
 import { isEqual, isEmpty } from "lodash-unified";
+import { transformI18n, $t } from "/@/plugins/i18n";
 import { RouteConfigs, tagsViewsType } from "../../types";
 import { useSettingStoreHook } from "/@/store/modules/settings";
 import { handleAliveRoute, delAliveRoutes } from "/@/router/utils";
@@ -33,6 +33,7 @@ import { usePermissionStoreHook } from "/@/store/modules/permission";
 import { toggleClass, removeClass, hasClass } from "/@/utils/operate";
 import { templateRef, useResizeObserver, useDebounceFn } from "@vueuse/core";
 
+const { t } = useI18n();
 const route = useRoute();
 const router = useRouter();
 const translateX = ref<number>(0);
@@ -193,42 +194,42 @@ const handleScroll = (offset: number): void => {
 const tagsViews = reactive<Array<tagsViewsType>>([
   {
     icon: refresh,
-    text: t("buttons.hsreload"),
+    text: $t("buttons.hsreload"),
     divided: false,
     disabled: false,
     show: true
   },
   {
     icon: close,
-    text: t("buttons.hscloseCurrentTab"),
+    text: $t("buttons.hscloseCurrentTab"),
     divided: false,
     disabled: multiTags.value.length > 1 ? false : true,
     show: true
   },
   {
     icon: closeLeft,
-    text: t("buttons.hscloseLeftTabs"),
+    text: $t("buttons.hscloseLeftTabs"),
     divided: true,
     disabled: multiTags.value.length > 1 ? false : true,
     show: true
   },
   {
     icon: closeRight,
-    text: t("buttons.hscloseRightTabs"),
+    text: $t("buttons.hscloseRightTabs"),
     divided: false,
     disabled: multiTags.value.length > 1 ? false : true,
     show: true
   },
   {
     icon: closeOther,
-    text: t("buttons.hscloseOtherTabs"),
+    text: $t("buttons.hscloseOtherTabs"),
     divided: true,
     disabled: multiTags.value.length > 2 ? false : true,
     show: true
   },
   {
     icon: closeAll,
-    text: t("buttons.hscloseAllTabs"),
+    text: $t("buttons.hscloseAllTabs"),
     divided: false,
     disabled: multiTags.value.length > 1 ? false : true,
     show: true
@@ -701,7 +702,7 @@ const getContextMenuStyle = computed((): CSSProperties => {
         >
           <li v-if="item.show" @click="selectTag(key, item)">
             <component :is="item.icon" :key="key" />
-            {{ $t(item.text) }}
+            {{ t(item.text) }}
           </li>
         </div>
       </ul>
@@ -710,7 +711,7 @@ const getContextMenuStyle = computed((): CSSProperties => {
     <ul class="right-button">
       <li>
         <el-icon
-          :title="$t('buttons.hsrefreshRoute')"
+          :title="t('buttons.hsrefreshRoute')"
           class="el-icon-refresh-right rotate"
           @click="onFresh"
         >
@@ -740,7 +741,7 @@ const getContextMenuStyle = computed((): CSSProperties => {
                   :key="key"
                   style="margin-right: 6px"
                 />
-                {{ $t(item.text) }}
+                {{ t(item.text) }}
               </el-dropdown-item>
             </el-dropdown-menu>
           </template>

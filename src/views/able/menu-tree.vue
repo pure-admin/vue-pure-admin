@@ -5,6 +5,7 @@ export default {
 </script>
 
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
 import { ref, computed } from "vue";
 import type { ElTreeV2 } from "element-plus";
 import { transformI18n } from "/@/plugins/i18n";
@@ -12,6 +13,7 @@ import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 import { extractPathList, deleteChildren } from "/@/utils/tree";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 import type { TreeNode } from "element-plus/es/components/tree-v2/src/types";
+const { t } = useI18n();
 
 interface treeNode extends TreeNode {
   meta: {
@@ -76,7 +78,7 @@ const filterMethod = (query: string, node: treeNode) => {
       :default-expanded-keys="expandedKeys"
     >
       <template #default="{ data }">
-        <span>{{ $t(data.meta.title) }}</span>
+        <span>{{ t(data.meta.title) }}</span>
       </template>
     </el-tree-v2>
   </el-card>
