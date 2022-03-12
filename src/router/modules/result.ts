@@ -3,7 +3,6 @@ const Layout = () => import("/@/layout/index.vue");
 
 const resultRouter = {
   path: "/result",
-  name: "reResult",
   component: Layout,
   redirect: "/result/success",
   meta: {

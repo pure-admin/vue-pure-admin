@@ -15,7 +15,6 @@ const remainingRouter = [
   },
   {
     path: "/redirect",
-    name: "redirect",
     component: Layout,
     meta: {
       icon: "home-filled",

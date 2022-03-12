@@ -3,7 +3,6 @@ const Layout = () => import("/@/layout/index.vue");
 
 const guideRouter = {
   path: "/guide",
-  name: "reGuide",
   component: Layout,
   redirect: "/guide/index",
   meta: {

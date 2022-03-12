@@ -50,10 +50,9 @@ export function transformI18n(
 
   // 处理存储动态路由的title,格式 {zh:"",en:""}
   if (typeof message === "object") {
-    debugger;
     const locale: string | WritableComputedRef<string> | any =
       i18n.global.locale;
-    return message[locale];
+    return message[locale?.value];
   }
 
   if (isI18n) {
