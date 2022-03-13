@@ -66,6 +66,13 @@ VXETable.setup({
     return unref(i18n.global.locale) === "zh"
       ? XEUtils.toFormatString(XEUtils.get(zh, key), args)
       : XEUtils.toFormatString(XEUtils.get(en, key), args);
+  },
+  translate(key) {
+    const NAMESPACED = ["el.", "buttons."];
+    if (key && NAMESPACED.findIndex(v => key.includes(v)) !== -1) {
+      return i18n.global.t.call(i18n.global.locale, key);
+    }
+    return key;
   }
 });
 
