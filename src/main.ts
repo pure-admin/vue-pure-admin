@@ -3,7 +3,7 @@ import router from "./router";
 import { setupStore } from "/@/store";
 import { getServerConfig } from "./config";
 import { createApp, Directive } from "vue";
-import { usI18n } from "../src/plugins/i18n";
+import { useI18n } from "../src/plugins/i18n";
 import { MotionPlugin } from "@vueuse/motion";
 import { useTable } from "../src/plugins/vxe-table";
 import { useElementPlus } from "../src/plugins/element-plus";
@@ -43,6 +43,6 @@ getServerConfig(app).then(async config => {
   await router.isReady();
   injectResponsiveStorage(app, config);
   setupStore(app);
-  app.use(MotionPlugin).use(useElementPlus).use(useTable).use(usI18n);
+  app.use(MotionPlugin).use(useI18n).use(useElementPlus).use(useTable);
   app.mount("#app");
 });

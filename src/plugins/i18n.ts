@@ -67,6 +67,6 @@ export const i18n: I18n = createI18n({
   messages: localesConfigs
 });
 
-export function usI18n(app: App) {
+export function useI18n(app: App) {
   app.use(i18n);
 }
