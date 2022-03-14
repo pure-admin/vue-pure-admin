@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import { Anchor, AnchorLink } from "@pureadmin/components";
 
-// const getCurrentAnchor = () => {
-//   return "one";
-// };
-
 function handleAnchorClick(e, link) {
   e.preventDefault();
   const srcolls = document.getElementById(link.href);
