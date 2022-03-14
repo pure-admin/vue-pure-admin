@@ -1,8 +1,8 @@
 /* 动态改变element-plus主题色 */
 import rgbHex from "rgb-hex";
-import { convert } from "css-color-function";
+import epCss from "./element.scss";
 import { TinyColor } from "@ctrl/tinycolor";
-import epCss from "element-plus/dist/index.css";
+import { convert } from "css-color-function";
 
 // 色值表
 const formula = {
