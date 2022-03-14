@@ -3,7 +3,6 @@ const Layout = () => import("/@/layout/index.vue");
 
 const editorRouter = {
   path: "/editor",
-  name: "reEditor",
   component: Layout,
   redirect: "/editor/index",
   meta: {

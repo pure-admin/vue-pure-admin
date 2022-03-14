@@ -3,9 +3,8 @@ const Layout = () => import("/@/layout/index.vue");
 
 const ableRouter = {
   path: "/able",
-  name: "components",
   component: Layout,
-  redirect: "/able/menuTree",
+  redirect: "/able/watermark",
   meta: {
     icon: "ubuntu-fill",
     title: $t("menus.hsAble"),

@@ -3,9 +3,6 @@ import { App, WritableComputedRef } from "vue";
 import { storageLocal } from "/@/utils/storage";
 import { type I18n, createI18n } from "vue-i18n";
 
-// vxe-table组件国际化
-import zhVxeTable from "vxe-table/lib/locale/lang/zh-CN";
-import enVxeTable from "vxe-table/lib/locale/lang/en-US";
 // element-plus国际化
 import enLocale from "element-plus/lib/locale/lang/en";
 import zhLocale from "element-plus/lib/locale/lang/zh-cn";
@@ -24,12 +21,10 @@ function siphonI18n(prefix = "zh-CN") {
 export const localesConfigs = {
   zh: {
     ...siphonI18n("zh-CN"),
-    ...zhVxeTable,
     ...zhLocale
   },
   en: {
     ...siphonI18n("en"),
-    ...enVxeTable,
     ...enLocale
   }
 };
@@ -50,10 +45,9 @@ export function transformI18n(
 
   // 处理存储动态路由的title,格式 {zh:"",en:""}
   if (typeof message === "object") {
-    debugger;
     const locale: string | WritableComputedRef<string> | any =
       i18n.global.locale;
-    return message[locale];
+    return message[locale?.value];
   }
 
   if (isI18n) {
@@ -73,6 +67,6 @@ export const i18n: I18n = createI18n({
   messages: localesConfigs
 });
 
-export function usI18n(app: App) {
+export function useI18n(app: App) {
   app.use(i18n);
 }

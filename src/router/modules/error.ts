@@ -3,7 +3,6 @@ const Layout = () => import("/@/layout/index.vue");
 
 const errorRouter = {
   path: "/error",
-  name: "error",
   component: Layout,
   redirect: "/error/403",
   meta: {

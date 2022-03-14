@@ -3,9 +3,8 @@ const Layout = () => import("/@/layout/index.vue");
 
 const aboutRouter = {
   path: "/about",
-  name: "reAbout",
   component: Layout,
-  redirect: "/about",
+  redirect: "/about/index",
   meta: {
     icon: "question-line",
     title: $t("menus.hsAbout"),
@@ -14,9 +13,9 @@ const aboutRouter = {
   },
   children: [
     {
-      path: "/about",
+      path: "/about/index",
       name: "reAbout",
-      component: () => import("/@/views/about.vue"),
+      component: () => import("/@/views/about/index.vue"),
       meta: {
         title: $t("menus.hsAbout"),
         i18n: true

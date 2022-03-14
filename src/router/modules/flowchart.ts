@@ -3,7 +3,6 @@ const Layout = () => import("/@/layout/index.vue");
 
 const flowChartRouter = {
   path: "/flowChart",
-  name: "flowChart",
   component: Layout,
   redirect: "/flowChart/index",
   meta: {

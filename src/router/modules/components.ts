@@ -3,7 +3,6 @@ const Layout = () => import("/@/layout/index.vue");
 
 const componentsRouter = {
   path: "/components",
-  name: "components",
   component: Layout,
   redirect: "/components/video",
   meta: {

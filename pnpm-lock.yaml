@@ -13,7 +13,7 @@ specifiers:
   "@intlify/vite-plugin-vue-i18n": ^3.3.1
   "@logicflow/core": 0.7.1
   "@logicflow/extension": 0.7.1
-  "@pureadmin/components": ^1.0.0
+  "@pureadmin/components": ^1.0.2
   "@types/element-resize-detector": 1.1.3
   "@types/js-cookie": ^3.0.1
   "@types/lodash-es": ^4.17.6
@@ -106,7 +106,7 @@ dependencies:
   "@ctrl/tinycolor": 3.4.0
   "@logicflow/core": 0.7.1
   "@logicflow/extension": 0.7.1
-  "@pureadmin/components": 1.0.0_vue@3.2.31
+  "@pureadmin/components": 1.0.2_vue@3.2.31
   "@vueuse/core": 8.0.0_vue@3.2.31
   "@vueuse/motion": 2.0.0-beta.9_vue@3.2.31
   "@vueuse/shared": 8.0.0_vue@3.2.31
@@ -222,10 +222,10 @@ packages:
       "@jridgewell/trace-mapping": 0.3.4
     dev: true
 
-  /@ant-design/colors/5.1.1:
+  /@ant-design/colors/6.0.0:
     resolution:
       {
-        integrity: sha512-Txy4KpHrp3q4XZdfgOBqLl+lkQIc3tEvHXOimRN1giX1AEC7mGtyrO9p8iRGJ3FLuVMGa2gNEzQyghVymLttKQ==
+        integrity: sha512-qAZRvPzfdWHtfameEGP2Qvuf838NhergR35o+EuVyB5XvSA98xod5r4utvi4TJ3ywmevm290g9nsCG5MryrdWQ==
       }
     dependencies:
       "@ctrl/tinycolor": 3.4.0
@@ -238,18 +238,16 @@ packages:
       }
     dev: false
 
-  /@ant-design/icons-vue/6.0.1_vue@3.2.31:
+  /@ant-design/icons-vue/6.1.0_vue@3.2.31:
     resolution:
       {
-        integrity: sha512-HigIgEVV6bbcrz2A92/qDzi/aKWB5EC6b6E1mxMB6aQA7ksiKY+gi4U94TpqyEIIhR23uaDrjufJ+xCZQ+vx6Q==
+        integrity: sha512-EX6bYm56V+ZrKN7+3MT/ubDkvJ5rK/O2t380WFRflDcVFgsvl3NLH7Wxeau6R8DbrO5jWR6DSTC3B6gYFp77AA==
       }
     peerDependencies:
       vue: ">=3.0.3"
     dependencies:
-      "@ant-design/colors": 5.1.1
+      "@ant-design/colors": 6.0.0
       "@ant-design/icons-svg": 4.2.1
-      "@types/lodash": 4.14.179
-      lodash: 4.17.21
       vue: 3.2.31
     dev: false
 
@@ -1191,16 +1189,16 @@ packages:
       }
     dev: false
 
-  /@pureadmin/components/1.0.0_vue@3.2.31:
+  /@pureadmin/components/1.0.2_vue@3.2.31:
     resolution:
       {
-        integrity: sha512-XQAKuGo5ybJsiAiP4JQNJCzS04u6P0B2iQ+3n+h5yEfMQIestmGPomF0pFa0ho/Wp1JpqBxvct9ZcVK7xmNW7w==
+        integrity: sha512-bNUA+FqiSiSa+u+dC6nII4ybT+9MMVX7KLM1GWM+p6XLvJpjGcaYt95chlFLeNs3LO8sNruxSPwafVqI/dhsZQ==
       }
     peerDependencies:
       vue: ^3.2.0
     dependencies:
       "@ant-design/icons-svg": 4.2.1
-      "@ant-design/icons-vue": 6.0.1_vue@3.2.31
+      "@ant-design/icons-vue": 6.1.0_vue@3.2.31
       vue: 3.2.31
     dev: false
 
@@ -1296,6 +1294,7 @@ packages:
       {
         integrity: sha512-uwc1x90yCKqGcIOAT6DwOSuxnrAbpkdPsUOZtwrXb4D/6wZs+6qG7QnIawDuZWg0sWpxl+ltIKCaLoMlna678w==
       }
+    dev: true
 
   /@types/minimatch/3.0.5:
     resolution:

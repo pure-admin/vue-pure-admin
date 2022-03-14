@@ -15,7 +15,6 @@ const remainingRouter = [
   },
   {
     path: "/redirect",
-    name: "redirect",
     component: Layout,
     meta: {
       icon: "home-filled",
@@ -28,7 +27,7 @@ const remainingRouter = [
       {
         path: "/redirect/:path(.*)",
         name: "redirect",
-        component: () => import("/@/views/redirect.vue")
+        component: () => import("/@/layout/redirect.vue")
       }
     ]
   }

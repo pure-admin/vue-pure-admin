@@ -1,11 +1,14 @@
 import "xe-utils";
-import { App } from "vue";
+import XEUtils from "xe-utils";
+import { App, unref } from "vue";
 import { i18n } from "/@/plugins/i18n";
 import "font-awesome/css/font-awesome.min.css";
+import zh from "vxe-table/lib/locale/lang/zh-CN";
+import en from "vxe-table/lib/locale/lang/en-US";
+
 import {
   // 核心
   VXETable,
-
   // 表格功能
   Header,
   Footer,
@@ -16,7 +19,6 @@ import {
   Export,
   Keyboard,
   Validator,
-
   // 可选组件
   Column,
   Colgroup,
@@ -42,7 +44,6 @@ import {
   Modal,
   List,
   Pulldown,
-
   // 表格
   Table
 } from "vxe-table";
@@ -61,17 +62,15 @@ VXETable.setup({
   input: {
     clearable: true
   },
-  // 对组件内置的提示语进行国际化翻译
-  // @ts-ignore
-  i18n: (key, args) => i18n.global.t(key, args),
-  // 可选，对参数中的列头、校验提示..等进行自动翻译（只对支持国际化的有效）
-  translate(key, args) {
-    // 例如，只翻译 "buttons." 开头的键值
-    if (key && key.indexOf("buttons.") > -1) {
-      return i18n.global.t(key, args);
-    }
-    if (key && key.indexOf("el.") > -1) {
-      return i18n.global.t(key, args);
+  i18n: (key, args) => {
+    return unref(i18n.global.locale) === "zh"
+      ? XEUtils.toFormatString(XEUtils.get(zh, key), args)
+      : XEUtils.toFormatString(XEUtils.get(en, key), args);
+  },
+  translate(key) {
+    const NAMESPACED = ["el.", "buttons."];
+    if (key && NAMESPACED.findIndex(v => key.includes(v)) !== -1) {
+      return i18n.global.t.call(i18n.global.locale, key);
     }
     return key;
   }
@@ -88,7 +87,6 @@ export function useTable(app: App) {
     .use(Export)
     .use(Keyboard)
     .use(Validator)
-
     // 可选组件
     .use(Column)
     .use(Colgroup)

@@ -5,7 +5,6 @@ const nestedRouter = {
   path: "/nested",
   component: Layout,
   redirect: "/nested/menu1/menu1-1",
-  name: "Nested",
   meta: {
     title: $t("menus.hsmenus"),
     icon: "histogram",
@@ -15,7 +14,6 @@ const nestedRouter = {
   children: [
     {
       path: "/nested/menu1",
-      name: "Menu1",
       meta: {
         title: $t("menus.hsmenu1"),
         i18n: true,
@@ -35,7 +33,6 @@ const nestedRouter = {
         },
         {
           path: "/nested/menu1/menu1-2",
-          name: "Menu1-2",
           redirect: "/nested/menu1/menu1-2/menu1-2-1",
           meta: {
             title: $t("menus.hsmenu1-2"),
