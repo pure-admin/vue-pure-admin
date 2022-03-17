@@ -3177,10 +3177,10 @@ packages:
       is-arrayish: 0.2.1
     dev: true
 
-  /es-module-lexer/0.10.1:
+  /es-module-lexer/0.10.2:
     resolution:
       {
-        integrity: sha512-7zffMCLzbiuuRjL5FVs4BEIr6j+Istfrbwzrwg8de4ep1kSyZNJmmq5RQzyqJq4YhvOmAxZ3DBsZXDO4I5N71Q==
+        integrity: sha512-Yscrk6aIG8IlpN+trRLuTiSI2MSJQELnG/S8g1xHnzoFZuxRhcp+Udx2ooFu1h/EIPyQvLqLUlcgivmxALfA2g==
       }
     dev: true
 
@@ -7223,7 +7223,7 @@ packages:
     engines: { node: ">=12.20.0" }
     dependencies:
       "@rollup/pluginutils": 4.2.0
-      es-module-lexer: 0.10.1
+      es-module-lexer: 0.10.2
       magic-string: 0.26.1
       unplugin: 0.3.3_rollup@2.70.1+vite@2.9.0-beta.3
     transitivePeerDependencies:
