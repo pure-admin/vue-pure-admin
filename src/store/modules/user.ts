@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { store } from "/@/store";
 import { userType } from "./types";
-import { useRouter } from "vue-router";
+import { router } from "/@/router";
 import { getLogin, refreshToken } from "/@/api/user";
 import { storageLocal, storageSession } from "/@/utils/storage";
 import { getToken, setToken, removeToken } from "/@/utils/auth";
@@ -64,7 +64,7 @@ export const useUserStore = defineStore({
           }
         }
       ]);
-      useRouter().push("/login");
+      router.push("/login");
     },
     // 刷新token
     async refreshToken(data) {
