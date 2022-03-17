@@ -24,7 +24,7 @@ import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
 import { storageLocal, storageSession } from "/@/utils/storage";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
 import { createNewStyle, writeNewStyle } from "../../theme/element-plus";
-import { toggleTheme } from "@zougt/vite-plugin-theme-preprocessor/dist/browser-utils";
+import { toggleTheme } from "@pureadmin/theme/dist/browser-utils";
 
 import dayIcon from "/@/assets/svg/day.svg?component";
 import darkIcon from "/@/assets/svg/dark.svg?component";
