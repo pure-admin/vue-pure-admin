@@ -51,7 +51,7 @@
     "mockjs": "^1.1.0",
     "nprogress": "^0.2.0",
     "path": "^0.12.7",
-    "pinia": "^2.0.11",
+    "pinia": "^2.0.12",
     "qs": "^6.10.1",
     "resize-observer-polyfill": "^1.5.1",
     "responsive-storage": "^1.0.11",
