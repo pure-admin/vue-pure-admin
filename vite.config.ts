@@ -89,7 +89,7 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
         "vxe-table/lib/locale/lang/zh-CN",
         "vxe-table/lib/locale/lang/en-US"
       ],
-      exclude: ["@zougt/vite-plugin-theme-preprocessor/dist/browser-utils"]
+      exclude: ["@pureadmin/theme/dist/browser-utils"]
     },
     build: {
       sourcemap: false,

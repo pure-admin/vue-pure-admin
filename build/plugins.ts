@@ -12,7 +12,7 @@ import VueI18n from "@intlify/vite-plugin-vue-i18n";
 import ElementPlus from "unplugin-element-plus/vite";
 import { visualizer } from "rollup-plugin-visualizer";
 import removeConsole from "vite-plugin-remove-console";
-import themePreprocessorPlugin from "@zougt/vite-plugin-theme-preprocessor";
+import themePreprocessorPlugin from "@pureadmin/theme";
 
 export function getPluginsList(command, VITE_LEGACY) {
   const prodMock = true;

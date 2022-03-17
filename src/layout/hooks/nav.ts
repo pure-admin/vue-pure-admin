@@ -1,12 +1,12 @@
 import { computed } from "vue";
 import { router } from "/@/router";
+import { getConfig } from "/@/config";
 import { emitter } from "/@/utils/mitt";
 import { routeMetaType } from "../types";
 import { transformI18n } from "/@/plugins/i18n";
 import { storageSession } from "/@/utils/storage";
 import { useAppStoreHook } from "/@/store/modules/app";
 import { remainingPaths } from "/@/router/modules/index";
-import { Title } from "../../../public/serverConfig.json";
 import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
 
 export function useNav() {
@@ -30,6 +30,7 @@ export function useNav() {
 
   // 动态title
   function changeTitle(meta: routeMetaType) {
+    const Title = getConfig().Title;
     if (Title)
       document.title = `${transformI18n(meta.title, meta.i18n)} | ${Title}`;
     else document.title = transformI18n(meta.title, meta.i18n);
