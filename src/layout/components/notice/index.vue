@@ -24,9 +24,9 @@ function tabClick() {
   <el-dropdown ref="dropdownDom" trigger="click" placement="bottom-end">
     <span class="dropdown-badge">
       <el-badge :value="noticesNum" :max="99">
-        <span class="header-notice-icon"
-          ><IconifyIconOffline icon="bell"
-        /></span>
+        <span class="header-notice-icon">
+          <IconifyIconOffline icon="bell" />
+        </span>
       </el-badge>
     </span>
     <template #dropdown>

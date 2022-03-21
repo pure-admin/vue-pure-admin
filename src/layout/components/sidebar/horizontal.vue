@@ -102,15 +102,17 @@ function translationEn() {
             <el-dropdown-item
               :style="getDropdownItemStyle(locale, 'zh')"
               @click="translationCh"
-              ><span class="check-zh" v-show="locale === 'zh'"
-                ><IconifyIconOffline icon="check" /></span
-              >简体中文</el-dropdown-item
             >
+              <span class="check-zh" v-show="locale === 'zh'">
+                <IconifyIconOffline icon="check" /> </span
+              >简体中文
+            </el-dropdown-item>
             <el-dropdown-item
               :style="getDropdownItemStyle(locale, 'en')"
               @click="translationEn"
-              ><span class="check-en" v-show="locale === 'en'"
-                ><IconifyIconOffline icon="check" /></span
+            >
+              <span class="check-en" v-show="locale === 'en'">
+                <IconifyIconOffline icon="check" /> </span
               >English</el-dropdown-item
             >
           </el-dropdown-menu>

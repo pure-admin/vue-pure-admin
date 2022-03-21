@@ -429,6 +429,7 @@ function onClickDrop(key, item, selectRoute?: RouteConfigs) {
 }
 
 function handleCommand(command: object) {
+  // @ts-expect-error
   const { key, item } = command;
   onClickDrop(key, item);
 }

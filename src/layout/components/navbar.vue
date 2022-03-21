@@ -82,10 +82,11 @@ function translationEn() {
             <el-dropdown-item
               :style="getDropdownItemStyle(locale, 'en')"
               @click="translationEn"
-              ><span class="check-en" v-show="locale === 'en'"
-                ><IconifyIconOffline icon="check" /></span
-              >English</el-dropdown-item
             >
+              <span class="check-en" v-show="locale === 'en'">
+                <IconifyIconOffline icon="check" /> </span
+              >English
+            </el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
