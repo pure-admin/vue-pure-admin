@@ -148,7 +148,7 @@ function resolvePath(routePath) {
       :class="{ 'submenu-title-noDropdown': !isNest }"
       :style="getNoDropdownStyle"
     >
-      <span class="el-icon" v-show="props.item.meta.icon">
+      <div class="el-icon" v-show="props.item.meta.icon">
         <component
           :is="
             useRenderIcon(
@@ -157,7 +157,7 @@ function resolvePath(routePath) {
             )
           "
         />
-      </span>
+      </div>
       <div
         v-if="
           !pureApp.sidebar.opened &&
