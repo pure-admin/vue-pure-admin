@@ -13,7 +13,7 @@ const url = ref(`${VITE_PUBLIC_PATH}html/button.html`);
         <span class="font-medium">通过iframe引入按钮页面</span>
       </div>
     </template>
-    <iframe :src="url" frameborder="0" class="iframe"></iframe>
+    <iframe :src="url" frameborder="0" class="iframe" />
   </el-card>
 </template>
 

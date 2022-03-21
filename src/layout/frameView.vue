@@ -1,6 +1,6 @@
 <template>
   <div class="frame" v-loading="loading">
-    <iframe :src="frameSrc" class="frame-iframe" ref="frameRef"></iframe>
+    <iframe :src="frameSrc" class="frame-iframe" ref="frameRef" />
   </div>
 </template>
 <script lang="ts" setup>

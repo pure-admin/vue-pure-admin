@@ -67,7 +67,7 @@ const filterMethod = (query: string, node: treeNode) => {
       placeholder="请输入关键字查找"
       clearable
       @input="onQueryChanged"
-    ></el-input>
+    />
     <el-tree-v2
       ref="treeRef"
       :data="menusData"

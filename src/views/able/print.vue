@@ -159,8 +159,7 @@ const tableData: User[] = [
               :key="item.value"
               :label="item.label"
               :value="item.value"
-            >
-            </el-option>
+            />
           </el-select>
           <el-button size="small" type="primary" @click="onPrint"
             >打印</el-button
@@ -233,16 +232,12 @@ const tableData: User[] = [
           :cell-style="cellStyle"
           :data="demo1.tableData"
         >
-          <vxe-column type="seq" width="60"></vxe-column>
-          <vxe-column field="name" title="Name"></vxe-column>
-          <vxe-column field="sex" title="Sex"></vxe-column>
-          <vxe-column field="age" title="Age"></vxe-column>
-          <vxe-column field="attr1" title="Attr1"></vxe-column>
-          <vxe-column
-            field="address"
-            title="Address"
-            show-overflow
-          ></vxe-column>
+          <vxe-column type="seq" width="60" />
+          <vxe-column field="name" title="Name" />
+          <vxe-column field="sex" title="Sex" />
+          <vxe-column field="age" title="Age" />
+          <vxe-column field="attr1" title="Attr1" />
+          <vxe-column field="address" title="Address" show-overflow />
         </vxe-table>
       </el-col>
 

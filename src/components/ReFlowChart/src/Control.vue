@@ -107,7 +107,7 @@ onMounted(() => {
           }"
           @click="onControl(item, key)"
         >
-          <span :class="'iconfont ' + item.icon"></span>
+          <span :class="'iconfont ' + item.icon" />
           <p>{{ item.text }}</p>
         </button>
       </li>

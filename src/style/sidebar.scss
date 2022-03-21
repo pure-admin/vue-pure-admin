@@ -202,7 +202,7 @@
 
     .horizontal-header-right {
       display: flex;
-      min-width: 280px;
+      min-width: 340px;
       align-items: center;
       color: $subMenuActiveText;
       justify-content: flex-end;
@@ -609,13 +609,10 @@ body[layout="vertical"] {
         }
       }
 
-      /* 无子菜单 */
+      /* 有无子菜单 */
+      .el-sub-menu__title,
       .el-menu-item [class^="el-icon"] {
         right: 5px;
-      }
-
-      .el-sub-menu__title [class^="el-icon"] {
-        right: 2px;
       }
 
       .submenu-title-noDropdown {

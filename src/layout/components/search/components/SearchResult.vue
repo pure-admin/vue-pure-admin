@@ -11,9 +11,7 @@
         @click="handleTo"
         @mouseenter="handleMouse(item)"
       >
-        <component
-          :is="useRenderIcon(item.meta?.icon ?? 'bookmark-2-line')"
-        ></component>
+        <component :is="useRenderIcon(item.meta?.icon ?? 'bookmark-2-line')" />
         <span class="result-item-title">{{ t(item.meta?.title) }}</span>
         <enterOutlined />
       </div>

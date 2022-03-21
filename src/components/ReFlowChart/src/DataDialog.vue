@@ -13,5 +13,5 @@ const props = defineProps({
     :deep="3"
     :showLength="true"
     :data="props.graphData"
-  ></vue-json-pretty>
+  />
 </template>

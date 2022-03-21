@@ -92,5 +92,5 @@ tryOnUnmounted(() => {
 </script>
 
 <template>
-  <div :class="'bar' + props.index" style="width: 100%; height: 35vh"></div>
+  <div :class="'bar' + props.index" style="width: 100%; height: 35vh" />
 </template>

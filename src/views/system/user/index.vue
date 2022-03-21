@@ -218,5 +218,5 @@ const gridOptions = reactive({
 </script>
 
 <template>
-  <vxe-grid v-bind="gridOptions"></vxe-grid>
+  <vxe-grid v-bind="gridOptions" />
 </template>

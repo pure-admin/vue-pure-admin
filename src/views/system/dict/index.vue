@@ -214,7 +214,7 @@ function handleClose() {
           v-model="dictData.filterName"
           :placeholder="t('buttons.hssearch')"
           @keyup="searchEvent"
-        ></vxe-input>
+        />
       </template>
       <template #tools>
         <vxe-button
@@ -251,11 +251,7 @@ function handleClose() {
       :data="dictData.tableData"
       @cell-dblclick="cellDBLClickEvent"
     >
-      <vxe-table-column
-        tree-node
-        field="name"
-        title="字典名称"
-      ></vxe-table-column>
+      <vxe-table-column tree-node field="name" title="字典名称" />
       <vxe-table-column title="字典类型">
         <template #default="{ row }">
           <el-tooltip
@@ -312,7 +308,7 @@ function handleClose() {
           title-align="right"
           title-width="100"
           @submit="submitEvent"
-        ></vxe-form>
+        />
       </template>
     </vxe-modal>
 

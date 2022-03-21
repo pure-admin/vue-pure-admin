@@ -498,7 +498,7 @@ defineExpose({
       :class="leftSwitchClass"
       @click="leftSwitchClick"
     >
-      <slot name="left-switch"></slot>
+      <slot name="left-switch" />
     </div>
     <div
       :style="rightSwitch"
@@ -506,7 +506,7 @@ defineExpose({
       :class="rightSwitchClass"
       @click="rightSwitchClick"
     >
-      <slot name="right-switch"></slot>
+      <slot name="right-switch" />
     </div>
     <div
       :ref="'realBox' + classOption['key']"
@@ -519,9 +519,9 @@ defineExpose({
       @mousewheel="wheel"
     >
       <div :ref="'slotList' + classOption['key']" :style="float">
-        <slot></slot>
+        <slot />
       </div>
-      <div v-html="copyHtml" :style="float"></div>
+      <div v-html="copyHtml" :style="float" />
     </div>
   </div>
 </template>

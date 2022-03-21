@@ -69,11 +69,7 @@ function translationEn() {
 <template>
   <div class="horizontal-header">
     <div class="horizontal-header-left" @click="backHome">
-      <FontIcon
-        icon="team-iconlogo"
-        svg
-        style="width: 35px; height: 35px"
-      ></FontIcon>
+      <FontIcon icon="team-iconlogo" svg style="width: 35px; height: 35px" />
       <h4>{{ title }}</h4>
     </div>
     <el-menu
@@ -106,15 +102,17 @@ function translationEn() {
             <el-dropdown-item
               :style="getDropdownItemStyle(locale, 'zh')"
               @click="translationCh"
-              ><el-icon class="check-zh" v-show="locale === 'zh'"
-                ><IconifyIconOffline icon="check" /></el-icon
-              >简体中文</el-dropdown-item
             >
+              <span class="check-zh" v-show="locale === 'zh'">
+                <IconifyIconOffline icon="check" /> </span
+              >简体中文
+            </el-dropdown-item>
             <el-dropdown-item
               :style="getDropdownItemStyle(locale, 'en')"
               @click="translationEn"
-              ><el-icon class="check-en" v-show="locale === 'en'"
-                ><IconifyIconOffline icon="check" /></el-icon
+            >
+              <span class="check-en" v-show="locale === 'en'">
+                <IconifyIconOffline icon="check" /> </span
               >English</el-dropdown-item
             >
           </el-dropdown-menu>
@@ -138,13 +136,13 @@ function translationEn() {
           </el-dropdown-menu>
         </template>
       </el-dropdown>
-      <el-icon
+      <span
         class="el-icon-setting"
         :title="t('buttons.hssystemSet')"
         @click="onPanel"
       >
         <IconifyIconOffline icon="setting" />
-      </el-icon>
+      </span>
     </div>
   </div>
 </template>

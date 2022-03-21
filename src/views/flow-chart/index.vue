@@ -81,11 +81,11 @@ onMounted(() => {
         :lf="lf"
         :catTurboData="false"
         @catData="catData"
-      ></Control>
+      />
       <!-- 节点面板 -->
-      <NodePanel :lf="lf" :nodeList="nodeList"></NodePanel>
+      <NodePanel :lf="lf" :nodeList="nodeList" />
       <!-- 画布 -->
-      <div id="LF-Turbo"></div>
+      <div id="LF-Turbo" />
       <!-- 数据查看面板 -->
       <el-dialog
         customClass="flow-dialog"
@@ -94,7 +94,7 @@ onMounted(() => {
         width="50%"
       >
         <el-scrollbar>
-          <DataDialog :graphData="graphData"></DataDialog>
+          <DataDialog :graphData="graphData" />
         </el-scrollbar>
       </el-dialog>
     </div>

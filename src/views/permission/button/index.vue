@@ -24,8 +24,8 @@ function changRole(value) {
     <template #header>
       <div class="card-header">
         <el-radio-group v-model="auth" @change="changRole">
-          <el-radio-button label="admin"></el-radio-button>
-          <el-radio-button label="test"></el-radio-button>
+          <el-radio-button label="admin" />
+          <el-radio-button label="test" />
         </el-radio-group>
       </div>
     </template>

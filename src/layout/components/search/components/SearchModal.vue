@@ -139,9 +139,9 @@ onKeyStroke("ArrowDown", handleDown);
       @input="handleSearch"
     >
       <template #prefix>
-        <el-icon class="el-input__icon">
+        <span class="el-input__icon">
           <IconifyIconOffline icon="search" />
-        </el-icon>
+        </span>
       </template>
     </el-input>
     <div class="search-result-container">

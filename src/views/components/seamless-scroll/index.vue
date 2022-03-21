@@ -101,7 +101,7 @@ function changeDirection(val) {
       >
         <ul class="item">
           <li v-for="(item, index) in listData" :key="index">
-            <span class="title" v-text="item.title"></span>
+            <span class="title" v-text="item.title" />
           </li>
         </ul>
       </SeamlessScroll>

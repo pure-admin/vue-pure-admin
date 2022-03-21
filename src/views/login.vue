@@ -73,7 +73,7 @@ function onPwdBlur() {
   <img :src="bg" class="wave" />
   <div class="login-container">
     <div class="img">
-      <component :is="currentWeek"></component>
+      <component :is="currentWeek" />
     </div>
     <div class="login-box">
       <div class="login-form">
