@@ -119,9 +119,9 @@ function translationEn() {
         :index="resolvePath(route) || route.redirect"
       >
         <template #title>
-          <el-icon v-show="route.meta.icon" :class="route.meta.icon">
+          <div v-show="route.meta.icon" :class="['el-icon', route.meta.icon]">
             <component :is="useRenderIcon(route.meta && route.meta.icon)" />
-          </el-icon>
+          </div>
           <span>{{ transformI18n(route.meta.title, route.meta.i18n) }}</span>
           <FontIcon
             v-if="route.meta.extraIcon"
@@ -149,15 +149,15 @@ function translationEn() {
             <el-dropdown-item
               :style="getDropdownItemStyle(locale, 'zh')"
               @click="translationCh"
-              ><el-icon class="check-zh" v-show="locale === 'zh'"
-                ><IconifyIconOffline icon="check" /></el-icon
+              ><span class="check-zh" v-show="locale === 'zh'"
+                ><IconifyIconOffline icon="check" /></span
               >简体中文</el-dropdown-item
             >
             <el-dropdown-item
               :style="getDropdownItemStyle(locale, 'en')"
               @click="translationEn"
-              ><el-icon class="check-en" v-show="locale === 'en'"
-                ><IconifyIconOffline icon="check" /></el-icon
+              ><span class="check-en" v-show="locale === 'en'"
+                ><IconifyIconOffline icon="check" /></span
               >English</el-dropdown-item
             >
           </el-dropdown-menu>
@@ -181,13 +181,13 @@ function translationEn() {
           </el-dropdown-menu>
         </template>
       </el-dropdown>
-      <el-icon
+      <span
         class="el-icon-setting"
         :title="t('buttons.hssystemSet')"
         @click="onPanel"
       >
         <IconifyIconOffline icon="setting" />
-      </el-icon>
+      </span>
     </div>
   </div>
 </template>

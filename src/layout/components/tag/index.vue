@@ -429,6 +429,7 @@ function onClickDrop(key, item, selectRoute?: RouteConfigs) {
 }
 
 function handleCommand(command: object) {
+  // @ts-expect-error
   const { key, item } = command;
   onClickDrop(key, item);
 }
@@ -663,7 +664,7 @@ const getContextMenuStyle = computed((): CSSProperties => {
           <router-link :to="item.path"
             >{{ transformI18n(item.meta.title, item.meta.i18n) }}
           </router-link>
-          <el-icon
+          <span
             v-if="
               iconIsActive(item, index) ||
               (index === activeIndex && index !== 0)
@@ -672,7 +673,7 @@ const getContextMenuStyle = computed((): CSSProperties => {
             @click.stop="deleteMenu(item)"
           >
             <IconifyIconOffline icon="close-bold" />
-          </el-icon>
+          </span>
           <div
             :ref="'schedule' + index"
             v-if="showModel !== 'card'"
@@ -710,13 +711,13 @@ const getContextMenuStyle = computed((): CSSProperties => {
     <!-- 右侧功能按钮 -->
     <ul class="right-button">
       <li>
-        <el-icon
+        <span
           :title="t('buttons.hsrefreshRoute')"
           class="el-icon-refresh-right rotate"
           @click="onFresh"
         >
           <IconifyIconOffline icon="refresh-right" />
-        </el-icon>
+        </span>
       </li>
       <li>
         <el-dropdown
@@ -724,9 +725,7 @@ const getContextMenuStyle = computed((): CSSProperties => {
           placement="bottom-end"
           @command="handleCommand"
         >
-          <el-icon>
-            <IconifyIconOffline icon="arrow-down" />
-          </el-icon>
+          <IconifyIconOffline icon="arrow-down" />
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item
