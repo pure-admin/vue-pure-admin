@@ -1,3 +1,24 @@
+# 3.2.0 (2022-3-22)
+
+### 🎫 Feat
+
+- Icon selection component
+- Menu search function
+- Added results page
+- Extended `element-plus` timeline component
+- Extended `element-plus` tree component to support connecting lines
+- Add tree selector, support single and multiple selection
+
+### 🍏 Perf
+
+- Optimized the error page UI
+- Optimize the internationalization function
+- Optimized routing `rank` sorting, compatible with the case where the value of the `rank` field in the routing `meta` is `null`
+
+### 🐞 Bug fixes
+
+- Fixed the situation where the menu expands and folds will freeze on some computers
+
 # 3.1.0 (2022-3-3)
 
 ### 🎫 Feat
