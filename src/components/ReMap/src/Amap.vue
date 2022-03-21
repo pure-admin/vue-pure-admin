@@ -122,7 +122,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div id="mapview" ref="mapview" v-loading="mapSet.loading"></div>
+  <div id="mapview" ref="mapview" v-loading="mapSet.loading" />
 </template>
 
 <style lang="scss" scoped>

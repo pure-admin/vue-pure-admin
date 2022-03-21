@@ -316,8 +316,7 @@ nextTick(() => {
       :active-icon="dayIcon"
       :inactive-icon="darkIcon"
       @change="dataThemeChange"
-    >
-    </el-switch>
+    />
 
     <el-divider>导航栏模式</el-divider>
     <ul class="pure-theme">
@@ -327,8 +326,8 @@ nextTick(() => {
           ref="verticalRef"
           @click="setLayoutModel('vertical')"
         >
-          <div></div>
-          <div></div>
+          <div />
+          <div />
         </li>
       </el-tooltip>
 
@@ -338,8 +337,8 @@ nextTick(() => {
           ref="horizontalRef"
           @click="setLayoutModel('horizontal')"
         >
-          <div></div>
-          <div></div>
+          <div />
+          <div />
         </li>
       </el-tooltip>
 
@@ -349,8 +348,8 @@ nextTick(() => {
           ref="mixRef"
           @click="setLayoutModel('mix')"
         >
-          <div></div>
-          <div></div>
+          <div />
+          <div />
         </li>
       </el-tooltip>
     </ul>
@@ -384,8 +383,7 @@ nextTick(() => {
           active-text="开"
           inactive-text="关"
           @change="greyChange"
-        >
-        </el-switch>
+        />
       </li>
       <li v-show="!dataTheme">
         <span>色弱模式</span>
@@ -396,8 +394,7 @@ nextTick(() => {
           active-text="开"
           inactive-text="关"
           @change="weekChange"
-        >
-        </el-switch>
+        />
       </li>
       <li>
         <span>隐藏标签页</span>
@@ -408,8 +405,7 @@ nextTick(() => {
           active-text="开"
           inactive-text="关"
           @change="tagsChange"
-        >
-        </el-switch>
+        />
       </li>
       <li>
         <span>侧边栏Logo</span>
@@ -422,8 +418,7 @@ nextTick(() => {
           active-text="开"
           inactive-text="关"
           @change="logoChange"
-        >
-        </el-switch>
+        />
       </li>
       <li>
         <span>标签页持久化</span>
@@ -434,8 +429,7 @@ nextTick(() => {
           active-text="开"
           inactive-text="关"
           @change="multiTagsCacheChange"
-        >
-        </el-switch>
+        />
       </li>
 
       <li>

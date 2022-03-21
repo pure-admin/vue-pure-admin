@@ -677,7 +677,7 @@ const getContextMenuStyle = computed((): CSSProperties => {
             :ref="'schedule' + index"
             v-if="showModel !== 'card'"
             :class="[scheduleIsActive(item)]"
-          ></div>
+          />
         </div>
       </div>
     </div>
@@ -748,7 +748,7 @@ const getContextMenuStyle = computed((): CSSProperties => {
         </el-dropdown>
       </li>
       <li>
-        <slot></slot>
+        <slot />
       </li>
     </ul>
   </div>

@@ -43,8 +43,8 @@ onBeforeUnmount(() => {
         >
       </div>
     </template>
-    <div ref="editor"></div>
-    <div :innerHTML="html"></div>
+    <div ref="editor" />
+    <div :innerHTML="html" />
   </el-card>
 </template>
 

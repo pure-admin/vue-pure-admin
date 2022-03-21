@@ -83,7 +83,7 @@ specifiers:
   typescript: ^4.6.2
   unplugin-element-plus: ^0.3.1
   v-contextmenu: 3.0.0
-  vite: ^2.9.0-beta.3
+  vite: ^2.9.0-beta.4
   vite-plugin-live-reload: ^2.1.0
   vite-plugin-mock: ^2.9.6
   vite-plugin-remove-console: ^0.0.6
@@ -154,7 +154,7 @@ devDependencies:
   "@iconify-icons/fa-solid": 1.2.2
   "@iconify-icons/ri": 1.2.1
   "@iconify/vue": 3.1.4_vue@3.2.31
-  "@intlify/vite-plugin-vue-i18n": 3.3.1_5005873cfdafd7bccc775c7a0caf8390
+  "@intlify/vite-plugin-vue-i18n": 3.3.1_fecf2311320b252734da88aa76ba6360
   "@pureadmin/theme": 0.0.1
   "@types/element-resize-detector": 1.1.3
   "@types/js-cookie": 3.0.1
@@ -166,8 +166,8 @@ devDependencies:
   "@types/qs": 6.9.7
   "@typescript-eslint/eslint-plugin": 5.15.0_f2c49ce7d0e93ebcfdb4b7d25b131b28
   "@typescript-eslint/parser": 5.15.0_eslint@8.11.0+typescript@4.6.2
-  "@vitejs/plugin-legacy": 1.7.1_vite@2.9.0-beta.3
-  "@vitejs/plugin-vue": 2.2.4_vite@2.9.0-beta.3+vue@3.2.31
+  "@vitejs/plugin-legacy": 1.7.1_vite@2.9.0-beta.4
+  "@vitejs/plugin-vue": 2.2.4_vite@2.9.0-beta.4+vue@3.2.31
   "@vitejs/plugin-vue-jsx": 1.3.8
   "@vue/eslint-config-prettier": 7.0.0_eslint@8.11.0+prettier@2.6.0
   "@vue/eslint-config-typescript": 10.0.0_5e58415d4c9ab0c3da8935a9b8bb8c26
@@ -197,13 +197,13 @@ devDependencies:
   stylelint-config-standard: 24.0.0_stylelint@14.6.0
   stylelint-order: 5.0.0_stylelint@14.6.0
   typescript: 4.6.2
-  unplugin-element-plus: 0.3.2_rollup@2.70.1+vite@2.9.0-beta.3
-  vite: 2.9.0-beta.3_sass@1.49.9
+  unplugin-element-plus: 0.3.2_rollup@2.70.1+vite@2.9.0-beta.4
+  vite: 2.9.0-beta.4_sass@1.49.9
   vite-plugin-live-reload: 2.1.0
-  vite-plugin-mock: 2.9.6_0f4f060d71e998e1697ce4d6d1a6c012
+  vite-plugin-mock: 2.9.6_cc7e5ded527ea0e0180226d44637e3ca
   vite-plugin-remove-console: 0.0.6
-  vite-plugin-style-import: 1.4.1_vite@2.9.0-beta.3
-  vite-plugin-windicss: 1.8.3_vite@2.9.0-beta.3
+  vite-plugin-style-import: 1.4.1_vite@2.9.0-beta.4
+  vite-plugin-windicss: 1.8.3_vite@2.9.0-beta.4
   vite-svg-loader: 2.2.0
   vue-eslint-parser: 8.3.0_eslint@8.11.0
   windicss: 3.5.1
@@ -1062,7 +1062,7 @@ packages:
       }
     engines: { node: ">= 12" }
 
-  /@intlify/vite-plugin-vue-i18n/3.3.1_5005873cfdafd7bccc775c7a0caf8390:
+  /@intlify/vite-plugin-vue-i18n/3.3.1_fecf2311320b252734da88aa76ba6360:
     resolution:
       {
         integrity: sha512-b9HIUANzL4/LmrA5RqeiPabZl2/RiWNAJ90TVZ8kSi3APRZ4BbmwUAclKe8ip+1jCDhqaGO/qfAI7SbQ0Y76Uw==
@@ -1084,7 +1084,7 @@ packages:
       debug: 4.3.3
       fast-glob: 3.2.11
       source-map: 0.6.1
-      vite: 2.9.0-beta.3_sass@1.49.9
+      vite: 2.9.0-beta.4_sass@1.49.9
       vue-i18n: 9.2.0-beta.32_vue@3.2.31
     transitivePeerDependencies:
       - supports-color
@@ -1535,7 +1535,7 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@vitejs/plugin-legacy/1.7.1_vite@2.9.0-beta.3:
+  /@vitejs/plugin-legacy/1.7.1_vite@2.9.0-beta.4:
     resolution:
       {
         integrity: sha512-RqgILXsGpfV7NHodVCdBVau8ss5+ynMXp6JGF/F7nhSy0bnwSQPlMS3KFqh7twfifXK8VuMriqfU4CxOiqmNnA==
@@ -1549,7 +1549,7 @@ packages:
       magic-string: 0.25.9
       regenerator-runtime: 0.13.9
       systemjs: 6.12.1
-      vite: 2.9.0-beta.3_sass@1.49.9
+      vite: 2.9.0-beta.4_sass@1.49.9
     dev: true
 
   /@vitejs/plugin-vue-jsx/1.3.8:
@@ -1569,7 +1569,7 @@ packages:
       - supports-color
     dev: true
 
-  /@vitejs/plugin-vue/2.2.4_vite@2.9.0-beta.3+vue@3.2.31:
+  /@vitejs/plugin-vue/2.2.4_vite@2.9.0-beta.4+vue@3.2.31:
     resolution:
       {
         integrity: sha512-ev9AOlp0ljCaDkFZF3JwC/pD2N4Hh+r5srl5JHM6BKg5+99jiiK0rE/XaRs3pVm1wzyKkjUy/StBSoXX5fFzcw==
@@ -1579,7 +1579,7 @@ packages:
       vite: ^2.5.10
       vue: ^3.2.25
     dependencies:
-      vite: 2.9.0-beta.3_sass@1.49.9
+      vite: 2.9.0-beta.4_sass@1.49.9
       vue: 3.2.31
     dev: true
 
@@ -7215,7 +7215,7 @@ packages:
     engines: { node: ">= 0.8" }
     dev: true
 
-  /unplugin-element-plus/0.3.2_rollup@2.70.1+vite@2.9.0-beta.3:
+  /unplugin-element-plus/0.3.2_rollup@2.70.1+vite@2.9.0-beta.4:
     resolution:
       {
         integrity: sha512-/oPbLA1ByrZ3VvN3jrVtVZcGJ147+ccyrL1w9d8wNLTTMH+buxdtiMQQv9R7Muz22ocJvebXZzlRVlA/JeeVPA==
@@ -7225,7 +7225,7 @@ packages:
       "@rollup/pluginutils": 4.2.0
       es-module-lexer: 0.10.2
       magic-string: 0.26.1
-      unplugin: 0.3.3_rollup@2.70.1+vite@2.9.0-beta.3
+      unplugin: 0.3.3_rollup@2.70.1+vite@2.9.0-beta.4
     transitivePeerDependencies:
       - esbuild
       - rollup
@@ -7233,7 +7233,7 @@ packages:
       - webpack
     dev: true
 
-  /unplugin/0.3.3_rollup@2.70.1+vite@2.9.0-beta.3:
+  /unplugin/0.3.3_rollup@2.70.1+vite@2.9.0-beta.4:
     resolution:
       {
         integrity: sha512-WjZWpUqqcYPQ/efR00Zm2m1+J1LitwoZ4uhHV4VdZ+IpW0Nh/qnDYtVf+nLhozXdGxslMPecOshVR7NiWFl4gA==
@@ -7254,7 +7254,7 @@ packages:
         optional: true
     dependencies:
       rollup: 2.70.1
-      vite: 2.9.0-beta.3_sass@1.49.9
+      vite: 2.9.0-beta.4_sass@1.49.9
       webpack-virtual-modules: 0.4.3
     dev: true
 
@@ -7350,7 +7350,7 @@ packages:
       chokidar: 3.5.3
     dev: true
 
-  /vite-plugin-mock/2.9.6_0f4f060d71e998e1697ce4d6d1a6c012:
+  /vite-plugin-mock/2.9.6_cc7e5ded527ea0e0180226d44637e3ca:
     resolution:
       {
         integrity: sha512-/Rm59oPppe/ncbkSrUuAxIQihlI2YcBmnbR4ST1RA2VzM1C0tEQc1KlbQvnUGhXECAGTaQN2JyasiwXP6EtKgg==
@@ -7370,7 +7370,7 @@ packages:
       fast-glob: 3.2.11
       mockjs: 1.1.0
       path-to-regexp: 6.2.0
-      vite: 2.9.0-beta.3_sass@1.49.9
+      vite: 2.9.0-beta.4_sass@1.49.9
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -7383,7 +7383,7 @@ packages:
       }
     dev: true
 
-  /vite-plugin-style-import/1.4.1_vite@2.9.0-beta.3:
+  /vite-plugin-style-import/1.4.1_vite@2.9.0-beta.4:
     resolution:
       {
         integrity: sha512-lJCRvm7+So0hHdnSJiJPg9gD5mxtL6YY0jmhEph+k7ArpsyvqOh6han2kG5htbWWDZxHkUN9d1BuTFL//yCLLQ==
@@ -7397,12 +7397,12 @@ packages:
       es-module-lexer: 0.9.3
       fs-extra: 10.0.1
       magic-string: 0.25.9
-      vite: 2.9.0-beta.3_sass@1.49.9
+      vite: 2.9.0-beta.4_sass@1.49.9
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /vite-plugin-windicss/1.8.3_vite@2.9.0-beta.3:
+  /vite-plugin-windicss/1.8.3_vite@2.9.0-beta.4:
     resolution:
       {
         integrity: sha512-RIw2GD6H6cKNE8wZXVOBs4L1uTicVS0FaAkeqXvy1oyuXLC4SXmvnzEuoK0+qFuWJjW0ECNwE8eU+ZZhzNQKUg==
@@ -7413,7 +7413,7 @@ packages:
       "@windicss/plugin-utils": 1.8.3
       debug: 4.3.3
       kolorist: 1.5.1
-      vite: 2.9.0-beta.3_sass@1.49.9
+      vite: 2.9.0-beta.4_sass@1.49.9
       windicss: 3.5.1
     transitivePeerDependencies:
       - supports-color
@@ -7429,10 +7429,10 @@ packages:
       svgo: 2.8.0
     dev: true
 
-  /vite/2.9.0-beta.3_sass@1.49.9:
+  /vite/2.9.0-beta.4_sass@1.49.9:
     resolution:
       {
-        integrity: sha512-x3G5GGQQlapvyjr2jhFTT16NIbKJdcfYOa6oD8OZuy+WqGTSYolowGJP7tUrTe9y5n641CBKLuhjqXc4gpwUVQ==
+        integrity: sha512-ToelFqN8lBaiK34VHzTbixOImHoHBw/PCveV5Xynd4ie1twcE0G6t9MFgunuN1hoajWMraGL5bV+pZ3hENR7GA==
       }
     engines: { node: ">=12.2.0" }
     hasBin: true

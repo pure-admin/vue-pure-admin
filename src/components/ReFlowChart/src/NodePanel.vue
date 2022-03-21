@@ -44,7 +44,7 @@ const nodeDragNode = item => {
         <div
           v-if="item.type === 'user' || item.type === 'time'"
           class="shape"
-        ></div>
+        />
       </div>
       <span class="node-label">{{ item.text }}</span>
     </div>

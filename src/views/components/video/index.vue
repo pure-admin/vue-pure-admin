@@ -40,7 +40,7 @@ onMounted(() => {
         >
       </div>
     </template>
-    <div id="mse"></div>
+    <div id="mse" />
   </el-card>
 </template>
 

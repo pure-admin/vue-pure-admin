@@ -94,7 +94,7 @@ function onCurrentChange(page) {
             placeholder="搜索图标"
             clearable
           />
-          <el-divider border-style="dashed"></el-divider>
+          <el-divider border-style="dashed" />
 
           <el-tabs v-model="currentActiveType" @tab-click="handleClick">
             <el-tab-pane
@@ -103,10 +103,7 @@ function onCurrentChange(page) {
               :label="pane.label"
               :name="pane.name"
             >
-              <el-divider
-                class="tab-divider"
-                border-style="dashed"
-              ></el-divider>
+              <el-divider class="tab-divider" border-style="dashed" />
               <el-scrollbar height="220px">
                 <ul class="flex flex-wrap px-2 ml-2">
                   <li
@@ -123,7 +120,7 @@ function onCurrentChange(page) {
               </el-scrollbar>
             </el-tab-pane>
           </el-tabs>
-          <el-divider border-style="dashed"></el-divider>
+          <el-divider border-style="dashed" />
 
           <el-pagination
             small
@@ -134,8 +131,7 @@ function onCurrentChange(page) {
             layout="prev, pager, next"
             class="flex items-center justify-center h-10"
             @current-change="onCurrentChange"
-          >
-          </el-pagination>
+          />
         </el-popover>
       </template>
     </el-input>

@@ -120,9 +120,7 @@ function translationEn() {
       >
         <template #title>
           <el-icon v-show="route.meta.icon" :class="route.meta.icon">
-            <component
-              :is="useRenderIcon(route.meta && route.meta.icon)"
-            ></component>
+            <component :is="useRenderIcon(route.meta && route.meta.icon)" />
           </el-icon>
           <span>{{ transformI18n(route.meta.title, route.meta.i18n) }}</span>
           <FontIcon
@@ -132,7 +130,7 @@ function translationEn() {
             style="position: absolute; right: 10px"
             :icon="route.meta.extraIcon.name"
             :svg="route.meta.extraIcon.svg ? true : false"
-          ></FontIcon>
+          />
         </template>
       </el-menu-item>
     </el-menu>

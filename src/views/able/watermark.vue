@@ -20,7 +20,7 @@ const { setWatermark, clear } = useWatermark();
       style="width: 200px"
       v-model="value"
       clearable
-    ></el-input>
+    />
     <span>请选择要创建水印的颜色：</span
     ><el-color-picker v-model="color" show-alpha />
     <br />

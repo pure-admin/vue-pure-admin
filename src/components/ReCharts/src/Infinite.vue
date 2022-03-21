@@ -78,9 +78,9 @@ let classOption = reactive({
     >
       <ul class="item">
         <li v-for="(item, index) in listData" :key="index">
-          <span v-text="item.date"></span>
-          <span v-text="item.name"></span>
-          <span v-text="item.star"></span>
+          <span v-text="item.date" />
+          <span v-text="item.name" />
+          <span v-text="item.star" />
         </li>
       </ul>
     </SeamlessScroll>

@@ -83,5 +83,5 @@ tryOnUnmounted(() => {
 </script>
 
 <template>
-  <div :class="'pie' + props.index" style="width: 100%; height: 35vh"></div>
+  <div :class="'pie' + props.index" style="width: 100%; height: 35vh" />
 </template>
