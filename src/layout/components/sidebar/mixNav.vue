@@ -119,9 +119,9 @@ function translationEn() {
         :index="resolvePath(route) || route.redirect"
       >
         <template #title>
-          <el-icon v-show="route.meta.icon" :class="route.meta.icon">
+          <span v-show="route.meta.icon" :class="['el-icon', route.meta.icon]">
             <component :is="useRenderIcon(route.meta && route.meta.icon)" />
-          </el-icon>
+          </span>
           <span>{{ transformI18n(route.meta.title, route.meta.i18n) }}</span>
           <FontIcon
             v-if="route.meta.extraIcon"

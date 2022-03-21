@@ -148,7 +148,7 @@ function resolvePath(routePath) {
       :class="{ 'submenu-title-noDropdown': !isNest }"
       :style="getNoDropdownStyle"
     >
-      <el-icon v-show="props.item.meta.icon">
+      <span class="el-icon" v-show="props.item.meta.icon">
         <component
           :is="
             useRenderIcon(
@@ -157,7 +157,7 @@ function resolvePath(routePath) {
             )
           "
         />
-      </el-icon>
+      </span>
       <div
         v-if="
           !pureApp.sidebar.opened &&
@@ -216,11 +216,14 @@ function resolvePath(routePath) {
     popper-append-to-body
   >
     <template #title>
-      <el-icon v-show="props.item.meta.icon" :class="props.item.meta.icon">
+      <div
+        v-show="props.item.meta.icon"
+        :class="['el-icon', props.item.meta.icon]"
+      >
         <component
           :is="useRenderIcon(props.item.meta && props.item.meta.icon)"
         />
-      </el-icon>
+      </div>
       <span v-if="!menuMode">{{
         transformI18n(props.item.meta.title, props.item.meta.i18n)
       }}</span>

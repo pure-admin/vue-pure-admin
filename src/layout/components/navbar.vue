@@ -82,8 +82,8 @@ function translationEn() {
             <el-dropdown-item
               :style="getDropdownItemStyle(locale, 'en')"
               @click="translationEn"
-              ><el-icon class="check-en" v-show="locale === 'en'"
-                ><IconifyIconOffline icon="check" /></el-icon
+              ><span class="check-en" v-show="locale === 'en'"
+                ><IconifyIconOffline icon="check" /></span
               >English</el-dropdown-item
             >
           </el-dropdown-menu>
@@ -106,13 +106,13 @@ function translationEn() {
           </el-dropdown-menu>
         </template>
       </el-dropdown>
-      <el-icon
+      <span
         class="el-icon-setting"
         :title="t('buttons.hssystemSet')"
         @click="onPanel"
       >
         <IconifyIconOffline icon="setting" />
-      </el-icon>
+      </span>
     </div>
   </div>
 </template>
