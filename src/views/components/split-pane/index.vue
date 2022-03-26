@@ -56,13 +56,14 @@ $H: 70vh;
   text-align: center;
   font-size: 50px;
   color: #fff;
+  border: 1px solid #e5e6eb;
 
   .dv-a,
   .dv-b,
   .dv-c {
     width: $W;
     height: $W;
-    background: rgba($color: dodgerblue, $alpha: 0.8);
+    color: rgba($color: dodgerblue, $alpha: 0.8);
     line-height: $H;
   }
 
@@ -72,11 +73,11 @@ $H: 70vh;
   }
 
   .dv-b {
-    background: rgba($color: #000, $alpha: 0.8);
+    color: rgba($color: #000, $alpha: 0.8);
   }
 
   .dv-c {
-    background: rgba($color: #ce272d, $alpha: 0.8);
+    color: rgba($color: #ce272d, $alpha: 0.8);
   }
 }
 </style>

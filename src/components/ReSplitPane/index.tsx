@@ -35,16 +35,12 @@ export default defineComponent({
       props.splitSet?.split
     ]);
 
-    const userSelect = computed(() => {
-      return active.value ? "none" : "";
-    });
-
     const cursor = computed(() => {
       return active.value
         ? props.splitSet?.split === "vertical"
-          ? "col-resize"
-          : "row-resize"
-        : "";
+          ? { cursor: "col-resize" }
+          : { cursor: "row-resize" }
+        : { cursor: "default" };
     });
 
     const onClick = (): void => {
@@ -109,7 +105,7 @@ export default defineComponent({
       <>
         <div
           class="vue-splitter-container clearfix"
-          style={(unref(cursor), unref(userSelect))}
+          style={unref(cursor)}
           onMouseup={() => onMouseUp()}
           onMousemove={() => onMouseMove(event)}
         >

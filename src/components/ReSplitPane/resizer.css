@@ -1,3 +1,5 @@
+@import "./iconfont/iconfont.css";
+
 .splitter-pane-resizer {
   box-sizing: border-box;
   background: #000;
@@ -9,19 +11,37 @@
 }
 
 .splitter-pane-resizer.horizontal {
-  height: 11px;
-  margin: -5px 0;
-  border-top: 5px solid rgb(255 255 255 / 0%);
-  border-bottom: 5px solid rgb(255 255 255 / 0%);
-  cursor: row-resize;
+  height: 6px;
   width: 100%;
+  background: #e5e6eb;
+  cursor: row-resize;
+}
+
+.splitter-pane-resizer.horizontal:before {
+  content: "\eda3";
+  font-family: "iconfont";
+  font-size: 13px;
+  color: #000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .splitter-pane-resizer.vertical {
-  width: 11px;
+  width: 6px;
   height: 100%;
-  margin-left: -5px;
-  border-left: 5px solid rgb(255 255 255 / 0%);
-  border-right: 5px solid rgb(255 255 255 / 0%);
+  background: #e5e6eb;
   cursor: col-resize;
+}
+
+.splitter-pane-resizer.vertical:before {
+  content: "\e647";
+  font-family: "iconfont";
+  font-size: 13px;
+  color: #000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
