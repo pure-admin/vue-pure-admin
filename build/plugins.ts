@@ -13,6 +13,7 @@ import ElementPlus from "unplugin-element-plus/vite";
 import { visualizer } from "rollup-plugin-visualizer";
 import removeConsole from "vite-plugin-remove-console";
 import themePreprocessorPlugin from "@pureadmin/theme";
+import { configVxeTableThemePlugin } from "./theme-vxe-table";
 
 export function getPluginsList(command, VITE_LEGACY) {
   const prodMock = true;
@@ -33,6 +34,8 @@ export function getPluginsList(command, VITE_LEGACY) {
     viteBuildInfo(),
     // 修改layout文件夹下的文件时自动重载浏览器 解决 https://github.com/xiaoxian521/vue-pure-admin/issues/170
     liveReload(["src/layout/**/*", "src/router/**/*"]),
+    // vxe-table自定义主题
+    configVxeTableThemePlugin(),
     // 自定义主题
     themePreprocessorPlugin({
       scss: {

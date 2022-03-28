@@ -18,6 +18,7 @@ import { emitter } from "/@/utils/mitt";
 import { templateRef } from "@vueuse/core";
 import { debounce } from "/@/utils/debounce";
 import { themeColorsType } from "../../types";
+import { watchChangeTheme } from "/@/utils/theme";
 import { useAppStoreHook } from "/@/store/modules/app";
 import { shadeBgColor } from "../../theme/element-plus";
 import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
@@ -304,6 +305,8 @@ nextTick(() => {
   writeNewStyle(createNewStyle(epThemeColor.value));
   dataThemeChange();
 });
+
+watchChangeTheme();
 </script>
 
 <template>
