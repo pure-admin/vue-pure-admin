@@ -1,6 +1,3 @@
-import type { Plugin } from "vite";
-import { themePreprocessorPlugin } from "@pureadmin/theme";
-
 const themeColors = {
   default: "#1b2a47",
   light: "#ffffff",
@@ -255,7 +252,7 @@ $vxe-pulldown-panel-background-color: $bg-color;
 `
 } as MultipleScopeVarsItem;
 
-function genScssMultipleScopeVars(): MultipleScopeVarsItem[] {
+export function genScssMultipleScopeVars(): MultipleScopeVarsItem[] {
   const result = [] as MultipleScopeVarsItem[];
   Object.keys(themeColors).forEach(key => {
     result.push({
@@ -265,27 +262,4 @@ function genScssMultipleScopeVars(): MultipleScopeVarsItem[] {
   });
   result.push(THEME_DEFAULT);
   return result;
-}
-
-export function configVxeTableThemePlugin(): Plugin {
-  return themePreprocessorPlugin({
-    // 同时使用 scss 和 less， 区别写multipleScopeVars，其他属性共用即可
-    scss: {
-      // 是否启用任意主题色模式，这里不启用
-      arbitraryMode: false,
-      multipleScopeVars: genScssMultipleScopeVars(),
-      // // 默认取 multipleScopeVars[0].scopeName
-      //defaultScopeName: '',
-      // 在生产模式是否抽取独立的主题css文件，extract为true以下属性有效
-      extract: false
-      // // 独立主题css文件的输出路径，默认取 viteConfig.build.assetsDir 相对于 (viteConfig.build.outDir)
-      // outputDir: "",
-      // // 会选取defaultScopeName对应的主题css文件在html添加link
-      // themeLinkTagId: "theme-link-tag",
-      // // "head"||"head-prepend" || "body" ||"body-prepend"
-      // themeLinkTagInjectTo: "head",
-      // // 是否对抽取的css文件内对应scopeName的权重类名移除
-      // removeCssScopeName: false,
-    }
-  });
 }
