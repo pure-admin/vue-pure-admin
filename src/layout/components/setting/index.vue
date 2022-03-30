@@ -9,7 +9,6 @@ import {
   useCssModule,
   getCurrentInstance
 } from "vue";
-import rgbHex from "rgb-hex";
 import { find } from "lodash-unified";
 import { getConfig } from "/@/config";
 import { useRouter } from "vue-router";
@@ -40,23 +39,23 @@ const instanceConfig =
 
 let themeColors = ref<Array<themeColorsType>>([
   // 道奇蓝（默认）
-  { rgb: "27, 42, 71", themeColor: "default" },
+  { color: "#1b2a47", themeColor: "default" },
   // 亮白色
-  { rgb: "255, 255, 255", themeColor: "light" },
+  { color: "#ffffff", themeColor: "light" },
   // 猩红色
-  { rgb: "245, 34, 45", themeColor: "dusk" },
+  { color: "#f5222d", themeColor: "dusk" },
   // 橙红色
-  { rgb: "250, 84, 28", themeColor: "volcano" },
+  { color: "#fa541c", themeColor: "volcano" },
   // 金色
-  { rgb: "250, 219, 20", themeColor: "yellow" },
+  { color: "#fadb14", themeColor: "yellow" },
   // 绿宝石
-  { rgb: "19, 194, 194", themeColor: "mingQing" },
+  { color: "#13c2c2", themeColor: "mingQing" },
   // 酸橙绿
-  { rgb: "82, 196, 26", themeColor: "auroraGreen" },
+  { color: "#52c41a", themeColor: "auroraGreen" },
   // 深粉色
-  { rgb: "235, 47, 150", themeColor: "pink" },
+  { color: "#eb2f96", themeColor: "pink" },
   // 深紫罗兰色
-  { rgb: "114, 46, 209", themeColor: "saucePurple" }
+  { color: "#722ed1", themeColor: "saucePurple" }
 ]);
 
 const verticalRef = templateRef<HTMLElement | null>("verticalRef", null);
@@ -97,8 +96,8 @@ const settings = reactive({
 });
 
 const getThemeColorStyle = computed(() => {
-  return rgb => {
-    return { background: `rgb(${rgb})` };
+  return color => {
+    return { background: color };
   };
 });
 
@@ -261,8 +260,7 @@ function setLayoutThemeColor(theme: string) {
     setEpThemeColor(getConfig().EpThemeColor);
   } else {
     const colors = find(themeColors.value, { themeColor: theme });
-    const color = "#" + rgbHex(colors.rgb);
-    setEpThemeColor(color);
+    setEpThemeColor(colors.color);
   }
 }
 
@@ -359,7 +357,7 @@ nextTick(() => {
       <li
         v-for="(item, index) in themeColors"
         :key="index"
-        :style="getThemeColorStyle(item.rgb)"
+        :style="getThemeColorStyle(item.color)"
         @click="setLayoutThemeColor(item.themeColor)"
       >
         <el-icon
