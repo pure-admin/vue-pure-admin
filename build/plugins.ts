@@ -37,45 +37,7 @@ export function getPluginsList(command, VITE_LEGACY) {
     // 自定义主题
     themePreprocessorPlugin({
       scss: {
-        multipleScopeVars: [
-          {
-            scopeName: "layout-theme-default",
-            path: "src/layout/theme/default-vars.scss"
-          },
-          {
-            scopeName: "layout-theme-light",
-            path: "src/layout/theme/light-vars.scss"
-          },
-          {
-            scopeName: "layout-theme-dusk",
-            path: "src/layout/theme/dusk-vars.scss"
-          },
-          {
-            scopeName: "layout-theme-volcano",
-            path: "src/layout/theme/volcano-vars.scss"
-          },
-          {
-            scopeName: "layout-theme-yellow",
-            path: "src/layout/theme/yellow-vars.scss"
-          },
-          {
-            scopeName: "layout-theme-mingQing",
-            path: "src/layout/theme/mingQing-vars.scss"
-          },
-          {
-            scopeName: "layout-theme-auroraGreen",
-            path: "src/layout/theme/auroraGreen-vars.scss"
-          },
-          {
-            scopeName: "layout-theme-pink",
-            path: "src/layout/theme/pink-vars.scss"
-          },
-          {
-            scopeName: "layout-theme-saucePurple",
-            path: "src/layout/theme/saucePurple-vars.scss"
-          },
-          ...genScssMultipleScopeVars()
-        ],
+        multipleScopeVars: genScssMultipleScopeVars(),
         // 默认取 multipleScopeVars[0].scopeName
         defaultScopeName: "",
         // 在生产模式是否抽取独立的主题css文件，extract为true以下属性有效

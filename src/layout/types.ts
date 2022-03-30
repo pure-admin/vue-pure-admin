@@ -79,7 +79,7 @@ export type childrenType = {
 };
 
 export type themeColorsType = {
-  rgb: string;
+  color: string;
   themeColor: string;
 };
 
