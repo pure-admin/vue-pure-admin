@@ -13,7 +13,7 @@ import ElementPlus from "unplugin-element-plus/vite";
 import { visualizer } from "rollup-plugin-visualizer";
 import removeConsole from "vite-plugin-remove-console";
 import themePreprocessorPlugin from "@pureadmin/theme";
-import { genScssMultipleScopeVars } from "../src/plugins/vxe-table/theme";
+import { genScssMultipleScopeVars } from "/@/layout/theme/theme";
 
 export function getPluginsList(command, VITE_LEGACY) {
   const prodMock = true;
