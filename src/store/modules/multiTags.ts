@@ -89,7 +89,13 @@ export const useMultiTagsStore = defineStore({
           }
           break;
         case "splice":
-          this.multiTags.splice(position?.startIndex, position?.length);
+          if (!position) {
+            const index = this.multiTags.findIndex(v => v.path === value);
+            if (index === -1) return;
+            this.multiTags.splice(index, 1);
+          } else {
+            this.multiTags.splice(position?.startIndex, position?.length);
+          }
           this.tagsCache(this.multiTags);
           return this.multiTags;
         case "slice":
