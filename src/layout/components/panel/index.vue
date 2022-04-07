@@ -26,7 +26,7 @@ emitter.on("openPanel", () => {
             <IconifyIconOffline icon="close" />
           </el-icon>
         </div>
-        <div style="border-bottom: 1px solid #dcdfe6"></div>
+        <div style="border-bottom: 1px solid #dcdfe6" />
         <slot />
       </div>
     </div>
