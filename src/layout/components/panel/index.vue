@@ -26,7 +26,7 @@ emitter.on("openPanel", () => {
             <IconifyIconOffline icon="close" />
           </el-icon>
         </div>
-        <div style="border-bottom: 1px solid #dcdfe6" />
+        <div style="border-bottom: 1px solid #dcdfe6"></div>
         <slot />
       </div>
     </div>
@@ -54,7 +54,7 @@ emitter.on("openPanel", () => {
 
 .right-panel {
   width: 100%;
-  max-width: 300px;
+  max-width: 315px;
   height: 100vh;
   position: fixed;
   top: 0;
@@ -105,8 +105,8 @@ emitter.on("openPanel", () => {
 
 .right-panel-items {
   margin-top: 60px;
-  height: 100vh;
-  overflow: auto;
+  height: calc(100vh - 60px);
+  overflow-y: auto;
 }
 
 .project-configuration {
