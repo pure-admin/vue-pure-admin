@@ -1,9 +1,5 @@
 import { MockMethod } from "vite-plugin-mock";
 
-// const userLoginResult = {
-//   code: 200,
-//   data: {}
-// };
 export default [
   {
     url: "/login",

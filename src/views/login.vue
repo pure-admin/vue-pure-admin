@@ -53,7 +53,6 @@ const onLogin = (): void => {
       });
       initRouter(res.username).then(() => {});
       router.push("/");
-      // window.location.reload();
     });
 };
 
