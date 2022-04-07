@@ -61,10 +61,12 @@ export const usePermissionStore = defineStore({
           break;
       }
     },
-    // 清空缓存页面和缓存菜单
+    // 清空缓存
     clearAllCachePage() {
-      this.cachePageList = [];
       this.wholeMenus = [];
+      this.menusTree = [];
+      this.buttonAuth = [];
+      this.cachePageList = [];
     }
   }
 });
