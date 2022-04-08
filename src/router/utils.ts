@@ -234,7 +234,11 @@ function addAsyncRoutes(arrRoutes: Array<RouteRecordRaw>) {
     } else if (v.meta?.frameSrc) {
       v.component = IFrame;
     } else {
-      const index = modulesRoutesKeys.findIndex(ev => ev.includes(v.path));
+      // 对后端传component组件路径和不传做兼容（如果后端传component组件路径，那么path可以随便写，如果不传，component组件路径会根path保持一致）
+      const index = v?.component
+        ? // @ts-expect-error
+          modulesRoutesKeys.findIndex(ev => ev.includes(v.component))
+        : modulesRoutesKeys.findIndex(ev => ev.includes(v.path));
       v.component = modulesRoutes[modulesRoutesKeys[index]];
     }
     if (v.children) {
