@@ -28,6 +28,14 @@ const systemRouter = {
         i18n: true,
         keepAlive: true
       }
+    },
+    {
+      path: "/system/job/index",
+      name: "job",
+      meta: {
+        title: "menus.hsJob",
+        i18n: true
+      }
     }
   ]
 };

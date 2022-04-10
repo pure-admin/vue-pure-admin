@@ -28,6 +28,7 @@ import Rank from "@iconify-icons/ep/rank";
 import videoPlay from "@iconify-icons/ep/video-play";
 import Monitor from "@iconify-icons/ep/monitor";
 import Search from "@iconify-icons/ep/search";
+import Refresh from "@iconify-icons/ep/refresh";
 addIcon("check", Check);
 addIcon("menu", Menu);
 addIcon("home-filled", HomeFilled);
@@ -54,6 +55,7 @@ addIcon("video-play", videoPlay);
 addIcon("rank", Rank);
 addIcon("monitor", Monitor);
 addIcon("search", Search);
+addIcon("refresh", Refresh);
 
 // remixicon
 import arrowRightSLine from "@iconify-icons/ri/arrow-right-s-line";
@@ -88,6 +90,14 @@ import faSignOut from "@iconify-icons/fa/sign-out";
 addIcon("fa-user", faUser);
 addIcon("fa-lock", faLock);
 addIcon("fa-sign-out", faSignOut);
+
+// Unicons
+import Import from "@iconify-icons/uil/import";
+import Export from "@iconify-icons/uil/export";
+import ArrowsShrinkV from "@iconify-icons/uil/arrows-shrink-v";
+addIcon("import", Import);
+addIcon("export", Export);
+addIcon("density", ArrowsShrinkV);
 
 // Iconify Icon在Vue里离线使用（用于内网环境）https://docs.iconify.design/icon-components/vue/offline.html
 export default defineComponent({

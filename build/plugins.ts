@@ -6,7 +6,6 @@ import legacy from "@vitejs/plugin-legacy";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 import WindiCSS from "vite-plugin-windicss";
 import { viteMockServe } from "vite-plugin-mock";
-import liveReload from "vite-plugin-live-reload";
 import styleImport from "vite-plugin-style-import";
 import VueI18n from "@intlify/vite-plugin-vue-i18n";
 import ElementPlus from "unplugin-element-plus/vite";
@@ -32,8 +31,6 @@ export function getPluginsList(command, VITE_LEGACY) {
     // 线上环境删除console
     removeConsole(),
     viteBuildInfo(),
-    // 修改layout文件夹下的文件时自动重载浏览器 解决 https://github.com/xiaoxian521/vue-pure-admin/issues/170
-    liveReload(["src/layout/**/*", "src/router/**/*"]),
     // 自定义主题
     themePreprocessorPlugin({
       scss: {

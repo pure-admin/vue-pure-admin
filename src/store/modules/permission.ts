@@ -1,9 +1,9 @@
 import { defineStore } from "pinia";
 import { store } from "/@/store";
 import { cacheType } from "./types";
+import { constantMenus } from "/@/router";
 import { cloneDeep } from "lodash-unified";
 import { RouteConfigs } from "/@/layout/types";
-import { constantMenus } from "/@/router/modules";
 import { ascending, filterTree } from "/@/router/utils";
 
 export const usePermissionStore = defineStore({

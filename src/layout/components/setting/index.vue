@@ -266,6 +266,7 @@ function setLayoutThemeColor(theme: string) {
 
 // 设置ep主题色
 const setEpThemeColor = (color: string) => {
+  // @ts-expect-error
   writeNewStyle(createNewStyle(color));
   useEpThemeStoreHook().setEpThemeColor(color);
   body.style.setProperty("--el-color-primary-active", shadeBgColor(color));
@@ -298,7 +299,7 @@ nextTick(() => {
   settings.weakVal &&
     document.querySelector("html")?.setAttribute("class", "html-weakness");
   settings.tabsVal && tagsChange();
-
+  // @ts-expect-error
   writeNewStyle(createNewStyle(epThemeColor.value));
   dataThemeChange();
 });

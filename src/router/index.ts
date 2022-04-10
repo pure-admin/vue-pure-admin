@@ -3,21 +3,71 @@ import { getConfig } from "/@/config";
 import { toRouteType } from "./types";
 import { openLink } from "/@/utils/link";
 import NProgress from "/@/utils/progress";
-import { constantRoutes } from "./modules";
 import { findIndex } from "lodash-unified";
 import { transformI18n } from "/@/plugins/i18n";
-import remainingRouter from "./modules/remaining";
 import { storageSession } from "/@/utils/storage";
+import { buildHierarchyTree } from "/@/utils/tree";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
-import { Router, RouteMeta, createRouter, RouteRecordName } from "vue-router";
 import {
+  Router,
+  RouteMeta,
+  createRouter,
+  RouteRecordRaw,
+  RouteComponent,
+  RouteRecordName
+} from "vue-router";
+import {
+  ascending,
   initRouter,
   getHistoryMode,
   getParentPaths,
   findRouteByPath,
-  handleAliveRoute
+  handleAliveRoute,
+  formatTwoStageRoutes,
+  formatFlatteningRoutes
 } from "./utils";
+
+import homeRouter from "./modules/home";
+import ableRouter from "./modules/able";
+import aboutRouter from "./modules/about";
+import errorRouter from "./modules/error";
+import guideRouter from "./modules/guide";
+import resultRouter from "./modules/result";
+import editorRouter from "./modules/editor";
+import nestedRouter from "./modules/nested";
+import flowChartRouter from "./modules/flowchart";
+import remainingRouter from "./modules/remaining";
+import componentsRouter from "./modules/components";
+
+// 原始静态路由（未做任何处理）
+const routes = [
+  homeRouter,
+  ableRouter,
+  aboutRouter,
+  errorRouter,
+  guideRouter,
+  resultRouter,
+  nestedRouter,
+  editorRouter,
+  flowChartRouter,
+  componentsRouter
+];
+
+// 导出处理后的静态路由（三级及以上的路由全部拍成二级）
+export const constantRoutes: Array<RouteRecordRaw> = formatTwoStageRoutes(
+  formatFlatteningRoutes(buildHierarchyTree(ascending(routes)))
+);
+
+// 用于渲染菜单，保持原始层级
+export const constantMenus: Array<RouteComponent> = ascending(routes).concat(
+  ...remainingRouter
+);
+
+// 不参与菜单的路由
+export const remainingPaths = Object.keys(remainingRouter).map(v => {
+  return remainingRouter[v].path;
+});
 
 // 创建路由实例
 export const router: Router = createRouter({
