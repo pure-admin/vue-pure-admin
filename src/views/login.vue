@@ -14,9 +14,6 @@ import illustration4 from "/@/assets/login/illustration4.svg?component";
 import illustration5 from "/@/assets/login/illustration5.svg?component";
 import illustration6 from "/@/assets/login/illustration6.svg?component";
 
-import { useUserStoreHook } from "/@/store/modules/user";
-import { usePermissionStoreHook } from "/@/store/modules/permission";
-
 const router = useRouter();
 
 // eslint-disable-next-line vue/return-in-computed-property
@@ -45,17 +42,12 @@ let user = ref("admin");
 let pwd = ref("123456");
 
 const onLogin = (): void => {
-  useUserStoreHook()
-    .loginByUsername({ username: user.value, password: pwd.value })
-    .then(async (res: any) => {
-      storageSession.setItem("info", {
-        username: res.username,
-        accessToken: res.accessToken
-      });
-      usePermissionStoreHook().clearAllCachePage();
-      initRouter(res.username);
-      router.push("/");
-    });
+  storageSession.setItem("info", {
+    username: "admin",
+    accessToken: "eyJhbGciOiJIUzUxMiJ9.test"
+  });
+  initRouter("admin").then(() => {});
+  router.push("/");
 };
 
 function onUserFocus() {
