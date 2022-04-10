@@ -31,7 +31,7 @@ export default [
               name: "人力资源",
               code: "hr",
               sort: 3,
-              status: 0,
+              status: 1,
               remark: "",
               id: 3,
               createTime: 1609837428000

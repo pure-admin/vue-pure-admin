@@ -5,8 +5,10 @@ export default {
 </script>
 
 <script setup lang="ts">
+import dayjs from "dayjs";
 import { getJobList } from "/@/api/system";
 import { FormInstance } from "element-plus";
+import { Switch } from "@pureadmin/components";
 import { reactive, ref, onMounted, computed } from "vue";
 import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
@@ -52,6 +54,10 @@ function handleCurrentChange(val: number) {
 
 function handleSizeChange(val: number) {
   console.log(`${val} items per page`);
+}
+
+function onChange(checked, val) {
+  console.log(checked, val);
 }
 
 onMounted(async () => {
@@ -161,20 +167,35 @@ onMounted(async () => {
         <el-table-column label="岗位排序" align="center" prop="sort" />
         <el-table-column label="状态" align="center" prop="status">
           <template #default="scope">
-            <el-tag>{{ scope.row.status }}</el-tag>
+            <Switch
+              :size="size === 'small' ? 'small' : 'default'"
+              v-model:checked="scope.row.status"
+              :checkedValue="1"
+              :unCheckedValue="0"
+              checked-children="已开启"
+              un-checked-children="已关闭"
+              @change="checked => onChange(checked, scope.row)"
+            />
           </template>
         </el-table-column>
-        <el-table-column label="创建时间" align="center" prop="createTime">
+        <el-table-column
+          label="创建时间"
+          align="center"
+          width="180"
+          prop="createTime"
+        >
           <template #default="scope">
-            <span>{{ scope.row.createTime }}</span>
+            <span>{{
+              dayjs(scope.row.createTime).format("YYYY-MM-DD HH:mm:ss")
+            }}</span>
           </template>
         </el-table-column>
-        <el-table-column label="操作" align="center">
+        <el-table-column label="操作" width="130" align="center">
           <template #default="scope">
             <el-button type="text" @click="handleUpdate(scope.row)"
               >修改</el-button
             >
-            <el-popconfirm title="确定删除吗?">
+            <el-popconfirm title="是否确认删除?">
               <template #reference>
                 <el-button type="text" @click="handleDelete(scope.row)"
                   >删除</el-button
