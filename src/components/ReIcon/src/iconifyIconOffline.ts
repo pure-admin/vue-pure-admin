@@ -70,6 +70,7 @@ import closeCircleLine from "@iconify-icons/ri/close-circle-line";
 import arrowUpLine from "@iconify-icons/ri/arrow-up-line";
 import arrowDownLine from "@iconify-icons/ri/arrow-down-line";
 import bookmark2Line from "@iconify-icons/ri/bookmark-2-line";
+import addFill from "@iconify-icons/ri/add-circle-line";
 addIcon("arrow-right-s-line", arrowRightSLine);
 addIcon("arrow-left-s-line", arrowLeftSLine);
 addIcon("logout-circle-r-line", logoutCircleRLine);
@@ -82,6 +83,7 @@ addIcon("close-circle-line", closeCircleLine);
 addIcon("arrow-up-line", arrowUpLine);
 addIcon("arrow-down-line", arrowDownLine);
 addIcon("bookmark-2-line", bookmark2Line);
+addIcon("add", addFill);
 
 // Font Awesome 4
 import faUser from "@iconify-icons/fa/user";

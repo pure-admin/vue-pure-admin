@@ -30,10 +30,18 @@ const systemRouter = {
       }
     },
     {
-      path: "/system/job/index",
-      name: "job",
+      path: "/system/post/index",
+      name: "post",
       meta: {
-        title: "menus.hsJob",
+        title: "menus.hsPost",
+        i18n: true
+      }
+    },
+    {
+      path: "/system/dept/index",
+      name: "dept",
+      meta: {
+        title: "menus.hsDept",
         i18n: true
       }
     }

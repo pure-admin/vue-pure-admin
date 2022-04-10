@@ -1,13 +1,13 @@
 <script lang="ts">
 export default {
-  name: "job"
+  name: "post"
 };
 </script>
 
 <script setup lang="ts">
 import dayjs from "dayjs";
-import { loadingSvg } from "./load";
-import { getJobList } from "/@/api/system";
+import { loadingSvg } from "../load";
+import { getPostList } from "/@/api/system";
 import { FormInstance } from "element-plus";
 import { Switch } from "@pureadmin/components";
 import { successMessage } from "/@/utils/message";
@@ -22,7 +22,7 @@ const form = reactive({
 });
 const buttonRef = ref();
 const tooltipRef = ref();
-let jobList = ref([]);
+let postList = ref([]);
 let pageSize = ref(10);
 let totalPage = ref(0);
 let checkList = ref([]);
@@ -84,8 +84,8 @@ function onChange(checked, { $index, row }) {
 
 async function onSearch() {
   loading.value = true;
-  let { data } = await getJobList();
-  jobList.value = data.list;
+  let { data } = await getPostList();
+  postList.value = data.list;
   totalPage.value = data.total;
   setTimeout(() => {
     loading.value = false;
@@ -124,9 +124,6 @@ onMounted(() => {
         </el-select>
       </el-form-item>
       <el-form-item>
-        <el-button :icon="useRenderIcon('refresh')" @click="resetForm(formRef)"
-          >重置</el-button
-        >
         <el-button
           type="primary"
           :icon="useRenderIcon('search')"
@@ -135,19 +132,24 @@ onMounted(() => {
         >
           搜索</el-button
         >
+        <el-button :icon="useRenderIcon('refresh')" @click="resetForm(formRef)"
+          >重置</el-button
+        >
       </el-form-item>
     </el-form>
 
     <div
-      class="w-99/100 mt-6 pb-4 bg-white"
+      class="w-99/100 mt-6 p-2 bg-white"
       v-loading="loading"
       :element-loading-svg="loadingSvg"
       element-loading-svg-view-box="-10, -10, 50, 50"
     >
       <div class="flex justify-between w-full h-60px p-4">
         <p class="font-bold">岗位列表</p>
-        <div class="w-200px flex items-center justify-around">
-          <el-button type="primary">新增岗位</el-button>
+        <div class="w-220px flex items-center justify-around">
+          <el-button type="primary" :icon="useRenderIcon('add')"
+            >新增岗位</el-button
+          >
           <!-- <el-button type="success" :icon="useRenderIcon('import')"
             >导入</el-button
           >
@@ -156,13 +158,14 @@ onMounted(() => {
           > -->
           <el-tooltip effect="dark" content="刷新" placement="top">
             <IconifyIconOffline
-              class="cursor-pointer outline-none"
+              class="cursor-pointer outline-none ml-4"
               icon="refresh-right"
               width="20"
               color="#606266"
               @click="onSearch"
             />
           </el-tooltip>
+          <el-divider direction="vertical" />
 
           <el-tooltip effect="dark" content="密度" placement="top">
             <el-dropdown id="header-translation" trigger="click">
@@ -196,6 +199,7 @@ onMounted(() => {
               </template>
             </el-dropdown>
           </el-tooltip>
+          <el-divider direction="vertical" />
 
           <el-popover :width="200" trigger="click">
             <template #reference>
@@ -239,14 +243,16 @@ onMounted(() => {
       </div>
       <el-table
         border
+        table-layout="auto"
         :size="size"
-        :data="jobList"
+        :data="postList"
         :header-cell-style="{ background: '#fafafa', color: '#606266' }"
         @selection-change="handleSelectionChange"
       >
         <el-table-column
           v-if="checkList.includes('勾选列')"
           type="selection"
+          align="center"
           width="55"
         />
         <el-table-column
@@ -302,7 +308,7 @@ onMounted(() => {
         </el-table-column>
       </el-table>
       <el-pagination
-        class="flex justify-end mt-4 mr-2"
+        class="flex justify-end mt-4"
         :small="size === 'small' ? true : false"
         v-model:page-size="pageSize"
         :page-sizes="[10, 20, 30, 50]"
@@ -315,5 +321,3 @@ onMounted(() => {
     </div>
   </div>
 </template>
-
-<style lang="scoped"></style>

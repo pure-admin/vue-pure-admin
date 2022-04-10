@@ -29,7 +29,7 @@ const {
   changeTitle,
   handleResize,
   menuSelect,
-  usename,
+  username,
   getDropdownItemStyle
 } = useNav();
 
@@ -115,7 +115,7 @@ function translationEn() {
       <el-dropdown trigger="click">
         <span class="el-dropdown-link">
           <img :src="avatars" />
-          <p>{{ usename }}</p>
+          <p>{{ username }}</p>
         </span>
         <template #dropdown>
           <el-dropdown-menu class="logout">

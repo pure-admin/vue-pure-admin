@@ -24,7 +24,8 @@ menus:
   hssysManagement: 系统管理
   hsBaseinfo: 基础信息
   hsDict: 字典管理
-  hsJob: 岗位管理
+  hsPost: 岗位管理
+  hsDept: 部门管理
   hseditor: 编辑器
   hserror: 错误页面
   hsfourZeroFour: "404"
