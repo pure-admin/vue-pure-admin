@@ -33,12 +33,12 @@ export const useUserStore = defineStore({
     },
     // 登入
     async loginByUsername(data) {
-      return new Promise((resolve, reject) => {
+      return new Promise<void>((resolve, reject) => {
         getLogin(data)
-          .then(res => {
-            if (res) {
-              setToken(res);
-              resolve(res);
+          .then(data => {
+            if (data) {
+              setToken(data);
+              resolve();
             }
           })
           .catch(error => {

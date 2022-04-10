@@ -7,7 +7,6 @@ import { remainingPaths } from "/@/router";
 import { transformI18n } from "/@/plugins/i18n";
 import { storageSession } from "/@/utils/storage";
 import { useAppStoreHook } from "/@/store/modules/app";
-import { useUserStoreHook } from "/@/store/modules/user";
 import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
 
 export function useNav() {
@@ -39,7 +38,8 @@ export function useNav() {
 
   // 退出登录
   function logout() {
-    useUserStoreHook().logOut();
+    storageSession.removeItem("info");
+    router.push("/login");
   }
 
   function backHome() {
