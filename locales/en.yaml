@@ -24,7 +24,8 @@ menus:
   hssysManagement: System Manage
   hsBaseinfo: Base Info
   hsDict: Dict Manage
-  hsJob: Job Manage
+  hsPost: Post Manage
+  hsDept: Dept Manage
   hseditor: Editor
   hserror: Error Page
   hsfourZeroFour: "404"
