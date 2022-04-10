@@ -56,6 +56,7 @@ import {
   ElStep,
   ElTree,
   ElTreeV2,
+  ElPopconfirm,
   // 指令
   ElLoading,
   ElInfiniteScroll
@@ -110,6 +111,7 @@ const components = [
   ElCollapseItem,
   ElTree,
   ElTreeV2,
+  ElPopconfirm,
   ElTable,
   ElTableColumn,
   ElLink,

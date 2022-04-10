@@ -75,6 +75,7 @@
     "@iconify-icons/fa": "^1.2.2",
     "@iconify-icons/fa-solid": "^1.2.2",
     "@iconify-icons/ri": "^1.2.1",
+    "@iconify-icons/uil": "^1.2.1",
     "@iconify/vue": "^3.2.0",
     "@intlify/vite-plugin-vue-i18n": "^3.3.1",
     "@pureadmin/theme": "^0.0.1",

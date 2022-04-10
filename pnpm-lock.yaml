@@ -9,6 +9,7 @@ specifiers:
   "@iconify-icons/fa": ^1.2.2
   "@iconify-icons/fa-solid": ^1.2.2
   "@iconify-icons/ri": ^1.2.1
+  "@iconify-icons/uil": ^1.2.1
   "@iconify/vue": ^3.2.0
   "@intlify/vite-plugin-vue-i18n": ^3.3.1
   "@logicflow/core": 0.7.1
@@ -152,6 +153,7 @@ devDependencies:
   "@iconify-icons/fa": 1.2.2
   "@iconify-icons/fa-solid": 1.2.2
   "@iconify-icons/ri": 1.2.1
+  "@iconify-icons/uil": 1.2.1
   "@iconify/vue": 3.2.0_vue@3.2.31
   "@intlify/vite-plugin-vue-i18n": 3.3.1_5e55492be6688dd52c71c76ed1867e7f
   "@pureadmin/theme": 0.0.1
@@ -990,6 +992,15 @@ packages:
     resolution:
       {
         integrity: sha512-8VlUg6xrRz2BWmwulF6aWnb138NzkLhBJZ36Pu/9qjpTwwLyFi+Wgg1+LeMvOBXySiD/H/bTQh7Lay73uiN61A==
+      }
+    dependencies:
+      "@iconify/types": 1.1.0
+    dev: true
+
+  /@iconify-icons/uil/1.2.1:
+    resolution:
+      {
+        integrity: sha512-ovb4896S1EH6gqP98NPa4pKzNYaJTtrXoEzM4xm3RJAF9/ke4N96v+DOGnR3oT+EGpdfJjzlyISeDqNlPvpCXw==
       }
     dependencies:
       "@iconify/types": 1.1.0
