@@ -4,8 +4,3 @@ import { http } from "../utils/http";
 export const mapJson = (params?: object) => {
   return http.request("get", "/getMapInfo", { params });
 };
-
-// echarts数据
-export const echartsJson = (params?: object) => {
-  return http.request("get", "/getEchartsInfo", { params });
-};
