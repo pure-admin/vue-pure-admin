@@ -57,6 +57,8 @@ import {
   ElTree,
   ElTreeV2,
   ElPopconfirm,
+  ElCheckbox,
+  ElCheckboxGroup,
   // 指令
   ElLoading,
   ElInfiniteScroll
@@ -112,6 +114,8 @@ const components = [
   ElTree,
   ElTreeV2,
   ElPopconfirm,
+  ElCheckbox,
+  ElCheckboxGroup,
   ElTable,
   ElTableColumn,
   ElLink,
