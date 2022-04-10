@@ -9,12 +9,12 @@ import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
 
 const data = getToken();
 let token = "";
-let name = "";
+let username = "";
 if (data) {
   const dataJson = JSON.parse(data);
   if (dataJson) {
     token = dataJson?.accessToken;
-    name = dataJson?.name ?? "admin";
+    username = dataJson?.username ?? "admin";
   }
 }
 
@@ -22,14 +22,14 @@ export const useUserStore = defineStore({
   id: "pure-user",
   state: (): userType => ({
     token,
-    name
+    username
   }),
   actions: {
     SET_TOKEN(token) {
       this.token = token;
     },
-    SET_NAME(name) {
-      this.name = name;
+    SET_NAME(username) {
+      this.username = username;
     },
     // 登入
     async loginByUsername(data) {
@@ -49,7 +49,7 @@ export const useUserStore = defineStore({
     // 登出 清空缓存
     logOut() {
       this.token = "";
-      this.name = "";
+      this.username = "";
       removeToken();
       storageSession.clear();
       useMultiTagsStoreHook().handleTags("equal", [
@@ -67,10 +67,10 @@ export const useUserStore = defineStore({
     },
     // 刷新token
     async refreshToken(data) {
-      return refreshToken(data).then(data => {
-        if (data) {
-          setToken(data);
-          return data;
+      return refreshToken(data).then(res => {
+        if (res) {
+          setToken(res);
+          return res;
         }
       });
     }
