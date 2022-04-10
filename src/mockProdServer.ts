@@ -1,9 +1,11 @@
 import { createProdMockServer } from "vite-plugin-mock/es/createProdMockServer";
-import mapMock from "../mock/map";
-import systemMock from "../mock/system";
-import asyncRoutesMock from "../mock/asyncRoutes";
 
-export const mockModules = [...mapMock, ...systemMock, ...asyncRoutesMock];
+const modules = import.meta.globEager("../mock/*.ts");
+const mockModules = [];
+
+Object.keys(modules).forEach(key => {
+  mockModules.push(...modules[key].default);
+});
 
 export function setupProdMockServer() {
   createProdMockServer(mockModules);
