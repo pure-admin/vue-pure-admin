@@ -1,16 +1,16 @@
 <script lang="ts">
 export default {
-  name: "post"
+  name: "role"
 };
 </script>
 
 <script setup lang="ts">
 import dayjs from "dayjs";
 import { loadingSvg } from "../load";
-import { getPostList } from "/@/api/system";
+import { getRoleList } from "/@/api/system";
 import { FormInstance } from "element-plus";
-import { Switch } from "@pureadmin/components";
-import { successMessage } from "/@/utils/message";
+import { ElMessageBox } from "element-plus";
+import { Switch, message } from "@pureadmin/components";
 import { reactive, ref, onMounted, computed } from "vue";
 import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
@@ -22,7 +22,7 @@ const form = reactive({
 });
 const buttonRef = ref();
 const tooltipRef = ref();
-let postList = ref([]);
+let roleList = ref([]);
 let pageSize = ref(10);
 let totalPage = ref(0);
 let checkList = ref([]);
@@ -67,25 +67,45 @@ function handleSelectionChange(val) {
 }
 
 function onChange(checked, { $index, row }) {
-  switchLoadMap.value[$index] = Object.assign({}, switchLoadMap.value[$index], {
-    loading: true
-  });
-  setTimeout(() => {
-    switchLoadMap.value[$index] = Object.assign(
-      {},
-      switchLoadMap.value[$index],
-      {
-        loading: false
-      }
-    );
-    successMessage("已成功修改岗位状态");
-  }, 300);
+  ElMessageBox.confirm(
+    `确认要<strong>停用</strong><strong style='color:var(--el-color-primary)'>${row.name}</strong>角色吗?`,
+    "系统提示",
+    {
+      confirmButtonText: "确定",
+      cancelButtonText: "取消",
+      type: "warning",
+      dangerouslyUseHTMLString: true,
+      draggable: true
+    }
+  )
+    .then(() => {
+      switchLoadMap.value[$index] = Object.assign(
+        {},
+        switchLoadMap.value[$index],
+        {
+          loading: true
+        }
+      );
+      setTimeout(() => {
+        switchLoadMap.value[$index] = Object.assign(
+          {},
+          switchLoadMap.value[$index],
+          {
+            loading: false
+          }
+        );
+        message.success("已成功修改角色状态");
+      }, 300);
+    })
+    .catch(() => {
+      row.status === 0 ? (row.status = 1) : (row.status = 0);
+    });
 }
 
 async function onSearch() {
   loading.value = true;
-  let { data } = await getPostList();
-  postList.value = data.list;
+  let { data } = await getRoleList();
+  roleList.value = data.list;
   totalPage.value = data.total;
   setTimeout(() => {
     loading.value = false;
@@ -111,10 +131,10 @@ onMounted(() => {
       :model="form"
       class="bg-white w-99/100 pl-8 pt-4"
     >
-      <el-form-item label="岗位编码：" prop="code">
+      <el-form-item label="角色编码：" prop="code">
         <el-input v-model="form.code" placeholder="请输入" clearable />
       </el-form-item>
-      <el-form-item label="岗位名称：" prop="user">
+      <el-form-item label="角色名称：" prop="user">
         <el-input v-model="form.user" placeholder="请输入" clearable />
       </el-form-item>
       <el-form-item label="状态：" prop="status">
@@ -145,10 +165,10 @@ onMounted(() => {
       element-loading-svg-view-box="-10, -10, 50, 50"
     >
       <div class="flex justify-between w-full h-60px p-4">
-        <p class="font-bold">岗位列表</p>
+        <p class="font-bold">角色列表</p>
         <div class="w-220px flex items-center justify-around">
           <el-button type="primary" :icon="useRenderIcon('add')"
-            >新增岗位</el-button
+            >新增角色</el-button
           >
           <!-- <el-button type="success" :icon="useRenderIcon('import')"
             >导入</el-button
@@ -245,7 +265,7 @@ onMounted(() => {
         border
         table-layout="auto"
         :size="size"
-        :data="postList"
+        :data="roleList"
         :header-cell-style="{ background: '#fafafa', color: '#606266' }"
         @selection-change="handleSelectionChange"
       >
@@ -262,10 +282,10 @@ onMounted(() => {
           align="center"
           width="60"
         />
-        <el-table-column label="岗位编号" align="center" prop="id" />
-        <el-table-column label="岗位编码" align="center" prop="code" />
-        <el-table-column label="岗位名称" align="center" prop="name" />
-        <el-table-column label="岗位排序" align="center" prop="sort" />
+        <el-table-column label="角色编号" align="center" prop="id" />
+        <el-table-column label="角色编码" align="center" prop="code" />
+        <el-table-column label="角色名称" align="center" prop="name" />
+        <el-table-column label="角色排序" align="center" prop="sort" />
         <el-table-column label="状态" align="center" prop="status">
           <template #default="scope">
             <Switch

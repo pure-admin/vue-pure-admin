@@ -2,7 +2,7 @@ import { MockMethod } from "vite-plugin-mock";
 
 export default [
   {
-    url: "/system",
+    url: "/role",
     method: "post",
     response: () => {
       return {
