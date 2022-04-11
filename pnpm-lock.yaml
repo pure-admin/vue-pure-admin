@@ -8,13 +8,14 @@ specifiers:
   "@iconify-icons/ep": ^1.2.4
   "@iconify-icons/fa": ^1.2.2
   "@iconify-icons/fa-solid": ^1.2.2
+  "@iconify-icons/fluent": ^1.2.5
   "@iconify-icons/ri": ^1.2.1
   "@iconify-icons/uil": ^1.2.1
   "@iconify/vue": ^3.2.0
   "@intlify/vite-plugin-vue-i18n": ^3.3.1
   "@logicflow/core": 0.7.1
   "@logicflow/extension": 0.7.1
-  "@pureadmin/components": ^1.0.3
+  "@pureadmin/components": ^1.0.6
   "@pureadmin/theme": ^0.0.1
   "@types/element-resize-detector": 1.1.3
   "@types/js-cookie": ^3.0.1
@@ -108,7 +109,7 @@ dependencies:
   "@ctrl/tinycolor": 3.4.0
   "@logicflow/core": 0.7.1
   "@logicflow/extension": 0.7.1
-  "@pureadmin/components": 1.0.3_vue@3.2.31
+  "@pureadmin/components": 1.0.6_vue@3.2.31
   "@vueuse/core": 8.2.0_vue@3.2.31
   "@vueuse/motion": 2.0.0-beta.12_vue@3.2.31
   "@vueuse/shared": 8.2.0_vue@3.2.31
@@ -152,6 +153,7 @@ devDependencies:
   "@iconify-icons/ep": 1.2.4
   "@iconify-icons/fa": 1.2.2
   "@iconify-icons/fa-solid": 1.2.2
+  "@iconify-icons/fluent": 1.2.5
   "@iconify-icons/ri": 1.2.1
   "@iconify-icons/uil": 1.2.1
   "@iconify/vue": 3.2.0_vue@3.2.31
@@ -988,6 +990,15 @@ packages:
       "@iconify/types": 1.1.0
     dev: true
 
+  /@iconify-icons/fluent/1.2.5:
+    resolution:
+      {
+        integrity: sha512-PMPrhYTl8hJ2vVQdLHr1zHvCF14U9kCLMY+CqwX+tCLUvUFct+NT6NphT2MgUmzk7J2BdyHsmjtPWmPVfdxZUw==
+      }
+    dependencies:
+      "@iconify/types": 1.1.0
+    dev: true
+
   /@iconify-icons/ri/1.2.1:
     resolution:
       {
@@ -1230,10 +1241,10 @@ packages:
       }
     dev: false
 
-  /@pureadmin/components/1.0.3_vue@3.2.31:
+  /@pureadmin/components/1.0.6_vue@3.2.31:
     resolution:
       {
-        integrity: sha512-+FYkSYma0qUXtqjy81Y3aIafIzoRveTOtPqxGkFqU2Ku1bnrPRjdKnJzn42pJyA5/OQ9WBvaDTKfldOFqEUuIg==
+        integrity: sha512-k+ZF/vsnLAZDkTGpBqZ44s9LTPZsCDFRnfNNXlGy7+TXInarzopuVWeQHGsPbHB3LPHcNd2/4MBjOq4NKYglpw==
       }
     peerDependencies:
       vue: ^3.2.0
