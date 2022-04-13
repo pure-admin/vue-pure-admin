@@ -71,6 +71,9 @@ import arrowUpLine from "@iconify-icons/ri/arrow-up-line";
 import arrowDownLine from "@iconify-icons/ri/arrow-down-line";
 import bookmark2Line from "@iconify-icons/ri/bookmark-2-line";
 import addFill from "@iconify-icons/ri/add-circle-line";
+import listCheck from "@iconify-icons/ri/list-check";
+import more2Fill from "@iconify-icons/ri/more-2-fill";
+
 addIcon("arrow-right-s-line", arrowRightSLine);
 addIcon("arrow-left-s-line", arrowLeftSLine);
 addIcon("logout-circle-r-line", logoutCircleRLine);
@@ -84,6 +87,8 @@ addIcon("arrow-up-line", arrowUpLine);
 addIcon("arrow-down-line", arrowDownLine);
 addIcon("bookmark-2-line", bookmark2Line);
 addIcon("add", addFill);
+addIcon("list-check", listCheck);
+addIcon("more-2-fill", more2Fill);
 
 // Font Awesome 4
 import faUser from "@iconify-icons/fa/user";
