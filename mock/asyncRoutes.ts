@@ -9,31 +9,33 @@ const systemRouter = {
     icon: "setting",
     title: "menus.hssysManagement",
     i18n: true,
-    rank: 6
+    rank: 11
   },
   children: [
+    // {
+    //   path: "/system/dict/index",
+    //   name: "dict",
+    //   meta: {
+    //     title: "menus.hsDict",
+    //     i18n: true,
+    //     keepAlive: true
+    //   }
+    // },
     {
       path: "/system/user/index",
       name: "user",
       meta: {
-        title: "menus.hsBaseinfo",
+        icon: "flUser",
+        title: "menus.hsUser",
         i18n: true
       }
     },
     {
-      path: "/system/dict/index",
-      name: "dict",
+      path: "/system/role/index",
+      name: "role",
       meta: {
-        title: "menus.hsDict",
-        i18n: true,
-        keepAlive: true
-      }
-    },
-    {
-      path: "/system/post/index",
-      name: "post",
-      meta: {
-        title: "menus.hsPost",
+        icon: "peoples",
+        title: "menus.hsRole",
         i18n: true
       }
     },
@@ -41,6 +43,7 @@ const systemRouter = {
       path: "/system/dept/index",
       name: "dept",
       meta: {
+        icon: "office-building",
         title: "menus.hsDept",
         i18n: true
       }

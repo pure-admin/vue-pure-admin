@@ -22,9 +22,9 @@ menus:
   hshome: Home
   hslogin: Login
   hssysManagement: System Manage
-  hsBaseinfo: Base Info
+  hsUser: User Manage
   hsDict: Dict Manage
-  hsPost: Post Manage
+  hsRole: Role Manage
   hsDept: Dept Manage
   hseditor: Editor
   hserror: Error Page
