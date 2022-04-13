@@ -44,7 +44,7 @@ specifiers:
   dayjs: ^1.11.0
   driver.js: ^0.9.8
   echarts: ^5.3.2
-  element-plus: ^2.1.8
+  element-plus: ^2.1.9
   element-resize-detector: ^1.2.3
   eslint: ^8.8.0
   eslint-plugin-prettier: ^4.0.0
@@ -120,7 +120,7 @@ dependencies:
   dayjs: 1.11.0
   driver.js: 0.9.8
   echarts: 5.3.2
-  element-plus: 2.1.8_1a412d14def5ff5ca1122000e4bee666
+  element-plus: 2.1.9_vue@3.2.31
   element-resize-detector: 1.2.4
   js-cookie: 3.0.1
   lodash: 4.17.21
@@ -1050,8 +1050,8 @@ packages:
       vue-i18n:
         optional: true
     dependencies:
-      "@intlify/message-compiler": 9.2.0-beta.34
-      "@intlify/shared": 9.2.0-beta.34
+      "@intlify/message-compiler": 9.2.0-beta.35
+      "@intlify/shared": 9.2.0-beta.35
       jsonc-eslint-parser: 1.4.1
       source-map: 0.6.1
       vue-i18n: 9.2.0-beta.33_vue@3.2.31
@@ -1092,14 +1092,14 @@ packages:
       source-map: 0.6.1
     dev: false
 
-  /@intlify/message-compiler/9.2.0-beta.34:
+  /@intlify/message-compiler/9.2.0-beta.35:
     resolution:
       {
-        integrity: sha512-l7JjkXJBW2l6cFZqPvI6oWU6QZn/i70agU6QB02W1O+6quFCFNpsiPswgYyQrmfHt4F4qYhLJUMZltIW/cqcbw==
+        integrity: sha512-wYQCgnRtyJ40HK3bJTrszHDaxqDXZH+9Ps7RsXNuNwZ9hIb1cVkLiUNIbuJS/XSJ1kATJXA6K+4if6ZLb0Ozxw==
       }
     engines: { node: ">= 12" }
     dependencies:
-      "@intlify/shared": 9.2.0-beta.34
+      "@intlify/shared": 9.2.0-beta.35
       source-map: 0.6.1
     dev: true
 
@@ -1111,10 +1111,10 @@ packages:
     engines: { node: ">= 12" }
     dev: false
 
-  /@intlify/shared/9.2.0-beta.34:
+  /@intlify/shared/9.2.0-beta.35:
     resolution:
       {
-        integrity: sha512-hbUKcVbTOkLVpnlSeZE1OPgEI7FpvhuZF/gb84xECTjXEImIa3u0fIcJKUUffv3dlAx8fMOE5xKgDzngidm0tw==
+        integrity: sha512-DXf7xrwf08GKhr93XPQ8EgaEN0CIELl+mAS6SlRhi/aLtZv5HSGSMkz4M/ICwoWzFLSgOx/ZdBSasex19MMogg==
       }
     engines: { node: ">= 12" }
     dev: true
@@ -1136,7 +1136,7 @@ packages:
         optional: true
     dependencies:
       "@intlify/bundle-utils": 3.0.0_vue-i18n@9.2.0-beta.33
-      "@intlify/shared": 9.2.0-beta.34
+      "@intlify/shared": 9.2.0-beta.35
       "@rollup/pluginutils": 4.2.0
       debug: 4.3.4
       fast-glob: 3.2.11
@@ -1354,14 +1354,19 @@ packages:
       }
     dependencies:
       "@types/lodash": 4.14.180
-    dev: true
 
   /@types/lodash/4.14.180:
     resolution:
       {
         integrity: sha512-XOKXa1KIxtNXgASAnwj7cnttJxS4fksBRywK/9LzRV5YxrF80BXZIGeQSuoESQ/VkUj30Ae0+YcuHc15wJCB2g==
       }
-    dev: true
+
+  /@types/lodash/4.14.181:
+    resolution:
+      {
+        integrity: sha512-n3tyKthHJbkiWhDZs3DkhkCzt2MexYHXlX0td5iMplyfwketaOeKboEVBqzceH7juqvEg3q5oUoBFxSLu7zFag==
+      }
+    dev: false
 
   /@types/minimatch/3.0.5:
     resolution:
@@ -1843,10 +1848,10 @@ packages:
       vue-demi: 0.12.4_vue@3.2.31
     dev: false
 
-  /@vueuse/core/8.2.4_vue@3.2.31:
+  /@vueuse/core/8.2.5_vue@3.2.31:
     resolution:
       {
-        integrity: sha512-K8DbVLErlHMnEOqy67BrRbDmWCd4Z9X0a1dL6fQdhABLXBydy69Tm7uF5ZUotAqib9sskItYFsAnLhvGSue6bg==
+        integrity: sha512-5prZAA1Ji2ltwNUnzreu6WIXYqHYP/9U2BiY5mD/650VYLpVcwVlYznJDFcLCmEWI3o3Vd34oS1FUf+6Mh68GQ==
       }
     peerDependencies:
       "@vue/composition-api": ^1.1.0
@@ -1857,8 +1862,8 @@ packages:
       vue:
         optional: true
     dependencies:
-      "@vueuse/metadata": 8.2.4
-      "@vueuse/shared": 8.2.4_vue@3.2.31
+      "@vueuse/metadata": 8.2.5
+      "@vueuse/shared": 8.2.5_vue@3.2.31
       vue: 3.2.31
       vue-demi: 0.12.4_vue@3.2.31
     dev: false
@@ -1870,10 +1875,10 @@ packages:
       }
     dev: false
 
-  /@vueuse/metadata/8.2.4:
+  /@vueuse/metadata/8.2.5:
     resolution:
       {
-        integrity: sha512-mn4FLULZAHd6r6vo5hLz+99xzwlVDP9qeVtZGV2Ik40m0zETe2okUr3O1Yoz6FReUoc7KAPrf0/GFpWEXVDAnQ==
+        integrity: sha512-Lk9plJjh9cIdiRdcj16dau+2LANxIdFCiTgdfzwYXbflxq0QnMBeOD2qHgKDE7fuVrtPcVWj8VSuZEx1HRfNQA==
       }
     dev: false
 
@@ -1916,10 +1921,10 @@ packages:
       vue-demi: 0.12.4_vue@3.2.31
     dev: false
 
-  /@vueuse/shared/8.2.4_vue@3.2.31:
+  /@vueuse/shared/8.2.5_vue@3.2.31:
     resolution:
       {
-        integrity: sha512-sLkuZMEumsmEDYie3m6/nrk7SrLGlyUgtVn/0EJZ8Chaj1YfSmBQuLxNE0ruQ/6VZlqkx44jEZxcgbU7qPyAiw==
+        integrity: sha512-lNWo+7sk6JCuOj4AiYM+6HZ6fq4xAuVq1sVckMQKgfCJZpZRe4i8es+ZULO5bYTKP+VrOCtqrLR2GzEfrbr3YQ==
       }
     peerDependencies:
       "@vue/composition-api": ^1.1.0
@@ -3196,10 +3201,10 @@ packages:
       }
     dev: true
 
-  /element-plus/2.1.8_1a412d14def5ff5ca1122000e4bee666:
+  /element-plus/2.1.9_vue@3.2.31:
     resolution:
       {
-        integrity: sha512-hwFtzw0R5lKMhWf3oVvSU/ucfN8RiY8DRaRWo6LktX4RlWWA2QjKfDXtISBi5Rb303Ny4I0Sgz0CA1Fd4Z2GGg==
+        integrity: sha512-6mWqS3YrmJPnouWP4otzL8+MehfOnDFqDbcIdnmC07p+Z0JkWe/CVKc4Wky8AYC8nyDMUQyiZYvooCbqGuM7pg==
       }
     peerDependencies:
       vue: ^3.2.0
@@ -3208,7 +3213,9 @@ packages:
       "@element-plus/icons-vue": 1.1.4_vue@3.2.31
       "@floating-ui/dom": 0.4.4
       "@popperjs/core": 2.11.5
-      "@vueuse/core": 8.2.4_vue@3.2.31
+      "@types/lodash": 4.14.181
+      "@types/lodash-es": 4.17.6
+      "@vueuse/core": 8.2.5_vue@3.2.31
       async-validator: 4.0.7
       dayjs: 1.11.0
       escape-html: 1.0.3
@@ -3219,7 +3226,6 @@ packages:
       normalize-wheel-es: 1.1.2
       vue: 3.2.31
     transitivePeerDependencies:
-      - "@types/lodash-es"
       - "@vue/composition-api"
     dev: false
 

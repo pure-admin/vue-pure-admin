@@ -82,6 +82,7 @@ const rules = {
     v-model="formVisible"
     title="新建产品"
     :width="680"
+    draggable
     :before-close="closeDialog"
   >
     <!-- 表单内容 -->
@@ -115,6 +116,7 @@ const rules = {
         <el-select
           v-model="formData.type"
           clearable
+          :teleported="false"
           :style="{ width: '480px' }"
         >
           <el-option
