@@ -26,6 +26,10 @@ export function useNav() {
     };
   });
 
+  const avatarsStyle = computed(() => {
+    return username ? { marginRight: "10px" } : "";
+  });
+
   const isCollapse = computed(() => {
     return !pureApp.getSidebarStatus;
   });
@@ -117,6 +121,7 @@ export function useNav() {
     isCollapse,
     pureApp,
     username,
+    avatarsStyle,
     getDropdownItemStyle
   };
 }
