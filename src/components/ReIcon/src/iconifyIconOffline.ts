@@ -112,6 +112,12 @@ import FlUser from "@iconify-icons/fluent/person-12-filled";
 addIcon("peoples", Peoples);
 addIcon("flUser", FlUser);
 
+// Material Design Icons
+import Expand from "@iconify-icons/mdi/arrow-expand-down";
+import UnExpand from "@iconify-icons/mdi/arrow-expand-right";
+addIcon("expand", Expand);
+addIcon("unExpand", UnExpand);
+
 // Iconify Icon在Vue里离线使用（用于内网环境）https://docs.iconify.design/icon-components/vue/offline.html
 export default defineComponent({
   name: "IconifyIcon",

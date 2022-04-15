@@ -9,6 +9,7 @@ specifiers:
   "@iconify-icons/fa": ^1.2.2
   "@iconify-icons/fa-solid": ^1.2.2
   "@iconify-icons/fluent": ^1.2.5
+  "@iconify-icons/mdi": ^1.2.8
   "@iconify-icons/ri": ^1.2.1
   "@iconify-icons/uil": ^1.2.1
   "@iconify/vue": ^3.2.1
@@ -154,6 +155,7 @@ devDependencies:
   "@iconify-icons/fa": 1.2.2
   "@iconify-icons/fa-solid": 1.2.2
   "@iconify-icons/fluent": 1.2.5
+  "@iconify-icons/mdi": 1.2.8
   "@iconify-icons/ri": 1.2.1
   "@iconify-icons/uil": 1.2.1
   "@iconify/vue": 3.2.1_vue@3.2.32
@@ -992,6 +994,15 @@ packages:
     resolution:
       {
         integrity: sha512-PMPrhYTl8hJ2vVQdLHr1zHvCF14U9kCLMY+CqwX+tCLUvUFct+NT6NphT2MgUmzk7J2BdyHsmjtPWmPVfdxZUw==
+      }
+    dependencies:
+      "@iconify/types": 1.1.0
+    dev: true
+
+  /@iconify-icons/mdi/1.2.8:
+    resolution:
+      {
+        integrity: sha512-yG/fH+6PGTTPhqcgdk0NZ465pDIJebdxWDTPPe9P2Fd76bxaoCIcMQSqv/V9g5ADrELdrK1CmHnro+/jd42/0A==
       }
     dependencies:
       "@iconify/types": 1.1.0

@@ -60,7 +60,7 @@ export default [
         code: 0,
         data: [
           {
-            name: "pure-admin",
+            name: "杭州总公司",
             parentId: 0,
             sort: 0,
             leaderUserId: 1,
@@ -72,7 +72,7 @@ export default [
             remark: "备注、备注、备注、备注、备注、备注、备注"
           },
           {
-            name: "深圳总公司",
+            name: "郑州分公司",
             parentId: 100,
             sort: 1,
             leaderUserId: 104,
@@ -108,7 +108,7 @@ export default [
             remark: "备注、备注、备注、备注、备注、备注、备注"
           },
           {
-            name: "长沙分公司",
+            name: "深圳分公司",
             parentId: 100,
             sort: 2,
             leaderUserId: null,

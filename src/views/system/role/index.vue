@@ -6,13 +6,12 @@ export default {
 
 <script setup lang="ts">
 import dayjs from "dayjs";
-import { loadingSvg } from "../load";
 import { getRoleList } from "/@/api/system";
 import { FormInstance } from "element-plus";
 import { ElMessageBox } from "element-plus";
+import { reactive, ref, onMounted } from "vue";
+import { EpTableProBar } from "/@/components/ReTable";
 import { Switch, message } from "@pureadmin/components";
-import { reactive, ref, onMounted, computed } from "vue";
-import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 
 const form = reactive({
@@ -20,27 +19,13 @@ const form = reactive({
   user: "",
   status: ""
 });
-const buttonRef = ref();
-const tooltipRef = ref();
-let roleList = ref([]);
+let dataList = ref([]);
 let pageSize = ref(10);
 let totalPage = ref(0);
-let checkList = ref([]);
 let loading = ref(true);
-let visible = ref(false);
-let size = ref("default");
 let switchLoadMap = ref({});
 
 const formRef = ref<FormInstance>();
-
-const getDropdownItemStyle = computed(() => {
-  return s => {
-    return {
-      background: s === size.value ? useEpThemeStoreHook().epThemeColor : "",
-      color: s === size.value ? "#f4f4f5" : "#000"
-    };
-  };
-});
 
 function handleUpdate(row) {
   console.log(row);
@@ -56,10 +41,6 @@ function handleCurrentChange(val: number) {
 
 function handleSizeChange(val: number) {
   console.log(`${val} items per page`);
-}
-
-function onCheckChange(val) {
-  console.log("onCheckChange", val);
 }
 
 function handleSelectionChange(val) {
@@ -105,7 +86,7 @@ function onChange(checked, { $index, row }) {
 async function onSearch() {
   loading.value = true;
   let { data } = await getRoleList();
-  roleList.value = data.list;
+  dataList.value = data.list;
   totalPage.value = data.total;
   setTimeout(() => {
     loading.value = false;
@@ -158,186 +139,101 @@ onMounted(() => {
       </el-form-item>
     </el-form>
 
-    <div
-      class="w-99/100 mt-6 p-2 bg-white"
-      v-loading="loading"
-      :element-loading-svg="loadingSvg"
-      element-loading-svg-view-box="-10, -10, 50, 50"
+    <EpTableProBar
+      title="角色列表"
+      :loading="loading"
+      :dataList="dataList"
+      @refresh="onSearch"
     >
-      <div class="flex justify-between w-full h-60px p-4">
-        <p class="font-bold">角色列表</p>
-        <div class="w-220px flex items-center justify-around">
-          <el-button type="primary" :icon="useRenderIcon('add')"
-            >新增角色</el-button
-          >
-          <!-- <el-button type="success" :icon="useRenderIcon('import')"
-            >导入</el-button
-          >
-          <el-button type="warning" :icon="useRenderIcon('export')"
-            >导出</el-button
-          > -->
-          <el-tooltip effect="dark" content="刷新" placement="top">
-            <IconifyIconOffline
-              class="cursor-pointer outline-none ml-4"
-              icon="refresh-right"
-              width="20"
-              color="#606266"
-              @click="onSearch"
-            />
-          </el-tooltip>
-          <el-divider direction="vertical" />
-
-          <el-tooltip effect="dark" content="密度" placement="top">
-            <el-dropdown id="header-translation" trigger="click">
-              <IconifyIconOffline
-                class="cursor-pointer outline-none"
-                icon="density"
-                width="20"
-                color="#606266"
-              />
-              <template #dropdown>
-                <el-dropdown-menu class="translation">
-                  <el-dropdown-item
-                    :style="getDropdownItemStyle('large')"
-                    @click="size = 'large'"
-                  >
-                    松散
-                  </el-dropdown-item>
-                  <el-dropdown-item
-                    :style="getDropdownItemStyle('default')"
-                    @click="size = 'default'"
-                  >
-                    默认
-                  </el-dropdown-item>
-                  <el-dropdown-item
-                    :style="getDropdownItemStyle('small')"
-                    @click="size = 'small'"
-                  >
-                    紧凑
-                  </el-dropdown-item>
-                </el-dropdown-menu>
-              </template>
-            </el-dropdown>
-          </el-tooltip>
-          <el-divider direction="vertical" />
-
-          <el-popover :width="200" trigger="click">
-            <template #reference>
-              <IconifyIconOffline
-                class="cursor-pointer outline-none"
-                icon="setting"
-                width="20"
-                color="#606266"
-                @mouseover="e => (buttonRef = e.currentTarget)"
-                @mouseenter="visible = true"
-                @mouseleave="visible = false"
+      <template #buttons>
+        <el-button type="primary" :icon="useRenderIcon('add')"
+          >新增角色</el-button
+        >
+      </template>
+      <template v-slot="{ size, checkList }">
+        <el-table
+          border
+          table-layout="auto"
+          :size="size"
+          :data="dataList"
+          :header-cell-style="{ background: '#fafafa', color: '#606266' }"
+          @selection-change="handleSelectionChange"
+        >
+          <el-table-column
+            v-if="checkList.includes('勾选列')"
+            type="selection"
+            align="center"
+            width="55"
+          />
+          <el-table-column
+            v-if="checkList.includes('序号列')"
+            type="index"
+            label="序号"
+            align="center"
+            width="70"
+          />
+          <el-table-column label="角色编号" align="center" prop="id" />
+          <el-table-column label="角色编码" align="center" prop="code" />
+          <el-table-column label="角色名称" align="center" prop="name" />
+          <el-table-column label="角色排序" align="center" prop="sort" />
+          <el-table-column label="状态" align="center" prop="status">
+            <template #default="scope">
+              <Switch
+                :size="size === 'small' ? 'small' : 'default'"
+                :loading="switchLoadMap[scope.$index]?.loading"
+                v-model:checked="scope.row.status"
+                :checkedValue="1"
+                :unCheckedValue="0"
+                checked-children="已开启"
+                un-checked-children="已关闭"
+                @change="checked => onChange(checked, scope)"
               />
             </template>
-            <el-checkbox-group v-model="checkList" @change="onCheckChange">
-              <el-checkbox label="序号列" />
-              <el-checkbox label="勾选列" />
-            </el-checkbox-group>
-          </el-popover>
-        </div>
-
-        <el-tooltip
-          ref="tooltipRef"
-          v-model:visible="visible"
-          :popper-options="{
-            modifiers: [
-              {
-                name: 'computeStyles',
-                options: {
-                  adaptive: false,
-                  enabled: false
-                }
-              }
-            ]
-          }"
-          placement="top"
-          :virtual-ref="buttonRef"
-          virtual-triggering
-          trigger="click"
-          content="列设置"
+          </el-table-column>
+          <el-table-column
+            label="创建时间"
+            align="center"
+            width="180"
+            prop="createTime"
+          >
+            <template #default="scope">
+              <span>{{
+                dayjs(scope.row.createTime).format("YYYY-MM-DD HH:mm:ss")
+              }}</span>
+            </template>
+          </el-table-column>
+          <el-table-column
+            fixed="right"
+            label="操作"
+            width="130"
+            align="center"
+          >
+            <template #default="scope">
+              <el-button type="text" @click="handleUpdate(scope.row)"
+                >修改</el-button
+              >
+              <el-popconfirm title="是否确认删除?">
+                <template #reference>
+                  <el-button type="text" @click="handleDelete(scope.row)"
+                    >删除</el-button
+                  >
+                </template>
+              </el-popconfirm>
+            </template>
+          </el-table-column>
+        </el-table>
+        <el-pagination
+          class="flex justify-end mt-4"
+          :small="size === 'small' ? true : false"
+          v-model:page-size="pageSize"
+          :page-sizes="[10, 20, 30, 50]"
+          :background="true"
+          layout="total, sizes, prev, pager, next, jumper"
+          :total="totalPage"
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
         />
-      </div>
-      <el-table
-        border
-        table-layout="auto"
-        :size="size"
-        :data="roleList"
-        :header-cell-style="{ background: '#fafafa', color: '#606266' }"
-        @selection-change="handleSelectionChange"
-      >
-        <el-table-column
-          v-if="checkList.includes('勾选列')"
-          type="selection"
-          align="center"
-          width="55"
-        />
-        <el-table-column
-          v-if="checkList.includes('序号列')"
-          type="index"
-          label="序号"
-          align="center"
-          width="60"
-        />
-        <el-table-column label="角色编号" align="center" prop="id" />
-        <el-table-column label="角色编码" align="center" prop="code" />
-        <el-table-column label="角色名称" align="center" prop="name" />
-        <el-table-column label="角色排序" align="center" prop="sort" />
-        <el-table-column label="状态" align="center" prop="status">
-          <template #default="scope">
-            <Switch
-              :size="size === 'small' ? 'small' : 'default'"
-              :loading="switchLoadMap[scope.$index]?.loading"
-              v-model:checked="scope.row.status"
-              :checkedValue="1"
-              :unCheckedValue="0"
-              checked-children="已开启"
-              un-checked-children="已关闭"
-              @change="checked => onChange(checked, scope)"
-            />
-          </template>
-        </el-table-column>
-        <el-table-column
-          label="创建时间"
-          align="center"
-          width="180"
-          prop="createTime"
-        >
-          <template #default="scope">
-            <span>{{
-              dayjs(scope.row.createTime).format("YYYY-MM-DD HH:mm:ss")
-            }}</span>
-          </template>
-        </el-table-column>
-        <el-table-column label="操作" width="130" align="center">
-          <template #default="scope">
-            <el-button type="text" @click="handleUpdate(scope.row)"
-              >修改</el-button
-            >
-            <el-popconfirm title="是否确认删除?">
-              <template #reference>
-                <el-button type="text" @click="handleDelete(scope.row)"
-                  >删除</el-button
-                >
-              </template>
-            </el-popconfirm>
-          </template>
-        </el-table-column>
-      </el-table>
-      <el-pagination
-        class="flex justify-end mt-4"
-        :small="size === 'small' ? true : false"
-        v-model:page-size="pageSize"
-        :page-sizes="[10, 20, 30, 50]"
-        :background="true"
-        layout="total, sizes, prev, pager, next, jumper"
-        :total="totalPage"
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-      />
-    </div>
+      </template>
+    </EpTableProBar>
   </div>
 </template>
