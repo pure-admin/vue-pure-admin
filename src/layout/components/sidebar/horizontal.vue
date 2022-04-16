@@ -30,6 +30,7 @@ const {
   handleResize,
   menuSelect,
   username,
+  avatarsStyle,
   getDropdownItemStyle
 } = useNav();
 
@@ -114,8 +115,8 @@ function translationEn() {
       <!-- 退出登陆 -->
       <el-dropdown trigger="click">
         <span class="el-dropdown-link">
-          <img :src="avatars" />
-          <p>{{ username }}</p>
+          <img v-if="avatars" :src="avatars" :style="avatarsStyle" />
+          <p v-if="username">{{ username }}</p>
         </span>
         <template #dropdown>
           <el-dropdown-menu class="logout">

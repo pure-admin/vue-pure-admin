@@ -9,7 +9,7 @@ const aboutRouter = {
     icon: "question-line",
     title: $t("menus.hsAbout"),
     i18n: true,
-    rank: 14
+    rank: 15
   },
   children: [
     {
