@@ -15,8 +15,8 @@ import { Switch, message } from "@pureadmin/components";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 
 const form = reactive({
+  name: "",
   code: "",
-  user: "",
   status: ""
 });
 let dataList = ref([]);
@@ -49,7 +49,11 @@ function handleSelectionChange(val) {
 
 function onChange(checked, { $index, row }) {
   ElMessageBox.confirm(
-    `确认要<strong>停用</strong><strong style='color:var(--el-color-primary)'>${row.name}</strong>角色吗?`,
+    `确认要<strong>${
+      row.status === 0 ? "停用" : "启用"
+    }</strong><strong style='color:var(--el-color-primary)'>${
+      row.name
+    }</strong>角色吗?`,
     "系统提示",
     {
       confirmButtonText: "确定",
@@ -112,16 +116,16 @@ onMounted(() => {
       :model="form"
       class="bg-white w-99/100 pl-8 pt-4"
     >
-      <el-form-item label="角色编码：" prop="code">
-        <el-input v-model="form.code" placeholder="请输入" clearable />
+      <el-form-item label="角色名称：" prop="name">
+        <el-input v-model="form.name" placeholder="请输入" clearable />
       </el-form-item>
-      <el-form-item label="角色名称：" prop="user">
-        <el-input v-model="form.user" placeholder="请输入" clearable />
+      <el-form-item label="角色标识：" prop="code">
+        <el-input v-model="form.code" placeholder="请输入" clearable />
       </el-form-item>
       <el-form-item label="状态：" prop="status">
         <el-select v-model="form.status" placeholder="请选择" clearable>
-          <el-option label="开启" value="1" />
-          <el-option label="关闭" value="0" />
+          <el-option label="已开启" value="1" />
+          <el-option label="已关闭" value="0" />
         </el-select>
       </el-form-item>
       <el-form-item>
@@ -131,11 +135,11 @@ onMounted(() => {
           :loading="loading"
           @click="onSearch"
         >
-          搜索</el-button
-        >
-        <el-button :icon="useRenderIcon('refresh')" @click="resetForm(formRef)"
-          >重置</el-button
-        >
+          搜索
+        </el-button>
+        <el-button :icon="useRenderIcon('refresh')" @click="resetForm(formRef)">
+          重置
+        </el-button>
       </el-form-item>
     </el-form>
 
@@ -146,9 +150,9 @@ onMounted(() => {
       @refresh="onSearch"
     >
       <template #buttons>
-        <el-button type="primary" :icon="useRenderIcon('add')"
-          >新增角色</el-button
-        >
+        <el-button type="primary" :icon="useRenderIcon('add')">
+          新增角色
+        </el-button>
       </template>
       <template v-slot="{ size, checkList }">
         <el-table
@@ -173,10 +177,26 @@ onMounted(() => {
             width="70"
           />
           <el-table-column label="角色编号" align="center" prop="id" />
-          <el-table-column label="角色编码" align="center" prop="code" />
           <el-table-column label="角色名称" align="center" prop="name" />
-          <el-table-column label="角色排序" align="center" prop="sort" />
-          <el-table-column label="状态" align="center" prop="status">
+          <el-table-column label="角色标识" align="center" prop="code" />
+          <el-table-column label="角色类型" align="center" prop="type">
+            <template #default="scope">
+              <el-tag
+                :size="size"
+                :type="scope.row.type === 1 ? 'danger' : ''"
+                effect="plain"
+              >
+                {{ scope.row.type === 1 ? "内置" : "自定义" }}
+              </el-tag>
+            </template>
+          </el-table-column>
+          <el-table-column label="显示顺序" align="center" prop="sort" />
+          <el-table-column
+            label="状态"
+            align="center"
+            width="130"
+            prop="status"
+          >
             <template #default="scope">
               <Switch
                 :size="size === 'small' ? 'small' : 'default'"
@@ -195,30 +215,74 @@ onMounted(() => {
             align="center"
             width="180"
             prop="createTime"
-          >
-            <template #default="scope">
-              <span>{{
-                dayjs(scope.row.createTime).format("YYYY-MM-DD HH:mm:ss")
-              }}</span>
-            </template>
-          </el-table-column>
+            :formatter="
+              ({ createTime }) => {
+                return dayjs(createTime).format('YYYY-MM-DD HH:mm:ss');
+              }
+            "
+          />
           <el-table-column
             fixed="right"
             label="操作"
-            width="130"
+            width="180"
             align="center"
           >
             <template #default="scope">
-              <el-button type="text" @click="handleUpdate(scope.row)"
-                >修改</el-button
+              <el-button
+                class="reset-margin"
+                type="text"
+                :size="size"
+                @click="handleUpdate(scope.row)"
+                :icon="useRenderIcon('edits')"
               >
+                修改
+              </el-button>
               <el-popconfirm title="是否确认删除?">
                 <template #reference>
-                  <el-button type="text" @click="handleDelete(scope.row)"
-                    >删除</el-button
+                  <el-button
+                    class="reset-margin"
+                    type="text"
+                    :size="size"
+                    :icon="useRenderIcon('delete')"
+                    @click="handleDelete(scope.row)"
                   >
+                    删除
+                  </el-button>
                 </template>
               </el-popconfirm>
+              <el-dropdown>
+                <el-button
+                  class="ml-3"
+                  type="text"
+                  :size="size"
+                  @click="handleUpdate(scope.row)"
+                  :icon="useRenderIcon('more')"
+                />
+                <template #dropdown>
+                  <el-dropdown-menu>
+                    <el-dropdown-item>
+                      <el-button
+                        class="reset-margin !h-20px !text-gray-500"
+                        type="text"
+                        :size="size"
+                        :icon="useRenderIcon('menu')"
+                      >
+                        菜单权限
+                      </el-button>
+                    </el-dropdown-item>
+                    <el-dropdown-item>
+                      <el-button
+                        class="reset-margin !h-20px !text-gray-500"
+                        type="text"
+                        :size="size"
+                        :icon="useRenderIcon('database')"
+                      >
+                        数据权限
+                      </el-button>
+                    </el-dropdown-item>
+                  </el-dropdown-menu>
+                </template>
+              </el-dropdown>
             </template>
           </el-table-column>
         </el-table>
@@ -237,3 +301,9 @@ onMounted(() => {
     </EpTableProBar>
   </div>
 </template>
+
+<style scoped lang="scss">
+:deep(.el-dropdown-menu__item i) {
+  margin: 0;
+}
+</style>

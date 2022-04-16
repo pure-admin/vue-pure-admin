@@ -10,43 +10,58 @@ export default [
         data: {
           list: [
             {
-              name: "董事长",
-              code: "ceo",
+              createTime: 1609837428000,
+              updateTime: 1645477701000,
+              creator: "admin",
+              updater: "",
+              deleted: false,
+              tenantId: 1,
+              id: 1,
+              name: "超级管理员",
+              code: "super_admin",
               sort: 1,
               status: 0,
-              remark: "",
-              id: 1,
-              createTime: 1609837428000
+              type: 1,
+              remark: "超级管理员",
+              dataScope: 1,
+              dataScopeDeptIds: null
             },
             {
-              name: "项目经理",
-              code: "se",
+              createTime: 1609837428000,
+              updateTime: 1645477700000,
+              creator: "admin",
+              updater: "",
+              deleted: false,
+              tenantId: 1,
+              id: 2,
+              name: "普通角色",
+              code: "common",
               sort: 2,
               status: 0,
-              remark: "",
-              id: 2,
-              createTime: 1609837428000
+              type: 1,
+              remark: "普通角色",
+              dataScope: 2,
+              dataScopeDeptIds: null
             },
             {
-              name: "人力资源",
-              code: "hr",
-              sort: 3,
-              status: 1,
-              remark: "",
-              id: 3,
-              createTime: 1609837428000
-            },
-            {
-              name: "普通员工",
-              code: "user",
-              sort: 4,
+              createTime: 1609912175000,
+              updateTime: 1647698441000,
+              creator: "",
+              updater: "1",
+              deleted: false,
+              tenantId: 1,
+              id: 101,
+              name: "测试账号",
+              code: "test",
+              sort: 0,
               status: 0,
-              remark: "",
-              id: 4,
-              createTime: 1609837428000
+              type: 2,
+              remark: "132",
+              dataScope: 1,
+              dataScopeDeptIds: []
             }
           ],
-          total: 4
+          total: 3
         },
         msg: ""
       };

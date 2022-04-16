@@ -79,11 +79,11 @@ onMounted(() => {
           :loading="loading"
           @click="onSearch"
         >
-          搜索</el-button
-        >
-        <el-button :icon="useRenderIcon('refresh')" @click="resetForm(formRef)"
-          >重置</el-button
-        >
+          搜索
+        </el-button>
+        <el-button :icon="useRenderIcon('refresh')" @click="resetForm(formRef)">
+          重置
+        </el-button>
       </el-form-item>
     </el-form>
 
@@ -129,6 +129,7 @@ onMounted(() => {
           <el-table-column label="状态" align="center" prop="status" width="80">
             <template #default="scope">
               <el-tag
+                :size="size"
                 :type="scope.row.status === 0 ? 'danger' : 'success'"
                 effect="plain"
               >
@@ -141,13 +142,12 @@ onMounted(() => {
             align="center"
             width="180"
             prop="createTime"
-          >
-            <template #default="scope">
-              <span>{{
-                dayjs(scope.row.createTime).format("YYYY-MM-DD HH:mm:ss")
-              }}</span>
-            </template>
-          </el-table-column>
+            :formatter="
+              ({ createTime }) => {
+                return dayjs(createTime).format('YYYY-MM-DD HH:mm:ss');
+              }
+            "
+          />
           <el-table-column
             label="备注"
             align="center"
@@ -158,17 +158,29 @@ onMounted(() => {
             fixed="right"
             label="操作"
             align="center"
-            width="130"
+            width="140"
           >
             <template #default="scope">
-              <el-button type="text" @click="handleUpdate(scope.row)"
-                >修改</el-button
+              <el-button
+                class="reset-margin"
+                type="text"
+                :size="size"
+                @click="handleUpdate(scope.row)"
+                :icon="useRenderIcon('edits')"
               >
+                修改
+              </el-button>
               <el-popconfirm title="是否确认删除?">
                 <template #reference>
-                  <el-button type="text" @click="handleDelete(scope.row)"
-                    >删除</el-button
+                  <el-button
+                    class="reset-margin"
+                    type="text"
+                    :size="size"
+                    :icon="useRenderIcon('delete')"
+                    @click="handleDelete(scope.row)"
                   >
+                    删除
+                  </el-button>
                 </template>
               </el-popconfirm>
             </template>

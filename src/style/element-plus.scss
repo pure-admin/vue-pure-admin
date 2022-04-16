@@ -36,7 +36,12 @@
   z-index: 99999 !important;
 }
 
-// 自定义popover的类名
+/* 重置button中icon的margin */
+.reset-margin [class*="el-icon"] + span {
+  margin-left: 2px !important;
+}
+
+/* 自定义popover的类名 */
 .pure-popper {
   padding: 0 !important;
 }
