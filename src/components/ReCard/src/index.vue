@@ -64,7 +64,7 @@ const cardLogoClass = computed(() => [
             :disabled="!product.isSetup"
             max-height="2"
           >
-            <IconifyIconOffline icon="more-2-fill" class="icon-more" />
+            <IconifyIconOffline icon="more-vertical" class="icon-more" />
             <template #dropdown>
               <el-dropdown-menu :disabled="!product.isSetup">
                 <el-dropdown-item @click="handleClickManage(product)"
