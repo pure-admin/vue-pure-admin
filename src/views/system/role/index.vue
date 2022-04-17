@@ -117,13 +117,13 @@ onMounted(() => {
       class="bg-white w-99/100 pl-8 pt-4"
     >
       <el-form-item label="角色名称：" prop="name">
-        <el-input v-model="form.name" placeholder="请输入" clearable />
+        <el-input v-model="form.name" placeholder="请输入角色名称" clearable />
       </el-form-item>
       <el-form-item label="角色标识：" prop="code">
-        <el-input v-model="form.code" placeholder="请输入" clearable />
+        <el-input v-model="form.code" placeholder="请输入角色标识" clearable />
       </el-form-item>
       <el-form-item label="状态：" prop="status">
-        <el-select v-model="form.status" placeholder="请选择" clearable>
+        <el-select v-model="form.status" placeholder="请选择状态" clearable>
           <el-option label="已开启" value="1" />
           <el-option label="已关闭" value="0" />
         </el-select>

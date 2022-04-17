@@ -71,6 +71,7 @@
   "devDependencies": {
     "@commitlint/cli": "13.1.0",
     "@commitlint/config-conventional": "13.1.0",
+    "@iconify-icons/carbon": "^1.2.4",
     "@iconify-icons/ep": "^1.2.4",
     "@iconify-icons/fa": "^1.2.2",
     "@iconify-icons/fa-solid": "^1.2.2",

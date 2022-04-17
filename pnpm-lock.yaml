@@ -5,6 +5,7 @@ specifiers:
   "@commitlint/cli": 13.1.0
   "@commitlint/config-conventional": 13.1.0
   "@ctrl/tinycolor": ^3.4.0
+  "@iconify-icons/carbon": ^1.2.4
   "@iconify-icons/ep": ^1.2.4
   "@iconify-icons/fa": ^1.2.2
   "@iconify-icons/fa-solid": ^1.2.2
@@ -151,6 +152,7 @@ dependencies:
 devDependencies:
   "@commitlint/cli": 13.1.0
   "@commitlint/config-conventional": 13.1.0
+  "@iconify-icons/carbon": 1.2.4
   "@iconify-icons/ep": 1.2.4
   "@iconify-icons/fa": 1.2.2
   "@iconify-icons/fa-solid": 1.2.2
@@ -961,6 +963,15 @@ packages:
       {
         integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
       }
+    dev: true
+
+  /@iconify-icons/carbon/1.2.4:
+    resolution:
+      {
+        integrity: sha512-RhLB8EwYz32oSSQZjafhWbyAqOoPIcj59VQmsrY/+8MR083c8XwOjepIwKVzZNMjWSL966ykqZxNrXwEjk7jrg==
+      }
+    dependencies:
+      "@iconify/types": 1.1.0
     dev: true
 
   /@iconify-icons/ep/1.2.4:

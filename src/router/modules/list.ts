@@ -17,6 +17,7 @@ const ableRouter = {
       name: "listCard",
       component: () => import("/@/views/list/card/index.vue"),
       meta: {
+        icon: "card",
         title: $t("menus.listCard"),
         i18n: true,
         showParent: true

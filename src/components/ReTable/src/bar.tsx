@@ -47,7 +47,7 @@ export default defineComponent({
   name: "epTableProBar",
   props,
   emits: ["refresh"],
-  setup(props, { emit, slots }) {
+  setup(props, { emit, slots, attrs }) {
     const buttonRef = ref();
     const checkList = ref([]);
     const currentWidth = ref(0);
@@ -125,6 +125,7 @@ export default defineComponent({
       <>
         <div
           v-resize
+          {...attrs}
           class="w-99/100 mt-6 p-2 bg-white"
           v-loading={props.loading}
           element-loading-svg={loadingSvg}

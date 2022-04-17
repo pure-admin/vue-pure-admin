@@ -80,6 +80,11 @@ import AddFill from "@iconify-icons/ri/add-circle-line";
 import ListCheck from "@iconify-icons/ri/list-check";
 import More2Fill from "@iconify-icons/ri/more-2-fill";
 import Database from "@iconify-icons/ri/database-2-line";
+import Dict from "@iconify-icons/ri/git-repository-line";
+import Card from "@iconify-icons/ri/bank-card-line";
+import Reset from "@iconify-icons/ri/restart-line";
+import Dept from "@iconify-icons/ri/git-branch-line";
+import Password from "@iconify-icons/ri/lock-password-line";
 addIcon("arrow-right-s-line", ArrowRightSLine);
 addIcon("arrow-left-s-line", ArrowLeftSLine);
 addIcon("logout-circle-r-line", LogoutCircleRLine);
@@ -94,8 +99,13 @@ addIcon("arrow-down-line", ArrowDownLine);
 addIcon("bookmark-2-line", Bookmark2Line);
 addIcon("add", AddFill);
 addIcon("list-check", ListCheck);
-addIcon("more-2-fill", More2Fill);
+addIcon("more-vertical", More2Fill);
 addIcon("database", Database);
+addIcon("dict", Dict);
+addIcon("card", Card);
+addIcon("reset", Reset);
+addIcon("dept", Dept);
+addIcon("password", Password);
 
 // Font Awesome 4
 import FaUser from "@iconify-icons/fa/user";
@@ -114,9 +124,9 @@ addIcon("export", Export);
 addIcon("density", ArrowsShrinkV);
 
 // fluent
-import Peoples from "@iconify-icons/fluent/people-swap-28-filled";
+import Role from "@iconify-icons/fluent/people-swap-28-filled";
 import FlUser from "@iconify-icons/fluent/person-12-filled";
-addIcon("peoples", Peoples);
+addIcon("role", Role);
 addIcon("flUser", FlUser);
 
 // Material Design Icons
@@ -124,6 +134,10 @@ import Expand from "@iconify-icons/mdi/arrow-expand-down";
 import UnExpand from "@iconify-icons/mdi/arrow-expand-right";
 addIcon("expand", Expand);
 addIcon("unExpand", UnExpand);
+
+// carbon
+import LocationCompany from "@iconify-icons/carbon/location-company";
+addIcon("location-company", LocationCompany);
 
 // Iconify Icon在Vue里离线使用（用于内网环境）https://docs.iconify.design/icon-components/vue/offline.html
 export default defineComponent({
