@@ -116,7 +116,7 @@ pnpm build
 
 ## 维护者
 
-[xiaoxian521](https://github.com/xiaoxian521)
+[xiaoxian521](https://github.com/xiaoxian521)、[Ten-K](https://github.com/Ten-K)
 
 ## 捐赠
 
