@@ -55,11 +55,7 @@ function onCloseTags() {
 <template>
   <el-card>
     <template #header>
-      <div class="card-header">
-        <span class="font-medium"
-          >标签页复用，超出限制自动关闭（使用场景: 动态路由）</span
-        >
-      </div>
+      <div>标签页复用，超出限制自动关闭（使用场景: 动态路由）</div>
     </template>
     <el-button v-for="index in 6" :key="index" @click="toDetail(index)">
       打开{{ index }}详情页

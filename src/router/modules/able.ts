@@ -92,6 +92,15 @@ const ableRouter = {
         title: $t("menus.hsAntTreeSelect"),
         i18n: true
       }
+    },
+    {
+      path: "/able/debounce",
+      name: "reDebounce",
+      component: () => import("/@/views/able/debounce.vue"),
+      meta: {
+        title: $t("menus.hsDebounce"),
+        i18n: true
+      }
     }
   ]
 };

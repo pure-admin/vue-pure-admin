@@ -7,7 +7,7 @@ const ableRouter = {
   redirect: "/list/card",
   meta: {
     icon: "list-check",
-    title: $t("menus.list"),
+    title: $t("menus.hsList"),
     i18n: true,
     rank: 12
   },
@@ -18,7 +18,7 @@ const ableRouter = {
       component: () => import("/@/views/list/card/index.vue"),
       meta: {
         icon: "card",
-        title: $t("menus.listCard"),
+        title: $t("menus.hsListCard"),
         i18n: true,
         showParent: true
       }
