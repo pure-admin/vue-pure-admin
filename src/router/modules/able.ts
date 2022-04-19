@@ -9,7 +9,7 @@ const ableRouter = {
     icon: "ubuntu-fill",
     title: $t("menus.hsAble"),
     i18n: true,
-    rank: 3
+    rank: 4
   },
   children: [
     {
@@ -90,6 +90,15 @@ const ableRouter = {
       component: () => import("/@/views/able/ant-treeSelect.vue"),
       meta: {
         title: $t("menus.hsAntTreeSelect"),
+        i18n: true
+      }
+    },
+    {
+      path: "/able/debounce",
+      name: "reDebounce",
+      component: () => import("/@/views/able/debounce.vue"),
+      meta: {
+        title: $t("menus.hsDebounce"),
         i18n: true
       }
     }

@@ -74,5 +74,6 @@ menus:
   hsAntTabs: 仿antdv标签页
   hsAntAnchor: 仿antdv锚点
   hsAntTreeSelect: 仿antdv树型选择器
-  list: 列表页
-  listCard: 卡片列表页
+  hsList: 列表页
+  hsListCard: 卡片列表页
+  hsDebounce: 防抖节流

@@ -28,6 +28,7 @@ import {
   formatFlatteningRoutes
 } from "./utils";
 
+import pptRouter from "./modules/ppt";
 import homeRouter from "./modules/home";
 import ableRouter from "./modules/able";
 import listRouter from "./modules/list";
@@ -43,6 +44,7 @@ import componentsRouter from "./modules/components";
 
 // 原始静态路由（未做任何处理）
 const routes = [
+  pptRouter,
   homeRouter,
   ableRouter,
   listRouter,

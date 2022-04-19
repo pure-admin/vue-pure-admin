@@ -116,7 +116,7 @@ Support modern browsers, not IE
 
 ## Maintainer
 
-[xiaoxian521](https://github.com/xiaoxian521)
+[xiaoxian521](https://github.com/xiaoxian521)、[Ten-K](https://github.com/Ten-K)
 
 ## Donate
 
