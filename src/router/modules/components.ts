@@ -9,7 +9,7 @@ const componentsRouter = {
     icon: "menu",
     title: $t("menus.hscomponents"),
     i18n: true,
-    rank: 4
+    rank: 5
   },
   children: [
     {

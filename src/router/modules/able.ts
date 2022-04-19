@@ -9,7 +9,7 @@ const ableRouter = {
     icon: "ubuntu-fill",
     title: $t("menus.hsAble"),
     i18n: true,
-    rank: 3
+    rank: 4
   },
   children: [
     {
