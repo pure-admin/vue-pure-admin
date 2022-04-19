@@ -74,5 +74,6 @@ menus:
   hsAntTabs: Imitate Antdv Tabs
   hsAntAnchor: Imitate Antdv Anchor
   hsAntTreeSelect: Imitate Antdv TreeSelector
-  list: List Page
-  listCard: Card List Page
+  hsList: List Page
+  hsListCard: Card List Page
+  hsDebounce: Debounce & Throttle
