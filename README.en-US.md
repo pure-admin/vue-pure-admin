@@ -23,6 +23,10 @@ vue-pure-admin is a free and open source middle and back-end template. Using the
 
 - [Click Watch Thin](https://github.com/xiaoxian521/pure-admin-thin)
 
+## Tauri
+
+- [Click Watch Tauri](https://github.com/xiaoxian521/tauri-pure-admin)
+
 ## Preview
 
 - [vue-pure-admin](https://vue-pure-admin.vercel.app)

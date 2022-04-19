@@ -4,6 +4,7 @@ const IFrame = () => import("/@/layout/frameView.vue");
 const pptRouter = {
   path: "/ppt",
   component: Layout,
+  redirect: "/ppt/index",
   meta: {
     icon: "ppt",
     title: "PPT",
