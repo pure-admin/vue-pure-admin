@@ -31,7 +31,8 @@ const {
   menuSelect,
   username,
   avatarsStyle,
-  getDropdownItemStyle
+  getDropdownItemStyle,
+  changeWangeditorLanguage
 } = useNav();
 
 onMounted(() => {
@@ -44,6 +45,9 @@ watch(
   () => locale.value,
   () => {
     changeTitle(route.meta);
+    locale.value === "en"
+      ? changeWangeditorLanguage(locale.value)
+      : changeWangeditorLanguage("zh-CN");
   }
 );
 

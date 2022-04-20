@@ -5,27 +5,38 @@ export default {
 </script>
 
 <script setup lang="ts">
-import WangEditor from "wangeditor";
-import { onMounted, onBeforeUnmount, ref, unref } from "vue";
+import "@wangeditor/editor/dist/css/style.css"; // 引入 css
+import { onBeforeUnmount, ref, shallowRef, onMounted } from "vue";
+import { Editor, Toolbar } from "@wangeditor/editor-for-vue";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 
-const html = ref(null);
-const editor = ref(null);
-let instance: WangEditor;
+const mode = "default";
+// 编辑器实例，必须用 shallowRef
+const editorRef = shallowRef();
 
+// 内容 HTML
+const valueHtml = ref("<p>hello</p>");
+
+// 模拟 ajax 异步获取内容
 onMounted(() => {
-  instance = new WangEditor(unref(editor));
-  Object.assign(instance.config, {
-    onchange() {
-      html.value = instance.txt.html();
-    }
-  });
-  instance.create();
+  setTimeout(() => {
+    valueHtml.value = "<p>模拟 Ajax 异步设置内容</p>";
+  }, 1500);
 });
 
+const toolbarConfig = { excludeKeys: "fullScreen" };
+const editorConfig = { placeholder: "请输入内容..." };
+
+// 组件销毁时，也及时销毁编辑器
 onBeforeUnmount(() => {
-  instance.destroy();
+  const editor = editorRef.value;
+  if (editor == null) return;
+  editor.destroy();
 });
+
+const handleCreated = editor => {
+  editorRef.value = editor; // 记录 editor 实例，重要！
+};
 </script>
 
 <template>
@@ -43,18 +54,18 @@ onBeforeUnmount(() => {
         >
       </div>
     </template>
-    <div ref="editor" />
-    <div :innerHTML="html" />
+    <Toolbar
+      style="border-bottom: 1px solid #ccc"
+      :editor="editorRef"
+      :defaultConfig="toolbarConfig"
+      :mode="mode"
+    />
+    <Editor
+      style="height: 500px; overflow-y: hidden"
+      v-model="valueHtml"
+      :defaultConfig="editorConfig"
+      :mode="mode"
+      @onCreated="handleCreated"
+    />
   </el-card>
 </template>
-
-<style lang="scss" scoped>
-:deep(.w-e-text-container) {
-  z-index: 99 !important;
-}
-
-:deep(.w-e-toolbar) {
-  z-index: 999 !important;
-  position: static;
-}
-</style>

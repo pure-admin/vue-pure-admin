@@ -34,7 +34,8 @@ const {
   pureApp,
   username,
   avatarsStyle,
-  getDropdownItemStyle
+  getDropdownItemStyle,
+  changeWangeditorLanguage
 } = useNav();
 
 let defaultActive = ref(null);
@@ -60,6 +61,9 @@ watch(
   () => locale.value,
   () => {
     changeTitle(route.meta);
+    locale.value === "en"
+      ? changeWangeditorLanguage(locale.value)
+      : changeWangeditorLanguage("zh-CN");
   }
 );
 

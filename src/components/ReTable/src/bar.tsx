@@ -124,7 +124,6 @@ export default defineComponent({
     return () => (
       <>
         <div
-          v-resize
           {...attrs}
           class="w-99/100 mt-6 p-2 bg-white"
           v-loading={props.loading}

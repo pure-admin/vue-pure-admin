@@ -186,6 +186,8 @@ function setFalse(Doms): any {
 }
 
 watch(instance, ({ layout }) => {
+  // 设置wangeditorV5主题色
+  body.style.setProperty("--w-e-toolbar-active-color", layout["epThemeColor"]);
   switch (layout["layout"]) {
     case "vertical":
       toggleClass(true, isSelect, unref(verticalRef));
