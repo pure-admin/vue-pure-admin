@@ -6,6 +6,7 @@
     "dev": "cross-env --max_old_space_size=4096 vite",
     "serve": "pnpm dev",
     "build": "rimraf dist && cross-env vite build",
+    "build:staging": "rimraf dist && cross-env vite build --mode staging",
     "report": "rimraf dist && cross-env vite build",
     "deploy": "bash deploy.sh",
     "preview": "vite preview",
