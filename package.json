@@ -34,6 +34,8 @@
     "@vueuse/core": "^8.2.5",
     "@vueuse/motion": "^2.0.0-beta.12",
     "@vueuse/shared": "^8.2.5",
+    "@wangeditor/editor": "^5.0.1",
+    "@wangeditor/editor-for-vue": "^5.1.10",
     "animate.css": "^4.1.1",
     "axios": "^0.26.1",
     "cropperjs": "^1.5.12",
@@ -64,7 +66,6 @@
     "vue-types": "^4.1.1",
     "vuedraggable": "4.1.0",
     "vxe-table": "^4.2.0",
-    "wangeditor": "^4.7.12",
     "xe-utils": "^3.5.4",
     "xgplayer": "^2.31.4"
   },
