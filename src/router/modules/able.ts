@@ -101,15 +101,6 @@ const ableRouter = {
         title: $t("menus.hsDebounce"),
         i18n: true
       }
-    },
-    {
-      path: "/able/formDesign",
-      name: "reFormDesign",
-      component: () => import("../../views/able/form-design.vue"),
-      meta: {
-        title: $t("menus.hsFormDesign"),
-        i18n: true
-      }
     }
   ]
 };

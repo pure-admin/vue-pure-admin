@@ -86,6 +86,7 @@ import Reset from "@iconify-icons/ri/restart-line";
 import Dept from "@iconify-icons/ri/git-branch-line";
 import Password from "@iconify-icons/ri/lock-password-line";
 import Ppt from "@iconify-icons/ri/file-ppt-2-line";
+import TerminalWindowLine from "@iconify-icons/ri/terminal-window-line";
 addIcon("arrow-right-s-line", ArrowRightSLine);
 addIcon("arrow-left-s-line", ArrowLeftSLine);
 addIcon("logout-circle-r-line", LogoutCircleRLine);
@@ -108,6 +109,7 @@ addIcon("reset", Reset);
 addIcon("dept", Dept);
 addIcon("password", Password);
 addIcon("ppt", Ppt);
+addIcon("terminal-window-line", TerminalWindowLine);
 
 // Font Awesome 4
 import FaUser from "@iconify-icons/fa/user";
