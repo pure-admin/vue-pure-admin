@@ -97,7 +97,7 @@ specifiers:
   vite-svg-loader: 2.2.0
   vue: ^3.2.33
   vue-eslint-parser: ^8.2.0
-  vue-form-create: ^1.2.7
+  vue-form-create2: ^1.2.8
   vue-i18n: ^9.2.0-beta.35
   vue-json-pretty: ^2.0.2
   vue-router: ^4.0.14
@@ -143,7 +143,7 @@ dependencies:
   rgb-hex: 4.0.0
   v-contextmenu: 3.0.0_vue@3.2.33
   vue: 3.2.33
-  vue-form-create: 1.2.7
+  vue-form-create2: 1.2.8
   vue-i18n: 9.2.0-beta.35_vue@3.2.33
   vue-json-pretty: 2.0.6_vue@3.2.33
   vue-router: 4.0.14_vue@3.2.33
@@ -8208,10 +8208,10 @@ packages:
       - supports-color
     dev: true
 
-  /vue-form-create/1.2.7:
+  /vue-form-create2/1.2.8:
     resolution:
       {
-        integrity: sha512-xNVzyHjNV9eWg9FKh+TONJkYmjum0YKL+x+wJVkSvATmQjEfL9pNu53h6DgPMiNazlGv2JWZmsntz1FVjXbhcQ==
+        integrity: sha512-qetQngWHhj3MgVg4+yfzJeWjtR3tOh2Xb7cPQ/B2y1S07y3uYXPW/MKkG5w+YZqdtGqPFvsgw1xMg2QFEuMpww==
       }
     dependencies:
       ace-builds: 1.4.14

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onBeforeMount } from "vue";
 import { loader } from "/@/utils/loaders";
-import { ElDesignForm } from "vue-form-create";
+import { ElDesignForm } from "vue-form-create2";
 
 const loading = ref(true);
 

@@ -61,7 +61,7 @@
     "rgb-hex": "^4.0.0",
     "v-contextmenu": "3.0.0",
     "vue": "^3.2.33",
-    "vue-form-create": "^1.2.7",
+    "vue-form-create2": "^1.2.8",
     "vue-i18n": "^9.2.0-beta.35",
     "vue-json-pretty": "^2.0.2",
     "vue-router": "^4.0.14",
