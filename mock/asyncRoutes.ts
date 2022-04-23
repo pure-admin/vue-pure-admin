@@ -40,7 +40,8 @@ const systemRouter = {
       }
     },
     {
-      path: "/system/dict/index",
+      path: "/system/dict",
+      component: "/system/dict/index",
       name: "dict",
       meta: {
         icon: "dict",
