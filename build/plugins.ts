@@ -8,7 +8,7 @@ import WindiCSS from "vite-plugin-windicss";
 import { viteMockServe } from "vite-plugin-mock";
 import styleImport from "vite-plugin-style-import";
 import VueI18n from "@intlify/vite-plugin-vue-i18n";
-import ElementPlus from "unplugin-element-plus/vite";
+// import ElementPlus from "unplugin-element-plus/vite";
 import { visualizer } from "rollup-plugin-visualizer";
 import removeConsole from "vite-plugin-remove-console";
 import themePreprocessorPlugin from "@pureadmin/theme";
@@ -65,7 +65,7 @@ export function getPluginsList(command, VITE_LEGACY) {
         }
       ]
     }),
-    ElementPlus({}),
+    // ElementPlus({}),
     // mock支持
     viteMockServe({
       mockPath: "mock",

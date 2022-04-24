@@ -53,12 +53,6 @@
   --el-button-active-border-color: var(--el-color-primary) !important;
 }
 
-/* button--primary plain */
-.el-button--primary.is-plain {
-  --el-button-active-bg-color: var(--el-color-primary) !important;
-  --el-button-active-border-color: var(--el-color-primary) !important;
-}
-
 /* nprogress适配ep的primary */
 #nprogress {
   & .bar {

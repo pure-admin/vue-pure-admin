@@ -54,9 +54,8 @@ const nodeDragNode = item => {
 <style scoped>
 .node-panel {
   position: absolute;
-  top: 100px;
-  left: 50px;
-  width: 70px;
+  top: 10px;
+  width: 60px;
   padding: 20px 10px;
   background-color: white;
   box-shadow: 0 0 10px 1px rgb(228, 224, 219);

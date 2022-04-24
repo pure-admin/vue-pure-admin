@@ -24,36 +24,43 @@ let titleLists = ref([
   {
     icon: "icon-zoom-out-hs",
     text: "缩小",
+    size: "18",
     disabled: false
   },
   {
     icon: "icon-enlarge-hs",
     text: "放大",
+    size: "18",
     disabled: false
   },
   {
     icon: "icon-full-screen-hs",
     text: "适应",
+    size: "15",
     disabled: false
   },
   {
     icon: "icon-previous-hs",
     text: "上一步",
+    size: "15",
     disabled: true
   },
   {
     icon: "icon-next-step-hs",
     text: "下一步",
+    size: "17",
     disabled: true
   },
   {
     icon: "icon-download-hs",
     text: "下载图片",
+    size: "17",
     disabled: false
   },
   {
     icon: "icon-watch-hs",
     text: "查看数据",
+    size: "17",
     disabled: false
   }
 ]);
@@ -95,21 +102,29 @@ onMounted(() => {
         v-for="(item, key) in titleLists"
         :key="key"
         :title="item.text"
-        :style="{ background: focusIndex === key ? '#ccc' : '' }"
         @mouseenter.prevent="onEnter(key)"
         @mouseleave.prevent="focusIndex = -1"
       >
-        <button
-          :ref="'controlButton' + key"
-          :disabled="item.disabled"
-          :style="{
-            cursor: item.disabled === false ? 'pointer' : 'not-allowed'
-          }"
-          @click="onControl(item, key)"
+        <el-tooltip
+          :content="item.text"
+          :visible="focusIndex === key"
+          placement="right"
         >
-          <span :class="'iconfont ' + item.icon" />
-          <p>{{ item.text }}</p>
-        </button>
+          <button
+            :ref="'controlButton' + key"
+            :disabled="item.disabled"
+            :style="{
+              cursor: item.disabled === false ? 'pointer' : 'not-allowed',
+              color: item.disabled === false ? '' : '#00000040'
+            }"
+            @click="onControl(item, key)"
+          >
+            <span
+              :class="'iconfont ' + item.icon"
+              :style="{ fontSize: `${item.size}px` }"
+            />
+          </button>
+        </el-tooltip>
       </li>
     </ul>
   </div>
@@ -119,36 +134,16 @@ onMounted(() => {
 @import "./assets/iconfont/iconfont.css";
 
 .control-container {
-  position: absolute;
-  right: 20px;
   background: hsla(0, 0%, 100%, 0.8);
   box-shadow: 0 1px 4px rgb(0 0 0 / 20%);
 }
 
-.iconfont {
-  font-size: 18px;
-}
-
-.control-container p {
-  margin: 0;
-  font-size: 12px;
-}
-
-.control-container ul {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin: 2px;
-}
-
 .control-container ul li {
-  width: 60px;
+  margin: 10px;
   text-align: center;
 }
 
-.control-container ul li button {
-  border: none;
-  background-color: transparent;
-  outline: none;
+.control-container ul li span:hover {
+  color: var(--el-color-primary);
 }
 </style>
