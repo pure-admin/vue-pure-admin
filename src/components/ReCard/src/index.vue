@@ -1,3 +1,9 @@
+<script lang="ts">
+export default {
+  name: "ReCard"
+};
+</script>
+
 <script setup lang="ts">
 import { computed, PropType } from "vue";
 import shopIcon from "/@/assets/svg/shop.svg?component";

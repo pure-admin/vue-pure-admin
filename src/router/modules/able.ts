@@ -101,6 +101,15 @@ const ableRouter = {
         title: $t("menus.hsDebounce"),
         i18n: true
       }
+    },
+    {
+      path: "/able/barcode",
+      name: "reBarcode",
+      component: () => import("/@/views/able/barcode.vue"),
+      meta: {
+        title: $t("menus.hsBarcode"),
+        i18n: true
+      }
     }
   ]
 };
