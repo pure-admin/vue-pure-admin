@@ -78,17 +78,7 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
     },
     plugins: getPluginsList(command, VITE_LEGACY),
     optimizeDeps: {
-      include: [
-        "pinia",
-        "vue-i18n",
-        "lodash-es",
-        "@vueuse/core",
-        "@iconify/vue",
-        // "element-plus/lib/locale/lang/en",
-        // "element-plus/lib/locale/lang/zh-cn",
-        "vxe-table/lib/locale/lang/zh-CN",
-        "vxe-table/lib/locale/lang/en-US"
-      ],
+      include: ["pinia", "vue-i18n", "lodash-es", "@vueuse/core"],
       exclude: ["@pureadmin/theme/dist/browser-utils"]
     },
     build: {

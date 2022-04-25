@@ -131,7 +131,6 @@
     "vite": "^2.9.5",
     "vite-plugin-mock": "^2.9.6",
     "vite-plugin-remove-console": "^0.0.7",
-    "vite-plugin-style-import": "1.4.1",
     "vite-plugin-windicss": "^1.8.4",
     "vite-svg-loader": "2.2.0",
     "vue-eslint-parser": "^8.2.0",
