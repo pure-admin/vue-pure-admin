@@ -14,7 +14,7 @@ specifiers:
   "@iconify-icons/ri": ^1.2.1
   "@iconify-icons/uil": ^1.2.1
   "@iconify/vue": ^3.2.1
-  "@intlify/vite-plugin-vue-i18n": ^3.3.1
+  "@intlify/vite-plugin-vue-i18n": ^3.4.0
   "@logicflow/core": ^1.1.14
   "@logicflow/extension": ^1.1.14
   "@pureadmin/components": ^1.0.6
@@ -88,7 +88,6 @@ specifiers:
   stylelint-config-standard: ^24.0.0
   stylelint-order: ^5.0.0
   typescript: ^4.6.3
-  unplugin-element-plus: ^0.4.0
   v-contextmenu: 3.0.0
   vite: ^2.9.5
   vite-plugin-mock: ^2.9.6
@@ -166,7 +165,7 @@ devDependencies:
   "@iconify-icons/ri": 1.2.1
   "@iconify-icons/uil": 1.2.1
   "@iconify/vue": 3.2.1_vue@3.2.33
-  "@intlify/vite-plugin-vue-i18n": 3.3.1_3d08e1d9025840888da5ae870455a383
+  "@intlify/vite-plugin-vue-i18n": 3.4.0_3d08e1d9025840888da5ae870455a383
   "@pureadmin/theme": 1.1.0
   "@types/element-resize-detector": 1.1.3
   "@types/js-cookie": 3.0.1
@@ -209,7 +208,6 @@ devDependencies:
   stylelint-config-standard: 24.0.0_stylelint@14.6.0
   stylelint-order: 5.0.0_stylelint@14.6.0
   typescript: 4.6.3
-  unplugin-element-plus: 0.4.0_rollup@2.70.1+vite@2.9.5
   vite: 2.9.5_sass@1.50.1
   vite-plugin-mock: 2.9.6_9bee6d01fd796cb52b526d4503041d36
   vite-plugin-remove-console: 0.0.7
@@ -1067,10 +1065,10 @@ packages:
       vue: 3.2.33
     dev: true
 
-  /@intlify/bundle-utils/3.0.0_vue-i18n@9.2.0-beta.35:
+  /@intlify/bundle-utils/2.2.2_vue-i18n@9.2.0-beta.35:
     resolution:
       {
-        integrity: sha512-y43Z5Q3ZJvxqtD8xUH6U3yrlZeay7ZTqkzv1GQ4b0mGQtk5uptOT9Ra4qvGuUv8QyPQsortrA/OHWUD5ax5ZNQ==
+        integrity: sha512-vngkvlIVV8ZJoyC5VqMvqJd2nvsx+qMN7pQjPiPjOrVndeiR7Dlue0k86Q8FsFUzyksW3HJZZi833ldxwbFzTA==
       }
     engines: { node: ">= 12" }
     peerDependencies:
@@ -1082,8 +1080,8 @@ packages:
       vue-i18n:
         optional: true
     dependencies:
-      "@intlify/message-compiler": 9.2.0-beta.35
-      "@intlify/shared": 9.2.0-beta.35
+      "@intlify/message-compiler": 9.1.9
+      "@intlify/shared": 9.1.9
       jsonc-eslint-parser: 1.4.1
       source-map: 0.6.1
       vue-i18n: 9.2.0-beta.35_vue@3.2.33
@@ -1113,6 +1111,18 @@ packages:
       "@intlify/shared": 9.2.0-beta.35
     dev: false
 
+  /@intlify/message-compiler/9.1.9:
+    resolution:
+      {
+        integrity: sha512-6YgCMF46Xd0IH2hMRLCssZI3gFG4aywidoWQ3QP4RGYQXQYYfFC54DxhSgfIPpVoPLQ+4AD29eoYmhiHZ+qLFQ==
+      }
+    engines: { node: ">= 10" }
+    dependencies:
+      "@intlify/message-resolver": 9.1.9
+      "@intlify/shared": 9.1.9
+      source-map: 0.6.1
+    dev: true
+
   /@intlify/message-compiler/9.2.0-beta.35:
     resolution:
       {
@@ -1122,6 +1132,23 @@ packages:
     dependencies:
       "@intlify/shared": 9.2.0-beta.35
       source-map: 0.6.1
+    dev: false
+
+  /@intlify/message-resolver/9.1.9:
+    resolution:
+      {
+        integrity: sha512-Lx/DBpigeK0sz2BBbzv5mu9/dAlt98HxwbG7xLawC3O2xMF9MNWU5FtOziwYG6TDIjNq0O/3ZbOJAxwITIWXEA==
+      }
+    engines: { node: ">= 10" }
+    dev: true
+
+  /@intlify/shared/9.1.9:
+    resolution:
+      {
+        integrity: sha512-xKGM1d0EAxdDFCWedcYXOm6V5Pfw/TMudd6/qCdEb4tv0hk9EKeg7lwQF1azE0dP2phvx0yXxrt7UQK+IZjNdw==
+      }
+    engines: { node: ">= 10" }
+    dev: true
 
   /@intlify/shared/9.2.0-beta.35:
     resolution:
@@ -1129,25 +1156,26 @@ packages:
         integrity: sha512-DXf7xrwf08GKhr93XPQ8EgaEN0CIELl+mAS6SlRhi/aLtZv5HSGSMkz4M/ICwoWzFLSgOx/ZdBSasex19MMogg==
       }
     engines: { node: ">= 12" }
+    dev: false
 
-  /@intlify/vite-plugin-vue-i18n/3.3.1_3d08e1d9025840888da5ae870455a383:
+  /@intlify/vite-plugin-vue-i18n/3.4.0_3d08e1d9025840888da5ae870455a383:
     resolution:
       {
-        integrity: sha512-b9HIUANzL4/LmrA5RqeiPabZl2/RiWNAJ90TVZ8kSi3APRZ4BbmwUAclKe8ip+1jCDhqaGO/qfAI7SbQ0Y76Uw==
+        integrity: sha512-XXcZBgwJ+3FRu11c4ARoY9N00kElPii0/jNZ49qR045Ka7/YGCwb1Ku14BBlMSEHiHDSjLQknLwrJKSQGVZLyA==
       }
     engines: { node: ">= 12" }
     peerDependencies:
-      petite-vue-i18n: ^9.0.0
+      petite-vue-i18n: ^9.1.0
       vite: ^2.0.0
-      vue-i18n: ^9.0.0
+      vue-i18n: ^9.1.0
     peerDependenciesMeta:
       petite-vue-i18n:
         optional: true
       vue-i18n:
         optional: true
     dependencies:
-      "@intlify/bundle-utils": 3.0.0_vue-i18n@9.2.0-beta.35
-      "@intlify/shared": 9.2.0-beta.35
+      "@intlify/bundle-utils": 2.2.2_vue-i18n@9.2.0-beta.35
+      "@intlify/shared": 9.1.9
       "@rollup/pluginutils": 4.2.0
       debug: 4.3.4
       fast-glob: 3.2.11
@@ -3623,13 +3651,6 @@ packages:
       }
     dependencies:
       is-arrayish: 0.2.1
-    dev: true
-
-  /es-module-lexer/0.10.5:
-    resolution:
-      {
-        integrity: sha512-+7IwY/kiGAacQfY+YBhKMvEmyAJnw5grTUgjG85Pe7vcUI/6b7pZjZG8nQ7+48YhzEAEqrEgD2dCz/JIK+AYvw==
-      }
     dev: true
 
   /es5-ext/0.10.59:
@@ -7765,51 +7786,6 @@ packages:
     engines: { node: ">= 0.8" }
     dev: true
 
-  /unplugin-element-plus/0.4.0_rollup@2.70.1+vite@2.9.5:
-    resolution:
-      {
-        integrity: sha512-iE4EZu8pp5Vz/qb9r45sCNSz9Px6KOthBpe6gFBV1E60g9A45HS+JhwAaj4Zki8HZ0YGW3LyrsBCrd+XhOypnQ==
-      }
-    engines: { node: ">=14.17.0" }
-    dependencies:
-      "@rollup/pluginutils": 4.2.0
-      es-module-lexer: 0.10.5
-      magic-string: 0.26.1
-      unplugin: 0.6.2_rollup@2.70.1+vite@2.9.5
-    transitivePeerDependencies:
-      - esbuild
-      - rollup
-      - vite
-      - webpack
-    dev: true
-
-  /unplugin/0.6.2_rollup@2.70.1+vite@2.9.5:
-    resolution:
-      {
-        integrity: sha512-+QONc2uBFQbeo4x5mlJHjTKjR6pmuchMpGVrWhwdGFFMb4ttFZ4E9KqhOOrNcm3Q8NNyB1vJ4s5e36IZC7UWYw==
-      }
-    peerDependencies:
-      esbuild: ">=0.13"
-      rollup: ^2.50.0
-      vite: ^2.3.0
-      webpack: 4 || 5
-    peerDependenciesMeta:
-      esbuild:
-        optional: true
-      rollup:
-        optional: true
-      vite:
-        optional: true
-      webpack:
-        optional: true
-    dependencies:
-      chokidar: 3.5.3
-      rollup: 2.70.1
-      vite: 2.9.5_sass@1.50.1
-      webpack-sources: 3.2.3
-      webpack-virtual-modules: 0.4.3
-    dev: true
-
   /uri-js/4.4.1:
     resolution:
       {
@@ -8142,21 +8118,6 @@ packages:
     dependencies:
       loose-envify: 1.4.0
     dev: false
-
-  /webpack-sources/3.2.3:
-    resolution:
-      {
-        integrity: sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==
-      }
-    engines: { node: ">=10.13.0" }
-    dev: true
-
-  /webpack-virtual-modules/0.4.3:
-    resolution:
-      {
-        integrity: sha512-5NUqC2JquIL2pBAAo/VfBP6KuGkHIZQXW/lNKupLPfhViwh8wNsu0BObtl09yuKZszeEUfbXz8xhrHvSG16Nqw==
-      }
-    dev: true
 
   /which/1.3.1:
     resolution:
