@@ -498,8 +498,8 @@
     > .el-sub-menu__title::before {
     position: absolute;
     top: 0;
-    left: 0;
-    width: 3px;
+    left: 2px;
+    width: 2px;
     height: 100%;
     background-color: $menuActiveBefore;
     content: "";
@@ -512,7 +512,7 @@
   .el-menu--collapse .is-active.submenu-title-noDropdown.outer-most::before {
     position: absolute;
     top: 0;
-    width: 3px;
+    width: 2px;
     height: 100%;
     background-color: $menuActiveBefore;
     content: "";
