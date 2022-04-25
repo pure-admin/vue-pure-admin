@@ -56,6 +56,7 @@ specifiers:
   font-awesome: ^4.7.0
   husky: ^7.0.4
   js-cookie: ^3.0.1
+  jsbarcode: ^3.11.5
   lint-staged: 11.1.2
   lodash: ^4.17.21
   lodash-es: ^4.17.21
@@ -129,6 +130,7 @@ dependencies:
   element-plus: 2.1.10_vue@3.2.33
   element-resize-detector: 1.2.4
   js-cookie: 3.0.1
+  jsbarcode: 3.11.5
   lodash: 4.17.21
   lodash-es: 4.17.21
   lodash-unified: 1.0.2_da03a4540fbd16bbaafbb96724306afd
@@ -5239,6 +5241,14 @@ packages:
     dependencies:
       argparse: 2.0.1
     dev: true
+
+  /jsbarcode/3.11.5:
+    resolution:
+      {
+        integrity: sha512-zv3KsH51zD00I/LrFzFSM6dst7rDn0vIMzaiZFL7qusTjPZiPtxg3zxetp0RR7obmjTw4f6NyGgbdkBCgZUIrA==
+      }
+    hasBin: true
+    dev: false
 
   /jsesc/2.5.2:
     resolution:
