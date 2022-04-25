@@ -148,7 +148,7 @@ function resolvePath(routePath) {
       :class="{ 'submenu-title-noDropdown': !isNest }"
       :style="getNoDropdownStyle"
     >
-      <div class="el-icon" v-show="props.item.meta.icon">
+      <div class="sub-menu-icon" v-show="props.item.meta.icon">
         <component
           :is="
             useRenderIcon(
@@ -216,10 +216,7 @@ function resolvePath(routePath) {
     popper-append-to-body
   >
     <template #title>
-      <div
-        v-show="props.item.meta.icon"
-        :class="['el-icon', props.item.meta.icon]"
-      >
+      <div v-show="props.item.meta.icon" class="sub-menu-icon">
         <component
           :is="useRenderIcon(props.item.meta && props.item.meta.icon)"
         />

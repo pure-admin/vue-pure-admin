@@ -14,10 +14,19 @@
     }
   }
 
+  .sub-menu-icon {
+    vertical-align: middle;
+    margin-right: 5px;
+    font-size: 18px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .main-container {
     height: 100vh;
     min-height: 100%;
-    transition: margin-left 0.28s;
+    transition: margin-left 0.1s;
     margin-left: $sideBarWidth;
     position: relative;
     background: #f0f2f5;
@@ -29,7 +38,7 @@
     right: 0;
     z-index: 998;
     width: calc(100% - 210px);
-    transition: width 0.28s;
+    transition: width 0.1s;
   }
 
   .main-hidden {
@@ -49,7 +58,7 @@
   }
 
   .sidebar-container {
-    transition: width 0.28s;
+    transition: width 0.1s;
     width: $sideBarWidth !important;
     background: $menuBg;
     height: 100%;
@@ -527,7 +536,7 @@
   .mobile {
     .fixed-header {
       width: 100% !important;
-      transition: width 0.28s;
+      transition: width 0.1s;
     }
 
     .main-container {
@@ -535,7 +544,7 @@
     }
 
     .sidebar-container {
-      transition: transform 0.28s;
+      transition: transform 0.1s;
       width: $sideBarWidth;
     }
 
@@ -572,7 +581,7 @@ body[layout="vertical"] {
   .hideSidebar {
     .fixed-header {
       width: calc(100% - 54px);
-      transition: width 0.28s;
+      transition: width 0.1s;
     }
 
     .sidebar-container {
@@ -606,16 +615,24 @@ body[layout="vertical"] {
         }
       }
 
-      /* 有无子菜单 */
-      .el-sub-menu__title,
-      .el-menu-item [class^="el-icon"] {
-        right: 5px;
-      }
-
       .submenu-title-noDropdown {
         background: transparent !important;
       }
+
+      /* 有无子菜单 */
+      .el-sub-menu__title,
+      .el-menu-item [class^="el-icon"] {
+        right: 2px;
+      }
+
+      .el-menu-tooltip__trigger {
+        padding: 0 18px;
+      }
     }
+  }
+
+  .sub-menu-icon {
+    width: 24px;
   }
 }
 
@@ -640,7 +657,7 @@ body[layout="mix"] {
   .hideSidebar {
     .fixed-header {
       width: calc(100% - 54px);
-      transition: width 0.28s;
+      transition: width 0.1s;
     }
 
     .sidebar-container {
