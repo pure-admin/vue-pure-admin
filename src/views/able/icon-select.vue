@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import { IconSelect } from "/@/components/ReIcon";
+let icon = ref("ep:add-location");
 </script>
 
 <template>
@@ -9,6 +11,6 @@ import { IconSelect } from "/@/components/ReIcon";
         <span class="font-medium">图标选择器</span>
       </div>
     </template>
-    <IconSelect />
+    <IconSelect v-model="icon" />
   </el-card>
 </template>

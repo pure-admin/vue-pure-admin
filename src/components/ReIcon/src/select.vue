@@ -1,10 +1,19 @@
 <script setup lang="ts">
 import { cloneDeep } from "lodash-unified";
-import { ref, computed, CSSProperties } from "vue";
+import { ref, computed, CSSProperties, toRef, watch } from "vue";
 import { IconJson } from "/@/components/ReIcon/data";
 type ParameterCSSProperties = (item?: string) => CSSProperties | undefined;
 
-let inputValue = ref("ep:add-location");
+const props = defineProps({
+  modelValue: {
+    require: false,
+    type: String
+  }
+});
+const emit = defineEmits<{ (e: "update:modelValue", v: string) }>();
+
+let visible = ref(false);
+let inputValue = toRef(props, "modelValue");
 let iconList = ref(IconJson);
 let icon = ref("add-location");
 let currentActiveType = ref("ep:");
@@ -35,15 +44,15 @@ let tabsList = [
 let pageList = computed(() => {
   if (currentPage.value === 1) {
     return copyIconList[currentActiveType.value]
-      .slice(currentPage.value - 1, pageSize.value)
-      .filter(v => v.includes(filterValue.value));
+      .filter(v => v.includes(filterValue.value))
+      .slice(currentPage.value - 1, pageSize.value);
   } else {
     return copyIconList[currentActiveType.value]
+      .filter(v => v.includes(filterValue.value))
       .slice(
         pageSize.value * (currentPage.value - 1),
         pageSize.value * (currentPage.value - 1) + pageSize.value
-      )
-      .filter(v => v.includes(filterValue.value));
+      );
   }
 });
 
@@ -60,29 +69,66 @@ const iconItemStyle = computed((): ParameterCSSProperties => {
 function handleClick({ props }) {
   currentPage.value = 1;
   currentActiveType.value = props.name;
-  inputValue.value =
-    currentActiveType.value + iconList.value[currentActiveType.value][0];
+  emit(
+    "update:modelValue",
+    currentActiveType.value + iconList.value[currentActiveType.value][0]
+  );
   icon.value = iconList.value[currentActiveType.value][0];
 }
 
 function onChangeIcon(item) {
-  inputValue.value = currentActiveType.value + item;
   icon.value = item;
+  emit("update:modelValue", currentActiveType.value + item);
+  visible.value = false;
 }
 
 function onCurrentChange(page) {
   currentPage.value = page;
 }
+
+watch(
+  () => {
+    return props.modelValue;
+  },
+  () => {
+    if (props.modelValue) {
+      currentActiveType.value = props.modelValue.substring(
+        0,
+        props.modelValue.indexOf(":") + 1
+      );
+      icon.value = props.modelValue.substring(
+        props.modelValue.indexOf(":") + 1
+      );
+    }
+  }
+);
+watch(
+  () => {
+    return filterValue.value;
+  },
+  () => {
+    currentPage.value = 1;
+  }
+);
 </script>
 
 <template>
   <div class="selector w-350px">
     <el-input v-model="inputValue" disabled>
       <template #append>
-        <el-popover :width="350" trigger="click" popper-class="pure-popper">
+        <el-popover
+          :width="350"
+          trigger="click"
+          popper-class="pure-popper"
+          :popper-options="{
+            placement: 'auto'
+          }"
+          :visible="visible"
+        >
           <template #reference>
             <div
               class="w-40px h-32px cursor-pointer flex justify-center items-center"
+              @click="visible = !visible"
             >
               <IconifyIconOnline :icon="icon" :type="currentActiveType" />
             </div>
