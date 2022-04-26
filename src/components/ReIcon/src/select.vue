@@ -69,7 +69,6 @@ const iconItemStyle = computed((): ParameterCSSProperties => {
 function handleClick({ props }) {
   currentPage.value = 1;
   currentActiveType.value = props.name;
-  // inputValue.value =
   emit(
     "update:modelValue",
     currentActiveType.value + iconList.value[currentActiveType.value][0]
