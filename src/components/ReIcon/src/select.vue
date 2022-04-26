@@ -44,15 +44,15 @@ let tabsList = [
 let pageList = computed(() => {
   if (currentPage.value === 1) {
     return copyIconList[currentActiveType.value]
-      .slice(currentPage.value - 1, pageSize.value)
-      .filter(v => v.includes(filterValue.value));
+      .filter(v => v.includes(filterValue.value))
+      .slice(currentPage.value - 1, pageSize.value);
   } else {
     return copyIconList[currentActiveType.value]
+      .filter(v => v.includes(filterValue.value))
       .slice(
         pageSize.value * (currentPage.value - 1),
         pageSize.value * (currentPage.value - 1) + pageSize.value
-      )
-      .filter(v => v.includes(filterValue.value));
+      );
   }
 });
 
@@ -69,8 +69,11 @@ const iconItemStyle = computed((): ParameterCSSProperties => {
 function handleClick({ props }) {
   currentPage.value = 1;
   currentActiveType.value = props.name;
-  inputValue.value =
-    currentActiveType.value + iconList.value[currentActiveType.value][0];
+  // inputValue.value =
+  emit(
+    "update:modelValue",
+    currentActiveType.value + iconList.value[currentActiveType.value][0]
+  );
   icon.value = iconList.value[currentActiveType.value][0];
 }
 
@@ -98,6 +101,14 @@ watch(
         props.modelValue.indexOf(":") + 1
       );
     }
+  }
+);
+watch(
+  () => {
+    return filterValue.value;
+  },
+  () => {
+    currentPage.value = 1;
   }
 );
 </script>
