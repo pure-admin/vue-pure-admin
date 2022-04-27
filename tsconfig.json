@@ -24,7 +24,7 @@
       "@build/*": ["build/*"],
       "/#/*": ["types/*"]
     },
-    "types": ["node", "vite/client", "element-plus/global", "@types/qrcode"],
+    "types": ["node", "vite/client", "element-plus/global"],
     "typeRoots": ["./node_modules/@types/", "./types"]
   },
   "include": [

@@ -37,14 +37,14 @@ const props = {
   // qrcode.js配置项
   options: {
     type: Object as PropType<QRCodeRenderersOptions>,
-    default: () => ({})
+    default: (): QRCodeRenderersOptions => ({})
   },
   // 宽度
   width: propTypes.number.def(200),
   // logo
   logo: {
     type: [String, Object] as PropType<Partial<QrcodeLogo> | string>,
-    default: ""
+    default: (): QrcodeLogo | string => ""
   },
   // 是否过期
   disabled: propTypes.bool.def(false),
