@@ -54,7 +54,7 @@ export function getPluginsList(command, VITE_LEGACY) {
           import { setupProdMockServer } from './mockProdServer';
           setupProdMockServer();
         `,
-      logger: true
+      logger: false
     }),
     // 是否为打包后的文件提供传统浏览器兼容性支持
     VITE_LEGACY
