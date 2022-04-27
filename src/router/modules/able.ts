@@ -110,6 +110,15 @@ const ableRouter = {
         title: $t("menus.hsBarcode"),
         i18n: true
       }
+    },
+    {
+      path: "/able/qrcode",
+      name: "reQarcode",
+      component: () => import("/@/views/able/qrcode.vue"),
+      meta: {
+        title: $t("menus.hsQarcode"),
+        i18n: true
+      }
     }
   ]
 };
