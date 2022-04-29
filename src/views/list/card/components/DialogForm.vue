@@ -116,7 +116,6 @@ const rules = {
         <el-select
           v-model="formData.type"
           clearable
-          :teleported="false"
           :style="{ width: '480px' }"
         >
           <el-option

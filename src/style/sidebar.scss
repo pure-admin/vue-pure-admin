@@ -30,6 +30,11 @@
     margin-left: $sideBarWidth;
     position: relative;
     background: #f0f2f5;
+
+    .el-scrollbar__wrap {
+      overflow: auto;
+      height: 100%;
+    }
   }
 
   .fixed-header {
@@ -481,11 +486,6 @@
       transition: color 0.3s;
       color: $subMenuActiveText !important;
     }
-  }
-
-  .el-scrollbar__wrap {
-    overflow: auto;
-    height: 100%;
   }
 
   .el-menu--collapse .el-menu .el-sub-menu {

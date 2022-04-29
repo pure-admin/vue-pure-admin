@@ -43,13 +43,14 @@ specifiers:
   animate.css: ^4.1.1
   autoprefixer: ^10.4.5
   axios: ^0.26.1
+  china-area-data: ^5.0.1
   cropperjs: ^1.5.12
   cross-env: 7.0.3
   css-color-function: ^1.3.3
   dayjs: ^1.11.0
   driver.js: ^0.9.8
   echarts: ^5.3.2
-  element-plus: ^2.1.10
+  element-plus: ^2.1.11
   element-resize-detector: ^1.2.3
   eslint: ^8.8.0
   eslint-plugin-prettier: ^4.0.0
@@ -122,12 +123,13 @@ dependencies:
   "@wangeditor/editor-for-vue": 5.1.10_9016b5918024e821ee2af40b62ae7476
   animate.css: 4.1.1
   axios: 0.26.1
+  china-area-data: 5.0.1
   cropperjs: 1.5.12
   css-color-function: 1.3.3
   dayjs: 1.11.0
   driver.js: 0.9.8
   echarts: 5.3.2
-  element-plus: 2.1.10_vue@3.2.33
+  element-plus: 2.1.11_vue@3.2.33
   element-resize-detector: 1.2.4
   js-cookie: 3.0.1
   jsbarcode: 3.11.5
@@ -942,20 +944,20 @@ packages:
       - supports-color
     dev: true
 
-  /@floating-ui/core/0.6.1:
+  /@floating-ui/core/0.6.2:
     resolution:
       {
-        integrity: sha512-Y30eVMcZva8o84c0HcXAtDO4BEzPJMvF6+B7x7urL2xbAqVsGJhojOyHLaoQHQYjb6OkqRq5kO+zeySycQwKqg==
+        integrity: sha512-jktYRmZwmau63adUG3GKOAVCofBXkk55S/zQ94XOorAHhwqFIOFAy1rSp2N0Wp6/tGbe9V3u/ExlGZypyY17rg==
       }
     dev: false
 
-  /@floating-ui/dom/0.4.4:
+  /@floating-ui/dom/0.4.5:
     resolution:
       {
-        integrity: sha512-0Ulu3B/dqQplUUSqnTx0foSrlYuMN+GTtlJWvNJwt6Fr7/PqmlR/Y08o6/+bxDWr6p3roBJRaQ51MDZsNmEhhw==
+        integrity: sha512-b+prvQgJt8pieaKYMSJBXHxX/DYwdLsAWxKYqnO5dO2V4oo/TYBZJAUQCVNjTWWsrs6o4VDrNcP9+E70HAhJdw==
       }
     dependencies:
-      "@floating-ui/core": 0.6.1
+      "@floating-ui/core": 0.6.2
     dev: false
 
   /@humanwhocodes/config-array/0.9.5:
@@ -1278,13 +1280,6 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@popperjs/core/2.11.5:
-    resolution:
-      {
-        integrity: sha512-9X2obfABZuDVLCgPK9aX0a/x4jaOEweTTWE2+9sr0Qqqevj2Uv5XorvusThmc9XGYpS9yI+fhh8RTafBtGposw==
-      }
-    dev: false
-
   /@pureadmin/components/1.0.6_vue@3.2.33:
     resolution:
       {
@@ -1363,6 +1358,13 @@ packages:
       nanopop: 2.1.0
     dev: false
 
+  /@sxzz/popperjs-es/2.11.7:
+    resolution:
+      {
+        integrity: sha512-Ccy0NlLkzr0Ex2FKvh2X+OyERHXJ88XJ1MXtsI9y9fGexlaXaVTPzBCRBwIxFkORuOb+uBqeu+RqnpgYTEZRUQ==
+      }
+    dev: false
+
   /@transloadit/prettier-bytes/0.0.7:
     resolution:
       {
@@ -1427,10 +1429,10 @@ packages:
         integrity: sha512-XOKXa1KIxtNXgASAnwj7cnttJxS4fksBRywK/9LzRV5YxrF80BXZIGeQSuoESQ/VkUj30Ae0+YcuHc15wJCB2g==
       }
 
-  /@types/lodash/4.14.181:
+  /@types/lodash/4.14.182:
     resolution:
       {
-        integrity: sha512-n3tyKthHJbkiWhDZs3DkhkCzt2MexYHXlX0td5iMplyfwketaOeKboEVBqzceH7juqvEg3q5oUoBFxSLu7zFag==
+        integrity: sha512-/THyiqyQAP9AfARo4pF+aCGcyiQ94tX/Is2I7HofNRqoYLgN1PBoOWu2/zTA5zMxzP5EFutMtWtGAFRKUe961Q==
       }
     dev: false
 
@@ -2835,6 +2837,13 @@ packages:
       supports-color: 7.2.0
     dev: true
 
+  /china-area-data/5.0.1:
+    resolution:
+      {
+        integrity: sha512-BQDPpiv5Nn+018ekcJK2oSD9PAD+E1bvXB0wgabc//dFVS/KvRqCgg0QOEUt3vBkx9XzB5a9BmkJCEZDBxVjVw==
+      }
+    dev: false
+
   /chokidar/3.5.3:
     resolution:
       {
@@ -3370,6 +3379,13 @@ packages:
       }
     dev: false
 
+  /dayjs/1.11.1:
+    resolution:
+      {
+        integrity: sha512-ER7EjqVAMkRRsxNCC5YqJ9d9VQYuWdGt7aiH2qA5R5wt8ZmWaP2dLUSIK6y/kVzLMlmh1Tvu5xUf4M/wdGJ5KA==
+      }
+    dev: false
+
   /debug/2.6.9:
     resolution:
       {
@@ -3587,23 +3603,23 @@ packages:
       }
     dev: true
 
-  /element-plus/2.1.10_vue@3.2.33:
+  /element-plus/2.1.11_vue@3.2.33:
     resolution:
       {
-        integrity: sha512-sS9OMgP20dlYipmzHlEEgCJU+ID7+03YpRpoJWNQEH736C6ArmDMLnGFe8DUjPvwbUEXRA2d0Eo5d0apFgkSqg==
+        integrity: sha512-s4X0I8s787tv+9UdekBC1g7v42Fj4bucPAmu03EjbgrGrV7BJvkoBGuK52lNfu4yC76bl6Uyjesd5Fu8CMakSw==
       }
     peerDependencies:
       vue: ^3.2.0
     dependencies:
       "@ctrl/tinycolor": 3.4.1
       "@element-plus/icons-vue": 1.1.4_vue@3.2.33
-      "@floating-ui/dom": 0.4.4
-      "@popperjs/core": 2.11.5
-      "@types/lodash": 4.14.181
+      "@floating-ui/dom": 0.4.5
+      "@popperjs/core": /@sxzz/popperjs-es/2.11.7
+      "@types/lodash": 4.14.182
       "@types/lodash-es": 4.17.6
       "@vueuse/core": 8.3.1_vue@3.2.33
       async-validator: 4.0.7
-      dayjs: 1.11.0
+      dayjs: 1.11.1
       escape-html: 1.0.3
       lodash: 4.17.21
       lodash-es: 4.17.21
@@ -8039,7 +8055,7 @@ packages:
       ace-builds: 1.4.14
       ant-design-vue: 3.2.0_vue@3.2.33
       core-js: 3.22.0
-      element-plus: 2.1.10_vue@3.2.33
+      element-plus: 2.1.11_vue@3.2.33
       lodash: 4.17.21
       uuid: 8.3.2
       vue: 3.2.33
