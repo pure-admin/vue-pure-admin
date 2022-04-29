@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import {
-  provinceAndCityData,
-  regionData,
   provinceAndCityDataPlus,
+  provinceAndCityData,
+  convertTextToCode,
   regionDataPlus,
-  CodeToText,
-  convertTextToCode
+  regionData,
+  CodeToText
 } from "/@/utils/chinaArea";
 import { ref } from "vue";
 
@@ -25,15 +25,14 @@ const handleChange = value => {
     <el-row :gutter="20">
       <el-col :xl="12" :lg="12" :md="24" :sm="24" :xs="24">
         <div class="flex flex-col items-center justify-center">
-          <div>
-            <span class="imp">1. 二级联动（不带“全部”选项）</span>
+          <span class="imp">
+            1. 二级联动（不带“全部”选项）
             <el-cascader
-              size="large"
               :options="provinceAndCityData"
               v-model="selectedOptions1"
               @change="handleChange"
             />
-          </div>
+          </span>
           <div class="leading-10">
             <div>绑定值：{{ selectedOptions1 }}</div>
             <div>
@@ -54,15 +53,14 @@ const handleChange = value => {
       </el-col>
       <el-col :xl="12" :lg="12" :md="24" :sm="24" :xs="24">
         <div class="flex flex-col items-center justify-center mt-3">
-          <div class="three">
-            <span class="imp">2. 二级联动(带有“全部”选项)</span>
+          <span class="imp">
+            2. 二级联动（带有“全部”选项）
             <el-cascader
-              size="large"
               :options="provinceAndCityDataPlus"
               v-model="selectedOptions3"
               @change="handleChange"
             />
-          </div>
+          </span>
           <div class="leading-10">
             <div>绑定值：{{ selectedOptions3 }}</div>
             <div>
@@ -83,16 +81,14 @@ const handleChange = value => {
       </el-col>
       <el-col :xl="12" :lg="12" :md="24" :sm="24" :xs="24">
         <div class="flex flex-col items-center justify-center mt-3">
-          <div>
-            <span class="imp">3. 三级联动（不带“全部”选项）</span>
+          <span class="imp">
+            3. 三级联动（不带“全部”选项）
             <el-cascader
-              class="w-60"
-              size="large"
               :options="regionData"
               v-model="selectedOptions2"
               @change="handleChange"
             />
-          </div>
+          </span>
           <div class="leading-10">
             <div>绑定值：{{ selectedOptions2 }}</div>
             <div>
@@ -114,16 +110,14 @@ const handleChange = value => {
       </el-col>
       <el-col :xl="12" :lg="12" :md="24" :sm="24" :xs="24">
         <div class="flex flex-col items-center justify-center mt-3">
-          <div>
-            <span class="imp">4. 三级联动(带"全部选项")</span>
+          <span class="imp">
+            4. 三级联动（带"全部选项"）
             <el-cascader
-              size="large"
-              class="w-60"
               :options="regionDataPlus"
               v-model="selectedOptions4"
               @change="handleChange"
             />
-          </div>
+          </span>
           <div class="leading-10">
             <div>绑定值：{{ selectedOptions4 }}</div>
             <div>
@@ -147,7 +141,7 @@ const handleChange = value => {
   </el-card>
 </template>
 
-<style scope lang="scss">
+<style scoped lang="scss">
 .imp {
   color: var(--el-color-primary);
 }
