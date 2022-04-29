@@ -43,6 +43,7 @@ specifiers:
   animate.css: ^4.1.1
   autoprefixer: ^10.4.5
   axios: ^0.26.1
+  china-area-data: ^5.0.1
   cropperjs: ^1.5.12
   cross-env: 7.0.3
   css-color-function: ^1.3.3
@@ -122,6 +123,7 @@ dependencies:
   "@wangeditor/editor-for-vue": 5.1.10_9016b5918024e821ee2af40b62ae7476
   animate.css: 4.1.1
   axios: 0.26.1
+  china-area-data: 5.0.1
   cropperjs: 1.5.12
   css-color-function: 1.3.3
   dayjs: 1.11.0
@@ -2834,6 +2836,13 @@ packages:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
     dev: true
+
+  /china-area-data/5.0.1:
+    resolution:
+      {
+        integrity: sha512-BQDPpiv5Nn+018ekcJK2oSD9PAD+E1bvXB0wgabc//dFVS/KvRqCgg0QOEUt3vBkx9XzB5a9BmkJCEZDBxVjVw==
+      }
+    dev: false
 
   /chokidar/3.5.3:
     resolution:

@@ -53,7 +53,7 @@ const props = {
 };
 
 export default defineComponent({
-  name: "epTableProBar",
+  name: "ReQrcode",
   props,
   emits: ["done", "click", "disabled-click"],
   setup(props, { emit }) {

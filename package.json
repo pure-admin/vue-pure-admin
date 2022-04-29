@@ -39,6 +39,7 @@
     "@wangeditor/editor-for-vue": "^5.1.10",
     "animate.css": "^4.1.1",
     "axios": "^0.26.1",
+    "china-area-data": "^5.0.1",
     "cropperjs": "^1.5.12",
     "css-color-function": "^1.3.3",
     "dayjs": "^1.11.0",
