@@ -2,6 +2,7 @@
 import Motion from "./utils/motion";
 import { useRouter } from "vue-router";
 import { loginRules } from "./utils/rule";
+import phone from "./components/phone.vue";
 import qrCode from "./components/qrCode.vue";
 import { initRouter } from "/@/router/utils";
 import type { FormInstance } from "element-plus";
@@ -78,7 +79,7 @@ watch(imgCode, value => {
               <el-input
                 clearable
                 v-model="ruleForm.username"
-                placeholder="请输入账号"
+                placeholder="账号"
                 :prefix-icon="useRenderIcon('user')"
               />
             </el-form-item>
@@ -90,7 +91,7 @@ watch(imgCode, value => {
                 clearable
                 show-password
                 v-model="ruleForm.password"
-                placeholder="请输入密码"
+                placeholder="密码"
                 :prefix-icon="useRenderIcon('lock')"
               />
             </el-form-item>
@@ -101,7 +102,7 @@ watch(imgCode, value => {
               <el-input
                 clearable
                 v-model="ruleForm.verifyCode"
-                placeholder="请输入验证码"
+                placeholder="验证码"
               >
                 <template v-slot:append>
                   <ReImageVerify v-model:code="imgCode" />
@@ -165,7 +166,9 @@ watch(imgCode, value => {
             </div>
           </el-form-item>
         </Motion>
-
+        <!-- 手机号登陆 -->
+        <phone v-if="currentPage === 1" />
+        <!-- 二维码登陆 -->
         <qrCode v-if="currentPage === 2" />
       </div>
     </div>

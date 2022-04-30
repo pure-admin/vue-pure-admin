@@ -1,6 +1,10 @@
 import { reactive } from "vue";
+import { isPhone } from "/@/utils/is";
 import type { FormRules } from "element-plus";
 import { useUserStoreHook } from "/@/store/modules/user";
+
+/** 6位数字验证码正则 */
+export const REGEXP_SIX = /^\d{6}$/;
 
 /** 密码正则（密码格式应为8-18位数字、字母、符号的任意两种组合） */
 export const REGEXP_PWD =
@@ -41,4 +45,36 @@ const loginRules = reactive(<FormRules>{
   ]
 });
 
-export { loginRules };
+/** 手机登陆校验 */
+const phoneRules = reactive(<FormRules>{
+  phone: [
+    {
+      validator: (rule, value, callback) => {
+        if (value === "") {
+          callback(new Error("请输入手机号"));
+        } else if (!isPhone(value)) {
+          callback(new Error("请输入正确的手机号格式"));
+        } else {
+          callback();
+        }
+      },
+      trigger: "blur"
+    }
+  ],
+  verifyCode: [
+    {
+      validator: (rule, value, callback) => {
+        if (value === "") {
+          callback(new Error("请输入验证码"));
+        } else if (!REGEXP_SIX.test(value)) {
+          callback(new Error("请输入6位数字验证码"));
+        } else {
+          callback();
+        }
+      },
+      trigger: "blur"
+    }
+  ]
+});
+
+export { loginRules, phoneRules };
