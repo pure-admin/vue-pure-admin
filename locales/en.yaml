@@ -79,3 +79,5 @@ menus:
   hsDebounce: Debounce & Throttle
   hsFormDesign: Form Design
   hsBarcode: Barcode
+  hsQrcode: Qrcode
+  hsCascader: Area Cascader

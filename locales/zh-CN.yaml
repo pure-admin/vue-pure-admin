@@ -79,3 +79,5 @@ menus:
   hsDebounce: 防抖节流
   hsFormDesign: 表单设计器
   hsBarcode: 条形码
+  hsQrcode: 二维码
+  hsCascader: 区域级联选择器
