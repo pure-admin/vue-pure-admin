@@ -9,11 +9,6 @@ export default defineComponent({
     icon: {
       type: String,
       default: ""
-    },
-    // default element plus icon
-    type: {
-      type: String,
-      default: "ep:"
     }
   },
   render() {
@@ -21,7 +16,7 @@ export default defineComponent({
     return h(
       IconifyIcon,
       {
-        icon: `${this.type}${this.icon}`,
+        icon: `${this.icon}`,
         ...attrs
       },
       {

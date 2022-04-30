@@ -130,7 +130,7 @@ watch(
               class="w-40px h-32px cursor-pointer flex justify-center items-center"
               @click="visible = !visible"
             >
-              <IconifyIconOnline :icon="icon" :type="currentActiveType" />
+              <IconifyIconOnline :icon="currentActiveType + icon" />
             </div>
           </template>
 
@@ -160,7 +160,7 @@ watch(
                     :style="iconItemStyle(item)"
                     @click="onChangeIcon(item)"
                   >
-                    <IconifyIconOnline :icon="item" :type="currentActiveType" />
+                    <IconifyIconOnline :icon="currentActiveType + item" />
                   </li>
                 </ul>
               </el-scrollbar>
