@@ -6,7 +6,7 @@ export default defineComponent({
   props: {
     delay: {
       type: Number,
-      default: 100
+      default: 50
     }
   },
   render() {

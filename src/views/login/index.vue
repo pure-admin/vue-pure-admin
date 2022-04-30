@@ -4,6 +4,7 @@ import { useRouter } from "vue-router";
 import { loginRules } from "./utils/rule";
 import phone from "./components/phone.vue";
 import qrCode from "./components/qrCode.vue";
+import update from "./components/update.vue";
 import { initRouter } from "/@/router/utils";
 import type { FormInstance } from "element-plus";
 import { storageSession } from "/@/utils/storage";
@@ -74,7 +75,7 @@ watch(imgCode, value => {
           :rules="loginRules"
           size="large"
         >
-          <Motion :delay="200">
+          <Motion :delay="100">
             <el-form-item prop="username">
               <el-input
                 clearable
@@ -85,7 +86,7 @@ watch(imgCode, value => {
             </el-form-item>
           </Motion>
 
-          <Motion :delay="300">
+          <Motion :delay="150">
             <el-form-item prop="password">
               <el-input
                 clearable
@@ -97,7 +98,7 @@ watch(imgCode, value => {
             </el-form-item>
           </Motion>
 
-          <Motion :delay="400">
+          <Motion :delay="200">
             <el-form-item prop="verifyCode">
               <el-input
                 clearable
@@ -111,11 +112,16 @@ watch(imgCode, value => {
             </el-form-item>
           </Motion>
 
-          <Motion :delay="500">
+          <Motion :delay="250">
             <el-form-item>
               <div class="w-full h-20px flex justify-between items-center">
                 <el-checkbox v-model="checked">记住密码</el-checkbox>
-                <el-button type="text"> 忘记密码? </el-button>
+                <el-button
+                  type="text"
+                  @click="useUserStoreHook().SET_CURRENTPAGE(4)"
+                >
+                  忘记密码?
+                </el-button>
               </div>
               <el-button
                 class="w-full mt-4"
@@ -129,7 +135,7 @@ watch(imgCode, value => {
             </el-form-item>
           </Motion>
 
-          <Motion :delay="600">
+          <Motion :delay="300">
             <el-form-item>
               <div class="w-full h-20px flex justify-between items-center">
                 <el-button
@@ -146,7 +152,7 @@ watch(imgCode, value => {
           </Motion>
         </el-form>
 
-        <Motion v-if="currentPage === 0" :delay="700">
+        <Motion v-if="currentPage === 0" :delay="350">
           <el-form-item>
             <el-divider>
               <p class="text-gray-500 text-xs">第三方登录</p>
@@ -170,6 +176,8 @@ watch(imgCode, value => {
         <phone v-if="currentPage === 1" />
         <!-- 二维码登陆 -->
         <qrCode v-if="currentPage === 2" />
+        <!-- 忘记密码 -->
+        <update v-if="currentPage === 4" />
       </div>
     </div>
   </div>
