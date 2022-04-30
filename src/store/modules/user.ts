@@ -22,7 +22,11 @@ export const useUserStore = defineStore({
   id: "pure-user",
   state: (): userType => ({
     token,
-    name
+    name,
+    // 前端生成的验证码（按实际需求替换）
+    verifyCode: "",
+    // 登陆显示组件判断 0：登陆 1：手机登陆 2：二维码登陆 3：注册 4：忘记密码，默认0：登陆
+    currentPage: 0
   }),
   actions: {
     SET_TOKEN(token) {
@@ -30,6 +34,12 @@ export const useUserStore = defineStore({
     },
     SET_NAME(name) {
       this.name = name;
+    },
+    SET_VERIFYCODE(verifyCode) {
+      this.verifyCode = verifyCode;
+    },
+    SET_CURRENTPAGE(value) {
+      this.currentPage = value;
     },
     // 登入
     async loginByUsername(data) {
