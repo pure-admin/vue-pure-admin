@@ -4,8 +4,10 @@ import { useRouter } from "vue-router";
 import { loginRules } from "./utils/rule";
 import phone from "./components/phone.vue";
 import qrCode from "./components/qrCode.vue";
+import regist from "./components/regist.vue";
 import update from "./components/update.vue";
 import { initRouter } from "/@/router/utils";
+import { message } from "@pureadmin/components";
 import type { FormInstance } from "element-plus";
 import { storageSession } from "/@/utils/storage";
 import { ref, reactive, watch, computed } from "vue";
@@ -25,22 +27,29 @@ const currentPage = computed(() => {
 });
 
 const ruleForm = reactive({
-  username: "",
-  password: "",
+  username: "admin",
+  password: "admin123",
   verifyCode: ""
 });
 
 const onLogin = async (formEl: FormInstance | undefined) => {
+  loading.value = true;
   if (!formEl) return;
   await formEl.validate((valid, fields) => {
     if (valid) {
-      storageSession.setItem("info", {
-        username: "admin",
-        accessToken: "eyJhbGciOiJIUzUxMiJ9.test"
-      });
-      initRouter("admin").then(() => {});
-      router.push("/");
+      // 模拟请求，需根据实际开发进行修改
+      setTimeout(() => {
+        loading.value = false;
+        storageSession.setItem("info", {
+          username: "admin",
+          accessToken: "eyJhbGciOiJIUzUxMiJ9.test"
+        });
+        initRouter("admin").then(() => {});
+        message.success("登陆成功");
+        router.push("/");
+      }, 2000);
     } else {
+      loading.value = false;
       return fields;
     }
   });
@@ -79,6 +88,7 @@ watch(imgCode, value => {
             <el-form-item prop="username">
               <el-input
                 clearable
+                :input-style="{ 'user-select': 'none' }"
                 v-model="ruleForm.username"
                 placeholder="账号"
                 :prefix-icon="useRenderIcon('user')"
@@ -90,6 +100,7 @@ watch(imgCode, value => {
             <el-form-item prop="password">
               <el-input
                 clearable
+                :input-style="{ 'user-select': 'none' }"
                 show-password
                 v-model="ruleForm.password"
                 placeholder="密码"
@@ -102,6 +113,7 @@ watch(imgCode, value => {
             <el-form-item prop="verifyCode">
               <el-input
                 clearable
+                :input-style="{ 'user-select': 'none' }"
                 v-model="ruleForm.verifyCode"
                 placeholder="验证码"
               >
@@ -176,6 +188,8 @@ watch(imgCode, value => {
         <phone v-if="currentPage === 1" />
         <!-- 二维码登陆 -->
         <qrCode v-if="currentPage === 2" />
+        <!-- 注册 -->
+        <regist v-if="currentPage === 3" />
         <!-- 忘记密码 -->
         <update v-if="currentPage === 4" />
       </div>

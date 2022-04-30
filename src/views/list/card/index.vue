@@ -8,7 +8,7 @@ export default {
 import { getCardList } from "/@/api/list";
 import ReCard from "/@/components/ReCard";
 import { ref, onMounted, nextTick } from "vue";
-import DialogForm from "./components/DialogForm.vue";
+import dialogForm from "./components/DialogForm.vue";
 import { ElMessage, ElMessageBox } from "element-plus";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 
@@ -172,6 +172,6 @@ const handleManageProduct = product => {
         />
       </template>
     </div>
-    <DialogForm v-model:visible="formDialogVisible" :data="formData" />
+    <dialogForm v-model:visible="formDialogVisible" :data="formData" />
   </div>
 </template>
