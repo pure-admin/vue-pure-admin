@@ -62,6 +62,7 @@
     "resize-observer-polyfill": "^1.5.1",
     "responsive-storage": "^1.0.11",
     "rgb-hex": "^4.0.0",
+    "swiper": "^8.1.4",
     "v-contextmenu": "3.0.0",
     "vue": "^3.2.33",
     "vue-form-create2": "^1.2.8",

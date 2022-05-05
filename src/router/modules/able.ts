@@ -128,6 +128,15 @@ const ableRouter = {
         title: $t("menus.hsCascader"),
         i18n: true
       }
+    },
+    {
+      path: "/able/swiper",
+      name: "reSwiper",
+      component: () => import("/@/views/able/swiper.vue"),
+      meta: {
+        title: $t("menus.hsSwiper"),
+        i18n: true
+      }
     }
   ]
 };

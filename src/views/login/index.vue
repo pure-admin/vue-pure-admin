@@ -83,6 +83,7 @@ watch(imgCode, value => {
           :model="ruleForm"
           :rules="loginRules"
           size="large"
+          @keyup.enter="onLogin(ruleFormRef)"
         >
           <Motion :delay="100">
             <el-form-item prop="username">
