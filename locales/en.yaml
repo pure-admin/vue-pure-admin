@@ -81,3 +81,4 @@ menus:
   hsBarcode: Barcode
   hsQrcode: Qrcode
   hsCascader: Area Cascader
+  hsSwiper: Swiper Plugin

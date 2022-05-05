@@ -90,6 +90,7 @@ specifiers:
   stylelint-config-recommended: ^6.0.0
   stylelint-config-standard: ^24.0.0
   stylelint-order: ^5.0.0
+  swiper: ^8.1.4
   typescript: ^4.6.3
   v-contextmenu: 3.0.0
   vite: ^2.9.6
@@ -146,6 +147,7 @@ dependencies:
   resize-observer-polyfill: 1.5.1
   responsive-storage: 1.0.11_vue@3.2.33
   rgb-hex: 4.0.0
+  swiper: 8.1.4
   v-contextmenu: 3.0.0_vue@3.2.33
   vue: 3.2.33
   vue-form-create2: 1.2.9
@@ -3447,6 +3449,15 @@ packages:
       }
     dependencies:
       ssr-window: 3.0.0
+    dev: false
+
+  /dom7/4.0.4:
+    resolution:
+      {
+        integrity: sha512-DSSgBzQ4rJWQp1u6o+3FVwMNnT5bzQbMb+o31TjYYeRi05uAcpF8koxdfzeoe5ElzPmua7W7N28YJhF7iEKqIw==
+      }
+    dependencies:
+      ssr-window: 4.0.2
     dev: false
 
   /domelementtype/2.3.0:
@@ -7253,6 +7264,13 @@ packages:
       }
     dev: false
 
+  /ssr-window/4.0.2:
+    resolution:
+      {
+        integrity: sha512-ISv/Ch+ig7SOtw7G2+qkwfVASzazUnvlDTwypdLoPoySv+6MqlOV10VwPSE6EWkGjhW50lUmghPmpYZXMu/+AQ==
+      }
+    dev: false
+
   /stable/0.1.8:
     resolution:
       {
@@ -7556,6 +7574,18 @@ packages:
       picocolors: 1.0.0
       stable: 0.1.8
     dev: true
+
+  /swiper/8.1.4:
+    resolution:
+      {
+        integrity: sha512-ho6ceKxqbDxV51qymVxwn1oB4CqTrsG3Y5pGW2aKlZxsT6NMdlow8ICUa+wD/m5l2T5ZD2B0yyqTihSSmLBV4A==
+      }
+    engines: { node: ">= 4.7.0" }
+    requiresBuild: true
+    dependencies:
+      dom7: 4.0.4
+      ssr-window: 4.0.2
+    dev: false
 
   /systemjs/6.12.1:
     resolution:
