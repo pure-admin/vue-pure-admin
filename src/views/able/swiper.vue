@@ -121,3 +121,9 @@ const swiperExample: SwiperExample[] = [
     </el-row>
   </el-card>
 </template>
+
+<style scoped lang="scss">
+:deep(.el-card__body) {
+  padding-top: 0;
+}
+</style>
