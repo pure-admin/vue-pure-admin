@@ -4,7 +4,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import type { SwiperOptions } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/vue";
-import SwiperCore, { Navigation, Pagination } from "swiper";
+import SwiperCore, { Autoplay, Navigation, Pagination } from "swiper";
 
 type SwiperExampleOptions = Pick<
   SwiperOptions,
@@ -17,13 +17,14 @@ type SwiperExampleOptions = Pick<
   | "direction"
   | "loop"
   | "loopFillGroupWithBlank"
+  | "autoplay"
 >;
 interface SwiperExample {
   id: number;
   label: string;
   options: Partial<SwiperExampleOptions>;
 }
-SwiperCore.use([Navigation, Pagination]);
+SwiperCore.use([Autoplay, Navigation, Pagination]);
 
 const swiperExample: SwiperExample[] = [
   { id: 0, label: "Default", options: {} },
@@ -83,6 +84,10 @@ const swiperExample: SwiperExample[] = [
     id: 7,
     label: "Infinite loop",
     options: {
+      autoplay: {
+        delay: 2000,
+        disableOnInteraction: false
+      },
       navigation: true,
       pagination: {
         clickable: true
