@@ -1,10 +1,10 @@
 import { resolve } from "path";
+import Unocss from "unocss/vite";
 import vue from "@vitejs/plugin-vue";
 import { viteBuildInfo } from "./info";
 import svgLoader from "vite-svg-loader";
 import legacy from "@vitejs/plugin-legacy";
 import vueJsx from "@vitejs/plugin-vue-jsx";
-import WindiCSS from "vite-plugin-windicss";
 import { viteMockServe } from "vite-plugin-mock";
 import VueI18n from "@intlify/vite-plugin-vue-i18n";
 import { visualizer } from "rollup-plugin-visualizer";
@@ -25,7 +25,7 @@ export function getPluginsList(command, VITE_LEGACY) {
     }),
     // jsx、tsx语法支持
     vueJsx(),
-    WindiCSS(),
+    Unocss(),
     // 线上环境删除console
     removeConsole(),
     viteBuildInfo(),

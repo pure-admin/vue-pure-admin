@@ -9,11 +9,13 @@ import { MotionPlugin } from "@vueuse/motion";
 import { useTable } from "../src/plugins/vxe-table";
 import { injectResponsiveStorage } from "/@/utils/storage/responsive";
 
+import "uno.css";
 import "animate.css";
-import "virtual:windi.css";
-import "element-plus/dist/index.css";
+// 引入重置样式
+import "./style/reset.scss";
 // 导入公共样式
 import "./style/index.scss";
+import "element-plus/dist/index.css";
 import "@pureadmin/components/dist/index.css";
 import "@pureadmin/components/dist/theme.css";
 // 导入字体图标

@@ -131,13 +131,12 @@
     "stylelint-config-standard": "^24.0.0",
     "stylelint-order": "^5.0.0",
     "typescript": "^4.6.3",
+    "unocss": "^0.32.13",
     "vite": "^2.9.6",
     "vite-plugin-mock": "^2.9.6",
     "vite-plugin-remove-console": "^0.0.7",
-    "vite-plugin-windicss": "^1.8.4",
     "vite-svg-loader": "2.2.0",
-    "vue-eslint-parser": "^8.2.0",
-    "windicss": "^3.5.1"
+    "vue-eslint-parser": "^8.2.0"
   },
   "repository": "git@github.com:xiaoxian521/vue-pure-admin.git",
   "author": "xiaoxian521",

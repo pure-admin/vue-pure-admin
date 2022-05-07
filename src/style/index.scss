@@ -7,8 +7,6 @@
 body {
   width: 100%;
   height: 100%;
-  margin: 0;
-  padding: 0;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizelegibility;
@@ -25,50 +23,6 @@ html {
 #app {
   width: 100%;
   height: 100%;
-}
-
-label {
-  font-weight: 700;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
-a:focus,
-a:active {
-  outline: none;
-}
-
-a,
-a:focus,
-a:hover {
-  cursor: pointer;
-  color: inherit;
-  text-decoration: none;
-}
-
-div:focus {
-  outline: none;
-}
-
-ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.clearfix {
-  &::after {
-    visibility: hidden;
-    display: block;
-    font-size: 0;
-    content: " ";
-    clear: both;
-    height: 0;
-  }
 }
 
 /* 头部用户信息样式重置 */
