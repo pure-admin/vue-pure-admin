@@ -1,3 +1,40 @@
+# 3.3.0 (2022-5-11)
+
+### 🎫 Feat
+
+- Add user management page demo
+- Add role management page demo
+- Add department management page demo
+- Add card list page demo
+- Integrated form designer
+- Added `PPT` demo
+- Added anti-shake interception demo in the function menu
+- Upgrade `wangeditorV5` (and support internationalization and custom themes)
+- Integrate `tauri` version
+- Added barcode function
+- Added QR code function
+- Use the `Cascader` cascade selector in `element-plus` to write a three-level and two-level linkage demo of Chinese provinces and cities
+- Integrate `Swiper` plugin
+- Routing supports passing `component`, representing the component path
+- Added pre-release packaging mode
+- Add [hooks] to close a tag (https://github.com/xiaoxian521/vue-pure-admin/commit/5e8723a031923e79f507e5a17151d3bd88a51523)
+
+### ✔️ refactor
+
+- Refactored the landing page to be more inclined to the actual business scenario
+- Use `unocss` instead of `windicss`, `unocss` has better performance in development environment, no memory leaks, and `api` is compatible with `windicss`
+
+### 🍏 Perf
+
+- Optimized the style of the `split-pane` component for the platform
+- Optimize internationalization, no longer pass the `i18n` field in the route, the platform automatically reads the files in the `locales` folder of the root directory for internationalization matching
+- Optimized icon selector
+- Optimize `layout` to display user information [commit](https://github.com/xiaoxian521/vue-pure-admin/commit/56f9dc85e7fbe0637605c43577c794de9f8968aa)
+
+### 🐞 Bug fixes
+
+- Fix route initialization problem (Cannot access 'constantRoutes' before initialization)
+
 # 3.2.0 (2022-3-22)
 
 ### 🎫 Feat
