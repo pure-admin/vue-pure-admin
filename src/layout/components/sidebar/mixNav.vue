@@ -127,7 +127,7 @@ function translationEn() {
           <div v-show="route.meta.icon" :class="['el-icon', route.meta.icon]">
             <component :is="useRenderIcon(route.meta && route.meta.icon)" />
           </div>
-          <span>{{ transformI18n(route.meta.title, route.meta.i18n) }}</span>
+          <span>{{ transformI18n(route.meta.title) }}</span>
           <FontIcon
             v-if="route.meta.extraIcon"
             width="30px"

@@ -9,7 +9,6 @@ const remainingRouter = [
     meta: {
       title: $t("menus.hslogin"),
       showLink: false,
-      i18n: true,
       rank: 101
     }
   },
@@ -19,7 +18,6 @@ const remainingRouter = [
     meta: {
       icon: "home-filled",
       title: $t("menus.hshome"),
-      i18n: true,
       showLink: false,
       rank: 104
     },

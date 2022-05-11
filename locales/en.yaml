@@ -82,3 +82,5 @@ menus:
   hsQrcode: Qrcode
   hsCascader: Area Cascader
   hsSwiper: Swiper Plugin
+status:
+  hsLoad: Loading...

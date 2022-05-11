@@ -30,15 +30,11 @@ export const localesConfigs = {
 };
 
 /**
- * 国际化转换工具函数
+ * 国际化转换工具函数（自动读取根目录locales文件夹下文件进行国际化匹配）
  * @param message message
- * @param isI18n  如果true,获取对应的消息,否则返回本身
- * @returns message
+ * @returns 转化后的message
  */
-export function transformI18n(
-  message: string | unknown | object = "",
-  isI18n: boolean | unknown = false
-) {
+export function transformI18n(message: any = "") {
   if (!message) {
     return "";
   }
@@ -50,7 +46,11 @@ export function transformI18n(
     return message[locale?.value];
   }
 
-  if (isI18n) {
+  const key = message.match(/(\S*)\./)?.[1];
+  if (key && Object.keys(siphonI18n("zh-CN")).includes(key)) {
+    return i18n.global.t.call(i18n.global.locale, message);
+  } else if (!key && Object.keys(siphonI18n("zh-CN")).includes(message)) {
+    // 兼容非嵌套形式的国际化写法
     return i18n.global.t.call(i18n.global.locale, message);
   } else {
     return message;

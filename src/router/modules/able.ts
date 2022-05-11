@@ -8,7 +8,6 @@ const ableRouter = {
   meta: {
     icon: "ubuntu-fill",
     title: $t("menus.hsAble"),
-    i18n: true,
     rank: 4
   },
   children: [
@@ -17,8 +16,7 @@ const ableRouter = {
       name: "reWatermark",
       component: () => import("/@/views/able/watermark.vue"),
       meta: {
-        title: $t("menus.hsWatermark"),
-        i18n: true
+        title: $t("menus.hsWatermark")
       }
     },
     {
@@ -26,8 +24,7 @@ const ableRouter = {
       name: "rePrint",
       component: () => import("/@/views/able/print.vue"),
       meta: {
-        title: $t("menus.hsPrint"),
-        i18n: true
+        title: $t("menus.hsPrint")
       }
     },
     {
@@ -35,8 +32,7 @@ const ableRouter = {
       name: "reIconSelect",
       component: () => import("/@/views/able/icon-select.vue"),
       meta: {
-        title: $t("menus.hsIconSelect"),
-        i18n: true
+        title: $t("menus.hsIconSelect")
       }
     },
     {
@@ -44,8 +40,7 @@ const ableRouter = {
       name: "reTimeline",
       component: () => import("/@/views/able/timeline.vue"),
       meta: {
-        title: $t("menus.hsTimeline"),
-        i18n: true
+        title: $t("menus.hsTimeline")
       }
     },
     {
@@ -53,8 +48,7 @@ const ableRouter = {
       name: "reMenuTree",
       component: () => import("/@/views/able/menu-tree.vue"),
       meta: {
-        title: $t("menus.hsMenuTree"),
-        i18n: true
+        title: $t("menus.hsMenuTree")
       }
     },
     {
@@ -62,8 +56,7 @@ const ableRouter = {
       name: "reLineTree",
       component: () => import("/@/views/able/line-tree.vue"),
       meta: {
-        title: $t("menus.hsLineTree"),
-        i18n: true
+        title: $t("menus.hsLineTree")
       }
     },
     {
@@ -71,8 +64,7 @@ const ableRouter = {
       name: "reAntTabs",
       component: () => import("/@/views/able/ant-tabs.vue"),
       meta: {
-        title: $t("menus.hsAntTabs"),
-        i18n: true
+        title: $t("menus.hsAntTabs")
       }
     },
     {
@@ -80,8 +72,7 @@ const ableRouter = {
       name: "reAntAnchor",
       component: () => import("/@/views/able/ant-anchor.vue"),
       meta: {
-        title: $t("menus.hsAntAnchor"),
-        i18n: true
+        title: $t("menus.hsAntAnchor")
       }
     },
     {
@@ -89,8 +80,7 @@ const ableRouter = {
       name: "reAntTreeSelect",
       component: () => import("/@/views/able/ant-treeSelect.vue"),
       meta: {
-        title: $t("menus.hsAntTreeSelect"),
-        i18n: true
+        title: $t("menus.hsAntTreeSelect")
       }
     },
     {
@@ -98,8 +88,7 @@ const ableRouter = {
       name: "reDebounce",
       component: () => import("/@/views/able/debounce.vue"),
       meta: {
-        title: $t("menus.hsDebounce"),
-        i18n: true
+        title: $t("menus.hsDebounce")
       }
     },
     {
@@ -107,8 +96,7 @@ const ableRouter = {
       name: "reBarcode",
       component: () => import("/@/views/able/barcode.vue"),
       meta: {
-        title: $t("menus.hsBarcode"),
-        i18n: true
+        title: $t("menus.hsBarcode")
       }
     },
     {
@@ -116,8 +104,7 @@ const ableRouter = {
       name: "reQrcode",
       component: () => import("/@/views/able/qrcode.vue"),
       meta: {
-        title: $t("menus.hsQrcode"),
-        i18n: true
+        title: $t("menus.hsQrcode")
       }
     },
     {
@@ -125,8 +112,7 @@ const ableRouter = {
       name: "reCascader",
       component: () => import("/@/views/able/cascader.vue"),
       meta: {
-        title: $t("menus.hsCascader"),
-        i18n: true
+        title: $t("menus.hsCascader")
       }
     },
     {
@@ -134,8 +120,7 @@ const ableRouter = {
       name: "reSwiper",
       component: () => import("/@/views/able/swiper.vue"),
       meta: {
-        title: $t("menus.hsSwiper"),
-        i18n: true
+        title: $t("menus.hsSwiper")
       }
     }
   ]

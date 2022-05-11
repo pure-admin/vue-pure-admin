@@ -8,7 +8,6 @@ const pptRouter = {
   meta: {
     icon: "ppt",
     title: "PPT",
-    i18n: false,
     rank: 3
   },
   children: [
@@ -18,7 +17,6 @@ const pptRouter = {
       component: IFrame,
       meta: {
         title: "PPT",
-        i18n: false,
         frameSrc: "https://pipipi-pikachu.github.io/PPTist/",
         extraIcon: {
           svg: true,

@@ -5,7 +5,6 @@ export const routerArrays: Array<RouteConfigs> = [
     parentPath: "/",
     meta: {
       title: "menus.hshome",
-      i18n: true,
       icon: "home-filled"
     }
   }

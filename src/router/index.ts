@@ -115,11 +115,8 @@ router.beforeEach((to: toRouteType, _from, next) => {
       if (!item.meta.title) return "";
       const Title = getConfig().Title;
       if (Title)
-        document.title = `${transformI18n(
-          item.meta.title,
-          item.meta?.i18n
-        )} | ${Title}`;
-      else document.title = transformI18n(item.meta.title, item.meta?.i18n);
+        document.title = `${transformI18n(item.meta.title)} | ${Title}`;
+      else document.title = transformI18n(item.meta.title);
     });
   if (name) {
     if (_from?.name) {

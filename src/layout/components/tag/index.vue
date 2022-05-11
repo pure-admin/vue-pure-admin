@@ -3,6 +3,7 @@ import {
   ref,
   watch,
   unref,
+  toRaw,
   reactive,
   nextTick,
   computed,
@@ -318,7 +319,6 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
           parentPath: "/",
           meta: {
             title: "menus.hshome",
-            i18n: true,
             icon: "home-filled"
           }
         },
@@ -662,7 +662,7 @@ const getContextMenuStyle = computed((): CSSProperties => {
           @click="tagOnClick(item)"
         >
           <router-link :to="item.path"
-            >{{ transformI18n(item.meta.title, item.meta.i18n) }}
+            >{{ transformI18n(item.meta.title) }}
           </router-link>
           <span
             v-if="
@@ -702,7 +702,7 @@ const getContextMenuStyle = computed((): CSSProperties => {
           style="display: flex; align-items: center"
         >
           <li v-if="item.show" @click="selectTag(key, item)">
-            <component :is="item.icon" :key="key" />
+            <component :is="toRaw(item.icon)" :key="key" />
             {{ t(item.text) }}
           </li>
         </div>
@@ -736,7 +736,7 @@ const getContextMenuStyle = computed((): CSSProperties => {
                 :disabled="item.disabled"
               >
                 <component
-                  :is="item.icon"
+                  :is="toRaw(item.icon)"
                   :key="key"
                   style="margin-right: 6px"
                 />

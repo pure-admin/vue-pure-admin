@@ -8,7 +8,6 @@ const aboutRouter = {
   meta: {
     icon: "question-line",
     title: $t("menus.hsAbout"),
-    i18n: true,
     rank: 15
   },
   children: [
@@ -17,8 +16,7 @@ const aboutRouter = {
       name: "reAbout",
       component: () => import("/@/views/about/index.vue"),
       meta: {
-        title: $t("menus.hsAbout"),
-        i18n: true
+        title: $t("menus.hsAbout")
       }
     }
   ]

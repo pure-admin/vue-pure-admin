@@ -8,7 +8,6 @@ const resultRouter = {
   meta: {
     icon: "checkbox-circle-line",
     title: $t("menus.hsResult"),
-    i18n: true,
     rank: 8
   },
   children: [
@@ -17,8 +16,7 @@ const resultRouter = {
       name: "reSuccess",
       component: () => import("/@/views/result/success.vue"),
       meta: {
-        title: $t("menus.hsSuccess"),
-        i18n: true
+        title: $t("menus.hsSuccess")
       }
     },
     {
@@ -26,8 +24,7 @@ const resultRouter = {
       name: "reFail",
       component: () => import("/@/views/result/fail.vue"),
       meta: {
-        title: $t("menus.hsFail"),
-        i18n: true
+        title: $t("menus.hsFail")
       }
     }
   ]

@@ -8,7 +8,6 @@ const formDesignRouter = {
   meta: {
     icon: "terminal-window-line",
     title: $t("menus.hsFormDesign"),
-    i18n: true,
     rank: 2
   },
   children: [
@@ -17,8 +16,7 @@ const formDesignRouter = {
       name: "formDesign",
       component: () => import("/@/views/form-design/index.vue"),
       meta: {
-        title: $t("menus.hsFormDesign"),
-        i18n: true
+        title: $t("menus.hsFormDesign")
       }
     }
   ]

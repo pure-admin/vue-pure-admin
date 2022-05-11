@@ -8,7 +8,6 @@ const flowChartRouter = {
   meta: {
     icon: "set-up",
     title: $t("menus.hsflowChart"),
-    i18n: true,
     rank: 1
   },
   children: [
@@ -17,8 +16,7 @@ const flowChartRouter = {
       name: "flowChart",
       component: () => import("/@/views/flow-chart/index.vue"),
       meta: {
-        title: $t("menus.hsflowChart"),
-        i18n: true
+        title: $t("menus.hsflowChart")
       }
     }
   ]

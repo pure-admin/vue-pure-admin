@@ -8,7 +8,6 @@ const systemRouter = {
   meta: {
     icon: "setting",
     title: "menus.hssysManagement",
-    i18n: true,
     rank: 11
   },
   children: [
@@ -17,8 +16,7 @@ const systemRouter = {
       name: "user",
       meta: {
         icon: "flUser",
-        title: "menus.hsUser",
-        i18n: true
+        title: "menus.hsUser"
       }
     },
     {
@@ -26,8 +24,7 @@ const systemRouter = {
       name: "role",
       meta: {
         icon: "role",
-        title: "menus.hsRole",
-        i18n: true
+        title: "menus.hsRole"
       }
     },
     {
@@ -35,8 +32,7 @@ const systemRouter = {
       name: "dept",
       meta: {
         icon: "dept",
-        title: "menus.hsDept",
-        i18n: true
+        title: "menus.hsDept"
       }
     },
     {
@@ -46,7 +42,6 @@ const systemRouter = {
       meta: {
         icon: "dict",
         title: "menus.hsDict",
-        i18n: true,
         keepAlive: true
       }
     }
@@ -59,7 +54,6 @@ const permissionRouter = {
   meta: {
     title: "menus.permission",
     icon: "lollipop",
-    i18n: true,
     rank: 7
   },
   children: [
@@ -67,8 +61,7 @@ const permissionRouter = {
       path: "/permission/page/index",
       name: "permissionPage",
       meta: {
-        title: "menus.permissionPage",
-        i18n: true
+        title: "menus.permissionPage"
       }
     },
     {
@@ -76,7 +69,6 @@ const permissionRouter = {
       name: "permissionButton",
       meta: {
         title: "menus.permissionButton",
-        i18n: true,
         authority: []
       }
     }
@@ -89,7 +81,6 @@ const frameRouter = {
   meta: {
     icon: "monitor",
     title: "menus.hsExternalPage",
-    i18n: true,
     rank: 10
   },
   children: [
@@ -97,7 +88,6 @@ const frameRouter = {
       path: "/iframe/pure",
       name: "reFramePure",
       meta: {
-        i18n: true,
         title: "menus.hsPureDocument",
         frameSrc: "https://pure-admin-doc.vercel.app"
       }
@@ -106,17 +96,15 @@ const frameRouter = {
       path: "/external",
       name: "https://pure-admin-doc.vercel.app",
       meta: {
-        title: "menus.externalLink",
-        i18n: true
+        title: "menus.externalLink"
       }
     },
     {
       path: "/iframe/ep",
       name: "reFrameEp",
       meta: {
-        i18n: true,
         title: "menus.hsEpDocument",
-        frameSrc: "https://element-plus.gitee.io/zh-CN/"
+        frameSrc: "https://element-plus.org/zh-CN/"
       }
     }
   ]
@@ -128,7 +116,6 @@ const tabsRouter = {
   meta: {
     icon: "IF-team-icontabs",
     title: "menus.hstabs",
-    i18n: true,
     rank: 13
   },
   children: [
@@ -136,8 +123,7 @@ const tabsRouter = {
       path: "/tabs/index",
       name: "reTabs",
       meta: {
-        title: "menus.hstabs",
-        i18n: true
+        title: "menus.hstabs"
       }
     },
     {
@@ -146,7 +132,6 @@ const tabsRouter = {
       meta: {
         title: "",
         showLink: false,
-        i18n: false,
         dynamicLevel: 3,
         refreshRedirect: "/tabs/index"
       }

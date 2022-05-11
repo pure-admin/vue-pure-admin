@@ -8,6 +8,6 @@ import { Amap } from "/@/components/ReMap";
 
 <style scoped>
 .main-content {
-  margin: 0 !important;
+  margin: 2px 0 0 !important;
 }
 </style>

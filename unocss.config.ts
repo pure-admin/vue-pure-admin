@@ -12,6 +12,10 @@ export default defineConfig({
   presets: [presetMini({ dark: "class" }), presetAttributify(), presetUno()],
   transformers: [transformerDirectives(), transformerVariantGroup()],
   exclude: [`${__dirname}/node_modules/**/*`],
-  shortcuts: {},
+  shortcuts: {
+    "wh-full": "w-full h-full",
+    "flex-ac": "flex justify-around items-center",
+    "flex-bc": "flex justify-between items-center"
+  },
   theme: {}
 });

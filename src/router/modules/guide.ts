@@ -8,7 +8,6 @@ const guideRouter = {
   meta: {
     icon: "guide",
     title: $t("menus.hsguide"),
-    i18n: true,
     rank: 14
   },
   children: [
@@ -17,8 +16,7 @@ const guideRouter = {
       name: "reGuide",
       component: () => import("/@/views/guide/index.vue"),
       meta: {
-        title: $t("menus.hsguide"),
-        i18n: true
+        title: $t("menus.hsguide")
       }
     }
   ]

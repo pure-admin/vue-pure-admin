@@ -35,7 +35,6 @@ function toDetail(index: number) {
     meta: {
       title: { zh: `No.${index} - 详情信息`, en: `No.${index} - DetailInfo` },
       showLink: false,
-      i18n: false,
       dynamicLevel: 3
     }
   });

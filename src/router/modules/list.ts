@@ -8,7 +8,6 @@ const ableRouter = {
   meta: {
     icon: "list-check",
     title: $t("menus.hsList"),
-    i18n: true,
     rank: 12
   },
   children: [
@@ -19,7 +18,6 @@ const ableRouter = {
       meta: {
         icon: "card",
         title: $t("menus.hsListCard"),
-        i18n: true,
         showParent: true
       }
     }

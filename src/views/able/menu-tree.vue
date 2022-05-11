@@ -18,7 +18,6 @@ const { t } = useI18n();
 interface treeNode extends TreeNode {
   meta: {
     title: string;
-    i18n: boolean;
   };
 }
 
@@ -41,7 +40,7 @@ const onQueryChanged = (query: string) => {
 };
 
 const filterMethod = (query: string, node: treeNode) => {
-  return transformI18n(node.meta.title, node.meta.i18n)!.indexOf(query) !== -1;
+  return transformI18n(node.meta.title)!.indexOf(query) !== -1;
 };
 </script>
 

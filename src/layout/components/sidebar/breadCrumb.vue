@@ -65,7 +65,7 @@ const getBreadcrumb = (): void => {
       {
         path: "/welcome",
         parentPath: "/",
-        meta: { title: "menus.hshome", i18n: true }
+        meta: { title: "menus.hshome" }
       } as unknown as RouteLocationMatched
     ].concat(matched);
   }
@@ -104,10 +104,10 @@ const handleLink = (item: RouteLocationMatched): any => {
         <span
           v-if="item.redirect === 'noRedirect' || index == levelList.length - 1"
           class="no-redirect"
-          >{{ transformI18n(item.meta.title, item.meta.i18n) }}</span
+          >{{ transformI18n(item.meta.title) }}</span
         >
         <a v-else @click.prevent="handleLink(item)">
-          {{ transformI18n(item.meta.title, item.meta.i18n) }}
+          {{ transformI18n(item.meta.title) }}
         </a>
       </el-breadcrumb-item>
     </transition-group>

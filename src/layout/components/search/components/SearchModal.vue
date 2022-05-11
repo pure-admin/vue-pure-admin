@@ -68,7 +68,7 @@ function search() {
   resultOptions.value = flatMenusData.filter(
     menu =>
       keyword.value &&
-      transformI18n(menu.meta?.title, menu.meta?.i18n)
+      transformI18n(menu.meta?.title)
         .toLocaleLowerCase()
         .includes(keyword.value.toLocaleLowerCase().trim())
   );

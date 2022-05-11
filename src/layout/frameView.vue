@@ -1,12 +1,19 @@
 <template>
-  <div class="frame" v-loading="loading">
+  <div
+    class="frame"
+    v-loading="loading"
+    :element-loading-text="t('status.hsLoad')"
+  >
     <iframe :src="frameSrc" class="frame-iframe" ref="frameRef" />
   </div>
 </template>
+
 <script lang="ts" setup>
+import { useI18n } from "vue-i18n";
 import { useRoute } from "vue-router";
 import { ref, unref, onMounted, nextTick } from "vue";
 
+const { t } = useI18n();
 const loading = ref(false);
 const currentRoute = useRoute();
 const frameSrc = ref<string>("");
@@ -45,7 +52,7 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .frame {
-  height: 100vh;
+  height: calc(100vh - 88px);
   z-index: 998;
 
   .frame-iframe {
@@ -58,6 +65,6 @@ onMounted(() => {
 }
 
 .main-content {
-  margin: 0 !important;
+  margin: 2px 0 0 !important;
 }
 </style>
