@@ -56,8 +56,9 @@ function changeDirection(val) {
           <el-button class="button" type="text" @click="changeDirection('top')">
             <span
               :style="{ color: classOption.direction === 'top' ? 'red' : '' }"
-              >向上滚动</span
             >
+              向上滚动
+            </span>
           </el-button>
           <el-button
             class="button"
@@ -68,8 +69,9 @@ function changeDirection(val) {
               :style="{
                 color: classOption.direction === 'bottom' ? 'red' : ''
               }"
-              >向下滚动</span
             >
+              向下滚动
+            </span>
           </el-button>
           <el-button
             class="button"
@@ -78,8 +80,9 @@ function changeDirection(val) {
           >
             <span
               :style="{ color: classOption.direction === 'left' ? 'red' : '' }"
-              >向左滚动</span
             >
+              向左滚动
+            </span>
           </el-button>
           <el-button
             class="button"
@@ -88,8 +91,9 @@ function changeDirection(val) {
           >
             <span
               :style="{ color: classOption.direction === 'right' ? 'red' : '' }"
-              >向右滚动</span
             >
+              向右滚动
+            </span>
           </el-button>
         </div>
       </template>

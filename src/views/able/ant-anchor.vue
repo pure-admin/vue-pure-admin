@@ -12,19 +12,25 @@ function handleAnchorClick(e, link) {
   <el-card>
     <template #header>
       <div class="card-header">
-        <span class="font-medium"
-          >仿antdv锚点，采用<el-link
+        <span class="font-medium">
+          仿antdv锚点，采用
+          <el-link
             href="https://www.npmjs.com/package/@pureadmin/components"
             target="_blank"
             style="font-size: 16px; margin: 0 4px 5px"
-            >@pureadmin/components</el-link
-          >，完全兼容antdv的<el-link
+          >
+            @pureadmin/components
+          </el-link>
+          ，完全兼容antdv的
+          <el-link
             href="https://next.antdv.com/components/anchor-cn"
             target="_blank"
             style="font-size: 16px; margin: 0 4px 5px"
-            >Anchor</el-link
-          >写法</span
-        >
+          >
+            Anchor
+          </el-link>
+          写法
+        </span>
       </div>
     </template>
     <div class="w-400px">

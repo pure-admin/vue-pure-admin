@@ -122,19 +122,25 @@ const onLoadData = treeNode => {
   <el-card>
     <template #header>
       <div class="card-header">
-        <span class="font-medium"
-          >仿antdv树选择，采用<el-link
+        <span class="font-medium">
+          仿antdv树选择，采用
+          <el-link
             href="https://www.npmjs.com/package/@pureadmin/components"
             target="_blank"
             style="font-size: 16px; margin: 0 4px 5px"
-            >@pureadmin/components</el-link
-          >，完全兼容antdv的<el-link
+          >
+            @pureadmin/components
+          </el-link>
+          ，完全兼容antdv的
+          <el-link
             href="https://next.antdv.com/components/tree-select-cn"
             target="_blank"
             style="font-size: 16px; margin: 0 4px 5px"
-            >TreeSelect</el-link
-          >写法</span
-        >
+          >
+            TreeSelect
+          </el-link>
+          写法
+        </span>
       </div>
     </template>
     <div class="flex justify-around flex-wrap">
@@ -171,9 +177,9 @@ const onLoadData = treeNode => {
           :max-tag-count="10"
         >
           <template #title="{ title, value }">
-            <span v-if="value === '0-0-1-0'" style="color: #1890ff">{{
-              title
-            }}</span>
+            <span v-if="value === '0-0-1-0'" style="color: #1890ff">
+              {{ title }}
+            </span>
             <template v-else>{{ title }}</template>
           </template>
         </TreeSelect>

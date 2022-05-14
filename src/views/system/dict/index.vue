@@ -217,24 +217,23 @@ function handleClose() {
         />
       </template>
       <template #tools>
-        <vxe-button
-          icon="fa fa-plus-square-o"
-          status="primary"
-          @click="onAdd"
-          >{{ t("buttons.hsadd") }}</vxe-button
-        >
+        <vxe-button icon="fa fa-plus-square-o" status="primary" @click="onAdd">
+          {{ t("buttons.hsadd") }}
+        </vxe-button>
         <vxe-button
           icon="fa fa-folder-open-o"
           status="primary"
           @click="$refs.xTree.setAllTreeExpand(true)"
-          >{{ t("buttons.hsexpendAll") }}</vxe-button
         >
+          {{ t("buttons.hsexpendAll") }}
+        </vxe-button>
         <vxe-button
           icon="fa fa-folder-o"
           status="primary"
           @click="$refs.xTree.clearTreeExpand()"
-          >{{ t("buttons.hscollapseAll") }}</vxe-button
         >
+          {{ t("buttons.hscollapseAll") }}
+        </vxe-button>
       </template>
     </vxe-toolbar>
 
@@ -269,24 +268,27 @@ function handleClose() {
             type="text"
             icon="fa fa-pencil-square-o"
             @click="onEdit(row)"
-            >编辑</vxe-button
           >
+            编辑
+          </vxe-button>
           <vxe-button
             type="text"
             icon="fa fa-plus-square-o"
             @click="onAddChild(row)"
-            >新增子类型</vxe-button
           >
+            新增子类型
+          </vxe-button>
           <vxe-button
             v-show="row.model"
             type="text"
             icon="fa fa-cog"
             @click="onDeploy(row)"
-            >字典配置</vxe-button
           >
-          <vxe-button type="text" icon="fa fa-trash-o" @click="confirmEvent"
-            >删除</vxe-button
-          >
+            字典配置
+          </vxe-button>
+          <vxe-button type="text" icon="fa fa-trash-o" @click="confirmEvent">
+            删除
+          </vxe-button>
         </template>
       </vxe-table-column>
     </vxe-table>

@@ -36,12 +36,13 @@ const handleChange = value => {
           <div class="leading-10">
             <div>绑定值：{{ selectedOptions1 }}</div>
             <div>
-              区域码转汉字：{{ CodeToText[selectedOptions1[0]] }},{{
-                CodeToText[selectedOptions1[1]]
-              }}
+              区域码转汉字：
+              {{ CodeToText[selectedOptions1[0]] }},
+              {{ CodeToText[selectedOptions1[1]] }}
             </div>
             <div>
-              汉字转区域码：{{
+              汉字转区域码：
+              {{
                 convertTextToCode(
                   CodeToText[selectedOptions1[0]],
                   CodeToText[selectedOptions1[1]]
@@ -64,12 +65,13 @@ const handleChange = value => {
           <div class="leading-10">
             <div>绑定值：{{ selectedOptions3 }}</div>
             <div>
-              区域码转汉字：{{ CodeToText[selectedOptions3[0]] }},{{
-                CodeToText[selectedOptions3[1]]
-              }}
+              区域码转汉字：
+              {{ CodeToText[selectedOptions3[0]] }},
+              {{ CodeToText[selectedOptions3[1]] }}
             </div>
             <div>
-              汉字转区域码：{{
+              汉字转区域码：
+              {{
                 convertTextToCode(
                   CodeToText[selectedOptions3[0]],
                   CodeToText[selectedOptions3[1]]
@@ -92,12 +94,14 @@ const handleChange = value => {
           <div class="leading-10">
             <div>绑定值：{{ selectedOptions2 }}</div>
             <div>
-              区域码转汉字：{{ CodeToText[selectedOptions2[0]] }},{{
-                CodeToText[selectedOptions2[1]]
-              }},{{ CodeToText[selectedOptions2[2]] }}
+              区域码转汉字：
+              {{ CodeToText[selectedOptions2[0]] }},
+              {{ CodeToText[selectedOptions2[1]] }},
+              {{ CodeToText[selectedOptions2[2]] }}
             </div>
             <div>
-              汉字转区域码：{{
+              汉字转区域码：
+              {{
                 convertTextToCode(
                   CodeToText[selectedOptions2[0]],
                   CodeToText[selectedOptions2[1]],
@@ -121,12 +125,14 @@ const handleChange = value => {
           <div class="leading-10">
             <div>绑定值：{{ selectedOptions4 }}</div>
             <div>
-              区域码转汉字：{{ CodeToText[selectedOptions4[0]] }},{{
-                CodeToText[selectedOptions4[1]]
-              }},{{ CodeToText[selectedOptions4[2]] }}
+              区域码转汉字：
+              {{ CodeToText[selectedOptions4[0]] }},
+              {{ CodeToText[selectedOptions4[1]] }},
+              {{ CodeToText[selectedOptions4[2]] }}
             </div>
             <div>
-              汉字转区域码：{{
+              汉字转区域码：
+              {{
                 convertTextToCode(
                   CodeToText[selectedOptions4[0]],
                   CodeToText[selectedOptions4[1]],

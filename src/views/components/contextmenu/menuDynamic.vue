@@ -7,20 +7,21 @@
 
     <v-contextmenu ref="contextmenu">
       <v-contextmenu-group title="操作">
-        <v-contextmenu-item :hide-on-click="false" @click="extra.push('item')"
-          >添加菜单</v-contextmenu-item
-        >
-        <v-contextmenu-item :hide-on-click="false" @click="extra.push('group')"
-          >添加菜单组</v-contextmenu-item
-        >
+        <v-contextmenu-item :hide-on-click="false" @click="extra.push('item')">
+          添加菜单
+        </v-contextmenu-item>
+        <v-contextmenu-item :hide-on-click="false" @click="extra.push('group')">
+          添加菜单组
+        </v-contextmenu-item>
         <v-contextmenu-item
           :hide-on-click="false"
           @click="extra.push('submenu')"
-          >添加子菜单</v-contextmenu-item
         >
-        <v-contextmenu-item :hide-on-click="false" @click="extra.pop()"
-          >删除</v-contextmenu-item
-        >
+          添加子菜单
+        </v-contextmenu-item>
+        <v-contextmenu-item :hide-on-click="false" @click="extra.pop()">
+          删除
+        </v-contextmenu-item>
       </v-contextmenu-group>
 
       <template v-for="(item, index) of extra" :key="index">

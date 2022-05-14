@@ -70,11 +70,11 @@ Object.keys(devDependencies).forEach(key => {
           </a>
         </el-descriptions-item>
         <el-descriptions-item label="QQ交流群" label-align="left" align="left">
-          <a href="https://jq.qq.com/?_wv=1027&k=HntMx0dt" target="_blank"
-            ><span style="color: var(--el-color-primary)"
-              >点击链接加入群聊【Pure Admin】</span
-            ></a
-          >
+          <a href="https://jq.qq.com/?_wv=1027&k=HntMx0dt" target="_blank">
+            <span style="color: var(--el-color-primary)">
+              点击链接加入群聊【Pure Admin】
+            </span>
+          </a>
         </el-descriptions-item>
       </el-descriptions>
     </el-card>

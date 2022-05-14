@@ -35,13 +35,15 @@
             href="javascript:void(0);"
             class="flex items-center"
             style="color: var(--el-color-primary)"
-            >立即解冻
+          >
+            立即解冻
             <IconifyIconOffline
               icon="arrow-right-s-line"
               color="var(--el-color-primary)"
               width="18px"
               height="18px"
-          /></a>
+            />
+          </a>
         </span>
       </el-descriptions-item>
       <el-descriptions-item>
@@ -57,13 +59,15 @@
             href="javascript:void(0);"
             class="flex items-center"
             style="color: var(--el-color-primary)"
-            >立即升级
+          >
+            立即升级
             <IconifyIconOffline
               icon="arrow-right-s-line"
               color="var(--el-color-primary)"
               width="18px"
               height="18px"
-          /></a>
+            />
+          </a>
         </span>
       </el-descriptions-item>
     </el-descriptions>

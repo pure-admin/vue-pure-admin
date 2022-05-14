@@ -55,8 +55,9 @@ import noServer from "/@/assets/status/500.svg?component";
             delay: 500
           }
         }"
-        >返回首页</el-button
       >
+        返回首页
+      </el-button>
     </div>
   </div>
 </template>

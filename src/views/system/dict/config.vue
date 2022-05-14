@@ -106,14 +106,16 @@ const checkboxChangeEvent: VxeTableEvents.CheckboxChange = ({ records }) => {
                 type="text"
                 icon="fa fa-pencil-square-o"
                 @click="editConfig(row)"
-                >编辑</vxe-button
               >
+                编辑
+              </vxe-button>
               <vxe-button
                 type="text"
                 icon="fa fa-trash-o"
                 @click="delConfig(row)"
-                >删除</vxe-button
               >
+                删除
+              </vxe-button>
             </template>
           </vxe-table-column>
         </vxe-table>
@@ -140,9 +142,9 @@ const checkboxChangeEvent: VxeTableEvents.CheckboxChange = ({ records }) => {
                 :indeterminate="configData.isIndeterminate"
                 @change="changeAllEvent"
               />
-              <span class="select-count"
-                >已选中{{ configData.selectRecords.length }}条</span
-              >
+              <span class="select-count">
+                已选中{{ configData.selectRecords.length }}条
+              </span>
               <vxe-button size="small">{{ t("buttons.hsdelete") }}</vxe-button>
             </span>
           </template>

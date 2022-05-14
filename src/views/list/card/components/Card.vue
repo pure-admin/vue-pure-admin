@@ -73,12 +73,12 @@ const cardLogoClass = computed(() => [
             <IconifyIconOffline icon="more-vertical" class="icon-more" />
             <template #dropdown>
               <el-dropdown-menu :disabled="!product.isSetup">
-                <el-dropdown-item @click="handleClickManage(product)"
-                  >管理</el-dropdown-item
-                >
-                <el-dropdown-item @click="handleClickDelete(product)"
-                  >删除</el-dropdown-item
-                >
+                <el-dropdown-item @click="handleClickManage(product)">
+                  管理
+                </el-dropdown-item>
+                <el-dropdown-item @click="handleClickDelete(product)">
+                  删除
+                </el-dropdown-item>
               </el-dropdown-menu>
             </template>
           </el-dropdown>

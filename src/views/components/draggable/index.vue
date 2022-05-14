@@ -51,15 +51,17 @@ onMounted(() => {
   <el-card>
     <template #header>
       <div class="card-header">
-        <span
-          >拖拽组件，采用开源的<el-link
+        <span>
+          拖拽组件，采用开源的
+          <el-link
             href="https://sortablejs.github.io/vue.draggable.next/#/simple"
             target="_blank"
             :icon="useRenderIcon('rank')"
             style="font-size: 16px; margin: 0 4px 5px"
-            >vuedraggable</el-link
-          ></span
-        >
+          >
+            vuedraggable
+          </el-link>
+        </span>
       </div>
     </template>
     <div class="drag-container">

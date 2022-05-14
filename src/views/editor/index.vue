@@ -24,7 +24,7 @@ onMounted(() => {
   }, 1500);
 });
 
-const toolbarConfig = { excludeKeys: "fullScreen" };
+const toolbarConfig: any = { excludeKeys: "fullScreen" };
 const editorConfig = { placeholder: "请输入内容..." };
 
 // 组件销毁时，也及时销毁编辑器
@@ -43,14 +43,16 @@ const handleCreated = editor => {
   <el-card>
     <template #header>
       <div class="card-header">
-        <span class="font-medium"
-          >编辑器组件，采用开源的<el-link
+        <span class="font-medium">
+          编辑器组件，采用开源的
+          <el-link
             href="https://www.wangeditor.com"
             target="_blank"
             :icon="useRenderIcon('edit')"
             style="font-size: 16px; margin: 0 4px 5px"
-            >wangeditor</el-link
-          ></span
+          >
+            wangeditor
+          </el-link></span
         >
       </div>
     </template>

@@ -48,16 +48,18 @@ const filterMethod = (query: string, node: treeNode) => {
   <el-card>
     <template #header>
       <div class="card-header">
-        <span class="font-medium"
-          >菜单树结构（采用element-plus的
+        <span class="font-medium">
+          菜单树结构（采用element-plus的
           <el-link
             href="https://element-plus.gitee.io/zh-CN/component/tree-v2.html"
             target="_blank"
             :icon="useRenderIcon('node-tree')"
             style="font-size: 16px; margin: 0 5px 4px 0"
-            >Tree V2</el-link
-          >组件并支持国际化）</span
-        >
+          >
+            Tree V2
+          </el-link>
+          组件并支持国际化）
+        </span>
       </div>
     </template>
     <el-input

@@ -29,14 +29,16 @@ onMounted(() => {
   <el-card>
     <template #header>
       <div class="card-header">
-        <span class="font-medium"
-          >视频组件，采用开源的<el-link
+        <span class="font-medium">
+          视频组件，采用开源的
+          <el-link
             href="https://v2.h5player.bytedance.com"
             target="_blank"
             :icon="useRenderIcon('video-play')"
             style="font-size: 16px; margin: 0 4px 5px"
-            >西瓜播放器</el-link
-          ></span
+          >
+            西瓜播放器
+          </el-link></span
         >
       </div>
     </template>

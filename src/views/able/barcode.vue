@@ -30,12 +30,15 @@ const barcodes = [
     <el-card>
       <template #header>
         <div class="font-medium">
-          条形码（基于<el-link
+          条形码（基于
+          <el-link
             href="https://lindell.me/JsBarcode/"
             target="_blank"
             style="font-size: 16px; margin: 0 5px 4px 0"
-            >JsBarcode</el-link
-          >生成）
+          >
+            JsBarcode
+          </el-link>
+          生成）
         </div>
       </template>
       <el-row :gutter="12">

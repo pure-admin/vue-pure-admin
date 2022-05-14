@@ -139,9 +139,9 @@ const rules = {
     </el-form>
     <template #footer>
       <el-button @click="closeDialog">取消</el-button>
-      <el-button type="primary" @click="submitForm(ruleFormRef)"
-        >确定</el-button
-      >
+      <el-button type="primary" @click="submitForm(ruleFormRef)">
+        确定
+      </el-button>
     </template>
   </el-dialog>
 </template>

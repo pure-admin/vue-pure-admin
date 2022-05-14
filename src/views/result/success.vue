@@ -47,7 +47,8 @@ const { lastBuildTime } = __APP_INFO__;
                 aria-label="dingding"
                 class="anticon anticon-dingding cursor-pointer flex items-center cursor-pointer"
                 style="color: rgb(0, 160, 233); margin-left: 8px"
-                ><svg
+              >
+                <svg
                   viewBox="64 64 896 896"
                   focusable="false"
                   data-icon="dingding"
