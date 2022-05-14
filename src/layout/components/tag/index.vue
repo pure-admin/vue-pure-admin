@@ -22,6 +22,7 @@ import closeRight from "/@/assets/svg/close_right.svg?component";
 
 import { useI18n } from "vue-i18n";
 import { emitter } from "/@/utils/mitt";
+import { routerArrays } from "/@/layout/types";
 import { storageLocal } from "/@/utils/storage";
 import { useRoute, useRouter } from "vue-router";
 import { isEqual, isEmpty } from "lodash-unified";
@@ -313,17 +314,7 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
     other?: boolean
   ): void => {
     if (other) {
-      useMultiTagsStoreHook().handleTags("equal", [
-        {
-          path: "/welcome",
-          parentPath: "/",
-          meta: {
-            title: "menus.hshome",
-            icon: "home-filled"
-          }
-        },
-        obj
-      ]);
+      useMultiTagsStoreHook().handleTags("equal", [routerArrays[0], obj]);
     } else {
       // @ts-ignore
       delAliveRouteList = useMultiTagsStoreHook().handleTags("splice", "", {

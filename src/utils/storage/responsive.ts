@@ -1,6 +1,7 @@
 // 响应式storage
 import { App } from "vue";
 import Storage from "responsive-storage";
+import { routerArrays } from "/@/layout/types";
 
 export const injectResponsiveStorage = (app: App, config: ServerConfigs) => {
   const configObj = Object.assign(
@@ -40,16 +41,7 @@ export const injectResponsiveStorage = (app: App, config: ServerConfigs) => {
           // 默认显示首页tag
           tags: {
             type: Array,
-            default: Storage.getData(undefined, "tags") ?? [
-              {
-                path: "/welcome",
-                parentPath: "/",
-                meta: {
-                  title: "menus.hshome",
-                  icon: "home-filled"
-                }
-              }
-            ]
+            default: Storage.getData(undefined, "tags") ?? routerArrays
           }
         }
       : {}

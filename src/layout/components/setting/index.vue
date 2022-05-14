@@ -17,6 +17,7 @@ import { emitter } from "/@/utils/mitt";
 import { templateRef } from "@vueuse/core";
 import { debounce } from "/@/utils/debounce";
 import { themeColorsType } from "../../types";
+import { routerArrays } from "/@/layout/types";
 import { useAppStoreHook } from "/@/store/modules/app";
 import { shadeBgColor } from "../../theme/element-plus";
 import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
@@ -151,16 +152,7 @@ function onReset() {
   useMultiTagsStoreHook().multiTagsCacheChange(MultiTagsCache);
   toggleClass(Grey, "html-grey", document.querySelector("html"));
   toggleClass(Weak, "html-weakness", document.querySelector("html"));
-  useMultiTagsStoreHook().handleTags("equal", [
-    {
-      path: "/welcome",
-      parentPath: "/",
-      meta: {
-        title: "menus.hshome",
-        icon: "home-filled"
-      }
-    }
-  ]);
+  useMultiTagsStoreHook().handleTags("equal", routerArrays);
   storageLocal.clear();
   storageSession.clear();
 }
