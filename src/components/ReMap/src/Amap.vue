@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import AMapLoader from "@amap/amap-jsapi-loader";
 import { reactive, getCurrentInstance, onBeforeMount, onUnmounted } from "vue";
-import { mapJson } from "/@/api/mock";
 import { deviceDetection } from "/@/utils/deviceDetection";
+import AMapLoader from "@amap/amap-jsapi-loader";
+import { mapJson } from "/@/api/mock";
 import car from "/@/assets/car.png";
 
 export interface MapConfigureInter {

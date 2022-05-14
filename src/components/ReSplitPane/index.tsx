@@ -8,6 +8,7 @@ export interface ContextProps {
   split: string;
 }
 
+/** 切割面板组件 */
 export default defineComponent({
   name: "splitPane",
   components: { resizer },

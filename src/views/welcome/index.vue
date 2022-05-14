@@ -1,11 +1,5 @@
 <script setup lang="ts">
-import {
-  ReGithub,
-  ReInfinite,
-  RePie,
-  ReLine,
-  ReBar
-} from "/@/components/ReCharts/index";
+import { ReGithub, ReInfinite, RePie, ReLine, ReBar } from "./components";
 import { ref, computed } from "vue";
 import avatars from "/@/assets/avatars.jpg";
 

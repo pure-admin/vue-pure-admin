@@ -1,16 +1,15 @@
 import iconifyIconOffline from "./src/iconifyIconOffline";
 import iconifyIconOnline from "./src/iconifyIconOnline";
+import iconSelect from "./src/Select.vue";
 import fontIcon from "./src/iconfont";
-import iconSelect from "./src/select.vue";
 
-export const IconifyIconOffline = iconifyIconOffline;
-export const IconifyIconOnline = iconifyIconOnline;
-export const FontIcon = fontIcon;
-export const IconSelect = iconSelect;
+/** 离线图标组件 */
+const IconifyIconOffline = iconifyIconOffline;
+/** 在线图标组件 */
+const IconifyIconOnline = iconifyIconOnline;
+/** 图标选择器组件 */
+const IconSelect = iconSelect;
+/** iconfont组件 */
+const FontIcon = fontIcon;
 
-export default {
-  IconifyIconOffline,
-  IconifyIconOnline,
-  FontIcon,
-  IconSelect
-};
+export { IconifyIconOffline, IconifyIconOnline, IconSelect, FontIcon };

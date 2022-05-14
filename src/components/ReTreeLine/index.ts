@@ -9,6 +9,7 @@ import type {
   TreeNodeData
 } from "element-plus/es/components/tree-v2/src/types";
 
+/** 树形连接线组件 */
 export default defineComponent({
   name: "el-tree-line",
   props: {

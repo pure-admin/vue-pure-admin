@@ -2,7 +2,7 @@
 import Print from "/@/utils/print";
 import { reactive, ref } from "vue";
 import { VxeTablePropTypes } from "vxe-table";
-import { ReLine } from "/@/components/ReCharts/index";
+import { ReLine } from "../welcome/components";
 
 interface User {
   date: string;
