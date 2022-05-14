@@ -172,9 +172,9 @@ function resolvePath(routePath) {
       </div>
       <template #title>
         <div :style="getDivStyle">
-          <span v-if="!menuMode">{{
-            transformI18n(onlyOneChild.meta.title)
-          }}</span>
+          <span v-if="!menuMode">
+            {{ transformI18n(onlyOneChild.meta.title) }}
+          </span>
           <el-tooltip
             v-else
             placement="top"

@@ -652,8 +652,8 @@ const getContextMenuStyle = computed((): CSSProperties => {
           @mouseleave.prevent="onMouseleave(index)"
           @click="tagOnClick(item)"
         >
-          <router-link :to="item.path"
-            >{{ transformI18n(item.meta.title) }}
+          <router-link :to="item.path">
+            {{ transformI18n(item.meta.title) }}
           </router-link>
           <span
             v-if="

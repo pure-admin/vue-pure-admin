@@ -234,7 +234,8 @@ const layoutHeader = defineComponent({
         <el-backtop
           title="回到顶部"
           target=".main-container .el-scrollbar__wrap"
-          ><backTop />
+        >
+          <backTop />
         </el-backtop>
         <layout-header />
         <!-- 主体内容 -->

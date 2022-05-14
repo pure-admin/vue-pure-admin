@@ -104,8 +104,9 @@ const handleLink = (item: RouteLocationMatched): any => {
         <span
           v-if="item.redirect === 'noRedirect' || index == levelList.length - 1"
           class="no-redirect"
-          >{{ transformI18n(item.meta.title) }}</span
         >
+          {{ transformI18n(item.meta.title) }}
+        </span>
         <a v-else @click.prevent="handleLink(item)">
           {{ transformI18n(item.meta.title) }}
         </a>

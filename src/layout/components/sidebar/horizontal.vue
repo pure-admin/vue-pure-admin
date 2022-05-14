@@ -109,17 +109,19 @@ function translationEn() {
               @click="translationCh"
             >
               <span class="check-zh" v-show="locale === 'zh'">
-                <IconifyIconOffline icon="check" /> </span
-              >简体中文
+                <IconifyIconOffline icon="check" />
+              </span>
+              简体中文
             </el-dropdown-item>
             <el-dropdown-item
               :style="getDropdownItemStyle(locale, 'en')"
               @click="translationEn"
             >
               <span class="check-en" v-show="locale === 'en'">
-                <IconifyIconOffline icon="check" /> </span
-              >English</el-dropdown-item
-            >
+                <IconifyIconOffline icon="check" />
+              </span>
+              English
+            </el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -136,8 +138,8 @@ function translationEn() {
                 icon="logout-circle-r-line"
                 style="margin: 5px"
               />
-              {{ t("buttons.hsLoginOut") }}</el-dropdown-item
-            >
+              {{ t("buttons.hsLoginOut") }}
+            </el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>

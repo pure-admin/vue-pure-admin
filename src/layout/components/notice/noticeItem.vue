@@ -72,7 +72,8 @@ function hoverDescription(event, description) {
           :type="props.noticeItem?.status"
           size="small"
           class="notice-title-extra"
-          >{{ props.noticeItem?.extra }}
+        >
+          {{ props.noticeItem?.extra }}
         </el-tag>
       </div>
 
