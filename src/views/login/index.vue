@@ -89,7 +89,6 @@ watch(imgCode, value => {
             <el-form-item prop="username">
               <el-input
                 clearable
-                :input-style="{ 'user-select': 'none' }"
                 v-model="ruleForm.username"
                 placeholder="账号"
                 :prefix-icon="useRenderIcon('user')"
@@ -101,7 +100,6 @@ watch(imgCode, value => {
             <el-form-item prop="password">
               <el-input
                 clearable
-                :input-style="{ 'user-select': 'none' }"
                 show-password
                 v-model="ruleForm.password"
                 placeholder="密码"
@@ -114,7 +112,6 @@ watch(imgCode, value => {
             <el-form-item prop="verifyCode">
               <el-input
                 clearable
-                :input-style="{ 'user-select': 'none' }"
                 v-model="ruleForm.verifyCode"
                 placeholder="验证码"
               >
