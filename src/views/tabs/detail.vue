@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import { useRoute } from "vue-router";
-const route = useRoute();
-const index = route.query?.id ?? -1;
+import { useDetail } from "./hooks";
+const { initToDetail, id } = useDetail();
+initToDetail();
 </script>
 
 <template>
-  <div>{{ index }} - 详情页内容在此</div>
+  <div>{{ id }} - 详情页内容在此</div>
 </template>
-
-<style lang="scss" scoped></style>

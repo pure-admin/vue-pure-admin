@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import { transformI18n } from "/@/plugins/i18n";
-import { useRouter, useRoute } from "vue-router";
 import { TreeSelect } from "@pureadmin/components";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
-
+import { usePermissionStoreHook } from "/@/store/modules/permission";
 import {
   deleteChildren,
   appendFieldByUniqueId,
   getNodeByUniqueId
 } from "/@/utils/tree";
-import { usePermissionStoreHook } from "/@/store/modules/permission";
+import { useDetail } from "./hooks";
+const { toDetail } = useDetail();
 
 let treeData = computed(() => {
   return appendFieldByUniqueId(
@@ -20,25 +20,7 @@ let treeData = computed(() => {
   );
 });
 
-const route = useRoute();
-const router = useRouter();
-
 const value = ref<string[]>([]);
-
-function toDetail(index: number) {
-  useMultiTagsStoreHook().handleTags("push", {
-    path: `/tabs/detail`,
-    parentPath: route.matched[0].path,
-    name: "tabDetail",
-    query: { id: String(index) },
-    meta: {
-      title: { zh: `No.${index} - 详情信息`, en: `No.${index} - DetailInfo` },
-      showLink: false,
-      dynamicLevel: 3
-    }
-  });
-  router.push({ name: "tabDetail", query: { id: String(index) } });
-}
 
 function onCloseTags() {
   value.value.forEach(uniqueId => {
