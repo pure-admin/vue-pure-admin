@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { useI18n } from "vue-i18n";
+import { transformI18n } from "/@/plugins/i18n";
 import ElTreeLine from "/@/components/ReTreeLine";
 import { extractPathList, deleteChildren } from "/@/utils/tree";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
-const { t } = useI18n();
 
 let menusData = computed(() => {
   return deleteChildren(usePermissionStoreHook().menusTree);
@@ -45,7 +44,9 @@ let dataProps = {
               ><template v-slot:default="{ node }">
                 <el-tree-line :node="node" :showLabelLine="true">
                   <template v-slot:node-label>
-                    <span class="text-sm">{{ t(node.data.meta.title) }}</span>
+                    <span class="text-sm">
+                      {{ transformI18n(node.data.meta.title) }}
+                    </span>
                   </template>
                 </el-tree-line>
               </template>
@@ -77,7 +78,9 @@ let dataProps = {
                   :indent="30"
                 >
                   <template v-slot:node-label>
-                    <span class="text-sm">{{ t(node.data.meta.title) }}</span>
+                    <span class="text-sm">
+                      {{ transformI18n(node.data.meta.title) }}
+                    </span>
                   </template>
                 </el-tree-line>
               </template>

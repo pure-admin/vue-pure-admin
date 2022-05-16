@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
 import { ref, computed } from "vue";
+import { transformI18n } from "/@/plugins/i18n";
 import { useRouter, useRoute } from "vue-router";
 import { TreeSelect } from "@pureadmin/components";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
@@ -20,7 +20,6 @@ let treeData = computed(() => {
   );
 });
 
-const { t } = useI18n();
 const route = useRoute();
 const router = useRouter();
 
@@ -78,12 +77,12 @@ function onCloseTags() {
     >
       <template #tagRender="{ closable, onClose, option }">
         <el-tag class="mr-3px" :closable="closable" @close="onClose">
-          {{ t(option.meta.title) }}
+          {{ transformI18n(option.meta.title) }}
         </el-tag>
       </template>
 
       <template #title="{ data }">
-        <span>{{ t(data.meta.title) }}</span>
+        <span>{{ transformI18n(data.meta.title) }}</span>
       </template>
     </TreeSelect>
     <el-button class="ml-2" @click="onCloseTags">关闭标签</el-button>
