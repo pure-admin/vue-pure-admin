@@ -1,7 +1,6 @@
-import { emitter } from "/@/utils/mitt";
-import { IconifyIconOffline } from "../../ReIcon";
 import { defineComponent, ref, computed, PropType } from "vue";
 import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
+import { IconifyIconOffline } from "../../ReIcon";
 
 export const loadingSvg = `
   <path class="path" d="
@@ -50,7 +49,6 @@ export default defineComponent({
   setup(props, { emit, slots, attrs }) {
     const buttonRef = ref();
     const checkList = ref([]);
-    const currentWidth = ref(0);
     const size = ref("default");
     const isExpandAll = ref(true);
 
@@ -77,12 +75,6 @@ export default defineComponent({
         }
       });
     }
-
-    // 监听容器
-    emitter.on("resize", ({ detail }) => {
-      const { width } = detail;
-      currentWidth.value = width;
-    });
 
     const dropdown = {
       dropdown: () => (
@@ -131,9 +123,7 @@ export default defineComponent({
           element-loading-svg-view-box="-10, -10, 50, 50"
         >
           <div class="flex justify-between w-full h-60px p-4">
-            <p class="font-bold">
-              {currentWidth.value > 390 ? props.title : "列表"}
-            </p>
+            <p class="font-bold truncate">{props.title}</p>
             <div class="flex items-center justify-around">
               <div class="flex mr-4">{slots?.buttons()}</div>
               {props.tableRef?.size ? (
