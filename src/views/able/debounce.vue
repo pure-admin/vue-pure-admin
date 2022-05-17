@@ -28,7 +28,7 @@ const throttleClick = useThrottleFn(handle, 1000, false);
         秒内又触发了事件，则会重新计算函数执行时间。
       </div>
       <el-button @click="immediateDebounce">
-        连续点击我，只会执行最后一次点击事件，立即执行
+        连续点击我，只会执行第一次点击事件，立即执行
       </el-button>
       <el-button @click="debounceClick">
         连续点击我，只会执行最后一次点击事件，延后执行
