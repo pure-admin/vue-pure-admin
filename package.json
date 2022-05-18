@@ -88,7 +88,7 @@
     "@iconify-icons/uil": "^1.2.1",
     "@iconify/vue": "^3.2.1",
     "@intlify/vite-plugin-vue-i18n": "^3.4.0",
-    "@pureadmin/theme": "^1.1.0",
+    "@pureadmin/theme": "^2.0.0",
     "@types/element-resize-detector": "1.1.3",
     "@types/js-cookie": "^3.0.1",
     "@types/lodash": "^4.14.180",
