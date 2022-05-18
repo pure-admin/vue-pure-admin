@@ -1,6 +1,6 @@
 import { iconType } from "./types";
 import { h, defineComponent, Component } from "vue";
-import { IconifyIconOffline, FontIcon } from "../index";
+import { IconifyIconOnline, IconifyIconOffline, FontIcon } from "../index";
 
 /**
  * 支持fontawesome4、5+、iconfont、remixicon、element-plus的icons、自定义svg
@@ -37,7 +37,9 @@ export function useRenderIcon(icon: string, attrs?: iconType): Component {
     return defineComponent({
       name: "Icon",
       render() {
-        return h(IconifyIconOffline, {
+        const IconifyIcon =
+          attrs && attrs["online"] ? IconifyIconOnline : IconifyIconOffline;
+        return h(IconifyIcon, {
           icon: icon,
           ...attrs
         });

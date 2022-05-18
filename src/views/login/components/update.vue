@@ -80,6 +80,9 @@ function onBack() {
             clearable
             v-model="ruleForm.verifyCode"
             placeholder="短信验证码"
+            :prefix-icon="
+              useRenderIcon('ri:shield-keyhole-line', { online: true })
+            "
           />
           <el-button
             :disabled="isDisabled"

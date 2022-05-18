@@ -11,7 +11,9 @@ export interface iconType {
   horizontalAlign?: boolean;
   verticalAlign?: boolean;
   align?: string;
+  online?: boolean;
   onLoad?: Function;
+  includes?: Function;
 
   //  all icon
   style?: object;
