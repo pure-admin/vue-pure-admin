@@ -5,6 +5,7 @@ specifiers:
   "@commitlint/cli": 13.1.0
   "@commitlint/config-conventional": 13.1.0
   "@ctrl/tinycolor": ^3.4.1
+  "@faker-js/faker": ^6.3.1
   "@iconify-icons/carbon": ^1.2.4
   "@iconify-icons/ep": ^1.2.4
   "@iconify-icons/fa": ^1.2.2
@@ -105,6 +106,7 @@ specifiers:
   vue-json-pretty: ^2.0.2
   vue-router: ^4.0.15
   vue-types: ^4.1.1
+  vue-virtual-scroller: ^2.0.0-alpha.1
   vuedraggable: 4.1.0
   vxe-table: ^4.2.3
   xe-utils: ^3.5.4
@@ -154,6 +156,7 @@ dependencies:
   vue-json-pretty: 2.0.6_vue@3.2.33
   vue-router: 4.0.15_vue@3.2.33
   vue-types: 4.1.1_vue@3.2.33
+  vue-virtual-scroller: 2.0.0-alpha.1_vue@3.2.33
   vuedraggable: 4.1.0_vue@3.2.33
   vxe-table: 4.2.3_vue@3.2.33+xe-utils@3.5.4
   xe-utils: 3.5.4
@@ -162,6 +165,7 @@ dependencies:
 devDependencies:
   "@commitlint/cli": 13.1.0
   "@commitlint/config-conventional": 13.1.0
+  "@faker-js/faker": 6.3.1
   "@iconify-icons/carbon": 1.2.5
   "@iconify-icons/ep": 1.2.4
   "@iconify-icons/fa": 1.2.2
@@ -936,6 +940,14 @@ packages:
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /@faker-js/faker/6.3.1:
+    resolution:
+      {
+        integrity: sha512-8YXBE2ZcU/pImVOHX7MWrSR/X5up7t6rPWZlk34RwZEcdr3ua6X+32pSd6XuOQRN+vbuvYNfA6iey8NbrjuMFQ==
+      }
+    engines: { node: ">=14.0.0", npm: ">=6.0.0" }
     dev: true
 
   /@floating-ui/core/0.6.2:
@@ -5989,6 +6001,13 @@ packages:
       kind-of: 6.0.3
     dev: true
 
+  /mitt/2.1.0:
+    resolution:
+      {
+        integrity: sha512-ILj2TpLiysu2wkBbWjAmww7TkZb65aiQO+DkVdUTBpBXq+MHYiETENkKFMtsJZX1Lf4pe4QOrTSjIfUwN5lRdg==
+      }
+    dev: false
+
   /mitt/3.0.0:
     resolution:
       {
@@ -8471,6 +8490,28 @@ packages:
       vue: 3.2.33
     dev: false
 
+  /vue-observe-visibility/2.0.0-alpha.1_vue@3.2.33:
+    resolution:
+      {
+        integrity: sha512-flFbp/gs9pZniXR6fans8smv1kDScJ8RS7rEpMjhVabiKeq7Qz3D9+eGsypncjfIyyU84saU88XZ0zjbD6Gq/g==
+      }
+    peerDependencies:
+      vue: ^3.0.0
+    dependencies:
+      vue: 3.2.33
+    dev: false
+
+  /vue-resize/2.0.0-alpha.1_vue@3.2.33:
+    resolution:
+      {
+        integrity: sha512-7+iqOueLU7uc9NrMfrzbG8hwMqchfVfSzpVlCMeJQe4pyibqyoifDNbKTZvwxZKDvGkB+PdFeKvnGZMoEb8esg==
+      }
+    peerDependencies:
+      vue: ^3.0.0
+    dependencies:
+      vue: 3.2.33
+    dev: false
+
   /vue-router/4.0.15_vue@3.2.33:
     resolution:
       {
@@ -8507,6 +8548,20 @@ packages:
     dependencies:
       is-plain-object: 5.0.0
       vue: 3.2.33
+    dev: false
+
+  /vue-virtual-scroller/2.0.0-alpha.1_vue@3.2.33:
+    resolution:
+      {
+        integrity: sha512-Mn5w3Qe06t7c3Imm2RHD43RACab1CCWplpdgzq+/FWJcpQtcGKd5vDep8i+nIwFtzFLsWAqEK0RzM7KrfAcBng==
+      }
+    peerDependencies:
+      vue: ^3.0.11
+    dependencies:
+      mitt: 2.1.0
+      vue: 3.2.33
+      vue-observe-visibility: 2.0.0-alpha.1_vue@3.2.33
+      vue-resize: 2.0.0-alpha.1_vue@3.2.33
     dev: false
 
   /vue/3.2.33:

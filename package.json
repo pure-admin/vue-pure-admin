@@ -70,6 +70,7 @@
     "vue-json-pretty": "^2.0.2",
     "vue-router": "^4.0.15",
     "vue-types": "^4.1.1",
+    "vue-virtual-scroller": "^2.0.0-alpha.1",
     "vuedraggable": "4.1.0",
     "vxe-table": "^4.2.3",
     "xe-utils": "^3.5.4",
@@ -78,6 +79,7 @@
   "devDependencies": {
     "@commitlint/cli": "13.1.0",
     "@commitlint/config-conventional": "13.1.0",
+    "@faker-js/faker": "^6.3.1",
     "@iconify-icons/carbon": "^1.2.4",
     "@iconify-icons/ep": "^1.2.4",
     "@iconify-icons/fa": "^1.2.2",

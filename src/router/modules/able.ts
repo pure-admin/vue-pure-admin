@@ -122,6 +122,14 @@ const ableRouter = {
       meta: {
         title: $t("menus.hsSwiper")
       }
+    },
+    {
+      path: "/able/virtualList",
+      name: "reVirtualList",
+      component: () => import("/@/views/able/virtual-list/index.vue"),
+      meta: {
+        title: $t("menus.hsVirtualList")
+      }
     }
   ]
 };
