@@ -10,7 +10,7 @@ import {
   getNodeByUniqueId
 } from "/@/utils/tree";
 import { useDetail } from "./hooks";
-const { toDetail } = useDetail();
+const { toDetail, router } = useDetail();
 
 let treeData = computed(() => {
   return appendFieldByUniqueId(
@@ -22,12 +22,20 @@ let treeData = computed(() => {
 
 const value = ref<string[]>([]);
 
+let multiTags = computed(() => {
+  return useMultiTagsStoreHook()?.multiTags;
+});
+
 function onCloseTags() {
   value.value.forEach(uniqueId => {
     let currentPath =
       getNodeByUniqueId(treeData.value, uniqueId).redirect ??
       getNodeByUniqueId(treeData.value, uniqueId).path;
     useMultiTagsStoreHook().handleTags("splice", currentPath);
+    if (currentPath === "/tabs/index")
+      router.push({
+        path: multiTags.value[multiTags.value.length - 1].path
+      });
   });
 }
 </script>
@@ -68,5 +76,17 @@ function onCloseTags() {
       </template>
     </TreeSelect>
     <el-button class="ml-2" @click="onCloseTags">关闭标签</el-button>
+    <br />
+    <p class="mt-4">
+      注意：此demo并未开启标签页缓存，如果需要在
+      <span class="text-red-500">刷新页面</span>
+      的时候同时
+      <span class="text-red-500">保留标签页的显示</span>
+      或者
+      <span class="text-red-500">保留url的参数</span>
+      ，那么就需要开启标签页持久化。
+      <br />
+      开启方式：在页面最右上角有个设置的小图标，点进去，会看到项目配置面板，找到标签页持久化开启即可。
+    </p>
   </el-card>
 </template>

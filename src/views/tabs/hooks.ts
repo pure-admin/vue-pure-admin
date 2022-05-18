@@ -28,5 +28,5 @@ export function useDetail() {
     });
   }
 
-  return { toDetail, initToDetail, id };
+  return { toDetail, initToDetail, id, router };
 }
