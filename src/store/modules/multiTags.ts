@@ -47,6 +47,7 @@ export const useMultiTagsStore = defineStore({
           {
             const tagVal = value as multiType;
             if (isUrl(tagVal?.name)) return;
+            if (tagVal?.meta?.title.length === 0) return;
             const tagPath = tagVal?.path;
             // 判断tag是否已存在
             const tagHasExits = this.multiTags.some(tag => {
