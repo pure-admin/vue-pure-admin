@@ -1,11 +1,7 @@
-import { App } from "vue";
+import { withInstall } from "/@/utils";
 import reBarcode from "./src/index.vue";
 
 /** 条形码组件 */
-export const ReBarcode = Object.assign(reBarcode, {
-  install(app: App) {
-    app.component(reBarcode.name, reBarcode);
-  }
-});
+export const ReBarcode = withInstall(reBarcode);
 
 export default ReBarcode;

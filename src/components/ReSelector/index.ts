@@ -1,11 +1,7 @@
-import { App } from "vue";
 import reSelector from "./src";
+import { withInstall } from "/@/utils";
 
 /** 选择器组件 */
-export const ReSelector = Object.assign(reSelector, {
-  install(app: App) {
-    app.component(reSelector.name, reSelector);
-  }
-});
+export const ReSelector = withInstall(reSelector);
 
 export default ReSelector;
