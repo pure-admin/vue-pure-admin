@@ -1,9 +1,3 @@
-<script lang="ts">
-export default {
-  name: "dict"
-};
-</script>
-
 <script setup lang="ts">
 import XEUtils from "xe-utils";
 import Config from "./config.vue";
@@ -22,6 +16,10 @@ type onEditNRow = {
   name: string;
   model: string;
 };
+
+defineOptions({
+  name: "Dict"
+});
 
 const { t } = useI18n();
 

@@ -1,9 +1,3 @@
-<script lang="ts">
-export default {
-  name: "reMenuTree"
-};
-</script>
-
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import type { ElTreeV2 } from "element-plus";
@@ -12,6 +6,10 @@ import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 import { extractPathList, deleteChildren } from "/@/utils/tree";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 import type { TreeNode } from "element-plus/es/components/tree-v2/src/types";
+
+defineOptions({
+  name: "MenuTree"
+});
 
 interface treeNode extends TreeNode {
   meta: {

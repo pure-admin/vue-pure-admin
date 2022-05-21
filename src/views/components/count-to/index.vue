@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import { ReNormalCountTo, ReboundCountTo } from "/@/components/ReCountTo";
+
+defineOptions({
+  name: "CountTo"
+});
 </script>
 
 <template>

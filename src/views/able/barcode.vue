@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import ReBarcode from "/@/components/ReBarcode";
 
+defineOptions({
+  name: "BarCode"
+});
+
 const barcodes = [
   {
     text: "CODE128",

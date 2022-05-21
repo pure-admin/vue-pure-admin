@@ -15,6 +15,10 @@ export interface MapConfigureInter {
   plugin?: Fn;
 }
 
+defineOptions({
+  name: "Amap"
+});
+
 type resultType = {
   info: Array<undefined>;
 };

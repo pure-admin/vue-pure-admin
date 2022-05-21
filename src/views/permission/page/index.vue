@@ -1,13 +1,11 @@
-<script lang="ts">
-export default {
-  name: "permissionPage"
-};
-</script>
-
 <script setup lang="ts">
 import { ref, unref } from "vue";
 import { storageSession } from "/@/utils/storage";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
+
+defineOptions({
+  name: "PermissionPage"
+});
 
 let purview = ref<string>(storageSession.getItem("info").username);
 

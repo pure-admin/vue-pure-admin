@@ -3,6 +3,10 @@ import { ref, nextTick, getCurrentInstance } from "vue";
 import Cropper from "/@/components/ReCropper";
 import img from "./picture.jpeg";
 
+defineOptions({
+  name: "Cropping"
+});
+
 let info = ref<object>(null);
 let cropperImg = ref<string>("");
 const instance = getCurrentInstance();

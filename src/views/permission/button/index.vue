@@ -1,12 +1,10 @@
-<script lang="ts">
-export default {
-  name: "permissionButton"
-};
-</script>
-
 <script setup lang="ts">
 import { ref } from "vue";
 import { storageSession } from "/@/utils/storage";
+
+defineOptions({
+  name: "PermissionButton"
+});
 
 const auth = ref<boolean>(storageSession.getItem("info").username || "admin");
 

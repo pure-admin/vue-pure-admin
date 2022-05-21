@@ -6,6 +6,10 @@ import type { SwiperOptions } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import SwiperCore, { Autoplay, Navigation, Pagination } from "swiper";
 
+defineOptions({
+  name: "Swiper"
+});
+
 type SwiperExampleOptions = Pick<
   SwiperOptions,
   | "navigation"

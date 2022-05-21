@@ -4,7 +4,7 @@ const Layout = () => import("/@/layout/index.vue");
 const remainingRouter = [
   {
     path: "/login",
-    name: "login",
+    name: "Login",
     component: () => import("/@/views/login/index.vue"),
     meta: {
       title: $t("menus.hslogin"),
@@ -24,7 +24,7 @@ const remainingRouter = [
     children: [
       {
         path: "/redirect/:path(.*)",
-        name: "redirect",
+        name: "Redirect",
         component: () => import("/@/layout/redirect.vue")
       }
     ]

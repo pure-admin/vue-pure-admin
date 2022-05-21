@@ -1,9 +1,3 @@
-<script lang="ts">
-export default {
-  name: "ListCard"
-};
-</script>
-
 <script setup lang="ts">
 import { getCardList } from "/@/api/list";
 import Card from "./components/Card.vue";
@@ -11,6 +5,10 @@ import { ref, onMounted, nextTick } from "vue";
 import dialogForm from "./components/DialogForm.vue";
 import { ElMessage, ElMessageBox } from "element-plus";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
+
+defineOptions({
+  name: "ListCard"
+});
 
 const svg = `
         <path class="path" d="

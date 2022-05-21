@@ -13,7 +13,7 @@ const guideRouter = {
   children: [
     {
       path: "/guide/index",
-      name: "reGuide",
+      name: "Guide",
       component: () => import("/@/views/guide/index.vue"),
       meta: {
         title: $t("menus.hsguide")

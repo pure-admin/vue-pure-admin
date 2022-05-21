@@ -3,7 +3,10 @@ import { ref, reactive, unref } from "vue";
 import { templateRef } from "@vueuse/core";
 import SeamlessScroll from "/@/components/ReSeamlessScroll";
 
-// eslint-disable-next-line no-undef
+defineOptions({
+  name: "SeamlessScroll"
+});
+
 const scroll = templateRef<ElRef | null>("scroll", null);
 
 let listData = ref([

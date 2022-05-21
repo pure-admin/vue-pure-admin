@@ -1,9 +1,3 @@
-<script lang="ts">
-export default {
-  name: "ReCard"
-};
-</script>
-
 <script setup lang="ts">
 import { computed, PropType } from "vue";
 import shopIcon from "/@/assets/svg/shop.svg?component";
@@ -18,6 +12,10 @@ export interface CardProductType {
   description: string;
   name: string;
 }
+
+defineOptions({
+  name: "ReCard"
+});
 
 const props = defineProps({
   product: {

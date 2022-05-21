@@ -13,7 +13,7 @@ const ableRouter = {
   children: [
     {
       path: "/list/card",
-      name: "listCard",
+      name: "ListCard",
       component: () => import("/@/views/list/card/index.vue"),
       meta: {
         icon: "card",

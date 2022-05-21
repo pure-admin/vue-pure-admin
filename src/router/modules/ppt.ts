@@ -13,7 +13,7 @@ const pptRouter = {
   children: [
     {
       path: "/ppt/index",
-      name: "reFrameppt",
+      name: "FramePpt",
       component: IFrame,
       meta: {
         title: "PPT",

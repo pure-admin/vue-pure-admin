@@ -13,7 +13,7 @@ const resultRouter = {
   children: [
     {
       path: "/result/success",
-      name: "reSuccess",
+      name: "Success",
       component: () => import("/@/views/result/success.vue"),
       meta: {
         title: $t("menus.hsSuccess")
@@ -21,7 +21,7 @@ const resultRouter = {
     },
     {
       path: "/result/fail",
-      name: "reFail",
+      name: "Fail",
       component: () => import("/@/views/result/fail.vue"),
       meta: {
         title: $t("menus.hsFail")

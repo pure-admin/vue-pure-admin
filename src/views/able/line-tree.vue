@@ -5,6 +5,10 @@ import ElTreeLine from "/@/components/ReTreeLine";
 import { extractPathList, deleteChildren } from "/@/utils/tree";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 
+defineOptions({
+  name: "LineTree"
+});
+
 let menusData = computed(() => {
   return deleteChildren(usePermissionStoreHook().menusTree);
 });

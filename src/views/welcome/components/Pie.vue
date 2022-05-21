@@ -1,9 +1,3 @@
-<script lang="ts">
-export default {
-  name: "Pie"
-};
-</script>
-
 <script setup lang="ts">
 import { ECharts } from "echarts";
 import echarts from "/@/plugins/echarts";

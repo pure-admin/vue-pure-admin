@@ -103,7 +103,7 @@ router.beforeEach((to: toRouteType, _from, next) => {
     const newMatched = to.matched;
     handleAliveRoute(newMatched, "add");
     // 页面整体刷新和点击标签页刷新
-    if (_from.name === undefined || _from.name === "redirect") {
+    if (_from.name === undefined || _from.name === "Redirect") {
       handleAliveRoute(newMatched);
     }
   }

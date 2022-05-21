@@ -11,6 +11,10 @@ import * as utilsMethods from "./utils";
 const { animationFrame, copyObj } = utilsMethods;
 animationFrame();
 
+defineOptions({
+  name: "ReSeamlessScroll"
+});
+
 const props = defineProps({
   data: {
     type: Array as PropType<unknown>

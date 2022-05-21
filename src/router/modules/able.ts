@@ -13,7 +13,7 @@ const ableRouter = {
   children: [
     {
       path: "/able/watermark",
-      name: "reWatermark",
+      name: "WaterMark",
       component: () => import("/@/views/able/watermark.vue"),
       meta: {
         title: $t("menus.hsWatermark")
@@ -21,7 +21,7 @@ const ableRouter = {
     },
     {
       path: "/able/print",
-      name: "rePrint",
+      name: "Print",
       component: () => import("/@/views/able/print.vue"),
       meta: {
         title: $t("menus.hsPrint")
@@ -29,7 +29,7 @@ const ableRouter = {
     },
     {
       path: "/able/iconSelect",
-      name: "reIconSelect",
+      name: "IconSelect",
       component: () => import("/@/views/able/icon-select.vue"),
       meta: {
         title: $t("menus.hsIconSelect")
@@ -37,7 +37,7 @@ const ableRouter = {
     },
     {
       path: "/able/timeline",
-      name: "reTimeline",
+      name: "TimeLine",
       component: () => import("/@/views/able/timeline.vue"),
       meta: {
         title: $t("menus.hsTimeline")
@@ -45,7 +45,7 @@ const ableRouter = {
     },
     {
       path: "/able/menuTree",
-      name: "reMenuTree",
+      name: "MenuTree",
       component: () => import("/@/views/able/menu-tree.vue"),
       meta: {
         title: $t("menus.hsMenuTree")
@@ -53,7 +53,7 @@ const ableRouter = {
     },
     {
       path: "/able/lineTree",
-      name: "reLineTree",
+      name: "LineTree",
       component: () => import("/@/views/able/line-tree.vue"),
       meta: {
         title: $t("menus.hsLineTree")
@@ -61,7 +61,7 @@ const ableRouter = {
     },
     {
       path: "/able/antTabs",
-      name: "reAntTabs",
+      name: "AntTabs",
       component: () => import("/@/views/able/ant-tabs.vue"),
       meta: {
         title: $t("menus.hsAntTabs")
@@ -69,7 +69,7 @@ const ableRouter = {
     },
     {
       path: "/able/antAnchor",
-      name: "reAntAnchor",
+      name: "AntAnchor",
       component: () => import("/@/views/able/ant-anchor.vue"),
       meta: {
         title: $t("menus.hsAntAnchor")
@@ -77,7 +77,7 @@ const ableRouter = {
     },
     {
       path: "/able/antTreeSelect",
-      name: "reAntTreeSelect",
+      name: "AntTreeSelect",
       component: () => import("/@/views/able/ant-treeSelect.vue"),
       meta: {
         title: $t("menus.hsAntTreeSelect")
@@ -85,7 +85,7 @@ const ableRouter = {
     },
     {
       path: "/able/debounce",
-      name: "reDebounce",
+      name: "Debounce",
       component: () => import("/@/views/able/debounce.vue"),
       meta: {
         title: $t("menus.hsDebounce")
@@ -93,7 +93,7 @@ const ableRouter = {
     },
     {
       path: "/able/barcode",
-      name: "reBarcode",
+      name: "BarCode",
       component: () => import("/@/views/able/barcode.vue"),
       meta: {
         title: $t("menus.hsBarcode")
@@ -101,7 +101,7 @@ const ableRouter = {
     },
     {
       path: "/able/qrcode",
-      name: "reQrcode",
+      name: "QrCode",
       component: () => import("/@/views/able/qrcode.vue"),
       meta: {
         title: $t("menus.hsQrcode")
@@ -109,7 +109,7 @@ const ableRouter = {
     },
     {
       path: "/able/cascader",
-      name: "reCascader",
+      name: "Cascader",
       component: () => import("/@/views/able/cascader.vue"),
       meta: {
         title: $t("menus.hsCascader")
@@ -117,7 +117,7 @@ const ableRouter = {
     },
     {
       path: "/able/swiper",
-      name: "reSwiper",
+      name: "Swiper",
       component: () => import("/@/views/able/swiper.vue"),
       meta: {
         title: $t("menus.hsSwiper")
@@ -125,7 +125,7 @@ const ableRouter = {
     },
     {
       path: "/able/virtualList",
-      name: "reVirtualList",
+      name: "VirtualList",
       component: () => import("/@/views/able/virtual-list/index.vue"),
       meta: {
         title: $t("menus.hsVirtualList")

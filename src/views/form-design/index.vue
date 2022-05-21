@@ -3,6 +3,10 @@ import { ref, onBeforeMount } from "vue";
 import { loader } from "/@/utils/loaders";
 import { ElDesignForm } from "vue-form-create2";
 
+defineOptions({
+  name: "FormDesign"
+});
+
 const loading = ref(true);
 
 onBeforeMount(() => {

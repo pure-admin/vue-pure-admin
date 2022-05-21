@@ -1,12 +1,10 @@
-<script lang="ts">
-export default {
-  name: "ReBarcode"
-};
-</script>
-
 <script setup lang="ts">
 import JsBarcode from "jsbarcode";
 import { ref, onMounted } from "vue";
+
+defineOptions({
+  name: "ReBarcode"
+});
 
 const props = defineProps({
   tag: {

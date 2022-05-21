@@ -13,7 +13,7 @@ const editorRouter = {
   children: [
     {
       path: "/editor/index",
-      name: "reEditor",
+      name: "Editor",
       component: () => import("/@/views/editor/index.vue"),
       meta: {
         title: $t("menus.hseditor"),

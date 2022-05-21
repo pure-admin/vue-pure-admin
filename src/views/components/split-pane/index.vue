@@ -2,6 +2,10 @@
 import splitpane, { ContextProps } from "/@/components/ReSplitPane";
 import { reactive } from "vue";
 
+defineOptions({
+  name: "SplitPane"
+});
+
 const settingLR: ContextProps = reactive({
   minPercent: 20,
   defaultPercent: 40,

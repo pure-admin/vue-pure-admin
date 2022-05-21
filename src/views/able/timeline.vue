@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 import { useRenderFlicker } from "/@/components/ReFlicker";
-// eslint-disable-next-line no-undef
+
+defineOptions({
+  name: "TimeLine"
+});
+
 const { lastBuildTime } = __APP_INFO__;
 const activities = [
   {

@@ -20,7 +20,7 @@ export interface attrsType {
  */
 export function useRenderFlicker(attrs?: attrsType): Component {
   return defineComponent({
-    name: "Flicker",
+    name: "ReFlicker",
     render() {
       return h(
         "div",

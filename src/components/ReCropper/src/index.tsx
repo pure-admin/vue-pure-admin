@@ -74,7 +74,7 @@ const props = {
 };
 
 export default defineComponent({
-  name: "Cropper",
+  name: "ReCropper",
   props,
   setup(props) {
     const cropper: any = ref<Nullable<Cropper>>(null);

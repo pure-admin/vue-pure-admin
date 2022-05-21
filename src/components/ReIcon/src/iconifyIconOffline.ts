@@ -147,7 +147,7 @@ addIcon("location-company", LocationCompany);
 
 // Iconify Icon在Vue里离线使用（用于内网环境）https://docs.iconify.design/icon-components/vue/offline.html
 export default defineComponent({
-  name: "IconifyIcon",
+  name: "IconifyIconOffline",
   components: { IconifyIcon },
   props: {
     icon: {

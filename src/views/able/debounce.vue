@@ -3,6 +3,10 @@ import { ElMessage } from "element-plus";
 import { debounce } from "/@/utils/debounce";
 import { useDebounceFn, useThrottleFn } from "@vueuse/core";
 
+defineOptions({
+  name: "Debounce"
+});
+
 const handle = () => {
   ElMessage({
     message: "恭喜你，这是一条成功消息",

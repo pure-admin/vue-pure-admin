@@ -2,6 +2,10 @@
 import Driver from "driver.js";
 import "driver.js/dist/driver.min.css";
 
+defineOptions({
+  name: "Guide"
+});
+
 const steps = [
   {
     element: "#header-notice",

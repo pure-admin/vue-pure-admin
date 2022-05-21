@@ -2,6 +2,10 @@
 import { ref } from "vue";
 import Selector from "/@/components/ReSelector";
 
+defineOptions({
+  name: "Selector"
+});
+
 let selectRange = ref<string>("");
 let dataLists = ref([
   {

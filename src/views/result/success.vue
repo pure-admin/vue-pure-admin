@@ -1,5 +1,8 @@
 <script setup lang="ts">
-// eslint-disable-next-line no-undef
+defineOptions({
+  name: "Success"
+});
+
 const { lastBuildTime } = __APP_INFO__;
 </script>
 

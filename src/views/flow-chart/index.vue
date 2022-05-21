@@ -11,6 +11,10 @@ import { Snapshot, BpmnElement, Menu } from "@logicflow/extension";
 import { Control, NodePanel, DataDialog } from "/@/components/ReFlowChart";
 import { toLogicflowData } from "/@/components/ReFlowChart/src/adpterForTurbo";
 
+defineOptions({
+  name: "FlowChart"
+});
+
 let lf = ref(null);
 let graphData = ref(null);
 let dataVisible = ref<boolean>(false);

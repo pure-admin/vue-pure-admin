@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import verticalList from "./vertical.vue";
 import horizontalList from "./horizontal.vue";
+
+defineOptions({
+  name: "VirtualList"
+});
 </script>
 
 <template>

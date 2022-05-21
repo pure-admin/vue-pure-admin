@@ -1,9 +1,3 @@
-<script lang="ts">
-export default {
-  name: "Bar"
-};
-</script>
-
 <script setup lang="ts">
 import { ECharts } from "echarts";
 import echarts from "/@/plugins/echarts";

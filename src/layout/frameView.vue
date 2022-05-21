@@ -13,6 +13,10 @@ import { useI18n } from "vue-i18n";
 import { useRoute } from "vue-router";
 import { ref, unref, onMounted, nextTick } from "vue";
 
+defineOptions({
+  name: "FrameView"
+});
+
 const { t } = useI18n();
 const loading = ref(false);
 const currentRoute = useRoute();

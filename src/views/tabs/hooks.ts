@@ -11,7 +11,7 @@ export function useDetail() {
     useMultiTagsStoreHook().handleTags("push", {
       path: `/tabs/detail`,
       parentPath: route.matched[0].path,
-      name: "tabDetail",
+      name: "TabDetail",
       query: { id: String(index) },
       meta: {
         title: { zh: `No.${index} - 详情信息`, en: `No.${index} - DetailInfo` },
@@ -19,7 +19,7 @@ export function useDetail() {
         dynamicLevel: 3
       }
     });
-    router.push({ name: "tabDetail", query: { id: String(index) } });
+    router.push({ name: "TabDetail", query: { id: String(index) } });
   }
 
   function initToDetail() {

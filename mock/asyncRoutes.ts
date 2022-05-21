@@ -13,7 +13,7 @@ const systemRouter = {
   children: [
     {
       path: "/system/user/index",
-      name: "user",
+      name: "User",
       meta: {
         icon: "flUser",
         title: "menus.hsUser"
@@ -21,7 +21,7 @@ const systemRouter = {
     },
     {
       path: "/system/role/index",
-      name: "role",
+      name: "Role",
       meta: {
         icon: "role",
         title: "menus.hsRole"
@@ -29,7 +29,7 @@ const systemRouter = {
     },
     {
       path: "/system/dept/index",
-      name: "dept",
+      name: "Dept",
       meta: {
         icon: "dept",
         title: "menus.hsDept"
@@ -38,7 +38,7 @@ const systemRouter = {
     {
       path: "/system/dict",
       component: "/system/dict/index",
-      name: "dict",
+      name: "Dict",
       meta: {
         icon: "dict",
         title: "menus.hsDict",
@@ -59,14 +59,14 @@ const permissionRouter = {
   children: [
     {
       path: "/permission/page/index",
-      name: "permissionPage",
+      name: "PermissionPage",
       meta: {
         title: "menus.permissionPage"
       }
     },
     {
       path: "/permission/button/index",
-      name: "permissionButton",
+      name: "PermissionButton",
       meta: {
         title: "menus.permissionButton",
         authority: []
@@ -86,7 +86,7 @@ const frameRouter = {
   children: [
     {
       path: "/iframe/pure",
-      name: "reFramePure",
+      name: "FramePure",
       meta: {
         title: "menus.hsPureDocument",
         frameSrc: "https://pure-admin-doc.vercel.app"
@@ -101,7 +101,7 @@ const frameRouter = {
     },
     {
       path: "/iframe/ep",
-      name: "reFrameEp",
+      name: "FrameEp",
       meta: {
         title: "menus.hsEpDocument",
         frameSrc: "https://element-plus.org/zh-CN/"
@@ -121,14 +121,14 @@ const tabsRouter = {
   children: [
     {
       path: "/tabs/index",
-      name: "reTabs",
+      name: "Tabs",
       meta: {
         title: "menus.hstabs"
       }
     },
     {
       path: "/tabs/detail",
-      name: "tabDetail",
+      name: "TabDetail",
       meta: {
         title: "",
         showLink: false,

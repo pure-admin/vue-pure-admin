@@ -50,7 +50,7 @@ const props = {
 };
 
 export default defineComponent({
-  name: "Selector",
+  name: "ReSelector",
   props,
   emits: ["selectedVal"],
   setup(props, { emit }) {

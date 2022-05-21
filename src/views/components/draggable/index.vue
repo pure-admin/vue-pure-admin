@@ -3,6 +3,10 @@ import { ref, onMounted } from "vue";
 import draggable from "vuedraggable/src/vuedraggable";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 
+defineOptions({
+  name: "Draggable"
+});
+
 let gridLists = ref<Array<Object>>([
   { grid: "cn", num: 1 },
   { grid: "cn", num: 2 },
@@ -36,7 +40,6 @@ const change = (evt): void => {
 onMounted(() => {
   // 使用原生sortable实现元素位置切换
   // @ts-ignore
-  // eslint-disable-next-line no-undef
   new Sortable(document.querySelector(".cut-container"), {
     swap: true,
     forceFallback: true,

@@ -13,7 +13,7 @@ const formDesignRouter = {
   children: [
     {
       path: "/formDesign/index",
-      name: "formDesign",
+      name: "FormDesign",
       component: () => import("/@/views/form-design/index.vue"),
       meta: {
         title: $t("menus.hsFormDesign")

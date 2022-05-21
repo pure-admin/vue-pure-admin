@@ -4,6 +4,10 @@ import { ref, computed, CSSProperties, toRef, watch } from "vue";
 import { IconJson } from "/@/components/ReIcon/data";
 type ParameterCSSProperties = (item?: string) => CSSProperties | undefined;
 
+defineOptions({
+  name: "IconSelect"
+});
+
 const props = defineProps({
   modelValue: {
     require: false,

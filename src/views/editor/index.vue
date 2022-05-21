@@ -1,14 +1,12 @@
-<script lang="ts">
-export default {
-  name: "reEditor"
-};
-</script>
-
 <script setup lang="ts">
 import "@wangeditor/editor/dist/css/style.css"; // 引入 css
-import { onBeforeUnmount, ref, shallowRef, onMounted } from "vue";
 import { Editor, Toolbar } from "@wangeditor/editor-for-vue";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
+import { onBeforeUnmount, ref, shallowRef, onMounted } from "vue";
+
+defineOptions({
+  name: "Editor"
+});
 
 const mode = "default";
 // 编辑器实例，必须用 shallowRef
@@ -51,9 +49,9 @@ const handleCreated = editor => {
             :icon="useRenderIcon('edit')"
             style="font-size: 16px; margin: 0 4px 5px"
           >
-            wangeditor
-          </el-link></span
-        >
+            Wangeditor
+          </el-link>
+        </span>
       </div>
     </template>
     <Toolbar

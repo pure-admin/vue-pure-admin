@@ -10,6 +10,11 @@ import {
   getNodeByUniqueId
 } from "/@/utils/tree";
 import { useDetail } from "./hooks";
+
+defineOptions({
+  name: "Tabs"
+});
+
 const { toDetail, router } = useDetail();
 
 let treeData = computed(() => {

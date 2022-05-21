@@ -2,6 +2,10 @@
 import { ref } from "vue";
 import { useWatermark } from "/@/utils/watermark";
 
+defineOptions({
+  name: "WaterMark"
+});
+
 let color = ref("#409EFF");
 let value = ref("vue-pure-admin");
 const { setWatermark, clear } = useWatermark();

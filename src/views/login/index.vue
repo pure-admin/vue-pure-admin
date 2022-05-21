@@ -17,6 +17,10 @@ import { bg, avatar, currentWeek } from "./utils/static";
 import { ReImageVerify } from "/@/components/ReImageVerify";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 
+defineOptions({
+  name: "Login"
+});
+
 const imgCode = ref("");
 const router = useRouter();
 const loading = ref(false);

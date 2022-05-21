@@ -1,12 +1,10 @@
-<script lang="ts">
-export default {
-  name: "ReImageVerify"
-};
-</script>
-
 <script setup lang="ts">
 import { watch } from "vue";
 import { useImageVerify } from "./hooks";
+
+defineOptions({
+  name: "ReImageVerify"
+});
 
 interface Props {
   code?: string;

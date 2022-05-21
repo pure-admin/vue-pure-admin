@@ -13,7 +13,7 @@ const componentsRouter = {
   children: [
     {
       path: "/components/video",
-      name: "video",
+      name: "Video",
       component: () => import("/@/views/components/video/index.vue"),
       meta: {
         title: $t("menus.hsvideo")
@@ -21,7 +21,7 @@ const componentsRouter = {
     },
     {
       path: "/components/map",
-      name: "map",
+      name: "Map",
       component: () => import("/@/views/components/map/index.vue"),
       meta: {
         title: $t("menus.hsmap"),
@@ -33,7 +33,7 @@ const componentsRouter = {
     },
     {
       path: "/components/draggable",
-      name: "draggable",
+      name: "Draggable",
       component: () => import("/@/views/components/draggable/index.vue"),
       meta: {
         title: $t("menus.hsdraggable"),
@@ -43,10 +43,9 @@ const componentsRouter = {
         }
       }
     },
-
     {
       path: "/components/splitPane",
-      name: "splitPane",
+      name: "SplitPane",
       component: () => import("/@/views/components/split-pane/index.vue"),
       meta: {
         title: $t("menus.hssplitPane"),
@@ -58,7 +57,7 @@ const componentsRouter = {
     },
     {
       path: "/components/button",
-      name: "button",
+      name: "Button",
       component: () => import("/@/views/components/button/index.vue"),
       meta: {
         title: $t("menus.hsbutton")
@@ -66,7 +65,7 @@ const componentsRouter = {
     },
     {
       path: "/components/cropping",
-      name: "cropping",
+      name: "Cropping",
       component: () => import("/@/views/components/cropping/index.vue"),
       meta: {
         title: $t("menus.hscropping")
@@ -74,7 +73,7 @@ const componentsRouter = {
     },
     {
       path: "/components/countTo",
-      name: "countTo",
+      name: "CountTo",
       component: () => import("/@/views/components/count-to/index.vue"),
       meta: {
         title: $t("menus.hscountTo")
@@ -82,7 +81,7 @@ const componentsRouter = {
     },
     {
       path: "/components/selector",
-      name: "selector",
+      name: "Selector",
       component: () => import("/@/views/components/selector/index.vue"),
       meta: {
         title: $t("menus.hsselector")
@@ -90,7 +89,7 @@ const componentsRouter = {
     },
     {
       path: "/components/seamlessScroll",
-      name: "seamlessScroll",
+      name: "SeamlessScroll",
       component: () => import("/@/views/components/seamless-scroll/index.vue"),
       meta: {
         title: $t("menus.hsseamless")
@@ -98,7 +97,7 @@ const componentsRouter = {
     },
     {
       path: "/components/contextmenu",
-      name: "contextmenu",
+      name: "ContextMenu",
       component: () => import("/@/views/components/contextmenu/index.vue"),
       meta: {
         title: $t("menus.hscontextmenu")

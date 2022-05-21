@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import { Amap } from "/@/components/ReMap";
+
+defineOptions({
+  name: "Map"
+});
 </script>
 
 <template>

@@ -15,7 +15,7 @@ const props = {
 };
 
 export default defineComponent({
-  name: "Filpper",
+  name: "ReFlop",
   props,
   setup(props) {
     // eslint-disable-next-line vue/no-setup-props-destructure

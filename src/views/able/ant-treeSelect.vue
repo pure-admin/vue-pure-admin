@@ -2,6 +2,10 @@
 import { ref } from "vue";
 import { TreeSelect } from "@pureadmin/components";
 
+defineOptions({
+  name: "AntTreeSelect"
+});
+
 const value1 = ref<string>("");
 const treeData1 = ref([
   {

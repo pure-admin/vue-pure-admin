@@ -10,7 +10,7 @@ import {
 import { reboundProps } from "./props";
 
 export default defineComponent({
-  name: "Rebound",
+  name: "ReboundCountTo",
   props: reboundProps,
   setup(props) {
     const timer = ref(null);

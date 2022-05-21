@@ -1,9 +1,3 @@
-<script lang="ts">
-export default {
-  name: "dept"
-};
-</script>
-
 <script setup lang="ts">
 import dayjs from "dayjs";
 import { handleTree } from "/@/utils/tree";
@@ -12,6 +6,10 @@ import { FormInstance } from "element-plus";
 import { reactive, ref, onMounted } from "vue";
 import { EpTableProBar } from "/@/components/ReTable";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
+
+defineOptions({
+  name: "Dept"
+});
 
 const form = reactive({
   user: "",

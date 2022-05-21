@@ -4,6 +4,10 @@ import { reactive, ref } from "vue";
 import { VxeTablePropTypes } from "vxe-table";
 import { ReLine } from "../welcome/components";
 
+defineOptions({
+  name: "Print"
+});
+
 interface User {
   date: string;
   name: string;

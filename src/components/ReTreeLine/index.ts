@@ -11,7 +11,7 @@ import type {
 
 /** 树形连接线组件 */
 export default defineComponent({
-  name: "el-tree-line",
+  name: "ReTreeLine",
   props: {
     node: {
       type: Object as PropType<TreeNode>,

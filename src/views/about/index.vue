@@ -4,7 +4,10 @@ export interface schemaItem {
   label: string;
 }
 
-// eslint-disable-next-line no-undef
+defineOptions({
+  name: "About"
+});
+
 const { pkg, lastBuildTime } = __APP_INFO__;
 const { dependencies, devDependencies, version } = pkg;
 

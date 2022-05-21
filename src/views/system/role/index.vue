@@ -1,9 +1,3 @@
-<script lang="ts">
-export default {
-  name: "role"
-};
-</script>
-
 <script setup lang="ts">
 import dayjs from "dayjs";
 import { getRoleList } from "/@/api/system";
@@ -13,6 +7,10 @@ import { reactive, ref, onMounted } from "vue";
 import { EpTableProBar } from "/@/components/ReTable";
 import { Switch, message } from "@pureadmin/components";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
+
+defineOptions({
+  name: "Role"
+});
 
 const form = reactive({
   name: "",

@@ -9,6 +9,10 @@ import {
 } from "/@/utils/chinaArea";
 import { ref } from "vue";
 
+defineOptions({
+  name: "Cascader"
+});
+
 const selectedOptions1 = ref(["110000", "110100"]);
 const selectedOptions2 = ref(["120000", "120100", "120101"]);
 const selectedOptions3 = ref(["130000", ""]);

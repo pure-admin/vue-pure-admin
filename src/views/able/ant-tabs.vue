@@ -2,6 +2,10 @@
 import { ref } from "vue";
 import { Tabs, TabPane } from "@pureadmin/components";
 
+defineOptions({
+  name: "AntTabs"
+});
+
 const mode = ref("top");
 const activeKey = ref(1);
 const callback = (val: string) => {

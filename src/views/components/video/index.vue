@@ -7,6 +7,10 @@ import { deviceDetection } from "/@/utils/deviceDetection";
 import playbackRate from "xgplayer/es/controls/playbackRate";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 
+defineOptions({
+  name: "Video"
+});
+
 onMounted(() => {
   new Player({
     id: "mse",
