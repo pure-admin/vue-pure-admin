@@ -25,7 +25,7 @@ function ascending(arr: any[]) {
   arr.forEach(v => {
     if (v?.meta?.rank === null) v.meta.rank = undefined;
     if (v?.meta?.rank === 0) {
-      if (v.name !== "home" && v.path !== "/") {
+      if (v.name !== "Home" && v.path !== "/") {
         console.warn("rank only the home page can be 0");
       }
     }

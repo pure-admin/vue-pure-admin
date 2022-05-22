@@ -3,6 +3,10 @@ import { ReGithub, ReInfinite, RePie, ReLine, ReBar } from "./components";
 import { ref, computed } from "vue";
 import avatars from "/@/assets/avatars.jpg";
 
+defineOptions({
+  name: "Welcome"
+});
+
 const date: Date = new Date();
 let loading = ref<boolean>(true);
 

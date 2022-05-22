@@ -17,7 +17,7 @@ const isDashboard = (route: RouteLocationMatched): boolean | string => {
   if (!name) {
     return false;
   }
-  return name.trim().toLocaleLowerCase() === "welcome".toLocaleLowerCase();
+  return name.trim().toLocaleLowerCase() === "Welcome".toLocaleLowerCase();
 };
 
 const getBreadcrumb = (): void => {

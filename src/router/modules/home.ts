@@ -3,7 +3,7 @@ const Layout = () => import("/@/layout/index.vue");
 
 const homeRouter = {
   path: "/",
-  name: "home",
+  name: "Home",
   component: Layout,
   redirect: "/welcome",
   meta: {
@@ -14,7 +14,7 @@ const homeRouter = {
   children: [
     {
       path: "/welcome",
-      name: "welcome",
+      name: "Welcome",
       component: () => import("/@/views/welcome/index.vue"),
       meta: {
         title: $t("menus.hshome")
