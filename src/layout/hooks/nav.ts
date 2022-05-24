@@ -31,9 +31,8 @@ export function useNav() {
     return username ? { marginRight: "10px" } : "";
   });
 
-  const isCollapse = computed(() => {
-    return !pureApp.getSidebarStatus;
-  });
+  const isCollapse = !pureApp.getSidebarStatus;
+
 
   // 动态title
   function changeTitle(meta: routeMetaType) {
