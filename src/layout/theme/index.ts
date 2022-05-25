@@ -1,7 +1,7 @@
-import serverConfig from "../../../public/serverConfig.json";
+import { EpThemeColor } from "../../../public/serverConfig.json";
 
 // 将vxe默认主题色和ep默认主题色保持一致
-const vxeColor = serverConfig.EpThemeColor;
+const vxeColor = EpThemeColor;
 const themeColors = {
   default: {
     vxeColor,
