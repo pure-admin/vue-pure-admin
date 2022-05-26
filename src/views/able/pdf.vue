@@ -20,18 +20,33 @@ const hideLoading = () => {
 </script>
 
 <template>
-  <div
-    class="h-[calc(100vh-134px)]"
-    v-loading="loading"
-    :element-loading-text="t('status.hsLoad')"
-  >
-    <el-scrollbar>
-      <vue-pdf-embed
-        class="h-full container overflow-auto"
-        ref="pdfRef"
-        :source="source"
-        @rendered="hideLoading"
-      />
-    </el-scrollbar>
-  </div>
+  <el-card>
+    <template #header>
+      <div class="font-medium">
+        PDF预览（
+        <el-link
+          href="https://github.com/hrynko/vue-pdf-embed"
+          target="_blank"
+          style="font-size: 16px; margin: 0 5px 4px 0"
+        >
+          github地址
+        </el-link>
+        ）
+      </div>
+    </template>
+    <div
+      class="h-[calc(100vh-239px)]"
+      v-loading="loading"
+      :element-loading-text="t('status.hsLoad')"
+    >
+      <el-scrollbar>
+        <vue-pdf-embed
+          class="h-full container overflow-auto"
+          ref="pdfRef"
+          :source="source"
+          @rendered="hideLoading"
+        />
+      </el-scrollbar>
+    </div>
+  </el-card>
 </template>
