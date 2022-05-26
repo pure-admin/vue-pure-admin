@@ -68,7 +68,7 @@
     "vue-form-create2": "^1.2.8",
     "vue-i18n": "^9.2.0-beta.35",
     "vue-json-pretty": "^2.0.2",
-    "vue-pdf-embed": "^1.1.1",
+    "vue-pdf-embed": "^1.1.2",
     "vue-router": "^4.0.15",
     "vue-types": "^4.1.1",
     "vue-virtual-scroller": "^2.0.0-alpha.1",

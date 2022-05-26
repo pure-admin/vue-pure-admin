@@ -105,7 +105,7 @@ specifiers:
   vue-form-create2: ^1.2.8
   vue-i18n: ^9.2.0-beta.35
   vue-json-pretty: ^2.0.2
-  vue-pdf-embed: ^1.1.1
+  vue-pdf-embed: ^1.1.2
   vue-router: ^4.0.15
   vue-types: ^4.1.1
   vue-virtual-scroller: ^2.0.0-alpha.1
@@ -156,7 +156,7 @@ dependencies:
   vue-form-create2: 1.2.9
   vue-i18n: 9.2.0-beta.35_vue@3.2.35
   vue-json-pretty: 2.0.6_vue@3.2.35
-  vue-pdf-embed: 1.1.1_vue@3.2.35
+  vue-pdf-embed: 1.1.2_vue@3.2.35
   vue-router: 4.0.15_vue@3.2.35
   vue-types: 4.1.1_vue@3.2.35
   vue-virtual-scroller: 2.0.0-alpha.1_vue@3.2.35
@@ -8628,10 +8628,10 @@ packages:
       vue: 3.2.35
     dev: false
 
-  /vue-pdf-embed/1.1.1_vue@3.2.35:
+  /vue-pdf-embed/1.1.2_vue@3.2.35:
     resolution:
       {
-        integrity: sha512-Ydbgiay/xIp0aW1mv62/JNkUlsk9dpbba+K03CKniIoos+N0URab+jEZW5RzJ0JbN6bplp+j+pAc78El1d8htw==
+        integrity: sha512-puXchZBqS3I/h+rPmqDYxMfE+UKtpOk2aRtGcl/BOgexNEPAggt1AghNOl8bmI/NY6M1+dS7YClQvWMvb9DJCA==
       }
     peerDependencies:
       vue: ^2.x || ^3.x
