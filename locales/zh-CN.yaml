@@ -83,5 +83,6 @@ menus:
   hsCascader: 区域级联选择器
   hsSwiper: Swiper插件
   hsVirtualList: 虚拟列表
+  hsPdf: PDF预览
 status:
   hsLoad: 加载中...
