@@ -83,5 +83,6 @@ menus:
   hsCascader: Area Cascader
   hsSwiper: Swiper Plugin
   hsVirtualList: Virtual List
+  hsPdf: PDF Preview
 status:
   hsLoad: Loading...
