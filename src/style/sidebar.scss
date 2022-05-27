@@ -121,7 +121,7 @@
     .el-sub-menu__title {
       height: 50px;
       color: $menuText;
-      padding: 0 20px 0 40px;
+      background-color: transparent !important;
 
       &:hover {
         color: $menuTitleHover !important;

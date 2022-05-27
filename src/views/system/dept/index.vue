@@ -161,7 +161,8 @@ onMounted(() => {
             <template #default="scope">
               <el-button
                 class="reset-margin"
-                type="text"
+                link
+                type="primary"
                 :size="size"
                 @click="handleUpdate(scope.row)"
                 :icon="useRenderIcon('edits')"
@@ -172,7 +173,8 @@ onMounted(() => {
                 <template #reference>
                   <el-button
                     class="reset-margin"
-                    type="text"
+                    link
+                    type="primary"
                     :size="size"
                     :icon="useRenderIcon('delete')"
                     @click="handleDelete(scope.row)"

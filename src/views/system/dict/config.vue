@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import { reactive } from "vue";
 import { useI18n } from "vue-i18n";
-import { VxeTableEvents } from "vxe-table";
-import { templateRef } from "@vueuse/core";
+import { ref, reactive } from "vue";
+import { type Direction } from "element-plus";
+import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
+import { type VxeTableEvents, type VxeTableInstance } from "vxe-table";
 
 interface Props {
   drawer: boolean;
   drawTitle?: string;
-  direction?: string;
+  direction?: Direction;
 }
 
 withDefaults(defineProps<Props>(), {
@@ -22,7 +23,7 @@ const emit = defineEmits<{
 
 const { t } = useI18n();
 
-const xTable = templateRef<any>("xTable", null);
+const xTable = ref({} as VxeTableInstance);
 
 const configData = reactive({
   tableData: [
@@ -72,7 +73,7 @@ const changeAllEvent = () => {
 const checkboxChangeEvent: VxeTableEvents.CheckboxChange = ({ records }) => {
   const $table = xTable.value;
   configData.isAllChecked = $table.isAllCheckboxChecked();
-  configData.isIndeterminate = $table.isCheckboxIndeterminate();
+  configData.isIndeterminate = $table.isAllCheckboxIndeterminate();
   configData.selectRecords = records;
 };
 </script>
@@ -85,11 +86,11 @@ const checkboxChangeEvent: VxeTableEvents.CheckboxChange = ({ records }) => {
       :direction="direction"
       :before-close="handleClose"
       destroy-on-close
-      size="640px"
+      size="680px"
     >
       <el-divider />
       <!-- 列表 -->
-      <div class="list">
+      <div class="p-2">
         <vxe-table
           ref="xTable"
           border
@@ -102,20 +103,22 @@ const checkboxChangeEvent: VxeTableEvents.CheckboxChange = ({ records }) => {
           <vxe-table-column field="dataval" title="数据值" />
           <vxe-table-column title="操作" fixed="right">
             <template #default="{ row }">
-              <vxe-button
-                type="text"
-                icon="fa fa-pencil-square-o"
+              <el-button
+                link
+                type="primary"
+                :icon="useRenderIcon('edits')"
                 @click="editConfig(row)"
               >
                 编辑
-              </vxe-button>
-              <vxe-button
-                type="text"
-                icon="fa fa-trash-o"
+              </el-button>
+              <el-button
+                link
+                type="primary"
+                :icon="useRenderIcon('delete')"
                 @click="delConfig(row)"
               >
                 删除
-              </vxe-button>
+              </el-button>
             </template>
           </vxe-table-column>
         </vxe-table>
@@ -136,16 +139,16 @@ const checkboxChangeEvent: VxeTableEvents.CheckboxChange = ({ records }) => {
           ]"
         >
           <template #left>
-            <span class="page-left">
+            <span class="absolute left-3 flex items-center">
               <vxe-checkbox
                 v-model="configData.isAllChecked"
                 :indeterminate="configData.isIndeterminate"
                 @change="changeAllEvent"
               />
-              <span class="select-count">
-                已选中{{ configData.selectRecords.length }}条
-              </span>
-              <vxe-button size="small">{{ t("buttons.hsdelete") }}</vxe-button>
+              <p>已选中{{ configData.selectRecords.length }}条</p>
+              <el-button link type="danger" class="ml-1">
+                {{ t("buttons.hsdelete") }}
+              </el-button>
             </span>
           </template>
         </vxe-pager>
@@ -155,22 +158,6 @@ const checkboxChangeEvent: VxeTableEvents.CheckboxChange = ({ records }) => {
 </template>
 
 <style lang="scss" scoped>
-.list {
-  padding: 10px;
-
-  .page-left {
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
-  }
-}
-
-:deep(.select-count) {
-  margin-right: 5px;
-}
-
 :deep(.el-drawer__header) {
   margin-bottom: 0;
 }

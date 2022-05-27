@@ -102,7 +102,8 @@ onMounted(async () => {
             <el-dropdown-item>
               <el-button
                 class="reset-margin !h-20px !text-gray-500"
-                type="text"
+                link
+                type="primary"
                 :icon="useRenderIcon('expand')"
                 @click="toggleRowExpansionAll(true)"
               >
@@ -112,7 +113,8 @@ onMounted(async () => {
             <el-dropdown-item>
               <el-button
                 class="reset-margin !h-20px !text-gray-500"
-                type="text"
+                link
+                type="primary"
                 :icon="useRenderIcon('unExpand')"
                 @click="toggleRowExpansionAll(false)"
               >
@@ -122,7 +124,8 @@ onMounted(async () => {
             <el-dropdown-item>
               <el-button
                 class="reset-margin !h-20px !text-gray-500"
-                type="text"
+                link
+                type="primary"
                 :icon="useRenderIcon('reset')"
                 @click="onReset"
               >

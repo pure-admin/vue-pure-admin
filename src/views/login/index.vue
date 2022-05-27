@@ -134,7 +134,8 @@ watch(imgCode, value => {
               <div class="w-full h-20px flex justify-between items-center">
                 <el-checkbox v-model="checked">记住密码</el-checkbox>
                 <el-button
-                  type="text"
+                  link
+                  type="primary"
                   @click="useUserStoreHook().SET_CURRENTPAGE(4)"
                 >
                   忘记密码?

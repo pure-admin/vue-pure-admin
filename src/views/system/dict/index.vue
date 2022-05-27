@@ -3,15 +3,18 @@ import XEUtils from "xe-utils";
 import Config from "./config.vue";
 import { useI18n } from "vue-i18n";
 import { cloneDeep } from "lodash-unified";
-import { templateRef } from "@vueuse/core";
 import { reactive, ref, unref, nextTick } from "vue";
+import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 import { useCopyToClipboard } from "/@/utils/useCopyToClipboard";
 import {
   VXETable,
-  VxeTableInstance,
-  VxeTableEvents,
-  VxeFormPropTypes
+  type TablePublicMethods,
+  type VxeTableInstance,
+  type VxeFormPropTypes,
+  type VxeTableEvents,
+  type FormMethods
 } from "vxe-table";
+
 type onEditNRow = {
   name: string;
   model: string;
@@ -91,7 +94,8 @@ const dictData = reactive({
 
 let originData = cloneDeep(dictData.tableData);
 
-const xTree = templateRef<HTMLElement | any>("xTree", null);
+const xTree = ref<TablePublicMethods>();
+const xForm = ref<FormMethods>();
 
 const handleSearch = () => {
   const filterName = XEUtils.toValueString(dictData.filterName).trim();
@@ -201,6 +205,18 @@ function onDeploy(value?: object) {
 function handleClose() {
   drawer.value = false;
 }
+
+function onExpand() {
+  xTree.value.setAllTreeExpand(true);
+}
+
+function onUnExpand() {
+  xTree.value.clearTreeExpand();
+}
+
+function onHide() {
+  xForm.value.reset();
+}
 </script>
 
 <template>
@@ -215,23 +231,29 @@ function handleClose() {
         />
       </template>
       <template #tools>
-        <vxe-button icon="fa fa-plus-square-o" status="primary" @click="onAdd">
-          {{ t("buttons.hsadd") }}
-        </vxe-button>
-        <vxe-button
-          icon="fa fa-folder-open-o"
-          status="primary"
-          @click="$refs.xTree.setAllTreeExpand(true)"
-        >
-          {{ t("buttons.hsexpendAll") }}
-        </vxe-button>
-        <vxe-button
-          icon="fa fa-folder-o"
-          status="primary"
-          @click="$refs.xTree.clearTreeExpand()"
-        >
-          {{ t("buttons.hscollapseAll") }}
-        </vxe-button>
+        <el-button-group>
+          <el-button
+            type="primary"
+            :icon="useRenderIcon('fa:plus-square-o', { online: true })"
+            @click="onAdd"
+          >
+            {{ t("buttons.hsadd") }}
+          </el-button>
+          <el-button
+            type="primary"
+            :icon="useRenderIcon('fa:folder-open-o', { online: true })"
+            @click="onExpand"
+          >
+            {{ t("buttons.hsexpendAll") }}
+          </el-button>
+          <el-button
+            type="primary"
+            :icon="useRenderIcon('fa:folder-o', { online: true })"
+            @click="onUnExpand"
+          >
+            {{ t("buttons.hscollapseAll") }}
+          </el-button>
+        </el-button-group>
       </template>
     </vxe-toolbar>
 
@@ -262,31 +284,39 @@ function handleClose() {
       </vxe-table-column>
       <vxe-table-column title="操作" width="330" fixed="right">
         <template #default="{ row }">
-          <vxe-button
-            type="text"
-            icon="fa fa-pencil-square-o"
+          <el-button
+            link
+            type="primary"
+            :icon="useRenderIcon('edits')"
             @click="onEdit(row)"
           >
             编辑
-          </vxe-button>
-          <vxe-button
-            type="text"
-            icon="fa fa-plus-square-o"
+          </el-button>
+          <el-button
+            link
+            type="primary"
+            :icon="useRenderIcon('fa:plus-square-o', { online: true })"
             @click="onAddChild(row)"
           >
             新增子类型
-          </vxe-button>
-          <vxe-button
+          </el-button>
+          <el-button
             v-show="row.model"
-            type="text"
-            icon="fa fa-cog"
+            link
+            type="primary"
+            :icon="useRenderIcon('fa:cog', { online: true })"
             @click="onDeploy(row)"
           >
             字典配置
-          </vxe-button>
-          <vxe-button type="text" icon="fa fa-trash-o" @click="confirmEvent">
+          </el-button>
+          <el-button
+            link
+            type="primary"
+            :icon="useRenderIcon('delete')"
+            @click="confirmEvent"
+          >
             删除
-          </vxe-button>
+          </el-button>
         </template>
       </vxe-table-column>
     </vxe-table>
@@ -298,7 +328,7 @@ function handleClose() {
       v-model="dictData.showEdit"
       :title="dictData.selectRow ? '编辑' : '新增'"
       :loading="dictData.submitLoading"
-      @hide="$refs.xForm.reset()"
+      @hide="onHide"
     >
       <template #default>
         <vxe-form

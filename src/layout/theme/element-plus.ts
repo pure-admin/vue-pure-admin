@@ -78,7 +78,7 @@ const getStyleTemplate = (data: Record<string, any>): Record<string, any> => {
   return data;
 };
 
-// 自动计算hover和active颜色 https://element-plus.gitee.io/zh-CN/component/button.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E9%A2%9C%E8%89%B2-%E6%B5%8B%E8%AF%95%E7%89%88
+// 自动计算hover和active颜色（https://element-plus.org/zh-CN/component/button.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E9%A2%9C%E8%89%B2）
 export const shadeBgColor = (color: string): string => {
   return new TinyColor(color).shade(10).toString();
 };

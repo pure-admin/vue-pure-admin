@@ -228,7 +228,8 @@ onMounted(() => {
             <template #default="scope">
               <el-button
                 class="reset-margin"
-                type="text"
+                link
+                type="primary"
                 :size="size"
                 @click="handleUpdate(scope.row)"
                 :icon="useRenderIcon('edits')"
@@ -239,7 +240,8 @@ onMounted(() => {
                 <template #reference>
                   <el-button
                     class="reset-margin"
-                    type="text"
+                    link
+                    type="primary"
                     :size="size"
                     :icon="useRenderIcon('delete')"
                     @click="handleDelete(scope.row)"
@@ -251,7 +253,8 @@ onMounted(() => {
               <el-dropdown>
                 <el-button
                   class="ml-3"
-                  type="text"
+                  link
+                  type="primary"
                   :size="size"
                   @click="handleUpdate(scope.row)"
                   :icon="useRenderIcon('more')"
@@ -261,7 +264,8 @@ onMounted(() => {
                     <el-dropdown-item>
                       <el-button
                         class="reset-margin !h-20px !text-gray-500"
-                        type="text"
+                        link
+                        type="primary"
                         :size="size"
                         :icon="useRenderIcon('menu')"
                       >
@@ -271,7 +275,8 @@ onMounted(() => {
                     <el-dropdown-item>
                       <el-button
                         class="reset-margin !h-20px !text-gray-500"
-                        type="text"
+                        link
+                        type="primary"
                         :size="size"
                         :icon="useRenderIcon('database')"
                       >

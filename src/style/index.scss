@@ -47,3 +47,8 @@ html {
 .mobile-spacing {
   margin: 0;
 }
+
+/* 重置vxe-table中pager样式 */
+.vxe-pager .vxe-pager--num-btn:not(.is--disabled).is--active {
+  color: #fff !important;
+}
