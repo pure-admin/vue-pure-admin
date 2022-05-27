@@ -8,7 +8,6 @@
     "build": "rimraf dist && cross-env vite build",
     "build:staging": "rimraf dist && cross-env vite build --mode staging",
     "report": "rimraf dist && cross-env vite build",
-    "deploy": "bash deploy.sh",
     "preview": "vite preview",
     "preview:build": "pnpm build && vite preview",
     "clean:cache": "rm -rf node_modules && rm -rf .eslintcache && pnpm install",
