@@ -43,7 +43,7 @@
   font-size: 14px;
   display: flex;
   align-items: center;
-  color: var(--el-text-color-regular);
+  color: var(--el-text-color-primary);
   background: #fff;
   position: relative;
   box-shadow: 0 0 1px #888;
@@ -92,7 +92,7 @@
 
   a {
     text-decoration: none;
-    color: #666;
+    color: var(--el-text-color-primary);
     padding: 0 4px;
   }
 
@@ -144,7 +144,7 @@
     list-style-type: none;
     padding: 5px 0;
     border-radius: 4px;
-    color: #000000d9;
+    color: var(--el-text-color-primary);
     font-weight: normal;
     font-size: 13px;
     white-space: nowrap;
@@ -228,7 +228,7 @@
 .arrow-right {
   width: 40px;
   height: 38px;
-  color: #00000073;
+  color: var(--el-text-color-primary);
   position: relative;
 
   svg {

@@ -1,29 +1,57 @@
-/* 暗黑模式 */
-[data-theme="dark"] {
-  filter: invert(0.9) hue-rotate(180deg);
+@import "element-plus/theme-chalk/src/dark/css-vars.scss";
 
-  #mse,
-  img,
-  .icon-svg,
-  .login-container {
-    filter: invert(1) hue-rotate(180deg);
+/* 暗黑模式适配 */
+html.dark {
+  /* 自定义深色背景颜色 */
+  // --el-bg-color: #020409;
+
+  .sidebar-container,
+  .sidebar-logo-container,
+  .navbar,
+  .tags-view,
+  .contextmenu {
+    background: var(--el-bg-color) !important;
   }
 
-  // element plus
-  .el-radio-button__original-radio:checked + .el-radio-button__inner,
-  .el-image-viewer__close,
-  .el-image-viewer__actions__inner,
-  .el-image-viewer__next,
-  .el-image-viewer__prev {
-    color: #000 !important;
+  .app-main {
+    background: #020409 !important;
   }
 
-  .el-overlay {
-    background-color: rgb(0 0 0 / 5%) !important;
+  .frame,
+  .logic-flow-view,
+  .wangeditor {
+    filter: invert(0.9) hue-rotate(180deg);
   }
 
-  .el-drawer {
-    box-shadow: 0 8px 10px -5px rgb(0 0 0 / 1%), 0 16px 24px 2px rgb(0 0 0 / 2%),
-      0 6px 30px 5px rgb(0 0 0 / 1%);
+  /* 表单设计器 */
+  .design-form {
+    .el-main.config-content,
+    .el-header,
+    .el-main.widget-empty,
+    .widget-form-list,
+    .el-aside,
+    .widget-view {
+      background: var(--el-bg-color) !important;
+    }
+
+    .form-edit-widget-label a {
+      background: var(--el-color-primary);
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+    }
+
+    .el-aside {
+      color: #fff;
+    }
+  }
+
+  /* ep组件 */
+  .el-table thead,
+  .el-table .el-table__body-wrapper {
+    background: var(--el-bg-color);
+  }
+  .el-card {
+    --el-card-bg-color: var(--el-bg-color);
   }
 }

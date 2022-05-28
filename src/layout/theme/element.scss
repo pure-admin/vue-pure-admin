@@ -1,2 +1,0 @@
-/* 通过scss模块本地导入element-plus的全局样式文件，解决vite2.7.13版本后使用 import epCss from "element-plus/dist/index.css"，打包后加载不到样式的问题 */
-@import "element-plus/dist/index.css";

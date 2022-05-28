@@ -64,7 +64,7 @@ let classOption = reactive({
 </script>
 
 <template>
-  <div class="infinite">
+  <div class="infinite bg-[#fafafa] dark:bg-dark">
     <ul class="top">
       <li>更新日期</li>
       <li>项目名称</li>
@@ -98,7 +98,7 @@ let classOption = reactive({
     font-size: 14px;
     color: #909399;
     font-weight: 400;
-    background: #fafafa;
+    // background: #fafafa;
 
     li {
       width: 34%;

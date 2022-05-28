@@ -59,7 +59,7 @@ onMounted(() => {
       ref="formRef"
       :inline="true"
       :model="form"
-      class="bg-white w-99/100 pl-8 pt-4"
+      class="bg-white dark:bg-dark w-99/100 pl-8 pt-4"
     >
       <el-form-item label="部门名称：" prop="user">
         <el-input v-model="form.user" placeholder="请输入部门名称" clearable />

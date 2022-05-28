@@ -176,7 +176,7 @@ function translationEn() {
       <el-dropdown trigger="click">
         <span class="el-dropdown-link">
           <img v-if="avatars" :src="avatars" :style="avatarsStyle" />
-          <p v-if="username">{{ username }}</p>
+          <p v-if="username" class="dark:color-white">{{ username }}</p>
         </span>
         <template #dropdown>
           <el-dropdown-menu class="logout">
@@ -191,7 +191,7 @@ function translationEn() {
         </template>
       </el-dropdown>
       <span
-        class="el-icon-setting"
+        class="el-icon-setting dark:color-white"
         :title="t('buttons.hssystemSet')"
         @click="onPanel"
       >

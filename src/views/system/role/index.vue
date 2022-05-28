@@ -112,7 +112,7 @@ onMounted(() => {
       ref="formRef"
       :inline="true"
       :model="form"
-      class="bg-white w-99/100 pl-8 pt-4"
+      class="bg-white dark:bg-dark w-99/100 pl-8 pt-4"
     >
       <el-form-item label="角色名称：" prop="name">
         <el-input v-model="form.name" placeholder="请输入角色名称" clearable />
@@ -158,7 +158,10 @@ onMounted(() => {
           table-layout="auto"
           :size="size"
           :data="dataList"
-          :header-cell-style="{ background: '#fafafa', color: '#606266' }"
+          :header-cell-style="{
+            background: 'var(--el-color-primary)',
+            color: '#606266'
+          }"
           @selection-change="handleSelectionChange"
         >
           <el-table-column

@@ -8,23 +8,11 @@ function handleSearch() {
 </script>
 
 <template>
-  <div class="search-container" @click="handleSearch">
+  <div
+    class="w-40px h-48px flex-c cursor-pointer bg-hover-dark9"
+    @click="handleSearch"
+  >
     <IconifyIconOffline icon="search" />
   </div>
   <SearchModal v-model:value="show" />
 </template>
-
-<style lang="scss" scoped>
-.search-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 48px;
-  width: 40px;
-  cursor: pointer;
-
-  &:hover {
-    background: #f6f6f6;
-  }
-}
-</style>

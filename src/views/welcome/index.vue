@@ -229,7 +229,7 @@ const openDepot = (): void => {
     justify-content: space-between;
     align-items: center;
     height: 60px;
-    background: #fff;
+    background: var(--el-bg-color);
 
     .left-mark {
       display: flex;

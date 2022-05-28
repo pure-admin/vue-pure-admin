@@ -15,16 +15,19 @@ import { useRouter } from "vue-router";
 import panel from "../panel/index.vue";
 import { emitter } from "/@/utils/mitt";
 import { templateRef } from "@vueuse/core";
+import { TinyColor } from "@ctrl/tinycolor";
 import { debounce } from "/@/utils/debounce";
 import { themeColorsType } from "../../types";
 import { routerArrays } from "/@/layout/types";
 import { useAppStoreHook } from "/@/store/modules/app";
-import { shadeBgColor } from "../../theme/element-plus";
 import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
 import { storageLocal, storageSession } from "/@/utils/storage";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
-import { createNewStyle, writeNewStyle } from "../../theme/element-plus";
-import { toggleTheme } from "@pureadmin/theme/dist/browser-utils";
+import {
+  darken,
+  lighten,
+  toggleTheme
+} from "@pureadmin/theme/dist/browser-utils";
 
 import dayIcon from "/@/assets/svg/day.svg?component";
 import darkIcon from "/@/assets/svg/dark.svg?component";
@@ -84,8 +87,6 @@ if (unref(layoutTheme)) {
 const markValue = ref(instance.configure?.showModel ?? "smart");
 
 const logoVal = ref(instance.configure?.showLogo ?? true);
-
-const epThemeColor = ref(useEpThemeStoreHook().getEpThemeColor);
 
 const settings = reactive({
   greyVal: instance.configure.grey,
@@ -231,12 +232,8 @@ function setLayoutModel(layout: string) {
   useAppStoreHook().setLayout(layout);
 }
 
-// 存放夜间主题切换前的导航主题色
-let tempLayoutThemeColor;
-
 // 设置导航主题色
 function setLayoutThemeColor(theme: string) {
-  tempLayoutThemeColor = instance.layout.theme;
   layoutTheme.value.theme = theme;
   toggleTheme({
     scopeName: `layout-theme-${theme}`
@@ -257,12 +254,31 @@ function setLayoutThemeColor(theme: string) {
   }
 }
 
+/**
+ * @description 自动计算hover和active颜色
+ * @see {@link https://element-plus.org/zh-CN/component/button.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E9%A2%9C%E8%89%B2}
+ */
+const shadeBgColor = (color: string): string => {
+  return new TinyColor(color).shade(10).toString();
+};
+
 // 设置ep主题色
 const setEpThemeColor = (color: string) => {
-  // @ts-expect-error
-  writeNewStyle(createNewStyle(color));
   useEpThemeStoreHook().setEpThemeColor(color);
   body.style.setProperty("--el-color-primary-active", shadeBgColor(color));
+  document.documentElement.style.setProperty("--el-color-primary", color);
+  for (let i = 1; i <= 9; i++) {
+    document.documentElement.style.setProperty(
+      `--el-color-primary-light-${i}`,
+      lighten(color, i / 10)
+    );
+  }
+  for (let i = 1; i <= 2; i++) {
+    document.documentElement.style.setProperty(
+      `--el-color-primary-dark-${i}`,
+      darken(color, i / 10)
+    );
+  }
 };
 
 let dataTheme = ref<boolean>(instance.layout.darkMode);
@@ -270,18 +286,17 @@ let dataTheme = ref<boolean>(instance.layout.darkMode);
 // 日间、夜间主题切换
 function dataThemeChange() {
   if (dataTheme.value) {
-    body.setAttribute("data-theme", "dark");
-    setLayoutThemeColor("light");
+    document.documentElement.classList.add("dark");
+    // setLayoutThemeColor("light");
   } else {
-    body.setAttribute("data-theme", "");
-    tempLayoutThemeColor && setLayoutThemeColor(tempLayoutThemeColor);
-    instance.layout = {
-      layout: useAppStoreHook().layout,
-      theme: instance.layout.theme,
-      darkMode: dataTheme.value,
-      sidebarStatus: instance.layout.sidebarStatus,
-      epThemeColor: instance.layout.epThemeColor
-    };
+    document.documentElement.classList.remove("dark");
+    // instance.layout = {
+    //   layout: useAppStoreHook().layout,
+    //   theme: instance.layout.theme,
+    //   darkMode: dataTheme.value,
+    //   sidebarStatus: instance.layout.sidebarStatus,
+    //   epThemeColor: instance.layout.epThemeColor
+    // };
   }
 }
 
@@ -292,8 +307,6 @@ nextTick(() => {
   settings.weakVal &&
     document.querySelector("html")?.setAttribute("class", "html-weakness");
   settings.tabsVal && tagsChange();
-  // @ts-expect-error
-  writeNewStyle(createNewStyle(epThemeColor.value));
   dataThemeChange();
 });
 </script>
@@ -346,8 +359,8 @@ nextTick(() => {
       </el-tooltip>
     </ul>
 
-    <el-divider v-show="!dataTheme">主题色</el-divider>
-    <ul class="theme-color" v-show="!dataTheme">
+    <el-divider>主题色</el-divider>
+    <ul class="theme-color">
       <li
         v-for="(item, index) in themeColors"
         :key="index"
@@ -366,7 +379,7 @@ nextTick(() => {
 
     <el-divider>界面显示</el-divider>
     <ul class="setting">
-      <li v-show="!dataTheme">
+      <li>
         <span>灰色模式</span>
         <el-switch
           v-model="settings.greyVal"
@@ -377,7 +390,7 @@ nextTick(() => {
           @change="greyChange"
         />
       </li>
-      <li v-show="!dataTheme">
+      <li>
         <span>色弱模式</span>
         <el-switch
           v-model="settings.weakVal"

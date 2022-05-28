@@ -19,7 +19,7 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <ElDesignForm v-loading="loading" style="height: 100vh" />
+  <ElDesignForm v-loading="loading" style="height: 100vh" class="design-form" />
 </template>
 
 <style lang="scss" scoped>
