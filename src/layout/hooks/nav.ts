@@ -47,9 +47,9 @@ export function useNav() {
 
   // 退出登录
   function logout() {
-    const LOGIN_EP_THEME_COLOR = "#409eff";
+    const LOGIN_EP_THEME_COLOR = "#409EFF";
     setStyle(LOGIN_EP_THEME_COLOR);
-    useMultiTagsStoreHook().handleTags("equal", routerArrays);
+    useMultiTagsStoreHook().handleTags("equal", [...routerArrays]);
     storageSession.removeItem("info");
     router.push("/login");
   }

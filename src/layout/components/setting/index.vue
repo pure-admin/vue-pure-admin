@@ -142,7 +142,7 @@ const multiTagsCacheChange = () => {
 // 清空缓存并返回登录页
 function onReset() {
   router.push("/login");
-  const LOGIN_EP_THEME_COLOR = "#409eff";
+  const LOGIN_EP_THEME_COLOR = "#409EFF";
   setStyle(LOGIN_EP_THEME_COLOR);
   const { Grey, Weak, MultiTagsCache, EpThemeColor, Theme, Layout } =
     getConfig();
@@ -150,7 +150,7 @@ function onReset() {
   toggleClass(Grey, "html-grey", HTML);
   toggleClass(Weak, "html-weakness", HTML);
   useEpThemeStoreHook().setEpThemeColor(EpThemeColor, Theme);
-  useMultiTagsStoreHook().handleTags("equal", routerArrays);
+  useMultiTagsStoreHook().handleTags("equal", [...routerArrays]);
   useMultiTagsStoreHook().multiTagsCacheChange(MultiTagsCache);
   storageLocal.clear();
   storageSession.clear();

@@ -41,7 +41,6 @@ export const useMultiTagsStore = defineStore({
       switch (mode) {
         case "equal":
           this.multiTags = value;
-          console.log("111", this.multiTags);
           this.tagsCache(this.multiTags);
           break;
         case "push":
