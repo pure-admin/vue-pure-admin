@@ -10,7 +10,7 @@ export const REGEXP_SIX = /^\d{6}$/;
 export const REGEXP_PWD =
   /^(?![0-9]+$)(?![a-z]+$)(?![A-Z]+$)(?!([^(0-9a-zA-Z)]|[()])+$)(?!^.*[\u4E00-\u9FA5].*$)([^(0-9a-zA-Z)]|[()]|[a-z]|[A-Z]|[0-9]){8,18}$/;
 
-/** 登陆校验 */
+/** 登录校验 */
 const loginRules = reactive(<FormRules>{
   username: [{ required: true, message: "请输入账号", trigger: "blur" }],
   password: [
@@ -45,7 +45,7 @@ const loginRules = reactive(<FormRules>{
   ]
 });
 
-/** 手机登陆校验 */
+/** 手机登录校验 */
 const phoneRules = reactive(<FormRules>{
   phone: [
     {
