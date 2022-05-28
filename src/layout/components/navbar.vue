@@ -72,7 +72,9 @@ function translationEn() {
       <screenfull id="header-screenfull" v-show="!deviceDetection()" />
       <!-- 国际化 -->
       <el-dropdown id="header-translation" trigger="click">
-        <globalization />
+        <globalization
+          class="navbar-bg-hover w-40px h-48px p-11px cursor-pointer"
+        />
         <template #dropdown>
           <el-dropdown-menu class="translation">
             <el-dropdown-item
@@ -100,7 +102,7 @@ function translationEn() {
       </el-dropdown>
       <!-- 退出登陆 -->
       <el-dropdown trigger="click">
-        <span class="el-dropdown-link">
+        <span class="el-dropdown-link navbar-bg-hover">
           <img v-if="avatars" :src="avatars" :style="avatarsStyle" />
           <p v-if="username" class="dark:color-white">{{ username }}</p>
         </span>
@@ -117,7 +119,7 @@ function translationEn() {
         </template>
       </el-dropdown>
       <span
-        class="el-icon-setting dark:color-white"
+        class="el-icon-setting navbar-bg-hover"
         :title="t('buttons.hssystemSet')"
         @click="onPanel"
       >
@@ -152,11 +154,11 @@ function translationEn() {
     color: #000000d9;
     justify-content: flex-end;
 
-    :deep(.dropdown-badge) {
-      &:hover {
-        background: #f6f6f6;
-      }
-    }
+    // :deep(.dropdown-badge) {
+    //   &:hover {
+    //     background: #f6f6f6;
+    //   }
+    // }
 
     // .screen-full {
     //   cursor: pointer;
@@ -165,17 +167,6 @@ function translationEn() {
     //     background: #f6f6f6;
     //   }
     // }
-
-    .globalization {
-      height: 48px;
-      width: 40px;
-      padding: 11px;
-      cursor: pointer;
-
-      &:hover {
-        background: #f6f6f6;
-      }
-    }
 
     .el-dropdown-link {
       height: 48px;
@@ -186,9 +177,9 @@ function translationEn() {
       cursor: pointer;
       color: #000000d9;
 
-      &:hover {
-        background: #f6f6f6;
-      }
+      // &:hover {
+      //   background: #f6f6f6;
+      // }
 
       p {
         font-size: 14px;
@@ -209,9 +200,9 @@ function translationEn() {
       cursor: pointer;
       align-items: center;
 
-      &:hover {
-        background: #f6f6f6;
-      }
+      // &:hover {
+      //   background: #f6f6f6;
+      // }
     }
   }
 

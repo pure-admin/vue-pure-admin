@@ -160,7 +160,7 @@
       align-items: center;
 
       &:hover {
-        background: var(--el-color-primary-light-9);
+        // background: var(--el-color-primary-light-9);
         color: var(--el-color-primary);
       }
 
@@ -207,7 +207,7 @@
 }
 
 .scroll-item.is-active {
-  background-color: var(--el-color-primary-light-9);
+  // background-color: var(--el-color-primary-light-9);
   position: relative;
   color: #fff;
 

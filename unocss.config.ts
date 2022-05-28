@@ -14,15 +14,18 @@ export default defineConfig({
   exclude: [`${__dirname}/node_modules/**/*`],
   shortcuts: {
     "wh-full": "w-full h-full",
+    "cp-on": "cursor-pointer outline-none",
     "flex-c": "flex justify-center items-center",
     "flex-ac": "flex justify-around items-center",
     "flex-bc": "flex justify-between items-center",
-    "bg-hover-dark9": "dark:color-white hover:bg-primary hover:dark:bg-primary"
+    "navbar-bg-hover":
+      "dark:color-white hover:bg-[#f6f6f6] dark:hover:bg-[#242424]"
   },
   theme: {
     colors: {
       primary_light_9: "var(--el-color-primary-light-9)",
-      primary: "var(--el-color-primary)"
+      primary: "var(--el-color-primary)",
+      bg_color: "var(--el-bg-color)"
     },
     backgroundColor: {
       dark: "#020409"

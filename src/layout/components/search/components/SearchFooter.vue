@@ -1,5 +1,5 @@
 <template>
-  <div class="search-footer">
+  <div class="search-footer color-[#333] dark:color-white">
     <span class="search-footer-item">
       <enterOutlined class="icon" />
       确认
@@ -23,7 +23,6 @@ import mdiKeyboardEsc from "/@/assets/svg/mdi_keyboard_esc.svg?component";
 <style lang="scss" scoped>
 .search-footer {
   display: flex;
-  color: #333;
 
   .search-footer-item {
     display: flex;

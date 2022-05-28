@@ -159,7 +159,8 @@ onMounted(async () => {
             'select-none',
             searchValue.trim().length > 0 &&
               node.label.includes(searchValue) &&
-              'text-red-500'
+              'text-red-500',
+            highlightMap[node.id]?.highlight ? 'dark:color-primary' : ''
           ]"
           :style="{
             background: highlightMap[node.id]?.highlight

@@ -9,7 +9,7 @@ function handleSearch() {
 
 <template>
   <div
-    class="w-40px h-48px flex-c cursor-pointer bg-hover-dark9"
+    class="w-40px h-48px flex-c cursor-pointer navbar-bg-hover"
     @click="handleSearch"
   >
     <IconifyIconOffline icon="search" />

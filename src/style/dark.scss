@@ -4,6 +4,8 @@
 html.dark {
   /* 自定义深色背景颜色 */
   // --el-bg-color: #020409;
+  $border-style: #303030;
+  $color-white: #fff;
 
   .sidebar-container,
   .sidebar-logo-container,
@@ -23,6 +25,44 @@ html.dark {
     filter: invert(0.9) hue-rotate(180deg);
   }
 
+  .ant-tabs {
+    background: var(--el-bg-color);
+    color: $color-white;
+  }
+
+  /* 标签页 */
+  .tags-view {
+    .arrow-left,
+    .arrow-right {
+      box-shadow: none;
+    }
+
+    .arrow-right {
+      border-left: 1px solid $border-style;
+    }
+
+    .arrow-left,
+    .arrow-right,
+    .right-button li {
+      border-right: 1px solid $border-style;
+    }
+  }
+
+  /* @pureadmin/components */
+  .ant-tabs > .ant-tabs-nav:before {
+    border-bottom: 1px solid $border-style;
+  }
+
+  /* 项目配置面板 */
+  .right-panel-items {
+    .el-divider__text {
+      --el-bg-color: var(--el-bg-color);
+    }
+    .el-divider--horizontal {
+      border-top: none;
+    }
+  }
+
   /* 表单设计器 */
   .design-form {
     .el-main.config-content,
@@ -38,17 +78,16 @@ html.dark {
       background: var(--el-color-primary);
       border: none;
       border-radius: 5px;
-      color: #fff;
+      color: $color-white;
     }
 
     .el-aside {
-      color: #fff;
+      color: $color-white;
     }
   }
 
-  /* ep组件 */
-  .el-table thead,
-  .el-table .el-table__body-wrapper {
+  /* element-plus */
+  .el-table__cell {
     background: var(--el-bg-color);
   }
   .el-card {
