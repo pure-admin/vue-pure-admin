@@ -14,17 +14,16 @@ import { getConfig } from "/@/config";
 import { useRouter } from "vue-router";
 import panel from "../panel/index.vue";
 import { emitter } from "/@/utils/mitt";
+import { setStyle } from "/@/utils/index";
 import { templateRef } from "@vueuse/core";
 import { debounce } from "/@/utils/debounce";
 import { themeColorsType } from "../../types";
 import { routerArrays } from "/@/layout/types";
 import { useAppStoreHook } from "/@/store/modules/app";
-import { shadeBgColor } from "../../theme/element-plus";
 import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
 import { storageLocal, storageSession } from "/@/utils/storage";
-import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
-import { createNewStyle, writeNewStyle } from "../../theme/element-plus";
 import { toggleTheme } from "@pureadmin/theme/dist/browser-utils";
+import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
 
 import dayIcon from "/@/assets/svg/day.svg?component";
 import darkIcon from "/@/assets/svg/dark.svg?component";
@@ -32,6 +31,7 @@ import darkIcon from "/@/assets/svg/dark.svg?component";
 const router = useRouter();
 const { isSelect } = useCssModule();
 const body = document.documentElement as HTMLElement;
+const HTML = document.querySelector("html") as HTMLElement;
 const instance =
   getCurrentInstance().appContext.app.config.globalProperties.$storage;
 
@@ -117,17 +117,13 @@ function toggleClass(flag: boolean, clsName: string, target?: HTMLElement) {
 
 // 灰色模式设置
 const greyChange = (value): void => {
-  toggleClass(settings.greyVal, "html-grey", document.querySelector("html"));
+  toggleClass(settings.greyVal, "html-grey", HTML);
   storageConfigureChange("grey", value);
 };
 
 // 色弱模式设置
 const weekChange = (value): void => {
-  toggleClass(
-    settings.weakVal,
-    "html-weakness",
-    document.querySelector("html")
-  );
+  toggleClass(settings.weakVal, "html-weakness", HTML);
   storageConfigureChange("weak", value);
 };
 
@@ -146,13 +142,16 @@ const multiTagsCacheChange = () => {
 // 清空缓存并返回登录页
 function onReset() {
   router.push("/login");
-  const { Grey, Weak, MultiTagsCache, EpThemeColor, Layout } = getConfig();
+  const LOGIN_EP_THEME_COLOR = "#409eff";
+  setStyle(LOGIN_EP_THEME_COLOR);
+  const { Grey, Weak, MultiTagsCache, EpThemeColor, Theme, Layout } =
+    getConfig();
   useAppStoreHook().setLayout(Layout);
-  useEpThemeStoreHook().setEpThemeColor(EpThemeColor);
-  useMultiTagsStoreHook().multiTagsCacheChange(MultiTagsCache);
-  toggleClass(Grey, "html-grey", document.querySelector("html"));
-  toggleClass(Weak, "html-weakness", document.querySelector("html"));
+  toggleClass(Grey, "html-grey", HTML);
+  toggleClass(Weak, "html-weakness", HTML);
+  useEpThemeStoreHook().setEpThemeColor(EpThemeColor, Theme);
   useMultiTagsStoreHook().handleTags("equal", routerArrays);
+  useMultiTagsStoreHook().multiTagsCacheChange(MultiTagsCache);
   storageLocal.clear();
   storageSession.clear();
 }
@@ -232,7 +231,7 @@ function setLayoutModel(layout: string) {
 }
 
 // 存放夜间主题切换前的导航主题色
-let tempLayoutThemeColor;
+let tempLayoutThemeColor: string;
 
 // 设置导航主题色
 function setLayoutThemeColor(theme: string) {
@@ -259,10 +258,8 @@ function setLayoutThemeColor(theme: string) {
 
 // 设置ep主题色
 const setEpThemeColor = (color: string) => {
-  // @ts-expect-error
-  writeNewStyle(createNewStyle(color));
   useEpThemeStoreHook().setEpThemeColor(color);
-  body.style.setProperty("--el-color-primary-active", shadeBgColor(color));
+  setStyle(color);
 };
 
 let dataTheme = ref<boolean>(instance.layout.darkMode);
@@ -287,13 +284,10 @@ function dataThemeChange() {
 
 //初始化项目配置
 nextTick(() => {
-  settings.greyVal &&
-    document.querySelector("html")?.setAttribute("class", "html-grey");
-  settings.weakVal &&
-    document.querySelector("html")?.setAttribute("class", "html-weakness");
+  settings.greyVal && HTML?.setAttribute("class", "html-grey");
+  settings.weakVal && HTML?.setAttribute("class", "html-weakness");
   settings.tabsVal && tagsChange();
-  // @ts-expect-error
-  writeNewStyle(createNewStyle(epThemeColor.value));
+  setStyle(epThemeColor.value);
   dataThemeChange();
 });
 </script>

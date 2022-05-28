@@ -3,12 +3,15 @@ import { router } from "/@/router";
 import { getConfig } from "/@/config";
 import { emitter } from "/@/utils/mitt";
 import { routeMetaType } from "../types";
+import { setStyle } from "/@/utils/index";
 import { remainingPaths } from "/@/router";
+import { routerArrays } from "/@/layout/types";
 import { transformI18n } from "/@/plugins/i18n";
 import { storageSession } from "/@/utils/storage";
 import { useAppStoreHook } from "/@/store/modules/app";
 import { i18nChangeLanguage } from "@wangeditor/editor";
 import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
+import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
 
 const errorInfo = "当前路由配置不正确，请检查配置";
 
@@ -44,6 +47,9 @@ export function useNav() {
 
   // 退出登录
   function logout() {
+    const LOGIN_EP_THEME_COLOR = "#409eff";
+    setStyle(LOGIN_EP_THEME_COLOR);
+    useMultiTagsStoreHook().handleTags("equal", routerArrays);
     storageSession.removeItem("info");
     router.push("/login");
   }

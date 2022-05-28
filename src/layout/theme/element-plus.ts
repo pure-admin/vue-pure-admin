@@ -18,14 +18,21 @@ const formula = {
   "light-9": "color(primary tint(90%))"
 };
 
-// 把生成的样式表写入到style中
+/**
+ * 把生成的样式表写入到style中
+ * @param newStyle 样式表
+ */
 export const writeNewStyle = (newStyle: string): void => {
   const style = window.document.createElement("style");
   style.innerText = newStyle;
   window.document.head.appendChild(style);
 };
 
-// 根据主题色，生成最新的样式表
+/**
+ * 根据主题色，生成最新的样式表
+ * @param primaryStyle 主题色
+ * @returns 样式表
+ */
 export const createNewStyle = (
   primaryStyle: Record<string, any>
 ): Record<string, any> => {
