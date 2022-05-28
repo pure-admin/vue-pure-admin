@@ -152,7 +152,7 @@ function onReset() {
   useMultiTagsStoreHook().multiTagsCacheChange(MultiTagsCache);
   toggleClass(Grey, "html-grey", document.querySelector("html"));
   toggleClass(Weak, "html-weakness", document.querySelector("html"));
-  useMultiTagsStoreHook().handleTags("equal", routerArrays);
+  useMultiTagsStoreHook().handleTags("equal", [...routerArrays]);
   storageLocal.clear();
   storageSession.clear();
 }
