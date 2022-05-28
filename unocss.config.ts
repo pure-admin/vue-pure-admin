@@ -14,6 +14,7 @@ export default defineConfig({
   exclude: [`${__dirname}/node_modules/**/*`],
   shortcuts: {
     "wh-full": "w-full h-full",
+    "flex-wrap": "flex flex-wrap",
     "flex-ac": "flex justify-around items-center",
     "flex-bc": "flex justify-between items-center"
   },

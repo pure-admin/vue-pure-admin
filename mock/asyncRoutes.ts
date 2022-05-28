@@ -127,13 +127,19 @@ const tabsRouter = {
       }
     },
     {
-      path: "/tabs/detail",
-      name: "TabDetail",
+      path: "/tabs/query-detail",
+      name: "TabQueryDetail",
       meta: {
-        title: "",
-        showLink: false,
-        dynamicLevel: 3,
-        refreshRedirect: "/tabs/index"
+        // 不在menu菜单中显示
+        showLink: false
+      }
+    },
+    {
+      path: "/tabs/params-detail/:id",
+      component: "params-detail",
+      name: "TabParamsDetail",
+      meta: {
+        showLink: false
       }
     }
   ]

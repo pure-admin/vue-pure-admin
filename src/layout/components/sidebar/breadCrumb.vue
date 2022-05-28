@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, watch } from "vue";
 import { isEqual } from "lodash-unified";
+import { ref, watch, onMounted } from "vue";
 import { transformI18n } from "/@/plugins/i18n";
 import { getParentPaths, findRouteByPath } from "/@/router/utils";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
@@ -25,7 +25,13 @@ const getBreadcrumb = (): void => {
   let currentRoute;
   if (Object.keys(route.query).length > 0) {
     multiTags.forEach(item => {
-      if (isEqual(route.query, item?.query)) {
+      if (isEqual(route.query, item.query)) {
+        currentRoute = item;
+      }
+    });
+  } else if (Object.keys(route.params).length > 0) {
+    multiTags.forEach(item => {
+      if (isEqual(route.params, item?.params)) {
         currentRoute = item;
       }
     });
@@ -75,19 +81,18 @@ const getBreadcrumb = (): void => {
   );
 };
 
-getBreadcrumb();
+onMounted(() => {
+  getBreadcrumb();
+});
 
 watch(
   () => route.path,
-  () => getBreadcrumb()
+  () => {
+    getBreadcrumb();
+  }
 );
 
-watch(
-  () => route.query,
-  () => getBreadcrumb()
-);
-
-const handleLink = (item: RouteLocationMatched): any => {
+const handleLink = (item: RouteLocationMatched): void => {
   const { redirect, path } = item;
   if (redirect) {
     router.push(redirect.toString());

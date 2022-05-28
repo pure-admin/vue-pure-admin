@@ -11,17 +11,14 @@ import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 import {
   Router,
-  RouteMeta,
   createRouter,
   RouteRecordRaw,
-  RouteComponent,
-  RouteRecordName
+  RouteComponent
 } from "vue-router";
 import {
   ascending,
   initRouter,
   getHistoryMode,
-  getParentPaths,
   findRouteByPath,
   handleAliveRoute,
   formatTwoStageRoutes,
@@ -132,69 +129,22 @@ router.beforeEach((to: toRouteType, _from, next) => {
       if (usePermissionStoreHook().wholeMenus.length === 0)
         initRouter(name.username).then((router: Router) => {
           if (!useMultiTagsStoreHook().getMultiTagsCache) {
-            const handTag = (
-              path: string,
-              parentPath: string,
-              name: RouteRecordName,
-              meta: RouteMeta
-            ): void => {
+            const { path } = to;
+            const index = findIndex(remainingRouter, v => {
+              return v.path == path;
+            });
+            const routes =
+              index === -1
+                ? router.options.routes[0].children
+                : router.options.routes;
+            const route = findRouteByPath(path, routes);
+            // query、params模式路由传参数的标签页不在此处处理
+            if (route && route.meta?.title) {
               useMultiTagsStoreHook().handleTags("push", {
-                path,
-                parentPath,
-                name,
-                meta
+                path: route.path,
+                name: route.name,
+                meta: route.meta
               });
-            };
-            // 未开启标签页缓存，刷新页面重定向到顶级路由（参考标签页操作例子，只针对静态路由）
-            if (to.meta?.refreshRedirect) {
-              const routes = router.options.routes;
-              const { refreshRedirect } = to.meta;
-              const { name, meta } = findRouteByPath(refreshRedirect, routes);
-              handTag(
-                refreshRedirect,
-                getParentPaths(refreshRedirect, routes)[1],
-                name,
-                meta
-              );
-              return router.push(refreshRedirect);
-            } else {
-              const { path } = to;
-              const index = findIndex(remainingRouter, v => {
-                return v.path == path;
-              });
-              const routes =
-                index === -1
-                  ? router.options.routes[0].children
-                  : router.options.routes;
-              const route = findRouteByPath(path, routes);
-              const routePartent = getParentPaths(path, routes);
-              // 未开启标签页缓存，刷新页面重定向到顶级路由（参考标签页操作例子，只针对动态路由）
-              if (
-                path !== routes[0].path &&
-                route?.meta?.rank !== 0 &&
-                routePartent.length === 0
-              ) {
-                if (!route?.meta?.refreshRedirect) return;
-                const { name, meta } = findRouteByPath(
-                  route.meta.refreshRedirect,
-                  routes
-                );
-                handTag(
-                  route.meta?.refreshRedirect,
-                  getParentPaths(route.meta?.refreshRedirect, routes)[0],
-                  name,
-                  meta
-                );
-                return router.push(route.meta?.refreshRedirect);
-              } else {
-                handTag(
-                  route.path,
-                  routePartent[routePartent.length - 1],
-                  route.name,
-                  route.meta
-                );
-                return router.push(path);
-              }
             }
           }
           router.push(to.fullPath);
