@@ -26,7 +26,7 @@ export const useUserStore = defineStore({
     name,
     // 前端生成的验证码（按实际需求替换）
     verifyCode: "",
-    // 登陆显示组件判断 0：登陆 1：手机登陆 2：二维码登陆 3：注册 4：忘记密码，默认0：登陆
+    // 登录显示组件判断 0：登录 1：手机登录 2：二维码登录 3：注册 4：忘记密码，默认0：登录
     currentPage: 0
   }),
   actions: {
