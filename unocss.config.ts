@@ -25,7 +25,10 @@ export default defineConfig({
     colors: {
       primary_light_9: "var(--el-color-primary-light-9)",
       primary: "var(--el-color-primary)",
-      bg_color: "var(--el-bg-color)"
+      bg_color: "var(--el-bg-color)",
+      text_color_primary: "var(--el-text-color-primary)",
+      text_color_regular: "var(--el-text-color-regular)",
+      text_color_disabled: "var(--el-text-color-disabled)"
     },
     backgroundColor: {
       dark: "#020409"

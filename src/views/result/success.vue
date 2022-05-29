@@ -26,7 +26,7 @@ const { lastBuildTime } = __APP_INFO__;
         </div>
       </template>
     </el-result>
-    <div style="background: rgb(250, 250, 250)" class="p-6 ml-10 mr-10">
+    <div class="p-6 ml-10 mr-10 bg-[#fafafa] dark:bg-transparent">
       <el-descriptions title="项目名称" class="mb-5">
         <el-descriptions-item label="项目 ID：">12345</el-descriptions-item>
         <el-descriptions-item label="负责人：">明明</el-descriptions-item>

@@ -82,12 +82,14 @@ const checkboxChangeEvent: VxeTableEvents.CheckboxChange = ({ records }) => {
   <div class="config">
     <el-drawer
       :model-value="drawer"
-      :title="drawTitle"
       :direction="direction"
       :before-close="handleClose"
       destroy-on-close
       size="680px"
     >
+      <template #title>
+        <span class="color-black dark:color-white">{{ drawTitle }}</span>
+      </template>
       <el-divider />
       <!-- 列表 -->
       <div class="p-2">
@@ -162,10 +164,8 @@ const checkboxChangeEvent: VxeTableEvents.CheckboxChange = ({ records }) => {
   margin-bottom: 0;
 }
 
-:deep(.el-drawer__header span) {
-  color: rgba(0, 0, 0, 0.85);
-  font-weight: 500;
-  font-size: 16px;
+:deep(.el-drawer__body) {
+  padding: 0;
 }
 
 :deep(.el-divider--horizontal) {

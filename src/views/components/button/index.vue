@@ -18,13 +18,12 @@ const url = ref(`${VITE_PUBLIC_PATH}html/button.html`);
         <span class="font-medium">通过iframe引入按钮页面</span>
       </div>
     </template>
-    <iframe :src="url" frameborder="0" class="iframe" />
+    <iframe :src="url" frameborder="0" class="iframe w-full h-60vh" />
   </el-card>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .iframe {
-  width: 100%;
-  height: 60vh;
+  filter: invert(0.9) hue-rotate(180deg);
 }
 </style>

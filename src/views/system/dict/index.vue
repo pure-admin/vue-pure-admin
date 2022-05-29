@@ -222,7 +222,7 @@ function onHide() {
 <template>
   <div>
     <!-- 工具栏 -->
-    <vxe-toolbar>
+    <vxe-toolbar class="dark:bg-dark">
       <template #buttons>
         <vxe-input
           v-model="dictData.filterName"

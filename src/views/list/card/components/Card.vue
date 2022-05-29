@@ -6,16 +6,16 @@ import serviceIcon from "/@/assets/svg/service.svg?component";
 import calendarIcon from "/@/assets/svg/calendar.svg?component";
 import userAvatarIcon from "/@/assets/svg/user_avatar.svg?component";
 
-export interface CardProductType {
+defineOptions({
+  name: "ReCard"
+});
+
+interface CardProductType {
   type: number;
   isSetup: boolean;
   description: string;
   name: string;
 }
-
-defineOptions({
-  name: "ReCard"
-});
 
 const props = defineProps({
   product: {
@@ -46,7 +46,7 @@ const cardLogoClass = computed(() => [
 
 <template>
   <div :class="cardClass">
-    <div class="list-card-item_detail">
+    <div class="list-card-item_detail !bg-white !dark:bg-dark">
       <el-row justify="space-between">
         <div :class="cardLogoClass">
           <shopIcon v-if="product.type === 1" />
@@ -68,7 +68,7 @@ const cardLogoClass = computed(() => [
             :disabled="!product.isSetup"
             max-height="2"
           >
-            <IconifyIconOffline icon="more-vertical" class="icon-more" />
+            <IconifyIconOffline icon="more-vertical" class="text-size-24px" />
             <template #dropdown>
               <el-dropdown-menu :disabled="!product.isSetup">
                 <el-dropdown-item @click="handleClickManage(product)">
@@ -82,15 +82,17 @@ const cardLogoClass = computed(() => [
           </el-dropdown>
         </div>
       </el-row>
-      <p class="list-card-item_detail--name">{{ product.name }}</p>
-      <p class="list-card-item_detail--desc">{{ product.description }}</p>
+      <p class="list-card-item_detail--name color-text_color_primary">
+        {{ product.name }}
+      </p>
+      <p class="list-card-item_detail--desc color-text_color_regular">
+        {{ product.description }}
+      </p>
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
-$text-color-disabled: rgba(0, 0, 0, 0.26);
-
 .list-card-item {
   display: flex;
   flex-direction: column;
@@ -98,11 +100,9 @@ $text-color-disabled: rgba(0, 0, 0, 0.26);
   border-radius: 3px;
   overflow: hidden;
   cursor: pointer;
-  color: rgba(0, 0, 0, 0.6);
 
   &_detail {
     flex: 1;
-    background: #fff;
     padding: 24px 32px;
     min-height: 140px;
 
@@ -131,16 +131,10 @@ $text-color-disabled: rgba(0, 0, 0, 0.26);
       }
     }
 
-    .icon-more {
-      font-size: 24px;
-      color: rgba(36, 36, 36, 1);
-    }
-
     &--name {
       margin: 24px 0 8px 0;
       font-size: 16px;
       font-weight: 400;
-      color: rgba(0, 0, 0, 0.9);
     }
 
     &--desc {
@@ -157,14 +151,9 @@ $text-color-disabled: rgba(0, 0, 0, 0.26);
   }
 
   &__disabled {
-    color: $text-color-disabled;
-
-    .icon-more {
-      color: $text-color-disabled;
-    }
-
-    .list-card-item_detail--name {
-      color: $text-color-disabled;
+    .list-card-item_detail--name,
+    .list-card-item_detail--desc {
+      color: var(--el-text-color-disabled);
     }
 
     .list-card-item_detail--operation--tag {

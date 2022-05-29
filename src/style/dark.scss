@@ -53,6 +53,50 @@ html.dark {
     border-bottom: 1px solid $border-style;
   }
 
+  .vxe-table--header-wrapper,
+  .vxe-table--body-wrapper {
+    color: $color-white;
+    background: var(--el-bg-color) !important;
+  }
+
+  .vxe-body--row.row--hover,
+  .vxe-pager {
+    background-color: transparent;
+  }
+
+  .vxe-input--inner,
+  .vxe-pager .vxe-pager--jump-prev,
+  .vxe-pager .vxe-pager--prev-btn,
+  .vxe-pager .vxe-pager--next-btn,
+  .vxe-pager .vxe-pager--jump-next,
+  .vxe-pager .vxe-pager--num-btn,
+  .vxe-pager .vxe-pager--jump .vxe-pager--goto {
+    background-color: transparent;
+    color: $color-white;
+    // outline: none !important;
+  }
+
+  .vxe-input--inner {
+  }
+
+  .vxe-select-option--wrapper {
+    background: var(--el-bg-color) !important;
+  }
+
+  .vxe-select-option:not(.is--disabled).is--hover {
+    background: var(--el-color-primary-light-6) !important;
+  }
+
+  // .vxe-pager {
+  //   background: var(--el-bg-color) !important;
+  // }
+
+  .vxe-footer--column {
+    border-bottom: var(--el-table-border);
+    background-image: linear-gradient(#303030, #303030),
+      linear-gradient(#303030, #303030);
+  }
+
   /* 项目配置面板 */
   .right-panel-items {
     .el-divider__text {
@@ -92,5 +136,10 @@ html.dark {
   }
   .el-card {
     --el-card-bg-color: var(--el-bg-color);
+    // border: none !important;
+  }
+  .el-backtop {
+    --el-backtop-bg-color: var(--el-color-primary-light-9);
+    --el-backtop-hover-bg-color: var(--el-color-primary);
   }
 }
