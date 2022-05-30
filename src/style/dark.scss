@@ -73,6 +73,11 @@ html.dark {
       );
   }
 
+  /* 表头 */
+  .vxe-table--header-wrapper {
+    background: #262727 !important;
+  }
+
   .vxe-table--render-wrapper,
   .vxe-table--main-wrapper {
     border: none;
@@ -89,7 +94,7 @@ html.dark {
 
   .vxe-body--row.row--hover,
   .vxe-pager {
-    background-color: transparent;
+    background-color: #262727;
   }
 
   .vxe-input--inner,
