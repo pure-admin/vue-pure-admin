@@ -57,7 +57,7 @@ export default defineComponent({
         return {
           background:
             s === size.value ? useEpThemeStoreHook().epThemeColor : "",
-          color: s === size.value ? "#f4f4f5" : "#000"
+          color: s === size.value ? "#fff" : "var(--el-text-color-primary)"
         };
       };
     });
@@ -107,7 +107,7 @@ export default defineComponent({
           class="cursor-pointer outline-none"
           icon="setting"
           width="16"
-          color="#606266"
+          color="text_color_regular"
           onMouseover={e => (buttonRef.value = e.currentTarget)}
         />
       )
@@ -137,7 +137,7 @@ export default defineComponent({
                       class="cursor-pointer outline-none"
                       icon={isExpandAll.value ? "unExpand" : "expand"}
                       width="16"
-                      color="#606266"
+                      color="text_color_regular"
                       onClick={() => onExpand()}
                     />
                   </el-tooltip>
@@ -149,7 +149,7 @@ export default defineComponent({
                   class="cursor-pointer outline-none"
                   icon="refresh-right"
                   width="16"
-                  color="#606266"
+                  color="text_color_regular"
                   onClick={() => emit("refresh")}
                 />
               </el-tooltip>
@@ -161,7 +161,7 @@ export default defineComponent({
                     class="cursor-pointer outline-none"
                     icon="density"
                     width="16"
-                    color="#606266"
+                    color="text_color_regular"
                   />
                 </el-dropdown>
               </el-tooltip>

@@ -13,6 +13,7 @@ export default defineConfig({
   transformers: [transformerDirectives(), transformerVariantGroup()],
   exclude: [`${__dirname}/node_modules/**/*`],
   shortcuts: {
+    "bg-dark": "bg-bg_color",
     "wh-full": "w-full h-full",
     "cp-on": "cursor-pointer outline-none",
     "flex-c": "flex justify-center items-center",
@@ -23,25 +24,12 @@ export default defineConfig({
   },
   theme: {
     colors: {
-      primary_light_9: "var(--el-color-primary-light-9)",
-      primary: "var(--el-color-primary)",
       bg_color: "var(--el-bg-color)",
+      primary: "var(--el-color-primary)",
+      primary_light_9: "var(--el-color-primary-light-9)",
       text_color_primary: "var(--el-text-color-primary)",
       text_color_regular: "var(--el-text-color-regular)",
       text_color_disabled: "var(--el-text-color-disabled)"
-    },
-    backgroundColor: {
-      dark: "#020409"
-    },
-    transitionProperty: [
-      "width",
-      "height",
-      "background",
-      "background-color",
-      "padding-left",
-      "border-color",
-      "right",
-      "fill"
-    ]
+    }
   }
 });

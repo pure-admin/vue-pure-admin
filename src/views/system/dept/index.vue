@@ -106,7 +106,10 @@ onMounted(() => {
           default-expand-all
           :size="size"
           :data="dataList"
-          :header-cell-style="{ background: '#fafafa', color: '#606266' }"
+          :header-cell-style="{
+            background: 'var(--el-table-row-hover-bg-color)',
+            color: 'var(--el-text-color-primary)'
+          }"
           @selection-change="handleSelectionChange"
         >
           <el-table-column

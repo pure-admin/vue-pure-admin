@@ -159,8 +159,8 @@ onMounted(() => {
           :size="size"
           :data="dataList"
           :header-cell-style="{
-            background: 'var(--el-color-primary)',
-            color: '#606266'
+            background: 'var(--el-table-row-hover-bg-color)',
+            color: 'var(--el-text-color-primary)'
           }"
           @selection-change="handleSelectionChange"
         >

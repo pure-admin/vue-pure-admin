@@ -87,7 +87,7 @@ const checkboxChangeEvent: VxeTableEvents.CheckboxChange = ({ records }) => {
       destroy-on-close
       size="680px"
     >
-      <template #title>
+      <template #header>
         <span class="color-black dark:color-white">{{ drawTitle }}</span>
       </template>
       <el-divider />
