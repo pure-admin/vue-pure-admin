@@ -30,7 +30,7 @@
     "@ctrl/tinycolor": "^3.4.1",
     "@logicflow/core": "^1.1.16",
     "@logicflow/extension": "^1.1.16",
-    "@pureadmin/components": "^1.0.6",
+    "@pureadmin/components": "^1.0.8",
     "@vueuse/core": "^8.5.0",
     "@vueuse/motion": "^2.0.0-beta.12",
     "@vueuse/shared": "^8.5.0",

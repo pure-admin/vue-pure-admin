@@ -26,7 +26,7 @@
   .main-container {
     height: 100vh;
     min-height: 100%;
-    transition: margin-left 0.1s;
+    transition: margin-left var(--el-transition-duration-fast);
     margin-left: $sideBarWidth;
     position: relative;
     background: #f0f2f5;
@@ -43,7 +43,7 @@
     right: 0;
     z-index: 998;
     width: calc(100% - 210px);
-    transition: width 0.1s;
+    transition: width var(--el-transition-duration-fast);
   }
 
   .main-hidden {
@@ -63,7 +63,7 @@
   }
 
   .sidebar-container {
-    transition: width 0.1s;
+    transition: width var(--el-transition-duration-fast);
     width: $sideBarWidth !important;
     background: $menuBg;
     height: 100%;
@@ -536,7 +536,7 @@
   .mobile {
     .fixed-header {
       width: 100% !important;
-      transition: width 0.1s;
+      transition: width var(--el-transition-duration-fast);
     }
 
     .main-container {
@@ -544,7 +544,7 @@
     }
 
     .sidebar-container {
-      transition: transform 0.1s;
+      transition: transform var(--el-transition-duration-fast);
       width: $sideBarWidth;
     }
 
@@ -581,7 +581,7 @@ body[layout="vertical"] {
   .hideSidebar {
     .fixed-header {
       width: calc(100% - 54px);
-      transition: width 0.1s;
+      transition: width var(--el-transition-duration-fast);
     }
 
     .sidebar-container {
@@ -657,7 +657,7 @@ body[layout="mix"] {
   .hideSidebar {
     .fixed-header {
       width: calc(100% - 54px);
-      transition: width 0.1s;
+      transition: width var(--el-transition-duration-fast);
     }
 
     .sidebar-container {

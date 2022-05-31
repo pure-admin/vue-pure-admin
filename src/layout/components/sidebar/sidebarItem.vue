@@ -205,12 +205,7 @@ function resolvePath(routePath) {
     </el-menu-item>
   </template>
 
-  <el-sub-menu
-    v-else
-    ref="subMenu"
-    :index="resolvePath(props.item.path)"
-    popper-append-to-body
-  >
+  <el-sub-menu v-else ref="subMenu" :index="resolvePath(props.item.path)">
     <template #title>
       <div v-show="props.item.meta.icon" class="sub-menu-icon">
         <component
