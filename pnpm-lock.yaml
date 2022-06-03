@@ -113,6 +113,7 @@ specifiers:
   vxe-table: ^4.2.3
   xe-utils: ^3.5.4
   xgplayer: ^2.31.6
+  xlsx: ^0.18.5
 
 dependencies:
   "@amap/amap-jsapi-loader": 1.0.1
@@ -164,6 +165,7 @@ dependencies:
   vxe-table: 4.2.3_vue@3.2.36+xe-utils@3.5.4
   xe-utils: 3.5.4
   xgplayer: 2.31.6
+  xlsx: 0.18.5
 
 devDependencies:
   "@commitlint/cli": 13.1.0
@@ -2159,10 +2161,6 @@ packages:
     peerDependencies:
       eslint: ^6.2.0 || ^7.0.0 || ^8.0.0
       eslint-plugin-vue: ^8.0.1
-      typescript: "*"
-    peerDependenciesMeta:
-      typescript:
-        optional: true
     dependencies:
       "@typescript-eslint/eslint-plugin": 5.23.0_17b6d2ce7129f0b36f2c30ae592c16e7
       "@typescript-eslint/parser": 5.23.0_eslint@8.15.0+typescript@4.6.4
@@ -2172,6 +2170,7 @@ packages:
       vue-eslint-parser: 8.3.0_eslint@8.15.0
     transitivePeerDependencies:
       - supports-color
+      - typescript
     dev: true
 
   /@vue/reactivity-transform/3.2.33:
@@ -2610,6 +2609,14 @@ packages:
     hasBin: true
     dev: true
 
+  /adler-32/1.3.1:
+    resolution:
+      {
+        integrity: sha512-ynZ4w/nUUv5rrsR8UUGoe1VC9hZj6V5hU9Qw1HlMDJGEJw5S7TfTErWTjMys6M7vr0YWcPqs3qAr4ss0nDfP+A==
+      }
+    engines: { node: ">=0.8" }
+    dev: false
+
   /aggregate-error/3.1.0:
     resolution:
       {
@@ -3002,6 +3009,17 @@ packages:
       }
     dev: true
 
+  /cfb/1.2.2:
+    resolution:
+      {
+        integrity: sha512-KfdUZsSOw19/ObEWasvBP/Ac4reZvAGauZhs6S/gqNhXhI7cKwvlH7ulj+dOEYnca4bm4SGo8C1bTAQvnTjgQA==
+      }
+    engines: { node: ">=0.8" }
+    dependencies:
+      adler-32: 1.3.1
+      crc-32: 1.2.2
+    dev: false
+
   /chalk/2.4.2:
     resolution:
       {
@@ -3123,6 +3141,14 @@ packages:
 
   /clone/1.0.4:
     resolution: { integrity: sha1-2jCcwmPfFZlMaIypAheco8fNfH4= }
+    engines: { node: ">=0.8" }
+    dev: false
+
+  /codepage/1.15.0:
+    resolution:
+      {
+        integrity: sha512-3g6NUTPd/YtuuGrhMnOMRjFc+LJw/bnMp3+0r/Wcz3IXUuCosKRJvMphm5+Q+bvTVGcJJuRvVLuYba+WojaFaA==
+      }
     engines: { node: ">=0.8" }
     dev: false
 
@@ -3266,8 +3292,6 @@ packages:
       finalhandler: 1.1.2
       parseurl: 1.3.3
       utils-merge: 1.0.1
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
   /consola/2.15.3:
@@ -3354,6 +3378,15 @@ packages:
       yaml: 1.10.2
     dev: true
 
+  /crc-32/1.2.2:
+    resolution:
+      {
+        integrity: sha512-ROmzCKrTnOwybPcJApAA6WBWij23HVfGVNKqqrZpuyZOHqK2CwHSvpGuyt/UNNvaIjEd8X5IFGp4Mh+Ie1IHJQ==
+      }
+    engines: { node: ">=0.8" }
+    hasBin: true
+    dev: false
+
   /create-require/1.1.1:
     resolution:
       {
@@ -3398,8 +3431,6 @@ packages:
       color: 0.11.4
       debug: 3.2.7
       rgb: 0.1.0
-    transitivePeerDependencies:
-      - supports-color
     dev: false
 
   /css-declaration-sorter/6.2.2_postcss@8.4.13:
@@ -3614,11 +3645,6 @@ packages:
       {
         integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==
       }
-    peerDependencies:
-      supports-color: "*"
-    peerDependenciesMeta:
-      supports-color:
-        optional: true
     dependencies:
       ms: 2.0.0
     dev: true
@@ -3628,11 +3654,6 @@ packages:
       {
         integrity: sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ==
       }
-    peerDependencies:
-      supports-color: "*"
-    peerDependenciesMeta:
-      supports-color:
-        optional: true
     dependencies:
       ms: 2.1.3
     dev: false
@@ -4742,8 +4763,6 @@ packages:
       parseurl: 1.3.3
       statuses: 1.5.0
       unpipe: 1.0.0
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
   /find-up/4.1.0:
@@ -4813,6 +4832,14 @@ packages:
       asynckit: 0.4.0
       combined-stream: 1.0.8
       mime-types: 2.1.35
+    dev: false
+
+  /frac/1.1.2:
+    resolution:
+      {
+        integrity: sha512-w/XBfkibaTl3YDqASwfDUqkna4Z2p9cFSr1aHDt0WoMTECnRfBOv2WArlZILlqgWlmdIlALXGpM2AOhEk5W3IA==
+      }
+    engines: { node: ">=0.8" }
     dev: false
 
   /fraction.js/4.2.0:
@@ -7696,6 +7723,16 @@ packages:
       readable-stream: 3.6.0
     dev: true
 
+  /ssf/0.11.2:
+    resolution:
+      {
+        integrity: sha512-+idbmIXoYET47hH+d7dfm2epdOMUDjqcB4648sTZ+t2JwoyBFL/insLfB/racrDmsKB3diwsDA696pZMieAC5g==
+      }
+    engines: { node: ">=0.8" }
+    dependencies:
+      frac: 1.1.2
+    dev: false
+
   /ssr-window/3.0.0:
     resolution:
       {
@@ -8779,6 +8816,14 @@ packages:
     resolution: { integrity: sha1-pwIEUwhNjNLv5wup02liY94XEKU= }
     dev: false
 
+  /wmf/1.0.2:
+    resolution:
+      {
+        integrity: sha512-/p9K7bEh0Dj6WbXg4JG0xvLQmIadrner1bi45VMJTfnbVHsc7yIajZyoSoK60/dtVBs12Fm6WkUI5/3WAVsNMw==
+      }
+    engines: { node: ">=0.8" }
+    dev: false
+
   /word-wrap/1.2.3:
     resolution:
       {
@@ -8786,6 +8831,14 @@ packages:
       }
     engines: { node: ">=0.10.0" }
     dev: true
+
+  /word/0.3.0:
+    resolution:
+      {
+        integrity: sha512-OELeY0Q61OXpdUfTp+oweA/vtLVg5VDOXh+3he3PNzLGG/y0oylSOC1xRVj0+l4vQ3tj/bB1HVHv1ocXkQceFA==
+      }
+    engines: { node: ">=0.8" }
+    dev: false
 
   /wrap-ansi/6.2.0:
     resolution:
@@ -8857,6 +8910,23 @@ packages:
       event-emitter: 0.3.5
       fs-extra: 5.0.0
       xgplayer-subtitles: 1.0.22
+    dev: false
+
+  /xlsx/0.18.5:
+    resolution:
+      {
+        integrity: sha512-dmg3LCjBPHZnQp5/F/+nnTa+miPJxUXB6vtk42YjBBKayDNagxGEeIdWApkYPOf3Z3pm3k62Knjzp7lMeTEtFQ==
+      }
+    engines: { node: ">=0.8" }
+    hasBin: true
+    dependencies:
+      adler-32: 1.3.1
+      cfb: 1.2.2
+      codepage: 1.15.0
+      crc-32: 1.2.2
+      ssf: 0.11.2
+      wmf: 1.0.2
+      word: 0.3.0
     dev: false
 
   /y18n/4.0.3:
