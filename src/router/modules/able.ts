@@ -138,6 +138,14 @@ const ableRouter = {
       meta: {
         title: $t("menus.hsPdf")
       }
+    },
+    {
+      path: "/able/execl",
+      name: "Execl",
+      component: () => import("/@/views/able/execl.vue"),
+      meta: {
+        title: $t("menus.hsExecl")
+      }
     }
   ]
 };

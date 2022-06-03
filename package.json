@@ -74,7 +74,8 @@
     "vuedraggable": "4.1.0",
     "vxe-table": "^4.2.3",
     "xe-utils": "^3.5.4",
-    "xgplayer": "^2.31.6"
+    "xgplayer": "^2.31.6",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@commitlint/cli": "13.1.0",
