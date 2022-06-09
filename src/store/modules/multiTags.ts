@@ -12,7 +12,7 @@ export const useMultiTagsStore = defineStore({
     // 存储标签页信息（路由信息）
     multiTags: storageLocal.getItem("responsive-configure").multiTagsCache
       ? storageLocal.getItem("responsive-tags")
-      : routerArrays,
+      : [...routerArrays],
     multiTagsCache: storageLocal.getItem("responsive-configure").multiTagsCache
   }),
   getters: {

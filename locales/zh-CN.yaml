@@ -3,7 +3,7 @@ buttons:
   hsfullscreen: 全屏
   hsexitfullscreen: 退出全屏
   hsrefreshRoute: 刷新路由
-  hslogin: 登陆
+  hslogin: 登录
   hsadd: 新增
   hsmark: 标记/取消
   hssave: 保存
@@ -20,7 +20,7 @@ buttons:
   hscloseAllTabs: 关闭全部标签页
 menus:
   hshome: 首页
-  hslogin: 登陆
+  hslogin: 登录
   hssysManagement: 系统管理
   hsUser: 用户管理
   hsDict: 字典管理
@@ -84,5 +84,6 @@ menus:
   hsSwiper: Swiper插件
   hsVirtualList: 虚拟列表
   hsPdf: PDF预览
+  hsExecl: 导出Excel
 status:
   hsLoad: 加载中...
