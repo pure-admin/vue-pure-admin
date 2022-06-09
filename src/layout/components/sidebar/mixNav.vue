@@ -14,7 +14,14 @@ import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
 import { getParentPaths, findRouteByPath } from "/@/router/utils";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 import globalization from "/@/assets/svg/globalization.svg?component";
-import { ref, watch, nextTick, onMounted, getCurrentInstance } from "vue";
+import {
+  ref,
+  toRaw,
+  watch,
+  nextTick,
+  onMounted,
+  getCurrentInstance
+} from "vue";
 
 const route = useRoute();
 const { locale, t } = useI18n();
@@ -124,8 +131,13 @@ function translationEn() {
         :index="resolvePath(route) || route.redirect"
       >
         <template #title>
-          <div v-show="route.meta.icon" :class="['el-icon', route.meta.icon]">
-            <component :is="useRenderIcon(route.meta && route.meta.icon)" />
+          <div
+            v-show="toRaw(route.meta.icon)"
+            :class="['el-icon', route.meta.icon]"
+          >
+            <component
+              :is="useRenderIcon(route.meta && toRaw(route.meta.icon))"
+            />
           </div>
           <span>{{ transformI18n(route.meta.title) }}</span>
           <FontIcon
