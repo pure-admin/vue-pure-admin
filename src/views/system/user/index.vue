@@ -2,11 +2,10 @@
 import dayjs from "dayjs";
 import tree from "./tree.vue";
 import { getUserList } from "/@/api/system";
-import { FormInstance } from "element-plus";
-import { ElMessageBox } from "element-plus";
 import { reactive, ref, onMounted } from "vue";
 import { EpTableProBar } from "/@/components/ReTable";
 import { Switch, message } from "@pureadmin/components";
+import { ElMessageBox, type FormInstance } from "element-plus";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 
 defineOptions({
