@@ -164,7 +164,7 @@
 
     /* 无子集的激活菜单背景 */
     .is-active.submenu-title-noDropdown.outer-most {
-      background: $subMenuActiveBg;
+      background: $subMenuActiveBg !important;
     }
 
     /* 有子集的激活菜单背景 */
@@ -586,6 +586,10 @@ body[layout="vertical"] {
 
     .sidebar-container {
       width: 54px !important;
+
+      .is-active.submenu-title-noDropdown.outer-most {
+        background: transparent !important;
+      }
     }
 
     .main-container {
@@ -662,6 +666,10 @@ body[layout="mix"] {
 
     .sidebar-container {
       width: 54px !important;
+
+      .is-active.submenu-title-noDropdown.outer-most {
+        background: transparent !important;
+      }
     }
 
     .main-container {
@@ -698,10 +706,6 @@ body[layout="mix"] {
 
       .el-sub-menu__title [class^="el-icon"] {
         right: 2px;
-      }
-
-      .submenu-title-noDropdown {
-        background: transparent !important;
       }
     }
   }
