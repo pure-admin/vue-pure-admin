@@ -19,33 +19,38 @@ export function useColumns() {
       hide: ({ checkList }) => !checkList.includes("序号列")
     },
     {
-      label: "角色编号",
+      label: "用户编号",
       prop: "id"
     },
     {
-      label: "角色名称",
-      prop: "name"
+      label: "用户名称",
+      prop: "username"
     },
     {
-      label: "角色标识",
-      prop: "code"
+      label: "用户昵称",
+      prop: "nickname"
     },
     {
-      label: "角色类型",
-      prop: "type",
+      label: "性别",
+      prop: "sex",
       cellRenderer: ({ row, props }) => (
         <el-tag
           size={props.size}
-          type={row.type === 1 ? "danger" : ""}
+          type={row.sex === 1 ? "danger" : ""}
           effect="plain"
         >
-          {row.type === 1 ? "内置" : "自定义"}
+          {row.sex === 1 ? "女" : "男"}
         </el-tag>
       )
     },
     {
-      label: "显示顺序",
-      prop: "sort"
+      label: "部门",
+      prop: "dept",
+      formatter: ({ dept }) => dept.name
+    },
+    {
+      label: "手机号码",
+      prop: "mobile"
     },
     {
       label: "状态",
@@ -84,8 +89,8 @@ export function useColumns() {
       `确认要<strong>${
         row.status === 0 ? "停用" : "启用"
       }</strong><strong style='color:var(--el-color-primary)'>${
-        row.name
-      }</strong>角色吗?`,
+        row.username
+      }</strong>用户吗?`,
       "系统提示",
       {
         confirmButtonText: "确定",
@@ -111,7 +116,7 @@ export function useColumns() {
               loading: false
             }
           );
-          message.success("已成功修改角色状态");
+          message.success("已成功修改用户状态");
         }, 300);
       })
       .catch(() => {

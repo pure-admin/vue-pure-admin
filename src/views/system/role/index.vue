@@ -1,4 +1,4 @@
-<script setup lang="tsx">
+<script setup lang="ts">
 import { useColumns } from "./columns";
 import { getRoleList } from "/@/api/system";
 import { PureTable } from "@pureadmin/table";
