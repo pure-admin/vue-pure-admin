@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import dayjs from "dayjs";
+import { useColumns } from "./columns";
 import { getRoleList } from "/@/api/system";
-import { FormInstance } from "element-plus";
-import { ElMessageBox } from "element-plus";
+import { PureTable } from "@pureadmin/table";
 import { reactive, ref, onMounted } from "vue";
+import { type FormInstance } from "element-plus";
 import { EpTableProBar } from "/@/components/ReTable";
-import { Switch, message } from "@pureadmin/components";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 
 defineOptions({
@@ -17,11 +16,12 @@ const form = reactive({
   code: "",
   status: ""
 });
+
 let dataList = ref([]);
 let pageSize = ref(10);
 let totalPage = ref(0);
 let loading = ref(true);
-let switchLoadMap = ref({});
+const { columns } = useColumns();
 
 const formRef = ref<FormInstance>();
 
@@ -43,46 +43,6 @@ function handleSizeChange(val: number) {
 
 function handleSelectionChange(val) {
   console.log("handleSelectionChange", val);
-}
-
-function onChange(checked, { $index, row }) {
-  ElMessageBox.confirm(
-    `确认要<strong>${
-      row.status === 0 ? "停用" : "启用"
-    }</strong><strong style='color:var(--el-color-primary)'>${
-      row.name
-    }</strong>角色吗?`,
-    "系统提示",
-    {
-      confirmButtonText: "确定",
-      cancelButtonText: "取消",
-      type: "warning",
-      dangerouslyUseHTMLString: true,
-      draggable: true
-    }
-  )
-    .then(() => {
-      switchLoadMap.value[$index] = Object.assign(
-        {},
-        switchLoadMap.value[$index],
-        {
-          loading: true
-        }
-      );
-      setTimeout(() => {
-        switchLoadMap.value[$index] = Object.assign(
-          {},
-          switchLoadMap.value[$index],
-          {
-            loading: false
-          }
-        );
-        message.success("已成功修改角色状态");
-      }, 300);
-    })
-    .catch(() => {
-      row.status === 0 ? (row.status = 1) : (row.status = 0);
-    });
 }
 
 async function onSearch() {
@@ -153,145 +113,84 @@ onMounted(() => {
         </el-button>
       </template>
       <template v-slot="{ size, checkList }">
-        <el-table
+        <PureTable
           border
+          align="center"
+          showOverflowTooltip
           table-layout="auto"
           :size="size"
           :data="dataList"
+          :columns="columns"
+          :checkList="checkList"
           :header-cell-style="{
             background: 'var(--el-table-row-hover-bg-color)',
             color: 'var(--el-text-color-primary)'
           }"
           @selection-change="handleSelectionChange"
         >
-          <el-table-column
-            v-if="checkList.includes('勾选列')"
-            type="selection"
-            align="center"
-            width="55"
-          />
-          <el-table-column
-            v-if="checkList.includes('序号列')"
-            type="index"
-            label="序号"
-            align="center"
-            width="70"
-          />
-          <el-table-column label="角色编号" align="center" prop="id" />
-          <el-table-column label="角色名称" align="center" prop="name" />
-          <el-table-column label="角色标识" align="center" prop="code" />
-          <el-table-column label="角色类型" align="center" prop="type">
-            <template #default="scope">
-              <el-tag
-                :size="size"
-                :type="scope.row.type === 1 ? 'danger' : ''"
-                effect="plain"
-              >
-                {{ scope.row.type === 1 ? "内置" : "自定义" }}
-              </el-tag>
-            </template>
-          </el-table-column>
-          <el-table-column label="显示顺序" align="center" prop="sort" />
-          <el-table-column
-            label="状态"
-            align="center"
-            width="130"
-            prop="status"
-          >
-            <template #default="scope">
-              <Switch
-                :size="size === 'small' ? 'small' : 'default'"
-                :loading="switchLoadMap[scope.$index]?.loading"
-                v-model:checked="scope.row.status"
-                :checkedValue="1"
-                :unCheckedValue="0"
-                checked-children="已开启"
-                un-checked-children="已关闭"
-                @change="checked => onChange(checked, scope)"
-              />
-            </template>
-          </el-table-column>
-          <el-table-column
-            label="创建时间"
-            align="center"
-            width="180"
-            prop="createTime"
-            :formatter="
-              ({ createTime }) => {
-                return dayjs(createTime).format('YYYY-MM-DD HH:mm:ss');
-              }
-            "
-          />
-          <el-table-column
-            fixed="right"
-            label="操作"
-            width="180"
-            align="center"
-          >
-            <template #default="scope">
-              <el-button
-                class="reset-margin"
-                link
-                type="primary"
-                :size="size"
-                @click="handleUpdate(scope.row)"
-                :icon="useRenderIcon('edits')"
-              >
-                修改
-              </el-button>
-              <el-popconfirm title="是否确认删除?">
-                <template #reference>
-                  <el-button
-                    class="reset-margin"
-                    link
-                    type="primary"
-                    :size="size"
-                    :icon="useRenderIcon('delete')"
-                    @click="handleDelete(scope.row)"
-                  >
-                    删除
-                  </el-button>
-                </template>
-              </el-popconfirm>
-              <el-dropdown>
+          <template #operation="{ row }">
+            <el-button
+              class="reset-margin"
+              link
+              type="primary"
+              :size="size"
+              @click="handleUpdate(row)"
+              :icon="useRenderIcon('edits')"
+            >
+              修改
+            </el-button>
+            <el-popconfirm title="是否确认删除?">
+              <template #reference>
                 <el-button
-                  class="ml-3"
+                  class="reset-margin"
                   link
                   type="primary"
                   :size="size"
-                  @click="handleUpdate(scope.row)"
-                  :icon="useRenderIcon('more')"
-                />
-                <template #dropdown>
-                  <el-dropdown-menu>
-                    <el-dropdown-item>
-                      <el-button
-                        class="reset-margin !h-20px !text-gray-500"
-                        link
-                        type="primary"
-                        :size="size"
-                        :icon="useRenderIcon('menu')"
-                      >
-                        菜单权限
-                      </el-button>
-                    </el-dropdown-item>
-                    <el-dropdown-item>
-                      <el-button
-                        class="reset-margin !h-20px !text-gray-500"
-                        link
-                        type="primary"
-                        :size="size"
-                        :icon="useRenderIcon('database')"
-                      >
-                        数据权限
-                      </el-button>
-                    </el-dropdown-item>
-                  </el-dropdown-menu>
-                </template>
-              </el-dropdown>
-            </template>
-          </el-table-column>
-        </el-table>
+                  :icon="useRenderIcon('delete')"
+                  @click="handleDelete(row)"
+                >
+                  删除
+                </el-button>
+              </template>
+            </el-popconfirm>
+            <el-dropdown>
+              <el-button
+                class="ml-3"
+                link
+                type="primary"
+                :size="size"
+                @click="handleUpdate(row)"
+                :icon="useRenderIcon('more')"
+              />
+              <template #dropdown>
+                <el-dropdown-menu>
+                  <el-dropdown-item>
+                    <el-button
+                      class="reset-margin !h-20px !text-gray-500"
+                      link
+                      type="primary"
+                      :size="size"
+                      :icon="useRenderIcon('menu')"
+                    >
+                      菜单权限
+                    </el-button>
+                  </el-dropdown-item>
+                  <el-dropdown-item>
+                    <el-button
+                      class="reset-margin !h-20px !text-gray-500"
+                      link
+                      type="primary"
+                      :size="size"
+                      :icon="useRenderIcon('database')"
+                    >
+                      数据权限
+                    </el-button>
+                  </el-dropdown-item>
+                </el-dropdown-menu>
+              </template>
+            </el-dropdown>
+          </template>
+        </PureTable>
         <el-pagination
           class="flex justify-end mt-4"
           :small="size === 'small' ? true : false"

@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import dayjs from "dayjs";
+import { useColumns } from "./columns";
 import { handleTree } from "/@/utils/tree";
 import { getDeptList } from "/@/api/system";
 import { FormInstance } from "element-plus";
+import { PureTable } from "@pureadmin/table";
 import { reactive, ref, onMounted } from "vue";
 import { EpTableProBar } from "/@/components/ReTable";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
@@ -17,6 +18,7 @@ const form = reactive({
 });
 let dataList = ref([]);
 let loading = ref(true);
+const { columns } = useColumns();
 
 const formRef = ref<FormInstance>();
 const tableRef = ref();
@@ -88,7 +90,7 @@ onMounted(() => {
     <EpTableProBar
       title="部门列表"
       :loading="loading"
-      :tableRef="tableRef"
+      :tableRef="tableRef?.getTableRef()"
       :dataList="dataList"
       @refresh="onSearch"
     >
@@ -98,97 +100,50 @@ onMounted(() => {
         </el-button>
       </template>
       <template v-slot="{ size, checkList }">
-        <el-table
+        <PureTable
           ref="tableRef"
           border
+          align="center"
           row-key="id"
           table-layout="auto"
           default-expand-all
           :size="size"
           :data="dataList"
+          :columns="columns"
+          :checkList="checkList"
           :header-cell-style="{
             background: 'var(--el-table-row-hover-bg-color)',
             color: 'var(--el-text-color-primary)'
           }"
           @selection-change="handleSelectionChange"
         >
-          <el-table-column
-            v-if="checkList.includes('勾选列')"
-            type="selection"
-            align="center"
-            width="55"
-          />
-          <el-table-column
-            v-if="checkList.includes('序号列')"
-            type="index"
-            align="center"
-            label="序号"
-            width="60"
-          />
-          <el-table-column label="部门名称" prop="name" width="180" />
-          <el-table-column label="排序" align="center" prop="sort" width="60" />
-          <el-table-column label="状态" align="center" prop="status" width="80">
-            <template #default="scope">
-              <el-tag
-                :size="size"
-                :type="scope.row.status === 0 ? 'danger' : 'success'"
-                effect="plain"
-              >
-                {{ scope.row.status === 0 ? "关闭" : "开启" }}
-              </el-tag>
-            </template>
-          </el-table-column>
-          <el-table-column
-            label="创建时间"
-            align="center"
-            width="180"
-            prop="createTime"
-            :formatter="
-              ({ createTime }) => {
-                return dayjs(createTime).format('YYYY-MM-DD HH:mm:ss');
-              }
-            "
-          />
-          <el-table-column
-            label="备注"
-            align="center"
-            prop="remark"
-            show-overflow-tooltip
-          />
-          <el-table-column
-            fixed="right"
-            label="操作"
-            align="center"
-            width="140"
-          >
-            <template #default="scope">
-              <el-button
-                class="reset-margin"
-                link
-                type="primary"
-                :size="size"
-                @click="handleUpdate(scope.row)"
-                :icon="useRenderIcon('edits')"
-              >
-                修改
-              </el-button>
-              <el-popconfirm title="是否确认删除?">
-                <template #reference>
-                  <el-button
-                    class="reset-margin"
-                    link
-                    type="primary"
-                    :size="size"
-                    :icon="useRenderIcon('delete')"
-                    @click="handleDelete(scope.row)"
-                  >
-                    删除
-                  </el-button>
-                </template>
-              </el-popconfirm>
-            </template>
-          </el-table-column>
-        </el-table>
+          <template #operation="{ row }">
+            <el-button
+              class="reset-margin"
+              link
+              type="primary"
+              :size="size"
+              @click="handleUpdate(row)"
+              :icon="useRenderIcon('edits')"
+            >
+              修改
+            </el-button>
+            <el-popconfirm title="是否确认删除?">
+              <template #reference>
+                <el-button
+                  class="reset-margin"
+                  link
+                  type="primary"
+                  :size="size"
+                  :icon="useRenderIcon('delete')"
+                  @click="handleDelete(row)"
+                >
+                  删除
+                </el-button>
+              </template>
+            </el-popconfirm>
+          </template>
+        </PureTable>
       </template>
     </EpTableProBar>
   </div>
