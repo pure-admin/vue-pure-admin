@@ -80,7 +80,7 @@ specifiers:
   qrcode: ^1.5.0
   qs: ^6.10.1
   resize-observer-polyfill: ^1.5.1
-  responsive-storage: ^1.0.11
+  responsive-storage: ^2.0.0
   rgb-hex: ^4.0.0
   rimraf: 3.0.2
   rollup: ^2.70.1
@@ -151,7 +151,7 @@ dependencies:
   qrcode: 1.5.0
   qs: 6.10.3
   resize-observer-polyfill: 1.5.1
-  responsive-storage: 1.0.11_vue@3.2.37
+  responsive-storage: 2.0.0
   rgb-hex: 4.0.0
   swiper: 8.1.4
   v-contextmenu: 3.0.0_vue@3.2.37
@@ -7360,15 +7360,11 @@ packages:
       supports-preserve-symlinks-flag: 1.0.0
     dev: true
 
-  /responsive-storage/1.0.11_vue@3.2.37:
+  /responsive-storage/2.0.0:
     resolution:
       {
-        integrity: sha512-XY/21b7FKCXwBWGLuxp5KUQOAh8jOTsdfRMz0RVE9P+HhK4oYXKcNESDLxE1mD5MWPg/i+k4SGogro5daMrE9A==
+        integrity: sha512-4pZbTlwDmJAbnZ0B93aQVfTOY58+LYwwQBGPDqAI89NbjnrgVdmqqemmzkfOSGNqFWWnCamq9moWASFk+oC2Fg==
       }
-    peerDependencies:
-      vue: ^3.2.0
-    dependencies:
-      vue: 3.2.37
     dev: false
 
   /restore-cursor/3.1.0:
