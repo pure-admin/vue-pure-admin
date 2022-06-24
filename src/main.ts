@@ -8,6 +8,7 @@ import { useI18n } from "../src/plugins/i18n";
 import { MotionPlugin } from "@vueuse/motion";
 import VirtualScroller from "vue-virtual-scroller";
 import { useTable } from "../src/plugins/vxe-table";
+import PureDescriptions from "@pureadmin/descriptions";
 import { injectResponsiveStorage } from "/@/utils/storage/responsive";
 
 import "uno.css";
@@ -52,6 +53,7 @@ getServerConfig(app).then(async config => {
     .use(MotionPlugin)
     .use(useI18n)
     .use(ElementPlus)
+    .use(PureDescriptions)
     .use(useTable)
     .use(VirtualScroller);
   app.mount("#app");

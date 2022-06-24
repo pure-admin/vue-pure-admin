@@ -4,6 +4,21 @@ defineOptions({
 });
 
 const { lastBuildTime } = __APP_INFO__;
+
+const columns = [
+  {
+    label: "项目 ID：",
+    value: "12345"
+  },
+  {
+    label: "负责人：",
+    value: "明明"
+  },
+  {
+    label: "生效时间：",
+    value: lastBuildTime
+  }
+];
 </script>
 
 <template>
@@ -27,13 +42,7 @@ const { lastBuildTime } = __APP_INFO__;
       </template>
     </el-result>
     <div style="background: rgb(250, 250, 250)" class="p-6 ml-10 mr-10">
-      <el-descriptions title="项目名称" class="mb-5">
-        <el-descriptions-item label="项目 ID：">12345</el-descriptions-item>
-        <el-descriptions-item label="负责人：">明明</el-descriptions-item>
-        <el-descriptions-item label="生效时间：">{{
-          lastBuildTime
-        }}</el-descriptions-item>
-      </el-descriptions>
+      <PureDescriptions title="项目名称" :columns="columns" class="mb-5" />
       <el-steps :active="2">
         <el-step title="创建项目">
           <template #description>
