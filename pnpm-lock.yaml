@@ -19,7 +19,7 @@ specifiers:
   "@logicflow/core": ^1.1.16
   "@logicflow/extension": ^1.1.16
   "@pureadmin/components": ^1.0.6
-  "@pureadmin/descriptions": ^1.0.0
+  "@pureadmin/descriptions": ^1.1.0
   "@pureadmin/table": ^0.0.1
   "@pureadmin/theme": ^2.4.0
   "@types/element-resize-detector": 1.1.3
@@ -124,7 +124,7 @@ dependencies:
   "@logicflow/core": 1.1.16
   "@logicflow/extension": 1.1.16
   "@pureadmin/components": 1.0.6_vue@3.2.37
-  "@pureadmin/descriptions": 1.0.0
+  "@pureadmin/descriptions": 1.1.0
   "@pureadmin/table": 0.0.1
   "@vueuse/core": 8.7.4_vue@3.2.37
   "@vueuse/motion": 2.0.0-beta.12_vue@3.2.37
@@ -1353,10 +1353,10 @@ packages:
       vue: 3.2.37
     dev: false
 
-  /@pureadmin/descriptions/1.0.0:
+  /@pureadmin/descriptions/1.1.0:
     resolution:
       {
-        integrity: sha512-fr+YLrxlmwiXTAVIKPqJbWQsRt3rqeUUz17d1BuH2Fzz8iSCd+hI4BoE1Z/bivzzoXVBC9wxBmWBSlN0n1YFAw==
+        integrity: sha512-Bi6lasPjc8P61kMcCXZjCd9ne99rj+whwUJ1ulKQX7JFupBhjo71Vu0TV5I7oEN52lZuvV1+F0EhJlEoIHpGFQ==
       }
     dependencies:
       "@element-plus/icons-vue": 2.0.6_vue@3.2.37
