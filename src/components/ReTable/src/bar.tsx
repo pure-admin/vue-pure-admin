@@ -43,7 +43,7 @@ const props = {
 };
 
 export default defineComponent({
-  name: "EpTableProBar",
+  name: "TableProBar",
   props,
   emits: ["refresh"],
   setup(props, { emit, slots, attrs }) {

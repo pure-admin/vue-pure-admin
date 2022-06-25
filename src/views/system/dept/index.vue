@@ -5,7 +5,7 @@ import { getDeptList } from "/@/api/system";
 import { FormInstance } from "element-plus";
 import { PureTable } from "@pureadmin/table";
 import { reactive, ref, onMounted } from "vue";
-import { EpTableProBar } from "/@/components/ReTable";
+import { TableProBar } from "/@/components/ReTable";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 
 defineOptions({
@@ -87,7 +87,7 @@ onMounted(() => {
       </el-form-item>
     </el-form>
 
-    <EpTableProBar
+    <TableProBar
       title="部门列表"
       :loading="loading"
       :tableRef="tableRef?.getTableRef()"
@@ -142,6 +142,6 @@ onMounted(() => {
           </template>
         </PureTable>
       </template>
-    </EpTableProBar>
+    </TableProBar>
   </div>
 </template>

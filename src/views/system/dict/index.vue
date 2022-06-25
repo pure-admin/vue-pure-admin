@@ -282,7 +282,7 @@ function onHide() {
           </el-tooltip>
         </template>
       </vxe-table-column>
-      <vxe-table-column title="操作" width="330" fixed="right">
+      <vxe-table-column title="操作" width="360" fixed="right">
         <template #default="{ row }">
           <el-button
             link

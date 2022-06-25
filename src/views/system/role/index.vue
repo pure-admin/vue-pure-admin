@@ -4,7 +4,7 @@ import { getRoleList } from "/@/api/system";
 import { PureTable } from "@pureadmin/table";
 import { reactive, ref, onMounted } from "vue";
 import { type FormInstance } from "element-plus";
-import { EpTableProBar } from "/@/components/ReTable";
+import { TableProBar } from "/@/components/ReTable";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 
 defineOptions({
@@ -101,7 +101,7 @@ onMounted(() => {
       </el-form-item>
     </el-form>
 
-    <EpTableProBar
+    <TableProBar
       title="角色列表"
       :loading="loading"
       :dataList="dataList"
@@ -200,7 +200,7 @@ onMounted(() => {
           @current-change="handleCurrentChange"
         />
       </template>
-    </EpTableProBar>
+    </TableProBar>
   </div>
 </template>
 

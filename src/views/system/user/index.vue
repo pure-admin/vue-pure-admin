@@ -4,7 +4,7 @@ import { useColumns } from "./columns";
 import { getUserList } from "/@/api/system";
 import { PureTable } from "@pureadmin/table";
 import { reactive, ref, onMounted } from "vue";
-import { EpTableProBar } from "/@/components/ReTable";
+import { TableProBar } from "/@/components/ReTable";
 import { type FormInstance } from "element-plus";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 
@@ -114,7 +114,7 @@ onMounted(() => {
         </el-form-item>
       </el-form>
 
-      <EpTableProBar
+      <TableProBar
         title="用户管理"
         :loading="loading"
         :dataList="dataList"
@@ -212,7 +212,7 @@ onMounted(() => {
             @current-change="handleCurrentChange"
           />
         </template>
-      </EpTableProBar>
+      </TableProBar>
     </div>
   </div>
 </template>
