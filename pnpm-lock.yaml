@@ -48,6 +48,7 @@ specifiers:
   autoprefixer: ^10.4.5
   axios: ^0.27.2
   china-area-data: ^5.0.1
+  cloc: ^2.9.0
   cropperjs: ^1.5.12
   cross-env: 7.0.3
   css-color-function: ^1.3.3
@@ -205,6 +206,7 @@ devDependencies:
   "@vue/eslint-config-typescript": 10.0.0_7f105dc3ebd31cec885fdbbd30d5cc4c
   "@vue/runtime-core": 3.2.37
   autoprefixer: 10.4.7_postcss@8.4.13
+  cloc: 2.9.0
   cross-env: 7.0.3
   eslint: 8.15.0
   eslint-plugin-prettier: 4.0.0_eslint@8.15.0+prettier@2.6.2
@@ -3168,6 +3170,14 @@ packages:
       string-width: 4.2.3
       strip-ansi: 6.0.1
       wrap-ansi: 7.0.0
+    dev: true
+
+  /cloc/2.9.0:
+    resolution:
+      {
+        integrity: sha512-Eo97MtQ5nozSd5CFcYgwUg5Ej7GVcdopVd5T+SGwJc3VAmu0vNxV/ZDl06QAQhCUkM2EGKl8nhhP1BZuQXGiZg==
+      }
+    hasBin: true
     dev: true
 
   /clone-regexp/2.2.0:
