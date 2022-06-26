@@ -20,7 +20,7 @@ specifiers:
   "@logicflow/extension": ^1.1.16
   "@pureadmin/components": ^1.0.6
   "@pureadmin/descriptions": ^1.1.0
-  "@pureadmin/table": ^0.0.1
+  "@pureadmin/table": ^1.1.0
   "@pureadmin/theme": ^2.4.0
   "@types/element-resize-detector": 1.1.3
   "@types/js-cookie": ^3.0.1
@@ -126,7 +126,7 @@ dependencies:
   "@logicflow/extension": 1.1.16
   "@pureadmin/components": 1.0.6_vue@3.2.37
   "@pureadmin/descriptions": 1.1.0
-  "@pureadmin/table": 0.0.1
+  "@pureadmin/table": 1.1.0
   "@vueuse/core": 8.7.4_vue@3.2.37
   "@vueuse/motion": 2.0.0-beta.12_vue@3.2.37
   "@vueuse/shared": 8.7.4_vue@3.2.37
@@ -1368,10 +1368,10 @@ packages:
       - "@vue/composition-api"
     dev: false
 
-  /@pureadmin/table/0.0.1:
+  /@pureadmin/table/1.1.0:
     resolution:
       {
-        integrity: sha512-1/4gHelsRtDMfOVjVhpMcHl3Q1i/OghuUG4bwKOOZdnbFaP08lcCpY4T0Xf16ZYmk6INas4fWcnHicl0Tu1/eg==
+        integrity: sha512-KZEUUSpBLz1yvOU8aijIpQNxgwD8bv1o64AQuqITDQ/JqUScVfPcGKupg8pwnxY53fNgt68xRK7nLyaWXvc4nA==
       }
     dependencies:
       element-plus: 2.2.6_vue@3.2.37

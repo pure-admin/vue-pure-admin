@@ -3,7 +3,6 @@ import { useColumns } from "./columns";
 import { handleTree } from "/@/utils/tree";
 import { getDeptList } from "/@/api/system";
 import { FormInstance } from "element-plus";
-import { PureTable } from "@pureadmin/table";
 import { reactive, ref, onMounted } from "vue";
 import { TableProBar } from "/@/components/ReTable";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";

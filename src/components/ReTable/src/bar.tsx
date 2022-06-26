@@ -117,7 +117,7 @@ export default defineComponent({
       <>
         <div
           {...attrs}
-          class="w-99/100 mt-6 p-2 bg-white"
+          class="w-99/100 mt-6  pt-2 pl-2 pr-2 pb-1 bg-white"
           v-loading={props.loading}
           element-loading-svg={loadingSvg}
           element-loading-svg-view-box="-10, -10, 50, 50"
