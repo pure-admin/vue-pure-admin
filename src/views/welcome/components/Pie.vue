@@ -1,26 +1,12 @@
 <script setup lang="ts">
-import { ECharts } from "echarts";
-import echarts from "/@/plugins/echarts";
-import { onBeforeMount, onMounted, nextTick } from "vue";
-import { useEventListener, tryOnUnmounted, useTimeoutFn } from "@vueuse/core";
+import { ref, type Ref } from "vue";
+import { useECharts } from "@pureadmin/utils";
 
-let echartInstance: ECharts;
+const pieChartRef = ref<HTMLDivElement | null>(null);
+const { setOptions } = useECharts(pieChartRef as Ref<HTMLDivElement>);
 
-const props = defineProps({
-  index: {
-    type: Number,
-    default: 0
-  }
-});
-
-function initechartInstance() {
-  const echartDom = document.querySelector(".pie" + props.index);
-  if (!echartDom) return;
-  // @ts-ignore
-  echartInstance = echarts.init(echartDom);
-  echartInstance.clear(); //清除旧画布 重新渲染
-
-  echartInstance.setOption({
+setOptions(
+  {
     tooltip: {
       trigger: "item"
     },
@@ -49,33 +35,24 @@ function initechartInstance() {
         }
       }
     ]
-  });
-}
-
-onBeforeMount(() => {
-  nextTick(() => {
-    initechartInstance();
-  });
-});
-
-onMounted(() => {
-  nextTick(() => {
-    useEventListener("resize", () => {
-      if (!echartInstance) return;
-      useTimeoutFn(() => {
-        echartInstance.resize();
-      }, 180);
-    });
-  });
-});
-
-tryOnUnmounted(() => {
-  if (!echartInstance) return;
-  echartInstance.dispose();
-  echartInstance = null;
-});
+  },
+  {
+    name: "click",
+    callback: params => {
+      console.log("click", params);
+    }
+  },
+  // 点击空白处
+  {
+    type: "zrender",
+    name: "click",
+    callback: params => {
+      console.log("点击空白处", params);
+    }
+  }
+);
 </script>
 
 <template>
-  <div :class="'pie' + props.index" style="width: 100%; height: 35vh" />
+  <div ref="pieChartRef" style="width: 100%; height: 35vh" />
 </template>

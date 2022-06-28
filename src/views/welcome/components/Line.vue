@@ -1,26 +1,12 @@
 <script setup lang="ts">
-import { ECharts } from "echarts";
-import echarts from "/@/plugins/echarts";
-import { onBeforeMount, onMounted, nextTick } from "vue";
-import { useEventListener, tryOnUnmounted, useTimeoutFn } from "@vueuse/core";
+import { ref, type Ref } from "vue";
+import { useECharts } from "@pureadmin/utils";
 
-let echartInstance: ECharts;
+const lineChartRef = ref<HTMLDivElement | null>(null);
+const { setOptions } = useECharts(lineChartRef as Ref<HTMLDivElement>);
 
-const props = defineProps({
-  index: {
-    type: Number,
-    default: 0
-  }
-});
-
-function initechartInstance() {
-  const echartDom = document.querySelector(".line" + props.index);
-  if (!echartDom) return;
-  // @ts-ignore
-  echartInstance = echarts.init(echartDom);
-  echartInstance.clear(); //清除旧画布 重新渲染
-
-  echartInstance.setOption({
+setOptions(
+  {
     grid: {
       bottom: "20%",
       height: "68%",
@@ -46,33 +32,16 @@ function initechartInstance() {
         areaStyle: {}
       }
     ]
-  });
-}
-
-onBeforeMount(() => {
-  nextTick(() => {
-    initechartInstance();
-  });
-});
-
-onMounted(() => {
-  nextTick(() => {
-    useEventListener("resize", () => {
-      if (!echartInstance) return;
-      useTimeoutFn(() => {
-        echartInstance.resize();
-      }, 180);
-    });
-  });
-});
-
-tryOnUnmounted(() => {
-  if (!echartInstance) return;
-  echartInstance.dispose();
-  echartInstance = null;
-});
+  },
+  {
+    name: "click",
+    callback: params => {
+      console.log("click", params);
+    }
+  }
+);
 </script>
 
 <template>
-  <div :class="'line' + props.index" style="width: 100%; height: 35vh" />
+  <div ref="lineChartRef" style="width: 100%; height: 35vh" />
 </template>

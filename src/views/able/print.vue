@@ -2,7 +2,7 @@
 import Print from "/@/utils/print";
 import { reactive, ref } from "vue";
 import { VxeTablePropTypes } from "vxe-table";
-import { ReLine } from "../welcome/components";
+import Line from "../welcome/components/Line.vue";
 
 defineOptions({
   name: "Print"
@@ -271,7 +271,7 @@ const tableData: User[] = [
         }"
       >
         <p class="font-medium pt-1">Echart</p>
-        <ReLine class="echart" style="margin: 0 auto" />
+        <Line class="echart" style="margin: 0 auto" />
       </el-col>
 
       <el-col
