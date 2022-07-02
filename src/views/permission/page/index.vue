@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import { ref, unref } from "vue";
-import { storageSession } from "/@/utils/storage";
+import type { StorageConfigs } from "/#/index";
+import { storageSession } from "@pureadmin/utils";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 
 defineOptions({
   name: "PermissionPage"
 });
 
-let purview = ref<string>(storageSession.getItem("info").username);
+let purview = ref<string>(
+  storageSession.getItem<StorageConfigs>("info").username
+);
 
 function changRole() {
   if (unref(purview) === "admin") {

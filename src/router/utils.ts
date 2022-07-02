@@ -10,7 +10,7 @@ import { router } from "./index";
 import { loadEnv } from "../../build";
 import { useTimeoutFn } from "@vueuse/core";
 import { RouteConfigs } from "/@/layout/types";
-import { buildHierarchyTree } from "/@/utils/tree";
+import { buildHierarchyTree } from "@pureadmin/utils";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 const Layout = () => import("/@/layout/index.vue");
 const IFrame = () => import("/@/layout/frameView.vue");

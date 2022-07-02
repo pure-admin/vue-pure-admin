@@ -11,8 +11,8 @@ import { setType } from "./types";
 import { useI18n } from "vue-i18n";
 import { routerArrays } from "./types";
 import { emitter } from "/@/utils/mitt";
+import { deviceDetection } from "@pureadmin/utils";
 import { useAppStoreHook } from "/@/store/modules/app";
-import { deviceDetection } from "/@/utils/deviceDetection";
 import { useMultiTagsStore } from "/@/store/modules/multiTags";
 import { useSettingStoreHook } from "/@/store/modules/settings";
 

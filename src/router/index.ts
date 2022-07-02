@@ -1,12 +1,9 @@
-import { isUrl } from "/@/utils/is";
 import { getConfig } from "/@/config";
 import { toRouteType } from "./types";
-import { openLink } from "/@/utils/link";
 import NProgress from "/@/utils/progress";
 import { findIndex } from "lodash-unified";
+import type { StorageConfigs } from "/#/index";
 import { transformI18n } from "/@/plugins/i18n";
-import { storageSession } from "/@/utils/storage";
-import { buildHierarchyTree } from "/@/utils/tree";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 import {
@@ -27,6 +24,12 @@ import {
   formatTwoStageRoutes,
   formatFlatteningRoutes
 } from "./utils";
+import {
+  buildHierarchyTree,
+  openLink,
+  isUrl,
+  storageSession
+} from "@pureadmin/utils";
 
 import pptRouter from "./modules/ppt";
 import homeRouter from "./modules/home";
@@ -107,9 +110,9 @@ router.beforeEach((to: toRouteType, _from, next) => {
       handleAliveRoute(newMatched);
     }
   }
-  const name = storageSession.getItem("info");
+  const name = storageSession.getItem<StorageConfigs>("info");
   NProgress.start();
-  const externalLink = isUrl(to?.name);
+  const externalLink = isUrl(to?.name as string);
   if (!externalLink)
     to.matched.some(item => {
       if (!item.meta.title) return "";
@@ -122,7 +125,7 @@ router.beforeEach((to: toRouteType, _from, next) => {
     if (_from?.name) {
       // name为超链接
       if (externalLink) {
-        openLink(to?.name);
+        openLink(to?.name as string);
         NProgress.done();
       } else {
         next();

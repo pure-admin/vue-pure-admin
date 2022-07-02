@@ -9,7 +9,7 @@ import {
   PropType
 } from "vue";
 import { templateRef } from "@vueuse/core";
-import { useAttrs } from "/@/utils/useAttrs";
+import { useAttrs } from "@pureadmin/utils";
 
 import Cropper from "cropperjs";
 import "cropperjs/dist/cropper.css";

@@ -9,7 +9,7 @@ import { MotionPlugin } from "@vueuse/motion";
 import { useEcharts } from "/@/plugins/echarts";
 import VirtualScroller from "vue-virtual-scroller";
 import { useTable } from "../src/plugins/vxe-table";
-import { injectResponsiveStorage } from "/@/utils/storage/responsive";
+import { injectResponsiveStorage } from "/@/utils/responsive";
 
 import Table from "@pureadmin/table";
 import PureDescriptions from "@pureadmin/descriptions";

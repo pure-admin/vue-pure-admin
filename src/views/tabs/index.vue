@@ -8,7 +8,7 @@ import {
   deleteChildren,
   appendFieldByUniqueId,
   getNodeByUniqueId
-} from "/@/utils/tree";
+} from "@pureadmin/utils";
 import { useDetail } from "./hooks";
 
 defineOptions({

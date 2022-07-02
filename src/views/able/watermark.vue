@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { useWatermark } from "/@/utils/watermark";
+import { useWatermark } from "@pureadmin/utils";
 
 defineOptions({
   name: "WaterMark"

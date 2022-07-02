@@ -1,5 +1,5 @@
 import { reactive } from "vue";
-import { isPhone } from "/@/utils/is";
+import { isPhone } from "@pureadmin/utils";
 import type { FormRules } from "element-plus";
 import { useUserStoreHook } from "/@/store/modules/user";
 

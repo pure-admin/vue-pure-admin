@@ -9,7 +9,7 @@ import update from "./components/update.vue";
 import { initRouter } from "/@/router/utils";
 import { message } from "@pureadmin/components";
 import type { FormInstance } from "element-plus";
-import { storageSession } from "/@/utils/storage";
+import { storageSession } from "@pureadmin/utils";
 import { ref, reactive, watch, computed } from "vue";
 import { operates, thirdParty } from "./utils/enums";
 import { useUserStoreHook } from "/@/store/modules/user";

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ElMessage } from "element-plus";
-import { debounce } from "/@/utils/debounce";
+import { debounce } from "@pureadmin/utils";
 import { useDebounceFn, useThrottleFn } from "@vueuse/core";
 
 defineOptions({

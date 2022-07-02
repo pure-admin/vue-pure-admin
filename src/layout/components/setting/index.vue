@@ -15,16 +15,16 @@ import { useRouter } from "vue-router";
 import panel from "../panel/index.vue";
 import { emitter } from "/@/utils/mitt";
 import { templateRef } from "@vueuse/core";
-import { debounce } from "/@/utils/debounce";
 import { themeColorsType } from "../../types";
 import { routerArrays } from "/@/layout/types";
+import type { StorageConfigs } from "/#/index";
 import { useAppStoreHook } from "/@/store/modules/app";
 import { shadeBgColor } from "../../theme/element-plus";
 import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
-import { storageLocal, storageSession } from "/@/utils/storage";
+import { toggleTheme } from "@pureadmin/theme/dist/browser-utils";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
 import { createNewStyle, writeNewStyle } from "../../theme/element-plus";
-import { toggleTheme } from "@pureadmin/theme/dist/browser-utils";
+import { debounce, storageLocal, storageSession } from "@pureadmin/utils";
 
 import dayIcon from "/@/assets/svg/day.svg?component";
 import darkIcon from "/@/assets/svg/dark.svg?component";
@@ -64,7 +64,7 @@ const horizontalRef = templateRef<HTMLElement | null>("horizontalRef", null);
 const mixRef = templateRef<HTMLElement | null>("mixRef", null);
 
 let layoutTheme =
-  ref(storageLocal.getItem("responsive-layout")) ||
+  ref(storageLocal.getItem<StorageConfigs>("responsive-layout")) ||
   ref({
     layout: instanceConfig?.Layout ?? "vertical",
     theme: instanceConfig?.Theme ?? "default"

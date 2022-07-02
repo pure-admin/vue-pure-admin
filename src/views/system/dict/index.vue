@@ -4,8 +4,8 @@ import Config from "./config.vue";
 import { useI18n } from "vue-i18n";
 import { cloneDeep } from "lodash-unified";
 import { reactive, ref, unref, nextTick } from "vue";
+import { useCopyToClipboard } from "@pureadmin/utils";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
-import { useCopyToClipboard } from "/@/utils/useCopyToClipboard";
 import {
   VXETable,
   type TablePublicMethods,

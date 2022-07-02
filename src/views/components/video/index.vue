@@ -2,8 +2,8 @@
 import { onMounted } from "vue";
 import Player from "xgplayer/dist/simple_player";
 import volume from "xgplayer/es/controls/volume";
+import { deviceDetection } from "@pureadmin/utils";
 import screenShot from "xgplayer/es/controls/screenShot";
-import { deviceDetection } from "/@/utils/deviceDetection";
 import playbackRate from "xgplayer/es/controls/playbackRate";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 
