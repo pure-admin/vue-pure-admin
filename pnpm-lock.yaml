@@ -103,7 +103,7 @@ specifiers:
   v-contextmenu: 3.0.0
   vite: ^2.9.13
   vite-plugin-mock: ^2.9.6
-  vite-plugin-remove-console: ^1.0.3
+  vite-plugin-remove-console: ^1.0.4
   vite-svg-loader: ^3.3.0
   vue: ^3.2.37
   vue-eslint-parser: ^8.2.0
@@ -238,7 +238,7 @@ devDependencies:
   unplugin-vue-define-options: 0.6.1_4ee01199f06fc07d2c8abf9ef5aca074
   vite: 2.9.13_sass@1.53.0
   vite-plugin-mock: 2.9.6_8c401e4b40cddd07d4d66fd0783a3612
-  vite-plugin-remove-console: 1.0.3
+  vite-plugin-remove-console: 1.0.4
   vite-svg-loader: 3.4.0
   vue-eslint-parser: 8.3.0_eslint@8.19.0
 
@@ -8787,10 +8787,10 @@ packages:
       - supports-color
     dev: true
 
-  /vite-plugin-remove-console/1.0.3:
+  /vite-plugin-remove-console/1.0.4:
     resolution:
       {
-        integrity: sha512-kkQ2Kd23FTCu8u4ufnonhXzAU5COOP2HLscv35qGN2GrUev1CyVWE0Jilm/iGZLkx7gvHSTCKy2HX8GoK+FmMQ==
+        integrity: sha512-enBSWnbXql97cO0QzIvU3MmFSv1wiq4yqMkr3MW+/8fz3x29T+3qV4ux931eSX8zrEdaJ/RBD754xnlqdUSu7A==
       }
     dev: true
 
