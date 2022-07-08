@@ -11,7 +11,7 @@
     "preview": "vite preview",
     "preview:build": "pnpm build && vite preview",
     "cloc": "cross-env --max_old_space_size=4096 cloc . --exclude-dir=node_modules --exclude-lang=YAML",
-    "clean:cache": "rm -rf node_modules && rm -rf .eslintcache && pnpm install",
+    "clean:cache": "rimraf -rf node_modules && rimraf -rf .eslintcache && pnpm install",
     "lint:eslint": "eslint --cache --max-warnings 0  \"{src,mock}/**/*.{vue,ts,tsx}\" --fix",
     "lint:prettier": "prettier --write  \"src/**/*.{js,json,tsx,css,less,scss,vue,html,md}\"",
     "lint:stylelint": "stylelint --cache --fix \"**/*.{vue,css,scss,postcss,less}\" --cache --cache-location node_modules/.cache/stylelint/",
