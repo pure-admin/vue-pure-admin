@@ -144,7 +144,7 @@
     "unplugin-vue-define-options": "^0.6.1",
     "vite": "^2.9.13",
     "vite-plugin-mock": "^2.9.6",
-    "vite-plugin-remove-console": "^1.0.4",
+    "vite-plugin-remove-console": "^1.1.0",
     "vite-svg-loader": "^3.3.0",
     "vue-eslint-parser": "^8.2.0"
   },
