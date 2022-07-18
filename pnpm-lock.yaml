@@ -22,7 +22,7 @@ specifiers:
   "@pureadmin/descriptions": ^1.1.0
   "@pureadmin/table": ^1.2.0
   "@pureadmin/theme": ^2.4.0
-  "@pureadmin/utils": ^0.0.14
+  "@pureadmin/utils": ^0.0.31
   "@types/element-resize-detector": 1.1.3
   "@types/js-cookie": ^3.0.1
   "@types/lodash": ^4.14.180
@@ -128,7 +128,7 @@ dependencies:
   "@pureadmin/components": 1.0.8_vue@3.2.37
   "@pureadmin/descriptions": 1.1.0
   "@pureadmin/table": 1.2.0
-  "@pureadmin/utils": 0.0.14_ddeba6182d8a664107079ddd4d59141b
+  "@pureadmin/utils": 0.0.31_ddeba6182d8a664107079ddd4d59141b
   "@vueuse/core": 8.9.4_vue@3.2.37
   "@vueuse/motion": 2.0.0-beta.12_vue@3.2.37
   "@vueuse/shared": 8.9.4_vue@3.2.37
@@ -1417,10 +1417,10 @@ packages:
       string-hash: 1.1.3
     dev: true
 
-  /@pureadmin/utils/0.0.14_ddeba6182d8a664107079ddd4d59141b:
+  /@pureadmin/utils/0.0.31_ddeba6182d8a664107079ddd4d59141b:
     resolution:
       {
-        integrity: sha512-2t65fbHfiImv8yt3aKSBS1Y7ubZfefzlPccS3YF8Ds8tNEDOVJdcR/AuXL7EOI9DOE1V/UF3JhiVN4zvuQLPmQ==
+        integrity: sha512-qgM2OYbHNyv36HMH7B/rSZHBjSiUYouvBWBDb+NS3XdiYOPILRWjW7TxP1HEj27qPvqW2kY+1M48eiB3Lbp90w==
       }
     peerDependencies:
       dayjs: "*"

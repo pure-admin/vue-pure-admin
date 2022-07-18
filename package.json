@@ -34,7 +34,7 @@
     "@pureadmin/components": "^1.0.6",
     "@pureadmin/descriptions": "^1.1.0",
     "@pureadmin/table": "^1.2.0",
-    "@pureadmin/utils": "^0.0.14",
+    "@pureadmin/utils": "^0.0.31",
     "@vueuse/core": "^8.7.4",
     "@vueuse/motion": "^2.0.0-beta.12",
     "@vueuse/shared": "^8.7.4",
