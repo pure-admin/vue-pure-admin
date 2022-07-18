@@ -8,6 +8,7 @@ import {
 } from "vue-router";
 import { router } from "./index";
 import { loadEnv } from "../../build";
+import { cloneDeep } from "lodash-unified";
 import { useTimeoutFn } from "@vueuse/core";
 import { RouteConfigs } from "/@/layout/types";
 import { buildHierarchyTree } from "@pureadmin/utils";
@@ -39,7 +40,7 @@ function ascending(arr: any[]) {
 
 // 过滤meta中showLink为false的路由
 function filterTree(data: RouteComponent[]) {
-  const newTree = data.filter(
+  const newTree = cloneDeep(data).filter(
     (v: { meta: { showLink: boolean } }) => v.meta?.showLink !== false
   );
   newTree.forEach(
@@ -135,7 +136,7 @@ function initRouter(name: string) {
               // 最终路由进行升序
               ascending(router.options.routes[0].children);
               if (!router.hasRoute(v?.name)) router.addRoute(v);
-              const flattenRouters = router
+              const flattenRouters: any = router
                 .getRoutes()
                 .find(n => n.path === "/");
               router.addRoute(flattenRouters);
