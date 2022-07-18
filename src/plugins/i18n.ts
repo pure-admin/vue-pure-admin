@@ -10,12 +10,12 @@ import zhLocale from "element-plus/lib/locale/lang/zh-cn";
 
 function siphonI18n(prefix = "zh-CN") {
   return Object.fromEntries(
-    Object.entries(import.meta.globEager("../../locales/*.y(a)?ml")).map(
-      ([key, value]) => {
-        const matched = key.match(/([A-Za-z0-9-_]+)\./i)[1];
-        return [matched, value.default];
-      }
-    )
+    Object.entries(
+      import.meta.glob("../../locales/*.y(a)?ml", { eager: true })
+    ).map(([key, value]: any) => {
+      const matched = key.match(/([A-Za-z0-9-_]+)\./i)[1];
+      return [matched, value.default];
+    })
   )[prefix];
 }
 

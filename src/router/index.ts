@@ -81,6 +81,7 @@ export const remainingPaths = Object.keys(remainingRouter).map(v => {
 // 创建路由实例
 export const router: Router = createRouter({
   history: getHistoryMode(),
+  // @ts-expect-error
   routes: constantRoutes.concat(...remainingRouter),
   strict: true,
   scrollBehavior(to, from, savedPosition) {
@@ -150,7 +151,7 @@ router.beforeEach((to: toRouteType, _from, next) => {
             };
             // 未开启标签页缓存，刷新页面重定向到顶级路由（参考标签页操作例子，只针对静态路由）
             if (to.meta?.refreshRedirect) {
-              const routes = router.options.routes;
+              const routes: any = router.options.routes;
               const { refreshRedirect } = to.meta;
               const { name, meta } = findRouteByPath(refreshRedirect, routes);
               handTag(
@@ -165,7 +166,7 @@ router.beforeEach((to: toRouteType, _from, next) => {
               const index = findIndex(remainingRouter, v => {
                 return v.path == path;
               });
-              const routes =
+              const routes: any =
                 index === -1
                   ? router.options.routes[0].children
                   : router.options.routes;

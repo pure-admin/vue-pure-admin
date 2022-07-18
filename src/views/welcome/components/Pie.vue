@@ -12,6 +12,7 @@ setOptions(
     },
     legend: {
       orient: "vertical",
+      // @ts-expect-error
       right: true
     },
     series: [

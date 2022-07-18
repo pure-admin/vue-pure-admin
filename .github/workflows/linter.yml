@@ -60,6 +60,7 @@ jobs:
         run: |
           pnpm install
           pnpm lint
+          pnpm typecheck
         env:
           VALIDATE_ALL_CODEBASE: false
           DEFAULT_BRANCH: main

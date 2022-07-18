@@ -289,6 +289,7 @@ function dynamicRouteTag(value: string, parentPath: string): void {
       });
     }
   }
+  // @ts-expect-error
   concatPath(router.options.routes, value, parentPath);
 }
 
