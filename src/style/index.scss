@@ -4,6 +4,10 @@
 @import "./sidebar.scss";
 @import "./dark.scss";
 
+:root {
+  --pure-transition-duration: 0.016s;
+}
+
 body {
   width: 100%;
   height: 100%;

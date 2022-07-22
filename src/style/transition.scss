@@ -49,3 +49,7 @@
 .outer-most .el-collapse-transition-enter-active {
   transition: 0.12s all ease-in-out !important;
 }
+
+.horizontal-collapse-transition {
+  transition: var(--pure-transition-duration) all !important;
+}
