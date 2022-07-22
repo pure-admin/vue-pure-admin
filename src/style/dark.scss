@@ -182,4 +182,7 @@ html.dark {
     --el-backtop-bg-color: var(--el-color-primary-light-9);
     --el-backtop-hover-bg-color: var(--el-color-primary);
   }
+  .el-dropdown-menu__item:not(.is-disabled):hover {
+    background: transparent;
+  }
 }

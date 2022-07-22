@@ -32,6 +32,7 @@ const {
   username,
   avatarsStyle,
   getDropdownItemStyle,
+  getDropdownItemClass,
   changeWangeditorLanguage
 } = useNav();
 
@@ -105,8 +106,8 @@ function translationEn() {
         <template #dropdown>
           <el-dropdown-menu class="translation">
             <el-dropdown-item
-              class="!dark:color-white"
               :style="getDropdownItemStyle(locale, 'zh')"
+              :class="['!dark:color-white', getDropdownItemClass(locale, 'zh')]"
               @click="translationCh"
             >
               <span class="check-zh" v-show="locale === 'zh'">
@@ -115,8 +116,8 @@ function translationEn() {
               简体中文
             </el-dropdown-item>
             <el-dropdown-item
-              class="!dark:color-white"
               :style="getDropdownItemStyle(locale, 'en')"
+              :class="['!dark:color-white', getDropdownItemClass(locale, 'en')]"
               @click="translationEn"
             >
               <span class="check-en" v-show="locale === 'en'">
