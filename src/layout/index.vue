@@ -185,10 +185,14 @@ const layoutHeader = defineComponent({
               default: () => [
                 h(
                   "span",
-                  { onClick: onFullScreen },
+                  {
+                    onClick: onFullScreen
+                  },
                   {
                     default: () => [
-                      !pureSetting.hiddenSideBar ? h(fullScreen) : h(exitScreen)
+                      !pureSetting.hiddenSideBar
+                        ? h(fullScreen, { class: "dark:color-white" })
+                        : h(exitScreen, { class: "dark:color-white" })
                     ]
                   }
                 )

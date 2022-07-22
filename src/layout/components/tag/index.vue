@@ -732,7 +732,7 @@ const getContextMenuStyle = computed((): CSSProperties => {
           placement="bottom-end"
           @command="handleCommand"
         >
-          <IconifyIconOffline icon="arrow-down" />
+          <IconifyIconOffline icon="arrow-down" class="dark:color-white" />
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item
