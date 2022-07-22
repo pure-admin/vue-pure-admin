@@ -7,11 +7,14 @@ html.dark {
   $border-style: #303030;
   $color-white: #fff;
 
-  .sidebar-container,
-  .sidebar-logo-container,
   .navbar,
   .tags-view,
-  .contextmenu {
+  .contextmenu,
+  .sidebar-container,
+  .horizontal-header,
+  .sidebar-logo-container,
+  .horizontal-header .el-sub-menu__title,
+  .horizontal-header .submenu-title-noDropdown {
     background: var(--el-bg-color) !important;
   }
 

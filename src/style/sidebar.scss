@@ -323,7 +323,6 @@
     .is-active > .el-sub-menu__title,
     .is-active.submenu-title-noDropdown {
       color: $subMenuActiveText !important;
-      border-bottom-color: #409eff;
 
       i {
         color: $subMenuActiveText !important;
@@ -333,7 +332,6 @@
     .is-active {
       transition: color 0.3s;
       color: $subMenuActiveText !important;
-      border-bottom-color: #409eff;
     }
   }
 
