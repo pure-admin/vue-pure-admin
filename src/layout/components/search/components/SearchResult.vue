@@ -2,7 +2,7 @@
   <div class="result">
     <template v-for="item in options" :key="item.path">
       <div
-        class="result-item"
+        class="result-item dark:bg-[#1d1d1d]"
         :style="{
           background:
             item?.path === active ? useEpThemeStoreHook().epThemeColor : '',
@@ -78,8 +78,8 @@ function handleTo() {
     margin-top: 8px;
     padding: 14px;
     border-radius: 4px;
-    background: #e5e7eb;
     cursor: pointer;
+    border: 0.1px solid #ccc;
 
     &-title {
       display: flex;
