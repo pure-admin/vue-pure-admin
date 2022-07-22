@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "cross-env --max_old_space_size=4096 vite",
     "serve": "pnpm dev",
-    "build": "rimraf dist && cross-env vite build",
+    "build": "rimraf dist && cross-env NODE_OPTIONS=--max-old-space-size=8192 vite build",
     "build:staging": "rimraf dist && cross-env vite build --mode staging",
     "report": "rimraf dist && cross-env vite build",
     "preview": "vite preview",
