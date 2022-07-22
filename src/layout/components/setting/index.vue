@@ -22,12 +22,12 @@ import type { StorageConfigs } from "/#/index";
 import { useAppStoreHook } from "/@/store/modules/app";
 import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
+import { debounce, storageLocal, storageSession } from "@pureadmin/utils";
 import {
   darken,
   lighten,
   toggleTheme
 } from "@pureadmin/theme/dist/browser-utils";
-import { debounce, storageLocal, storageSession } from "@pureadmin/utils";
 
 import dayIcon from "/@/assets/svg/day.svg?component";
 import darkIcon from "/@/assets/svg/dark.svg?component";

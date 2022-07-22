@@ -1,9 +1,17 @@
 <script setup lang="ts">
-import { ref, type Ref } from "vue";
-import { useECharts } from "@pureadmin/utils";
+import { ref, computed, type Ref } from "vue";
+import { useDark, useECharts, type EchartOptions } from "@pureadmin/utils";
+
+const { isDark } = useDark();
+
+let theme: EchartOptions["theme"] = computed(() => {
+  return isDark.value ? "dark" : "default";
+});
 
 const lineChartRef = ref<HTMLDivElement | null>(null);
-const { setOptions } = useECharts(lineChartRef as Ref<HTMLDivElement>);
+const { setOptions } = useECharts(lineChartRef as Ref<HTMLDivElement>, {
+  theme
+});
 
 setOptions(
   {
