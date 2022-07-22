@@ -1,5 +1,5 @@
-import epTableProBar from "./src/bar";
-import { withInstall } from "/@/utils";
+import tableProBar from "./src/bar";
+import { withInstall } from "@pureadmin/utils";
 
 /** table-crud组件 */
-export const EpTableProBar = withInstall(epTableProBar);
+export const TableProBar = withInstall(tableProBar);

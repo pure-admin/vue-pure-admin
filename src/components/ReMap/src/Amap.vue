@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { reactive, getCurrentInstance, onBeforeMount, onUnmounted } from "vue";
-import { deviceDetection } from "/@/utils/deviceDetection";
+import { deviceDetection } from "@pureadmin/utils";
 import AMapLoader from "@amap/amap-jsapi-loader";
 import { mapJson } from "/@/api/mock";
 import car from "/@/assets/car.png";

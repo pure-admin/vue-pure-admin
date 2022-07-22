@@ -8,7 +8,7 @@ import {
   deleteChildren,
   appendFieldByUniqueId,
   getNodeByUniqueId
-} from "/@/utils/tree";
+} from "@pureadmin/utils";
 import { useDetail } from "./hooks";
 
 defineOptions({
@@ -38,9 +38,8 @@ function onCloseTags() {
       getNodeByUniqueId(treeData.value, uniqueId).path;
     useMultiTagsStoreHook().handleTags("splice", currentPath);
     if (currentPath === "/tabs/index")
-      router.push({
-        path: multiTags.value[multiTags.value.length - 1].path
-      });
+      // @ts-expect-error
+      router.push({ path: multiTags.value[multiTags.value.length - 1].path });
   });
 }
 </script>

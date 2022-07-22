@@ -8,8 +8,8 @@ import {
   defineComponent
 } from "vue";
 import "./index.scss";
-import { isString } from "/@/utils/is";
 import { cloneDeep } from "lodash-unified";
+import { isString } from "@pureadmin/utils";
 import { propTypes } from "/@/utils/propTypes";
 import { IconifyIconOffline } from "../../ReIcon";
 import QRCode, { QRCodeRenderersOptions } from "qrcode";

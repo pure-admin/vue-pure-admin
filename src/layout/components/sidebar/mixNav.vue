@@ -8,7 +8,7 @@ import avatars from "/@/assets/avatars.jpg";
 import { transformI18n } from "/@/plugins/i18n";
 import screenfull from "../screenfull/index.vue";
 import { useRoute, useRouter } from "vue-router";
-import { deviceDetection } from "/@/utils/deviceDetection";
+import { deviceDetection } from "@pureadmin/utils";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
 import { getParentPaths, findRouteByPath } from "/@/router/utils";

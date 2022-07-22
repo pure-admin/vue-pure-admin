@@ -5,7 +5,7 @@ import { emitter } from "/@/utils/mitt";
 
 let show = ref<Boolean>(false);
 const target = ref(null);
-onClickOutside(target, event => {
+onClickOutside(target, (event: any) => {
   if (event.clientX > target.value.offsetLeft) return;
   show.value = false;
 });

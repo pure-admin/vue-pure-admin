@@ -2,10 +2,10 @@
 import tree from "./tree.vue";
 import { useColumns } from "./columns";
 import { getUserList } from "/@/api/system";
-import { PureTable } from "@pureadmin/table";
 import { reactive, ref, onMounted } from "vue";
-import { EpTableProBar } from "/@/components/ReTable";
 import { type FormInstance } from "element-plus";
+import { TableProBar } from "/@/components/ReTable";
+import { type PaginationProps } from "@pureadmin/table";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 
 defineOptions({
@@ -18,12 +18,17 @@ const form = reactive({
   status: ""
 });
 let dataList = ref([]);
-let pageSize = ref(10);
-let totalPage = ref(0);
 let loading = ref(true);
 const { columns } = useColumns();
 
 const formRef = ref<FormInstance>();
+
+const pagination = reactive<PaginationProps>({
+  total: 0,
+  pageSize: 10,
+  currentPage: 1,
+  background: true
+});
 
 function handleUpdate(row) {
   console.log(row);
@@ -49,7 +54,7 @@ async function onSearch() {
   loading.value = true;
   let { data } = await getUserList();
   dataList.value = data.list;
-  totalPage.value = data.total;
+  pagination.total = data.total;
   setTimeout(() => {
     loading.value = false;
   }, 500);
@@ -114,7 +119,7 @@ onMounted(() => {
         </el-form-item>
       </el-form>
 
-      <EpTableProBar
+      <TableProBar
         title="用户管理"
         :loading="loading"
         :dataList="dataList"
@@ -134,11 +139,15 @@ onMounted(() => {
             :data="dataList"
             :columns="columns"
             :checkList="checkList"
+            :pagination="pagination"
+            :paginationSmall="size === 'small' ? true : false"
             :header-cell-style="{
               background: 'var(--el-table-row-hover-bg-color)',
               color: 'var(--el-text-color-primary)'
             }"
             @selection-change="handleSelectionChange"
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
           >
             <template #operation="{ row }">
               <el-button
@@ -203,19 +212,8 @@ onMounted(() => {
               </el-dropdown>
             </template>
           </PureTable>
-          <el-pagination
-            class="flex justify-end mt-4"
-            :small="size === 'small' ? true : false"
-            v-model:page-size="pageSize"
-            :page-sizes="[10, 20, 30, 50]"
-            :background="true"
-            layout="total, sizes, prev, pager, next, jumper"
-            :total="totalPage"
-            @size-change="handleSizeChange"
-            @current-change="handleCurrentChange"
-          />
         </template>
-      </EpTableProBar>
+      </TableProBar>
     </div>
   </div>
 </template>

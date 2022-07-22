@@ -24,7 +24,14 @@
       "@build/*": ["build/*"],
       "/#/*": ["types/*"]
     },
-    "types": ["node", "vite/client", "element-plus/global", "unplugin-vue-define-options"],
+    "types": [
+      "node",
+      "vite/client",
+      "element-plus/global",
+      "@pureadmin/table/volar",
+      "unplugin-vue-define-options",
+      "@pureadmin/descriptions/volar"
+    ],
     "typeRoots": ["./node_modules/@types/", "./types"]
   },
   "include": [

@@ -2,7 +2,7 @@
 import { computed } from "vue";
 import { transformI18n } from "/@/plugins/i18n";
 import ElTreeLine from "/@/components/ReTreeLine";
-import { extractPathList, deleteChildren } from "/@/utils/tree";
+import { extractPathList, deleteChildren } from "@pureadmin/utils";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 
 defineOptions({

@@ -4,8 +4,8 @@ import Config from "./config.vue";
 import { useI18n } from "vue-i18n";
 import { cloneDeep } from "lodash-unified";
 import { reactive, ref, unref, nextTick } from "vue";
+import { useCopyToClipboard } from "@pureadmin/utils";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
-import { useCopyToClipboard } from "/@/utils/useCopyToClipboard";
 import {
   VXETable,
   type TablePublicMethods,
@@ -172,9 +172,9 @@ function onEdit(row?: onEditNRow) {
 }
 
 // 拷贝当前列表项的数据（字典类型）
-const { clipboardRef } = useCopyToClipboard();
+const { clipboardValue } = useCopyToClipboard();
 const cellDBLClickEvent: VxeTableEvents.CellDblclick = ({ row }) => {
-  clipboardRef.value = unref(row).model;
+  clipboardValue.value = unref(row).model;
 };
 
 const xTable = ref({} as VxeTableInstance);
@@ -288,7 +288,7 @@ function onHide() {
           </el-tooltip>
         </template>
       </vxe-table-column>
-      <vxe-table-column title="操作" width="330" fixed="right">
+      <vxe-table-column title="操作" width="360" fixed="right">
         <template #default="{ row }">
           <el-button
             link

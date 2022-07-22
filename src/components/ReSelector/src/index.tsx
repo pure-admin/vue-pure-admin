@@ -6,7 +6,7 @@ import {
   getCurrentInstance,
   unref
 } from "vue";
-import { addClass, removeClass, toggleClass } from "/@/utils/operate";
+import { addClass, removeClass, toggleClass } from "@pureadmin/utils";
 import "./index.css";
 
 const stayClass = "stay"; //鼠标点击
@@ -254,23 +254,32 @@ export default defineComponent({
       });
 
       addClass(
-        instance.refs["hsdiv" + props.HsKey + item[0]],
+        instance.refs["hsdiv" + props.HsKey + item[0]] as Element,
         activeClass,
         stayClass
       );
-
-      addClass(instance.refs["hstd" + props.HsKey + item[0]], bothLeftSides);
 
       addClass(
-        instance.refs["hsdiv" + props.HsKey + item[1]],
+        instance.refs["hstd" + props.HsKey + item[0]] as Element,
+        bothLeftSides
+      );
+
+      addClass(
+        instance.refs["hsdiv" + props.HsKey + item[1]] as Element,
         activeClass,
         stayClass
       );
 
-      addClass(instance.refs["hstd" + props.HsKey + item[1]], bothRightSides);
+      addClass(
+        instance.refs["hstd" + props.HsKey + item[1]] as Element,
+        bothRightSides
+      );
 
       while (item[1] >= item[0]) {
-        addClass(instance.refs["hstd" + props.HsKey + item[0]], inRange);
+        addClass(
+          instance.refs["hstd" + props.HsKey + item[0]] as Element,
+          inRange
+        );
         item[0]++;
       }
     };

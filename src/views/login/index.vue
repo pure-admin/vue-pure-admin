@@ -9,8 +9,8 @@ import update from "./components/update.vue";
 import { initRouter } from "/@/router/utils";
 import { message } from "@pureadmin/components";
 import type { FormInstance } from "element-plus";
-import { storageSession } from "/@/utils/storage";
-import { ref, reactive, watch, computed } from "vue";
+import { storageSession } from "@pureadmin/utils";
+import { ref, reactive, watch, computed, getCurrentInstance } from "vue";
 import { operates, thirdParty } from "./utils/enums";
 import { useUserStoreHook } from "/@/store/modules/user";
 import { bg, avatar, currentWeek } from "./utils/static";
@@ -20,7 +20,8 @@ import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 defineOptions({
   name: "Login"
 });
-
+const title =
+  getCurrentInstance().appContext.config.globalProperties.$config?.Title;
 const imgCode = ref("");
 const router = useRouter();
 const loading = ref(false);
@@ -78,7 +79,7 @@ watch(imgCode, value => {
       <div class="login-form">
         <avatar class="avatar" />
         <Motion>
-          <h2>Pure Admin</h2>
+          <h2>{{ title }}</h2>
         </Motion>
 
         <el-form

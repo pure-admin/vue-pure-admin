@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useColumns } from "./columns";
 export interface schemaItem {
   field: string;
   label: string;
@@ -8,11 +9,13 @@ defineOptions({
   name: "About"
 });
 
-const { pkg, lastBuildTime } = __APP_INFO__;
-const { dependencies, devDependencies, version } = pkg;
+const { pkg } = __APP_INFO__;
+const { dependencies, devDependencies } = pkg;
 
 const schema: schemaItem[] = [];
 const devSchema: schemaItem[] = [];
+
+const { columns } = useColumns();
 
 Object.keys(dependencies).forEach(key => {
   schema.push({ field: dependencies[key], label: key });
@@ -43,43 +46,7 @@ Object.keys(devDependencies).forEach(key => {
           <span class="font-medium">项目信息</span>
         </div>
       </template>
-      <el-descriptions :column="2" border>
-        <el-descriptions-item label="版本" label-align="left" align="left">
-          <el-tag>{{ version }}</el-tag>
-        </el-descriptions-item>
-        <el-descriptions-item
-          label="最后编译时间"
-          label-align="left"
-          align="left"
-        >
-          <el-tag>{{ lastBuildTime }}</el-tag>
-        </el-descriptions-item>
-        <el-descriptions-item label="文档地址" label-align="left" align="left">
-          <a href="https://pure-admin-doc.vercel.app" target="_blank">
-            <span style="color: var(--el-color-primary)">文档地址</span>
-          </a>
-        </el-descriptions-item>
-        <el-descriptions-item label="预览地址" label-align="left" align="left">
-          <a href="https://vue-pure-admin.vercel.app" target="_blank">
-            <span style="color: var(--el-color-primary)">预览地址</span>
-          </a>
-        </el-descriptions-item>
-        <el-descriptions-item label="Github" label-align="left" align="left">
-          <a
-            href="https://github.com/xiaoxian521/vue-pure-admin"
-            target="_blank"
-          >
-            <span style="color: var(--el-color-primary)">Github</span>
-          </a>
-        </el-descriptions-item>
-        <el-descriptions-item label="QQ交流群" label-align="left" align="left">
-          <a href="https://jq.qq.com/?_wv=1027&k=HntMx0dt" target="_blank">
-            <span style="color: var(--el-color-primary)">
-              点击链接加入群聊【Pure Admin】
-            </span>
-          </a>
-        </el-descriptions-item>
-      </el-descriptions>
+      <PureDescriptions :columns="columns" border :column="3" align="left" />
     </el-card>
 
     <el-card class="box-card m-4" shadow="hover">

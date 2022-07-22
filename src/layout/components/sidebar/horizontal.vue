@@ -8,7 +8,7 @@ import SidebarItem from "./sidebarItem.vue";
 import avatars from "/@/assets/avatars.jpg";
 import screenfull from "../screenfull/index.vue";
 import { useRoute, useRouter } from "vue-router";
-import { deviceDetection } from "/@/utils/deviceDetection";
+import { deviceDetection } from "@pureadmin/utils";
 import { watch, nextTick, onMounted, getCurrentInstance } from "vue";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 import globalization from "/@/assets/svg/globalization.svg?component";

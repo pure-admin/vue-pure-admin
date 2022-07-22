@@ -9,7 +9,7 @@ import avatars from "/@/assets/avatars.jpg";
 import Hamburger from "./sidebar/hamBurger.vue";
 import { watch, getCurrentInstance } from "vue";
 import Breadcrumb from "./sidebar/breadCrumb.vue";
-import { deviceDetection } from "/@/utils/deviceDetection";
+import { deviceDetection } from "@pureadmin/utils";
 import screenfull from "../components/screenfull/index.vue";
 import globalization from "/@/assets/svg/globalization.svg?component";
 

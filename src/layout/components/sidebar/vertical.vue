@@ -3,7 +3,8 @@ import Logo from "./logo.vue";
 import { emitter } from "/@/utils/mitt";
 import { useNav } from "../../hooks/nav";
 import SidebarItem from "./sidebarItem.vue";
-import { storageLocal } from "/@/utils/storage";
+import type { StorageConfigs } from "/#/index";
+import { storageLocal } from "@pureadmin/utils";
 import { useRoute, useRouter } from "vue-router";
 import { ref, computed, watch, onBeforeMount } from "vue";
 import { findRouteByPath, getParentPaths } from "/@/router/utils";
@@ -12,7 +13,7 @@ import { usePermissionStoreHook } from "/@/store/modules/permission";
 const route = useRoute();
 const routers = useRouter().options.routes;
 const showLogo = ref(
-  storageLocal.getItem("responsive-configure")?.showLogo ?? true
+  storageLocal.getItem<StorageConfigs>("responsive-configure")?.showLogo ?? true
 );
 
 const { pureApp, isCollapse, menuSelect } = useNav();
@@ -43,7 +44,7 @@ getSubMenuData(route.path);
 
 onBeforeMount(() => {
   emitter.on("logoChange", key => {
-    showLogo.value = key;
+    showLogo.value = key as unknown as boolean;
   });
 });
 
