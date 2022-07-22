@@ -104,7 +104,7 @@ export default defineComponent({
     const reference = {
       reference: () => (
         <IconifyIconOffline
-          class="cursor-pointer outline-none"
+          class="cursor-pointer"
           icon="setting"
           width="16"
           color="text_color_regular"
@@ -134,7 +134,7 @@ export default defineComponent({
                     placement="top"
                   >
                     <IconifyIconOffline
-                      class="cursor-pointer outline-none"
+                      class="cursor-pointer"
                       icon={isExpandAll.value ? "unExpand" : "expand"}
                       width="16"
                       color="text_color_regular"
@@ -146,7 +146,7 @@ export default defineComponent({
               ) : undefined}
               <el-tooltip effect="dark" content="刷新" placement="top">
                 <IconifyIconOffline
-                  class="cursor-pointer outline-none"
+                  class="cursor-pointer"
                   icon="refresh-right"
                   width="16"
                   color="text_color_regular"
@@ -158,7 +158,7 @@ export default defineComponent({
               <el-tooltip effect="dark" content="密度" placement="top">
                 <el-dropdown v-slots={dropdown} trigger="click">
                   <IconifyIconOffline
-                    class="cursor-pointer outline-none"
+                    class="cursor-pointer"
                     icon="density"
                     width="16"
                     color="text_color_regular"

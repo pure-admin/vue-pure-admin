@@ -164,6 +164,7 @@ function translationEn() {
         <template #dropdown>
           <el-dropdown-menu class="translation">
             <el-dropdown-item
+              class="!dark:color-white"
               :style="getDropdownItemStyle(locale, 'zh')"
               @click="translationCh"
             >
@@ -173,6 +174,7 @@ function translationEn() {
               简体中文
             </el-dropdown-item>
             <el-dropdown-item
+              class="!dark:color-white"
               :style="getDropdownItemStyle(locale, 'en')"
               @click="translationEn"
             >

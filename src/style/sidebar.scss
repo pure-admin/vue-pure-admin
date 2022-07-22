@@ -248,6 +248,7 @@
         padding: 11px;
         cursor: pointer;
         color: $subMenuActiveText;
+        outline: none;
 
         &:hover {
           background: $menuHover;
