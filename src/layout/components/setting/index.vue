@@ -22,7 +22,12 @@ import type { StorageConfigs } from "/#/index";
 import { useAppStoreHook } from "/@/store/modules/app";
 import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
-import { debounce, storageLocal, storageSession } from "@pureadmin/utils";
+import {
+  useDark,
+  debounce,
+  storageLocal,
+  storageSession
+} from "@pureadmin/utils";
 import {
   darken,
   lighten,
@@ -33,6 +38,7 @@ import dayIcon from "/@/assets/svg/day.svg?component";
 import darkIcon from "/@/assets/svg/dark.svg?component";
 
 const router = useRouter();
+const { isDark } = useDark();
 const { isSelect } = useCssModule();
 const body = document.documentElement as HTMLElement;
 const instance =
@@ -100,6 +106,13 @@ const settings = reactive({
 const getThemeColorStyle = computed(() => {
   return color => {
     return { background: color };
+  };
+});
+
+/** 当网页为暗黑模式时不显示亮白色切换选项 */
+const showThemeColors = computed(() => {
+  return themeColor => {
+    return themeColor === "light" && isDark.value ? false : true;
   };
 });
 
@@ -359,6 +372,7 @@ nextTick(() => {
       <li
         v-for="(item, index) in themeColors"
         :key="index"
+        v-show="showThemeColors(item.themeColor)"
         :style="getThemeColorStyle(item.color)"
         @click="setLayoutThemeColor(item.themeColor)"
       >
