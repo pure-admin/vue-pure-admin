@@ -59,7 +59,8 @@ const getMenuTextStyle = computed((): CSSProperties => {
     width: pureApp.sidebar.opened ? "210px" : "",
     overflow: "hidden",
     textOverflow: "ellipsis",
-    outline: "none"
+    outline: "none",
+    marginLeft: "5px"
   };
 });
 
@@ -75,7 +76,8 @@ const getSubTextStyle = computed((): CSSProperties => {
 const getSpanStyle = computed((): CSSProperties => {
   return {
     overflow: "hidden",
-    textOverflow: "ellipsis"
+    textOverflow: "ellipsis",
+    marginLeft: "5px"
   };
 });
 

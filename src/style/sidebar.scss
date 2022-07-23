@@ -16,7 +16,6 @@
 
   .sub-menu-icon {
     vertical-align: middle;
-    margin-right: 5px;
     font-size: 18px;
     display: inline-flex;
     justify-content: center;
@@ -396,15 +395,19 @@
 
     .el-menu-item,
     .el-sub-menu {
-      i {
-        width: 20px;
-        text-align: center;
-        font-size: 16px;
-      }
+      // i {
+      //   width: 20px;
+      //   text-align: center;
+      //   font-size: 16px;
+      // }
 
-      i.fa {
-        margin-right: 5px;
-        font-size: 16px;
+      // i.fa {
+      //   margin-right: 5px;
+      //   font-size: 16px;
+      // }
+      .el-menu-tooltip__trigger {
+        width: 54px;
+        padding: 18px !important;
       }
     }
   }
@@ -573,6 +576,7 @@ body[layout="vertical"] {
       .is-active.submenu-title-noDropdown.outer-most {
         background: transparent !important;
       }
+      transition: all 0.2s;
     }
 
     .main-container {
@@ -595,6 +599,10 @@ body[layout="vertical"] {
 
       .submenu-title-noDropdown {
         background: transparent !important;
+      }
+
+      .el-sub-menu__title {
+        padding: 0 18px !important;
       }
     }
   }
