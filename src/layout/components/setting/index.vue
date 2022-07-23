@@ -298,7 +298,13 @@ let dataTheme = ref<boolean>(instance.layout.darkMode);
 
 /** 日间、夜间主题切换 */
 function dataThemeChange() {
-  setLayoutThemeColor(useEpThemeStoreHook().epTheme);
+  /* 如果当前是light夜间主题，默认切换到default主题 */
+  if (useEpThemeStoreHook().epTheme === "light" && dataTheme.value) {
+    setLayoutThemeColor("default");
+  } else {
+    setLayoutThemeColor(useEpThemeStoreHook().epTheme);
+  }
+
   if (dataTheme.value) {
     instance.layout.darkMode = true;
     document.documentElement.classList.add("dark");
