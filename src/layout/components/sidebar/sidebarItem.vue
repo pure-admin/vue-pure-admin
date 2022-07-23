@@ -174,7 +174,7 @@ function resolvePath(routePath) {
       </div>
       <template #title>
         <div :style="getDivStyle">
-          <span v-if="!menuMode">
+          <span v-if="!menuMode" style="margin-left: 5px">
             {{ transformI18n(onlyOneChild.meta.title) }}
           </span>
           <el-tooltip
@@ -214,7 +214,9 @@ function resolvePath(routePath) {
           :is="useRenderIcon(props.item.meta && toRaw(props.item.meta.icon))"
         />
       </div>
-      <span v-if="!menuMode">{{ transformI18n(props.item.meta.title) }}</span>
+      <span v-if="!menuMode" style="margin-left: 5px">
+        {{ transformI18n(props.item.meta.title) }}</span
+      >
       <el-tooltip
         v-else
         placement="top"
