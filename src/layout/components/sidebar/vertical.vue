@@ -62,13 +62,13 @@ watch(
     <Logo v-if="showLogo" :collapse="isCollapse" />
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu
-        :default-active="route.path"
-        :collapse="isCollapse"
-        unique-opened
         router
-        :collapse-transition="false"
+        unique-opened
         mode="vertical"
         class="outer-most"
+        :collapse="isCollapse"
+        :default-active="route.path"
+        :collapse-transition="false"
         @select="indexPath => menuSelect(indexPath, routers)"
       >
         <sidebar-item

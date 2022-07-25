@@ -79,11 +79,11 @@ function translationEn() {
       <h4>{{ title }}</h4>
     </div>
     <el-menu
-      ref="menu"
-      class="horizontal-header-menu"
-      mode="horizontal"
-      :default-active="route.path"
       router
+      ref="menu"
+      mode="horizontal"
+      class="horizontal-header-menu"
+      :default-active="route.path"
       @select="indexPath => menuSelect(indexPath, routers)"
     >
       <sidebar-item

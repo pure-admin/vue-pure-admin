@@ -119,11 +119,11 @@ function translationEn() {
       </svg>
     </div>
     <el-menu
-      ref="menu"
-      class="horizontal-header-menu"
-      mode="horizontal"
-      :default-active="defaultActive"
       router
+      ref="menu"
+      mode="horizontal"
+      class="horizontal-header-menu"
+      :default-active="defaultActive"
       @select="indexPath => menuSelect(indexPath, routers)"
     >
       <el-menu-item

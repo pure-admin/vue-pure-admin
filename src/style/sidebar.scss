@@ -25,6 +25,7 @@
   .main-container {
     height: 100vh;
     min-height: 100%;
+    /* main-content属性动画 */
     transition: margin-left var(--pure-transition-duration);
     margin-left: $sideBarWidth;
     position: relative;
@@ -42,6 +43,7 @@
     right: 0;
     z-index: 998;
     width: calc(100% - 210px);
+    /* fixed-header属性左上角动画 */
     transition: width var(--pure-transition-duration);
   }
 
@@ -62,6 +64,7 @@
   }
 
   .sidebar-container {
+    /* 展开动画 */
     transition: width var(--pure-transition-duration);
     width: $sideBarWidth !important;
     background: $menuBg;
@@ -183,7 +186,7 @@
       align-items: center;
       padding-left: 10px;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all 0.125s ease;
 
       i {
         font-size: 30px;
@@ -490,7 +493,7 @@
     background-color: $menuActiveBefore;
     content: "";
     clear: both;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.125s ease-in-out;
     transform: translateY(0);
   }
 
@@ -529,14 +532,6 @@
       }
     }
   }
-
-  /* vertical菜单下hideSidebar去除动画 */
-  .withoutAnimation {
-    .main-container,
-    .sidebar-container {
-      transition: none;
-    }
-  }
 }
 
 body[layout="vertical"] {
@@ -558,12 +553,12 @@ body[layout="vertical"] {
     }
 
     .sidebar-container {
+      transition: width 0.125s;
       width: 54px !important;
 
       .is-active.submenu-title-noDropdown.outer-most {
         background: transparent !important;
       }
-      transition: all 0.2s;
     }
 
     .main-container {
@@ -641,6 +636,7 @@ body[layout="mix"] {
     }
 
     .sidebar-container {
+      transition: width 0.125s;
       width: 54px !important;
 
       .is-active.submenu-title-noDropdown.outer-most {
