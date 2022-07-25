@@ -161,7 +161,9 @@ function translationEn() {
       <screenfull id="header-screenfull" v-show="!deviceDetection()" />
       <!-- 国际化 -->
       <el-dropdown id="header-translation" trigger="click">
-        <globalization />
+        <globalization
+          class="navbar-bg-hover w-40px h-48px p-11px cursor-pointer outline-none"
+        />
         <template #dropdown>
           <el-dropdown-menu class="translation">
             <el-dropdown-item
@@ -189,7 +191,7 @@ function translationEn() {
       </el-dropdown>
       <!-- 退出登录 -->
       <el-dropdown trigger="click">
-        <span class="el-dropdown-link">
+        <span class="el-dropdown-link navbar-bg-hover">
           <img v-if="avatars" :src="avatars" :style="avatarsStyle" />
           <p v-if="username" class="dark:color-white">{{ username }}</p>
         </span>
@@ -206,7 +208,7 @@ function translationEn() {
         </template>
       </el-dropdown>
       <span
-        class="el-icon-setting dark:color-white"
+        class="el-icon-setting navbar-bg-hover"
         :title="t('buttons.hssystemSet')"
         @click="onPanel"
       >

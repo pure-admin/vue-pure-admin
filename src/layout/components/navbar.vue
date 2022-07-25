@@ -157,20 +157,6 @@ function translationEn() {
     color: #000000d9;
     justify-content: flex-end;
 
-    // :deep(.dropdown-badge) {
-    //   &:hover {
-    //     background: #f6f6f6;
-    //   }
-    // }
-
-    // .screen-full {
-    //   cursor: pointer;
-
-    //   &:hover {
-    //     background: #f6f6f6;
-    //   }
-    // }
-
     .el-dropdown-link {
       height: 48px;
       padding: 10px;
@@ -179,10 +165,6 @@ function translationEn() {
       justify-content: space-around;
       cursor: pointer;
       color: #000000d9;
-
-      // &:hover {
-      //   background: #f6f6f6;
-      // }
 
       p {
         font-size: 14px;
@@ -202,10 +184,6 @@ function translationEn() {
       display: flex;
       cursor: pointer;
       align-items: center;
-
-      // &:hover {
-      //   background: #f6f6f6;
-      // }
     }
   }
 

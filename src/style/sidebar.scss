@@ -213,40 +213,35 @@
       color: $subMenuActiveText;
       justify-content: flex-end;
 
+      /* 搜索 */
+      .search-container,
+      /* 告警 */
+      .dropdown-badge,
+      /* 全屏 */
+      .screen-full,
+      /* 国际化 */
+      .globalization,
+      /* 登陆名 */
+      .el-dropdown-link,
+      /* 设置 */
+      .el-icon-setting {
+        &:hover {
+          background: $menuHover;
+        }
+      }
+
       .dropdown-badge {
         height: 48px;
         color: $subMenuActiveText;
-
-        &:hover {
-          background: $menuHover;
-        }
-      }
-
-      .search-container {
-        &:hover {
-          background: $menuHover;
-        }
-      }
-
-      .screen-full {
-        cursor: pointer;
-
-        &:hover {
-          background: $menuHover;
-        }
       }
 
       .globalization {
-        height: 48px;
         width: 40px;
+        height: 48px;
         padding: 11px;
+        outline: none;
         cursor: pointer;
         color: $subMenuActiveText;
-        outline: none;
-
-        &:hover {
-          background: $menuHover;
-        }
       }
 
       .el-dropdown-link {
@@ -257,10 +252,6 @@
         justify-content: space-around;
         cursor: pointer;
         color: $subMenuActiveText;
-
-        &:hover {
-          background: $menuHover;
-        }
 
         p {
           font-size: 14px;
@@ -280,10 +271,6 @@
         display: flex;
         cursor: pointer;
         align-items: center;
-
-        &:hover {
-          background: $menuHover;
-        }
       }
     }
 
@@ -609,6 +596,23 @@ body[layout="vertical"] {
 
   .sub-menu-icon {
     width: 24px;
+  }
+
+  /* 搜索 */
+  .search-container,
+  /* 告警 */
+  .dropdown-badge,
+  /* 全屏 */
+  .screen-full,
+  /* 国际化 */
+  .globalization,
+  /* 登陆名 */
+  .el-dropdown-link,
+  /* 设置 */
+  .el-icon-setting {
+    &:hover {
+      background: #f6f6f6;
+    }
   }
 }
 
