@@ -133,8 +133,8 @@ function translationEn() {
       >
         <template #title>
           <div
-            v-show="toRaw(route.meta.icon)"
-            :class="['el-icon', route.meta.icon]"
+            v-if="toRaw(route.meta.icon)"
+            :class="['sub-menu-icon', route.meta.icon]"
           >
             <component
               :is="useRenderIcon(route.meta && toRaw(route.meta.icon))"

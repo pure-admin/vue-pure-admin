@@ -20,6 +20,7 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
+    margin-right: 5px;
   }
 
   .main-container {
@@ -251,9 +252,9 @@
         height: 48px;
         padding: 10px;
         display: flex;
+        cursor: pointer;
         align-items: center;
         justify-content: space-around;
-        cursor: pointer;
         color: $subMenuActiveText;
 
         p {
@@ -327,15 +328,6 @@
       .el-menu-item {
         span {
           font-size: 12px;
-          margin-left: 10px;
-        }
-      }
-
-      .el-sub-menu__title {
-        color: $menuText;
-
-        span {
-          margin-left: 10px;
         }
       }
     }
@@ -418,16 +410,11 @@
 
         span {
           font-size: 12px;
-          margin-left: 10px;
         }
       }
 
       .el-sub-menu__title {
         color: $menuText;
-
-        span {
-          margin-left: 10px;
-        }
       }
     }
 
@@ -624,6 +611,10 @@ body[layout="horizontal"] {
 body[layout="mix"] {
   $sideBarWidth: 210px;
   @include merge-style($sideBarWidth);
+
+  .el-menu--collapse {
+    width: 54px;
+  }
 
   .el-menu {
     --el-menu-hover-bg-color: transparent !important;

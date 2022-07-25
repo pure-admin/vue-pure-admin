@@ -54,13 +54,12 @@ const getDivStyle = computed((): CSSProperties => {
   };
 });
 
-const getMenuTextStyle = computed((): CSSProperties => {
+const getMenuTextStyle = computed(() => {
   return {
     width: pureApp.sidebar.opened ? "210px" : "",
     overflow: "hidden",
     textOverflow: "ellipsis",
-    outline: "none",
-    marginLeft: "5px"
+    outline: "none"
   };
 });
 
@@ -73,11 +72,10 @@ const getSubTextStyle = computed((): CSSProperties => {
   };
 });
 
-const getSpanStyle = computed((): CSSProperties => {
+const getSpanStyle = computed(() => {
   return {
     overflow: "hidden",
-    textOverflow: "ellipsis",
-    marginLeft: "5px"
+    textOverflow: "ellipsis"
   };
 });
 
@@ -150,7 +148,7 @@ function resolvePath(routePath) {
       :class="{ 'submenu-title-noDropdown': !isNest }"
       :style="getNoDropdownStyle"
     >
-      <div class="sub-menu-icon" v-show="toRaw(props.item.meta.icon)">
+      <div class="sub-menu-icon" v-if="toRaw(props.item.meta.icon)">
         <component
           :is="
             useRenderIcon(
@@ -174,7 +172,7 @@ function resolvePath(routePath) {
       </div>
       <template #title>
         <div :style="getDivStyle">
-          <span v-if="!menuMode" style="margin-left: 5px">
+          <span v-if="!menuMode">
             {{ transformI18n(onlyOneChild.meta.title) }}
           </span>
           <el-tooltip
@@ -209,14 +207,12 @@ function resolvePath(routePath) {
 
   <el-sub-menu v-else ref="subMenu" :index="resolvePath(props.item.path)">
     <template #title>
-      <div v-show="toRaw(props.item.meta.icon)" class="sub-menu-icon">
+      <div v-if="toRaw(props.item.meta.icon)" class="sub-menu-icon">
         <component
           :is="useRenderIcon(props.item.meta && toRaw(props.item.meta.icon))"
         />
       </div>
-      <span v-if="!menuMode" style="margin-left: 5px">
-        {{ transformI18n(props.item.meta.title) }}</span
-      >
+      <span v-if="!menuMode"> {{ transformI18n(props.item.meta.title) }}</span>
       <el-tooltip
         v-else
         placement="top"
