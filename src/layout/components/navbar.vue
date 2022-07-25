@@ -55,8 +55,8 @@ function translationEn() {
   <div class="navbar">
     <Hamburger
       v-if="pureApp.layout !== 'mix'"
-      :is-active="pureApp.sidebar.opened"
       class="hamburger-container"
+      :is-active="pureApp.sidebar.opened"
       @toggleClick="toggleSideBar"
     />
 
@@ -145,8 +145,6 @@ function translationEn() {
     height: 100%;
     float: left;
     cursor: pointer;
-    transition: background 0.3s;
-    -webkit-tap-highlight-color: transparent;
   }
 
   .vertical-header-right {

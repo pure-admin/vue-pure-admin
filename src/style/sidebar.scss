@@ -66,7 +66,7 @@
 
   .sidebar-container {
     /* 展开动画 */
-    transition: width 0.125s;
+    transition: width var(--pure-transition-duration);
     width: $sideBarWidth !important;
     background: $menuBg;
     height: 100%;
