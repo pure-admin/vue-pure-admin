@@ -66,6 +66,7 @@ watch(
         :collapse="isCollapse"
         unique-opened
         router
+        :collapse-transition="false"
         mode="vertical"
         class="outer-most"
         @select="indexPath => menuSelect(indexPath, routers)"
