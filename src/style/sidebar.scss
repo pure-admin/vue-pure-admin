@@ -66,7 +66,7 @@
 
   .sidebar-container {
     /* 展开动画 */
-    transition: width var(--pure-transition-duration);
+    transition: width 0.125s;
     width: $sideBarWidth !important;
     background: $menuBg;
     height: 100%;
@@ -574,10 +574,10 @@ body[layout="vertical"] {
         padding: 0 18px !important;
       }
     }
-  }
 
-  .sub-menu-icon {
-    width: 24px;
+    .sub-menu-icon {
+      margin-right: 0;
+    }
   }
 
   /* 搜索 */
