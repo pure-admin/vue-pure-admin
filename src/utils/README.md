@@ -1,4 +1,4 @@
-### 备注
+### 注意
 
 - [文档](https://pure-admin-utils.vercel.app)
 - [npm](https://www.npmjs.com/package/@pureadmin/utils)
