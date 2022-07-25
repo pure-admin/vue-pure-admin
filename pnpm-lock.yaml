@@ -18,7 +18,7 @@ specifiers:
   "@intlify/vite-plugin-vue-i18n": ^5.0.0
   "@logicflow/core": ^1.1.22
   "@logicflow/extension": ^1.1.22
-  "@pureadmin/components": ^1.0.6
+  "@pureadmin/components": ^1.1.0
   "@pureadmin/descriptions": ^1.1.0
   "@pureadmin/table": ^1.2.0
   "@pureadmin/theme": ^2.4.0
@@ -126,7 +126,7 @@ dependencies:
   "@ctrl/tinycolor": 3.4.1
   "@logicflow/core": 1.1.22
   "@logicflow/extension": 1.1.22
-  "@pureadmin/components": 1.0.8_vue@3.2.37
+  "@pureadmin/components": 1.1.0_vue@3.2.37
   "@pureadmin/descriptions": 1.1.0
   "@pureadmin/table": 1.2.0
   "@pureadmin/utils": 0.0.33_5d67ed6011fc942bf0327f2155ab86bd
@@ -1342,10 +1342,10 @@ packages:
       }
     dev: true
 
-  /@pureadmin/components/1.0.8_vue@3.2.37:
+  /@pureadmin/components/1.1.0_vue@3.2.37:
     resolution:
       {
-        integrity: sha512-cU+eor4PpAviuVlwjWl5MtCGwidGA6JA/rPzbB1EIZ13UV7iFyIpqjXcOF1Ge3sjRxmrG2VwCxICt6x+ZRw/2w==
+        integrity: sha512-Y7FCUVQVkZ2P3K/3vLrfQOfpjbf8g0TDPUWuFUlaq6aIW3BRduiVfqn4k/r3TX6LtasxGvgnJ/TO9tGed5VlTg==
       }
     peerDependencies:
       vue: ^3.2.0

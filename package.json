@@ -32,7 +32,7 @@
     "@ctrl/tinycolor": "^3.4.1",
     "@logicflow/core": "^1.1.22",
     "@logicflow/extension": "^1.1.22",
-    "@pureadmin/components": "^1.0.6",
+    "@pureadmin/components": "^1.1.0",
     "@pureadmin/descriptions": "^1.1.0",
     "@pureadmin/table": "^1.2.0",
     "@pureadmin/utils": "^0.0.33",
