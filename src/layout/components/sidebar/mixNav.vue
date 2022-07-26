@@ -116,7 +116,7 @@ function translationEn() {
               :is="useRenderIcon(route.meta && toRaw(route.meta.icon))"
             />
           </div>
-          <span>{{ transformI18n(route.meta.title) }}</span>
+          <span class="select-none">{{ transformI18n(route.meta.title) }}</span>
           <FontIcon
             v-if="route.meta.extraIcon"
             width="30px"

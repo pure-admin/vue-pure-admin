@@ -50,7 +50,9 @@ function translationEn() {
 </script>
 
 <template>
-  <div class="navbar">
+  <div
+    class="navbar bg-[#fff] shadow-sm shadow-[rgba(0, 21, 41, 0.08)] dark:shadow-[#0d0d0d]"
+  >
     <Breadcrumb v-if="pureApp.layout !== 'mix'" class="breadcrumb-container" />
 
     <mixNav v-if="pureApp.layout === 'mix'" />
@@ -128,8 +130,6 @@ function translationEn() {
   width: 100%;
   height: 48px;
   overflow: hidden;
-  background: #fff;
-  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
 
   .vertical-header-right {
     display: flex;
