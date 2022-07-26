@@ -246,7 +246,7 @@ export default defineComponent({
             >
               <div class="absolute top-[50%] left-[50%] font-bold">
                 <IconifyIconOffline
-                  class="cursor-pointer outline-none"
+                  class="cursor-pointer"
                   icon="refresh-right"
                   width="30"
                   color="var(--el-color-primary)"

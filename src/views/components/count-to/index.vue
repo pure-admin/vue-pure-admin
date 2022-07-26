@@ -34,14 +34,3 @@ defineOptions({
     </div>
   </el-card>
 </template>
-
-<style lang="scss" scoped>
-.flex {
-  display: flex;
-}
-
-:deep(.el-card) {
-  text-align: center;
-  margin-bottom: 10px;
-}
-</style>

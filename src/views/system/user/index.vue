@@ -79,7 +79,7 @@ onMounted(() => {
         ref="formRef"
         :inline="true"
         :model="form"
-        class="bg-white w-99/100 pl-8 pt-4"
+        class="bg-white dark:bg-dark w-99/100 pl-8 pt-4"
       >
         <el-form-item label="用户名称：" prop="username">
           <el-input
@@ -141,7 +141,10 @@ onMounted(() => {
             :checkList="checkList"
             :pagination="pagination"
             :paginationSmall="size === 'small' ? true : false"
-            :header-cell-style="{ background: '#fafafa', color: '#606266' }"
+            :header-cell-style="{
+              background: 'var(--el-table-row-hover-bg-color)',
+              color: 'var(--el-text-color-primary)'
+            }"
             @selection-change="handleSelectionChange"
             @size-change="handleSizeChange"
             @current-change="handleCurrentChange"

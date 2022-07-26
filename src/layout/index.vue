@@ -11,8 +11,8 @@ import { setType } from "./types";
 import { useI18n } from "vue-i18n";
 import { routerArrays } from "./types";
 import { emitter } from "/@/utils/mitt";
-import { deviceDetection } from "@pureadmin/utils";
 import { useAppStoreHook } from "/@/store/modules/app";
+import { deviceDetection, useDark } from "@pureadmin/utils";
 import { useMultiTagsStore } from "/@/store/modules/multiTags";
 import { useSettingStoreHook } from "/@/store/modules/settings";
 
@@ -27,6 +27,7 @@ import setting from "./components/setting/index.vue";
 import Vertical from "./components/sidebar/vertical.vue";
 import Horizontal from "./components/sidebar/horizontal.vue";
 
+const { isDark } = useDark();
 const isMobile = deviceDetection();
 const pureSetting = useSettingStoreHook();
 const instance = getCurrentInstance().appContext.app.config.globalProperties;
@@ -165,7 +166,9 @@ const layoutHeader = defineComponent({
         class: { "fixed-header": set.fixedHeader },
         style: [
           set.hideTabs && layout.value.includes("horizontal")
-            ? "box-shadow: 0 1px 4px rgb(0 21 41 / 8%);"
+            ? isDark.value
+              ? "box-shadow: 0 1px 4px #0d0d0d"
+              : "box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08)"
             : ""
         ]
       },
@@ -185,10 +188,14 @@ const layoutHeader = defineComponent({
               default: () => [
                 h(
                   "span",
-                  { onClick: onFullScreen },
+                  {
+                    onClick: onFullScreen
+                  },
                   {
                     default: () => [
-                      !pureSetting.hiddenSideBar ? h(fullScreen) : h(exitScreen)
+                      !pureSetting.hiddenSideBar
+                        ? h(fullScreen, { class: "dark:color-white" })
+                        : h(exitScreen, { class: "dark:color-white" })
                     ]
                   }
                 )

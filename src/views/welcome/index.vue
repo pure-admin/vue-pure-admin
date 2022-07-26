@@ -35,7 +35,7 @@ const openDepot = (): void => {
 
 <template>
   <div class="welcome">
-    <el-card class="top-content">
+    <el-card class="top-content dark:border-none">
       <div class="left-mark">
         <img :src="avatars" title="直达仓库地址" @click="openDepot" />
         <span>{{ greetings }}</span>
@@ -233,7 +233,7 @@ const openDepot = (): void => {
     justify-content: space-between;
     align-items: center;
     height: 60px;
-    background: #fff;
+    background: var(--el-bg-color);
 
     .left-mark {
       display: flex;

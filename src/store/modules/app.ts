@@ -48,14 +48,11 @@ export const useAppStore = defineStore({
       }
       storageLocal.setItem("responsive-layout", layout);
     },
-    TOGGLE_DEVICE(device: string) {
-      this.device = device;
-    },
     async toggleSideBar(opened?: boolean, resize?: string) {
       await this.TOGGLE_SIDEBAR(opened, resize);
     },
-    toggleDevice(device) {
-      this.TOGGLE_DEVICE(device);
+    toggleDevice(device: string) {
+      this.device = device;
     },
     setLayout(layout) {
       this.layout = layout;

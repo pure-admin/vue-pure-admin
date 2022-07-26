@@ -18,7 +18,7 @@ emitter.on("openPanel", () => {
 <template>
   <div :class="{ show: show }" class="right-panel-container">
     <div class="right-panel-background" />
-    <div ref="target" class="right-panel">
+    <div ref="target" class="right-panel bg-white dark:bg-dark">
       <div class="right-panel-items">
         <div class="project-configuration">
           <h3>项目配置</h3>
@@ -26,7 +26,7 @@ emitter.on("openPanel", () => {
             <IconifyIconOffline icon="close" />
           </el-icon>
         </div>
-        <div style="border-bottom: 1px solid #dcdfe6" />
+        <div class="border-b-1 border-[#dcdfe6] dark:border-[#303030]" />
         <slot />
       </div>
     </div>
@@ -62,7 +62,7 @@ emitter.on("openPanel", () => {
   box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.05);
   transition: all 0.25s cubic-bezier(0.7, 0.3, 0.1, 1);
   transform: translate(100%);
-  background: #fff;
+  // background: #fff;
   z-index: 40000;
 }
 

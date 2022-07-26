@@ -1,15 +1,14 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
-export interface Props {
+import { useDark } from "@pureadmin/utils";
+
+interface Props {
   isActive: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   isActive: false
 });
-
-const fillColor = ref<string>("");
+const { isDark } = useDark();
 
 const emit = defineEmits<{
   (e: "toggleClick"): void;
@@ -21,43 +20,28 @@ const toggleClick = () => {
 </script>
 
 <template>
-  <div
-    :class="classes.container"
-    :title="props.isActive ? '点击折叠' : '点击展开'"
-    @click="toggleClick"
-    @mouseenter="fillColor = useEpThemeStoreHook().epThemeColor"
-    @mouseleave="fillColor = ''"
-  >
-    <svg
-      :fill="fillColor"
-      :class="['hamburger', props.isActive ? 'is-active' : '']"
-      viewBox="0 0 1024 1024"
-      xmlns="http://www.w3.org/2000/svg"
-      width="64"
-      height="64"
+  <div class="hamburger-container">
+    <el-tooltip
+      placement="right"
+      :effect="isDark ? 'dark' : 'light'"
+      :content="props.isActive ? '点击折叠' : '点击展开'"
     >
-      <path
-        d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM142.4 642.1L298.7 519a8.84 8.84 0 0 0 0-13.9L142.4 381.9c-5.8-4.6-14.4-.5-14.4 6.9v246.3a8.9 8.9 0 0 0 14.4 7z"
+      <IconifyIconOffline
+        :icon="props.isActive ? 'menu-fold' : 'menu-unfold'"
+        class="cursor-pointer inline-block align-middle color-primary hover:color-primary !dark:hover:color-white w-16px h-16px ml-4 mb-1"
+        @click="toggleClick"
       />
-    </svg>
+    </el-tooltip>
   </div>
 </template>
 
-<style module="classes" scoped>
-.container {
-  padding: 0 15px;
-}
-</style>
-
-<style scoped>
-.hamburger {
-  display: inline-block;
-  vertical-align: middle;
-  width: 20px;
-  height: 20px;
-}
-
-.is-active {
-  transform: rotate(180deg);
+<style lang="scss" scoped>
+.hamburger-container {
+  position: absolute;
+  bottom: 0;
+  width: 210px;
+  height: 40px;
+  line-height: 40px;
+  box-shadow: 0 0 6px -2px var(--el-color-primary);
 }
 </style>

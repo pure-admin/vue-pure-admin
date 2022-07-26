@@ -60,7 +60,7 @@ onMounted(() => {
       ref="formRef"
       :inline="true"
       :model="form"
-      class="bg-white w-99/100 pl-8 pt-4"
+      class="bg-white dark:bg-dark w-99/100 pl-8 pt-4"
     >
       <el-form-item label="部门名称：" prop="user">
         <el-input v-model="form.user" placeholder="请输入部门名称" clearable />
@@ -110,7 +110,10 @@ onMounted(() => {
           :data="dataList"
           :columns="columns"
           :checkList="checkList"
-          :header-cell-style="{ background: '#fafafa', color: '#606266' }"
+          :header-cell-style="{
+            background: 'var(--el-table-row-hover-bg-color)',
+            color: 'var(--el-text-color-primary)'
+          }"
           @selection-change="handleSelectionChange"
         >
           <template #operation="{ row }">

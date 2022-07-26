@@ -1,13 +1,16 @@
 <script setup lang="ts">
-import { useFullscreen } from "@vueuse/core";
 import { useI18n } from "vue-i18n";
+import { useFullscreen } from "@vueuse/core";
 
 const { t } = useI18n();
 const { isFullscreen, toggle } = useFullscreen();
 </script>
 
 <template>
-  <div class="screen-full" @click="toggle">
+  <div
+    class="screen-full w-36px h-48px flex-ac cursor-pointer navbar-bg-hover"
+    @click="toggle"
+  >
     <FontIcon
       :title="
         isFullscreen ? t('buttons.hsexitfullscreen') : t('buttons.hsfullscreen')
@@ -16,13 +19,3 @@ const { isFullscreen, toggle } = useFullscreen();
     />
   </div>
 </template>
-
-<style lang="scss" scoped>
-.screen-full {
-  width: 36px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-</style>

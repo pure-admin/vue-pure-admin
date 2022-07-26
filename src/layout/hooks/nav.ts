@@ -30,6 +30,11 @@ export function useNav() {
       };
     };
   });
+  const getDropdownItemClass = computed(() => {
+    return (locale, t) => {
+      return locale === t ? "" : "!dark:hover:color-primary";
+    };
+  });
 
   const avatarsStyle = computed(() => {
     return username ? { marginRight: "10px" } : "";
@@ -137,6 +142,7 @@ export function useNav() {
     username,
     avatarsStyle,
     getDropdownItemStyle,
+    getDropdownItemClass,
     changeWangeditorLanguage
   };
 }

@@ -32,6 +32,7 @@ const {
   username,
   avatarsStyle,
   getDropdownItemStyle,
+  getDropdownItemClass,
   changeWangeditorLanguage
 } = useNav();
 
@@ -78,11 +79,11 @@ function translationEn() {
       <h4>{{ title }}</h4>
     </div>
     <el-menu
-      ref="menu"
-      class="horizontal-header-menu"
-      mode="horizontal"
-      :default-active="route.path"
       router
+      ref="menu"
+      mode="horizontal"
+      class="horizontal-header-menu"
+      :default-active="route.path"
       @select="indexPath => menuSelect(indexPath, routers)"
     >
       <sidebar-item
@@ -101,11 +102,14 @@ function translationEn() {
       <screenfull id="header-screenfull" v-show="!deviceDetection()" />
       <!-- 国际化 -->
       <el-dropdown id="header-translation" trigger="click">
-        <globalization />
+        <globalization
+          class="navbar-bg-hover w-40px h-48px p-11px cursor-pointer outline-none"
+        />
         <template #dropdown>
           <el-dropdown-menu class="translation">
             <el-dropdown-item
               :style="getDropdownItemStyle(locale, 'zh')"
+              :class="['!dark:color-white', getDropdownItemClass(locale, 'zh')]"
               @click="translationCh"
             >
               <span class="check-zh" v-show="locale === 'zh'">
@@ -115,6 +119,7 @@ function translationEn() {
             </el-dropdown-item>
             <el-dropdown-item
               :style="getDropdownItemStyle(locale, 'en')"
+              :class="['!dark:color-white', getDropdownItemClass(locale, 'en')]"
               @click="translationEn"
             >
               <span class="check-en" v-show="locale === 'en'">
@@ -127,9 +132,9 @@ function translationEn() {
       </el-dropdown>
       <!-- 退出登录 -->
       <el-dropdown trigger="click">
-        <span class="el-dropdown-link">
+        <span class="el-dropdown-link navbar-bg-hover">
           <img v-if="avatars" :src="avatars" :style="avatarsStyle" />
-          <p v-if="username">{{ username }}</p>
+          <p v-if="username" class="dark:color-white">{{ username }}</p>
         </span>
         <template #dropdown>
           <el-dropdown-menu class="logout">
@@ -144,7 +149,7 @@ function translationEn() {
         </template>
       </el-dropdown>
       <span
-        class="el-icon-setting"
+        class="el-icon-setting navbar-bg-hover"
         :title="t('buttons.hssystemSet')"
         @click="onPanel"
       >

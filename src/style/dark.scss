@@ -1,29 +1,188 @@
-/* 暗黑模式 */
-[data-theme="dark"] {
-  filter: invert(0.9) hue-rotate(180deg);
+@import "element-plus/theme-chalk/src/dark/css-vars.scss";
 
-  #mse,
-  img,
-  .icon-svg,
-  .login-container {
-    filter: invert(1) hue-rotate(180deg);
+/* 暗黑模式适配 */
+html.dark {
+  /* 自定义深色背景颜色 */
+  // --el-bg-color: #020409;
+  $border-style: #303030;
+  $color-white: #fff;
+
+  .navbar,
+  .tags-view,
+  .contextmenu,
+  .sidebar-container,
+  .horizontal-header,
+  .sidebar-logo-container,
+  .horizontal-header .el-sub-menu__title,
+  .horizontal-header .submenu-title-noDropdown {
+    background: var(--el-bg-color) !important;
   }
 
-  // element plus
-  .el-radio-button__original-radio:checked + .el-radio-button__inner,
-  .el-image-viewer__close,
-  .el-image-viewer__actions__inner,
-  .el-image-viewer__next,
-  .el-image-viewer__prev {
-    color: #000 !important;
+  .app-main {
+    background: #020409 !important;
   }
 
-  .el-overlay {
-    background-color: rgb(0 0 0 / 5%) !important;
+  .frame,
+  .logic-flow-view,
+  .wangeditor {
+    filter: invert(0.9) hue-rotate(180deg);
   }
 
-  .el-drawer {
-    box-shadow: 0 8px 10px -5px rgb(0 0 0 / 1%), 0 16px 24px 2px rgb(0 0 0 / 2%),
-      0 6px 30px 5px rgb(0 0 0 / 1%);
+  .ant-tabs {
+    background: var(--el-bg-color);
+    color: $color-white;
+  }
+
+  /* 标签页 */
+  .tags-view {
+    .arrow-left,
+    .arrow-right {
+      box-shadow: none;
+    }
+
+    .arrow-right {
+      border-left: 1px solid $border-style;
+    }
+
+    .arrow-left,
+    .arrow-right,
+    .right-button li {
+      border-right: 1px solid $border-style;
+    }
+  }
+
+  /* vxe-table */
+  .vxe-table--header-wrapper,
+  .vxe-table--body-wrapper {
+    color: var(--el-text-color-primary);
+    background: var(--el-bg-color) !important;
+  }
+
+  .vxe-table--render-default.border--full .vxe-header--column,
+  .vxe-table--render-default.border--full .vxe-body--column,
+  .vxe-table--render-default.border--full .vxe-footer--column {
+    background-image: linear-gradient(
+        var(--el-border-color-lighter),
+        var(--el-border-color-lighter)
+      ),
+      linear-gradient(
+        var(--el-border-color-lighter),
+        var(--el-border-color-lighter)
+      );
+  }
+
+  /* 表头 */
+  .vxe-table--header-wrapper {
+    background: #262727 !important;
+  }
+
+  .vxe-table--render-wrapper,
+  .vxe-table--main-wrapper {
+    border: none;
+  }
+
+  .vxe-pager.is--perfect,
+  .vxe-table--render-default .vxe-table--border-line {
+    border: 1px solid var(--el-border-color-lighter);
+  }
+
+  .vxe-table--header-border-line {
+    border-bottom: 1px solid var(--el-border-color-lighter) !important;
+  }
+
+  .vxe-body--row.row--hover,
+  .vxe-pager {
+    background-color: #262727;
+  }
+
+  .vxe-input--inner,
+  .vxe-pager .vxe-pager--jump-prev,
+  .vxe-pager .vxe-pager--prev-btn,
+  .vxe-pager .vxe-pager--next-btn,
+  .vxe-pager .vxe-pager--jump-next,
+  .vxe-pager .vxe-pager--num-btn,
+  .vxe-pager .vxe-pager--jump .vxe-pager--goto {
+    background-color: transparent;
+    color: var(--el-text-color-primary);
+    // outline: none !important;
+  }
+
+  .vxe-select-option--wrapper {
+    background: var(--el-bg-color) !important;
+  }
+
+  .vxe-select-option:not(.is--disabled).is--hover {
+    background: var(--el-color-primary-light-6) !important;
+  }
+
+  .vxe-modal--wrapper.type--modal .vxe-modal--box,
+  .vxe-modal--wrapper.type--alert .vxe-modal--box,
+  .vxe-modal--wrapper.type--confirm .vxe-modal--box,
+  .vxe-form {
+    background: var(--el-bg-color) !important;
+  }
+
+  .vxe-modal--box,
+  .vxe-modal--header {
+    border: none;
+    background: var(--el-bg-color) !important;
+  }
+
+  .vxe-modal--title,
+  .vxe-button--content {
+    color: var(--el-text-color-primary);
+  }
+
+  .vxe-button.type--button.size--medium:hover {
+    background: var(--el-color-primary) !important;
+  }
+
+  /* 项目配置面板 */
+  .right-panel-items {
+    .el-divider__text {
+      --el-bg-color: var(--el-bg-color);
+    }
+    .el-divider--horizontal {
+      border-top: none;
+    }
+  }
+
+  /* 表单设计器 */
+  .design-form {
+    .el-main.config-content,
+    .el-header,
+    .el-main.widget-empty,
+    .widget-form-list,
+    .el-aside,
+    .widget-view {
+      background: var(--el-bg-color) !important;
+    }
+
+    .form-edit-widget-label a {
+      background: var(--el-color-primary);
+      border: none;
+      border-radius: 5px;
+      color: $color-white;
+    }
+
+    .el-aside {
+      color: $color-white;
+    }
+  }
+
+  /* element-plus */
+  .el-table__cell {
+    background: var(--el-bg-color);
+  }
+  .el-card {
+    --el-card-bg-color: var(--el-bg-color);
+    // border: none !important;
+  }
+  .el-backtop {
+    --el-backtop-bg-color: var(--el-color-primary-light-9);
+    --el-backtop-hover-bg-color: var(--el-color-primary);
+  }
+  .el-dropdown-menu__item:not(.is-disabled):hover {
+    background: transparent;
   }
 }

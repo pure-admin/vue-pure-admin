@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Logo from "./logo.vue";
+import Hamburger from "./hamBurger.vue";
 import { emitter } from "/@/utils/mitt";
 import { useNav } from "../../hooks/nav";
 import SidebarItem from "./sidebarItem.vue";
@@ -16,7 +17,7 @@ const showLogo = ref(
   storageLocal.getItem<StorageConfigs>("responsive-configure")?.showLogo ?? true
 );
 
-const { pureApp, isCollapse, menuSelect } = useNav();
+const { pureApp, isCollapse, menuSelect, toggleSideBar } = useNav();
 
 let subMenuData = ref([]);
 
@@ -62,13 +63,13 @@ watch(
     <Logo v-if="showLogo" :collapse="isCollapse" />
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu
-        :default-active="route.path"
-        :collapse="isCollapse"
-        unique-opened
         router
-        :collapse-transition="false"
+        unique-opened
         mode="vertical"
         class="outer-most"
+        :collapse="isCollapse"
+        :default-active="route.path"
+        :collapse-transition="false"
         @select="indexPath => menuSelect(indexPath, routers)"
       >
         <sidebar-item
@@ -80,5 +81,9 @@ watch(
         />
       </el-menu>
     </el-scrollbar>
+    <Hamburger
+      :is-active="pureApp.sidebar.opened"
+      @toggleClick="toggleSideBar"
+    />
   </div>
 </template>

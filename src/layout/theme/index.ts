@@ -1,7 +1,17 @@
+/**
+ * @description ⚠️：此文件仅供主题插件使用，请不要在此文件中导出别的工具函数（仅在页面加载前运行）
+ */
+
 import { EpThemeColor } from "../../../public/serverConfig.json";
 
-// 将vxe默认主题色和ep默认主题色保持一致
+type MultipleScopeVarsItem = {
+  scopeName: string;
+  varsContent: string;
+};
+
+/** 将vxe默认主题色和ep默认主题色保持一致 */
 const vxeColor = EpThemeColor;
+/** 预设主题色 */
 const themeColors = {
   default: {
     vxeColor,
@@ -122,12 +132,10 @@ const themeColors = {
   }
 };
 
-type MultipleScopeVarsItem = {
-  scopeName: string;
-  varsContent: string;
-};
-
-export function genScssMultipleScopeVars(): MultipleScopeVarsItem[] {
+/**
+ * @description 将预设主题色处理成主题插件所需格式
+ */
+export const genScssMultipleScopeVars = (): MultipleScopeVarsItem[] => {
   const result = [] as MultipleScopeVarsItem[];
   Object.keys(themeColors).forEach(key => {
     result.push({
@@ -148,4 +156,4 @@ export function genScssMultipleScopeVars(): MultipleScopeVarsItem[] {
     } as MultipleScopeVarsItem);
   });
   return result;
-}
+};

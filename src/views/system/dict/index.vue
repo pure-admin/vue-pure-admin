@@ -222,13 +222,19 @@ function onHide() {
 <template>
   <div>
     <!-- 工具栏 -->
-    <vxe-toolbar>
+    <vxe-toolbar class="dark:bg-dark">
       <template #buttons>
-        <vxe-input
-          v-model="dictData.filterName"
-          :placeholder="t('buttons.hssearch')"
-          @keyup="searchEvent"
-        />
+        <div class="ml-20px">
+          <label>字典名称：</label>
+          <el-input
+            class="!w-200px"
+            v-model="dictData.filterName"
+            :placeholder="t('buttons.hssearch')"
+            @keyup.prevent="searchEvent"
+            @input="searchEvent"
+            clearable
+          />
+        </div>
       </template>
       <template #tools>
         <el-button-group>

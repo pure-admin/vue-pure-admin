@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { getCardList } from "/@/api/list";
 import Card from "./components/Card.vue";
+import { getCardList } from "/@/api/list";
 import { ref, onMounted, nextTick } from "vue";
 import dialogForm from "./components/DialogForm.vue";
 import { ElMessage, ElMessageBox } from "element-plus";

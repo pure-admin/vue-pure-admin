@@ -665,7 +665,10 @@ const getContextMenuStyle = computed((): CSSProperties => {
           @mouseleave.prevent="onMouseleave(index)"
           @click="tagOnClick(item)"
         >
-          <router-link :to="item.path">
+          <router-link
+            :to="item.path"
+            class="!dark:color-text_color_primary !dark:hover:color-primary"
+          >
             {{ transformI18n(item.meta.title) }}
           </router-link>
           <span
@@ -729,7 +732,7 @@ const getContextMenuStyle = computed((): CSSProperties => {
           placement="bottom-end"
           @command="handleCommand"
         >
-          <IconifyIconOffline icon="arrow-down" />
+          <IconifyIconOffline icon="arrow-down" class="dark:color-white" />
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item
