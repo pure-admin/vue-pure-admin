@@ -93,7 +93,8 @@
 
     &.has-logo {
       .el-scrollbar {
-        height: calc(100% - 50px);
+        /* logo: 48px、Hamburger: 40px、Hamburger-shadow: 4px */
+        height: calc(100% - 92px);
       }
     }
 
@@ -281,8 +282,8 @@
     .el-menu {
       border: none;
       height: 100%;
-      background-color: transparent;
       width: 100% !important;
+      background-color: transparent;
     }
 
     .el-menu-item,

@@ -6,7 +6,6 @@ import Search from "./search/index.vue";
 import Notice from "./notice/index.vue";
 import mixNav from "./sidebar/mixNav.vue";
 import avatars from "/@/assets/avatars.jpg";
-import Hamburger from "./sidebar/hamBurger.vue";
 import { watch, getCurrentInstance } from "vue";
 import Breadcrumb from "./sidebar/breadCrumb.vue";
 import { deviceDetection } from "@pureadmin/utils";
@@ -21,7 +20,6 @@ const {
   logout,
   onPanel,
   changeTitle,
-  toggleSideBar,
   pureApp,
   username,
   avatarsStyle,
@@ -53,13 +51,6 @@ function translationEn() {
 
 <template>
   <div class="navbar">
-    <Hamburger
-      v-if="pureApp.layout !== 'mix'"
-      class="hamburger-container"
-      :is-active="pureApp.sidebar.opened"
-      @toggleClick="toggleSideBar"
-    />
-
     <Breadcrumb v-if="pureApp.layout !== 'mix'" class="breadcrumb-container" />
 
     <mixNav v-if="pureApp.layout === 'mix'" />
@@ -140,13 +131,6 @@ function translationEn() {
   background: #fff;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
 
-  .hamburger-container {
-    line-height: 48px;
-    height: 100%;
-    float: left;
-    cursor: pointer;
-  }
-
   .vertical-header-right {
     display: flex;
     min-width: 280px;
@@ -187,6 +171,7 @@ function translationEn() {
 
   .breadcrumb-container {
     float: left;
+    margin-left: 16px;
   }
 }
 

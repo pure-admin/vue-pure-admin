@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
-import Hamburger from "./hamBurger.vue";
 import Search from "../search/index.vue";
 import Notice from "../notice/index.vue";
 import { useNav } from "../../hooks/nav";
@@ -34,11 +33,9 @@ const {
   logout,
   onPanel,
   changeTitle,
-  toggleSideBar,
   handleResize,
   menuSelect,
   resolvePath,
-  pureApp,
   username,
   avatarsStyle,
   getDropdownItemStyle,
@@ -97,11 +94,6 @@ function translationEn() {
 
 <template>
   <div class="horizontal-header">
-    <Hamburger
-      class="hamburger-container"
-      :is-active="pureApp.sidebar.opened"
-      @toggleClick="toggleSideBar"
-    />
     <el-menu
       router
       ref="menu"
@@ -203,13 +195,6 @@ function translationEn() {
 </template>
 
 <style lang="scss" scoped>
-.hamburger-container {
-  line-height: 44px;
-  height: 100%;
-  color: #fff;
-  cursor: pointer;
-}
-
 .translation {
   ::v-deep(.el-dropdown-menu__item) {
     padding: 5px 40px;
