@@ -1,9 +1,9 @@
-import { computed, getCurrentInstance } from "vue";
 import { useI18n } from "vue-i18n";
 import { routerArrays } from "../types";
+import { computed, getCurrentInstance } from "vue";
 import { useMultiTagsStore } from "/@/store/modules/multiTags";
 
-export default function useLayout() {
+export function useLayout() {
   const instance = getCurrentInstance().appContext.app.config.globalProperties;
 
   const initStorage = () => {

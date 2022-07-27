@@ -1,6 +1,6 @@
 import { getConfig } from "/@/config";
 import { find } from "lodash-unified";
-import useLayout from "./useLayout";
+import { useLayout } from "./useLayout";
 import { themeColorsType } from "../types";
 import { TinyColor } from "@ctrl/tinycolor";
 import { ref, getCurrentInstance } from "vue";
@@ -12,7 +12,7 @@ import {
   toggleTheme
 } from "@pureadmin/theme/dist/browser-utils";
 
-export default function useDataThemeChange() {
+export function useDataThemeChange() {
   const { layoutTheme } = useLayout();
   const themeColors = ref<Array<themeColorsType>>([
     /* 道奇蓝（默认） */

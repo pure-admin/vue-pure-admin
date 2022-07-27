@@ -7,7 +7,7 @@ import avatars from "/@/assets/avatars.jpg";
 import Breadcrumb from "./sidebar/breadCrumb.vue";
 import { deviceDetection } from "@pureadmin/utils";
 import screenfull from "../components/screenfull/index.vue";
-import useTranslationLang from "../hooks/useTranslationLang";
+import { useTranslationLang } from "../hooks/useTranslationLang";
 import globalization from "/@/assets/svg/globalization.svg?component";
 
 const {

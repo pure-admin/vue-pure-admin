@@ -3,7 +3,7 @@ import { useI18n } from "vue-i18n";
 import { useRoute } from "vue-router";
 import { watch, getCurrentInstance } from "vue";
 
-export default function useTranslationLang() {
+export function useTranslationLang() {
   const { changeTitle, changeWangeditorLanguage } = useNav();
   const { locale, t } = useI18n();
   const route = useRoute();

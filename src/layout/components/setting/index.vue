@@ -15,9 +15,8 @@ import { emitter } from "/@/utils/mitt";
 import { templateRef } from "@vueuse/core";
 import { routerArrays } from "/@/layout/types";
 import { useAppStoreHook } from "/@/store/modules/app";
-import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
-import useDataThemeChange from "/@/layout/hooks/useDataThemeChange";
+import { useDataThemeChange } from "/@/layout/hooks/useDataThemeChange";
 import {
   useDark,
   debounce,
@@ -44,6 +43,7 @@ const {
   layoutTheme,
   themeColors,
   dataThemeChange,
+  setEpThemeColor,
   setLayoutThemeColor
 } = useDataThemeChange();
 
@@ -130,7 +130,7 @@ function onReset() {
   router.push("/login");
   const { Grey, Weak, MultiTagsCache, EpThemeColor, Layout } = getConfig();
   useAppStoreHook().setLayout(Layout);
-  useEpThemeStoreHook().setEpThemeColor(EpThemeColor);
+  setEpThemeColor(EpThemeColor);
   useMultiTagsStoreHook().multiTagsCacheChange(MultiTagsCache);
   toggleClass(Grey, "html-grey", document.querySelector("html"));
   toggleClass(Weak, "html-weakness", document.querySelector("html"));

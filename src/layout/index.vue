@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { setType } from "./types";
 import { emitter } from "/@/utils/mitt";
+import { useLayout } from "./hooks/useLayout";
 import { useAppStoreHook } from "/@/store/modules/app";
 import { deviceDetection, useDark } from "@pureadmin/utils";
 import { useSettingStoreHook } from "/@/store/modules/settings";
@@ -10,7 +11,6 @@ import backTop from "/@/assets/svg/back_top.svg?component";
 import fullScreen from "/@/assets/svg/full_screen.svg?component";
 import exitScreen from "/@/assets/svg/exit_screen.svg?component";
 
-import useLayout from "./hooks/useLayout";
 import navbar from "./components/navbar.vue";
 import tag from "./components/tag/index.vue";
 import appMain from "./components/appMain.vue";
