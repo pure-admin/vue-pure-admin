@@ -1,52 +1,26 @@
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
 import { useNav } from "../hooks/nav";
-import { useRoute } from "vue-router";
 import Search from "./search/index.vue";
 import Notice from "./notice/index.vue";
 import mixNav from "./sidebar/mixNav.vue";
 import avatars from "/@/assets/avatars.jpg";
-import { watch, getCurrentInstance } from "vue";
 import Breadcrumb from "./sidebar/breadCrumb.vue";
 import { deviceDetection } from "@pureadmin/utils";
 import screenfull from "../components/screenfull/index.vue";
+import { useTranslationLang } from "../hooks/useTranslationLang";
 import globalization from "/@/assets/svg/globalization.svg?component";
 
-const route = useRoute();
-const { locale, t } = useI18n();
-const instance =
-  getCurrentInstance().appContext.config.globalProperties.$storage;
 const {
   logout,
   onPanel,
-  changeTitle,
   pureApp,
   username,
   avatarsStyle,
   getDropdownItemStyle,
-  getDropdownItemClass,
-  changeWangeditorLanguage
+  getDropdownItemClass
 } = useNav();
 
-watch(
-  () => locale.value,
-  () => {
-    changeTitle(route.meta);
-    locale.value === "en"
-      ? changeWangeditorLanguage(locale.value)
-      : changeWangeditorLanguage("zh-CN");
-  }
-);
-
-function translationCh() {
-  instance.locale = { locale: "zh" };
-  locale.value = "zh";
-}
-
-function translationEn() {
-  instance.locale = { locale: "en" };
-  locale.value = "en";
-}
+const { t, locale, translationCh, translationEn } = useTranslationLang();
 </script>
 
 <template>

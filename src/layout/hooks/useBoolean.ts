@@ -1,6 +1,6 @@
 import { ref } from "vue";
 
-export default function useBoolean(initValue = false) {
+export function useBoolean(initValue = false) {
   const bool = ref(initValue);
 
   function setBool(value: boolean) {
