@@ -7,15 +7,23 @@ import qrCode from "./components/qrCode.vue";
 import regist from "./components/regist.vue";
 import update from "./components/update.vue";
 import { initRouter } from "/@/router/utils";
+import { useNav } from "/@/layout/hooks/nav";
 import { message } from "@pureadmin/components";
 import type { FormInstance } from "element-plus";
+import useLayout from "/@/layout/hooks/useLayout";
 import { storageSession } from "@pureadmin/utils";
-import { ref, reactive, watch, computed, getCurrentInstance } from "vue";
 import { operates, thirdParty } from "./utils/enums";
 import { useUserStoreHook } from "/@/store/modules/user";
 import { bg, avatar, currentWeek } from "./utils/static";
 import { ReImageVerify } from "/@/components/ReImageVerify";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
+import useDataThemeChange from "/@/layout/hooks/useDataThemeChange";
+import useTranslationLang from "/@/layout/hooks/useTranslationLang";
+import { ref, reactive, watch, computed, getCurrentInstance } from "vue";
+
+import dayIcon from "/@/assets/svg/day.svg?component";
+import darkIcon from "/@/assets/svg/dark.svg?component";
+import globalization from "/@/assets/svg/globalization.svg?component";
 
 defineOptions({
   name: "Login"
@@ -30,6 +38,13 @@ const ruleFormRef = ref<FormInstance>();
 const currentPage = computed(() => {
   return useUserStoreHook().currentPage;
 });
+
+const { initStorage } = useLayout();
+initStorage();
+
+const { dataTheme, dataThemeChange } = useDataThemeChange();
+const { getDropdownItemStyle, getDropdownItemClass } = useNav();
+const { locale, translationCh, translationEn } = useTranslationLang();
 
 const ruleForm = reactive({
   username: "admin",
@@ -70,6 +85,46 @@ watch(imgCode, value => {
 </script>
 
 <template>
+  <div class="flex-c absolute right-5">
+    <!-- 主题 -->
+    <el-switch
+      v-model="dataTheme"
+      inline-prompt
+      :active-icon="dayIcon"
+      :inactive-icon="darkIcon"
+      @change="dataThemeChange"
+    />
+    <!-- 国际化 -->
+    <el-dropdown trigger="click">
+      <globalization class="w-40px h-48px p-11px cursor-pointer outline-none" />
+      <template #dropdown>
+        <el-dropdown-menu class="translation">
+          <el-dropdown-item
+            :style="getDropdownItemStyle(locale, 'zh')"
+            :class="['!dark:color-white', getDropdownItemClass(locale, 'zh')]"
+            @click="translationCh"
+          >
+            <IconifyIconOffline
+              class="check-zh"
+              v-show="locale === 'zh'"
+              icon="check"
+            />
+            简体中文
+          </el-dropdown-item>
+          <el-dropdown-item
+            :style="getDropdownItemStyle(locale, 'en')"
+            :class="['!dark:color-white', getDropdownItemClass(locale, 'en')]"
+            @click="translationEn"
+          >
+            <span class="check-en" v-show="locale === 'en'">
+              <IconifyIconOffline icon="check" />
+            </span>
+            English
+          </el-dropdown-item>
+        </el-dropdown-menu>
+      </template>
+    </el-dropdown>
+  </div>
   <img :src="bg" class="wave" />
   <div class="login-container">
     <div class="img">
