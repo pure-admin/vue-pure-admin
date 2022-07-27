@@ -267,4 +267,20 @@ watch(imgCode, value => {
 :deep(.el-input-group__append, .el-input-group__prepend) {
   padding: 0;
 }
+
+.translation {
+  ::v-deep(.el-dropdown-menu__item) {
+    padding: 5px 40px;
+  }
+
+  .check-zh {
+    position: absolute;
+    left: 20px;
+  }
+
+  .check-en {
+    position: absolute;
+    left: 20px;
+  }
+}
 </style>
