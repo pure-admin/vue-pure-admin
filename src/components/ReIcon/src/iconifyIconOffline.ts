@@ -87,6 +87,8 @@ import Ppt from "@iconify-icons/ri/file-ppt-2-line";
 import TerminalWindowLine from "@iconify-icons/ri/terminal-window-line";
 import User from "@iconify-icons/ri/user-3-fill";
 import Lock from "@iconify-icons/ri/lock-fill";
+import MenuUnfold from "@iconify-icons/ri/menu-unfold-fill";
+import MenuFold from "@iconify-icons/ri/menu-fold-fill";
 addIcon("arrow-right-s-line", ArrowRightSLine);
 addIcon("arrow-left-s-line", ArrowLeftSLine);
 addIcon("logout-circle-r-line", LogoutCircleRLine);
@@ -112,6 +114,8 @@ addIcon("ppt", Ppt);
 addIcon("terminal-window-line", TerminalWindowLine);
 addIcon("user", User);
 addIcon("lock", Lock);
+addIcon("menu-unfold", MenuUnfold);
+addIcon("menu-fold", MenuFold);
 
 // Font Awesome 4
 import FaUser from "@iconify-icons/fa/user";
@@ -161,6 +165,9 @@ export default defineComponent({
       IconifyIcon,
       {
         icon: `${this.icon}`,
+        style: attrs?.style
+          ? Object.assign(attrs.style, { outline: "none" })
+          : { outline: "none" },
         ...attrs
       },
       {

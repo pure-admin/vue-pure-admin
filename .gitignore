@@ -17,3 +17,4 @@ tests/**/coverage/
 *.ntvs*
 *.njsproj
 *.sln
+tsconfig.tsbuildinfo

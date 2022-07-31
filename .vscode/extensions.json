@@ -5,11 +5,11 @@
     "stylelint.vscode-stylelint",
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
-    "johnsoncodehk.volar",
     "lokalise.i18n-ally",
     "mikestead.dotenv",
     "eamodio.gitlens",
     "antfu.iconify",
-    "antfu.unocss"
+    "antfu.unocss",
+    "Vue.volar"
   ]
 }

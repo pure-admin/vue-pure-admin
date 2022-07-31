@@ -1,7 +1,7 @@
-import { withInstall } from "/@/utils";
 import control from "./src/Control.vue";
 import nodePanel from "./src/NodePanel.vue";
 import dataDialog from "./src/DataDialog.vue";
+import { withInstall } from "@pureadmin/utils";
 
 /** LogicFlow流程图-控制面板 */
 const Control = withInstall(control);

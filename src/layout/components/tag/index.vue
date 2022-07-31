@@ -4,7 +4,7 @@ import { useTags } from "../../hooks/tag";
 import { RouteConfigs } from "../../types";
 import { routerArrays } from "/@/layout/types";
 import { isEqual, isEmpty } from "lodash-unified";
-import { toggleClass, removeClass } from "/@/utils/operate";
+import { toggleClass, removeClass } from "@pureadmin/utils";
 import { useResizeObserver, useDebounceFn } from "@vueuse/core";
 import { useSettingStoreHook } from "/@/store/modules/settings";
 import { handleAliveRoute, delAliveRoutes } from "/@/router/utils";
@@ -139,6 +139,7 @@ function dynamicRouteTag(value: string, parentPath: string): void {
       });
     }
   }
+  // @ts-expect-error
   concatPath(router.options.routes, value, parentPath);
 }
 
@@ -435,7 +436,7 @@ onBeforeMount(() => {
 
   // 触发隐藏标签页
   emitter.on("tagViewsChange", key => {
-    if (unref(showTags) === key) return;
+    if (showTags.value === key) return;
     showTags.value = key;
   });
 
@@ -491,7 +492,10 @@ onMounted(() => {
           @mouseleave.prevent="onMouseleave(index)"
           @click="tagOnClick(item)"
         >
-          <router-link :to="item.path">
+          <router-link
+            :to="item.path"
+            class="!dark:color-text_color_primary !dark:hover:color-primary"
+          >
             {{ transformI18n(item.meta.title) }}
           </router-link>
           <span
@@ -555,7 +559,7 @@ onMounted(() => {
           placement="bottom-end"
           @command="handleCommand"
         >
-          <IconifyIconOffline icon="arrow-down" />
+          <IconifyIconOffline icon="arrow-down" class="dark:color-white" />
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { ElTree } from "element-plus";
-import { handleTree } from "/@/utils/tree";
 import { getDeptList } from "/@/api/system";
+import { handleTree } from "@pureadmin/utils";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 import { ref, watch, onMounted, getCurrentInstance } from "vue";
 
@@ -70,7 +70,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="max-w-260px h-full min-h-780px bg-white">
+  <div class="max-w-260px h-full min-h-780px bg-white dark:bg-dark">
     <div class="flex items-center h-34px">
       <p class="flex-1 ml-2 font-bold text-base truncate" title="部门列表">
         部门列表
@@ -101,8 +101,9 @@ onMounted(async () => {
           <el-dropdown-menu>
             <el-dropdown-item>
               <el-button
-                class="reset-margin !h-20px !text-gray-500"
-                type="text"
+                class="reset-margin !h-20px !text-gray-500 !dark:hover:color-primary"
+                link
+                type="primary"
                 :icon="useRenderIcon('expand')"
                 @click="toggleRowExpansionAll(true)"
               >
@@ -111,8 +112,9 @@ onMounted(async () => {
             </el-dropdown-item>
             <el-dropdown-item>
               <el-button
-                class="reset-margin !h-20px !text-gray-500"
-                type="text"
+                class="reset-margin !h-20px !text-gray-500 !dark:hover:color-primary"
+                link
+                type="primary"
                 :icon="useRenderIcon('unExpand')"
                 @click="toggleRowExpansionAll(false)"
               >
@@ -121,8 +123,9 @@ onMounted(async () => {
             </el-dropdown-item>
             <el-dropdown-item>
               <el-button
-                class="reset-margin !h-20px !text-gray-500"
-                type="text"
+                class="reset-margin !h-20px !text-gray-500 !dark:hover:color-primary"
+                link
+                type="primary"
                 :icon="useRenderIcon('reset')"
                 @click="onReset"
               >
@@ -156,7 +159,8 @@ onMounted(async () => {
             'select-none',
             searchValue.trim().length > 0 &&
               node.label.includes(searchValue) &&
-              'text-red-500'
+              'text-red-500',
+            highlightMap[node.id]?.highlight ? 'dark:color-primary' : ''
           ]"
           :style="{
             background: highlightMap[node.id]?.highlight

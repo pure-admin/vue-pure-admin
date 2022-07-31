@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onBeforeMount } from "vue";
-import { loader } from "/@/utils/loaders";
+import { useLoader } from "@pureadmin/utils";
 import { ElDesignForm } from "vue-form-create2";
 
 defineOptions({
@@ -8,18 +8,19 @@ defineOptions({
 });
 
 const loading = ref(true);
+const { loadScript } = useLoader();
 
 onBeforeMount(() => {
-  loader
-    .loadScript("https://unpkg.com/ace-builds/src-noconflict/ace.js")
-    .then(() => {
-      loading.value = false;
-    });
+  loadScript({
+    src: "https://unpkg.com/ace-builds/src-noconflict/ace.js"
+  }).then(message => {
+    if (message === "success") loading.value = false;
+  });
 });
 </script>
 
 <template>
-  <ElDesignForm v-loading="loading" style="height: 100vh" />
+  <ElDesignForm v-loading="loading" style="height: 100vh" class="design-form" />
 </template>
 
 <style lang="scss" scoped>

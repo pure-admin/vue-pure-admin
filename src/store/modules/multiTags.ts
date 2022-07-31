@@ -1,19 +1,21 @@
 import { defineStore } from "pinia";
 import { store } from "/@/store";
-import { isUrl } from "/@/utils/is";
 import { isEqual } from "lodash-unified";
+import type { StorageConfigs } from "/#/index";
 import { routerArrays } from "/@/layout/types";
-import { storageLocal } from "/@/utils/storage";
 import { multiType, positionType } from "./types";
+import { isUrl, storageLocal } from "@pureadmin/utils";
 
 export const useMultiTagsStore = defineStore({
   id: "pure-multiTags",
   state: () => ({
     // 存储标签页信息（路由信息）
-    multiTags: storageLocal.getItem("responsive-configure").multiTagsCache
-      ? storageLocal.getItem("responsive-tags")
-      : routerArrays,
-    multiTagsCache: storageLocal.getItem("responsive-configure").multiTagsCache
+    multiTags: storageLocal.getItem<StorageConfigs>("responsive-configure")
+      .multiTagsCache
+      ? storageLocal.getItem<StorageConfigs>("responsive-tags")
+      : [...routerArrays],
+    multiTagsCache: storageLocal.getItem<StorageConfigs>("responsive-configure")
+      .multiTagsCache
   }),
   getters: {
     getMultiTagsCache() {

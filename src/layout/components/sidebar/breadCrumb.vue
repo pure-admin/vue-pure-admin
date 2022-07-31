@@ -9,8 +9,8 @@ import { useRoute, useRouter, RouteLocationMatched } from "vue-router";
 const route = useRoute();
 const levelList = ref([]);
 const router = useRouter();
-const routes = router.options.routes;
-const multiTags = useMultiTagsStoreHook().multiTags;
+const routes: any = router.options.routes;
+const multiTags: any = useMultiTagsStoreHook().multiTags;
 
 const isDashboard = (route: RouteLocationMatched): boolean | string => {
   const name = route && (route.name as string);
@@ -103,7 +103,7 @@ const handleLink = (item: RouteLocationMatched): void => {
 </script>
 
 <template>
-  <el-breadcrumb class="app-breadcrumb" separator="/">
+  <el-breadcrumb class="app-breadcrumb select-none" separator="/">
     <transition-group appear name="breadcrumb">
       <el-breadcrumb-item v-for="(item, index) in levelList" :key="item.path">
         <span

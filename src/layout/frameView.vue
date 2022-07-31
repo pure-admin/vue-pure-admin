@@ -1,13 +1,3 @@
-<template>
-  <div
-    class="frame"
-    v-loading="loading"
-    :element-loading-text="t('status.hsLoad')"
-  >
-    <iframe :src="frameSrc" class="frame-iframe" ref="frameRef" />
-  </div>
-</template>
-
 <script lang="ts" setup>
 import { useI18n } from "vue-i18n";
 import { useRoute } from "vue-router";
@@ -53,6 +43,16 @@ onMounted(() => {
   init();
 });
 </script>
+
+<template>
+  <div
+    class="frame"
+    v-loading="loading"
+    :element-loading-text="t('status.hsLoad')"
+  >
+    <iframe :src="frameSrc" class="frame-iframe" ref="frameRef" />
+  </div>
+</template>
 
 <style lang="scss" scoped>
 .frame {

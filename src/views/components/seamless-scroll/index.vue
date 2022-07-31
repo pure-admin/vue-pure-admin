@@ -56,7 +56,12 @@ function changeDirection(val) {
       <template #header>
         <div class="card-header">
           <span>无缝滚动示例</span>
-          <el-button class="button" type="text" @click="changeDirection('top')">
+          <el-button
+            class="button"
+            link
+            type="primary"
+            @click="changeDirection('top')"
+          >
             <span
               :style="{ color: classOption.direction === 'top' ? 'red' : '' }"
             >
@@ -65,7 +70,8 @@ function changeDirection(val) {
           </el-button>
           <el-button
             class="button"
-            type="text"
+            link
+            type="primary"
             @click="changeDirection('bottom')"
           >
             <span
@@ -78,7 +84,8 @@ function changeDirection(val) {
           </el-button>
           <el-button
             class="button"
-            type="text"
+            link
+            type="primary"
             @click="changeDirection('left')"
           >
             <span
@@ -89,7 +96,8 @@ function changeDirection(val) {
           </el-button>
           <el-button
             class="button"
-            type="text"
+            link
+            type="primary"
             @click="changeDirection('right')"
           >
             <span

@@ -4,6 +4,10 @@
 @import "./sidebar.scss";
 @import "./dark.scss";
 
+:root {
+  --pure-transition-duration: 0.016s;
+}
+
 body {
   width: 100%;
   height: 100%;
@@ -46,4 +50,9 @@ html {
 
 .mobile-spacing {
   margin: 0;
+}
+
+/* 重置vxe-table中pager样式 */
+.vxe-pager .vxe-pager--num-btn:not(.is--disabled).is--active {
+  color: #fff !important;
 }

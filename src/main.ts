@@ -6,9 +6,13 @@ import { getServerConfig } from "./config";
 import { createApp, Directive } from "vue";
 import { useI18n } from "../src/plugins/i18n";
 import { MotionPlugin } from "@vueuse/motion";
+import { useEcharts } from "/@/plugins/echarts";
 import VirtualScroller from "vue-virtual-scroller";
 import { useTable } from "../src/plugins/vxe-table";
-import { injectResponsiveStorage } from "/@/utils/storage/responsive";
+import { injectResponsiveStorage } from "/@/utils/responsive";
+
+import Table from "@pureadmin/table";
+import PureDescriptions from "@pureadmin/descriptions";
 
 import "uno.css";
 import "animate.css";
@@ -19,6 +23,7 @@ import "./style/index.scss";
 import "element-plus/dist/index.css";
 import "@pureadmin/components/dist/index.css";
 import "@pureadmin/components/dist/theme.css";
+import "@pureadmin/components/dist/dark.scss";
 // 导入字体图标
 import "./assets/iconfont/iconfont.js";
 import "./assets/iconfont/iconfont.css";
@@ -52,7 +57,10 @@ getServerConfig(app).then(async config => {
     .use(MotionPlugin)
     .use(useI18n)
     .use(ElementPlus)
+    .use(Table)
+    .use(PureDescriptions)
     .use(useTable)
+    .use(useEcharts)
     .use(VirtualScroller);
   app.mount("#app");
 });

@@ -3,7 +3,7 @@ import { ref, computed } from "vue";
 import type { ElTreeV2 } from "element-plus";
 import { transformI18n } from "/@/plugins/i18n";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
-import { extractPathList, deleteChildren } from "/@/utils/tree";
+import { extractPathList, deleteChildren } from "@pureadmin/utils";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 import type { TreeNode } from "element-plus/es/components/tree-v2/src/types";
 

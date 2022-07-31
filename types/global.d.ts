@@ -5,6 +5,7 @@ import type {
   FunctionalComponent,
   PropType as VuePropType
 } from "vue";
+import type { ECharts } from "echarts";
 
 // GlobalComponents for Volar
 declare module "vue" {
@@ -106,6 +107,11 @@ declare global {
         zoom?: number;
       };
     };
+  }
+
+  declare interface GlobalPropertiesApi {
+    $echarts: ECharts;
+    $storage: ServerConfigs;
   }
 
   function parseInt(s: string | number, radix?: number): number;

@@ -1,76 +1,53 @@
 <script setup lang="ts">
 import {
-  reactive,
   ref,
   unref,
   watch,
+  reactive,
   computed,
   nextTick,
-  useCssModule,
-  getCurrentInstance
+  useCssModule
 } from "vue";
-import { find } from "lodash-unified";
 import { getConfig } from "/@/config";
 import { useRouter } from "vue-router";
 import panel from "../panel/index.vue";
 import { emitter } from "/@/utils/mitt";
 import { templateRef } from "@vueuse/core";
-import { debounce } from "/@/utils/debounce";
-import { themeColorsType } from "../../types";
 import { routerArrays } from "/@/layout/types";
 import { useAppStoreHook } from "/@/store/modules/app";
-import { shadeBgColor } from "../../theme/element-plus";
-import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
-import { storageLocal, storageSession } from "/@/utils/storage";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
-import { createNewStyle, writeNewStyle } from "../../theme/element-plus";
+import { useDataThemeChange } from "/@/layout/hooks/useDataThemeChange";
+import {
+  useDark,
+  debounce,
+  storageLocal,
+  storageSession
+} from "@pureadmin/utils";
 import { toggleTheme } from "@pureadmin/theme/dist/browser-utils";
 
 import dayIcon from "/@/assets/svg/day.svg?component";
 import darkIcon from "/@/assets/svg/dark.svg?component";
 
 const router = useRouter();
+const { isDark } = useDark();
 const { isSelect } = useCssModule();
-const body = document.documentElement as HTMLElement;
-const instance =
-  getCurrentInstance().appContext.app.config.globalProperties.$storage;
 
-const instanceConfig =
-  getCurrentInstance().appContext.app.config.globalProperties.$config;
-
-let themeColors = ref<Array<themeColorsType>>([
-  // 道奇蓝（默认）
-  { color: "#1b2a47", themeColor: "default" },
-  // 亮白色
-  { color: "#ffffff", themeColor: "light" },
-  // 猩红色
-  { color: "#f5222d", themeColor: "dusk" },
-  // 橙红色
-  { color: "#fa541c", themeColor: "volcano" },
-  // 金色
-  { color: "#fadb14", themeColor: "yellow" },
-  // 绿宝石
-  { color: "#13c2c2", themeColor: "mingQing" },
-  // 酸橙绿
-  { color: "#52c41a", themeColor: "auroraGreen" },
-  // 深粉色
-  { color: "#eb2f96", themeColor: "pink" },
-  // 深紫罗兰色
-  { color: "#722ed1", themeColor: "saucePurple" }
-]);
-
+const mixRef = templateRef<HTMLElement | null>("mixRef", null);
 const verticalRef = templateRef<HTMLElement | null>("verticalRef", null);
 const horizontalRef = templateRef<HTMLElement | null>("horizontalRef", null);
-const mixRef = templateRef<HTMLElement | null>("mixRef", null);
 
-let layoutTheme =
-  ref(storageLocal.getItem("responsive-layout")) ||
-  ref({
-    layout: instanceConfig?.Layout ?? "vertical",
-    theme: instanceConfig?.Theme ?? "default"
-  });
+const {
+  body,
+  instance,
+  dataTheme,
+  layoutTheme,
+  themeColors,
+  dataThemeChange,
+  setEpThemeColor,
+  setLayoutThemeColor
+} = useDataThemeChange();
 
-// body添加layout属性，作用于src/style/sidebar.scss
+/* body添加layout属性，作用于src/style/sidebar.scss */
 if (unref(layoutTheme)) {
   let layout = unref(layoutTheme).layout;
   let theme = unref(layoutTheme).theme;
@@ -80,12 +57,10 @@ if (unref(layoutTheme)) {
   setLayoutModel(layout);
 }
 
-// 默认灵动模式
+/** 默认灵动模式 */
 const markValue = ref(instance.configure?.showModel ?? "smart");
 
 const logoVal = ref(instance.configure?.showLogo ?? true);
-
-const epThemeColor = ref(useEpThemeStoreHook().getEpThemeColor);
 
 const settings = reactive({
   greyVal: instance.configure.grey,
@@ -102,6 +77,13 @@ const getThemeColorStyle = computed(() => {
   };
 });
 
+/** 当网页为暗黑模式时不显示亮白色切换选项 */
+const showThemeColors = computed(() => {
+  return themeColor => {
+    return themeColor === "light" && isDark.value ? false : true;
+  };
+});
+
 function storageConfigureChange<T>(key: string, val: T): void {
   const storageConfigure = instance.configure;
   storageConfigure[key] = val;
@@ -115,13 +97,13 @@ function toggleClass(flag: boolean, clsName: string, target?: HTMLElement) {
   targetEl.className = flag ? `${className} ${clsName} ` : className;
 }
 
-// 灰色模式设置
+/** 灰色模式设置 */
 const greyChange = (value): void => {
   toggleClass(settings.greyVal, "html-grey", document.querySelector("html"));
   storageConfigureChange("grey", value);
 };
 
-// 色弱模式设置
+/** 色弱模式设置 */
 const weekChange = (value): void => {
   toggleClass(
     settings.weakVal,
@@ -143,16 +125,16 @@ const multiTagsCacheChange = () => {
   useMultiTagsStoreHook().multiTagsCacheChange(multiTagsCache);
 };
 
-// 清空缓存并返回登录页
+/** 清空缓存并返回登录页 */
 function onReset() {
   router.push("/login");
   const { Grey, Weak, MultiTagsCache, EpThemeColor, Layout } = getConfig();
   useAppStoreHook().setLayout(Layout);
-  useEpThemeStoreHook().setEpThemeColor(EpThemeColor);
+  setEpThemeColor(EpThemeColor);
   useMultiTagsStoreHook().multiTagsCacheChange(MultiTagsCache);
   toggleClass(Grey, "html-grey", document.querySelector("html"));
   toggleClass(Weak, "html-weakness", document.querySelector("html"));
-  useMultiTagsStoreHook().handleTags("equal", routerArrays);
+  useMultiTagsStoreHook().handleTags("equal", [...routerArrays]);
   storageLocal.clear();
   storageSession.clear();
 }
@@ -162,7 +144,7 @@ function onChange(label) {
   emitter.emit("tagViewsShowModel", label);
 }
 
-// 侧边栏Logo
+/** 侧边栏Logo */
 function logoChange() {
   unref(logoVal)
     ? storageConfigureChange("showLogo", true)
@@ -177,7 +159,7 @@ function setFalse(Doms): any {
 }
 
 watch(instance, ({ layout }) => {
-  // 设置wangeditorV5主题色
+  /* 设置wangeditorV5主题色 */
   body.style.setProperty("--w-e-toolbar-active-color", layout["epThemeColor"]);
   switch (layout["layout"]) {
     case "vertical":
@@ -198,7 +180,7 @@ watch(instance, ({ layout }) => {
   }
 });
 
-// 主题色 激活选择项
+/** 主题色 激活选择项 */
 const getThemeColor = computed(() => {
   return current => {
     if (
@@ -217,7 +199,7 @@ const getThemeColor = computed(() => {
   };
 });
 
-// 设置导航模式
+/** 设置导航模式 */
 function setLayoutModel(layout: string) {
   layoutTheme.value.layout = layout;
   window.document.body.setAttribute("layout", layout);
@@ -231,69 +213,13 @@ function setLayoutModel(layout: string) {
   useAppStoreHook().setLayout(layout);
 }
 
-// 存放夜间主题切换前的导航主题色
-let tempLayoutThemeColor;
-
-// 设置导航主题色
-function setLayoutThemeColor(theme: string) {
-  tempLayoutThemeColor = instance.layout.theme;
-  layoutTheme.value.theme = theme;
-  toggleTheme({
-    scopeName: `layout-theme-${theme}`
-  });
-  instance.layout = {
-    layout: useAppStoreHook().layout,
-    theme,
-    darkMode: dataTheme.value,
-    sidebarStatus: instance.layout.sidebarStatus,
-    epThemeColor: instance.layout.epThemeColor
-  };
-
-  if (theme === "default" || theme === "light") {
-    setEpThemeColor(getConfig().EpThemeColor);
-  } else {
-    const colors = find(themeColors.value, { themeColor: theme });
-    setEpThemeColor(colors.color);
-  }
-}
-
-// 设置ep主题色
-const setEpThemeColor = (color: string) => {
-  // @ts-expect-error
-  writeNewStyle(createNewStyle(color));
-  useEpThemeStoreHook().setEpThemeColor(color);
-  body.style.setProperty("--el-color-primary-active", shadeBgColor(color));
-};
-
-let dataTheme = ref<boolean>(instance.layout.darkMode);
-
-// 日间、夜间主题切换
-function dataThemeChange() {
-  if (dataTheme.value) {
-    body.setAttribute("data-theme", "dark");
-    setLayoutThemeColor("light");
-  } else {
-    body.setAttribute("data-theme", "");
-    tempLayoutThemeColor && setLayoutThemeColor(tempLayoutThemeColor);
-    instance.layout = {
-      layout: useAppStoreHook().layout,
-      theme: instance.layout.theme,
-      darkMode: dataTheme.value,
-      sidebarStatus: instance.layout.sidebarStatus,
-      epThemeColor: instance.layout.epThemeColor
-    };
-  }
-}
-
-//初始化项目配置
+/* 初始化项目配置 */
 nextTick(() => {
   settings.greyVal &&
     document.querySelector("html")?.setAttribute("class", "html-grey");
   settings.weakVal &&
     document.querySelector("html")?.setAttribute("class", "html-weakness");
   settings.tabsVal && tagsChange();
-  // @ts-expect-error
-  writeNewStyle(createNewStyle(epThemeColor.value));
   dataThemeChange();
 });
 </script>
@@ -346,11 +272,12 @@ nextTick(() => {
       </el-tooltip>
     </ul>
 
-    <el-divider v-show="!dataTheme">主题色</el-divider>
-    <ul class="theme-color" v-show="!dataTheme">
+    <el-divider>主题色</el-divider>
+    <ul class="theme-color">
       <li
         v-for="(item, index) in themeColors"
         :key="index"
+        v-show="showThemeColors(item.themeColor)"
         :style="getThemeColorStyle(item.color)"
         @click="setLayoutThemeColor(item.themeColor)"
       >
@@ -366,7 +293,7 @@ nextTick(() => {
 
     <el-divider>界面显示</el-divider>
     <ul class="setting">
-      <li v-show="!dataTheme">
+      <li>
         <span>灰色模式</span>
         <el-switch
           v-model="settings.greyVal"
@@ -377,7 +304,7 @@ nextTick(() => {
           @change="greyChange"
         />
       </li>
-      <li v-show="!dataTheme">
+      <li>
         <span>色弱模式</span>
         <el-switch
           v-model="settings.weakVal"

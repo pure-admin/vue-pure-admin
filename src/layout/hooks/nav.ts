@@ -4,18 +4,22 @@ import { getConfig } from "/@/config";
 import { emitter } from "/@/utils/mitt";
 import { routeMetaType } from "../types";
 import { remainingPaths } from "/@/router";
+import type { StorageConfigs } from "/#/index";
+import { routerArrays } from "/@/layout/types";
 import { transformI18n } from "/@/plugins/i18n";
-import { storageSession } from "/@/utils/storage";
+import { storageSession } from "@pureadmin/utils";
 import { useAppStoreHook } from "/@/store/modules/app";
 import { i18nChangeLanguage } from "@wangeditor/editor";
 import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
+import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
 
 const errorInfo = "当前路由配置不正确，请检查配置";
 
 export function useNav() {
   const pureApp = useAppStoreHook();
   // 用户名
-  const username: string = storageSession.getItem("info")?.username;
+  const username: string =
+    storageSession.getItem<StorageConfigs>("info")?.username;
 
   // 设置国际化选中后的样式
   const getDropdownItemStyle = computed(() => {
@@ -24,6 +28,11 @@ export function useNav() {
         background: locale === t ? useEpThemeStoreHook().epThemeColor : "",
         color: locale === t ? "#f4f4f5" : "#000"
       };
+    };
+  });
+  const getDropdownItemClass = computed(() => {
+    return (locale, t) => {
+      return locale === t ? "" : "!dark:hover:color-primary";
     };
   });
 
@@ -44,6 +53,7 @@ export function useNav() {
 
   // 退出登录
   function logout() {
+    useMultiTagsStoreHook().handleTags("equal", [...routerArrays]);
     storageSession.removeItem("info");
     router.push("/login");
   }
@@ -132,6 +142,7 @@ export function useNav() {
     username,
     avatarsStyle,
     getDropdownItemStyle,
+    getDropdownItemClass,
     changeWangeditorLanguage
   };
 }

@@ -21,7 +21,7 @@
 
 ### ✔️ refactor
 
-- 重构登陆页，更偏向实际业务场景
+- 重构登录页，更偏向实际业务场景
 - 使用`unocss`替换`windicss`，`unocss`开发环境下性能更好，没有内存泄露，而且`api`使用上兼容`windicss`
 
 ### 🍏 Perf

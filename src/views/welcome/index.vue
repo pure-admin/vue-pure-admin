@@ -1,7 +1,11 @@
 <script setup lang="ts">
-import { ReGithub, ReInfinite, RePie, ReLine, ReBar } from "./components";
 import { ref, computed } from "vue";
+import Bar from "./components/Bar.vue";
+import Pie from "./components/Pie.vue";
+import Line from "./components/Line.vue";
 import avatars from "/@/assets/avatars.jpg";
+import Github from "./components/Github.vue";
+import Infinite from "./components/Infinite.vue";
 
 defineOptions({
   name: "Welcome"
@@ -31,7 +35,7 @@ const openDepot = (): void => {
 
 <template>
   <div class="welcome">
-    <el-card class="top-content">
+    <el-card class="top-content dark:border-none">
       <div class="left-mark">
         <img :src="avatars" title="直达仓库地址" @click="openDepot" />
         <span>{{ greetings }}</span>
@@ -65,7 +69,7 @@ const openDepot = (): void => {
           </template>
           <el-skeleton animated :rows="7" :loading="loading">
             <template #default>
-              <ReGithub />
+              <Github />
             </template>
           </el-skeleton>
         </el-card>
@@ -99,7 +103,7 @@ const openDepot = (): void => {
           </template>
           <el-skeleton animated :rows="7" :loading="loading">
             <template #default>
-              <ReInfinite />
+              <Infinite />
             </template>
           </el-skeleton>
         </el-card>
@@ -133,7 +137,7 @@ const openDepot = (): void => {
           </template>
           <el-skeleton animated :rows="7" :loading="loading">
             <template #default>
-              <RePie />
+              <Pie />
             </template>
           </el-skeleton>
         </el-card>
@@ -167,7 +171,7 @@ const openDepot = (): void => {
           </template>
           <el-skeleton animated :rows="7" :loading="loading">
             <template #default>
-              <ReLine />
+              <Line />
             </template>
           </el-skeleton>
         </el-card>
@@ -201,7 +205,7 @@ const openDepot = (): void => {
           </template>
           <el-skeleton animated :rows="7" :loading="loading">
             <template #default>
-              <ReBar />
+              <Bar />
             </template>
           </el-skeleton>
         </el-card>
@@ -229,7 +233,7 @@ const openDepot = (): void => {
     justify-content: space-between;
     align-items: center;
     height: 60px;
-    background: #fff;
+    background: var(--el-bg-color);
 
     .left-mark {
       display: flex;

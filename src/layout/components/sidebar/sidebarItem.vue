@@ -5,7 +5,7 @@ import { childrenType } from "../../types";
 import { transformI18n } from "/@/plugins/i18n";
 import { useAppStoreHook } from "/@/store/modules/app";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
-import { ref, PropType, nextTick, computed, CSSProperties } from "vue";
+import { ref, toRaw, PropType, nextTick, computed, CSSProperties } from "vue";
 
 const { pureApp } = useNav();
 const menuMode = ["vertical", "mix"].includes(pureApp.layout);
@@ -54,9 +54,9 @@ const getDivStyle = computed((): CSSProperties => {
   };
 });
 
-const getMenuTextStyle = computed((): CSSProperties => {
+const getMenuTextStyle = computed(() => {
   return {
-    width: pureApp.sidebar.opened ? "125px" : "",
+    width: pureApp.sidebar.opened ? "210px" : "",
     overflow: "hidden",
     textOverflow: "ellipsis",
     outline: "none"
@@ -65,14 +65,14 @@ const getMenuTextStyle = computed((): CSSProperties => {
 
 const getSubTextStyle = computed((): CSSProperties => {
   return {
-    width: pureApp.sidebar.opened ? "125px" : "",
+    width: pureApp.sidebar.opened ? "210px" : "",
     display: "inline-block",
     overflow: "hidden",
     textOverflow: "ellipsis"
   };
 });
 
-const getSpanStyle = computed((): CSSProperties => {
+const getSpanStyle = computed(() => {
   return {
     overflow: "hidden",
     textOverflow: "ellipsis"
@@ -148,12 +148,12 @@ function resolvePath(routePath) {
       :class="{ 'submenu-title-noDropdown': !isNest }"
       :style="getNoDropdownStyle"
     >
-      <div class="sub-menu-icon" v-show="props.item.meta.icon">
+      <div class="sub-menu-icon" v-if="toRaw(props.item.meta.icon)">
         <component
           :is="
             useRenderIcon(
-              onlyOneChild.meta.icon ||
-                (props.item.meta && props.item.meta.icon)
+              toRaw(onlyOneChild.meta.icon) ||
+                (props.item.meta && toRaw(props.item.meta.icon))
             )
           "
         />
@@ -205,19 +205,14 @@ function resolvePath(routePath) {
     </el-menu-item>
   </template>
 
-  <el-sub-menu
-    v-else
-    ref="subMenu"
-    :index="resolvePath(props.item.path)"
-    popper-append-to-body
-  >
+  <el-sub-menu v-else ref="subMenu" :index="resolvePath(props.item.path)">
     <template #title>
-      <div v-show="props.item.meta.icon" class="sub-menu-icon">
+      <div v-if="toRaw(props.item.meta.icon)" class="sub-menu-icon">
         <component
-          :is="useRenderIcon(props.item.meta && props.item.meta.icon)"
+          :is="useRenderIcon(props.item.meta && toRaw(props.item.meta.icon))"
         />
       </div>
-      <span v-if="!menuMode">{{ transformI18n(props.item.meta.title) }}</span>
+      <span v-if="!menuMode"> {{ transformI18n(props.item.meta.title) }}</span>
       <el-tooltip
         v-else
         placement="top"

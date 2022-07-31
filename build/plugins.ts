@@ -29,7 +29,7 @@ export function getPluginsList(command, VITE_LEGACY) {
     Unocss(),
     DefineOptions(),
     // 线上环境删除console
-    removeConsole(),
+    removeConsole({ external: ["src/assets/iconfont/iconfont.js"] }),
     viteBuildInfo(),
     // 自定义主题
     themePreprocessorPlugin({

@@ -40,3 +40,16 @@
 .breadcrumb-leave-active {
   position: absolute;
 }
+
+/**
+ * @description 重置el-menu的展开收起动画时长
+ * @see {@link https://github.com/element-plus/element-plus/issues/4509#issuecomment-980165001}
+ */
+.outer-most .el-collapse-transition-leave-active,
+.outer-most .el-collapse-transition-enter-active {
+  transition: 0.12s all ease-in-out !important;
+}
+
+.horizontal-collapse-transition {
+  transition: var(--pure-transition-duration) all !important;
+}

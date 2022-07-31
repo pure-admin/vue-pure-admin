@@ -143,7 +143,7 @@ function onBack() {
     <Motion :delay="300">
       <el-form-item>
         <el-checkbox v-model="checked"> 我已仔细阅读并接受 </el-checkbox>
-        <el-button type="text"> 《隐私政策》 </el-button>
+        <el-button link type="primary"> 《隐私政策》 </el-button>
       </el-form-item>
     </Motion>
 

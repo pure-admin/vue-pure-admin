@@ -61,12 +61,11 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
     },
     plugins: getPluginsList(command, VITE_LEGACY),
     optimizeDeps: {
-      include: ["pinia", "vue-i18n", "lodash-es", "@vueuse/core"],
+      include: ["pinia", "vue-i18n", "lodash-es", "@vueuse/core", "dayjs"],
       exclude: ["@pureadmin/theme/dist/browser-utils"]
     },
     build: {
       sourcemap: false,
-      brotliSize: false,
       // 消除打包大小超过500kb警告
       chunkSizeWarningLimit: 4000
     },

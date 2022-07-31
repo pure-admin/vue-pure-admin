@@ -2,22 +2,23 @@ import { store } from "/@/store";
 import { appType } from "./types";
 import { defineStore } from "pinia";
 import { getConfig } from "/@/config";
-import { storageLocal } from "/@/utils/storage";
-import { deviceDetection } from "/@/utils/deviceDetection";
+import type { StorageConfigs } from "/#/index";
+import { deviceDetection, storageLocal } from "@pureadmin/utils";
 
 export const useAppStore = defineStore({
   id: "pure-app",
   state: (): appType => ({
     sidebar: {
       opened:
-        storageLocal.getItem("responsive-layout")?.sidebarStatus ??
-        getConfig().SidebarStatus,
+        storageLocal.getItem<StorageConfigs>("responsive-layout")
+          ?.sidebarStatus ?? getConfig().SidebarStatus,
       withoutAnimation: false,
       isClickHamburger: false
     },
     // 这里的layout用于监听容器拖拉后恢复对应的导航模式
     layout:
-      storageLocal.getItem("responsive-layout")?.layout ?? getConfig().Layout,
+      storageLocal.getItem<StorageConfigs>("responsive-layout")?.layout ??
+      getConfig().Layout,
     device: deviceDetection() ? "mobile" : "desktop"
   }),
   getters: {
@@ -30,7 +31,7 @@ export const useAppStore = defineStore({
   },
   actions: {
     TOGGLE_SIDEBAR(opened?: boolean, resize?: string) {
-      const layout = storageLocal.getItem("responsive-layout");
+      const layout = storageLocal.getItem<StorageConfigs>("responsive-layout");
       if (opened && resize) {
         this.sidebar.withoutAnimation = true;
         this.sidebar.opened = true;
@@ -47,14 +48,11 @@ export const useAppStore = defineStore({
       }
       storageLocal.setItem("responsive-layout", layout);
     },
-    TOGGLE_DEVICE(device: string) {
-      this.device = device;
-    },
     async toggleSideBar(opened?: boolean, resize?: string) {
       await this.TOGGLE_SIDEBAR(opened, resize);
     },
-    toggleDevice(device) {
-      this.TOGGLE_DEVICE(device);
+    toggleDevice(device: string) {
+      this.device = device;
     },
     setLayout(layout) {
       this.layout = layout;

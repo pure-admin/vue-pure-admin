@@ -1,6 +1,20 @@
+/**
+ * @description ⚠️：此文件仅供主题插件使用，请不要在此文件中导出别的工具函数（仅在页面加载前运行）
+ */
+
+import { EpThemeColor } from "../../../public/serverConfig.json";
+
+type MultipleScopeVarsItem = {
+  scopeName: string;
+  varsContent: string;
+};
+
+/** 将vxe默认主题色和ep默认主题色保持一致 */
+const vxeColor = EpThemeColor;
+/** 预设主题色 */
 const themeColors = {
   default: {
-    color: "#409EFF",
+    vxeColor,
     subMenuActiveText: "#fff",
     menuBg: "#001529",
     menuHover: "#4091f7",
@@ -13,7 +27,7 @@ const themeColors = {
     menuActiveBefore: "#4091f7"
   },
   light: {
-    color: "#409EFF",
+    vxeColor,
     subMenuActiveText: "#409eff",
     menuBg: "#fff",
     menuHover: "#e0ebf6",
@@ -26,7 +40,7 @@ const themeColors = {
     menuActiveBefore: "#4091f7"
   },
   dusk: {
-    color: "#f5222d",
+    vxeColor: "#f5222d",
     subMenuActiveText: "#fff",
     menuBg: "#2a0608",
     menuHover: "#e13c39",
@@ -39,7 +53,7 @@ const themeColors = {
     menuActiveBefore: "#e13c39"
   },
   volcano: {
-    color: "#fa541c",
+    vxeColor: "#fa541c",
     subMenuActiveText: "#fff",
     menuBg: "#2b0e05",
     menuHover: "#e85f33",
@@ -52,7 +66,7 @@ const themeColors = {
     menuActiveBefore: "#e85f33"
   },
   yellow: {
-    color: "#fadb14",
+    vxeColor: "#fadb14",
     subMenuActiveText: "#d25f00",
     menuBg: "#2b2503",
     menuHover: "#f6da4d",
@@ -65,7 +79,7 @@ const themeColors = {
     menuActiveBefore: "#f6da4d"
   },
   mingQing: {
-    color: "#13c2c2",
+    vxeColor: "#13c2c2",
     subMenuActiveText: "#fff",
     menuBg: "#032121",
     menuHover: "#59bfc1",
@@ -78,7 +92,7 @@ const themeColors = {
     menuActiveBefore: "#59bfc1"
   },
   auroraGreen: {
-    color: "#52c41a",
+    vxeColor: "#52c41a",
     subMenuActiveText: "#fff",
     menuBg: "#0b1e15",
     menuHover: "#60ac80",
@@ -91,7 +105,7 @@ const themeColors = {
     menuActiveBefore: "#60ac80"
   },
   pink: {
-    color: "#eb2f96",
+    vxeColor: "#eb2f96",
     subMenuActiveText: "#fff",
     menuBg: "#28081a",
     menuHover: "#d84493",
@@ -104,7 +118,7 @@ const themeColors = {
     menuActiveBefore: "#d84493"
   },
   saucePurple: {
-    color: "#722ed1",
+    vxeColor: "#722ed1",
     subMenuActiveText: "#fff",
     menuBg: "#130824",
     menuHover: "#693ac9",
@@ -118,19 +132,28 @@ const themeColors = {
   }
 };
 
-type MultipleScopeVarsItem = {
-  scopeName: string;
-  path: string;
-  varsContent: string;
-};
-
-export function genScssMultipleScopeVars(): MultipleScopeVarsItem[] {
+/**
+ * @description 将预设主题色处理成主题插件所需格式
+ */
+export const genScssMultipleScopeVars = (): MultipleScopeVarsItem[] => {
   const result = [] as MultipleScopeVarsItem[];
   Object.keys(themeColors).forEach(key => {
     result.push({
       scopeName: `layout-theme-${key}`,
-      varsContent: `$primary-color: ${themeColors[key].color} !default;$vxe-primary-color: $primary-color;$subMenuActiveText: ${themeColors[key].subMenuActiveText} !default;$menuBg: ${themeColors[key].menuBg} !default;$menuHover: ${themeColors[key].menuHover} !default;$subMenuBg: ${themeColors[key].subMenuBg} !default;$subMenuActiveBg: ${themeColors[key].subMenuActiveBg} !default;$navTextColor: ${themeColors[key].navTextColor} !default;$menuText: ${themeColors[key].menuText} !default;$sidebarLogo: ${themeColors[key].sidebarLogo} !default;$menuTitleHover: ${themeColors[key].menuTitleHover} !default;$menuActiveBefore: ${themeColors[key].menuActiveBefore} !default;`
+      varsContent: `
+        $vxe-primary-color: ${themeColors[key].vxeColor} !default;
+        $subMenuActiveText: ${themeColors[key].subMenuActiveText} !default;
+        $menuBg: ${themeColors[key].menuBg} !default;
+        $menuHover: ${themeColors[key].menuHover} !default;
+        $subMenuBg: ${themeColors[key].subMenuBg} !default;
+        $subMenuActiveBg: ${themeColors[key].subMenuActiveBg} !default;
+        $navTextColor: ${themeColors[key].navTextColor} !default;
+        $menuText: ${themeColors[key].menuText} !default;
+        $sidebarLogo: ${themeColors[key].sidebarLogo} !default;
+        $menuTitleHover: ${themeColors[key].menuTitleHover} !default;
+        $menuActiveBefore: ${themeColors[key].menuActiveBefore} !default;
+      `
     } as MultipleScopeVarsItem);
   });
   return result;
-}
+};

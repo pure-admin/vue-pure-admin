@@ -5,18 +5,17 @@ import {
   computed,
   reactive,
   onMounted,
-  ComputedRef,
   CSSProperties,
   getCurrentInstance
 } from "vue";
+import { tagsViewsType } from "../types";
 import { isEqual } from "lodash-unified";
+import type { StorageConfigs } from "/#/index";
 import { useEventListener } from "@vueuse/core";
-import { storageLocal } from "/@/utils/storage";
 import { useRoute, useRouter } from "vue-router";
 import { transformI18n, $t } from "/@/plugins/i18n";
-import { RouteConfigs, tagsViewsType } from "../types";
-import { toggleClass, hasClass } from "/@/utils/operate";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
+import { storageLocal, toggleClass, hasClass } from "@pureadmin/utils";
 
 import close from "/@/assets/svg/close.svg?component";
 import refresh from "/@/assets/svg/refresh.svg?component";
@@ -40,12 +39,15 @@ export function useTags() {
 
   /** 显示模式，默认灵动模式 */
   const showModel = ref(
-    storageLocal.getItem("responsive-configure")?.showModel || "smart"
+    storageLocal.getItem<StorageConfigs>("responsive-configure")?.showModel ||
+      "smart"
   );
   /** 是否隐藏标签页，默认显示 */
   const showTags =
-    ref(storageLocal.getItem("responsive-configure").hideTabs) ?? ref("false");
-  const multiTags: ComputedRef<Array<RouteConfigs>> = computed(() => {
+    ref(
+      storageLocal.getItem<StorageConfigs>("responsive-configure").hideTabs
+    ) ?? ref("false");
+  const multiTags: any = computed(() => {
     return useMultiTagsStoreHook().multiTags;
   });
 
@@ -172,7 +174,9 @@ export function useTags() {
 
   onMounted(() => {
     if (!showModel.value) {
-      const configure = storageLocal.getItem("responsive-configure");
+      const configure = storageLocal.getItem<StorageConfigs>(
+        "responsive-configure"
+      );
       configure.showModel = "card";
       storageLocal.setItem("responsive-configure", configure);
     }

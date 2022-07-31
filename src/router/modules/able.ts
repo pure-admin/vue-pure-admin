@@ -130,6 +130,22 @@ const ableRouter = {
       meta: {
         title: $t("menus.hsVirtualList")
       }
+    },
+    {
+      path: "/able/pdf",
+      name: "Pdf",
+      component: () => import("/@/views/able/pdf.vue"),
+      meta: {
+        title: $t("menus.hsPdf")
+      }
+    },
+    {
+      path: "/able/execl",
+      name: "Execl",
+      component: () => import("/@/views/able/execl.vue"),
+      meta: {
+        title: $t("menus.hsExecl")
+      }
     }
   ]
 };
