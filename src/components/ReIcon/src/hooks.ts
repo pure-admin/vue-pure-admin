@@ -4,11 +4,11 @@ import { IconifyIconOnline, IconifyIconOffline, FontIcon } from "../index";
 
 /**
  * 支持fontawesome4、5+、iconfont、remixicon、element-plus的icons、自定义svg
- * @param icon 必传 string 图标
+ * @param icon 必传 图标
  * @param attrs 可选 iconType 属性
  * @returns Component
  */
-export function useRenderIcon(icon: string, attrs?: iconType): Component {
+export function useRenderIcon(icon: any, attrs?: iconType): Component {
   // iconfont
   const ifReg = /^IF-/;
   // typeof icon === "function" 属于SVG
@@ -30,7 +30,7 @@ export function useRenderIcon(icon: string, attrs?: iconType): Component {
         });
       }
     });
-  } else if (typeof icon === "function") {
+  } else if (typeof icon === "function" || typeof icon?.render === "function") {
     // svg
     return icon;
   } else {
