@@ -70,7 +70,6 @@ watch(
         :collapse="isCollapse"
         :default-active="route.path"
         :collapse-transition="false"
-        @select="indexPath => menuSelect(indexPath, routers)"
       >
         <sidebar-item
           v-for="routes in menuData"

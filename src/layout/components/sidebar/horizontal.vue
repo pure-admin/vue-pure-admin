@@ -84,7 +84,6 @@ function translationEn() {
       mode="horizontal"
       class="horizontal-header-menu"
       :default-active="route.path"
-      @select="indexPath => menuSelect(indexPath, routers)"
     >
       <sidebar-item
         v-for="route in usePermissionStoreHook().wholeMenus"
