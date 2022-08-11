@@ -18,6 +18,7 @@ const pptRouter = {
       meta: {
         title: "PPT",
         frameSrc: "https://pipipi-pikachu.github.io/PPTist/",
+        frameLoading: false,
         extraIcon: {
           svg: true,
           name: "team-iconxinpin"
