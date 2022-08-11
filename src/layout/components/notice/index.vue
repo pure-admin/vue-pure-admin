@@ -15,8 +15,7 @@ notices.value.forEach(notice => {
 });
 
 function tabClick() {
-  // @ts-expect-error
-  dropdownDom.value.handleOpen();
+  (dropdownDom as any).v.handleOpen();
 }
 </script>
 

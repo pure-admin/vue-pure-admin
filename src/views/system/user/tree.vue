@@ -45,8 +45,7 @@ function nodeClick(value) {
 }
 
 function toggleRowExpansionAll(status) {
-  // @ts-expect-error
-  let nodes = proxy.$refs["treeRef"].store._getAllNodes();
+  let nodes = (proxy.$refs["treeRef"] as any).store._getAllNodes();
   for (var i = 0; i < nodes.length; i++) {
     nodes[i].expanded = status;
   }

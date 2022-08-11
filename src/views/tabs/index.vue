@@ -38,8 +38,9 @@ function onCloseTags() {
       getNodeByUniqueId(treeData.value, uniqueId).path;
     useMultiTagsStoreHook().handleTags("splice", currentPath);
     if (currentPath === "/tabs/index")
-      // @ts-expect-error
-      router.push({ path: multiTags.value[multiTags.value.length - 1].path });
+      router.push({
+        path: multiTags.value[(multiTags as any).value.length - 1].path
+      });
   });
 }
 </script>

@@ -289,8 +289,7 @@ function dynamicRouteTag(value: string, parentPath: string): void {
       });
     }
   }
-  // @ts-expect-error
-  concatPath(router.options.routes, value, parentPath);
+  concatPath(router.options.routes as any, value, parentPath);
 }
 
 // 重新加载
@@ -327,11 +326,10 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
     if (other) {
       useMultiTagsStoreHook().handleTags("equal", [routerArrays[0], obj]);
     } else {
-      // @ts-ignore
       delAliveRouteList = useMultiTagsStoreHook().handleTags("splice", "", {
         startIndex,
         length
-      });
+      }) as any;
     }
   };
 
@@ -430,8 +428,7 @@ function onClickDrop(key, item, selectRoute?: RouteConfigs) {
   });
 }
 
-function handleCommand(command: object) {
-  // @ts-expect-error
+function handleCommand(command: any) {
   const { key, item } = command;
   onClickDrop(key, item);
 }
@@ -610,11 +607,9 @@ onBeforeMount(() => {
   showMenuModel(route.fullPath);
 
   // 触发隐藏标签页
-  emitter.on("tagViewsChange", key => {
-    // @ts-expect-error
-    if (unref(showTags) === key) return;
-    // @ts-expect-error
-    showTags.value = key;
+  emitter.on("tagViewsChange", (key: any) => {
+    if (unref(showTags as any) === key) return;
+    (showTags as any).value = key;
   });
 
   // 改变标签风格

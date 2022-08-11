@@ -44,8 +44,7 @@ let classOption = reactive({
 });
 
 function changeDirection(val) {
-  // @ts-ignore
-  unref(scroll).reset();
+  (unref(scroll) as any).reset();
   unref(classOption).direction = val;
 }
 </script>

@@ -31,8 +31,7 @@ let menusData = computed(() => {
 let expandedKeys = extractPathList(menusData.value);
 
 const onQueryChanged = (query: string) => {
-  // @ts-expect-error
-  treeRef.value!.filter(query);
+  (treeRef as any).value!.filter(query);
 };
 
 const filterMethod = (query: string, node: treeNode) => {

@@ -81,8 +81,7 @@ export const remainingPaths = Object.keys(remainingRouter).map(v => {
 // 创建路由实例
 export const router: Router = createRouter({
   history: getHistoryMode(),
-  // @ts-expect-error
-  routes: constantRoutes.concat(...remainingRouter),
+  routes: constantRoutes.concat(...(remainingRouter as any)),
   strict: true,
   scrollBehavior(to, from, savedPosition) {
     return new Promise(resolve => {
