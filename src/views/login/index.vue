@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
 import Motion from "./utils/motion";
 import { useRouter } from "vue-router";
 import { loginRules } from "./utils/rule";
@@ -11,6 +12,7 @@ import { useNav } from "/@/layout/hooks/nav";
 import { message } from "@pureadmin/components";
 import type { FormInstance } from "element-plus";
 import { storageSession } from "@pureadmin/utils";
+import { $t, transformI18n } from "/@/plugins/i18n";
 import { operates, thirdParty } from "./utils/enums";
 import { useLayout } from "/@/layout/hooks/useLayout";
 import { useUserStoreHook } from "/@/store/modules/user";
@@ -42,6 +44,7 @@ const currentPage = computed(() => {
 const { initStorage } = useLayout();
 initStorage();
 
+const { t } = useI18n();
 const { dataTheme, dataThemeChange } = useDataThemeChange();
 const { getDropdownItemStyle, getDropdownItemClass } = useNav();
 const { locale, translationCh, translationEn } = useTranslationLang();
@@ -151,11 +154,20 @@ dataThemeChange();
             @keyup.enter="onLogin(ruleFormRef)"
           >
             <Motion :delay="100">
-              <el-form-item prop="username">
+              <el-form-item
+                :rules="[
+                  {
+                    required: true,
+                    message: transformI18n($t('login.usernameReg')),
+                    trigger: 'blur'
+                  }
+                ]"
+                prop="username"
+              >
                 <el-input
                   clearable
                   v-model="ruleForm.username"
-                  placeholder="账号"
+                  :placeholder="t('login.username')"
                   :prefix-icon="useRenderIcon('user')"
                 />
               </el-form-item>
@@ -167,7 +179,7 @@ dataThemeChange();
                   clearable
                   show-password
                   v-model="ruleForm.password"
-                  placeholder="密码"
+                  :placeholder="t('login.password')"
                   :prefix-icon="useRenderIcon('lock')"
                 />
               </el-form-item>
@@ -178,7 +190,7 @@ dataThemeChange();
                 <el-input
                   clearable
                   v-model="ruleForm.verifyCode"
-                  placeholder="验证码"
+                  :placeholder="t('login.verifyCode')"
                   :prefix-icon="
                     useRenderIcon('ri:shield-keyhole-line', { online: true })
                   "
@@ -193,13 +205,15 @@ dataThemeChange();
             <Motion :delay="250">
               <el-form-item>
                 <div class="w-full h-20px flex justify-between items-center">
-                  <el-checkbox v-model="checked">记住密码</el-checkbox>
+                  <el-checkbox v-model="checked">
+                    {{ t("login.remember") }}
+                  </el-checkbox>
                   <el-button
                     link
                     type="primary"
                     @click="useUserStoreHook().SET_CURRENTPAGE(4)"
                   >
-                    忘记密码?
+                    {{ t("login.forget") }}
                   </el-button>
                 </div>
                 <el-button
@@ -209,7 +223,7 @@ dataThemeChange();
                   :loading="loading"
                   @click="onLogin(ruleFormRef)"
                 >
-                  登录
+                  {{ t("login.login") }}
                 </el-button>
               </el-form-item>
             </Motion>
@@ -224,7 +238,7 @@ dataThemeChange();
                     size="default"
                     @click="onHandle(index + 1)"
                   >
-                    {{ item.title }}
+                    {{ t(item.title) }}
                   </el-button>
                 </div>
               </el-form-item>
@@ -234,13 +248,13 @@ dataThemeChange();
           <Motion v-if="currentPage === 0" :delay="350">
             <el-form-item>
               <el-divider>
-                <p class="text-gray-500 text-xs">第三方登录</p>
+                <p class="text-gray-500 text-xs">{{ t("login.thirdLogin") }}</p>
               </el-divider>
               <div class="w-full flex justify-evenly">
                 <span
                   v-for="(item, index) in thirdParty"
                   :key="index"
-                  :title="`${item.title}登录`"
+                  :title="t(item.title)"
                 >
                   <IconifyIconOnline
                     :icon="`ri:${item.icon}-fill`"
