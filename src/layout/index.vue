@@ -74,7 +74,7 @@ let isAutoCloseSidebar = true;
 emitter.on("resize", ({ detail }) => {
   if (isMobile) return;
   let { width } = detail;
-  width <= 670 ? setTheme("vertical") : setTheme(useAppStoreHook().layout);
+  width <= 760 ? setTheme("vertical") : setTheme(useAppStoreHook().layout);
   /** width app-wrapper类容器宽度
    * 0 < width <= 760 隐藏侧边栏
    * 760 < width <= 990 折叠侧边栏
@@ -89,7 +89,7 @@ emitter.on("resize", ({ detail }) => {
       isAutoCloseSidebar = false;
     }
   } else if (width > 990) {
-    if (!set.sidebar.isClickHamburger) {
+    if (!set.sidebar.isClickCollapse) {
       toggle("desktop", true);
       isAutoCloseSidebar = true;
     }

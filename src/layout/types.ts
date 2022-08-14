@@ -44,7 +44,7 @@ export interface setType {
   sidebar: {
     opened: boolean;
     withoutAnimation: boolean;
-    isClickHamburger: boolean;
+    isClickCollapse: boolean;
   };
   device: string;
   fixedHeader: boolean;

@@ -13,7 +13,7 @@ export const useAppStore = defineStore({
         storageLocal.getItem<StorageConfigs>("responsive-layout")
           ?.sidebarStatus ?? getConfig().SidebarStatus,
       withoutAnimation: false,
-      isClickHamburger: false
+      isClickCollapse: false
     },
     // 这里的layout用于监听容器拖拉后恢复对应的导航模式
     layout:
@@ -43,7 +43,7 @@ export const useAppStore = defineStore({
       } else if (!opened && !resize) {
         this.sidebar.withoutAnimation = false;
         this.sidebar.opened = !this.sidebar.opened;
-        this.sidebar.isClickHamburger = !this.sidebar.opened;
+        this.sidebar.isClickCollapse = !this.sidebar.opened;
         layout.sidebarStatus = this.sidebar.opened;
       }
       storageLocal.setItem("responsive-layout", layout);

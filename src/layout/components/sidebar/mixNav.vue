@@ -30,6 +30,7 @@ const instance =
   getCurrentInstance().appContext.config.globalProperties.$storage;
 
 const {
+  device,
   logout,
   onPanel,
   changeTitle,
@@ -93,7 +94,7 @@ function translationEn() {
 </script>
 
 <template>
-  <div class="horizontal-header">
+  <div v-if="device !== 'mobile'" class="horizontal-header">
     <el-menu
       router
       ref="menu"

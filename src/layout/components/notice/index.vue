@@ -15,7 +15,7 @@ notices.value.forEach(notice => {
 });
 
 function tabClick() {
-  (dropdownDom as any).v.handleOpen();
+  (dropdownDom as any).value.handleOpen();
 }
 </script>
 

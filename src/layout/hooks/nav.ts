@@ -7,9 +7,9 @@ import { remainingPaths } from "/@/router";
 import type { StorageConfigs } from "/#/index";
 import { routerArrays } from "/@/layout/types";
 import { transformI18n } from "/@/plugins/i18n";
-import { storageSession } from "@pureadmin/utils";
 import { useAppStoreHook } from "/@/store/modules/app";
 import { i18nChangeLanguage } from "@wangeditor/editor";
+import { storageSession, useGlobal } from "@pureadmin/utils";
 import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
 
@@ -44,6 +44,15 @@ export function useNav() {
     return !pureApp.getSidebarStatus;
   });
 
+  const device = computed(() => {
+    return pureApp.getDevice;
+  });
+
+  const { $storage } = useGlobal<GlobalPropertiesApi>();
+  const layout = computed(() => {
+    return $storage?.layout?.layout;
+  });
+
   // 动态title
   function changeTitle(meta: routeMetaType) {
     const Title = getConfig().Title;
@@ -71,7 +80,7 @@ export function useNav() {
   }
 
   function handleResize(menuRef) {
-    menuRef.handleResize();
+    menuRef?.handleResize();
   }
 
   function resolvePath(route) {
@@ -129,6 +138,8 @@ export function useNav() {
   }
 
   return {
+    device,
+    layout,
     logout,
     backHome,
     onPanel,

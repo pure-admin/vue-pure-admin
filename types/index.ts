@@ -26,3 +26,25 @@ export interface StorageConfigs {
   };
   username?: string;
 }
+
+export interface ResponsiveStorage {
+  locale: {
+    locale?: string;
+  };
+  layout: {
+    layout?: string;
+    theme?: string;
+    darkMode?: boolean;
+    sidebarStatus?: boolean;
+    epThemeColor?: string;
+  };
+  configure: {
+    grey?: boolean;
+    weak?: boolean;
+    hideTabs?: boolean;
+    showLogo?: boolean;
+    showModel?: string;
+    multiTagsCache?: boolean;
+  };
+  tags?: Array<any>;
+}

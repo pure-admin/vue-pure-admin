@@ -20,7 +20,7 @@ const toggleClick = () => {
 </script>
 
 <template>
-  <div class="hamburger-container">
+  <div class="container">
     <el-tooltip
       placement="right"
       :effect="isDark ? 'dark' : 'light'"
@@ -36,10 +36,10 @@ const toggleClick = () => {
 </template>
 
 <style lang="scss" scoped>
-.hamburger-container {
+.container {
   position: absolute;
   bottom: 0;
-  width: 210px;
+  width: 100%;
   height: 40px;
   line-height: 40px;
   box-shadow: 0 0 6px -2px var(--el-color-primary);

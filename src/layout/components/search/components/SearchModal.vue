@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { useRouter } from "vue-router";
+import { useNav } from "../../../hooks/nav";
 import SearchResult from "./SearchResult.vue";
 import SearchFooter from "./SearchFooter.vue";
 import { transformI18n } from "/@/plugins/i18n";
@@ -17,6 +18,7 @@ interface Emits {
   (e: "update:value", val: boolean): void;
 }
 
+const { device } = useNav();
 const emit = defineEmits<Emits>();
 const props = withDefaults(defineProps<Props>(), {});
 const router = useRouter();
@@ -130,7 +132,12 @@ onKeyStroke("ArrowDown", handleDown);
 </script>
 
 <template>
-  <el-dialog top="5vh" v-model="show" :before-close="handleClose">
+  <el-dialog
+    top="5vh"
+    :width="device === 'mobile' ? '80vw' : '50vw'"
+    v-model="show"
+    :before-close="handleClose"
+  >
     <el-input
       ref="inputRef"
       v-model="keyword"
