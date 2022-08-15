@@ -6,10 +6,10 @@ import avatars from "/@/assets/avatars.jpg";
 import { useNav } from "/@/layout/hooks/useNav";
 import screenfull from "../screenfull/index.vue";
 import { deviceDetection } from "@pureadmin/utils";
-import { ref, watch, nextTick, onMounted } from "vue";
 import { useTranslationLang } from "../../hooks/useTranslationLang";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 import globalization from "/@/assets/svg/globalization.svg?component";
+import { ref, watch, nextTick, onMounted, onBeforeUnmount } from "vue";
 
 const menuRef = ref();
 
@@ -29,10 +29,18 @@ const {
   getDropdownItemClass
 } = useNav();
 
-onMounted(() => {
+function onResizeMenu() {
   nextTick(() => {
     handleResize(menuRef.value);
   });
+}
+
+onMounted(() => {
+  window.addEventListener("resize", onResizeMenu);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("resize", onResizeMenu);
 });
 
 watch(

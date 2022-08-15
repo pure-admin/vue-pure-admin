@@ -45,7 +45,7 @@ getSubMenuData(route.path);
 
 onBeforeMount(() => {
   emitter.on("logoChange", key => {
-    showLogo.value = key as unknown as boolean;
+    showLogo.value = key;
   });
 });
 

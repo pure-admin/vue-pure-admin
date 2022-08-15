@@ -1,9 +1,10 @@
+import { ref } from "vue";
 import { getConfig } from "/@/config";
 import { find } from "lodash-unified";
 import { useLayout } from "./useLayout";
 import { themeColorsType } from "../types";
 import { TinyColor } from "@ctrl/tinycolor";
-import { ref, getCurrentInstance } from "vue";
+import { useGlobal } from "@pureadmin/utils";
 import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
 import {
   darken,
@@ -34,9 +35,9 @@ export function useDataThemeChange() {
     { color: "#722ed1", themeColor: "saucePurple" }
   ]);
 
+  const { $storage } = useGlobal<GlobalPropertiesApi>();
+
   const body = document.documentElement as HTMLElement;
-  const instance =
-    getCurrentInstance().appContext.app.config.globalProperties.$storage;
 
   /** 设置导航主题色 */
   function setLayoutThemeColor(theme = "default") {
@@ -44,8 +45,8 @@ export function useDataThemeChange() {
     toggleTheme({
       scopeName: `layout-theme-${theme}`
     });
-    instance.layout.theme = theme;
-    instance.layout.darkMode = dataTheme.value;
+    $storage.layout.theme = theme;
+    $storage.layout.darkMode = dataTheme.value;
 
     if (theme === "default" || theme === "light") {
       setEpThemeColor(getConfig().EpThemeColor);
@@ -81,7 +82,7 @@ export function useDataThemeChange() {
       );
     }
   };
-  const dataTheme = ref<boolean>(instance?.layout?.darkMode);
+  const dataTheme = ref<boolean>($storage?.layout?.darkMode);
 
   /** 日间、夜间主题切换 */
   function dataThemeChange() {
@@ -93,17 +94,16 @@ export function useDataThemeChange() {
     }
 
     if (dataTheme.value) {
-      instance.layout.darkMode = true;
+      $storage.layout.darkMode = true;
       document.documentElement.classList.add("dark");
     } else {
-      instance.layout.darkMode = false;
+      $storage.layout.darkMode = false;
       document.documentElement.classList.remove("dark");
     }
   }
 
   return {
     body,
-    instance,
     dataTheme,
     layoutTheme,
     themeColors,

@@ -1,23 +1,22 @@
 import { useNav } from "./useNav";
 import { useI18n } from "vue-i18n";
 import { useRoute } from "vue-router";
-import { watch, getCurrentInstance, type Ref } from "vue";
+import { watch, type Ref } from "vue";
 
 export function useTranslationLang(ref?: Ref) {
-  const { changeTitle, changeWangeditorLanguage, handleResize } = useNav();
+  const { $storage, changeTitle, changeWangeditorLanguage, handleResize } =
+    useNav();
   const { locale, t } = useI18n();
   const route = useRoute();
-  const instance =
-    getCurrentInstance().appContext.config.globalProperties.$storage;
 
   function translationCh() {
-    instance.locale = { locale: "zh" };
+    $storage.locale = { locale: "zh" };
     locale.value = "zh";
     ref && handleResize(ref.value);
   }
 
   function translationEn() {
-    instance.locale = { locale: "en" };
+    $storage.locale = { locale: "en" };
     locale.value = "en";
     ref && handleResize(ref.value);
   }

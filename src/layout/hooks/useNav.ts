@@ -150,6 +150,7 @@ export function useNav() {
     layout,
     logout,
     routers,
+    $storage,
     backHome,
     onPanel,
     changeTitle,
