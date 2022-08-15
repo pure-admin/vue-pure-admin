@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { getCurrentInstance } from "vue";
+import { useNav } from "../../hooks/nav";
+
 const props = defineProps({
   collapse: Boolean
 });
 
-const title =
-  getCurrentInstance().appContext.config.globalProperties.$config?.Title;
+const { title } = useNav();
 </script>
 
 <template>

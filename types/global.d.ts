@@ -113,6 +113,7 @@ declare global {
   declare interface GlobalPropertiesApi {
     $echarts: ECharts;
     $storage: ResponsiveStorage;
+    $config: ServerConfigs;
   }
 
   function parseInt(s: string | number, radix?: number): number;

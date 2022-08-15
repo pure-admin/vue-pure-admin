@@ -1,54 +1,40 @@
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
 import Search from "../search/index.vue";
 import Notice from "../notice/index.vue";
 import { useNav } from "../../hooks/nav";
-import { templateRef } from "@vueuse/core";
 import avatars from "/@/assets/avatars.jpg";
 import { transformI18n } from "/@/plugins/i18n";
 import screenfull from "../screenfull/index.vue";
-import { useRoute, useRouter } from "vue-router";
 import { deviceDetection } from "@pureadmin/utils";
+import { ref, toRaw, watch, nextTick, onMounted } from "vue";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 import { getParentPaths, findRouteByPath } from "/@/router/utils";
+import { useTranslationLang } from "../../hooks/useTranslationLang";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 import globalization from "/@/assets/svg/globalization.svg?component";
-import {
-  ref,
-  toRaw,
-  watch,
-  nextTick,
-  onMounted,
-  getCurrentInstance
-} from "vue";
 
-const route = useRoute();
-const { locale, t } = useI18n();
-const routers = useRouter().options.routes;
-const menuRef = templateRef<ElRef | null>("menu", null);
-const instance =
-  getCurrentInstance().appContext.config.globalProperties.$storage;
+const menuRef = ref();
+let defaultActive = ref(null);
 
+const { t, route, locale, translationCh, translationEn } =
+  useTranslationLang(menuRef);
 const {
   device,
+  routers,
   logout,
   onPanel,
-  changeTitle,
   handleResize,
   menuSelect,
   resolvePath,
   username,
   avatarsStyle,
   getDropdownItemStyle,
-  getDropdownItemClass,
-  changeWangeditorLanguage
+  getDropdownItemClass
 } = useNav();
-
-let defaultActive = ref(null);
 
 function getDefaultActive(routePath) {
   const wholeMenus = usePermissionStoreHook().wholeMenus;
-  // 当前路由的父级路径
+  /** 当前路由的父级路径 */
   const parentRoutes = getParentPaths(routePath, wholeMenus)[0];
   defaultActive.value = findRouteByPath(
     parentRoutes,
@@ -64,40 +50,18 @@ onMounted(() => {
 });
 
 watch(
-  () => locale.value,
-  () => {
-    changeTitle(route.meta);
-    locale.value === "en"
-      ? changeWangeditorLanguage(locale.value)
-      : changeWangeditorLanguage("zh-CN");
-  }
-);
-
-watch(
   () => route.path,
   () => {
     getDefaultActive(route.path);
   }
 );
-
-function translationCh() {
-  instance.locale = { locale: "zh" };
-  locale.value = "zh";
-  handleResize(menuRef.value);
-}
-
-function translationEn() {
-  instance.locale = { locale: "en" };
-  locale.value = "en";
-  handleResize(menuRef.value);
-}
 </script>
 
 <template>
   <div v-if="device !== 'mobile'" class="horizontal-header">
     <el-menu
       router
-      ref="menu"
+      ref="menuRef"
       mode="horizontal"
       class="horizontal-header-menu"
       :default-active="defaultActive"

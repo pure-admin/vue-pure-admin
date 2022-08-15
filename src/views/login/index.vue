@@ -13,6 +13,7 @@ import { message } from "@pureadmin/components";
 import type { FormInstance } from "element-plus";
 import { storageSession } from "@pureadmin/utils";
 import { $t, transformI18n } from "/@/plugins/i18n";
+import { ref, reactive, watch, computed } from "vue";
 import { operates, thirdParty } from "./utils/enums";
 import { useLayout } from "/@/layout/hooks/useLayout";
 import { useUserStoreHook } from "/@/store/modules/user";
@@ -21,7 +22,6 @@ import { ReImageVerify } from "/@/components/ReImageVerify";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 import { useTranslationLang } from "/@/layout/hooks/useTranslationLang";
 import { useDataThemeChange } from "/@/layout/hooks/useDataThemeChange";
-import { ref, reactive, watch, computed, getCurrentInstance } from "vue";
 
 import dayIcon from "/@/assets/svg/day.svg?component";
 import darkIcon from "/@/assets/svg/dark.svg?component";
@@ -30,8 +30,6 @@ import globalization from "/@/assets/svg/globalization.svg?component";
 defineOptions({
   name: "Login"
 });
-const title =
-  getCurrentInstance().appContext.config.globalProperties.$config?.Title;
 const imgCode = ref("");
 const router = useRouter();
 const loading = ref(false);
@@ -46,7 +44,7 @@ initStorage();
 
 const { t } = useI18n();
 const { dataTheme, dataThemeChange } = useDataThemeChange();
-const { getDropdownItemStyle, getDropdownItemClass } = useNav();
+const { title, getDropdownItemStyle, getDropdownItemClass } = useNav();
 const { locale, translationCh, translationEn } = useTranslationLang();
 
 const ruleForm = reactive({

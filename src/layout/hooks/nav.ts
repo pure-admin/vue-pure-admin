@@ -1,6 +1,7 @@
 import { computed } from "vue";
 import { router } from "/@/router";
 import { getConfig } from "/@/config";
+import { useRouter } from "vue-router";
 import { emitter } from "/@/utils/mitt";
 import { routeMetaType } from "../types";
 import { remainingPaths } from "/@/router";
@@ -17,11 +18,12 @@ const errorInfo = "当前路由配置不正确，请检查配置";
 
 export function useNav() {
   const pureApp = useAppStoreHook();
-  // 用户名
+  const routers = useRouter().options.routes;
+  /** 用户名 */
   const username: string =
     storageSession.getItem<StorageConfigs>("info")?.username;
 
-  // 设置国际化选中后的样式
+  /** 设置国际化选中后的样式 */
   const getDropdownItemStyle = computed(() => {
     return (locale, t) => {
       return {
@@ -30,6 +32,7 @@ export function useNav() {
       };
     };
   });
+
   const getDropdownItemClass = computed(() => {
     return (locale, t) => {
       return locale === t ? "" : "!dark:hover:color-primary";
@@ -48,19 +51,23 @@ export function useNav() {
     return pureApp.getDevice;
   });
 
-  const { $storage } = useGlobal<GlobalPropertiesApi>();
+  const { $storage, $config } = useGlobal<GlobalPropertiesApi>();
   const layout = computed(() => {
     return $storage?.layout?.layout;
   });
 
-  // 动态title
+  const title = computed(() => {
+    return $config.Title;
+  });
+
+  /** 动态title */
   function changeTitle(meta: routeMetaType) {
     const Title = getConfig().Title;
     if (Title) document.title = `${transformI18n(meta.title)} | ${Title}`;
     else document.title = transformI18n(meta.title);
   }
 
-  // 退出登录
+  /** 退出登录 */
   function logout() {
     useMultiTagsStoreHook().handleTags("equal", [...routerArrays]);
     storageSession.removeItem("info");
@@ -101,7 +108,7 @@ export function useNav() {
     if (parentPathIndex > 0) {
       parentPath = indexPath.slice(0, parentPathIndex);
     }
-    // 找到当前路由的信息
+    /** 找到当前路由的信息 */
     function findCurrentRoute(indexPath: string, routes) {
       if (!routes) return console.error(errorInfo);
       return routes.map(item => {
@@ -109,7 +116,7 @@ export function useNav() {
           if (item.redirect) {
             findCurrentRoute(item.redirect, item.children);
           } else {
-            // 切换左侧菜单 通知标签页
+            /** 切换左侧菜单 通知标签页 */
             emitter.emit("changLayoutRoute", {
               indexPath,
               parentPath
@@ -123,7 +130,7 @@ export function useNav() {
     findCurrentRoute(indexPath, routers);
   }
 
-  // 判断路径是否参与菜单
+  /** 判断路径是否参与菜单 */
   function isRemaining(path: string): boolean {
     return remainingPaths.includes(path);
   }
@@ -138,9 +145,11 @@ export function useNav() {
   }
 
   return {
+    title,
     device,
     layout,
     logout,
+    routers,
     backHome,
     onPanel,
     changeTitle,

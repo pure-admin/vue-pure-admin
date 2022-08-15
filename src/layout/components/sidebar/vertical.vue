@@ -1,28 +1,28 @@
 <script setup lang="ts">
 import Logo from "./logo.vue";
+import { useRoute } from "vue-router";
 import { emitter } from "/@/utils/mitt";
 import { useNav } from "../../hooks/nav";
 import SidebarItem from "./sidebarItem.vue";
 import leftCollapse from "./leftCollapse.vue";
 import type { StorageConfigs } from "/#/index";
 import { storageLocal } from "@pureadmin/utils";
-import { useRoute, useRouter } from "vue-router";
 import { ref, computed, watch, onBeforeMount } from "vue";
 import { findRouteByPath, getParentPaths } from "/@/router/utils";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 
 const route = useRoute();
-const routers = useRouter().options.routes;
 const showLogo = ref(
   storageLocal.getItem<StorageConfigs>("responsive-configure")?.showLogo ?? true
 );
 
-const { device, pureApp, isCollapse, menuSelect, toggleSideBar } = useNav();
+const { routers, device, pureApp, isCollapse, menuSelect, toggleSideBar } =
+  useNav();
 
 let subMenuData = ref([]);
 
 const menuData = computed(() => {
-  return pureApp.layout === "mix"
+  return pureApp.layout === "mix" && device.value !== "mobile"
     ? subMenuData.value
     : usePermissionStoreHook().wholeMenus;
 });

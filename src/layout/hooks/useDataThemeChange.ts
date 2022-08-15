@@ -4,7 +4,6 @@ import { useLayout } from "./useLayout";
 import { themeColorsType } from "../types";
 import { TinyColor } from "@ctrl/tinycolor";
 import { ref, getCurrentInstance } from "vue";
-import { useAppStoreHook } from "/@/store/modules/app";
 import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
 import {
   darken,
@@ -45,13 +44,8 @@ export function useDataThemeChange() {
     toggleTheme({
       scopeName: `layout-theme-${theme}`
     });
-    instance.layout = {
-      layout: useAppStoreHook().layout,
-      theme,
-      darkMode: dataTheme.value,
-      sidebarStatus: instance.layout.sidebarStatus,
-      epThemeColor: instance.layout.epThemeColor
-    };
+    instance.layout.theme = theme;
+    instance.layout.darkMode = dataTheme.value;
 
     if (theme === "default" || theme === "light") {
       setEpThemeColor(getConfig().EpThemeColor);

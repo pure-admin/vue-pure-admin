@@ -1,10 +1,10 @@
 import { useNav } from "./nav";
 import { useI18n } from "vue-i18n";
 import { useRoute } from "vue-router";
-import { watch, getCurrentInstance } from "vue";
+import { watch, getCurrentInstance, type Ref } from "vue";
 
-export function useTranslationLang() {
-  const { changeTitle, changeWangeditorLanguage } = useNav();
+export function useTranslationLang(ref?: Ref) {
+  const { changeTitle, changeWangeditorLanguage, handleResize } = useNav();
   const { locale, t } = useI18n();
   const route = useRoute();
   const instance =
@@ -13,11 +13,13 @@ export function useTranslationLang() {
   function translationCh() {
     instance.locale = { locale: "zh" };
     locale.value = "zh";
+    ref && handleResize(ref.value);
   }
 
   function translationEn() {
     instance.locale = { locale: "en" };
     locale.value = "en";
+    ref && handleResize(ref.value);
   }
 
   watch(
@@ -29,8 +31,10 @@ export function useTranslationLang() {
         : changeWangeditorLanguage("zh-CN");
     }
   );
+
   return {
     t,
+    route,
     locale,
     translationCh,
     translationEn
