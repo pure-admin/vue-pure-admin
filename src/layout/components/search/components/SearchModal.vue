@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { useRouter } from "vue-router";
-import { useNav } from "../../../hooks/nav";
 import SearchResult from "./SearchResult.vue";
 import SearchFooter from "./SearchFooter.vue";
+import { useNav } from "/@/layout/hooks/useNav";
 import { transformI18n } from "/@/plugins/i18n";
 import { deleteChildren } from "@pureadmin/utils";
 import { useDebounceFn, onKeyStroke } from "@vueuse/core";

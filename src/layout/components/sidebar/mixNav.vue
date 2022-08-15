@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import Search from "../search/index.vue";
 import Notice from "../notice/index.vue";
-import { useNav } from "../../hooks/nav";
 import avatars from "/@/assets/avatars.jpg";
+import { useNav } from "/@/layout/hooks/useNav";
 import { transformI18n } from "/@/plugins/i18n";
 import screenfull from "../screenfull/index.vue";
 import { deviceDetection } from "@pureadmin/utils";

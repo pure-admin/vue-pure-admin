@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useNav } from "../../hooks/nav";
 import Search from "../search/index.vue";
 import Notice from "../notice/index.vue";
 import SidebarItem from "./sidebarItem.vue";
 import avatars from "/@/assets/avatars.jpg";
+import { useNav } from "/@/layout/hooks/useNav";
 import screenfull from "../screenfull/index.vue";
 import { deviceDetection } from "@pureadmin/utils";
 import { ref, watch, nextTick, onMounted } from "vue";

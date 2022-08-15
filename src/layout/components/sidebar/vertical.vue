@@ -2,10 +2,10 @@
 import Logo from "./logo.vue";
 import { useRoute } from "vue-router";
 import { emitter } from "/@/utils/mitt";
-import { useNav } from "../../hooks/nav";
 import SidebarItem from "./sidebarItem.vue";
 import leftCollapse from "./leftCollapse.vue";
 import type { StorageConfigs } from "/#/index";
+import { useNav } from "/@/layout/hooks/useNav";
 import { storageLocal } from "@pureadmin/utils";
 import { ref, computed, watch, onBeforeMount } from "vue";
 import { findRouteByPath, getParentPaths } from "/@/router/utils";

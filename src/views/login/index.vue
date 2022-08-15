@@ -8,7 +8,7 @@ import qrCode from "./components/qrCode.vue";
 import regist from "./components/regist.vue";
 import update from "./components/update.vue";
 import { initRouter } from "/@/router/utils";
-import { useNav } from "/@/layout/hooks/nav";
+import { useNav } from "/@/layout/hooks/useNav";
 import { message } from "@pureadmin/components";
 import type { FormInstance } from "element-plus";
 import { storageSession } from "@pureadmin/utils";

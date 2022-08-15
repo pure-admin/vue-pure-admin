@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useNav } from "../../hooks/nav";
+import { useNav } from "/@/layout/hooks/useNav";
 
 const props = defineProps({
   collapse: Boolean

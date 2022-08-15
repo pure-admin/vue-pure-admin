@@ -1,4 +1,4 @@
-import { useNav } from "./nav";
+import { useNav } from "./useNav";
 import { useI18n } from "vue-i18n";
 import { useRoute } from "vue-router";
 import { watch, getCurrentInstance, type Ref } from "vue";
