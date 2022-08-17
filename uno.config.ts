@@ -11,7 +11,31 @@ import {
 export default defineConfig({
   presets: [presetMini({ dark: "class" }), presetAttributify(), presetUno()],
   transformers: [transformerDirectives(), transformerVariantGroup()],
-  exclude: [`${__dirname}/node_modules/**/*`],
+  // unocss默认不扫描 node_modules、dist、css以及其扩展 具体实现：https://github.com/unocss/unocss/blob/03c8abe8f5020b3baaed3dfbfe8e2258dd041a7e/packages/vite/src/utils.ts#L3
+  exclude: [
+    "node_modules",
+    "dist",
+    ".git",
+    ".github",
+    ".husky",
+    ".vscode",
+    "build",
+    "locales",
+    "mock",
+    "public",
+    "types",
+    ".eslintrc.js",
+    ".prettierrc.js",
+    "postcss.config.js",
+    "stylelint.config.js",
+    "commitlint.config.js",
+    "README.md",
+    "CHANGELOG.md",
+    "README.en-US.md",
+    "CHANGELOG.en_US.md",
+    "CHANGELOG.zh_CN.md",
+    /\.(css|postcss|sass|scss|less|stylus|styl)$/
+  ],
   shortcuts: {
     "bg-dark": "bg-bg_color",
     "wh-full": "w-full h-full",
