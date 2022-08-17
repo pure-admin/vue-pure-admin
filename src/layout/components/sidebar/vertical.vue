@@ -69,7 +69,7 @@ watch(
         router
         unique-opened
         mode="vertical"
-        class="outer-most"
+        class="outer-most select-none"
         :collapse="isCollapse"
         :default-active="route.path"
         :collapse-transition="false"

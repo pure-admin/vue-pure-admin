@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { emitter } from "/@/utils/mitt";
-import { useTags } from "../../hooks/tag";
 import { RouteConfigs } from "../../types";
+import { useTags } from "../../hooks/useTag";
 import { routerArrays } from "/@/layout/types";
 import { isEqual, isEmpty } from "lodash-unified";
 import { toggleClass, removeClass } from "@pureadmin/utils";

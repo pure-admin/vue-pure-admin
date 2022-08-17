@@ -104,5 +104,10 @@ function onCloseTags() {
       </template>
     </TreeSelect>
     <el-button class="m-2" @click="onCloseTags">关闭标签</el-button>
+
+    <el-divider />
+    <el-button @click="$router.push({ name: 'Menu1-2-2' })">
+      跳转页内菜单
+    </el-button>
   </el-card>
 </template>
