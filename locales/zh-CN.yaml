@@ -21,6 +21,7 @@ buttons:
 menus:
   hshome: 首页
   hslogin: 登录
+  hsempty: 无Layout页
   hssysManagement: 系统管理
   hsUser: 用户管理
   hsDict: 字典管理

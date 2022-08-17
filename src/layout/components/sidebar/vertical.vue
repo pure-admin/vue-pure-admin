@@ -69,7 +69,7 @@ watch(
         router
         unique-opened
         mode="vertical"
-        class="outer-most"
+        class="outer-most select-none"
         :collapse="isCollapse"
         :default-active="route.path"
         :collapse-transition="false"
@@ -79,8 +79,8 @@ watch(
           v-for="routes in menuData"
           :key="routes.path"
           :item="routes"
-          class="outer-most"
           :base-path="routes.path"
+          class="outer-most select-none"
         />
       </el-menu>
     </el-scrollbar>

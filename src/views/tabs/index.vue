@@ -93,5 +93,10 @@ function onCloseTags() {
       <br />
       开启方式：在页面最右上角有个设置的小图标，点进去，会看到项目配置面板，找到标签页持久化开启即可。
     </p>
+
+    <el-divider />
+    <el-button @click="$router.push({ name: 'Empty' })">
+      跳转无Layout的空白页面
+    </el-button>
   </el-card>
 </template>
