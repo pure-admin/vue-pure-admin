@@ -33,8 +33,7 @@ export default defineConfig({
     "CHANGELOG.md",
     "README.en-US.md",
     "CHANGELOG.en_US.md",
-    "CHANGELOG.zh_CN.md",
-    /\.(css|postcss|sass|scss|less|stylus|styl)$/
+    "CHANGELOG.zh_CN.md"
   ],
   shortcuts: {
     "bg-dark": "bg-bg_color",
