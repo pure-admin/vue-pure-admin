@@ -204,7 +204,6 @@ const getThemeColor = computed(() => {
 
 /** 设置导航模式 */
 function setLayoutModel(layout: string) {
-  if (layout === $storage.layout.layout) return;
   layoutTheme.value.layout = layout;
   window.document.body.setAttribute("layout", layout);
   $storage.layout = {
