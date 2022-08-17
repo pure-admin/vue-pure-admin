@@ -109,5 +109,10 @@ function onCloseTags() {
     <el-button @click="$router.push({ name: 'Menu1-2-2' })">
       跳转页内菜单
     </el-button>
+
+    <el-divider />
+    <el-button @click="$router.push({ name: 'Empty' })">
+      跳转无Layout的空白页面
+    </el-button>
   </el-card>
 </template>

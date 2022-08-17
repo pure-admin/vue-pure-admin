@@ -2734,10 +2734,10 @@ packages:
       through: 2.3.8
     dev: true
 
-  /ace-builds/1.9.5:
+  /ace-builds/1.9.6:
     resolution:
       {
-        integrity: sha512-6iVEUPfqiKIGKsA63InrUhRRASmfuGnJCUBzkz/pL1BCPPEjasBp6fBA7mj4ovihICouopYYZaAKYhg6zypAwg==
+        integrity: sha512-M/Li4hPruMSbkkg35LgdbsIBq0WuwrV4ztP2pKaww47rC/MvDc1bOrYxwJrfgxdlzyLKrja5bn+9KwwuzqB2xQ==
       }
     dev: false
 
@@ -3015,7 +3015,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.21.3
-      caniuse-lite: 1.0.30001377
+      caniuse-lite: 1.0.30001378
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -3103,7 +3103,7 @@ packages:
     engines: { node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7 }
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001377
+      caniuse-lite: 1.0.30001378
       electron-to-chromium: 1.4.222
       node-releases: 2.0.6
       update-browserslist-db: 1.0.5_browserslist@4.21.3
@@ -3184,15 +3184,15 @@ packages:
       }
     dependencies:
       browserslist: 4.21.3
-      caniuse-lite: 1.0.30001377
+      caniuse-lite: 1.0.30001378
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
     dev: true
 
-  /caniuse-lite/1.0.30001377:
+  /caniuse-lite/1.0.30001378:
     resolution:
       {
-        integrity: sha512-I5XeHI1x/mRSGl96LFOaSk528LA/yZG3m3iQgImGujjO8gotd/DL8QaI1R1h1dg5ATeI2jqPblMpKq4Tr5iKfQ==
+        integrity: sha512-JVQnfoO7FK7WvU4ZkBRbPjaot4+YqxogSDosHv0Hv5mWpUESmN+UubMU6L/hGz8QlQ2aY5U0vR6MOs6j/CXpNA==
       }
     dev: true
 
@@ -9073,7 +9073,7 @@ packages:
         integrity: sha512-8Es47Ocrr5FnE8VDP+CtMM6GdJY+eWir8X8V5wrGqcT6pM6R3TIZZaD49NIDp78nZWu2UoWWM9bnuU8Jke10lw==
       }
     dependencies:
-      ace-builds: 1.9.5
+      ace-builds: 1.9.6
       ant-design-vue: 3.2.11_vue@3.2.37
       core-js: 3.24.1
       element-plus: 2.2.13_vue@3.2.37

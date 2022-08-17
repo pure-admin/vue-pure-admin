@@ -14,6 +14,7 @@ import panel from "../panel/index.vue";
 import { emitter } from "/@/utils/mitt";
 import { templateRef } from "@vueuse/core";
 import { routerArrays } from "/@/layout/types";
+import { useNav } from "/@/layout/hooks/useNav";
 import { useAppStoreHook } from "/@/store/modules/app";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
 import { useDataThemeChange } from "/@/layout/hooks/useDataThemeChange";
@@ -30,6 +31,7 @@ import dayIcon from "/@/assets/svg/day.svg?component";
 import darkIcon from "/@/assets/svg/dark.svg?component";
 
 const router = useRouter();
+const { device } = useNav();
 const { isDark } = useDark();
 const { isSelect } = useCssModule();
 const { $storage } = useGlobal<GlobalPropertiesApi>();
@@ -249,7 +251,12 @@ nextTick(() => {
         </li>
       </el-tooltip>
 
-      <el-tooltip class="item" content="顶部模式" placement="bottom">
+      <el-tooltip
+        v-if="device !== 'mobile'"
+        class="item"
+        content="顶部模式"
+        placement="bottom"
+      >
         <li
           :class="layoutTheme.layout === 'horizontal' ? $style.isSelect : ''"
           ref="horizontalRef"
@@ -260,7 +267,12 @@ nextTick(() => {
         </li>
       </el-tooltip>
 
-      <el-tooltip class="item" content="混合模式" placement="bottom">
+      <el-tooltip
+        v-if="device !== 'mobile'"
+        class="item"
+        content="混合模式"
+        placement="bottom"
+      >
         <li
           :class="layoutTheme.layout === 'mix' ? $style.isSelect : ''"
           ref="mixRef"

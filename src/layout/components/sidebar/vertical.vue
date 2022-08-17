@@ -79,8 +79,8 @@ watch(
           v-for="routes in menuData"
           :key="routes.path"
           :item="routes"
-          class="outer-most"
           :base-path="routes.path"
+          class="outer-most select-none"
         />
       </el-menu>
     </el-scrollbar>

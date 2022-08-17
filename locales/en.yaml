@@ -21,6 +21,7 @@ buttons:
 menus:
   hshome: Home
   hslogin: Login
+  hsempty: Empty Page
   hssysManagement: System Manage
   hsUser: User Manage
   hsDict: Dict Manage
