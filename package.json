@@ -78,7 +78,7 @@
     "vue-types": "^4.2.1",
     "vue-virtual-scroller": "^2.0.0-alpha.1",
     "vuedraggable": "^4.1.0",
-    "vxe-table": "^4.3.0-beta.3",
+    "vxe-table": "^4.3.0-beta.5",
     "xe-utils": "^3.5.6",
     "xgplayer": "^2.31.7",
     "xlsx": "^0.18.5"

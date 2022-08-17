@@ -118,7 +118,7 @@ specifiers:
   vue-types: ^4.2.1
   vue-virtual-scroller: ^2.0.0-alpha.1
   vuedraggable: ^4.1.0
-  vxe-table: ^4.3.0-beta.3
+  vxe-table: ^4.3.0-beta.5
   xe-utils: ^3.5.6
   xgplayer: ^2.31.7
   xlsx: ^0.18.5
@@ -174,7 +174,7 @@ dependencies:
   vue-types: 4.2.1_vue@3.2.37
   vue-virtual-scroller: 2.0.0-alpha.1_vue@3.2.37
   vuedraggable: 4.1.0_vue@3.2.37
-  vxe-table: 4.3.0-beta.3_vue@3.2.37+xe-utils@3.5.6
+  vxe-table: 4.3.0-beta.5_vue@3.2.37+xe-utils@3.5.6
   xe-utils: 3.5.6
   xgplayer: 2.31.7
   xlsx: 0.18.5
@@ -9308,10 +9308,10 @@ packages:
       vue: 3.2.37
     dev: false
 
-  /vxe-table/4.3.0-beta.3_vue@3.2.37+xe-utils@3.5.6:
+  /vxe-table/4.3.0-beta.5_vue@3.2.37+xe-utils@3.5.6:
     resolution:
       {
-        integrity: sha512-G4Pqdu3WRcs+GaoAnBp789tDz0/F0NoxT+87BnAp8i54dWuDhRlSD4YZO6pzrNRHCQ5b0JPr2ntG4U0B/cFQ6g==
+        integrity: sha512-ITkrob9xapUN+FVy2ut7+Uj/OFu+fLRYfg6QsBfATaDGT98oF+OyYIr3nyL8tiDFm3bQICJ6ktjZo+Z0CF0gHQ==
       }
     peerDependencies:
       vue: ^3.2.2

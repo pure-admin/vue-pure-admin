@@ -11,7 +11,6 @@ import {
   // 核心
   VXETable,
   // 表格功能
-  Footer,
   Icon,
   Filter,
   Edit,
@@ -78,7 +77,6 @@ VXETable.setup({
 
 export function useTable(app: App) {
   app
-    .use(Footer)
     .use(Icon)
     .use(Filter)
     .use(Edit)
