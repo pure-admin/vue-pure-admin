@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Sortable from "sortablejs";
 import { ref, onMounted } from "vue";
 import draggable from "vuedraggable/src/vuedraggable";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
@@ -39,7 +40,6 @@ const change = (evt): void => {
 
 onMounted(() => {
   // 使用原生sortable实现元素位置切换
-  // @ts-ignore
   new Sortable(document.querySelector(".cut-container"), {
     swap: true,
     forceFallback: true,

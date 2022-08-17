@@ -1,23 +1,18 @@
 <script setup lang="ts">
-import {
-  h,
-  ref,
-  computed,
-  Transition,
-  defineComponent,
-  getCurrentInstance
-} from "vue";
+import { useGlobal } from "@pureadmin/utils";
 import backTop from "/@/assets/svg/back_top.svg?component";
+import { h, computed, Transition, defineComponent } from "vue";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 
 const props = defineProps({
   fixedHeader: Boolean
 });
-const keepAlive: Boolean = ref(
-  getCurrentInstance().appContext.config.globalProperties.$config?.KeepAlive
-);
-const instance =
-  getCurrentInstance().appContext.app.config.globalProperties.$storage;
+
+const { $storage, $config } = useGlobal<GlobalPropertiesApi>();
+
+const keepAlive = computed(() => {
+  return $config?.KeepAlive;
+});
 
 const transitions = computed(() => {
   return route => {
@@ -26,11 +21,11 @@ const transitions = computed(() => {
 });
 
 const hideTabs = computed(() => {
-  return instance?.configure.hideTabs;
+  return $storage?.configure.hideTabs;
 });
 
 const layout = computed(() => {
-  return instance?.layout.layout === "vertical";
+  return $storage?.layout.layout === "vertical";
 });
 
 const getSectionStyle = computed(() => {

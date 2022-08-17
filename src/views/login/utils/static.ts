@@ -9,7 +9,7 @@ import illustration4 from "/@/assets/login/illustration4.svg?component";
 import illustration5 from "/@/assets/login/illustration5.svg?component";
 import illustration6 from "/@/assets/login/illustration6.svg?component";
 
-/* Show a different background every day */
+/** Show a different background every day */
 const currentWeek = computed(() => {
   switch (String(new Date().getDay())) {
     case "0":

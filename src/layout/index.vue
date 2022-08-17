@@ -3,8 +3,8 @@ import { setType } from "./types";
 import { emitter } from "/@/utils/mitt";
 import { useLayout } from "./hooks/useLayout";
 import { useAppStoreHook } from "/@/store/modules/app";
-import { deviceDetection, useDark } from "@pureadmin/utils";
 import { useSettingStoreHook } from "/@/store/modules/settings";
+import { deviceDetection, useDark, useGlobal } from "@pureadmin/utils";
 import { h, reactive, computed, onMounted, defineComponent } from "vue";
 
 import backTop from "/@/assets/svg/back_top.svg?component";
@@ -19,10 +19,10 @@ import Vertical from "./components/sidebar/vertical.vue";
 import Horizontal from "./components/sidebar/horizontal.vue";
 
 const { isDark } = useDark();
+const { layout } = useLayout();
 const isMobile = deviceDetection();
 const pureSetting = useSettingStoreHook();
-
-const { instance, layout } = useLayout();
+const { $storage } = useGlobal<GlobalPropertiesApi>();
 
 const set: setType = reactive({
   sidebar: computed(() => {
@@ -47,18 +47,18 @@ const set: setType = reactive({
   }),
 
   hideTabs: computed(() => {
-    return instance.$storage?.configure.hideTabs;
+    return $storage?.configure.hideTabs;
   })
 });
 
 function setTheme(layoutModel: string) {
   window.document.body.setAttribute("layout", layoutModel);
-  instance.$storage.layout = {
+  $storage.layout = {
     layout: `${layoutModel}`,
-    theme: instance.$storage.layout?.theme,
-    darkMode: instance.$storage.layout?.darkMode,
-    sidebarStatus: instance.$storage.layout?.sidebarStatus,
-    epThemeColor: instance.$storage.layout?.epThemeColor
+    theme: $storage.layout?.theme,
+    darkMode: $storage.layout?.darkMode,
+    sidebarStatus: $storage.layout?.sidebarStatus,
+    epThemeColor: $storage.layout?.epThemeColor
   };
 }
 
@@ -74,7 +74,7 @@ let isAutoCloseSidebar = true;
 emitter.on("resize", ({ detail }) => {
   if (isMobile) return;
   let { width } = detail;
-  width <= 670 ? setTheme("vertical") : setTheme(useAppStoreHook().layout);
+  width <= 760 ? setTheme("vertical") : setTheme(useAppStoreHook().layout);
   /** width app-wrapper类容器宽度
    * 0 < width <= 760 隐藏侧边栏
    * 760 < width <= 990 折叠侧边栏
@@ -89,7 +89,7 @@ emitter.on("resize", ({ detail }) => {
       isAutoCloseSidebar = false;
     }
   } else if (width > 990) {
-    if (!set.sidebar.isClickHamburger) {
+    if (!set.sidebar.isClickCollapse) {
       toggle("desktop", true);
       isAutoCloseSidebar = true;
     }

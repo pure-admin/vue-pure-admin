@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import path from "path";
-import { useNav } from "../../hooks/nav";
 import { childrenType } from "../../types";
+import { useNav } from "/@/layout/hooks/useNav";
 import { transformI18n } from "/@/plugins/i18n";
 import { useAppStoreHook } from "/@/store/modules/app";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";

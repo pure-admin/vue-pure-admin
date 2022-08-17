@@ -136,7 +136,6 @@ export function useElementPlus(app: App) {
   });
   // 注册指令
   plugins.forEach(plugin => {
-    // @ts-ignore
     app.use(plugin);
   });
 }

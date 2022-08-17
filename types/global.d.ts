@@ -6,6 +6,7 @@ import type {
   PropType as VuePropType
 } from "vue";
 import type { ECharts } from "echarts";
+import { type ResponsiveStorage } from "./index";
 
 // GlobalComponents for Volar
 declare module "vue" {
@@ -111,7 +112,8 @@ declare global {
 
   declare interface GlobalPropertiesApi {
     $echarts: ECharts;
-    $storage: ServerConfigs;
+    $storage: ResponsiveStorage;
+    $config: ServerConfigs;
   }
 
   function parseInt(s: string | number, radix?: number): number;

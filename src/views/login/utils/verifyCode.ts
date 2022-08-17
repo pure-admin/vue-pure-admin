@@ -3,9 +3,8 @@ import { cloneDeep } from "lodash-unified";
 import { ref } from "vue";
 
 const isDisabled = ref(false);
-const TEXT = "获取验证码";
 const timer = ref(null);
-const text = ref(TEXT);
+const text = ref("");
 
 export const useVerifyCode = () => {
   const start = async (
@@ -20,11 +19,11 @@ export const useVerifyCode = () => {
         clearInterval(timer.value);
         timer.value = setInterval(() => {
           if (time > 0) {
-            text.value = `${time}秒后重新获取`;
+            text.value = `${time}`;
             isDisabled.value = true;
             time -= 1;
           } else {
-            text.value = TEXT;
+            text.value = "";
             isDisabled.value = false;
             clearInterval(timer.value);
             time = initTime;
@@ -35,7 +34,7 @@ export const useVerifyCode = () => {
   };
 
   const end = () => {
-    text.value = TEXT;
+    text.value = "";
     isDisabled.value = false;
     clearInterval(timer.value);
   };

@@ -1,21 +1,25 @@
 <script setup lang="ts">
-import { useNav } from "../hooks/nav";
 import Search from "./search/index.vue";
 import Notice from "./notice/index.vue";
 import mixNav from "./sidebar/mixNav.vue";
 import avatars from "/@/assets/avatars.jpg";
+import { useNav } from "/@/layout/hooks/useNav";
 import Breadcrumb from "./sidebar/breadCrumb.vue";
 import { deviceDetection } from "@pureadmin/utils";
+import topCollapse from "./sidebar/topCollapse.vue";
 import screenfull from "../components/screenfull/index.vue";
 import { useTranslationLang } from "../hooks/useTranslationLang";
 import globalization from "/@/assets/svg/globalization.svg?component";
 
 const {
+  layout,
+  device,
   logout,
   onPanel,
   pureApp,
   username,
   avatarsStyle,
+  toggleSideBar,
   getDropdownItemStyle,
   getDropdownItemClass
 } = useNav();
@@ -27,11 +31,21 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
   <div
     class="navbar bg-[#fff] shadow-sm shadow-[rgba(0, 21, 41, 0.08)] dark:shadow-[#0d0d0d]"
   >
-    <Breadcrumb v-if="pureApp.layout !== 'mix'" class="breadcrumb-container" />
+    <topCollapse
+      v-if="device === 'mobile'"
+      class="hamburger-container"
+      :is-active="pureApp.sidebar.opened"
+      @toggleClick="toggleSideBar"
+    />
 
-    <mixNav v-if="pureApp.layout === 'mix'" />
+    <Breadcrumb
+      v-if="layout !== 'mix' && device !== 'mobile'"
+      class="breadcrumb-container"
+    />
 
-    <div v-if="pureApp.layout === 'vertical'" class="vertical-header-right">
+    <mixNav v-if="layout === 'mix'" />
+
+    <div v-if="layout === 'vertical'" class="vertical-header-right">
       <!-- 菜单搜索 -->
       <Search />
       <!-- 通知 -->
@@ -104,6 +118,13 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
   width: 100%;
   height: 48px;
   overflow: hidden;
+
+  .hamburger-container {
+    line-height: 48px;
+    height: 100%;
+    float: left;
+    cursor: pointer;
+  }
 
   .vertical-header-right {
     display: flex;

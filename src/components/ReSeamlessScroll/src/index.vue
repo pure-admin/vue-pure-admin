@@ -106,7 +106,7 @@ let defaultOption = computed(() => {
 });
 
 let options = computed(() => {
-  // @ts-ignore
+  // @ts-expect-error
   return copyObj({}, unref(defaultOption), classOption);
 });
 
@@ -167,8 +167,7 @@ let autoPlay = computed(() => {
 
 let scrollSwitch = computed(() => {
   // 从 props 解构出来的 属性 不再具有相应性.
-  // @ts-expect-error
-  return props.data.length >= unref(options).limitMoveNum;
+  return (props.data as any).length >= unref(options).limitMoveNum;
 });
 
 let hoverStopSwitch = computed(() => {

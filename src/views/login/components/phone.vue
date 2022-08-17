@@ -1,13 +1,16 @@
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
 import { ref, reactive } from "vue";
 import Motion from "../utils/motion";
 import { phoneRules } from "../utils/rule";
 import { message } from "@pureadmin/components";
 import type { FormInstance } from "element-plus";
+import { $t, transformI18n } from "/@/plugins/i18n";
 import { useVerifyCode } from "../utils/verifyCode";
 import { useUserStoreHook } from "/@/store/modules/user";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 
+const { t } = useI18n();
 const loading = ref(false);
 const ruleForm = reactive({
   phone: "",
@@ -23,7 +26,7 @@ const onLogin = async (formEl: FormInstance | undefined) => {
     if (valid) {
       // 模拟登录请求，需根据实际开发进行修改
       setTimeout(() => {
-        message.success("登录成功");
+        message.success(transformI18n($t("login.loginSuccess")));
         loading.value = false;
       }, 2000);
     } else {
@@ -46,7 +49,7 @@ function onBack() {
         <el-input
           clearable
           v-model="ruleForm.phone"
-          placeholder="手机号码"
+          :placeholder="t('login.phone')"
           :prefix-icon="useRenderIcon('iphone')"
         />
       </el-form-item>
@@ -58,7 +61,7 @@ function onBack() {
           <el-input
             clearable
             v-model="ruleForm.verifyCode"
-            placeholder="短信验证码"
+            :placeholder="t('login.smsVerifyCode')"
             :prefix-icon="
               useRenderIcon('ri:shield-keyhole-line', { online: true })
             "
@@ -68,7 +71,11 @@ function onBack() {
             class="ml-2"
             @click="useVerifyCode().start(ruleFormRef, 'phone')"
           >
-            {{ text }}
+            {{
+              text.length > 0
+                ? text + t("login.info")
+                : t("login.getVerifyCode")
+            }}
           </el-button>
         </div>
       </el-form-item>
@@ -83,7 +90,7 @@ function onBack() {
           :loading="loading"
           @click="onLogin(ruleFormRef)"
         >
-          登录
+          {{ t("login.login") }}
         </el-button>
       </el-form-item>
     </Motion>
@@ -91,7 +98,7 @@ function onBack() {
     <Motion :delay="200">
       <el-form-item>
         <el-button class="w-full" size="default" @click="onBack">
-          返回
+          {{ t("login.back") }}
         </el-button>
       </el-form-item>
     </Motion>

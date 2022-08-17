@@ -1,56 +1,47 @@
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
-import { useNav } from "../../hooks/nav";
 import Search from "../search/index.vue";
 import Notice from "../notice/index.vue";
-import { templateRef } from "@vueuse/core";
 import SidebarItem from "./sidebarItem.vue";
 import avatars from "/@/assets/avatars.jpg";
+import { useNav } from "/@/layout/hooks/useNav";
 import screenfull from "../screenfull/index.vue";
-import { useRoute, useRouter } from "vue-router";
 import { deviceDetection } from "@pureadmin/utils";
-import { watch, nextTick, onMounted, getCurrentInstance } from "vue";
+import { useTranslationLang } from "../../hooks/useTranslationLang";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 import globalization from "/@/assets/svg/globalization.svg?component";
+import { ref, watch, nextTick, onMounted, onBeforeUnmount } from "vue";
 
-const route = useRoute();
-const { locale, t } = useI18n();
-const routers = useRouter().options.routes;
-const menuRef = templateRef<ElRef | null>("menu", null);
-const instance =
-  getCurrentInstance().appContext.config.globalProperties.$storage;
-const title =
-  getCurrentInstance().appContext.config.globalProperties.$config?.Title;
+const menuRef = ref();
 
+const { t, route, locale, translationCh, translationEn } =
+  useTranslationLang(menuRef);
 const {
+  title,
+  routers,
   logout,
   backHome,
   onPanel,
-  changeTitle,
   handleResize,
   menuSelect,
   username,
   avatarsStyle,
   getDropdownItemStyle,
-  getDropdownItemClass,
-  changeWangeditorLanguage
+  getDropdownItemClass
 } = useNav();
 
-onMounted(() => {
+function onResizeMenu() {
   nextTick(() => {
     handleResize(menuRef.value);
   });
+}
+
+onMounted(() => {
+  window.addEventListener("resize", onResizeMenu);
 });
 
-watch(
-  () => locale.value,
-  () => {
-    changeTitle(route.meta);
-    locale.value === "en"
-      ? changeWangeditorLanguage(locale.value)
-      : changeWangeditorLanguage("zh-CN");
-  }
-);
+onBeforeUnmount(() => {
+  window.removeEventListener("resize", onResizeMenu);
+});
 
 watch(
   () => route.path,
@@ -58,18 +49,6 @@ watch(
     menuSelect(route.path, routers);
   }
 );
-
-function translationCh() {
-  instance.locale = { locale: "zh" };
-  locale.value = "zh";
-  handleResize(menuRef.value);
-}
-
-function translationEn() {
-  instance.locale = { locale: "en" };
-  locale.value = "en";
-  handleResize(menuRef.value);
-}
 </script>
 
 <template>
@@ -80,7 +59,7 @@ function translationEn() {
     </div>
     <el-menu
       router
-      ref="menu"
+      ref="menuRef"
       mode="horizontal"
       class="horizontal-header-menu"
       :default-active="route.path"

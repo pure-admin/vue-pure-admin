@@ -46,8 +46,7 @@ function dig(path = "0", level = 3) {
     };
 
     if (level > 0) {
-      // @ts-expect-error
-      treeNode.children = dig(value, level - 1);
+      (treeNode as any).children = dig(value, level - 1);
     }
 
     list.push(treeNode);
@@ -111,8 +110,7 @@ const onLoadData = treeNode => {
   return new Promise(resolve => {
     const { id } = treeNode.dataRef;
     setTimeout(() => {
-      // @ts-expect-error
-      treeData3.value = treeData3.value.concat([
+      treeData3.value = (treeData3 as any).value.concat([
         genTreeNode(id, false),
         genTreeNode(id, true)
       ]);

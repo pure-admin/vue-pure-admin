@@ -92,9 +92,12 @@
     }
 
     &.has-logo {
-      .el-scrollbar {
-        /* logo: 48px、Hamburger: 40px、Hamburger-shadow: 4px */
+      .el-scrollbar.pc {
+        /* logo: 48px、leftCollapse: 40px、leftCollapse-shadow: 4px */
         height: calc(100% - 92px);
+      }
+      .el-scrollbar.mobile {
+        height: 100%;
       }
     }
 

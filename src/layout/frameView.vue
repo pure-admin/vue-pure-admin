@@ -8,7 +8,7 @@ defineOptions({
 });
 
 const { t } = useI18n();
-const loading = ref(false);
+const loading = ref(true);
 const currentRoute = useRoute();
 const frameSrc = ref<string>("");
 const frameRef = ref<HTMLElement | null>(null);
@@ -16,6 +16,7 @@ const frameRef = ref<HTMLElement | null>(null);
 if (unref(currentRoute.meta)?.frameSrc) {
   frameSrc.value = unref(currentRoute.meta)?.frameSrc as string;
 }
+unref(currentRoute.meta)?.frameLoading === false && hideLoading();
 
 function hideLoading() {
   loading.value = false;
@@ -39,7 +40,6 @@ function init() {
 }
 
 onMounted(() => {
-  loading.value = true;
   init();
 });
 </script>

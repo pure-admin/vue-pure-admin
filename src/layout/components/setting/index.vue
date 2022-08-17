@@ -20,6 +20,7 @@ import { useDataThemeChange } from "/@/layout/hooks/useDataThemeChange";
 import {
   useDark,
   debounce,
+  useGlobal,
   storageLocal,
   storageSession
 } from "@pureadmin/utils";
@@ -31,6 +32,7 @@ import darkIcon from "/@/assets/svg/dark.svg?component";
 const router = useRouter();
 const { isDark } = useDark();
 const { isSelect } = useCssModule();
+const { $storage } = useGlobal<GlobalPropertiesApi>();
 
 const mixRef = templateRef<HTMLElement | null>("mixRef", null);
 const verticalRef = templateRef<HTMLElement | null>("verticalRef", null);
@@ -38,7 +40,6 @@ const horizontalRef = templateRef<HTMLElement | null>("horizontalRef", null);
 
 const {
   body,
-  instance,
   dataTheme,
   layoutTheme,
   themeColors,
@@ -58,17 +59,17 @@ if (unref(layoutTheme)) {
 }
 
 /** 默认灵动模式 */
-const markValue = ref(instance.configure?.showModel ?? "smart");
+const markValue = ref($storage.configure?.showModel ?? "smart");
 
-const logoVal = ref(instance.configure?.showLogo ?? true);
+const logoVal = ref($storage.configure?.showLogo ?? true);
 
 const settings = reactive({
-  greyVal: instance.configure.grey,
-  weakVal: instance.configure.weak,
-  tabsVal: instance.configure.hideTabs,
-  showLogo: instance.configure.showLogo,
-  showModel: instance.configure.showModel,
-  multiTagsCache: instance.configure.multiTagsCache
+  greyVal: $storage.configure.grey,
+  weakVal: $storage.configure.weak,
+  tabsVal: $storage.configure.hideTabs,
+  showLogo: $storage.configure.showLogo,
+  showModel: $storage.configure.showModel,
+  multiTagsCache: $storage.configure.multiTagsCache
 });
 
 const getThemeColorStyle = computed(() => {
@@ -85,9 +86,9 @@ const showThemeColors = computed(() => {
 });
 
 function storageConfigureChange<T>(key: string, val: T): void {
-  const storageConfigure = instance.configure;
+  const storageConfigure = $storage.configure;
   storageConfigure[key] = val;
-  instance.configure = storageConfigure;
+  $storage.configure = storageConfigure;
 }
 
 function toggleClass(flag: boolean, clsName: string, target?: HTMLElement) {
@@ -116,7 +117,7 @@ const weekChange = (value): void => {
 const tagsChange = () => {
   let showVal = settings.tabsVal;
   storageConfigureChange("hideTabs", showVal);
-  emitter.emit("tagViewsChange", showVal);
+  emitter.emit("tagViewsChange", showVal as unknown as string);
 };
 
 const multiTagsCacheChange = () => {
@@ -158,7 +159,7 @@ function setFalse(Doms): any {
   });
 }
 
-watch(instance, ({ layout }) => {
+watch($storage, ({ layout }) => {
   /* 设置wangeditorV5主题色 */
   body.style.setProperty("--w-e-toolbar-active-color", layout["epThemeColor"]);
   switch (layout["layout"]) {
@@ -203,12 +204,11 @@ const getThemeColor = computed(() => {
 function setLayoutModel(layout: string) {
   layoutTheme.value.layout = layout;
   window.document.body.setAttribute("layout", layout);
-  instance.layout = {
+  $storage.layout = {
     layout,
     theme: layoutTheme.value.theme,
-    darkMode: instance.layout.darkMode,
-    sidebarStatus: instance.layout.sidebarStatus,
-    epThemeColor: instance.layout.epThemeColor
+    darkMode: $storage.layout.darkMode,
+    sidebarStatus: $storage.layout.sidebarStatus
   };
   useAppStoreHook().setLayout(layout);
 }
