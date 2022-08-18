@@ -56,7 +56,6 @@ const getDivStyle = computed((): CSSProperties => {
 
 const getMenuTextStyle = computed(() => {
   return {
-    width: pureApp.sidebar.opened ? "210px" : "",
     overflow: "hidden",
     textOverflow: "ellipsis",
     outline: "none"
