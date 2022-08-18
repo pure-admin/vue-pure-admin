@@ -1,14 +1,14 @@
 import { http } from "../utils/http";
 
-interface userType extends Promise<any> {
+type Result = {
   svg?: string;
   code?: number;
   info?: object;
-}
+};
 
 // 获取验证码
-export const getVerify = (): userType => {
-  return http.request("get", "/captcha");
+export const getVerify = () => {
+  return http.request<Result>("get", "/captcha");
 };
 
 // 登录

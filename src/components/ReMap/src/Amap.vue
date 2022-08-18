@@ -19,10 +19,6 @@ defineOptions({
   name: "Amap"
 });
 
-type resultType = {
-  info: Array<undefined>;
-};
-
 let MarkerCluster;
 let map: MapConfigureInter;
 
@@ -96,8 +92,8 @@ onBeforeMount(() => {
 
       // 获取模拟车辆信息
       mapJson()
-        .then((res: resultType) => {
-          let points: object = res.info.map((v: any) => {
+        .then(({ info }) => {
+          let points: object = info.map(v => {
             return {
               lnglat: [v.lng, v.lat],
               ...v
