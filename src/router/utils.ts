@@ -104,14 +104,14 @@ function findRouteByPath(path: string, routes: RouteRecordRaw[]) {
   }
 }
 
-// 重置路由
-function resetRouter(): void {
-  router.getRoutes().forEach(route => {
-    const { name } = route;
-    if (name) {
-      router.hasRoute(name) && router.removeRoute(name);
-    }
-  });
+function addPathMatch() {
+  if (!router.hasRoute("pathMatch")) {
+    router.addRoute({
+      path: "/:pathMatch(.*)",
+      name: "pathMatch",
+      redirect: "/error/404"
+    });
+  }
 }
 
 // 初始化路由
@@ -146,10 +146,7 @@ function initRouter(name: string) {
         );
         usePermissionStoreHook().changeSetting(info);
       }
-      router.addRoute({
-        path: "/:pathMatch(.*)",
-        redirect: "/error/404"
-      });
+      addPathMatch();
     });
   });
 }
@@ -230,6 +227,8 @@ function addAsyncRoutes(arrRoutes: Array<RouteRecordRaw>) {
   if (!arrRoutes || !arrRoutes.length) return;
   const modulesRoutesKeys = Object.keys(modulesRoutes);
   arrRoutes.forEach((v: RouteRecordRaw) => {
+    // 将backstage属性加入meta，标识此路由为后端返回路由
+    v.meta.backstage = true;
     if (v.redirect) {
       v.component = Layout;
     } else if (v.meta?.frameSrc) {
@@ -295,7 +294,6 @@ export {
   ascending,
   filterTree,
   initRouter,
-  resetRouter,
   hasPermissions,
   getHistoryMode,
   addAsyncRoutes,

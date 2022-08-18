@@ -4,6 +4,7 @@ import { MockMethod } from "vite-plugin-mock";
 // http://mockjs.com/examples.html#Object
 const systemRouter = {
   path: "/system",
+  name: "User",
   redirect: "/system/user/index",
   meta: {
     icon: "setting",
@@ -51,6 +52,7 @@ const systemRouter = {
 const permissionRouter = {
   path: "/permission",
   redirect: "/permission/page/index",
+  name: "PermissionPage",
   meta: {
     title: "menus.permission",
     icon: "lollipop",
@@ -77,6 +79,7 @@ const permissionRouter = {
 
 const frameRouter = {
   path: "/iframe",
+  name: "FramePure",
   redirect: "/iframe/pure",
   meta: {
     icon: "monitor",
@@ -113,6 +116,7 @@ const frameRouter = {
 const tabsRouter = {
   path: "/tabs",
   redirect: "/tabs/index",
+  name: "Tabs",
   meta: {
     icon: "IF-team-icontabs",
     title: "menus.hstabs",

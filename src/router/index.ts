@@ -98,6 +98,19 @@ export const router: Router = createRouter({
   }
 });
 
+// 重置路由
+export function resetRouter() {
+  router.getRoutes().forEach(route => {
+    const { name, meta } = route;
+    if (name && router.hasRoute(name) && meta?.backstage) {
+      router.removeRoute(name);
+      router.options.routes = formatTwoStageRoutes(
+        formatFlatteningRoutes(buildHierarchyTree(ascending(routes)))
+      );
+    }
+  });
+}
+
 // 路由白名单
 const whiteList = ["/login"];
 
