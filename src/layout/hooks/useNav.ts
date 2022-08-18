@@ -73,9 +73,6 @@ export function useNav() {
     storageSession.removeItem("info");
     router.push("/login");
     resetRouter();
-    setTimeout(() => {
-      console.log("----", router.options.routes, router.getRoutes());
-    }, 3000);
   }
 
   function backHome() {
