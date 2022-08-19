@@ -3,12 +3,10 @@ import path from "path";
 import { childrenType } from "../../types";
 import { useNav } from "/@/layout/hooks/useNav";
 import { transformI18n } from "/@/plugins/i18n";
-import { useAppStoreHook } from "/@/store/modules/app";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 import { ref, toRaw, PropType, nextTick, computed, CSSProperties } from "vue";
 
-const { pureApp } = useNav();
-const menuMode = ["vertical", "mix"].includes(pureApp.layout);
+const { layout, isCollapse } = useNav();
 
 const props = defineProps({
   item: {
@@ -25,7 +23,7 @@ const props = defineProps({
 });
 
 const getExtraIconStyle = computed((): CSSProperties => {
-  if (useAppStoreHook().getSidebarStatus) {
+  if (!isCollapse.value) {
     return {
       position: "absolute",
       right: "10px"
@@ -46,7 +44,7 @@ const getNoDropdownStyle = computed((): CSSProperties => {
 
 const getDivStyle = computed((): CSSProperties => {
   return {
-    width: pureApp.sidebar.opened ? "" : "100%",
+    width: !isCollapse.value ? "" : "100%",
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
@@ -64,7 +62,7 @@ const getMenuTextStyle = computed(() => {
 
 const getSubTextStyle = computed((): CSSProperties => {
   return {
-    width: pureApp.sidebar.opened ? "210px" : "",
+    width: !isCollapse.value ? "210px" : "",
     display: "inline-block",
     overflow: "hidden",
     textOverflow: "ellipsis"
@@ -159,9 +157,19 @@ function resolvePath(routePath) {
       </div>
       <div
         v-if="
-          !pureApp.sidebar.opened &&
-          pureApp.layout === 'mix' &&
-          props.item?.pathList?.length === 2
+          isCollapse &&
+          layout === 'vertical' &&
+          props.item?.pathList?.length === 1
+        "
+        :style="getDivStyle"
+      >
+        <span :style="getMenuTextStyle">
+          {{ transformI18n(onlyOneChild.meta.title) }}
+        </span>
+      </div>
+      <div
+        v-if="
+          isCollapse && layout === 'mix' && props.item?.pathList?.length === 2
         "
         :style="getDivStyle"
       >
@@ -171,7 +179,7 @@ function resolvePath(routePath) {
       </div>
       <template #title>
         <div :style="getDivStyle">
-          <span v-if="!menuMode">
+          <span v-if="layout === 'horizontal'">
             {{ transformI18n(onlyOneChild.meta.title) }}
           </span>
           <el-tooltip
@@ -211,12 +219,14 @@ function resolvePath(routePath) {
           :is="useRenderIcon(props.item.meta && toRaw(props.item.meta.icon))"
         />
       </div>
-      <span v-if="!menuMode"> {{ transformI18n(props.item.meta.title) }}</span>
+      <span v-if="layout === 'horizontal'">
+        {{ transformI18n(props.item.meta.title) }}
+      </span>
       <el-tooltip
         v-else
         placement="top"
         :offset="-10"
-        :disabled="!pureApp.sidebar.opened || !props.item.showTooltip"
+        :disabled="!isCollapse || !props.item.showTooltip"
       >
         <template #content>
           {{ transformI18n(props.item.meta.title) }}
