@@ -51,7 +51,7 @@ export function useColumns() {
       label: "QQ交流群",
       cellRenderer: () => {
         return (
-          <a href="https://jq.qq.com/?_wv=1027&k=HntMx0dt" target="_blank">
+          <a href="https://jq.qq.com/?_wv=1027&k=E9fwmFGr" target="_blank">
             <span style="color: var(--el-color-primary)">
               点击链接加入群聊【Pure Admin】
             </span>
