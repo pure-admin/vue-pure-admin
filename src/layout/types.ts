@@ -12,7 +12,6 @@ export const routerArrays: Array<RouteConfigs> = [
 
 export type routeMetaType = {
   title?: string;
-  i18n?: boolean;
   icon?: string;
   showLink?: boolean;
   savedPosition?: boolean;
@@ -65,7 +64,6 @@ export type childrenType = {
   meta?: {
     icon?: string;
     title?: string;
-    i18n?: boolean;
     showParent?: boolean;
     extraIcon?: {
       svg?: boolean;

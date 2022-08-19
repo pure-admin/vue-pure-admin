@@ -1,7 +1,8 @@
 import { $t } from "/@/plugins/i18n";
+import type { RouteConfigsTable } from "/#/index";
 const Layout = () => import("/@/layout/index.vue");
 
-const homeRouter = {
+const homeRouter: RouteConfigsTable = {
   path: "/",
   name: "Home",
   component: Layout,

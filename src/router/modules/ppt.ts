@@ -1,7 +1,8 @@
+import type { RouteConfigsTable } from "/#/index";
 const Layout = () => import("/@/layout/index.vue");
 const IFrame = () => import("/@/layout/frameView.vue");
 
-const pptRouter = {
+const pptRouter: RouteConfigsTable = {
   path: "/ppt",
   component: Layout,
   redirect: "/ppt/index",
