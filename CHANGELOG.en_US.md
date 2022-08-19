@@ -1,3 +1,34 @@
+# 3.3.5 (2022-8-19)
+
+### 🎫 Feat
+
+- Secondary encapsulation of `Table` of `element-plus` into [@pureadmin/table](https://github.com/xiaoxian521/pure-admin-table), providing flexible configuration items and integrating into the platform
+- Secondary encapsulation of `Descriptions` of `element-plus` into [@pureadmin/descriptions](https://github.com/xiaoxian521/pure-admin-descriptions), providing flexible configuration items and integrating into the platform
+- Centralize most of the tools and hooks of the platform to [@pureadmin/utils](https://pure-admin-utils-docs.vercel.app/), and delete the code concentrated in this library to reduce the size of the platform
+- Add [unplugin-vue-define-options](https://www.npmjs.com/package/unplugin-vue-define-options) plugin, the page can directly write `defineOptions({name: custom name})`
+- Add project files, language analysis tool [cloc](https://www.npmjs.com/package/cloc)
+- Added landing page internationalization
+- Add full routing configuration table type declaration
+- Add virtual listing page demo
+- Add `PDF` preview page demo
+- Added export `execl` page demo
+- Added blank page demo without `Layout`
+
+### ✔️ refactor
+
+- Refactored the theme color to adapt to `element-plus` dark mode (also solved the problem that the same element `css` in `3.3.0` and earlier versions was overwritten many times, resulting in poor style debugging)
+- Refactored route reset function
+
+### 🍏 Perf
+
+- The compatible project storage directory is named in Chinese, but we really do not recommend Chinese naming, because a library may not escape the Chinese path, causing the project to crash
+- Optimized interface type
+
+### 🐞 Bug fixes
+
+- Fixed async routes with `showlink` set to `false`, not showing after refresh
+- Fixed vertical navigation menu text being hidden after collapse when there is no `icon`
+
 # 3.3.0 (2022-5-11)
 
 ### 🎫 Feat
