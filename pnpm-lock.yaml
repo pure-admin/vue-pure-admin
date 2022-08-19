@@ -57,7 +57,7 @@ specifiers:
   dayjs: ^1.11.4
   driver.js: ^0.9.8
   echarts: ^5.3.3
-  element-plus: ^2.2.13
+  element-plus: ^2.2.14
   element-resize-detector: ^1.2.3
   eslint: ^8.8.0
   eslint-plugin-prettier: ^4.0.0
@@ -145,7 +145,7 @@ dependencies:
   dayjs: 1.11.5
   driver.js: 0.9.8
   echarts: 5.3.3
-  element-plus: 2.2.13_vue@3.2.37
+  element-plus: 2.2.14_vue@3.2.37
   element-resize-detector: 1.2.4
   js-cookie: 3.0.1
   jsbarcode: 3.11.5
@@ -1414,7 +1414,7 @@ packages:
       }
     dependencies:
       "@element-plus/icons-vue": 2.0.9_vue@3.2.37
-      element-plus: 2.2.13_vue@3.2.37
+      element-plus: 2.2.14_vue@3.2.37
       vue: 3.2.37
     transitivePeerDependencies:
       - "@vue/composition-api"
@@ -1426,7 +1426,7 @@ packages:
         integrity: sha512-mJBpMj0YkaqTM5TDz+ek/f8h74qRLhDc/gLJhBq0wpyfCgG++Jd/9i+QUj8gedA5oN8IL6LOSFbcvlGDYxHgkw==
       }
     dependencies:
-      element-plus: 2.2.13_vue@3.2.37
+      element-plus: 2.2.14_vue@3.2.37
       vue: 3.2.37
     transitivePeerDependencies:
       - "@vue/composition-api"
@@ -4150,10 +4150,10 @@ packages:
       }
     dev: true
 
-  /element-plus/2.2.13_vue@3.2.37:
+  /element-plus/2.2.14_vue@3.2.37:
     resolution:
       {
-        integrity: sha512-dKQ7BPZC8deUPhv+6s4GgOL0GyGj3KpUarywxm6s1nWnHjH6FqeZlUcxPqBvJd7W/d81POayx3B13GP+rfkG9g==
+        integrity: sha512-V5Pis0OHhePg1RgVogZrcefaVl8vjVn4Pn9Qsh/t2CbFgjg9kKOYFqf/tuP3ObSXGm3X89hpe0W+nLVAsaFnpw==
       }
     peerDependencies:
       vue: ^3.2.0
@@ -4164,7 +4164,7 @@ packages:
       "@popperjs/core": /@sxzz/popperjs-es/2.11.7
       "@types/lodash": 4.14.183
       "@types/lodash-es": 4.17.6
-      "@vueuse/core": 8.9.4_vue@3.2.37
+      "@vueuse/core": 9.1.0_vue@3.2.37
       async-validator: 4.2.5
       dayjs: 1.11.5
       escape-html: 1.0.3
@@ -9076,7 +9076,7 @@ packages:
       ace-builds: 1.9.6
       ant-design-vue: 3.2.11_vue@3.2.37
       core-js: 3.24.1
-      element-plus: 2.2.13_vue@3.2.37
+      element-plus: 2.2.14_vue@3.2.37
       lodash: 4.17.21
       uuid: 8.3.2
       vue: 3.2.37

@@ -49,7 +49,7 @@
     "dayjs": "^1.11.4",
     "driver.js": "^0.9.8",
     "echarts": "^5.3.3",
-    "element-plus": "^2.2.13",
+    "element-plus": "^2.2.14",
     "element-resize-detector": "^1.2.3",
     "js-cookie": "^3.0.1",
     "jsbarcode": "^3.11.5",

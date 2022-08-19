@@ -54,7 +54,7 @@ export interface ResponsiveStorage {
 export interface RouteChildrenConfigsTable {
   /** 子路由地址 `必填` */
   path: string;
-  /** 路由名字（对应不要重复，根当前组件的`name`保持一致）`必填` */
+  /** 路由名字（对应不要重复，和当前组件的`name`保持一致）`必填` */
   name?: string;
   /** 路由重定向 `可选` */
   redirect?: string;
