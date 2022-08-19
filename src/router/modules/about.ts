@@ -6,7 +6,7 @@ const aboutRouter = {
   component: Layout,
   redirect: "/about/index",
   meta: {
-    icon: "question-line",
+    // icon: "question-line",
     title: $t("menus.hsAbout"),
     rank: 15
   },
