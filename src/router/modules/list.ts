@@ -1,10 +1,8 @@
 import { $t } from "/@/plugins/i18n";
 import type { RouteConfigsTable } from "/#/index";
-const Layout = () => import("/@/layout/index.vue");
 
 const ableRouter: RouteConfigsTable = {
   path: "/list",
-  component: Layout,
   redirect: "/list/card",
   meta: {
     icon: "list-check",
