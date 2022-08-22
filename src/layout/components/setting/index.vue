@@ -211,8 +211,9 @@ function setLayoutModel(layout: string) {
   $storage.layout = {
     layout,
     theme: layoutTheme.value.theme,
-    darkMode: $storage.layout.darkMode,
-    sidebarStatus: $storage.layout.sidebarStatus
+    darkMode: $storage.layout?.darkMode,
+    sidebarStatus: $storage.layout?.sidebarStatus,
+    epThemeColor: $storage.layout?.epThemeColor
   };
   useAppStoreHook().setLayout(layout);
 }

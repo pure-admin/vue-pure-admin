@@ -13,7 +13,7 @@ import {
 } from "@pureadmin/theme/dist/browser-utils";
 
 export function useDataThemeChange() {
-  const { layoutTheme } = useLayout();
+  const { layoutTheme, layout } = useLayout();
   const themeColors = ref<Array<themeColorsType>>([
     /* 道奇蓝（默认） */
     { color: "#1b2a47", themeColor: "default" },
@@ -36,7 +36,7 @@ export function useDataThemeChange() {
   ]);
 
   const { $storage } = useGlobal<GlobalPropertiesApi>();
-
+  const dataTheme = ref<boolean>($storage?.layout?.darkMode);
   const body = document.documentElement as HTMLElement;
 
   /** 设置导航主题色 */
@@ -45,8 +45,13 @@ export function useDataThemeChange() {
     toggleTheme({
       scopeName: `layout-theme-${theme}`
     });
-    $storage.layout.theme = theme;
-    $storage.layout.darkMode = dataTheme.value;
+    $storage.layout = {
+      layout: layout.value,
+      theme,
+      darkMode: dataTheme.value,
+      sidebarStatus: $storage.layout?.sidebarStatus,
+      epThemeColor: $storage.layout?.epThemeColor
+    };
 
     if (theme === "default" || theme === "light") {
       setEpThemeColor(getConfig().EpThemeColor);
@@ -82,7 +87,6 @@ export function useDataThemeChange() {
       );
     }
   };
-  const dataTheme = ref<boolean>($storage?.layout?.darkMode);
 
   /** 日间、夜间主题切换 */
   function dataThemeChange() {
@@ -94,10 +98,8 @@ export function useDataThemeChange() {
     }
 
     if (dataTheme.value) {
-      $storage.layout.darkMode = true;
       document.documentElement.classList.add("dark");
     } else {
-      $storage.layout.darkMode = false;
       document.documentElement.classList.remove("dark");
     }
   }
