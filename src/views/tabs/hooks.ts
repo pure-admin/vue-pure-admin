@@ -5,26 +5,48 @@ import { onBeforeMount } from "vue";
 export function useDetail() {
   const route = useRoute();
   const router = useRouter();
-  const id = route.query?.id ?? -1;
+  const id = route.query?.id ? route.query?.id : route.params?.id;
 
-  function toDetail(index: number | string | string[] | number[]) {
-    useMultiTagsStoreHook().handleTags("push", {
-      path: `/tabs/detail`,
-      parentPath: route.matched[0].path,
-      name: "TabDetail",
-      query: { id: String(index) },
-      meta: {
-        title: { zh: `No.${index} - 详情信息`, en: `No.${index} - DetailInfo` },
-        showLink: false,
-        dynamicLevel: 3
-      }
-    });
-    router.push({ name: "TabDetail", query: { id: String(index) } });
+  function toDetail(
+    index: number | string | string[] | number[],
+    model: string
+  ) {
+    if (model === "query") {
+      // 保存信息到标签页
+      useMultiTagsStoreHook().handleTags("push", {
+        path: `/tabs/query-detail`,
+        name: "TabQueryDetail",
+        query: { id: String(index) },
+        meta: {
+          title: {
+            zh: `No.${index} - 详情信息`,
+            en: `No.${index} - DetailInfo`
+          },
+          // 最大打开标签数
+          dynamicLevel: 3
+        }
+      });
+      // 路由跳转
+      router.push({ name: "TabQueryDetail", query: { id: String(index) } });
+    } else {
+      useMultiTagsStoreHook().handleTags("push", {
+        path: `/tabs/params-detail/:id`,
+        name: "TabParamsDetail",
+        params: { id: String(index) },
+        meta: {
+          title: {
+            zh: `No.${index} - 详情信息`,
+            en: `No.${index} - DetailInfo`
+          }
+        }
+      });
+      router.push({ name: "TabParamsDetail", params: { id: String(index) } });
+    }
   }
 
-  function initToDetail() {
+  function initToDetail(model) {
     onBeforeMount(() => {
-      if (id) toDetail(id);
+      if (id) toDetail(id, model);
     });
   }
 

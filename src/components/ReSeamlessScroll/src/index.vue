@@ -428,7 +428,7 @@ function scrollInitMove() {
       if (timer) clearTimeout(timer);
       copyHtml.value = unref(slotList).innerHTML;
       setTimeout(() => {
-        realBoxHeight.value = unref(realBox).offsetHeight;
+        realBoxHeight.value = unref(realBox)?.offsetHeight;
         scrollMove();
       }, 0);
     } else {

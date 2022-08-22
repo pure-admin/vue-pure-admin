@@ -7,6 +7,7 @@ import {
   RouteRecordNormalized
 } from "vue-router";
 import { router } from "./index";
+import { isProxy, toRaw } from "vue";
 import { loadEnv } from "../../build";
 import { cloneDeep } from "lodash-unified";
 import { useTimeoutFn } from "@vueuse/core";
@@ -86,7 +87,7 @@ function getParentPaths(path: string, routes: RouteRecordRaw[]) {
 function findRouteByPath(path: string, routes: RouteRecordRaw[]) {
   let res = routes.find((item: { path: string }) => item.path == path);
   if (res) {
-    return res;
+    return isProxy(res) ? toRaw(res) : res;
   } else {
     for (let i = 0; i < routes.length; i++) {
       if (
@@ -95,7 +96,7 @@ function findRouteByPath(path: string, routes: RouteRecordRaw[]) {
       ) {
         res = findRouteByPath(path, routes[i].children);
         if (res) {
-          return res;
+          return isProxy(res) ? toRaw(res) : res;
         }
       }
     }

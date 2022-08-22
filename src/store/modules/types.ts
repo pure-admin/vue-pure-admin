@@ -27,6 +27,7 @@ export type multiType = {
   name: string;
   meta: any;
   query?: object;
+  params?: object;
 };
 
 export type setType = {

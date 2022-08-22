@@ -1,123 +1,53 @@
 <script setup lang="ts">
-import {
-  ref,
-  watch,
-  unref,
-  toRaw,
-  reactive,
-  nextTick,
-  computed,
-  ComputedRef,
-  CSSProperties,
-  onBeforeMount,
-  getCurrentInstance
-} from "vue";
-
-import close from "/@/assets/svg/close.svg?component";
-import refresh from "/@/assets/svg/refresh.svg?component";
-import closeAll from "/@/assets/svg/close_all.svg?component";
-import closeLeft from "/@/assets/svg/close_left.svg?component";
-import closeOther from "/@/assets/svg/close_other.svg?component";
-import closeRight from "/@/assets/svg/close_right.svg?component";
-
-import { useI18n } from "vue-i18n";
 import { emitter } from "/@/utils/mitt";
-import type { StorageConfigs } from "/#/index";
+import { RouteConfigs } from "../../types";
+import { useTags } from "../../hooks/useTag";
 import { routerArrays } from "/@/layout/types";
-import { useRoute, useRouter } from "vue-router";
 import { isEqual, isEmpty } from "lodash-unified";
-import { transformI18n, $t } from "/@/plugins/i18n";
-import { RouteConfigs, tagsViewsType } from "../../types";
+import { toggleClass, removeClass } from "@pureadmin/utils";
+import { useResizeObserver, useDebounceFn } from "@vueuse/core";
 import { useSettingStoreHook } from "/@/store/modules/settings";
 import { handleAliveRoute, delAliveRoutes } from "/@/router/utils";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
-import { templateRef, useResizeObserver, useDebounceFn } from "@vueuse/core";
-import {
-  toggleClass,
-  removeClass,
-  hasClass,
-  storageLocal
-} from "@pureadmin/utils";
+import { ref, watch, unref, toRaw, nextTick, onBeforeMount } from "vue";
 
-const { t } = useI18n();
-const route = useRoute();
-const router = useRouter();
-const translateX = ref<number>(0);
-const activeIndex = ref<number>(-1);
-let refreshButton = "refresh-button";
-const instance = getCurrentInstance();
-const pureSetting = useSettingStoreHook();
-const tabDom = templateRef<HTMLElement | null>("tabDom", null);
-const containerDom = templateRef<HTMLElement | null>("containerDom", null);
-const scrollbarDom = templateRef<HTMLElement | null>("scrollbarDom", null);
-const showTags =
-  ref(storageLocal.getItem<StorageConfigs>("responsive-configure").hideTabs) ??
-  "false";
-// @ts-expect-error
-let multiTags: ComputedRef<Array<RouteConfigs>> = computed(() => {
-  return useMultiTagsStoreHook()?.multiTags;
-});
+const {
+  route,
+  router,
+  visible,
+  showTags,
+  instance,
+  multiTags,
+  tagsViews,
+  buttonTop,
+  buttonLeft,
+  showModel,
+  translateX,
+  activeIndex,
+  getTabStyle,
+  iconIsActive,
+  linkIsActive,
+  currentSelect,
+  scheduleIsActive,
+  getContextMenuStyle,
+  closeMenu,
+  onMounted,
+  onMouseenter,
+  onMouseleave,
+  transformI18n
+} = useTags();
 
-const linkIsActive = computed(() => {
-  return item => {
-    if (Object.keys(route.query).length === 0) {
-      if (route.path === item.path) {
-        return "is-active";
-      } else {
-        return "";
-      }
-    } else {
-      if (isEqual(route?.query, item?.query)) {
-        return "is-active";
-      } else {
-        return "";
-      }
-    }
-  };
-});
-
-const scheduleIsActive = computed(() => {
-  return item => {
-    if (Object.keys(route.query).length === 0) {
-      if (route.path === item.path) {
-        return "schedule-active";
-      } else {
-        return "";
-      }
-    } else {
-      if (isEqual(route?.query, item?.query)) {
-        return "schedule-active";
-      } else {
-        return "";
-      }
-    }
-  };
-});
-
-const iconIsActive = computed(() => {
-  return (item, index) => {
-    if (index === 0) return;
-    if (Object.keys(route.query).length === 0) {
-      if (route.path === item.path) {
-        return true;
-      } else {
-        return false;
-      }
-    } else {
-      if (isEqual(route?.query, item?.query)) {
-        return true;
-      } else {
-        return false;
-      }
-    }
-  };
-});
+const tabDom = ref();
+const containerDom = ref();
+const scrollbarDom = ref();
 
 const dynamicTagView = () => {
   const index = multiTags.value.findIndex(item => {
-    if (item?.query) {
-      return isEqual(route?.query, item?.query);
+    if (item.query) {
+      return isEqual(route.query, item.query);
+    } else if (item.params) {
+      return isEqual(route.params, item.params);
     } else {
       return item.path === route.path;
     }
@@ -125,23 +55,9 @@ const dynamicTagView = () => {
   moveToView(index);
 };
 
-watch([route], () => {
-  activeIndex.value = -1;
-  dynamicTagView();
-});
-
-useResizeObserver(
-  scrollbarDom,
-  useDebounceFn(() => {
-    dynamicTagView();
-  }, 200)
-);
-
-const tabNavPadding = 10;
 const moveToView = (index: number): void => {
-  if (!instance.refs["dynamic" + index]) {
-    return;
-  }
+  const tabNavPadding = 10;
+  if (!instance.refs["dynamic" + index]) return;
   const tabItemEl = instance.refs["dynamic" + index][0];
   const tabItemElOffsetLeft = (tabItemEl as HTMLElement)?.offsetLeft;
   const tabItemOffsetWidth = (tabItemEl as HTMLElement)?.offsetWidth;
@@ -151,7 +67,6 @@ const moveToView = (index: number): void => {
     : 0;
   // 已有标签页总长度（包含溢出部分）
   const tabDomWidth = tabDom.value ? tabDom.value?.offsetWidth : 0;
-
   if (tabDomWidth < scrollbarDomWidth || tabItemElOffsetLeft === 0) {
     translateX.value = 0;
   } else if (tabItemElOffsetLeft < -translateX.value) {
@@ -200,71 +115,6 @@ const handleScroll = (offset: number): void => {
   }
 };
 
-const tagsViews = reactive<Array<tagsViewsType>>([
-  {
-    icon: refresh,
-    text: $t("buttons.hsreload"),
-    divided: false,
-    disabled: false,
-    show: true
-  },
-  {
-    icon: close,
-    text: $t("buttons.hscloseCurrentTab"),
-    divided: false,
-    disabled: multiTags.value.length > 1 ? false : true,
-    show: true
-  },
-  {
-    icon: closeLeft,
-    text: $t("buttons.hscloseLeftTabs"),
-    divided: true,
-    disabled: multiTags.value.length > 1 ? false : true,
-    show: true
-  },
-  {
-    icon: closeRight,
-    text: $t("buttons.hscloseRightTabs"),
-    divided: false,
-    disabled: multiTags.value.length > 1 ? false : true,
-    show: true
-  },
-  {
-    icon: closeOther,
-    text: $t("buttons.hscloseOtherTabs"),
-    divided: true,
-    disabled: multiTags.value.length > 2 ? false : true,
-    show: true
-  },
-  {
-    icon: closeAll,
-    text: $t("buttons.hscloseAllTabs"),
-    divided: false,
-    disabled: multiTags.value.length > 1 ? false : true,
-    show: true
-  }
-]);
-
-// 显示模式，默认灵动模式显示
-const showModel = ref(
-  storageLocal.getItem<StorageConfigs>("responsive-configure")?.showModel ||
-    "smart"
-);
-if (!showModel.value) {
-  const configure = storageLocal.getItem<StorageConfigs>(
-    "responsive-configure"
-  );
-  configure.showModel = "card";
-  storageLocal.setItem("responsive-configure", configure);
-}
-
-let visible = ref(false);
-let buttonLeft = ref(0);
-let buttonTop = ref(0);
-
-// 当前右键选中的路由信息
-let currentSelect = ref({});
-
 function dynamicRouteTag(value: string, parentPath: string): void {
   const hasValue = multiTags.value.some(item => {
     return item.path === value;
@@ -292,8 +142,9 @@ function dynamicRouteTag(value: string, parentPath: string): void {
   concatPath(router.options.routes as any, value, parentPath);
 }
 
-// 重新加载
+/** 刷新路由 */
 function onFresh() {
+  const refreshButton = "refresh-button";
   toggleClass(true, refreshButton, document.querySelector(".rotate"));
   const { fullPath, query } = unref(route);
   router.replace({
@@ -312,6 +163,10 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
     if (item.query) {
       if (item.path === obj.path) {
         return item.query === obj.query;
+      }
+    } else if (item.params) {
+      if (item.path === obj.path) {
+        return item.params === obj.params;
       }
     } else {
       return item.path === obj.path;
@@ -351,24 +206,25 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
       : handleAliveRoute(route.matched, "delete");
     // 如果删除当前激活tag就自动切换到最后一个tag
     if (tag === "left") return;
-    nextTick(() => {
-      router.push({
-        path: newRoute[0].path,
-        query: newRoute[0].query
-      });
-    });
+    if (newRoute[0]?.query) {
+      router.push({ name: newRoute[0].name, query: newRoute[0].query });
+    } else if (newRoute[0]?.params) {
+      router.push({ name: newRoute[0].name, params: newRoute[0].params });
+    } else {
+      router.push({ path: newRoute[0].path });
+    }
   } else {
     // 删除缓存路由
     tag ? delAliveRoutes(delAliveRouteList) : delAliveRoutes([obj]);
     if (!multiTags.value.length) return;
-    let isHasActiveTag = multiTags.value.some(item => {
-      return item.path === route.path;
-    });
-    !isHasActiveTag &&
-      router.push({
-        path: newRoute[0].path,
-        query: newRoute[0].query
-      });
+    if (multiTags.value.some(item => item.path === route.path)) return;
+    if (newRoute[0]?.query) {
+      router.push({ name: newRoute[0].name, query: newRoute[0].query });
+    } else if (newRoute[0]?.params) {
+      router.push({ name: newRoute[0].name, params: newRoute[0].params });
+    } else {
+      router.push({ path: newRoute[0].path });
+    }
   }
 }
 
@@ -385,7 +241,8 @@ function onClickDrop(key, item, selectRoute?: RouteConfigs) {
       path: selectRoute.path,
       meta: selectRoute.meta,
       name: selectRoute.name,
-      query: selectRoute.query
+      query: selectRoute?.query,
+      params: selectRoute?.params
     };
   } else {
     selectTagRoute = { path: route.path, meta: route.meta };
@@ -394,7 +251,7 @@ function onClickDrop(key, item, selectRoute?: RouteConfigs) {
   // 当前路由信息
   switch (key) {
     case 0:
-      // 重新加载
+      // 刷新路由
       onFresh();
       break;
     case 1:
@@ -433,13 +290,9 @@ function handleCommand(command: any) {
   onClickDrop(key, item);
 }
 
-// 触发右键中菜单的点击事件
+/** 触发右键中菜单的点击事件 */
 function selectTag(key, item) {
   onClickDrop(key, item, currentSelect.value);
-}
-
-function closeMenu() {
-  visible.value = false;
 }
 
 function showMenus(value: boolean) {
@@ -454,7 +307,7 @@ function disabledMenus(value: boolean) {
   });
 }
 
-// 检查当前右键的菜单两边是否存在别的菜单，如果左侧的菜单是首页，则不显示关闭左侧标签页，如果右侧没有菜单，则不显示关闭右侧标签页
+/** 检查当前右键的菜单两边是否存在别的菜单，如果左侧的菜单是首页，则不显示关闭左侧标签页，如果右侧没有菜单，则不显示关闭右侧标签页 */
 function showMenuModel(
   currentPath: string,
   query: object = {},
@@ -514,7 +367,7 @@ function openMenu(tag, e) {
     // 右键菜单为首页，只显示刷新
     showMenus(false);
     tagsViews[0].show = true;
-  } else if (route.path !== tag.path) {
+  } else if (route.path !== tag.path && route.name !== tag.name) {
     // 右键菜单不匹配当前路由，隐藏刷新
     tagsViews[0].show = false;
     showMenuModel(tag.path, tag.query);
@@ -542,63 +395,36 @@ function openMenu(tag, e) {
   } else {
     buttonLeft.value = left;
   }
-  pureSetting.hiddenSideBar
+  useSettingStoreHook().hiddenSideBar
     ? (buttonTop.value = e.clientY)
     : (buttonTop.value = e.clientY - 40);
-  setTimeout(() => {
+  nextTick(() => {
     visible.value = true;
-  }, 10);
-}
-
-// 触发tags标签切换
-function tagOnClick(item) {
-  router.push({
-    path: item?.path,
-    query: item?.query
   });
-  showMenuModel(item?.path, item?.query);
 }
 
-// 鼠标移入
-function onMouseenter(index) {
-  if (index) activeIndex.value = index;
-  if (unref(showModel) === "smart") {
-    if (hasClass(instance.refs["schedule" + index][0], "schedule-active"))
-      return;
-    toggleClass(true, "schedule-in", instance.refs["schedule" + index][0]);
-    toggleClass(false, "schedule-out", instance.refs["schedule" + index][0]);
-  } else {
-    if (hasClass(instance.refs["dynamic" + index][0], "card-active")) return;
-    toggleClass(true, "card-in", instance.refs["dynamic" + index][0]);
-    toggleClass(false, "card-out", instance.refs["dynamic" + index][0]);
-  }
-}
-
-// 鼠标移出
-function onMouseleave(index) {
-  activeIndex.value = -1;
-  if (unref(showModel) === "smart") {
-    if (hasClass(instance.refs["schedule" + index][0], "schedule-active"))
-      return;
-    toggleClass(false, "schedule-in", instance.refs["schedule" + index][0]);
-    toggleClass(true, "schedule-out", instance.refs["schedule" + index][0]);
-  } else {
-    if (hasClass(instance.refs["dynamic" + index][0], "card-active")) return;
-    toggleClass(false, "card-in", instance.refs["dynamic" + index][0]);
-    toggleClass(true, "card-out", instance.refs["dynamic" + index][0]);
-  }
-}
-
-watch(
-  () => visible.value,
-  val => {
-    if (val) {
-      document.body.addEventListener("click", closeMenu);
+/** 触发tags标签切换 */
+function tagOnClick(item) {
+  const { name, path } = item;
+  if (name) {
+    if (item.query) {
+      router.push({
+        name,
+        query: item.query
+      });
+    } else if (item.params) {
+      router.push({
+        name,
+        params: item.params
+      });
     } else {
-      document.body.removeEventListener("click", closeMenu);
+      router.push({ name });
     }
+  } else {
+    router.push({ path });
   }
-);
+  // showMenuModel(item?.path, item?.query);
+}
 
 onBeforeMount(() => {
   if (!instance) return;
@@ -626,14 +452,18 @@ onBeforeMount(() => {
   });
 });
 
-const getTabStyle = computed((): CSSProperties => {
-  return {
-    transform: `translateX(${translateX.value}px)`
-  };
+watch([route], () => {
+  activeIndex.value = -1;
+  dynamicTagView();
 });
 
-const getContextMenuStyle = computed((): CSSProperties => {
-  return { left: buttonLeft.value + "px", top: buttonTop.value + "px" };
+onMounted(() => {
+  useResizeObserver(
+    scrollbarDom,
+    useDebounceFn(() => {
+      dynamicTagView();
+    }, 200)
+  );
 });
 </script>
 
@@ -705,7 +535,7 @@ const getContextMenuStyle = computed((): CSSProperties => {
         >
           <li v-if="item.show" @click="selectTag(key, item)">
             <component :is="toRaw(item.icon)" :key="key" />
-            {{ t(item.text) }}
+            {{ transformI18n(item.text) }}
           </li>
         </div>
       </ul>
@@ -714,7 +544,7 @@ const getContextMenuStyle = computed((): CSSProperties => {
     <ul class="right-button">
       <li>
         <span
-          :title="t('buttons.hsrefreshRoute')"
+          :title="transformI18n('buttons.hsrefreshRoute')"
           class="el-icon-refresh-right rotate"
           @click="onFresh"
         >
@@ -742,7 +572,7 @@ const getContextMenuStyle = computed((): CSSProperties => {
                   :key="key"
                   style="margin-right: 6px"
                 />
-                {{ t(item.text) }}
+                {{ transformI18n(item.text) }}
               </el-dropdown-item>
             </el-dropdown-menu>
           </template>

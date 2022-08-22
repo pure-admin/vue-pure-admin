@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref, watch } from "vue";
 import { isEqual } from "lodash-unified";
 import { transformI18n } from "/@/plugins/i18n";
+import { ref, watch, onMounted, toRaw } from "vue";
 import { getParentPaths, findRouteByPath } from "/@/router/utils";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
 import { useRoute, useRouter, RouteLocationMatched } from "vue-router";
@@ -14,19 +14,24 @@ const multiTags: any = useMultiTagsStoreHook().multiTags;
 
 const isDashboard = (route: RouteLocationMatched): boolean | string => {
   const name = route && (route.name as string);
-  if (!name) {
-    return false;
-  }
+  if (!name) return false;
   return name.trim().toLocaleLowerCase() === "Welcome".toLocaleLowerCase();
 };
 
 const getBreadcrumb = (): void => {
   // 当前路由信息
   let currentRoute;
+
   if (Object.keys(route.query).length > 0) {
     multiTags.forEach(item => {
       if (isEqual(route.query, item?.query)) {
-        currentRoute = item;
+        currentRoute = toRaw(item);
+      }
+    });
+  } else if (Object.keys(route.params).length > 0) {
+    multiTags.forEach(item => {
+      if (isEqual(route.params, item?.params)) {
+        currentRoute = toRaw(item);
       }
     });
   } else {
@@ -38,29 +43,12 @@ const getBreadcrumb = (): void => {
   let matched = [];
   // 获取每个父级路径对应的路由信息
   parentRoutes.forEach(path => {
-    if (path !== "/") {
-      matched.push(findRouteByPath(path, routes));
-    }
+    if (path !== "/") matched.push(findRouteByPath(path, routes));
   });
-  if (router.currentRoute.value.meta?.refreshRedirect) {
-    matched.unshift(
-      findRouteByPath(
-        router.currentRoute.value.meta.refreshRedirect as string,
-        routes
-      )
-    );
-  } else {
-    // 过滤与子级相同标题的父级路由
-    matched = matched.filter(item => {
-      return !item.redirect || (item.redirect && item.children.length !== 1);
-    });
-  }
-  if (currentRoute?.path !== "/welcome") {
-    matched.push(currentRoute);
-  }
 
-  const first = matched[0];
-  if (!isDashboard(first)) {
+  if (currentRoute?.path !== "/welcome") matched.push(currentRoute);
+
+  if (!isDashboard(matched[0])) {
     matched = [
       {
         path: "/welcome",
@@ -70,60 +58,51 @@ const getBreadcrumb = (): void => {
     ].concat(matched);
   }
 
+  matched.forEach((item, index) => {
+    if (currentRoute.query || currentRoute.params) return;
+    if (item?.children) {
+      item.children.forEach(v => {
+        if (v.meta.title === item.meta.title) {
+          matched.splice(index, 1);
+        }
+      });
+    }
+  });
+
   levelList.value = matched.filter(
     item => item?.meta && item?.meta.title !== false
   );
 };
 
-getBreadcrumb();
+const handleLink = (item: RouteLocationMatched): void => {
+  const { redirect, path } = item;
+  if (redirect) {
+    router.push(redirect as any);
+  } else {
+    router.push(path);
+  }
+};
+
+onMounted(() => {
+  getBreadcrumb();
+});
 
 watch(
   () => route.path,
-  () => getBreadcrumb()
-);
-
-watch(
-  () => route.query,
-  () => getBreadcrumb()
-);
-
-const handleLink = (item: RouteLocationMatched): any => {
-  const { redirect, path } = item;
-  if (redirect) {
-    router.push(redirect.toString());
-    return;
+  () => {
+    getBreadcrumb();
   }
-  router.push(path);
-};
+);
 </script>
 
 <template>
-  <el-breadcrumb class="app-breadcrumb select-none" separator="/">
+  <el-breadcrumb class="!leading-[50px] select-none" separator="/">
     <transition-group appear name="breadcrumb">
-      <el-breadcrumb-item v-for="(item, index) in levelList" :key="item.path">
-        <span
-          v-if="item.redirect === 'noRedirect' || index == levelList.length - 1"
-          class="no-redirect"
-        >
-          {{ transformI18n(item.meta.title) }}
-        </span>
-        <a v-else @click.prevent="handleLink(item)">
+      <el-breadcrumb-item v-for="item in levelList" :key="item.path">
+        <a @click.prevent="handleLink(item)">
           {{ transformI18n(item.meta.title) }}
         </a>
       </el-breadcrumb-item>
     </transition-group>
   </el-breadcrumb>
 </template>
-
-<style lang="scss" scoped>
-.app-breadcrumb.el-breadcrumb {
-  display: inline-block;
-  font-size: 14px;
-  line-height: 50px;
-
-  .no-redirect {
-    color: #97a8be;
-    cursor: text;
-  }
-}
-</style>

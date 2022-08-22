@@ -156,7 +156,7 @@ watch(
             >
               <el-divider class="tab-divider" border-style="dashed" />
               <el-scrollbar height="220px">
-                <ul class="flex flex-wrap px-2 ml-2">
+                <ul class="flex-wrap px-2 ml-2">
                   <li
                     v-for="(item, key) in pageList"
                     :key="key"

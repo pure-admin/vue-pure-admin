@@ -6,8 +6,8 @@ import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 import {
   deleteChildren,
-  appendFieldByUniqueId,
-  getNodeByUniqueId
+  getNodeByUniqueId,
+  appendFieldByUniqueId
 } from "@pureadmin/utils";
 import { useDetail } from "./hooks";
 
@@ -50,9 +50,32 @@ function onCloseTags() {
     <template #header>
       <div>标签页复用，超出限制自动关闭（使用场景: 动态路由）</div>
     </template>
-    <el-button v-for="index in 6" :key="index" @click="toDetail(index)">
-      打开{{ index }}详情页
-    </el-button>
+    <div class="flex-wrap items-center">
+      <p>query传参模式：</p>
+      <el-button
+        class="m-2"
+        v-for="index in 6"
+        :key="index"
+        @click="toDetail(index, 'query')"
+      >
+        打开{{ index }}详情页
+      </el-button>
+    </div>
+
+    <el-divider />
+
+    <div class="flex-wrap items-center">
+      <p>params传参模式：</p>
+      <el-button
+        class="m-2"
+        v-for="index in 6"
+        :key="index"
+        @click="toDetail(index, 'params')"
+      >
+        打开{{ index }}详情页
+      </el-button>
+    </div>
+
     <el-divider />
     <TreeSelect
       class="w-300px"
@@ -80,19 +103,27 @@ function onCloseTags() {
         <span>{{ transformI18n(data.meta.title) }}</span>
       </template>
     </TreeSelect>
-    <el-button class="ml-2" @click="onCloseTags">关闭标签</el-button>
-    <br />
-    <p class="mt-4">
-      注意：此demo并未开启标签页缓存，如果需要在
-      <span class="text-red-500">刷新页面</span>
-      的时候同时
-      <span class="text-red-500">保留标签页的显示</span>
-      或者
-      <span class="text-red-500">保留url的参数</span>
-      ，那么就需要开启标签页持久化。
-      <br />
-      开启方式：在页面最右上角有个设置的小图标，点进去，会看到项目配置面板，找到标签页持久化开启即可。
-    </p>
+    <el-button class="m-2" @click="onCloseTags">关闭标签</el-button>
+
+    <el-divider />
+    <el-button @click="$router.push({ name: 'Menu1-2-2' })">
+      跳转页内菜单（传name对象，优先推荐）
+    </el-button>
+    <el-button @click="$router.push('/nested/menu1/menu1-2/menu1-2-2')">
+      跳转页内菜单（直接传要跳转的路径）
+    </el-button>
+    <el-button
+      @click="$router.push({ path: '/nested/menu1/menu1-2/menu1-2-2' })"
+    >
+      跳转页内菜单（传path对象）
+    </el-button>
+    <el-link
+      class="ml-4"
+      href="https://router.vuejs.org/zh/guide/essentials/navigation.html#%E5%AF%BC%E8%88%AA%E5%88%B0%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BD%8D%E7%BD%AE"
+      target="_blank"
+    >
+      点击查看更多跳转方式
+    </el-link>
 
     <el-divider />
     <el-button @click="$router.push({ name: 'Empty' })">

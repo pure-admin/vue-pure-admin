@@ -38,7 +38,7 @@ export default defineConfig({
   shortcuts: {
     "bg-dark": "bg-bg_color",
     "wh-full": "w-full h-full",
-    "cp-on": "cursor-pointer outline-none",
+    "flex-wrap": "flex flex-wrap",
     "flex-c": "flex justify-center items-center",
     "flex-ac": "flex justify-around items-center",
     "flex-bc": "flex justify-between items-center",

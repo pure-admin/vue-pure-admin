@@ -48,9 +48,13 @@ export const useMultiTagsStore = defineStore({
         case "push":
           {
             const tagVal = value as multiType;
+            // 不添加到标签页
+            if (tagVal?.meta?.hiddenTag) return;
+            // 如果是外链无需添加信息到标签页
             if (isUrl(tagVal?.name)) return;
+            // 如果title为空拒绝添加空信息到标签页
             if (tagVal?.meta?.title.length === 0) return;
-            const tagPath = tagVal?.path;
+            const tagPath = tagVal.path;
             // 判断tag是否已存在
             const tagHasExits = this.multiTags.some(tag => {
               return tag.path === tagPath;
@@ -58,20 +62,24 @@ export const useMultiTagsStore = defineStore({
 
             // 判断tag中的query键值是否相等
             const tagQueryHasExits = this.multiTags.some(tag => {
-              return isEqual(tag.query, tagVal?.query);
+              return isEqual(tag?.query, tagVal?.query);
             });
 
-            if (tagHasExits && tagQueryHasExits) return;
+            // 判断tag中的params键值是否相等
+            const tagParamsHasExits = this.multiTags.some(tag => {
+              return isEqual(tag?.params, tagVal?.params);
+            });
 
+            if (tagHasExits && tagQueryHasExits && tagParamsHasExits) return;
+
+            // 动态路由可打开的最大数量
             const dynamicLevel = tagVal?.meta?.dynamicLevel ?? -1;
             if (dynamicLevel > 0) {
-              // dynamicLevel动态路由可打开的数量
-              // 获取到已经打开的动态路由数, 判断是否大于dynamicLevel
               if (
                 this.multiTags.filter(e => e?.path === tagPath).length >=
                 dynamicLevel
               ) {
-                // 关闭第一个
+                // 如果当前已打开的动态路由数大于dynamicLevel，替换第一个动态路由标签
                 const index = this.multiTags.findIndex(
                   item => item?.path === tagPath
                 );
