@@ -94,6 +94,8 @@ export interface RouteChildrenConfigsTable {
       /** 离场动画 */
       leaveTransition?: string;
     };
+    // 是否不添加信息到标签页，（默认`false`）
+    hiddenTag?: boolean;
     /** 动态路由可打开的最大数量 `可选` */
     dynamicLevel?: number;
     /** 刷新重定向（用于未开启标签页缓存，刷新页面获取不到动态`title`）`可选` */

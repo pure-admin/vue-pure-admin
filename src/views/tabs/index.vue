@@ -6,8 +6,8 @@ import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 import {
   deleteChildren,
-  appendFieldByUniqueId,
-  getNodeByUniqueId
+  getNodeByUniqueId,
+  appendFieldByUniqueId
 } from "@pureadmin/utils";
 import { useDetail } from "./hooks";
 
