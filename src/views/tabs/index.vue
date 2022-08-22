@@ -107,8 +107,23 @@ function onCloseTags() {
 
     <el-divider />
     <el-button @click="$router.push({ name: 'Menu1-2-2' })">
-      跳转页内菜单
+      跳转页内菜单（传name对象，优先推荐）
     </el-button>
+    <el-button @click="$router.push('/nested/menu1/menu1-2/menu1-2-2')">
+      跳转页内菜单（直接传要跳转的路径）
+    </el-button>
+    <el-button
+      @click="$router.push({ path: '/nested/menu1/menu1-2/menu1-2-2' })"
+    >
+      跳转页内菜单（传path对象）
+    </el-button>
+    <el-link
+      class="ml-4"
+      href="https://router.vuejs.org/zh/guide/essentials/navigation.html#%E5%AF%BC%E8%88%AA%E5%88%B0%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BD%8D%E7%BD%AE"
+      target="_blank"
+    >
+      点击查看更多跳转方式
+    </el-link>
 
     <el-divider />
     <el-button @click="$router.push({ name: 'Empty' })">
