@@ -1,3 +1,9 @@
+# 3.4.5 (2022-8-22)
+
+### 🐞 Bug fixes
+
+- Fix local responsive storage object setting issue
+
 # 3.4.0 (2022-8-22)
 
 ### 🍏 Perf
