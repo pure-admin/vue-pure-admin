@@ -1,3 +1,11 @@
+# 3.4.0 (2022-8-22)
+
+### 🍏 Perf
+
+- Optimized routing
+- Optimized for mobile compatibility
+- Optimized routing parameters (`query`, `params` way to refresh the page does not need to open the tab page cache, the parameters can be retained on the `url` and `tab page`)
+
 # 3.3.5 (2022-8-19)
 
 ### 🎫 Feat
