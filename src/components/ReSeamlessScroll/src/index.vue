@@ -454,7 +454,6 @@ function scrollStopMove() {
 
 // 鼠标滚轮事件
 function wheel(e) {
-  e.preventDefault();
   if (
     unref(options).direction === "left" ||
     unref(options).direction === "right"
@@ -517,10 +516,10 @@ defineExpose({
       :style="pos"
       @mouseenter="enter"
       @mouseleave="leave"
-      @touchstart="touchStart"
-      @touchmove="touchMove"
+      @touchstart.passive="touchStart"
+      @touchmove.passive="touchMove"
       @touchend="touchEnd"
-      @mousewheel="wheel"
+      @mousewheel.passive="wheel"
     >
       <div :ref="'slotList' + classOption['key']" :style="float">
         <slot />

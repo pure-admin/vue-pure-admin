@@ -1,9 +1,8 @@
 import { $t } from "/@/plugins/i18n";
-const Layout = () => import("/@/layout/index.vue");
+import type { RouteConfigsTable } from "/#/index";
 
-const guideRouter = {
+const guideRouter: RouteConfigsTable = {
   path: "/guide",
-  component: Layout,
   redirect: "/guide/index",
   meta: {
     icon: "guide",

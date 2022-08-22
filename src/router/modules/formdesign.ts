@@ -1,9 +1,8 @@
 import { $t } from "/@/plugins/i18n";
-const Layout = () => import("/@/layout/index.vue");
+import type { RouteConfigsTable } from "/#/index";
 
-const formDesignRouter = {
+const formDesignRouter: RouteConfigsTable = {
   path: "/formDesign",
-  component: Layout,
   redirect: "/formDesign/index",
   meta: {
     icon: "terminal-window-line",

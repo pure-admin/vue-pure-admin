@@ -6,12 +6,12 @@ import { useNav } from "/@/layout/hooks/useNav";
 import { transformI18n } from "/@/plugins/i18n";
 import screenfull from "../screenfull/index.vue";
 import { deviceDetection } from "@pureadmin/utils";
+import { ref, toRaw, watch, onMounted } from "vue";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 import { getParentPaths, findRouteByPath } from "/@/router/utils";
 import { useTranslationLang } from "../../hooks/useTranslationLang";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 import globalization from "/@/assets/svg/globalization.svg?component";
-import { ref, toRaw, watch, nextTick, onMounted, onBeforeUnmount } from "vue";
 
 const menuRef = ref();
 let defaultActive = ref(null);
@@ -23,7 +23,6 @@ const {
   routers,
   logout,
   onPanel,
-  handleResize,
   menuSelect,
   resolvePath,
   username,
@@ -42,19 +41,8 @@ function getDefaultActive(routePath) {
   )?.children[0]?.path;
 }
 
-function onResizeMenu() {
-  nextTick(() => {
-    handleResize(menuRef.value);
-  });
-}
-
 onMounted(() => {
   getDefaultActive(route.path);
-  window.addEventListener("resize", onResizeMenu);
-});
-
-onBeforeUnmount(() => {
-  window.removeEventListener("resize", onResizeMenu);
 });
 
 watch(

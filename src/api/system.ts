@@ -1,22 +1,27 @@
 import { http } from "../utils/http";
 
-interface ResponseType extends Promise<any> {
-  data?: object;
+type Result = {
+  data?: {
+    /** 列表数据 */
+    list: Array<any>;
+    /** 总数 */
+    total: number;
+  };
   code?: number;
   msg?: string;
-}
+};
 
 // 获取用户管理列表
-export const getUserList = (data?: object): ResponseType => {
-  return http.request("post", "/user", { data });
+export const getUserList = (data?: object) => {
+  return http.request<Result>("post", "/user", { data });
 };
 
 // 获取角色管理列表
-export const getRoleList = (data?: object): ResponseType => {
-  return http.request("post", "/role", { data });
+export const getRoleList = (data?: object) => {
+  return http.request<Result>("post", "/role", { data });
 };
 
 // 获取部门管理列表
-export const getDeptList = (data?: object): ResponseType => {
-  return http.request("post", "/dept", { data });
+export const getDeptList = (data?: object) => {
+  return http.request<Result>("post", "/dept", { data });
 };

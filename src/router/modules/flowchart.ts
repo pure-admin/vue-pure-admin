@@ -1,9 +1,8 @@
 import { $t } from "/@/plugins/i18n";
-const Layout = () => import("/@/layout/index.vue");
+import type { RouteConfigsTable } from "/#/index";
 
-const flowChartRouter = {
+const flowChartRouter: RouteConfigsTable = {
   path: "/flowChart",
-  component: Layout,
   redirect: "/flowChart/index",
   meta: {
     icon: "set-up",

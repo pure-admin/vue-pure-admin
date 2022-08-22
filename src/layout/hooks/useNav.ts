@@ -4,11 +4,11 @@ import { getConfig } from "/@/config";
 import { useRouter } from "vue-router";
 import { emitter } from "/@/utils/mitt";
 import { routeMetaType } from "../types";
-import { remainingPaths } from "/@/router";
 import type { StorageConfigs } from "/#/index";
 import { routerArrays } from "/@/layout/types";
 import { transformI18n } from "/@/plugins/i18n";
 import { useAppStoreHook } from "/@/store/modules/app";
+import { remainingPaths, resetRouter } from "/@/router";
 import { i18nChangeLanguage } from "@wangeditor/editor";
 import { storageSession, useGlobal } from "@pureadmin/utils";
 import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
@@ -72,6 +72,7 @@ export function useNav() {
     useMultiTagsStoreHook().handleTags("equal", [...routerArrays]);
     storageSession.removeItem("info");
     router.push("/login");
+    resetRouter();
   }
 
   function backHome() {

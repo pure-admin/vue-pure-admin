@@ -1,9 +1,8 @@
 import { $t } from "/@/plugins/i18n";
-const Layout = () => import("/@/layout/index.vue");
+import type { RouteConfigsTable } from "/#/index";
 
-const nestedRouter = {
+const nestedRouter: RouteConfigsTable = {
   path: "/nested",
-  component: Layout,
   redirect: "/nested/menu1/menu1-1",
   meta: {
     title: $t("menus.hsmenus"),

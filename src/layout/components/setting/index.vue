@@ -12,6 +12,7 @@ import { getConfig } from "/@/config";
 import { useRouter } from "vue-router";
 import panel from "../panel/index.vue";
 import { emitter } from "/@/utils/mitt";
+import { resetRouter } from "/@/router";
 import { templateRef } from "@vueuse/core";
 import { routerArrays } from "/@/layout/types";
 import { useNav } from "/@/layout/hooks/useNav";
@@ -140,6 +141,7 @@ function onReset() {
   useMultiTagsStoreHook().handleTags("equal", [...routerArrays]);
   storageLocal.clear();
   storageSession.clear();
+  resetRouter();
 }
 
 function onChange(label) {

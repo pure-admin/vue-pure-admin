@@ -1,9 +1,8 @@
 import { $t } from "/@/plugins/i18n";
-const Layout = () => import("/@/layout/index.vue");
+import type { RouteConfigsTable } from "/#/index";
 
-const errorRouter = {
+const errorRouter: RouteConfigsTable = {
   path: "/error",
-  component: Layout,
   redirect: "/error/403",
   meta: {
     icon: "information-line",

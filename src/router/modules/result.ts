@@ -1,9 +1,8 @@
 import { $t } from "/@/plugins/i18n";
-const Layout = () => import("/@/layout/index.vue");
+import type { RouteConfigsTable } from "/#/index";
 
-const resultRouter = {
+const resultRouter: RouteConfigsTable = {
   path: "/result",
-  component: Layout,
   redirect: "/result/success",
   meta: {
     icon: "checkbox-circle-line",

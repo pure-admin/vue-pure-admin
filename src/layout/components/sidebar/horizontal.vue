@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref, watch } from "vue";
 import Search from "../search/index.vue";
 import Notice from "../notice/index.vue";
 import SidebarItem from "./sidebarItem.vue";
@@ -9,7 +10,6 @@ import { deviceDetection } from "@pureadmin/utils";
 import { useTranslationLang } from "../../hooks/useTranslationLang";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 import globalization from "/@/assets/svg/globalization.svg?component";
-import { ref, watch, nextTick, onMounted, onBeforeUnmount } from "vue";
 
 const menuRef = ref();
 
@@ -21,27 +21,12 @@ const {
   logout,
   backHome,
   onPanel,
-  handleResize,
   menuSelect,
   username,
   avatarsStyle,
   getDropdownItemStyle,
   getDropdownItemClass
 } = useNav();
-
-function onResizeMenu() {
-  nextTick(() => {
-    handleResize(menuRef.value);
-  });
-}
-
-onMounted(() => {
-  window.addEventListener("resize", onResizeMenu);
-});
-
-onBeforeUnmount(() => {
-  window.removeEventListener("resize", onResizeMenu);
-});
 
 watch(
   () => route.path,
