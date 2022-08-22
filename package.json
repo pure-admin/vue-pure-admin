@@ -143,7 +143,7 @@
     "stylelint-config-standard": "^24.0.0",
     "stylelint-order": "^5.0.0",
     "typescript": "^4.7.4",
-    "unocss": "^0.45.8",
+    "unocss": "^0.45.9",
     "unplugin-vue-define-options": "^0.7.3",
     "vite": "^3.0.9",
     "vite-plugin-mock": "^2.9.6",

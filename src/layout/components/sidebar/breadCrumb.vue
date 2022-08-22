@@ -59,10 +59,10 @@ const getBreadcrumb = (): void => {
   }
 
   matched.forEach((item, index) => {
-    if (currentRoute.query || currentRoute.params) return;
+    if (currentRoute?.query || currentRoute?.params) return;
     if (item?.children) {
       item.children.forEach(v => {
-        if (v.meta.title === item.meta.title) {
+        if (v?.meta?.title === item?.meta?.title) {
           matched.splice(index, 1);
         }
       });
