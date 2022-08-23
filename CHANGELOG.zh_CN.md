@@ -1,3 +1,11 @@
+# 3.4.6 (2022-8-23)
+
+### 🐞 Bug fixes
+
+- `process` is not defined in path
+- 修复动态路由`children`为空数组时报错
+- 修复`iframe`加载失败
+
 # 3.4.5 (2022-8-22)
 
 ### 🐞 Bug fixes

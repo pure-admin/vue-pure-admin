@@ -1,3 +1,11 @@
+# 3.4.6 (2022-8-23)
+
+### 🐞 Bug fixes
+
+- `process` is not defined in path
+- Fixed an error when dynamic routing `children` is an empty array
+- Fixed `iframe` loading failure
+
 # 3.4.5 (2022-8-22)
 
 ### 🐞 Bug fixes
