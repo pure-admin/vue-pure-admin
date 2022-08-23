@@ -70,6 +70,8 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
       chunkSizeWarningLimit: 4000
     },
     define: {
+      "process.platform": null,
+      "process.version": null,
       __INTLIFY_PROD_DEVTOOLS__: false,
       __APP_INFO__: JSON.stringify(__APP_INFO__)
     }
