@@ -1,16 +1,7 @@
-import {
-  transformerVariantGroup,
-  transformerDirectives,
-  presetAttributify,
-  defineConfig,
-  presetMini,
-  presetUno
-} from "unocss";
+import { defineConfig, presetUno } from "unocss";
 
 // https://github.com/unocss/unocss#readme
 export default defineConfig({
-  presets: [presetMini({ dark: "class" }), presetAttributify(), presetUno()],
-  transformers: [transformerDirectives(), transformerVariantGroup()],
   // unocss默认不扫描 node_modules、dist、css以及其扩展 具体实现：https://github.com/unocss/unocss/blob/03c8abe8f5020b3baaed3dfbfe8e2258dd041a7e/packages/vite/src/utils.ts#L3
   exclude: [
     "node_modules",
@@ -35,6 +26,7 @@ export default defineConfig({
     "CHANGELOG.en_US.md",
     "CHANGELOG.zh_CN.md"
   ],
+  presets: [presetUno({ dark: "class" })],
   shortcuts: {
     "bg-dark": "bg-bg_color",
     "wh-full": "w-full h-full",
