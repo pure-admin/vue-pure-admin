@@ -6,6 +6,7 @@
   },
   "editor.tabSize": 2,
   "editor.formatOnPaste": true,
+  "editor.guides.bracketPairs": "active",
   "files.autoSave": "afterDelay",
   "git.confirmSync": false,
   "workbench.startupEditor": "newUntitledFile",
