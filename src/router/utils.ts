@@ -235,12 +235,15 @@ function addAsyncRoutes(arrRoutes: Array<RouteRecordRaw>) {
     // 父级的name属性取值：如果子级存在且父级的name属性不存在，默认取第一个子级的name；如果子级存在且父级的name属性存在，取存在的name属性，会覆盖默认值
     if (v?.children && v.children.length && !v.name)
       v.name = v.children[0].name;
-    if (v.meta?.frameSrc) v.component = IFrame;
-    // 对后端传component组件路径和不传做兼容（如果后端传component组件路径，那么path可以随便写，如果不传，component组件路径会跟path保持一致）
-    const index = v?.component
-      ? modulesRoutesKeys.findIndex(ev => ev.includes(v.component as any))
-      : modulesRoutesKeys.findIndex(ev => ev.includes(v.path));
-    v.component = modulesRoutes[modulesRoutesKeys[index]];
+    if (v.meta?.frameSrc) {
+      v.component = IFrame;
+    } else {
+      // 对后端传component组件路径和不传做兼容（如果后端传component组件路径，那么path可以随便写，如果不传，component组件路径会跟path保持一致）
+      const index = v?.component
+        ? modulesRoutesKeys.findIndex(ev => ev.includes(v.component as any))
+        : modulesRoutesKeys.findIndex(ev => ev.includes(v.path));
+      v.component = modulesRoutes[modulesRoutesKeys[index]];
+    }
     if (v?.children && v.children.length) {
       addAsyncRoutes(v.children);
     }
