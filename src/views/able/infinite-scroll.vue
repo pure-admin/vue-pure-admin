@@ -15,7 +15,7 @@ const dataTemplate = new Array(10).fill({
 const data = ref([]);
 const disabled = ref(false);
 const page = ref(0);
-const total = ref(5);
+const total = ref(10);
 
 const load = () => {
   if (disabled.value) return;
@@ -35,7 +35,7 @@ const load = () => {
   <el-card>
     <template #header>
       <div class="font-medium">
-        无限滚动（
+        表格无限滚动（
         <el-link
           href="https://github.com/yujinpan/el-table-infinite-scroll"
           target="_blank"
@@ -56,7 +56,7 @@ const load = () => {
         v-el-table-infinite-scroll="load"
         :data="data"
         :infinite-scroll-disabled="disabled"
-        height="200px"
+        height="435px"
       >
         <el-table-column type="index" />
         <el-table-column prop="date" label="date" />
