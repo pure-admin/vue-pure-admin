@@ -145,6 +145,14 @@ const ableRouter: RouteConfigsTable = {
       meta: {
         title: $t("menus.hsExecl")
       }
+    },
+    {
+      path: "/able/infiniteScroll",
+      name: "InfiniteScroll",
+      component: () => import("/@/views/able/infinite-scroll.vue"),
+      meta: {
+        title: $t("menus.hsInfiniteScroll")
+      }
     }
   ]
 };

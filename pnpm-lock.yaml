@@ -57,6 +57,7 @@ specifiers:
   dayjs: ^1.11.4
   driver.js: ^0.9.8
   echarts: ^5.3.3
+  el-table-infinite-scroll: ^3.0.1
   element-plus: ^2.2.14
   element-resize-detector: ^1.2.3
   eslint: ^8.8.0
@@ -145,6 +146,7 @@ dependencies:
   dayjs: 1.11.5
   driver.js: 0.9.8
   echarts: 5.3.3
+  el-table-infinite-scroll: 3.0.1
   element-plus: 2.2.14_vue@3.2.37
   element-resize-detector: 1.2.4
   js-cookie: 3.0.1
@@ -2330,10 +2332,6 @@ packages:
     peerDependencies:
       eslint: ^6.2.0 || ^7.0.0 || ^8.0.0
       eslint-plugin-vue: ^8.0.1
-      typescript: "*"
-    peerDependenciesMeta:
-      typescript:
-        optional: true
     dependencies:
       "@typescript-eslint/eslint-plugin": 5.33.1_ac9d23a22d787f7b7991fddcc31412d2
       "@typescript-eslint/parser": 5.33.1_eslint@8.22.0+typescript@4.7.4
@@ -2343,6 +2341,7 @@ packages:
       vue-eslint-parser: 8.3.0_eslint@8.22.0
     transitivePeerDependencies:
       - supports-color
+      - typescript
     dev: true
 
   /@vue/reactivity-transform/3.2.37:
@@ -3502,8 +3501,6 @@ packages:
       finalhandler: 1.1.2
       parseurl: 1.3.3
       utils-merge: 1.0.1
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
   /consola/2.15.3:
@@ -3646,8 +3643,6 @@ packages:
       color: 0.11.4
       debug: 3.2.7
       rgb: 0.1.0
-    transitivePeerDependencies:
-      - supports-color
     dev: false
 
   /css-declaration-sorter/6.3.0_postcss@8.4.16:
@@ -3862,11 +3857,6 @@ packages:
       {
         integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==
       }
-    peerDependencies:
-      supports-color: "*"
-    peerDependenciesMeta:
-      supports-color:
-        optional: true
     dependencies:
       ms: 2.0.0
     dev: true
@@ -3876,11 +3866,6 @@ packages:
       {
         integrity: sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ==
       }
-    peerDependencies:
-      supports-color: "*"
-    peerDependenciesMeta:
-      supports-color:
-        optional: true
     dependencies:
       ms: 2.1.3
     dev: false
@@ -4155,6 +4140,19 @@ packages:
         integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==
       }
     dev: true
+
+  /el-table-infinite-scroll/3.0.1:
+    resolution:
+      {
+        integrity: sha512-A5zeqo0us1mzAi+bvQsluex2V4BSEf/2a4FuZzkluJWsoqNCIexRVnxcgWVRl/8HaAK9nLGLnkAb//Xox+eLOg==
+      }
+    dependencies:
+      core-js: 3.24.1
+      element-plus: 2.2.14_vue@3.2.37
+      vue: 3.2.37
+    transitivePeerDependencies:
+      - "@vue/composition-api"
+    dev: false
 
   /electron-to-chromium/1.4.222:
     resolution:
@@ -5051,8 +5049,6 @@ packages:
       parseurl: 1.3.3
       statuses: 1.5.0
       unpipe: 1.0.0
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
   /find-up/4.1.0:
