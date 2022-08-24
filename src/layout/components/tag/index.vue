@@ -9,7 +9,6 @@ import { useResizeObserver, useDebounceFn } from "@vueuse/core";
 import { useSettingStoreHook } from "/@/store/modules/settings";
 import { handleAliveRoute, delAliveRoutes } from "/@/router/utils";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
-import { usePermissionStoreHook } from "/@/store/modules/permission";
 import { ref, watch, unref, toRaw, nextTick, onBeforeMount } from "vue";
 
 const {
@@ -276,7 +275,6 @@ function onClickDrop(key, item, selectRoute?: RouteConfigs) {
         startIndex: 1,
         length: multiTags.value.length
       });
-      usePermissionStoreHook().clearAllCachePage();
       router.push("/welcome");
       break;
   }
