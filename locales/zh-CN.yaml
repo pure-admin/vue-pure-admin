@@ -86,6 +86,7 @@ menus:
   hsVirtualList: 虚拟列表
   hsPdf: PDF预览
   hsExecl: 导出Excel
+  hsInfiniteScroll: 无限滚动
 status:
   hsLoad: 加载中...
 login:

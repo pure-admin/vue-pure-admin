@@ -86,6 +86,7 @@ menus:
   hsVirtualList: Virtual List
   hsPdf: PDF Preview
   hsExecl: Export Excel
+  hsInfiniteScroll: Infinite Scroll
 status:
   hsLoad: Loading...
 login:
