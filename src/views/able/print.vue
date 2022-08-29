@@ -194,11 +194,10 @@ const tableData: User[] = [
       >
         <p class="font-medium pt-1">Element-Plus Table</p>
         <el-table
-          class="el-table"
-          :data="tableData"
           border
-          style="margin: 40px auto; width: 100%"
+          :data="tableData"
           :row-class-name="tableRowClassName"
+          class="el-table w-full mt-40px mr-40px"
         >
           <el-table-column prop="date" label="Date" width="180" />
           <el-table-column prop="name" label="Name" width="180" />
