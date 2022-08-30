@@ -1,0 +1,39 @@
+name: Build and Deploy
+permissions:
+  contents: write
+on:
+  push:
+    branches:
+      - gitee
+jobs:
+  deploy:
+    concurrency: ci-${{ github.ref }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16"
+          registry-url: https://registry.npmjs.com/
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+
+      - name: Deploy 🔧
+        run: |
+          pnpm install
+          sed -i "s#VITE_PUBLIC_PATH = /#VITE_PUBLIC_PATH = /vue-pure-admin/#g" $(pwd)/.env.production
+          pnpm build
+          cd dist
+          touch README.md .nojekyll
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
+          clean: true
