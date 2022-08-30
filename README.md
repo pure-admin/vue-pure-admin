@@ -17,7 +17,9 @@ vue-pure-admin 是一个免费开源的中后台模版。使用了最新的`vue3
 
 ## 配套文档
 
-- [点我查看文档](https://pure-admin-doc.vercel.app)
+- [点我查看国内文档站](http://yiming_chang.gitee.io/pure-admin-doc)
+- [点我查看国外文档站 1](https://xiaoxian521.github.io/pure-admin-doc)
+- [点我查看国外文档站 2](https://pure-admin-doc.vercel.app)
 
 ## 精简版
 
@@ -29,7 +31,9 @@ vue-pure-admin 是一个免费开源的中后台模版。使用了最新的`vue3
 
 ## 预览
 
-- [vue-pure-admin](https://vue-pure-admin.vercel.app)
+- [点我查看国内预览站](http://yiming_chang.gitee.io/vue-pure-admin)
+- [点我查看国外预览站 1](https://xiaoxian521.github.io/vue-pure-admin)
+- [点我查看国外预览站 2](https://vue-pure-admin.vercel.app)
 
 - PC 端
 <p align="center">

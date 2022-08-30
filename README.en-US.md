@@ -17,7 +17,9 @@ vue-pure-admin is a free and open source middle and back-end template. Using the
 
 ## Docs
 
-- [Click Watch Docs](https://pure-admin-doc.vercel.app)
+- [Click me to view the domestic documentation site](http://yiming_chang.gitee.io/pure-admin-doc)
+- [Click me to view foreign document site 1](https://xiaoxian521.github.io/pure-admin-doc)
+- [Click me to view foreign document site 2](https://pure-admin-doc.vercel.app)
 
 ## Thin
 
@@ -29,7 +31,9 @@ vue-pure-admin is a free and open source middle and back-end template. Using the
 
 ## Preview
 
-- [vue-pure-admin](https://vue-pure-admin.vercel.app)
+- [Click me to view the domestic preview station](http://yiming_chang.gitee.io/vue-pure-admin)
+- [Click me to view foreign preview site 1](https://xiaoxian521.github.io/vue-pure-admin)
+- [Click me to view foreign preview station 2](https://vue-pure-admin.vercel.app)
 
 - PC
 <p align="center">
