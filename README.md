@@ -145,7 +145,7 @@ pnpm build
 
 一群已满，下面是二群，群里严禁`黄`、`赌`、`毒`、`vpn`等违法行为！
 
-<img src="https://pure-admin-doc.vercel.app/img/support/qq.png" width="150px" height="225px" />
+<img src="http://yiming_chang.gitee.io/pure-admin-doc/img/support/qq.png" width="150px" height="225px" />
 
 ## 许可证
 
