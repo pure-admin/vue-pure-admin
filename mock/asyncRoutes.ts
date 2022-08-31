@@ -86,12 +86,12 @@ const frameRouter = {
       name: "FramePure",
       meta: {
         title: "menus.hsPureDocument",
-        frameSrc: "https://pure-admin-doc.vercel.app"
+        frameSrc: "http://yiming_chang.gitee.io/pure-admin-doc"
       }
     },
     {
       path: "/external",
-      name: "https://pure-admin-doc.vercel.app",
+      name: "http://yiming_chang.gitee.io/pure-admin-doc",
       meta: {
         title: "menus.externalLink"
       }

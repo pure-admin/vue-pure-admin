@@ -18,7 +18,7 @@ export function useColumns() {
       label: "文档地址",
       cellRenderer: () => {
         return (
-          <a href="https://pure-admin-doc.vercel.app" target="_blank">
+          <a href="http://yiming_chang.gitee.io/pure-admin-doc" target="_blank">
             <span style="color: var(--el-color-primary)">文档地址</span>
           </a>
         );
@@ -28,7 +28,7 @@ export function useColumns() {
       label: "预览地址",
       cellRenderer: () => {
         return (
-          <a href="https://vue-pure-admin.vercel.app" target="_blank">
+          <a href="http://yiming_chang.gitee.io/vue-pure-admin" target="_blank">
             <span style="color: var(--el-color-primary)">预览地址</span>
           </a>
         );

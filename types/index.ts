@@ -105,7 +105,7 @@ export interface RouteChildrenConfigsTable {
 
 /**
  * @description 完整路由配置表
- * @see {@link https://pure-admin-doc.vercel.app/pages/782b6e/#%E4%B8%80-%E9%85%8D%E7%BD%AE%E9%A1%B9}
+ * @see {@link https://yiming_chang.gitee.io/pure-admin-doc/pages/782b6e/#%E4%B8%80-%E9%85%8D%E7%BD%AE%E9%A1%B9}
  */
 export interface RouteConfigsTable {
   /** 路由地址 `必填` */
