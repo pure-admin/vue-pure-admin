@@ -3,13 +3,13 @@
     "vscode-icons-team.vscode-icons",
     "davidanson.vscode-markdownlint",
     "stylelint.vscode-stylelint",
+    "bradlc.vscode-tailwindcss",
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "lokalise.i18n-ally",
     "mikestead.dotenv",
     "eamodio.gitlens",
     "antfu.iconify",
-    "antfu.unocss",
     "Vue.volar"
   ]
 }

@@ -144,8 +144,8 @@ const layoutHeader = defineComponent({
                   {
                     default: () => [
                       !pureSetting.hiddenSideBar
-                        ? h(fullScreen, { class: "dark:color-white" })
-                        : h(exitScreen, { class: "dark:color-white" })
+                        ? h(fullScreen, { class: "dark:text-white" })
+                        : h(exitScreen, { class: "dark:text-white" })
                     ]
                   }
                 )

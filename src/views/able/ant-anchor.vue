@@ -37,8 +37,8 @@ function handleAnchorClick(e, link) {
         </span>
       </div>
     </template>
-    <div class="w-400px">
-      <Anchor class="float-left mt-200px" @click="handleAnchorClick">
+    <div class="w-[400px]">
+      <Anchor class="float-left mt-[200px]" @click="handleAnchorClick">
         <AnchorLink href="one" title="测试one" />
         <AnchorLink href="two" title="测试two" />
         <AnchorLink href="three" title="测试three" />
@@ -47,21 +47,21 @@ function handleAnchorClick(e, link) {
       <el-scrollbar class="float-right overflow-auto" height="600px">
         <header
           id="one"
-          class="w-200px h-600px text-cyan-50 flex justify-center items-center text-4xl"
+          class="w-[200px] h-[600px] text-cyan-50 flex justify-center items-center text-4xl"
           style="background: #409eff"
         >
           测试one
         </header>
         <header
           id="two"
-          class="w-200px h-600px text-cyan-50 flex justify-center items-center text-4xl"
+          class="w-[200px] h-[600px] text-cyan-50 flex justify-center items-center text-4xl"
           style="background: #67c23a"
         >
           测试two
         </header>
         <header
           id="three"
-          class="w-200px h-600px text-cyan-50 flex justify-center items-center text-4xl"
+          class="w-[200px] h-[600px] text-cyan-50 flex justify-center items-center text-4xl"
           style="background: #f56c6c"
         >
           测试three

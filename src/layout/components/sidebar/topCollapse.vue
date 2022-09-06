@@ -24,7 +24,7 @@ const toggleClick = () => {
   >
     <IconifyIconOffline
       :icon="props.isActive ? 'menu-fold' : 'menu-unfold'"
-      class="inline-block align-middle hover:color-primary !dark:hover:color-white"
+      class="inline-block align-middle hover:text-primary dark:hover:!text-white"
     />
   </div>
 </template>

@@ -102,13 +102,13 @@ dataThemeChange();
       <!-- 国际化 -->
       <el-dropdown trigger="click">
         <globalization
-          class="hover:color-primary !hover:bg-transparent w-20px h-20px ml-1.5 cursor-pointer outline-none duration-300"
+          class="hover:text-primary hover:!bg-[transparent] w-[20px] h-[20px] ml-1.5 cursor-pointer outline-none duration-300"
         />
         <template #dropdown>
           <el-dropdown-menu class="translation">
             <el-dropdown-item
               :style="getDropdownItemStyle(locale, 'zh')"
-              :class="['!dark:color-white', getDropdownItemClass(locale, 'zh')]"
+              :class="['dark:!text-white', getDropdownItemClass(locale, 'zh')]"
               @click="translationCh"
             >
               <IconifyIconOffline
@@ -120,7 +120,7 @@ dataThemeChange();
             </el-dropdown-item>
             <el-dropdown-item
               :style="getDropdownItemStyle(locale, 'en')"
-              :class="['!dark:color-white', getDropdownItemClass(locale, 'en')]"
+              :class="['dark:!text-white', getDropdownItemClass(locale, 'en')]"
               @click="translationEn"
             >
               <span class="check-en" v-show="locale === 'en'">
@@ -202,7 +202,7 @@ dataThemeChange();
 
             <Motion :delay="250">
               <el-form-item>
-                <div class="w-full h-20px flex justify-between items-center">
+                <div class="w-full h-[20px] flex justify-between items-center">
                   <el-checkbox v-model="checked">
                     {{ t("login.remember") }}
                   </el-checkbox>
@@ -228,7 +228,7 @@ dataThemeChange();
 
             <Motion :delay="300">
               <el-form-item>
-                <div class="w-full h-20px flex justify-between items-center">
+                <div class="w-full h-[20px] flex justify-between items-center">
                   <el-button
                     v-for="(item, index) in operates"
                     :key="index"

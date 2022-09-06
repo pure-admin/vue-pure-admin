@@ -73,7 +73,7 @@ const onPrint = () => {
             {{ currentPage }} / {{ pageCount }}
           </el-pagination>
         </div>
-        <div class="w-170px flex-bc">
+        <div class="w-[170px] flex-bc">
           <el-checkbox v-model="showAllPages" @change="showAllPagesChange">
             显示所有页面
           </el-checkbox>

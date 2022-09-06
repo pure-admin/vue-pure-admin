@@ -117,12 +117,12 @@ export default defineComponent({
       <>
         <div
           {...attrs}
-          class="w-99/100 mt-6 p-2 bg-white dark:bg-dark"
+          class="w-[99/100] mt-6 p-2 bg-white dark:bg-dark"
           v-loading={props.loading}
           element-loading-svg={loadingSvg}
           element-loading-svg-view-box="-10, -10, 50, 50"
         >
-          <div class="flex justify-between w-full h-60px p-4">
+          <div class="flex justify-between w-full h-[60px] p-4">
             <p class="font-bold truncate">{props.title}</p>
             <div class="flex items-center justify-around">
               <div class="flex mr-4">{slots?.buttons()}</div>

@@ -149,7 +149,7 @@ const onLoadData = treeNode => {
       <div>
         <span>线性样式：</span>
         <TreeSelect
-          class="w-200px"
+          class="w-[200px]"
           v-model:value="value1"
           show-search
           :dropdown-style="{ maxHeight: '400px', overflow: 'auto' }"
@@ -169,7 +169,7 @@ const onLoadData = treeNode => {
       <div>
         <span>虚拟滚动：</span>
         <TreeSelect
-          class="w-200px mt-6"
+          class="w-[200px] mt-6"
           v-model:value="checkedKeys"
           tree-checkable
           tree-default-expand-all
@@ -190,7 +190,7 @@ const onLoadData = treeNode => {
       <div>
         <span>可勾选：</span>
         <TreeSelect
-          class="w-200px"
+          class="w-[200px]"
           v-model:value="value2"
           :tree-data="treeData2"
           tree-checkable
@@ -203,7 +203,7 @@ const onLoadData = treeNode => {
       <div>
         <span>异步加载：</span>
         <TreeSelect
-          class="w-200px"
+          class="w-[200px]"
           v-model:value="value3"
           tree-data-simple-mode
           :dropdown-style="{ maxHeight: '400px', overflow: 'auto' }"

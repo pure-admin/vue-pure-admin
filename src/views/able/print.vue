@@ -197,7 +197,7 @@ const tableData: User[] = [
           border
           :data="tableData"
           :row-class-name="tableRowClassName"
-          class="el-table w-full mt-40px mr-40px"
+          class="el-table w-full mt-[40px] mr-[40px]"
         >
           <el-table-column prop="date" label="Date" width="180" />
           <el-table-column prop="name" label="Name" width="180" />

@@ -118,7 +118,7 @@ watch(
 </script>
 
 <template>
-  <div class="selector w-350px">
+  <div class="selector w-[350px]">
     <el-input v-model="inputValue" disabled>
       <template #append>
         <el-popover
@@ -132,7 +132,7 @@ watch(
         >
           <template #reference>
             <div
-              class="w-40px h-32px cursor-pointer flex justify-center items-center"
+              class="w-[40px] h-[32px] cursor-pointer flex justify-center items-center"
               @click="visible = !visible"
             >
               <IconifyIconOnline :icon="currentActiveType + icon" />
@@ -156,12 +156,12 @@ watch(
             >
               <el-divider class="tab-divider" border-style="dashed" />
               <el-scrollbar height="220px">
-                <ul class="flex-wrap px-2 ml-2">
+                <ul class="flex flex-wrap px-2 ml-2">
                   <li
                     v-for="(item, key) in pageList"
                     :key="key"
                     :title="item"
-                    class="icon-item p-2 w-1/10 cursor-pointer mr-2 mt-1 flex justify-center items-center border border-solid"
+                    class="icon-item p-2 w-[1/10] cursor-pointer mr-2 mt-1 flex justify-center items-center border border-solid"
                     :style="iconItemStyle(item)"
                     @click="onChangeIcon(item)"
                   >

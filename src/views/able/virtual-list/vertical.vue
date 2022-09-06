@@ -33,7 +33,7 @@ function onResize() {
   <div class="dynamic-scroller-demo">
     <div class="flex justify-around mb-4">
       <el-input
-        class="mr-2 !w-1/1.5"
+        class="mr-2 !w-[1/1.5]"
         clearable
         v-model="search"
         placeholder="Filter..."

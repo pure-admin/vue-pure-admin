@@ -8,7 +8,7 @@ defineOptions({
 
 <template>
   <div class="back" title="返回上一页" @click="$router.go(-1)">
-    <back class="w-80px h-80px" />
+    <back class="w-[80px] h-[80px]" />
   </div>
 </template>
 

@@ -224,10 +224,10 @@ function onHide() {
     <!-- 工具栏 -->
     <vxe-toolbar class="dark:bg-dark">
       <template #buttons>
-        <div class="ml-20px">
+        <div class="ml-[20px]">
           <label>字典名称：</label>
           <el-input
-            class="!w-200px"
+            class="!w-[200px]"
             v-model="dictData.filterName"
             :placeholder="t('buttons.hssearch')"
             @keyup.prevent="searchEvent"
