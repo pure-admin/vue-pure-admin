@@ -29,7 +29,7 @@
 - 将平台的大部分工具以及 hooks 都集中到[@pureadmin/utils](https://pure-admin-utils-docs.vercel.app/)，并删除集中到这个库里的代码，减少平台体积
 - 添加[unplugin-vue-define-options](https://www.npmjs.com/package/unplugin-vue-define-options)插件，页面可直接写 `defineOptions({name: 自定义名称})`
 - 添加项目文件、语言分析工具 [cloc](https://www.npmjs.com/package/cloc)
-- 添加登陆页国际化
+- 添加登录页国际化
 - 添加完整路由配置表类型声明
 - 添加虚拟列表页面 demo
 - 添加 `PDF` 预览页面 demo
