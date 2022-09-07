@@ -225,7 +225,7 @@ function onHide() {
     <vxe-toolbar class="dark:bg-dark">
       <template #buttons>
         <div class="ml-[20px]">
-          <label>字典名称：</label>
+          <label class="dark:text-text_color_regular">字典名称： </label>
           <el-input
             class="!w-[200px]"
             v-model="dictData.filterName"

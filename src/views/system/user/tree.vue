@@ -100,7 +100,7 @@ onMounted(async () => {
           <el-dropdown-menu>
             <el-dropdown-item>
               <el-button
-                class="reset-margin !h-[20px] !text-gray-500 dark:hover:!text-primary"
+                class="reset-margin !h-[20px] !text-gray-500 dark:!text-white dark:hover:!text-primary"
                 link
                 type="primary"
                 :icon="useRenderIcon('expand')"
@@ -111,7 +111,7 @@ onMounted(async () => {
             </el-dropdown-item>
             <el-dropdown-item>
               <el-button
-                class="reset-margin !h-[20px] !text-gray-500 dark:hover:!text-primary"
+                class="reset-margin !h-[20px] !text-gray-500 dark:!text-white dark:hover:!text-primary"
                 link
                 type="primary"
                 :icon="useRenderIcon('unExpand')"
@@ -122,7 +122,7 @@ onMounted(async () => {
             </el-dropdown-item>
             <el-dropdown-item>
               <el-button
-                class="reset-margin !h-[20px] !text-gray-500 dark:hover:!text-primary"
+                class="reset-margin !h-[20px] !text-gray-500 dark:!text-white dark:hover:!text-primary"
                 link
                 type="primary"
                 :icon="useRenderIcon('reset')"

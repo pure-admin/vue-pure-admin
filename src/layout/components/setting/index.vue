@@ -309,7 +309,7 @@ nextTick(() => {
     <el-divider>界面显示</el-divider>
     <ul class="setting">
       <li>
-        <span>灰色模式</span>
+        <span class="dark:text-white">灰色模式</span>
         <el-switch
           v-model="settings.greyVal"
           inline-prompt
@@ -320,7 +320,7 @@ nextTick(() => {
         />
       </li>
       <li>
-        <span>色弱模式</span>
+        <span class="dark:text-white">色弱模式</span>
         <el-switch
           v-model="settings.weakVal"
           inline-prompt
@@ -331,7 +331,7 @@ nextTick(() => {
         />
       </li>
       <li>
-        <span>隐藏标签页</span>
+        <span class="dark:text-white">隐藏标签页</span>
         <el-switch
           v-model="settings.tabsVal"
           inline-prompt
@@ -342,7 +342,7 @@ nextTick(() => {
         />
       </li>
       <li>
-        <span>侧边栏Logo</span>
+        <span class="dark:text-white">侧边栏Logo</span>
         <el-switch
           v-model="logoVal"
           inline-prompt
@@ -355,7 +355,7 @@ nextTick(() => {
         />
       </li>
       <li>
-        <span>标签页持久化</span>
+        <span class="dark:text-white">标签页持久化</span>
         <el-switch
           v-model="settings.multiTagsCache"
           inline-prompt
@@ -367,7 +367,7 @@ nextTick(() => {
       </li>
 
       <li>
-        <span>标签风格</span>
+        <span class="dark:text-white">标签风格</span>
         <el-radio-group v-model="markValue" size="small" @change="onChange">
           <el-radio label="card">卡片</el-radio>
           <el-radio label="smart">灵动</el-radio>

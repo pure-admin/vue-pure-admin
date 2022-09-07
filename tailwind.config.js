@@ -1,8 +1,9 @@
-const plugin = require("tailwindcss/plugin");
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: "class",
+  corePlugins: {
+    preflight: false
+  },
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
     extend: {
@@ -15,18 +16,5 @@ module.exports = {
         text_color_disabled: "var(--el-text-color-disabled)"
       }
     }
-  },
-  corePlugins: {
-    preflight: false
-  },
-  plugins: [
-    plugin(function ({ addComponents }) {
-      // https://github.com/tailwindlabs/tailwindcss/pull/412
-      // addComponents({
-      //   '.flex-c': {
-      //     "@apply flex justify-center items-center": {}
-      //   }
-      // })
-    })
-  ]
+  }
 };
