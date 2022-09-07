@@ -166,7 +166,7 @@ let autoPlay = computed(() => {
 });
 
 let scrollSwitch = computed(() => {
-  // 从 props 解构出来的 属性 不再具有相应性.
+  // 从 props 解构出来的 属性 不再具有响应性.
   return (props.data as any).length >= unref(options).limitMoveNum;
 });
 
