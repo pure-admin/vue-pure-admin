@@ -45,7 +45,7 @@ function hoverDescription(event, description) {
 
 <template>
   <div
-    class="notice-container border-b-1 border-[#f0f0f0] dark:border-[#303030]"
+    class="notice-container border-b-[1px] border-solid border-[#f0f0f0] dark:border-[#303030]"
   >
     <el-avatar
       v-if="props.noticeItem.avatar"
@@ -54,7 +54,7 @@ function hoverDescription(event, description) {
       class="notice-container-avatar"
     />
     <div class="notice-container-text">
-      <div class="notice-text-title color-[#000000d9] dark:color-white">
+      <div class="notice-text-title text-[#000000d9] dark:text-white">
         <el-tooltip
           popper-class="notice-title-popper"
           :disabled="!titleTooltip"
@@ -93,7 +93,7 @@ function hoverDescription(event, description) {
           {{ props.noticeItem.description }}
         </div>
       </el-tooltip>
-      <div class="notice-text-datetime color-[#00000073] dark:color-white">
+      <div class="notice-text-datetime text-[#00000073] dark:text-white">
         {{ props.noticeItem.datetime }}
       </div>
     </div>

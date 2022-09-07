@@ -57,7 +57,7 @@ const columns = [
               <span
                 role="img"
                 aria-label="dingding"
-                class="anticon anticon-dingding cursor-pointer flex items-center cursor-pointer"
+                class="anticon anticon-dingding flex items-center cursor-pointer"
                 style="color: rgb(0, 160, 233); margin-left: 8px"
               >
                 <svg

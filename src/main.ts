@@ -14,7 +14,6 @@ import { injectResponsiveStorage } from "/@/utils/responsive";
 import Table from "@pureadmin/table";
 import PureDescriptions from "@pureadmin/descriptions";
 
-import "uno.css";
 import "animate.css";
 // 引入重置样式
 import "./style/reset.scss";

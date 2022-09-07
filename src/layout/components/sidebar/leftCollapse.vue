@@ -28,7 +28,7 @@ const toggleClick = () => {
     >
       <IconifyIconOffline
         :icon="props.isActive ? 'menu-fold' : 'menu-unfold'"
-        class="cursor-pointer inline-block align-middle color-primary hover:color-primary !dark:hover:color-white w-16px h-16px ml-4 mb-1"
+        class="cursor-pointer inline-block align-middle text-primary hover:text-primary dark:hover:!text-white w-[16px] h-[16px] ml-4 mb-1"
         @click="toggleClick"
       />
     </el-tooltip>

@@ -8,7 +8,7 @@ const { isFullscreen, toggle } = useFullscreen();
 
 <template>
   <div
-    class="screen-full w-36px h-48px flex-ac cursor-pointer navbar-bg-hover"
+    class="screen-full w-[36px] h-[48px] flex-ac cursor-pointer navbar-bg-hover"
     @click="toggle"
   >
     <FontIcon

@@ -7,7 +7,7 @@ defineOptions({
 </script>
 
 <template>
-  <div class="flex justify-center items-center h-screen-sm">
+  <div class="flex justify-center items-center h-[640px]">
     <noAccess />
     <div class="ml-12">
       <p

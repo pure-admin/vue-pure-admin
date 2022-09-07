@@ -88,7 +88,7 @@ const checkboxChangeEvent: VxeTableEvents.CheckboxChange = ({ records }) => {
       size="680px"
     >
       <template #header>
-        <span class="color-black dark:color-white">{{ drawTitle }}</span>
+        <span class="text-black dark:text-white">{{ drawTitle }}</span>
       </template>
       <el-divider />
       <!-- 列表 -->

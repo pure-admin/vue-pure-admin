@@ -79,7 +79,7 @@ onMounted(() => {
         ref="formRef"
         :inline="true"
         :model="form"
-        class="bg-white dark:bg-dark w-99/100 pl-8 pt-4"
+        class="bg-white dark:bg-dark w-[99/100] pl-8 pt-4"
       >
         <el-form-item label="用户名称：" prop="username">
           <el-input
@@ -187,7 +187,7 @@ onMounted(() => {
                   <el-dropdown-menu>
                     <el-dropdown-item>
                       <el-button
-                        class="reset-margin !h-20px !text-gray-500"
+                        class="reset-margin !h-[20px] !text-gray-500 dark:!text-white dark:hover:!text-primary"
                         link
                         type="primary"
                         :size="size"
@@ -198,7 +198,7 @@ onMounted(() => {
                     </el-dropdown-item>
                     <el-dropdown-item>
                       <el-button
-                        class="reset-margin !h-20px !text-gray-500"
+                        class="reset-margin !h-[20px] !text-gray-500 dark:!text-white dark:hover:!text-primary"
                         link
                         type="primary"
                         :size="size"

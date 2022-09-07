@@ -46,7 +46,7 @@ const cardLogoClass = computed(() => [
 
 <template>
   <div :class="cardClass">
-    <div class="list-card-item_detail !bg-white !dark:bg-dark">
+    <div class="list-card-item_detail bg-white dark:bg-dark">
       <el-row justify="space-between">
         <div :class="cardLogoClass">
           <shopIcon v-if="product.type === 1" />
@@ -68,7 +68,7 @@ const cardLogoClass = computed(() => [
             :disabled="!product.isSetup"
             max-height="2"
           >
-            <IconifyIconOffline icon="more-vertical" class="text-size-24px" />
+            <IconifyIconOffline icon="more-vertical" class="text-[24px]" />
             <template #dropdown>
               <el-dropdown-menu :disabled="!product.isSetup">
                 <el-dropdown-item @click="handleClickManage(product)">
@@ -82,10 +82,10 @@ const cardLogoClass = computed(() => [
           </el-dropdown>
         </div>
       </el-row>
-      <p class="list-card-item_detail--name color-text_color_primary">
+      <p class="list-card-item_detail--name text-text_color_primary">
         {{ product.name }}
       </p>
-      <p class="list-card-item_detail--desc color-text_color_regular">
+      <p class="list-card-item_detail--desc text-text_color_regular">
         {{ product.description }}
       </p>
     </div>

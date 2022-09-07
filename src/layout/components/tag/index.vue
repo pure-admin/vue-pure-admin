@@ -490,7 +490,7 @@ onMounted(() => {
         >
           <router-link
             :to="item.path"
-            class="!dark:color-text_color_primary !dark:hover:color-primary"
+            class="dark:!text-text_color_primary dark:hover:!text-primary"
           >
             {{ transformI18n(item.meta.title) }}
           </router-link>
@@ -555,7 +555,7 @@ onMounted(() => {
           placement="bottom-end"
           @command="handleCommand"
         >
-          <IconifyIconOffline icon="arrow-down" class="dark:color-white" />
+          <IconifyIconOffline icon="arrow-down" class="dark:text-white" />
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item

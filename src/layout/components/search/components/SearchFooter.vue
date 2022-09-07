@@ -1,5 +1,5 @@
 <template>
-  <div class="search-footer color-[#333] dark:color-white">
+  <div class="search-footer text-[#333] dark:text-white">
     <span class="search-footer-item">
       <enterOutlined class="icon" />
       确认

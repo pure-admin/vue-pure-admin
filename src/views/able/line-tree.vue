@@ -30,14 +30,14 @@ let dataProps = {
     </template>
 
     <el-row :gutter="24">
-      <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12" class="mb-20px">
+      <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12" class="mb-[20px]">
         <el-card>
           <template #header>
             <div class="card-header">
               <span class="font-medium"> 普通树结构 </span>
             </div>
           </template>
-          <div class="max-h-550px overflow-y-auto">
+          <div class="max-h-[550px] overflow-y-auto">
             <el-tree
               :data="menusData"
               :props="dataProps"
@@ -66,7 +66,7 @@ let dataProps = {
               <span class="font-medium"> 虚拟树结构 </span>
             </div>
           </template>
-          <div class="max-h-550px overflow-y-auto">
+          <div class="max-h-[550px] overflow-y-auto">
             <el-tree-v2
               :data="menusData"
               :props="dataProps"

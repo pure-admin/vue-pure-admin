@@ -102,7 +102,7 @@ onMounted(() => {
         v-for="(item, key) in titleLists"
         :key="key"
         :title="item.text"
-        class="dark:color-bg_color"
+        class="dark:text-bg_color"
         @mouseenter.prevent="onEnter(key)"
         @mouseleave.prevent="focusIndex = -1"
       >

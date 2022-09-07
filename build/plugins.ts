@@ -1,5 +1,4 @@
 import { resolve } from "path";
-import Unocss from "unocss/vite";
 import vue from "@vitejs/plugin-vue";
 import { viteBuildInfo } from "./info";
 import svgLoader from "vite-svg-loader";
@@ -26,7 +25,6 @@ export function getPluginsList(command, VITE_LEGACY) {
     }),
     // jsx、tsx语法支持
     vueJsx(),
-    Unocss(),
     DefineOptions(),
     // 线上环境删除console
     removeConsole({ external: ["src/assets/iconfont/iconfont.js"] }),

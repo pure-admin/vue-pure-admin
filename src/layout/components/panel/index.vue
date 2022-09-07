@@ -21,12 +21,14 @@ emitter.on("openPanel", () => {
     <div ref="target" class="right-panel bg-white dark:bg-dark">
       <div class="right-panel-items">
         <div class="project-configuration">
-          <h3>项目配置</h3>
+          <h3 class="dark:text-white">项目配置</h3>
           <el-icon title="关闭配置" class="el-icon-close" @click="show = !show">
             <IconifyIconOffline icon="close" />
           </el-icon>
         </div>
-        <div class="border-b-1 border-[#dcdfe6] dark:border-[#303030]" />
+        <div
+          class="border-b-[1px] border-solid border-[#dcdfe6] dark:border-[#303030]"
+        />
         <slot />
       </div>
     </div>

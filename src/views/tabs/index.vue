@@ -50,7 +50,7 @@ function onCloseTags() {
     <template #header>
       <div>标签页复用，超出限制自动关闭（使用场景: 动态路由）</div>
     </template>
-    <div class="flex-wrap items-center">
+    <div class="flex flex-wrap items-center">
       <p>query传参模式：</p>
       <el-button
         class="m-2"
@@ -64,7 +64,7 @@ function onCloseTags() {
 
     <el-divider />
 
-    <div class="flex-wrap items-center">
+    <div class="flex flex-wrap items-center">
       <p>params传参模式：</p>
       <el-button
         class="m-2"
@@ -78,7 +78,7 @@ function onCloseTags() {
 
     <el-divider />
     <TreeSelect
-      class="w-300px"
+      class="w-[300px]"
       v-model:value="value"
       show-search
       :dropdown-style="{ maxHeight: '400px', overflow: 'auto' }"
@@ -94,7 +94,7 @@ function onCloseTags() {
       :tree-data="treeData"
     >
       <template #tagRender="{ closable, onClose, option }">
-        <el-tag class="mr-3px" :closable="closable" @close="onClose">
+        <el-tag class="mr-[3px]" :closable="closable" @close="onClose">
           {{ transformI18n(option.meta.title) }}
         </el-tag>
       </template>

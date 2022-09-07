@@ -58,7 +58,7 @@ export function useColumns() {
       cellRenderer: () => {
         return lists.map(v => {
           return (
-            <el-tag class="mr-10px" type={v.type} size="small" effect="dark">
+            <el-tag class="mr-[10px]" type={v.type} size="small" effect="dark">
               {v.label}
             </el-tag>
           );

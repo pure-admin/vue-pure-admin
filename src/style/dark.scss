@@ -129,12 +129,17 @@ html.dark {
   }
 
   .vxe-modal--title,
-  .vxe-button--content {
+  .vxe-button--content,
+  .vxe-modal--header-title {
     color: var(--el-text-color-primary);
   }
 
   .vxe-button.type--button.size--medium:hover {
     background: var(--el-color-primary) !important;
+  }
+
+  .vxe-button {
+    background-color: transparent;
   }
 
   /* 项目配置面板 */
