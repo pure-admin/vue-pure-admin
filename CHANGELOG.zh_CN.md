@@ -1,3 +1,23 @@
+# 3.5.0 (2022-9-10)
+
+### 🎫 Feat
+
+- 添加 `cssnano` ，打包时压缩 `css` 体积
+- 添加 `element-plus` 无缝滚动 `Table` 页面 demo
+- 开启 `vscode` 括号对指南
+
+### ✔️ refactor
+
+- 使用 `tailwindcss` 替换 `unocss`，新增 `tailwindcss` [使用文档](http://yiming_chang.gitee.io/pure-admin-doc/pages/39156f/)
+
+### 🐞 Bug fixes
+
+- `token` 过期，刷新死循环
+
+### 🍏 Perf
+
+- 重置路由时，清空缓存页面
+
 # 3.4.6 (2022-8-23)
 
 ### 🐞 Bug fixes

@@ -1,3 +1,23 @@
+# 3.5.0 (2022-9-10)
+
+### 🎫 Feat
+
+- Add `cssnano` to compress the size of `css` when packaging
+- Add `element-plus` seamless scrolling `Table` page demo
+- Open `vscode` bracket pair guide
+
+### ✔️ refactor
+
+- Replace `unocss` with `tailwindcss`, add `tailwindcss` [documentation](https://xiaoxian521.github.io/pure-admin-doc/pages/39156f/)
+
+### 🐞 Bug fixes
+
+- `token` expires, refresh the infinite loop
+
+### 🍏 Perf
+
+- When resetting the route, clear the cached page
+
 # 3.4.6 (2022-8-23)
 
 ### 🐞 Bug fixes
