@@ -5,34 +5,9 @@
 @import "./dark.scss";
 @import "./tailwind.css";
 
+/* 自定义全局 CssVar */
 :root {
   --pure-transition-duration: 0.016s;
-}
-
-body {
-  width: 100%;
-  height: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizelegibility;
-  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
-    "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-}
-
-html {
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-}
-
-#app {
-  width: 100%;
-  height: 100%;
-}
-
-/* 头部用户信息样式重置 */
-.hidden {
-  display: none !important;
 }
 
 /* 灰色模式 */
@@ -45,15 +20,7 @@ html {
   filter: invert(80%);
 }
 
-.pc-spacing {
-  margin: 10px;
-}
-
-.mobile-spacing {
-  margin: 0;
-}
-
-/* 重置vxe-table中pager样式 */
+/* 重置 vxe-table 中 pager 样式 */
 .vxe-pager .vxe-pager--num-btn:not(.is--disabled).is--active {
   color: #fff !important;
 }

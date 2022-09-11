@@ -1,6 +1,5 @@
-@mixin merge-style(
-  /* vertical模式下主体内容距离网页文档左侧的距离 */ $sideBarWidth
-) {
+/* $sideBarWidth: vertical 模式下主体内容距离网页文档左侧的距离 */
+@mixin merge-style($sideBarWidth) {
   $menuActiveText: #7a80b4;
 
   @media screen and (min-width: 150px) and (max-width: 420px) {
@@ -26,7 +25,7 @@
   .main-container {
     height: 100vh;
     min-height: 100%;
-    /* main-content属性动画 */
+    /* main-content 属性动画 */
     transition: margin-left var(--pure-transition-duration);
     margin-left: $sideBarWidth;
     position: relative;
@@ -44,7 +43,7 @@
     right: 0;
     z-index: 998;
     width: calc(100% - 210px);
-    /* fixed-header属性左上角动画 */
+    /* fixed-header 属性左上角动画 */
     transition: width var(--pure-transition-duration);
   }
 
@@ -324,7 +323,7 @@
     }
   }
 
-  /* vertical菜单折叠 */
+  /* vertical 菜单折叠 */
   .el-menu--vertical {
     .el-menu--popup {
       background-color: $subMenuBg !important;
@@ -398,7 +397,7 @@
     }
   }
 
-  /* horizontal菜单 */
+  /* horizontal 菜单 */
   .el-menu--horizontal {
     & > .el-sub-menu .el-sub-menu__icon-arrow {
       position: static !important;
@@ -422,7 +421,7 @@
       }
     }
 
-    /* 无子菜单时激活border-bottom */
+    /* 无子菜单时激活 border-bottom */
     .router-link-exact-active > .submenu-title-noDropdown {
       height: 60px;
       border-bottom: 2px solid var(--el-menu-active-color);

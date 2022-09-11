@@ -36,17 +36,17 @@
   z-index: 99999 !important;
 }
 
-/* 重置button中icon的margin */
+/* 重置 el-button 中 icon 的 margin */
 .reset-margin [class*="el-icon"] + span {
   margin-left: 2px !important;
 }
 
-/* 自定义popover的类名 */
+/* 自定义 popover 的类名 */
 .pure-popper {
   padding: 0 !important;
 }
 
-/* nprogress适配ep的primary */
+/* nprogress 适配 element-plus 的主题色 */
 #nprogress {
   & .bar {
     background-color: var(--el-color-primary) !important;
