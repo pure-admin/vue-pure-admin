@@ -79,7 +79,7 @@ onMounted(() => {
         ref="formRef"
         :inline="true"
         :model="form"
-        class="bg-white dark:bg-dark w-[99/100] pl-8 pt-4"
+        class="bg-bg_color w-[99/100] pl-8 pt-4"
       >
         <el-form-item label="用户名称：" prop="username">
           <el-input

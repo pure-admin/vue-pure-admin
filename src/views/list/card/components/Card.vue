@@ -46,7 +46,7 @@ const cardLogoClass = computed(() => [
 
 <template>
   <div :class="cardClass">
-    <div class="list-card-item_detail bg-white dark:bg-dark">
+    <div class="list-card-item_detail bg-bg_color">
       <el-row justify="space-between">
         <div :class="cardLogoClass">
           <shopIcon v-if="product.type === 1" />

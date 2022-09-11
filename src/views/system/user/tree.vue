@@ -69,7 +69,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="max-w-[260px] h-full min-h-[780px] bg-white dark:bg-dark">
+  <div class="max-w-[260px] h-full min-h-[780px] bg-bg_color">
     <div class="flex items-center h-[34px]">
       <p class="flex-1 ml-2 font-bold text-base truncate" title="部门列表">
         部门列表

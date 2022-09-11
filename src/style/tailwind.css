@@ -3,14 +3,6 @@
 @tailwind utilities;
 
 @layer components {
-  .bg-dark {
-    @apply bg-bg_color;
-  }
-
-  .wh-full {
-    @apply w-full h-full;
-  }
-
   .flex-c {
     @apply flex justify-center items-center;
   }

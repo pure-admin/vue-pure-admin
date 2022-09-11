@@ -18,7 +18,7 @@ emitter.on("openPanel", () => {
 <template>
   <div :class="{ show: show }" class="right-panel-container">
     <div class="right-panel-background" />
-    <div ref="target" class="right-panel bg-white dark:bg-dark">
+    <div ref="target" class="right-panel bg-bg_color">
       <div class="right-panel-items">
         <div class="project-configuration">
           <h3 class="dark:text-white">项目配置</h3>

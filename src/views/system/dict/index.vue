@@ -222,7 +222,7 @@ function onHide() {
 <template>
   <div>
     <!-- 工具栏 -->
-    <vxe-toolbar class="dark:bg-dark">
+    <vxe-toolbar class="bg-bg_color">
       <template #buttons>
         <div class="ml-[20px]">
           <label class="dark:text-text_color_regular">字典名称： </label>
