@@ -38,13 +38,13 @@ class PureHttp {
     this.httpInterceptorsRequest();
     this.httpInterceptorsResponse();
   }
-  // 初始化配置对象
+  /** 初始化配置对象 */
   private static initConfig: PureHttpRequestConfig = {};
 
-  // 保存当前Axios实例对象
+  /** 保存当前Axios实例对象 */
   private static axiosInstance: AxiosInstance = Axios.create(defaultConfig);
 
-  // 请求拦截
+  /** 请求拦截 */
   private httpInterceptorsRequest(): void {
     PureHttp.axiosInstance.interceptors.request.use(
       (config: PureHttpRequestConfig) => {
@@ -87,7 +87,7 @@ class PureHttp {
     );
   }
 
-  // 响应拦截
+  /** 响应拦截 */
   private httpInterceptorsResponse(): void {
     const instance = PureHttp.axiosInstance;
     instance.interceptors.response.use(
@@ -117,7 +117,7 @@ class PureHttp {
     );
   }
 
-  // 通用请求工具函数
+  /** 通用请求工具函数 */
   public request<T>(
     method: RequestMethods,
     url: string,
@@ -144,7 +144,7 @@ class PureHttp {
     });
   }
 
-  // 单独抽离的post工具函数
+  /** 单独抽离的post工具函数 */
   public post<T, P>(
     url: string,
     params?: T,
@@ -153,7 +153,7 @@ class PureHttp {
     return this.request<P>("post", url, params, config);
   }
 
-  // 单独抽离的get工具函数
+  /** 单独抽离的get工具函数 */
   public get<T, P>(
     url: string,
     params?: T,

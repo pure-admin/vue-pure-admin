@@ -27,7 +27,7 @@ const getConfig = (key?: string): ServerConfigs => {
   return config;
 };
 
-// 获取项目动态全局配置
+/** 获取项目动态全局配置 */
 export const getServerConfig = async (app: App): Promise<undefined> => {
   app.config.globalProperties.$config = getConfig();
   return axios({

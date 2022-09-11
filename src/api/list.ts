@@ -9,7 +9,7 @@ type Result = {
   msg?: string;
 };
 
-// 卡片列表
+/** 卡片列表 */
 export const getCardList = (data?: object) => {
   return http.request<Result>("post", "/getCardList", { data });
 };

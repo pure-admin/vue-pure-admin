@@ -11,17 +11,17 @@ type Result = {
   msg?: string;
 };
 
-// 获取用户管理列表
+/** 获取用户管理列表 */
 export const getUserList = (data?: object) => {
   return http.request<Result>("post", "/user", { data });
 };
 
-// 获取角色管理列表
+/** 获取角色管理列表 */
 export const getRoleList = (data?: object) => {
   return http.request<Result>("post", "/role", { data });
 };
 
-// 获取部门管理列表
+/** 获取部门管理列表 */
 export const getDeptList = (data?: object) => {
   return http.request<Result>("post", "/dept", { data });
 };

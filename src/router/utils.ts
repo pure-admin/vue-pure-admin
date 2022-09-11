@@ -21,7 +21,7 @@ const modulesRoutes = import.meta.glob("/src/views/**/*.{vue,tsx}");
 // 动态路由
 import { getAsyncRoutes } from "/@/api/routes";
 
-// 按照路由中meta下的rank等级升序来排序路由
+/** 按照路由中meta下的rank等级升序来排序路由 */
 function ascending(arr: any[]) {
   arr.forEach(v => {
     if (v?.meta?.rank === null) v.meta.rank = undefined;
@@ -38,7 +38,7 @@ function ascending(arr: any[]) {
   );
 }
 
-// 过滤meta中showLink为false的路由
+/** 过滤meta中showLink为false的路由 */
 function filterTree(data: RouteComponent[]) {
   const newTree = cloneDeep(data).filter(
     (v: { meta: { showLink: boolean } }) => v.meta?.showLink !== false
@@ -49,7 +49,7 @@ function filterTree(data: RouteComponent[]) {
   return newTree;
 }
 
-// 批量删除缓存路由(keepalive)
+/** 批量删除缓存路由(keepalive) */
 function delAliveRoutes(delAliveRouteList: Array<RouteConfigs>) {
   delAliveRouteList.forEach(route => {
     usePermissionStoreHook().cacheOperate({
@@ -59,7 +59,7 @@ function delAliveRoutes(delAliveRouteList: Array<RouteConfigs>) {
   });
 }
 
-// 通过path获取父级路径
+/** 通过path获取父级路径 */
 function getParentPaths(path: string, routes: RouteRecordRaw[]) {
   // 深度遍历查找
   function dfs(routes: RouteRecordRaw[], path: string, parents: string[]) {
@@ -83,7 +83,7 @@ function getParentPaths(path: string, routes: RouteRecordRaw[]) {
   return dfs(routes, path, []);
 }
 
-// 查找对应path的路由信息
+/** 查找对应path的路由信息 */
 function findRouteByPath(path: string, routes: RouteRecordRaw[]) {
   let res = routes.find((item: { path: string }) => item.path == path);
   if (res) {
@@ -114,7 +114,7 @@ function addPathMatch() {
   }
 }
 
-// 初始化路由
+/** 初始化路由 */
 function initRouter(name: string) {
   return new Promise(resolve => {
     getAsyncRoutes({ name }).then(({ info }) => {
@@ -195,7 +195,7 @@ function formatTwoStageRoutes(routesList: RouteRecordRaw[]) {
   return newRoutesList;
 }
 
-// 处理缓存路由（添加、删除、刷新）
+/** 处理缓存路由（添加、删除、刷新） */
 function handleAliveRoute(matched: RouteRecordNormalized[], mode?: string) {
   switch (mode) {
     case "add":
@@ -222,7 +222,7 @@ function handleAliveRoute(matched: RouteRecordNormalized[], mode?: string) {
   }
 }
 
-// 过滤后端传来的动态路由 重新生成规范路由
+/** 过滤后端传来的动态路由 重新生成规范路由 */
 function addAsyncRoutes(arrRoutes: Array<RouteRecordRaw>) {
   if (!arrRoutes || !arrRoutes.length) return;
   const modulesRoutesKeys = Object.keys(modulesRoutes);
@@ -251,7 +251,7 @@ function addAsyncRoutes(arrRoutes: Array<RouteRecordRaw>) {
   return arrRoutes;
 }
 
-// 获取路由历史模式 https://next.router.vuejs.org/zh/guide/essentials/history-mode.html
+/** 获取路由历史模式 https://next.router.vuejs.org/zh/guide/essentials/history-mode.html */
 function getHistoryMode(): RouterHistory {
   const routerHistory = loadEnv().VITE_ROUTER_HISTORY;
   // len为1 代表只有历史模式 为2 代表历史模式中存在base参数 https://next.router.vuejs.org/zh/api/#%E5%8F%82%E6%95%B0-1
@@ -275,7 +275,7 @@ function getHistoryMode(): RouterHistory {
   }
 }
 
-// 是否有权限
+/** 是否有权限 */
 function hasPermissions(value: Array<string>): boolean {
   if (value && value instanceof Array && value.length > 0) {
     const roles = usePermissionStoreHook().buttonAuth;

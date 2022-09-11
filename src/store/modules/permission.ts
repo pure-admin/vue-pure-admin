@@ -20,7 +20,7 @@ export const usePermissionStore = defineStore({
     cachePageList: []
   }),
   actions: {
-    // 获取异步路由菜单
+    /** 获取异步路由菜单 */
     asyncActionRoutes(routes) {
       if (this.wholeMenus.length > 0) return;
       this.wholeMenus = filterTree(
@@ -61,7 +61,7 @@ export const usePermissionStore = defineStore({
           break;
       }
     },
-    // 清空缓存页面
+    /** 清空缓存页面 */
     clearAllCachePage() {
       this.wholeMenus = [];
       this.menusTree = [];
