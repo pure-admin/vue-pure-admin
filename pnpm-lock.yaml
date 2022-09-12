@@ -41,10 +41,10 @@ specifiers:
   "@vue/eslint-config-prettier": ^7.0.0
   "@vue/eslint-config-typescript": ^10.0.0
   "@vue/runtime-core": ^3.2.39
-  "@vueuse/core": ^9.1.1
+  "@vueuse/core": ^9.2.0
   "@vueuse/motion": ^2.0.0-beta.12
-  "@vueuse/shared": ^9.1.1
-  "@wangeditor/editor": ^5.1.14
+  "@vueuse/shared": ^9.2.0
+  "@wangeditor/editor": ^5.1.15
   "@wangeditor/editor-for-vue": ^5.1.12
   animate.css: ^4.1.1
   autoprefixer: ^10.4.8
@@ -53,7 +53,7 @@ specifiers:
   cloc: ^2.10.0
   cropperjs: ^1.5.12
   cssnano: ^5.1.13
-  dayjs: ^1.11.4
+  dayjs: ^1.11.5
   driver.js: ^0.9.8
   echarts: ^5.3.3
   el-table-infinite-scroll: ^3.0.1
@@ -75,7 +75,7 @@ specifiers:
   nprogress: ^0.2.0
   path: ^0.12.7
   picocolors: ^1.0.0
-  pinia: ^2.0.21
+  pinia: ^2.0.22
   postcss: ^8.4.16
   postcss-html: ^1.5.0
   postcss-import: ^15.0.0
@@ -106,7 +106,7 @@ specifiers:
   vite: ^3.1.0
   vite-plugin-mock: ^2.9.6
   vite-plugin-remove-console: ^1.1.0
-  vite-svg-loader: ^3.4.0
+  vite-svg-loader: ^3.6.0
   vue: ^3.2.39
   vue-eslint-parser: ^8.2.0
   vue-form-create2: ^1.2.8
@@ -114,13 +114,13 @@ specifiers:
   vue-json-pretty: ^2.1.1
   vue-pdf-embed: ^1.1.4
   vue-router: ^4.1.5
-  vue-tsc: ^0.40.7
+  vue-tsc: ^0.40.13
   vue-types: ^4.2.1
   vue-virtual-scroller: ^2.0.0-alpha.1
   vuedraggable: ^4.1.0
-  vxe-table: ^4.3.2
+  vxe-table: ^4.3.5
   xe-utils: ^3.5.6
-  xgplayer: ^2.31.7
+  xgplayer: ^2.32.0
   xlsx: ^0.18.5
 
 dependencies:
@@ -173,7 +173,7 @@ dependencies:
   vue-types: 4.2.1_vue@3.2.39
   vue-virtual-scroller: 2.0.0-alpha.1_vue@3.2.39
   vuedraggable: 4.1.0_vue@3.2.39
-  vxe-table: 4.3.2_vue@3.2.39+xe-utils@3.5.6
+  vxe-table: 4.3.5_vue@3.2.39+xe-utils@3.5.6
   xe-utils: 3.5.6
   xgplayer: 2.32.0
   xlsx: 0.18.5
@@ -8952,13 +8952,13 @@ packages:
       vue: 3.2.39
     dev: false
 
-  /vxe-table/4.3.2_vue@3.2.39+xe-utils@3.5.6:
+  /vxe-table/4.3.5_vue@3.2.39+xe-utils@3.5.6:
     resolution:
       {
-        integrity: sha512-m9guEBntvKDFzHW6BZ5w6jbrNWD4eRjsFa+uYKuTvrW59KBE9HEkYRoh2z3zOkR/RyIAT8l8sWpgI04wY2iu5A==
+        integrity: sha512-JEvGAs7SBN1rWn5f2tkoRiXd/rAT7RfnDTTlFsHsTtASiUTKNTISI2WBsVeLkkNRTs0SXh6FgrYsIPO2soSBXA==
       }
     peerDependencies:
-      vue: ^3.2.2
+      vue: ^3.2.28
       xe-utils: ^3.5.0
     dependencies:
       vue: 3.2.39
