@@ -1,15 +1,16 @@
 <script setup lang="ts">
+import { $t } from "/@/plugins/i18n";
 import { emitter } from "/@/utils/mitt";
 import { RouteConfigs } from "../../types";
 import { useTags } from "../../hooks/useTag";
 import { routerArrays } from "/@/layout/types";
 import { isEqual, isEmpty } from "lodash-unified";
 import { toggleClass, removeClass } from "@pureadmin/utils";
-import { useResizeObserver, useDebounceFn } from "@vueuse/core";
 import { useSettingStoreHook } from "/@/store/modules/settings";
+import { ref, watch, unref, nextTick, onBeforeMount } from "vue";
 import { handleAliveRoute, delAliveRoutes } from "/@/router/utils";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
-import { ref, watch, unref, toRaw, nextTick, onBeforeMount } from "vue";
+import { useResizeObserver, useDebounceFn, useFullscreen } from "@vueuse/core";
 
 const {
   route,
@@ -23,6 +24,7 @@ const {
   buttonLeft,
   showModel,
   translateX,
+  pureSetting,
   activeIndex,
   getTabStyle,
   iconIsActive,
@@ -34,12 +36,14 @@ const {
   onMounted,
   onMouseenter,
   onMouseleave,
-  transformI18n
+  transformI18n,
+  onContentFullScreen
 } = useTags();
 
 const tabDom = ref();
 const containerDom = ref();
 const scrollbarDom = ref();
+const { isFullscreen, toggle } = useFullscreen();
 
 const dynamicTagView = () => {
   const index = multiTags.value.findIndex(item => {
@@ -276,6 +280,32 @@ function onClickDrop(key, item, selectRoute?: RouteConfigs) {
         length: multiTags.value.length
       });
       router.push("/welcome");
+      break;
+    case 6:
+      // 整体页面全屏
+      toggle();
+      setTimeout(() => {
+        if (isFullscreen.value) {
+          tagsViews[6].icon = "exit-fullscreen";
+          tagsViews[6].text = $t("buttons.hswholeExitFullScreen");
+        } else {
+          tagsViews[6].icon = "fullscreen";
+          tagsViews[6].text = $t("buttons.hswholeFullScreen");
+        }
+      }, 100);
+      break;
+    case 7:
+      // 内容区全屏
+      onContentFullScreen();
+      setTimeout(() => {
+        if (pureSetting.hiddenSideBar) {
+          tagsViews[7].icon = "exit-fullscreen";
+          tagsViews[7].text = $t("buttons.hscontentExitFullScreen");
+        } else {
+          tagsViews[7].icon = "fullscreen";
+          tagsViews[7].text = $t("buttons.hscontentFullScreen");
+        }
+      }, 100);
       break;
   }
   setTimeout(() => {
@@ -532,54 +562,36 @@ onMounted(() => {
           style="display: flex; align-items: center"
         >
           <li v-if="item.show" @click="selectTag(key, item)">
-            <component :is="toRaw(item.icon)" :key="key" />
+            <IconifyIconOffline :icon="item.icon" />
             {{ transformI18n(item.text) }}
           </li>
         </div>
       </ul>
     </transition>
     <!-- 右侧功能按钮 -->
-    <ul class="right-button">
-      <li>
-        <span
-          :title="transformI18n('buttons.hsrefreshRoute')"
-          class="el-icon-refresh-right rotate"
-          @click="onFresh"
-        >
-          <IconifyIconOffline icon="refresh-right" />
-        </span>
-      </li>
-      <li>
-        <el-dropdown
-          trigger="click"
-          placement="bottom-end"
-          @command="handleCommand"
-        >
-          <IconifyIconOffline icon="arrow-down" class="dark:text-white" />
-          <template #dropdown>
-            <el-dropdown-menu>
-              <el-dropdown-item
-                v-for="(item, key) in tagsViews"
-                :key="key"
-                :command="{ key, item }"
-                :divided="item.divided"
-                :disabled="item.disabled"
-              >
-                <component
-                  :is="toRaw(item.icon)"
-                  :key="key"
-                  style="margin-right: 6px"
-                />
-                {{ transformI18n(item.text) }}
-              </el-dropdown-item>
-            </el-dropdown-menu>
-          </template>
-        </el-dropdown>
-      </li>
-      <li>
-        <slot />
-      </li>
-    </ul>
+    <el-dropdown
+      trigger="click"
+      placement="bottom-end"
+      @command="handleCommand"
+    >
+      <span class="arrow-down">
+        <IconifyIconOffline icon="arrow-down" class="dark:text-white" />
+      </span>
+      <template #dropdown>
+        <el-dropdown-menu>
+          <el-dropdown-item
+            v-for="(item, key) in tagsViews"
+            :key="key"
+            :command="{ key, item }"
+            :divided="item.divided"
+            :disabled="item.disabled"
+          >
+            <IconifyIconOffline :icon="item.icon" />
+            {{ transformI18n(item.text) }}
+          </el-dropdown-item>
+        </el-dropdown-menu>
+      </template>
+    </el-dropdown>
   </div>
 </template>
 

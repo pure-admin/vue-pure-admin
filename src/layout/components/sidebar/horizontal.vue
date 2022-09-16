@@ -5,8 +5,6 @@ import Notice from "../notice/index.vue";
 import SidebarItem from "./sidebarItem.vue";
 import avatars from "/@/assets/avatars.jpg";
 import { useNav } from "/@/layout/hooks/useNav";
-import screenfull from "../screenfull/index.vue";
-import { deviceDetection } from "@pureadmin/utils";
 import { useTranslationLang } from "../../hooks/useTranslationLang";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 import globalization from "/@/assets/svg/globalization.svg?component";
@@ -62,8 +60,6 @@ watch(
       <Search />
       <!-- 通知 -->
       <Notice id="header-notice" />
-      <!-- 全屏 -->
-      <screenfull id="header-screenfull" v-show="!deviceDetection()" />
       <!-- 国际化 -->
       <el-dropdown id="header-translation" trigger="click">
         <globalization

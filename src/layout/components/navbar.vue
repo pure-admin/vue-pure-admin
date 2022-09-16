@@ -5,9 +5,7 @@ import mixNav from "./sidebar/mixNav.vue";
 import avatars from "/@/assets/avatars.jpg";
 import { useNav } from "/@/layout/hooks/useNav";
 import Breadcrumb from "./sidebar/breadCrumb.vue";
-import { deviceDetection } from "@pureadmin/utils";
 import topCollapse from "./sidebar/topCollapse.vue";
-import screenfull from "../components/screenfull/index.vue";
 import { useTranslationLang } from "../hooks/useTranslationLang";
 import globalization from "/@/assets/svg/globalization.svg?component";
 
@@ -50,8 +48,6 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
       <Search />
       <!-- 通知 -->
       <Notice id="header-notice" />
-      <!-- 全屏 -->
-      <screenfull id="header-screenfull" v-show="!deviceDetection()" />
       <!-- 国际化 -->
       <el-dropdown id="header-translation" trigger="click">
         <globalization

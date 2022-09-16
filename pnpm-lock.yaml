@@ -57,7 +57,7 @@ specifiers:
   driver.js: ^0.9.8
   echarts: ^5.3.3
   el-table-infinite-scroll: ^3.0.1
-  element-plus: ^2.2.16
+  element-plus: ^2.2.17
   element-resize-detector: ^1.2.3
   eslint: ^8.8.0
   eslint-plugin-prettier: ^4.0.0
@@ -145,7 +145,7 @@ dependencies:
   driver.js: 0.9.8
   echarts: 5.3.3
   el-table-infinite-scroll: 3.0.1
-  element-plus: 2.2.16_vue@3.2.39
+  element-plus: 2.2.17_vue@3.2.39
   element-resize-detector: 1.2.4
   js-cookie: 3.0.1
   jsbarcode: 3.11.5
@@ -1392,7 +1392,7 @@ packages:
       }
     dependencies:
       "@element-plus/icons-vue": 2.0.9_vue@3.2.39
-      element-plus: 2.2.16_vue@3.2.39
+      element-plus: 2.2.17_vue@3.2.39
       vue: 3.2.39
     transitivePeerDependencies:
       - "@vue/composition-api"
@@ -1404,7 +1404,7 @@ packages:
         integrity: sha512-mJBpMj0YkaqTM5TDz+ek/f8h74qRLhDc/gLJhBq0wpyfCgG++Jd/9i+QUj8gedA5oN8IL6LOSFbcvlGDYxHgkw==
       }
     dependencies:
-      element-plus: 2.2.16_vue@3.2.39
+      element-plus: 2.2.17_vue@3.2.39
       vue: 3.2.39
     transitivePeerDependencies:
       - "@vue/composition-api"
@@ -3901,7 +3901,7 @@ packages:
       }
     dependencies:
       core-js: 3.25.1
-      element-plus: 2.2.16_vue@3.2.39
+      element-plus: 2.2.17_vue@3.2.39
       vue: 3.2.39
     transitivePeerDependencies:
       - "@vue/composition-api"
@@ -3914,10 +3914,10 @@ packages:
       }
     dev: true
 
-  /element-plus/2.2.16_vue@3.2.39:
+  /element-plus/2.2.17_vue@3.2.39:
     resolution:
       {
-        integrity: sha512-rvaTMFIujec9YDC5lyaiQv2XVUCHuhVDq2k+9vQxP78N8Wd07iEOGa9pvEVOO2uYc75l4rSl2RE/IWPH/6Mdzw==
+        integrity: sha512-MGwMIE/q+FFD3kgS23x8HIe5043tmD1cTRwjhIX9o6fim1avFnUkrsfYRvybbz4CkyqSb185EheZS5AUPpXh2g==
       }
     peerDependencies:
       vue: ^3.2.0
@@ -8790,7 +8790,7 @@ packages:
       ace-builds: 1.10.1
       ant-design-vue: 3.2.12_vue@3.2.39
       core-js: 3.25.1
-      element-plus: 2.2.16_vue@3.2.39
+      element-plus: 2.2.17_vue@3.2.39
       lodash: 4.17.21
       uuid: 8.3.2
       vue: 3.2.39

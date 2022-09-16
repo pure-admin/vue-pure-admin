@@ -4,8 +4,6 @@ import Notice from "../notice/index.vue";
 import avatars from "/@/assets/avatars.jpg";
 import { useNav } from "/@/layout/hooks/useNav";
 import { transformI18n } from "/@/plugins/i18n";
-import screenfull from "../screenfull/index.vue";
-import { deviceDetection } from "@pureadmin/utils";
 import { ref, toRaw, watch, onMounted } from "vue";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
 import { getParentPaths, findRouteByPath } from "/@/router/utils";
@@ -94,8 +92,6 @@ watch(
       <Search />
       <!-- 通知 -->
       <Notice id="header-notice" />
-      <!-- 全屏 -->
-      <screenfull id="header-screenfull" v-show="!deviceDetection()" />
       <!-- 国际化 -->
       <el-dropdown id="header-translation" trigger="click">
         <globalization

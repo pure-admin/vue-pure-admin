@@ -49,7 +49,7 @@
     "driver.js": "^0.9.8",
     "echarts": "^5.3.3",
     "el-table-infinite-scroll": "^3.0.1",
-    "element-plus": "^2.2.16",
+    "element-plus": "^2.2.17",
     "element-resize-detector": "^1.2.3",
     "js-cookie": "^3.0.1",
     "jsbarcode": "^3.11.5",
