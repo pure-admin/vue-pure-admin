@@ -18,6 +18,10 @@ buttons:
   hscloseRightTabs: Close RightTabs
   hscloseOtherTabs: Close OtherTabs
   hscloseAllTabs: Close AllTabs
+  hswholeFullScreen: Whole FullScreen
+  hswholeExitFullScreen: Whole ExitFullScreen
+  hscontentFullScreen: Content FullScreen
+  hscontentExitFullScreen: Content ExitFullScreen
 menus:
   hshome: Home
   hslogin: Login

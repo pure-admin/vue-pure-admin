@@ -121,21 +121,6 @@
     }
   }
 
-  .right-button {
-    display: flex;
-    font-size: 16px;
-
-    li {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 38px;
-      border-right: 1px solid #ccc;
-      cursor: pointer;
-    }
-  }
-
   /* 右键菜单 */
   .contextmenu {
     margin: 0;
@@ -196,6 +181,9 @@
   margin-right: 10px;
 }
 
+:deep(.el-dropdown-menu__item--divided) {
+  margin: 1px 0;
+}
 .el-dropdown-menu__item--divided::before {
   margin: 0;
 }
@@ -223,7 +211,8 @@
 }
 
 .arrow-left,
-.arrow-right {
+.arrow-right,
+.arrow-down {
   width: 40px;
   height: 38px;
   color: var(--el-text-color-primary);
@@ -248,7 +237,7 @@
 
 .arrow-right {
   box-shadow: -5px 0 5px -6px #ccc;
-  border-right: 1px solid #ccc;
+  border-right: 0.5px solid #ccc;
 
   &:hover {
     cursor: e-resize;
@@ -304,9 +293,4 @@
   bottom: 0;
   background: var(--el-color-primary);
   animation: scheduleOutWidth 400ms ease-in;
-}
-
-/* 刷新按钮动画效果 */
-.refresh-button {
-  animation: rotate 600ms linear infinite;
 }

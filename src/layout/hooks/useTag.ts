@@ -14,20 +14,15 @@ import type { StorageConfigs } from "/#/index";
 import { useEventListener } from "@vueuse/core";
 import { useRoute, useRouter } from "vue-router";
 import { transformI18n, $t } from "/@/plugins/i18n";
+import { useSettingStoreHook } from "/@/store/modules/settings";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
 import { storageLocal, toggleClass, hasClass } from "@pureadmin/utils";
-
-import close from "/@/assets/svg/close.svg?component";
-import refresh from "/@/assets/svg/refresh.svg?component";
-import closeAll from "/@/assets/svg/close_all.svg?component";
-import closeLeft from "/@/assets/svg/close_left.svg?component";
-import closeOther from "/@/assets/svg/close_other.svg?component";
-import closeRight from "/@/assets/svg/close_right.svg?component";
 
 export function useTags() {
   const route = useRoute();
   const router = useRouter();
   const instance = getCurrentInstance();
+  const pureSetting = useSettingStoreHook();
 
   const buttonTop = ref(0);
   const buttonLeft = ref(0);
@@ -53,45 +48,59 @@ export function useTags() {
 
   const tagsViews = reactive<Array<tagsViewsType>>([
     {
-      icon: refresh,
+      icon: "refresh-right",
       text: $t("buttons.hsreload"),
       divided: false,
       disabled: false,
       show: true
     },
     {
-      icon: close,
+      icon: "close",
       text: $t("buttons.hscloseCurrentTab"),
       divided: false,
       disabled: multiTags.value.length > 1 ? false : true,
       show: true
     },
     {
-      icon: closeLeft,
+      icon: "close-left-tags",
       text: $t("buttons.hscloseLeftTabs"),
       divided: true,
       disabled: multiTags.value.length > 1 ? false : true,
       show: true
     },
     {
-      icon: closeRight,
+      icon: "close-right-tags",
       text: $t("buttons.hscloseRightTabs"),
       divided: false,
       disabled: multiTags.value.length > 1 ? false : true,
       show: true
     },
     {
-      icon: closeOther,
+      icon: "close-other-tags",
       text: $t("buttons.hscloseOtherTabs"),
       divided: true,
       disabled: multiTags.value.length > 2 ? false : true,
       show: true
     },
     {
-      icon: closeAll,
+      icon: "close-all-tags",
       text: $t("buttons.hscloseAllTabs"),
       divided: false,
       disabled: multiTags.value.length > 1 ? false : true,
+      show: true
+    },
+    {
+      icon: "fullscreen",
+      text: $t("buttons.hswholeFullScreen"),
+      divided: true,
+      disabled: false,
+      show: true
+    },
+    {
+      icon: "fullscreen",
+      text: $t("buttons.hscontentFullScreen"),
+      divided: false,
+      disabled: false,
       show: true
     }
   ]);
@@ -172,6 +181,12 @@ export function useTags() {
     }
   }
 
+  function onContentFullScreen() {
+    pureSetting.hiddenSideBar
+      ? pureSetting.changeSetting({ key: "hiddenSideBar", value: false })
+      : pureSetting.changeSetting({ key: "hiddenSideBar", value: true });
+  }
+
   onMounted(() => {
     if (!showModel.value) {
       const configure = storageLocal.getItem<StorageConfigs>(
@@ -201,6 +216,7 @@ export function useTags() {
     buttonTop,
     buttonLeft,
     translateX,
+    pureSetting,
     activeIndex,
     getTabStyle,
     iconIsActive,
@@ -213,6 +229,7 @@ export function useTags() {
     onMounted,
     onMouseenter,
     onMouseleave,
-    transformI18n
+    transformI18n,
+    onContentFullScreen
   };
 }

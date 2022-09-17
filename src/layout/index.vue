@@ -7,16 +7,13 @@ import { useSettingStoreHook } from "/@/store/modules/settings";
 import { deviceDetection, useDark, useGlobal } from "@pureadmin/utils";
 import { h, reactive, computed, onMounted, defineComponent } from "vue";
 
-import backTop from "/@/assets/svg/back_top.svg?component";
-import fullScreen from "/@/assets/svg/full_screen.svg?component";
-import exitScreen from "/@/assets/svg/exit_screen.svg?component";
-
 import navbar from "./components/navbar.vue";
 import tag from "./components/tag/index.vue";
 import appMain from "./components/appMain.vue";
 import setting from "./components/setting/index.vue";
 import Vertical from "./components/sidebar/vertical.vue";
 import Horizontal from "./components/sidebar/horizontal.vue";
+import backTop from "/@/assets/svg/back_top.svg?component";
 
 const { isDark } = useDark();
 const { layout } = useLayout();
@@ -102,12 +99,6 @@ onMounted(() => {
   }
 });
 
-function onFullScreen() {
-  pureSetting.hiddenSideBar
-    ? pureSetting.changeSetting({ key: "hiddenSideBar", value: false })
-    : pureSetting.changeSetting({ key: "hiddenSideBar", value: true });
-}
-
 const layoutHeader = defineComponent({
   render() {
     return h(
@@ -127,31 +118,11 @@ const layoutHeader = defineComponent({
           !pureSetting.hiddenSideBar &&
           (layout.value.includes("vertical") || layout.value.includes("mix"))
             ? h(navbar)
-            : h("div"),
+            : null,
           !pureSetting.hiddenSideBar && layout.value.includes("horizontal")
             ? h(Horizontal)
-            : h("div"),
-          h(
-            tag,
-            {},
-            {
-              default: () => [
-                h(
-                  "span",
-                  {
-                    onClick: onFullScreen
-                  },
-                  {
-                    default: () => [
-                      !pureSetting.hiddenSideBar
-                        ? h(fullScreen, { class: "dark:text-white" })
-                        : h(exitScreen, { class: "dark:text-white" })
-                    ]
-                  }
-                )
-              ]
-            }
-          )
+            : null,
+          h(tag)
         ]
       }
     );
@@ -224,10 +195,6 @@ const layoutHeader = defineComponent({
     position: fixed;
     top: 0;
   }
-}
-
-.main-hidden {
-  margin-left: 0 !important;
 }
 
 .app-mask {

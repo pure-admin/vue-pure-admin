@@ -1,4 +1,3 @@
-import { Component } from "vue";
 export const routerArrays: Array<RouteConfigs> = [
   {
     path: "/welcome",
@@ -33,7 +32,7 @@ export type multiTagsType = {
 };
 
 export type tagsViewsType = {
-  icon: Component;
+  icon: string;
   text: string;
   divided: boolean;
   disabled: boolean;

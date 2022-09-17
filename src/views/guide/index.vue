@@ -16,14 +16,6 @@ const steps = [
     }
   },
   {
-    element: "#header-screenfull",
-    popover: {
-      title: "全屏",
-      description: "你可以在这里进行全屏切换",
-      position: "left"
-    }
-  },
-  {
     element: "#header-translation",
     popover: {
       title: "国际化",
