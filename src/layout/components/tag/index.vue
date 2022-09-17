@@ -5,7 +5,6 @@ import { RouteConfigs } from "../../types";
 import { useTags } from "../../hooks/useTag";
 import { routerArrays } from "/@/layout/types";
 import { isEqual, isEmpty } from "lodash-unified";
-import { toggleClass, removeClass } from "@pureadmin/utils";
 import { useSettingStoreHook } from "/@/store/modules/settings";
 import { ref, watch, unref, nextTick, onBeforeMount } from "vue";
 import { handleAliveRoute, delAliveRoutes } from "/@/router/utils";
@@ -43,6 +42,7 @@ const {
 const tabDom = ref();
 const containerDom = ref();
 const scrollbarDom = ref();
+let isShowArrow = ref(false);
 const { isFullscreen, toggle } = useFullscreen();
 
 const dynamicTagView = () => {
@@ -70,6 +70,9 @@ const moveToView = (index: number): void => {
     : 0;
   // 已有标签页总长度（包含溢出部分）
   const tabDomWidth = tabDom.value ? tabDom.value?.offsetWidth : 0;
+  scrollbarDomWidth <= tabDomWidth
+    ? (isShowArrow.value = true)
+    : (isShowArrow.value = false);
   if (tabDomWidth < scrollbarDomWidth || tabItemElOffsetLeft === 0) {
     translateX.value = 0;
   } else if (tabItemElOffsetLeft < -translateX.value) {
@@ -147,16 +150,11 @@ function dynamicRouteTag(value: string, parentPath: string): void {
 
 /** 刷新路由 */
 function onFresh() {
-  const refreshButton = "refresh-button";
-  toggleClass(true, refreshButton, document.querySelector(".rotate"));
   const { fullPath, query } = unref(route);
   router.replace({
     path: "/redirect" + fullPath,
     query: query
   });
-  setTimeout(() => {
-    removeClass(document.querySelector(".rotate"), refreshButton);
-  }, 600);
 }
 
 function deleteDynamicTag(obj: any, current: any, tag?: string) {
@@ -497,9 +495,9 @@ onMounted(() => {
 
 <template>
   <div ref="containerDom" class="tags-view" v-if="!showTags">
-    <div class="arrow-left">
+    <span v-show="isShowArrow" class="arrow-left">
       <IconifyIconOffline icon="arrow-left-s-line" @click="handleScroll(200)" />
-    </div>
+    </span>
     <div ref="scrollbarDom" class="scroll-container">
       <div class="tab" ref="tabDom" :style="getTabStyle">
         <div
@@ -542,7 +540,7 @@ onMounted(() => {
         </div>
       </div>
     </div>
-    <span class="arrow-right">
+    <span v-show="isShowArrow" class="arrow-right">
       <IconifyIconOffline
         icon="arrow-right-s-line"
         @click="handleScroll(-200)"
@@ -557,7 +555,7 @@ onMounted(() => {
         class="contextmenu"
       >
         <div
-          v-for="(item, key) in tagsViews"
+          v-for="(item, key) in tagsViews.slice(0, 6)"
           :key="key"
           style="display: flex; align-items: center"
         >
