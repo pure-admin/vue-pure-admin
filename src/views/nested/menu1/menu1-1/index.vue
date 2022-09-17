@@ -11,7 +11,7 @@ const { t } = useI18n();
 </script>
 
 <template>
-  <div>
+  <div class="dark:text-white">
     <p>{{ t("menus.hsmenu1") }}</p>
     <p style="text-indent: 2em">{{ t("menus.hsmenu1-1") }}</p>
     <el-input v-model="input" />

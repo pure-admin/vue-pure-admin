@@ -11,7 +11,7 @@ defineOptions({
     <noExist />
     <div class="ml-12">
       <p
-        class="font-medium text-4xl mb-4"
+        class="font-medium text-4xl mb-4 dark:text-white"
         v-motion
         :initial="{
           opacity: 0,

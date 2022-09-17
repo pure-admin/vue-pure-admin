@@ -11,7 +11,7 @@ const { t } = useI18n();
 </script>
 
 <template>
-  <div>
+  <div class="dark:text-white">
     <p>{{ t("menus.hsmenu2") }}</p>
     <el-input v-model="input" />
   </div>
