@@ -22,9 +22,13 @@ emitter.on("openPanel", () => {
       <div class="right-panel-items">
         <div class="project-configuration">
           <h3 class="dark:text-white">项目配置</h3>
-          <el-icon title="关闭配置" class="el-icon-close" @click="show = !show">
-            <IconifyIconOffline icon="close" />
-          </el-icon>
+          <span title="关闭配置">
+            <IconifyIconOffline
+              class="dark:text-white"
+              icon="close"
+              @click="show = !show"
+            />
+          </span>
         </div>
         <div
           class="border-b-[1px] border-solid border-[#dcdfe6] dark:border-[#303030]"
@@ -121,7 +125,7 @@ emitter.on("openPanel", () => {
   top: 15px;
   margin-left: 10px;
 
-  i {
+  svg {
     font-size: 20px;
     margin-right: 20px;
 

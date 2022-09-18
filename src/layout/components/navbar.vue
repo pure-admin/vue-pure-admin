@@ -99,7 +99,7 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
         </template>
       </el-dropdown>
       <span
-        class="el-icon-setting navbar-bg-hover"
+        class="set-icon navbar-bg-hover"
         :title="t('buttons.hssystemSet')"
         @click="onPanel"
       >
@@ -148,15 +148,6 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
         height: 22px;
         border-radius: 50%;
       }
-    }
-
-    .el-icon-setting {
-      height: 48px;
-      width: 38px;
-      padding: 12px;
-      display: flex;
-      cursor: pointer;
-      align-items: center;
     }
   }
 

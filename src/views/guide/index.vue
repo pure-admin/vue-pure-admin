@@ -24,7 +24,7 @@ const steps = [
     }
   },
   {
-    element: ".el-icon-setting",
+    element: ".set-icon",
     popover: {
       title: "项目配置",
       description: "你可以在这里查看项目配置",

@@ -109,7 +109,7 @@ watch(
         </template>
       </el-dropdown>
       <span
-        class="el-icon-setting navbar-bg-hover"
+        class="set-icon navbar-bg-hover"
         :title="t('buttons.hssystemSet')"
         @click="onPanel"
       >

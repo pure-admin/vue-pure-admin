@@ -22,6 +22,15 @@
     margin-right: 5px;
   }
 
+  .set-icon {
+    height: 48px;
+    width: 40px;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+  }
+
   .main-container {
     height: 100vh;
     min-height: 100%;
@@ -231,7 +240,7 @@
       /* 登录名 */
       .el-dropdown-link,
       /* 设置 */
-      .el-icon-setting {
+      .set-icon {
         &:hover {
           background: $menuHover;
         }
@@ -269,15 +278,6 @@
           height: 22px;
           border-radius: 50%;
         }
-      }
-
-      .el-icon-setting {
-        height: 48px;
-        width: 40px;
-        padding: 12px;
-        display: flex;
-        cursor: pointer;
-        align-items: center;
       }
     }
 
@@ -594,7 +594,7 @@ body[layout="vertical"] {
   /* 登录名 */
   .el-dropdown-link,
   /* 设置 */
-  .el-icon-setting {
+  .set-icon {
     &:hover {
       background: #f6f6f6;
     }
