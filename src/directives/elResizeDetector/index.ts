@@ -1,7 +1,6 @@
 import { Directive, type DirectiveBinding, type VNode } from "vue";
 import elementResizeDetectorMaker from "element-resize-detector";
 import type { Erd } from "element-resize-detector";
-import { optimizeFps } from "@pureadmin/utils";
 import { emitter } from "/@/utils/mitt";
 
 const erd: Erd = elementResizeDetectorMaker({
@@ -14,9 +13,7 @@ export const resize: Directive = {
       const width = elem.offsetWidth;
       const height = elem.offsetHeight;
       if (binding?.instance) {
-        optimizeFps(() => {
-          emitter.emit("resize", { detail: { width, height } });
-        })();
+        emitter.emit("resize", { detail: { width, height } });
       } else {
         vnode.el.dispatchEvent(
           new CustomEvent("resize", { detail: { width, height } })
