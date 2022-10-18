@@ -27,6 +27,14 @@ const ableRouter: RouteConfigsTable = {
       }
     },
     {
+      path: "/able/download",
+      name: "Download",
+      component: () => import("/@/views/able/download.vue"),
+      meta: {
+        title: $t("menus.hsDownload")
+      }
+    },
+    {
       path: "/able/iconSelect",
       name: "IconSelect",
       component: () => import("/@/views/able/icon-select.vue"),
