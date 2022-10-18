@@ -34,6 +34,7 @@ export const useEpThemeStore = defineStore({
       const layout = storageLocal.getItem<StorageConfigs>("responsive-layout");
       this.epTheme = layout?.theme;
       this.epThemeColor = newColor;
+      if (!layout) return;
       layout.epThemeColor = newColor;
       storageLocal.setItem("responsive-layout", layout);
     }

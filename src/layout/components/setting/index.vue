@@ -132,6 +132,8 @@ const multiTagsCacheChange = () => {
 /** 清空缓存并返回登录页 */
 function onReset() {
   router.push("/login");
+  storageLocal.clear();
+  storageSession.clear();
   const { Grey, Weak, MultiTagsCache, EpThemeColor, Layout } = getConfig();
   useAppStoreHook().setLayout(Layout);
   setEpThemeColor(EpThemeColor);
@@ -139,8 +141,6 @@ function onReset() {
   toggleClass(Grey, "html-grey", document.querySelector("html"));
   toggleClass(Weak, "html-weakness", document.querySelector("html"));
   useMultiTagsStoreHook().handleTags("equal", [...routerArrays]);
-  storageLocal.clear();
-  storageSession.clear();
   resetRouter();
 }
 
