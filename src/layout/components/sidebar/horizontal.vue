@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref, watch } from "vue";
 import Search from "../search/index.vue";
 import Notice from "../notice/index.vue";
+import { ref, watch, nextTick } from "vue";
 import SidebarItem from "./sidebarItem.vue";
 import avatars from "/@/assets/avatars.jpg";
 import { useNav } from "/@/layout/hooks/useNav";
@@ -25,6 +25,10 @@ const {
   getDropdownItemStyle,
   getDropdownItemClass
 } = useNav();
+
+nextTick(() => {
+  menuRef.value?.handleResize();
+});
 
 watch(
   () => route.path,
