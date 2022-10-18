@@ -75,7 +75,7 @@ specifiers:
   nprogress: ^0.2.0
   path: ^0.12.7
   picocolors: ^1.0.0
-  pinia: ^2.0.22
+  pinia: ^2.0.23
   postcss: ^8.4.17
   postcss-html: ^1.5.0
   postcss-import: ^15.0.0
@@ -156,7 +156,7 @@ dependencies:
   mockjs: 1.1.0
   nprogress: 0.2.0
   path: 0.12.7
-  pinia: 2.0.22_typescript@4.8.4+vue@3.2.40
+  pinia: 2.0.23_typescript@4.8.4+vue@3.2.40
   qrcode: 1.5.1
   qs: 6.11.0
   resize-observer-polyfill: 1.5.1
@@ -6608,10 +6608,10 @@ packages:
     engines: { node: ">=0.10.0" }
     dev: true
 
-  /pinia/2.0.22_typescript@4.8.4+vue@3.2.40:
+  /pinia/2.0.23_typescript@4.8.4+vue@3.2.40:
     resolution:
       {
-        integrity: sha512-u+b8/BC+tmvo3ACbYO2w5NfxHWFOjvvw9DQnyT0dW8aUMCPRQT5QnfZ5R5W2MzZBMTeZRMQI7V/QFbafmM9QHw==
+        integrity: sha512-N15hFf4o5STrxpNrib1IEb1GOArvPYf1zPvQVRGOO1G1d74Ak0J0lVyalX/SmrzdT4Q0nlEFjbURsmBmIGUR5Q==
       }
     peerDependencies:
       "@vue/composition-api": ^1.4.0
