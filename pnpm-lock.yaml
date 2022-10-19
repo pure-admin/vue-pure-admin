@@ -112,7 +112,7 @@ specifiers:
   vue-eslint-parser: ^8.2.0
   vue-form-create2: ^1.2.8
   vue-i18n: ^9.2.2
-  vue-json-pretty: ^2.1.1
+  vue-json-pretty: ^2.2.2
   vue-pdf-embed: ^1.1.4
   vue-router: ^4.1.5
   vue-tsc: ^0.40.13

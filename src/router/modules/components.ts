@@ -109,6 +109,14 @@ const componentsRouter: RouteConfigsTable = {
       meta: {
         title: $t("menus.hstypeit")
       }
+    },
+    {
+      path: "/components/json-editor",
+      name: "JsonEditor",
+      component: () => import("/@/views/components/json-editor/index.vue"),
+      meta: {
+        title: $t("menus.hsjsoneditor")
+      }
     }
   ]
 };
