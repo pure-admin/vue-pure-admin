@@ -82,9 +82,20 @@ watch(
             target="_blank"
             style="font-size: 16px; margin: 0 4px 5px"
           >
-            vue-json-pretty（支持大数据量）
-          </el-link></span
-        >
+            vue-json-pretty
+          </el-link>
+          （支持大数据量）。
+        </span>
+        <span class="font-medium">
+          当然我们还有一款代码编辑器组件推荐（这里就不做演示了），采用开源的
+          <el-link
+            href="https://github.com/surmon-china/vue-codemirror"
+            target="_blank"
+            style="font-size: 16px; margin: 0 4px 5px"
+          >
+            codemirror6
+          </el-link>
+        </span>
       </div>
     </template>
     <vue-json-pretty

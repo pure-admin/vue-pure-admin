@@ -42,8 +42,8 @@ onMounted(() => {
             style="font-size: 16px; margin: 0 4px 5px"
           >
             西瓜播放器
-          </el-link></span
-        >
+          </el-link>
+        </span>
       </div>
     </template>
     <div id="mse" />
