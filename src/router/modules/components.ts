@@ -101,6 +101,14 @@ const componentsRouter: RouteConfigsTable = {
       meta: {
         title: $t("menus.hscontextmenu")
       }
+    },
+    {
+      path: "/components/typeit",
+      name: "Typeit",
+      component: () => import("/@/views/components/typeit/index.vue"),
+      meta: {
+        title: $t("menus.hstypeit")
+      }
     }
   ]
 };

@@ -4,6 +4,7 @@ import Motion from "./utils/motion";
 import { useRouter } from "vue-router";
 import { loginRules } from "./utils/rule";
 import phone from "./components/phone.vue";
+import TypeIt from "/@/components/ReTypeit";
 import qrCode from "./components/qrCode.vue";
 import regist from "./components/regist.vue";
 import update from "./components/update.vue";
@@ -162,7 +163,9 @@ onBeforeUnmount(() => {
         <div class="login-form">
           <avatar class="avatar" />
           <Motion>
-            <h2 class="outline-none">{{ title }}</h2>
+            <h2 class="outline-none">
+              <TypeIt :values="[title]" :cursor="false" :speed="150" />
+            </h2>
           </Motion>
 
           <el-form

@@ -67,6 +67,7 @@
     "responsive-storage": "^2.1.0",
     "sortablejs": "^1.15.0",
     "swiper": "^8.4.3",
+    "typeit": "^8.7.0",
     "v-contextmenu": "3.0.0",
     "vue": "^3.2.40",
     "vue-form-create2": "^1.2.8",

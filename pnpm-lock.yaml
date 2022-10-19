@@ -100,6 +100,7 @@ specifiers:
   swiper: ^8.4.3
   tailwindcss: ^3.1.8
   terser: ^5.15.0
+  typeit: ^8.7.0
   typescript: ^4.7.4
   unplugin-vue-define-options: 0.7.3
   v-contextmenu: 3.0.0
@@ -163,6 +164,7 @@ dependencies:
   responsive-storage: 2.1.0
   sortablejs: 1.15.0
   swiper: 8.4.3
+  typeit: 8.7.0
   v-contextmenu: 3.0.0_vue@3.2.40
   vue: 3.2.40
   vue-form-create2: 1.2.9
@@ -8491,6 +8493,14 @@ packages:
       {
         integrity: sha512-dzlvlNlt6AXU7EBSfpAscydQ7gXB+pPGsPnfJnZpiNJBDj7IaJzQlBZYGdEi4R9HmPdBv2XmWJ6YUtoTa7lmCw==
       }
+    dev: false
+
+  /typeit/8.7.0:
+    resolution:
+      {
+        integrity: sha512-MeraWJAquZr0EPo2yRYQnSdAxIuzgS5s4JEvzOdp63ZRRpETxtiHYvCJiK4aJA6FuScz3oUJkjmjQsLrx6VOMA==
+      }
+    requiresBuild: true
     dev: false
 
   /typescript/4.8.4:
