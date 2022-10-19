@@ -96,7 +96,7 @@ watch(
       :show-icon="state.showIcon"
       :show-line-number="state.showLineNumber"
       :editable="state.editable"
-      :editable-trigger="state.editableTrigger"
+      :editable-trigger="(state.editableTrigger as any)"
     />
   </el-card>
 </template>
