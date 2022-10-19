@@ -38,15 +38,11 @@ html.dark {
     .arrow-left,
     .arrow-right {
       box-shadow: none;
+      border-right: 1px solid $border-style;
     }
 
     .arrow-right {
       border-left: 1px solid $border-style;
-    }
-
-    .arrow-left,
-    .arrow-right {
-      border-right: 1px solid $border-style;
     }
   }
 
