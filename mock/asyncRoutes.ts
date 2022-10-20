@@ -67,7 +67,7 @@ const permissionRouter = {
       name: "PermissionButton",
       meta: {
         title: "menus.permissionButton",
-        authority: []
+        permissions: []
       }
     }
   ]
@@ -142,8 +142,8 @@ const tabsRouter = {
 };
 
 // 添加不同按钮权限到/permission/button页面中
-function setDifAuthority(authority, routes) {
-  routes.children[1].meta.authority = [authority];
+function addPermissions(permissions, routes) {
+  routes.children[1].meta.permissions = [permissions].flat(Infinity);
   return routes;
 }
 
@@ -159,13 +159,13 @@ export default [
             tabsRouter,
             frameRouter,
             systemRouter,
-            setDifAuthority("v-admin", permissionRouter)
+            addPermissions("v-admin", permissionRouter)
           ]
         };
       } else {
         return {
           code: 0,
-          info: [tabsRouter, setDifAuthority("v-test", permissionRouter)]
+          info: [tabsRouter, addPermissions("v-test", permissionRouter)]
         };
       }
     }

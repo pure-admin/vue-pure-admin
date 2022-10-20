@@ -278,7 +278,7 @@ function getHistoryMode(): RouterHistory {
 /** 是否有权限 */
 function hasPermissions(value: Array<string>): boolean {
   if (value && value instanceof Array && value.length > 0) {
-    const roles = usePermissionStoreHook().buttonAuth;
+    const roles = usePermissionStoreHook().permissions;
     const permissionRoles = value;
 
     const hasPermission = roles.some(role => {

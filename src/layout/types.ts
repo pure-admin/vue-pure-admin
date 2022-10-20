@@ -14,7 +14,7 @@ export type routeMetaType = {
   icon?: string;
   showLink?: boolean;
   savedPosition?: boolean;
-  authority?: Array<string>;
+  permissions?: Array<string>;
 };
 
 export type RouteConfigs = {

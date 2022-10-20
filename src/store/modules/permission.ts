@@ -15,9 +15,12 @@ export const usePermissionStore = defineStore({
     wholeMenus: [],
     // 深拷贝一个菜单树，与导航菜单不突出
     menusTree: [],
-    buttonAuth: [],
     // 缓存页面keepAlive
-    cachePageList: []
+    cachePageList: [],
+    // 页面级别权限
+    roles: [],
+    // 按钮级别权限
+    permissions: []
   }),
   actions: {
     /** 获取异步路由菜单 */
@@ -31,19 +34,19 @@ export const usePermissionStore = defineStore({
         filterTree(ascending(this.constantMenus.concat(routes)))
       );
 
-      const getButtonAuth = (arrRoutes: Array<RouteConfigs>) => {
+      const getPermissions = (arrRoutes: Array<RouteConfigs>) => {
         if (!arrRoutes || !arrRoutes.length) return;
         arrRoutes.forEach((v: RouteConfigs) => {
-          if (v.meta && v.meta.authority) {
-            this.buttonAuth.push(...v.meta.authority);
+          if (v.meta && v.meta.permissions) {
+            this.permissions.push(...v.meta.permissions);
           }
           if (v.children) {
-            getButtonAuth(v.children);
+            getPermissions(v.children);
           }
         });
       };
 
-      getButtonAuth(this.wholeMenus);
+      getPermissions(this.wholeMenus);
     },
     async changeSetting(routes) {
       await this.asyncActionRoutes(routes);
@@ -65,7 +68,7 @@ export const usePermissionStore = defineStore({
     clearAllCachePage() {
       this.wholeMenus = [];
       this.menusTree = [];
-      this.buttonAuth = [];
+      this.permissions = [];
       this.cachePageList = [];
     }
   }
