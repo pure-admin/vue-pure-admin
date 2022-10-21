@@ -2,8 +2,8 @@
 import { MockMethod } from "vite-plugin-mock";
 
 /**
- * roles：页面级别权限，这里模拟二种 "super_admin"、"common"
- * super_admin：超级管理员角色
+ * roles：页面级别权限，这里模拟二种 "admin"、"common"
+ * admin：管理员角色
  * common：普通角色
  */
 
@@ -21,7 +21,7 @@ const systemRouter = {
       meta: {
         icon: "flUser",
         title: "menus.hsUser",
-        roles: ["super_admin"]
+        roles: ["admin"]
       }
     },
     {
@@ -30,7 +30,7 @@ const systemRouter = {
       meta: {
         icon: "role",
         title: "menus.hsRole",
-        roles: ["super_admin"]
+        roles: ["admin"]
       }
     },
     {
@@ -39,7 +39,7 @@ const systemRouter = {
       meta: {
         icon: "dept",
         title: "menus.hsDept",
-        roles: ["super_admin"]
+        roles: ["admin"]
       }
     },
     {
@@ -50,7 +50,7 @@ const systemRouter = {
         icon: "dict",
         title: "menus.hsDict",
         keepAlive: true,
-        roles: ["super_admin"]
+        roles: ["admin"]
       }
     }
   ]
@@ -68,7 +68,7 @@ const permissionRouter = {
       path: "/permission/page/index",
       name: "PermissionPage",
       meta: {
-        roles: ["super_admin", "common"],
+        roles: ["admin", "common"],
         title: "menus.permissionPage"
       }
     },
@@ -77,7 +77,7 @@ const permissionRouter = {
       name: "PermissionButton",
       meta: {
         title: "menus.permissionButton",
-        roles: ["super_admin", "common"],
+        roles: ["admin", "common"],
         auths: ["btn_add", "btn_edit", "btn_delete"]
       }
     }
@@ -98,7 +98,7 @@ const frameRouter = {
       meta: {
         title: "menus.hsPureDocument",
         frameSrc: "http://yiming_chang.gitee.io/pure-admin-doc",
-        roles: ["super_admin", "common"]
+        roles: ["admin", "common"]
       }
     },
     {
@@ -106,7 +106,7 @@ const frameRouter = {
       name: "http://yiming_chang.gitee.io/pure-admin-doc",
       meta: {
         title: "menus.externalLink",
-        roles: ["super_admin", "common"]
+        roles: ["admin", "common"]
       }
     },
     {
@@ -115,7 +115,7 @@ const frameRouter = {
       meta: {
         title: "menus.hsEpDocument",
         frameSrc: "https://element-plus.org/zh-CN/",
-        roles: ["super_admin", "common"]
+        roles: ["admin", "common"]
       }
     }
   ]
@@ -134,7 +134,7 @@ const tabsRouter = {
       name: "Tabs",
       meta: {
         title: "menus.hstabs",
-        roles: ["super_admin", "common"]
+        roles: ["admin", "common"]
       }
     },
     {
@@ -143,7 +143,7 @@ const tabsRouter = {
       meta: {
         // 不在menu菜单中显示
         showLink: false,
-        roles: ["super_admin", "common"]
+        roles: ["admin", "common"]
       }
     },
     {
@@ -152,7 +152,7 @@ const tabsRouter = {
       name: "TabParamsDetail",
       meta: {
         showLink: false,
-        roles: ["super_admin", "common"]
+        roles: ["admin", "common"]
       }
     }
   ]

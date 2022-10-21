@@ -15,9 +15,7 @@ export const usePermissionStore = defineStore({
     // 深拷贝一个菜单树，与导航菜单不突出
     menusTree: [],
     // 缓存页面keepAlive
-    cachePageList: [],
-    // 页面级别权限
-    roles: []
+    cachePageList: []
   }),
   actions: {
     /** 获取异步路由菜单 */
