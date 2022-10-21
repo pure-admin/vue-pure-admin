@@ -2,10 +2,9 @@
 import { MockMethod } from "vite-plugin-mock";
 
 /**
- * roles：页面级别权限，分为三种 "super_admin"、"common"、"test"
+ * roles：页面级别权限，这里模拟二种 "super_admin"、"common"
  * super_admin：超级管理员角色
  * common：普通角色
- * test 测试角色
  */
 
 const systemRouter = {
@@ -69,7 +68,7 @@ const permissionRouter = {
       path: "/permission/page/index",
       name: "PermissionPage",
       meta: {
-        roles: ["super_admin", "common", "test"],
+        roles: ["super_admin", "common"],
         title: "menus.permissionPage"
       }
     },
@@ -78,7 +77,7 @@ const permissionRouter = {
       name: "PermissionButton",
       meta: {
         title: "menus.permissionButton",
-        roles: ["super_admin", "common", "test"],
+        roles: ["super_admin", "common"],
         auths: ["btn_add", "btn_edit", "btn_delete"]
       }
     }
