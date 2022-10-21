@@ -12,7 +12,11 @@ import { loadEnv } from "../../build";
 import { cloneDeep } from "lodash-unified";
 import { useTimeoutFn } from "@vueuse/core";
 import { RouteConfigs } from "/@/layout/types";
-import { buildHierarchyTree } from "@pureadmin/utils";
+import {
+  isString,
+  buildHierarchyTree,
+  isIncludeAllChildren
+} from "@pureadmin/utils";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 const IFrame = () => import("/@/layout/frameView.vue");
 // https://cn.vitejs.dev/guide/features.html#glob-import
@@ -275,30 +279,28 @@ function getHistoryMode(): RouterHistory {
   }
 }
 
-/** 是否有权限 */
-function hasPermissions(value: Array<string>): boolean {
-  if (value && value instanceof Array && value.length > 0) {
-    const roles = usePermissionStoreHook().permissions;
-    const permissionRoles = value;
+/** 获取当前页面按钮级别的权限 */
+function getAuths(): Array<string> {
+  return router.currentRoute.value.meta.auths as Array<string>;
+}
 
-    const hasPermission = roles.some(role => {
-      return permissionRoles.includes(role);
-    });
-
-    if (!hasPermission) {
-      return false;
-    }
-    return true;
-  } else {
-    return false;
-  }
+/** 是否有按钮级别的权限 */
+function hasAuth(value: string | Array<string>): boolean {
+  if (!value) return false;
+  /** 从当前路由的`meta`字段里获取按钮级别的所有自定义`code`值 */
+  const metaAuths = getAuths();
+  const isAuths = isString(value)
+    ? metaAuths.includes(value)
+    : isIncludeAllChildren(value, metaAuths);
+  return isAuths ? true : false;
 }
 
 export {
+  hasAuth,
+  getAuths,
   ascending,
   filterTree,
   initRouter,
-  hasPermissions,
   getHistoryMode,
   addAsyncRoutes,
   delAliveRoutes,

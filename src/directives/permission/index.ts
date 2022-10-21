@@ -1,30 +1,13 @@
-import router from "/@/router";
+import { hasAuth } from "/@/router/utils";
 import { Directive, type DirectiveBinding } from "vue";
-import { isString, isIncludeAllChildren } from "@pureadmin/utils";
 
 export const auth: Directive = {
   mounted(el: HTMLElement, binding: DirectiveBinding) {
     const { value } = binding;
     if (value) {
-      /** 从当前路由的`meta`字段里获取按钮级别的所有自定义`code`值 */
-      const metaPermissions = router.currentRoute.value.meta
-        .permissions as Array<string>;
-
-      /** 兼容传`字符串`或`字符串数组`两种写法
-       *  字符串写法例子：v-auth="'btn.add'"
-       *  字符串数组写法例子：v-auth="['btn.add','btn.edit']"
-       */
-      const hasPermissions = isString(value)
-        ? metaPermissions.includes(value)
-        : isIncludeAllChildren(value, metaPermissions);
-
-      if (!hasPermissions) {
-        el.parentNode.removeChild(el);
-      }
+      !hasAuth(value) && el.parentNode.removeChild(el);
     } else {
-      throw new Error(
-        "need permissions! Like v-auth=\"['btn.add','btn.edit']\""
-      );
+      throw new Error("need auths! Like v-auth=\"['btn.add','btn.edit']\"");
     }
   }
 };

@@ -3,7 +3,6 @@ import { store } from "/@/store";
 import { cacheType } from "./types";
 import { constantMenus } from "/@/router";
 import { cloneDeep } from "lodash-unified";
-import { RouteConfigs } from "/@/layout/types";
 import { ascending, filterTree } from "/@/router/utils";
 
 export const usePermissionStore = defineStore({
@@ -18,9 +17,7 @@ export const usePermissionStore = defineStore({
     // 缓存页面keepAlive
     cachePageList: [],
     // 页面级别权限
-    roles: [],
-    // 按钮级别权限
-    permissions: []
+    roles: []
   }),
   actions: {
     /** 获取异步路由菜单 */
@@ -33,20 +30,6 @@ export const usePermissionStore = defineStore({
       this.menusTree = cloneDeep(
         filterTree(ascending(this.constantMenus.concat(routes)))
       );
-
-      const getPermissions = (arrRoutes: Array<RouteConfigs>) => {
-        if (!arrRoutes || !arrRoutes.length) return;
-        arrRoutes.forEach((v: RouteConfigs) => {
-          if (v.meta && v.meta.permissions) {
-            this.permissions.push(...v.meta.permissions);
-          }
-          if (v.children) {
-            getPermissions(v.children);
-          }
-        });
-      };
-
-      getPermissions(this.wholeMenus);
     },
     async changeSetting(routes) {
       await this.asyncActionRoutes(routes);
@@ -68,7 +51,6 @@ export const usePermissionStore = defineStore({
     clearAllCachePage() {
       this.wholeMenus = [];
       this.menusTree = [];
-      this.permissions = [];
       this.cachePageList = [];
     }
   }

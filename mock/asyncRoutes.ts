@@ -1,7 +1,13 @@
-// 根据角色动态生成路由
+// 模拟后端动态生成路由
 import { MockMethod } from "vite-plugin-mock";
 
-// http://mockjs.com/examples.html#Object
+/**
+ * roles：页面级别权限，分为三种 "super_admin"、"common"、"test"
+ * super_admin：超级管理员角色
+ * common：普通角色
+ * test 测试角色
+ */
+
 const systemRouter = {
   path: "/system",
   meta: {
@@ -15,7 +21,8 @@ const systemRouter = {
       name: "User",
       meta: {
         icon: "flUser",
-        title: "menus.hsUser"
+        title: "menus.hsUser",
+        roles: ["super_admin"]
       }
     },
     {
@@ -23,7 +30,8 @@ const systemRouter = {
       name: "Role",
       meta: {
         icon: "role",
-        title: "menus.hsRole"
+        title: "menus.hsRole",
+        roles: ["super_admin"]
       }
     },
     {
@@ -31,7 +39,8 @@ const systemRouter = {
       name: "Dept",
       meta: {
         icon: "dept",
-        title: "menus.hsDept"
+        title: "menus.hsDept",
+        roles: ["super_admin"]
       }
     },
     {
@@ -41,7 +50,8 @@ const systemRouter = {
       meta: {
         icon: "dict",
         title: "menus.hsDict",
-        keepAlive: true
+        keepAlive: true,
+        roles: ["super_admin"]
       }
     }
   ]
@@ -59,6 +69,7 @@ const permissionRouter = {
       path: "/permission/page/index",
       name: "PermissionPage",
       meta: {
+        roles: ["super_admin", "common", "test"],
         title: "menus.permissionPage"
       }
     },
@@ -67,7 +78,8 @@ const permissionRouter = {
       name: "PermissionButton",
       meta: {
         title: "menus.permissionButton",
-        permissions: []
+        roles: ["super_admin", "common", "test"],
+        auths: ["btn_add", "btn_edit", "btn_delete"]
       }
     }
   ]
@@ -86,14 +98,16 @@ const frameRouter = {
       name: "FramePure",
       meta: {
         title: "menus.hsPureDocument",
-        frameSrc: "http://yiming_chang.gitee.io/pure-admin-doc"
+        frameSrc: "http://yiming_chang.gitee.io/pure-admin-doc",
+        roles: ["super_admin", "common"]
       }
     },
     {
       path: "/external",
       name: "http://yiming_chang.gitee.io/pure-admin-doc",
       meta: {
-        title: "menus.externalLink"
+        title: "menus.externalLink",
+        roles: ["super_admin", "common"]
       }
     },
     {
@@ -101,7 +115,8 @@ const frameRouter = {
       name: "FrameEp",
       meta: {
         title: "menus.hsEpDocument",
-        frameSrc: "https://element-plus.org/zh-CN/"
+        frameSrc: "https://element-plus.org/zh-CN/",
+        roles: ["super_admin", "common"]
       }
     }
   ]
@@ -119,7 +134,8 @@ const tabsRouter = {
       path: "/tabs/index",
       name: "Tabs",
       meta: {
-        title: "menus.hstabs"
+        title: "menus.hstabs",
+        roles: ["super_admin", "common"]
       }
     },
     {
@@ -127,7 +143,8 @@ const tabsRouter = {
       name: "TabQueryDetail",
       meta: {
         // 不在menu菜单中显示
-        showLink: false
+        showLink: false,
+        roles: ["super_admin", "common"]
       }
     },
     {
@@ -135,39 +152,22 @@ const tabsRouter = {
       component: "params-detail",
       name: "TabParamsDetail",
       meta: {
-        showLink: false
+        showLink: false,
+        roles: ["super_admin", "common"]
       }
     }
   ]
 };
 
-// 添加不同按钮权限到/permission/button页面中
-function addPermissions(permissions, routes) {
-  routes.children[1].meta.permissions = [permissions].flat(Infinity);
-  return routes;
-}
-
 export default [
   {
     url: "/getAsyncRoutes",
     method: "get",
-    response: ({ query }) => {
-      if (query.name === "admin") {
-        return {
-          code: 0,
-          info: [
-            tabsRouter,
-            frameRouter,
-            systemRouter,
-            addPermissions("v-admin", permissionRouter)
-          ]
-        };
-      } else {
-        return {
-          code: 0,
-          info: [tabsRouter, addPermissions("v-test", permissionRouter)]
-        };
-      }
+    response: () => {
+      return {
+        code: 0,
+        info: [systemRouter, permissionRouter, frameRouter, tabsRouter]
+      };
     }
   }
 ] as MockMethod[];

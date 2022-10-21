@@ -47,6 +47,10 @@ app.component("IconifyIconOffline", IconifyIconOffline);
 app.component("IconifyIconOnline", IconifyIconOnline);
 app.component("FontIcon", FontIcon);
 
+// 全局注册按钮级别权限组件
+import { Auth } from "/@/components/ReAuth";
+app.component("Auth", Auth);
+
 getServerConfig(app).then(async config => {
   app.use(router);
   await router.isReady();
