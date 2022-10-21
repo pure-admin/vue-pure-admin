@@ -2,7 +2,7 @@ import router from "/@/router";
 import { Directive, type DirectiveBinding } from "vue";
 import { isString, isIncludeAllChildren } from "@pureadmin/utils";
 
-export const permission: Directive = {
+export const auth: Directive = {
   mounted(el: HTMLElement, binding: DirectiveBinding) {
     const { value } = binding;
     if (value) {
@@ -11,8 +11,8 @@ export const permission: Directive = {
         .permissions as Array<string>;
 
       /** 兼容传`字符串`或`字符串数组`两种写法
-       *  字符串写法例子：v-permission="'btn.add'"
-       *  字符串数组写法例子：v-permission="['btn.add','btn.edit']"
+       *  字符串写法例子：v-auth="'btn.add'"
+       *  字符串数组写法例子：v-auth="['btn.add','btn.edit']"
        */
       const hasPermissions = isString(value)
         ? metaPermissions.includes(value)
@@ -23,7 +23,7 @@ export const permission: Directive = {
       }
     } else {
       throw new Error(
-        "need permissions! Like v-permission=\"['btn.add','btn.edit']\""
+        "need permissions! Like v-auth=\"['btn.add','btn.edit']\""
       );
     }
   }
