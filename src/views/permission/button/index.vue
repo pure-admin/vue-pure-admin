@@ -23,41 +23,35 @@ let width = computed((): CSSProperties => {
       <template #header>
         <div class="card-header">组件方式判断权限</div>
       </template>
-      <el-space>
-        <Auth value="btn_add">
-          <el-button type="success"> 拥有code：'btn_add' 权限可见 </el-button>
-        </Auth>
-        <Auth :value="['btn_edit']">
-          <el-button type="primary">
-            拥有code：['btn_edit'] 权限可见
-          </el-button>
-        </Auth>
-        <Auth :value="['btn_add', 'btn_edit', 'btn_delete']">
-          <el-button type="danger">
-            拥有code：['btn_add', 'btn_edit', 'btn_delete'] 权限可见
-          </el-button>
-        </Auth>
-      </el-space>
+      <Auth value="btn_add">
+        <el-button type="success"> 拥有code：'btn_add' 权限可见 </el-button>
+      </Auth>
+      <Auth :value="['btn_edit']">
+        <el-button type="primary"> 拥有code：['btn_edit'] 权限可见 </el-button>
+      </Auth>
+      <Auth :value="['btn_add', 'btn_edit', 'btn_delete']">
+        <el-button type="danger">
+          拥有code：['btn_add', 'btn_edit', 'btn_delete'] 权限可见
+        </el-button>
+      </Auth>
     </el-card>
 
     <el-card shadow="never" :style="width">
       <template #header>
         <div class="card-header">函数方式判断权限</div>
       </template>
-      <el-space>
-        <el-button type="success" v-if="hasAuth('btn_add')">
-          拥有code：'btn_add' 权限可见
-        </el-button>
-        <el-button type="primary" v-if="hasAuth(['btn_edit'])">
-          拥有code：['btn_edit'] 权限可见
-        </el-button>
-        <el-button
-          type="danger"
-          v-if="hasAuth(['btn_add', 'btn_edit', 'btn_delete'])"
-        >
-          拥有code：['btn_add', 'btn_edit', 'btn_delete'] 权限可见
-        </el-button>
-      </el-space>
+      <el-button type="success" v-if="hasAuth('btn_add')">
+        拥有code：'btn_add' 权限可见
+      </el-button>
+      <el-button type="primary" v-if="hasAuth(['btn_edit'])">
+        拥有code：['btn_edit'] 权限可见
+      </el-button>
+      <el-button
+        type="danger"
+        v-if="hasAuth(['btn_add', 'btn_edit', 'btn_delete'])"
+      >
+        拥有code：['btn_add', 'btn_edit', 'btn_delete'] 权限可见
+      </el-button>
     </el-card>
 
     <el-card shadow="never" :style="width">
@@ -66,17 +60,15 @@ let width = computed((): CSSProperties => {
           指令方式判断权限（该方式不能动态修改权限）
         </div>
       </template>
-      <el-space>
-        <el-button type="success" v-auth="'btn_add'">
-          拥有code：'btn_add' 权限可见
-        </el-button>
-        <el-button type="primary" v-auth="['btn_edit']">
-          拥有code：['btn_edit'] 权限可见
-        </el-button>
-        <el-button type="danger" v-auth="['btn_add', 'btn_edit', 'btn_delete']">
-          拥有code：['btn_add', 'btn_edit', 'btn_delete'] 权限可见
-        </el-button>
-      </el-space>
+      <el-button type="success" v-auth="'btn_add'">
+        拥有code：'btn_add' 权限可见
+      </el-button>
+      <el-button type="primary" v-auth="['btn_edit']">
+        拥有code：['btn_edit'] 权限可见
+      </el-button>
+      <el-button type="danger" v-auth="['btn_add', 'btn_edit', 'btn_delete']">
+        拥有code：['btn_add', 'btn_edit', 'btn_delete'] 权限可见
+      </el-button>
     </el-card>
   </el-space>
 </template>

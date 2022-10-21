@@ -62,7 +62,7 @@ const permissionRouter = {
   meta: {
     title: "menus.permission",
     icon: "lollipop",
-    rank: 7
+    rank: 10
   },
   children: [
     {
@@ -90,7 +90,7 @@ const frameRouter = {
   meta: {
     icon: "monitor",
     title: "menus.hsExternalPage",
-    rank: 10
+    rank: 7
   },
   children: [
     {
