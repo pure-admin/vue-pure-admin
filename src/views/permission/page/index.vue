@@ -1,53 +1,78 @@
 <script setup lang="ts">
-import { ref, unref } from "vue";
+import { sessionKey } from "/@/utils/auth";
 import type { StorageConfigs } from "/#/index";
 import { storageSession } from "@pureadmin/utils";
-import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
+import { type CSSProperties, ref, computed } from "vue";
 
 defineOptions({
   name: "PermissionPage"
 });
 
+let width = computed((): CSSProperties => {
+  return {
+    width: "85vw"
+  };
+});
+
 let purview = ref<string>(
-  storageSession.getItem<StorageConfigs>("info").username
+  storageSession.getItem<StorageConfigs>(sessionKey)?.username
 );
 
-function changRole() {
-  if (unref(purview) === "admin") {
-    storageSession.setItem("info", {
-      username: "test",
-      accessToken: "eyJhbGciOiJIUzUxMiJ9.test"
-    });
-    window.location.reload();
-  } else {
-    storageSession.setItem("info", {
-      username: "admin",
-      accessToken: "eyJhbGciOiJIUzUxMiJ9.admin"
-    });
-    window.location.reload();
+const value = ref("");
+
+const options = [
+  {
+    value: "admin",
+    label: "管理员角色"
+  },
+  {
+    value: "common",
+    label: "普通角色"
   }
-}
+];
+
+// function changRole() {
+//   if (unref(purview) === "admin") {
+//     storageSession.setItem("info", {
+//       username: "test",
+//       accessToken: "eyJhbGciOiJIUzUxMiJ9.test"
+//     });
+//     window.location.reload();
+//   } else {
+//     storageSession.setItem("info", {
+//       username: "admin",
+//       accessToken: "eyJhbGciOiJIUzUxMiJ9.admin"
+//     });
+//     window.location.reload();
+//   }
+// }
 </script>
 
 <template>
-  <el-card>
-    <template #header>
-      <div class="card-header">
-        <span>
-          当前角色：
-          <span style="font-size: 26px">{{ purview }}</span>
-          <p style="color: #ffa500">
-            查看左侧菜单变化(系统管理)，模拟后台根据不同角色返回对应路由
-          </p>
-        </span>
-      </div>
-    </template>
-    <el-button
-      type="primary"
-      @click="changRole"
-      :icon="useRenderIcon('user', { color: '#fff' })"
-    >
-      切换角色
-    </el-button>
-  </el-card>
+  <el-space direction="vertical" size="large">
+    <el-tag :style="width" size="large" effect="dark">
+      模拟后台根据不同角色返回对应路由，观察左侧菜单变化（管理员角色可查看系统管理菜单、普通角色不可查看系统管理菜单）
+    </el-tag>
+    <el-card shadow="never" :style="width">
+      <template #header>
+        <div class="card-header">
+          <span>当前角色：{{ purview }}</span>
+        </div>
+      </template>
+      <el-select v-model="value">
+        <el-option
+          v-for="item in options"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value"
+        />
+      </el-select>
+    </el-card>
+  </el-space>
 </template>
+
+<style lang="scss" scoped>
+:deep(.el-tag) {
+  justify-content: start;
+}
+</style>

@@ -2,6 +2,7 @@ import { getConfig } from "/@/config";
 import { toRouteType } from "./types";
 import NProgress from "/@/utils/progress";
 import { findIndex } from "lodash-unified";
+import { sessionKey } from "/@/utils/auth";
 import type { StorageConfigs } from "/#/index";
 import { transformI18n } from "/@/plugins/i18n";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
@@ -121,7 +122,7 @@ router.beforeEach((to: toRouteType, _from, next) => {
       handleAliveRoute(newMatched);
     }
   }
-  const name = storageSession.getItem<StorageConfigs>("info");
+  const userInfo = storageSession.getItem<StorageConfigs>(sessionKey);
   NProgress.start();
   const externalLink = isUrl(to?.name as string);
   if (!externalLink)
@@ -132,7 +133,7 @@ router.beforeEach((to: toRouteType, _from, next) => {
         document.title = `${transformI18n(item.meta.title)} | ${Title}`;
       else document.title = transformI18n(item.meta.title);
     });
-  if (name) {
+  if (userInfo) {
     if (_from?.name) {
       // name为超链接
       if (externalLink) {
@@ -144,7 +145,7 @@ router.beforeEach((to: toRouteType, _from, next) => {
     } else {
       // 刷新
       if (usePermissionStoreHook().wholeMenus.length === 0)
-        initRouter(name.username).then((router: Router) => {
+        initRouter().then((router: Router) => {
           if (!useMultiTagsStoreHook().getMultiTagsCache) {
             const { path } = to;
             const index = findIndex(remainingRouter, v => {

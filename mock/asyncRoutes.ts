@@ -164,8 +164,8 @@ export default [
     method: "get",
     response: () => {
       return {
-        code: 0,
-        info: [systemRouter, permissionRouter, frameRouter, tabsRouter]
+        success: true,
+        data: [systemRouter, permissionRouter, frameRouter, tabsRouter]
       };
     }
   }

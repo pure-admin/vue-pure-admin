@@ -4,6 +4,7 @@ import { getConfig } from "/@/config";
 import { useRouter } from "vue-router";
 import { emitter } from "/@/utils/mitt";
 import { routeMetaType } from "../types";
+import { sessionKey } from "/@/utils/auth";
 import type { StorageConfigs } from "/#/index";
 import { routerArrays } from "/@/layout/types";
 import { transformI18n } from "/@/plugins/i18n";
@@ -21,7 +22,7 @@ export function useNav() {
   const routers = useRouter().options.routes;
   /** 用户名 */
   const username: string =
-    storageSession.getItem<StorageConfigs>("info")?.username;
+    storageSession.getItem<StorageConfigs>(sessionKey)?.username;
 
   /** 设置国际化选中后的样式 */
   const getDropdownItemStyle = computed(() => {
