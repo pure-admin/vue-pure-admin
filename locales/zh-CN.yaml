@@ -32,7 +32,7 @@ menus:
   hsRole: 角色管理
   hsDept: 部门管理
   hseditor: 编辑器
-  hserror: 错误页面
+  hsabnormal: 异常页面
   hsfourZeroFour: "404"
   hsfourZeroOne: "403"
   hsFive: "500"

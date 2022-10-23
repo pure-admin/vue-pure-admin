@@ -9,14 +9,16 @@ import {
 import { router } from "./index";
 import { isProxy, toRaw } from "vue";
 import { loadEnv } from "../../build";
-import { cloneDeep } from "lodash-unified";
 import { useTimeoutFn } from "@vueuse/core";
 import { RouteConfigs } from "/@/layout/types";
 import {
   isString,
+  storageSession,
   buildHierarchyTree,
   isIncludeAllChildren
 } from "@pureadmin/utils";
+import { cloneDeep, intersection } from "lodash-unified";
+import { sessionKey, type DataInfo } from "/@/utils/auth";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 const IFrame = () => import("/@/layout/frameView.vue");
 // https://cn.vitejs.dev/guide/features.html#glob-import
@@ -42,7 +44,7 @@ function ascending(arr: any[]) {
   );
 }
 
-/** 过滤meta中showLink为false的路由 */
+/** 过滤meta中showLink为false的菜单 */
 function filterTree(data: RouteComponent[]) {
   const newTree = cloneDeep(data).filter(
     (v: { meta: { showLink: boolean } }) => v.meta?.showLink !== false
@@ -51,6 +53,37 @@ function filterTree(data: RouteComponent[]) {
     (v: { children }) => v.children && (v.children = filterTree(v.children))
   );
   return newTree;
+}
+
+/** 过滤children长度为0的的菜单 */
+function filterChildrenTree(data: RouteComponent[]) {
+  const newTree = cloneDeep(data).filter((v: any) => v?.children?.length !== 0);
+  newTree.forEach(
+    (v: { children }) => v.children && (v.children = filterTree(v.children))
+  );
+  return newTree;
+}
+
+/** 判断两个数组彼此是否存在相同值 */
+function isOneOfArray(a: Array<string>, b: Array<string>) {
+  return Array.isArray(a) && Array.isArray(b)
+    ? intersection(a, b).length > 0
+      ? true
+      : false
+    : true;
+}
+
+/** 从sessionStorage里取出当前登陆用户的角色roles，过滤无权限的菜单 */
+function filterNoPermissionTree(data: RouteComponent[]) {
+  const currentRoles =
+    storageSession.getItem<DataInfo<number>>(sessionKey).roles ?? [];
+  const newTree = cloneDeep(data).filter((v: any) =>
+    isOneOfArray(v.meta?.roles, currentRoles)
+  );
+  newTree.forEach(
+    (v: any) => v.children && (v.children = filterNoPermissionTree(v.children))
+  );
+  return filterChildrenTree(newTree);
 }
 
 /** 批量删除缓存路由(keepalive) */
@@ -123,7 +156,7 @@ function initRouter() {
   return new Promise(resolve => {
     getAsyncRoutes().then(({ data }) => {
       if (data.length === 0) {
-        usePermissionStoreHook().changeSetting(data);
+        usePermissionStoreHook().handleWholeMenus(data);
       } else {
         formatFlatteningRoutes(addAsyncRoutes(data)).map(
           (v: RouteRecordRaw) => {
@@ -148,7 +181,7 @@ function initRouter() {
             resolve(router);
           }
         );
-        usePermissionStoreHook().changeSetting(data);
+        usePermissionStoreHook().handleWholeMenus(data);
       }
       addPathMatch();
     });
@@ -308,5 +341,6 @@ export {
   findRouteByPath,
   handleAliveRoute,
   formatTwoStageRoutes,
-  formatFlatteningRoutes
+  formatFlatteningRoutes,
+  filterNoPermissionTree
 };

@@ -18,7 +18,7 @@ let purview = ref<string>(
   storageSession.getItem<StorageConfigs>(sessionKey)?.username
 );
 
-const value = ref("");
+const value = ref("admin");
 
 const options = [
   {
@@ -31,21 +31,9 @@ const options = [
   }
 ];
 
-// function changRole() {
-//   if (unref(purview) === "admin") {
-//     storageSession.setItem("info", {
-//       username: "test",
-//       accessToken: "eyJhbGciOiJIUzUxMiJ9.test"
-//     });
-//     window.location.reload();
-//   } else {
-//     storageSession.setItem("info", {
-//       username: "admin",
-//       accessToken: "eyJhbGciOiJIUzUxMiJ9.admin"
-//     });
-//     window.location.reload();
-//   }
-// }
+function onChange() {
+  console.log("--", value.value);
+}
 </script>
 
 <template>
@@ -59,7 +47,7 @@ const options = [
           <span>当前角色：{{ purview }}</span>
         </div>
       </template>
-      <el-select v-model="value">
+      <el-select v-model="value" @change="onChange">
         <el-option
           v-for="item in options"
           :key="item.value"

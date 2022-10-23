@@ -116,7 +116,8 @@ onMounted(() => {
             :disabled="item.disabled"
             :style="{
               cursor: item.disabled === false ? 'pointer' : 'not-allowed',
-              color: item.disabled === false ? '' : '#00000040'
+              color: item.disabled === false ? '' : '#00000040',
+              background: 'transparent'
             }"
             @click="onControl(item, key)"
           >

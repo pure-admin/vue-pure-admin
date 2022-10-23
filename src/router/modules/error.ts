@@ -6,7 +6,7 @@ const errorRouter: RouteConfigsTable = {
   redirect: "/error/403",
   meta: {
     icon: "information-line",
-    title: $t("menus.hserror"),
+    title: $t("menus.hsabnormal"),
     rank: 9
   },
   children: [

@@ -125,7 +125,7 @@ router.beforeEach((to: toRouteType, _from, next) => {
   const userInfo = storageSession.getItem<StorageConfigs>(sessionKey);
   NProgress.start();
   const externalLink = isUrl(to?.name as string);
-  if (!externalLink)
+  if (!externalLink) {
     to.matched.some(item => {
       if (!item.meta.title) return "";
       const Title = getConfig().Title;
@@ -133,6 +133,7 @@ router.beforeEach((to: toRouteType, _from, next) => {
         document.title = `${transformI18n(item.meta.title)} | ${Title}`;
       else document.title = transformI18n(item.meta.title);
     });
+  }
   if (userInfo) {
     if (_from?.name) {
       // name为超链接
@@ -144,7 +145,10 @@ router.beforeEach((to: toRouteType, _from, next) => {
       }
     } else {
       // 刷新
-      if (usePermissionStoreHook().wholeMenus.length === 0)
+      if (
+        usePermissionStoreHook().wholeMenus.length === 0 &&
+        to.path !== "/login"
+      )
         initRouter().then((router: Router) => {
           if (!useMultiTagsStoreHook().getMultiTagsCache) {
             const { path } = to;

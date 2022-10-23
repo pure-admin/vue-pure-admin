@@ -3,7 +3,7 @@ import { store } from "/@/store";
 import { cacheType } from "./types";
 import { constantMenus } from "/@/router";
 import { cloneDeep } from "lodash-unified";
-import { ascending, filterTree } from "/@/router/utils";
+import { ascending, filterTree, filterNoPermissionTree } from "/@/router/utils";
 
 export const usePermissionStore = defineStore({
   id: "pure-permission",
@@ -18,19 +18,18 @@ export const usePermissionStore = defineStore({
     cachePageList: []
   }),
   actions: {
-    /** 获取异步路由菜单 */
-    asyncActionRoutes(routes) {
+    /** 组装整体路由生成的菜单 */
+    handleWholeMenus(routes) {
       if (this.wholeMenus.length > 0) return;
-      this.wholeMenus = filterTree(
-        ascending(this.constantMenus.concat(routes))
+      this.wholeMenus = filterNoPermissionTree(
+        filterTree(ascending(this.constantMenus.concat(routes)))
       );
 
       this.menusTree = cloneDeep(
-        filterTree(ascending(this.constantMenus.concat(routes)))
+        filterNoPermissionTree(
+          filterTree(ascending(this.constantMenus.concat(routes)))
+        )
       );
-    },
-    async changeSetting(routes) {
-      await this.asyncActionRoutes(routes);
     },
     cacheOperate({ mode, name }: cacheType) {
       switch (mode) {
