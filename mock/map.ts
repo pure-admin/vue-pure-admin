@@ -29,8 +29,8 @@ export default [
     method: "get",
     response: () => {
       return {
-        code: 0,
-        info: mapList()
+        success: true,
+        data: mapList()
       };
     }
   }

@@ -6,7 +6,7 @@ export default [
     method: "post",
     response: () => {
       return {
-        code: 0,
+        success: true,
         data: {
           list: [
             {
