@@ -29,11 +29,10 @@ const activePath = ref("");
 const inputRef = ref<HTMLInputElement | null>(null);
 const resultOptions = shallowRef([]);
 const handleSearch = useDebounceFn(search, 300);
-let menusTree = cloneDeep(usePermissionStoreHook().wholeMenus);
 
 /** 菜单树形结构 */
 const menusData = computed(() => {
-  return deleteChildren(menusTree);
+  return deleteChildren(cloneDeep(usePermissionStoreHook().wholeMenus));
 });
 
 const show = computed({
