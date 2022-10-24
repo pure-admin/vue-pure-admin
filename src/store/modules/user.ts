@@ -1,48 +1,32 @@
 import { defineStore } from "pinia";
 import { store } from "/@/store";
 import { userType } from "./types";
-import { router } from "/@/router";
 import { routerArrays } from "/@/layout/types";
+import { router, resetRouter } from "/@/router";
 import { storageSession } from "@pureadmin/utils";
 import { getLogin, refreshTokenApi } from "/@/api/user";
 import { UserResult, RefreshTokenResult } from "/@/api/user";
-import { getToken, setToken, removeToken } from "/@/utils/auth";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
-
-const data = getToken();
-let token = "";
-let refreshToken = "";
-let username = "";
-let roles = [];
-if (data) {
-  token = data?.accessToken ?? "";
-  refreshToken = data?.refreshToken ?? "";
-  username = data?.username ?? "";
-  roles = data?.roles ?? [];
-}
+import {
+  type DataInfo,
+  setToken,
+  removeToken,
+  sessionKey
+} from "/@/utils/auth";
 
 export const useUserStore = defineStore({
   id: "pure-user",
   state: (): userType => ({
-    token,
-    refreshToken,
-    username,
+    username:
+      storageSession.getItem<DataInfo<number>>(sessionKey)?.username ?? "",
     // 页面级别权限
-    roles,
+    roles: storageSession.getItem<DataInfo<number>>(sessionKey)?.roles ?? [],
     // 前端生成的验证码（按实际需求替换）
     verifyCode: "",
     // 判断登录页面显示哪个组件（0：登录（默认）、1：手机登录、2：二维码登录、3：注册、4：忘记密码）
     currentPage: 0
   }),
   actions: {
-    /** 存储`token` */
-    SET_TOKEN(token: string) {
-      this.token = token;
-    },
-    /** 存储`refreshToken` */
-    SET_REFRESHTOKEN(token: string) {
-      this.refreshToken = token;
-    },
     /** 存储用户名 */
     SET_USERNAME(username: string) {
       this.username = username;
@@ -74,15 +58,14 @@ export const useUserStore = defineStore({
           });
       });
     },
-    /** 登出 清空缓存 */
+    /** 前端登出（不调用接口） */
     logOut() {
-      this.token = "";
       this.username = "";
       this.roles = [];
       removeToken();
-      storageSession.clear();
-      useMultiTagsStoreHook().handleTags("equal", routerArrays);
       router.push("/login");
+      useMultiTagsStoreHook().handleTags("equal", [...routerArrays]);
+      resetRouter();
     },
     /** 刷新`token` */
     async handRefreshToken(data) {

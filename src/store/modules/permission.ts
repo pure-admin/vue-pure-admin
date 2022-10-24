@@ -20,11 +20,9 @@ export const usePermissionStore = defineStore({
   actions: {
     /** 组装整体路由生成的菜单 */
     handleWholeMenus(routes) {
-      if (this.wholeMenus.length > 0) return;
       this.wholeMenus = filterNoPermissionTree(
         filterTree(ascending(this.constantMenus.concat(routes)))
       );
-
       this.menusTree = cloneDeep(
         filterNoPermissionTree(
           filterTree(ascending(this.constantMenus.concat(routes)))

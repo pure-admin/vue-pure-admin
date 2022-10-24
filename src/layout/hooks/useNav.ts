@@ -1,28 +1,26 @@
 import { computed } from "vue";
-import { router } from "/@/router";
 import { getConfig } from "/@/config";
 import { useRouter } from "vue-router";
 import { emitter } from "/@/utils/mitt";
 import { routeMetaType } from "../types";
-import type { StorageConfigs } from "/#/index";
-import { routerArrays } from "/@/layout/types";
+import { useGlobal } from "@pureadmin/utils";
 import { transformI18n } from "/@/plugins/i18n";
+import { router, remainingPaths } from "/@/router";
 import { useAppStoreHook } from "/@/store/modules/app";
-import { sessionKey, removeToken } from "/@/utils/auth";
-import { remainingPaths, resetRouter } from "/@/router";
 import { i18nChangeLanguage } from "@wangeditor/editor";
-import { storageSession, useGlobal } from "@pureadmin/utils";
+import { useUserStoreHook } from "/@/store/modules/user";
 import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
-import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
 
 const errorInfo = "当前路由配置不正确，请检查配置";
 
 export function useNav() {
   const pureApp = useAppStoreHook();
   const routers = useRouter().options.routes;
+
   /** 用户名 */
-  const username: string =
-    storageSession.getItem<StorageConfigs>(sessionKey)?.username;
+  const username = computed(() => {
+    return useUserStoreHook()?.username;
+  });
 
   /** 设置国际化选中后的样式 */
   const getDropdownItemStyle = computed(() => {
@@ -41,7 +39,7 @@ export function useNav() {
   });
 
   const avatarsStyle = computed(() => {
-    return username ? { marginRight: "10px" } : "";
+    return username.value ? { marginRight: "10px" } : "";
   });
 
   const isCollapse = computed(() => {
@@ -70,10 +68,7 @@ export function useNav() {
 
   /** 退出登录 */
   function logout() {
-    removeToken();
-    useMultiTagsStoreHook().handleTags("equal", [...routerArrays]);
-    resetRouter();
-    router.push("/login");
+    useUserStoreHook().logOut();
   }
 
   function backHome() {

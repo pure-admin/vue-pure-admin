@@ -37,8 +37,6 @@ export type setType = {
 };
 
 export type userType = {
-  token: string;
-  refreshToken: string;
   username?: string;
   roles?: Array<string>;
   verifyCode?: string;

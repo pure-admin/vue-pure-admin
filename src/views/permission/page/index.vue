@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { sessionKey } from "/@/utils/auth";
-import type { StorageConfigs } from "/#/index";
-import { storageSession } from "@pureadmin/utils";
+import { initRouter } from "/@/router/utils";
 import { type CSSProperties, ref, computed } from "vue";
+import { useUserStoreHook } from "/@/store/modules/user";
+import { usePermissionStoreHook } from "/@/store/modules/permission";
 
 defineOptions({
   name: "PermissionPage"
@@ -14,11 +14,7 @@ let width = computed((): CSSProperties => {
   };
 });
 
-let purview = ref<string>(
-  storageSession.getItem<StorageConfigs>(sessionKey)?.username
-);
-
-const value = ref("admin");
+let username = ref(useUserStoreHook()?.username);
 
 const options = [
   {
@@ -32,7 +28,14 @@ const options = [
 ];
 
 function onChange() {
-  console.log("--", value.value);
+  useUserStoreHook()
+    .loginByUsername({ username: username.value })
+    .then(res => {
+      if (res.success) {
+        usePermissionStoreHook().clearAllCachePage();
+        initRouter();
+      }
+    });
 }
 </script>
 
@@ -44,10 +47,10 @@ function onChange() {
     <el-card shadow="never" :style="width">
       <template #header>
         <div class="card-header">
-          <span>当前角色：{{ purview }}</span>
+          <span>当前角色：{{ username }}</span>
         </div>
       </template>
-      <el-select v-model="value" @change="onChange">
+      <el-select v-model="username" @change="onChange">
         <el-option
           v-for="item in options"
           :key="item.value"

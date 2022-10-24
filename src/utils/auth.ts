@@ -21,9 +21,9 @@ export const TokenKey = "authorized-token";
 /** 获取`token` */
 export function getToken(): DataInfo<number> {
   // 此处与`TokenKey`相同，此写法解决初始化时`Cookies`中不存在`TokenKey`报错
-  return Cookies.get("authorized-token")
-    ? JSON.parse(Cookies.get("authorized-token"))
-    : storageSession.getItem("user-info");
+  return Cookies.get(TokenKey)
+    ? JSON.parse(Cookies.get(TokenKey))
+    : storageSession.getItem(sessionKey);
 }
 
 /**
@@ -36,8 +36,6 @@ export function setToken(data: DataInfo<Date>) {
   let expires = 0;
   const { accessToken, refreshToken } = data;
   expires = new Date(data.expires).getTime();
-  useUserStoreHook().SET_TOKEN(accessToken);
-  useUserStoreHook().SET_REFRESHTOKEN(refreshToken);
   const cookieString = JSON.stringify({ accessToken, expires });
 
   expires > 0
