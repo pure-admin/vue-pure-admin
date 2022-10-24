@@ -4,11 +4,11 @@ import { getConfig } from "/@/config";
 import { useRouter } from "vue-router";
 import { emitter } from "/@/utils/mitt";
 import { routeMetaType } from "../types";
-import { sessionKey } from "/@/utils/auth";
 import type { StorageConfigs } from "/#/index";
 import { routerArrays } from "/@/layout/types";
 import { transformI18n } from "/@/plugins/i18n";
 import { useAppStoreHook } from "/@/store/modules/app";
+import { sessionKey, removeToken } from "/@/utils/auth";
 import { remainingPaths, resetRouter } from "/@/router";
 import { i18nChangeLanguage } from "@wangeditor/editor";
 import { storageSession, useGlobal } from "@pureadmin/utils";
@@ -70,10 +70,10 @@ export function useNav() {
 
   /** 退出登录 */
   function logout() {
+    removeToken();
     useMultiTagsStoreHook().handleTags("equal", [...routerArrays]);
-    storageSession.removeItem("info");
-    router.push("/login");
     resetRouter();
+    router.push("/login");
   }
 
   function backHome() {
