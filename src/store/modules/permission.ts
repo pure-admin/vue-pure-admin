@@ -2,7 +2,6 @@ import { defineStore } from "pinia";
 import { store } from "/@/store";
 import { cacheType } from "./types";
 import { constantMenus } from "/@/router";
-import { cloneDeep } from "lodash-unified";
 import { ascending, filterTree, filterNoPermissionTree } from "/@/router/utils";
 
 export const usePermissionStore = defineStore({
@@ -12,8 +11,6 @@ export const usePermissionStore = defineStore({
     constantMenus,
     // 整体路由生成的菜单（静态、动态）
     wholeMenus: [],
-    // 深拷贝一个菜单树，与导航菜单不突出
-    menusTree: [],
     // 缓存页面keepAlive
     cachePageList: []
   }),
@@ -22,11 +19,6 @@ export const usePermissionStore = defineStore({
     handleWholeMenus(routes) {
       this.wholeMenus = filterNoPermissionTree(
         filterTree(ascending(this.constantMenus.concat(routes)))
-      );
-      this.menusTree = cloneDeep(
-        filterNoPermissionTree(
-          filterTree(ascending(this.constantMenus.concat(routes)))
-        )
       );
     },
     cacheOperate({ mode, name }: cacheType) {
@@ -45,7 +37,6 @@ export const usePermissionStore = defineStore({
     /** 清空缓存页面 */
     clearAllCachePage() {
       this.wholeMenus = [];
-      this.menusTree = [];
       this.cachePageList = [];
     }
   }

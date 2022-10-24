@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
+import { cloneDeep } from "lodash-unified";
 import type { ElTreeV2 } from "element-plus";
 import { transformI18n } from "/@/plugins/i18n";
 import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
@@ -23,9 +24,10 @@ let dataProps = ref({
   children: "children"
 });
 const treeRef = ref<InstanceType<typeof ElTreeV2>>();
+let menusTree = cloneDeep(usePermissionStoreHook().wholeMenus);
 
 let menusData = computed(() => {
-  return deleteChildren(usePermissionStoreHook().menusTree);
+  return deleteChildren(menusTree);
 });
 
 let expandedKeys = extractPathList(menusData.value);

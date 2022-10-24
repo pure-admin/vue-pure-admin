@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { useRouter } from "vue-router";
+import { cloneDeep } from "lodash-unified";
 import SearchResult from "./SearchResult.vue";
 import SearchFooter from "./SearchFooter.vue";
 import { useNav } from "/@/layout/hooks/useNav";
@@ -28,10 +29,11 @@ const activePath = ref("");
 const inputRef = ref<HTMLInputElement | null>(null);
 const resultOptions = shallowRef([]);
 const handleSearch = useDebounceFn(search, 300);
+let menusTree = cloneDeep(usePermissionStoreHook().wholeMenus);
 
 /** 菜单树形结构 */
 const menusData = computed(() => {
-  return deleteChildren(usePermissionStoreHook().menusTree);
+  return deleteChildren(menusTree);
 });
 
 const show = computed({
