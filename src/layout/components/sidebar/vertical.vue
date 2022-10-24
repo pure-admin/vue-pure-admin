@@ -27,7 +27,7 @@ const menuData = computed(() => {
     : usePermissionStoreHook().wholeMenus;
 });
 
-function getSubMenuData(path) {
+function getSubMenuData(path: string) {
   // path的上级路由组成的数组
   const parentPathArr = getParentPaths(
     path,
@@ -41,6 +41,7 @@ function getSubMenuData(path) {
   if (!parenetRoute?.children) return;
   subMenuData.value = parenetRoute?.children;
 }
+
 getSubMenuData(route.path);
 
 onBeforeMount(() => {
@@ -50,7 +51,7 @@ onBeforeMount(() => {
 });
 
 watch(
-  () => route.path,
+  () => [route.path, usePermissionStoreHook().wholeMenus],
   () => {
     getSubMenuData(route.path);
     menuSelect(route.path, routers);

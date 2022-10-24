@@ -48,7 +48,7 @@ nextTick(() => {
 });
 
 watch(
-  () => route.path,
+  () => [route.path, usePermissionStoreHook().wholeMenus],
   () => {
     getDefaultActive(route.path);
   }
