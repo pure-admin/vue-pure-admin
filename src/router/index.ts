@@ -2,9 +2,8 @@ import { getConfig } from "/@/config";
 import { toRouteType } from "./types";
 import NProgress from "/@/utils/progress";
 import { findIndex } from "lodash-unified";
-import { sessionKey } from "/@/utils/auth";
-import type { StorageConfigs } from "/#/index";
 import { transformI18n } from "/@/plugins/i18n";
+import { sessionKey, type DataInfo } from "/@/utils/auth";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 import {
@@ -16,6 +15,7 @@ import {
 import {
   ascending,
   initRouter,
+  isOneOfArray,
   getHistoryMode,
   findRouteByPath,
   handleAliveRoute,
@@ -122,7 +122,7 @@ router.beforeEach((to: toRouteType, _from, next) => {
       handleAliveRoute(newMatched);
     }
   }
-  const userInfo = storageSession.getItem<StorageConfigs>(sessionKey);
+  const userInfo = storageSession.getItem<DataInfo<number>>(sessionKey);
   NProgress.start();
   const externalLink = isUrl(to?.name as string);
   if (!externalLink) {
@@ -135,6 +135,10 @@ router.beforeEach((to: toRouteType, _from, next) => {
     });
   }
   if (userInfo) {
+    // 无权限跳转403页面
+    if (to.meta?.roles && !isOneOfArray(to.meta?.roles, userInfo?.roles)) {
+      next({ path: "/error/403" });
+    }
     if (_from?.name) {
       // name为超链接
       if (externalLink) {

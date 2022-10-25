@@ -334,6 +334,7 @@ export {
   ascending,
   filterTree,
   initRouter,
+  isOneOfArray,
   getHistoryMode,
   addAsyncRoutes,
   delAliveRoutes,
