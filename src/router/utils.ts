@@ -157,6 +157,7 @@ function initRouter() {
     getAsyncRoutes().then(({ data }) => {
       if (data.length === 0) {
         usePermissionStoreHook().handleWholeMenus(data);
+        resolve(router);
       } else {
         formatFlatteningRoutes(addAsyncRoutes(data)).map(
           (v: RouteRecordRaw) => {
