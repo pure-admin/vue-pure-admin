@@ -1,11 +1,15 @@
-import Axios, { AxiosInstance, AxiosRequestConfig } from "axios";
+import Axios, {
+  AxiosInstance,
+  AxiosRequestConfig,
+  CustomParamsSerializer
+} from "axios";
 import {
   PureHttpError,
   RequestMethods,
   PureHttpResponse,
   PureHttpRequestConfig
 } from "./types.d";
-import qs from "qs";
+import { stringify } from "qs";
 import NProgress from "../progress";
 // import { loadEnv } from "@build/index";
 import { getToken } from "/@/utils/auth";
@@ -20,7 +24,7 @@ const defaultConfig: AxiosRequestConfig = {
   //   process.env.NODE_ENV === "production"
   //     ? VITE_PROXY_DOMAIN_REAL
   //     : VITE_PROXY_DOMAIN,
-  // 当前使用mock模拟请求，将baseURL制空，如果你的环境用到了http请求，请删除下面的baseURL启用上面的baseURL，并将第10行、15行代码注释取消
+  // 当前使用mock模拟请求，将baseURL制空，如果你的环境用到了http请求，请删除下面的baseURL启用上面的baseURL，并将第14行、19行代码注释取消
   baseURL: "",
   timeout: 10000,
   headers: {
@@ -28,8 +32,10 @@ const defaultConfig: AxiosRequestConfig = {
     "Content-Type": "application/json",
     "X-Requested-With": "XMLHttpRequest"
   },
-  // 数组格式参数序列化
-  paramsSerializer: params => qs.stringify(params, { indices: false })
+  // 数组格式参数序列化（https://github.com/axios/axios/issues/5142）
+  paramsSerializer: {
+    serialize: stringify as unknown as CustomParamsSerializer
+  }
 };
 
 class PureHttp {
