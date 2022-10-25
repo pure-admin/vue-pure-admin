@@ -4,7 +4,7 @@ permissions:
 on:
   push:
     branches:
-      - gitee
+      - master
 jobs:
   deploy:
     concurrency: ci-${{ github.ref }}
