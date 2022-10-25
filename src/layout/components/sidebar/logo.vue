@@ -51,6 +51,12 @@ const { title } = useNav();
     margin-top: 5px;
 
     .sidebar-title {
+      display: block;
+      width: 160px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      text-align: left;
       color: #1890ff;
       font-weight: 600;
       font-size: 20px;

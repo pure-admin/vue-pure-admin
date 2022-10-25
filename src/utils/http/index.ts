@@ -59,7 +59,7 @@ class PureHttp {
           PureHttp.initConfig.beforeRequestCallback($config);
           return $config;
         }
-        /** 请求白名单（通过设置请求白名单，防止token过期后再请求造成的死循环问题） */
+        /** 请求白名单，放置一些不需要token的接口（通过设置请求白名单，防止token过期后再请求造成的死循环问题） */
         const whiteList = ["/refreshToken", "/login"];
         return whiteList.some(v => config.url.indexOf(v) > -1)
           ? config
