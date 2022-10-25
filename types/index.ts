@@ -74,8 +74,10 @@ export interface RouteChildrenConfigsTable {
     showLink?: boolean;
     /** 是否显示父级菜单 `可选` */
     showParent?: boolean;
-    /** 路由权限设置 `可选` */
-    authority?: Array<string>;
+    /** 页面级别权限设置 `可选` */
+    roles?: Array<string>;
+    /** 按钮级别权限设置 `可选` */
+    auths?: Array<string>;
     /** 路由组件缓存（开启 `true`、关闭 `false`）`可选` */
     keepAlive?: boolean;
     /** 内嵌的`iframe`链接 `可选` */

@@ -1,8 +1,8 @@
 import { http } from "../utils/http";
 
 type Result = {
-  code: number;
-  info: Array<any>;
+  success: boolean;
+  data: Array<any>;
 };
 
 /** 地图数据 */

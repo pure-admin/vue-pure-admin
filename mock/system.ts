@@ -6,7 +6,7 @@ export default [
     method: "post",
     response: () => {
       return {
-        code: 0,
+        success: true,
         data: {
           list: [
             {
@@ -71,7 +71,7 @@ export default [
     method: "post",
     response: () => {
       return {
-        code: 0,
+        success: true,
         data: [
           {
             name: "杭州总公司",
@@ -212,7 +212,7 @@ export default [
     method: "post",
     response: () => {
       return {
-        code: 0,
+        success: true,
         data: {
           list: [
             {

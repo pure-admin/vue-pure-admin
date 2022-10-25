@@ -1,36 +1,80 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import type { StorageConfigs } from "/#/index";
-import { storageSession } from "@pureadmin/utils";
+import { type CSSProperties, computed } from "vue";
+import { hasAuth, getAuths } from "/@/router/utils";
 
 defineOptions({
   name: "PermissionButton"
 });
 
-const auth = ref(
-  storageSession.getItem<StorageConfigs>("info").username || "admin"
-);
-
-function changRole(value) {
-  storageSession.setItem("info", {
-    username: value,
-    accessToken: `eyJhbGciOiJIUzUxMiJ9.${value}`
-  });
-  window.location.reload();
-}
+let width = computed((): CSSProperties => {
+  return {
+    width: "85vw"
+  };
+});
 </script>
 
 <template>
-  <el-card>
-    <template #header>
-      <div class="card-header">
-        <el-radio-group v-model="auth" @change="changRole">
-          <el-radio-button label="admin" />
-          <el-radio-button label="test" />
-        </el-radio-group>
-      </div>
-    </template>
-    <p v-auth="'v-admin'">只有admin可看</p>
-    <p v-auth="'v-test'">只有test可看</p>
-  </el-card>
+  <el-space direction="vertical" size="large">
+    <el-tag :style="width" size="large" effect="dark">
+      当前拥有的code列表：{{ getAuths() }}
+    </el-tag>
+
+    <el-card shadow="never" :style="width">
+      <template #header>
+        <div class="card-header">组件方式判断权限</div>
+      </template>
+      <Auth value="btn_add">
+        <el-button type="success"> 拥有code：'btn_add' 权限可见 </el-button>
+      </Auth>
+      <Auth :value="['btn_edit']">
+        <el-button type="primary"> 拥有code：['btn_edit'] 权限可见 </el-button>
+      </Auth>
+      <Auth :value="['btn_add', 'btn_edit', 'btn_delete']">
+        <el-button type="danger">
+          拥有code：['btn_add', 'btn_edit', 'btn_delete'] 权限可见
+        </el-button>
+      </Auth>
+    </el-card>
+
+    <el-card shadow="never" :style="width">
+      <template #header>
+        <div class="card-header">函数方式判断权限</div>
+      </template>
+      <el-button type="success" v-if="hasAuth('btn_add')">
+        拥有code：'btn_add' 权限可见
+      </el-button>
+      <el-button type="primary" v-if="hasAuth(['btn_edit'])">
+        拥有code：['btn_edit'] 权限可见
+      </el-button>
+      <el-button
+        type="danger"
+        v-if="hasAuth(['btn_add', 'btn_edit', 'btn_delete'])"
+      >
+        拥有code：['btn_add', 'btn_edit', 'btn_delete'] 权限可见
+      </el-button>
+    </el-card>
+
+    <el-card shadow="never" :style="width">
+      <template #header>
+        <div class="card-header">
+          指令方式判断权限（该方式不能动态修改权限）
+        </div>
+      </template>
+      <el-button type="success" v-auth="'btn_add'">
+        拥有code：'btn_add' 权限可见
+      </el-button>
+      <el-button type="primary" v-auth="['btn_edit']">
+        拥有code：['btn_edit'] 权限可见
+      </el-button>
+      <el-button type="danger" v-auth="['btn_add', 'btn_edit', 'btn_delete']">
+        拥有code：['btn_add', 'btn_edit', 'btn_delete'] 权限可见
+      </el-button>
+    </el-card>
+  </el-space>
 </template>
+
+<style lang="scss" scoped>
+:deep(.el-tag) {
+  justify-content: start;
+}
+</style>

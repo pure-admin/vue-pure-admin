@@ -2,8 +2,8 @@ import { getConfig } from "/@/config";
 import { toRouteType } from "./types";
 import NProgress from "/@/utils/progress";
 import { findIndex } from "lodash-unified";
-import type { StorageConfigs } from "/#/index";
 import { transformI18n } from "/@/plugins/i18n";
+import { sessionKey, type DataInfo } from "/@/utils/auth";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
 import { usePermissionStoreHook } from "/@/store/modules/permission";
 import {
@@ -15,6 +15,7 @@ import {
 import {
   ascending,
   initRouter,
+  isOneOfArray,
   getHistoryMode,
   findRouteByPath,
   handleAliveRoute,
@@ -121,10 +122,10 @@ router.beforeEach((to: toRouteType, _from, next) => {
       handleAliveRoute(newMatched);
     }
   }
-  const name = storageSession.getItem<StorageConfigs>("info");
+  const userInfo = storageSession.getItem<DataInfo<number>>(sessionKey);
   NProgress.start();
   const externalLink = isUrl(to?.name as string);
-  if (!externalLink)
+  if (!externalLink) {
     to.matched.some(item => {
       if (!item.meta.title) return "";
       const Title = getConfig().Title;
@@ -132,7 +133,12 @@ router.beforeEach((to: toRouteType, _from, next) => {
         document.title = `${transformI18n(item.meta.title)} | ${Title}`;
       else document.title = transformI18n(item.meta.title);
     });
-  if (name) {
+  }
+  if (userInfo) {
+    // 无权限跳转403页面
+    if (to.meta?.roles && !isOneOfArray(to.meta?.roles, userInfo?.roles)) {
+      next({ path: "/error/403" });
+    }
     if (_from?.name) {
       // name为超链接
       if (externalLink) {
@@ -143,8 +149,11 @@ router.beforeEach((to: toRouteType, _from, next) => {
       }
     } else {
       // 刷新
-      if (usePermissionStoreHook().wholeMenus.length === 0)
-        initRouter(name.username).then((router: Router) => {
+      if (
+        usePermissionStoreHook().wholeMenus.length === 0 &&
+        to.path !== "/login"
+      )
+        initRouter().then((router: Router) => {
           if (!useMultiTagsStoreHook().getMultiTagsCache) {
             const { path } = to;
             const index = findIndex(remainingRouter, v => {

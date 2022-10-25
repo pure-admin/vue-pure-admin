@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
+import { cloneDeep } from "lodash-unified";
 import { transformI18n } from "/@/plugins/i18n";
 import { TreeSelect } from "@pureadmin/components";
 import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
@@ -16,13 +17,12 @@ defineOptions({
 });
 
 const { toDetail, router } = useDetail();
+let menusTree = cloneDeep(usePermissionStoreHook().wholeMenus);
 
 let treeData = computed(() => {
-  return appendFieldByUniqueId(
-    deleteChildren(usePermissionStoreHook().menusTree),
-    0,
-    { disabled: true }
-  );
+  return appendFieldByUniqueId(deleteChildren(menusTree), 0, {
+    disabled: true
+  });
 });
 
 const value = ref<string[]>([]);

@@ -1,14 +1,13 @@
 import { http } from "../utils/http";
 
 type Result = {
+  success: boolean;
   data?: {
     /** 列表数据 */
     list: Array<any>;
     /** 总数 */
-    total: number;
+    total?: number;
   };
-  code?: number;
-  msg?: string;
 };
 
 /** 获取用户管理列表 */

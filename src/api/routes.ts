@@ -1,10 +1,10 @@
 import { http } from "../utils/http";
 
 type Result = {
-  code: number;
-  info: Array<any>;
+  success: boolean;
+  data: Array<any>;
 };
 
-export const getAsyncRoutes = (params?: object) => {
-  return http.request<Result>("get", "/getAsyncRoutes", { params });
+export const getAsyncRoutes = () => {
+  return http.request<Result>("get", "/getAsyncRoutes");
 };

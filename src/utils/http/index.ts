@@ -1,6 +1,5 @@
 import Axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 import {
-  resultType,
   PureHttpError,
   RequestMethods,
   PureHttpResponse,
@@ -21,7 +20,7 @@ const defaultConfig: AxiosRequestConfig = {
   //   process.env.NODE_ENV === "production"
   //     ? VITE_PROXY_DOMAIN_REAL
   //     : VITE_PROXY_DOMAIN,
-  // 当前使用mock模拟请求，将baseURL制空，如果你的环境用到了http请求，请删除下面的baseURL启用上面的baseURL，并将11行、16行代码注释取消
+  // 当前使用mock模拟请求，将baseURL制空，如果你的环境用到了http请求，请删除下面的baseURL启用上面的baseURL，并将第10行、15行代码注释取消
   baseURL: "",
   timeout: 10000,
   headers: {
@@ -47,7 +46,7 @@ class PureHttp {
   /** 请求拦截 */
   private httpInterceptorsRequest(): void {
     PureHttp.axiosInstance.interceptors.request.use(
-      (config: PureHttpRequestConfig) => {
+      async (config: PureHttpRequestConfig) => {
         const $config = config;
         // 开启进度条动画
         NProgress.start();
@@ -60,26 +59,33 @@ class PureHttp {
           PureHttp.initConfig.beforeRequestCallback($config);
           return $config;
         }
-        const token = getToken();
-        if (token) {
-          const data = JSON.parse(token);
-          const now = new Date().getTime();
-          const expired = parseInt(data.expires) - now <= 0;
-          if (expired) {
-            // token过期刷新
-            useUserStoreHook()
-              .refreshToken(data)
-              .then((res: resultType) => {
-                config.headers["Authorization"] = "Bearer " + res.accessToken;
-                return $config;
-              });
-          } else {
-            config.headers["Authorization"] = "Bearer " + data.accessToken;
-            return $config;
-          }
-        } else {
-          return $config;
-        }
+        /** 请求白名单（通过设置请求白名单，防止token过期后再请求造成的死循环问题） */
+        const whiteList = ["/refreshToken", "/login"];
+        return whiteList.some(v => config.url.indexOf(v) > -1)
+          ? config
+          : new Promise(resolve => {
+              const data = getToken();
+              if (data) {
+                const now = new Date().getTime();
+                const expired = parseInt(data.expires) - now <= 0;
+                if (expired) {
+                  // token过期刷新
+                  useUserStoreHook()
+                    .handRefreshToken({ refreshToken: data.refreshToken })
+                    .then(res => {
+                      config.headers["Authorization"] =
+                        "Bearer " + res.data.accessToken;
+                      resolve($config);
+                    });
+                } else {
+                  config.headers["Authorization"] =
+                    "Bearer " + data.accessToken;
+                  resolve($config);
+                }
+              } else {
+                resolve($config);
+              }
+            });
       },
       error => {
         return Promise.reject(error);

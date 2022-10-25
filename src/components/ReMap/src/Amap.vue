@@ -92,8 +92,8 @@ onBeforeMount(() => {
 
       // 获取模拟车辆信息
       mapJson()
-        .then(({ info }) => {
-          let points: object = info.map(v => {
+        .then(({ data }) => {
+          let points: object = data.map(v => {
             return {
               lnglat: [v.lng, v.lat],
               ...v

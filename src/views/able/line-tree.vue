@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
+import { cloneDeep } from "lodash-unified";
 import { transformI18n } from "/@/plugins/i18n";
 import ElTreeLine from "/@/components/ReTreeLine";
 import { extractPathList, deleteChildren } from "@pureadmin/utils";
@@ -9,8 +10,9 @@ defineOptions({
   name: "LineTree"
 });
 
+let menusTree = cloneDeep(usePermissionStoreHook().wholeMenus);
 let menusData = computed(() => {
-  return deleteChildren(usePermissionStoreHook().menusTree);
+  return deleteChildren(menusTree);
 });
 let expandedKeys = extractPathList(menusData.value);
 let dataProps = {

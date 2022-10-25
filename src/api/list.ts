@@ -1,12 +1,11 @@
 import { http } from "../utils/http";
 
 type Result = {
+  success: boolean;
   data?: {
     /** 列表数据 */
     list: Array<any>;
   };
-  code?: number;
-  msg?: string;
 };
 
 /** 卡片列表 */

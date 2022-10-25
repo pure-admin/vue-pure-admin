@@ -1,7 +1,12 @@
-// 根据角色动态生成路由
+// 模拟后端动态生成路由
 import { MockMethod } from "vite-plugin-mock";
 
-// http://mockjs.com/examples.html#Object
+/**
+ * roles：页面级别权限，这里模拟二种 "admin"、"common"
+ * admin：管理员角色
+ * common：普通角色
+ */
+
 const systemRouter = {
   path: "/system",
   meta: {
@@ -15,7 +20,8 @@ const systemRouter = {
       name: "User",
       meta: {
         icon: "flUser",
-        title: "menus.hsUser"
+        title: "menus.hsUser",
+        roles: ["admin"]
       }
     },
     {
@@ -23,7 +29,8 @@ const systemRouter = {
       name: "Role",
       meta: {
         icon: "role",
-        title: "menus.hsRole"
+        title: "menus.hsRole",
+        roles: ["admin"]
       }
     },
     {
@@ -31,7 +38,8 @@ const systemRouter = {
       name: "Dept",
       meta: {
         icon: "dept",
-        title: "menus.hsDept"
+        title: "menus.hsDept",
+        roles: ["admin"]
       }
     },
     {
@@ -41,7 +49,8 @@ const systemRouter = {
       meta: {
         icon: "dict",
         title: "menus.hsDict",
-        keepAlive: true
+        keepAlive: true,
+        roles: ["admin"]
       }
     }
   ]
@@ -52,13 +61,14 @@ const permissionRouter = {
   meta: {
     title: "menus.permission",
     icon: "lollipop",
-    rank: 7
+    rank: 10
   },
   children: [
     {
       path: "/permission/page/index",
       name: "PermissionPage",
       meta: {
+        roles: ["admin", "common"],
         title: "menus.permissionPage"
       }
     },
@@ -67,7 +77,8 @@ const permissionRouter = {
       name: "PermissionButton",
       meta: {
         title: "menus.permissionButton",
-        authority: []
+        roles: ["admin", "common"],
+        auths: ["btn_add", "btn_edit", "btn_delete"]
       }
     }
   ]
@@ -78,7 +89,7 @@ const frameRouter = {
   meta: {
     icon: "monitor",
     title: "menus.hsExternalPage",
-    rank: 10
+    rank: 7
   },
   children: [
     {
@@ -86,14 +97,16 @@ const frameRouter = {
       name: "FramePure",
       meta: {
         title: "menus.hsPureDocument",
-        frameSrc: "http://yiming_chang.gitee.io/pure-admin-doc"
+        frameSrc: "http://yiming_chang.gitee.io/pure-admin-doc",
+        roles: ["admin", "common"]
       }
     },
     {
       path: "/external",
       name: "http://yiming_chang.gitee.io/pure-admin-doc",
       meta: {
-        title: "menus.externalLink"
+        title: "menus.externalLink",
+        roles: ["admin", "common"]
       }
     },
     {
@@ -101,7 +114,8 @@ const frameRouter = {
       name: "FrameEp",
       meta: {
         title: "menus.hsEpDocument",
-        frameSrc: "https://element-plus.org/zh-CN/"
+        frameSrc: "https://element-plus.org/zh-CN/",
+        roles: ["admin", "common"]
       }
     }
   ]
@@ -119,7 +133,8 @@ const tabsRouter = {
       path: "/tabs/index",
       name: "Tabs",
       meta: {
-        title: "menus.hstabs"
+        title: "menus.hstabs",
+        roles: ["admin", "common"]
       }
     },
     {
@@ -127,7 +142,8 @@ const tabsRouter = {
       name: "TabQueryDetail",
       meta: {
         // 不在menu菜单中显示
-        showLink: false
+        showLink: false,
+        roles: ["admin", "common"]
       }
     },
     {
@@ -135,39 +151,22 @@ const tabsRouter = {
       component: "params-detail",
       name: "TabParamsDetail",
       meta: {
-        showLink: false
+        showLink: false,
+        roles: ["admin", "common"]
       }
     }
   ]
 };
 
-// 添加不同按钮权限到/permission/button页面中
-function setDifAuthority(authority, routes) {
-  routes.children[1].meta.authority = [authority];
-  return routes;
-}
-
 export default [
   {
     url: "/getAsyncRoutes",
     method: "get",
-    response: ({ query }) => {
-      if (query.name === "admin") {
-        return {
-          code: 0,
-          info: [
-            tabsRouter,
-            frameRouter,
-            systemRouter,
-            setDifAuthority("v-admin", permissionRouter)
-          ]
-        };
-      } else {
-        return {
-          code: 0,
-          info: [tabsRouter, setDifAuthority("v-test", permissionRouter)]
-        };
-      }
+    response: () => {
+      return {
+        success: true,
+        data: [systemRouter, permissionRouter, frameRouter, tabsRouter]
+      };
     }
   }
 ] as MockMethod[];
