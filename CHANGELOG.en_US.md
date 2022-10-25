@@ -1,3 +1,29 @@
+# 3.6.0 (2022-10-25)
+
+### 🎫 Feat
+
+- Add file download `demo`
+- Add typewriter component `demo`
+- Added `json` editor `demo`
+
+### ✔️ refactor
+
+- Refactor the permission module, adopt the most commonly used `RBAC` (Role-Based Access List): role-based permission control (User -> Role -> Permission), and update the page permission and button permission `demo` example, button Permissions support three operation modes (judging permissions in component mode, judging permissions in function mode, and judging permissions in instruction mode)
+
+### 🐞 Bug fixes
+
+- Fixed the theme not being emptied when clearing the cache and returning to the login page
+- Fix `menu` display problem in production environment in `horizontal` mode
+- Fixed the problem that the `mix` mixed mode navigation might not be displayed in the left menu of the production environment
+- After the `token` expires, calling the refresh `token` interface will cause an infinite loop
+
+### 🍏 Perf
+
+- Removed uncommon `@apply` from `tailwind.css`
+- Replace `//` comments with `/** */`, which is more friendly to the editor's intellisense
+- Optimize the login enter event
+- Simplified some functions, eliminated useless functions, and optimized page loading speed
+
 # 3.5.0 (2022-9-10)
 
 ### 🎫 Feat
