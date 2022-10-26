@@ -30,6 +30,7 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
     VITE_CDN,
     VITE_PORT,
     VITE_LEGACY,
+    VITE_COMPRESSION,
     VITE_PUBLIC_PATH,
     VITE_PROXY_DOMAIN,
     VITE_PROXY_DOMAIN_REAL
@@ -60,7 +61,7 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
             }
           : null
     },
-    plugins: getPluginsList(command, VITE_LEGACY, VITE_CDN),
+    plugins: getPluginsList(command, VITE_LEGACY, VITE_CDN, VITE_COMPRESSION),
     optimizeDeps: {
       include: ["pinia", "vue-i18n", "lodash-es", "@vueuse/core", "dayjs"],
       exclude: ["@pureadmin/theme/dist/browser-utils"]

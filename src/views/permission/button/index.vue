@@ -6,20 +6,21 @@ defineOptions({
   name: "PermissionButton"
 });
 
-let width = computed((): CSSProperties => {
+let elStyle = computed((): CSSProperties => {
   return {
-    width: "85vw"
+    width: "85vw",
+    justifyContent: "start"
   };
 });
 </script>
 
 <template>
   <el-space direction="vertical" size="large">
-    <el-tag :style="width" size="large" effect="dark">
+    <el-tag :style="elStyle" size="large" effect="dark">
       当前拥有的code列表：{{ getAuths() }}
     </el-tag>
 
-    <el-card shadow="never" :style="width">
+    <el-card shadow="never" :style="elStyle">
       <template #header>
         <div class="card-header">组件方式判断权限</div>
       </template>
@@ -36,7 +37,7 @@ let width = computed((): CSSProperties => {
       </Auth>
     </el-card>
 
-    <el-card shadow="never" :style="width">
+    <el-card shadow="never" :style="elStyle">
       <template #header>
         <div class="card-header">函数方式判断权限</div>
       </template>
@@ -54,7 +55,7 @@ let width = computed((): CSSProperties => {
       </el-button>
     </el-card>
 
-    <el-card shadow="never" :style="width">
+    <el-card shadow="never" :style="elStyle">
       <template #header>
         <div class="card-header">
           指令方式判断权限（该方式不能动态修改权限）
@@ -72,9 +73,3 @@ let width = computed((): CSSProperties => {
     </el-card>
   </el-space>
 </template>
-
-<style lang="scss" scoped>
-:deep(.el-tag) {
-  justify-content: start;
-}
-</style>

@@ -74,6 +74,15 @@ declare global {
     __: unknown;
   }
 
+  type ViteCompression =
+    | "none"
+    | "gzip"
+    | "brotli"
+    | "both"
+    | "gzip-clear"
+    | "brotli-clear"
+    | "both-clear";
+
   declare interface ViteEnv {
     VITE_PORT: number;
     VITE_PUBLIC_PATH: string;
@@ -82,6 +91,7 @@ declare global {
     VITE_ROUTER_HISTORY: string;
     VITE_LEGACY: boolean;
     VITE_CDN: boolean;
+    VITE_COMPRESSION: ViteCompression;
   }
 
   declare interface ServerConfigs {
