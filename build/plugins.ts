@@ -1,3 +1,4 @@
+import { cdn } from "./cdn";
 import { resolve } from "path";
 import vue from "@vitejs/plugin-vue";
 import { viteBuildInfo } from "./info";
@@ -12,7 +13,11 @@ import themePreprocessorPlugin from "@pureadmin/theme";
 import { genScssMultipleScopeVars } from "/@/layout/theme";
 import DefineOptions from "unplugin-vue-define-options/vite";
 
-export function getPluginsList(command, VITE_LEGACY) {
+export function getPluginsList(
+  command: string,
+  VITE_LEGACY: boolean,
+  VITE_CDN: boolean
+) {
   const prodMock = true;
   const lifecycle = process.env.npm_lifecycle_event;
   return [
@@ -25,6 +30,7 @@ export function getPluginsList(command, VITE_LEGACY) {
     }),
     // jsx、tsx语法支持
     vueJsx(),
+    VITE_CDN ? cdn : null,
     DefineOptions(),
     // 线上环境删除console
     removeConsole({ external: ["src/assets/iconfont/iconfont.js"] }),

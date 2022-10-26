@@ -27,6 +27,7 @@ const __APP_INFO__ = {
 
 export default ({ command, mode }: ConfigEnv): UserConfigExport => {
   const {
+    VITE_CDN,
     VITE_PORT,
     VITE_LEGACY,
     VITE_PUBLIC_PATH,
@@ -59,7 +60,7 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
             }
           : null
     },
-    plugins: getPluginsList(command, VITE_LEGACY),
+    plugins: getPluginsList(command, VITE_LEGACY, VITE_CDN),
     optimizeDeps: {
       include: ["pinia", "vue-i18n", "lodash-es", "@vueuse/core", "dayjs"],
       exclude: ["@pureadmin/theme/dist/browser-utils"]
