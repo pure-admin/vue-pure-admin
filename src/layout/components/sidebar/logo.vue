@@ -9,7 +9,7 @@ const { title } = useNav();
 </script>
 
 <template>
-  <div class="sidebar-logo-container" :class="{ collapse: props.collapse }">
+  <div class="sidebar-logo-container" :class="{ collapses: props.collapse }">
     <transition name="sidebarLogoFade">
       <router-link
         v-if="props.collapse"
@@ -65,7 +65,7 @@ const { title } = useNav();
     }
   }
 
-  .collapse {
+  .collapses {
     .sidebar-logo {
       margin-right: 0;
     }
