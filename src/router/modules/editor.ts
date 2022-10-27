@@ -1,4 +1,4 @@
-import { $t } from "/@/plugins/i18n";
+import { $t } from "@/plugins/i18n";
 import type { RouteConfigsTable } from "/#/index";
 
 const editorRouter: RouteConfigsTable = {
@@ -13,7 +13,7 @@ const editorRouter: RouteConfigsTable = {
     {
       path: "/editor/index",
       name: "Editor",
-      component: () => import("/@/views/editor/index.vue"),
+      component: () => import("@/views/editor/index.vue"),
       meta: {
         title: $t("menus.hseditor"),
         keepAlive: true

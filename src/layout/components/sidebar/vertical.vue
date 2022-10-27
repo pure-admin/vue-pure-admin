@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import Logo from "./logo.vue";
 import { useRoute } from "vue-router";
-import { emitter } from "/@/utils/mitt";
+import { emitter } from "@/utils/mitt";
 import SidebarItem from "./sidebarItem.vue";
 import leftCollapse from "./leftCollapse.vue";
 import type { StorageConfigs } from "/#/index";
-import { useNav } from "/@/layout/hooks/useNav";
+import { useNav } from "@/layout/hooks/useNav";
 import { storageLocal } from "@pureadmin/utils";
 import { ref, computed, watch, onBeforeMount } from "vue";
-import { findRouteByPath, getParentPaths } from "/@/router/utils";
-import { usePermissionStoreHook } from "/@/store/modules/permission";
+import { findRouteByPath, getParentPaths } from "@/router/utils";
+import { usePermissionStoreHook } from "@/store/modules/permission";
 
 const route = useRoute();
 const showLogo = ref(

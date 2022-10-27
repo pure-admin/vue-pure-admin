@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import Search from "../search/index.vue";
 import Notice from "../notice/index.vue";
-import avatars from "/@/assets/avatars.jpg";
-import { useNav } from "/@/layout/hooks/useNav";
-import { transformI18n } from "/@/plugins/i18n";
+import avatars from "@/assets/avatars.jpg";
+import { useNav } from "@/layout/hooks/useNav";
+import { transformI18n } from "@/plugins/i18n";
 import { ref, toRaw, watch, onMounted, nextTick } from "vue";
-import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
-import { getParentPaths, findRouteByPath } from "/@/router/utils";
+import { useRenderIcon } from "@/components/ReIcon/src/hooks";
+import { getParentPaths, findRouteByPath } from "@/router/utils";
 import { useTranslationLang } from "../../hooks/useTranslationLang";
-import { usePermissionStoreHook } from "/@/store/modules/permission";
-import globalization from "/@/assets/svg/globalization.svg?component";
+import { usePermissionStoreHook } from "@/store/modules/permission";
+import globalization from "@/assets/svg/globalization.svg?component";
 
 const menuRef = ref();
 let defaultActive = ref(null);

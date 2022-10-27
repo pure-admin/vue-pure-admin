@@ -1,8 +1,8 @@
 import { defineStore } from "pinia";
-import { store } from "/@/store";
+import { store } from "@/store";
 import { cacheType } from "./types";
-import { constantMenus } from "/@/router";
-import { ascending, filterTree, filterNoPermissionTree } from "/@/router/utils";
+import { constantMenus } from "@/router";
+import { ascending, filterTree, filterNoPermissionTree } from "@/router/utils";
 
 export const usePermissionStore = defineStore({
   id: "pure-permission",

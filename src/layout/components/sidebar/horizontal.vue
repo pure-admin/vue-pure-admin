@@ -3,11 +3,11 @@ import Search from "../search/index.vue";
 import Notice from "../notice/index.vue";
 import { ref, watch, nextTick } from "vue";
 import SidebarItem from "./sidebarItem.vue";
-import avatars from "/@/assets/avatars.jpg";
-import { useNav } from "/@/layout/hooks/useNav";
+import avatars from "@/assets/avatars.jpg";
+import { useNav } from "@/layout/hooks/useNav";
 import { useTranslationLang } from "../../hooks/useTranslationLang";
-import { usePermissionStoreHook } from "/@/store/modules/permission";
-import globalization from "/@/assets/svg/globalization.svg?component";
+import { usePermissionStoreHook } from "@/store/modules/permission";
+import globalization from "@/assets/svg/globalization.svg?component";
 
 const menuRef = ref();
 

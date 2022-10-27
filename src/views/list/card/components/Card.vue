@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed, PropType } from "vue";
-import shopIcon from "/@/assets/svg/shop.svg?component";
-import laptopIcon from "/@/assets/svg/laptop.svg?component";
-import serviceIcon from "/@/assets/svg/service.svg?component";
-import calendarIcon from "/@/assets/svg/calendar.svg?component";
-import userAvatarIcon from "/@/assets/svg/user_avatar.svg?component";
+import shopIcon from "@/assets/svg/shop.svg?component";
+import laptopIcon from "@/assets/svg/laptop.svg?component";
+import serviceIcon from "@/assets/svg/service.svg?component";
+import calendarIcon from "@/assets/svg/calendar.svg?component";
+import userAvatarIcon from "@/assets/svg/user_avatar.svg?component";
 
 defineOptions({
   name: "ReCard"

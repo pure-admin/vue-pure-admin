@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import splitpane, { ContextProps } from "/@/components/ReSplitPane";
+import splitpane, { ContextProps } from "@/components/ReSplitPane";
 import { reactive } from "vue";
 
 defineOptions({

@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { $t } from "/@/plugins/i18n";
-import { emitter } from "/@/utils/mitt";
+import { $t } from "@/plugins/i18n";
+import { emitter } from "@/utils/mitt";
 import { RouteConfigs } from "../../types";
 import { useTags } from "../../hooks/useTag";
-import { routerArrays } from "/@/layout/types";
+import { routerArrays } from "@/layout/types";
 import { isEqual, isEmpty } from "lodash-unified";
-import { useSettingStoreHook } from "/@/store/modules/settings";
+import { useSettingStoreHook } from "@/store/modules/settings";
 import { ref, watch, unref, nextTick, onBeforeMount } from "vue";
-import { handleAliveRoute, delAliveRoutes } from "/@/router/utils";
-import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
+import { handleAliveRoute, delAliveRoutes } from "@/router/utils";
+import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
 import { useResizeObserver, useDebounceFn, useFullscreen } from "@vueuse/core";
 
 const {

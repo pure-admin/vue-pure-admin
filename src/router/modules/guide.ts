@@ -1,4 +1,4 @@
-import { $t } from "/@/plugins/i18n";
+import { $t } from "@/plugins/i18n";
 import type { RouteConfigsTable } from "/#/index";
 
 const guideRouter: RouteConfigsTable = {
@@ -13,7 +13,7 @@ const guideRouter: RouteConfigsTable = {
     {
       path: "/guide/index",
       name: "Guide",
-      component: () => import("/@/views/guide/index.vue"),
+      component: () => import("@/views/guide/index.vue"),
       meta: {
         title: $t("menus.hsguide")
       }

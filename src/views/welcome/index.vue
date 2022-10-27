@@ -3,7 +3,7 @@ import { ref, computed } from "vue";
 import Bar from "./components/Bar.vue";
 import Pie from "./components/Pie.vue";
 import Line from "./components/Line.vue";
-import avatars from "/@/assets/avatars.jpg";
+import avatars from "@/assets/avatars.jpg";
 import Github from "./components/Github.vue";
 import Infinite from "./components/Infinite.vue";
 

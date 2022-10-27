@@ -2,12 +2,12 @@
 import Search from "./search/index.vue";
 import Notice from "./notice/index.vue";
 import mixNav from "./sidebar/mixNav.vue";
-import avatars from "/@/assets/avatars.jpg";
-import { useNav } from "/@/layout/hooks/useNav";
+import avatars from "@/assets/avatars.jpg";
+import { useNav } from "@/layout/hooks/useNav";
 import Breadcrumb from "./sidebar/breadCrumb.vue";
 import topCollapse from "./sidebar/topCollapse.vue";
 import { useTranslationLang } from "../hooks/useTranslationLang";
-import globalization from "/@/assets/svg/globalization.svg?component";
+import globalization from "@/assets/svg/globalization.svg?component";
 
 const {
   layout,

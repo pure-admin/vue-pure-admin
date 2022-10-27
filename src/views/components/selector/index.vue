@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import Selector from "/@/components/ReSelector";
+import Selector from "@/components/ReSelector";
 
 defineOptions({
   name: "Selector"

@@ -1,4 +1,4 @@
-import { $t } from "/@/plugins/i18n";
+import { $t } from "@/plugins/i18n";
 import type { RouteConfigsTable } from "/#/index";
 
 const flowChartRouter: RouteConfigsTable = {
@@ -13,7 +13,7 @@ const flowChartRouter: RouteConfigsTable = {
     {
       path: "/flowChart/index",
       name: "FlowChart",
-      component: () => import("/@/views/flow-chart/index.vue"),
+      component: () => import("@/views/flow-chart/index.vue"),
       meta: {
         title: $t("menus.hsflowChart")
       }

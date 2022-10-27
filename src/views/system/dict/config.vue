@@ -2,7 +2,7 @@
 import { useI18n } from "vue-i18n";
 import { ref, reactive } from "vue";
 import { type Direction } from "element-plus";
-import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
+import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import { type VxeTableEvents, type VxeTableInstance } from "vxe-table";
 
 interface Props {

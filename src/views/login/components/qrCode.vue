@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
 import Motion from "../utils/motion";
-import ReQrcode from "/@/components/ReQrcode";
-import { useUserStoreHook } from "/@/store/modules/user";
+import ReQrcode from "@/components/ReQrcode";
+import { useUserStoreHook } from "@/store/modules/user";
 
 const { t } = useI18n();
 </script>

@@ -1,5 +1,5 @@
 import { defineComponent, ref, computed, PropType } from "vue";
-import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
+import { useEpThemeStoreHook } from "@/store/modules/epTheme";
 import { IconifyIconOffline } from "../../ReIcon";
 
 export const loadingSvg = `

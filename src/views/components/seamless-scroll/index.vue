@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, reactive, unref } from "vue";
 import { templateRef } from "@vueuse/core";
-import SeamlessScroll from "/@/components/ReSeamlessScroll";
+import SeamlessScroll from "@/components/ReSeamlessScroll";
 
 defineOptions({
   name: "SeamlessScroll"

@@ -12,27 +12,27 @@ import Motion from "./utils/motion";
 import { useRouter } from "vue-router";
 import { loginRules } from "./utils/rule";
 import phone from "./components/phone.vue";
-import TypeIt from "/@/components/ReTypeit";
+import TypeIt from "@/components/ReTypeit";
 import qrCode from "./components/qrCode.vue";
 import regist from "./components/regist.vue";
 import update from "./components/update.vue";
-import { initRouter } from "/@/router/utils";
-import { useNav } from "/@/layout/hooks/useNav";
+import { initRouter } from "@/router/utils";
+import { useNav } from "@/layout/hooks/useNav";
 import { message } from "@pureadmin/components";
 import type { FormInstance } from "element-plus";
-import { $t, transformI18n } from "/@/plugins/i18n";
+import { $t, transformI18n } from "@/plugins/i18n";
 import { operates, thirdParty } from "./utils/enums";
-import { useLayout } from "/@/layout/hooks/useLayout";
-import { useUserStoreHook } from "/@/store/modules/user";
+import { useLayout } from "@/layout/hooks/useLayout";
+import { useUserStoreHook } from "@/store/modules/user";
 import { bg, avatar, currentWeek } from "./utils/static";
-import { ReImageVerify } from "/@/components/ReImageVerify";
-import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
-import { useTranslationLang } from "/@/layout/hooks/useTranslationLang";
-import { useDataThemeChange } from "/@/layout/hooks/useDataThemeChange";
+import { ReImageVerify } from "@/components/ReImageVerify";
+import { useRenderIcon } from "@/components/ReIcon/src/hooks";
+import { useTranslationLang } from "@/layout/hooks/useTranslationLang";
+import { useDataThemeChange } from "@/layout/hooks/useDataThemeChange";
 
-import dayIcon from "/@/assets/svg/day.svg?component";
-import darkIcon from "/@/assets/svg/dark.svg?component";
-import globalization from "/@/assets/svg/globalization.svg?component";
+import dayIcon from "@/assets/svg/day.svg?component";
+import darkIcon from "@/assets/svg/dark.svg?component";
+import globalization from "@/assets/svg/globalization.svg?component";
 
 defineOptions({
   name: "Login"
@@ -296,7 +296,7 @@ watch(imgCode, value => {
 </template>
 
 <style scoped>
-@import url("/@/style/login.css");
+@import url("@/style/login.css");
 </style>
 
 <style lang="scss" scoped>

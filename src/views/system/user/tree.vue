@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import type { ElTree } from "element-plus";
-import { getDeptList } from "/@/api/system";
+import { getDeptList } from "@/api/system";
 import { handleTree } from "@pureadmin/utils";
-import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
+import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import { ref, watch, onMounted, getCurrentInstance } from "vue";
 
 interface Tree {

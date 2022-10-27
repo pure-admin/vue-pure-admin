@@ -13,9 +13,9 @@ import { isEqual } from "lodash-unified";
 import type { StorageConfigs } from "/#/index";
 import { useEventListener } from "@vueuse/core";
 import { useRoute, useRouter } from "vue-router";
-import { transformI18n, $t } from "/@/plugins/i18n";
-import { useSettingStoreHook } from "/@/store/modules/settings";
-import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
+import { transformI18n, $t } from "@/plugins/i18n";
+import { useSettingStoreHook } from "@/store/modules/settings";
+import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
 import { storageLocal, toggleClass, hasClass } from "@pureadmin/utils";
 
 export function useTags() {

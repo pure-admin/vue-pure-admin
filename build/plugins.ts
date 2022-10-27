@@ -11,8 +11,8 @@ import VueI18n from "@intlify/vite-plugin-vue-i18n";
 import { visualizer } from "rollup-plugin-visualizer";
 import removeConsole from "vite-plugin-remove-console";
 import themePreprocessorPlugin from "@pureadmin/theme";
-import { genScssMultipleScopeVars } from "/@/layout/theme";
 import DefineOptions from "unplugin-vue-define-options/vite";
+import { genScssMultipleScopeVars } from "../src/layout/theme";
 
 export function getPluginsList(
   command: string,

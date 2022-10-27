@@ -1,13 +1,13 @@
 import { computed } from "vue";
-import bg from "/@/assets/login/bg.png";
-import avatar from "/@/assets/login/avatar.svg?component";
-import illustration0 from "/@/assets/login/illustration0.svg?component";
-import illustration1 from "/@/assets/login/illustration1.svg?component";
-import illustration2 from "/@/assets/login/illustration2.svg?component";
-import illustration3 from "/@/assets/login/illustration3.svg?component";
-import illustration4 from "/@/assets/login/illustration4.svg?component";
-import illustration5 from "/@/assets/login/illustration5.svg?component";
-import illustration6 from "/@/assets/login/illustration6.svg?component";
+import bg from "@/assets/login/bg.png";
+import avatar from "@/assets/login/avatar.svg?component";
+import illustration0 from "@/assets/login/illustration0.svg?component";
+import illustration1 from "@/assets/login/illustration1.svg?component";
+import illustration2 from "@/assets/login/illustration2.svg?component";
+import illustration3 from "@/assets/login/illustration3.svg?component";
+import illustration4 from "@/assets/login/illustration4.svg?component";
+import illustration5 from "@/assets/login/illustration5.svg?component";
+import illustration6 from "@/assets/login/illustration6.svg?component";
 
 /** Show a different background every day */
 const currentWeek = computed(() => {

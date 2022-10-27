@@ -2,7 +2,7 @@ import "xe-utils";
 import "./index.scss";
 import XEUtils from "xe-utils";
 import { App, unref } from "vue";
-import { i18n } from "/@/plugins/i18n";
+import { i18n } from "@/plugins/i18n";
 import "font-awesome/css/font-awesome.min.css";
 import zh from "vxe-table/lib/locale/lang/zh-CN";
 import en from "vxe-table/lib/locale/lang/en-US";

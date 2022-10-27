@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { initRouter } from "/@/router/utils";
+import { initRouter } from "@/router/utils";
 import { type CSSProperties, ref, computed } from "vue";
-import { useUserStoreHook } from "/@/store/modules/user";
-import { usePermissionStoreHook } from "/@/store/modules/permission";
+import { useUserStoreHook } from "@/store/modules/user";
+import { usePermissionStoreHook } from "@/store/modules/permission";
 
 defineOptions({
   name: "PermissionPage"

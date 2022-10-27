@@ -5,7 +5,7 @@ import volume from "xgplayer/es/controls/volume";
 import { deviceDetection } from "@pureadmin/utils";
 import screenShot from "xgplayer/es/controls/screenShot";
 import playbackRate from "xgplayer/es/controls/playbackRate";
-import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
+import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 
 defineOptions({
   name: "Video"

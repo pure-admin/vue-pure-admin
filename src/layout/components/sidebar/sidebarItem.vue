@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import path from "path";
 import { childrenType } from "../../types";
-import { useNav } from "/@/layout/hooks/useNav";
-import { transformI18n } from "/@/plugins/i18n";
-import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
+import { useNav } from "@/layout/hooks/useNav";
+import { transformI18n } from "@/plugins/i18n";
+import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import { ref, toRaw, PropType, nextTick, computed, CSSProperties } from "vue";
 
 const { layout, isCollapse } = useNav();

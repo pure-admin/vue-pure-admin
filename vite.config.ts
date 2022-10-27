@@ -15,7 +15,7 @@ const pathResolve = (dir: string): string => {
 
 /** 设置别名 */
 const alias: Record<string, string> = {
-  "/@": pathResolve("src"),
+  "@": pathResolve("src"),
   "@build": pathResolve("build")
 };
 
