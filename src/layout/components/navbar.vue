@@ -82,7 +82,7 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
       </el-dropdown>
       <!-- 退出登录 -->
       <el-dropdown trigger="click">
-        <span class="el-dropdown-link navbar-bg-hover">
+        <span class="el-dropdown-link navbar-bg-hover select-none">
           <img v-if="avatars" :src="avatars" :style="avatarsStyle" />
           <p v-if="username" class="dark:text-white">{{ username }}</p>
         </span>

@@ -499,7 +499,7 @@ onMounted(() => {
       <IconifyIconOffline icon="arrow-left-s-line" @click="handleScroll(200)" />
     </span>
     <div ref="scrollbarDom" class="scroll-container">
-      <div class="tab" ref="tabDom" :style="getTabStyle">
+      <div class="tab select-none" ref="tabDom" :style="getTabStyle">
         <div
           :ref="'dynamic' + index"
           v-for="(item, index) in multiTags"

@@ -36,7 +36,7 @@ const openDepot = (): void => {
 <template>
   <div class="welcome">
     <el-card class="top-content dark:border-none">
-      <div class="left-mark">
+      <div class="left-mark select-none">
         <img :src="avatars" title="直达仓库地址" @click="openDepot" />
         <span>{{ greetings }}</span>
       </div>
