@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useGlobal } from "@pureadmin/utils";
-import backTop from "/@/assets/svg/back_top.svg?component";
+import backTop from "@/assets/svg/back_top.svg?component";
 import { h, computed, Transition, defineComponent } from "vue";
-import { usePermissionStoreHook } from "/@/store/modules/permission";
+import { usePermissionStoreHook } from "@/store/modules/permission";
 
 const props = defineProps({
   fixedHeader: Boolean

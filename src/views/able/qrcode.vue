@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref, unref } from "vue";
 import { ElMessage } from "element-plus";
-import avatars from "/@/assets/avatars.jpg";
-import ReQrcode from "/@/components/ReQrcode";
+import avatars from "@/assets/avatars.jpg";
+import ReQrcode from "@/components/ReQrcode";
 
 defineOptions({
   name: "QrCode"

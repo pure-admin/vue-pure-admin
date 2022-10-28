@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Print from "/@/utils/print";
+import Print from "@/utils/print";
 import { reactive, ref } from "vue";
 import { VxeTablePropTypes } from "vxe-table";
 import Line from "../welcome/components/Line.vue";

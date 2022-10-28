@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import TypeIt from "/@/components/ReTypeit";
+import TypeIt from "@/components/ReTypeit";
 
 defineOptions({
   name: "Typeit"

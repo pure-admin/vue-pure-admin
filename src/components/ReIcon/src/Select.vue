@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { cloneDeep } from "lodash-unified";
 import { ref, computed, CSSProperties, toRef, watch } from "vue";
-import { IconJson } from "/@/components/ReIcon/data";
+import { IconJson } from "@/components/ReIcon/data";
 type ParameterCSSProperties = (item?: string) => CSSProperties | undefined;
 
 defineOptions({

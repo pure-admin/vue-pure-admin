@@ -1,4 +1,4 @@
-import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
+import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
 import { useRouter, useRoute } from "vue-router";
 import { onBeforeMount } from "vue";
 

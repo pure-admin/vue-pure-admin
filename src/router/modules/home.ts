@@ -1,6 +1,6 @@
-import { $t } from "/@/plugins/i18n";
+import { $t } from "@/plugins/i18n";
 import type { RouteConfigsTable } from "/#/index";
-const Layout = () => import("/@/layout/index.vue");
+const Layout = () => import("@/layout/index.vue");
 
 const homeRouter: RouteConfigsTable = {
   path: "/",
@@ -16,7 +16,7 @@ const homeRouter: RouteConfigsTable = {
     {
       path: "/welcome",
       name: "Welcome",
-      component: () => import("/@/views/welcome/index.vue"),
+      component: () => import("@/views/welcome/index.vue"),
       meta: {
         title: $t("menus.hshome")
       }

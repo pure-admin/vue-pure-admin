@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import Search from "../search/index.vue";
 import Notice from "../notice/index.vue";
-import avatars from "/@/assets/avatars.jpg";
-import { useNav } from "/@/layout/hooks/useNav";
-import { transformI18n } from "/@/plugins/i18n";
+import avatars from "@/assets/avatars.jpg";
+import { useNav } from "@/layout/hooks/useNav";
+import { transformI18n } from "@/plugins/i18n";
 import { ref, toRaw, watch, onMounted, nextTick } from "vue";
-import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
-import { getParentPaths, findRouteByPath } from "/@/router/utils";
+import { useRenderIcon } from "@/components/ReIcon/src/hooks";
+import { getParentPaths, findRouteByPath } from "@/router/utils";
 import { useTranslationLang } from "../../hooks/useTranslationLang";
-import { usePermissionStoreHook } from "/@/store/modules/permission";
-import globalization from "/@/assets/svg/globalization.svg?component";
+import { usePermissionStoreHook } from "@/store/modules/permission";
+import globalization from "@/assets/svg/globalization.svg?component";
 
 const menuRef = ref();
 let defaultActive = ref(null);
@@ -128,7 +128,7 @@ watch(
       </el-dropdown>
       <!-- 退出登录 -->
       <el-dropdown trigger="click">
-        <span class="el-dropdown-link navbar-bg-hover">
+        <span class="el-dropdown-link navbar-bg-hover select-none">
           <img v-if="avatars" :src="avatars" :style="avatarsStyle" />
           <p v-if="username" class="dark:text-white">{{ username }}</p>
         </span>

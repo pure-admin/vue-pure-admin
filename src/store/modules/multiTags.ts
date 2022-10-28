@@ -1,8 +1,8 @@
 import { defineStore } from "pinia";
-import { store } from "/@/store";
+import { store } from "@/store";
 import { isEqual } from "lodash-unified";
 import type { StorageConfigs } from "/#/index";
-import { routerArrays } from "/@/layout/types";
+import { routerArrays } from "@/layout/types";
 import { multiType, positionType } from "./types";
 import { isUrl, storageLocal } from "@pureadmin/utils";
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { onClickOutside } from "@vueuse/core";
-import { emitter } from "/@/utils/mitt";
+import { emitter } from "@/utils/mitt";
 
 let show = ref<Boolean>(false);
 const target = ref(null);

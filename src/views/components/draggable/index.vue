@@ -2,7 +2,7 @@
 import Sortable from "sortablejs";
 import { ref, onMounted } from "vue";
 import draggable from "vuedraggable/src/vuedraggable";
-import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
+import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 
 defineOptions({
   name: "Draggable"

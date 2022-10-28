@@ -105,6 +105,8 @@ specifiers:
   unplugin-vue-define-options: 0.7.3
   v-contextmenu: 3.0.0
   vite: ^3.1.8
+  vite-plugin-cdn-import: ^0.3.5
+  vite-plugin-compression: ^0.5.1
   vite-plugin-mock: ^2.9.6
   vite-plugin-remove-console: ^1.1.0
   vite-svg-loader: ^3.6.0
@@ -246,6 +248,8 @@ devDependencies:
   typescript: 4.8.4
   unplugin-vue-define-options: 0.7.3_vite@3.1.8+vue@3.2.40
   vite: 3.1.8_sass@1.55.0+terser@5.15.1
+  vite-plugin-cdn-import: 0.3.5
+  vite-plugin-compression: 0.5.1_vite@3.1.8
   vite-plugin-mock: 2.9.6_mockjs@1.1.0+vite@3.1.8
   vite-plugin-remove-console: 1.1.0
   vite-svg-loader: 3.6.0
@@ -5513,6 +5517,15 @@ packages:
       }
     engines: { node: ">=0.10.0" }
 
+  /is-reference/1.2.1:
+    resolution:
+      {
+        integrity: sha512-U82MsXXiFIrjCK4otLT+o2NA2Cd2g5MLoOVXUZjIOhLurrRxpEXzI8O0KZHr3IjLvlAH1kTPYSuqer5T9ZVBKQ==
+      }
+    dependencies:
+      "@types/estree": 0.0.39
+    dev: true
+
   /is-regexp/1.0.0:
     resolution:
       {
@@ -7529,6 +7542,23 @@ packages:
       glob: 7.2.3
     dev: true
 
+  /rollup-plugin-external-globals/0.6.1:
+    resolution:
+      {
+        integrity: sha512-mlp3KNa5sE4Sp9UUR2rjBrxjG79OyZAh/QC18RHIjM+iYkbBwNXSo8DHRMZWtzJTrH8GxQ+SJvCTN3i14uMXIA==
+      }
+    peerDependencies:
+      rollup: ^2.25.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+    dependencies:
+      "@rollup/pluginutils": 4.2.1
+      estree-walker: 2.0.2
+      is-reference: 1.2.1
+      magic-string: 0.25.9
+    dev: true
+
   /rollup-plugin-visualizer/5.8.2:
     resolution:
       {
@@ -8687,6 +8717,33 @@ packages:
     dependencies:
       spdx-correct: 3.1.1
       spdx-expression-parse: 3.0.1
+    dev: true
+
+  /vite-plugin-cdn-import/0.3.5:
+    resolution:
+      {
+        integrity: sha512-e1raoalfBiIhv+hnMeSp1UNjloDDBhHpeFxkwRRdPBmTdDRqdEEn8owUmT5u8UBSVCs4xN3n/od4a91vXEhXPQ==
+      }
+    dependencies:
+      rollup-plugin-external-globals: 0.6.1
+    transitivePeerDependencies:
+      - rollup
+    dev: true
+
+  /vite-plugin-compression/0.5.1_vite@3.1.8:
+    resolution:
+      {
+        integrity: sha512-5QJKBDc+gNYVqL/skgFAP81Yuzo9R+EAf19d+EtsMF/i8kFUpNi3J/H01QD3Oo8zBQn+NzoCIFkpPLynoOzaJg==
+      }
+    peerDependencies:
+      vite: ">=2.0.0"
+    dependencies:
+      chalk: 4.1.2
+      debug: 4.3.4
+      fs-extra: 10.1.0
+      vite: 3.1.8_sass@1.55.0+terser@5.15.1
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /vite-plugin-mock/2.9.6_mockjs@1.1.0+vite@3.1.8:

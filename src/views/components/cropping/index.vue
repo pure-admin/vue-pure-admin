@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, nextTick } from "vue";
-import Cropper from "/@/components/ReCropper";
+import Cropper from "@/components/ReCropper";
 import img from "./picture.jpeg";
 
 defineOptions({

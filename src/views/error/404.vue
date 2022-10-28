@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import noExist from "/@/assets/status/404.svg?component";
+import noExist from "@/assets/status/404.svg?component";
 
 defineOptions({
   name: "404"

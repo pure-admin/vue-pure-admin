@@ -1,11 +1,11 @@
 import { ref } from "vue";
-import { getConfig } from "/@/config";
+import { getConfig } from "@/config";
 import { find } from "lodash-unified";
 import { useLayout } from "./useLayout";
 import { themeColorsType } from "../types";
 import { TinyColor } from "@ctrl/tinycolor";
 import { useGlobal } from "@pureadmin/utils";
-import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
+import { useEpThemeStoreHook } from "@/store/modules/epTheme";
 import {
   darken,
   lighten,

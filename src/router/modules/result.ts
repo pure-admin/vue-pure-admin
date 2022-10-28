@@ -1,4 +1,4 @@
-import { $t } from "/@/plugins/i18n";
+import { $t } from "@/plugins/i18n";
 import type { RouteConfigsTable } from "/#/index";
 
 const resultRouter: RouteConfigsTable = {
@@ -13,7 +13,7 @@ const resultRouter: RouteConfigsTable = {
     {
       path: "/result/success",
       name: "Success",
-      component: () => import("/@/views/result/success.vue"),
+      component: () => import("@/views/result/success.vue"),
       meta: {
         title: $t("menus.hsSuccess")
       }
@@ -21,7 +21,7 @@ const resultRouter: RouteConfigsTable = {
     {
       path: "/result/fail",
       name: "Fail",
-      component: () => import("/@/views/result/fail.vue"),
+      component: () => import("@/views/result/fail.vue"),
       meta: {
         title: $t("menus.hsFail")
       }

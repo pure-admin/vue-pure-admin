@@ -3,7 +3,7 @@
 ### Get 请求
 
 ```
-import { http } from "/@/utils/http";
+import { http } from "@/utils/http";
 
 // params传参
 http.request('get', '/xxx', { params: param });
@@ -15,7 +15,7 @@ http.request('get', '/xxx?message=' + msg);
 ### Post 请求
 
 ```
-import { http } from "/@/utils/http";
+import { http } from "@/utils/http";
 
 // params传参
 http.request('post', '/xxx', { params: param });

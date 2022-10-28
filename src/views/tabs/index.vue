@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import { cloneDeep } from "lodash-unified";
-import { transformI18n } from "/@/plugins/i18n";
+import { transformI18n } from "@/plugins/i18n";
 import { TreeSelect } from "@pureadmin/components";
-import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
-import { usePermissionStoreHook } from "/@/store/modules/permission";
+import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
+import { usePermissionStoreHook } from "@/store/modules/permission";
 import {
   deleteChildren,
   getNodeByUniqueId,

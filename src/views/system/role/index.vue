@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { useColumns } from "./columns";
-import { getRoleList } from "/@/api/system";
+import { getRoleList } from "@/api/system";
 import { reactive, ref, onMounted } from "vue";
 import { type FormInstance } from "element-plus";
-import { TableProBar } from "/@/components/ReTable";
+import { TableProBar } from "@/components/ReTable";
 import { type PaginationProps } from "@pureadmin/table";
-import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
+import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 
 defineOptions({
   name: "Role"

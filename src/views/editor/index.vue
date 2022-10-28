@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import "@wangeditor/editor/dist/css/style.css"; // 引入 css
 import { Editor, Toolbar } from "@wangeditor/editor-for-vue";
-import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
+import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import { onBeforeUnmount, ref, shallowRef, onMounted } from "vue";
 
 defineOptions({

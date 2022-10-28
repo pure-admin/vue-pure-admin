@@ -1,15 +1,15 @@
 import { computed } from "vue";
-import { getConfig } from "/@/config";
+import { getConfig } from "@/config";
 import { useRouter } from "vue-router";
-import { emitter } from "/@/utils/mitt";
+import { emitter } from "@/utils/mitt";
 import { routeMetaType } from "../types";
 import { useGlobal } from "@pureadmin/utils";
-import { transformI18n } from "/@/plugins/i18n";
-import { router, remainingPaths } from "/@/router";
-import { useAppStoreHook } from "/@/store/modules/app";
+import { transformI18n } from "@/plugins/i18n";
+import { router, remainingPaths } from "@/router";
+import { useAppStoreHook } from "@/store/modules/app";
 import { i18nChangeLanguage } from "@wangeditor/editor";
-import { useUserStoreHook } from "/@/store/modules/user";
-import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
+import { useUserStoreHook } from "@/store/modules/user";
+import { useEpThemeStoreHook } from "@/store/modules/epTheme";
 
 const errorInfo = "当前路由配置不正确，请检查配置";
 

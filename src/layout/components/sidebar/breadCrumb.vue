@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { isEqual } from "lodash-unified";
-import { transformI18n } from "/@/plugins/i18n";
+import { transformI18n } from "@/plugins/i18n";
 import { ref, watch, onMounted, toRaw } from "vue";
-import { getParentPaths, findRouteByPath } from "/@/router/utils";
-import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
+import { getParentPaths, findRouteByPath } from "@/router/utils";
+import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
 import { useRoute, useRouter, RouteLocationMatched } from "vue-router";
 
 const route = useRoute();

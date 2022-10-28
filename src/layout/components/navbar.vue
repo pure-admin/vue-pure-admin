@@ -2,12 +2,12 @@
 import Search from "./search/index.vue";
 import Notice from "./notice/index.vue";
 import mixNav from "./sidebar/mixNav.vue";
-import avatars from "/@/assets/avatars.jpg";
-import { useNav } from "/@/layout/hooks/useNav";
+import avatars from "@/assets/avatars.jpg";
+import { useNav } from "@/layout/hooks/useNav";
 import Breadcrumb from "./sidebar/breadCrumb.vue";
 import topCollapse from "./sidebar/topCollapse.vue";
 import { useTranslationLang } from "../hooks/useTranslationLang";
-import globalization from "/@/assets/svg/globalization.svg?component";
+import globalization from "@/assets/svg/globalization.svg?component";
 
 const {
   layout,
@@ -82,7 +82,7 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
       </el-dropdown>
       <!-- 退出登录 -->
       <el-dropdown trigger="click">
-        <span class="el-dropdown-link navbar-bg-hover">
+        <span class="el-dropdown-link navbar-bg-hover select-none">
           <img v-if="avatars" :src="avatars" :style="avatarsStyle" />
           <p v-if="username" class="dark:text-white">{{ username }}</p>
         </span>

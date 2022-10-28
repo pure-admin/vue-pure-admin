@@ -10,7 +10,7 @@ import { router } from "./index";
 import { isProxy, toRaw } from "vue";
 import { loadEnv } from "../../build";
 import { useTimeoutFn } from "@vueuse/core";
-import { RouteConfigs } from "/@/layout/types";
+import { RouteConfigs } from "@/layout/types";
 import {
   isString,
   storageSession,
@@ -18,14 +18,14 @@ import {
   isIncludeAllChildren
 } from "@pureadmin/utils";
 import { cloneDeep, intersection } from "lodash-unified";
-import { sessionKey, type DataInfo } from "/@/utils/auth";
-import { usePermissionStoreHook } from "/@/store/modules/permission";
-const IFrame = () => import("/@/layout/frameView.vue");
+import { sessionKey, type DataInfo } from "@/utils/auth";
+import { usePermissionStoreHook } from "@/store/modules/permission";
+const IFrame = () => import("@/layout/frameView.vue");
 // https://cn.vitejs.dev/guide/features.html#glob-import
 const modulesRoutes = import.meta.glob("/src/views/**/*.{vue,tsx}");
 
 // 动态路由
-import { getAsyncRoutes } from "/@/api/routes";
+import { getAsyncRoutes } from "@/api/routes";
 
 /** 按照路由中meta下的rank等级升序来排序路由 */
 function ascending(arr: any[]) {

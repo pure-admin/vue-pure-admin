@@ -2,8 +2,8 @@
 import { reactive, getCurrentInstance, onBeforeMount, onUnmounted } from "vue";
 import { deviceDetection } from "@pureadmin/utils";
 import AMapLoader from "@amap/amap-jsapi-loader";
-import { mapJson } from "/@/api/mock";
-import car from "/@/assets/car.png";
+import { mapJson } from "@/api/mock";
+import car from "@/assets/car.png";
 
 export interface MapConfigureInter {
   on: Fn;

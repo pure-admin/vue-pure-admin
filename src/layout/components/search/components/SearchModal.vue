@@ -3,12 +3,12 @@ import { useRouter } from "vue-router";
 import { cloneDeep } from "lodash-unified";
 import SearchResult from "./SearchResult.vue";
 import SearchFooter from "./SearchFooter.vue";
-import { useNav } from "/@/layout/hooks/useNav";
-import { transformI18n } from "/@/plugins/i18n";
+import { useNav } from "@/layout/hooks/useNav";
+import { transformI18n } from "@/plugins/i18n";
 import { deleteChildren } from "@pureadmin/utils";
 import { useDebounceFn, onKeyStroke } from "@vueuse/core";
 import { ref, watch, computed, nextTick, shallowRef } from "vue";
-import { usePermissionStoreHook } from "/@/store/modules/permission";
+import { usePermissionStoreHook } from "@/store/modules/permission";
 
 interface Props {
   /** 弹窗显隐 */

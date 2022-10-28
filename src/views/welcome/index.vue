@@ -3,7 +3,7 @@ import { ref, computed } from "vue";
 import Bar from "./components/Bar.vue";
 import Pie from "./components/Pie.vue";
 import Line from "./components/Line.vue";
-import avatars from "/@/assets/avatars.jpg";
+import avatars from "@/assets/avatars.jpg";
 import Github from "./components/Github.vue";
 import Infinite from "./components/Infinite.vue";
 
@@ -36,7 +36,7 @@ const openDepot = (): void => {
 <template>
   <div class="welcome">
     <el-card class="top-content dark:border-none">
-      <div class="left-mark">
+      <div class="left-mark select-none">
         <img :src="avatars" title="直达仓库地址" @click="openDepot" />
         <span>{{ greetings }}</span>
       </div>

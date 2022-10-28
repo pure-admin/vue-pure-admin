@@ -1,6 +1,6 @@
 import Cookies from "js-cookie";
 import { storageSession } from "@pureadmin/utils";
-import { useUserStoreHook } from "/@/store/modules/user";
+import { useUserStoreHook } from "@/store/modules/user";
 
 export interface DataInfo<T> {
   /** token */

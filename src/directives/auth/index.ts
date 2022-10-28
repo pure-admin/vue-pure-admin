@@ -1,4 +1,4 @@
-import { hasAuth } from "/@/router/utils";
+import { hasAuth } from "@/router/utils";
 import { Directive, type DirectiveBinding } from "vue";
 
 export const auth: Directive = {

@@ -6,9 +6,9 @@ import { updateRules } from "../utils/rule";
 import { message } from "@pureadmin/components";
 import type { FormInstance } from "element-plus";
 import { useVerifyCode } from "../utils/verifyCode";
-import { $t, transformI18n } from "/@/plugins/i18n";
-import { useUserStoreHook } from "/@/store/modules/user";
-import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
+import { $t, transformI18n } from "@/plugins/i18n";
+import { useUserStoreHook } from "@/store/modules/user";
+import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 
 const { t } = useI18n();
 const loading = ref(false);

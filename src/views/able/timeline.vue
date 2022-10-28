@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useRenderIcon } from "/@/components/ReIcon/src/hooks";
-import { useRenderFlicker } from "/@/components/ReFlicker";
+import { useRenderIcon } from "@/components/ReIcon/src/hooks";
+import { useRenderFlicker } from "@/components/ReFlicker";
 
 defineOptions({
   name: "TimeLine"

@@ -1,6 +1,6 @@
 {
   "name": "vue-pure-admin",
-  "version": "3.6.0",
+  "version": "3.6.2",
   "private": true,
   "scripts": {
     "dev": "NODE_OPTIONS=--max-old-space-size=4096 vite",
@@ -148,6 +148,8 @@
     "typescript": "^4.7.4",
     "unplugin-vue-define-options": "0.7.3",
     "vite": "^3.1.8",
+    "vite-plugin-cdn-import": "^0.3.5",
+    "vite-plugin-compression": "^0.5.1",
     "vite-plugin-mock": "^2.9.6",
     "vite-plugin-remove-console": "^1.1.0",
     "vite-svg-loader": "^3.6.0",

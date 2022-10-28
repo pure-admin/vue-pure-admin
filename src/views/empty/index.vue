@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import back from "/@/assets/svg/back.svg?component";
+import back from "@/assets/svg/back.svg?component";
 
 defineOptions({
   name: "Empty"

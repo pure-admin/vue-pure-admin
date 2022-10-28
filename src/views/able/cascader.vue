@@ -6,7 +6,7 @@ import {
   regionDataPlus,
   regionData,
   CodeToText
-} from "/@/utils/chinaArea";
+} from "@/utils/chinaArea";
 import { ref } from "vue";
 
 defineOptions({

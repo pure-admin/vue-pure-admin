@@ -1,3 +1,25 @@
+# 3.6.2 (2022-10-27)
+
+### ✔️ refactor
+
+- Replace `/@/` alias with `@/` alias
+
+# 3.6.1 (2022-10-27)
+
+### 🎫 Feat
+
+- Add whether to start `cdn` for packaging to replace the local library configuration, the default `false` does not start
+- Added optional `gzip` and `brotli` compression modes for packaging builds
+
+### 🐞 Bug fixes
+
+- Fix `title` too long display style problem
+- Fix the parent `name` in the route should not be repeated with the child `name`, which will cause redirection to jump `404` problem
+
+### 🍏 Perf
+
+- Upgrade `axios` to the latest version
+
 # 3.6.0 (2022-10-25)
 
 ### 🎫 Feat

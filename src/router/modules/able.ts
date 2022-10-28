@@ -1,4 +1,4 @@
-import { $t } from "/@/plugins/i18n";
+import { $t } from "@/plugins/i18n";
 import type { RouteConfigsTable } from "/#/index";
 
 const ableRouter: RouteConfigsTable = {
@@ -13,7 +13,7 @@ const ableRouter: RouteConfigsTable = {
     {
       path: "/able/watermark",
       name: "WaterMark",
-      component: () => import("/@/views/able/watermark.vue"),
+      component: () => import("@/views/able/watermark.vue"),
       meta: {
         title: $t("menus.hsWatermark")
       }
@@ -21,7 +21,7 @@ const ableRouter: RouteConfigsTable = {
     {
       path: "/able/print",
       name: "Print",
-      component: () => import("/@/views/able/print.vue"),
+      component: () => import("@/views/able/print.vue"),
       meta: {
         title: $t("menus.hsPrint")
       }
@@ -29,7 +29,7 @@ const ableRouter: RouteConfigsTable = {
     {
       path: "/able/download",
       name: "Download",
-      component: () => import("/@/views/able/download.vue"),
+      component: () => import("@/views/able/download.vue"),
       meta: {
         title: $t("menus.hsDownload")
       }
@@ -37,7 +37,7 @@ const ableRouter: RouteConfigsTable = {
     {
       path: "/able/iconSelect",
       name: "IconSelect",
-      component: () => import("/@/views/able/icon-select.vue"),
+      component: () => import("@/views/able/icon-select.vue"),
       meta: {
         title: $t("menus.hsIconSelect")
       }
@@ -45,7 +45,7 @@ const ableRouter: RouteConfigsTable = {
     {
       path: "/able/timeline",
       name: "TimeLine",
-      component: () => import("/@/views/able/timeline.vue"),
+      component: () => import("@/views/able/timeline.vue"),
       meta: {
         title: $t("menus.hsTimeline")
       }
@@ -53,7 +53,7 @@ const ableRouter: RouteConfigsTable = {
     {
       path: "/able/menuTree",
       name: "MenuTree",
-      component: () => import("/@/views/able/menu-tree.vue"),
+      component: () => import("@/views/able/menu-tree.vue"),
       meta: {
         title: $t("menus.hsMenuTree")
       }
@@ -61,7 +61,7 @@ const ableRouter: RouteConfigsTable = {
     {
       path: "/able/lineTree",
       name: "LineTree",
-      component: () => import("/@/views/able/line-tree.vue"),
+      component: () => import("@/views/able/line-tree.vue"),
       meta: {
         title: $t("menus.hsLineTree")
       }
@@ -69,7 +69,7 @@ const ableRouter: RouteConfigsTable = {
     {
       path: "/able/antTabs",
       name: "AntTabs",
-      component: () => import("/@/views/able/ant-tabs.vue"),
+      component: () => import("@/views/able/ant-tabs.vue"),
       meta: {
         title: $t("menus.hsAntTabs")
       }
@@ -77,7 +77,7 @@ const ableRouter: RouteConfigsTable = {
     {
       path: "/able/antAnchor",
       name: "AntAnchor",
-      component: () => import("/@/views/able/ant-anchor.vue"),
+      component: () => import("@/views/able/ant-anchor.vue"),
       meta: {
         title: $t("menus.hsAntAnchor")
       }
@@ -85,7 +85,7 @@ const ableRouter: RouteConfigsTable = {
     {
       path: "/able/antTreeSelect",
       name: "AntTreeSelect",
-      component: () => import("/@/views/able/ant-treeSelect.vue"),
+      component: () => import("@/views/able/ant-treeSelect.vue"),
       meta: {
         title: $t("menus.hsAntTreeSelect")
       }
@@ -93,7 +93,7 @@ const ableRouter: RouteConfigsTable = {
     {
       path: "/able/debounce",
       name: "Debounce",
-      component: () => import("/@/views/able/debounce.vue"),
+      component: () => import("@/views/able/debounce.vue"),
       meta: {
         title: $t("menus.hsDebounce")
       }
@@ -101,7 +101,7 @@ const ableRouter: RouteConfigsTable = {
     {
       path: "/able/barcode",
       name: "BarCode",
-      component: () => import("/@/views/able/barcode.vue"),
+      component: () => import("@/views/able/barcode.vue"),
       meta: {
         title: $t("menus.hsBarcode")
       }
@@ -109,7 +109,7 @@ const ableRouter: RouteConfigsTable = {
     {
       path: "/able/qrcode",
       name: "QrCode",
-      component: () => import("/@/views/able/qrcode.vue"),
+      component: () => import("@/views/able/qrcode.vue"),
       meta: {
         title: $t("menus.hsQrcode")
       }
@@ -117,7 +117,7 @@ const ableRouter: RouteConfigsTable = {
     {
       path: "/able/cascader",
       name: "Cascader",
-      component: () => import("/@/views/able/cascader.vue"),
+      component: () => import("@/views/able/cascader.vue"),
       meta: {
         title: $t("menus.hsCascader")
       }
@@ -125,7 +125,7 @@ const ableRouter: RouteConfigsTable = {
     {
       path: "/able/swiper",
       name: "Swiper",
-      component: () => import("/@/views/able/swiper.vue"),
+      component: () => import("@/views/able/swiper.vue"),
       meta: {
         title: $t("menus.hsSwiper")
       }
@@ -133,7 +133,7 @@ const ableRouter: RouteConfigsTable = {
     {
       path: "/able/virtualList",
       name: "VirtualList",
-      component: () => import("/@/views/able/virtual-list/index.vue"),
+      component: () => import("@/views/able/virtual-list/index.vue"),
       meta: {
         title: $t("menus.hsVirtualList")
       }
@@ -141,7 +141,7 @@ const ableRouter: RouteConfigsTable = {
     {
       path: "/able/pdf",
       name: "Pdf",
-      component: () => import("/@/views/able/pdf.vue"),
+      component: () => import("@/views/able/pdf.vue"),
       meta: {
         title: $t("menus.hsPdf")
       }
@@ -149,7 +149,7 @@ const ableRouter: RouteConfigsTable = {
     {
       path: "/able/execl",
       name: "Execl",
-      component: () => import("/@/views/able/execl.vue"),
+      component: () => import("@/views/able/execl.vue"),
       meta: {
         title: $t("menus.hsExecl")
       }
@@ -157,7 +157,7 @@ const ableRouter: RouteConfigsTable = {
     {
       path: "/able/infiniteScroll",
       name: "InfiniteScroll",
-      component: () => import("/@/views/able/infinite-scroll.vue"),
+      component: () => import("@/views/able/infinite-scroll.vue"),
       meta: {
         title: $t("menus.hsInfiniteScroll")
       }

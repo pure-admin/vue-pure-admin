@@ -8,18 +8,18 @@ import {
   nextTick,
   useCssModule
 } from "vue";
-import { getConfig } from "/@/config";
+import { getConfig } from "@/config";
 import { useRouter } from "vue-router";
 import panel from "../panel/index.vue";
-import { emitter } from "/@/utils/mitt";
-import { resetRouter } from "/@/router";
+import { emitter } from "@/utils/mitt";
+import { resetRouter } from "@/router";
 import { templateRef } from "@vueuse/core";
-import { removeToken } from "/@/utils/auth";
-import { routerArrays } from "/@/layout/types";
-import { useNav } from "/@/layout/hooks/useNav";
-import { useAppStoreHook } from "/@/store/modules/app";
-import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
-import { useDataThemeChange } from "/@/layout/hooks/useDataThemeChange";
+import { removeToken } from "@/utils/auth";
+import { routerArrays } from "@/layout/types";
+import { useNav } from "@/layout/hooks/useNav";
+import { useAppStoreHook } from "@/store/modules/app";
+import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
+import { useDataThemeChange } from "@/layout/hooks/useDataThemeChange";
 import {
   useDark,
   debounce,
@@ -29,8 +29,8 @@ import {
 } from "@pureadmin/utils";
 import { toggleTheme } from "@pureadmin/theme/dist/browser-utils";
 
-import dayIcon from "/@/assets/svg/day.svg?component";
-import darkIcon from "/@/assets/svg/dark.svg?component";
+import dayIcon from "@/assets/svg/day.svg?component";
+import darkIcon from "@/assets/svg/dark.svg?component";
 
 const router = useRouter();
 const { device } = useNav();

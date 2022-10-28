@@ -1,4 +1,4 @@
-import { $t } from "/@/plugins/i18n";
+import { $t } from "@/plugins/i18n";
 import type { RouteConfigsTable } from "/#/index";
 
 const formDesignRouter: RouteConfigsTable = {
@@ -13,7 +13,7 @@ const formDesignRouter: RouteConfigsTable = {
     {
       path: "/formDesign/index",
       name: "FormDesign",
-      component: () => import("/@/views/form-design/index.vue"),
+      component: () => import("@/views/form-design/index.vue"),
       meta: {
         title: $t("menus.hsFormDesign")
       }

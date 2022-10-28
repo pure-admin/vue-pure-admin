@@ -1,5 +1,5 @@
 import type { RouteConfigsTable } from "/#/index";
-const IFrame = () => import("/@/layout/frameView.vue");
+const IFrame = () => import("@/layout/frameView.vue");
 
 const pptRouter: RouteConfigsTable = {
   path: "/ppt",

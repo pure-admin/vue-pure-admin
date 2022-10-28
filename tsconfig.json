@@ -20,7 +20,7 @@
     "lib": ["dom", "esnext"],
     "incremental": true,
     "paths": {
-      "/@/*": ["src/*"],
+      "@/*": ["src/*"],
       "@build/*": ["build/*"],
       "/#/*": ["types/*"]
     },

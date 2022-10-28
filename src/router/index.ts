@@ -1,11 +1,11 @@
-import { getConfig } from "/@/config";
+import { getConfig } from "@/config";
 import { toRouteType } from "./types";
-import NProgress from "/@/utils/progress";
+import NProgress from "@/utils/progress";
 import { findIndex } from "lodash-unified";
-import { transformI18n } from "/@/plugins/i18n";
-import { sessionKey, type DataInfo } from "/@/utils/auth";
-import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
-import { usePermissionStoreHook } from "/@/store/modules/permission";
+import { transformI18n } from "@/plugins/i18n";
+import { sessionKey, type DataInfo } from "@/utils/auth";
+import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
+import { usePermissionStoreHook } from "@/store/modules/permission";
 import {
   Router,
   createRouter,

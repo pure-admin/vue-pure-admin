@@ -1,4 +1,4 @@
-import { IconifyIconOffline } from "/@/components/ReIcon";
+import { IconifyIconOffline } from "@/components/ReIcon";
 
 export function useColumns() {
   const lists = [
