@@ -21,9 +21,10 @@ vue-pure-admin 是一个免费开源的中后台模版。使用了最新的`vue3
 - [点我查看国外文档站 1](https://xiaoxian521.github.io/pure-admin-doc)
 - [点我查看国外文档站 2](https://pure-admin-doc.vercel.app)
 
-## 精简版
+## 精简版（提供非国际化、国际化两个版本选择）
 
-- [点我查看精简版](https://github.com/xiaoxian521/pure-admin-thin)
+- [点我查看非国际化精简版](https://github.com/xiaoxian521/pure-admin-thin)
+- [点我查看国际化精简版](https://github.com/xiaoxian521/pure-admin-thin/tree/i18n)
 
 ## Tauri 版
 

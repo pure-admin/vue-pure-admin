@@ -21,9 +21,10 @@ vue-pure-admin is a free and open source middle and back-end template. Using the
 - [Click me to view foreign document site 1](https://xiaoxian521.github.io/pure-admin-doc)
 - [Click me to view foreign document site 2](https://pure-admin-doc.vercel.app)
 
-## Thin
+## Thin version (offering non-internationalized and internationalized versions)
 
-- [Click Watch Thin](https://github.com/xiaoxian521/pure-admin-thin)
+- [Click me to view the non-internationalized version](https://github.com/xiaoxian521/pure-admin-thin)
+- [Click me to view Internationalization version](https://github.com/xiaoxian521/pure-admin-thin/tree/i18n)
 
 ## Tauri
 
