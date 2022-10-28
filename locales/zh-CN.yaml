@@ -94,6 +94,7 @@ menus:
   hsPdf: PDF预览
   hsExecl: 导出Excel
   hsInfiniteScroll: 表格无限滚动
+  hsdanmaku: 弹幕组件
 status:
   hsLoad: 加载中...
 login:

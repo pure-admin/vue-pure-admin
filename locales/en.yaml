@@ -94,6 +94,7 @@ menus:
   hsPdf: PDF Preview
   hsExecl: Export Excel
   hsInfiniteScroll: Table Infinite Scroll
+  hsdanmaku: Danmaku Components
 status:
   hsLoad: Loading...
 login:

@@ -117,6 +117,14 @@ const componentsRouter: RouteConfigsTable = {
       meta: {
         title: $t("menus.hsjsoneditor")
       }
+    },
+    {
+      path: "/components/danmaku",
+      name: "Danmaku",
+      component: () => import("/@/views/components/danmaku/index.vue"),
+      meta: {
+        title: $t("menus.hsdanmaku")
+      }
     }
   ]
 };
