@@ -121,7 +121,7 @@ const componentsRouter: RouteConfigsTable = {
     {
       path: "/components/danmaku",
       name: "Danmaku",
-      component: () => import("/@/views/components/danmaku/index.vue"),
+      component: () => import("@/views/components/danmaku/index.vue"),
       meta: {
         title: $t("menus.hsdanmaku")
       }
