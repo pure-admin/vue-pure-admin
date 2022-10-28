@@ -3,6 +3,10 @@ import { danmus as danmusData, getDanmuData } from "./danmu.js";
 import { onMounted, onUnmounted, reactive, ref } from "vue";
 import VueDanmaku from "vue3-danmaku";
 
+defineOptions({
+  name: "Danmaku"
+});
+
 const danmaku = ref<any>(null);
 const danmus = ref<any[]>(getDanmuData());
 const danmuMsg = ref<string>("");
@@ -101,7 +105,7 @@ function addDanmu() {
   <el-card>
     <template #header>
       <div class="card-header">
-        <span>
+        <span class="font-medium">
           弹幕组件，采用开源的
           <el-link
             href="https://github.com/hellodigua/vue-danmaku/tree/vue3"
