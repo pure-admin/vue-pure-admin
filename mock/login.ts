@@ -11,6 +11,7 @@ export default [
           success: true,
           data: {
             username: "admin",
+            avatar: "/src/assets/avatars.jpg",
             // 一个用户可能有多个角色
             roles: ["admin"],
             accessToken: "eyJhbGciOiJIUzUxMiJ9.admin",

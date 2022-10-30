@@ -2,7 +2,7 @@
 import Search from "./search/index.vue";
 import Notice from "./notice/index.vue";
 import mixNav from "./sidebar/mixNav.vue";
-import avatars from "@/assets/avatars.jpg";
+// import avatars from "@/assets/avatars.jpg";
 import { useNav } from "@/layout/hooks/useNav";
 import Breadcrumb from "./sidebar/breadCrumb.vue";
 import topCollapse from "./sidebar/topCollapse.vue";
@@ -16,6 +16,7 @@ const {
   onPanel,
   pureApp,
   username,
+  avatar,
   avatarsStyle,
   toggleSideBar,
   getDropdownItemStyle,
@@ -83,7 +84,7 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
       <!-- 退出登录 -->
       <el-dropdown trigger="click">
         <span class="el-dropdown-link navbar-bg-hover select-none">
-          <img v-if="avatars" :src="avatars" :style="avatarsStyle" />
+          <img v-if="avatar" :src="avatar" :style="avatarsStyle" />
           <p v-if="username" class="dark:text-white">{{ username }}</p>
         </span>
         <template #dropdown>

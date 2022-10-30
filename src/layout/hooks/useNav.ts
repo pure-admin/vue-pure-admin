@@ -22,6 +22,11 @@ export function useNav() {
     return useUserStoreHook()?.username;
   });
 
+  /** 头像 */
+  const avatar = computed(() => {
+    return useUserStoreHook()?.avatar;
+  });
+
   /** 设置国际化选中后的样式 */
   const getDropdownItemStyle = computed(() => {
     return (locale, t) => {
@@ -158,6 +163,7 @@ export function useNav() {
     isCollapse,
     pureApp,
     username,
+    avatar,
     avatarsStyle,
     getDropdownItemStyle,
     getDropdownItemClass,

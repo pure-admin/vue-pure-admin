@@ -14,6 +14,7 @@ export const useUserStore = defineStore({
   state: (): userType => ({
     username:
       storageSession.getItem<DataInfo<number>>(sessionKey)?.username ?? "",
+    avatar: storageSession.getItem<DataInfo<number>>(sessionKey)?.avatar ?? "",
     // 页面级别权限
     roles: storageSession.getItem<DataInfo<number>>(sessionKey)?.roles ?? [],
     // 前端生成的验证码（按实际需求替换）
@@ -25,6 +26,10 @@ export const useUserStore = defineStore({
     /** 存储用户名 */
     SET_USERNAME(username: string) {
       this.username = username;
+    },
+    /** 存储头像 */
+    SET_AVATAR(avatar: string) {
+      this.avatar = avatar;
     },
     /** 存储角色 */
     SET_ROLES(roles: Array<string>) {
