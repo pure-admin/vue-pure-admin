@@ -165,9 +165,9 @@ const tableData: User[] = [
               :value="item.value"
             />
           </el-select>
-          <el-button size="small" type="primary" @click="onPrint"
-            >打印</el-button
-          >
+          <el-button size="small" type="primary" @click="onPrint">
+            打印
+          </el-button>
         </div>
       </div>
     </template>
@@ -300,7 +300,7 @@ const tableData: User[] = [
       >
         <p class="font-medium pt-1">Image</p>
         <img
-          src="../../assets/avatars.jpg"
+          src="https://avatars.githubusercontent.com/u/44761321?v=4"
           alt="avatars"
           class="img"
           style="width: 200px; height: 200px; margin: 50px auto"

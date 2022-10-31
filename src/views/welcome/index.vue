@@ -3,7 +3,7 @@ import { ref, computed } from "vue";
 import Bar from "./components/Bar.vue";
 import Pie from "./components/Pie.vue";
 import Line from "./components/Line.vue";
-import avatars from "@/assets/avatars.jpg";
+import { openLink } from "@pureadmin/utils";
 import Github from "./components/Github.vue";
 import Infinite from "./components/Infinite.vue";
 
@@ -27,17 +27,17 @@ let greetings = computed(() => {
     return "折一根天使羽毛，愿拂去您的疲惫烦恼忧伤🌛！";
   }
 });
-
-const openDepot = (): void => {
-  window.open("https://github.com/xiaoxian521/vue-pure-admin");
-};
 </script>
 
 <template>
   <div class="welcome">
     <el-card class="top-content dark:border-none">
       <div class="left-mark select-none">
-        <img :src="avatars" title="直达仓库地址" @click="openDepot" />
+        <img
+          src="https://avatars.githubusercontent.com/u/44761321?v=4"
+          title="直达仓库地址"
+          @click="openLink('https://github.com/xiaoxian521/vue-pure-admin')"
+        />
         <span>{{ greetings }}</span>
       </div>
     </el-card>

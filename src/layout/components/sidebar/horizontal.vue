@@ -3,7 +3,6 @@ import Search from "../search/index.vue";
 import Notice from "../notice/index.vue";
 import { ref, watch, nextTick } from "vue";
 import SidebarItem from "./sidebarItem.vue";
-import avatars from "@/assets/avatars.jpg";
 import { useNav } from "@/layout/hooks/useNav";
 import { useTranslationLang } from "../../hooks/useTranslationLang";
 import { usePermissionStoreHook } from "@/store/modules/permission";
@@ -97,7 +96,10 @@ watch(
       <!-- 退出登录 -->
       <el-dropdown trigger="click">
         <span class="el-dropdown-link navbar-bg-hover">
-          <img v-if="avatars" :src="avatars" :style="avatarsStyle" />
+          <img
+            src="https://avatars.githubusercontent.com/u/44761321?v=4"
+            :style="avatarsStyle"
+          />
           <p v-if="username" class="dark:text-white">{{ username }}</p>
         </span>
         <template #dropdown>

@@ -68,8 +68,8 @@ const permissionRouter = {
       path: "/permission/page/index",
       name: "PermissionPage",
       meta: {
-        roles: ["admin", "common"],
-        title: "menus.permissionPage"
+        title: "menus.permissionPage",
+        roles: ["admin", "common"]
       }
     },
     {
