@@ -1,3 +1,15 @@
+# 3.6.3 (2022-11-01)
+
+### 🎫 Feat
+
+- Static resource classification and packaging
+- Add danmaku component `demo`
+
+### 🐞 Bug fixes
+
+- Fix the `collapse` property added in the latest version of `tailwindcss` conflicts with the platform `class` class name
+- Fix that when the `token` expires, if the page has multiple requests, the `token` will be refreshed repeatedly
+
 # 3.6.2 (2022-10-27)
 
 ### ✔️ refactor
