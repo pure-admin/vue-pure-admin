@@ -69,7 +69,7 @@ export function useDataThemeChange() {
     return new TinyColor(color).shade(10).toString();
   };
 
-  /** 设置ep主题色 */
+  /** 设置 `element-plus` 主题色 */
   const setEpThemeColor = (color: string) => {
     useEpThemeStoreHook().setEpThemeColor(color);
     body.style.setProperty("--el-color-primary-active", shadeBgColor(color));
