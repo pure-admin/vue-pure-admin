@@ -8,18 +8,17 @@
 
 ## 简介
 
-vue-pure-admin 是一个免费开源的中后台模版。使用了最新的`vue3` `vite2` `Element-Plus` `TypeScript`等主流技术开发，开箱即用的中后台前端解决方案，也可用于学习参考。
+`vue-pure-admin` 是一款开源免费且开箱即用的中后台管理系统模版。使用了最新的 `Vue3`、`Vite`、`Element-Plus`、`TypeScript`、`Pinia`、`Tailwindcss` 等主流技术开发
 
 ## 配套视频
 
 - [点我查看教程](https://www.bilibili.com/video/BV1534y1S7HV)
 - [点我查看 UI 设计](https://www.bilibili.com/video/BV17g411T7rq)
 
-## 配套文档
+## 配套文档（支持 `PWA` 快速、离线访问）
 
-- [点我查看国内文档站](http://yiming_chang.gitee.io/pure-admin-doc)
-- [点我查看国外文档站 1](https://xiaoxian521.github.io/pure-admin-doc)
-- [点我查看国外文档站 2](https://pure-admin-doc.vercel.app)
+- [点我查看国内文档站](https://yiming_chang.gitee.io/pure-admin-doc)
+- [点我查看国外文档站](https://xiaoxian521.github.io/pure-admin-doc)
 
 ## 精简版（提供非国际化、国际化两个版本选择）
 
@@ -32,9 +31,8 @@ vue-pure-admin 是一个免费开源的中后台模版。使用了最新的`vue3
 
 ## 预览
 
-- [点我查看国内预览站](http://yiming_chang.gitee.io/vue-pure-admin)
-- [点我查看国外预览站 1](https://xiaoxian521.github.io/vue-pure-admin)
-- [点我查看国外预览站 2](https://vue-pure-admin.vercel.app)
+- [点我查看国内预览站](https://yiming_chang.gitee.io/vue-pure-admin)
+- [点我查看国外预览站](https://xiaoxian521.github.io/vue-pure-admin)
 
 - PC 端
 <p align="center">

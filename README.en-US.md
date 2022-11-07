@@ -8,18 +8,17 @@
 
 ## Introduction
 
-vue-pure-admin is a free and open source middle and back-end template. Using the latest `vue3` `vite2` `Element-Plus` `TypeScript` and other mainstream technology development, the out-of-the-box middle and back-end front-end solutions can also be used for learning reference.
+`vue-pure-admin` is an open source free and out-of-the-box middle and background management system template. Developed using the latest mainstream technologies such as `Vue3`, `Vite`, `Element-Plus`, `TypeScript`, `Pinia`, `Tailwindcss`
 
 ## Supporting Video
 
 - [Click Watch Tutorial](https://www.bilibili.com/video/BV1534y1S7HV)
 - [Click Watch UI Design](https://www.bilibili.com/video/BV17g411T7rq)
 
-## Docs
+## Docs (support `PWA` fast, offline access)
 
-- [Click me to view the domestic documentation site](http://yiming_chang.gitee.io/pure-admin-doc)
-- [Click me to view foreign document site 1](https://xiaoxian521.github.io/pure-admin-doc)
-- [Click me to view foreign document site 2](https://pure-admin-doc.vercel.app)
+- [Click me to view the domestic documentation site](https://yiming_chang.gitee.io/pure-admin-doc)
+- [Click me to view foreign document site](https://xiaoxian521.github.io/pure-admin-doc)
 
 ## Thin version (offering non-internationalized and internationalized versions)
 
@@ -32,9 +31,8 @@ vue-pure-admin is a free and open source middle and back-end template. Using the
 
 ## Preview
 
-- [Click me to view the domestic preview station](http://yiming_chang.gitee.io/vue-pure-admin)
-- [Click me to view foreign preview site 1](https://xiaoxian521.github.io/vue-pure-admin)
-- [Click me to view foreign preview station 2](https://vue-pure-admin.vercel.app)
+- [Click me to view the domestic preview station](https://yiming_chang.gitee.io/vue-pure-admin)
+- [Click me to view foreign preview site](https://xiaoxian521.github.io/vue-pure-admin)
 
 - PC
 <p align="center">
