@@ -62,9 +62,7 @@ function onBack() {
             clearable
             v-model="ruleForm.verifyCode"
             :placeholder="t('login.smsVerifyCode')"
-            :prefix-icon="
-              useRenderIcon('ri:shield-keyhole-line', { online: true })
-            "
+            :prefix-icon="useRenderIcon('ri:shield-keyhole-line')"
           />
           <el-button
             :disabled="isDisabled"

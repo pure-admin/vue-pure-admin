@@ -3,7 +3,8 @@ import { h, defineComponent, Component } from "vue";
 import { IconifyIconOnline, IconifyIconOffline, FontIcon } from "../index";
 
 /**
- * 支持fontawesome4、5+、iconfont、remixicon、element-plus的icons、自定义svg
+ * 支持 `iconfont`、自定义 `svg` 以及 `iconify` 中所有的图标
+ * @see 点击查看文档图标篇 {@link https://yiming_chang.gitee.io/pure-admin-doc/pages/icon/}
  * @param icon 必传 图标
  * @param attrs 可选 iconType 属性
  * @returns Component
@@ -34,11 +35,12 @@ export function useRenderIcon(icon: any, attrs?: iconType): Component {
     // svg
     return icon;
   } else {
+    // 通过是否存在 : 符号来判断是在线还是本地图标，存在即是在线图标，反之
     return defineComponent({
       name: "Icon",
       render() {
         const IconifyIcon =
-          attrs && attrs["online"] ? IconifyIconOnline : IconifyIconOffline;
+          icon && icon.includes(":") ? IconifyIconOnline : IconifyIconOffline;
         return h(IconifyIcon, {
           icon: icon,
           ...attrs

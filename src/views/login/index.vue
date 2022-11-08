@@ -207,9 +207,7 @@ watch(imgCode, value => {
                   clearable
                   v-model="ruleForm.verifyCode"
                   :placeholder="t('login.verifyCode')"
-                  :prefix-icon="
-                    useRenderIcon('ri:shield-keyhole-line', { online: true })
-                  "
+                  :prefix-icon="useRenderIcon('ri:shield-keyhole-line')"
                 >
                   <template v-slot:append>
                     <ReImageVerify v-model:code="imgCode" />

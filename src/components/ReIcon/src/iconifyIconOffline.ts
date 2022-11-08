@@ -161,7 +161,7 @@ addIcon("unExpand", UnExpand);
 import LocationCompany from "@iconify-icons/carbon/location-company";
 addIcon("location-company", LocationCompany);
 
-// Iconify Icon在Vue里离线使用（用于内网环境）https://docs.iconify.design/icon-components/vue/offline.html
+// Iconify Icon在Vue里本地使用（用于内网环境）https://docs.iconify.design/icon-components/vue/offline.html
 export default defineComponent({
   name: "IconifyIconOffline",
   components: { IconifyIcon },

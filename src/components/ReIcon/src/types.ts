@@ -11,7 +11,6 @@ export interface iconType {
   horizontalAlign?: boolean;
   verticalAlign?: boolean;
   align?: string;
-  online?: boolean;
   onLoad?: Function;
   includes?: Function;
 

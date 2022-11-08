@@ -3,7 +3,7 @@ import iconifyIconOnline from "./src/iconifyIconOnline";
 import iconSelect from "./src/Select.vue";
 import fontIcon from "./src/iconfont";
 
-/** 离线图标组件 */
+/** 本地图标组件 */
 const IconifyIconOffline = iconifyIconOffline;
 /** 在线图标组件 */
 const IconifyIconOnline = iconifyIconOnline;
