@@ -5,7 +5,7 @@ const props = defineProps({
   collapse: Boolean
 });
 
-const { title } = useNav();
+const { title, topRoute } = useNav();
 </script>
 
 <template>
@@ -16,7 +16,7 @@ const { title } = useNav();
         key="props.collapse"
         :title="title"
         class="sidebar-logo-link"
-        to="/"
+        :to="topRoute"
       >
         <FontIcon icon="team-iconlogo" svg style="width: 35px; height: 35px" />
         <span class="sidebar-title">{{ title }}</span>
@@ -26,7 +26,7 @@ const { title } = useNav();
         key="expand"
         :title="title"
         class="sidebar-logo-link"
-        to="/"
+        :to="topRoute"
       >
         <FontIcon icon="team-iconlogo" svg style="width: 35px; height: 35px" />
         <span class="sidebar-title">{{ title }}</span>

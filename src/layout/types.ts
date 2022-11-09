@@ -1,12 +1,12 @@
 export const routerArrays: Array<RouteConfigs> = [
-  {
-    path: "/welcome",
-    parentPath: "/",
-    meta: {
-      title: "menus.hshome",
-      icon: "home-filled"
-    }
-  }
+  // {
+  //   path: "/welcome",
+  //   parentPath: "/",
+  //   meta: {
+  //     title: "menus.hshome",
+  //     icon: "home-filled"
+  //   }
+  // }
 ];
 
 export type routeMetaType = {

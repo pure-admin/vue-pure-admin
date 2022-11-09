@@ -5,6 +5,7 @@ import { emitter } from "@/utils/mitt";
 import { routeMetaType } from "../types";
 import { useGlobal } from "@pureadmin/utils";
 import { transformI18n } from "@/plugins/i18n";
+import { currentTopRoute } from "@/router/utils";
 import { router, remainingPaths } from "@/router";
 import { useAppStoreHook } from "@/store/modules/app";
 import { i18nChangeLanguage } from "@wangeditor/editor";
@@ -15,6 +16,7 @@ const errorInfo = "当前路由配置不正确，请检查配置";
 
 export function useNav() {
   const pureApp = useAppStoreHook();
+  const topRoute = currentTopRoute().path;
   const routers = useRouter().options.routes;
 
   /** 用户名 */
@@ -72,7 +74,7 @@ export function useNav() {
   }
 
   function backHome() {
-    router.push("/welcome");
+    router.push(topRoute);
   }
 
   function onPanel() {
@@ -158,6 +160,7 @@ export function useNav() {
     isCollapse,
     pureApp,
     username,
+    topRoute,
     avatarsStyle,
     getDropdownItemStyle,
     getDropdownItemClass,

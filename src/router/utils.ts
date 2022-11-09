@@ -1,10 +1,10 @@
 import {
-  RouterHistory,
-  RouteRecordRaw,
-  RouteComponent,
+  type RouterHistory,
+  type RouteRecordRaw,
+  type RouteComponent,
+  type RouteRecordNormalized,
   createWebHistory,
-  createWebHashHistory,
-  RouteRecordNormalized
+  createWebHashHistory
 } from "vue-router";
 import { router } from "./index";
 import { isProxy, toRaw } from "vue";
@@ -329,6 +329,11 @@ function hasAuth(value: string | Array<string>): boolean {
   return isAuths ? true : false;
 }
 
+/** 当设置首页隐藏时获取顶级路由作为第一个菜单 */
+function currentTopRoute() {
+  return router.options.routes[0].children[1];
+}
+
 export {
   hasAuth,
   getAuths,
@@ -340,6 +345,7 @@ export {
   addAsyncRoutes,
   delAliveRoutes,
   getParentPaths,
+  currentTopRoute,
   findRouteByPath,
   handleAliveRoute,
   formatTwoStageRoutes,

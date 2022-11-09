@@ -13,10 +13,10 @@ import { useRouter } from "vue-router";
 import { loginRules } from "./utils/rule";
 import phone from "./components/phone.vue";
 import TypeIt from "@/components/ReTypeit";
+import { initRouter } from "@/router/utils";
 import qrCode from "./components/qrCode.vue";
 import regist from "./components/regist.vue";
 import update from "./components/update.vue";
-import { initRouter } from "@/router/utils";
 import { useNav } from "@/layout/hooks/useNav";
 import { message } from "@pureadmin/components";
 import type { FormInstance } from "element-plus";
@@ -52,7 +52,8 @@ const { initStorage } = useLayout();
 initStorage();
 const { dataTheme, dataThemeChange } = useDataThemeChange();
 dataThemeChange();
-const { title, getDropdownItemStyle, getDropdownItemClass } = useNav();
+const { title, topRoute, getDropdownItemStyle, getDropdownItemClass } =
+  useNav();
 const { locale, translationCh, translationEn } = useTranslationLang();
 
 const ruleForm = reactive({
@@ -73,7 +74,7 @@ const onLogin = async (formEl: FormInstance | undefined) => {
             // 获取后端路由
             initRouter().then(() => {
               message.success("登录成功");
-              router.push("/");
+              router.push(topRoute);
             });
           }
         });
