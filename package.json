@@ -70,7 +70,6 @@
     "typeit": "^8.7.0",
     "v-contextmenu": "3.0.0",
     "vue": "^3.2.40",
-    "vue-form-create2": "^1.2.8",
     "vue-i18n": "^9.2.2",
     "vue-json-pretty": "^2.2.2",
     "vue-pdf-embed": "^1.1.4",

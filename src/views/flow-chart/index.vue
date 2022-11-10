@@ -94,7 +94,7 @@ onMounted(() => {
       <div id="LF-Turbo" />
       <!-- 数据查看面板 -->
       <el-dialog
-        customClass="flow-dialog"
+        class="flow-dialog"
         title="数据"
         v-model="dataVisible"
         width="50%"
