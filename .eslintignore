@@ -1,6 +1,7 @@
 public
 dist
 *.d.ts
+/src/assets
 package.json
 .eslintrc.js
 .prettierrc.js
@@ -8,3 +9,5 @@ commitlint.config.js
 postcss.config.js
 tailwind.config.js
 stylelint.config.js
+src/components/ReSplitPane/iconfont
+src/components/ReFlowChart/src/assets/iconfont

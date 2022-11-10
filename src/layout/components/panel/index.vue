@@ -3,7 +3,7 @@ import { ref } from "vue";
 import { onClickOutside } from "@vueuse/core";
 import { emitter } from "@/utils/mitt";
 
-let show = ref<Boolean>(false);
+const show = ref<Boolean>(false);
 const target = ref(null);
 onClickOutside(target, (event: any) => {
   if (event.clientX > target.value.offsetLeft) return;

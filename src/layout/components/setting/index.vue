@@ -54,8 +54,8 @@ const {
 
 /* body添加layout属性，作用于src/style/sidebar.scss */
 if (unref(layoutTheme)) {
-  let layout = unref(layoutTheme).layout;
-  let theme = unref(layoutTheme).theme;
+  const layout = unref(layoutTheme).layout;
+  const theme = unref(layoutTheme).theme;
   toggleTheme({
     scopeName: `layout-theme-${theme}`
   });
@@ -119,13 +119,13 @@ const weekChange = (value): void => {
 };
 
 const tagsChange = () => {
-  let showVal = settings.tabsVal;
+  const showVal = settings.tabsVal;
   storageConfigureChange("hideTabs", showVal);
   emitter.emit("tagViewsChange", showVal as unknown as string);
 };
 
 const multiTagsCacheChange = () => {
-  let multiTagsCache = settings.multiTagsCache;
+  const multiTagsCache = settings.multiTagsCache;
   storageConfigureChange("multiTagsCache", multiTagsCache);
   useMultiTagsStoreHook().multiTagsCacheChange(multiTagsCache);
 };

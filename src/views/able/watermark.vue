@@ -6,8 +6,8 @@ defineOptions({
   name: "WaterMark"
 });
 
-let color = ref("#409EFF");
-let value = ref("vue-pure-admin");
+const color = ref("#409EFF");
+const value = ref("vue-pure-admin");
 const { setWatermark, clear } = useWatermark();
 </script>
 

@@ -10,12 +10,12 @@ defineOptions({
   name: "LineTree"
 });
 
-let menusTree = cloneDeep(usePermissionStoreHook().wholeMenus);
-let menusData = computed(() => {
+const menusTree = cloneDeep(usePermissionStoreHook().wholeMenus);
+const menusData = computed(() => {
   return deleteChildren(menusTree);
 });
-let expandedKeys = extractPathList(menusData.value);
-let dataProps = {
+const expandedKeys = extractPathList(menusData.value);
+const dataProps = {
   value: "uniqueId",
   children: "children"
 };

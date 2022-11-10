@@ -17,8 +17,8 @@ const form = reactive({
   status: ""
 });
 
-let dataList = ref([]);
-let loading = ref(true);
+const dataList = ref([]);
+const loading = ref(true);
 const { columns } = useColumns();
 
 const formRef = ref<FormInstance>();
@@ -52,7 +52,7 @@ function handleSelectionChange(val) {
 
 async function onSearch() {
   loading.value = true;
-  let { data } = await getRoleList();
+  const { data } = await getRoleList();
   dataList.value = data.list;
   pagination.total = data.total;
   setTimeout(() => {

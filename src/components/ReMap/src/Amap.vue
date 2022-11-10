@@ -39,8 +39,8 @@ const complete = (): void => {
 
 onBeforeMount(() => {
   if (!instance) return;
-  let { MapConfigure } = instance.appContext.config.globalProperties.$config;
-  let { options } = MapConfigure;
+  const { MapConfigure } = instance.appContext.config.globalProperties.$config;
+  const { options } = MapConfigure;
 
   AMapLoader.load({
     key: MapConfigure.amapKey,
@@ -67,10 +67,10 @@ onBeforeMount(() => {
         gridSize: 80,
         maxZoom: 14,
         renderMarker(ctx) {
-          let { marker, data } = ctx;
+          const { marker, data } = ctx;
           if (Array.isArray(data) && data[0]) {
-            var { driver, plateNumber, orientation } = data[0];
-            var content = `<img style="transform: scale(1) rotate(${
+            const { driver, plateNumber, orientation } = data[0];
+            const content = `<img style="transform: scale(1) rotate(${
               360 - Number(orientation)
             }deg);" src='${car}' />`;
             marker.setContent(content);
@@ -93,7 +93,7 @@ onBeforeMount(() => {
       // 获取模拟车辆信息
       mapJson()
         .then(({ data }) => {
-          let points: object = data.map(v => {
+          const points: object = data.map(v => {
             return {
               lnglat: [v.lng, v.lat],
               ...v

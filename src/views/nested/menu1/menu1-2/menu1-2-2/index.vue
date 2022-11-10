@@ -6,7 +6,7 @@ defineOptions({
   name: "Menu1-2-2"
 });
 
-let input = ref("");
+const input = ref("");
 const { t } = useI18n();
 </script>
 

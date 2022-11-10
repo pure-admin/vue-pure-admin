@@ -2,7 +2,6 @@
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import type { SwiperOptions } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import SwiperCore, { Autoplay, Navigation, Pagination } from "swiper";
 
@@ -10,27 +9,9 @@ defineOptions({
   name: "Swiper"
 });
 
-type SwiperExampleOptions = Pick<
-  SwiperOptions,
-  | "navigation"
-  | "pagination"
-  | "scrollbar"
-  | "slidesPerView"
-  | "slidesPerGroup"
-  | "spaceBetween"
-  | "direction"
-  | "loop"
-  | "loopFillGroupWithBlank"
-  | "autoplay"
->;
-interface SwiperExample {
-  id: number;
-  label: string;
-  options: Partial<SwiperExampleOptions>;
-}
 SwiperCore.use([Autoplay, Navigation, Pagination]);
 
-const swiperExample: SwiperExample[] = [
+const swiperExample: any[] = [
   { id: 0, label: "Default", options: {} },
   {
     id: 1,

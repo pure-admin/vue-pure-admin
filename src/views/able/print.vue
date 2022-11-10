@@ -77,7 +77,7 @@ const options = [
 ];
 
 function onPrint() {
-  let el = options.filter(v => v.value === value.value)[0]?.el;
+  const el = options.filter(v => v.value === value.value)[0]?.el;
   Print(el).toPrint;
 }
 

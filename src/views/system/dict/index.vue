@@ -92,7 +92,7 @@ const dictData = reactive({
   ] as VxeFormPropTypes.Items
 });
 
-let originData = cloneDeep(dictData.tableData);
+const originData = cloneDeep(dictData.tableData);
 
 const xTree = ref<TablePublicMethods>();
 const xForm = ref<FormMethods>();
@@ -195,7 +195,7 @@ const submitEvent = () => {
   }, 500);
 };
 
-let drawer = ref(false);
+const drawer = ref(false);
 
 function onDeploy(value?: object) {
   console.log("onDeploy", value);

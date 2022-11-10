@@ -11,7 +11,7 @@ import { usePermissionStoreHook } from "@/store/modules/permission";
 import globalization from "@/assets/svg/globalization.svg?component";
 
 const menuRef = ref();
-let defaultActive = ref(null);
+const defaultActive = ref(null);
 
 const { t, route, locale, translationCh, translationEn } =
   useTranslationLang(menuRef);

@@ -9,7 +9,7 @@ defineOptions({
 
 const scroll = templateRef<ElRef | null>("scroll", null);
 
-let listData = ref([
+const listData = ref([
   {
     title: "无缝滚动第一行无缝滚动第一行！！！！！！！！！！"
   },
@@ -39,7 +39,7 @@ let listData = ref([
   }
 ]);
 
-let classOption = reactive({
+const classOption = reactive({
   direction: "top"
 });
 

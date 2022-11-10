@@ -21,7 +21,7 @@ const searchValue = ref("");
 const { proxy } = getCurrentInstance();
 const treeRef = ref<InstanceType<typeof ElTree>>();
 
-let highlightMap = ref({});
+const highlightMap = ref({});
 
 const filterNode = (value: string, data: Tree) => {
   if (!value) return true;
@@ -45,8 +45,8 @@ function nodeClick(value) {
 }
 
 function toggleRowExpansionAll(status) {
-  let nodes = (proxy.$refs["treeRef"] as any).store._getAllNodes();
-  for (var i = 0; i < nodes.length; i++) {
+  const nodes = (proxy.$refs["treeRef"] as any).store._getAllNodes();
+  for (let i = 0; i < nodes.length; i++) {
     nodes[i].expanded = status;
   }
 }
@@ -63,7 +63,7 @@ watch(searchValue, val => {
 });
 
 onMounted(async () => {
-  let { data } = await getDeptList();
+  const { data } = await getDeptList();
   treeData.value = handleTree(data as any);
 });
 </script>

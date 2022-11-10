@@ -6,7 +6,7 @@ defineOptions({
   name: "PermissionButton"
 });
 
-let elStyle = computed((): CSSProperties => {
+const elStyle = computed((): CSSProperties => {
   return {
     width: "85vw",
     justifyContent: "start"

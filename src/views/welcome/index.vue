@@ -12,13 +12,13 @@ defineOptions({
 });
 
 const date: Date = new Date();
-let loading = ref<boolean>(true);
+const loading = ref<boolean>(true);
 
 setTimeout(() => {
   loading.value = !loading.value;
 }, 800);
 
-let greetings = computed(() => {
+const greetings = computed(() => {
   if (date.getHours() >= 0 && date.getHours() < 12) {
     return "上午阳光明媚，祝你薪水翻倍🌞！";
   } else if (date.getHours() >= 12 && date.getHours() < 18) {

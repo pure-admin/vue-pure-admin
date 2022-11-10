@@ -24,11 +24,11 @@ function hoverTitle() {
 
 function hoverDescription(event, description) {
   // currentWidth 为文本在页面中所占的宽度，创建标签，加入到页面，获取currentWidth ,最后在移除
-  let tempTag = document.createElement("span");
+  const tempTag = document.createElement("span");
   tempTag.innerText = description;
   tempTag.className = "getDescriptionWidth";
   document.querySelector("body").appendChild(tempTag);
-  let currentWidth = (
+  const currentWidth = (
     document.querySelector(".getDescriptionWidth") as HTMLSpanElement
   ).offsetWidth;
   document.querySelector(".getDescriptionWidth").remove();

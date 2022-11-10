@@ -8,7 +8,7 @@ defineOptions({
   name: "Draggable"
 });
 
-let gridLists = ref<Array<Object>>([
+const gridLists = ref<Array<Object>>([
   { grid: "cn", num: 1 },
   { grid: "cn", num: 2 },
   { grid: "cn", num: 3 },
@@ -20,14 +20,14 @@ let gridLists = ref<Array<Object>>([
   { grid: "cn", num: 9 }
 ]);
 
-let lists = ref<Array<Object>>([
+const lists = ref<Array<Object>>([
   { people: "cn", id: 1, name: "www.itxst.com" },
   { people: "cn", id: 2, name: "www.baidu.com" },
   { people: "cn", id: 3, name: "www.taobao.com" },
   { people: "cn", id: 4, name: "www.google.com" }
 ]);
 
-let cutLists = ref([
+const cutLists = ref([
   { people: "cn", id: 1, name: "cut1" },
   { people: "cn", id: 2, name: "cut2" },
   { people: "cn", id: 3, name: "cut3" },

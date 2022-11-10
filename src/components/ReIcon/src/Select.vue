@@ -16,21 +16,21 @@ const props = defineProps({
 });
 const emit = defineEmits<{ (e: "update:modelValue", v: string) }>();
 
-let visible = ref(false);
-let inputValue = toRef(props, "modelValue");
-let iconList = ref(IconJson);
-let icon = ref("add-location");
-let currentActiveType = ref("ep:");
+const visible = ref(false);
+const inputValue = toRef(props, "modelValue");
+const iconList = ref(IconJson);
+const icon = ref("add-location");
+const currentActiveType = ref("ep:");
 // 深拷贝图标数据，前端做搜索
-let copyIconList = cloneDeep(iconList.value);
+const copyIconList = cloneDeep(iconList.value);
 
-let pageSize = ref(96);
-let currentPage = ref(1);
+const pageSize = ref(96);
+const currentPage = ref(1);
 
 // 搜索条件
-let filterValue = ref("");
+const filterValue = ref("");
 
-let tabsList = [
+const tabsList = [
   {
     label: "Element Plus",
     name: "ep:"
@@ -45,7 +45,7 @@ let tabsList = [
   }
 ];
 
-let pageList = computed(() => {
+const pageList = computed(() => {
   if (currentPage.value === 1) {
     return copyIconList[currentActiveType.value]
       .filter(v => v.includes(filterValue.value))

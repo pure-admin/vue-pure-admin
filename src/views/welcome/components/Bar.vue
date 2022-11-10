@@ -4,7 +4,7 @@ import { useDark, useECharts, type EchartOptions } from "@pureadmin/utils";
 
 const { isDark } = useDark();
 
-let theme: EchartOptions["theme"] = computed(() => {
+const theme: EchartOptions["theme"] = computed(() => {
   return isDark.value ? "dark" : "light";
 });
 

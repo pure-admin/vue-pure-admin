@@ -19,18 +19,18 @@ interface treeNode extends TreeNode {
 }
 
 const query = ref("");
-let dataProps = ref({
+const dataProps = ref({
   value: "uniqueId",
   children: "children"
 });
 const treeRef = ref<InstanceType<typeof ElTreeV2>>();
-let menusTree = cloneDeep(usePermissionStoreHook().wholeMenus);
+const menusTree = cloneDeep(usePermissionStoreHook().wholeMenus);
 
-let menusData = computed(() => {
+const menusData = computed(() => {
   return deleteChildren(menusTree);
 });
 
-let expandedKeys = extractPathList(menusData.value);
+const expandedKeys = extractPathList(menusData.value);
 
 const onQueryChanged = (query: string) => {
   (treeRef as any).value!.filter(query);

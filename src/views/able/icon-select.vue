@@ -6,7 +6,7 @@ defineOptions({
   name: "IconSelect"
 });
 
-let icon = ref("ep:add-location");
+const icon = ref("ep:add-location");
 </script>
 
 <template>

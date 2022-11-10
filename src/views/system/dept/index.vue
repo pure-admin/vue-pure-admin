@@ -15,8 +15,8 @@ const form = reactive({
   user: "",
   status: ""
 });
-let dataList = ref([]);
-let loading = ref(true);
+const dataList = ref([]);
+const loading = ref(true);
 const { columns } = useColumns();
 
 const formRef = ref<FormInstance>();
@@ -36,7 +36,7 @@ function handleSelectionChange(val) {
 
 async function onSearch() {
   loading.value = true;
-  let { data } = await getDeptList();
+  const { data } = await getDeptList();
   dataList.value = handleTree(data as any);
   setTimeout(() => {
     loading.value = false;

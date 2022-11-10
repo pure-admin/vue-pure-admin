@@ -9,7 +9,7 @@ const dropdownDom = templateRef<ElRef | null>("dropdownDom", null);
 const activeName = ref(noticesData[0].name);
 const notices = ref(noticesData);
 
-let noticesNum = ref(0);
+const noticesNum = ref(0);
 notices.value.forEach(notice => {
   noticesNum.value += notice.list.length;
 });

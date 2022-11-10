@@ -7,14 +7,14 @@ defineOptions({
   name: "Cropping"
 });
 
-let refCropper = ref();
-let info = ref<object>(null);
-let cropperImg = ref<string>("");
+const refCropper = ref();
+const info = ref<object>(null);
+const cropperImg = ref<string>("");
 
 const onCropper = (): void => {
   nextTick(() => {
     refCropper.value.cropper.getCroppedCanvas().toBlob(blob => {
-      let fileReader: FileReader = new FileReader();
+      const fileReader: FileReader = new FileReader();
       fileReader.onloadend = (e: ProgressEvent) => {
         cropperImg.value = (e.target as any).result;
         info.value = refCropper.value.cropper.getData();

@@ -17,9 +17,9 @@ defineOptions({
 });
 
 const { toDetail, router } = useDetail();
-let menusTree = cloneDeep(usePermissionStoreHook().wholeMenus);
+const menusTree = cloneDeep(usePermissionStoreHook().wholeMenus);
 
-let treeData = computed(() => {
+const treeData = computed(() => {
   return appendFieldByUniqueId(deleteChildren(menusTree), 0, {
     disabled: true
   });
@@ -27,13 +27,13 @@ let treeData = computed(() => {
 
 const value = ref<string[]>([]);
 
-let multiTags = computed(() => {
+const multiTags = computed(() => {
   return useMultiTagsStoreHook()?.multiTags;
 });
 
 function onCloseTags() {
   value.value.forEach(uniqueId => {
-    let currentPath =
+    const currentPath =
       getNodeByUniqueId(treeData.value, uniqueId).redirect ??
       getNodeByUniqueId(treeData.value, uniqueId).path;
     useMultiTagsStoreHook().handleTags("splice", currentPath);
