@@ -1,3 +1,18 @@
+# 3.6.4 (2022-11-10)
+
+### 🎫 Feat
+
+- Menu icon `icon` supports using online icons
+
+### 🐞 Bug fixes
+
+- Fixed `vxe-button` font color issue after mouse overlay and some other style issues
+
+### 🍏 Perf
+
+- Optimize the routing guard, if you have logged in and there is login information, you cannot jump to the routing whitelist, but continue to stay on the current page
+- Removed `baseURL` and global environment proxy, and can be written directly in `vite.config.ts`, which is convenient and supports multiple proxy addresses
+
 # 3.6.3 (2022-11-01)
 
 ### 🎫 Feat
