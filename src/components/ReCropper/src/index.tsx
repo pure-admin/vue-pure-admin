@@ -8,7 +8,6 @@ import {
   computed,
   PropType
 } from "vue";
-import { templateRef } from "@vueuse/core";
 import { useAttrs } from "@pureadmin/utils";
 
 import Cropper from "cropperjs";
@@ -78,7 +77,7 @@ export default defineComponent({
   props,
   setup(props) {
     const cropper: any = ref<Nullable<Cropper>>(null);
-    const imgElRef = templateRef<HTMLImageElement | null>("imgElRef", null);
+    const imgElRef = ref();
 
     const isReady = ref<boolean>(false);
 

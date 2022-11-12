@@ -1,17 +1,16 @@
 <script setup lang="ts">
 import { ref, unref, nextTick, onUnmounted } from "vue";
-import { templateRef } from "@vueuse/core";
 import flippers from "./filpper";
 
 const timer = ref(null);
 const flipObjs = ref([]);
 
-const flipperHour1 = templateRef<HTMLElement | null>("flipperHour1", null);
-const flipperHour2 = templateRef<HTMLElement | null>("flipperHour2", null);
-const flipperMinute1 = templateRef<HTMLElement | null>("flipperMinute1", null);
-const flipperMinute2 = templateRef<HTMLElement | null>("flipperMinute2", null);
-const flipperSecond1 = templateRef<HTMLElement | null>("flipperSecond1", null);
-const flipperSecond2 = templateRef<HTMLElement | null>("flipperSecond2", null);
+const flipperHour1 = ref();
+const flipperHour2 = ref();
+const flipperMinute1 = ref();
+const flipperMinute2 = ref();
+const flipperSecond1 = ref();
+const flipperSecond2 = ref();
 
 // 初始化数字
 const init = () => {

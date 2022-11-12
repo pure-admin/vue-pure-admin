@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { ref, reactive } from "vue";
-import { templateRef } from "@vueuse/core";
 import SeamlessScroll from "@/components/ReSeamlessScroll";
 
-const scroll = templateRef<ElRef | null>("scroll", null);
+const scroll = ref();
 
 const listData = ref([
   {

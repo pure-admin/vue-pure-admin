@@ -13,7 +13,6 @@ import { useRouter } from "vue-router";
 import panel from "../panel/index.vue";
 import { emitter } from "@/utils/mitt";
 import { resetRouter } from "@/router";
-import { templateRef } from "@vueuse/core";
 import { removeToken } from "@/utils/auth";
 import { routerArrays } from "@/layout/types";
 import { useNav } from "@/layout/hooks/useNav";
@@ -38,9 +37,9 @@ const { isDark } = useDark();
 const { isSelect } = useCssModule();
 const { $storage } = useGlobal<GlobalPropertiesApi>();
 
-const mixRef = templateRef<HTMLElement | null>("mixRef", null);
-const verticalRef = templateRef<HTMLElement | null>("verticalRef", null);
-const horizontalRef = templateRef<HTMLElement | null>("horizontalRef", null);
+const mixRef = ref();
+const verticalRef = ref();
+const horizontalRef = ref();
 
 const {
   body,

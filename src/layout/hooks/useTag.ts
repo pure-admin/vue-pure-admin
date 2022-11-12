@@ -9,7 +9,7 @@ import {
   getCurrentInstance
 } from "vue";
 import { tagsViewsType } from "../types";
-import { isEqual } from "lodash-unified";
+import { isEqual } from "@pureadmin/utils";
 import type { StorageConfigs } from "/#/index";
 import { useEventListener } from "@vueuse/core";
 import { useRoute, useRouter } from "vue-router";

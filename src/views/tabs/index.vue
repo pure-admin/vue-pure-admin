@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
-import { cloneDeep } from "lodash-unified";
+import { clone } from "@pureadmin/utils";
 import { transformI18n } from "@/plugins/i18n";
 import { TreeSelect } from "@pureadmin/components";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
@@ -17,7 +17,7 @@ defineOptions({
 });
 
 const { toDetail, router } = useDetail();
-const menusTree = cloneDeep(usePermissionStoreHook().wholeMenus);
+const menusTree = clone(usePermissionStoreHook().wholeMenus, true);
 
 const treeData = computed(() => {
   return appendFieldByUniqueId(deleteChildren(menusTree), 0, {

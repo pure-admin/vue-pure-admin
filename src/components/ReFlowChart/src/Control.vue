@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, unref, onMounted } from "vue";
-import { templateRef } from "@vueuse/core";
 import { LogicFlow } from "@logicflow/core";
 
 interface Props {
@@ -16,8 +15,8 @@ const emit = defineEmits<{
   (e: "catData"): void;
 }>();
 
-const controlButton3 = templateRef<HTMLElement | any>("controlButton3", null);
-const controlButton4 = templateRef<HTMLElement | any>("controlButton4", null);
+const controlButton3 = ref();
+const controlButton4 = ref();
 
 const focusIndex = ref<Number>(-1);
 const titleLists = ref([
