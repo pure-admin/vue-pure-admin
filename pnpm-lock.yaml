@@ -16,8 +16,8 @@ specifiers:
   "@iconify-icons/uil": ^1.2.2
   "@iconify/vue": ^4.0.0
   "@intlify/vite-plugin-vue-i18n": ^6.0.3
-  "@logicflow/core": ^1.1.24
-  "@logicflow/extension": ^1.1.24
+  "@logicflow/core": ^1.1.30
+  "@logicflow/extension": ^1.1.30
   "@pureadmin/components": ^1.1.0
   "@pureadmin/descriptions": ^1.1.0
   "@pureadmin/table": ^1.2.0
@@ -40,7 +40,7 @@ specifiers:
   "@vitejs/plugin-vue-jsx": ^2.1.1
   "@vue/eslint-config-prettier": ^7.0.0
   "@vue/eslint-config-typescript": ^11.0.2
-  "@vue/runtime-core": ^3.2.44
+  "@vue/runtime-core": ^3.2.45
   "@vueuse/core": ^9.5.0
   "@vueuse/motion": 2.0.0-beta.12
   "@wangeditor/editor": ^5.1.21
@@ -109,7 +109,7 @@ specifiers:
   vite-plugin-mock: ^2.9.6
   vite-plugin-remove-console: ^1.3.0
   vite-svg-loader: ^3.6.0
-  vue: ^3.2.44
+  vue: ^3.2.45
   vue-eslint-parser: ^9.1.0
   vue-i18n: ^9.2.2
   vue-json-pretty: ^2.2.2
@@ -131,8 +131,8 @@ dependencies:
   "@logicflow/core": 1.1.30
   "@logicflow/extension": 1.1.30
   "@pureadmin/components": 1.1.0_vue@3.2.45
-  "@pureadmin/descriptions": 1.1.1
-  "@pureadmin/table": 1.2.0
+  "@pureadmin/descriptions": 1.1.1_element-plus@2.2.21
+  "@pureadmin/table": 1.2.0_element-plus@2.2.21
   "@pureadmin/utils": 1.1.5_aotapuqn7htzdjltsyimavekky
   "@vueuse/core": 9.5.0_vue@3.2.45
   "@vueuse/motion": 2.0.0-beta.12_vue@3.2.45
@@ -239,7 +239,7 @@ devDependencies:
   stylelint-config-recommended: 9.0.0_stylelint@14.14.1
   stylelint-config-standard: 29.0.0_stylelint@14.14.1
   stylelint-order: 5.0.0_stylelint@14.14.1
-  tailwindcss: 3.2.4
+  tailwindcss: 3.2.4_postcss@8.4.19
   terser: 5.15.1
   typescript: 4.8.4
   unplugin-vue-macros: 0.16.3_33e425fbdcno4preplio4kvzwe
@@ -1157,7 +1157,6 @@ packages:
       "@intlify/message-compiler": 9.2.2
       "@intlify/shared": 9.2.2
       "@intlify/vue-devtools": 9.2.2
-    dev: false
 
   /@intlify/devtools-if/9.2.2:
     resolution:
@@ -1167,7 +1166,6 @@ packages:
     engines: { node: ">= 14" }
     dependencies:
       "@intlify/shared": 9.2.2
-    dev: false
 
   /@intlify/message-compiler/9.2.2:
     resolution:
@@ -1178,7 +1176,6 @@ packages:
     dependencies:
       "@intlify/shared": 9.2.2
       source-map: 0.6.1
-    dev: false
 
   /@intlify/message-compiler/9.3.0-beta.6:
     resolution:
@@ -1197,7 +1194,6 @@ packages:
         integrity: sha512-wRwTpsslgZS5HNyM7uDQYZtxnbI12aGiBZURX3BTR9RFIKKRWpllTsgzHWvj3HKm3Y2Sh5LPC1r0PDCKEhVn9Q==
       }
     engines: { node: ">= 14" }
-    dev: false
 
   /@intlify/shared/9.3.0-beta.6:
     resolution:
@@ -1246,7 +1242,6 @@ packages:
     dependencies:
       "@intlify/core-base": 9.2.2
       "@intlify/shared": 9.2.2
-    dev: false
 
   /@jridgewell/gen-mapping/0.1.1:
     resolution:
@@ -1379,29 +1374,29 @@ packages:
       vue: 3.2.45
     dev: false
 
-  /@pureadmin/descriptions/1.1.1:
+  /@pureadmin/descriptions/1.1.1_element-plus@2.2.21:
     resolution:
       {
         integrity: sha512-4BHLKomLU/LxGs5EUA+h+aKNrJEkhrU6+QE8VoWfJZ8VTU6ddvFLT/Pi4WuO5CWNXM9ZjqvHLFFVwEPlKntqtg==
       }
+    peerDependencies:
+      element-plus: ^2.0.0
     dependencies:
       "@element-plus/icons-vue": 2.0.10_vue@3.2.45
       element-plus: 2.2.21_vue@3.2.45
       vue: 3.2.45
-    transitivePeerDependencies:
-      - "@vue/composition-api"
     dev: false
 
-  /@pureadmin/table/1.2.0:
+  /@pureadmin/table/1.2.0_element-plus@2.2.21:
     resolution:
       {
         integrity: sha512-mJBpMj0YkaqTM5TDz+ek/f8h74qRLhDc/gLJhBq0wpyfCgG++Jd/9i+QUj8gedA5oN8IL6LOSFbcvlGDYxHgkw==
       }
+    peerDependencies:
+      element-plus: ^2.0.0
     dependencies:
       element-plus: 2.2.21_vue@3.2.45
       vue: 3.2.45
-    transitivePeerDependencies:
-      - "@vue/composition-api"
     dev: false
 
   /@pureadmin/theme/2.4.0:
@@ -1670,7 +1665,6 @@ packages:
       {
         integrity: sha512-oh8q2Zc32S6gd/j50GowEjKLoOVOwHP/bWVjKJInBwQqdOYMdPrf1oVlelTlyfFK3CKxL1uahMDAr+vy8T7yMQ==
       }
-    dev: false
 
   /@typescript-eslint/eslint-plugin/5.42.1_2udltptbznfmezdozpdoa2aemq:
     resolution:
@@ -2241,7 +2235,6 @@ packages:
       {
         integrity: sha512-JD5fcdIuFxU4fQyXUu3w2KpAJHzTVdN+p4iOX2lMWSHMOoQdMAcpFLZzm9Z/2nmsoZ1a96QEhZ26e50xLBsgOQ==
       }
-    dev: false
 
   /@vue/eslint-config-prettier/7.0.0_mbd4zptqpjbepwpyh2zbtslqey:
     resolution:
@@ -2320,7 +2313,6 @@ packages:
       "@vue/runtime-core": 3.2.45
       "@vue/shared": 3.2.45
       csstype: 2.6.21
-    dev: false
 
   /@vue/server-renderer/3.2.45_vue@3.2.45:
     resolution:
@@ -2333,7 +2325,6 @@ packages:
       "@vue/compiler-ssr": 3.2.45
       "@vue/shared": 3.2.45
       vue: 3.2.45
-    dev: false
 
   /@vue/shared/3.2.45:
     resolution:
@@ -2375,7 +2366,6 @@ packages:
     transitivePeerDependencies:
       - "@vue/composition-api"
       - vue
-    dev: false
 
   /@vueuse/metadata/8.9.4:
     resolution:
@@ -2389,7 +2379,6 @@ packages:
       {
         integrity: sha512-4M1AyPZmIv41pym+K5+4wup3bKuYebbH8w8BROY1hmT7rIwcyS4tEL+UsGz0Hiu1FCOxcoBrwtAizc0YmBJjyQ==
       }
-    dev: false
 
   /@vueuse/motion/2.0.0-beta.12_vue@3.2.45:
     resolution:
@@ -2440,7 +2429,6 @@ packages:
     transitivePeerDependencies:
       - "@vue/composition-api"
       - vue
-    dev: false
 
   /@wangeditor/basic-modules/1.1.6_o6rq7lyzv5eg7j3353bh3hudbm:
     resolution:
@@ -3385,7 +3373,6 @@ packages:
         integrity: sha512-5EEkTNyHNGFPD2H+c/dXXfQZYa/scCKasxWcXJaWnNJ99pnQN9Vnmqow+p+PlFPE63Q6mThaZws1T+HxfpgtPw==
       }
     engines: { node: ^12.20.0 || >=14 }
-    dev: false
 
   /compare-func/2.0.0:
     resolution:
@@ -3457,8 +3444,8 @@ packages:
     engines: { node: ">=10" }
     hasBin: true
     dependencies:
-      is-text-path: 1.0.1
       JSONStream: 1.3.5
+      is-text-path: 1.0.1
       lodash: 4.17.21
       meow: 8.1.2
       split2: 3.2.2
@@ -3688,7 +3675,6 @@ packages:
       {
         integrity: sha512-Z1PhmomIfypOpoMjRQB70jfvy/wxT50qW08YXO5lMIJkrdq4yOTR+AW7FqutScmB9NkLwxo+jU+kZLbofZZq/w==
       }
-    dev: false
 
   /d/1.0.1:
     resolution:
@@ -6347,7 +6333,6 @@ packages:
     hasBin: true
     dependencies:
       commander: 9.4.1
-    dev: false
 
   /mousetrap/1.6.5:
     resolution:
@@ -8433,13 +8418,15 @@ packages:
       strip-ansi: 6.0.1
     dev: true
 
-  /tailwindcss/3.2.4:
+  /tailwindcss/3.2.4_postcss@8.4.19:
     resolution:
       {
         integrity: sha512-AhwtHCKMtR71JgeYDaswmZXhPcW9iuI9Sp2LvZPo9upDZ7231ZJ7eA9RaURbhpXGVlrjX4cFNlB4ieTetEb7hQ==
       }
     engines: { node: ">=12.13.0" }
     hasBin: true
+    peerDependencies:
+      postcss: ^8.0.9
     dependencies:
       arg: 5.0.2
       chokidar: 3.5.3
@@ -8684,7 +8671,6 @@ packages:
       }
     engines: { node: ">=4.2.0" }
     hasBin: true
-    dev: true
 
   /unidragger/2.4.0:
     resolution:
@@ -9013,7 +8999,6 @@ packages:
         optional: true
     dependencies:
       vue: 3.2.45
-    dev: false
 
   /vue-eslint-parser/9.1.0_eslint@8.27.0:
     resolution:
@@ -9050,7 +9035,6 @@ packages:
       "@intlify/vue-devtools": 9.2.2
       "@vue/devtools-api": 6.4.5
       vue: 3.2.45
-    dev: false
 
   /vue-json-pretty/2.2.3_vue@3.2.45:
     resolution:
@@ -9171,7 +9155,6 @@ packages:
       "@vue/runtime-dom": 3.2.45
       "@vue/server-renderer": 3.2.45_vue@3.2.45
       "@vue/shared": 3.2.45
-    dev: false
 
   /vue3-danmaku/1.0.0_vue@3.2.45:
     resolution:
