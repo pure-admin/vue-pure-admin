@@ -29,6 +29,10 @@
 
 - [Click Watch Tauri](https://github.com/xiaoxian521/tauri-pure-admin)
 
+## Electron
+
+- [Click Watch Electron](https://github.com/xiaoxian521/electron-pure-admin)
+
 ## Preview
 
 - [Click me to view the domestic preview station](https://yiming_chang.gitee.io/vue-pure-admin)

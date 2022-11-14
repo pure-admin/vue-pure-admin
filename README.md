@@ -29,6 +29,10 @@
 
 - [点我查看 Tauri 版](https://github.com/xiaoxian521/tauri-pure-admin)
 
+## Electron 版
+
+- [点我查看 Electron 版](https://github.com/xiaoxian521/electron-pure-admin)
+
 ## 预览
 
 - [点我查看国内预览站](https://yiming_chang.gitee.io/vue-pure-admin)
