@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { utils, writeFile } from "xlsx";
 
 defineOptions({

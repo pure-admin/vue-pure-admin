@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import type { ElTree } from "element-plus";
 import { getDeptList } from "@/api/system";
 import { handleTree } from "@pureadmin/utils";
