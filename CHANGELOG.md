@@ -121,7 +121,7 @@
 
 - Secondary encapsulation of `Table` of `element-plus` into [@pureadmin/table](https://github.com/xiaoxian521/pure-admin-table), providing flexible configuration items and integrating into the platform
 - Secondary encapsulation of `Descriptions` of `element-plus` into [@pureadmin/descriptions](https://github.com/xiaoxian521/pure-admin-descriptions), providing flexible configuration items and integrating into the platform
-- Centralize most of the tools and hooks of the platform to [@pureadmin/utils](https://pure-admin-utils-docs.vercel.app/), and delete the code concentrated in this library to reduce the size of the platform
+- Centralize most of the tools and hooks of the platform to [@pureadmin/utils](https://pure-admin-utils.netlify.app), and delete the code concentrated in this library to reduce the size of the platform
 - Add [unplugin-vue-define-options](https://www.npmjs.com/package/unplugin-vue-define-options) plugin, the page can directly write `defineOptions({name: custom name})`
 - Add project files, language analysis tool [cloc](https://www.npmjs.com/package/cloc)
 - Added landing page internationalization

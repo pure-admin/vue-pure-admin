@@ -18,7 +18,10 @@ export function useColumns() {
       label: "文档地址",
       cellRenderer: () => {
         return (
-          <a href="http://yiming_chang.gitee.io/pure-admin-doc" target="_blank">
+          <a
+            href="https://yiming_chang.gitee.io/pure-admin-doc"
+            target="_blank"
+          >
             <span style="color: var(--el-color-primary)">文档地址</span>
           </a>
         );
@@ -28,7 +31,10 @@ export function useColumns() {
       label: "预览地址",
       cellRenderer: () => {
         return (
-          <a href="http://yiming_chang.gitee.io/vue-pure-admin" target="_blank">
+          <a
+            href="https://yiming_chang.gitee.io/vue-pure-admin"
+            target="_blank"
+          >
             <span style="color: var(--el-color-primary)">预览地址</span>
           </a>
         );

@@ -97,13 +97,13 @@ const frameRouter = {
       name: "FramePure",
       meta: {
         title: "menus.hsPureDocument",
-        frameSrc: "http://yiming_chang.gitee.io/pure-admin-doc",
+        frameSrc: "https://yiming_chang.gitee.io/pure-admin-doc",
         roles: ["admin", "common"]
       }
     },
     {
       path: "/external",
-      name: "http://yiming_chang.gitee.io/pure-admin-doc",
+      name: "https://yiming_chang.gitee.io/pure-admin-doc",
       meta: {
         title: "menus.externalLink",
         roles: ["admin", "common"]
