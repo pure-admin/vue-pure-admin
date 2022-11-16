@@ -137,6 +137,7 @@ const tabsRouter = {
         roles: ["admin", "common"]
       }
     },
+    // query 传参模式
     {
       path: "/tabs/query-detail",
       name: "TabQueryDetail",
@@ -146,11 +147,13 @@ const tabsRouter = {
         roles: ["admin", "common"]
       }
     },
+    // params 传参模式
     {
       path: "/tabs/params-detail/:id",
       component: "params-detail",
       name: "TabParamsDetail",
       meta: {
+        // 不在menu菜单中显示
         showLink: false,
         roles: ["admin", "common"]
       }

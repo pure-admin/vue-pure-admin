@@ -117,6 +117,28 @@ function onCloseTags() {
     >
       跳转页内菜单（传path对象）
     </el-button>
+
+    <el-divider />
+    <el-button
+      @click="
+        $router.push({
+          name: 'Menu1-2-2',
+          query: { text: '传name对象，优先推荐' }
+        })
+      "
+    >
+      携参跳转页内菜单（传name对象，优先推荐）
+    </el-button>
+    <el-button
+      @click="
+        $router.push({
+          path: '/nested/menu1/menu1-2/menu1-2-2',
+          query: { text: '传path对象' }
+        })
+      "
+    >
+      携参跳转页内菜单（传path对象）
+    </el-button>
     <el-link
       class="ml-4"
       href="https://router.vuejs.org/zh/guide/essentials/navigation.html#%E5%AF%BC%E8%88%AA%E5%88%B0%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BD%8D%E7%BD%AE"

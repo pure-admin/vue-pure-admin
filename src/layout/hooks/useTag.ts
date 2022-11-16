@@ -9,11 +9,11 @@ import {
   getCurrentInstance
 } from "vue";
 import { tagsViewsType } from "../types";
-import { isEqual } from "@pureadmin/utils";
 import type { StorageConfigs } from "/#/index";
 import { useEventListener } from "@vueuse/core";
 import { useRoute, useRouter } from "vue-router";
 import { transformI18n, $t } from "@/plugins/i18n";
+import { isEqual, isBoolean } from "@pureadmin/utils";
 import { useSettingStoreHook } from "@/store/modules/settings";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
 import { storageLocal, toggleClass, hasClass } from "@pureadmin/utils";
@@ -106,15 +106,14 @@ export function useTags() {
   ]);
 
   function conditionHandle(item, previous, next) {
-    if (
-      Object.keys(route.query).length === 0 &&
-      Object.keys(route.params).length === 0
-    ) {
-      return route.path === item.path ? previous : next;
-    } else if (Object.keys(route.query).length > 0) {
-      return isEqual(route.query, item.query) ? previous : next;
+    if (isBoolean(route?.meta?.showLink) && route?.meta?.showLink === false) {
+      if (Object.keys(route.query).length > 0) {
+        return isEqual(route.query, item.query) ? previous : next;
+      } else {
+        return isEqual(route.params, item.params) ? previous : next;
+      }
     } else {
-      return isEqual(route.params, item.params) ? previous : next;
+      return route.path === item.path ? previous : next;
     }
   }
 
