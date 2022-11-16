@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import path from "path";
+import { getConfig } from "@/config";
 import { childrenType } from "../../types";
 import { useNav } from "@/layout/hooks/useNav";
 import { transformI18n } from "@/plugins/i18n";
@@ -74,6 +75,10 @@ const getSpanStyle = computed(() => {
     overflow: "hidden",
     textOverflow: "ellipsis"
   };
+});
+
+const expandCloseIcon = computed(() => {
+  return getConfig()?.menuArrowIconNoTransition ? "expand-close-icon" : "";
 });
 
 const onlyOneChild: childrenType = ref(null);
@@ -212,7 +217,15 @@ function resolvePath(routePath) {
     </el-menu-item>
   </template>
 
-  <el-sub-menu v-else ref="subMenu" :index="resolvePath(props.item.path)">
+  <el-sub-menu
+    v-else
+    ref="subMenu"
+    :index="resolvePath(props.item.path)"
+    v-bind:[expandCloseIcon]="useRenderIcon('ep-arrow-down')"
+    :expand-open-icon="useRenderIcon('ep-arrow-up')"
+    :collapse-close-icon="useRenderIcon('ep-arrow-right')"
+    :collapse-open-icon="useRenderIcon('ep-arrow-left')"
+  >
     <template #title>
       <div v-if="toRaw(props.item.meta.icon)" class="sub-menu-icon">
         <component

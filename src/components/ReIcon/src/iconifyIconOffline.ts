@@ -29,6 +29,10 @@ import Refresh from "@iconify-icons/ep/refresh";
 import EditPen from "@iconify-icons/ep/edit-pen";
 import Delete from "@iconify-icons/ep/delete";
 import More from "@iconify-icons/ep/more-filled";
+import EpArrowDown from "@iconify-icons/ep/arrow-down";
+import ArrowUp from "@iconify-icons/ep/arrow-up";
+import ArrowRight from "@iconify-icons/ep/arrow-right";
+import ArrowLeft from "@iconify-icons/ep/arrow-left";
 addIcon("check", Check);
 addIcon("menu", Menu);
 addIcon("home-filled", HomeFilled);
@@ -56,6 +60,10 @@ addIcon("refresh", Refresh);
 addIcon("edits", EditPen);
 addIcon("delete", Delete);
 addIcon("more", More);
+addIcon("ep-arrow-down", EpArrowDown);
+addIcon("ep-arrow-up", ArrowUp);
+addIcon("ep-arrow-right", ArrowRight);
+addIcon("ep-arrow-left", ArrowLeft);
 
 // remixicon
 import ArrowRightSLine from "@iconify-icons/ri/arrow-right-s-line";

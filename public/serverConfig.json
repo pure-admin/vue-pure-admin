@@ -16,6 +16,7 @@
   "EpThemeColor": "#409EFF",
   "ShowLogo": true,
   "ShowModel": "smart",
+  "menuArrowIconNoTransition": false,
   "MapConfigure": {
     "amapKey": "97b3248d1553172e81f168cf94ea667e",
     "options": {
