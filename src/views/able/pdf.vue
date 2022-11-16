@@ -1,24 +1,19 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useI18n } from "vue-i18n";
-import VuePdfEmbed, {
-  type VuePdfEmbedMethods,
-  type VuePdfEmbedData
-} from "vue-pdf-embed";
+import VuePdfEmbed from "vue-pdf-embed";
 
 defineOptions({
   name: "Pdf"
 });
 
-interface pdfRefType extends VuePdfEmbedData, VuePdfEmbedMethods {}
-
 const { t } = useI18n();
-const pdfRef = ref<pdfRefType>();
-let pageCount = ref(1);
-let loading = ref(true);
-let currentPage = ref(1);
-let currentRotation = ref(0);
-let showAllPages = ref(false);
+const pdfRef = ref<any>();
+const pageCount = ref(1);
+const loading = ref(true);
+const currentPage = ref(1);
+const currentRotation = ref(0);
+const showAllPages = ref(false);
 const rotations = [0, 90, 180, 270];
 
 const source =

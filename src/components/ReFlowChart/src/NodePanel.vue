@@ -18,7 +18,7 @@ const props = withDefaults(defineProps<Props>(), {
   nodeList: null
 });
 
-let properties = ref({
+const properties = ref({
   a: "efrwe",
   b: "wewe"
 });

@@ -2,7 +2,7 @@
 import XEUtils from "xe-utils";
 import Config from "./config.vue";
 import { useI18n } from "vue-i18n";
-import { cloneDeep } from "lodash-unified";
+import { clone } from "@pureadmin/utils";
 import { reactive, ref, unref, nextTick } from "vue";
 import { useCopyToClipboard } from "@pureadmin/utils";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
@@ -92,7 +92,7 @@ const dictData = reactive({
   ] as VxeFormPropTypes.Items
 });
 
-let originData = cloneDeep(dictData.tableData);
+const originData = clone(dictData.tableData, true);
 
 const xTree = ref<TablePublicMethods>();
 const xForm = ref<FormMethods>();
@@ -195,7 +195,7 @@ const submitEvent = () => {
   }, 500);
 };
 
-let drawer = ref(false);
+const drawer = ref(false);
 
 function onDeploy(value?: object) {
   console.log("onDeploy", value);

@@ -42,7 +42,7 @@ const {
 const tabDom = ref();
 const containerDom = ref();
 const scrollbarDom = ref();
-let isShowArrow = ref(false);
+const isShowArrow = ref(false);
 const { isFullscreen, toggle } = useFullscreen();
 
 const dynamicTagView = () => {
@@ -129,7 +129,7 @@ function dynamicRouteTag(value: string, parentPath: string): void {
   function concatPath(arr: object[], value: string, parentPath: string) {
     if (!hasValue) {
       arr.forEach((arrItem: any) => {
-        let pathConcat = parentPath + arrItem.path;
+        const pathConcat = parentPath + arrItem.path;
         if (arrItem.path === value || pathConcat === value) {
           useMultiTagsStoreHook().handleTags("push", {
             path: value,
@@ -160,7 +160,7 @@ function onFresh() {
 function deleteDynamicTag(obj: any, current: any, tag?: string) {
   // 存放被删除的缓存路由
   let delAliveRouteList = [];
-  let valueIndex: number = multiTags.value.findIndex((item: any) => {
+  const valueIndex: number = multiTags.value.findIndex((item: any) => {
     if (item.query) {
       if (item.path === obj.path) {
         return item.query === obj.query;
@@ -199,7 +199,7 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
     // 从当前匹配到的路径中删除
     spliceRoute(valueIndex, 1);
   }
-  let newRoute = useMultiTagsStoreHook().handleTags("slice");
+  const newRoute = useMultiTagsStoreHook().handleTags("slice");
   if (current === route.path) {
     // 删除缓存路由
     tag
@@ -339,8 +339,8 @@ function showMenuModel(
   query: object = {},
   refresh = false
 ) {
-  let allRoute = multiTags.value;
-  let routeLength = multiTags.value.length;
+  const allRoute = multiTags.value;
+  const routeLength = multiTags.value.length;
   let currentIndex = -1;
   if (isEmpty(query)) {
     currentIndex = allRoute.findIndex(v => v.path === currentPath);

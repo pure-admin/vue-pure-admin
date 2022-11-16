@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { useRouter } from "vue-router";
 import { cloneDeep } from "lodash-unified";
 import SearchResult from "./SearchResult.vue";

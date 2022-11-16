@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { ref } from "vue";
 import { default as vElTableInfiniteScroll } from "el-table-infinite-scroll";
 

@@ -1,15 +1,14 @@
 <script setup lang="ts">
 import { ref, reactive, unref } from "vue";
-import { templateRef } from "@vueuse/core";
 import SeamlessScroll from "@/components/ReSeamlessScroll";
 
 defineOptions({
   name: "SeamlessScroll"
 });
 
-const scroll = templateRef<ElRef | null>("scroll", null);
+const scroll = ref();
 
-let listData = ref([
+const listData = ref([
   {
     title: "无缝滚动第一行无缝滚动第一行！！！！！！！！！！"
   },
@@ -39,7 +38,7 @@ let listData = ref([
   }
 ]);
 
-let classOption = reactive({
+const classOption = reactive({
   direction: "top"
 });
 

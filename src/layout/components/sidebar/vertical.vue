@@ -19,7 +19,7 @@ const showLogo = ref(
 const { routers, device, pureApp, isCollapse, menuSelect, toggleSideBar } =
   useNav();
 
-let subMenuData = ref([]);
+const subMenuData = ref([]);
 
 const menuData = computed(() => {
   return pureApp.layout === "mix" && device.value !== "mobile"

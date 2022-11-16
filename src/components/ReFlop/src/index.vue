@@ -1,22 +1,21 @@
 <script setup lang="ts">
 import { ref, unref, nextTick, onUnmounted } from "vue";
-import { templateRef } from "@vueuse/core";
 import flippers from "./filpper";
 
-let timer = ref(null);
-let flipObjs = ref([]);
+const timer = ref(null);
+const flipObjs = ref([]);
 
-const flipperHour1 = templateRef<HTMLElement | null>("flipperHour1", null);
-const flipperHour2 = templateRef<HTMLElement | null>("flipperHour2", null);
-const flipperMinute1 = templateRef<HTMLElement | null>("flipperMinute1", null);
-const flipperMinute2 = templateRef<HTMLElement | null>("flipperMinute2", null);
-const flipperSecond1 = templateRef<HTMLElement | null>("flipperSecond1", null);
-const flipperSecond2 = templateRef<HTMLElement | null>("flipperSecond2", null);
+const flipperHour1 = ref();
+const flipperHour2 = ref();
+const flipperMinute1 = ref();
+const flipperMinute2 = ref();
+const flipperSecond1 = ref();
+const flipperSecond2 = ref();
 
 // 初始化数字
 const init = () => {
-  let now = new Date();
-  let nowTimeStr = formatDate(new Date(now.getTime()), "hhiiss");
+  const now = new Date();
+  const nowTimeStr = formatDate(new Date(now.getTime()), "hhiiss");
   for (let i = 0; i < flipObjs.value.length; i++) {
     flipObjs?.value[i]?.setFront(nowTimeStr[i]);
   }
@@ -26,9 +25,9 @@ const init = () => {
 const run = () => {
   timer.value = setInterval(() => {
     // 获取当前时间
-    let now = new Date();
-    let nowTimeStr = formatDate(new Date(now.getTime() - 1000), "hhiiss");
-    let nextTimeStr = formatDate(now, "hhiiss");
+    const now = new Date();
+    const nowTimeStr = formatDate(new Date(now.getTime() - 1000), "hhiiss");
+    const nextTimeStr = formatDate(now, "hhiiss");
     for (let i = 0; i < flipObjs.value.length; i++) {
       if (nowTimeStr[i] === nextTimeStr[i]) {
         continue;
@@ -52,17 +51,17 @@ const formatDate = (date: Date, dateFormat: string) => {
     );
   }
   // 格式化月、日、时、分、秒
-  let o = {
+  const o = {
     "m+": date.getMonth() + 1,
     "d+": date.getDate(),
     "h+": date.getHours(),
     "i+": date.getMinutes(),
     "s+": date.getSeconds()
   };
-  for (let k in o) {
+  for (const k in o) {
     if (new RegExp(`(${k})`).test(dateFormat)) {
       // 取出对应的值
-      let str = o[k] + "";
+      const str = o[k] + "";
       /* 根据设置的格式，输出对应的字符
        * 例如: 早上8时，hh => 08，h => 8
        * 但是，当数字>=10时，无论格式为一位还是多位，不做截取，这是与年份格式化不一致的地方

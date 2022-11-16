@@ -6,8 +6,8 @@ defineOptions({
   name: "Selector"
 });
 
-let selectRange = ref<string>("");
-let dataLists = ref([
+const selectRange = ref<string>("");
+const dataLists = ref([
   {
     title: "基本使用",
     echo: [],

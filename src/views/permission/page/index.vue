@@ -8,14 +8,14 @@ defineOptions({
   name: "PermissionPage"
 });
 
-let elStyle = computed((): CSSProperties => {
+const elStyle = computed((): CSSProperties => {
   return {
     width: "85vw",
     justifyContent: "start"
   };
 });
 
-let username = ref(useUserStoreHook()?.username);
+const username = ref(useUserStoreHook()?.username);
 
 const options = [
   {
@@ -30,7 +30,7 @@ const options = [
 
 function onChange() {
   useUserStoreHook()
-    .loginByUsername({ username: username.value })
+    .loginByUsername({ username: username.value, password: "admin123" })
     .then(res => {
       if (res.success) {
         usePermissionStoreHook().clearAllCachePage();

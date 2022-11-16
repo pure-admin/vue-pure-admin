@@ -1,3 +1,18 @@
+# 3.6.4 (2022-11-10)
+
+### 🎫 Feat
+
+- Menu icon `icon` supports using online icons
+
+### 🐞 Bug fixes
+
+- Fixed `vxe-button` font color issue after mouse overlay and some other style issues
+
+### 🍏 Perf
+
+- Optimize the routing guard, if you have logged in and there is login information, you cannot jump to the routing whitelist, but continue to stay on the current page
+- Removed `baseURL` and global environment proxy, and can be written directly in `vite.config.ts`, which is convenient and supports multiple proxy addresses
+
 # 3.6.3 (2022-11-01)
 
 ### 🎫 Feat
@@ -106,7 +121,7 @@
 
 - Secondary encapsulation of `Table` of `element-plus` into [@pureadmin/table](https://github.com/xiaoxian521/pure-admin-table), providing flexible configuration items and integrating into the platform
 - Secondary encapsulation of `Descriptions` of `element-plus` into [@pureadmin/descriptions](https://github.com/xiaoxian521/pure-admin-descriptions), providing flexible configuration items and integrating into the platform
-- Centralize most of the tools and hooks of the platform to [@pureadmin/utils](https://pure-admin-utils-docs.vercel.app/), and delete the code concentrated in this library to reduce the size of the platform
+- Centralize most of the tools and hooks of the platform to [@pureadmin/utils](https://pure-admin-utils.netlify.app), and delete the code concentrated in this library to reduce the size of the platform
 - Add [unplugin-vue-define-options](https://www.npmjs.com/package/unplugin-vue-define-options) plugin, the page can directly write `defineOptions({name: custom name})`
 - Add project files, language analysis tool [cloc](https://www.npmjs.com/package/cloc)
 - Added landing page internationalization

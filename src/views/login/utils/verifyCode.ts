@@ -1,5 +1,5 @@
 import type { FormInstance, FormItemProp } from "element-plus";
-import { cloneDeep } from "lodash-unified";
+import { clone } from "@pureadmin/utils";
 import { ref } from "vue";
 
 const isDisabled = ref(false);
@@ -13,7 +13,7 @@ export const useVerifyCode = () => {
     time = 60
   ) => {
     if (!formEl) return;
-    const initTime = cloneDeep(time);
+    const initTime = clone(time, true);
     await formEl.validateField(props, isValid => {
       if (isValid) {
         clearInterval(timer.value);

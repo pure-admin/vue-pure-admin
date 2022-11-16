@@ -13,7 +13,6 @@ import { useRouter } from "vue-router";
 import panel from "../panel/index.vue";
 import { emitter } from "@/utils/mitt";
 import { resetRouter } from "@/router";
-import { templateRef } from "@vueuse/core";
 import { removeToken } from "@/utils/auth";
 import { routerArrays } from "@/layout/types";
 import { useNav } from "@/layout/hooks/useNav";
@@ -38,9 +37,9 @@ const { isDark } = useDark();
 const { isSelect } = useCssModule();
 const { $storage } = useGlobal<GlobalPropertiesApi>();
 
-const mixRef = templateRef<HTMLElement | null>("mixRef", null);
-const verticalRef = templateRef<HTMLElement | null>("verticalRef", null);
-const horizontalRef = templateRef<HTMLElement | null>("horizontalRef", null);
+const mixRef = ref();
+const verticalRef = ref();
+const horizontalRef = ref();
 
 const {
   body,
@@ -54,8 +53,8 @@ const {
 
 /* body添加layout属性，作用于src/style/sidebar.scss */
 if (unref(layoutTheme)) {
-  let layout = unref(layoutTheme).layout;
-  let theme = unref(layoutTheme).theme;
+  const layout = unref(layoutTheme).layout;
+  const theme = unref(layoutTheme).theme;
   toggleTheme({
     scopeName: `layout-theme-${theme}`
   });
@@ -119,13 +118,13 @@ const weekChange = (value): void => {
 };
 
 const tagsChange = () => {
-  let showVal = settings.tabsVal;
+  const showVal = settings.tabsVal;
   storageConfigureChange("hideTabs", showVal);
   emitter.emit("tagViewsChange", showVal as unknown as string);
 };
 
 const multiTagsCacheChange = () => {
-  let multiTagsCache = settings.multiTagsCache;
+  const multiTagsCache = settings.multiTagsCache;
   storageConfigureChange("multiTagsCache", multiTagsCache);
   useMultiTagsStoreHook().multiTagsCacheChange(multiTagsCache);
 };

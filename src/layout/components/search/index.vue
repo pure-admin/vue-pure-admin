@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { SearchModal } from "./components";
 import { useBoolean } from "../../hooks/useBoolean";
 const { bool: show, toggle } = useBoolean();

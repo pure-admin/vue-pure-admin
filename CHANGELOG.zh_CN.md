@@ -1,3 +1,18 @@
+# 3.6.4 (2022-11-10)
+
+### 🎫 Feat
+
+- 菜单图标 `icon` 支持使用在线图标
+
+### 🐞 Bug fixes
+
+- 修复 `vxe-button` 鼠标覆盖后字体颜色问题以及一些别的样式问题
+
+### 🍏 Perf
+
+- 优化路由守卫，如果已经登录并存在登录信息后不能跳转到路由白名单，而是继续保持在当前页面
+- 将 `baseURL` 和全局环境代理删除，可直接在 `vite.config.ts` 编写，即方便又支持多个代理地址
+
 # 3.6.3 (2022-11-01)
 
 ### 🎫 Feat
@@ -68,7 +83,7 @@
 
 ### ✔️ refactor
 
-- 使用 `tailwindcss` 替换 `unocss`，新增 `tailwindcss` [使用文档](http://yiming_chang.gitee.io/pure-admin-doc/pages/39156f/)
+- 使用 `tailwindcss` 替换 `unocss`，新增 `tailwindcss` [使用文档](https://yiming_chang.gitee.io/pure-admin-doc/pages/tailwindcss/)
 
 ### 🐞 Bug fixes
 
@@ -106,7 +121,7 @@
 
 - 将 `element-plus` 的 `Table` 二次封装到[@pureadmin/table](https://github.com/xiaoxian521/pure-admin-table)，提供灵活的配置项并集成到平台里
 - 将 `element-plus` 的 `Descriptions` 二次封装到[@pureadmin/descriptions](https://github.com/xiaoxian521/pure-admin-descriptions)，提供灵活的配置项并集成到平台里
-- 将平台的大部分工具以及 hooks 都集中到[@pureadmin/utils](https://pure-admin-utils-docs.vercel.app/)，并删除集中到这个库里的代码，减少平台体积
+- 将平台的大部分工具以及 `hooks` 都集中到[@pureadmin/utils](https://pure-admin-utils.netlify.app)，并删除集中到这个库里的代码，减少平台体积
 - 添加[unplugin-vue-define-options](https://www.npmjs.com/package/unplugin-vue-define-options)插件，页面可直接写 `defineOptions({name: 自定义名称})`
 - 添加项目文件、语言分析工具 [cloc](https://www.npmjs.com/package/cloc)
 - 添加登录页国际化

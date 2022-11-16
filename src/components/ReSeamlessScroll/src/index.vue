@@ -28,16 +28,16 @@ const emit = defineEmits<{
   (e: "scrollEnd"): void;
 }>();
 
-let xPos = ref<number>(0);
-let yPos = ref<number>(0);
-let delay = ref<number>(0);
-let height = ref<number>(0);
+const xPos = ref<number>(0);
+const yPos = ref<number>(0);
+const delay = ref<number>(0);
+const height = ref<number>(0);
 // 外容器宽度
-let width = ref<number>(0);
+const width = ref<number>(0);
 // 内容实际宽度
-let realBoxWidth = ref<number>(0);
-let realBoxHeight = ref<number>(0);
-let copyHtml = ref("");
+const realBoxWidth = ref<number>(0);
+const realBoxHeight = ref<number>(0);
+const copyHtml = ref("");
 // single 单步滚动的定时器
 let singleWaitTime = null;
 // move动画的animationFrame定时器
@@ -52,7 +52,7 @@ let isHover = false;
 let ease = "ease-in";
 
 // eslint-disable-next-line vue/no-setup-props-destructure
-let { classOption } = props;
+const { classOption } = props;
 
 if (classOption["key"] === undefined) {
   classOption["key"] = 0;
@@ -68,15 +68,15 @@ const realBox = templateRef<HTMLElement | null>(
   null
 );
 
-let leftSwitchState = computed(() => {
+const leftSwitchState = computed(() => {
   return unref(xPos) < 0;
 });
 
-let rightSwitchState = computed(() => {
+const rightSwitchState = computed(() => {
   return Math.abs(unref(xPos)) < unref(realBoxWidth) - unref(width);
 });
 
-let defaultOption = computed(() => {
+const defaultOption = computed(() => {
   return {
     //步长
     step: 1,
@@ -105,7 +105,7 @@ let defaultOption = computed(() => {
   };
 });
 
-let options = computed(() => {
+const options = computed(() => {
   // @ts-expect-error
   return copyObj({}, unref(defaultOption), classOption);
 });
@@ -114,11 +114,11 @@ const leftSwitchClass = computed(() => {
   return unref(leftSwitchState) ? "" : unref(options).switchDisabledClass;
 });
 
-let rightSwitchClass = computed(() => {
+const rightSwitchClass = computed(() => {
   return unref(rightSwitchState) ? "" : unref(options).switchDisabledClass;
 });
 
-let leftSwitch = computed((): CSSProperties => {
+const leftSwitch = computed((): CSSProperties => {
   return {
     position: "absolute",
     margin: `${unref(height) / 2}px 0 0 -${unref(options).switchOffset}px`,
@@ -126,7 +126,7 @@ let leftSwitch = computed((): CSSProperties => {
   };
 });
 
-let rightSwitch = computed((): CSSProperties => {
+const rightSwitch = computed((): CSSProperties => {
   return {
     position: "absolute",
     margin: `${unref(height) / 2}px 0 0 ${
@@ -136,19 +136,19 @@ let rightSwitch = computed((): CSSProperties => {
   };
 });
 
-let isHorizontal = computed(() => {
+const isHorizontal = computed(() => {
   return (
     unref(options).direction !== "bottom" && unref(options).direction !== "top"
   );
 });
 
-let float = computed((): CSSProperties => {
+const float = computed((): CSSProperties => {
   return unref(isHorizontal)
     ? { float: "left", overflow: "hidden" }
     : { overflow: "hidden" };
 });
 
-let pos = computed(() => {
+const pos = computed(() => {
   return {
     transform: `translate(${unref(xPos)}px,${unref(yPos)}px)`,
     transition: `all ${ease} ${unref(delay)}ms`,
@@ -156,45 +156,45 @@ let pos = computed(() => {
   };
 });
 
-let navigation = computed(() => {
+const navigation = computed(() => {
   return unref(options).navigation;
 });
 
-let autoPlay = computed(() => {
+const autoPlay = computed(() => {
   if (unref(navigation)) return false;
   return unref(options).autoPlay;
 });
 
-let scrollSwitch = computed(() => {
+const scrollSwitch = computed(() => {
   // 从 props 解构出来的 属性 不再具有响应性.
   return (props.data as any).length >= unref(options).limitMoveNum;
 });
 
-let hoverStopSwitch = computed(() => {
+const hoverStopSwitch = computed(() => {
   return unref(options).hoverStop && unref(autoPlay) && unref(scrollSwitch);
 });
 
-let canTouchScroll = computed(() => {
+const canTouchScroll = computed(() => {
   return unref(options).openTouch;
 });
 
-let baseFontSize = computed(() => {
+const baseFontSize = computed(() => {
   return unref(options).isSingleRemUnit
     ? parseInt(window.getComputedStyle(document.documentElement, null).fontSize)
     : 1;
 });
 
-let realSingleStopWidth = computed(() => {
+const realSingleStopWidth = computed(() => {
   return unref(options).singleWidth * unref(baseFontSize);
 });
 
-let realSingleStopHeight = computed(() => {
+const realSingleStopHeight = computed(() => {
   return unref(options).singleHeight * unref(baseFontSize);
 });
 
-let step = computed(() => {
+const step = computed(() => {
   let singleStep;
-  let step = unref(options).step;
+  const step = unref(options).step;
   if (unref(isHorizontal)) {
     singleStep = unref(realSingleStopWidth);
   } else {
@@ -275,7 +275,7 @@ function touchMove(e) {
     return;
   const touch = e.targetTouches[0];
   const { direction } = unref(options);
-  let endPos = {
+  const endPos = {
     x: touch.pageX - startPos.x,
     y: touch.pageY - startPos.y
   };
@@ -300,18 +300,19 @@ function touchMove(e) {
 
 function touchEnd() {
   if (!unref(canTouchScroll)) return;
-  let timer;
+  // eslint-disable-next-line prefer-const
+  let timer: any;
   const direction = unref(options).direction;
   delay.value = 50;
   if (direction === "top") {
     if (unref(yPos) > 0) yPos.value = 0;
   } else if (direction === "bottom") {
-    let h = (unref(realBoxHeight) / 2) * -1;
+    const h = (unref(realBoxHeight) / 2) * -1;
     if (unref(yPos) < h) yPos.value = h;
   } else if (direction === "left") {
     if (unref(xPos) > 0) xPos.value = 0;
   } else if (direction === "right") {
-    let w = unref(realBoxWidth) * -1;
+    const w = unref(realBoxWidth) * -1;
     if (unref(xPos) < w) xPos.value = w;
   }
   if (timer) clearTimeout(timer);
@@ -339,7 +340,7 @@ function scrollMove() {
     const h = unref(realBoxHeight) / 2;
     //宽度
     const w = unref(realBoxWidth) / 2;
-    let { direction, waitTime } = unref(options);
+    const { direction, waitTime } = unref(options);
     if (direction === "top") {
       // 上
       if (Math.abs(unref(yPos)) >= h) {

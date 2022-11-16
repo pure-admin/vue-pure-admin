@@ -15,10 +15,10 @@ defineOptions({
   name: "FlowChart"
 });
 
-let lf = ref(null);
-let graphData = ref(null);
-let dataVisible = ref<boolean>(false);
-let config = ref({
+const lf = ref(null);
+const graphData = ref(null);
+const dataVisible = ref<boolean>(false);
+const config = ref({
   grid: true,
   background: {
     color: "#f7f9ff"
@@ -27,7 +27,7 @@ let config = ref({
     enabled: true
   }
 });
-let nodeList = BpmnNode;
+const nodeList = BpmnNode;
 
 function initLf() {
   // 画布配置
@@ -94,7 +94,7 @@ onMounted(() => {
       <div id="LF-Turbo" />
       <!-- 数据查看面板 -->
       <el-dialog
-        customClass="flow-dialog"
+        class="flow-dialog"
         title="数据"
         v-model="dataVisible"
         width="50%"

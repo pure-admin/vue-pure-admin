@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
-import { cloneDeep } from "lodash-unified";
+import { clone } from "@pureadmin/utils";
 import { transformI18n } from "@/plugins/i18n";
 import { TreeSelect } from "@pureadmin/components";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
@@ -17,9 +17,9 @@ defineOptions({
 });
 
 const { toDetail, router } = useDetail();
-let menusTree = cloneDeep(usePermissionStoreHook().wholeMenus);
+const menusTree = clone(usePermissionStoreHook().wholeMenus, true);
 
-let treeData = computed(() => {
+const treeData = computed(() => {
   return appendFieldByUniqueId(deleteChildren(menusTree), 0, {
     disabled: true
   });
@@ -27,13 +27,13 @@ let treeData = computed(() => {
 
 const value = ref<string[]>([]);
 
-let multiTags = computed(() => {
+const multiTags = computed(() => {
   return useMultiTagsStoreHook()?.multiTags;
 });
 
 function onCloseTags() {
   value.value.forEach(uniqueId => {
-    let currentPath =
+    const currentPath =
       getNodeByUniqueId(treeData.value, uniqueId).redirect ??
       getNodeByUniqueId(treeData.value, uniqueId).path;
     useMultiTagsStoreHook().handleTags("splice", currentPath);
@@ -116,6 +116,28 @@ function onCloseTags() {
       @click="$router.push({ path: '/nested/menu1/menu1-2/menu1-2-2' })"
     >
       跳转页内菜单（传path对象）
+    </el-button>
+
+    <el-divider />
+    <el-button
+      @click="
+        $router.push({
+          name: 'Menu1-2-2',
+          query: { text: '传name对象，优先推荐' }
+        })
+      "
+    >
+      携参跳转页内菜单（传name对象，优先推荐）
+    </el-button>
+    <el-button
+      @click="
+        $router.push({
+          path: '/nested/menu1/menu1-2/menu1-2-2',
+          query: { text: '传path对象' }
+        })
+      "
+    >
+      携参跳转页内菜单（传path对象）
     </el-button>
     <el-link
       class="ml-4"

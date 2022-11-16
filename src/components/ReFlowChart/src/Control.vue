@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, unref, onMounted } from "vue";
-import { templateRef } from "@vueuse/core";
 import { LogicFlow } from "@logicflow/core";
 
 interface Props {
@@ -16,11 +15,11 @@ const emit = defineEmits<{
   (e: "catData"): void;
 }>();
 
-const controlButton3 = templateRef<HTMLElement | any>("controlButton3", null);
-const controlButton4 = templateRef<HTMLElement | any>("controlButton4", null);
+const controlButton3 = ref();
+const controlButton4 = ref();
 
-let focusIndex = ref<Number>(-1);
-let titleLists = ref([
+const focusIndex = ref<Number>(-1);
+const titleLists = ref([
   {
     icon: "icon-zoom-out-hs",
     text: "缩小",
@@ -68,7 +67,7 @@ let titleLists = ref([
 const onControl = (item, key) => {
   ["zoom", "zoom", "resetZoom", "undo", "redo", "getSnapshot"].forEach(
     (v, i) => {
-      let domControl = props.lf;
+      const domControl = props.lf;
       if (key === 1) {
         domControl.zoom(true);
       }

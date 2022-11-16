@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import { ref, reactive } from "vue";
-import { templateRef } from "@vueuse/core";
 import SeamlessScroll from "@/components/ReSeamlessScroll";
 
-const scroll = templateRef<ElRef | null>("scroll", null);
+const scroll = ref();
 
-let listData = ref([
+const listData = ref([
   {
     date: "2021-09-01",
     name: "vue-pure-admin",
@@ -58,7 +57,7 @@ let listData = ref([
   }
 ]);
 
-let classOption = reactive({
+const classOption = reactive({
   direction: "top"
 });
 </script>

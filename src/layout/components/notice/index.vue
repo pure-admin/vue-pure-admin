@@ -2,14 +2,13 @@
 import { ref } from "vue";
 import { noticesData } from "./data";
 import NoticeList from "./noticeList.vue";
-import { templateRef } from "@vueuse/core";
 import { Tabs, TabPane } from "@pureadmin/components";
 
-const dropdownDom = templateRef<ElRef | null>("dropdownDom", null);
-const activeName = ref(noticesData[0].name);
+const dropdownDom = ref();
+const activeKey = ref(noticesData[2].key);
 const notices = ref(noticesData);
 
-let noticesNum = ref(0);
+const noticesNum = ref(0);
 notices.value.forEach(notice => {
   noticesNum.value += notice.list.length;
 });
@@ -33,7 +32,8 @@ function tabClick() {
         <Tabs
           centered
           class="dropdown-tabs"
-          v-model:activeName="activeName"
+          :tabBarStyle="{ marginLeft: notices?.length > 4 ? '8px' : '0' }"
+          v-model="activeKey"
           @tabClick="tabClick"
         >
           <template v-for="item in notices" :key="item.key">

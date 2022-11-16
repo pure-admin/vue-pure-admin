@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { isEqual } from "lodash-unified";
+import { isEqual } from "@pureadmin/utils";
 import { transformI18n } from "@/plugins/i18n";
 import { ref, watch, onMounted, toRaw } from "vue";
 import { getParentPaths, findRouteByPath } from "@/router/utils";
@@ -40,7 +40,7 @@ const getBreadcrumb = (): void => {
   // 当前路由的父级路径组成的数组
   const parentRoutes = getParentPaths(router.currentRoute.value.path, routes);
   // 存放组成面包屑的数组
-  let matched = [];
+  const matched = [];
   // 获取每个父级路径对应的路由信息
   parentRoutes.forEach(path => {
     if (path !== "/") matched.push(findRouteByPath(path, routes));

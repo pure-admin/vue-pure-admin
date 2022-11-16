@@ -29,6 +29,10 @@
 
 - [点我查看 Tauri 版](https://github.com/xiaoxian521/tauri-pure-admin)
 
+## Electron 版
+
+- [点我查看 Electron 版](https://github.com/xiaoxian521/electron-pure-admin)
+
 ## 预览
 
 - [点我查看国内预览站](https://yiming_chang.gitee.io/vue-pure-admin)
@@ -144,7 +148,7 @@ pnpm build
 
 一群已满，下面是二群，群里严禁`黄`、`赌`、`毒`、`vpn`等违法行为！
 
-<img src="http://yiming_chang.gitee.io/pure-admin-doc/img/support/qq.png" width="150px" height="225px" />
+<img src="https://yiming_chang.gitee.io/pure-admin-doc/img/support/qq.png" width="150px" height="225px" />
 
 ## 许可证
 

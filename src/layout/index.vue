@@ -70,7 +70,7 @@ let isAutoCloseSidebar = true;
 // 监听容器
 emitter.on("resize", ({ detail }) => {
   if (isMobile) return;
-  let { width } = detail;
+  const { width } = detail;
   width <= 760 ? setTheme("vertical") : setTheme(useAppStoreHook().layout);
   /** width app-wrapper类容器宽度
    * 0 < width <= 760 隐藏侧边栏
