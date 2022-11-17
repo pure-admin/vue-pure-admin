@@ -63,11 +63,7 @@ const cardLogoClass = computed(() => [
           >
             {{ product.isSetup ? "已启用" : "已停用" }}
           </el-tag>
-          <el-dropdown
-            trigger="click"
-            :disabled="!product.isSetup"
-            max-height="2"
-          >
+          <el-dropdown trigger="click" :disabled="!product.isSetup">
             <IconifyIconOffline icon="more-vertical" class="text-[24px]" />
             <template #dropdown>
               <el-dropdown-menu :disabled="!product.isSetup">
