@@ -31,7 +31,6 @@ const getConfig = (key?: string): ServerConfigs => {
 export const getServerConfig = async (app: App): Promise<undefined> => {
   app.config.globalProperties.$config = getConfig();
   return axios({
-    baseURL: "",
     method: "get",
     url: `${VITE_PUBLIC_PATH}serverConfig.json`
   })
@@ -44,8 +43,6 @@ export const getServerConfig = async (app: App): Promise<undefined> => {
         // 设置全局配置
         setConfig($config);
       }
-      // 设置全局baseURL
-      app.config.globalProperties.$baseUrl = $config.baseURL;
       return $config;
     })
     .catch(() => {
