@@ -1,6 +1,6 @@
 /** 处理环境变量 */
 const warpperEnv = (envConf: Recordable): ViteEnv => {
-  /** 此处为默认值，无需修改 */
+  /** 此处为默认值 */
   const ret: ViteEnv = {
     VITE_PORT: 8848,
     VITE_PUBLIC_PATH: "",
@@ -28,7 +28,7 @@ const warpperEnv = (envConf: Recordable): ViteEnv => {
   return ret;
 };
 
-/** 环境变量 */
+/** 获取环境变量 */
 const loadEnv = (): ViteEnv => {
   return import.meta.env;
 };
