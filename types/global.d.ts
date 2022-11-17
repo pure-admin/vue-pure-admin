@@ -110,7 +110,7 @@ declare global {
     EpThemeColor?: string;
     ShowLogo?: boolean;
     ShowModel?: string;
-    menuArrowIconNoTransition?: boolean;
+    MenuArrowIconNoTransition?: boolean;
     MapConfigure?: {
       amapKey?: string;
       options: {

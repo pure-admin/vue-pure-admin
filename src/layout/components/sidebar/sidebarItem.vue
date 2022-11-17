@@ -78,7 +78,7 @@ const getSpanStyle = computed(() => {
 });
 
 const expandCloseIcon = computed(() => {
-  return getConfig()?.menuArrowIconNoTransition ? "expand-close-icon" : "";
+  return getConfig()?.MenuArrowIconNoTransition ? "expand-close-icon" : "";
 });
 
 const onlyOneChild: childrenType = ref(null);
