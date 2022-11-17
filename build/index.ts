@@ -5,7 +5,6 @@ const warpperEnv = (envConf: Recordable): ViteEnv => {
     VITE_PORT: 8848,
     VITE_PUBLIC_PATH: "",
     VITE_ROUTER_HISTORY: "",
-    VITE_LEGACY: false,
     VITE_CDN: false,
     VITE_COMPRESSION: "none"
   };

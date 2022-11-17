@@ -3,7 +3,6 @@ import { resolve } from "path";
 import vue from "@vitejs/plugin-vue";
 import { viteBuildInfo } from "./info";
 import svgLoader from "vite-svg-loader";
-import legacy from "@vitejs/plugin-legacy";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 import VueMacros from "unplugin-vue-macros/vite";
 import { viteMockServe } from "vite-plugin-mock";
@@ -16,7 +15,6 @@ import { genScssMultipleScopeVars } from "../src/layout/theme";
 
 export function getPluginsList(
   command: string,
-  VITE_LEGACY: boolean,
   VITE_CDN: boolean,
   VITE_COMPRESSION: ViteCompression
 ) {
@@ -65,13 +63,6 @@ export function getPluginsList(
         `,
       logger: false
     }),
-    // 是否为打包后的文件提供传统浏览器兼容性支持
-    VITE_LEGACY
-      ? legacy({
-          targets: ["ie >= 11"],
-          additionalLegacyPolyfills: ["regenerator-runtime/runtime"]
-        })
-      : null,
     // 打包分析
     lifecycle === "report"
       ? visualizer({ open: true, brotliSize: true, filename: "report.html" })

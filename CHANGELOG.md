@@ -282,7 +282,6 @@
 - Optimize the tab page to bring a better interactive experience
 - Routing title supports direct writing in Chinese, which can be separated from internationalization
 - Route history mode is read from env and supports base parameter
-- Packaged files provide traditional browser compatibility support, configure VITE_LEGACY to true
 
 # 2.6.0(2021-11-10)
 

@@ -87,7 +87,6 @@ declare global {
     VITE_PORT: number;
     VITE_PUBLIC_PATH: string;
     VITE_ROUTER_HISTORY: string;
-    VITE_LEGACY: boolean;
     VITE_CDN: boolean;
     VITE_COMPRESSION: ViteCompression;
   }
