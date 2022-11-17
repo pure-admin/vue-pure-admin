@@ -12,11 +12,11 @@ const router = useRouter();
 const routes: any = router.options.routes;
 const multiTags: any = useMultiTagsStoreHook().multiTags;
 
-// const isDashboard = (route: RouteLocationMatched): boolean | string => {
-//   const name = route && (route.name as string);
-//   if (!name) return false;
-//   return name.trim().toLocaleLowerCase() === "Welcome".toLocaleLowerCase();
-// };
+const isDashboard = (route: RouteLocationMatched): boolean | string => {
+  const name = route && (route.name as string);
+  if (!name) return false;
+  return name.trim().toLocaleLowerCase() === "Welcome".toLocaleLowerCase();
+};
 
 const getBreadcrumb = (): void => {
   // 当前路由信息
@@ -40,7 +40,7 @@ const getBreadcrumb = (): void => {
   // 当前路由的父级路径组成的数组
   const parentRoutes = getParentPaths(router.currentRoute.value.path, routes);
   // 存放组成面包屑的数组
-  const matched = [];
+  let matched = [];
   // 获取每个父级路径对应的路由信息
   parentRoutes.forEach(path => {
     if (path !== "/") matched.push(findRouteByPath(path, routes));
@@ -48,15 +48,15 @@ const getBreadcrumb = (): void => {
 
   if (currentRoute?.path !== "/welcome") matched.push(currentRoute);
 
-  // if (!isDashboard(matched[0])) {
-  //   matched = [
-  //     {
-  //       path: "/welcome",
-  //       parentPath: "/",
-  //       meta: { title: "menus.hshome" }
-  //     } as unknown as RouteLocationMatched
-  //   ].concat(matched);
-  // }
+  if (!isDashboard(matched[0])) {
+    matched = [
+      {
+        path: "/welcome",
+        parentPath: "/",
+        meta: { title: "menus.hshome" }
+      } as unknown as RouteLocationMatched
+    ].concat(matched);
+  }
 
   matched.forEach((item, index) => {
     if (currentRoute?.query || currentRoute?.params) return;

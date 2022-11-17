@@ -106,7 +106,17 @@ export function useTags() {
   ]);
 
   function conditionHandle(item, previous, next) {
-    if (isBoolean(route?.meta?.showLink) && route?.meta?.showLink === false) {
+    if (
+      isBoolean(route?.meta?.showLink) &&
+      route?.meta?.showLink === false &&
+      route?.name !== "Home"
+    ) {
+      console.log(
+        "%croute?.name===>>>: ",
+        "color: MidnightBlue; background: Aquamarine; font-size: 20px;",
+        router
+      );
+      console.log("---");
       if (Object.keys(route.query).length > 0) {
         return isEqual(route.query, item.query) ? previous : next;
       } else {
@@ -116,6 +126,19 @@ export function useTags() {
       return route.path === item.path ? previous : next;
     }
   }
+
+  // function conditionHandle(item, previous, next) {
+  //   if (
+  //     Object.keys(route.query).length === 0 &&
+  //     Object.keys(route.params).length === 0
+  //   ) {
+  //     return route.path === item.path ? previous : next;
+  //   } else if (Object.keys(route.query).length > 0) {
+  //     return isEqual(route.query, item.query) ? previous : next;
+  //   } else {
+  //     return isEqual(route.params, item.params) ? previous : next;
+  //   }
+  // }
 
   const iconIsActive = computed(() => {
     return (item, index) => {
