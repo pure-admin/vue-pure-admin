@@ -1,62 +1,42 @@
 <script setup lang="ts">
-import Driver from "driver.js";
-import "driver.js/dist/driver.min.css";
+import intro from "intro.js";
+import "intro.js/minified/introjs.min.css";
 
 defineOptions({
   name: "Guide"
 });
 
-const steps = [
-  {
-    element: "#header-notice",
-    popover: {
-      title: "消息通知",
-      description: "你可以在这里查看管理员发送的消息",
-      position: "left"
-    }
-  },
-  {
-    element: "#header-translation",
-    popover: {
-      title: "国际化",
-      description: "你可以在这里进行语言切换",
-      position: "left"
-    }
-  },
-  {
-    element: ".set-icon",
-    popover: {
-      title: "项目配置",
-      description: "你可以在这里查看项目配置",
-      position: "left"
-    }
-  },
-  {
-    element: ".tags-view",
-    popover: {
-      title: "多标签页",
-      description: "这里是你访问过的页面的历史",
-      position: "buttom"
-    }
-  }
-];
-
-const driver = new Driver({
-  className: "scoped-class",
-  animate: true,
-  opacity: 0.75,
-  padding: 0,
-  allowClose: true,
-  overlayClickNext: false,
-  doneBtnText: "完成",
-  closeBtnText: "关闭",
-  nextBtnText: "下一步",
-  prevBtnText: "上一步"
-});
-
 const guide = () => {
-  driver.defineSteps(steps);
-  driver.start();
+  intro()
+    .setOptions({
+      steps: [
+        {
+          element: document.querySelector("#header-notice"),
+          title: "消息通知",
+          intro: "您可以在这里查看管理员发送的消息",
+          position: "left"
+        },
+        {
+          element: document.querySelector("#header-translation"),
+          title: "国际化",
+          intro: "您可以在这里进行语言切换",
+          position: "left"
+        },
+        {
+          element: document.querySelector(".set-icon"),
+          title: "项目配置",
+          intro: "您可以在这里查看项目配置",
+          position: "left"
+        },
+        {
+          element: document.querySelector(".tags-view"),
+          title: "多标签页",
+          intro: "这里是您访问过的页面的历史",
+          position: "bottom"
+        }
+      ]
+    })
+    .start();
 };
 </script>
 
@@ -69,20 +49,8 @@ const guide = () => {
         </span>
       </div>
     </template>
-    <el-button
-      type="primary"
-      style="margin-top: 10px"
-      @click.prevent.stop="guide"
-    >
+    <el-button type="primary" class="mt-[10px]" @click="guide">
       打开引导页
     </el-button>
   </el-card>
 </template>
-
-<style>
-div#driver-highlighted-element-stage,
-div#driver-page-overlay {
-  background: transparent !important;
-  outline: 5000px solid rgba(0, 0, 0, 0.75);
-}
-</style>

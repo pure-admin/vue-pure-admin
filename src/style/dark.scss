@@ -170,6 +170,12 @@ html.dark {
     }
   }
 
+  /* intro.js */
+  .introjs-tooltip-title,
+  .introjs-tooltiptext {
+    color: var(--el-color-primary);
+  }
+
   /* element-plus */
   .el-table__cell {
     background: var(--el-bg-color);

@@ -24,6 +24,7 @@ specifiers:
   "@pureadmin/theme": ^2.4.0
   "@pureadmin/utils": ^1.6.5
   "@types/element-resize-detector": 1.1.3
+  "@types/intro.js": ^5.1.0
   "@types/js-cookie": ^3.0.1
   "@types/lodash": ^4.14.180
   "@types/lodash-es": ^4.17.6
@@ -52,16 +53,16 @@ specifiers:
   cropperjs: ^1.5.12
   cssnano: ^5.1.14
   dayjs: ^1.11.5
-  driver.js: ^0.9.8
   echarts: ^5.4.0
   el-table-infinite-scroll: ^3.0.1
-  element-plus: ^2.2.21
+  element-plus: ^2.2.22
   element-resize-detector: ^1.2.4
   eslint: ^8.8.0
   eslint-plugin-prettier: ^4.0.0
   eslint-plugin-vue: ^9.7.0
   font-awesome: ^4.7.0
   husky: ^7.0.4
+  intro.js: ^6.0.0
   js-cookie: ^3.0.1
   jsbarcode: ^3.11.5
   lint-staged: 11.1.2
@@ -130,8 +131,8 @@ dependencies:
   "@logicflow/core": 1.1.31
   "@logicflow/extension": 1.1.31
   "@pureadmin/components": 1.1.0_vue@3.2.45
-  "@pureadmin/descriptions": 1.1.1_element-plus@2.2.21
-  "@pureadmin/table": 1.2.0_element-plus@2.2.21
+  "@pureadmin/descriptions": 1.1.1_element-plus@2.2.22
+  "@pureadmin/table": 1.2.0_element-plus@2.2.22
   "@pureadmin/utils": 1.6.6_aotapuqn7htzdjltsyimavekky
   "@vueuse/core": 9.5.0_vue@3.2.45
   "@vueuse/motion": 2.0.0-beta.12_vue@3.2.45
@@ -142,11 +143,11 @@ dependencies:
   china-area-data: 5.0.1
   cropperjs: 1.5.12
   dayjs: 1.11.6
-  driver.js: 0.9.8
   echarts: 5.4.0
   el-table-infinite-scroll: 3.0.1
-  element-plus: 2.2.21_vue@3.2.45
+  element-plus: 2.2.22_vue@3.2.45
   element-resize-detector: 1.2.4
+  intro.js: 6.0.0
   js-cookie: 3.0.1
   jsbarcode: 3.11.5
   lodash: 4.17.21
@@ -195,6 +196,7 @@ devDependencies:
   "@intlify/vite-plugin-vue-i18n": 6.0.3_vite@3.1.8+vue-i18n@9.2.2
   "@pureadmin/theme": 2.4.0
   "@types/element-resize-detector": 1.1.3
+  "@types/intro.js": 5.1.0
   "@types/js-cookie": 3.0.2
   "@types/lodash": 4.14.189
   "@types/lodash-es": 4.17.6
@@ -1364,7 +1366,7 @@ packages:
       vue: 3.2.45
     dev: false
 
-  /@pureadmin/descriptions/1.1.1_element-plus@2.2.21:
+  /@pureadmin/descriptions/1.1.1_element-plus@2.2.22:
     resolution:
       {
         integrity: sha512-4BHLKomLU/LxGs5EUA+h+aKNrJEkhrU6+QE8VoWfJZ8VTU6ddvFLT/Pi4WuO5CWNXM9ZjqvHLFFVwEPlKntqtg==
@@ -1373,11 +1375,11 @@ packages:
       element-plus: ^2.0.0
     dependencies:
       "@element-plus/icons-vue": 2.0.10_vue@3.2.45
-      element-plus: 2.2.21_vue@3.2.45
+      element-plus: 2.2.22_vue@3.2.45
       vue: 3.2.45
     dev: false
 
-  /@pureadmin/table/1.2.0_element-plus@2.2.21:
+  /@pureadmin/table/1.2.0_element-plus@2.2.22:
     resolution:
       {
         integrity: sha512-mJBpMj0YkaqTM5TDz+ek/f8h74qRLhDc/gLJhBq0wpyfCgG++Jd/9i+QUj8gedA5oN8IL6LOSFbcvlGDYxHgkw==
@@ -1385,7 +1387,7 @@ packages:
     peerDependencies:
       element-plus: ^2.0.0
     dependencies:
-      element-plus: 2.2.21_vue@3.2.45
+      element-plus: 2.2.22_vue@3.2.45
       vue: 3.2.45
     dev: false
 
@@ -1519,6 +1521,13 @@ packages:
         integrity: sha512-UfnOK1pIxO7P+EgPRZXD9jMpimd8QEFcEZ5R67R1UhGbv4zghU5+NE7U8M8G9H5Jc8FI51rqDWQs6FtUfq2e/Q==
       }
     dev: false
+
+  /@types/intro.js/5.1.0:
+    resolution:
+      {
+        integrity: sha512-XHkD6t7f3bn8B2//kOlznRzmk15KvsRkFpY6i8em/eDphblQ8QHbCiW+6OPjX7CxI0aVNVJK6Yamb2h2KMmFdA==
+      }
+    dev: true
 
   /@types/js-cookie/3.0.2:
     resolution:
@@ -3952,13 +3961,6 @@ packages:
       unidragger: 2.4.0
     dev: false
 
-  /driver.js/0.9.8:
-    resolution:
-      {
-        integrity: sha512-bczjyKdX6XmFyCDkwtRmlaORDwfBk1xXmRO0CAe5VwNQTM98aWaG2LAIiIdTe53iV/B7W5lXlIy2xYtf0JRb7Q==
-      }
-    dev: false
-
   /echarts/5.4.0:
     resolution:
       {
@@ -3983,7 +3985,7 @@ packages:
       }
     dependencies:
       core-js: 3.26.1
-      element-plus: 2.2.21_vue@3.2.45
+      element-plus: 2.2.22_vue@3.2.45
       vue: 3.2.45
     transitivePeerDependencies:
       - "@vue/composition-api"
@@ -3996,10 +3998,10 @@ packages:
       }
     dev: true
 
-  /element-plus/2.2.21_vue@3.2.45:
+  /element-plus/2.2.22_vue@3.2.45:
     resolution:
       {
-        integrity: sha512-wZUePoXZ1zuCkzENK/8mn+mekuLJ9OoGYiudjUujzCf+T8HfOQl+TKQStwOkGBNk93fK8e9YdFIty4jH4AX6dg==
+        integrity: sha512-gg2g2WOMNpWf0wGesymUvTV0VZDF/4khQKroSNeCV/vWJ/cqssPYdtqfGxTiFRt/f+JpyFkV7O1mo0yzMCzrBg==
       }
     peerDependencies:
       vue: ^3.2.0
@@ -5462,6 +5464,13 @@ packages:
         integrity: sha512-JV/yugV2uzW5iMRSiZAyDtQd+nxtUnjeLt0acNdw98kKLrvuRVyB80tsREOE7yvGVgalhZ6RNXCmEHkUKBKxew==
       }
     dev: true
+
+  /intro.js/6.0.0:
+    resolution:
+      {
+        integrity: sha512-ZUiR6BoLSvPSlLG0boewnWVgji1fE1gBvP/pyw5pgCKXEDQz1mMeUxarggClPNs71UTq364LwSk9zxz17A9gaQ==
+      }
+    dev: false
 
   /is-arrayish/0.2.1:
     resolution:
