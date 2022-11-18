@@ -12,7 +12,7 @@
 
 ## Supporting Video
 
-- [Click Watch Tutorial](https://www.bilibili.com/video/BV1534y1S7HV)
+- [Click Watch Tutorial](https://www.bilibili.com/video/BV1kg411v7QT)
 - [Click Watch UI Design](https://www.bilibili.com/video/BV17g411T7rq)
 
 ## Docs (support `PWA` fast, offline access)
