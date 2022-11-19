@@ -7,6 +7,7 @@ import type {
 } from "vue";
 import type { ECharts } from "echarts";
 import { type ResponsiveStorage } from "./index";
+import type { TableColumns } from "@pureadmin/table";
 
 // GlobalComponents for Volar
 declare module "vue" {
@@ -125,6 +126,9 @@ declare global {
     $storage: ResponsiveStorage;
     $config: ServerConfigs;
   }
+
+  // 继承 @pureadmin/table 的 TableColumns，方便全局直接调用
+  declare interface TableColumnList extends Array<TableColumns> {}
 
   function parseInt(s: string | number, radix?: number): number;
 

@@ -33,6 +33,7 @@ import pptRouter from "./modules/ppt";
 import homeRouter from "./modules/home";
 import ableRouter from "./modules/able";
 import listRouter from "./modules/list";
+import tableRouter from "./modules/table";
 import aboutRouter from "./modules/about";
 import errorRouter from "./modules/error";
 import guideRouter from "./modules/guide";
@@ -50,6 +51,7 @@ const routes = [
   homeRouter,
   ableRouter,
   listRouter,
+  tableRouter,
   aboutRouter,
   errorRouter,
   guideRouter,
