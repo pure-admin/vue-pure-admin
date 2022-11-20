@@ -11,6 +11,7 @@ import MultipleChoice from "./multipleChoice.vue";
 import Sortable from "./sortable.vue";
 import Filters from "./filters.vue";
 import ColumnTemplate from "./column-template/index.vue";
+import HeaderRenderer from "./header-renderer/index.vue";
 
 export {
   Base,
@@ -25,5 +26,6 @@ export {
   MultipleChoice,
   Sortable,
   Filters,
-  ColumnTemplate
+  ColumnTemplate,
+  HeaderRenderer
 };
