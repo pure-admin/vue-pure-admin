@@ -1,4 +1,5 @@
 import dayjs from "dayjs";
+import { clone } from "@pureadmin/utils";
 
 const date = dayjs(new Date()).format("YYYY-MM-DD");
 
@@ -45,7 +46,9 @@ const tableData = [
   }
 ];
 
-const tableDataMore = tableData.map(item =>
+const cloneData = clone(tableData, true);
+
+const tableDataMore = cloneData.map(item =>
   Object.assign(item, {
     state: "California",
     city: "Los Angeles",
@@ -53,4 +56,10 @@ const tableDataMore = tableData.map(item =>
   })
 );
 
-export { tableData, tableDataMore };
+const tableDataSortable = cloneData.map((item, index) =>
+  Object.assign(item, {
+    date: `${dayjs(new Date()).format("YYYY-MM")}-${index + 1}`
+  })
+);
+
+export { tableData, tableDataMore, tableDataSortable };

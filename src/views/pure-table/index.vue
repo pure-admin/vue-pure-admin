@@ -8,7 +8,11 @@ import {
   FixHeader,
   FixColumn,
   FluidHeight,
-  GroupHeader
+  GroupHeader,
+  Radio,
+  MultipleChoice,
+  Sortable,
+  Filters
 } from "./components";
 
 defineOptions({
@@ -69,6 +73,18 @@ defineOptions({
       </TabPane>
       <TabPane key="groupHeader" tab="多级表头（表头分组）">
         <GroupHeader />
+      </TabPane>
+      <TabPane key="radio" tab="单选">
+        <Radio />
+      </TabPane>
+      <TabPane key="multipleChoice" tab="多选">
+        <MultipleChoice />
+      </TabPane>
+      <TabPane key="sortable" tab="排序和格式化">
+        <Sortable />
+      </TabPane>
+      <TabPane key="filters" tab="筛选">
+        <Filters />
       </TabPane>
     </Tabs>
   </el-card>

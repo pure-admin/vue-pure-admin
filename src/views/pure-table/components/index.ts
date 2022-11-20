@@ -6,6 +6,10 @@ import FixHeader from "./fixHeader.vue";
 import FixColumn from "./fixColumn.vue";
 import FluidHeight from "./fluidHeight.vue";
 import GroupHeader from "./groupHeader.vue";
+import Radio from "./radio.vue";
+import MultipleChoice from "./multipleChoice.vue";
+import Sortable from "./sortable.vue";
+import Filters from "./filters.vue";
 
 export {
   Base,
@@ -15,5 +19,9 @@ export {
   FixHeader,
   FixColumn,
   FluidHeight,
-  GroupHeader
+  GroupHeader,
+  Radio,
+  MultipleChoice,
+  Sortable,
+  Filters
 };
