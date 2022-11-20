@@ -10,6 +10,7 @@ export function useColumns() {
     {
       type: "selection",
       width: 55,
+      align: "left",
       hide: ({ checkList }) => !checkList.includes("勾选列")
     },
     {

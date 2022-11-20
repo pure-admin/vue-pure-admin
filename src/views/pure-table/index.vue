@@ -12,23 +12,16 @@ defineOptions({
     <template #header>
       <div class="card-header">
         <span class="font-medium">
-          仿antdv锚点，采用
+          平台二次封装 element-plus 的 Table ，完全兼容 Api
+          并提供灵活的配置项以及完善的类型提醒，再也不用将代码都写在 template
+          里了，欢迎 Star
           <el-link
-            href="https://www.npmjs.com/package/@pureadmin/components"
+            href="https://github.com/xiaoxian521/pure-admin-table"
             target="_blank"
             style="font-size: 16px; margin: 0 4px 5px"
           >
-            @pureadmin/components
+            @pureadmin/table
           </el-link>
-          ，完全兼容antdv的
-          <el-link
-            href="https://next.antdv.com/components/anchor-cn"
-            target="_blank"
-            style="font-size: 16px; margin: 0 4px 5px"
-          >
-            Anchor
-          </el-link>
-          写法
         </span>
       </div>
     </template>

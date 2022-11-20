@@ -12,7 +12,6 @@ export function useColumns() {
       label: "序号",
       type: "index",
       width: 60,
-      align: "left",
       hide: ({ checkList }) => !checkList.includes("序号列")
     },
     {
