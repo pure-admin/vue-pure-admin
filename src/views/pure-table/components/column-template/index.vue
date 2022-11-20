@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { tableData } from "../data";
 import { useColumns } from "./columns";
 
-const { columns } = useColumns();
+const { columns, tableData } = useColumns();
 </script>
 
 <template>

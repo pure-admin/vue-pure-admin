@@ -1,4 +1,5 @@
 import { message } from "@pureadmin/components";
+import { tableData } from "../data";
 
 // 如果您不习惯tsx写法，可以传slot，然后在template里写
 export function useColumns() {
@@ -8,7 +9,7 @@ export function useColumns() {
       prop: "date",
       cellRenderer: ({ row }) => (
         <div style="display: flex; align-items: center">
-          <iconify-iconOnline icon="ep:timer" />
+          <iconify-icon-online icon="ep:timer" />
           <span style="margin-left: 10px">{row.date}</span>
         </div>
       )
@@ -62,6 +63,7 @@ export function useColumns() {
   };
 
   return {
-    columns
+    columns,
+    tableData
   };
 }

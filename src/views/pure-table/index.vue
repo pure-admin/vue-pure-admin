@@ -26,7 +26,7 @@ defineOptions({
       </div>
     </template>
 
-    <Tabs>
+    <Tabs :destroyInactiveTabPane="true">
       <TabPane v-for="item of list" :key="item.key">
         <template #tab>
           <el-tooltip :content="item.content" placement="top-end">
