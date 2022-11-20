@@ -7,7 +7,8 @@ import {
   Status,
   FixHeader,
   FixColumn,
-  FluidHeight
+  FluidHeight,
+  GroupHeader
 } from "./components";
 
 defineOptions({
@@ -65,6 +66,9 @@ defineOptions({
       </TabPane>
       <TabPane key="fluidHeight" tab="流体高度">
         <FluidHeight />
+      </TabPane>
+      <TabPane key="groupHeader" tab="多级表头（表头分组）">
+        <GroupHeader />
       </TabPane>
     </Tabs>
   </el-card>
