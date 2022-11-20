@@ -10,6 +10,7 @@ import Radio from "./radio.vue";
 import MultipleChoice from "./multipleChoice.vue";
 import Sortable from "./sortable.vue";
 import Filters from "./filters.vue";
+import ColumnTemplate from "./column-template/index.vue";
 
 export {
   Base,
@@ -23,5 +24,6 @@ export {
   Radio,
   MultipleChoice,
   Sortable,
-  Filters
+  Filters,
+  ColumnTemplate
 };

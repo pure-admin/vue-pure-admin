@@ -10,7 +10,8 @@ import {
   Radio,
   MultipleChoice,
   Sortable,
-  Filters
+  Filters,
+  ColumnTemplate
 } from "./components";
 
 const rendContent = (val: string) =>
@@ -94,5 +95,11 @@ export const list = [
     content: rendContent("filters.vue"),
     title: "筛选",
     component: Filters
+  },
+  {
+    key: "column-template",
+    content: rendContent("column-template/index.vue"),
+    title: "自定义列模板",
+    component: ColumnTemplate
   }
 ];
