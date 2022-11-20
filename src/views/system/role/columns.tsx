@@ -6,7 +6,7 @@ import { Switch, message } from "@pureadmin/components";
 export function useColumns() {
   const switchLoadMap = ref({});
 
-  const columns = ref([
+  const columns: TableColumnList = [
     {
       type: "selection",
       width: 55,
@@ -60,7 +60,7 @@ export function useColumns() {
           unCheckedValue={0}
           checked-children="已开启"
           un-checked-children="已关闭"
-          onChange={() => onChange(scope)}
+          onChange={() => onChange(scope as any)}
         />
       )
     },
@@ -77,7 +77,7 @@ export function useColumns() {
       width: 180,
       slot: "operation"
     }
-  ]);
+  ];
 
   function onChange({ row, index }) {
     ElMessageBox.confirm(

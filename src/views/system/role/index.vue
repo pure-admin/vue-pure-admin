@@ -120,7 +120,7 @@ onMounted(() => {
       <template v-slot="{ size, checkList }">
         <PureTable
           border
-          align="center"
+          align-whole="center"
           showOverflowTooltip
           table-layout="auto"
           :size="size"

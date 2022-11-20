@@ -14,7 +14,11 @@ const flowChartRouter: RouteConfigsTable = {
       name: "PureTable",
       component: () => import("@/views/pure-table/index.vue"),
       meta: {
-        title: "pure-admin-table"
+        title: "pure-admin-table",
+        extraIcon: {
+          svg: true,
+          name: "team-iconxinpin"
+        }
       }
     }
   ]

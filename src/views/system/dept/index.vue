@@ -102,8 +102,9 @@ onMounted(() => {
         <PureTable
           ref="tableRef"
           border
-          align="center"
+          align-whole="center"
           row-key="id"
+          showOverflowTooltip
           table-layout="auto"
           default-expand-all
           :size="size"
