@@ -100,7 +100,7 @@ const swiperExample: any[] = [
     </template>
     <el-row :gutter="10">
       <el-col v-for="item in swiperExample" :key="item.id" :span="12">
-        <h3 class="py-[24px] text-[24px] font-bold">{{ item.label }}</h3>
+        <h6 class="py-[24px] text-[24px] font-bold">{{ item.label }}</h6>
         <swiper v-bind="item.options">
           <swiper-slide v-for="i in 5" :key="i">
             <div
