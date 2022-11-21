@@ -14,6 +14,7 @@ import ColumnTemplate from "./column-template/index.vue";
 import HeaderRenderer from "./header-renderer/index.vue";
 import Expand from "./expand.vue";
 import TreeTable from "./tree.vue";
+import TotalRow from "./totalRow.vue";
 
 export {
   Base,
@@ -31,5 +32,6 @@ export {
   ColumnTemplate,
   HeaderRenderer,
   Expand,
-  TreeTable
+  TreeTable,
+  TotalRow
 };

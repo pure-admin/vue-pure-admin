@@ -14,7 +14,8 @@ import {
   ColumnTemplate,
   HeaderRenderer,
   Expand,
-  TreeTable
+  TreeTable,
+  TotalRow
 } from "./components";
 
 const rendContent = (val: string) =>
@@ -122,5 +123,11 @@ export const list = [
     content: rendContent("tree"),
     title: "树形数据与懒加载",
     component: TreeTable
+  },
+  {
+    key: "totalRow",
+    content: rendContent("totalRow"),
+    title: "表尾合计行",
+    component: TotalRow
   }
 ];
