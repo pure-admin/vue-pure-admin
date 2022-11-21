@@ -43,7 +43,7 @@ import { subBefore, getQueryMap } from "@pureadmin/utils";
     delete params["roles"];
     delete params["accessToken"];
 
-    const newUrl = `${location.origin}${subBefore(
+    const newUrl = `${location.origin}${location.pathname}${subBefore(
       location.hash,
       "?"
     )}?${JSON.stringify(params)
