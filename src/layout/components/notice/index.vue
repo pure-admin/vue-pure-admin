@@ -5,7 +5,8 @@ import NoticeList from "./noticeList.vue";
 import { Tabs, TabPane } from "@pureadmin/components";
 
 const dropdownDom = ref();
-const activeKey = ref(noticesData[2].key);
+const activeKey = ref(noticesData[0].key);
+
 const notices = ref(noticesData);
 
 const noticesNum = ref(0);
@@ -33,7 +34,7 @@ function tabClick() {
           centered
           class="dropdown-tabs"
           :tabBarStyle="{ marginLeft: notices?.length > 4 ? '8px' : '0' }"
-          v-model="activeKey"
+          v-model:activeKey="activeKey"
           @tabClick="tabClick"
         >
           <template v-for="item in notices" :key="item.key">

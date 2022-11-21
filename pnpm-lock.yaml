@@ -74,7 +74,7 @@ specifiers:
   nprogress: ^0.2.0
   path: ^0.12.7
   picocolors: ^1.0.0
-  pinia: ^2.0.23
+  pinia: ^2.0.24
   postcss: ^8.4.18
   postcss-html: ^1.5.0
   postcss-import: ^15.0.0
