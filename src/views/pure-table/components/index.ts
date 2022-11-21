@@ -13,6 +13,7 @@ import Filters from "./filters.vue";
 import ColumnTemplate from "./column-template/index.vue";
 import HeaderRenderer from "./header-renderer/index.vue";
 import Expand from "./expand.vue";
+import TreeTable from "./tree.vue";
 
 export {
   Base,
@@ -29,5 +30,6 @@ export {
   Filters,
   ColumnTemplate,
   HeaderRenderer,
-  Expand
+  Expand,
+  TreeTable
 };

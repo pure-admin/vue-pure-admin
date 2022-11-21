@@ -13,7 +13,8 @@ import {
   Filters,
   ColumnTemplate,
   HeaderRenderer,
-  Expand
+  Expand,
+  TreeTable
 } from "./components";
 
 const rendContent = (val: string) =>
@@ -115,5 +116,11 @@ export const list = [
     content: rendContent("expand"),
     title: "展开行",
     component: Expand
+  },
+  {
+    key: "tree",
+    content: rendContent("tree"),
+    title: "树形数据与懒加载",
+    component: TreeTable
   }
 ];
