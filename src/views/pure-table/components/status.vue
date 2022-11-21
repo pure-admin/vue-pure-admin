@@ -27,7 +27,7 @@ const columns: TableColumnList = [
 </script>
 
 <template>
-  <PureTable
+  <pure-table
     :data="tableData"
     :columns="columns"
     :row-class-name="tableRowClassName"

@@ -12,7 +12,8 @@ import {
   Sortable,
   Filters,
   ColumnTemplate,
-  HeaderRenderer
+  HeaderRenderer,
+  Expand
 } from "./components";
 
 const rendContent = (val: string) =>
@@ -108,5 +109,11 @@ export const list = [
     content: rendContent("header-renderer/index"),
     title: "自定义表头",
     component: HeaderRenderer
+  },
+  {
+    key: "expand",
+    content: rendContent("expand"),
+    title: "展开行",
+    component: Expand
   }
 ];

@@ -60,7 +60,7 @@ function handleClick(row) {
 </script>
 
 <template>
-  <PureTable
+  <pure-table
     :data="
       props.height
         ? tableDataMore.concat(tableDataMore).concat(tableDataMore)
@@ -75,5 +75,5 @@ function handleClick(row) {
       </el-button>
       <el-button link type="primary" size="small">Edit</el-button>
     </template>
-  </PureTable>
+  </pure-table>
 </template>

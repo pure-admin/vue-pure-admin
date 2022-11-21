@@ -2,6 +2,7 @@ import { message } from "@pureadmin/components";
 import { tableData } from "../data";
 
 // 如果您不习惯tsx写法，可以传slot，然后在template里写
+// 需是hooks写法（函数中有return），避免失去响应性
 export function useColumns() {
   const columns: TableColumnList = [
     {

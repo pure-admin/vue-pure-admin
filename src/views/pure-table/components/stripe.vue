@@ -18,5 +18,5 @@ const columns: TableColumnList = [
 </script>
 
 <template>
-  <PureTable :data="tableData" :columns="columns" stripe />
+  <pure-table :data="tableData" :columns="columns" stripe />
 </template>

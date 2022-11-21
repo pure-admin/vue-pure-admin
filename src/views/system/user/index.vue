@@ -131,7 +131,7 @@ onMounted(() => {
           </el-button>
         </template>
         <template v-slot="{ size, checkList }">
-          <PureTable
+          <pure-table
             border
             align-whole="center"
             table-layout="auto"
@@ -211,7 +211,7 @@ onMounted(() => {
                 </template>
               </el-dropdown>
             </template>
-          </PureTable>
+          </pure-table>
         </template>
       </TableProBar>
     </div>

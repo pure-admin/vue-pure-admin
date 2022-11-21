@@ -5,5 +5,5 @@ const { columns, filterTableData } = useColumns();
 </script>
 
 <template>
-  <PureTable :data="filterTableData" :columns="columns" />
+  <pure-table :data="filterTableData" :columns="columns" />
 </template>

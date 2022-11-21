@@ -41,7 +41,7 @@ const columns: TableColumnList = [
 
 <template>
   <div>
-    <PureTable
+    <pure-table
       ref="tableRef"
       :data="tableData"
       :columns="columns"

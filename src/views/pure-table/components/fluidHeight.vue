@@ -65,7 +65,7 @@ const onAddItem = () => {
 
 <template>
   <div>
-    <PureTable :data="tableData" :columns="columns" maxHeight="500">
+    <pure-table :data="tableData" :columns="columns" maxHeight="500">
       <template #operation="{ $index }">
         <el-button
           link
@@ -76,7 +76,7 @@ const onAddItem = () => {
           Remove
         </el-button>
       </template>
-    </PureTable>
+    </pure-table>
     <el-button class="mt-4" style="width: 100%" @click="onAddItem">
       Add Item
     </el-button>

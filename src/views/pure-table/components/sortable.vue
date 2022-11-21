@@ -20,7 +20,7 @@ const columns: TableColumnList = [
 </script>
 
 <template>
-  <PureTable
+  <pure-table
     :data="tableDataSortable"
     :columns="columns"
     :default-sort="{ prop: 'date', order: 'ascending' }"

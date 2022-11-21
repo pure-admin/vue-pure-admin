@@ -99,7 +99,7 @@ onMounted(() => {
         </el-button>
       </template>
       <template v-slot="{ size, checkList }">
-        <PureTable
+        <pure-table
           ref="tableRef"
           border
           align-whole="center"
@@ -143,7 +143,7 @@ onMounted(() => {
               </template>
             </el-popconfirm>
           </template>
-        </PureTable>
+        </pure-table>
       </template>
     </TableProBar>
   </div>

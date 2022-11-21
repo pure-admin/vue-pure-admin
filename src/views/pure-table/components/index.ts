@@ -12,6 +12,7 @@ import Sortable from "./sortable.vue";
 import Filters from "./filters.vue";
 import ColumnTemplate from "./column-template/index.vue";
 import HeaderRenderer from "./header-renderer/index.vue";
+import Expand from "./expand.vue";
 
 export {
   Base,
@@ -27,5 +28,6 @@ export {
   Sortable,
   Filters,
   ColumnTemplate,
-  HeaderRenderer
+  HeaderRenderer,
+  Expand
 };

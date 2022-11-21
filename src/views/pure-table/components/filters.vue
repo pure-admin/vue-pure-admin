@@ -88,7 +88,7 @@ const tableData = [
   <div>
     <el-button @click="resetDateFilter">reset date filter</el-button>
     <el-button @click="clearFilter">reset all filters</el-button>
-    <PureTable
+    <pure-table
       ref="tableRef"
       row-key="date"
       :data="tableData"
@@ -99,6 +99,6 @@ const tableData = [
           {{ row.tag }}
         </el-tag>
       </template>
-    </PureTable>
+    </pure-table>
   </div>
 </template>

@@ -18,7 +18,7 @@ const columns: TableColumnList = [
 </script>
 
 <template>
-  <PureTable
+  <pure-table
     :data="tableData.concat(tableData).concat(tableData)"
     :columns="columns"
     height="360"
