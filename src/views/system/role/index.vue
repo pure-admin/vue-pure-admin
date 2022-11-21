@@ -118,9 +118,9 @@ onMounted(() => {
         </el-button>
       </template>
       <template v-slot="{ size, checkList }">
-        <PureTable
+        <pure-table
           border
-          align="center"
+          align-whole="center"
           showOverflowTooltip
           table-layout="auto"
           :size="size"
@@ -199,7 +199,7 @@ onMounted(() => {
               </template>
             </el-dropdown>
           </template>
-        </PureTable>
+        </pure-table>
       </template>
     </TableProBar>
   </div>

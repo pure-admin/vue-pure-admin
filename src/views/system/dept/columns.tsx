@@ -1,8 +1,7 @@
-import { ref } from "vue";
 import dayjs from "dayjs";
 
 export function useColumns() {
-  const columns = ref([
+  const columns: TableColumnList = [
     {
       type: "selection",
       width: 55,
@@ -13,7 +12,6 @@ export function useColumns() {
       label: "序号",
       type: "index",
       width: 60,
-      align: "left",
       hide: ({ checkList }) => !checkList.includes("序号列")
     },
     {
@@ -58,7 +56,7 @@ export function useColumns() {
       width: 140,
       slot: "operation"
     }
-  ]);
+  ];
 
   return {
     columns

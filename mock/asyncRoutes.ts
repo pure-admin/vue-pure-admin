@@ -89,7 +89,7 @@ const frameRouter = {
   meta: {
     icon: "monitor",
     title: "menus.hsExternalPage",
-    rank: 7
+    rank: 8
   },
   children: [
     {

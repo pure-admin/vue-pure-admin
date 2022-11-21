@@ -7,7 +7,7 @@ const nestedRouter: RouteConfigsTable = {
   meta: {
     title: $t("menus.hsmenus"),
     icon: "histogram",
-    rank: 6
+    rank: 7
   },
   children: [
     {

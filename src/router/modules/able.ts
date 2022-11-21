@@ -7,7 +7,7 @@ const ableRouter: RouteConfigsTable = {
   meta: {
     icon: "ubuntu-fill",
     title: $t("menus.hsAble"),
-    rank: 4
+    rank: 5
   },
   children: [
     {

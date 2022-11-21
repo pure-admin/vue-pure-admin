@@ -20,9 +20,9 @@ specifiers:
   "@logicflow/extension": ^1.1.30
   "@pureadmin/components": ^1.1.0
   "@pureadmin/descriptions": ^1.1.0
-  "@pureadmin/table": ^1.2.0
+  "@pureadmin/table": ^1.6.0
   "@pureadmin/theme": ^2.4.0
-  "@pureadmin/utils": ^1.6.5
+  "@pureadmin/utils": ^1.6.6
   "@types/element-resize-detector": 1.1.3
   "@types/intro.js": ^5.1.0
   "@types/js-cookie": ^3.0.1
@@ -132,7 +132,7 @@ dependencies:
   "@logicflow/extension": 1.1.31
   "@pureadmin/components": 1.1.0_vue@3.2.45
   "@pureadmin/descriptions": 1.1.1_element-plus@2.2.22
-  "@pureadmin/table": 1.2.0_element-plus@2.2.22
+  "@pureadmin/table": 1.6.0_element-plus@2.2.22
   "@pureadmin/utils": 1.6.6_aotapuqn7htzdjltsyimavekky
   "@vueuse/core": 9.5.0_vue@3.2.45
   "@vueuse/motion": 2.0.0-beta.12_vue@3.2.45
@@ -1379,10 +1379,10 @@ packages:
       vue: 3.2.45
     dev: false
 
-  /@pureadmin/table/1.2.0_element-plus@2.2.22:
+  /@pureadmin/table/1.6.0_element-plus@2.2.22:
     resolution:
       {
-        integrity: sha512-mJBpMj0YkaqTM5TDz+ek/f8h74qRLhDc/gLJhBq0wpyfCgG++Jd/9i+QUj8gedA5oN8IL6LOSFbcvlGDYxHgkw==
+        integrity: sha512-ryTZbfkNT/PTUS6pdrq7vuHr3f74lXs6kgRHaAPz64iTZmzaeVzf27TPakf4YDEcnQ/Gw6RqlQzE71W9m+P48w==
       }
     peerDependencies:
       element-plus: ^2.0.0
