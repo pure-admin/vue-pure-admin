@@ -1,3 +1,27 @@
+# 3.7.0 (2022-11-21)
+
+### ✔️ refactor
+
+- 使用 `intro.js` 替换 `driver.js`
+
+### 🎫 Feat
+
+- 添加前端单点登录，测试地址 https://yiming_chang.gitee.io/vue-pure-admin/#/pure-table/index?username=sso&roles=admin&accessToken=eyJhbGciOiJIUzUxMiJ9.admin
+- 为 [@pureadmin/table](https://github.com/xiaoxian521/pure-admin-table) 添加更多的示例和 `element-plus` 的 [table](https://element-plus.org/zh-CN/component/table.html) 示例保持一致
+- 丰富水印功能页面（支持自定义各种颜色、阴影、文字、额外属性、设置不可删除水印以及给指定元素设置水印）
+- 优化菜单，添加 `MenuArrowIconNoTransition` 全局配置，在 `public/serverConfig.json` 中配置即可，对于出现左侧菜单模式，菜单展开卡顿的可设置 `MenuArrowIconNoTransition: true` 即可解决
+- 更换表单设计器组件演示
+
+### 🐞 Bug fixes
+
+- 修复页内菜单带参互相跳转，标签没有选中高亮
+
+### 🍏 Perf
+
+- 删除已废弃的 `$baseUrl`
+- 兼容引入某个库导致 `global is not defined` 报错，将 `src/utils/globalPolyfills.ts` 文件引入 `src/main.ts` 即可解决
+- 删除 `@vitejs/plugin-legacy`，`vue3` 无法通过任何工具使其支持 `ie`
+
 # 3.6.4 (2022-11-10)
 
 ### 🎫 Feat

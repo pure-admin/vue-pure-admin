@@ -1,3 +1,27 @@
+# 3.7.0 (2022-11-21)
+
+### ✔️ refactor
+
+- Replace `driver.js` with `intro.js`
+
+### 🎫 Feat
+
+- Add front-end single sign-on, test address https://yiming_chang.gitee.io/vue-pure-admin/#/pure-table/index?username=sso&roles=admin&accessToken=eyJhbGciOiJIUzUxMiJ9.admin
+- Add more examples for [@pureadmin/table](https://github.com/xiaoxian521/pure-admin-table) and `element-plus` [table](https://element-plus.org /zh-CN/component/table.html) example remains the same
+- Rich watermark function page (supports customizing various colors, shadows, text, additional attributes, setting undeletable watermarks and setting watermarks for specified elements)
+- Optimize the menu, add `MenuArrowIconNoTransition` global configuration, configure it in `public/serverConfig.json`, for the left menu mode, the menu expansion can be set `MenuArrowIconNoTransition: true` to solve
+- Replacement form designer component demo
+
+### 🐞 Bug fixes
+
+- Repair the in-page menu with parameters to jump to each other, the label is not selected and highlighted
+
+### 🍏 Perf
+
+- Removed deprecated `$baseUrl`
+- Compatible importing a certain library leads to `global is not defined` error, importing `src/utils/globalPolyfills.ts` file into `src/main.ts` can solve the problem
+- Remove `@vitejs/plugin-legacy`, `vue3` cannot make it support `ie` through any tool
+
 # 3.6.4 (2022-11-10)
 
 ### 🎫 Feat
