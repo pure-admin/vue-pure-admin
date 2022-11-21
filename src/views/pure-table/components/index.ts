@@ -15,6 +15,8 @@ import HeaderRenderer from "./header-renderer/index.vue";
 import Expand from "./expand.vue";
 import TreeTable from "./tree.vue";
 import TotalRow from "./totalRow.vue";
+import Merge from "./merge.vue";
+import CustomIndex from "./customIndex.vue";
 
 export {
   Base,
@@ -33,5 +35,7 @@ export {
   HeaderRenderer,
   Expand,
   TreeTable,
-  TotalRow
+  TotalRow,
+  Merge,
+  CustomIndex
 };

@@ -15,7 +15,9 @@ import {
   HeaderRenderer,
   Expand,
   TreeTable,
-  TotalRow
+  TotalRow,
+  Merge,
+  CustomIndex
 } from "./components";
 
 const rendContent = (val: string) =>
@@ -129,5 +131,17 @@ export const list = [
     content: rendContent("totalRow"),
     title: "表尾合计行",
     component: TotalRow
+  },
+  {
+    key: "merge",
+    content: rendContent("merge"),
+    title: "合并行或列",
+    component: Merge
+  },
+  {
+    key: "customIndex",
+    content: rendContent("customIndex"),
+    title: "自定义索引",
+    component: CustomIndex
   }
 ];
