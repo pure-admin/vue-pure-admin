@@ -59,9 +59,9 @@ export const useUserStore = defineStore({
       this.username = "";
       this.roles = [];
       removeToken();
-      router.push("/login");
       useMultiTagsStoreHook().handleTags("equal", [...routerArrays]);
       resetRouter();
+      router.push("/login");
     },
     /** 刷新`token` */
     async handRefreshToken(data) {
