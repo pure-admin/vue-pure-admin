@@ -1,3 +1,9 @@
+# 3.7.1 (2022-11-22)
+
+### 🔥 hotfix
+
+- Fixed the problem that the tab page may not be reset when logging out when the tab page cache is not turned on
+
 # 3.7.0 (2022-11-21)
 
 ### ✔️ refactor
