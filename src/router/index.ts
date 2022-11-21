@@ -1,3 +1,4 @@
+import "@/utils/sso";
 import { getConfig } from "@/config";
 import { toRouteType } from "./types";
 import NProgress from "@/utils/progress";
