@@ -17,7 +17,8 @@ import {
   TreeTable,
   TotalRow,
   Merge,
-  CustomIndex
+  CustomIndex,
+  Layout
 } from "./components";
 
 const rendContent = (val: string) =>
@@ -143,5 +144,11 @@ export const list = [
     content: rendContent("customIndex"),
     title: "自定义索引",
     component: CustomIndex
+  },
+  {
+    key: "layout",
+    content: rendContent("layout"),
+    title: "表格布局",
+    component: Layout
   }
 ];

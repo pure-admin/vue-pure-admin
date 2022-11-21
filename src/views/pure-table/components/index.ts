@@ -17,6 +17,7 @@ import TreeTable from "./tree.vue";
 import TotalRow from "./totalRow.vue";
 import Merge from "./merge.vue";
 import CustomIndex from "./customIndex.vue";
+import Layout from "./layout.vue";
 
 export {
   Base,
@@ -37,5 +38,6 @@ export {
   TreeTable,
   TotalRow,
   Merge,
-  CustomIndex
+  CustomIndex,
+  Layout
 };
