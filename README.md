@@ -177,3 +177,9 @@ pnpm build
 非常感谢留下星星的好心人，感谢您的支持 :heart:
 
 [![Stargazers for vue-pure-admin](https://reporoster.com/stars/xiaoxian521/vue-pure-admin)](https://github.com/xiaoxian521/vue-pure-admin/stargazers)
+
+## `Fork`
+
+瞧，那些 `小哥哥` 、`小姐姐` 认真 `学习` 的样子真滴是 `哎呦不错哦` :heart:
+
+[![Forkers repo roster for vue-pure-admin](https://reporoster.com/forks/xiaoxian521/vue-pure-admin)](https://github.com/xiaoxian521/vue-pure-admin/network/members)
