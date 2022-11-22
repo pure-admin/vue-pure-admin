@@ -162,6 +162,12 @@ Thank you very much for your support, I believe the project will get better and 
 
 ## Contributors
 
-This project exists thanks to all the people who contribute :heart:
+Thanks to all the people who contribute :heart:
 
 <a href="https://github.com/xiaoxian521/vue-pure-admin/graphs/contributors"><img src="https://contrib.rocks/image?repo=xiaoxian521/vue-pure-admin" /></a>
+
+## Star
+
+Many thanks to the kind individuals who leave a star. Your support is much appreciated :heart:
+
+[![Stargazers for vue-pure-admin](https://reporoster.com/stars/xiaoxian521/vue-pure-admin)](https://github.com/xiaoxian521/vue-pure-admin/stargazers)
