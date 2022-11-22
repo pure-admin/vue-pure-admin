@@ -56,6 +56,14 @@ const tableDataMore = cloneData.map(item =>
   })
 );
 
+const tableDataImage = cloneData.map((item, index) =>
+  Object.assign(item, {
+    image: `https://xiaoxian521.github.io/pure-admin-table/imgs/${
+      index + 1
+    }.jpg`
+  })
+);
+
 const tableDataSortable = cloneData.map((item, index) =>
   Object.assign(item, {
     date: `${dayjs(new Date()).format("YYYY-MM")}-${index + 1}`
@@ -282,4 +290,10 @@ const tableDataExpand = [
   }
 ];
 
-export { tableData, tableDataMore, tableDataSortable, tableDataExpand };
+export {
+  tableData,
+  tableDataMore,
+  tableDataImage,
+  tableDataExpand,
+  tableDataSortable
+};

@@ -19,7 +19,8 @@ import {
   Merge,
   CustomIndex,
   Layout,
-  NestProp
+  NestProp,
+  ImgPreview
 } from "./components";
 
 const rendContent = (val: string) =>
@@ -157,5 +158,11 @@ export const list = [
     content: rendContent("nestProp"),
     title: "多种数据格式（深层结构）",
     component: NestProp
+  },
+  {
+    key: "imgPreview",
+    content: rendContent("imgPreview"),
+    title: "图像预览",
+    component: ImgPreview
   }
 ];

@@ -19,6 +19,7 @@ import Merge from "./merge.vue";
 import CustomIndex from "./customIndex.vue";
 import Layout from "./layout.vue";
 import NestProp from "./nestProp.vue";
+import ImgPreview from "./imgPreview.vue";
 
 export {
   Base,
@@ -41,5 +42,6 @@ export {
   Merge,
   CustomIndex,
   Layout,
-  NestProp
+  NestProp,
+  ImgPreview
 };
