@@ -18,7 +18,8 @@ import {
   TotalRow,
   Merge,
   CustomIndex,
-  Layout
+  Layout,
+  NestProp
 } from "./components";
 
 const rendContent = (val: string) =>
@@ -150,5 +151,11 @@ export const list = [
     content: rendContent("layout"),
     title: "表格布局",
     component: Layout
+  },
+  {
+    key: "nestProp",
+    content: rendContent("nestProp"),
+    title: "多种数据格式（深层结构）",
+    component: NestProp
   }
 ];

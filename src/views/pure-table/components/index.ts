@@ -18,6 +18,7 @@ import TotalRow from "./totalRow.vue";
 import Merge from "./merge.vue";
 import CustomIndex from "./customIndex.vue";
 import Layout from "./layout.vue";
+import NestProp from "./nestProp.vue";
 
 export {
   Base,
@@ -39,5 +40,6 @@ export {
   TotalRow,
   Merge,
   CustomIndex,
-  Layout
+  Layout,
+  NestProp
 };
