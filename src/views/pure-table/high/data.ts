@@ -79,10 +79,21 @@ const tableDataDrag = clone(tableData, true).map((item, index) => {
   );
 });
 
+const tableDataEdit = clone(tableData, true).map((item, index) => {
+  return Object.assign(
+    {
+      id: index + 1,
+      date: `${dayjs(new Date()).format("YYYY-MM")}-${index + 1}`
+    },
+    item
+  );
+});
+
 export {
   tableData,
   tableDataDrag,
   tableDataMore,
+  tableDataEdit,
   tableDataImage,
   tableDataSortable
 };

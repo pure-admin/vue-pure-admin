@@ -2,6 +2,7 @@ import RowDrag from "./drag/row/index.vue";
 import ColumnDrag from "./drag/column/index.vue";
 import Contextmenu from "./contextmenu/index.vue";
 import Execl from "./execl/index.vue";
+import Edit from "./edit/index.vue";
 
 const rendContent = (val: string) =>
   `代码位置：src/views/pure-table/high/${val}/index.vue`;
@@ -30,5 +31,11 @@ export const list = [
     content: rendContent("execl"),
     title: "导出execl",
     component: Execl
+  },
+  {
+    key: "edit",
+    content: rendContent("edit"),
+    title: "单元格编辑",
+    component: Edit
   }
 ];
