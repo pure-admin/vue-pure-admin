@@ -4,6 +4,7 @@ import Contextmenu from "./contextmenu/index.vue";
 import Execl from "./execl/index.vue";
 import Edit from "./edit/index.vue";
 import Watermark from "./watermark/index.vue";
+import Print from "./prints/index.vue";
 
 const rendContent = (val: string) =>
   `代码位置：src/views/pure-table/high/${val}/index.vue`;
@@ -42,7 +43,13 @@ export const list = [
   {
     key: "watermark",
     content: rendContent("watermark"),
-    title: "表格水印",
+    title: "水印",
     component: Watermark
+  },
+  {
+    key: "print",
+    content: rendContent("print"),
+    title: "打印",
+    component: Print
   }
 ];
