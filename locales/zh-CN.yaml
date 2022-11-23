@@ -95,6 +95,8 @@ menus:
   hsExecl: 导出Excel
   hsInfiniteScroll: 表格无限滚动
   hsdanmaku: 弹幕组件
+  hsPureTableBase: 基础用法
+  hsPureTableHigh: 高级用法
 status:
   hsLoad: 加载中...
 login:

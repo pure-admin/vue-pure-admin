@@ -19,6 +19,7 @@ export type appType = {
   };
   layout: string;
   device: string;
+  sortSwap: boolean;
 };
 
 export type multiType = {

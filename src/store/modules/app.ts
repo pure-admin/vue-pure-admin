@@ -19,7 +19,9 @@ export const useAppStore = defineStore({
     layout:
       storageLocal.getItem<StorageConfigs>("responsive-layout")?.layout ??
       getConfig().Layout,
-    device: deviceDetection() ? "mobile" : "desktop"
+    device: deviceDetection() ? "mobile" : "desktop",
+    // 作用于 src/views/components/draggable/index.vue 页面，当离开页面并不会销毁 new Swap()，sortablejs 官网也没有提供任何销毁的 api
+    sortSwap: false
   }),
   getters: {
     getSidebarStatus() {
@@ -56,6 +58,9 @@ export const useAppStore = defineStore({
     },
     setLayout(layout) {
       this.layout = layout;
+    },
+    setSortSwap(val) {
+      this.sortSwap = val;
     }
   }
 });

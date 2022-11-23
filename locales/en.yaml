@@ -95,6 +95,8 @@ menus:
   hsExecl: Export Excel
   hsInfiniteScroll: Table Infinite Scroll
   hsdanmaku: Danmaku Components
+  hsPureTableBase: Base Usage
+  hsPureTableHigh: High Usage
 status:
   hsLoad: Loading...
 login:

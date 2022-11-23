@@ -1,12 +1,15 @@
 <script setup lang="ts">
-import Sortable from "sortablejs";
 import { ref, onMounted } from "vue";
+import Sortable, { Swap } from "sortablejs";
 import draggable from "vuedraggable/src/vuedraggable";
+import { useAppStoreHook } from "@/store/modules/app";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 
 defineOptions({
   name: "Draggable"
 });
+
+const { setSortSwap } = useAppStoreHook();
 
 const gridLists = ref<Array<Object>>([
   { grid: "cn", num: 1 },
@@ -39,7 +42,8 @@ const change = (evt): void => {
 };
 
 onMounted(() => {
-  // 使用原生sortable实现元素位置切换
+  if (!useAppStoreHook().sortSwap) Sortable.mount(new Swap());
+  setSortSwap(true);
   new Sortable(document.querySelector(".cut-container"), {
     swap: true,
     forceFallback: true,
@@ -121,7 +125,7 @@ onMounted(() => {
           <el-card>
             <template #header>
               <div class="card-header">
-                <span>拖拽实现元素位置切换</span>
+                <span>拖拽实现元素位置交换</span>
               </div>
             </template>
             <!-- 拖拽实现元素位置切换 -->

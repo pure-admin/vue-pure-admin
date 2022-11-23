@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { list } from "./base/list";
+import { list } from "./high/list";
 import { Tabs, TabPane } from "@pureadmin/components";
 
 defineOptions({
-  name: "PureTable"
+  name: "PureTableHigh"
 });
 </script>
 
@@ -12,9 +12,7 @@ defineOptions({
     <template #header>
       <div class="card-header">
         <span class="font-medium">
-          平台二次封装 element-plus 的 Table ，完全兼容 Api
-          并提供灵活的配置项以及完善的类型提醒，再也不用将代码都写在 template
-          里了，欢迎 Star
+          高级用法全部采用 tsx 语法，充分发挥
           <el-link
             href="https://github.com/xiaoxian521/pure-admin-table"
             target="_blank"
@@ -22,13 +20,14 @@ defineOptions({
           >
             @pureadmin/table
           </el-link>
+          的灵活性，维护整体表格只需操作 columns 配置即可
         </span>
       </div>
     </template>
 
     <el-alert
-      title="基础用法中大部分表格都没设置 row-key ，不过最好都设置一下，后端需返回唯一值的字段，比如id 作用：1. 用来优化 Table
-      的渲染，尤其当字段在深层结构中；2. 防止某些操作导致表格组件内部混乱"
+      title="高级用法中所有表格都设置了 row-key ，后端需返回唯一值的字段，比如id 作用：1. 用来优化 Table
+      的渲染，尤其当字段在深层结构中；2. 防止拖拽后表格组件内部混乱（拖拽必须设置哦，坑都帮您们踩过啦 ❤️）"
       type="info"
       :closable="false"
     />
