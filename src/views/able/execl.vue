@@ -64,7 +64,7 @@ const exportExcel = () => {
   const workSheet = utils.aoa_to_sheet(res);
   const workBook = utils.book_new();
   utils.book_append_sheet(workBook, workSheet, "数据报表");
-  writeFile(workBook, "tale-list.xlsx");
+  writeFile(workBook, "tableV2.xlsx");
 };
 </script>
 
@@ -83,7 +83,7 @@ const exportExcel = () => {
         ）
       </div>
     </template>
-    <el-button type="primary" @click="exportExcel">导出Excel </el-button>
+    <el-button type="primary" @click="exportExcel">导出Excel</el-button>
     <div class="h-[25rem] mt-3">
       <el-auto-resizer>
         <template #default="{ height, width }">

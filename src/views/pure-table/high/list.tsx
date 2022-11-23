@@ -1,6 +1,7 @@
 import RowDrag from "./drag/row/index.vue";
 import ColumnDrag from "./drag/column/index.vue";
 import Contextmenu from "./contextmenu/index.vue";
+import Execl from "./execl/index.vue";
 
 const rendContent = (val: string) =>
   `代码位置：src/views/pure-table/high/${val}/index.vue`;
@@ -23,5 +24,11 @@ export const list = [
     content: rendContent("contextmenu"),
     title: "右键菜单",
     component: Contextmenu
+  },
+  {
+    key: "execl",
+    content: rendContent("execl"),
+    title: "导出execl",
+    component: Execl
   }
 ];
