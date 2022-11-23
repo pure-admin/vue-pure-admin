@@ -17,7 +17,7 @@ export function useColumns() {
 
   const columns: TableColumnList = [
     {
-      label: "ID",
+      label: "ID（可编辑）",
       prop: "id",
       // class="flex-bc" flex-bc 代表 flex justify-between items-center 具体看 src/style/tailwind.css 文件
       cellRenderer: ({ row, index }) => (
