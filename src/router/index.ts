@@ -161,7 +161,7 @@ router.beforeEach((to: toRouteType, _from, next) => {
         to.path !== "/login"
       )
         initRouter().then((router: Router) => {
-          if (!useMultiTagsStoreHook().getMultiTagsCache) {
+          if (!useMultiTagsStoreHook().getMultiTagsCache()) {
             const { path } = to;
             const index = findIndex(remainingRouter, v => {
               return v.path == path;
