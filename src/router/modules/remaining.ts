@@ -20,7 +20,7 @@ const remainingRouter: Array<RouteConfigsTable> = [
       icon: "home-filled",
       title: $t("menus.hshome"),
       showLink: false,
-      rank: 104
+      rank: 102
     },
     children: [
       {
@@ -38,7 +38,7 @@ const remainingRouter: Array<RouteConfigsTable> = [
     meta: {
       title: $t("menus.hsempty"),
       showLink: false,
-      rank: 105
+      rank: 103
     }
   }
 ];

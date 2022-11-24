@@ -69,9 +69,14 @@ menus:
   hsPrint: 打印
   hsDownload: 下载
   hsExternalPage: 外部页面
-  hsPureDocument: 平台文档(内嵌)
-  externalLink: 平台文档(外链)
-  hsEpDocument: Element Plus文档(内嵌)
+  hsPureDocument: 平台文档（内嵌）
+  externalLink: 平台文档（外链）
+  hsEpDocument: Element Plus 文档（内嵌）
+  hsVueDocument: Vue3 文档（内嵌）
+  hsViteDocument: Vite 文档（内嵌）
+  hsPiniaDocument: Pinia 文档（内嵌）
+  hsRouterDocument: Vue Router 文档（内嵌）
+  hsTailwindcssDocument: Tailwindcss 文档（内嵌）
   hsAbout: 关于
   hsResult: 结果页面
   hsSuccess: 成功页面
@@ -97,6 +102,7 @@ menus:
   hsdanmaku: 弹幕组件
   hsPureTableBase: 基础用法
   hsPureTableHigh: 高级用法
+  hsTree: 大数据树业务组件
 status:
   hsLoad: 加载中...
 login:

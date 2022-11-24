@@ -1,14 +1,15 @@
 import { $t } from "@/plugins/i18n";
+import { table } from "@/router/enums";
 import hot from "@/assets/svg/hot.svg?component";
 import type { RouteConfigsTable } from "/#/index";
 
-const flowChartRouter: RouteConfigsTable = {
+const tableRouter: RouteConfigsTable = {
   path: "/pure-table",
   redirect: "/pure-table/index",
   meta: {
     icon: hot,
     title: "pure-admin-table",
-    rank: 4
+    rank: table
   },
   children: [
     {
@@ -30,4 +31,4 @@ const flowChartRouter: RouteConfigsTable = {
   ]
 };
 
-export default flowChartRouter;
+export default tableRouter;

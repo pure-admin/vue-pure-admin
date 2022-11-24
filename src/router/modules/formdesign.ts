@@ -1,4 +1,5 @@
 import { $t } from "@/plugins/i18n";
+import { formdesign } from "@/router/enums";
 import type { RouteConfigsTable } from "/#/index";
 const IFrame = () => import("@/layout/frameView.vue");
 
@@ -8,7 +9,7 @@ const formDesignRouter: RouteConfigsTable = {
   meta: {
     icon: "terminal-window-line",
     title: $t("menus.hsFormDesign"),
-    rank: 2
+    rank: formdesign
   },
   children: [
     {

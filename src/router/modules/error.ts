@@ -1,4 +1,5 @@
 import { $t } from "@/plugins/i18n";
+import { error } from "@/router/enums";
 import type { RouteConfigsTable } from "/#/index";
 
 const errorRouter: RouteConfigsTable = {
@@ -7,7 +8,7 @@ const errorRouter: RouteConfigsTable = {
   meta: {
     icon: "information-line",
     title: $t("menus.hsabnormal"),
-    rank: 9
+    rank: error
   },
   children: [
     {

@@ -1,4 +1,5 @@
 import { $t } from "@/plugins/i18n";
+import { result } from "@/router/enums";
 import type { RouteConfigsTable } from "/#/index";
 
 const resultRouter: RouteConfigsTable = {
@@ -7,7 +8,7 @@ const resultRouter: RouteConfigsTable = {
   meta: {
     icon: "checkbox-circle-line",
     title: $t("menus.hsResult"),
-    rank: 8
+    rank: result
   },
   children: [
     {

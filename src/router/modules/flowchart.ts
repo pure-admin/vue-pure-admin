@@ -1,4 +1,5 @@
 import { $t } from "@/plugins/i18n";
+import { flowchart } from "@/router/enums";
 import type { RouteConfigsTable } from "/#/index";
 
 const flowChartRouter: RouteConfigsTable = {
@@ -7,7 +8,7 @@ const flowChartRouter: RouteConfigsTable = {
   meta: {
     icon: "set-up",
     title: $t("menus.hsflowChart"),
-    rank: 1
+    rank: flowchart
   },
   children: [
     {

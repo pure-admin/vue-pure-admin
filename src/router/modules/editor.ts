@@ -1,4 +1,5 @@
 import { $t } from "@/plugins/i18n";
+import { editor } from "@/router/enums";
 import type { RouteConfigsTable } from "/#/index";
 
 const editorRouter: RouteConfigsTable = {
@@ -7,7 +8,7 @@ const editorRouter: RouteConfigsTable = {
   meta: {
     icon: "edit",
     title: $t("menus.hseditor"),
-    rank: 2
+    rank: editor
   },
   children: [
     {

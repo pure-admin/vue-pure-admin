@@ -1,4 +1,5 @@
 import { $t } from "@/plugins/i18n";
+import { guide } from "@/router/enums";
 import type { RouteConfigsTable } from "/#/index";
 
 const guideRouter: RouteConfigsTable = {
@@ -7,7 +8,7 @@ const guideRouter: RouteConfigsTable = {
   meta: {
     icon: "guide",
     title: $t("menus.hsguide"),
-    rank: 14
+    rank: guide
   },
   children: [
     {

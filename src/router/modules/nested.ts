@@ -1,4 +1,5 @@
 import { $t } from "@/plugins/i18n";
+import { nested } from "@/router/enums";
 import type { RouteConfigsTable } from "/#/index";
 
 const nestedRouter: RouteConfigsTable = {
@@ -7,7 +8,7 @@ const nestedRouter: RouteConfigsTable = {
   meta: {
     title: $t("menus.hsmenus"),
     icon: "histogram",
-    rank: 7
+    rank: nested
   },
   children: [
     {

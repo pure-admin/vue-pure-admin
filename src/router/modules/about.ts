@@ -1,4 +1,5 @@
 import { $t } from "@/plugins/i18n";
+import { about } from "@/router/enums";
 import type { RouteConfigsTable } from "/#/index";
 
 const aboutRouter: RouteConfigsTable = {
@@ -7,7 +8,7 @@ const aboutRouter: RouteConfigsTable = {
   meta: {
     // icon: "question-line",
     title: $t("menus.hsAbout"),
-    rank: 15
+    rank: about
   },
   children: [
     {
