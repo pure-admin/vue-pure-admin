@@ -3,7 +3,7 @@ import { ref } from "vue";
 import { useColumns } from "./columns";
 
 const printRef = ref();
-const { columns, dataList, print, rowStyle, headerCellStyle } =
+const { columns, dataList, print, cellStyle, rowStyle, headerCellStyle } =
   useColumns(printRef);
 </script>
 
@@ -13,22 +13,15 @@ const { columns, dataList, print, rowStyle, headerCellStyle } =
       打印
     </el-button>
     <pure-table
+      rowHoverBgColor="transparent"
       ref="printRef"
       row-key="id"
       border
       :data="dataList"
       :columns="columns"
       :row-style="rowStyle"
+      :cell-style="cellStyle"
       :header-cell-style="headerCellStyle"
     />
   </div>
 </template>
-
-<style lang="scss" scoped>
-// 去掉鼠标悬停行背景色
-:deep(.el-table) {
-  tbody tr:hover > td {
-    background-color: transparent !important;
-  }
-}
-</style>

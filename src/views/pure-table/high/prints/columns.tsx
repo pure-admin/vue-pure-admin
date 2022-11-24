@@ -26,14 +26,23 @@ export function useColumns(printRef: Ref) {
   ];
 
   const print = () => {
-    Print(printRef.value.getTableRef().$refs.tableWrapper).toPrint;
+    Print(printRef.value.getTableDoms().tableWrapper).toPrint;
   };
+
+  function cellStyle({ column: { property }, rowIndex }) {
+    if (property === "id") {
+      return rowIndex < 3
+        ? { background: "#87baf9" }
+        : { background: "#87e8de" };
+    }
+  }
 
   function headerCellStyle({ columnIndex }) {
     return columnIndex === 0
       ? { background: "#f3b2d0" }
       : { background: "#fafafa" };
   }
+
   function rowStyle({ rowIndex }) {
     return rowIndex % 2 === 1
       ? { background: "#ffa39e" }
@@ -44,7 +53,8 @@ export function useColumns(printRef: Ref) {
     columns,
     dataList,
     print,
-    headerCellStyle,
-    rowStyle
+    rowStyle,
+    cellStyle,
+    headerCellStyle
   };
 }

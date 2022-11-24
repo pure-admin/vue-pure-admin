@@ -27,7 +27,7 @@ export function useColumns(waterRef: Ref) {
   onMounted(() => {
     delay().then(() => {
       const { setWatermark } = useWatermark(
-        waterRef.value.getTableRef().$refs.tableWrapper
+        waterRef.value.getTableDoms().tableWrapper
       );
       setWatermark("编程即艺术", {
         font: "16px Microsoft YaHei",
