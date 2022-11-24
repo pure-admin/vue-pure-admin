@@ -5,13 +5,37 @@ import { clone, delay } from "@pureadmin/utils";
 
 // 温馨提示：编辑整行方法雷同，将cellRenderer后面渲染的组件抽出来做对应处理即可
 export function useColumns() {
+  // 编辑值（可多个）
   const inputValMap = ref({});
+  // 是否正处于编辑状态（可多个）
+  const editStatus = ref({});
+  // 当前激活的单元格（唯一）
   const activeIndex = ref(-1);
   const dataList = ref(clone(tableDataEdit, true));
 
   const comVal = computed(() => {
     return index => {
       return inputValMap.value[index]?.value;
+    };
+  });
+
+  const editing = computed(() => {
+    return index => {
+      return editStatus.value[index]?.editing;
+    };
+  });
+
+  const iconClass = computed(() => {
+    return (index, other = false) => {
+      return [
+        "cursor-pointer",
+        "ml-2",
+        "transition",
+        "delay-100",
+        other
+          ? ["hover:scale-110", "hover:text-red-500"]
+          : editing.value(index) && ["scale-150", "text-red-500"]
+      ];
     };
   });
 
@@ -22,26 +46,26 @@ export function useColumns() {
       // class="flex-bc" flex-bc 代表 flex justify-between items-center 具体看 src/style/tailwind.css 文件
       cellRenderer: ({ row, index }) => (
         <div
-          class="flex-bc"
+          class="flex-bc h-[32px]"
           onMouseenter={() => (activeIndex.value = index)}
           onMouseleave={() => onMouseleave(index)}
         >
-          <p v-show={!comVal.value(index)}>{row.id}</p>
+          <p v-show={!editing.value(index)}>{row.id}</p>
           <el-input
-            v-show={comVal.value(index)}
+            v-show={editing.value(index)}
             modelValue={comVal.value(index)}
             onInput={value => onChange(value, index)}
           />
           <iconify-icon-offline
-            v-show={comVal.value(index)}
+            v-show={editing.value(index)}
             icon="check"
-            class="cursor-pointer ml-2 transition delay-100 hover:scale-150 hover:text-red-500"
+            class={iconClass.value(index)}
             onClick={() => onSure(index)}
           />
           <iconify-icon-offline
-            v-show={activeIndex.value === index && !comVal.value(index)}
+            v-show={activeIndex.value === index && !editing.value(index)}
             icon="edits"
-            class="cursor-pointer ml-2 transition delay-100 hover:scale-110 hover:text-red-500"
+            class={iconClass.value(index, true)}
             onClick={() => onEdit(row, index)}
           />
         </div>
@@ -65,6 +89,10 @@ export function useColumns() {
     inputValMap.value[index] = Object.assign({}, inputValMap.value[index], {
       value: id
     });
+    // 处于编辑状态
+    editStatus.value[index] = Object.assign({}, editStatus.value[index], {
+      editing: true
+    });
   }
 
   function onMouseleave(index) {
@@ -84,6 +112,10 @@ export function useColumns() {
         dataList.value[index]
       )}`
     );
+    // 编辑状态关闭
+    editStatus.value[index] = Object.assign({}, editStatus.value[index], {
+      editing: false
+    });
     delay().then(() => (inputValMap.value[index].value = null));
   }
 

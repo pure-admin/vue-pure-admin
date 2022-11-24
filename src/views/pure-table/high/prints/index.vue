@@ -12,6 +12,7 @@ const { columns, dataList, print, cellStyle, rowStyle, headerCellStyle } =
     <el-button type="primary" @click="print" class="mb-[20px] float-right">
       打印
     </el-button>
+    <!-- rowHoverBgColor="transparent" 鼠标经过行时，去掉行的背景色 -->
     <pure-table
       rowHoverBgColor="transparent"
       ref="printRef"
