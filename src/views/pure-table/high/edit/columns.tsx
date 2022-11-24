@@ -1,5 +1,5 @@
-import { ref, computed } from "vue";
 import { tableDataEdit } from "../data";
+import { ref, computed, Transition } from "vue";
 import { message } from "@pureadmin/components";
 import { clone, delay } from "@pureadmin/utils";
 
@@ -51,11 +51,13 @@ export function useColumns() {
           onMouseleave={() => onMouseleave(index)}
         >
           <p v-show={!editing.value(index)}>{row.id}</p>
-          <el-input
-            v-show={editing.value(index)}
-            modelValue={comVal.value(index)}
-            onInput={value => onChange(value, index)}
-          />
+          <Transition enter-active-class="animate__animated animate__fadeInUp animate__faster">
+            <el-input
+              v-show={editing.value(index)}
+              modelValue={comVal.value(index)}
+              onInput={value => onChange(value, index)}
+            />
+          </Transition>
           <iconify-icon-offline
             v-show={editing.value(index)}
             icon="check"
