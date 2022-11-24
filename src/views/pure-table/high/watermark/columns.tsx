@@ -26,6 +26,7 @@ export function useColumns(waterRef: Ref) {
 
   onMounted(() => {
     delay().then(() => {
+      // https://pure-admin-utils.netlify.app/hooks/useWatermark/useWatermark.html
       const { setWatermark } = useWatermark(
         waterRef.value.getTableDoms().tableWrapper
       );

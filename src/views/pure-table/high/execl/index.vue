@@ -11,7 +11,7 @@ const { columns, dataList, exportExcel } = useColumns();
       @click="exportExcel"
       class="mb-[20px] float-right"
     >
-      导出Excel
+      导出
     </el-button>
     <pure-table row-key="id" border :data="dataList" :columns="columns" />
   </div>

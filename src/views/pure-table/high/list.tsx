@@ -5,6 +5,7 @@ import Execl from "./execl/index.vue";
 import Edit from "./edit/index.vue";
 import Watermark from "./watermark/index.vue";
 import Print from "./prints/index.vue";
+import Echarts from "./echarts/index.vue";
 
 const rendContent = (val: string) =>
   `代码位置：src/views/pure-table/high/${val}/index.vue`;
@@ -29,16 +30,22 @@ export const list = [
     component: Contextmenu
   },
   {
+    key: "edit",
+    content: rendContent("edit"),
+    title: "单元格编辑",
+    component: Edit
+  },
+  {
     key: "execl",
     content: rendContent("execl"),
     title: "导出execl",
     component: Execl
   },
   {
-    key: "edit",
-    content: rendContent("edit"),
-    title: "单元格编辑",
-    component: Edit
+    key: "print",
+    content: rendContent("print"),
+    title: "打印",
+    component: Print
   },
   {
     key: "watermark",
@@ -47,9 +54,9 @@ export const list = [
     component: Watermark
   },
   {
-    key: "print",
-    content: rendContent("print"),
-    title: "打印",
-    component: Print
+    key: "echarts",
+    content: rendContent("echarts"),
+    title: "内嵌echarts图表",
+    component: Echarts
   }
 ];
