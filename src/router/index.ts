@@ -24,45 +24,30 @@ import {
   formatFlatteningRoutes
 } from "./utils";
 import {
-  buildHierarchyTree,
-  openLink,
   isUrl,
-  storageSession
+  openLink,
+  storageSession,
+  buildHierarchyTree
 } from "@pureadmin/utils";
-
-import pptRouter from "./modules/ppt";
-import homeRouter from "./modules/home";
-import ableRouter from "./modules/able";
-import listRouter from "./modules/list";
-import tableRouter from "./modules/table";
-import aboutRouter from "./modules/about";
-import errorRouter from "./modules/error";
-import guideRouter from "./modules/guide";
-import resultRouter from "./modules/result";
-import editorRouter from "./modules/editor";
-import nestedRouter from "./modules/nested";
-import flowChartRouter from "./modules/flowchart";
 import remainingRouter from "./modules/remaining";
-import componentsRouter from "./modules/components";
-import formDesignRouter from "./modules/formdesign";
+
+/** 自动导入全部静态路由，无需再手动引入！匹配 src/router/modules 目录（任何嵌套级别）中具有 .ts 扩展名的所有文件，除了 remaining.ts 文件
+ * 如何匹配所有文件请看：https://github.com/mrmlnc/fast-glob#basic-syntax
+ * 如何排除文件请看：https://cn.vitejs.dev/guide/features.html#negative-patterns
+ */
+const modules: Record<string, any> = import.meta.glob(
+  ["./modules/**/*.ts", "!./modules/**/remaining.ts"],
+  {
+    eager: true
+  }
+);
 
 /** 原始静态路由（未做任何处理） */
-const routes = [
-  pptRouter,
-  homeRouter,
-  ableRouter,
-  listRouter,
-  tableRouter,
-  aboutRouter,
-  errorRouter,
-  guideRouter,
-  resultRouter,
-  nestedRouter,
-  editorRouter,
-  flowChartRouter,
-  componentsRouter,
-  formDesignRouter
-];
+const routes = [];
+
+Object.keys(modules).forEach(key => {
+  routes.push(modules[key].default);
+});
 
 /** 导出处理后的静态路由（三级及以上的路由全部拍成二级） */
 export const constantRoutes: Array<RouteRecordRaw> = formatTwoStageRoutes(
