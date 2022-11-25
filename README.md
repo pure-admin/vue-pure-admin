@@ -20,7 +20,7 @@
 - [点我查看国内文档站](https://yiming_chang.gitee.io/pure-admin-doc)
 - [点我查看国外文档站](https://xiaoxian521.github.io/pure-admin-doc)
 
-## 精简版（提供 `非国际化` 、`国际化` 两个版本选择）
+## 精简版（实际项目开发请用精简版，提供 `非国际化` 、`国际化` 两个版本选择）
 
 - [点我查看非国际化精简版](https://github.com/xiaoxian521/pure-admin-thin)
 - [点我查看国际化精简版](https://github.com/xiaoxian521/pure-admin-thin/tree/i18n)
