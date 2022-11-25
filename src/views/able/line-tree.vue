@@ -3,7 +3,7 @@ import { computed } from "vue";
 import { clone } from "@pureadmin/utils";
 import { transformI18n } from "@/plugins/i18n";
 import ElTreeLine from "@/components/ReTreeLine";
-import { extractPathList, deleteChildren } from "@pureadmin/utils";
+import { extractPathList, deleteChildren } from "@/utils/tree";
 import { usePermissionStoreHook } from "@/store/modules/permission";
 
 defineOptions({

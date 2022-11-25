@@ -23,12 +23,9 @@ import {
   formatTwoStageRoutes,
   formatFlatteningRoutes
 } from "./utils";
-import {
-  isUrl,
-  openLink,
-  storageSession,
-  buildHierarchyTree
-} from "@pureadmin/utils";
+import { buildHierarchyTree } from "@/utils/tree";
+import { isUrl, openLink, storageSession } from "@pureadmin/utils";
+
 import remainingRouter from "./modules/remaining";
 
 /** 自动导入全部静态路由，无需再手动引入！匹配 src/router/modules 目录（任何嵌套级别）中具有 .ts 扩展名的所有文件，除了 remaining.ts 文件

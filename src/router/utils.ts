@@ -14,9 +14,9 @@ import { RouteConfigs } from "@/layout/types";
 import {
   isString,
   storageSession,
-  buildHierarchyTree,
   isIncludeAllChildren
 } from "@pureadmin/utils";
+import { buildHierarchyTree } from "@/utils/tree";
 import { cloneDeep, intersection } from "lodash-unified";
 import { sessionKey, type DataInfo } from "@/utils/auth";
 import { usePermissionStoreHook } from "@/store/modules/permission";
