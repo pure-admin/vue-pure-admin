@@ -1,9 +1,8 @@
 import { $t } from "@/plugins/i18n";
 import { formdesign } from "@/router/enums";
-import type { RouteConfigsTable } from "/#/index";
 const IFrame = () => import("@/layout/frameView.vue");
 
-const formDesignRouter: RouteConfigsTable = {
+export default {
   path: "/formDesign",
   redirect: "/formDesign/index",
   meta: {
@@ -23,6 +22,4 @@ const formDesignRouter: RouteConfigsTable = {
       }
     }
   ]
-};
-
-export default formDesignRouter;
+} as RouteConfigsTable;

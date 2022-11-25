@@ -1,8 +1,7 @@
 import { $t } from "@/plugins/i18n";
 import { about } from "@/router/enums";
-import type { RouteConfigsTable } from "/#/index";
 
-const aboutRouter: RouteConfigsTable = {
+export default {
   path: "/about",
   redirect: "/about/index",
   meta: {
@@ -20,6 +19,4 @@ const aboutRouter: RouteConfigsTable = {
       }
     }
   ]
-};
-
-export default aboutRouter;
+} as RouteConfigsTable;

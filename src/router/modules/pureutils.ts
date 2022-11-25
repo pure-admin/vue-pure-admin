@@ -1,9 +1,8 @@
 import { utils } from "@/router/enums";
 import hot from "@/assets/svg/hot.svg?component";
-import type { RouteConfigsTable } from "/#/index";
 const IFrame = () => import("@/layout/frameView.vue");
 
-const pptRouter: RouteConfigsTable = {
+export default {
   path: "/pure-admin-utils",
   redirect: "/pure-admin-utils/index",
   meta: {
@@ -22,6 +21,4 @@ const pptRouter: RouteConfigsTable = {
       }
     }
   ]
-};
-
-export default pptRouter;
+} as RouteConfigsTable;

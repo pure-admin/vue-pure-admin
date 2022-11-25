@@ -1,8 +1,7 @@
 import { $t } from "@/plugins/i18n";
 import { list } from "@/router/enums";
-import type { RouteConfigsTable } from "/#/index";
 
-const ableRouter: RouteConfigsTable = {
+export default {
   path: "/list",
   redirect: "/list/card",
   meta: {
@@ -22,6 +21,4 @@ const ableRouter: RouteConfigsTable = {
       }
     }
   ]
-};
-
-export default ableRouter;
+} as RouteConfigsTable;

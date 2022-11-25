@@ -1,8 +1,7 @@
 import { $t } from "@/plugins/i18n";
 import { components } from "@/router/enums";
-import type { RouteConfigsTable } from "/#/index";
 
-const componentsRouter: RouteConfigsTable = {
+export default {
   path: "/components",
   redirect: "/components/video",
   meta: {
@@ -128,6 +127,4 @@ const componentsRouter: RouteConfigsTable = {
       }
     }
   ]
-};
-
-export default componentsRouter;
+} as RouteConfigsTable;

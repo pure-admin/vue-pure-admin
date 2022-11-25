@@ -1,6 +1,5 @@
 // 多组件库的国际化和本地项目国际化兼容
 import { App, WritableComputedRef } from "vue";
-import type { StorageConfigs } from "/#/index";
 import { storageLocal } from "@pureadmin/utils";
 import { type I18n, createI18n } from "vue-i18n";
 

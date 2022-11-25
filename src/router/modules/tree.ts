@@ -1,9 +1,8 @@
 import { $t } from "@/plugins/i18n";
 import { tree } from "@/router/enums";
 import hot from "@/assets/svg/hot.svg?component";
-import type { RouteConfigsTable } from "/#/index";
 
-const treeRouter: RouteConfigsTable = {
+export default {
   path: "/tree",
   redirect: "/tree/index",
   meta: {
@@ -21,6 +20,4 @@ const treeRouter: RouteConfigsTable = {
       }
     }
   ]
-};
-
-export default treeRouter;
+} as RouteConfigsTable;

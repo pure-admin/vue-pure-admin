@@ -1,8 +1,7 @@
 import { $t } from "@/plugins/i18n";
 import { nested } from "@/router/enums";
-import type { RouteConfigsTable } from "/#/index";
 
-const nestedRouter: RouteConfigsTable = {
+export default {
   path: "/nested",
   redirect: "/nested/menu1/menu1-1",
   meta: {
@@ -83,6 +82,4 @@ const nestedRouter: RouteConfigsTable = {
       }
     }
   ]
-};
-
-export default nestedRouter;
+} as RouteConfigsTable;

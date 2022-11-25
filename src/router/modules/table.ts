@@ -1,9 +1,8 @@
 import { $t } from "@/plugins/i18n";
 import { table } from "@/router/enums";
 import hot from "@/assets/svg/hot.svg?component";
-import type { RouteConfigsTable } from "/#/index";
 
-const tableRouter: RouteConfigsTable = {
+export default {
   path: "/pure-table",
   redirect: "/pure-table/index",
   meta: {
@@ -29,6 +28,4 @@ const tableRouter: RouteConfigsTable = {
       }
     }
   ]
-};
-
-export default tableRouter;
+} as RouteConfigsTable;

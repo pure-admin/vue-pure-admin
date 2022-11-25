@@ -1,8 +1,7 @@
 import { $t } from "@/plugins/i18n";
 import { editor } from "@/router/enums";
-import type { RouteConfigsTable } from "/#/index";
 
-const editorRouter: RouteConfigsTable = {
+export default {
   path: "/editor",
   redirect: "/editor/index",
   meta: {
@@ -21,6 +20,4 @@ const editorRouter: RouteConfigsTable = {
       }
     }
   ]
-};
-
-export default editorRouter;
+} as RouteConfigsTable;

@@ -1,8 +1,7 @@
 import { $t } from "@/plugins/i18n";
 import { result } from "@/router/enums";
-import type { RouteConfigsTable } from "/#/index";
 
-const resultRouter: RouteConfigsTable = {
+export default {
   path: "/result",
   redirect: "/result/success",
   meta: {
@@ -28,6 +27,4 @@ const resultRouter: RouteConfigsTable = {
       }
     }
   ]
-};
-
-export default resultRouter;
+} as RouteConfigsTable;
