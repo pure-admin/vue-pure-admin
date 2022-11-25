@@ -97,6 +97,7 @@ specifiers:
   stylelint-config-recommended: ^9.0.0
   stylelint-config-standard: ^29.0.0
   stylelint-order: ^5.0.0
+  svgo: ^3.0.2
   swiper: ^8.4.4
   tailwindcss: ^3.2.4
   terser: ^5.15.1
@@ -241,6 +242,7 @@ devDependencies:
   stylelint-config-recommended: 9.0.0_stylelint@14.15.0
   stylelint-config-standard: 29.0.0_stylelint@14.15.0
   stylelint-order: 5.0.0_stylelint@14.15.0
+  svgo: 3.0.2
   tailwindcss: 3.2.4_postcss@8.4.19
   terser: 5.15.1
   typescript: 4.9.3
@@ -3543,6 +3545,19 @@ packages:
       nth-check: 2.1.1
     dev: true
 
+  /css-select/5.1.0:
+    resolution:
+      {
+        integrity: sha512-nwoRF1rvRRnnCqqY7updORDsuqKzqYJ28+oSMaJMMgOauh3fvwHqMS7EZpIPqK8GL+g9mKxF1vP/ZjSeNjEVHg==
+      }
+    dependencies:
+      boolbase: 1.0.0
+      css-what: 6.1.0
+      domhandler: 5.0.3
+      domutils: 3.0.1
+      nth-check: 2.1.1
+    dev: true
+
   /css-tree/1.1.3:
     resolution:
       {
@@ -3552,6 +3567,17 @@ packages:
     dependencies:
       mdn-data: 2.0.14
       source-map: 0.6.1
+    dev: true
+
+  /css-tree/2.2.1:
+    resolution:
+      {
+        integrity: sha512-OA0mILzGc1kCOCSJerOeqDxDQ4HOh+G8NbOJFOTgOCzpw7fCBubk0fEyxp8AgOL/jvLgYA/uV0cMbe43ElF1JA==
+      }
+    engines: { node: ^10 || ^12.20.0 || ^14.13.0 || >=15.0.0, npm: ">=7.0.0" }
+    dependencies:
+      mdn-data: 2.0.28
+      source-map-js: 1.0.2
     dev: true
 
   /css-what/6.1.0:
@@ -3663,6 +3689,16 @@ packages:
     engines: { node: ">=8.0.0" }
     dependencies:
       css-tree: 1.1.3
+    dev: true
+
+  /csso/5.0.5:
+    resolution:
+      {
+        integrity: sha512-0LrrStPOdJj+SPCCrGhzryycLjwcgUSHBtxNA8aIDxf0GLsRh1cKYhB00Gd1lDOS4yGH69+SNn13+TWbVHETFQ==
+      }
+    engines: { node: ^10 || ^12.20.0 || ^14.13.0 || >=15.0.0, npm: ">=7.0.0" }
+    dependencies:
+      css-tree: 2.2.1
     dev: true
 
   /csstype/2.6.21:
@@ -6151,6 +6187,13 @@ packages:
       }
     dev: true
 
+  /mdn-data/2.0.28:
+    resolution:
+      {
+        integrity: sha512-aylIc7Z9y4yzHYAJNuESG3hfhC+0Ibp/MAMiaOZgNv4pmEdFyfZhhhny4MNiAfWdBQ1RQ2mfDWmM1x8SvGyp8g==
+      }
+    dev: true
+
   /memoize-one/6.0.0:
     resolution:
       {
@@ -8379,6 +8422,22 @@ packages:
       csso: 4.2.0
       picocolors: 1.0.0
       stable: 0.1.8
+    dev: true
+
+  /svgo/3.0.2:
+    resolution:
+      {
+        integrity: sha512-Z706C1U2pb1+JGP48fbazf3KxHrWOsLme6Rv7imFBn5EnuanDW1GPaA/P1/dvObE670JDePC3mnj0k0B7P0jjQ==
+      }
+    engines: { node: ">=14.0.0" }
+    hasBin: true
+    dependencies:
+      "@trysound/sax": 0.2.0
+      commander: 7.2.0
+      css-select: 5.1.0
+      css-tree: 2.2.1
+      csso: 5.0.5
+      picocolors: 1.0.0
     dev: true
 
   /swiper/8.4.4:
