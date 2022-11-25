@@ -1,5 +1,5 @@
 import { type FunctionalComponent } from "vue";
-import { type RouteComponent } from "vue-router";
+import { type RouteComponent, type RouteLocationNormalized } from "vue-router";
 
 export interface StorageConfigs {
   version?: string;
@@ -131,4 +131,12 @@ export interface RouteConfigsTable {
   };
   /** 子路由配置项 */
   children?: Array<RouteChildrenConfigsTable>;
+}
+
+export interface toRouteType extends RouteLocationNormalized {
+  meta: {
+    roles: Array<string>;
+    keepAlive?: boolean;
+    dynamicLevel?: string;
+  };
 }

@@ -1,6 +1,6 @@
 import "@/utils/sso";
 import { getConfig } from "@/config";
-import { toRouteType } from "./types";
+import { toRouteType } from "/#/index";
 import NProgress from "@/utils/progress";
 import { findIndex } from "lodash-unified";
 import { transformI18n } from "@/plugins/i18n";
