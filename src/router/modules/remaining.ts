@@ -1,8 +1,7 @@
 import { $t } from "@/plugins/i18n";
-import type { RouteConfigsTable } from "/#/index";
 const Layout = () => import("@/layout/index.vue");
 
-const remainingRouter: Array<RouteConfigsTable> = [
+export default [
   {
     path: "/login",
     name: "Login",
@@ -20,7 +19,7 @@ const remainingRouter: Array<RouteConfigsTable> = [
       icon: "home-filled",
       title: $t("menus.hshome"),
       showLink: false,
-      rank: 104
+      rank: 102
     },
     children: [
       {
@@ -38,9 +37,7 @@ const remainingRouter: Array<RouteConfigsTable> = [
     meta: {
       title: $t("menus.hsempty"),
       showLink: false,
-      rank: 105
+      rank: 103
     }
   }
-];
-
-export default remainingRouter;
+] as Array<RouteConfigsTable>;

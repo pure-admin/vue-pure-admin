@@ -1,13 +1,13 @@
 import { $t } from "@/plugins/i18n";
-import type { RouteConfigsTable } from "/#/index";
+import { able } from "@/router/enums";
 
-const ableRouter: RouteConfigsTable = {
+export default {
   path: "/able",
   redirect: "/able/watermark",
   meta: {
     icon: "ubuntu-fill",
     title: $t("menus.hsAble"),
-    rank: 5
+    rank: able
   },
   children: [
     {
@@ -163,6 +163,4 @@ const ableRouter: RouteConfigsTable = {
       }
     }
   ]
-};
-
-export default ableRouter;
+} as RouteConfigsTable;

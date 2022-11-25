@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useColumns } from "./columns";
+import { handleTree } from "@/utils/tree";
 import { getDeptList } from "@/api/system";
 import { FormInstance } from "element-plus";
-import { handleTree } from "@pureadmin/utils";
 import { reactive, ref, onMounted } from "vue";
 import { TableProBar } from "@/components/ReTable";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";

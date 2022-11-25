@@ -1,13 +1,13 @@
 import { $t } from "@/plugins/i18n";
-import type { RouteConfigsTable } from "/#/index";
+import { flowchart } from "@/router/enums";
 
-const flowChartRouter: RouteConfigsTable = {
+export default {
   path: "/flowChart",
   redirect: "/flowChart/index",
   meta: {
     icon: "set-up",
     title: $t("menus.hsflowChart"),
-    rank: 1
+    rank: flowchart
   },
   children: [
     {
@@ -19,6 +19,4 @@ const flowChartRouter: RouteConfigsTable = {
       }
     }
   ]
-};
-
-export default flowChartRouter;
+} as RouteConfigsTable;

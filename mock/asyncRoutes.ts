@@ -1,5 +1,6 @@
 // 模拟后端动态生成路由
 import { MockMethod } from "vite-plugin-mock";
+import { system, permission, frame, tabs } from "@/router/enums";
 
 /**
  * roles：页面级别权限，这里模拟二种 "admin"、"common"
@@ -12,7 +13,7 @@ const systemRouter = {
   meta: {
     icon: "setting",
     title: "menus.hssysManagement",
-    rank: 11
+    rank: system
   },
   children: [
     {
@@ -61,7 +62,7 @@ const permissionRouter = {
   meta: {
     title: "menus.permission",
     icon: "lollipop",
-    rank: 10
+    rank: permission
   },
   children: [
     {
@@ -89,23 +90,23 @@ const frameRouter = {
   meta: {
     icon: "monitor",
     title: "menus.hsExternalPage",
-    rank: 8
+    rank: frame
   },
   children: [
+    {
+      path: "/external",
+      name: "https://yiming_chang.gitee.io/pure-admin-doc",
+      meta: {
+        title: "menus.externalLink",
+        roles: ["admin", "common"]
+      }
+    },
     {
       path: "/iframe/pure",
       name: "FramePure",
       meta: {
         title: "menus.hsPureDocument",
         frameSrc: "https://yiming_chang.gitee.io/pure-admin-doc",
-        roles: ["admin", "common"]
-      }
-    },
-    {
-      path: "/external",
-      name: "https://yiming_chang.gitee.io/pure-admin-doc",
-      meta: {
-        title: "menus.externalLink",
         roles: ["admin", "common"]
       }
     },
@@ -117,6 +118,51 @@ const frameRouter = {
         frameSrc: "https://element-plus.org/zh-CN/",
         roles: ["admin", "common"]
       }
+    },
+    {
+      path: "/iframe/vue3",
+      name: "FrameVue",
+      meta: {
+        title: "menus.hsVueDocument",
+        frameSrc: "https://cn.vuejs.org/",
+        roles: ["admin", "common"]
+      }
+    },
+    {
+      path: "/iframe/vite",
+      name: "FrameVite",
+      meta: {
+        title: "menus.hsViteDocument",
+        frameSrc: "https://cn.vitejs.dev/",
+        roles: ["admin", "common"]
+      }
+    },
+    {
+      path: "/iframe/pinia",
+      name: "FramePinia",
+      meta: {
+        title: "menus.hsPiniaDocument",
+        frameSrc: "https://pinia.vuejs.org/zh/index.html",
+        roles: ["admin", "common"]
+      }
+    },
+    {
+      path: "/iframe/vue-router",
+      name: "FrameRouter",
+      meta: {
+        title: "menus.hsRouterDocument",
+        frameSrc: "https://router.vuejs.org/zh/",
+        roles: ["admin", "common"]
+      }
+    },
+    {
+      path: "/iframe/tailwindcss",
+      name: "FrameTailwindcss",
+      meta: {
+        title: "menus.hsTailwindcssDocument",
+        frameSrc: "https://tailwindcss.com/docs/installation",
+        roles: ["admin", "common"]
+      }
     }
   ]
 };
@@ -126,7 +172,7 @@ const tabsRouter = {
   meta: {
     icon: "IF-team-icontabs",
     title: "menus.hstabs",
-    rank: 13
+    rank: tabs
   },
   children: [
     {

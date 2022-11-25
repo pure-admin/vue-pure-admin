@@ -1,13 +1,13 @@
 import { $t } from "@/plugins/i18n";
-import type { RouteConfigsTable } from "/#/index";
+import { error } from "@/router/enums";
 
-const errorRouter: RouteConfigsTable = {
+export default {
   path: "/error",
   redirect: "/error/403",
   meta: {
     icon: "information-line",
     title: $t("menus.hsabnormal"),
-    rank: 9
+    rank: error
   },
   children: [
     {
@@ -35,6 +35,4 @@ const errorRouter: RouteConfigsTable = {
       }
     }
   ]
-};
-
-export default errorRouter;
+} as RouteConfigsTable;

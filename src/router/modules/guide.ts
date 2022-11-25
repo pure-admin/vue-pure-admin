@@ -1,13 +1,13 @@
 import { $t } from "@/plugins/i18n";
-import type { RouteConfigsTable } from "/#/index";
+import { guide } from "@/router/enums";
 
-const guideRouter: RouteConfigsTable = {
+export default {
   path: "/guide",
   redirect: "/guide/index",
   meta: {
     icon: "guide",
     title: $t("menus.hsguide"),
-    rank: 14
+    rank: guide
   },
   children: [
     {
@@ -19,6 +19,4 @@ const guideRouter: RouteConfigsTable = {
       }
     }
   ]
-};
-
-export default guideRouter;
+} as RouteConfigsTable;

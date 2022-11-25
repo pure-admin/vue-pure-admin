@@ -1,13 +1,13 @@
-import type { RouteConfigsTable } from "/#/index";
+import { ppt } from "@/router/enums";
 const IFrame = () => import("@/layout/frameView.vue");
 
-const pptRouter: RouteConfigsTable = {
+export default {
   path: "/ppt",
   redirect: "/ppt/index",
   meta: {
     icon: "ppt",
     title: "PPT",
-    rank: 3
+    rank: ppt
   },
   children: [
     {
@@ -21,6 +21,4 @@ const pptRouter: RouteConfigsTable = {
       }
     }
   ]
-};
-
-export default pptRouter;
+} as RouteConfigsTable;

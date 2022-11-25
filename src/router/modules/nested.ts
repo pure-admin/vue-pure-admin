@@ -1,13 +1,13 @@
 import { $t } from "@/plugins/i18n";
-import type { RouteConfigsTable } from "/#/index";
+import { nested } from "@/router/enums";
 
-const nestedRouter: RouteConfigsTable = {
+export default {
   path: "/nested",
   redirect: "/nested/menu1/menu1-1",
   meta: {
     title: $t("menus.hsmenus"),
     icon: "histogram",
-    rank: 7
+    rank: nested
   },
   children: [
     {
@@ -82,6 +82,4 @@ const nestedRouter: RouteConfigsTable = {
       }
     }
   ]
-};
-
-export default nestedRouter;
+} as RouteConfigsTable;

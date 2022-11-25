@@ -1,13 +1,13 @@
 import { $t } from "@/plugins/i18n";
-import type { RouteConfigsTable } from "/#/index";
+import { result } from "@/router/enums";
 
-const resultRouter: RouteConfigsTable = {
+export default {
   path: "/result",
   redirect: "/result/success",
   meta: {
     icon: "checkbox-circle-line",
     title: $t("menus.hsResult"),
-    rank: 8
+    rank: result
   },
   children: [
     {
@@ -27,6 +27,4 @@ const resultRouter: RouteConfigsTable = {
       }
     }
   ]
-};
-
-export default resultRouter;
+} as RouteConfigsTable;

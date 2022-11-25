@@ -1,8 +1,8 @@
 import { $t } from "@/plugins/i18n";
-import type { RouteConfigsTable } from "/#/index";
+import { home } from "@/router/enums";
 const Layout = () => import("@/layout/index.vue");
 
-const homeRouter: RouteConfigsTable = {
+export default {
   path: "/",
   name: "Home",
   component: Layout,
@@ -10,7 +10,7 @@ const homeRouter: RouteConfigsTable = {
   meta: {
     icon: "home-filled",
     title: $t("menus.hshome"),
-    rank: 0
+    rank: home
   },
   children: [
     {
@@ -22,6 +22,4 @@ const homeRouter: RouteConfigsTable = {
       }
     }
   ]
-};
-
-export default homeRouter;
+} as RouteConfigsTable;

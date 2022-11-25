@@ -1,13 +1,13 @@
 import { $t } from "@/plugins/i18n";
-import type { RouteConfigsTable } from "/#/index";
+import { components } from "@/router/enums";
 
-const componentsRouter: RouteConfigsTable = {
+export default {
   path: "/components",
   redirect: "/components/video",
   meta: {
     icon: "menu",
     title: $t("menus.hscomponents"),
-    rank: 6
+    rank: components
   },
   children: [
     {
@@ -127,6 +127,4 @@ const componentsRouter: RouteConfigsTable = {
       }
     }
   ]
-};
-
-export default componentsRouter;
+} as RouteConfigsTable;

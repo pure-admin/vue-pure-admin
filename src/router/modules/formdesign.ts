@@ -1,14 +1,14 @@
 import { $t } from "@/plugins/i18n";
-import type { RouteConfigsTable } from "/#/index";
+import { formdesign } from "@/router/enums";
 const IFrame = () => import("@/layout/frameView.vue");
 
-const formDesignRouter: RouteConfigsTable = {
+export default {
   path: "/formDesign",
   redirect: "/formDesign/index",
   meta: {
     icon: "terminal-window-line",
     title: $t("menus.hsFormDesign"),
-    rank: 2
+    rank: formdesign
   },
   children: [
     {
@@ -22,6 +22,4 @@ const formDesignRouter: RouteConfigsTable = {
       }
     }
   ]
-};
-
-export default formDesignRouter;
+} as RouteConfigsTable;

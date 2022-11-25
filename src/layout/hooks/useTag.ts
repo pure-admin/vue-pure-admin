@@ -9,7 +9,6 @@ import {
   getCurrentInstance
 } from "vue";
 import { tagsViewsType } from "../types";
-import type { StorageConfigs } from "/#/index";
 import { useEventListener } from "@vueuse/core";
 import { useRoute, useRouter } from "vue-router";
 import { transformI18n, $t } from "@/plugins/i18n";

@@ -9,7 +9,7 @@ import {
   deleteChildren,
   getNodeByUniqueId,
   appendFieldByUniqueId
-} from "@pureadmin/utils";
+} from "@/utils/tree";
 import { useDetail } from "./hooks";
 
 defineOptions({
