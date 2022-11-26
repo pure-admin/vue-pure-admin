@@ -1,6 +1,6 @@
 import { tableDataEdit } from "../data";
+import { message } from "@/utils/message";
 import { ref, computed, Transition } from "vue";
-import { message } from "@pureadmin/components";
 import { clone, delay } from "@pureadmin/utils";
 
 // 温馨提示：编辑整行方法雷同，将cellRenderer后面渲染的组件抽出来做对应处理即可
@@ -109,10 +109,11 @@ export function useColumns() {
 
   function onSure(index) {
     dataList.value[index].id = inputValMap.value[index].value;
-    message.success(
+    message(
       `您编辑了第 ${index + 1} 行，编辑后数据为：${JSON.stringify(
         dataList.value[index]
-      )}`
+      )}`,
+      "success"
     );
     // 编辑状态关闭
     editStatus.value[index] = Object.assign({}, editStatus.value[index], {

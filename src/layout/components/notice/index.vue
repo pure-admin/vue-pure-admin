@@ -2,25 +2,16 @@
 import { ref } from "vue";
 import { noticesData } from "./data";
 import NoticeList from "./noticeList.vue";
-import { Tabs, TabPane } from "@pureadmin/components";
-
-const dropdownDom = ref();
-const activeKey = ref(noticesData[0].key);
-
-const notices = ref(noticesData);
 
 const noticesNum = ref(0);
-notices.value.forEach(notice => {
-  noticesNum.value += notice.list.length;
-});
+const notices = ref(noticesData);
+const activeKey = ref(noticesData[0].key);
 
-function tabClick() {
-  (dropdownDom as any).value.handleOpen();
-}
+notices.value.map(v => (noticesNum.value += v.list.length));
 </script>
 
 <template>
-  <el-dropdown ref="dropdownDom" trigger="click" placement="bottom-end">
+  <el-dropdown trigger="click" placement="bottom-end">
     <span class="dropdown-badge navbar-bg-hover select-none">
       <el-badge :value="noticesNum" :max="99">
         <span class="header-notice-icon">
@@ -30,33 +21,24 @@ function tabClick() {
     </span>
     <template #dropdown>
       <el-dropdown-menu>
-        <Tabs
-          centered
-          class="dropdown-tabs"
-          :tabBarStyle="{ marginLeft: notices?.length > 4 ? '8px' : '0' }"
-          v-model:activeKey="activeKey"
-          @tabClick="tabClick"
-        >
+        <el-tabs :stretch="true" v-model="activeKey" class="dropdown-tabs">
           <template v-for="item in notices" :key="item.key">
-            <TabPane :tab="`${item.name}(${item.list.length})`">
+            <el-tab-pane
+              :label="`${item.name}(${item.list.length})`"
+              :name="`${item.key}`"
+            >
               <el-scrollbar max-height="330px">
                 <div class="noticeList-container">
                   <NoticeList :list="item.list" />
                 </div>
               </el-scrollbar>
-            </TabPane>
+            </el-tab-pane>
           </template>
-        </Tabs>
+        </el-tabs>
       </el-dropdown-menu>
     </template>
   </el-dropdown>
 </template>
-
-<style>
-.ant-tabs-dropdown {
-  z-index: 2900 !important;
-}
-</style>
 
 <style lang="scss" scoped>
 .dropdown-badge {
@@ -73,30 +55,28 @@ function tabClick() {
 }
 
 .dropdown-tabs {
-  width: 336px;
-  background-color: #fff;
-  box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
-  border-radius: 4px;
+  width: 330px;
+
+  .noticeList-container {
+    padding: 15px 24px 0 24px;
+  }
 
   :deep(.el-tabs__header) {
     margin: 0;
-  }
-
-  :deep(.el-tabs__nav-scroll) {
-    display: flex;
-    justify-content: center;
   }
 
   :deep(.el-tabs__nav-wrap)::after {
     height: 1px;
   }
 
-  :deep(.noticeList-container) {
-    padding: 15px 24px 0 24px;
+  // 如果上面的 notices 长度大于 3 请注释掉下面代码
+  :deep(.el-tabs__nav-wrap) {
+    padding: 0 36px 0 36px;
   }
-}
 
-:deep(.ant-tabs-nav) {
-  margin-bottom: 0;
+  // 如果上面的 notices 长度大于 3 请注释掉下面代码
+  :deep(.el-tabs__active-bar) {
+    margin: 0 36px 0 36px;
+  }
 }
 </style>

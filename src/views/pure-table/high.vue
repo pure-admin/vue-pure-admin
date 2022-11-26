@@ -1,10 +1,16 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import { list } from "./high/list";
-import { Tabs, TabPane } from "@pureadmin/components";
 
 defineOptions({
   name: "PureTableHigh"
 });
+
+const selected = ref(0);
+
+function tabClick({ index }) {
+  selected.value = index;
+}
 </script>
 
 <template>
@@ -32,21 +38,30 @@ defineOptions({
       :closable="false"
     />
 
-    <Tabs :destroyInactiveTabPane="true">
-      <TabPane v-for="item of list" :key="item.key">
-        <template #tab>
-          <el-tooltip :content="item.content" placement="top-end">
-            <span>{{ item.title }}</span>
-          </el-tooltip>
-        </template>
-        <component :is="item.component" />
-      </TabPane>
-    </Tabs>
+    <el-tabs @tab-click="tabClick">
+      <template v-for="(item, index) of list" :key="item.key">
+        <el-tab-pane :lazy="true">
+          <template #label>
+            <el-tooltip
+              :content="`（第 ${index + 1} 个示例）${item.content}`"
+              placement="top-end"
+            >
+              <span>{{ item.title }}</span>
+            </el-tooltip>
+          </template>
+          <component v-if="selected == index" :is="item.component" />
+        </el-tab-pane>
+      </template>
+    </el-tabs>
   </el-card>
 </template>
 
 <style scoped>
-:deep(.ant-tabs-content-holder) {
+:deep(.el-tabs__nav-wrap)::after {
+  height: 1px;
+}
+
+:deep(.el-tabs__header) {
   margin-top: 10px;
 }
 

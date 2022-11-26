@@ -5,9 +5,9 @@ import {
   type EchartOptions
 } from "@pureadmin/utils";
 import { tableDataDrag } from "../data";
+import { message } from "@/utils/message";
 import { templateRef } from "@vueuse/core";
 import { ref, type Ref, computed } from "vue";
-import { message } from "@pureadmin/components";
 
 export function useColumns() {
   const dataList = ref(clone(tableDataDrag, true).splice(0, 4));
@@ -76,8 +76,9 @@ export function useColumns() {
       {
         name: "click",
         callback: ({ data: { name, value } }) => {
-          message.success(
-            `您点击了第 ${i + 1} 行，图表标题为${name}，图表数据为：${value}`
+          message(
+            `您点击了第 ${i + 1} 行，图表标题为${name}，图表数据为：${value}`,
+            "success"
           );
         }
       }

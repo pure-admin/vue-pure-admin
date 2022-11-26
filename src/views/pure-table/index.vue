@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { list } from "./base/list";
-import { Tabs, TabPane } from "@pureadmin/components";
 
 defineOptions({
   name: "PureTable"
@@ -33,21 +32,30 @@ defineOptions({
       :closable="false"
     />
 
-    <Tabs :destroyInactiveTabPane="true">
-      <TabPane v-for="item of list" :key="item.key">
-        <template #tab>
-          <el-tooltip :content="item.content" placement="top-end">
-            <span>{{ item.title }}</span>
-          </el-tooltip>
-        </template>
-        <component :is="item.component" />
-      </TabPane>
-    </Tabs>
+    <el-tabs>
+      <template v-for="(item, index) of list" :key="item.key">
+        <el-tab-pane>
+          <template #label>
+            <el-tooltip
+              :content="`（第 ${index + 1} 个示例）${item.content}`"
+              placement="top-end"
+            >
+              <span>{{ item.title }}</span>
+            </el-tooltip>
+          </template>
+          <component :is="item.component" />
+        </el-tab-pane>
+      </template>
+    </el-tabs>
   </el-card>
 </template>
 
 <style scoped>
-:deep(.ant-tabs-content-holder) {
+:deep(.el-tabs__nav-wrap)::after {
+  height: 1px;
+}
+
+:deep(.el-tabs__header) {
   margin-top: 10px;
 }
 

@@ -28,11 +28,6 @@ html.dark {
     filter: invert(0.9) hue-rotate(180deg);
   }
 
-  .ant-tabs {
-    background: var(--el-bg-color);
-    color: $color-white;
-  }
-
   /* 标签页 */
   .tags-view {
     .arrow-left,

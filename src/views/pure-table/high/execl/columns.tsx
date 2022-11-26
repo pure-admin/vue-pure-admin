@@ -2,7 +2,7 @@ import { ref } from "vue";
 import { utils, writeFile } from "xlsx";
 import { tableDataDrag } from "../data";
 import { clone } from "@pureadmin/utils";
-import { message } from "@pureadmin/components";
+import { message } from "@/utils/message";
 
 export function useColumns() {
   const dataList = ref(clone(tableDataDrag, true));
@@ -39,7 +39,7 @@ export function useColumns() {
     const workBook = utils.book_new();
     utils.book_append_sheet(workBook, workSheet, "数据报表");
     writeFile(workBook, "pure-admin-table.xlsx");
-    message.success("导出成功");
+    message("导出成功", "success");
   };
 
   return {

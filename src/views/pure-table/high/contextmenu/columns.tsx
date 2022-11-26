@@ -1,7 +1,7 @@
 import { ref } from "vue";
 import { tableDataDrag } from "../data";
 import { clone } from "@pureadmin/utils";
-import { message } from "@pureadmin/components";
+import { message } from "@/utils/message";
 import { CustomMouseMenu } from "@howdyjs/mouse-menu";
 
 export function useColumns() {
@@ -33,10 +33,11 @@ export function useColumns() {
         label: "编辑",
         tips: "Edit",
         fn: row =>
-          message.success(
+          message(
             `您编辑了第 ${
               dataList.value.findIndex(v => v.id === row.id) + 1
-            } 行，数据为：${JSON.stringify(row)}`
+            } 行，数据为：${JSON.stringify(row)}`,
+            "success"
           )
       }
     ]

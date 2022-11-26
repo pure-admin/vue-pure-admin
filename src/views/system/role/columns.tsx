@@ -1,7 +1,7 @@
 import { ref } from "vue";
 import dayjs from "dayjs";
+import { message } from "@/utils/message";
 import { ElMessageBox } from "element-plus";
-import { Switch, message } from "@pureadmin/components";
 
 export function useColumns() {
   const switchLoadMap = ref({});
@@ -53,14 +53,15 @@ export function useColumns() {
       prop: "status",
       width: 130,
       cellRenderer: scope => (
-        <Switch
+        <el-switch
           size={scope.props.size === "small" ? "small" : "default"}
           loading={switchLoadMap.value[scope.index]?.loading}
-          v-model:checked={scope.row.status}
-          checkedValue={1}
-          unCheckedValue={0}
-          checked-children="已开启"
-          un-checked-children="已关闭"
+          v-model={scope.row.status}
+          active-value={1}
+          inactive-value={0}
+          active-text="已开启"
+          inactive-text="已关闭"
+          inline-prompt
           onChange={() => onChange(scope as any)}
         />
       )
@@ -112,7 +113,7 @@ export function useColumns() {
               loading: false
             }
           );
-          message.success("已成功修改角色状态");
+          message("已成功修改角色状态", "success");
         }, 300);
       })
       .catch(() => {

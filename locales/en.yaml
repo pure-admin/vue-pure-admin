@@ -84,9 +84,6 @@ menus:
   hsIconSelect: Icon Select
   hsTimeline: Time Line
   hsLineTree: LineTree
-  hsAntTabs: Imitate Antdv Tabs
-  hsAntAnchor: Imitate Antdv Anchor
-  hsAntTreeSelect: Imitate Antdv TreeSelector
   hsList: List Page
   hsListCard: Card List Page
   hsDebounce: Debounce & Throttle

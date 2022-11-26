@@ -2,8 +2,8 @@
 import { useI18n } from "vue-i18n";
 import { ref, reactive } from "vue";
 import Motion from "../utils/motion";
+import { message } from "@/utils/message";
 import { phoneRules } from "../utils/rule";
-import { message } from "@pureadmin/components";
 import type { FormInstance } from "element-plus";
 import { $t, transformI18n } from "@/plugins/i18n";
 import { useVerifyCode } from "../utils/verifyCode";
@@ -26,7 +26,7 @@ const onLogin = async (formEl: FormInstance | undefined) => {
     if (valid) {
       // 模拟登录请求，需根据实际开发进行修改
       setTimeout(() => {
-        message.success(transformI18n($t("login.loginSuccess")));
+        message(transformI18n($t("login.loginSuccess")), "success");
         loading.value = false;
       }, 2000);
     } else {

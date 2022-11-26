@@ -1,4 +1,4 @@
-import { message } from "@pureadmin/components";
+import { message } from "@/utils/message";
 import { tableData } from "../data";
 
 // 如果您不习惯tsx写法，可以传slot，然后在template里写
@@ -56,11 +56,14 @@ export function useColumns() {
   ];
 
   const handleEdit = (index: number, row) => {
-    message.success(`您编辑了第 ${index} 行，数据为：${JSON.stringify(row)}`);
+    message(
+      `您编辑了第 ${index} 行，数据为：${JSON.stringify(row)}`,
+      "success"
+    );
   };
 
   const handleDelete = (index: number, row) => {
-    message.error(`您删除了第 ${index} 行，数据为：${JSON.stringify(row)}`);
+    message(`您删除了第 ${index} 行，数据为：${JSON.stringify(row)}`, "info");
   };
 
   return {

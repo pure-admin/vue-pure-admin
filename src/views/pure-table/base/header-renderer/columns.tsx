@@ -1,4 +1,4 @@
-import { message } from "@pureadmin/components";
+import { message } from "@/utils/message";
 import { tableData } from "../data";
 import { ref, computed } from "vue";
 
@@ -15,11 +15,14 @@ export function useColumns() {
   );
 
   const handleEdit = (index: number, row) => {
-    message.success(`您编辑了第 ${index} 行，数据为：${JSON.stringify(row)}`);
+    message(
+      `您编辑了第 ${index} 行，数据为：${JSON.stringify(row)}`,
+      "success"
+    );
   };
 
   const handleDelete = (index: number, row) => {
-    message.error(`您删除了第 ${index} 行，数据为：${JSON.stringify(row)}`);
+    message(`您删除了第 ${index} 行，数据为：${JSON.stringify(row)}`, "info");
   };
 
   const columns: TableColumnList = [

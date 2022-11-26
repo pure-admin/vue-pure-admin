@@ -67,30 +67,6 @@ export default {
       }
     },
     {
-      path: "/able/antTabs",
-      name: "AntTabs",
-      component: () => import("@/views/able/ant-tabs.vue"),
-      meta: {
-        title: $t("menus.hsAntTabs")
-      }
-    },
-    {
-      path: "/able/antAnchor",
-      name: "AntAnchor",
-      component: () => import("@/views/able/ant-anchor.vue"),
-      meta: {
-        title: $t("menus.hsAntAnchor")
-      }
-    },
-    {
-      path: "/able/antTreeSelect",
-      name: "AntTreeSelect",
-      component: () => import("@/views/able/ant-treeSelect.vue"),
-      meta: {
-        title: $t("menus.hsAntTreeSelect")
-      }
-    },
-    {
       path: "/able/debounce",
       name: "Debounce",
       component: () => import("@/views/able/debounce.vue"),
