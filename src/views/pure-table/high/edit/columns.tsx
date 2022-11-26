@@ -46,7 +46,7 @@ export function useColumns() {
       // class="flex-bc" flex-bc 代表 flex justify-between items-center 具体看 src/style/tailwind.css 文件
       cellRenderer: ({ row, index }) => (
         <div
-          class="flex-bc h-[32px]"
+          class="flex-bc w-full h-[32px]"
           onMouseenter={() => (activeIndex.value = index)}
           onMouseleave={() => onMouseleave(index)}
         >

@@ -7,7 +7,7 @@ const { columns, dataList } = useColumns();
 <template>
   <pure-table row-key="id" border :data="dataList" :columns="columns">
     <template #echart="{ index }">
-      <div :ref="'PieChartRef' + index" style="height: 100px" />
+      <div :ref="'PieChartRef' + index" class="w-full h-[100px]" />
     </template>
   </pure-table>
 </template>
