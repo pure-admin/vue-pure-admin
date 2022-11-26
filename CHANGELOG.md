@@ -1,3 +1,24 @@
+# 3.8.0 (2022-11-26)
+
+### 🎫 Feat
+
+- Add `@pureadmin/table` multiple data format (deep structure) examples
+- Add `@pureadmin/table` image preview example
+- Add `@pureadmin/table` row and column drag example
+- Add `@pureadmin/table` context menu example
+- Add `@pureadmin/table` export `Excel` example
+- Add `@pureadmin/table` edit cell example
+- Add `@pureadmin/table` watermark example
+- Add `@pureadmin/table` print example
+- Add `@pureadmin/table` embedded `echarts` chart example
+- Add `svgo` to compress all `svg` files on the platform to reduce the size
+
+### 🍏 Perf
+
+- The static routing platform automatically imports without manual import
+- Improved global type hints
+- Optimize `vite` to rely on pre-built configurations in the platform, and the loading speed of page switching is significantly accelerated
+
 # 3.7.1 (2022-11-22)
 
 ### 🔥 hotfix
