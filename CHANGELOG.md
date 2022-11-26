@@ -1,3 +1,9 @@
+# 3.8.5 (2022-11-26)
+
+### 🍏 Perf
+
+- Great optimization, remove `@pureadmin/components` and use compatible writing, the package size of the platform is reduced by `0.4` MB before compression is not enabled, and the resource of `2.3` MB is reduced for the first screen request, which is for the [lite version ](https://github.com/xiaoxian521/pure-admin-thin) is a very big optimization, the streamlined version has synchronized code
+
 # 3.8.0 (2022-11-26)
 
 ### 🎫 Feat
