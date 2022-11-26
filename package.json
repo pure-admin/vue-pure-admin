@@ -114,7 +114,6 @@
     "@vitejs/plugin-vue-jsx": "^2.1.1",
     "@vue/eslint-config-prettier": "^7.0.0",
     "@vue/eslint-config-typescript": "^11.0.2",
-    "@vue/runtime-core": "^3.2.45",
     "autoprefixer": "^10.4.13",
     "cloc": "^2.10.0",
     "cssnano": "^5.1.14",

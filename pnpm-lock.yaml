@@ -40,7 +40,6 @@ specifiers:
   "@vitejs/plugin-vue-jsx": ^2.1.1
   "@vue/eslint-config-prettier": ^7.0.0
   "@vue/eslint-config-typescript": ^11.0.2
-  "@vue/runtime-core": ^3.2.45
   "@vueuse/core": ^9.6.0
   "@vueuse/motion": 2.0.0-beta.12
   "@wangeditor/editor": ^5.1.21
@@ -211,7 +210,6 @@ devDependencies:
   "@vitejs/plugin-vue-jsx": 2.1.1_vite@3.1.8+vue@3.2.45
   "@vue/eslint-config-prettier": 7.0.0_5qrnzwqb344w6up62gv3safeoi
   "@vue/eslint-config-typescript": 11.0.2_5ma4o5namqj2syekqcvrgakwe4
-  "@vue/runtime-core": 3.2.45
   autoprefixer: 10.4.13_postcss@8.4.19
   cloc: 2.10.0
   cssnano: 5.1.14_postcss@8.4.19

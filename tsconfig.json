@@ -21,8 +21,7 @@
     "incremental": true,
     "paths": {
       "@/*": ["src/*"],
-      "@build/*": ["build/*"],
-      "/#/*": ["types/*"]
+      "@build/*": ["build/*"]
     },
     "types": [
       "node",
@@ -35,11 +34,11 @@
     "typeRoots": ["./node_modules/@types/", "./types"]
   },
   "include": [
+    "mock/*.ts",
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
     "types/*.d.ts",
-    "mock/*.ts",
     "vite.config.ts"
   ],
   "exclude": ["node_modules", "dist", "**/*.js"]
