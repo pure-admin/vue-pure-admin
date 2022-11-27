@@ -1,9 +1,16 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import { list } from "./base/list";
 
 defineOptions({
   name: "PureTable"
 });
+
+const selected = ref(0);
+
+function tabClick({ index }) {
+  selected.value = index;
+}
 </script>
 
 <template>
@@ -32,9 +39,9 @@ defineOptions({
       :closable="false"
     />
 
-    <el-tabs>
+    <el-tabs @tab-click="tabClick">
       <template v-for="(item, index) of list" :key="item.key">
-        <el-tab-pane>
+        <el-tab-pane :lazy="true">
           <template #label>
             <el-tooltip
               :content="`（第 ${index + 1} 个示例）${item.content}`"
@@ -43,7 +50,7 @@ defineOptions({
               <span>{{ item.title }}</span>
             </el-tooltip>
           </template>
-          <component :is="item.component" />
+          <component v-if="selected == index" :is="item.component" />
         </el-tab-pane>
       </template>
     </el-tabs>

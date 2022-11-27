@@ -19,6 +19,10 @@ export default {
         extraIcon: {
           svg: true,
           name: "team-iconxinpinrenqiwang"
+        },
+        transition: {
+          enterTransition: "animate__fadeInLeft",
+          leaveTransition: "animate__fadeOutRight"
         }
       }
     },

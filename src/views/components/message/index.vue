@@ -19,7 +19,7 @@ defineOptions({
 
     <h4 class="mb-4">element-plus 的消息提示，点击弹出提示信息</h4>
 
-    <el-space>
+    <el-space wrap>
       <el-button
         type="info"
         @click="message('Info类型消息', { customClass: 'el' })"
@@ -119,7 +119,7 @@ defineOptions({
       原本样式，使用和打包大小成本极低并适配暗黑模式）
     </h4>
 
-    <el-space>
+    <el-space wrap>
       <el-button type="info" @click="message('Info类型消息')">Info</el-button>
       <el-button
         type="success"
