@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
-import { ElMessage, FormInstance } from "element-plus";
+import { message } from "@/utils/message";
+import { FormInstance } from "element-plus";
 
 const SELECT_OPTIONS = [
   { label: "网关", value: 1 },
@@ -33,7 +34,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
   if (!formEl) return;
   await formEl.validate(valid => {
     if (valid) {
-      ElMessage.success("提交成功");
+      message("提交成功", { type: "success" });
       formVisible.value = false;
       resetForm(formEl);
     }

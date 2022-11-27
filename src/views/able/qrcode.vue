@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, unref } from "vue";
-import { ElMessage } from "element-plus";
+import { message } from "@/utils/message";
 import ReQrcode from "@/components/ReQrcode";
 
 defineOptions({
@@ -14,10 +14,10 @@ setTimeout(() => {
   asyncTitle.value = unref(qrcodeText);
 }, 3000);
 const codeClick = () => {
-  ElMessage.info("点击事件");
+  message("点击事件", { type: "info" });
 };
 const disabledClick = () => {
-  ElMessage.info("失效");
+  message("失效", { type: "info" });
 };
 </script>
 

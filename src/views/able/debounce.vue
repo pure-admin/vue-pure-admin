@@ -1,17 +1,12 @@
 <script setup lang="ts">
-import { ElMessage } from "element-plus";
+import { message } from "@/utils/message";
 import { debounce, throttle } from "@pureadmin/utils";
 
 defineOptions({
   name: "Debounce"
 });
 
-const handle = () => {
-  ElMessage({
-    message: "恭喜你，这是一条成功消息",
-    type: "success"
-  });
-};
+const handle = () => message("恭喜你，这是一条成功消息", { type: "success" });
 
 const immediateDebounce = debounce(handle, 1000, true);
 

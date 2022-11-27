@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import Card from "./components/Card.vue";
 import { getCardList } from "@/api/list";
+import { message } from "@/utils/message";
+import { ElMessageBox } from "element-plus";
 import { ref, onMounted, nextTick } from "vue";
 import dialogForm from "./components/DialogForm.vue";
-import { ElMessage, ElMessageBox } from "element-plus";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 
 defineOptions({
@@ -77,10 +78,7 @@ const handleDeleteItem = product => {
     }
   )
     .then(() => {
-      ElMessage({
-        type: "success",
-        message: "删除成功"
-      });
+      message("删除成功", { type: "success" });
     })
     .catch(() => {});
 };
