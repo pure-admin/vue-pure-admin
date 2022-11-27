@@ -4,13 +4,13 @@ import vue from "@vitejs/plugin-vue";
 import { viteBuildInfo } from "./info";
 import svgLoader from "vite-svg-loader";
 import vueJsx from "@vitejs/plugin-vue-jsx";
-import VueMacros from "unplugin-vue-macros/vite";
 import { viteMockServe } from "vite-plugin-mock";
 import { configCompressPlugin } from "./compress";
 import VueI18n from "@intlify/vite-plugin-vue-i18n";
 import { visualizer } from "rollup-plugin-visualizer";
 import removeConsole from "vite-plugin-remove-console";
 import themePreprocessorPlugin from "@pureadmin/theme";
+import DefineOptions from "unplugin-vue-define-options/vite";
 import { genScssMultipleScopeVars } from "../src/layout/theme";
 
 export function getPluginsList(
@@ -32,7 +32,7 @@ export function getPluginsList(
     vueJsx(),
     VITE_CDN ? cdn : null,
     configCompressPlugin(VITE_COMPRESSION),
-    VueMacros(),
+    DefineOptions(),
     // 线上环境删除console
     removeConsole({ external: ["src/assets/iconfont/iconfont.js"] }),
     viteBuildInfo(),
