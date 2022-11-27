@@ -39,7 +39,9 @@ export function useColumns() {
     const workBook = utils.book_new();
     utils.book_append_sheet(workBook, workSheet, "数据报表");
     writeFile(workBook, "pure-admin-table.xlsx");
-    message("导出成功", "success");
+    message("导出成功", {
+      type: "success"
+    });
   };
 
   return {

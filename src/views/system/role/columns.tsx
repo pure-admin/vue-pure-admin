@@ -113,7 +113,9 @@ export function useColumns() {
               loading: false
             }
           );
-          message("已成功修改角色状态", "success");
+          message("已成功修改角色状态", {
+            type: "success"
+          });
         }, 300);
       })
       .catch(() => {

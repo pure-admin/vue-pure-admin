@@ -186,4 +186,18 @@ html.dark {
   .el-dropdown-menu__item:not(.is-disabled):hover {
     background: transparent;
   }
+
+  /* 克隆并自定义 ElMessage 样式，不会影响 ElMessage 原本样式，在 src/utils/message.ts 中调用自定义样式 ElMessage 方法即可，非暗黑模式在 src/style/element-plus.scss 文件进行了适配 */
+  .pure-message {
+    background-image: initial !important;
+    background-color: rgb(36, 37, 37) !important;
+    box-shadow: rgb(13 13 13 / 12%) 0px 3px 6px -4px,
+      rgb(13 13 13 / 8%) 0px 6px 16px 0px, rgb(13 13 13 / 5%) 0px 9px 28px 8px !important;
+
+    & .el-message__content {
+      color: $color-white !important;
+      pointer-events: all !important;
+      background-image: initial !important;
+    }
+  }
 }

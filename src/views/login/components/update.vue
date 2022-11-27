@@ -42,7 +42,9 @@ const onUpdate = async (formEl: FormInstance | undefined) => {
     if (valid) {
       // 模拟请求，需根据实际开发进行修改
       setTimeout(() => {
-        message(transformI18n($t("login.passwordUpdateReg")), "success");
+        message(transformI18n($t("login.passwordUpdateReg")), {
+          type: "success"
+        });
         loading.value = false;
       }, 2000);
     } else {

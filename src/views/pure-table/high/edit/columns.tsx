@@ -113,7 +113,9 @@ export function useColumns() {
       `您编辑了第 ${index + 1} 行，编辑后数据为：${JSON.stringify(
         dataList.value[index]
       )}`,
-      "success"
+      {
+        type: "success"
+      }
     );
     // 编辑状态关闭
     editStatus.value[index] = Object.assign({}, editStatus.value[index], {

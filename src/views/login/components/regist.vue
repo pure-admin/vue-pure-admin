@@ -45,12 +45,14 @@ const onUpdate = async (formEl: FormInstance | undefined) => {
       if (checked.value) {
         // 模拟请求，需根据实际开发进行修改
         setTimeout(() => {
-          message(transformI18n($t("login.registerSuccess")), "success");
+          message(transformI18n($t("login.registerSuccess")), {
+            type: "success"
+          });
           loading.value = false;
         }, 2000);
       } else {
         loading.value = false;
-        message(transformI18n($t("login.tickPrivacy")), "warning");
+        message(transformI18n($t("login.tickPrivacy")), { type: "warning" });
       }
     } else {
       loading.value = false;

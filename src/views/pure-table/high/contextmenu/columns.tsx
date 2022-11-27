@@ -37,7 +37,9 @@ export function useColumns() {
             `您编辑了第 ${
               dataList.value.findIndex(v => v.id === row.id) + 1
             } 行，数据为：${JSON.stringify(row)}`,
-            "success"
+            {
+              type: "success"
+            }
           )
       }
     ]

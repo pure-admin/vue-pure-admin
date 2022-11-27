@@ -56,14 +56,13 @@ export function useColumns() {
   ];
 
   const handleEdit = (index: number, row) => {
-    message(
-      `您编辑了第 ${index} 行，数据为：${JSON.stringify(row)}`,
-      "success"
-    );
+    message(`您编辑了第 ${index} 行，数据为：${JSON.stringify(row)}`, {
+      type: "success"
+    });
   };
 
   const handleDelete = (index: number, row) => {
-    message(`您删除了第 ${index} 行，数据为：${JSON.stringify(row)}`, "info");
+    message(`您删除了第 ${index} 行，数据为：${JSON.stringify(row)}`);
   };
 
   return {

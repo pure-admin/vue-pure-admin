@@ -78,7 +78,9 @@ export function useColumns() {
         callback: ({ data: { name, value } }) => {
           message(
             `您点击了第 ${i + 1} 行，图表标题为${name}，图表数据为：${value}`,
-            "success"
+            {
+              type: "success"
+            }
           );
         }
       }

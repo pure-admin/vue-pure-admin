@@ -118,7 +118,9 @@ export function useColumns() {
               loading: false
             }
           );
-          message("已成功修改用户状态", "success");
+          message("已成功修改用户状态", {
+            type: "success"
+          });
         }, 300);
       })
       .catch(() => {

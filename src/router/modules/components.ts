@@ -11,6 +11,18 @@ export default {
   },
   children: [
     {
+      path: "/components/message",
+      name: "Message",
+      component: () => import("@/views/components/message/index.vue"),
+      meta: {
+        title: $t("menus.hsmessage"),
+        extraIcon: {
+          svg: true,
+          name: "team-iconxinpinrenqiwang"
+        }
+      }
+    },
+    {
       path: "/components/video",
       name: "Video",
       component: () => import("@/views/components/video/index.vue"),
@@ -47,11 +59,7 @@ export default {
       name: "SplitPane",
       component: () => import("@/views/components/split-pane/index.vue"),
       meta: {
-        title: $t("menus.hssplitPane"),
-        extraIcon: {
-          svg: true,
-          name: "team-iconxinpinrenqiwang"
-        }
+        title: $t("menus.hssplitPane")
       }
     },
     {

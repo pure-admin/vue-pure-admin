@@ -29,7 +29,8 @@
       "element-plus/global",
       "@pureadmin/table/volar",
       "@pureadmin/descriptions/volar",
-      "unplugin-vue-macros/macros-global"
+      "unplugin-vue-macros/macros-global",
+      "unplugin-vue-define-options/macros-global"
     ],
     "typeRoots": ["./node_modules/@types/", "./types"]
   },
