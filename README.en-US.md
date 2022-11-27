@@ -10,6 +10,13 @@
 
 `vue-pure-admin` is an open source free and out-of-the-box middle and background management system template. Developed using the latest mainstream technologies such as `Vue3`, `Vite`, `Element-Plus`, `TypeScript`, `Pinia`, `Tailwindcss`
 
+## Thin version (offering non-internationalized and internationalized versions)
+
+The simplified version is based on the shelf extracted from [vue-pure-admin](https://github.com/xiaoxian521/vue-pure-admin), which contains main functions and is more suitable for actual project development. The packaged size is introduced globally [element-plus](https://element-plus.org) is still below `2.3MB`, and the full version of the code will be permanently synchronized. After enabling `brotli` compression and `cdn` to replace the local library mode, the package size is less than `350kb`
+
+- [Click me to view the non-internationalized version](https://github.com/xiaoxian521/pure-admin-thin)
+- [Click me to view Internationalization version](https://github.com/xiaoxian521/pure-admin-thin/tree/i18n)
+
 ## Supporting Video
 
 - [Click Watch Tutorial](https://www.bilibili.com/video/BV1kg411v7QT)
@@ -19,11 +26,6 @@
 
 - [Click me to view the domestic documentation site](https://yiming_chang.gitee.io/pure-admin-doc)
 - [Click me to view foreign document site](https://xiaoxian521.github.io/pure-admin-doc)
-
-## Thin version (offering non-internationalized and internationalized versions)
-
-- [Click me to view the non-internationalized version](https://github.com/xiaoxian521/pure-admin-thin)
-- [Click me to view Internationalization version](https://github.com/xiaoxian521/pure-admin-thin/tree/i18n)
 
 ## Tauri
 

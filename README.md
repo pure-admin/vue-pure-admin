@@ -10,6 +10,13 @@
 
 `vue-pure-admin` 是一款开源免费且开箱即用的中后台管理系统模版。使用了最新的 `Vue3`、`Vite`、`Element-Plus`、`TypeScript`、`Pinia`、`Tailwindcss` 等主流技术开发
 
+## 精简版（实际项目开发请用精简版，提供 `非国际化` 、`国际化` 两个版本选择）
+
+精简版是基于 [vue-pure-admin](https://github.com/xiaoxian521/vue-pure-admin) 提炼出的架子，包含主体功能，更适合实际项目开发，打包后的大小在全局引入 [element-plus](https://element-plus.org) 的情况下仍然低于 `2.3MB`，并且会永久同步完整版的代码。开启 `brotli` 压缩和 `cdn` 替换本地库模式后，打包大小低于 `350kb`
+
+- [点我查看非国际化精简版](https://github.com/xiaoxian521/pure-admin-thin)
+- [点我查看国际化精简版](https://github.com/xiaoxian521/pure-admin-thin/tree/i18n)
+
 ## 配套视频
 
 - [点我查看快速开发教程](https://www.bilibili.com/video/BV1kg411v7QT)
@@ -19,11 +26,6 @@
 
 - [点我查看国内文档站](https://yiming_chang.gitee.io/pure-admin-doc)
 - [点我查看国外文档站](https://xiaoxian521.github.io/pure-admin-doc)
-
-## 精简版（实际项目开发请用精简版，提供 `非国际化` 、`国际化` 两个版本选择）
-
-- [点我查看非国际化精简版](https://github.com/xiaoxian521/pure-admin-thin)
-- [点我查看国际化精简版](https://github.com/xiaoxian521/pure-admin-thin/tree/i18n)
 
 ## `Tauri` 版
 
