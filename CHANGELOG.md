@@ -1,3 +1,13 @@
+# 3.8.6 (2022-11-27)
+
+### 🎫 Feat
+
+- Add `message` message prompt function, compatible with `Element Plus` and `Ant ​​Design` two `Message` style styles, use and package size are extremely low cost and adapt to dark mode, really fragrant 😂
+
+### 🍏 Perf
+
+- perf: No need to install `@vue/runtime-core`, compatible with `volar` hints of all `element-plus` components
+
 # 3.8.5 (2022-11-26)
 
 ### 🍏 Perf
