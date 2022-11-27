@@ -1,3 +1,9 @@
+# 3.8.7 (2022-11-28)
+
+### 🍏 Perf
+
+- perf: Great package optimization, please be sure to upgrade! Use `unplugin-vue-define-options` to replace `unplugin-vue-macros`, the packaging speed is increased several times, use `unplugin-vue-macros` to take `mac` with moderate performance as an example, the packaging time of the full version is` 6` minutes😭, after replacing it with `unplugin-vue-define-options`, the packaging time on the same computer is `50` seconds☺️
+
 # 3.8.6 (2022-11-27)
 
 ### 🎫 Feat
