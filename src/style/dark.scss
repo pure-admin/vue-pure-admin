@@ -199,5 +199,12 @@ html.dark {
       pointer-events: all !important;
       background-image: initial !important;
     }
+
+    & .el-message__closeBtn {
+      &:hover {
+        color: rgba(255, 255, 255, 0.85);
+        background-color: rgba(255, 255, 255, 0.12);
+      }
+    }
   }
 }

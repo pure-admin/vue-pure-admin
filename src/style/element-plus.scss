@@ -86,6 +86,13 @@
   }
 
   & .el-message__closeBtn {
+    outline: none;
+    border-radius: 4px;
     right: 9px !important;
+    transition: background-color 0.2s, color 0.2s;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.06);
+    }
   }
 }
