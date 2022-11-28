@@ -18,8 +18,8 @@ buttons:
   hscloseRightTabs: 关闭右侧标签页
   hscloseOtherTabs: 关闭其他标签页
   hscloseAllTabs: 关闭全部标签页
-  hswholeFullScreen: 整体页面全屏
-  hswholeExitFullScreen: 整体页面退出全屏
+  hswholeFullScreen: 全屏
+  hswholeExitFullScreen: 退出全屏
   hscontentFullScreen: 内容区全屏
   hscontentExitFullScreen: 内容区退出全屏
 menus:
