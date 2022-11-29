@@ -33,6 +33,9 @@ import { useDataThemeChange } from "@/layout/hooks/useDataThemeChange";
 import dayIcon from "@/assets/svg/day.svg?component";
 import darkIcon from "@/assets/svg/dark.svg?component";
 import globalization from "@/assets/svg/globalization.svg?component";
+import Lock from "@iconify-icons/ri/lock-fill";
+import Check from "@iconify-icons/ep/check";
+// import User from "@iconify-icons/ri/user-3-fill";
 
 defineOptions({
   name: "Login"
@@ -131,7 +134,7 @@ watch(imgCode, value => {
               <IconifyIconOffline
                 class="check-zh"
                 v-show="locale === 'zh'"
-                icon="check"
+                :icon="Check"
               />
               简体中文
             </el-dropdown-item>
@@ -141,7 +144,7 @@ watch(imgCode, value => {
               @click="translationEn"
             >
               <span class="check-en" v-show="locale === 'en'">
-                <IconifyIconOffline icon="check" />
+                <IconifyIconOffline :icon="Check" />
               </span>
               English
             </el-dropdown-item>
@@ -184,7 +187,6 @@ watch(imgCode, value => {
                   clearable
                   v-model="ruleForm.username"
                   :placeholder="t('login.username')"
-                  :prefix-icon="useRenderIcon('user')"
                 />
               </el-form-item>
             </Motion>
@@ -196,7 +198,7 @@ watch(imgCode, value => {
                   show-password
                   v-model="ruleForm.password"
                   :placeholder="t('login.password')"
-                  :prefix-icon="useRenderIcon('lock')"
+                  :prefix-icon="useRenderIcon(Lock)"
                 />
               </el-form-item>
             </Motion>

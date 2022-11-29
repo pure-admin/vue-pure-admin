@@ -11,6 +11,8 @@ import { Snapshot, BpmnElement, Menu } from "@logicflow/extension";
 import { Control, NodePanel, DataDialog } from "@/components/ReFlowChart";
 import { toLogicflowData } from "@/components/ReFlowChart/src/adpterForTurbo";
 
+import SetUp from "@iconify-icons/ep/set-up";
+
 defineOptions({
   name: "FlowChart"
 });
@@ -71,7 +73,7 @@ onMounted(() => {
           <el-link
             href="http://logic-flow.org/"
             target="_blank"
-            :icon="useRenderIcon('set-up')"
+            :icon="useRenderIcon(SetUp)"
             style="font-size: 16px; margin: 0 4px 5px"
           >
             LogicFlow

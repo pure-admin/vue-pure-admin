@@ -1,17 +1,20 @@
+import type { IconifyIcon } from "@iconify/vue";
+import HomeFilled from "@iconify-icons/ep/home-filled";
+
 export const routerArrays: Array<RouteConfigs> = [
   {
     path: "/welcome",
     parentPath: "/",
     meta: {
       title: "menus.hshome",
-      icon: "home-filled"
+      icon: HomeFilled
     }
   }
 ];
 
 export type routeMetaType = {
   title?: string;
-  icon?: string;
+  icon?: string | IconifyIcon;
   showLink?: boolean;
   savedPosition?: boolean;
   auths?: Array<string>;
@@ -32,7 +35,7 @@ export type multiTagsType = {
 };
 
 export type tagsViewsType = {
-  icon: string;
+  icon: string | IconifyIcon;
   text: string;
   divided: boolean;
   disabled: boolean;

@@ -9,6 +9,7 @@ import { transformI18n } from "@/plugins/i18n";
 import { useDebounceFn, onKeyStroke } from "@vueuse/core";
 import { ref, watch, computed, nextTick, shallowRef } from "vue";
 import { usePermissionStoreHook } from "@/store/modules/permission";
+import Search from "@iconify-icons/ep/search";
 
 interface Props {
   /** 弹窗显隐 */
@@ -148,7 +149,7 @@ onKeyStroke("ArrowDown", handleDown);
     >
       <template #prefix>
         <span class="el-input__icon">
-          <IconifyIconOffline icon="search" />
+          <IconifyIconOffline :icon="Search" />
         </span>
       </template>
     </el-input>

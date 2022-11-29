@@ -7,6 +7,11 @@ import { transformI18n } from "@/plugins/i18n";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import { ref, toRaw, PropType, nextTick, computed, CSSProperties } from "vue";
 
+import ArrowUp from "@iconify-icons/ep/arrow-up";
+import EpArrowDown from "@iconify-icons/ep/arrow-down";
+import ArrowLeft from "@iconify-icons/ep/arrow-left";
+import ArrowRight from "@iconify-icons/ep/arrow-right";
+
 const { layout, isCollapse } = useNav();
 
 const props = defineProps({
@@ -221,10 +226,10 @@ function resolvePath(routePath) {
     v-else
     ref="subMenu"
     :index="resolvePath(props.item.path)"
-    v-bind:[expandCloseIcon]="useRenderIcon('ep-arrow-down')"
-    :expand-open-icon="useRenderIcon('ep-arrow-up')"
-    :collapse-close-icon="useRenderIcon('ep-arrow-right')"
-    :collapse-open-icon="useRenderIcon('ep-arrow-left')"
+    v-bind:[expandCloseIcon]="useRenderIcon(EpArrowDown)"
+    :expand-open-icon="useRenderIcon(ArrowUp)"
+    :collapse-close-icon="useRenderIcon(ArrowRight)"
+    :collapse-open-icon="useRenderIcon(ArrowLeft)"
   >
     <template #title>
       <div v-if="toRaw(props.item.meta.icon)" class="sub-menu-icon">

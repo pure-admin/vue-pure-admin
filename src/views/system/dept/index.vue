@@ -6,6 +6,11 @@ import { FormInstance } from "element-plus";
 import { reactive, ref, onMounted } from "vue";
 import { TableProBar } from "@/components/ReTable";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
+import Delete from "@iconify-icons/ep/delete";
+import EditPen from "@iconify-icons/ep/edit-pen";
+import Search from "@iconify-icons/ep/search";
+import Refresh from "@iconify-icons/ep/refresh";
+import AddFill from "@iconify-icons/ri/add-circle-line";
 
 defineOptions({
   name: "Dept"
@@ -74,13 +79,13 @@ onMounted(() => {
       <el-form-item>
         <el-button
           type="primary"
-          :icon="useRenderIcon('search')"
+          :icon="useRenderIcon(Search)"
           :loading="loading"
           @click="onSearch"
         >
           搜索
         </el-button>
-        <el-button :icon="useRenderIcon('refresh')" @click="resetForm(formRef)">
+        <el-button :icon="useRenderIcon(Refresh)" @click="resetForm(formRef)">
           重置
         </el-button>
       </el-form-item>
@@ -94,7 +99,7 @@ onMounted(() => {
       @refresh="onSearch"
     >
       <template #buttons>
-        <el-button type="primary" :icon="useRenderIcon('add')">
+        <el-button type="primary" :icon="useRenderIcon(AddFill)">
           新增部门
         </el-button>
       </template>
@@ -124,7 +129,7 @@ onMounted(() => {
               type="primary"
               :size="size"
               @click="handleUpdate(row)"
-              :icon="useRenderIcon('edits')"
+              :icon="useRenderIcon(EditPen)"
             >
               修改
             </el-button>
@@ -135,7 +140,7 @@ onMounted(() => {
                   link
                   type="primary"
                   :size="size"
-                  :icon="useRenderIcon('delete')"
+                  :icon="useRenderIcon(Delete)"
                   @click="handleDelete(row)"
                 >
                   删除

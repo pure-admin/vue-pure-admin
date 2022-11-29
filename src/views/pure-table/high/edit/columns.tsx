@@ -2,6 +2,8 @@ import { tableDataEdit } from "../data";
 import { message } from "@/utils/message";
 import { ref, computed, Transition } from "vue";
 import { clone, delay } from "@pureadmin/utils";
+import EditPen from "@iconify-icons/ep/edit-pen";
+import Check from "@iconify-icons/ep/check";
 
 // 温馨提示：编辑整行方法雷同，将cellRenderer后面渲染的组件抽出来做对应处理即可
 export function useColumns() {
@@ -60,13 +62,13 @@ export function useColumns() {
           </Transition>
           <iconify-icon-offline
             v-show={editing.value(index)}
-            icon="check"
+            icon={Check}
             class={iconClass.value(index)}
             onClick={() => onSure(index)}
           />
           <iconify-icon-offline
             v-show={activeIndex.value === index && !editing.value(index)}
-            icon="edits"
+            icon={EditPen}
             class={iconClass.value(index, true)}
             onClick={() => onEdit(row, index)}
           />

@@ -2,6 +2,7 @@
 import { markRaw } from "vue";
 import { useRenderFlicker } from "@/components/ReFlicker";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
+import Iphone from "@iconify-icons/ep/iphone";
 
 defineOptions({
   name: "TimeLine"
@@ -32,7 +33,7 @@ const activities = [
     content: "支持自定义图标",
     timestamp: lastBuildTime,
     color: "transparent",
-    icon: useRenderIcon("iphone", {
+    icon: useRenderIcon(Iphone, {
       color: "#0bbd87"
     })
   }

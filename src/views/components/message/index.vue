@@ -3,6 +3,7 @@ import { h } from "vue";
 import hot from "@/assets/svg/hot.svg?component";
 import { message, closeAllMessage } from "@/utils/message";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
+import Check from "@iconify-icons/ep/check";
 
 defineOptions({
   name: "Message"
@@ -68,7 +69,7 @@ defineOptions({
         @click="
           message('自定义消息图标', {
             customClass: 'el',
-            icon: useRenderIcon('check')
+            icon: useRenderIcon(Check)
           })
         "
       >

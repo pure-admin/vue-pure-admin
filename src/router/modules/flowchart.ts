@@ -1,11 +1,12 @@
 import { $t } from "@/plugins/i18n";
 import { flowchart } from "@/router/enums";
+import SetUp from "@iconify-icons/ep/set-up";
 
 export default {
   path: "/flowChart",
   redirect: "/flowChart/index",
   meta: {
-    icon: "set-up",
+    icon: SetUp,
     title: $t("menus.hsflowChart"),
     rank: flowchart
   },

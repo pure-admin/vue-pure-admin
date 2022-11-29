@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import { noticesData } from "./data";
 import NoticeList from "./noticeList.vue";
+import Bell from "@iconify-icons/ep/bell";
 
 const noticesNum = ref(0);
 const notices = ref(noticesData);
@@ -15,7 +16,7 @@ notices.value.map(v => (noticesNum.value += v.list.length));
     <span class="dropdown-badge navbar-bg-hover select-none">
       <el-badge :value="noticesNum" :max="99">
         <span class="header-notice-icon">
-          <IconifyIconOffline icon="bell" />
+          <IconifyIconOffline :icon="Bell" />
         </span>
       </el-badge>
     </span>

@@ -1,11 +1,12 @@
 import { $t } from "@/plugins/i18n";
 import { components } from "@/router/enums";
+import Menu from "@iconify-icons/ep/menu";
 
 export default {
   path: "/components",
   redirect: "/components/video",
   meta: {
-    icon: "menu",
+    icon: Menu,
     title: $t("menus.hscomponents"),
     rank: components
   },

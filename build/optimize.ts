@@ -4,7 +4,7 @@
  * 尤其当您禁用浏览器缓存时（这种情况只应该发生在调试阶段）必须将对应模块加入到 include里，否则会遇到开发环境切换页面卡顿的问题（vite 会认为它是一个新的依赖包会重新加载并强制刷新页面），因为它既无法使用浏览器缓存，又没有在本地 node_modules/.vite 里缓存
  * 温馨提示：如果您使用的第三方库是全局引入，也就是引入到 src/main.ts 文件里，就不需要再添加到 include 里了，因为 vite 会自动将它们缓存到 node_modules/.vite
  */
-export const include = [
+const include = [
   "qs",
   "mitt",
   "xlsx",
@@ -50,3 +50,12 @@ export const include = [
   "xgplayer/es/controls/screenShot",
   "xgplayer/es/controls/playbackRate"
 ];
+
+const exclude = [
+  "@iconify-icons/ep",
+  "@iconify-icons/ri",
+  "@iconify-icons/mdi",
+  "@pureadmin/theme/dist/browser-utils"
+];
+
+export { include, exclude };

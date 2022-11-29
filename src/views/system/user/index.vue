@@ -8,6 +8,15 @@ import { TableProBar } from "@/components/ReTable";
 import { type PaginationProps } from "@pureadmin/table";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 
+import Role from "@iconify-icons/ri/admin-line";
+import Password from "@iconify-icons/ri/lock-password-line";
+import More from "@iconify-icons/ep/more-filled";
+import Delete from "@iconify-icons/ep/delete";
+import EditPen from "@iconify-icons/ep/edit-pen";
+import Search from "@iconify-icons/ep/search";
+import Refresh from "@iconify-icons/ep/refresh";
+import AddFill from "@iconify-icons/ri/add-circle-line";
+
 defineOptions({
   name: "User"
 });
@@ -104,16 +113,13 @@ onMounted(() => {
         <el-form-item>
           <el-button
             type="primary"
-            :icon="useRenderIcon('search')"
+            :icon="useRenderIcon(Search)"
             :loading="loading"
             @click="onSearch"
           >
             搜索
           </el-button>
-          <el-button
-            :icon="useRenderIcon('refresh')"
-            @click="resetForm(formRef)"
-          >
+          <el-button :icon="useRenderIcon(Refresh)" @click="resetForm(formRef)">
             重置
           </el-button>
         </el-form-item>
@@ -126,7 +132,7 @@ onMounted(() => {
         @refresh="onSearch"
       >
         <template #buttons>
-          <el-button type="primary" :icon="useRenderIcon('add')">
+          <el-button type="primary" :icon="useRenderIcon(AddFill)">
             新增用户
           </el-button>
         </template>
@@ -156,7 +162,7 @@ onMounted(() => {
                 type="primary"
                 :size="size"
                 @click="handleUpdate(row)"
-                :icon="useRenderIcon('edits')"
+                :icon="useRenderIcon(EditPen)"
               >
                 修改
               </el-button>
@@ -167,7 +173,7 @@ onMounted(() => {
                     link
                     type="primary"
                     :size="size"
-                    :icon="useRenderIcon('delete')"
+                    :icon="useRenderIcon(Delete)"
                     @click="handleDelete(row)"
                   >
                     删除
@@ -181,7 +187,7 @@ onMounted(() => {
                   type="primary"
                   :size="size"
                   @click="handleUpdate(row)"
-                  :icon="useRenderIcon('more')"
+                  :icon="useRenderIcon(More)"
                 />
                 <template #dropdown>
                   <el-dropdown-menu>
@@ -191,7 +197,7 @@ onMounted(() => {
                         link
                         type="primary"
                         :size="size"
-                        :icon="useRenderIcon('password')"
+                        :icon="useRenderIcon(Password)"
                       >
                         重置密码
                       </el-button>
@@ -202,7 +208,7 @@ onMounted(() => {
                         link
                         type="primary"
                         :size="size"
-                        :icon="useRenderIcon('role')"
+                        :icon="useRenderIcon(Role)"
                       >
                         分配角色
                       </el-button>

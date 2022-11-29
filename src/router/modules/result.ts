@@ -1,11 +1,12 @@
 import { $t } from "@/plugins/i18n";
 import { result } from "@/router/enums";
+import CheckboxCircleLine from "@iconify-icons/ri/checkbox-circle-line";
 
 export default {
   path: "/result",
   redirect: "/result/success",
   meta: {
-    icon: "checkbox-circle-line",
+    icon: CheckboxCircleLine,
     title: $t("menus.hsResult"),
     rank: result
   },

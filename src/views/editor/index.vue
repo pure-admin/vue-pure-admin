@@ -3,6 +3,7 @@ import "@wangeditor/editor/dist/css/style.css"; // 引入 css
 import { Editor, Toolbar } from "@wangeditor/editor-for-vue";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import { onBeforeUnmount, ref, shallowRef, onMounted } from "vue";
+import Edit from "@iconify-icons/ep/edit";
 
 defineOptions({
   name: "Editor"
@@ -46,7 +47,7 @@ const handleCreated = editor => {
           <el-link
             href="https://www.wangeditor.com"
             target="_blank"
-            :icon="useRenderIcon('edit')"
+            :icon="useRenderIcon(Edit)"
             style="font-size: 16px; margin: 0 4px 5px"
           >
             Wangeditor

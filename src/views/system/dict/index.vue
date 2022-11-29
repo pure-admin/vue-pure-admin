@@ -14,6 +14,8 @@ import {
   type VxeTableEvents,
   type FormMethods
 } from "vxe-table";
+import Delete from "@iconify-icons/ep/delete";
+import EditPen from "@iconify-icons/ep/edit-pen";
 
 type onEditNRow = {
   name: string;
@@ -293,7 +295,7 @@ function onHide() {
           <el-button
             link
             type="primary"
-            :icon="useRenderIcon('edits')"
+            :icon="useRenderIcon(EditPen)"
             @click="onEdit(row)"
           >
             编辑
@@ -318,7 +320,7 @@ function onHide() {
           <el-button
             link
             type="primary"
-            :icon="useRenderIcon('delete')"
+            :icon="useRenderIcon(Delete)"
             @click="confirmEvent"
           >
             删除
