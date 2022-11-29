@@ -22,9 +22,11 @@ setOptions(
       }
     },
     grid: {
-      bottom: "20%",
-      height: "68%",
-      containLabel: true
+      containLabel: true,
+      top: "10px",
+      bottom: "0",
+      left: "0",
+      right: "0"
     },
     xAxis: [
       {
@@ -49,7 +51,7 @@ setOptions(
       {
         name: "GitHub信息",
         type: "bar",
-        data: [3, 204, 1079, 1079]
+        data: [1000, 10000, 20000, 66666]
       }
     ]
   },

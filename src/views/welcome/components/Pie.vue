@@ -27,13 +27,14 @@ setOptions(
       {
         name: "Github信息",
         type: "pie",
-        radius: "60%",
+        top: "20%",
+        radius: "80%",
         center: ["40%", "50%"],
         data: [
-          { value: 1079, name: "watchers" },
-          { value: 1079, name: "star" },
-          { value: 204, name: "forks" },
-          { value: 3, name: "open_issues" }
+          { value: 20000, name: "watchers" },
+          { value: 66666, name: "star" },
+          { value: 10000, name: "forks" },
+          { value: 1000, name: "open_issues" }
         ],
         emphasis: {
           itemStyle: {

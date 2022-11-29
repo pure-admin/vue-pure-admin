@@ -1,4 +1,5 @@
 import { IconifyIconOffline } from "@/components/ReIcon";
+import TypeIt from "@/components/ReTypeit";
 
 export function useColumns() {
   const lists = [
@@ -41,7 +42,7 @@ export function useColumns() {
           居住地
         </div>
       ),
-      value: "上海"
+      value: "杭州"
     }
   ];
 
@@ -74,7 +75,7 @@ export function useColumns() {
           联系地址
         </div>
       ),
-      value: "上海市徐汇区"
+      value: "杭州市西湖区"
     }
   ];
 
@@ -88,7 +89,14 @@ export function useColumns() {
           好好学习，天天向上
         </div>
       ),
-      value: "上海市徐汇区"
+      cellRenderer: () => (
+        <TypeIt
+          className={"github"}
+          values={["Coding as art. Keep open source. Enjoy open source."]}
+          cursor={false}
+          speed={40}
+        />
+      )
     }
   ];
 

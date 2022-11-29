@@ -15,13 +15,15 @@ const { setOptions } = useECharts(lineChartRef as Ref<HTMLDivElement>, {
 
 setOptions(
   {
-    grid: {
-      bottom: "20%",
-      height: "68%",
-      containLabel: true
-    },
     tooltip: {
       trigger: "item"
+    },
+    grid: {
+      containLabel: true,
+      top: "10px",
+      bottom: "0",
+      left: "0",
+      right: "0"
     },
     xAxis: {
       type: "category",
@@ -35,7 +37,7 @@ setOptions(
     },
     series: [
       {
-        data: [3, 204, 1079, 1079],
+        data: [1000, 10000, 20000, 66666],
         type: "line",
         areaStyle: {}
       }

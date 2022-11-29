@@ -1,18 +1,25 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import axios from "axios";
 import Bar from "./components/Bar.vue";
 import Pie from "./components/Pie.vue";
+import Markdown from "vue3-markdown-it";
 import Line from "./components/Line.vue";
-import { openLink } from "@pureadmin/utils";
+import TypeIt from "@/components/ReTypeit";
 import Github from "./components/Github.vue";
-import Infinite from "./components/Infinite.vue";
+import { ref, computed, markRaw } from "vue";
+import { openLink, randomColor } from "@pureadmin/utils";
+import { useRenderFlicker } from "@/components/ReFlicker";
 
 defineOptions({
   name: "Welcome"
 });
 
+const list = ref();
 const date: Date = new Date();
 const loading = ref<boolean>(true);
+const titleClass = computed(() => {
+  return ["text-base", "font-medium"];
+});
 
 setTimeout(() => {
   loading.value = !loading.value;
@@ -27,6 +34,22 @@ const greetings = computed(() => {
     return "折一根天使羽毛，愿拂去您的疲惫烦恼忧伤🌛！";
   }
 });
+
+axios
+  .get("https://api.github.com/repos/xiaoxian521/vue-pure-admin/releases")
+  .then(res => {
+    list.value = res.data.map(v => {
+      return {
+        content: v.body,
+        timestamp: v.published_at,
+        icon: markRaw(
+          useRenderFlicker({
+            background: randomColor({ type: "hex" }) as string
+          })
+        )
+      };
+    });
+  });
 </script>
 
 <template>
@@ -38,7 +61,12 @@ const greetings = computed(() => {
           title="直达仓库地址"
           @click="openLink('https://github.com/xiaoxian521/vue-pure-admin')"
         />
-        <span>{{ greetings }}</span>
+        <TypeIt
+          :className="'type-it0'"
+          :values="[greetings]"
+          :cursor="false"
+          :speed="60"
+        />
       </div>
     </el-card>
 
@@ -65,7 +93,14 @@ const greetings = computed(() => {
       >
         <el-card style="height: 360px">
           <template #header>
-            <span style="font-size: 16px; font-weight: 500">GitHub信息</span>
+            <span :class="titleClass">
+              <TypeIt
+                :className="'type-it1'"
+                :values="['GitHub信息']"
+                :cursor="false"
+                :speed="120"
+              />
+            </span>
           </template>
           <el-skeleton animated :rows="7" :loading="loading">
             <template #default>
@@ -97,13 +132,30 @@ const greetings = computed(() => {
       >
         <el-card style="height: 360px">
           <template #header>
-            <span style="font-size: 16px; font-weight: 500">
-              GitHub滚动信息
+            <span :class="titleClass">
+              <TypeIt
+                :className="'type-it2'"
+                :values="['Pure-Admin 版本日志']"
+                :cursor="false"
+                :speed="120"
+              />
             </span>
           </template>
           <el-skeleton animated :rows="7" :loading="loading">
             <template #default>
-              <Infinite />
+              <el-scrollbar height="274px">
+                <el-timeline v-show="list?.length > 0">
+                  <el-timeline-item
+                    v-for="(item, index) in list"
+                    :key="index"
+                    :icon="item.icon"
+                    :timestamp="item.timestamp"
+                  >
+                    <Markdown :source="item.content" />
+                  </el-timeline-item>
+                </el-timeline>
+                <el-empty v-show="list?.length === 0" />
+              </el-scrollbar>
             </template>
           </el-skeleton>
         </el-card>
@@ -131,8 +183,13 @@ const greetings = computed(() => {
       >
         <el-card>
           <template #header>
-            <span style="font-size: 16px; font-weight: 500">
-              GitHub饼图信息
+            <span :class="titleClass">
+              <TypeIt
+                :className="'type-it3'"
+                :values="['GitHub饼图信息']"
+                :cursor="false"
+                :speed="120"
+              />
             </span>
           </template>
           <el-skeleton animated :rows="7" :loading="loading">
@@ -165,8 +222,13 @@ const greetings = computed(() => {
       >
         <el-card>
           <template #header>
-            <span style="font-size: 16px; font-weight: 500">
-              GitHub折线图信息
+            <span :class="titleClass">
+              <TypeIt
+                :className="'type-it4'"
+                :values="['GitHub折线图信息']"
+                :cursor="false"
+                :speed="120"
+              />
             </span>
           </template>
           <el-skeleton animated :rows="7" :loading="loading">
@@ -199,8 +261,13 @@ const greetings = computed(() => {
       >
         <el-card>
           <template #header>
-            <span style="font-size: 16px; font-weight: 500">
-              GitHub柱状图信息
+            <span :class="titleClass">
+              <TypeIt
+                :className="'type-it5'"
+                :values="['GitHub柱状图信息']"
+                :cursor="false"
+                :speed="120"
+              />
             </span>
           </template>
           <el-skeleton animated :rows="7" :loading="loading">
@@ -214,13 +281,11 @@ const greetings = computed(() => {
   </div>
 </template>
 
-<style module scoped>
-.size {
-  height: 335px;
-}
-</style>
-
 <style lang="scss" scoped>
+:deep(.el-timeline-item) {
+  margin: 6px 0 0 6px;
+}
+
 .main-content {
   margin: 0 !important;
 }
