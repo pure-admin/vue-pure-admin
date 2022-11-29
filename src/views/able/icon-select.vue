@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { IconSelect } from "@/components/ReIcon";
+import IconSelect from "@/components/ReIcon/src/Select.vue";
 
 defineOptions({
   name: "IconSelect"

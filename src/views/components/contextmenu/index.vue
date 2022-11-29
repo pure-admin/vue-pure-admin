@@ -2,6 +2,7 @@
 import basic from "./basic.vue";
 import menuGroup from "./menuGroup.vue";
 import menuDynamic from "./menuDynamic.vue";
+import "v-contextmenu/dist/themes/default.css";
 
 defineOptions({
   name: "ContextMenu"

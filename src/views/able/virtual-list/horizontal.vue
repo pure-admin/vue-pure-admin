@@ -1,33 +1,27 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
-import { generateMessage } from "./data";
+import { DynamicScroller, DynamicScrollerItem } from "vue-virtual-scroller";
 
 const items = ref([]);
 const search = ref("");
 
-for (let i = 0; i < 10000; i++) {
+for (let i = 0; i < 800; i++) {
   items.value.push({
-    id: i,
-    ...generateMessage()
+    id: i
   });
 }
 
 const filteredItems = computed(() => {
   if (!search.value) return items.value;
-  const lowerCaseSearch = search.value.toLowerCase();
-  return items.value.filter(i =>
-    i.message.toLowerCase().includes(lowerCaseSearch)
-  );
+  const lowerCaseSearch = search.value;
+  return items.value.filter(i => i.id == lowerCaseSearch);
 });
-
-function changeMessage(message) {
-  Object.assign(message, generateMessage());
-}
 </script>
 
 <template>
   <div class="dynamic-scroller-demo">
-    <div class="flex justify-around mb-4">
+    <div class="flex-ac mb-4 shadow-2xl">
+      水平模式 horizontal
       <el-input
         class="mr-2 !w-[1/1.5]"
         clearable
@@ -35,7 +29,6 @@ function changeMessage(message) {
         placeholder="Filter..."
         style="width: 300px"
       />
-      <el-tag effect="dark">水平模式horizontal</el-tag>
     </div>
 
     <DynamicScroller
@@ -48,31 +41,21 @@ function changeMessage(message) {
         <DynamicScrollerItem
           :item="item"
           :active="active"
-          :size-dependencies="[item.message]"
+          :size-dependencies="[item.id]"
           :data-index="index"
           :data-active="active"
           :title="`Click to change message ${index}`"
           :style="{
-            width: `${Math.max(
-              130,
-              Math.round((item.message.length / 20) * 20)
-            )}px`
+            width: `${Math.max(130, Math.round((item.id?.length / 20) * 20))}px`
           }"
           class="message"
-          @click="changeMessage(item)"
         >
-          <div class="avatar">
+          <div>
             <IconifyIconOnline
               icon="openmoji:beaming-face-with-smiling-eyes"
               width="40"
             />
-          </div>
-          <div class="text">
-            {{ item.message }}
-          </div>
-          <div class="index">
-            <span>{{ item.id }} (id)</span>
-            <span>{{ index }} (index)</span>
+            <p class="text-center">{{ item.id }}</p>
           </div>
         </DynamicScrollerItem>
       </template>
@@ -103,36 +86,5 @@ function changeMessage(message) {
   min-height: 32px;
   padding: 12px;
   box-sizing: border-box;
-}
-
-.avatar {
-  flex: auto 0 0;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  margin-bottom: 12px;
-}
-
-.avatar .image {
-  max-width: 100%;
-  max-height: 100%;
-  border-radius: 50%;
-}
-
-.index,
-.text {
-  flex: 1;
-}
-
-.text {
-  margin-bottom: 12px;
-}
-
-.index {
-  opacity: 0.5;
-}
-
-.index span {
-  display: block;
 }
 </style>

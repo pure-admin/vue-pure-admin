@@ -8,13 +8,11 @@ import { createApp, Directive } from "vue";
 import { MotionPlugin } from "@vueuse/motion";
 import { useEcharts } from "@/plugins/echarts";
 import { useTable } from "@/plugins/vxe-table";
-import VirtualScroller from "vue-virtual-scroller";
 import { injectResponsiveStorage } from "@/utils/responsive";
 
 import Table from "@pureadmin/table";
 import PureDescriptions from "@pureadmin/descriptions";
 
-import "animate.css";
 // 引入重置样式
 import "./style/reset.scss";
 // 导入公共样式
@@ -23,8 +21,6 @@ import "element-plus/dist/index.css";
 // 导入字体图标
 import "./assets/iconfont/iconfont.js";
 import "./assets/iconfont/iconfont.css";
-import "v-contextmenu/dist/themes/default.css";
-import "vue-virtual-scroller/dist/vue-virtual-scroller.css";
 
 const app = createApp(App);
 
@@ -60,7 +56,6 @@ getServerConfig(app).then(async config => {
     .use(Table)
     .use(PureDescriptions)
     .use(useTable)
-    .use(useEcharts)
-    .use(VirtualScroller);
+    .use(useEcharts);
   app.mount("#app");
 });

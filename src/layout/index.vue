@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import "animate.css";
 import { setType } from "./types";
 import { emitter } from "@/utils/mitt";
 import { useLayout } from "./hooks/useLayout";

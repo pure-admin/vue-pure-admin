@@ -8,7 +8,6 @@ import { useGlobal } from "@pureadmin/utils";
 import { transformI18n } from "@/plugins/i18n";
 import { router, remainingPaths } from "@/router";
 import { useAppStoreHook } from "@/store/modules/app";
-import { i18nChangeLanguage } from "@wangeditor/editor";
 import { useUserStoreHook } from "@/store/modules/user";
 import { useEpThemeStoreHook } from "@/store/modules/epTheme";
 import { usePermissionStoreHook } from "@/store/modules/permission";
@@ -136,15 +135,6 @@ export function useNav() {
     return remainingPaths.includes(path);
   }
 
-  /**
-   * 切换wangEditorV5国际化
-   * @param language string 可选值 en、zh-CN
-   * @returns void
-   */
-  function changeWangeditorLanguage(language: string): void {
-    i18nChangeLanguage(language);
-  }
-
   return {
     title,
     device,
@@ -164,7 +154,6 @@ export function useNav() {
     username,
     avatarsStyle,
     getDropdownItemStyle,
-    getDropdownItemClass,
-    changeWangeditorLanguage
+    getDropdownItemClass
   };
 }

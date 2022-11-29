@@ -195,7 +195,7 @@ onUnmounted(() => {
             >
               <TypeIt
                 :className="'type-it2'"
-                :values="['Pure-Admin 版本日志']"
+                :values="['PureAdmin 版本日志']"
                 :cursor="false"
                 :speed="80"
               />
