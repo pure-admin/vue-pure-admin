@@ -39,12 +39,14 @@ setOptions(
           // width: "70",
           // overflow: "truncate"
         },
-        data: ["open_issues", "forks", "watchers", "star"]
+        data: ["open_issues", "forks", "watchers", "star"],
+        triggerEvent: true
       }
     ],
     yAxis: [
       {
-        type: "value"
+        type: "value",
+        triggerEvent: true
       }
     ],
     series: [
@@ -53,7 +55,8 @@ setOptions(
         type: "bar",
         data: [1000, 10000, 20000, 66666]
       }
-    ]
+    ],
+    addTooltip: true
   },
   {
     name: "click",

@@ -30,10 +30,12 @@ setOptions(
       axisLabel: {
         interval: 0
       },
-      data: ["open_issues", "forks", "watchers", "star"]
+      data: ["open_issues", "forks", "watchers", "star"],
+      triggerEvent: true
     },
     yAxis: {
-      type: "value"
+      type: "value",
+      triggerEvent: true
     },
     series: [
       {
@@ -41,7 +43,8 @@ setOptions(
         type: "line",
         areaStyle: {}
       }
-    ]
+    ],
+    addTooltip: true
   },
   {
     name: "click",

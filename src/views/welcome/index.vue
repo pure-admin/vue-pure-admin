@@ -1,20 +1,40 @@
 <script setup lang="ts">
 import axios from "axios";
+import VueDanmaku from "vue3-danmaku";
 import Bar from "./components/Bar.vue";
 import Pie from "./components/Pie.vue";
 import Markdown from "vue3-markdown-it";
 import Line from "./components/Line.vue";
 import TypeIt from "@/components/ReTypeit";
 import Github from "./components/Github.vue";
-import { ref, computed, markRaw } from "vue";
 import { openLink, randomColor } from "@pureadmin/utils";
 import { useRenderFlicker } from "@/components/ReFlicker";
+import { ref, computed, markRaw, onMounted, onUnmounted } from "vue";
 
 defineOptions({
   name: "Welcome"
 });
 
+const danmus = [
+  "太好用了吧",
+  "so easy",
+  "效率大大提高呀",
+  "还有精简版，还分国际化和非国际化，Perfect 😘",
+  "好多组件呀，爱啦爱啦 ❤️",
+  "精简版开发体验也太赞了吧 🙀",
+  "pure-admin-table 真方便呀",
+  "哇塞，pure-admin-utils 好多常用、易用的工具呀",
+  "我要 star 这个项目，爱啦爱啦",
+  "免费、开源做到这个程度，真不错 👍",
+  "文档简单易懂，上手真快",
+  "呀！还有免费的教学视频呢，我要去学习一下咯",
+  "稳定、可靠，未来可期呀，加油！",
+  "太卷了，太卷了，慢点让我跟上 😄"
+];
+
+let timer = 0;
 const list = ref();
+const danmaku = ref();
 const date: Date = new Date();
 const loading = ref<boolean>(true);
 const titleClass = computed(() => {
@@ -35,6 +55,13 @@ const greetings = computed(() => {
   }
 });
 
+function resizeHandler() {
+  if (timer) clearTimeout(timer);
+  timer = window.setTimeout(() => {
+    danmaku.value.resize();
+  }, 500);
+}
+
 axios
   .get("https://api.github.com/repos/xiaoxian521/vue-pure-admin/releases")
   .then(res => {
@@ -50,6 +77,14 @@ axios
       };
     });
   });
+
+onMounted(() => {
+  window.onresize = () => resizeHandler();
+});
+
+onUnmounted(() => {
+  window.onresize = null;
+});
 </script>
 
 <template>
@@ -91,20 +126,40 @@ axios
           }
         }"
       >
-        <el-card style="height: 360px">
+        <el-card style="height: 410px">
           <template #header>
-            <span :class="titleClass">
+            <a
+              :class="titleClass"
+              href="https://github.com/xiaoxian521"
+              target="_black"
+            >
               <TypeIt
                 :className="'type-it1'"
                 :values="['GitHub信息']"
                 :cursor="false"
                 :speed="120"
               />
-            </span>
+            </a>
           </template>
           <el-skeleton animated :rows="7" :loading="loading">
             <template #default>
               <Github />
+              <vue-danmaku
+                ref="danmaku"
+                loop
+                useSlot
+                isSuspend
+                randomChannel
+                :debounce="1200"
+                :danmus="danmus"
+                style="width: 100%; height: 80px"
+              >
+                <template v-slot:dm="{ danmu }">
+                  <p :style="{ color: randomColor({ type: 'hex' }) as string }">
+                    {{ danmu }}
+                  </p>
+                </template>
+              </vue-danmaku>
             </template>
           </el-skeleton>
         </el-card>
@@ -130,20 +185,24 @@ axios
           }
         }"
       >
-        <el-card style="height: 360px">
+        <el-card style="height: 410px">
           <template #header>
-            <span :class="titleClass">
+            <a
+              :class="titleClass"
+              href="https://github.com/xiaoxian521/vue-pure-admin/releases"
+              target="_black"
+            >
               <TypeIt
                 :className="'type-it2'"
                 :values="['Pure-Admin 版本日志']"
                 :cursor="false"
-                :speed="120"
+                :speed="80"
               />
-            </span>
+            </a>
           </template>
           <el-skeleton animated :rows="7" :loading="loading">
             <template #default>
-              <el-scrollbar height="274px">
+              <el-scrollbar height="324px">
                 <el-timeline v-show="list?.length > 0">
                   <el-timeline-item
                     v-for="(item, index) in list"
@@ -183,14 +242,18 @@ axios
       >
         <el-card>
           <template #header>
-            <span :class="titleClass">
+            <a
+              :class="titleClass"
+              href="https://github.com/xiaoxian521/vue-pure-admin"
+              target="_black"
+            >
               <TypeIt
                 :className="'type-it3'"
                 :values="['GitHub饼图信息']"
                 :cursor="false"
                 :speed="120"
               />
-            </span>
+            </a>
           </template>
           <el-skeleton animated :rows="7" :loading="loading">
             <template #default>
@@ -222,14 +285,18 @@ axios
       >
         <el-card>
           <template #header>
-            <span :class="titleClass">
+            <a
+              :class="titleClass"
+              href="https://github.com/xiaoxian521/vue-pure-admin"
+              target="_black"
+            >
               <TypeIt
                 :className="'type-it4'"
                 :values="['GitHub折线图信息']"
                 :cursor="false"
                 :speed="120"
               />
-            </span>
+            </a>
           </template>
           <el-skeleton animated :rows="7" :loading="loading">
             <template #default>
@@ -261,14 +328,18 @@ axios
       >
         <el-card>
           <template #header>
-            <span :class="titleClass">
+            <a
+              :class="titleClass"
+              href="https://github.com/xiaoxian521/vue-pure-admin"
+              target="_black"
+            >
               <TypeIt
                 :className="'type-it5'"
                 :values="['GitHub柱状图信息']"
                 :cursor="false"
                 :speed="120"
               />
-            </span>
+            </a>
           </template>
           <el-skeleton animated :rows="7" :loading="loading">
             <template #default>

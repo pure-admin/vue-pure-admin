@@ -7,7 +7,7 @@ defineOptions({
   name: "Danmaku"
 });
 
-const danmaku = ref<any>(null);
+const danmaku = ref();
 const danmus = ref<any[]>(getDanmuData());
 const danmuMsg = ref<string>("");
 let timer = 0;
@@ -112,7 +112,7 @@ function addDanmu() {
             target="_blank"
             style="font-size: 16px; margin: 0 4px 5px"
           >
-            vue-danmaku
+            vue3-danmaku
           </el-link>
         </span>
       </div>

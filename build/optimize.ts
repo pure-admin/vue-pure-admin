@@ -35,6 +35,7 @@ export const include = [
   "vue-json-pretty",
   "@logicflow/core",
   "@pureadmin/utils",
+  "vue3-markdown-it",
   "responsive-storage",
   "@howdyjs/mouse-menu",
   "@logicflow/extension",
