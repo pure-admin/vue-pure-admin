@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import dayjs from "dayjs";
 import axios from "axios";
+import MdEditor from "md-editor-v3";
 import VueDanmaku from "vue3-danmaku";
 import Bar from "./components/Bar.vue";
 import Pie from "./components/Pie.vue";
-import Markdown from "vue3-markdown-it";
 import Line from "./components/Line.vue";
 import TypeIt from "@/components/ReTypeit";
 import Github from "./components/Github.vue";
@@ -68,7 +69,7 @@ axios
     list.value = res.data.map(v => {
       return {
         content: v.body,
-        timestamp: v.published_at,
+        timestamp: dayjs(v.published_at).format("YYYY/MM/DD hh:mm:ss A"),
         icon: markRaw(
           useRenderFlicker({
             background: randomColor({ type: "hex" }) as string
@@ -210,7 +211,7 @@ onUnmounted(() => {
                     :icon="item.icon"
                     :timestamp="item.timestamp"
                   >
-                    <Markdown :source="item.content" />
+                    <md-editor v-model="item.content" preview-only />
                   </el-timeline-item>
                 </el-timeline>
                 <el-empty v-show="list?.length === 0" />

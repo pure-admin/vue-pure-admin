@@ -28,7 +28,6 @@ specifiers:
   "@types/js-cookie": ^3.0.1
   "@types/lodash": ^4.14.180
   "@types/lodash-es": ^4.17.6
-  "@types/markdown-it": ^12.2.3
   "@types/mockjs": ^1.0.7
   "@types/node": ^18.11.9
   "@types/nprogress": 0.2.0
@@ -69,6 +68,7 @@ specifiers:
   lodash: ^4.17.21
   lodash-es: ^4.17.21
   lodash-unified: ^1.0.2
+  md-editor-v3: ^2.4.2
   mitt: ^3.0.0
   mockjs: ^1.1.0
   nprogress: ^0.2.0
@@ -119,7 +119,6 @@ specifiers:
   vue-types: ^4.2.1
   vue-virtual-scroller: ^2.0.0-alpha.1
   vue3-danmaku: ^1.0.0
-  vue3-markdown-it: ^1.0.10
   vuedraggable: ^4.1.0
   vxe-table: ^4.3.6
   xe-utils: ^3.5.7
@@ -154,6 +153,7 @@ dependencies:
   lodash: 4.17.21
   lodash-es: 4.17.21
   lodash-unified: 1.0.3_3ib2ivapxullxkx3xftsimdk7u
+  md-editor-v3: 2.4.2
   mitt: 3.0.0
   mockjs: 1.1.0
   nprogress: 0.2.0
@@ -174,7 +174,6 @@ dependencies:
   vue-types: 4.2.1_vue@3.2.45
   vue-virtual-scroller: 2.0.0-beta.3_vue@3.2.45
   vue3-danmaku: 1.0.0_vue@3.2.45
-  vue3-markdown-it: 1.0.10_@types+markdown-it@12.2.3
   vuedraggable: 4.1.0_vue@3.2.45
   vxe-table: 4.3.6_vue@3.2.45+xe-utils@3.5.7
   xe-utils: 3.5.7
@@ -201,7 +200,6 @@ devDependencies:
   "@types/js-cookie": 3.0.2
   "@types/lodash": 4.14.190
   "@types/lodash-es": 4.17.6
-  "@types/markdown-it": 12.2.3
   "@types/mockjs": 1.0.7
   "@types/node": 18.11.9
   "@types/nprogress": 0.2.0
@@ -1508,12 +1506,6 @@ packages:
       }
     dev: true
 
-  /@types/linkify-it/3.0.2:
-    resolution:
-      {
-        integrity: sha512-HZQYqbiFVWufzCwexrvh694SOim8z2d+xJl5UNamcvQFejLY/2YUtzXHYi3cHdI7PMlS8ejH2slRAOJQ32aNbA==
-      }
-
   /@types/lodash-es/4.17.6:
     resolution:
       {
@@ -1526,21 +1518,6 @@ packages:
     resolution:
       {
         integrity: sha512-5iJ3FBJBvQHQ8sFhEhJfjUP+G+LalhavTkYyrAYqz5MEJG+erSv0k9KJLb6q7++17Lafk1scaTIFXcMJlwK8Mw==
-      }
-
-  /@types/markdown-it/12.2.3:
-    resolution:
-      {
-        integrity: sha512-GKMHFfv3458yYy+v/N8gjufHO6MSZKCOXpZc5GXIWWy8uldwfmPn98vp81gZ5f9SVw8YYBctgfJ22a2d7AOMeQ==
-      }
-    dependencies:
-      "@types/linkify-it": 3.0.2
-      "@types/mdurl": 1.0.2
-
-  /@types/mdurl/1.0.2:
-    resolution:
-      {
-        integrity: sha512-eC4U9MlIcu2q0KQmXszyn5Akca/0jrQmwDRgpAMJai7qBWq4amIQhZyNau4VYGtCeALvW1/NtjzJJ567aZxfKA==
       }
 
   /@types/minimatch/3.0.5:
@@ -2669,6 +2646,7 @@ packages:
       {
         integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==
       }
+    dev: true
 
   /array-differ/3.0.0:
     resolution:
@@ -3935,13 +3913,6 @@ packages:
       ansi-colors: 4.1.3
     dev: true
 
-  /entities/2.1.0:
-    resolution:
-      {
-        integrity: sha512-hCx1oky9PFrJ611mf0ifBLBRW8lUUVRlFolb5gWRfIELabBlbp9xZvrqZLZAs+NxFnbfQoeGd8wDkygjg7U85w==
-      }
-    dev: false
-
   /entities/2.2.0:
     resolution:
       {
@@ -5159,14 +5130,6 @@ packages:
       }
     dev: false
 
-  /highlight.js/11.7.0:
-    resolution:
-      {
-        integrity: sha512-1rRqesRFhMO/PRF+G86evnyJkCgaZFOI+Z6kdj15TA18funfoqJXvgPCLSf0SWq3SRfg1j3HlDs8o4s3EGq1oQ==
-      }
-    engines: { node: ">=12.0.0" }
-    dev: false
-
   /hosted-git-info/2.8.9:
     resolution:
       {
@@ -5736,15 +5699,6 @@ packages:
       }
     dev: true
 
-  /linkify-it/3.0.3:
-    resolution:
-      {
-        integrity: sha512-ynTsyrFSdE5oZ/O9GEf00kPngmOfVwazR5GKDq6EYfhlpFug3J2zybX56a2PRRpc9P+FuSoGNAwjlbDs9jJBPQ==
-      }
-    dependencies:
-      uc.micro: 1.0.6
-    dev: false
-
   /lint-staged/11.1.2:
     resolution:
       {
@@ -5852,13 +5806,6 @@ packages:
     resolution:
       {
         integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==
-      }
-    dev: false
-
-  /lodash.flow/3.5.0:
-    resolution:
-      {
-        integrity: sha512-ff3BX/tSioo+XojX4MOsOMhJw0nZoUEF011LX8g8d3gvjVbxd89cCio4BCXronjxcTUIJUoqKEUA+n4CqvvRPw==
       }
     dev: false
 
@@ -6006,119 +5953,20 @@ packages:
     engines: { node: ">=8" }
     dev: true
 
-  /markdown-it-abbr/1.0.4:
-    resolution:
-      {
-        integrity: sha512-ZeA4Z4SaBbYysZap5iZcxKmlPL6bYA8grqhzJIHB1ikn7njnzaP8uwbtuXc4YXD5LicI4/2Xmc0VwmSiFV04gg==
-      }
-    dev: false
-
-  /markdown-it-anchor/8.6.5_2zb4u3vubltivolgu556vv4aom:
-    resolution:
-      {
-        integrity: sha512-PI1qEHHkTNWT+X6Ip9w+paonfIQ+QZP9sCeMYi47oqhH+EsW8CrJ8J7CzV19QVOj6il8ATGbK2nTECj22ZHGvQ==
-      }
-    peerDependencies:
-      "@types/markdown-it": "*"
-      markdown-it: "*"
-    dependencies:
-      "@types/markdown-it": 12.2.3
-      markdown-it: 12.3.2
-    dev: false
-
-  /markdown-it-deflist/2.1.0:
-    resolution:
-      {
-        integrity: sha512-3OuqoRUlSxJiuQYu0cWTLHNhhq2xtoSFqsZK8plANg91+RJQU1ziQ6lA2LzmFAEes18uPBsHZpcX6We5l76Nzg==
-      }
-    dev: false
-
-  /markdown-it-emoji/2.0.2:
-    resolution:
-      {
-        integrity: sha512-zLftSaNrKuYl0kR5zm4gxXjHaOI3FAOEaloKmRA5hijmJZvSjmxcokOLlzycb/HXlUFWzXqpIEoyEMCE4i9MvQ==
-      }
-    dev: false
-
-  /markdown-it-footnote/3.0.3:
-    resolution:
-      {
-        integrity: sha512-YZMSuCGVZAjzKMn+xqIco9d1cLGxbELHZ9do/TSYVzraooV8ypsppKNmUJ0fVH5ljkCInQAtFpm8Rb3eXSrt5w==
-      }
-    dev: false
-
-  /markdown-it-highlightjs/3.6.0:
-    resolution:
-      {
-        integrity: sha512-ex+Lq3cVkprh0GpGwFyc53A/rqY6GGzopPCG1xMsf8Ya3XtGC8Uw9tChN1rWbpyDae7tBBhVHVcMM29h4Btamw==
-      }
-    dependencies:
-      highlight.js: 11.7.0
-      lodash.flow: 3.5.0
-    dev: false
-
-  /markdown-it-ins/3.0.1:
-    resolution:
-      {
-        integrity: sha512-32SSfZqSzqyAmmQ4SHvhxbFqSzPDqsZgMHDwxqPzp+v+t8RsmqsBZRG+RfRQskJko9PfKC2/oxyOs4Yg/CfiRw==
-      }
-    dev: false
-
-  /markdown-it-mark/3.0.1:
-    resolution:
-      {
-        integrity: sha512-HyxjAu6BRsdt6Xcv6TKVQnkz/E70TdGXEFHRYBGLncRE9lBFwDNLVtFojKxjJWgJ+5XxUwLaHXy+2sGBbDn+4A==
-      }
-    dev: false
-
-  /markdown-it-sub/1.0.0:
-    resolution:
-      {
-        integrity: sha512-z2Rm/LzEE1wzwTSDrI+FlPEveAAbgdAdPhdWarq/ZGJrGW/uCQbKAnhoCsE4hAbc3SEym26+W2z/VQB0cQiA9Q==
-      }
-    dev: false
-
-  /markdown-it-sup/1.0.0:
-    resolution:
-      {
-        integrity: sha512-E32m0nV9iyhRR7CrhnzL5msqic7rL1juWre6TQNxsnApg7Uf+F97JOKxUijg5YwXz86lZ0mqfOnutoryyNdntQ==
-      }
-    dev: false
-
-  /markdown-it-task-lists/2.1.1:
-    resolution:
-      {
-        integrity: sha512-TxFAc76Jnhb2OUu+n3yz9RMu4CwGfaT788br6HhEDlvWfdeJcLUsxk1Hgw2yJio0OXsxv7pyIPmvECY7bMbluA==
-      }
-    dev: false
-
-  /markdown-it-toc-done-right/4.2.0:
-    resolution:
-      {
-        integrity: sha512-UB/IbzjWazwTlNAX0pvWNlJS8NKsOQ4syrXZQ/C72j+jirrsjVRT627lCaylrKJFBQWfRsPmIVQie8x38DEhAQ==
-      }
-    dev: false
-
-  /markdown-it/12.3.2:
-    resolution:
-      {
-        integrity: sha512-TchMembfxfNVpHkbtriWltGWc+m3xszaRD0CZup7GFFhzIgQqxIfn3eGj1yZpfuflzPvfkt611B2Q/Bsk1YnGg==
-      }
-    hasBin: true
-    dependencies:
-      argparse: 2.0.1
-      entities: 2.1.0
-      linkify-it: 3.0.3
-      mdurl: 1.0.1
-      uc.micro: 1.0.6
-    dev: false
-
   /mathml-tag-names/2.1.3:
     resolution:
       {
         integrity: sha512-APMBEanjybaPzUrfqU0IMU5I0AswKMH7k8OTLs0vvV4KZpExkTkY87nR/zpbuTPj+gARop7aGUbl11pnDfW6xg==
       }
     dev: true
+
+  /md-editor-v3/2.4.2:
+    resolution:
+      {
+        integrity: sha512-qVbvfIifrXwfi9In8l14nW+A5MXaE9UxN7d+Iw2QtXFV0kaDfS5H2Z5kMeVP61GaLLkdbOi4GCt0X2izZ0rdJw==
+      }
+    engines: { node: ">=12.0.0" }
+    dev: false
 
   /mdn-data/2.0.14:
     resolution:
@@ -6133,13 +5981,6 @@ packages:
         integrity: sha512-aylIc7Z9y4yzHYAJNuESG3hfhC+0Ibp/MAMiaOZgNv4pmEdFyfZhhhny4MNiAfWdBQ1RQ2mfDWmM1x8SvGyp8g==
       }
     dev: true
-
-  /mdurl/1.0.1:
-    resolution:
-      {
-        integrity: sha512-/sKlQJCBYVY9Ers9hqzKou4H6V5UWc/M59TH2dvkt+84itfnq7uFOMLpOiOS4ujvHP4etln18fmIxA5R5fll0g==
-      }
-    dev: false
 
   /memoize-one/6.0.0:
     resolution:
@@ -8659,13 +8500,6 @@ packages:
     engines: { node: ">=4.2.0" }
     hasBin: true
 
-  /uc.micro/1.0.6:
-    resolution:
-      {
-        integrity: sha512-8Y75pvTYkLJW2hWQHXxoqRgV7qb9B+9vFEtidML+7koHUFapnVJAZ6cKs+Qjz5Aw3aZWHMC6u0wJE3At+nSGwA==
-      }
-    dev: false
-
   /unidragger/2.4.0:
     resolution:
       {
@@ -9102,29 +8936,6 @@ packages:
       vue: ^3.0.0
     dependencies:
       vue: 3.2.45
-    dev: false
-
-  /vue3-markdown-it/1.0.10_@types+markdown-it@12.2.3:
-    resolution:
-      {
-        integrity: sha512-mTvHu0zl7jrh7ojgaZ+tTpCLiS4CVg4bTgTu4KGhw/cRRY5YgIG8QgFAPu6kCzSW6Znc9a52Beb6hFvF4hSMkQ==
-      }
-    dependencies:
-      markdown-it: 12.3.2
-      markdown-it-abbr: 1.0.4
-      markdown-it-anchor: 8.6.5_2zb4u3vubltivolgu556vv4aom
-      markdown-it-deflist: 2.1.0
-      markdown-it-emoji: 2.0.2
-      markdown-it-footnote: 3.0.3
-      markdown-it-highlightjs: 3.6.0
-      markdown-it-ins: 3.0.1
-      markdown-it-mark: 3.0.1
-      markdown-it-sub: 1.0.0
-      markdown-it-sup: 1.0.0
-      markdown-it-task-lists: 2.1.1
-      markdown-it-toc-done-right: 4.2.0
-    transitivePeerDependencies:
-      - "@types/markdown-it"
     dev: false
 
   /vuedraggable/4.1.0_vue@3.2.45:
