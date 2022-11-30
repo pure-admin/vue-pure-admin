@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import MenuFold from "@iconify-icons/ri/menu-fold-fill";
+import MenuUnfold from "@iconify-icons/ri/menu-unfold-fill";
+
 interface Props {
   isActive: boolean;
 }
@@ -23,7 +26,7 @@ const toggleClick = () => {
     @click="toggleClick"
   >
     <IconifyIconOffline
-      :icon="props.isActive ? 'menu-fold' : 'menu-unfold'"
+      :icon="props.isActive ? MenuFold : MenuUnfold"
       class="inline-block align-middle hover:text-primary dark:hover:!text-white"
     />
   </div>

@@ -1,5 +1,11 @@
 import { IconifyIconOffline } from "@/components/ReIcon";
 import TypeIt from "@/components/ReTypeit";
+import OfficeBuilding from "@iconify-icons/ep/office-building";
+import Tickets from "@iconify-icons/ep/tickets";
+import Location from "@iconify-icons/ep/location";
+import Iphone from "@iconify-icons/ep/iphone";
+import Notebook from "@iconify-icons/ep/notebook";
+import User from "@iconify-icons/ri/user-3-fill";
 
 export function useColumns() {
   const lists = [
@@ -15,7 +21,7 @@ export function useColumns() {
       labelRenderer: () => (
         <div class="flex items-center">
           <el-icon>
-            <IconifyIconOffline icon="user" />
+            <IconifyIconOffline icon={User} />
           </el-icon>
           用户名
         </div>
@@ -26,7 +32,7 @@ export function useColumns() {
       labelRenderer: () => (
         <div class="flex items-center">
           <el-icon>
-            <IconifyIconOffline icon="iphone" />
+            <IconifyIconOffline icon={Iphone} />
           </el-icon>
           手机号
         </div>
@@ -37,7 +43,7 @@ export function useColumns() {
       labelRenderer: () => (
         <div class="flex items-center">
           <el-icon>
-            <IconifyIconOffline icon="location" />
+            <IconifyIconOffline icon={Location} />
           </el-icon>
           居住地
         </div>
@@ -51,7 +57,7 @@ export function useColumns() {
       labelRenderer: () => (
         <div class="flex items-center">
           <el-icon>
-            <IconifyIconOffline icon="tickets" />
+            <IconifyIconOffline icon={Tickets} />
           </el-icon>
           标签
         </div>
@@ -70,7 +76,7 @@ export function useColumns() {
       labelRenderer: () => (
         <div class="flex items-center">
           <el-icon>
-            <IconifyIconOffline icon="office-building" />
+            <IconifyIconOffline icon={OfficeBuilding} />
           </el-icon>
           联系地址
         </div>
@@ -84,7 +90,7 @@ export function useColumns() {
       labelRenderer: () => (
         <div class="flex items-center">
           <el-icon>
-            <IconifyIconOffline icon="notebook" />
+            <IconifyIconOffline icon={Notebook} />
           </el-icon>
           好好学习，天天向上
         </div>

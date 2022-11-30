@@ -111,7 +111,6 @@ button,
 [type="button"],
 [type="reset"],
 [type="submit"] {
-  -webkit-appearance: button;
   background-image: none;
 }
 
@@ -133,16 +132,10 @@ progress {
 }
 
 [type="search"] {
-  -webkit-appearance: textfield;
   outline-offset: -2px;
 }
 
-::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
 ::-webkit-file-upload-button {
-  -webkit-appearance: button;
   font: inherit;
 }
 
@@ -211,7 +204,6 @@ iframe,
 embed,
 object {
   display: block;
-  vertical-align: middle;
 }
 
 img,

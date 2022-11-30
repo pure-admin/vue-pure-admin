@@ -5,6 +5,7 @@ import type {
   ComponentPublicInstance
 } from "vue";
 import type { ECharts } from "echarts";
+import type { IconifyIcon } from "@iconify/vue";
 import type { ResponsiveStorage } from "./index";
 import type { TableColumns } from "@pureadmin/table";
 import { type RouteComponent, type RouteLocationNormalized } from "vue-router";
@@ -189,7 +190,7 @@ declare global {
       /** 菜单名称（兼容国际化、非国际化，如何用国际化的写法就必须在根目录的`locales`文件夹下对应添加） `必填` */
       title: string;
       /** 菜单图标 `可选` */
-      icon?: string | FunctionalComponent;
+      icon?: string | FunctionalComponent | IconifyIcon;
       /** 菜单名称右侧的额外图标，支持`fontawesome`、`iconfont`、`element-plus-icon` `可选` */
       extraIcon?: {
         svg?: boolean;
@@ -247,7 +248,7 @@ declare global {
       /** 菜单名称（兼容国际化、非国际化，如何用国际化的写法就必须在根目录的`locales`文件夹下对应添加）`必填` */
       title: string;
       /** 菜单图标 `可选` */
-      icon?: string | FunctionalComponent;
+      icon?: string | FunctionalComponent | IconifyIcon;
       /** 是否在菜单中显示（默认`true`）`可选` */
       showLink?: boolean;
       /** 菜单升序排序，值越高排的越后（只针对顶级路由）`可选` */

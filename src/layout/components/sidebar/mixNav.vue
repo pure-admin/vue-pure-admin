@@ -9,6 +9,9 @@ import { getParentPaths, findRouteByPath } from "@/router/utils";
 import { useTranslationLang } from "../../hooks/useTranslationLang";
 import { usePermissionStoreHook } from "@/store/modules/permission";
 import globalization from "@/assets/svg/globalization.svg?component";
+import LogoutCircleRLine from "@iconify-icons/ri/logout-circle-r-line";
+import Setting from "@iconify-icons/ri/settings-3-line";
+import Check from "@iconify-icons/ep/check";
 
 const menuRef = ref();
 const defaultActive = ref(null);
@@ -108,7 +111,7 @@ watch(
               @click="translationCh"
             >
               <span class="check-zh" v-show="locale === 'zh'">
-                <IconifyIconOffline icon="check" />
+                <IconifyIconOffline :icon="Check" />
               </span>
               简体中文
             </el-dropdown-item>
@@ -118,7 +121,7 @@ watch(
               @click="translationEn"
             >
               <span class="check-en" v-show="locale === 'en'">
-                <IconifyIconOffline icon="check" />
+                <IconifyIconOffline :icon="Check" />
               </span>
               English
             </el-dropdown-item>
@@ -138,7 +141,7 @@ watch(
           <el-dropdown-menu class="logout">
             <el-dropdown-item @click="logout">
               <IconifyIconOffline
-                icon="logout-circle-r-line"
+                :icon="LogoutCircleRLine"
                 style="margin: 5px"
               />
               {{ t("buttons.hsLoginOut") }}
@@ -151,7 +154,7 @@ watch(
         :title="t('buttons.hssystemSet')"
         @click="onPanel"
       >
-        <IconifyIconOffline icon="setting" />
+        <IconifyIconOffline :icon="Setting" />
       </span>
     </div>
   </div>

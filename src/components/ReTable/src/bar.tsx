@@ -1,6 +1,12 @@
 import { defineComponent, ref, computed, PropType } from "vue";
 import { useEpThemeStoreHook } from "@/store/modules/epTheme";
+
+import UnExpand from "@iconify-icons/mdi/arrow-expand-right";
 import { IconifyIconOffline } from "../../ReIcon";
+import Expand from "@iconify-icons/mdi/arrow-expand-down";
+import ArrowCollapse from "@iconify-icons/mdi/arrow-collapse-vertical";
+import Setting from "@iconify-icons/ri/settings-3-line";
+import RefreshRight from "@iconify-icons/ep/refresh-right";
 
 export const loadingSvg = `
   <path class="path" d="
@@ -105,7 +111,7 @@ export default defineComponent({
       reference: () => (
         <IconifyIconOffline
           class="cursor-pointer"
-          icon="setting"
+          icon={Setting}
           width="16"
           color="text_color_regular"
           onMouseover={e => (buttonRef.value = e.currentTarget)}
@@ -135,7 +141,7 @@ export default defineComponent({
                   >
                     <IconifyIconOffline
                       class="cursor-pointer"
-                      icon={isExpandAll.value ? "unExpand" : "expand"}
+                      icon={isExpandAll.value ? UnExpand : Expand}
                       width="16"
                       color="text_color_regular"
                       onClick={() => onExpand()}
@@ -147,7 +153,7 @@ export default defineComponent({
               <el-tooltip effect="dark" content="刷新" placement="top">
                 <IconifyIconOffline
                   class="cursor-pointer"
-                  icon="refresh-right"
+                  icon={RefreshRight}
                   width="16"
                   color="text_color_regular"
                   onClick={() => emit("refresh")}
@@ -159,7 +165,7 @@ export default defineComponent({
                 <el-dropdown v-slots={dropdown} trigger="click">
                   <IconifyIconOffline
                     class="cursor-pointer"
-                    icon="density"
+                    icon={ArrowCollapse}
                     width="16"
                     color="text_color_regular"
                   />

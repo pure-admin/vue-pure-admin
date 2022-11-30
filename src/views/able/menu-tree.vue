@@ -7,6 +7,7 @@ import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import { extractPathList, deleteChildren } from "@/utils/tree";
 import { usePermissionStoreHook } from "@/store/modules/permission";
 import type { TreeNode } from "element-plus/es/components/tree-v2/src/types";
+import NodeTree from "@iconify-icons/ri/node-tree";
 
 defineOptions({
   name: "MenuTree"
@@ -50,7 +51,7 @@ const filterMethod = (query: string, node: treeNode) => {
           <el-link
             href="https://element-plus.gitee.io/zh-CN/component/tree-v2.html"
             target="_blank"
-            :icon="useRenderIcon('node-tree')"
+            :icon="useRenderIcon(NodeTree)"
             style="font-size: 16px; margin: 0 5px 4px 0"
           >
             Tree V2

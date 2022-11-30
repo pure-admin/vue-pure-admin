@@ -5,8 +5,8 @@
       确认
     </span>
     <span class="search-footer-item">
-      <IconifyIconOffline icon="arrow-up-line" class="icon" />
-      <IconifyIconOffline icon="arrow-down-line" class="icon" />
+      <IconifyIconOffline :icon="ArrowUpLine" class="icon" />
+      <IconifyIconOffline :icon="ArrowDownLine" class="icon" />
       切换
     </span>
     <span class="search-footer-item">
@@ -17,6 +17,8 @@
 </template>
 
 <script setup lang="ts">
+import ArrowUpLine from "@iconify-icons/ri/arrow-up-line";
+import ArrowDownLine from "@iconify-icons/ri/arrow-down-line";
 import mdiKeyboardEsc from "@/assets/svg/keyboard_esc.svg?component";
 import enterOutlined from "@/assets/svg/enter_outlined.svg?component";
 </script>

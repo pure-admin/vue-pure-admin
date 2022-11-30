@@ -1,5 +1,6 @@
 import { iconType } from "./types";
 import { h, defineComponent, Component } from "vue";
+import { addIcon } from "@iconify/vue/dist/offline";
 import { IconifyIconOnline, IconifyIconOffline, FontIcon } from "../index";
 
 /**
@@ -34,6 +35,18 @@ export function useRenderIcon(icon: any, attrs?: iconType): Component {
   } else if (typeof icon === "function" || typeof icon?.render === "function") {
     // svg
     return icon;
+  } else if (typeof icon === "object") {
+    // iconify 本地图标
+    addIcon(icon, icon);
+    return defineComponent({
+      name: "OfflineIcon",
+      render() {
+        return h(IconifyIconOffline, {
+          icon: icon,
+          ...attrs
+        });
+      }
+    });
   } else {
     // 通过是否存在 : 符号来判断是在线还是本地图标，存在即是在线图标，反之
     return defineComponent({

@@ -4,6 +4,8 @@ import { ref, reactive } from "vue";
 import { type Direction } from "element-plus";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import { type VxeTableEvents, type VxeTableInstance } from "vxe-table";
+import Delete from "@iconify-icons/ep/delete";
+import EditPen from "@iconify-icons/ep/edit-pen";
 
 interface Props {
   drawer: boolean;
@@ -108,7 +110,7 @@ const checkboxChangeEvent: VxeTableEvents.CheckboxChange = ({ records }) => {
               <el-button
                 link
                 type="primary"
-                :icon="useRenderIcon('edits')"
+                :icon="useRenderIcon(EditPen)"
                 @click="editConfig(row)"
               >
                 编辑
@@ -116,7 +118,7 @@ const checkboxChangeEvent: VxeTableEvents.CheckboxChange = ({ records }) => {
               <el-button
                 link
                 type="primary"
-                :icon="useRenderIcon('delete')"
+                :icon="useRenderIcon(Delete)"
                 @click="delConfig(row)"
               >
                 删除

@@ -1,11 +1,12 @@
 import { $t } from "@/plugins/i18n";
 import { guide } from "@/router/enums";
+import Guide from "@iconify-icons/ep/guide";
 
 export default {
   path: "/guide",
   redirect: "/guide/index",
   meta: {
-    icon: "guide",
+    icon: Guide,
     title: $t("menus.hsguide"),
     rank: guide
   },

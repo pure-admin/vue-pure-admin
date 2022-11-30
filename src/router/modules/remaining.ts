@@ -1,5 +1,6 @@
 import { $t } from "@/plugins/i18n";
 const Layout = () => import("@/layout/index.vue");
+import HomeFilled from "@iconify-icons/ep/home-filled";
 
 export default [
   {
@@ -16,7 +17,7 @@ export default [
     path: "/redirect",
     component: Layout,
     meta: {
-      icon: "home-filled",
+      icon: HomeFilled,
       title: $t("menus.hshome"),
       showLink: false,
       rank: 102

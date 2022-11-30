@@ -5,7 +5,6 @@ export default {
   path: "/about",
   redirect: "/about/index",
   meta: {
-    // icon: "question-line",
     title: $t("menus.hsAbout"),
     rank: about
   },
