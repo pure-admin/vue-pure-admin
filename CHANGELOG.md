@@ -1,3 +1,14 @@
+# 3.9.0 (2022-11-30)
+
+### 🐞 Bug fixes
+
+- Fixed the jitter problem caused by the scroll bar on the page when the text is too long when exiting the full screen
+- Fix some type errors
+
+### 🍏 Perf
+
+- perf: Great optimization of the first screen loading. Compared with the version before `3.9.0`, the first screen requests are reduced by `71`, and the first screen loading resources are reduced by `4.1 MB`
+
 # 3.8.7 (2022-11-28)
 
 ### 🍏 Perf
