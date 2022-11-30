@@ -14,7 +14,7 @@ specifiers:
   "@logicflow/core": ^1.1.30
   "@logicflow/extension": ^1.1.30
   "@pureadmin/descriptions": ^1.1.0
-  "@pureadmin/table": ^1.8.0
+  "@pureadmin/table": ^1.8.1
   "@pureadmin/theme": ^2.4.0
   "@pureadmin/utils": ^1.7.1
   "@types/element-resize-detector": 1.1.3

@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import "animate.css";
+// vxe-table的所有icon不支持component模式，间接依赖了font-awesome
+import "font-awesome/css/font-awesome.min.css";
 import { setType } from "./types";
 import { emitter } from "@/utils/mitt";
 import { useLayout } from "./hooks/useLayout";
