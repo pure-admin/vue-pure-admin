@@ -83,7 +83,13 @@ const getSpanStyle = computed(() => {
 });
 
 const expandCloseIcon = computed(() => {
-  return getConfig()?.MenuArrowIconNoTransition ? "expand-close-icon" : "";
+  if (!getConfig()?.MenuArrowIconNoTransition) return "";
+  return {
+    "expand-close-icon": useRenderIcon(EpArrowDown),
+    "expand-open-icon": useRenderIcon(ArrowUp),
+    "collapse-close-icon": useRenderIcon(ArrowRight),
+    "collapse-open-icon": useRenderIcon(ArrowLeft)
+  };
 });
 
 const onlyOneChild: childrenType = ref(null);
@@ -225,11 +231,8 @@ function resolvePath(routePath) {
   <el-sub-menu
     v-else
     ref="subMenu"
+    v-bind="expandCloseIcon"
     :index="resolvePath(props.item.path)"
-    v-bind:[expandCloseIcon]="useRenderIcon(EpArrowDown)"
-    :expand-open-icon="useRenderIcon(ArrowUp)"
-    :collapse-close-icon="useRenderIcon(ArrowRight)"
-    :collapse-open-icon="useRenderIcon(ArrowLeft)"
   >
     <template #title>
       <div v-if="toRaw(props.item.meta.icon)" class="sub-menu-icon">
