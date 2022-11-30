@@ -1,6 +1,5 @@
 import { iconType } from "./types";
 import { h, defineComponent, Component } from "vue";
-import { addIcon } from "@iconify/vue/dist/offline";
 import { IconifyIconOnline, IconifyIconOffline, FontIcon } from "../index";
 
 /**
@@ -36,8 +35,6 @@ export function useRenderIcon(icon: any, attrs?: iconType): Component {
     // svg
     return icon;
   } else if (typeof icon === "object") {
-    // iconify 本地图标
-    addIcon(icon, icon);
     return defineComponent({
       name: "OfflineIcon",
       render() {
