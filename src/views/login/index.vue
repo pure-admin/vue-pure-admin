@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {
   ref,
+  toRaw,
   reactive,
   watch,
   computed,
@@ -24,7 +25,7 @@ import { $t, transformI18n } from "@/plugins/i18n";
 import { operates, thirdParty } from "./utils/enums";
 import { useLayout } from "@/layout/hooks/useLayout";
 import { useUserStoreHook } from "@/store/modules/user";
-import { bg, avatar, currentWeek } from "./utils/static";
+import { bg, avatar, illustration } from "./utils/static";
 import { ReImageVerify } from "@/components/ReImageVerify";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import { useTranslationLang } from "@/layout/hooks/useTranslationLang";
@@ -35,7 +36,7 @@ import darkIcon from "@/assets/svg/dark.svg?component";
 import globalization from "@/assets/svg/globalization.svg?component";
 import Lock from "@iconify-icons/ri/lock-fill";
 import Check from "@iconify-icons/ep/check";
-// import User from "@iconify-icons/ri/user-3-fill";
+import User from "@iconify-icons/ri/user-3-fill";
 
 defineOptions({
   name: "Login"
@@ -154,7 +155,7 @@ watch(imgCode, value => {
     </div>
     <div class="login-container">
       <div class="img">
-        <component :is="currentWeek" />
+        <component :is="toRaw(illustration)" />
       </div>
       <div class="login-box">
         <div class="login-form">
@@ -187,6 +188,7 @@ watch(imgCode, value => {
                   clearable
                   v-model="ruleForm.username"
                   :placeholder="t('login.username')"
+                  :prefix-icon="useRenderIcon(User)"
                 />
               </el-form-item>
             </Motion>
