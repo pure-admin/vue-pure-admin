@@ -184,29 +184,34 @@ function handleAsyncRoutes(routeList) {
   addPathMatch();
 }
 
-/** 初始化路由 */
+/** 初始化路由（`new Promise` 写法防止在异步请求中造成无限循环）*/
 function initRouter() {
-  return new Promise(resolve => {
-    if (getConfig()?.CachingAsyncRoutes) {
-      // 开启动态路由缓存本地sessionStorage
-      const key = "async-routes";
-      const asyncRouteList = storageSession.getItem(key) as any;
-      if (asyncRouteList?.length > 0) {
+  if (getConfig()?.CachingAsyncRoutes) {
+    // 开启动态路由缓存本地sessionStorage
+    const key = "async-routes";
+    const asyncRouteList = storageSession.getItem(key) as any;
+    if (asyncRouteList && asyncRouteList?.length > 0) {
+      return new Promise(resolve => {
         handleAsyncRoutes(asyncRouteList);
-      } else {
+        resolve(router);
+      });
+    } else {
+      return new Promise(resolve => {
         getAsyncRoutes().then(({ data }) => {
           handleAsyncRoutes(data);
           storageSession.setItem(key, data);
+          resolve(router);
         });
-      }
-      resolve(router);
-    } else {
+      });
+    }
+  } else {
+    return new Promise(resolve => {
       getAsyncRoutes().then(({ data }) => {
         handleAsyncRoutes(data);
         resolve(router);
       });
-    }
-  });
+    });
+  }
 }
 
 /**
