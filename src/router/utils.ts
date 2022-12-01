@@ -16,6 +16,7 @@ import {
   storageSession,
   isIncludeAllChildren
 } from "@pureadmin/utils";
+import { getConfig } from "@/config";
 import { buildHierarchyTree } from "@/utils/tree";
 import { cloneDeep, intersection } from "lodash-unified";
 import { sessionKey, type DataInfo } from "@/utils/auth";
@@ -151,41 +152,60 @@ function addPathMatch() {
   }
 }
 
+/** 处理动态路由（后端返回的路由） */
+function handleAsyncRoutes(routeList) {
+  if (routeList.length === 0) {
+    usePermissionStoreHook().handleWholeMenus(routeList);
+  } else {
+    formatFlatteningRoutes(addAsyncRoutes(routeList)).map(
+      (v: RouteRecordRaw) => {
+        // 防止重复添加路由
+        if (
+          router.options.routes[0].children.findIndex(
+            value => value.path === v.path
+          ) !== -1
+        ) {
+          return;
+        } else {
+          // 切记将路由push到routes后还需要使用addRoute，这样路由才能正常跳转
+          router.options.routes[0].children.push(v);
+          // 最终路由进行升序
+          ascending(router.options.routes[0].children);
+          if (!router.hasRoute(v?.name)) router.addRoute(v);
+          const flattenRouters: any = router
+            .getRoutes()
+            .find(n => n.path === "/");
+          router.addRoute(flattenRouters);
+        }
+      }
+    );
+    usePermissionStoreHook().handleWholeMenus(routeList);
+  }
+  addPathMatch();
+}
+
 /** 初始化路由 */
 function initRouter() {
   return new Promise(resolve => {
-    getAsyncRoutes().then(({ data }) => {
-      if (data.length === 0) {
-        usePermissionStoreHook().handleWholeMenus(data);
-        resolve(router);
+    if (getConfig()?.CachingAsyncRoutes) {
+      // 开启动态路由缓存本地sessionStorage
+      const key = "async-routes";
+      const asyncRouteList = storageSession.getItem(key) as any;
+      if (asyncRouteList?.length > 0) {
+        handleAsyncRoutes(asyncRouteList);
       } else {
-        formatFlatteningRoutes(addAsyncRoutes(data)).map(
-          (v: RouteRecordRaw) => {
-            // 防止重复添加路由
-            if (
-              router.options.routes[0].children.findIndex(
-                value => value.path === v.path
-              ) !== -1
-            ) {
-              return;
-            } else {
-              // 切记将路由push到routes后还需要使用addRoute，这样路由才能正常跳转
-              router.options.routes[0].children.push(v);
-              // 最终路由进行升序
-              ascending(router.options.routes[0].children);
-              if (!router.hasRoute(v?.name)) router.addRoute(v);
-              const flattenRouters: any = router
-                .getRoutes()
-                .find(n => n.path === "/");
-              router.addRoute(flattenRouters);
-            }
-            resolve(router);
-          }
-        );
-        usePermissionStoreHook().handleWholeMenus(data);
+        getAsyncRoutes().then(({ data }) => {
+          handleAsyncRoutes(data);
+          storageSession.setItem(key, data);
+        });
       }
-      addPathMatch();
-    });
+      resolve(router);
+    } else {
+      getAsyncRoutes().then(({ data }) => {
+        handleAsyncRoutes(data);
+        resolve(router);
+      });
+    }
   });
 }
 

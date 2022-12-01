@@ -70,7 +70,7 @@ export function setToken(data: DataInfo<Date>) {
 /** 删除`token`以及key值为`user-info`的session信息 */
 export function removeToken() {
   Cookies.remove(TokenKey);
-  sessionStorage.removeItem(sessionKey);
+  sessionStorage.clear();
 }
 
 /** 格式化token（jwt格式） */

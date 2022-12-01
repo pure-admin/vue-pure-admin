@@ -33,6 +33,7 @@ function onChange() {
     .loginByUsername({ username: username.value, password: "admin123" })
     .then(res => {
       if (res.success) {
+        sessionStorage.removeItem("async-routes");
         usePermissionStoreHook().clearAllCachePage();
         initRouter();
       }

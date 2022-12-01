@@ -95,6 +95,7 @@ declare global {
     ShowLogo?: boolean;
     ShowModel?: string;
     MenuArrowIconNoTransition?: boolean;
+    CachingAsyncRoutes?: boolean;
     MapConfigure?: {
       amapKey?: string;
       options: {
