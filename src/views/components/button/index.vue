@@ -21,9 +21,3 @@ const url = ref(`${VITE_PUBLIC_PATH}html/button.html`);
     <iframe :src="url" frameborder="0" class="iframe w-full h-[60vh]" />
   </el-card>
 </template>
-
-<style lang="scss" scoped>
-.iframe {
-  filter: invert(0.9) hue-rotate(180deg);
-}
-</style>
