@@ -4,9 +4,7 @@ import type {
   PropType as VuePropType,
   ComponentPublicInstance
 } from "vue";
-import type { ECharts } from "echarts";
 import type { IconifyIcon } from "@iconify/vue";
-import type { ResponsiveStorage } from "./index";
 import type { TableColumns } from "@pureadmin/table";
 import { type RouteComponent, type RouteLocationNormalized } from "vue-router";
 
@@ -96,6 +94,7 @@ declare global {
     ShowModel?: string;
     MenuArrowIconNoTransition?: boolean;
     CachingAsyncRoutes?: boolean;
+    TooltipEffect?: Effect;
     MapConfigure?: {
       amapKey?: string;
       options: {

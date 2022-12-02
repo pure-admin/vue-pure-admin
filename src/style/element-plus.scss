@@ -46,6 +46,12 @@
   padding: 0 !important;
 }
 
+/* 自定义 tooltip 的类名 */
+.pure-tooltip {
+  // 右侧操作面板right-panel类名的z-index为40000，tooltip需要大于它才能显示
+  z-index: 41000 !important;
+}
+
 /* nprogress 适配 element-plus 的主题色 */
 #nprogress {
   & .bar {

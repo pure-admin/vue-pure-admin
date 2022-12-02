@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useDark } from "@pureadmin/utils";
+import { useNav } from "@/layout/hooks/useNav";
 import MenuFold from "@iconify-icons/ri/menu-fold-fill";
 import MenuUnfold from "@iconify-icons/ri/menu-unfold-fill";
 
@@ -10,7 +10,7 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   isActive: false
 });
-const { isDark } = useDark();
+const { tooltipEffect } = useNav();
 
 const emit = defineEmits<{
   (e: "toggleClick"): void;
@@ -25,7 +25,7 @@ const toggleClick = () => {
   <div class="container">
     <el-tooltip
       placement="right"
-      :effect="isDark ? 'dark' : 'light'"
+      :effect="tooltipEffect"
       :content="props.isActive ? '点击折叠' : '点击展开'"
     >
       <IconifyIconOffline

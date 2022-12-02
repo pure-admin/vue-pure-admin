@@ -45,6 +45,8 @@ type TimeoutHandle = ReturnType<typeof setTimeout>;
 
 type IntervalHandle = ReturnType<typeof setInterval>;
 
+type Effect = "light" | "dark";
+
 interface ChangeEvent extends Event {
   target: HTMLInputElement;
 }

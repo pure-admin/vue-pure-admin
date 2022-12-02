@@ -1,13 +1,11 @@
 <script setup lang="ts">
 import {
-  ref,
-  unref,
-  watch,
-  reactive,
-  computed,
-  nextTick,
-  useCssModule
-} from "vue";
+  useDark,
+  debounce,
+  useGlobal,
+  storageLocal,
+  storageSession
+} from "@pureadmin/utils";
 import { getConfig } from "@/config";
 import { useRouter } from "vue-router";
 import panel from "../panel/index.vue";
@@ -17,16 +15,10 @@ import { removeToken } from "@/utils/auth";
 import { routerArrays } from "@/layout/types";
 import { useNav } from "@/layout/hooks/useNav";
 import { useAppStoreHook } from "@/store/modules/app";
-import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
-import { useDataThemeChange } from "@/layout/hooks/useDataThemeChange";
-import {
-  useDark,
-  debounce,
-  useGlobal,
-  storageLocal,
-  storageSession
-} from "@pureadmin/utils";
 import { toggleTheme } from "@pureadmin/theme/dist/browser-utils";
+import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
+import { ref, unref, watch, reactive, computed, nextTick } from "vue";
+import { useDataThemeChange } from "@/layout/hooks/useDataThemeChange";
 
 import dayIcon from "@/assets/svg/day.svg?component";
 import darkIcon from "@/assets/svg/dark.svg?component";
@@ -34,9 +26,8 @@ import Check from "@iconify-icons/ep/check";
 import Logout from "@iconify-icons/ri/logout-circle-r-line";
 
 const router = useRouter();
-const { device } = useNav();
 const { isDark } = useDark();
-const { isSelect } = useCssModule();
+const { device, tooltipEffect } = useNav();
 const { $storage } = useGlobal<GlobalPropertiesApi>();
 
 const mixRef = ref();
@@ -161,29 +152,9 @@ function logoChange() {
 
 function setFalse(Doms): any {
   Doms.forEach(v => {
-    toggleClass(false, isSelect, unref(v));
+    toggleClass(false, "is-select", unref(v));
   });
 }
-
-watch($storage, ({ layout }) => {
-  switch (layout["layout"]) {
-    case "vertical":
-      toggleClass(true, isSelect, unref(verticalRef));
-      debounce(setFalse([horizontalRef]), 50);
-      debounce(setFalse([mixRef]), 50);
-      break;
-    case "horizontal":
-      toggleClass(true, isSelect, unref(horizontalRef));
-      debounce(setFalse([verticalRef]), 50);
-      debounce(setFalse([mixRef]), 50);
-      break;
-    case "mix":
-      toggleClass(true, isSelect, unref(mixRef));
-      debounce(setFalse([verticalRef]), 50);
-      debounce(setFalse([horizontalRef]), 50);
-      break;
-  }
-});
 
 /** 主题色 激活选择项 */
 const getThemeColor = computed(() => {
@@ -227,6 +198,26 @@ nextTick(() => {
   settings.tabsVal && tagsChange();
   dataThemeChange();
 });
+
+watch($storage, ({ layout }) => {
+  switch (layout["layout"]) {
+    case "vertical":
+      toggleClass(true, "is-select", unref(verticalRef));
+      debounce(setFalse([horizontalRef]), 50);
+      debounce(setFalse([mixRef]), 50);
+      break;
+    case "horizontal":
+      toggleClass(true, "is-select", unref(horizontalRef));
+      debounce(setFalse([verticalRef]), 50);
+      debounce(setFalse([mixRef]), 50);
+      break;
+    case "mix":
+      toggleClass(true, "is-select", unref(mixRef));
+      debounce(setFalse([verticalRef]), 50);
+      debounce(setFalse([horizontalRef]), 50);
+      break;
+  }
+});
 </script>
 
 <template>
@@ -243,9 +234,15 @@ nextTick(() => {
 
     <el-divider>导航栏模式</el-divider>
     <ul class="pure-theme">
-      <el-tooltip class="item" content="左侧模式" placement="bottom">
+      <el-tooltip
+        :effect="tooltipEffect"
+        class="item"
+        content="左侧模式"
+        placement="bottom"
+        popper-class="pure-tooltip"
+      >
         <li
-          :class="layoutTheme.layout === 'vertical' ? $style.isSelect : ''"
+          :class="layoutTheme.layout === 'vertical' ? 'is-select' : ''"
           ref="verticalRef"
           @click="setLayoutModel('vertical')"
         >
@@ -256,12 +253,14 @@ nextTick(() => {
 
       <el-tooltip
         v-if="device !== 'mobile'"
+        :effect="tooltipEffect"
         class="item"
         content="顶部模式"
         placement="bottom"
+        popper-class="pure-tooltip"
       >
         <li
-          :class="layoutTheme.layout === 'horizontal' ? $style.isSelect : ''"
+          :class="layoutTheme.layout === 'horizontal' ? 'is-select' : ''"
           ref="horizontalRef"
           @click="setLayoutModel('horizontal')"
         >
@@ -272,12 +271,14 @@ nextTick(() => {
 
       <el-tooltip
         v-if="device !== 'mobile'"
+        :effect="tooltipEffect"
         class="item"
         content="混合模式"
         placement="bottom"
+        popper-class="pure-tooltip"
       >
         <li
-          :class="layoutTheme.layout === 'mix' ? $style.isSelect : ''"
+          :class="layoutTheme.layout === 'mix' ? 'is-select' : ''"
           ref="mixRef"
           @click="setLayoutModel('mix')"
         >
@@ -392,13 +393,16 @@ nextTick(() => {
   </panel>
 </template>
 
-<style scoped module>
-.isSelect {
+<style lang="scss" scoped>
+:deep(.el-divider__text) {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.is-select {
   border: 2px solid var(--el-color-primary);
 }
-</style>
 
-<style lang="scss" scoped>
 .setting {
   width: 100%;
 
@@ -408,11 +412,6 @@ nextTick(() => {
     align-items: center;
     margin: 25px;
   }
-}
-
-:deep(.el-divider__text) {
-  font-size: 16px;
-  font-weight: 700;
 }
 
 .pure-datatheme {

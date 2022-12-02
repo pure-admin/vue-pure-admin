@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ListItem } from "./data";
 import { ref, PropType, nextTick } from "vue";
+import { useNav } from "@/layout/hooks/useNav";
 
 const props = defineProps({
   noticeItem: {
@@ -13,6 +14,7 @@ const titleRef = ref(null);
 const titleTooltip = ref(false);
 const descriptionRef = ref(null);
 const descriptionTooltip = ref(false);
+const { tooltipEffect } = useNav();
 
 function hoverTitle() {
   nextTick(() => {
@@ -57,6 +59,7 @@ function hoverDescription(event, description) {
       <div class="notice-text-title text-[#000000d9] dark:text-white">
         <el-tooltip
           popper-class="notice-title-popper"
+          :effect="tooltipEffect"
           :disabled="!titleTooltip"
           :content="props.noticeItem.title"
           placement="top-start"
@@ -81,6 +84,7 @@ function hoverDescription(event, description) {
 
       <el-tooltip
         popper-class="notice-title-popper"
+        :effect="tooltipEffect"
         :disabled="!descriptionTooltip"
         :content="props.noticeItem.description"
         placement="top-start"
