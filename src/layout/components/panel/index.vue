@@ -1,11 +1,27 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import { onClickOutside } from "@vueuse/core";
+import { ref, computed } from "vue";
 import { emitter } from "@/utils/mitt";
+import { onClickOutside } from "@vueuse/core";
 import Close from "@iconify-icons/ep/close";
 
-const show = ref<Boolean>(false);
 const target = ref(null);
+const show = ref<Boolean>(false);
+
+const iconClass = computed(() => {
+  return [
+    "mr-[20px]",
+    "outline-none",
+    "width-[20px]",
+    "height-[20px]",
+    "rounded-[4px]",
+    "cursor-pointer",
+    "transition-colors",
+    "hover:bg-[#0000000f]",
+    "dark:hover:bg-[#ffffff1f]",
+    "dark:hover:text-[#ffffffd9]"
+  ];
+});
+
 onClickOutside(target, (event: any) => {
   if (event.clientX > target.value.offsetLeft) return;
   show.value = false;
@@ -23,9 +39,11 @@ emitter.on("openPanel", () => {
       <div class="right-panel-items">
         <div class="project-configuration">
           <h4 class="dark:text-white">项目配置</h4>
-          <span title="关闭配置">
+          <span title="关闭配置" :class="iconClass">
             <IconifyIconOffline
               class="dark:text-white"
+              width="20px"
+              height="20px"
               :icon="Close"
               @click="show = !show"
             />
@@ -69,7 +87,6 @@ emitter.on("openPanel", () => {
   box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.05);
   transition: all 0.25s cubic-bezier(0.7, 0.3, 0.1, 1);
   transform: translate(100%);
-  // background: #fff;
   z-index: 40000;
 }
 
@@ -125,16 +142,6 @@ emitter.on("openPanel", () => {
   align-items: center;
   top: 15px;
   margin-left: 10px;
-
-  svg {
-    font-size: 20px;
-    margin-right: 20px;
-
-    &:hover {
-      cursor: pointer;
-      color: var(--el-color-primary);
-    }
-  }
 }
 
 :deep(.el-divider--horizontal) {
