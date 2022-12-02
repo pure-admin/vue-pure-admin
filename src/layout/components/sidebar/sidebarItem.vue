@@ -203,7 +203,7 @@ function resolvePath(routePath) {
             placement="top"
             :effect="tooltipEffect"
             :offset="-10"
-            :disabled="!onlyOneChild.showTooltip"
+            :disabled="!isCollapse && !onlyOneChild.showTooltip"
           >
             <template #content>
               {{ transformI18n(onlyOneChild.meta.title) }}
@@ -249,7 +249,7 @@ function resolvePath(routePath) {
         placement="top"
         :effect="tooltipEffect"
         :offset="-10"
-        :disabled="!isCollapse || !props.item.showTooltip"
+        :disabled="!props.item.showTooltip"
       >
         <template #content>
           {{ transformI18n(props.item.meta.title) }}

@@ -15,15 +15,8 @@ const showLogo = ref(
   storageLocal.getItem<StorageConfigs>("responsive-configure")?.showLogo ?? true
 );
 
-const {
-  routers,
-  device,
-  pureApp,
-  isCollapse,
-  tooltipEffect,
-  menuSelect,
-  toggleSideBar
-} = useNav();
+const { routers, device, pureApp, isCollapse, menuSelect, toggleSideBar } =
+  useNav();
 
 const subMenuData = ref([]);
 
@@ -76,7 +69,6 @@ watch(
         router
         unique-opened
         mode="vertical"
-        :popper-effect="tooltipEffect"
         class="outer-most select-none"
         :collapse="isCollapse"
         :default-active="route.path"
