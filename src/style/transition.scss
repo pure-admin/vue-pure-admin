@@ -26,9 +26,12 @@
 }
 
 /* breadcrumb transition */
-.breadcrumb-enter-active,
+.breadcrumb-enter-active {
+  transition: all 0.4s;
+}
+
 .breadcrumb-leave-active {
-  transition: all 0.5s;
+  transition: all 0.3s;
 }
 
 .breadcrumb-enter-from,
