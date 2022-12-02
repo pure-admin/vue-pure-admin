@@ -1,3 +1,16 @@
+# 3.9.1 (2022-12-02)
+
+### 🎫 Feat
+
+- 添加 `CachingAsyncRoutes` 是否开启动态路由缓存本地的全局配置，默认 `true`
+- 添加 `TooltipEffect` 全局配置，可配置平台主体所有 `el-tooltip` 的 `effect` 属性，默认 `light`，不影响业务代码
+- 添加目录、菜单文字超出显示 `Tooltip` 文字提示演示
+
+### 🍏 Perf
+
+- 优化 `initRouter` 方法，兼容 `sso` 场景
+- 面包屑动画样式优化
+
 # 3.9.0 (2022-11-30)
 
 ### 🐞 Bug fixes

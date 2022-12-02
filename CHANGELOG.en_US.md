@@ -1,3 +1,16 @@
+# 3.9.1 (2022-12-02)
+
+### 🎫 Feat
+
+- Add `CachingAsyncRoutes` whether to enable dynamic route cache local global configuration, default `true`
+- Add `TooltipEffect` global configuration, you can configure the `effect` attribute of all `el-tooltip` on the platform body, the default `light`, does not affect the business code
+- Add directory, menu text exceeds display `Tooltip` text prompt demo
+
+### 🍏 Perf
+
+- Optimize `initRouter` method, compatible with `sso` scenario
+- Breadcrumb animation style optimization
+
 # 3.9.0 (2022-11-30)
 
 ### 🐞 Bug fixes
