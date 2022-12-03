@@ -41,7 +41,10 @@ watch(
 </script>
 
 <template>
-  <div class="horizontal-header">
+  <div
+    v-loading="usePermissionStoreHook().wholeMenus.length === 0"
+    class="horizontal-header"
+  >
     <div class="horizontal-header-left" @click="backHome">
       <FontIcon icon="team-iconlogo" svg style="width: 35px; height: 35px" />
       <h4>{{ title }}</h4>
@@ -129,6 +132,10 @@ watch(
 </template>
 
 <style lang="scss" scoped>
+:deep(.el-loading-mask) {
+  opacity: 0.45;
+}
+
 .translation {
   ::v-deep(.el-dropdown-menu__item) {
     padding: 5px 40px;

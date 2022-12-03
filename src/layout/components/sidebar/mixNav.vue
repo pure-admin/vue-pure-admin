@@ -58,7 +58,11 @@ watch(
 </script>
 
 <template>
-  <div v-if="device !== 'mobile'" class="horizontal-header">
+  <div
+    v-if="device !== 'mobile'"
+    class="horizontal-header"
+    v-loading="usePermissionStoreHook().wholeMenus.length === 0"
+  >
     <el-menu
       router
       ref="menuRef"
@@ -161,6 +165,10 @@ watch(
 </template>
 
 <style lang="scss" scoped>
+:deep(.el-loading-mask) {
+  opacity: 0.45;
+}
+
 .translation {
   ::v-deep(.el-dropdown-menu__item) {
     padding: 5px 40px;

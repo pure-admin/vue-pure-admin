@@ -59,7 +59,10 @@ watch(
 </script>
 
 <template>
-  <div :class="['sidebar-container', showLogo ? 'has-logo' : '']">
+  <div
+    v-loading="menuData.length === 0"
+    :class="['sidebar-container', showLogo ? 'has-logo' : '']"
+  >
     <Logo v-if="showLogo" :collapse="isCollapse" />
     <el-scrollbar
       wrap-class="scrollbar-wrapper"
@@ -91,3 +94,9 @@ watch(
     />
   </div>
 </template>
+
+<style scoped>
+:deep(.el-loading-mask) {
+  opacity: 0.45;
+}
+</style>
