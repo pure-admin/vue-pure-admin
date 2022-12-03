@@ -9,10 +9,12 @@ export function viteBuildInfo(): Plugin {
   let config: { command: string };
   let startTime: Dayjs;
   let endTime: Dayjs;
+  let outDir: string;
   return {
     name: "vite:buildInfo",
-    configResolved(resolvedConfig: { command: string }) {
+    configResolved(resolvedConfig) {
       config = resolvedConfig;
+      outDir = resolvedConfig.build?.outDir ?? "dist";
     },
     buildStart() {
       console.log(
@@ -32,6 +34,7 @@ export function viteBuildInfo(): Plugin {
       if (config.command === "build") {
         endTime = dayjs(new Date());
         getPackageSize({
+          folder: outDir,
           callback: (size: string) => {
             console.log(
               bold(
