@@ -1,3 +1,11 @@
+# 3.9.2 (2022-12-03)
+
+### 🍏 Perf
+
+- Global coverage of `el-dialog`, `el-drawer`, `el-message-box`, `el-notification` components of `element-plus`The style of the close icon in the upper right corner makes it more vivid [specific modification Code record](https://github.com/xiaoxian521/vue-pure-admin/commit/c80818d792276666aaea4b18413a0f08777f2ed1)
+- The packaging output information is compatible with different packaging output paths
+- Optimize some animations
+
 # 3.9.1 (2022-12-02)
 
 ### 🎫 Feat
