@@ -69,6 +69,33 @@
   }
 }
 
+/* 全局覆盖element-plus的el-dialog、el-drawer、el-message-box、el-notification组件右上角关闭图标的样式，表现更鲜明 */
+.el-dialog__headerbtn,
+.el-message-box__headerbtn {
+  &:hover {
+    .el-dialog__close {
+      color: var(--el-color-info) !important;
+    }
+  }
+}
+.el-icon {
+  &.el-dialog__close,
+  &.el-drawer__close,
+  &.el-message-box__close,
+  &.el-notification__closeBtn {
+    width: 24px;
+    height: 24px;
+    outline: none;
+    border-radius: 4px;
+    transition: background-color 0.2s, color 0.2s;
+    &:hover {
+      color: rgba(0, 0, 0, 0.88) !important;
+      background-color: rgba(0, 0, 0, 0.06);
+      text-decoration: none;
+    }
+  }
+}
+
 /* 克隆并自定义 ElMessage 样式，不会影响 ElMessage 原本样式，在 src/utils/message.ts 中调用自定义样式 ElMessage 方法即可，暗黑模式在 src/style/dark.scss 文件进行了适配 */
 .pure-message {
   border-width: 0 !important;
