@@ -6,7 +6,6 @@ import { IconifyIconOffline } from "../../ReIcon";
 import Expand from "@iconify-icons/mdi/arrow-expand-down";
 import ArrowCollapse from "@iconify-icons/mdi/arrow-collapse-vertical";
 import Setting from "@iconify-icons/ri/settings-3-line";
-import RefreshRight from "@iconify-icons/ep/refresh-right";
 
 export const loadingSvg = `
   <path class="path" d="
@@ -153,7 +152,7 @@ export default defineComponent({
               <el-tooltip effect="dark" content="刷新" placement="top">
                 <IconifyIconOffline
                   class="cursor-pointer"
-                  icon={RefreshRight}
+                  icon="refreshRight"
                   width="16"
                   color="text_color_regular"
                   onClick={() => emit("refresh")}

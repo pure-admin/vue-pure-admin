@@ -1,5 +1,4 @@
 import type { IconifyIcon } from "@iconify/vue";
-import HomeFilled from "@iconify-icons/ep/home-filled";
 
 export const routerArrays: Array<RouteConfigs> = [
   {
@@ -7,7 +6,7 @@ export const routerArrays: Array<RouteConfigs> = [
     parentPath: "/",
     meta: {
       title: "menus.hshome",
-      icon: HomeFilled
+      icon: "homeFilled"
     }
   }
 ];

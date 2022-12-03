@@ -1,12 +1,11 @@
 import { $t } from "@/plugins/i18n";
 import { able } from "@/router/enums";
-import UbuntuFill from "@iconify-icons/ri/ubuntu-fill";
 
 export default {
   path: "/able",
   redirect: "/able/watermark",
   meta: {
-    icon: UbuntuFill,
+    icon: "ubuntuFill",
     title: $t("menus.hsAble"),
     rank: able
   },

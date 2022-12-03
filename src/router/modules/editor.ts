@@ -1,12 +1,11 @@
 import { $t } from "@/plugins/i18n";
 import { editor } from "@/router/enums";
-import Edit from "@iconify-icons/ep/edit";
 
 export default {
   path: "/editor",
   redirect: "/editor/index",
   meta: {
-    icon: Edit,
+    icon: "edit",
     title: $t("menus.hseditor"),
     rank: editor
   },

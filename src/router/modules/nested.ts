@@ -1,13 +1,12 @@
 import { $t } from "@/plugins/i18n";
 import { nested } from "@/router/enums";
-import Histogram from "@iconify-icons/ep/histogram";
 
 export default {
   path: "/nested",
   redirect: "/nested/menu1/menu1-1",
   meta: {
     title: $t("menus.hsmenus"),
-    icon: Histogram,
+    icon: "histogram",
     rank: nested
   },
   children: [

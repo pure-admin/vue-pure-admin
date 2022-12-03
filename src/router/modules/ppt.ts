@@ -1,12 +1,11 @@
 import { ppt } from "@/router/enums";
 const IFrame = () => import("@/layout/frameView.vue");
-import Ppt from "@iconify-icons/ri/file-ppt-2-line";
 
 export default {
   path: "/ppt",
   redirect: "/ppt/index",
   meta: {
-    icon: Ppt,
+    icon: "ppt",
     title: "PPT",
     rank: ppt
   },

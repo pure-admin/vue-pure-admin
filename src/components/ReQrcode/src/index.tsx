@@ -13,7 +13,6 @@ import { isString } from "@pureadmin/utils";
 import { propTypes } from "@/utils/propTypes";
 import { IconifyIconOffline } from "../../ReIcon";
 import QRCode, { QRCodeRenderersOptions } from "qrcode";
-import RefreshRight from "@iconify-icons/ep/refresh-right";
 
 interface QrcodeLogo {
   src?: string;
@@ -248,7 +247,7 @@ export default defineComponent({
               <div class="absolute top-[50%] left-[50%] font-bold">
                 <IconifyIconOffline
                   class="cursor-pointer"
-                  icon={RefreshRight}
+                  icon="refreshRight"
                   width="30"
                   color="var(--el-color-primary)"
                 />
