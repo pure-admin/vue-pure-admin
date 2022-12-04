@@ -99,7 +99,7 @@ menus:
   hsInfiniteScroll: 表格无限滚动
   hsdanmaku: 弹幕组件
   hsPureTableBase: 基础用法（23个示例）
-  hsPureTableHigh: 高级用法（8个示例）
+  hsPureTableHigh: 高级用法（9个示例）
   hsTree: 大数据树业务组件
   hsMenuoverflow: 目录超出显示 Tooltip 文字提示
   hsChildMenuoverflow: 菜单超出显示 Tooltip 文字提示
