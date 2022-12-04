@@ -1,3 +1,20 @@
+# 3.9.3 (2022-12-04)
+
+### 🎫 Feat
+
+- Add `@pureadmin/table` pagination and loading animation example
+
+### 🐞 Bug fixes
+
+- Fixed the problem that the refresh page would be blank due to changes in dynamic routes stored in local storage after enabling `CachingAsyncRoutes`
+- Fixed `Tooltip` displayed abnormally after the menu is collapsed
+
+### 🍏 Perf
+
+- Expand the use of local icons, the first launch of the full version reduces `13` requests again
+- When the menu loading is slow, add `loading` animation to optimize user experience
+- Theme initialization is placed in `onBeforeMount` to avoid flashing of the initialization page
+
 # 3.9.2 (2022-12-03)
 
 ### 🍏 Perf
