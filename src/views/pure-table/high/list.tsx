@@ -1,3 +1,4 @@
+import Page from "./page/index.vue";
 import RowDrag from "./drag/row/index.vue";
 import ColumnDrag from "./drag/column/index.vue";
 import Contextmenu from "./contextmenu/index.vue";
@@ -11,6 +12,12 @@ const rendContent = (val: string) =>
   `代码位置：src/views/pure-table/high/${val}/index.vue`;
 
 export const list = [
+  {
+    key: "page",
+    content: rendContent("page"),
+    title: "分页、加载动画",
+    component: Page
+  },
   {
     key: "rowDrag",
     content: rendContent("drag/row"),
