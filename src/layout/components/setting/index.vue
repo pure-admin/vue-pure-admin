@@ -1,5 +1,14 @@
 <script setup lang="ts">
 import {
+  ref,
+  unref,
+  watch,
+  reactive,
+  computed,
+  nextTick,
+  onBeforeMount
+} from "vue";
+import {
   useDark,
   debounce,
   useGlobal,
@@ -17,7 +26,6 @@ import { useNav } from "@/layout/hooks/useNav";
 import { useAppStoreHook } from "@/store/modules/app";
 import { toggleTheme } from "@pureadmin/theme/dist/browser-utils";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
-import { ref, unref, watch, reactive, computed, nextTick } from "vue";
 import { useDataThemeChange } from "@/layout/hooks/useDataThemeChange";
 
 import dayIcon from "@/assets/svg/day.svg?component";
@@ -189,16 +197,6 @@ function setLayoutModel(layout: string) {
   useAppStoreHook().setLayout(layout);
 }
 
-/* 初始化项目配置 */
-nextTick(() => {
-  settings.greyVal &&
-    document.querySelector("html")?.setAttribute("class", "html-grey");
-  settings.weakVal &&
-    document.querySelector("html")?.setAttribute("class", "html-weakness");
-  settings.tabsVal && tagsChange();
-  dataThemeChange();
-});
-
 watch($storage, ({ layout }) => {
   switch (layout["layout"]) {
     case "vertical":
@@ -217,6 +215,18 @@ watch($storage, ({ layout }) => {
       debounce(setFalse([horizontalRef]), 50);
       break;
   }
+});
+
+onBeforeMount(() => {
+  dataThemeChange();
+  /* 初始化项目配置 */
+  nextTick(() => {
+    settings.greyVal &&
+      document.querySelector("html")?.setAttribute("class", "html-grey");
+    settings.weakVal &&
+      document.querySelector("html")?.setAttribute("class", "html-weakness");
+    settings.tabsVal && tagsChange();
+  });
 });
 </script>
 
