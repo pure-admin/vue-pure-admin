@@ -7,6 +7,7 @@ import Edit from "./edit/index.vue";
 import Watermark from "./watermark/index.vue";
 import Print from "./prints/index.vue";
 import Echarts from "./echarts/index.vue";
+import TableSelect from "./table-select/index.vue";
 
 const rendContent = (val: string) =>
   `代码位置：src/views/pure-table/high/${val}/index.vue`;
@@ -17,6 +18,12 @@ export const list = [
     content: rendContent("page"),
     title: "分页、加载动画",
     component: Page
+  },
+  {
+    key: "tableSelect",
+    content: rendContent("table-select"),
+    title: "表格选择器",
+    component: TableSelect
   },
   {
     key: "rowDrag",
