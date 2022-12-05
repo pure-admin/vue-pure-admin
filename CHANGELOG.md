@@ -1,3 +1,14 @@
+# 3.9.4 (2022-12-05)
+
+### ✔️ refactor
+
+- Completely removed `vxe-table`, after removal, the overall package size of the full version is reduced by `1.82MB`, and the initial startup time is basically the same as the lite version 🐮
+  [Click here to see Why Removed? How to integrate it yourself?](https://xiaoxian521.github.io/pure-admin-doc/pages/FAQ/#%E5%B9%B3%E5%8F%B0%E5%9C%A8-v3-9-4-%E7%89%88%E6%9C%AC%E5%AE%8C%E5%85%A8%E7%A7%BB%E9%99%A4%E4%BA%86-vxe-table-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%A7%BB%E9%99%A4-%E5%A6%82%E4%BD%95%E8%87%AA%E8%A1%8C%E9%9B%86%E6%88%90)
+
+### 🎫 Feat
+
+- Add `@pureadmin/table` table selector (single select, multiple select) example
+
 # 3.9.3 (2022-12-04)
 
 ### 🎫 Feat
