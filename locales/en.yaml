@@ -28,7 +28,6 @@ menus:
   hsempty: Empty Page
   hssysManagement: System Manage
   hsUser: User Manage
-  hsDict: Dict Manage
   hsRole: Role Manage
   hsDept: Dept Manage
   hseditor: Editor

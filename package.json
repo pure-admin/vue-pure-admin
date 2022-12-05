@@ -78,8 +78,6 @@
     "vue-virtual-scroller": "^2.0.0-alpha.1",
     "vue3-danmaku": "^1.1.0",
     "vuedraggable": "^4.1.0",
-    "vxe-table": "^4.3.6",
-    "xe-utils": "^3.5.7",
     "xgplayer": "^2.32.1",
     "xlsx": "^0.18.5"
   },
@@ -115,7 +113,6 @@
     "eslint": "^8.8.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^9.7.0",
-    "font-awesome": "^4.7.0",
     "husky": "^7.0.4",
     "lint-staged": "11.1.2",
     "picocolors": "^1.0.0",

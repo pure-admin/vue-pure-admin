@@ -2,19 +2,14 @@
  * @description ⚠️：此文件仅供主题插件使用，请不要在此文件中导出别的工具函数（仅在页面加载前运行）
  */
 
-import { EpThemeColor } from "../../../public/serverConfig.json";
-
 type MultipleScopeVarsItem = {
   scopeName: string;
   varsContent: string;
 };
 
-/** 将vxe默认主题色和ep默认主题色保持一致 */
-const vxeColor = EpThemeColor;
 /** 预设主题色 */
 const themeColors = {
   default: {
-    vxeColor,
     subMenuActiveText: "#fff",
     menuBg: "#001529",
     menuHover: "#4091f7",
@@ -26,7 +21,6 @@ const themeColors = {
     menuActiveBefore: "#4091f7"
   },
   light: {
-    vxeColor,
     subMenuActiveText: "#409eff",
     menuBg: "#fff",
     menuHover: "#e0ebf6",
@@ -38,7 +32,6 @@ const themeColors = {
     menuActiveBefore: "#4091f7"
   },
   dusk: {
-    vxeColor: "#f5222d",
     subMenuActiveText: "#fff",
     menuBg: "#2a0608",
     menuHover: "#e13c39",
@@ -50,7 +43,6 @@ const themeColors = {
     menuActiveBefore: "#e13c39"
   },
   volcano: {
-    vxeColor: "#fa541c",
     subMenuActiveText: "#fff",
     menuBg: "#2b0e05",
     menuHover: "#e85f33",
@@ -62,7 +54,6 @@ const themeColors = {
     menuActiveBefore: "#e85f33"
   },
   yellow: {
-    vxeColor: "#fadb14",
     subMenuActiveText: "#d25f00",
     menuBg: "#2b2503",
     menuHover: "#f6da4d",
@@ -74,7 +65,6 @@ const themeColors = {
     menuActiveBefore: "#f6da4d"
   },
   mingQing: {
-    vxeColor: "#13c2c2",
     subMenuActiveText: "#fff",
     menuBg: "#032121",
     menuHover: "#59bfc1",
@@ -86,7 +76,6 @@ const themeColors = {
     menuActiveBefore: "#59bfc1"
   },
   auroraGreen: {
-    vxeColor: "#52c41a",
     subMenuActiveText: "#fff",
     menuBg: "#0b1e15",
     menuHover: "#60ac80",
@@ -98,7 +87,6 @@ const themeColors = {
     menuActiveBefore: "#60ac80"
   },
   pink: {
-    vxeColor: "#eb2f96",
     subMenuActiveText: "#fff",
     menuBg: "#28081a",
     menuHover: "#d84493",
@@ -110,7 +98,6 @@ const themeColors = {
     menuActiveBefore: "#d84493"
   },
   saucePurple: {
-    vxeColor: "#722ed1",
     subMenuActiveText: "#fff",
     menuBg: "#130824",
     menuHover: "#693ac9",
@@ -132,7 +119,6 @@ export const genScssMultipleScopeVars = (): MultipleScopeVarsItem[] => {
     result.push({
       scopeName: `layout-theme-${key}`,
       varsContent: `
-        $vxe-primary-color: ${themeColors[key].vxeColor} !default;
         $subMenuActiveText: ${themeColors[key].subMenuActiveText} !default;
         $menuBg: ${themeColors[key].menuBg} !default;
         $menuHover: ${themeColors[key].menuHover} !default;

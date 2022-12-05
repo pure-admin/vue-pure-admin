@@ -42,17 +42,6 @@ const systemRouter = {
         title: "menus.hsDept",
         roles: ["admin"]
       }
-    },
-    {
-      path: "/system/dict",
-      component: "/system/dict/index",
-      name: "Dict",
-      meta: {
-        icon: "dict",
-        title: "menus.hsDict",
-        keepAlive: true,
-        roles: ["admin"]
-      }
     }
   ]
 };

@@ -16,8 +16,6 @@ const include = [
   "echarts",
   "intro.js",
   "vue-i18n",
-  "xe-utils",
-  "vxe-table",
   "js-cookie",
   "lodash-es",
   "cropperjs",

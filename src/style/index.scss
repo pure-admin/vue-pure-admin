@@ -19,9 +19,3 @@
 .html-weakness {
   filter: invert(80%);
 }
-
-/* 重置 vxe-table 样式 */
-.vxe-button.type--button.theme--primary:hover,
-.vxe-pager .vxe-pager--num-btn:not(.is--disabled).is--active {
-  color: #fff !important;
-}
