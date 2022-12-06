@@ -6,6 +6,7 @@ export default {
   redirect: "/error/403",
   meta: {
     icon: "informationLine",
+    // showLink: false,
     title: $t("menus.hsabnormal"),
     rank: error
   },

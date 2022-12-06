@@ -13,6 +13,7 @@ import { useTimeoutFn } from "@vueuse/core";
 import { RouteConfigs } from "@/layout/types";
 import {
   isString,
+  isAllEmpty,
   storageSession,
   isIncludeAllChildren
 } from "@pureadmin/utils";
@@ -28,19 +29,21 @@ const modulesRoutes = import.meta.glob("/src/views/**/*.{vue,tsx}");
 // 动态路由
 import { getAsyncRoutes } from "@/api/routes";
 
+function handRank(ramk: number, name: string, path: string) {
+  return isAllEmpty(ramk) || (ramk === 0 && name !== "Home" && path !== "/")
+    ? true
+    : false;
+}
+
 /** 按照路由中meta下的rank等级升序来排序路由 */
 function ascending(arr: any[]) {
-  arr.forEach(v => {
-    if (v?.meta?.rank === null) v.meta.rank = undefined;
-    if (v?.meta?.rank === 0) {
-      if (v.name !== "Home" && v.path !== "/") {
-        console.warn("rank only the home page can be 0");
-      }
-    }
+  arr.forEach((v, index) => {
+    // 当rank不存在时，根据顺序自动创建，首页路由永远在第一位
+    if (handRank(v?.meta?.rank, v.name, v.path)) v.meta.rank = index + 2;
   });
   return arr.sort(
     (a: { meta: { rank: number } }, b: { meta: { rank: number } }) => {
-      return a?.meta?.rank - b?.meta?.rank;
+      return a?.meta.rank - b?.meta.rank;
     }
   );
 }
@@ -252,7 +255,7 @@ function formatTwoStageRoutes(routesList: RouteRecordRaw[]) {
         children: []
       });
     } else {
-      newRoutesList[0].children.push({ ...v });
+      newRoutesList[0]?.children.push({ ...v });
     }
   });
   return newRoutesList;
