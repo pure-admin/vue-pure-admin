@@ -29,9 +29,13 @@ const modulesRoutes = import.meta.glob("/src/views/**/*.{vue,tsx}");
 // 动态路由
 import { getAsyncRoutes } from "@/api/routes";
 
-function handRank(ramk: number, name: string, path: string) {
-  return isAllEmpty(ramk) || (ramk === 0 && name !== "Home" && path !== "/")
-    ? true
+function handRank(routeInfo: any) {
+  const { name, path, parentId, meta } = routeInfo;
+  return isAllEmpty(parentId)
+    ? isAllEmpty(meta?.rank) ||
+      (meta?.rank === 0 && name !== "Home" && path !== "/")
+      ? true
+      : false
     : false;
 }
 
@@ -39,7 +43,7 @@ function handRank(ramk: number, name: string, path: string) {
 function ascending(arr: any[]) {
   arr.forEach((v, index) => {
     // 当rank不存在时，根据顺序自动创建，首页路由永远在第一位
-    if (handRank(v?.meta?.rank, v.name, v.path)) v.meta.rank = index + 2;
+    if (handRank(v)) v.meta.rank = index + 2;
   });
   return arr.sort(
     (a: { meta: { rank: number } }, b: { meta: { rank: number } }) => {
@@ -351,6 +355,7 @@ function hasAuth(value: string | Array<string>): boolean {
   if (!value) return false;
   /** 从当前路由的`meta`字段里获取按钮级别的所有自定义`code`值 */
   const metaAuths = getAuths();
+  if (!metaAuths) return false;
   const isAuths = isString(value)
     ? metaAuths.includes(value)
     : isIncludeAllChildren(value, metaAuths);
