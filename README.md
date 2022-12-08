@@ -22,7 +22,7 @@
 - [点我查看快速开发教程](https://www.bilibili.com/video/BV1kg411v7QT)
 - [点我查看 UI 设计](https://www.bilibili.com/video/BV17g411T7rq)
 
-## 配套文档（支持 `PWA` 快速、离线访问）
+## 配套保姆级文档（支持 `PWA` 快速、离线访问）
 
 - [点我查看国内文档站](https://yiming_chang.gitee.io/pure-admin-doc)
 - [点我查看国外文档站](https://xiaoxian521.github.io/pure-admin-doc)
