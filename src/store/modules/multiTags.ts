@@ -9,12 +9,13 @@ export const useMultiTagsStore = defineStore({
   id: "pure-multiTags",
   state: () => ({
     // 存储标签页信息（路由信息）
-    multiTags: storageLocal.getItem<StorageConfigs>("responsive-configure")
+    multiTags: storageLocal().getItem<StorageConfigs>("responsive-configure")
       ?.multiTagsCache
-      ? storageLocal.getItem<StorageConfigs>("responsive-tags")
+      ? storageLocal().getItem<StorageConfigs>("responsive-tags")
       : [...routerArrays],
-    multiTagsCache: storageLocal.getItem<StorageConfigs>("responsive-configure")
-      ?.multiTagsCache
+    multiTagsCache: storageLocal().getItem<StorageConfigs>(
+      "responsive-configure"
+    )?.multiTagsCache
   }),
   getters: {
     getMultiTagsCache() {
@@ -25,14 +26,14 @@ export const useMultiTagsStore = defineStore({
     multiTagsCacheChange(multiTagsCache: boolean) {
       this.multiTagsCache = multiTagsCache;
       if (multiTagsCache) {
-        storageLocal.setItem("responsive-tags", this.multiTags);
+        storageLocal().setItem("responsive-tags", this.multiTags);
       } else {
-        storageLocal.removeItem("responsive-tags");
+        storageLocal().removeItem("responsive-tags");
       }
     },
     tagsCache(multiTags) {
       this.getMultiTagsCache &&
-        storageLocal.setItem("responsive-tags", multiTags);
+        storageLocal().setItem("responsive-tags", multiTags);
     },
     handleTags<T>(
       mode: string,

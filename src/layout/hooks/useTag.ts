@@ -41,13 +41,13 @@ export function useTags() {
 
   /** 显示模式，默认灵动模式 */
   const showModel = ref(
-    storageLocal.getItem<StorageConfigs>("responsive-configure")?.showModel ||
+    storageLocal().getItem<StorageConfigs>("responsive-configure")?.showModel ||
       "smart"
   );
   /** 是否隐藏标签页，默认显示 */
   const showTags =
     ref(
-      storageLocal.getItem<StorageConfigs>("responsive-configure").hideTabs
+      storageLocal().getItem<StorageConfigs>("responsive-configure").hideTabs
     ) ?? ref("false");
   const multiTags: any = computed(() => {
     return useMultiTagsStoreHook().multiTags;
@@ -195,11 +195,11 @@ export function useTags() {
 
   onMounted(() => {
     if (!showModel.value) {
-      const configure = storageLocal.getItem<StorageConfigs>(
+      const configure = storageLocal().getItem<StorageConfigs>(
         "responsive-configure"
       );
       configure.showModel = "card";
-      storageLocal.setItem("responsive-configure", configure);
+      storageLocal().setItem("responsive-configure", configure);
     }
   });
 

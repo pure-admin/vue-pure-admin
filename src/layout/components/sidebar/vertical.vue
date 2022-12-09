@@ -12,7 +12,8 @@ import { usePermissionStoreHook } from "@/store/modules/permission";
 
 const route = useRoute();
 const showLogo = ref(
-  storageLocal.getItem<StorageConfigs>("responsive-configure")?.showLogo ?? true
+  storageLocal().getItem<StorageConfigs>("responsive-configure")?.showLogo ??
+    true
 );
 
 const { routers, device, pureApp, isCollapse, menuSelect, toggleSideBar } =

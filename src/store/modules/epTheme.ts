@@ -7,10 +7,10 @@ export const useEpThemeStore = defineStore({
   id: "pure-epTheme",
   state: () => ({
     epThemeColor:
-      storageLocal.getItem<StorageConfigs>("responsive-layout")?.epThemeColor ??
-      getConfig().EpThemeColor,
+      storageLocal().getItem<StorageConfigs>("responsive-layout")
+        ?.epThemeColor ?? getConfig().EpThemeColor,
     epTheme:
-      storageLocal.getItem<StorageConfigs>("responsive-layout")?.theme ??
+      storageLocal().getItem<StorageConfigs>("responsive-layout")?.theme ??
       getConfig().Theme
   }),
   getters: {
@@ -30,12 +30,13 @@ export const useEpThemeStore = defineStore({
   },
   actions: {
     setEpThemeColor(newColor: string): void {
-      const layout = storageLocal.getItem<StorageConfigs>("responsive-layout");
+      const layout =
+        storageLocal().getItem<StorageConfigs>("responsive-layout");
       this.epTheme = layout?.theme;
       this.epThemeColor = newColor;
       if (!layout) return;
       layout.epThemeColor = newColor;
-      storageLocal.setItem("responsive-layout", layout);
+      storageLocal().setItem("responsive-layout", layout);
     }
   }
 });

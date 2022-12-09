@@ -63,7 +63,7 @@ export const $t = (key: string) => key;
 export const i18n: I18n = createI18n({
   legacy: false,
   locale:
-    storageLocal.getItem<StorageConfigs>("responsive-locale")?.locale ?? "zh",
+    storageLocal().getItem<StorageConfigs>("responsive-locale")?.locale ?? "zh",
   fallbackLocale: "en",
   messages: localesConfigs
 });

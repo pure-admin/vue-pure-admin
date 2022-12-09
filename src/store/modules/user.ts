@@ -14,9 +14,9 @@ export const useUserStore = defineStore({
   state: (): userType => ({
     // 用户名
     username:
-      storageSession.getItem<DataInfo<number>>(sessionKey)?.username ?? "",
+      storageSession().getItem<DataInfo<number>>(sessionKey)?.username ?? "",
     // 页面级别权限
-    roles: storageSession.getItem<DataInfo<number>>(sessionKey)?.roles ?? [],
+    roles: storageSession().getItem<DataInfo<number>>(sessionKey)?.roles ?? [],
     // 前端生成的验证码（按实际需求替换）
     verifyCode: "",
     // 判断登录页面显示哪个组件（0：登录（默认）、1：手机登录、2：二维码登录、3：注册、4：忘记密码）

@@ -84,7 +84,7 @@ function isOneOfArray(a: Array<string>, b: Array<string>) {
 /** 从sessionStorage里取出当前登陆用户的角色roles，过滤无权限的菜单 */
 function filterNoPermissionTree(data: RouteComponent[]) {
   const currentRoles =
-    storageSession.getItem<DataInfo<number>>(sessionKey)?.roles ?? [];
+    storageSession().getItem<DataInfo<number>>(sessionKey)?.roles ?? [];
   const newTree = cloneDeep(data).filter((v: any) =>
     isOneOfArray(v.meta?.roles, currentRoles)
   );
@@ -196,7 +196,7 @@ function initRouter() {
   if (getConfig()?.CachingAsyncRoutes) {
     // 开启动态路由缓存本地sessionStorage
     const key = "async-routes";
-    const asyncRouteList = storageSession.getItem(key) as any;
+    const asyncRouteList = storageSession().getItem(key) as any;
     if (asyncRouteList && asyncRouteList?.length > 0) {
       return new Promise(resolve => {
         handleAsyncRoutes(asyncRouteList);
@@ -206,7 +206,7 @@ function initRouter() {
       return new Promise(resolve => {
         getAsyncRoutes().then(({ data }) => {
           handleAsyncRoutes(cloneDeep(data));
-          storageSession.setItem(key, data);
+          storageSession().setItem(key, data);
           resolve(router);
         });
       });
