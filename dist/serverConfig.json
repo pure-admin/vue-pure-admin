@@ -1,0 +1,30 @@
+{
+  "Version": "3.9.4",
+  "Title": "PureAdmin",
+  "FixedHeader": true,
+  "HiddenSideBar": false,
+  "MultiTagsCache": false,
+  "KeepAlive": true,
+  "Locale": "zh",
+  "Layout": "vertical",
+  "Theme": "default",
+  "DarkMode": false,
+  "Grey": false,
+  "Weak": false,
+  "HideTabs": false,
+  "SidebarStatus": true,
+  "EpThemeColor": "#409EFF",
+  "ShowLogo": true,
+  "ShowModel": "smart",
+  "MenuArrowIconNoTransition": true,
+  "CachingAsyncRoutes": true,
+  "TooltipEffect": "light",
+  "MapConfigure": {
+    "amapKey": "97b3248d1553172e81f168cf94ea667e",
+    "options": {
+      "resizeEnable": true,
+      "center": [113.6401, 34.72468],
+      "zoom": 12
+    }
+  }
+}

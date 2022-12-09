@@ -1,0 +1,1 @@
+const i=Vue.defineComponent({name:"Motion",props:{delay:{type:Number,default:50}},render(){const{delay:e}=this,t=Vue.resolveDirective("motion");return Vue.withDirectives(Vue.h("div",{},{default:()=>[this.$slots.default()]}),[[t,{initial:{opacity:0,y:100},enter:{opacity:1,y:0,transition:{delay:e}}}]])}});export{i as M};

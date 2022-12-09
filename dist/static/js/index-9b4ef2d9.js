@@ -1,0 +1,1 @@
+const u=Vue.defineComponent({name:"MenuOverflow"}),t=Vue.defineComponent({...u,setup(e){return(n,o)=>(Vue.openBlock(),Vue.createElementBlock("div",null,"\u76EE\u5F55\u3001\u83DC\u5355\u6587\u5B57\u8D85\u51FA\u663E\u793A Tooltip \u6587\u5B57\u63D0\u793A"))}});export{t as default};

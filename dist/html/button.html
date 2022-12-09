@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+
+  <body>
+    <div class="btns">
+      <div class="btn java">JAVA攻城狮</div>
+      <div class="btn golang">Golang工程师!</div>
+      <div class="btn js"><span>js攻城狮</span></div>
+      <div class="btn nodd-ruby ruby">
+        <div class="anim"></div>
+        <span>Ruby攻城狮</span>
+      </div>
+
+      <div class="btn vb">
+        <span>VB攻城狮</span>
+        <div class="dot"></div>
+      </div>
+      <div class="btn python python-1">python攻城狮</div>
+      <div class="btn python python-2">python攻城狮</div>
+      <div class="btn python python-3">python攻城狮</div>
+      <div class="btn python python-4">python攻城狮</div>
+      <div class="btn python python-5">python攻城狮</div>
+
+      <div class="btn php php-1">php攻城狮</div>
+      <div class="btn php php-2">php攻城狮</div>
+      <div class="btn php php-3">php攻城狮</div>
+      <div class="btn php php-4">php攻城狮</div>
+      <div class="btn php php-5">php攻城狮</div>
+
+      <div class="btn kotlin kotlin-3">kotlin攻城狮</div>
+      <div class="btn kotlin kotlin-1">kotlin攻城狮</div>
+      <div class="btn kotlin kotlin-4">kotlin攻城狮</div>
+      <div class="btn kotlin kotlin-2">kotlin攻城狮</div>
+      <div class="btn kotlin kotlin-5">kotlin攻城狮</div>
+      <div class="btn c">C语言攻城狮</div>
+    </div>
+  </body>
+  <style>
+    .text-info {
+      position: absolute;
+      top: calc(50vh - 245px);
+      text-align: center;
+      font-size: 12px;
+      color: #999;
+      width: 100%;
+      margin-left: -5px;
+    }
+
+    .btn {
+      vertical-align: top;
+      margin: 15px;
+      display: inline-block;
+      text-align: center;
+      width: 122px;
+      height: 44px;
+      line-height: 44px;
+      border-radius: 4px;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .java {
+      color: #eb9e05;
+      height: 42px;
+      line-height: 42px;
+      width: 120px;
+      border: 1px solid #eb9e05;
+      opacity: 1;
+      transition: all 0.6s;
+    }
+
+    .java:hover {
+      background: #eb9e05;
+      color: #fff;
+    }
+
+    .java:active {
+      opacity: 0.7;
+    }
+
+    .c {
+      height: 44px;
+      line-height: 44px;
+      background: #55acee;
+      transition: all 0.5s;
+      box-shadow: 0px 5px 0px 0px #3486d5;
+    }
+
+    .c:hover {
+      background-color: #6fc6ff;
+    }
+
+    .c:active {
+      transform: translate(0px, 4px);
+      box-shadow: 0px 1px 0px 0px #3486d5;
+    }
+
+    @keyframes sheen {
+      0% {
+        transform: skewY(-45deg) translateX(0);
+      }
+
+      100% {
+        transform: skewY(-45deg) translateX(12.5em);
+      }
+    }
+
+    .golang {
+      vertical-align: top;
+      height: 42px;
+      line-height: 42px;
+      width: 120px;
+      color: #2194e0;
+      border: 1px solid #2194e0;
+      transition: all 0.2s ease-in-out;
+      position: relative;
+      opacity: 1;
+      overflow: hidden;
+    }
+
+    .golang:before {
+      content: "";
+      background-color: rgba(255, 255, 255, 0.5);
+      height: 100%;
+      width: 3em;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: -4.5em;
+      transform: skewX(-45deg) translateX(0);
+      transition: none;
+    }
+
+    .golang:hover {
+      background-color: #2194e0;
+      color: #fff;
+    }
+
+    .golang:hover:before {
+      transform: skewX(-45deg) translateX(260px);
+      transition: all 0.5s ease-in-out;
+    }
+
+    .golang:active {
+      opacity: 0.8;
+    }
+
+    .js {
+      width: 160px;
+      height: 42px;
+      line-height: 42px;
+      background: #0d6;
+      width: 120px;
+      border: 1px solid #0d6;
+      overflow: hidden;
+      transition: all 0.5s;
+      opacity: 1;
+    }
+
+    .js:hover,
+    .js:active {
+      text-decoration: none;
+      color: #0c5;
+      border-color: #0c5;
+      background: #fff;
+    }
+
+    .js:active {
+      opacity: 0.8;
+    }
+
+    .js span {
+      display: inline-block;
+      position: relative;
+      padding-right: 0;
+      transition: padding-right 0.5s;
+    }
+
+    .js span:after {
+      content: " ";
+      position: absolute;
+      top: 0;
+      right: -18px;
+      opacity: 0;
+      width: 10px;
+      height: 10px;
+      margin-top: -10px;
+      background: rgba(0, 0, 0, 0);
+      border: 2px solid #fff;
+      border-top: none;
+      border-right: none;
+      transition: opacity 0.5s, top 0.5s, right 0.5s;
+      transform: rotate(-140deg);
+    }
+
+    .js:hover span,
+    .js:active span {
+      padding-right: 30px;
+    }
+
+    .js:hover span:after,
+    .js:active span:after {
+      transition: opacity 0.5s, top 0.5s, right 0.5s;
+      opacity: 1;
+      border-color: #0c5;
+      right: 0;
+      top: calc(50% + 2.5px);
+      transform: rotate(-140deg);
+    }
+
+    .nodd-ruby {
+      background: #c147e6;
+      position: relative;
+      overflow: hidden;
+      z-index: 0;
+      cursor: pointer;
+      opacity: 1;
+      transition: all 0.3s;
+    }
+
+    input[type="checkbox"].toggle {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      left: 0;
+      top: 0;
+      cursor: pointer;
+    }
+
+    input[type="checkbox"].toggle:focus {
+      outline: 0;
+    }
+
+    .anim {
+      transform: translate(-50%, -50%);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: -1;
+    }
+
+    .anim:before {
+      position: relative;
+      content: "";
+      display: block;
+      margin-top: 100%;
+    }
+
+    .anim:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-radius: 50%;
+    }
+
+    .node .toggle:checked + .anim {
+      animation: 0.75s anim-in;
+    }
+
+    .node .toggle:checked + .anim:after {
+      animation: anim-in-pseudo 0.75s;
+    }
+
+    .node .toggle:not(:checked) + .anim {
+      animation: anim-out 0.75s;
+    }
+
+    .node .toggle:not(:checked) + .anim:after {
+      animation: anim-out-pseudo 0.75s;
+    }
+
+    .node {
+      background: #ed3f14;
+    }
+
+    .node:hover {
+      opacity: 0.8;
+    }
+
+    .ruby:active {
+      opacity: 0.8;
+    }
+
+    .ruby:hover > .anim {
+      animation: anim-out 0.75s;
+    }
+
+    .ruby:hover > .anim:after {
+      animation: anim-out-pseudo 0.75s;
+    }
+
+    @keyframes anim-in {
+      0% {
+        width: 0%;
+      }
+
+      100% {
+        width: 100%;
+      }
+    }
+
+    @keyframes anim-in-pseudo {
+      0% {
+        background: rgba(0, 0, 0, 0.3);
+      }
+
+      100% {
+        background: transparent;
+      }
+    }
+
+    @keyframes anim-out {
+      0% {
+        width: 0%;
+      }
+
+      100% {
+        width: 100%;
+      }
+    }
+
+    @keyframes anim-out-pseudo {
+      0% {
+        background: rgba(0, 0, 0, 0.35);
+      }
+
+      100% {
+        background: transparent;
+      }
+    }
+
+    .python {
+      transition: 0.5s;
+      background-size: 200% auto;
+    }
+
+    .python:hover {
+      background-position: right center;
+    }
+
+    .python-1 {
+      background-image: linear-gradient(
+        to right,
+        #f6d365 0%,
+        #fda085 51%,
+        #f6d365 100%
+      );
+    }
+
+    .python-2 {
+      background-image: linear-gradient(
+        to right,
+        #fbc2eb 0%,
+        #a6c1ee 51%,
+        #fbc2eb 100%
+      );
+    }
+
+    .python-3 {
+      background-image: linear-gradient(
+        to right,
+        #84fab0 0%,
+        #8fd3f4 51%,
+        #84fab0 100%
+      );
+    }
+
+    .python-4 {
+      background-image: linear-gradient(
+        to right,
+        #a1c4fd 0%,
+        #c2e9fb 51%,
+        #a1c4fd 100%
+      );
+    }
+
+    .python-5 {
+      background-image: linear-gradient(
+        to right,
+        #ffecd2 0%,
+        #fcb69f 51%,
+        #ffecd2 100%
+      );
+    }
+
+    .php,
+    .php::after {
+      transition: all 0.5s;
+    }
+
+    .php {
+      border: 1px solid #c147e6;
+      color: #c147e6;
+      width: 120px;
+      height: 42px;
+      line-height: 42px;
+      position: relative;
+      z-index: 1;
+      text-transform: uppercase;
+    }
+
+    .php:hover {
+      color: #fff;
+    }
+
+    .php::before,
+    .php::after {
+      background: #c147e6;
+      content: "";
+      position: absolute;
+      z-index: -2;
+      border-radius: 3px;
+    }
+
+    .php-1::after {
+      height: 0;
+      left: 0;
+      top: 0;
+      width: 100%;
+    }
+
+    .php-1:hover:after {
+      height: 100%;
+    }
+
+    .php-2::after {
+      height: 100%;
+      left: 0;
+      top: 0;
+      width: 0;
+    }
+
+    .php-2:hover:after {
+      width: 100%;
+    }
+
+    .php-3::after {
+      height: 0;
+      left: 50%;
+      top: 50%;
+      width: 0;
+    }
+
+    .php-3:hover:after {
+      height: 100%;
+      left: 0;
+      top: 0;
+      width: 100%;
+    }
+
+    .php-4::before {
+      height: 100%;
+      left: 0;
+      top: 0;
+      width: 100%;
+    }
+
+    .php-4::after {
+      background: #fff;
+      height: 100%;
+      left: 0;
+      top: 0;
+      width: 100%;
+    }
+
+    .php-4:hover:after {
+      height: 0;
+      left: 50%;
+      top: 50%;
+      width: 0;
+    }
+
+    .php-5 {
+      overflow: hidden;
+    }
+
+    .php-5::after {
+      height: 100%;
+      left: -35%;
+      top: 0;
+      transform: skew(50deg);
+      transition-duration: 0.6s;
+      transform-origin: top left;
+      width: 0;
+    }
+
+    .php-5:hover:after {
+      height: 100%;
+      width: 135%;
+    }
+
+    .kotlin {
+      background: none;
+      border: 1px solid;
+      width: 120px;
+      height: 42px;
+      line-height: 42px;
+      letter-spacing: inherit;
+      text-transform: inherit;
+      transition: color 1s;
+    }
+
+    .kotlin-1 {
+      color: #9c89f7;
+    }
+
+    .kotlin-1:hover {
+      animation: halftone 1s forwards;
+      background: radial-gradient(circle, #9c89f7 0.2em, transparent 0.25em) 0 0/1.25em
+          1.25em,
+        radial-gradient(circle, #9c89f7 0.2em, transparent 0.25em) 6.25em 6.25em/1.25em
+          1.25em;
+      color: #e4f789;
+    }
+
+    @keyframes halftone {
+      100% {
+        background-size: 2.375em 2.375em, 0.1em 0.1em;
+      }
+    }
+
+    .kotlin-2 {
+      color: #82f6d8;
+    }
+
+    .kotlin-2:hover {
+      animation: stripes-move 0.75s infinite linear;
+      background: repeating-linear-gradient(
+        45deg,
+        #82f6d8 0,
+        #82f6d8 0.25em,
+        transparent 0.25em,
+        transparent 0.5em
+      );
+      color: #f682a0;
+    }
+
+    @keyframes stripes-move {
+      100% {
+        background-position: 5em 0px;
+      }
+    }
+
+    .kotlin-3 {
+      color: #d3f169;
+    }
+
+    .kotlin-3:hover {
+      animation: sawtooth 0.35s infinite linear;
+      background: linear-gradient(45deg, #d3f169 0.5em, transparent 0.5em) 0 0/1em
+          1em,
+        linear-gradient(-45deg, #d3f169 0.5em, transparent 0.5em) 0 0/1em 1em;
+      color: #8769f1;
+    }
+
+    @keyframes sawtooth {
+      100% {
+        background-position: 1em 0;
+      }
+    }
+
+    .kotlin-4 {
+      color: #eea163;
+    }
+
+    .kotlin-4:hover {
+      animation: zigzag 1s linear infinite;
+      background: linear-gradient(
+            135deg,
+            rgba(238, 161, 99, 0.25) 0.25em,
+            transparent 0.25em
+          ) -0.5em 0,
+        linear-gradient(
+            225deg,
+            rgba(238, 161, 99, 0.25) 0.25em,
+            transparent 0.25em
+          ) -0.5em 0,
+        linear-gradient(
+            315deg,
+            rgba(238, 161, 99, 0.25) 0.25em,
+            transparent 0.25em
+          )
+          0 0,
+        linear-gradient(
+            45deg,
+            rgba(238, 161, 99, 0.25) 0.25em,
+            transparent 0.25em
+          )
+          0 0;
+      background-size: 0.75em 0.75em;
+      color: #63b0ee;
+    }
+
+    @keyframes zigzag {
+      100% {
+        background-position: 1em 0, 1em 0, -0.75em 0, -0.75em 0;
+      }
+    }
+
+    .kotlin-5 {
+      color: #f9879b;
+    }
+
+    .kotlin-5:hover {
+      animation: pulse 1s ease-in infinite;
+      background: radial-gradient(
+            circle,
+            rgba(249, 135, 155, 0.25) 43%,
+            transparent 50%
+          )
+          0 0/1em 1em,
+        radial-gradient(circle, rgba(249, 135, 155, 0.25) 43%, transparent 50%)
+          0.5em 0.5em/2em 2em;
+      color: #0bdcb7;
+    }
+
+    @keyframes pulse {
+      50% {
+        background-position: 0.66em 0.66em, -0.33em -0.33em;
+      }
+
+      100% {
+        background-size: 2em 2em, 1em 1em;
+        background-position: -1.5em -1.5em, -1em -1em;
+      }
+    }
+
+    .vb:before,
+    .vb:after {
+      box-sizing: border-box;
+    }
+
+    .vb {
+      position: relative;
+      width: 120px;
+      color: #fa5555;
+      height: 40px;
+      line-height: 42px;
+      border: 2px solid #fa5555;
+      border-radius: 14px;
+      text-transform: uppercase;
+    }
+
+    .dot {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 32px;
+      height: 100%;
+      border-radius: 50%;
+      transition: all 300ms ease;
+      display: none;
+    }
+
+    .dot:after {
+      content: "";
+      position: absolute;
+      top: -6px;
+      height: 5px;
+      width: 5px;
+      background: #fa5555;
+      border-radius: 50%;
+      border: 4px solid #fa5555;
+      box-shadow: 0 0 0.7em #fff, 0 0 2em #fa5555;
+    }
+
+    .vb:hover .dot,
+    .vb:focus .dot {
+      animation: atom 2s infinite linear;
+      display: block;
+    }
+
+    /*calc(122px - 36px)  按钮宽度 - dot宽度 - 边框宽度*/
+    @keyframes atom {
+      0% {
+        transform: translateX(0) rotate(0);
+      }
+
+      30% {
+        transform: translateX(calc(122px - 36px)) rotate(0);
+      }
+
+      50% {
+        transform: translateX(calc(122px - 36px)) rotate(180deg);
+      }
+
+      80% {
+        transform: translateX(0) rotate(180deg);
+      }
+
+      100% {
+        transform: translateX(0) rotate(360deg);
+      }
+    }
+
+    .btn-down {
+      position: absolute;
+      top: calc(50vh - 280px);
+      text-align: center;
+      border-radius: 4px;
+      cursor: pointer;
+      left: calc(50vw - 87px);
+      width: 122px;
+      line-height: 44px;
+      color: #fff;
+      background: #2194e0;
+      opacity: 1;
+    }
+
+    .btn-down:active {
+      opacity: 0.8;
+    }
+  </style>
+</html>
