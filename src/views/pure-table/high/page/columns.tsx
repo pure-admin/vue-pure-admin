@@ -6,19 +6,25 @@ import type { PaginationProps, LoadingConfig, Align } from "@pureadmin/table";
 export function useColumns() {
   const dataList = ref([]);
   const loading = ref(true);
+  const hideVal = ref("nohide");
+  const tableSize = ref("default");
+  const paginationSmall = ref(false);
   const paginationAlign = ref("right");
   const columns: TableColumnList = [
     {
       label: "日期",
-      prop: "date"
+      prop: "date",
+      hide: () => (hideVal.value === "hideDate" ? true : false)
     },
     {
       label: "姓名",
-      prop: "name"
+      prop: "name",
+      hide: () => (hideVal.value === "hideName" ? true : false)
     },
     {
       label: "地址",
-      prop: "address"
+      prop: "address",
+      hide: () => (hideVal.value === "hideAddress" ? true : false)
     }
   ];
 
@@ -29,7 +35,8 @@ export function useColumns() {
     pageSizes: [10, 15, 20],
     total: 0,
     align: "right",
-    background: true
+    background: true,
+    small: false
   });
 
   /** 加载动画配置 */
@@ -49,6 +56,10 @@ export function useColumns() {
     // svg: "",
     // background: rgba()
   });
+
+  function onChange(val) {
+    pagination.small = val;
+  }
 
   function onSizeChange(val) {
     console.log("onSizeChange", val);
@@ -82,9 +93,13 @@ export function useColumns() {
     loading,
     columns,
     dataList,
+    hideVal,
+    tableSize,
     pagination,
     loadingConfig,
     paginationAlign,
+    paginationSmall,
+    onChange,
     onSizeChange,
     onCurrentChange
   };
