@@ -16,7 +16,7 @@ export const list = [
   {
     key: "page",
     content: rendContent("page"),
-    title: "分页、加载动画",
+    title: "分页、加载动画、动态列",
     component: Page
   },
   {
