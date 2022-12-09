@@ -1,1 +1,0 @@
-import"./DialogForm.vue_vue_type_script_setup_true_lang-00572381.js";import{_ as i}from"./DialogForm.vue_vue_type_script_setup_true_lang-00572381.js";import"./message-e5778918.js";import"./index-4b813511.js";export{i as default};
