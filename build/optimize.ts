@@ -28,7 +28,6 @@ const include = [
   "v-contextmenu",
   "vue-pdf-embed",
   "lodash-unified",
-  "@ctrl/tinycolor",
   "china-area-data",
   "vue-json-pretty",
   "@logicflow/core",

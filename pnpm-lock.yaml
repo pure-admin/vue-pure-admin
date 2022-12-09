@@ -4,7 +4,6 @@ specifiers:
   "@amap/amap-jsapi-loader": ^1.0.1
   "@commitlint/cli": 13.1.0
   "@commitlint/config-conventional": 13.1.0
-  "@ctrl/tinycolor": ^3.4.1
   "@howdyjs/mouse-menu": ^2.0.5
   "@iconify-icons/ep": ^1.2.7
   "@iconify-icons/mdi": ^1.2.8
@@ -118,7 +117,6 @@ specifiers:
 
 dependencies:
   "@amap/amap-jsapi-loader": 1.0.1
-  "@ctrl/tinycolor": 3.4.1
   "@howdyjs/mouse-menu": 2.0.5_vue@3.2.45
   "@logicflow/core": 1.1.31
   "@logicflow/extension": 1.1.31
@@ -836,10 +834,10 @@ packages:
       postcss-selector-parser: 6.0.11
     dev: true
 
-  /@ctrl/tinycolor/3.4.1:
+  /@ctrl/tinycolor/3.5.0:
     resolution:
       {
-        integrity: sha512-ej5oVy6lykXsvieQtqZxCOaLT+xD4+QNarq78cIYISHmZXshCvROLudpQN3lfL8G0NL7plMSSK+zlyvCaIJ4Iw==
+        integrity: sha512-tlJpwF40DEQcfR/QF+wNMVyGMaO9FQp6Z1Wahj4Gk3CJQYHwA2xVG7iKDFdW6zuxZY9XWOpGcfNCTsX4McOsOg==
       }
     engines: { node: ">=10" }
     dev: false
@@ -3769,7 +3767,7 @@ packages:
     peerDependencies:
       vue: ^3.2.0
     dependencies:
-      "@ctrl/tinycolor": 3.4.1
+      "@ctrl/tinycolor": 3.5.0
       "@element-plus/icons-vue": 2.0.10_vue@3.2.45
       "@floating-ui/dom": 1.0.7
       "@popperjs/core": /@sxzz/popperjs-es/2.11.7

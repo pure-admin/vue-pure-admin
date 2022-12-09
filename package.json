@@ -30,7 +30,6 @@
   ],
   "dependencies": {
     "@amap/amap-jsapi-loader": "^1.0.1",
-    "@ctrl/tinycolor": "^3.4.1",
     "@howdyjs/mouse-menu": "^2.0.5",
     "@logicflow/core": "^1.1.30",
     "@logicflow/extension": "^1.1.30",
