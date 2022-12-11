@@ -3,7 +3,7 @@ import { useColumns } from "./columns";
 import { getRoleList } from "@/api/system";
 import { reactive, ref, onMounted } from "vue";
 import { type FormInstance } from "element-plus";
-import { TableProBar } from "@/components/ReTable";
+import { PureTableBar } from "@/components/RePureTableBar";
 import { type PaginationProps } from "@pureadmin/table";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import Database from "@iconify-icons/ri/database-2-line";
@@ -114,12 +114,7 @@ onMounted(() => {
       </el-form-item>
     </el-form>
 
-    <TableProBar
-      title="角色列表"
-      :loading="loading"
-      :dataList="dataList"
-      @refresh="onSearch"
-    >
+    <PureTableBar title="角色列表" @refresh="onSearch">
       <template #buttons>
         <el-button type="primary" :icon="useRenderIcon(AddFill)">
           新增角色
@@ -209,7 +204,7 @@ onMounted(() => {
           </template>
         </pure-table>
       </template>
-    </TableProBar>
+    </PureTableBar>
   </div>
 </template>
 

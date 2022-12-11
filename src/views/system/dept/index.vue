@@ -4,7 +4,7 @@ import { handleTree } from "@/utils/tree";
 import { getDeptList } from "@/api/system";
 import { FormInstance } from "element-plus";
 import { reactive, ref, onMounted } from "vue";
-import { TableProBar } from "@/components/ReTable";
+import { PureTableBar } from "@/components/RePureTableBar";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import Delete from "@iconify-icons/ep/delete";
 import EditPen from "@iconify-icons/ep/edit-pen";
@@ -91,11 +91,9 @@ onMounted(() => {
       </el-form-item>
     </el-form>
 
-    <TableProBar
+    <PureTableBar
       title="部门列表"
-      :loading="loading"
       :tableRef="tableRef?.getTableRef()"
-      :dataList="dataList"
       @refresh="onSearch"
     >
       <template #buttons>
@@ -150,6 +148,6 @@ onMounted(() => {
           </template>
         </pure-table>
       </template>
-    </TableProBar>
+    </PureTableBar>
   </div>
 </template>

@@ -4,7 +4,7 @@ import { useColumns } from "./columns";
 import { getUserList } from "@/api/system";
 import { reactive, ref, onMounted } from "vue";
 import { type FormInstance } from "element-plus";
-import { TableProBar } from "@/components/ReTable";
+import { PureTableBar } from "@/components/RePureTableBar";
 import { type PaginationProps } from "@pureadmin/table";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 
@@ -125,12 +125,7 @@ onMounted(() => {
         </el-form-item>
       </el-form>
 
-      <TableProBar
-        title="用户管理"
-        :loading="loading"
-        :dataList="dataList"
-        @refresh="onSearch"
-      >
+      <PureTableBar title="用户管理" @refresh="onSearch">
         <template #buttons>
           <el-button type="primary" :icon="useRenderIcon(AddFill)">
             新增用户
@@ -219,7 +214,7 @@ onMounted(() => {
             </template>
           </pure-table>
         </template>
-      </TableProBar>
+      </PureTableBar>
     </div>
   </div>
 </template>

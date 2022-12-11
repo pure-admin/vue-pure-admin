@@ -11,7 +11,6 @@ import "./index.scss";
 import { cloneDeep } from "lodash-unified";
 import { isString } from "@pureadmin/utils";
 import { propTypes } from "@/utils/propTypes";
-import { IconifyIconOffline } from "../../ReIcon";
 import QRCode, { QRCodeRenderersOptions } from "qrcode";
 
 interface QrcodeLogo {
@@ -245,7 +244,7 @@ export default defineComponent({
               onClick={disabledClick}
             >
               <div class="absolute top-[50%] left-[50%] font-bold">
-                <IconifyIconOffline
+                <iconify-icon-offline
                   class="cursor-pointer"
                   icon="refreshRight"
                   width="30"
