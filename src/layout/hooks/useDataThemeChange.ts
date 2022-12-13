@@ -1,6 +1,5 @@
 import { ref } from "vue";
 import { getConfig } from "@/config";
-import { find } from "lodash-unified";
 import { useLayout } from "./useLayout";
 import { themeColorsType } from "../types";
 import { useGlobal } from "@pureadmin/utils";
@@ -55,7 +54,7 @@ export function useDataThemeChange() {
     if (theme === "default" || theme === "light") {
       setEpThemeColor(getConfig().EpThemeColor);
     } else {
-      const colors = find(themeColors.value, { themeColor: theme });
+      const colors = themeColors.value.find(v => v.themeColor === theme);
       setEpThemeColor(colors.color);
     }
   }

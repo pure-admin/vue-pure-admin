@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
-import { cloneDeep } from "lodash-unified";
+import { cloneDeep } from "@pureadmin/utils";
 import SearchResult from "./SearchResult.vue";
 import SearchFooter from "./SearchFooter.vue";
 import { deleteChildren } from "@/utils/tree";

@@ -8,9 +8,8 @@ import {
   defineComponent
 } from "vue";
 import "./index.scss";
-import { cloneDeep } from "lodash-unified";
-import { isString } from "@pureadmin/utils";
 import { propTypes } from "@/utils/propTypes";
+import { isString, cloneDeep } from "@pureadmin/utils";
 import QRCode, { QRCodeRenderersOptions } from "qrcode";
 
 interface QrcodeLogo {
@@ -96,7 +95,7 @@ export default defineComponent({
           width: props.width,
           ...options
         });
-        (unref(wrapRef) as HTMLImageElement).src = url;
+        (unref(wrapRef) as any).src = url;
         emit("done", url);
         loading.value = false;
       }
