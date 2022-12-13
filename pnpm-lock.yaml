@@ -105,7 +105,7 @@ specifiers:
   vue-tsc: ^1.0.9
   vue-types: ^4.2.1
   vue-virtual-scroller: ^2.0.0-alpha.1
-  vue3-danmaku: ^1.1.0
+  vue3-danmaku: ^1.2.0
   vuedraggable: ^4.1.0
   xgplayer: ^2.32.1
   xlsx: ^0.18.5
