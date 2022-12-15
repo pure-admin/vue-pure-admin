@@ -40,7 +40,6 @@ export default defineComponent({
 
     function onExpand() {
       isExpandAll.value = !isExpandAll.value;
-      console.log(props.tableRef);
       toggleRowExpansionAll(props.tableRef.data, isExpandAll.value);
     }
 

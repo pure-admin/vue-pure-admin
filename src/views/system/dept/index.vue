@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import { useColumns } from "./columns";
-import { handleTree } from "@/utils/tree";
-import { getDeptList } from "@/api/system";
-import { FormInstance } from "element-plus";
-import { reactive, ref, onMounted } from "vue";
+import { ref } from "vue";
+import { useColumns } from "./hook";
 import { PureTableBar } from "@/components/RePureTableBar";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
+
 import Delete from "@iconify-icons/ep/delete";
 import EditPen from "@iconify-icons/ep/edit-pen";
 import Search from "@iconify-icons/ep/search";
@@ -16,47 +14,19 @@ defineOptions({
   name: "Dept"
 });
 
-const form = reactive({
-  user: "",
-  status: ""
-});
-const dataList = ref([]);
-const loading = ref(true);
-const { columns } = useColumns();
-
-const formRef = ref<FormInstance>();
+const formRef = ref();
 const tableRef = ref();
-
-function handleUpdate(row) {
-  console.log(row);
-}
-
-function handleDelete(row) {
-  console.log(row);
-}
-
-function handleSelectionChange(val) {
-  console.log("handleSelectionChange", val);
-}
-
-async function onSearch() {
-  loading.value = true;
-  const { data } = await getDeptList();
-  dataList.value = handleTree(data as any);
-  setTimeout(() => {
-    loading.value = false;
-  }, 500);
-}
-
-const resetForm = (formEl: FormInstance | undefined) => {
-  if (!formEl) return;
-  formEl.resetFields();
-  onSearch();
-};
-
-onMounted(() => {
-  onSearch();
-});
+const {
+  form,
+  loading,
+  columns,
+  dataList,
+  onSearch,
+  resetForm,
+  handleUpdate,
+  handleDelete,
+  handleSelectionChange
+} = useColumns();
 </script>
 
 <template>

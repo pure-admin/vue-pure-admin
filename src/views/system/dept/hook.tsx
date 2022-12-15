@@ -1,6 +1,16 @@
 import dayjs from "dayjs";
+import { handleTree } from "@/utils/tree";
+import { getDeptList } from "@/api/system";
+import { reactive, ref, onMounted } from "vue";
 
 export function useColumns() {
+  const form = reactive({
+    user: "",
+    status: ""
+  });
+  const dataList = ref([]);
+  const loading = ref(true);
+
   const columns: TableColumnList = [
     {
       type: "selection",
@@ -58,7 +68,46 @@ export function useColumns() {
     }
   ];
 
+  function handleUpdate(row) {
+    console.log(row);
+  }
+
+  function handleDelete(row) {
+    console.log(row);
+  }
+
+  function handleSelectionChange(val) {
+    console.log("handleSelectionChange", val);
+  }
+
+  function resetForm(formEl) {
+    if (!formEl) return;
+    formEl.resetFields();
+    onSearch();
+  }
+
+  async function onSearch() {
+    loading.value = true;
+    const { data } = await getDeptList();
+    dataList.value = handleTree(data as any);
+    setTimeout(() => {
+      loading.value = false;
+    }, 500);
+  }
+
+  onMounted(() => {
+    onSearch();
+  });
+
   return {
-    columns
+    form,
+    loading,
+    columns,
+    dataList,
+    onSearch,
+    resetForm,
+    handleUpdate,
+    handleDelete,
+    handleSelectionChange
   };
 }
