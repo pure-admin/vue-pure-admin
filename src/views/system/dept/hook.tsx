@@ -33,12 +33,12 @@ export function useColumns() {
     {
       label: "排序",
       prop: "sort",
-      width: 60
+      width: 70
     },
     {
       label: "状态",
       prop: "status",
-      width: 80,
+      width: 100,
       cellRenderer: ({ row, props }) => (
         <el-tag
           size={props.size}
@@ -51,7 +51,7 @@ export function useColumns() {
     },
     {
       label: "创建时间",
-      width: 180,
+      width: 200,
       prop: "createTime",
       formatter: ({ createTime }) =>
         dayjs(createTime).format("YYYY-MM-DD HH:mm:ss")
@@ -63,7 +63,7 @@ export function useColumns() {
     {
       label: "操作",
       fixed: "right",
-      width: 140,
+      width: 160,
       slot: "operation"
     }
   ];

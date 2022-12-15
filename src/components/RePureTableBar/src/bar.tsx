@@ -1,7 +1,6 @@
 import { defineComponent, ref, computed, type PropType } from "vue";
 import { useEpThemeStoreHook } from "@/store/modules/epTheme";
 
-import UnExpand from "@iconify-icons/mdi/arrow-expand-right";
 import Expand from "@iconify-icons/mdi/arrow-expand-down";
 import ArrowCollapse from "@iconify-icons/mdi/arrow-collapse-vertical";
 import Setting from "@iconify-icons/ri/settings-3-line";
@@ -105,8 +104,11 @@ export default defineComponent({
                     placement="top"
                   >
                     <iconify-icon-offline
-                      class="cursor-pointer"
-                      icon={isExpandAll.value ? UnExpand : Expand}
+                      class="cursor-pointer duration-100"
+                      icon={Expand}
+                      style={{
+                        transform: isExpandAll.value ? "none" : "rotate(-90deg)"
+                      }}
                       width="16"
                       color="text_color_regular"
                       onClick={() => onExpand()}
