@@ -3,7 +3,7 @@ import { handleTree } from "@/utils/tree";
 import { getDeptList } from "@/api/system";
 import { reactive, ref, onMounted } from "vue";
 
-export function useColumns() {
+export function useDept() {
   const form = reactive({
     user: "",
     status: ""
@@ -21,7 +21,7 @@ export function useColumns() {
     {
       label: "序号",
       type: "index",
-      width: 60,
+      minWidth: 60,
       hide: ({ checkList }) => !checkList.includes("序号列")
     },
     {
@@ -33,12 +33,12 @@ export function useColumns() {
     {
       label: "排序",
       prop: "sort",
-      width: 70
+      minWidth: 70
     },
     {
       label: "状态",
       prop: "status",
-      width: 100,
+      minWidth: 100,
       cellRenderer: ({ row, props }) => (
         <el-tag
           size={props.size}
@@ -51,14 +51,15 @@ export function useColumns() {
     },
     {
       label: "创建时间",
-      width: 200,
+      minWidth: 200,
       prop: "createTime",
       formatter: ({ createTime }) =>
         dayjs(createTime).format("YYYY-MM-DD HH:mm:ss")
     },
     {
       label: "备注",
-      prop: "remark"
+      prop: "remark",
+      minWidth: 200
     },
     {
       label: "操作",

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { useColumns } from "./hook";
+import { useDept } from "./hook";
 import { PureTableBar } from "@/components/RePureTableBar";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 
@@ -26,7 +26,7 @@ const {
   handleUpdate,
   handleDelete,
   handleSelectionChange
-} = useColumns();
+} = useDept();
 </script>
 
 <template>
