@@ -44,7 +44,7 @@ export default defineComponent({
         "text-black",
         "dark:text-white",
         "duration-100",
-        "hover:opacity-50",
+        "hover:!text-primary",
         "cursor-pointer",
         "outline-none"
       ];

@@ -5,14 +5,14 @@ import { getDeptList } from "@/api/system";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import { ref, watch, onMounted, getCurrentInstance } from "vue";
 
-import LocationCompany from "@iconify-icons/ep/add-location";
 import UnExpand from "@iconify-icons/mdi/arrow-expand-right";
 import Expand from "@iconify-icons/mdi/arrow-expand-down";
 import More2Fill from "@iconify-icons/ri/more-2-fill";
-import Reset from "@iconify-icons/ri/restart-line";
 import Dept from "@iconify-icons/ri/git-branch-line";
-import OfficeBuilding from "@iconify-icons/ep/office-building";
+import Reset from "@iconify-icons/ri/restart-line";
 import Search from "@iconify-icons/ep/search";
+import OfficeBuilding from "@iconify-icons/ep/office-building";
+import LocationCompany from "@iconify-icons/ep/add-location";
 
 interface Tree {
   id: number;
