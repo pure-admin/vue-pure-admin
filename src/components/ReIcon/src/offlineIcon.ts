@@ -43,7 +43,3 @@ addIcon("setting", Setting);
 addIcon("dept", Dept);
 addIcon("lollipop", Lollipop);
 addIcon("monitor", Monitor);
-
-// 非菜单图标
-import RefreshRight from "@iconify-icons/ep/refresh-right";
-addIcon("refreshRight", RefreshRight);

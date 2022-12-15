@@ -5,6 +5,7 @@ import UnExpand from "@iconify-icons/mdi/arrow-expand-right";
 import Expand from "@iconify-icons/mdi/arrow-expand-down";
 import ArrowCollapse from "@iconify-icons/mdi/arrow-collapse-vertical";
 import Setting from "@iconify-icons/ri/settings-3-line";
+import RefreshRight from "@iconify-icons/ep/refresh-right";
 
 const props = {
   /** 头部最左边的标题 */
@@ -117,7 +118,7 @@ export default defineComponent({
               <el-tooltip effect="dark" content="刷新" placement="top">
                 <iconify-icon-offline
                   class="cursor-pointer"
-                  icon="refreshRight"
+                  icon={RefreshRight}
                   width="16"
                   color="text_color_regular"
                   onClick={() => emit("refresh")}

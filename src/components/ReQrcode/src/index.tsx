@@ -11,6 +11,7 @@ import "./index.scss";
 import { propTypes } from "@/utils/propTypes";
 import { isString, cloneDeep } from "@pureadmin/utils";
 import QRCode, { QRCodeRenderersOptions } from "qrcode";
+import RefreshRight from "@iconify-icons/ep/refresh-right";
 
 interface QrcodeLogo {
   src?: string;
@@ -245,7 +246,7 @@ export default defineComponent({
               <div class="absolute top-[50%] left-[50%] font-bold">
                 <iconify-icon-offline
                   class="cursor-pointer"
-                  icon="refreshRight"
+                  icon={RefreshRight}
                   width="30"
                   color="var(--el-color-primary)"
                 />

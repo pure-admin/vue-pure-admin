@@ -71,7 +71,7 @@
     "vue-pdf-embed": "^1.1.5",
     "vue-router": "^4.1.6",
     "vue-types": "^4.2.1",
-    "vue-virtual-scroller": "^2.0.0-alpha.1",
+    "vue-virtual-scroller": "2.0.0-beta.7",
     "vue3-danmaku": "^1.2.0",
     "vuedraggable": "^4.1.0",
     "xgplayer": "^2.32.1",
