@@ -1,0 +1,1 @@
+import{useColumns as t}from"./columns-648b6478.js";const _=Vue.defineComponent({__name:"index",setup(u){const e=Vue.ref(),{columns:n,dataList:o}=t(e);return(a,c)=>{const r=Vue.resolveComponent("pure-table");return Vue.openBlock(),Vue.createBlock(r,{ref_key:"waterRef",ref:e,"row-key":"id",border:"",data:Vue.unref(o),columns:Vue.unref(n)},null,8,["data","columns"])}}});export{_};

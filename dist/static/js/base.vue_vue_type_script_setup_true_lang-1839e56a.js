@@ -1,0 +1,1 @@
+import{t as o}from"./data-9725eb2a.js";const r=Vue.defineComponent({__name:"base",setup(t){const e=[{label:"\u65E5\u671F",prop:"date"},{label:"\u59D3\u540D",prop:"name"},{label:"\u5730\u5740",prop:"address"}];return(n,u)=>{const a=Vue.resolveComponent("pure-table");return Vue.openBlock(),Vue.createBlock(a,{data:Vue.unref(o),columns:e},null,8,["data"])}}});export{r as _};
