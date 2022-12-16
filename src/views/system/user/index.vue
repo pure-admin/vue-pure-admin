@@ -99,6 +99,7 @@ const {
             border
             align-whole="center"
             table-layout="auto"
+            :loading="loading"
             :size="size"
             :data="dataList"
             :columns="columns"

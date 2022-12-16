@@ -90,6 +90,7 @@ const {
           showOverflowTooltip
           table-layout="auto"
           default-expand-all
+          :loading="loading"
           :size="size"
           :data="dataList"
           :columns="columns"

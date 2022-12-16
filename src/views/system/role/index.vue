@@ -97,6 +97,7 @@ const {
           align-whole="center"
           showOverflowTooltip
           table-layout="auto"
+          :loading="loading"
           :size="size"
           :data="dataList"
           :columns="columns"
