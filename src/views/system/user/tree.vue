@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { handleTree } from "@/utils/tree";
-import type { ElTree } from "element-plus";
 import { getDeptList } from "@/api/system";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
-import { ref, watch, onMounted, getCurrentInstance } from "vue";
+import { ref, computed, watch, onMounted, getCurrentInstance } from "vue";
 
 import UnExpand from "@iconify-icons/mdi/arrow-expand-right";
 import Expand from "@iconify-icons/mdi/arrow-expand-down";
@@ -20,17 +19,25 @@ interface Tree {
   highlight?: boolean;
   children?: Tree[];
 }
+
+const treeRef = ref();
+const treeData = ref([]);
+const searchValue = ref("");
+const highlightMap = ref({});
+const { proxy } = getCurrentInstance();
 const defaultProps = {
   children: "children",
   label: "name"
 };
-
-const treeData = ref([]);
-const searchValue = ref("");
-const { proxy } = getCurrentInstance();
-const treeRef = ref<InstanceType<typeof ElTree>>();
-
-const highlightMap = ref({});
+const buttonClass = computed(() => {
+  return [
+    "!h-[20px]",
+    "reset-margin",
+    "!text-gray-500",
+    "dark:!text-white",
+    "dark:hover:!text-primary"
+  ];
+});
 
 const filterNode = (value: string, data: Tree) => {
   if (!value) return true;
@@ -60,7 +67,7 @@ function toggleRowExpansionAll(status) {
   }
 }
 
-// 重置状态（选中状态、搜索框值、树初始化）
+/** 重置状态（选中状态、搜索框值、树初始化） */
 function onReset() {
   highlightMap.value = {};
   searchValue.value = "";
@@ -73,12 +80,12 @@ watch(searchValue, val => {
 
 onMounted(async () => {
   const { data } = await getDeptList();
-  treeData.value = handleTree(data as any);
+  treeData.value = handleTree(data);
 });
 </script>
 
 <template>
-  <div class="max-w-[260px] h-full min-h-[780px] bg-bg_color">
+  <div class="h-full min-h-[780px] bg-bg_color overflow-auto">
     <div class="flex items-center h-[34px]">
       <p class="flex-1 ml-2 font-bold text-base truncate" title="部门列表">
         部门列表
@@ -109,7 +116,7 @@ onMounted(async () => {
           <el-dropdown-menu>
             <el-dropdown-item>
               <el-button
-                class="reset-margin !h-[20px] !text-gray-500 dark:!text-white dark:hover:!text-primary"
+                :class="buttonClass"
                 link
                 type="primary"
                 :icon="useRenderIcon(Expand)"
@@ -120,7 +127,7 @@ onMounted(async () => {
             </el-dropdown-item>
             <el-dropdown-item>
               <el-button
-                class="reset-margin !h-[20px] !text-gray-500 dark:!text-white dark:hover:!text-primary"
+                :class="buttonClass"
                 link
                 type="primary"
                 :icon="useRenderIcon(UnExpand)"
@@ -131,7 +138,7 @@ onMounted(async () => {
             </el-dropdown-item>
             <el-dropdown-item>
               <el-button
-                class="reset-margin !h-[20px] !text-gray-500 dark:!text-white dark:hover:!text-primary"
+                :class="buttonClass"
                 link
                 type="primary"
                 :icon="useRenderIcon(Reset)"

@@ -21,7 +21,7 @@ export function useDept() {
     {
       label: "序号",
       type: "index",
-      minWidth: 60,
+      minWidth: 70,
       hide: ({ checkList }) => !checkList.includes("序号列")
     },
     {
@@ -90,7 +90,7 @@ export function useDept() {
   async function onSearch() {
     loading.value = true;
     const { data } = await getDeptList();
-    dataList.value = handleTree(data as any);
+    dataList.value = handleTree(data);
     setTimeout(() => {
       loading.value = false;
     }, 500);

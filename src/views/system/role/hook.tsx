@@ -30,7 +30,7 @@ export function useRole() {
     {
       label: "序号",
       type: "index",
-      width: 60,
+      width: 70,
       hide: ({ checkList }) => !checkList.includes("序号列")
     },
     {
