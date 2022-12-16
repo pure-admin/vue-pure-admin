@@ -81,7 +81,6 @@
     "@commitlint/cli": "13.1.0",
     "@commitlint/config-conventional": "13.1.0",
     "@iconify-icons/ep": "^1.2.7",
-    "@iconify-icons/mdi": "^1.2.8",
     "@iconify-icons/ri": "^1.2.3",
     "@iconify/vue": "^4.0.0",
     "@intlify/vite-plugin-vue-i18n": "^6.0.3",

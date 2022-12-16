@@ -4,14 +4,14 @@ import { getDeptList } from "@/api/system";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import { ref, computed, watch, onMounted, getCurrentInstance } from "vue";
 
-import UnExpand from "@iconify-icons/mdi/arrow-expand-right";
-import Expand from "@iconify-icons/mdi/arrow-expand-down";
-import More2Fill from "@iconify-icons/ri/more-2-fill";
 import Dept from "@iconify-icons/ri/git-branch-line";
 import Reset from "@iconify-icons/ri/restart-line";
 import Search from "@iconify-icons/ep/search";
+import More2Fill from "@iconify-icons/ri/more-2-fill";
 import OfficeBuilding from "@iconify-icons/ep/office-building";
 import LocationCompany from "@iconify-icons/ep/add-location";
+import ExpandIcon from "./svg/expand.svg?component";
+import UnExpandIcon from "./svg/unexpand.svg?component";
 
 interface Tree {
   id: number;
@@ -22,6 +22,7 @@ interface Tree {
 
 const treeRef = ref();
 const treeData = ref([]);
+const isExpand = ref(true);
 const searchValue = ref("");
 const highlightMap = ref({});
 const { proxy } = getCurrentInstance();
@@ -61,6 +62,7 @@ function nodeClick(value) {
 }
 
 function toggleRowExpansionAll(status) {
+  isExpand.value = status;
   const nodes = (proxy.$refs["treeRef"] as any).store._getAllNodes();
   for (let i = 0; i < nodes.length; i++) {
     nodes[i].expanded = status;
@@ -106,7 +108,7 @@ onMounted(async () => {
           </el-icon>
         </template>
       </el-input>
-      <el-dropdown>
+      <el-dropdown :hide-on-click="false">
         <IconifyIconOffline
           class="w-[28px] cursor-pointer"
           width="18px"
@@ -119,21 +121,10 @@ onMounted(async () => {
                 :class="buttonClass"
                 link
                 type="primary"
-                :icon="useRenderIcon(Expand)"
-                @click="toggleRowExpansionAll(true)"
+                :icon="useRenderIcon(isExpand ? ExpandIcon : UnExpandIcon)"
+                @click="toggleRowExpansionAll(isExpand ? false : true)"
               >
-                展开全部
-              </el-button>
-            </el-dropdown-item>
-            <el-dropdown-item>
-              <el-button
-                :class="buttonClass"
-                link
-                type="primary"
-                :icon="useRenderIcon(UnExpand)"
-                @click="toggleRowExpansionAll(false)"
-              >
-                折叠全部
+                {{ isExpand ? "折叠全部" : "展开全部" }}
               </el-button>
             </el-dropdown-item>
             <el-dropdown-item>
