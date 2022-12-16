@@ -1,54 +1,25 @@
-import { defineComponent, ref, computed, PropType } from "vue";
+import { delay } from "@pureadmin/utils";
 import { useEpThemeStoreHook } from "@/store/modules/epTheme";
-
-import UnExpand from "@iconify-icons/mdi/arrow-expand-right";
-import { IconifyIconOffline } from "../../ReIcon";
-import Expand from "@iconify-icons/mdi/arrow-expand-down";
-import ArrowCollapse from "@iconify-icons/mdi/arrow-collapse-vertical";
-import Setting from "@iconify-icons/ri/settings-3-line";
-
-export const loadingSvg = `
-  <path class="path" d="
-    M 30 15
-    L 28 17
-    M 25.61 25.61
-    A 15 15, 0, 0, 1, 15 30
-    A 15 15, 0, 1, 1, 27.99 7.5
-    L 15 15
-  "
-    style="stroke-width: 4px; fill: rgba(0, 0, 0, 0)"
-  />
-`;
+import { defineComponent, ref, computed, type PropType } from "vue";
+import ExpandIcon from "./svg/expand.svg?component";
+import RefreshIcon from "./svg/refresh.svg?component";
+import SettingIcon from "./svg/settings.svg?component";
+import CollapseIcon from "./svg/collapse.svg?component";
 
 const props = {
-  // 头部最左边的标题
+  /** 头部最左边的标题 */
   title: {
     type: String,
     default: "列表"
   },
-  // 表格数据
-  dataList: {
-    type: Array,
-    default: () => {
-      return [];
-    }
-  },
-  // 对于树形表格，如果想启用展开和折叠功能，传入当前表格的ref即可
+  /** 对于树形表格，如果想启用展开和折叠功能，传入当前表格的ref即可 */
   tableRef: {
-    type: Object as PropType<any>,
-    default() {
-      return {};
-    }
-  },
-  // 是否显示加载动画，默认false 不加载
-  loading: {
-    type: Boolean,
-    default: false
+    type: Object as PropType<any>
   }
 };
 
 export default defineComponent({
-  name: "TableProBar",
+  name: "PureTableBar",
   props,
   emits: ["refresh"],
   setup(props, { emit, slots, attrs }) {
@@ -56,6 +27,7 @@ export default defineComponent({
     const checkList = ref([]);
     const size = ref("default");
     const isExpandAll = ref(true);
+    const loading = ref(false);
 
     const getDropdownItemStyle = computed(() => {
       return s => {
@@ -67,9 +39,26 @@ export default defineComponent({
       };
     });
 
+    const iconClass = computed(() => {
+      return [
+        "text-black",
+        "dark:text-white",
+        "duration-100",
+        "hover:!text-primary",
+        "cursor-pointer",
+        "outline-none"
+      ];
+    });
+
+    function onReFresh() {
+      loading.value = true;
+      emit("refresh");
+      delay(500).then(() => (loading.value = false));
+    }
+
     function onExpand() {
       isExpandAll.value = !isExpandAll.value;
-      toggleRowExpansionAll(props.dataList, isExpandAll.value);
+      toggleRowExpansionAll(props.tableRef.data, isExpandAll.value);
     }
 
     function toggleRowExpansionAll(data, isExpansion) {
@@ -88,7 +77,7 @@ export default defineComponent({
             style={getDropdownItemStyle.value("large")}
             onClick={() => (size.value = "large")}
           >
-            松散
+            宽松
           </el-dropdown-item>
           <el-dropdown-item
             style={getDropdownItemStyle.value("default")}
@@ -108,11 +97,8 @@ export default defineComponent({
 
     const reference = {
       reference: () => (
-        <IconifyIconOffline
-          class="cursor-pointer"
-          icon={Setting}
-          width="16"
-          color="text_color_regular"
+        <SettingIcon
+          class={["w-[16px]", iconClass.value]}
           onMouseover={e => (buttonRef.value = e.currentTarget)}
         />
       )
@@ -120,13 +106,7 @@ export default defineComponent({
 
     return () => (
       <>
-        <div
-          {...attrs}
-          class="w-[99/100] mt-6 p-2 bg-bg_color"
-          v-loading={props.loading}
-          element-loading-svg={loadingSvg}
-          element-loading-svg-view-box="-10, -10, 50, 50"
-        >
+        <div {...attrs} class="w-[99/100] mt-6 p-2 bg-bg_color">
           <div class="flex justify-between w-full h-[60px] p-4">
             <p class="font-bold truncate">{props.title}</p>
             <div class="flex items-center justify-around">
@@ -138,36 +118,32 @@ export default defineComponent({
                     content={isExpandAll.value ? "折叠" : "展开"}
                     placement="top"
                   >
-                    <IconifyIconOffline
-                      class="cursor-pointer"
-                      icon={isExpandAll.value ? UnExpand : Expand}
-                      width="16"
-                      color="text_color_regular"
+                    <ExpandIcon
+                      class={["w-[16px]", iconClass.value]}
+                      style={{
+                        transform: isExpandAll.value ? "none" : "rotate(-90deg)"
+                      }}
                       onClick={() => onExpand()}
                     />
                   </el-tooltip>
                   <el-divider direction="vertical" />
                 </>
-              ) : undefined}
+              ) : null}
               <el-tooltip effect="dark" content="刷新" placement="top">
-                <IconifyIconOffline
-                  class="cursor-pointer"
-                  icon="refreshRight"
-                  width="16"
-                  color="text_color_regular"
-                  onClick={() => emit("refresh")}
+                <RefreshIcon
+                  class={[
+                    "w-[16px]",
+                    iconClass.value,
+                    loading.value ? "animate-spin" : ""
+                  ]}
+                  onClick={() => onReFresh()}
                 />
               </el-tooltip>
               <el-divider direction="vertical" />
 
               <el-tooltip effect="dark" content="密度" placement="top">
                 <el-dropdown v-slots={dropdown} trigger="click">
-                  <IconifyIconOffline
-                    class="cursor-pointer"
-                    icon={ArrowCollapse}
-                    width="16"
-                    color="text_color_regular"
-                  />
+                  <CollapseIcon class={["w-[16px]", iconClass.value]} />
                 </el-dropdown>
               </el-tooltip>
               <el-divider direction="vertical" />
@@ -199,11 +175,7 @@ export default defineComponent({
               content="列设置"
             />
           </div>
-          {props.dataList.length > 0 ? (
-            slots.default({ size: size.value, checkList: checkList.value })
-          ) : (
-            <el-empty description="暂无数据" />
-          )}
+          {slots.default({ size: size.value, checkList: checkList.value })}
         </div>
       </>
     );

@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import { useColumns } from "./columns";
-import { handleTree } from "@/utils/tree";
-import { getDeptList } from "@/api/system";
-import { FormInstance } from "element-plus";
-import { reactive, ref, onMounted } from "vue";
-import { TableProBar } from "@/components/ReTable";
+import { ref } from "vue";
+import { useDept } from "./hook";
+import { PureTableBar } from "@/components/RePureTableBar";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
+
 import Delete from "@iconify-icons/ep/delete";
 import EditPen from "@iconify-icons/ep/edit-pen";
 import Search from "@iconify-icons/ep/search";
@@ -16,47 +14,19 @@ defineOptions({
   name: "Dept"
 });
 
-const form = reactive({
-  user: "",
-  status: ""
-});
-const dataList = ref([]);
-const loading = ref(true);
-const { columns } = useColumns();
-
-const formRef = ref<FormInstance>();
+const formRef = ref();
 const tableRef = ref();
-
-function handleUpdate(row) {
-  console.log(row);
-}
-
-function handleDelete(row) {
-  console.log(row);
-}
-
-function handleSelectionChange(val) {
-  console.log("handleSelectionChange", val);
-}
-
-async function onSearch() {
-  loading.value = true;
-  const { data } = await getDeptList();
-  dataList.value = handleTree(data as any);
-  setTimeout(() => {
-    loading.value = false;
-  }, 500);
-}
-
-const resetForm = (formEl: FormInstance | undefined) => {
-  if (!formEl) return;
-  formEl.resetFields();
-  onSearch();
-};
-
-onMounted(() => {
-  onSearch();
-});
+const {
+  form,
+  loading,
+  columns,
+  dataList,
+  onSearch,
+  resetForm,
+  handleUpdate,
+  handleDelete,
+  handleSelectionChange
+} = useDept();
 </script>
 
 <template>
@@ -68,10 +38,20 @@ onMounted(() => {
       class="bg-bg_color w-[99/100] pl-8 pt-4"
     >
       <el-form-item label="部门名称：" prop="user">
-        <el-input v-model="form.user" placeholder="请输入部门名称" clearable />
+        <el-input
+          v-model="form.user"
+          placeholder="请输入部门名称"
+          clearable
+          class="!w-[200px]"
+        />
       </el-form-item>
       <el-form-item label="状态：" prop="status">
-        <el-select v-model="form.status" placeholder="请选择状态" clearable>
+        <el-select
+          v-model="form.status"
+          placeholder="请选择状态"
+          clearable
+          class="!w-[180px]"
+        >
           <el-option label="开启" value="1" />
           <el-option label="关闭" value="0" />
         </el-select>
@@ -91,11 +71,9 @@ onMounted(() => {
       </el-form-item>
     </el-form>
 
-    <TableProBar
+    <PureTableBar
       title="部门列表"
-      :loading="loading"
       :tableRef="tableRef?.getTableRef()"
-      :dataList="dataList"
       @refresh="onSearch"
     >
       <template #buttons>
@@ -112,6 +90,7 @@ onMounted(() => {
           showOverflowTooltip
           table-layout="auto"
           default-expand-all
+          :loading="loading"
           :size="size"
           :data="dataList"
           :columns="columns"
@@ -150,6 +129,6 @@ onMounted(() => {
           </template>
         </pure-table>
       </template>
-    </TableProBar>
+    </PureTableBar>
   </div>
 </template>

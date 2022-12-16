@@ -1,18 +1,17 @@
 <script setup lang="ts">
 import { handleTree } from "@/utils/tree";
-import type { ElTree } from "element-plus";
 import { getDeptList } from "@/api/system";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
-import { ref, watch, onMounted, getCurrentInstance } from "vue";
+import { ref, computed, watch, onMounted, getCurrentInstance } from "vue";
 
-import LocationCompany from "@iconify-icons/ep/add-location";
-import UnExpand from "@iconify-icons/mdi/arrow-expand-right";
-import Expand from "@iconify-icons/mdi/arrow-expand-down";
-import More2Fill from "@iconify-icons/ri/more-2-fill";
-import Reset from "@iconify-icons/ri/restart-line";
 import Dept from "@iconify-icons/ri/git-branch-line";
-import OfficeBuilding from "@iconify-icons/ep/office-building";
+import Reset from "@iconify-icons/ri/restart-line";
 import Search from "@iconify-icons/ep/search";
+import More2Fill from "@iconify-icons/ri/more-2-fill";
+import OfficeBuilding from "@iconify-icons/ep/office-building";
+import LocationCompany from "@iconify-icons/ep/add-location";
+import ExpandIcon from "./svg/expand.svg?component";
+import UnExpandIcon from "./svg/unexpand.svg?component";
 
 interface Tree {
   id: number;
@@ -20,17 +19,26 @@ interface Tree {
   highlight?: boolean;
   children?: Tree[];
 }
+
+const treeRef = ref();
+const treeData = ref([]);
+const isExpand = ref(true);
+const searchValue = ref("");
+const highlightMap = ref({});
+const { proxy } = getCurrentInstance();
 const defaultProps = {
   children: "children",
   label: "name"
 };
-
-const treeData = ref([]);
-const searchValue = ref("");
-const { proxy } = getCurrentInstance();
-const treeRef = ref<InstanceType<typeof ElTree>>();
-
-const highlightMap = ref({});
+const buttonClass = computed(() => {
+  return [
+    "!h-[20px]",
+    "reset-margin",
+    "!text-gray-500",
+    "dark:!text-white",
+    "dark:hover:!text-primary"
+  ];
+});
 
 const filterNode = (value: string, data: Tree) => {
   if (!value) return true;
@@ -54,13 +62,14 @@ function nodeClick(value) {
 }
 
 function toggleRowExpansionAll(status) {
+  isExpand.value = status;
   const nodes = (proxy.$refs["treeRef"] as any).store._getAllNodes();
   for (let i = 0; i < nodes.length; i++) {
     nodes[i].expanded = status;
   }
 }
 
-// 重置状态（选中状态、搜索框值、树初始化）
+/** 重置状态（选中状态、搜索框值、树初始化） */
 function onReset() {
   highlightMap.value = {};
   searchValue.value = "";
@@ -73,12 +82,12 @@ watch(searchValue, val => {
 
 onMounted(async () => {
   const { data } = await getDeptList();
-  treeData.value = handleTree(data as any);
+  treeData.value = handleTree(data);
 });
 </script>
 
 <template>
-  <div class="max-w-[260px] h-full min-h-[780px] bg-bg_color">
+  <div class="h-full min-h-[780px] bg-bg_color overflow-auto">
     <div class="flex items-center h-[34px]">
       <p class="flex-1 ml-2 font-bold text-base truncate" title="部门列表">
         部门列表
@@ -99,7 +108,7 @@ onMounted(async () => {
           </el-icon>
         </template>
       </el-input>
-      <el-dropdown>
+      <el-dropdown :hide-on-click="false">
         <IconifyIconOffline
           class="w-[28px] cursor-pointer"
           width="18px"
@@ -109,29 +118,18 @@ onMounted(async () => {
           <el-dropdown-menu>
             <el-dropdown-item>
               <el-button
-                class="reset-margin !h-[20px] !text-gray-500 dark:!text-white dark:hover:!text-primary"
+                :class="buttonClass"
                 link
                 type="primary"
-                :icon="useRenderIcon(Expand)"
-                @click="toggleRowExpansionAll(true)"
+                :icon="useRenderIcon(isExpand ? ExpandIcon : UnExpandIcon)"
+                @click="toggleRowExpansionAll(isExpand ? false : true)"
               >
-                展开全部
+                {{ isExpand ? "折叠全部" : "展开全部" }}
               </el-button>
             </el-dropdown-item>
             <el-dropdown-item>
               <el-button
-                class="reset-margin !h-[20px] !text-gray-500 dark:!text-white dark:hover:!text-primary"
-                link
-                type="primary"
-                :icon="useRenderIcon(UnExpand)"
-                @click="toggleRowExpansionAll(false)"
-              >
-                折叠全部
-              </el-button>
-            </el-dropdown-item>
-            <el-dropdown-item>
-              <el-button
-                class="reset-margin !h-[20px] !text-gray-500 dark:!text-white dark:hover:!text-primary"
+                :class="buttonClass"
                 link
                 type="primary"
                 :icon="useRenderIcon(Reset)"
