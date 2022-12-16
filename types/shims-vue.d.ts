@@ -9,7 +9,5 @@ declare module "*.scss" {
   export default scss;
 }
 
-declare module "@pureadmin/theme";
 declare module "vue-virtual-scroller";
 declare module "vuedraggable/src/vuedraggable";
-declare module "@pureadmin/theme/dist/browser-utils";

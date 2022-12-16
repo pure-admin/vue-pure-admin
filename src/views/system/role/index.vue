@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import { useColumns } from "./columns";
-import { getRoleList } from "@/api/system";
-import { reactive, ref, onMounted } from "vue";
-import { type FormInstance } from "element-plus";
-import { TableProBar } from "@/components/ReTable";
-import { type PaginationProps } from "@pureadmin/table";
+import { ref } from "vue";
+import { useRole } from "./hook";
+import { PureTableBar } from "@/components/RePureTableBar";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
+
 import Database from "@iconify-icons/ri/database-2-line";
 import More from "@iconify-icons/ep/more-filled";
 import Delete from "@iconify-icons/ep/delete";
@@ -19,64 +17,22 @@ defineOptions({
   name: "Role"
 });
 
-const form = reactive({
-  name: "",
-  code: "",
-  status: ""
-});
-
-const dataList = ref([]);
-const loading = ref(true);
-const { columns } = useColumns();
-
-const formRef = ref<FormInstance>();
-
-const pagination = reactive<PaginationProps>({
-  total: 0,
-  pageSize: 10,
-  currentPage: 1,
-  background: true
-});
-
-function handleUpdate(row) {
-  console.log(row);
-}
-
-function handleDelete(row) {
-  console.log(row);
-}
-
-function handleCurrentChange(val: number) {
-  console.log(`current page: ${val}`);
-}
-
-function handleSizeChange(val: number) {
-  console.log(`${val} items per page`);
-}
-
-function handleSelectionChange(val) {
-  console.log("handleSelectionChange", val);
-}
-
-async function onSearch() {
-  loading.value = true;
-  const { data } = await getRoleList();
-  dataList.value = data.list;
-  pagination.total = data.total;
-  setTimeout(() => {
-    loading.value = false;
-  }, 500);
-}
-
-const resetForm = (formEl: FormInstance | undefined) => {
-  if (!formEl) return;
-  formEl.resetFields();
-  onSearch();
-};
-
-onMounted(() => {
-  onSearch();
-});
+const formRef = ref();
+const {
+  form,
+  loading,
+  columns,
+  dataList,
+  pagination,
+  buttonClass,
+  onSearch,
+  resetForm,
+  handleUpdate,
+  handleDelete,
+  handleSizeChange,
+  handleCurrentChange,
+  handleSelectionChange
+} = useRole();
 </script>
 
 <template>
@@ -88,13 +44,28 @@ onMounted(() => {
       class="bg-bg_color w-[99/100] pl-8 pt-4"
     >
       <el-form-item label="角色名称：" prop="name">
-        <el-input v-model="form.name" placeholder="请输入角色名称" clearable />
+        <el-input
+          v-model="form.name"
+          placeholder="请输入角色名称"
+          clearable
+          class="!w-[200px]"
+        />
       </el-form-item>
       <el-form-item label="角色标识：" prop="code">
-        <el-input v-model="form.code" placeholder="请输入角色标识" clearable />
+        <el-input
+          v-model="form.code"
+          placeholder="请输入角色标识"
+          clearable
+          class="!w-[180px]"
+        />
       </el-form-item>
       <el-form-item label="状态：" prop="status">
-        <el-select v-model="form.status" placeholder="请选择状态" clearable>
+        <el-select
+          v-model="form.status"
+          placeholder="请选择状态"
+          clearable
+          class="!w-[180px]"
+        >
           <el-option label="已开启" value="1" />
           <el-option label="已关闭" value="0" />
         </el-select>
@@ -114,12 +85,7 @@ onMounted(() => {
       </el-form-item>
     </el-form>
 
-    <TableProBar
-      title="角色列表"
-      :loading="loading"
-      :dataList="dataList"
-      @refresh="onSearch"
-    >
+    <PureTableBar title="角色列表" @refresh="onSearch">
       <template #buttons>
         <el-button type="primary" :icon="useRenderIcon(AddFill)">
           新增角色
@@ -131,6 +97,7 @@ onMounted(() => {
           align-whole="center"
           showOverflowTooltip
           table-layout="auto"
+          :loading="loading"
           :size="size"
           :data="dataList"
           :columns="columns"
@@ -151,8 +118,8 @@ onMounted(() => {
               link
               type="primary"
               :size="size"
-              @click="handleUpdate(row)"
               :icon="useRenderIcon(EditPen)"
+              @click="handleUpdate(row)"
             >
               修改
             </el-button>
@@ -172,18 +139,18 @@ onMounted(() => {
             </el-popconfirm>
             <el-dropdown>
               <el-button
-                class="ml-3"
+                class="ml-3 mt-[2px]"
                 link
                 type="primary"
                 :size="size"
-                @click="handleUpdate(row)"
                 :icon="useRenderIcon(More)"
+                @click="handleUpdate(row)"
               />
               <template #dropdown>
                 <el-dropdown-menu>
                   <el-dropdown-item>
                     <el-button
-                      class="reset-margin !h-[20px] !text-gray-500 dark:!text-white dark:hover:!text-primary"
+                      :class="buttonClass"
                       link
                       type="primary"
                       :size="size"
@@ -194,7 +161,7 @@ onMounted(() => {
                   </el-dropdown-item>
                   <el-dropdown-item>
                     <el-button
-                      class="reset-margin !h-[20px] !text-gray-500 dark:!text-white dark:hover:!text-primary"
+                      :class="buttonClass"
                       link
                       type="primary"
                       :size="size"
@@ -209,7 +176,7 @@ onMounted(() => {
           </template>
         </pure-table>
       </template>
-    </TableProBar>
+    </PureTableBar>
   </div>
 </template>
 

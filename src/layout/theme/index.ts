@@ -2,10 +2,7 @@
  * @description ⚠️：此文件仅供主题插件使用，请不要在此文件中导出别的工具函数（仅在页面加载前运行）
  */
 
-type MultipleScopeVarsItem = {
-  scopeName: string;
-  varsContent: string;
-};
+import { type multipleScopeVarsOptions } from "@pureadmin/theme";
 
 /** 预设主题色 */
 const themeColors = {
@@ -113,8 +110,8 @@ const themeColors = {
 /**
  * @description 将预设主题色处理成主题插件所需格式
  */
-export const genScssMultipleScopeVars = (): MultipleScopeVarsItem[] => {
-  const result = [] as MultipleScopeVarsItem[];
+export const genScssMultipleScopeVars = (): multipleScopeVarsOptions[] => {
+  const result = [] as multipleScopeVarsOptions[];
   Object.keys(themeColors).forEach(key => {
     result.push({
       scopeName: `layout-theme-${key}`,
@@ -129,7 +126,7 @@ export const genScssMultipleScopeVars = (): MultipleScopeVarsItem[] => {
         $menuTitleHover: ${themeColors[key].menuTitleHover} !default;
         $menuActiveBefore: ${themeColors[key].menuActiveBefore} !default;
       `
-    } as MultipleScopeVarsItem);
+    } as multipleScopeVarsOptions);
   });
   return result;
 };

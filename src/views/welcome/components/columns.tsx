@@ -1,4 +1,3 @@
-import { IconifyIconOffline } from "@/components/ReIcon";
 import TypeIt from "@/components/ReTypeit";
 import OfficeBuilding from "@iconify-icons/ep/office-building";
 import Tickets from "@iconify-icons/ep/tickets";
@@ -21,7 +20,7 @@ export function useColumns() {
       labelRenderer: () => (
         <div class="flex items-center">
           <el-icon>
-            <IconifyIconOffline icon={User} />
+            <iconify-icon-offline icon={User} />
           </el-icon>
           用户名
         </div>
@@ -32,7 +31,7 @@ export function useColumns() {
       labelRenderer: () => (
         <div class="flex items-center">
           <el-icon>
-            <IconifyIconOffline icon={Iphone} />
+            <iconify-icon-offline icon={Iphone} />
           </el-icon>
           手机号
         </div>
@@ -43,7 +42,7 @@ export function useColumns() {
       labelRenderer: () => (
         <div class="flex items-center">
           <el-icon>
-            <IconifyIconOffline icon={Location} />
+            <iconify-icon-offline icon={Location} />
           </el-icon>
           居住地
         </div>
@@ -57,7 +56,7 @@ export function useColumns() {
       labelRenderer: () => (
         <div class="flex items-center">
           <el-icon>
-            <IconifyIconOffline icon={Tickets} />
+            <iconify-icon-offline icon={Tickets} />
           </el-icon>
           标签
         </div>
@@ -76,7 +75,7 @@ export function useColumns() {
       labelRenderer: () => (
         <div class="flex items-center">
           <el-icon>
-            <IconifyIconOffline icon={OfficeBuilding} />
+            <iconify-icon-offline icon={OfficeBuilding} />
           </el-icon>
           联系地址
         </div>
@@ -90,7 +89,7 @@ export function useColumns() {
       labelRenderer: () => (
         <div class="flex items-center">
           <el-icon>
-            <IconifyIconOffline icon={Notebook} />
+            <iconify-icon-offline icon={Notebook} />
           </el-icon>
           好好学习，天天向上
         </div>

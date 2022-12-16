@@ -1,11 +1,25 @@
-import { ref } from "vue";
 import dayjs from "dayjs";
 import { message } from "@/utils/message";
+import { getRoleList } from "@/api/system";
 import { ElMessageBox } from "element-plus";
+import { type PaginationProps } from "@pureadmin/table";
+import { reactive, ref, computed, onMounted } from "vue";
 
-export function useColumns() {
+export function useRole() {
+  const form = reactive({
+    name: "",
+    code: "",
+    status: ""
+  });
+  const dataList = ref([]);
+  const loading = ref(true);
   const switchLoadMap = ref({});
-
+  const pagination = reactive<PaginationProps>({
+    total: 0,
+    pageSize: 10,
+    currentPage: 1,
+    background: true
+  });
   const columns: TableColumnList = [
     {
       type: "selection",
@@ -21,19 +35,23 @@ export function useColumns() {
     },
     {
       label: "角色编号",
-      prop: "id"
+      prop: "id",
+      minWidth: 100
     },
     {
       label: "角色名称",
-      prop: "name"
+      prop: "name",
+      minWidth: 120
     },
     {
       label: "角色标识",
-      prop: "code"
+      prop: "code",
+      minWidth: 150
     },
     {
       label: "角色类型",
       prop: "type",
+      minWidth: 150,
       cellRenderer: ({ row, props }) => (
         <el-tag
           size={props.size}
@@ -46,12 +64,12 @@ export function useColumns() {
     },
     {
       label: "显示顺序",
-      prop: "sort"
+      prop: "sort",
+      minWidth: 100
     },
     {
       label: "状态",
-      prop: "status",
-      width: 130,
+      minWidth: 130,
       cellRenderer: scope => (
         <el-switch
           size={scope.props.size === "small" ? "small" : "default"}
@@ -68,7 +86,7 @@ export function useColumns() {
     },
     {
       label: "创建时间",
-      width: 180,
+      minWidth: 180,
       prop: "createTime",
       formatter: ({ createTime }) =>
         dayjs(createTime).format("YYYY-MM-DD HH:mm:ss")
@@ -80,6 +98,15 @@ export function useColumns() {
       slot: "operation"
     }
   ];
+  const buttonClass = computed(() => {
+    return [
+      "!h-[20px]",
+      "reset-margin",
+      "!text-gray-500",
+      "dark:!text-white",
+      "dark:hover:!text-primary"
+    ];
+  });
 
   function onChange({ row, index }) {
     ElMessageBox.confirm(
@@ -123,7 +150,59 @@ export function useColumns() {
       });
   }
 
+  function handleUpdate(row) {
+    console.log(row);
+  }
+
+  function handleDelete(row) {
+    console.log(row);
+  }
+
+  function handleSizeChange(val: number) {
+    console.log(`${val} items per page`);
+  }
+
+  function handleCurrentChange(val: number) {
+    console.log(`current page: ${val}`);
+  }
+
+  function handleSelectionChange(val) {
+    console.log("handleSelectionChange", val);
+  }
+
+  async function onSearch() {
+    loading.value = true;
+    const { data } = await getRoleList();
+    dataList.value = data.list;
+    pagination.total = data.total;
+    setTimeout(() => {
+      loading.value = false;
+    }, 500);
+  }
+
+  const resetForm = formEl => {
+    if (!formEl) return;
+    formEl.resetFields();
+    onSearch();
+  };
+
+  onMounted(() => {
+    onSearch();
+  });
+
   return {
-    columns
+    form,
+    loading,
+    columns,
+    dataList,
+    pagination,
+    buttonClass,
+    onSearch,
+    resetForm,
+    handleUpdate,
+    handleDelete,
+    handleSizeChange,
+    handleCurrentChange,
+    handleSelectionChange
   };
 }

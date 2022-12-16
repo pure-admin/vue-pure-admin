@@ -1,11 +1,25 @@
-import { ref } from "vue";
 import dayjs from "dayjs";
 import { message } from "@/utils/message";
+import { getUserList } from "@/api/system";
 import { ElMessageBox } from "element-plus";
+import { type PaginationProps } from "@pureadmin/table";
+import { reactive, ref, computed, onMounted } from "vue";
 
-export function useColumns() {
+export function useUser() {
+  const form = reactive({
+    username: "",
+    mobile: "",
+    status: ""
+  });
+  const dataList = ref([]);
+  const loading = ref(true);
   const switchLoadMap = ref({});
-
+  const pagination = reactive<PaginationProps>({
+    total: 0,
+    pageSize: 10,
+    currentPage: 1,
+    background: true
+  });
   const columns: TableColumnList = [
     {
       type: "selection",
@@ -21,19 +35,23 @@ export function useColumns() {
     },
     {
       label: "用户编号",
-      prop: "id"
+      prop: "id",
+      minWidth: 130
     },
     {
       label: "用户名称",
-      prop: "username"
+      prop: "username",
+      minWidth: 130
     },
     {
       label: "用户昵称",
-      prop: "nickname"
+      prop: "nickname",
+      minWidth: 130
     },
     {
       label: "性别",
       prop: "sex",
+      minWidth: 90,
       cellRenderer: ({ row, props }) => (
         <el-tag
           size={props.size}
@@ -47,16 +65,18 @@ export function useColumns() {
     {
       label: "部门",
       prop: "dept",
+      minWidth: 90,
       formatter: ({ dept }) => dept.name
     },
     {
       label: "手机号码",
-      prop: "mobile"
+      prop: "mobile",
+      minWidth: 90
     },
     {
       label: "状态",
       prop: "status",
-      width: 130,
+      minWidth: 90,
       cellRenderer: scope => (
         <el-switch
           size={scope.props.size === "small" ? "small" : "default"}
@@ -73,7 +93,7 @@ export function useColumns() {
     },
     {
       label: "创建时间",
-      width: 180,
+      minWidth: 90,
       prop: "createTime",
       formatter: ({ createTime }) =>
         dayjs(createTime).format("YYYY-MM-DD HH:mm:ss")
@@ -85,6 +105,15 @@ export function useColumns() {
       slot: "operation"
     }
   ];
+  const buttonClass = computed(() => {
+    return [
+      "!h-[20px]",
+      "reset-margin",
+      "!text-gray-500",
+      "dark:!text-white",
+      "dark:hover:!text-primary"
+    ];
+  });
 
   function onChange({ row, index }) {
     ElMessageBox.confirm(
@@ -128,7 +157,59 @@ export function useColumns() {
       });
   }
 
+  function handleUpdate(row) {
+    console.log(row);
+  }
+
+  function handleDelete(row) {
+    console.log(row);
+  }
+
+  function handleSizeChange(val: number) {
+    console.log(`${val} items per page`);
+  }
+
+  function handleCurrentChange(val: number) {
+    console.log(`current page: ${val}`);
+  }
+
+  function handleSelectionChange(val) {
+    console.log("handleSelectionChange", val);
+  }
+
+  async function onSearch() {
+    loading.value = true;
+    const { data } = await getUserList();
+    dataList.value = data.list;
+    pagination.total = data.total;
+    setTimeout(() => {
+      loading.value = false;
+    }, 500);
+  }
+
+  const resetForm = formEl => {
+    if (!formEl) return;
+    formEl.resetFields();
+    onSearch();
+  };
+
+  onMounted(() => {
+    onSearch();
+  });
+
   return {
-    columns
+    form,
+    loading,
+    columns,
+    dataList,
+    pagination,
+    buttonClass,
+    onSearch,
+    resetForm,
+    handleUpdate,
+    handleDelete,
+    handleSizeChange,
+    handleCurrentChange,
+    handleSelectionChange
   };
 }
