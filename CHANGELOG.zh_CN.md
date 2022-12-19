@@ -1,3 +1,19 @@
+# 3.9.6 (2022-12-19)
+
+### 🎫 Chores
+
+- 升级 `vite4` 版本
+
+### 🐞 Bug fixes
+
+- 修复 `tailwind.css` 错误的引入方式导致 `vite` 的 `hmr` 慢的问题
+
+### 🍏 Perf
+
+- 更新 [@pureadmin/theme](https://github.com/pure-admin/pure-admin-theme) 至最新版，带来更友好的类型提示
+- 优化 [PureTableBar](https://github.com/xiaoxian521/vue-pure-admin/tree/main/src/components/RePureTableBar) 组件
+- 优化系统管理页面业务代码，带来更好的代码参考
+
 # 3.9.5 (2022-12-13)
 
 ### ✔️ refactor
