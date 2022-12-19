@@ -44,7 +44,7 @@ specifiers:
   dayjs: ^1.11.6
   echarts: ^5.4.0
   el-table-infinite-scroll: ^3.0.1
-  element-plus: ^2.2.26
+  element-plus: ^2.2.27
   element-resize-detector: ^1.2.4
   eslint: ^8.8.0
   eslint-plugin-prettier: ^4.0.0
@@ -60,7 +60,7 @@ specifiers:
   nprogress: ^0.2.0
   path: ^0.12.7
   picocolors: ^1.0.0
-  pinia: ^2.0.27
+  pinia: ^2.0.28
   postcss: ^8.4.18
   postcss-html: ^1.5.0
   postcss-import: ^15.0.0
@@ -114,8 +114,8 @@ dependencies:
   "@howdyjs/mouse-menu": 2.0.5_vue@3.2.45
   "@logicflow/core": 1.1.31
   "@logicflow/extension": 1.1.31
-  "@pureadmin/descriptions": 1.1.1_element-plus@2.2.26
-  "@pureadmin/table": 1.9.0_element-plus@2.2.26
+  "@pureadmin/descriptions": 1.1.1_element-plus@2.2.27
+  "@pureadmin/table": 1.9.0_element-plus@2.2.27
   "@pureadmin/utils": 1.8.5_echarts@5.4.1+vue@3.2.45
   "@vueuse/core": 9.6.0_vue@3.2.45
   "@vueuse/motion": 2.0.0-beta.12_vue@3.2.45
@@ -128,7 +128,7 @@ dependencies:
   dayjs: 1.11.7
   echarts: 5.4.1
   el-table-infinite-scroll: 3.0.1
-  element-plus: 2.2.26_vue@3.2.45
+  element-plus: 2.2.27_vue@3.2.45
   element-resize-detector: 1.2.4
   intro.js: 6.0.0
   js-cookie: 3.0.1
@@ -1480,7 +1480,7 @@ packages:
       fastq: 1.14.0
     dev: true
 
-  /@pureadmin/descriptions/1.1.1_element-plus@2.2.26:
+  /@pureadmin/descriptions/1.1.1_element-plus@2.2.27:
     resolution:
       {
         integrity: sha512-4BHLKomLU/LxGs5EUA+h+aKNrJEkhrU6+QE8VoWfJZ8VTU6ddvFLT/Pi4WuO5CWNXM9ZjqvHLFFVwEPlKntqtg==
@@ -1489,11 +1489,11 @@ packages:
       element-plus: ^2.0.0
     dependencies:
       "@element-plus/icons-vue": 2.0.10_vue@3.2.45
-      element-plus: 2.2.26_vue@3.2.45
+      element-plus: 2.2.27_vue@3.2.45
       vue: 3.2.45
     dev: false
 
-  /@pureadmin/table/1.9.0_element-plus@2.2.26:
+  /@pureadmin/table/1.9.0_element-plus@2.2.27:
     resolution:
       {
         integrity: sha512-3cGbQc5QV0E7i1h0QZJWVuwJKXn1Kk2Ae6T/Z/pxEVRbwE0L+vixI/x9WO31/yZEL7qNz2lD+OIOtUU+HjTbYA==
@@ -1501,7 +1501,7 @@ packages:
     peerDependencies:
       element-plus: ^2.0.0
     dependencies:
-      element-plus: 2.2.26_vue@3.2.45
+      element-plus: 2.2.27_vue@3.2.45
       vue: 3.2.45
     dev: false
 
@@ -3983,7 +3983,7 @@ packages:
       }
     dependencies:
       core-js: 3.26.1
-      element-plus: 2.2.26_vue@3.2.45
+      element-plus: 2.2.27_vue@3.2.45
       vue: 3.2.45
     transitivePeerDependencies:
       - "@vue/composition-api"
@@ -3996,10 +3996,10 @@ packages:
       }
     dev: true
 
-  /element-plus/2.2.26_vue@3.2.45:
+  /element-plus/2.2.27_vue@3.2.45:
     resolution:
       {
-        integrity: sha512-O/rdY5m9DkclpVg8r3GynyqCunm7MxSR142xSsjrZA77bi7bcwA3SIy6SPEDqHi5R4KqgkGYgKSp4Q4e3irbYg==
+        integrity: sha512-P04HDOZBYDdvlYuleuCZRULzAc5xJVOBfLDK9xWxVo0vyo8ntdaXS5sTU+/76vrNzuO3FhLn9kvrsbiJEVa1jg==
       }
     peerDependencies:
       vue: ^3.2.0
