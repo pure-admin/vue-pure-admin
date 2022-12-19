@@ -8,7 +8,6 @@ import {
 } from "vue-router";
 import { router } from "./index";
 import { isProxy, toRaw } from "vue";
-import { loadEnv } from "../../build";
 import { useTimeoutFn } from "@vueuse/core";
 import { RouteConfigs } from "@/layout/types";
 import {
@@ -324,7 +323,7 @@ function addAsyncRoutes(arrRoutes: Array<RouteRecordRaw>) {
 
 /** 获取路由历史模式 https://next.router.vuejs.org/zh/guide/essentials/history-mode.html */
 function getHistoryMode(): RouterHistory {
-  const routerHistory = loadEnv().VITE_ROUTER_HISTORY;
+  const routerHistory = import.meta.env.VITE_ROUTER_HISTORY;
   // len为1 代表只有历史模式 为2 代表历史模式中存在base参数 https://next.router.vuejs.org/zh/api/#%E5%8F%82%E6%95%B0-1
   const historyMode = routerHistory.split(",");
   const leftMode = historyMode[0];

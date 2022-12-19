@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { loadEnv } from "@build/index";
 
 defineOptions({
   name: "Button"
 });
 
-const { VITE_PUBLIC_PATH } = loadEnv();
+const { VITE_PUBLIC_PATH } = import.meta.env;
 
 const url = ref(`${VITE_PUBLIC_PATH}html/button.html`);
 </script>

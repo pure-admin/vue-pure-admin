@@ -1,9 +1,8 @@
 import { App } from "vue";
 import axios from "axios";
-import { loadEnv } from "@build/index";
 
 let config: object = {};
-const { VITE_PUBLIC_PATH } = loadEnv();
+const { VITE_PUBLIC_PATH } = import.meta.env;
 
 const setConfig = (cfg?: unknown) => {
   config = Object.assign(config, cfg);
