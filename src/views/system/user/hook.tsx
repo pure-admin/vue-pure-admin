@@ -157,11 +157,19 @@ export function useUser() {
       });
   }
 
+  function handleAdd(row) {
+    const len = dataList.value.length;
+    const user = dataList.value.at(Math.floor(Math.random() * len));
+    dataList.value.push(user);
+    console.log(row);
+  }
+
   function handleUpdate(row) {
     console.log(row);
   }
 
   function handleDelete(row) {
+    dataList.value.splice(dataList.value.indexOf(row), 1);
     console.log(row);
   }
 
@@ -180,7 +188,19 @@ export function useUser() {
   async function onSearch() {
     loading.value = true;
     const { data } = await getUserList();
-    dataList.value = data.list;
+    dataList.value = data.list.filter(item => {
+      let result = true;
+      if (form.username) {
+        result = result && item?.username?.includes(form.username);
+      }
+      if (form.mobile) {
+        result = result && item?.mobile?.includes(form.mobile);
+      }
+      if (form.status) {
+        result = result && item?.status == form.status;
+      }
+      return result;
+    });
     pagination.total = data.total;
     setTimeout(() => {
       loading.value = false;
@@ -206,6 +226,7 @@ export function useUser() {
     buttonClass,
     onSearch,
     resetForm,
+    handleAdd,
     handleUpdate,
     handleDelete,
     handleSizeChange,

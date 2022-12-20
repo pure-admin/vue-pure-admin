@@ -28,6 +28,7 @@ const {
   buttonClass,
   onSearch,
   resetForm,
+  handleAdd,
   handleUpdate,
   handleDelete,
   handleSizeChange,
@@ -90,7 +91,11 @@ const {
 
       <PureTableBar title="用户管理" @refresh="onSearch">
         <template #buttons>
-          <el-button type="primary" :icon="useRenderIcon(AddFill)">
+          <el-button
+            @click="handleAdd"
+            type="primary"
+            :icon="useRenderIcon(AddFill)"
+          >
             新增用户
           </el-button>
         </template>
@@ -125,7 +130,7 @@ const {
               >
                 修改
               </el-button>
-              <el-popconfirm title="是否确认删除?">
+              <el-popconfirm title="是否确认删除?" @confirm="handleDelete(row)">
                 <template #reference>
                   <el-button
                     class="reset-margin"
@@ -133,7 +138,6 @@ const {
                     type="primary"
                     :size="size"
                     :icon="useRenderIcon(Delete)"
-                    @click="handleDelete(row)"
                   >
                     删除
                   </el-button>
