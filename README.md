@@ -140,7 +140,7 @@ pnpm build
 
 [xiaoxian521](https://github.com/xiaoxian521)、[Ten-K](https://github.com/Ten-K)
 
-## 捐赠
+## 支持
 
 如果您觉得这个项目对您有帮助，可以帮作者买一杯果汁 🍹 表示支持
 
@@ -148,9 +148,7 @@ pnpm build
 
 ## `QQ` 交流群
 
-一群已满，下面是二群，群里严禁`黄`、`赌`、`毒`、`vpn`等违法行为！
-
-<img src="https://yiming_chang.gitee.io/pure-admin-doc/img/support/qq.png" width="150px" height="225px" />
+[点击去加入](https://yiming_chang.gitee.io/pure-admin-doc/pages/support/#qq-%E4%BA%A4%E6%B5%81%E7%BE%A4)
 
 ## 许可证
 
@@ -158,7 +156,7 @@ pnpm build
 
 [MIT © xiaoxian521-2020](./LICENSE)
 
-## 捐赠者
+## 支持者
 
 非常感谢您们的支持，相信项目会越来越好 :heart:
 
