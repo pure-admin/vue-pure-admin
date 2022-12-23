@@ -130,7 +130,7 @@
     "terser": "^5.15.1",
     "typescript": "^4.9.3",
     "unplugin-vue-define-options": "^1.0.0",
-    "vite": "^4.0.2",
+    "vite": "^4.0.3",
     "vite-plugin-cdn-import": "^0.3.5",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-mock": "^2.9.6",

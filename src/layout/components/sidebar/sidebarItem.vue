@@ -144,7 +144,8 @@ function resolvePath(routePath) {
   if (httpReg.test(routePath) || httpReg.test(props.basePath)) {
     return routePath || props.basePath;
   } else {
-    return path.resolve(props.basePath, routePath);
+    // 使用path.posix.resolve替代path.resolve 避免windows环境下使用electron出现盘符问题
+    return path.posix.resolve(props.basePath, routePath);
   }
 }
 </script>
