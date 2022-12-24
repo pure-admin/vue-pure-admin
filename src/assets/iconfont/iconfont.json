@@ -2,50 +2,29 @@
   "id": "2208059",
   "name": "pure-admin",
   "font_family": "iconfont",
-  "css_prefix_text": "team-icon",
-  "description": "pure-admin",
+  "css_prefix_text": "pure-iconfont-",
+  "description": "pure-admin-iconfont",
   "glyphs": [
     {
       "icon_id": "20594647",
-      "name": "标签页",
+      "name": "Tabs",
       "font_class": "tabs",
       "unicode": "e63e",
       "unicode_decimal": 58942
     },
     {
       "icon_id": "22129506",
-      "name": "水能",
+      "name": "PureLogo",
       "font_class": "logo",
       "unicode": "e620",
       "unicode_decimal": 58912
     },
     {
-      "icon_id": "7795613",
-      "name": "新品",
-      "font_class": "xinpin",
-      "unicode": "e614",
-      "unicode_decimal": 58900
-    },
-    {
       "icon_id": "7795615",
-      "name": "新品人气王",
-      "font_class": "xinpinrenqiwang",
+      "name": "New",
+      "font_class": "new",
       "unicode": "e615",
       "unicode_decimal": 58901
-    },
-    {
-      "icon_id": "5698509",
-      "name": "全屏缩小",
-      "font_class": "exit-fullscreen",
-      "unicode": "e62a",
-      "unicode_decimal": 58922
-    },
-    {
-      "icon_id": "5698510",
-      "name": "全屏显示",
-      "font_class": "fullscreen",
-      "unicode": "e62b",
-      "unicode_decimal": 58923
     }
   ]
 }

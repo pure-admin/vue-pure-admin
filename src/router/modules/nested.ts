@@ -55,7 +55,7 @@ export default {
                 keepAlive: true,
                 extraIcon: {
                   svg: true,
-                  name: "team-iconxinpinrenqiwang"
+                  name: "pure-iconfont-new"
                 }
               }
             }

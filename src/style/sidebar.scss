@@ -20,6 +20,11 @@
     justify-content: center;
     align-items: center;
     margin-right: 5px;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
   }
 
   .set-icon {
@@ -195,7 +200,7 @@
       align-items: center;
       padding-left: 10px;
       cursor: pointer;
-      transition: all 0.125s ease;
+      transition: all var(--pure-transition-duration) ease;
 
       i {
         font-size: 30px;
@@ -374,16 +379,10 @@
 
     .el-menu-item,
     .el-sub-menu {
-      // i {
-      //   width: 20px;
-      //   text-align: center;
-      //   font-size: 16px;
-      // }
+      .iconfont {
+        font-size: 18px;
+      }
 
-      // i.fa {
-      //   margin-right: 5px;
-      //   font-size: 16px;
-      // }
       .el-menu-tooltip__trigger {
         width: 54px;
         padding: 18px !important;
@@ -477,7 +476,7 @@
     background-color: $menuActiveBefore;
     content: "";
     clear: both;
-    transition: all 0.125s ease-in-out;
+    transition: all var(--pure-transition-duration) ease-in-out;
     transform: translateY(0);
   }
 
@@ -537,7 +536,7 @@ body[layout="vertical"] {
     }
 
     .sidebar-container {
-      transition: width 0.125s;
+      transition: width var(--pure-transition-duration);
       width: 54px !important;
 
       .is-active.submenu-title-noDropdown.outer-most {
@@ -622,7 +621,7 @@ body[layout="mix"] {
     }
 
     .sidebar-container {
-      transition: width 0.125s;
+      transition: width var(--pure-transition-duration);
       width: 54px !important;
 
       .is-active.submenu-title-noDropdown.outer-most {
