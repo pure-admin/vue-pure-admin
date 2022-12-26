@@ -70,14 +70,8 @@ notices.value.map(v => (noticesNum.value += v.list.length));
     height: 1px;
   }
 
-  // 如果上面的 notices 长度大于 3 请注释掉下面代码
   :deep(.el-tabs__nav-wrap) {
     padding: 0 36px 0 36px;
-  }
-
-  // 如果上面的 notices 长度大于 3 请注释掉下面代码
-  :deep(.el-tabs__active-bar) {
-    margin: 0 36px 0 36px;
   }
 }
 </style>

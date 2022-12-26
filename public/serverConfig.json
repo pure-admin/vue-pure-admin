@@ -1,5 +1,5 @@
 {
-  "Version": "3.9.5",
+  "Version": "3.9.6",
   "Title": "PureAdmin",
   "FixedHeader": true,
   "HiddenSideBar": false,
@@ -17,7 +17,7 @@
   "ShowLogo": true,
   "ShowModel": "smart",
   "MenuArrowIconNoTransition": true,
-  "CachingAsyncRoutes": true,
+  "CachingAsyncRoutes": false,
   "TooltipEffect": "light",
   "MapConfigure": {
     "amapKey": "97b3248d1553172e81f168cf94ea667e",

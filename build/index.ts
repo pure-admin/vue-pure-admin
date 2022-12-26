@@ -27,9 +27,4 @@ const warpperEnv = (envConf: Recordable): ViteEnv => {
   return ret;
 };
 
-/** 获取环境变量 */
-const loadEnv = (): ViteEnv => {
-  return import.meta.env;
-};
-
-export { warpperEnv, loadEnv };
+export { warpperEnv };
