@@ -1,0 +1,1 @@
+const e=Vue.defineComponent({name:"MenuOverflow"}),u=Vue.defineComponent({...e,setup(n){return(o,t)=>(Vue.openBlock(),Vue.createElementBlock("div",null,"目录、菜单文字超出显示 Tooltip 文字提示"))}});export{u as default};
