@@ -1,3 +1,10 @@
+# 3.9.7 (2022-12-26)
+
+### 🍏 Perf
+
+- 使用 `path.posix.resolve` 替代 `path.resolve` 避免 `windows` 环境下使用 `electron` 出现盘符问题
+- 默认关闭 `CachingAsyncRoutes` 动态路由缓存本地，使其在开发环境下调试更方便，不用每次修改动态路由都要先清空本地缓存的动态路由，更推荐在生产环境开启
+
 # 3.9.6 (2022-12-19)
 
 ### 🎫 Chores
