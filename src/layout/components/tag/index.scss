@@ -281,7 +281,7 @@
   left: 0;
   bottom: 0;
   background: var(--el-color-primary);
-  animation: scheduleInWidth 400ms ease-in;
+  animation: scheduleInWidth 200ms ease-in;
 }
 
 /* 灵动模式下鼠标移出隐藏蓝色进度条 */
@@ -292,5 +292,5 @@
   left: 0;
   bottom: 0;
   background: var(--el-color-primary);
-  animation: scheduleOutWidth 400ms ease-in;
+  animation: scheduleOutWidth 200ms ease-in;
 }
