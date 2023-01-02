@@ -156,7 +156,7 @@ const tableData: User[] = [
         }"
       >
         <p class="font-medium pt-1">Echart</p>
-        <Line class="echart" style="margin: 0 auto; height: 300px" />
+        <Line class="echart" style="margin: 0 auto; height: 88%" />
       </el-col>
 
       <el-col
