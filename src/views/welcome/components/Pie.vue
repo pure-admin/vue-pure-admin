@@ -71,7 +71,7 @@ setOptions(
 watch(
   () => useAppStoreHook().getSidebarStatus,
   () => {
-    delay(360).then(() => resize());
+    delay(600).then(() => resize());
   }
 );
 </script>
