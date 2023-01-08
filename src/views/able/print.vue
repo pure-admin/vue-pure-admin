@@ -10,6 +10,7 @@ defineOptions({
 interface User {
   date: string;
   name: string;
+  age: number;
   address: string;
 }
 
@@ -19,15 +20,15 @@ const options = [
   {
     value: "1",
     el: ".el-table",
-    label: "Element-Plus Table"
+    label: "Table"
   },
   {
-    value: "3",
+    value: "2",
     el: ".echart",
     label: "Echart"
   },
   {
-    value: "4",
+    value: "3",
     el: ".img",
     label: "Image"
   }
@@ -51,21 +52,25 @@ const tableData: User[] = [
   {
     date: "2016-05-03",
     name: "Tom",
+    age: 18,
     address: "No. 189, Grove St, Los Angeles"
   },
   {
     date: "2016-05-02",
     name: "Tom",
+    age: 18,
     address: "No. 189, Grove St, Los Angeles"
   },
   {
     date: "2016-05-04",
     name: "Tom",
+    age: 18,
     address: "No. 189, Grove St, Los Angeles"
   },
   {
     date: "2016-05-01",
     name: "Tom",
+    age: 18,
     address: "No. 189, Grove St, Los Angeles"
   }
 ];
@@ -98,12 +103,11 @@ const tableData: User[] = [
     </template>
     <el-row :gutter="24">
       <el-col
-        :xs="22"
-        :sm="22"
-        :md="11"
-        :lg="11"
-        :xl="11"
-        style="margin: 10px; border: 0.01rem solid var(--el-color-primary)"
+        :xs="24"
+        :sm="24"
+        :md="24"
+        :lg="24"
+        :xl="24"
         v-motion
         :initial="{
           opacity: 0,
@@ -117,31 +121,28 @@ const tableData: User[] = [
           }
         }"
       >
-        <p class="font-medium pt-1">Element-Plus Table</p>
+        <p class="font-medium pt-1">Table</p>
         <el-table
           border
           :data="tableData"
           :row-class-name="tableRowClassName"
-          class="el-table w-full mt-[40px] mr-[40px]"
+          class="el-table w-full mt-[10px]"
         >
-          <el-table-column prop="date" label="Date" width="180" />
-          <el-table-column prop="name" label="Name" width="180" />
+          <el-table-column prop="date" label="Date" />
+          <el-table-column prop="name" label="Name" />
+          <el-table-column prop="age" label="age" />
           <el-table-column prop="address" label="Address" />
         </el-table>
       </el-col>
 
+      <el-divider />
+
       <el-col
-        :xs="22"
-        :sm="22"
+        :xs="11"
+        :sm="11"
         :md="11"
         :lg="11"
         :xl="11"
-        style="
-          width: 200px;
-          height: 300px;
-          margin: 10px;
-          border: 0.01rem solid var(--el-color-primary);
-        "
         v-motion
         :initial="{
           opacity: 0,
@@ -156,21 +157,15 @@ const tableData: User[] = [
         }"
       >
         <p class="font-medium pt-1">Echart</p>
-        <Line class="echart" style="margin: 0 auto; height: 300px" />
+        <Line class="echart mt-[10px]" />
       </el-col>
 
       <el-col
-        :xs="22"
-        :sm="22"
+        :xs="11"
+        :sm="11"
         :md="11"
         :lg="11"
         :xl="11"
-        style="
-          width: 200px;
-          height: 300px;
-          margin: 10px;
-          border: 0.01rem solid var(--el-color-primary);
-        "
         v-motion
         :initial="{
           opacity: 0,
@@ -188,8 +183,7 @@ const tableData: User[] = [
         <img
           src="https://avatars.githubusercontent.com/u/44761321?v=4"
           alt="avatars"
-          class="img"
-          style="width: 200px; height: 200px; margin: 50px auto"
+          class="img mt-[10px] w-[250px] h-[250px] m-auto"
         />
       </el-col>
     </el-row>

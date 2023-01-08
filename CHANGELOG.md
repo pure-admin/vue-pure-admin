@@ -1,3 +1,10 @@
+# 3.9.7 (2022-12-26)
+
+### 🍏 Perf
+
+- Use `path.posix.resolve` instead of `path.resolve` to avoid drive letter problems when using `electron` in `windows` environment
+- By default, the `CachingAsyncRoutes` dynamic routing cache is turned off locally, making it easier to debug in the development environment. It is not necessary to clear the local cached dynamic routing every time you modify the dynamic routing. It is recommended to enable it in the production environment
+
 # 3.9.6 (2022-12-19)
 
 ### 🎫 Chores
