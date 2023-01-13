@@ -85,42 +85,28 @@ const transitionMain = defineComponent({
             <backTop />
           </el-backtop>
           <transitionMain :route="route">
-            <keep-alive
-              v-if="keepAlive"
-              :include="usePermissionStoreHook().cachePageList"
-            >
-              <component
-                :is="Component"
-                :key="route.fullPath"
-                class="main-content"
-              />
-            </keep-alive>
-            <component
-              v-else
-              :is="Component"
-              :key="route.fullPath"
-              class="main-content"
-            />
+            <div :key="route.fullPath">
+              <keep-alive
+                v-if="keepAlive"
+                :include="usePermissionStoreHook().cachePageList"
+              >
+                <component :is="Component" class="m-6" />
+              </keep-alive>
+              <component v-else :is="Component" class="m-6" />
+            </div>
           </transitionMain>
         </el-scrollbar>
         <div v-else>
           <transitionMain :route="route">
-            <keep-alive
-              v-if="keepAlive"
-              :include="usePermissionStoreHook().cachePageList"
-            >
-              <component
-                :is="Component"
-                :key="route.fullPath"
-                class="main-content"
-              />
-            </keep-alive>
-            <component
-              v-else
-              :is="Component"
-              :key="route.fullPath"
-              class="main-content"
-            />
+            <div :key="route.fullPath">
+              <keep-alive
+                v-if="keepAlive"
+                :include="usePermissionStoreHook().cachePageList"
+              >
+                <component :is="Component" class="m-6" />
+              </keep-alive>
+              <component v-else :is="Component" class="m-6" />
+            </div>
           </transitionMain>
         </div>
       </template>
