@@ -90,9 +90,9 @@ const transitionMain = defineComponent({
                 v-if="keepAlive"
                 :include="usePermissionStoreHook().cachePageList"
               >
-                <component :is="Component" class="m-6" />
+                <component :is="Component" class="main-content" />
               </keep-alive>
-              <component v-else :is="Component" class="m-6" />
+              <component v-else :is="Component" class="main-content" />
             </div>
           </transitionMain>
         </el-scrollbar>
@@ -103,9 +103,9 @@ const transitionMain = defineComponent({
                 v-if="keepAlive"
                 :include="usePermissionStoreHook().cachePageList"
               >
-                <component :is="Component" class="m-6" />
+                <component :is="Component" class="main-content" />
               </keep-alive>
-              <component v-else :is="Component" class="m-6" />
+              <component v-else :is="Component" class="main-content" />
             </div>
           </transitionMain>
         </div>
