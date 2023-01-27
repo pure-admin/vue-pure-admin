@@ -14,11 +14,11 @@
   }
 
   .sub-menu-icon {
-    vertical-align: middle;
+    // vertical-align: middle;
     font-size: 18px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
+    // display: inline-flex;
+    // justify-content: center;
+    // align-items: center;
     margin-right: 5px;
 
     svg {
@@ -289,6 +289,7 @@
 
     .el-menu-item,
     .el-sub-menu__title {
+      padding-right: var(--el-menu-base-level-padding);
       color: $menuText;
 
       &:hover {
@@ -385,7 +386,8 @@
 
       .el-menu-tooltip__trigger {
         width: 54px;
-        padding: 18px !important;
+        padding: 0;
+        // padding: 18px !important;
       }
     }
   }
@@ -470,7 +472,7 @@
   .el-menu--collapse .is-active.submenu-title-noDropdown.outer-most::before {
     position: absolute;
     top: 0;
-    left: 2px;
+    left: 0;
     width: 2px;
     height: 100%;
     background-color: $menuActiveBefore;
@@ -553,11 +555,10 @@ body[layout="vertical"] {
       .el-sub-menu {
         & > .el-sub-menu__title {
           & > span {
-            height: 0;
-            width: 0;
-            overflow: hidden;
-            visibility: hidden;
-            display: inline-block;
+            height: 100%;
+            width: 100%;
+            text-align: center;
+            visibility: visible;
           }
         }
       }
@@ -567,7 +568,7 @@ body[layout="vertical"] {
       }
 
       .el-sub-menu__title {
-        padding: 0 18px !important;
+        padding: 0;
       }
     }
 
@@ -637,12 +638,12 @@ body[layout="mix"] {
     .el-menu--collapse {
       .el-sub-menu {
         & > .el-sub-menu__title {
+          padding: 0;
           & > span {
-            height: 0;
-            width: 0;
-            overflow: hidden;
-            visibility: hidden;
-            display: inline-block;
+            height: 100%;
+            width: 100%;
+            text-align: center;
+            visibility: visible;
           }
         }
       }
