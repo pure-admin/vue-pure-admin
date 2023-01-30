@@ -3,7 +3,6 @@ import { useRouter } from "vue-router";
 import { cloneDeep } from "@pureadmin/utils";
 import SearchResult from "./SearchResult.vue";
 import SearchFooter from "./SearchFooter.vue";
-import { deleteChildren } from "@/utils/tree";
 import { useNav } from "@/layout/hooks/useNav";
 import { transformI18n } from "@/plugins/i18n";
 import { useDebounceFn, onKeyStroke } from "@vueuse/core";
@@ -33,7 +32,7 @@ const handleSearch = useDebounceFn(search, 300);
 
 /** 菜单树形结构 */
 const menusData = computed(() => {
-  return deleteChildren(cloneDeep(usePermissionStoreHook().wholeMenus));
+  return cloneDeep(usePermissionStoreHook().wholeMenus);
 });
 
 const show = computed({
