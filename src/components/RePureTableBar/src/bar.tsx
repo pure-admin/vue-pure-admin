@@ -110,7 +110,9 @@ export default defineComponent({
           <div class="flex justify-between w-full h-[60px] p-4">
             <p class="font-bold truncate">{props.title}</p>
             <div class="flex items-center justify-around">
-              <div class="flex mr-4">{slots?.buttons()}</div>
+              {slots?.buttons ? (
+                <div class="flex mr-4">{slots.buttons()}</div>
+              ) : null}
               {props.tableRef?.size ? (
                 <>
                   <el-tooltip
