@@ -12,7 +12,7 @@ specifiers:
   "@logicflow/core": ^1.1.30
   "@logicflow/extension": ^1.1.30
   "@pureadmin/descriptions": ^1.1.0
-  "@pureadmin/table": ^1.9.0
+  "@pureadmin/table": ^2.0.0
   "@pureadmin/theme": ^3.0.0
   "@pureadmin/utils": ^1.8.5
   "@types/element-resize-detector": 1.1.3
@@ -30,7 +30,7 @@ specifiers:
   "@vitejs/plugin-vue-jsx": ^3.0.0
   "@vue/eslint-config-prettier": ^7.0.0
   "@vue/eslint-config-typescript": ^11.0.2
-  "@vueuse/core": ^9.10.0
+  "@vueuse/core": ^9.12.0
   "@vueuse/motion": 2.0.0-beta.12
   "@wangeditor/editor": ^5.1.21
   "@wangeditor/editor-for-vue": ^5.1.12
@@ -60,7 +60,7 @@ specifiers:
   nprogress: ^0.2.0
   path: ^0.12.7
   picocolors: ^1.0.0
-  pinia: ^2.0.28
+  pinia: ^2.0.30
   postcss: ^8.4.21
   postcss-html: ^1.5.0
   postcss-import: ^15.1.0
@@ -82,7 +82,7 @@ specifiers:
   stylelint-config-standard: ^29.0.0
   stylelint-order: ^5.0.0
   svgo: ^3.0.2
-  swiper: ^8.4.5
+  swiper: ^9.0.3
   tailwindcss: ^3.2.4
   terser: ^5.16.1
   typeit: ^8.7.1
@@ -115,9 +115,9 @@ dependencies:
   "@logicflow/core": 1.1.31
   "@logicflow/extension": 1.1.31
   "@pureadmin/descriptions": 1.1.1_element-plus@2.2.29
-  "@pureadmin/table": 1.9.0_element-plus@2.2.29
+  "@pureadmin/table": 2.0.0_element-plus@2.2.29
   "@pureadmin/utils": 1.8.5_echarts@5.4.1+vue@3.2.45
-  "@vueuse/core": 9.10.0_vue@3.2.45
+  "@vueuse/core": 9.12.0_vue@3.2.45
   "@vueuse/motion": 2.0.0-beta.12_vue@3.2.45
   "@wangeditor/editor": 5.1.23
   "@wangeditor/editor-for-vue": 5.1.12_3apfu3xbp6awzuex7ed3sbrv6y
@@ -138,12 +138,12 @@ dependencies:
   mockjs: 1.1.0
   nprogress: 0.2.0
   path: 0.12.7
-  pinia: 2.0.28_prq2uz4lho2pwp6irk4cfkrxwu
+  pinia: 2.0.30_prq2uz4lho2pwp6irk4cfkrxwu
   qrcode: 1.5.1
   qs: 6.11.0
   responsive-storage: 2.1.0
   sortablejs: 1.15.0
-  swiper: 8.4.5
+  swiper: 9.0.3
   typeit: 8.7.1
   v-contextmenu: 3.0.0_vue@3.2.45
   vue: 3.2.45
@@ -1516,10 +1516,10 @@ packages:
       vue: 3.2.45
     dev: false
 
-  /@pureadmin/table/1.9.0_element-plus@2.2.29:
+  /@pureadmin/table/2.0.0_element-plus@2.2.29:
     resolution:
       {
-        integrity: sha512-3cGbQc5QV0E7i1h0QZJWVuwJKXn1Kk2Ae6T/Z/pxEVRbwE0L+vixI/x9WO31/yZEL7qNz2lD+OIOtUU+HjTbYA==
+        integrity: sha512-B5+vniSskCOjXLbQA+quPtySoOdwrhQOV93ruSwaUUZvRXxbfro1C3tAhUk/xYSeg8CbGrjoKdXYtN+yGjn6YA==
       }
     peerDependencies:
       element-plus: ^2.0.0
@@ -2329,15 +2329,15 @@ packages:
       vue-demi: 0.13.11_vue@3.2.45
     dev: false
 
-  /@vueuse/core/9.10.0_vue@3.2.45:
+  /@vueuse/core/9.12.0_vue@3.2.45:
     resolution:
       {
-        integrity: sha512-CxMewME07qeuzuT/AOIQGv0EhhDoojniqU6pC3F8m5VC76L47UT18DcX88kWlP3I7d3qMJ4u/PD8iSRsy3bmNA==
+        integrity: sha512-h/Di8Bvf6xRcvS/PvUVheiMYYz3U0tH3X25YxONSaAUBa841ayMwxkuzx/DGUMCW/wHWzD8tRy2zYmOC36r4sg==
       }
     dependencies:
       "@types/web-bluetooth": 0.0.16
-      "@vueuse/metadata": 9.10.0
-      "@vueuse/shared": 9.10.0_vue@3.2.45
+      "@vueuse/metadata": 9.12.0
+      "@vueuse/shared": 9.12.0_vue@3.2.45
       vue-demi: 0.13.11_vue@3.2.45
     transitivePeerDependencies:
       - "@vue/composition-api"
@@ -2351,10 +2351,10 @@ packages:
       }
     dev: false
 
-  /@vueuse/metadata/9.10.0:
+  /@vueuse/metadata/9.12.0:
     resolution:
       {
-        integrity: sha512-G5VZhgTCapzU9rv0Iq2HBrVOSGzOKb+OE668NxhXNcTjUjwYxULkEhAw70FtRLMZc+hxcFAzDZlKYA0xcwNMuw==
+        integrity: sha512-9oJ9MM9lFLlmvxXUqsR1wLt1uF7EVbP5iYaHJYqk+G2PbMjY6EXvZeTjbdO89HgoF5cI6z49o2zT/jD9SVoNpQ==
       }
     dev: false
 
@@ -2397,10 +2397,10 @@ packages:
       vue-demi: 0.13.11_vue@3.2.45
     dev: false
 
-  /@vueuse/shared/9.10.0_vue@3.2.45:
+  /@vueuse/shared/9.12.0_vue@3.2.45:
     resolution:
       {
-        integrity: sha512-vakHJ2ZRklAzqmcVBL38RS7BxdBA4+5poG9NsSyqJxrt9kz0zX3P5CXMy0Hm6LFbZXUgvKdqAS3pUH1zX/5qTQ==
+        integrity: sha512-TWuJLACQ0BVithVTRbex4Wf1a1VaRuSpVeyEd4vMUWl54PzlE0ciFUshKCXnlLuD0lxIaLK4Ypj3NXYzZh4+SQ==
       }
     dependencies:
       vue-demi: 0.13.11_vue@3.2.45
@@ -3920,15 +3920,6 @@ packages:
       ssr-window: 3.0.0
     dev: false
 
-  /dom7/4.0.4:
-    resolution:
-      {
-        integrity: sha512-DSSgBzQ4rJWQp1u6o+3FVwMNnT5bzQbMb+o31TjYYeRi05uAcpF8koxdfzeoe5ElzPmua7W7N28YJhF7iEKqIw==
-      }
-    dependencies:
-      ssr-window: 4.0.2
-    dev: false
-
   /domelementtype/2.3.0:
     resolution:
       {
@@ -4056,7 +4047,7 @@ packages:
       "@popperjs/core": /@sxzz/popperjs-es/2.11.7
       "@types/lodash": 4.14.191
       "@types/lodash-es": 4.17.6
-      "@vueuse/core": 9.10.0_vue@3.2.45
+      "@vueuse/core": 9.12.0_vue@3.2.45
       async-validator: 4.2.5
       dayjs: 1.11.7
       escape-html: 1.0.3
@@ -6565,10 +6556,10 @@ packages:
     engines: { node: ">=0.10.0" }
     dev: true
 
-  /pinia/2.0.28_prq2uz4lho2pwp6irk4cfkrxwu:
+  /pinia/2.0.30_prq2uz4lho2pwp6irk4cfkrxwu:
     resolution:
       {
-        integrity: sha512-YClq9DkqCblq9rlyUual7ezMu/iICWdBtfJrDt4oWU9Zxpijyz7xB2xTwx57DaBQ96UGvvTMORzALr+iO5PVMw==
+        integrity: sha512-q6DUmxWwe/mQgg+55QQjykpKC+aGeGdaJV3niminl19V08dE+LRTvSEuqi6/NLSGCKHI49KGL6tMNEOssFiMyA==
       }
     peerDependencies:
       "@vue/composition-api": ^1.4.0
@@ -8212,15 +8203,13 @@ packages:
       picocolors: 1.0.0
     dev: true
 
-  /swiper/8.4.5:
+  /swiper/9.0.3:
     resolution:
       {
-        integrity: sha512-zveyEFBBv4q1sVkbJHnuH4xCtarKieavJ4SxP0QEHvdpPLJRuD7j/Xg38IVVLbp7Db6qrPsLUePvxohYx39Agw==
+        integrity: sha512-hHYI6CeUHcDyv6IakzAQrUv6nS5BMRn6KOkui16nhtdgYBlWgUdlaMbcdT0o4RJxpwSktCTLgpBtCm+WwwVYRw==
       }
     engines: { node: ">= 4.7.0" }
-    requiresBuild: true
     dependencies:
-      dom7: 4.0.4
       ssr-window: 4.0.2
     dev: false
 
