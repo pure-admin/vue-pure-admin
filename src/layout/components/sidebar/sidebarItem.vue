@@ -104,16 +104,18 @@ function hoverMenu(key) {
   });
 }
 
-// 左侧菜单折叠后，当菜单没有图标时只显示一个文字加省略号
-function overflowSlice(text, item) {
-  console.log("item", item?.meta?.icon);
-  if (
-    item?.meta?.icon ||
-    !isCollapse.value ||
-    (item?.pathList.length !== 2 && item?.children?.length > 0)
-  )
-    return text;
-  return (text?.length > 1 ? text.toString().slice(0, 1) : text) + " ...";
+// 左侧菜单折叠后，当菜单没有图标时只显示一个文字并加上省略号
+function overflowSlice(text, item?: any) {
+  const newText =
+    (text?.length > 1 ? text.toString().slice(0, 1) : text) + " ...";
+  if (item && !(isCollapse.value && item?.parentId === null)) {
+    return layout.value === "mix" &&
+      item?.pathList?.length === 2 &&
+      isCollapse.value
+      ? newText
+      : text;
+  }
+  return newText;
 }
 
 function hasOneShowingChild(
@@ -192,12 +194,7 @@ function resolvePath(routePath) {
         width: '100%'
       }"
     >
-      {{
-        overflowSlice(
-          transformI18n(onlyOneChild.meta.title),
-          onlyOneChild.meta.icon
-        )
-      }}
+      {{ overflowSlice(transformI18n(onlyOneChild.meta.title)) }}
     </span>
     <span
       v-if="
@@ -211,12 +208,7 @@ function resolvePath(routePath) {
         width: '100%'
       }"
     >
-      {{
-        overflowSlice(
-          transformI18n(onlyOneChild.meta.title),
-          onlyOneChild.meta.icon
-        )
-      }}
+      {{ overflowSlice(transformI18n(onlyOneChild.meta.title)) }}
     </span>
     <template #title>
       <div :style="getDivStyle">
@@ -273,10 +265,11 @@ function resolvePath(routePath) {
           :is="useRenderIcon(props.item.meta && toRaw(props.item.meta.icon))"
         />
       </div>
-      <!-- <span v-if="layout === 'horizontal'">
+      <span v-if="layout === 'horizontal'">
         {{ transformI18n(props.item.meta.title) }}
-      </span> -->
+      </span>
       <el-tooltip
+        v-else
         placement="top"
         :effect="tooltipEffect"
         :offset="-10"
@@ -286,6 +279,13 @@ function resolvePath(routePath) {
           {{ transformI18n(props.item.meta.title) }}
         </template>
         <span
+          v-if="
+            !(
+              isCollapse &&
+              toRaw(props.item.meta.icon) &&
+              props.item.parentId === null
+            )
+          "
           ref="menuTextRef"
           :style="getSubTextStyle"
           @mouseover="hoverMenu(props.item)"
@@ -293,13 +293,13 @@ function resolvePath(routePath) {
           {{ overflowSlice(transformI18n(props.item.meta.title), props.item) }}
         </span>
       </el-tooltip>
-      <!-- <FontIcon
+      <FontIcon
         v-if="props.item.meta.extraIcon"
         width="30px"
         height="30px"
         :icon="props.item.meta.extraIcon.name"
         :svg="props.item.meta.extraIcon.svg ? true : false"
-      /> -->
+      />
     </template>
     <sidebar-item
       v-for="child in props.item.children"
