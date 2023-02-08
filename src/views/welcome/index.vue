@@ -64,7 +64,7 @@ function resizeHandler() {
 }
 
 axios
-  .get("https://api.github.com/repos/xiaoxian521/vue-pure-admin/releases")
+  .get("https://api.github.com/repos/pure-admin/vue-pure-admin/releases")
   .then(res => {
     list.value = res.data.map(v => {
       return {
@@ -95,7 +95,7 @@ onUnmounted(() => {
         <img
           src="https://avatars.githubusercontent.com/u/44761321?v=4"
           title="直达仓库地址"
-          @click="openLink('https://github.com/xiaoxian521/vue-pure-admin')"
+          @click="openLink('https://github.com/pure-admin/vue-pure-admin')"
         />
         <TypeIt
           :className="'type-it0'"
@@ -190,7 +190,7 @@ onUnmounted(() => {
           <template #header>
             <a
               :class="titleClass"
-              href="https://github.com/xiaoxian521/vue-pure-admin/releases"
+              href="https://github.com/pure-admin/vue-pure-admin/releases"
               target="_black"
             >
               <TypeIt
@@ -245,7 +245,7 @@ onUnmounted(() => {
           <template #header>
             <a
               :class="titleClass"
-              href="https://github.com/xiaoxian521/vue-pure-admin"
+              href="https://github.com/pure-admin/vue-pure-admin"
               target="_black"
             >
               <TypeIt
@@ -288,7 +288,7 @@ onUnmounted(() => {
           <template #header>
             <a
               :class="titleClass"
-              href="https://github.com/xiaoxian521/vue-pure-admin"
+              href="https://github.com/pure-admin/vue-pure-admin"
               target="_black"
             >
               <TypeIt
@@ -331,7 +331,7 @@ onUnmounted(() => {
           <template #header>
             <a
               :class="titleClass"
-              href="https://github.com/xiaoxian521/vue-pure-admin"
+              href="https://github.com/pure-admin/vue-pure-admin"
               target="_black"
             >
               <TypeIt

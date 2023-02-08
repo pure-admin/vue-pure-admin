@@ -45,7 +45,7 @@ export function useColumns() {
       cellRenderer: () => {
         return (
           <a
-            href="https://github.com/xiaoxian521/vue-pure-admin"
+            href="https://github.com/pure-admin/vue-pure-admin"
             target="_blank"
           >
             <span style="color: var(--el-color-primary)">Github</span>

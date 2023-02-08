@@ -24,7 +24,7 @@ const iconClass = computed(() => {
     "align-middle",
     "text-primary",
     "cursor-pointer",
-    "duration-[360ms]",
+    "duration-[100ms]",
     "hover:text-primary",
     "dark:hover:!text-white"
   ];

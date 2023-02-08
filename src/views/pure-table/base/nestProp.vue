@@ -19,7 +19,7 @@ const tableData = [
       {
         more: {
           content:
-            '<img width="100" height="100" src="https://xiaoxian521.github.io/pure-admin-table/imgs/11.jpg">'
+            '<img width="100" height="100" src="https://pure-admin.github.io/pure-admin-table/imgs/11.jpg">'
         }
       }
     ],
@@ -32,7 +32,7 @@ const tableData = [
       {
         more: {
           content:
-            '<img width="100" height="100" src="https://xiaoxian521.github.io/pure-admin-table/imgs/1.jpg">'
+            '<img width="100" height="100" src="https://pure-admin.github.io/pure-admin-table/imgs/1.jpg">'
         }
       }
     ],

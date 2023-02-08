@@ -18,7 +18,11 @@ const { title } = useNav();
         class="sidebar-logo-link"
         to="/"
       >
-        <FontIcon icon="team-iconlogo" svg style="width: 35px; height: 35px" />
+        <FontIcon
+          icon="pure-iconfont-logo"
+          svg
+          style="width: 35px; height: 35px"
+        />
         <span class="sidebar-title">{{ title }}</span>
       </router-link>
       <router-link
@@ -28,7 +32,11 @@ const { title } = useNav();
         class="sidebar-logo-link"
         to="/"
       >
-        <FontIcon icon="team-iconlogo" svg style="width: 35px; height: 35px" />
+        <FontIcon
+          icon="pure-iconfont-logo"
+          svg
+          style="width: 35px; height: 35px"
+        />
         <span class="sidebar-title">{{ title }}</span>
       </router-link>
     </transition>

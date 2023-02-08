@@ -38,7 +38,7 @@ export function useDataThemeChange() {
   const body = document.documentElement as HTMLElement;
 
   /** 设置导航主题色 */
-  function setLayoutThemeColor(theme = "default") {
+  function setLayoutThemeColor(theme = getConfig().Theme ?? "default") {
     layoutTheme.value.theme = theme;
     toggleTheme({
       scopeName: `layout-theme-${theme}`

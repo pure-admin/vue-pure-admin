@@ -1,8 +1,8 @@
 <h1>vue-pure-admin</h1>
 
-![GitHub license](https://img.shields.io/github/license/xiaoxian521/vue-pure-admin?style=flat)
-![GitHub stars](https://img.shields.io/github/stars/xiaoxian521/vue-pure-admin?color=fa6470&style=flat)
-![GitHub forks](https://img.shields.io/github/forks/xiaoxian521/vue-pure-admin?style=flat)
+![GitHub license](https://img.shields.io/github/license/pure-admin/vue-pure-admin?style=flat)
+![GitHub stars](https://img.shields.io/github/stars/pure-admin/vue-pure-admin?color=fa6470&style=flat)
+![GitHub forks](https://img.shields.io/github/forks/pure-admin/vue-pure-admin?style=flat)
 
 **English** | [中文](./README.md)
 
@@ -12,10 +12,10 @@
 
 ## Thin version (offering non-internationalized and internationalized versions)
 
-The simplified version is based on the shelf extracted from [vue-pure-admin](https://github.com/xiaoxian521/vue-pure-admin), which contains main functions and is more suitable for actual project development. The packaged size is introduced globally [element-plus](https://element-plus.org) is still below `2.3MB`, and the full version of the code will be permanently synchronized. After enabling `brotli` compression and `cdn` to replace the local library mode, the package size is less than `350kb`
+The simplified version is based on the shelf extracted from [vue-pure-admin](https://github.com/pure-admin/vue-pure-admin), which contains main functions and is more suitable for actual project development. The packaged size is introduced globally [element-plus](https://element-plus.org) is still below `2.3MB`, and the full version of the code will be permanently synchronized. After enabling `brotli` compression and `cdn` to replace the local library mode, the package size is less than `350kb`
 
-- [Click me to view the non-internationalized version](https://github.com/xiaoxian521/pure-admin-thin)
-- [Click me to view Internationalization version](https://github.com/xiaoxian521/pure-admin-thin/tree/i18n)
+- [Click me to view the non-internationalized version](https://github.com/pure-admin/pure-admin-thin)
+- [Click me to view Internationalization version](https://github.com/pure-admin/pure-admin-thin/tree/i18n)
 
 ## Supporting Video
 
@@ -25,20 +25,20 @@ The simplified version is based on the shelf extracted from [vue-pure-admin](htt
 ## Docs (support `PWA` fast, offline access)
 
 - [Click me to view the domestic documentation site](https://yiming_chang.gitee.io/pure-admin-doc)
-- [Click me to view foreign document site](https://xiaoxian521.github.io/pure-admin-doc)
+- [Click me to view foreign document site](https://pure-admin.github.io/pure-admin-doc)
 
 ## Tauri
 
-- [Click Watch Tauri](https://github.com/xiaoxian521/tauri-pure-admin)
+- [Click Watch Tauri](https://github.com/pure-admin/tauri-pure-admin)
 
 ## Electron
 
-- [Click Watch Electron](https://github.com/xiaoxian521/electron-pure-admin)
+- [Click Watch Electron](https://github.com/pure-admin/electron-pure-admin)
 
 ## Preview
 
 - [Click me to view the domestic preview station](https://yiming_chang.gitee.io/vue-pure-admin)
-- [Click me to view foreign preview site](https://xiaoxian521.github.io/vue-pure-admin)
+- [Click me to view foreign preview site](https://pure-admin.github.io/vue-pure-admin)
 
 - PC
 <p align="center">
@@ -59,14 +59,14 @@ The simplified version is based on the shelf extracted from [vue-pure-admin](htt
 
 Open the project in Gitpod (free online dev environment for GitHub) and start coding immediately.
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/xiaoxian521/vue-pure-admin)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/pure-admin/vue-pure-admin)
 
 ## Install and use
 
 - Get the project code
 
 ```bash
-git clone https://github.com/xiaoxian521/vue-pure-admin.git
+git clone https://github.com/pure-admin/vue-pure-admin.git
 or
 git clone https://gitee.com/yiming_chang/vue-pure-admin.git
 ```
@@ -98,7 +98,7 @@ pnpm build
 
 ## How to contribute
 
-You are very welcome to join！[Raise an issue](https://github.com/xiaoxian521/vue-pure-admin/issues/new/choose) Or submit a Pull Request
+You are very welcome to join！[Raise an issue](https://github.com/pure-admin/vue-pure-admin/issues/new/choose) Or submit a Pull Request
 
 **Pull Request:**
 
@@ -150,7 +150,7 @@ If you think this project is helpful to you, you can help the author buy a glass
 
 In principle, no fees and copyrights are charged, and you can use it with confidence, but if you need secondary open source, please contact the author for permission!
 
-[MIT © xiaoxian521-2020](./LICENSE)
+[MIT © xiaoxian521-2023](./LICENSE)
 
 ## Backers
 
@@ -166,16 +166,16 @@ Thank you very much for your support, I believe the project will get better and 
 
 Thanks to all the people who contribute :heart:
 
-<a href="https://github.com/xiaoxian521/vue-pure-admin/graphs/contributors"><img src="https://contrib.rocks/image?repo=xiaoxian521/vue-pure-admin" /></a>
+<a href="https://github.com/pure-admin/vue-pure-admin/graphs/contributors"><img src="https://contrib.rocks/image?repo=pure-admin/vue-pure-admin" /></a>
 
 ## `Star`
 
 Many thanks to the kind individuals who leave a star. Your support is much appreciated :heart:
 
-[![Stargazers for vue-pure-admin](https://reporoster.com/stars/xiaoxian521/vue-pure-admin)](https://github.com/xiaoxian521/vue-pure-admin/stargazers)
+[![Stargazers for vue-pure-admin](https://reporoster.com/stars/pure-admin/vue-pure-admin)](https://github.com/pure-admin/vue-pure-admin/stargazers)
 
 ## `Fork`
 
 It's so cool that you study hard :heart:
 
-[![Forkers repo roster for vue-pure-admin](https://reporoster.com/forks/xiaoxian521/vue-pure-admin)](https://github.com/xiaoxian521/vue-pure-admin/network/members)
+[![Forkers repo roster for vue-pure-admin](https://reporoster.com/forks/pure-admin/vue-pure-admin)](https://github.com/pure-admin/vue-pure-admin/network/members)

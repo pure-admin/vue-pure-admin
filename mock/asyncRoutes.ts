@@ -159,7 +159,7 @@ const frameRouter = {
 const tabsRouter = {
   path: "/tabs",
   meta: {
-    icon: "IF-team-icontabs",
+    icon: "IF-pure-iconfont-tabs",
     title: "menus.hstabs",
     rank: tabs
   },
