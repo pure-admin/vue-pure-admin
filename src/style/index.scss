@@ -6,7 +6,8 @@
 
 /* 自定义全局 CssVar */
 :root {
-  --pure-transition-duration: 0.016s;
+  /* 左侧菜单展开、收起动画时长 */
+  --pure-transition-duration: 0.3s;
 }
 
 /* 灰色模式 */

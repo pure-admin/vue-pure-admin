@@ -18,7 +18,7 @@ export default {
         title: $t("menus.hsmessage"),
         extraIcon: {
           svg: true,
-          name: "team-iconxinpinrenqiwang"
+          name: "pure-iconfont-new"
         },
         transition: {
           enterTransition: "animate__fadeInLeft",
