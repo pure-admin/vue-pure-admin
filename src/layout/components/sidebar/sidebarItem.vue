@@ -28,10 +28,25 @@ const props = defineProps({
   }
 });
 
+const getSpanStyle = computed((): CSSProperties => {
+  return {
+    width: "100%",
+    textAlign: "center"
+  };
+});
+
 const getNoDropdownStyle = computed((): CSSProperties => {
   return {
     display: "flex",
     alignItems: "center"
+  };
+});
+
+const getMenuTextStyle = computed(() => {
+  return {
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    outline: "none"
   };
 });
 
@@ -45,11 +60,12 @@ const getDivStyle = computed((): CSSProperties => {
   };
 });
 
-const getMenuTextStyle = computed(() => {
+const getsubMenuIconStyle = computed((): CSSProperties => {
   return {
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-    outline: "none"
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    margin: isCollapse.value ? "0 auto" : "0 5px 0 0"
   };
 });
 
@@ -64,9 +80,6 @@ const getSubTextStyle = computed((): CSSProperties => {
   } else {
     return {
       width: ""
-      // display: "inline-block",
-      // overflow: "hidden",
-      // textOverflow: "ellipsis"
     };
   }
 });
@@ -165,13 +178,8 @@ function resolvePath(routePath) {
   >
     <div
       v-if="toRaw(props.item.meta.icon)"
-      class="sub-menu-icon bb"
-      :style="{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        margin: isCollapse ? '0 auto' : '0 5px 0 0'
-      }"
+      class="sub-menu-icon"
+      :style="getsubMenuIconStyle"
     >
       <component
         :is="
@@ -189,10 +197,7 @@ function resolvePath(routePath) {
         layout === 'vertical' &&
         props.item?.pathList?.length === 1
       "
-      :style="{
-        textAlign: 'center',
-        width: '100%'
-      }"
+      :style="getSpanStyle"
     >
       {{ overflowSlice(transformI18n(onlyOneChild.meta.title)) }}
     </span>
@@ -203,10 +208,7 @@ function resolvePath(routePath) {
         layout === 'mix' &&
         props.item?.pathList?.length === 2
       "
-      :style="{
-        textAlign: 'center',
-        width: '100%'
-      }"
+      :style="getSpanStyle"
     >
       {{ overflowSlice(transformI18n(onlyOneChild.meta.title)) }}
     </span>
@@ -253,12 +255,7 @@ function resolvePath(routePath) {
     <template #title>
       <div
         v-if="toRaw(props.item.meta.icon)"
-        :style="{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          margin: isCollapse ? '0 auto' : '0 5px 0 0'
-        }"
+        :style="getsubMenuIconStyle"
         class="sub-menu-icon"
       >
         <component
