@@ -18,7 +18,7 @@
 ### 🍏 Perf
 
 - Update [@pureadmin/theme](https://github.com/pure-admin/pure-admin-theme) to the latest version, bringing more friendly type hints
-- Optimize [PureTableBar](https://github.com/xiaoxian521/vue-pure-admin/tree/main/src/components/RePureTableBar) component
+- Optimize [PureTableBar](https://github.com/pure-admin/vue-pure-admin/tree/main/src/components/RePureTableBar) component
 - Optimize the business code of the system management page to bring better code reference
 
 # 3.9.5 (2022-12-13)
@@ -46,7 +46,7 @@
 ### ✔️ refactor
 
 - Completely removed `vxe-table`, after removal, the overall package size of the full version is reduced by `1.82MB`, and the initial startup time is basically the same as the lite version 🐮
-  [Click here to see Why Removed? How to integrate it yourself?](https://xiaoxian521.github.io/pure-admin-doc/pages/FAQ/#%E5%B9%B3%E5%8F%B0%E5%9C%A8-v3-9-4-%E7%89%88%E6%9C%AC%E5%AE%8C%E5%85%A8%E7%A7%BB%E9%99%A4%E4%BA%86-vxe-table-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%A7%BB%E9%99%A4-%E5%A6%82%E4%BD%95%E8%87%AA%E8%A1%8C%E9%9B%86%E6%88%90)
+  [Click here to see Why Removed? How to integrate it yourself?](https://pure-admin.github.io/pure-admin-doc/pages/FAQ/#%E5%B9%B3%E5%8F%B0%E5%9C%A8-v3-9-4-%E7%89%88%E6%9C%AC%E5%AE%8C%E5%85%A8%E7%A7%BB%E9%99%A4%E4%BA%86-vxe-table-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%A7%BB%E9%99%A4-%E5%A6%82%E4%BD%95%E8%87%AA%E8%A1%8C%E9%9B%86%E6%88%90)
 
 ### 🎫 Feat
 
@@ -73,7 +73,7 @@
 
 ### 🍏 Perf
 
-- Global coverage of `el-dialog`, `el-drawer`, `el-message-box`, `el-notification` components of `element-plus`The style of the close icon in the upper right corner makes it more vivid [specific modification Code record](https://github.com/xiaoxian521/vue-pure-admin/commit/c80818d792276666aaea4b18413a0f08777f2ed1)
+- Global coverage of `el-dialog`, `el-drawer`, `el-message-box`, `el-notification` components of `element-plus`The style of the close icon in the upper right corner makes it more vivid [specific modification Code record](https://github.com/pure-admin/vue-pure-admin/commit/c80818d792276666aaea4b18413a0f08777f2ed1)
 - The packaging output information is compatible with different packaging output paths
 - Optimize some animations
 
@@ -121,7 +121,7 @@
 
 ### 🍏 Perf
 
-- Great optimization, remove `@pureadmin/components` and use compatible writing, the package size of the platform is reduced by `0.4` MB before compression is not enabled, and the resource of `2.3` MB is reduced for the first screen request, which is for the [lite version ](https://github.com/xiaoxian521/pure-admin-thin) is a very big optimization, the streamlined version has synchronized code
+- Great optimization, remove `@pureadmin/components` and use compatible writing, the package size of the platform is reduced by `0.4` MB before compression is not enabled, and the resource of `2.3` MB is reduced for the first screen request, which is for the [lite version ](https://github.com/pure-admin/pure-admin-thin) is a very big optimization, the streamlined version has synchronized code
 
 # 3.8.0 (2022-11-26)
 
@@ -159,7 +159,7 @@
 ### 🎫 Feat
 
 - Add front-end single sign-on, test address https://yiming_chang.gitee.io/vue-pure-admin/#/pure-table/index?username=sso&roles=admin&accessToken=eyJhbGciOiJIUzUxMiJ9.admin
-- Add more examples for [@pureadmin/table](https://github.com/xiaoxian521/pure-admin-table) and `element-plus` [table](https://element-plus.org /zh-CN/component/table.html) example remains the same
+- Add more examples for [@pureadmin/table](https://github.com/pure-admin/pure-admin-table) and `element-plus` [table](https://element-plus.org /zh-CN/component/table.html) example remains the same
 - Rich watermark function page (supports customizing various colors, shadows, text, additional attributes, setting undeletable watermarks and setting watermarks for specified elements)
 - Optimize the menu, add `MenuArrowIconNoTransition` global configuration, configure it in `public/serverConfig.json`, for the left menu mode, the menu expansion can be set `MenuArrowIconNoTransition: true` to solve
 - Replacement form designer component demo
@@ -259,7 +259,7 @@
 
 ### ✔️ refactor
 
-- Replace `unocss` with `tailwindcss`, add `tailwindcss` [documentation](https://xiaoxian521.github.io/pure-admin-doc/pages/39156f/)
+- Replace `unocss` with `tailwindcss`, add `tailwindcss` [documentation](https://pure-admin.github.io/pure-admin-doc/pages/39156f/)
 
 ### 🐞 Bug fixes
 
@@ -295,8 +295,8 @@
 
 ### 🎫 Feat
 
-- Secondary encapsulation of `Table` of `element-plus` into [@pureadmin/table](https://github.com/xiaoxian521/pure-admin-table), providing flexible configuration items and integrating into the platform
-- Secondary encapsulation of `Descriptions` of `element-plus` into [@pureadmin/descriptions](https://github.com/xiaoxian521/pure-admin-descriptions), providing flexible configuration items and integrating into the platform
+- Secondary encapsulation of `Table` of `element-plus` into [@pureadmin/table](https://github.com/pure-admin/pure-admin-table), providing flexible configuration items and integrating into the platform
+- Secondary encapsulation of `Descriptions` of `element-plus` into [@pureadmin/descriptions](https://github.com/pure-admin/pure-admin-descriptions), providing flexible configuration items and integrating into the platform
 - Centralize most of the tools and hooks of the platform to [@pureadmin/utils](https://pure-admin-utils.netlify.app), and delete the code concentrated in this library to reduce the size of the platform
 - Add [unplugin-vue-define-options](https://www.npmjs.com/package/unplugin-vue-define-options) plugin, the page can directly write `defineOptions({name: custom name})`
 - Add project files, language analysis tool [cloc](https://www.npmjs.com/package/cloc)
@@ -341,7 +341,7 @@
 - Integrate `Swiper` plugin
 - Routing supports passing `component`, representing the component path
 - Added pre-release packaging mode
-- Add [hooks] to close a tag (https://github.com/xiaoxian521/vue-pure-admin/commit/5e8723a031923e79f507e5a17151d3bd88a51523)
+- Add [hooks] to close a tag (https://github.com/pure-admin/vue-pure-admin/commit/5e8723a031923e79f507e5a17151d3bd88a51523)
 
 ### ✔️ refactor
 
@@ -353,7 +353,7 @@
 - Optimized the style of the `split-pane` component for the platform
 - Optimize internationalization, no longer pass the `i18n` field in the route, the platform automatically reads the files in the `locales` folder of the root directory for internationalization matching
 - Optimized icon selector
-- Optimize `layout` to display user information [commit](https://github.com/xiaoxian521/vue-pure-admin/commit/56f9dc85e7fbe0637605c43577c794de9f8968aa)
+- Optimize `layout` to display user information [commit](https://github.com/pure-admin/vue-pure-admin/commit/56f9dc85e7fbe0637605c43577c794de9f8968aa)
 
 ### 🐞 Bug fixes
 

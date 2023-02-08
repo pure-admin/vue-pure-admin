@@ -147,7 +147,7 @@
       ]
     }
   },
-  "repository": "git@github.com:xiaoxian521/vue-pure-admin.git",
+  "repository": "git@github.com:pure-admin/vue-pure-admin.git",
   "author": "xiaoxian521",
   "license": "MIT"
 }

@@ -56,9 +56,7 @@ const tableDataMore = clone(tableData, true).map(item =>
 
 const tableDataImage = clone(tableData, true).map((item, index) =>
   Object.assign(item, {
-    image: `https://xiaoxian521.github.io/pure-admin-table/imgs/${
-      index + 1
-    }.jpg`
+    image: `https://pure-admin.github.io/pure-admin-table/imgs/${index + 1}.jpg`
   })
 );
 

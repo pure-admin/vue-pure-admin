@@ -22,7 +22,7 @@ function tabClick({ index }) {
           并提供灵活的配置项以及完善的类型提醒，再也不用将代码都写在 template
           里了，欢迎 Star
           <el-link
-            href="https://github.com/xiaoxian521/pure-admin-table"
+            href="https://github.com/pure-admin/pure-admin-table"
             target="_blank"
             style="font-size: 16px; margin: 0 4px 5px"
           >

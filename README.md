@@ -1,8 +1,8 @@
 <h1>vue-pure-admin</h1>
 
-![GitHub license](https://img.shields.io/github/license/xiaoxian521/vue-pure-admin?style=flat)
-![GitHub stars](https://img.shields.io/github/stars/xiaoxian521/vue-pure-admin?color=fa6470&style=flat)
-![GitHub forks](https://img.shields.io/github/forks/xiaoxian521/vue-pure-admin?style=flat)
+![GitHub license](https://img.shields.io/github/license/pure-admin/vue-pure-admin?style=flat)
+![GitHub stars](https://img.shields.io/github/stars/pure-admin/vue-pure-admin?color=fa6470&style=flat)
+![GitHub forks](https://img.shields.io/github/forks/pure-admin/vue-pure-admin?style=flat)
 
 **中文** | [English](./README.en-US.md)
 
@@ -12,10 +12,10 @@
 
 ## 精简版（实际项目开发请用精简版，提供 `非国际化` 、`国际化` 两个版本选择）
 
-精简版是基于 [vue-pure-admin](https://github.com/xiaoxian521/vue-pure-admin) 提炼出的架子，包含主体功能，更适合实际项目开发，打包后的大小在全局引入 [element-plus](https://element-plus.org) 的情况下仍然低于 `2.3MB`，并且会永久同步完整版的代码。开启 `brotli` 压缩和 `cdn` 替换本地库模式后，打包大小低于 `350kb`
+精简版是基于 [vue-pure-admin](https://github.com/pure-admin/vue-pure-admin) 提炼出的架子，包含主体功能，更适合实际项目开发，打包后的大小在全局引入 [element-plus](https://element-plus.org) 的情况下仍然低于 `2.3MB`，并且会永久同步完整版的代码。开启 `brotli` 压缩和 `cdn` 替换本地库模式后，打包大小低于 `350kb`
 
-- [点我查看非国际化精简版](https://github.com/xiaoxian521/pure-admin-thin)
-- [点我查看国际化精简版](https://github.com/xiaoxian521/pure-admin-thin/tree/i18n)
+- [点我查看非国际化精简版](https://github.com/pure-admin/pure-admin-thin)
+- [点我查看国际化精简版](https://github.com/pure-admin/pure-admin-thin/tree/i18n)
 
 ## 配套视频
 
@@ -25,20 +25,20 @@
 ## 配套保姆级文档（支持 `PWA` 快速、离线访问）
 
 - [点我查看国内文档站](https://yiming_chang.gitee.io/pure-admin-doc)
-- [点我查看国外文档站](https://xiaoxian521.github.io/pure-admin-doc)
+- [点我查看国外文档站](https://pure-admin.github.io/pure-admin-doc)
 
 ## `Tauri` 版
 
-- [点我查看 Tauri 版](https://github.com/xiaoxian521/tauri-pure-admin)
+- [点我查看 Tauri 版](https://github.com/pure-admin/tauri-pure-admin)
 
 ## `Electron` 版
 
-- [点我查看 Electron 版](https://github.com/xiaoxian521/electron-pure-admin)
+- [点我查看 Electron 版](https://github.com/pure-admin/electron-pure-admin)
 
 ## 预览
 
 - [点我查看国内预览站](https://yiming_chang.gitee.io/vue-pure-admin)
-- [点我查看国外预览站](https://xiaoxian521.github.io/vue-pure-admin)
+- [点我查看国外预览站](https://pure-admin.github.io/vue-pure-admin)
 
 - PC 端
 <p align="center">
@@ -59,14 +59,14 @@
 
 在 Gitpod（适用于 GitHub 的免费在线开发环境）中打开项目，并立即开始编码.
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/xiaoxian521/vue-pure-admin)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/pure-admin/vue-pure-admin)
 
 ## 安装使用
 
 - 获取项目代码
 
 ```bash
-git clone https://github.com/xiaoxian521/vue-pure-admin.git
+git clone https://github.com/pure-admin/vue-pure-admin.git
 or
 git clone https://gitee.com/yiming_chang/vue-pure-admin.git
 ```
@@ -98,7 +98,7 @@ pnpm build
 
 ## 如何贡献
 
-非常欢迎您的加入！[提一个 Issue](https://github.com/xiaoxian521/vue-pure-admin/issues/new/choose) 或者提交一个 `Pull Request`
+非常欢迎您的加入！[提一个 Issue](https://github.com/pure-admin/vue-pure-admin/issues/new/choose) 或者提交一个 `Pull Request`
 
 **Pull Request:**
 
@@ -154,7 +154,7 @@ pnpm build
 
 原则上不收取任何费用及版权，可以放心使用，不过如需二次开源（比如用此平台二次开发并开源）请联系作者获取许可！
 
-[MIT © xiaoxian521-2020](./LICENSE)
+[MIT © xiaoxian521-2023](./LICENSE)
 
 ## 支持者
 
@@ -170,16 +170,16 @@ pnpm build
 
 感谢所有做出贡献的人 :heart:
 
-<a href="https://github.com/xiaoxian521/vue-pure-admin/graphs/contributors"><img src="https://contrib.rocks/image?repo=xiaoxian521/vue-pure-admin" /></a>
+<a href="https://github.com/pure-admin/vue-pure-admin/graphs/contributors"><img src="https://contrib.rocks/image?repo=pure-admin/vue-pure-admin" /></a>
 
 ## `Star`
 
 非常感谢留下星星的好心人，感谢您的支持 :heart:
 
-[![Stargazers for vue-pure-admin](https://reporoster.com/stars/xiaoxian521/vue-pure-admin)](https://github.com/xiaoxian521/vue-pure-admin/stargazers)
+[![Stargazers for vue-pure-admin](https://reporoster.com/stars/pure-admin/vue-pure-admin)](https://github.com/pure-admin/vue-pure-admin/stargazers)
 
 ## `Fork`
 
 瞧，那些 `小哥哥` 、`小姐姐` 认真 `学习` 的样子真滴是 `哎呦不错哦` :heart:
 
-[![Forkers repo roster for vue-pure-admin](https://reporoster.com/forks/xiaoxian521/vue-pure-admin)](https://github.com/xiaoxian521/vue-pure-admin/network/members)
+[![Forkers repo roster for vue-pure-admin](https://reporoster.com/forks/pure-admin/vue-pure-admin)](https://github.com/pure-admin/vue-pure-admin/network/members)
