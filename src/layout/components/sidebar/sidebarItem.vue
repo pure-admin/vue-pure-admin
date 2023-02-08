@@ -122,7 +122,7 @@ function hoverMenu(key) {
   });
 }
 
-// 左侧菜单折叠后，当菜单没有图标时只显示一个文字并加上省略号
+// 左侧菜单折叠后，当菜单没有图标时只显示第一个文字并加上省略号
 function overflowSlice(text, item?: any) {
   const newText =
     (text?.length > 1 ? text.toString().slice(0, 1) : text) + "...";
