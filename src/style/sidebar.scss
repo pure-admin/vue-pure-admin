@@ -592,9 +592,13 @@ body[layout="horizontal"] {
   $sideBarWidth: 0;
   @include merge-style($sideBarWidth);
 
+  .fixed-header,
+  .main-container {
+    transition: none !important;
+  }
+
   .fixed-header {
     width: 100%;
-    transition: none !important;
   }
 }
 

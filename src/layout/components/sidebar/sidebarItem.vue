@@ -65,7 +65,12 @@ const getsubMenuIconStyle = computed((): CSSProperties => {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    margin: isCollapse.value ? "0 auto" : "0 5px 0 0"
+    margin:
+      layout.value === "horizontal"
+        ? "0 5px 0 0"
+        : isCollapse.value
+        ? "0 auto"
+        : "0 5px 0 0"
   };
 });
 
@@ -120,7 +125,7 @@ function hoverMenu(key) {
 // 左侧菜单折叠后，当菜单没有图标时只显示一个文字并加上省略号
 function overflowSlice(text, item?: any) {
   const newText =
-    (text?.length > 1 ? text.toString().slice(0, 1) : text) + " ...";
+    (text?.length > 1 ? text.toString().slice(0, 1) : text) + "...";
   if (item && !(isCollapse.value && item?.parentId === null)) {
     return layout.value === "mix" &&
       item?.pathList?.length === 2 &&
