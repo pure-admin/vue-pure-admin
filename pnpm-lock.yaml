@@ -44,7 +44,7 @@ specifiers:
   dayjs: ^1.11.7
   echarts: ^5.4.1
   el-table-infinite-scroll: ^3.0.1
-  element-plus: ^2.2.29
+  element-plus: 2.2.28
   element-resize-detector: ^1.2.4
   eslint: ^8.8.0
   eslint-plugin-prettier: ^4.0.0
@@ -114,8 +114,8 @@ dependencies:
   "@howdyjs/mouse-menu": 2.0.5_vue@3.2.45
   "@logicflow/core": 1.1.31
   "@logicflow/extension": 1.1.31
-  "@pureadmin/descriptions": 1.1.1_element-plus@2.2.29
-  "@pureadmin/table": 2.0.0_element-plus@2.2.29
+  "@pureadmin/descriptions": 1.1.1_element-plus@2.2.28
+  "@pureadmin/table": 2.0.0_element-plus@2.2.28
   "@pureadmin/utils": 1.8.5_echarts@5.4.1+vue@3.2.45
   "@vueuse/core": 9.12.0_vue@3.2.45
   "@vueuse/motion": 2.0.0-beta.12_vue@3.2.45
@@ -128,7 +128,7 @@ dependencies:
   dayjs: 1.11.7
   echarts: 5.4.1
   el-table-infinite-scroll: 3.0.1
-  element-plus: 2.2.29_vue@3.2.45
+  element-plus: 2.2.28_vue@3.2.45
   element-resize-detector: 1.2.4
   intro.js: 6.0.0
   js-cookie: 3.0.1
@@ -1503,7 +1503,7 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@pureadmin/descriptions/1.1.1_element-plus@2.2.29:
+  /@pureadmin/descriptions/1.1.1_element-plus@2.2.28:
     resolution:
       {
         integrity: sha512-4BHLKomLU/LxGs5EUA+h+aKNrJEkhrU6+QE8VoWfJZ8VTU6ddvFLT/Pi4WuO5CWNXM9ZjqvHLFFVwEPlKntqtg==
@@ -1512,11 +1512,11 @@ packages:
       element-plus: ^2.0.0
     dependencies:
       "@element-plus/icons-vue": 2.0.10_vue@3.2.45
-      element-plus: 2.2.29_vue@3.2.45
+      element-plus: 2.2.28_vue@3.2.45
       vue: 3.2.45
     dev: false
 
-  /@pureadmin/table/2.0.0_element-plus@2.2.29:
+  /@pureadmin/table/2.0.0_element-plus@2.2.28:
     resolution:
       {
         integrity: sha512-B5+vniSskCOjXLbQA+quPtySoOdwrhQOV93ruSwaUUZvRXxbfro1C3tAhUk/xYSeg8CbGrjoKdXYtN+yGjn6YA==
@@ -1524,7 +1524,7 @@ packages:
     peerDependencies:
       element-plus: ^2.0.0
     dependencies:
-      element-plus: 2.2.29_vue@3.2.45
+      element-plus: 2.2.28_vue@3.2.45
       vue: 3.2.45
     dev: false
 
@@ -4032,6 +4032,34 @@ packages:
         integrity: sha512-M8WEXFuKXMYMVr45fo8mq0wUrrJHheiKZf6BArTKk9ZBYCKJEOU5H8cdWgDT+qCVZf7Na4lVUaZsA+h6uA9+PA==
       }
     dev: true
+
+  /element-plus/2.2.28_vue@3.2.45:
+    resolution:
+      {
+        integrity: sha512-BsxF7iEaBydmRfw1Tt++EO9jRBjbtJr7ZRIrnEwz4J3Cwa1IzHCNCcx3ZwcYTlJq9CYFxv94JnbNr1EbkTou3A==
+      }
+    peerDependencies:
+      vue: ^3.2.0
+    dependencies:
+      "@ctrl/tinycolor": 3.5.0
+      "@element-plus/icons-vue": 2.0.10_vue@3.2.45
+      "@floating-ui/dom": 1.1.0
+      "@popperjs/core": /@sxzz/popperjs-es/2.11.7
+      "@types/lodash": 4.14.191
+      "@types/lodash-es": 4.17.6
+      "@vueuse/core": 9.12.0_vue@3.2.45
+      async-validator: 4.2.5
+      dayjs: 1.11.7
+      escape-html: 1.0.3
+      lodash: 4.17.21
+      lodash-es: 4.17.21
+      lodash-unified: 1.0.3_3ib2ivapxullxkx3xftsimdk7u
+      memoize-one: 6.0.0
+      normalize-wheel-es: 1.2.0
+      vue: 3.2.45
+    transitivePeerDependencies:
+      - "@vue/composition-api"
+    dev: false
 
   /element-plus/2.2.29_vue@3.2.45:
     resolution:
