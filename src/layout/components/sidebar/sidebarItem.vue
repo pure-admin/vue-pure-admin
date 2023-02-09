@@ -271,7 +271,14 @@ function resolvePath(routePath) {
         {{ transformI18n(props.item.meta.title) }}
       </span>
       <el-tooltip
-        v-else
+        v-if="
+          layout !== 'horizontal' &&
+          !(
+            isCollapse &&
+            toRaw(props.item.meta.icon) &&
+            props.item.parentId === null
+          )
+        "
         placement="top"
         :effect="tooltipEffect"
         :offset="-10"
@@ -281,13 +288,6 @@ function resolvePath(routePath) {
           {{ transformI18n(props.item.meta.title) }}
         </template>
         <span
-          v-if="
-            !(
-              isCollapse &&
-              toRaw(props.item.meta.icon) &&
-              props.item.parentId === null
-            )
-          "
           ref="menuTextRef"
           :style="getSubTextStyle"
           @mouseover="hoverMenu(props.item)"
