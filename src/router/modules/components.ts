@@ -16,10 +16,7 @@ export default {
       component: () => import("@/views/components/message/index.vue"),
       meta: {
         title: $t("menus.hsmessage"),
-        extraIcon: {
-          svg: true,
-          name: "pure-iconfont-new"
-        },
+        extraIcon: "IF-pure-iconfont-new svg",
         transition: {
           enterTransition: "animate__fadeInLeft",
           leaveTransition: "animate__fadeOutRight"

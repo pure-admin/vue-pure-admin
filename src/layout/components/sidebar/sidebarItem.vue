@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import path from "path";
 import { getConfig } from "@/config";
+import extraIcon from "./extraIcon.vue";
 import { childrenType } from "../../types";
 import { useNav } from "@/layout/hooks/useNav";
 import { transformI18n } from "@/plugins/i18n";
@@ -12,7 +13,7 @@ import EpArrowDown from "@iconify-icons/ep/arrow-down";
 import ArrowLeft from "@iconify-icons/ep/arrow-left";
 import ArrowRight from "@iconify-icons/ep/arrow-right";
 
-const { layout, isCollapse, tooltipEffect } = useNav();
+const { layout, isCollapse, tooltipEffect, getDivStyle } = useNav();
 
 const props = defineProps({
   item: {
@@ -50,16 +51,6 @@ const getMenuTextStyle = computed(() => {
   };
 });
 
-const getDivStyle = computed((): CSSProperties => {
-  return {
-    width: "100%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    overflow: "hidden"
-  };
-});
-
 const getsubMenuIconStyle = computed((): CSSProperties => {
   return {
     display: "flex",
@@ -87,6 +78,28 @@ const getSubTextStyle = computed((): CSSProperties => {
       width: ""
     };
   }
+});
+
+const getSubMenuDivStyle = computed((): any => {
+  return item => {
+    return !isCollapse.value
+      ? {
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          overflow: "hidden"
+        }
+      : {
+          width: "100%",
+          textAlign:
+            item?.parentId === null
+              ? "center"
+              : layout.value === "mix" && item?.pathList?.length === 2
+              ? "center"
+              : ""
+        };
+  };
 });
 
 const expandCloseIcon = computed(() => {
@@ -240,13 +253,7 @@ function resolvePath(routePath) {
             {{ transformI18n(onlyOneChild.meta.title) }}
           </span>
         </el-tooltip>
-        <FontIcon
-          v-if="onlyOneChild.meta.extraIcon"
-          width="30px"
-          height="30px"
-          :icon="onlyOneChild.meta.extraIcon.name"
-          :svg="onlyOneChild.meta.extraIcon.svg ? true : false"
-        />
+        <extraIcon :extraIcon="onlyOneChild.meta.extraIcon" />
       </div>
     </template>
   </el-menu-item>
@@ -267,41 +274,41 @@ function resolvePath(routePath) {
           :is="useRenderIcon(props.item.meta && toRaw(props.item.meta.icon))"
         />
       </div>
-      <span v-if="layout === 'horizontal'">
-        {{ transformI18n(props.item.meta.title) }}
-      </span>
-      <el-tooltip
+      <div
+        :style="getSubMenuDivStyle(props.item)"
         v-if="
-          layout !== 'horizontal' &&
           !(
             isCollapse &&
             toRaw(props.item.meta.icon) &&
             props.item.parentId === null
           )
         "
-        placement="top"
-        :effect="tooltipEffect"
-        :offset="-10"
-        :disabled="!props.item.showTooltip"
       >
-        <template #content>
+        <span v-if="layout === 'horizontal'">
           {{ transformI18n(props.item.meta.title) }}
-        </template>
-        <span
-          ref="menuTextRef"
-          :style="getSubTextStyle"
-          @mouseover="hoverMenu(props.item)"
-        >
-          {{ overflowSlice(transformI18n(props.item.meta.title), props.item) }}
         </span>
-      </el-tooltip>
-      <FontIcon
-        v-if="props.item.meta.extraIcon"
-        width="30px"
-        height="30px"
-        :icon="props.item.meta.extraIcon.name"
-        :svg="props.item.meta.extraIcon.svg ? true : false"
-      />
+        <el-tooltip
+          v-if="layout !== 'horizontal'"
+          placement="top"
+          :effect="tooltipEffect"
+          :offset="-10"
+          :disabled="!props.item.showTooltip"
+        >
+          <template #content>
+            {{ transformI18n(props.item.meta.title) }}
+          </template>
+          <span
+            ref="menuTextRef"
+            :style="getSubTextStyle"
+            @mouseover="hoverMenu(props.item)"
+          >
+            {{
+              overflowSlice(transformI18n(props.item.meta.title), props.item)
+            }}
+          </span>
+        </el-tooltip>
+        <extraIcon v-if="!isCollapse" :extraIcon="props.item.meta.extraIcon" />
+      </div>
     </template>
     <sidebar-item
       v-for="child in props.item.children"

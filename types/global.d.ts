@@ -192,11 +192,8 @@ declare global {
       title: string;
       /** 菜单图标 `可选` */
       icon?: string | FunctionalComponent | IconifyIcon;
-      /** 菜单名称右侧的额外图标，支持`fontawesome`、`iconfont`、`element-plus-icon` `可选` */
-      extraIcon?: {
-        svg?: boolean;
-        name?: string;
-      };
+      /** 菜单名称右侧的额外图标 */
+      extraIcon?: string | FunctionalComponent | IconifyIcon;
       /** 是否在菜单中显示（默认`true`）`可选` */
       showLink?: boolean;
       /** 是否显示父级菜单 `可选` */
