@@ -318,6 +318,13 @@ function onClickDrop(key, item, selectRoute?: RouteConfigs) {
   });
 }
 
+document.addEventListener("fullscreenchange", () => {
+  if (!isFullscreen.value) {
+    tagsViews[6].icon = Fullscreen;
+    tagsViews[6].text = $t("buttons.hswholeFullScreen");
+  }
+});
+
 function handleCommand(command: any) {
   const { key, item } = command;
   onClickDrop(key, item);
