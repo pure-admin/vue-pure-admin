@@ -490,6 +490,11 @@ watch([route], () => {
   dynamicTagView();
 });
 
+watch(isFullscreen, () => {
+  tagsViews[6].icon = Fullscreen;
+  tagsViews[6].text = $t("buttons.hswholeFullScreen");
+});
+
 onMounted(() => {
   useResizeObserver(
     scrollbarDom,
