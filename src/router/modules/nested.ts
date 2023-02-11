@@ -53,10 +53,7 @@ export default {
               meta: {
                 title: $t("menus.hsmenu1-2-2"),
                 keepAlive: true,
-                extraIcon: {
-                  svg: true,
-                  name: "pure-iconfont-new"
-                }
+                extraIcon: "IF-pure-iconfont-new svg"
               }
             }
           ]

@@ -31,7 +31,7 @@ const barcodes = [
 
 <template>
   <div>
-    <el-card>
+    <el-card shadow="never">
       <template #header>
         <div class="font-medium">
           条形码（基于

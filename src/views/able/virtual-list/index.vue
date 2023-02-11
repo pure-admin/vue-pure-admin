@@ -9,7 +9,7 @@ defineOptions({
 </script>
 
 <template>
-  <el-card>
+  <el-card shadow="never">
     <template #header>
       <div class="font-medium">
         虚拟列表组件（

@@ -40,7 +40,7 @@ Object.keys(devDependencies).forEach(key => {
       </span>
     </el-card>
 
-    <el-card class="box-card m-4" shadow="hover">
+    <el-card class="box-card m-4" shadow="never">
       <template #header>
         <div class="card-header">
           <span class="font-medium">项目信息</span>
@@ -49,7 +49,7 @@ Object.keys(devDependencies).forEach(key => {
       <PureDescriptions :columns="columns" border :column="3" align="left" />
     </el-card>
 
-    <el-card class="box-card m-4" shadow="hover">
+    <el-card class="box-card m-4" shadow="never">
       <template #header>
         <div class="card-header">
           <span class="font-medium">生产环境依赖</span>
@@ -73,7 +73,7 @@ Object.keys(devDependencies).forEach(key => {
       </el-descriptions>
     </el-card>
 
-    <el-card class="box-card m-4" shadow="hover">
+    <el-card class="box-card m-4" shadow="never">
       <template #header>
         <div class="card-header">
           <span class="font-medium">开发环境依赖</span>

@@ -25,8 +25,8 @@ setOptions(
       trigger: "item"
     },
     legend: {
-      orient: "vertical",
-      // @ts-expect-error
+      icon: "circle",
+      //@ts-expect-error
       right: true
     },
     series: [
@@ -36,19 +36,19 @@ setOptions(
         top: "20%",
         radius: "80%",
         center: ["40%", "50%"],
+        color: ["#e6a23c", "#f56c6c", "#53a7ff"],
         data: [
-          { value: 20000, name: "watchers" },
-          { value: 66666, name: "star" },
-          { value: 10000, name: "forks" },
-          { value: 1000, name: "open_issues" }
-        ],
-        emphasis: {
-          itemStyle: {
-            shadowBlur: 10,
-            shadowOffsetX: 0,
-            shadowColor: "rgba(0, 0, 0, 0.5)"
-          }
-        }
+          { value: 400, name: "watchers" },
+          { value: 1600, name: "forks" },
+          { value: 7200, name: "star" }
+        ]
+        // emphasis: {
+        //   itemStyle: {
+        //     shadowBlur: 10,
+        //     shadowOffsetX: 0,
+        //     shadowColor: "rgba(0, 0, 0, 0.5)"
+        //   }
+        // }
       }
     ]
   },

@@ -46,7 +46,7 @@ function onCloseTags() {
 </script>
 
 <template>
-  <el-card>
+  <el-card shadow="never">
     <template #header>
       <div>标签页复用，超出限制自动关闭</div>
     </template>

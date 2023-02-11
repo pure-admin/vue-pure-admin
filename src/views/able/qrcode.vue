@@ -23,7 +23,7 @@ const disabledClick = () => {
 
 <template>
   <div>
-    <el-card>
+    <el-card shadow="never">
       <template #header>
         <div class="font-medium">
           二维码（基于

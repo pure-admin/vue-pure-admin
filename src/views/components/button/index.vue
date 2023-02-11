@@ -11,7 +11,7 @@ const url = ref(`${VITE_PUBLIC_PATH}html/button.html`);
 </script>
 
 <template>
-  <el-card>
+  <el-card shadow="never">
     <template #header>
       <div class="card-header">
         <span class="font-medium">通过iframe引入按钮页面</span>

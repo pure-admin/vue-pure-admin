@@ -77,7 +77,7 @@ const tableData: User[] = [
 </script>
 
 <template>
-  <el-card>
+  <el-card shadow="never">
     <template #header>
       <div class="card-header">
         <span class="font-medium">打印功能（报表、图表、图片）</span>

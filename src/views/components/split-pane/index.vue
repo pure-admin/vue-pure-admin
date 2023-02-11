@@ -20,7 +20,7 @@ const settingTB: ContextProps = reactive({
 </script>
 
 <template>
-  <el-card>
+  <el-card shadow="never">
     <template #header>
       <div class="card-header">
         <span class="font-medium">切割面板组件</span>

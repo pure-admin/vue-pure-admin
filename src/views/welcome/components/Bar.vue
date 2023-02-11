@@ -7,6 +7,7 @@ import {
   useECharts,
   type EchartOptions
 } from "@pureadmin/utils";
+import * as echarts from "echarts/core";
 
 const { isDark } = useDark();
 
@@ -28,11 +29,13 @@ setOptions(
       }
     },
     grid: {
-      containLabel: true,
-      top: "10px",
-      bottom: "0",
-      left: "0",
-      right: "0"
+      bottom: "20px",
+      right: "10px"
+    },
+    legend: {
+      //@ts-expect-error
+      right: true,
+      data: ["watchers", "fork", "star"]
     },
     xAxis: [
       {
@@ -45,7 +48,7 @@ setOptions(
           // width: "70",
           // overflow: "truncate"
         },
-        data: ["open_issues", "forks", "watchers", "star"],
+        data: ["2021", "2022", "2023"],
         triggerEvent: true
       }
     ],
@@ -57,9 +60,58 @@ setOptions(
     ],
     series: [
       {
-        name: "GitHub信息",
+        name: "watchers",
         type: "bar",
-        data: [1000, 10000, 20000, 66666]
+        barWidth: "15%",
+        itemStyle: {
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+            {
+              offset: 0,
+              color: "#e6a23c"
+            },
+            {
+              offset: 1,
+              color: "#eebe77"
+            }
+          ])
+        },
+        data: [200, 320, 800]
+      },
+      {
+        name: "fork",
+        type: "bar",
+        barWidth: "15%",
+        itemStyle: {
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+            {
+              offset: 0,
+              color: "#f56c6c"
+            },
+            {
+              offset: 1,
+              color: "#f89898"
+            }
+          ])
+        },
+        data: [1600, 2460, 4500]
+      },
+      {
+        name: "star",
+        type: "bar",
+        barWidth: "15%",
+        itemStyle: {
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+            {
+              offset: 0,
+              color: "#409EFF"
+            },
+            {
+              offset: 1,
+              color: "#53a7ff"
+            }
+          ])
+        },
+        data: [1450, 3620, 7500]
       }
     ],
     addTooltip: true

@@ -26,7 +26,7 @@ function down() {
 </script>
 
 <template>
-  <el-card>
+  <el-card shadow="never">
     <template #header>
       <span class="font-medium">文件下载功能</span>
     </template>

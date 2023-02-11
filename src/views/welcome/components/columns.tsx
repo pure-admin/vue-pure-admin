@@ -25,7 +25,7 @@ export function useColumns() {
           用户名
         </div>
       ),
-      value: "xiaoxian"
+      value: "乐于分享的程序员小铭"
     },
     {
       labelRenderer: () => (
@@ -47,7 +47,7 @@ export function useColumns() {
           居住地
         </div>
       ),
-      value: "杭州"
+      value: "中国"
     }
   ];
 
@@ -80,7 +80,7 @@ export function useColumns() {
           联系地址
         </div>
       ),
-      value: "杭州市西湖区"
+      value: "中华人民共和国"
     }
   ];
 
@@ -91,15 +91,15 @@ export function useColumns() {
           <el-icon>
             <iconify-icon-offline icon={Notebook} />
           </el-icon>
-          好好学习，天天向上
+          个性签名
         </div>
       ),
       cellRenderer: () => (
         <TypeIt
           className={"github"}
-          values={["Coding as art. Keep open source. Enjoy open source."]}
+          values={["办法总比困难多"]}
           cursor={false}
-          speed={40}
+          speed={100}
         />
       )
     }

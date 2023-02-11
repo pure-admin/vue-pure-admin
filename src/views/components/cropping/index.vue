@@ -26,7 +26,7 @@ const onCropper = (): void => {
 </script>
 
 <template>
-  <el-card>
+  <el-card shadow="never">
     <template #header>
       <div class="card-header">
         <span class="font-medium">图片裁剪组件</span>
