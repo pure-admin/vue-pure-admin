@@ -17,7 +17,7 @@ const throttleClick = throttle(handle);
 
 <template>
   <div>
-    <el-card class="mb-5">
+    <el-card class="mb-5" shadow="never">
       <template #header>
         <div>防抖：debounce</div>
       </template>
@@ -32,7 +32,7 @@ const throttleClick = throttle(handle);
         连续点击我，只会执行最后一次点击事件，延后执行
       </el-button>
     </el-card>
-    <el-card>
+    <el-card shadow="never">
       <template #header>
         <div>节流：throttle</div>
       </template>

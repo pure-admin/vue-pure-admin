@@ -84,7 +84,7 @@ const swiperExample: any[] = [
 </script>
 
 <template>
-  <el-card>
+  <el-card shadow="never">
     <template #header>
       <div class="font-medium">
         Swiper插件（

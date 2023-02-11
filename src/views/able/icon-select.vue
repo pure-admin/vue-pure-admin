@@ -10,7 +10,7 @@ const icon = ref("ep:add-location");
 </script>
 
 <template>
-  <el-card>
+  <el-card shadow="never">
     <template #header>
       <div class="card-header">
         <span class="font-medium">图标选择器</span>

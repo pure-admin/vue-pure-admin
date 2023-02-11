@@ -69,7 +69,7 @@ const exportExcel = () => {
 </script>
 
 <template>
-  <el-card>
+  <el-card shadow="never">
     <template #header>
       <div class="font-medium">
         导出Execl（

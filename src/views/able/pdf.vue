@@ -34,7 +34,7 @@ const onPrint = () => {
 </script>
 
 <template>
-  <el-card>
+  <el-card shadow="never">
     <template #header>
       <div class="font-medium">
         PDF预览（

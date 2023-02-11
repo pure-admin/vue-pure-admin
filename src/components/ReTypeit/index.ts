@@ -5,7 +5,7 @@ import TypeIt from "typeit";
 export default defineComponent({
   name: "TypeIt",
   props: {
-    /** 打字速度，以每一步之间的毫秒数为单位 */
+    /** 打字速度，以每一步之间的毫秒数为单位，默认`200` */
     speed: {
       type: Number,
       default: 200

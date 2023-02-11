@@ -24,7 +24,7 @@ const handleChange = value => {
 </script>
 
 <template>
-  <el-card>
+  <el-card shadow="never">
     <template #header> 区域级联选择器 </template>
     <el-row :gutter="20">
       <el-col :xl="12" :lg="12" :md="24" :sm="24" :xs="24">

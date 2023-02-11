@@ -56,7 +56,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <el-card>
+  <el-card shadow="never">
     <template #header>
       <div class="card-header">
         <span class="font-medium">
@@ -76,7 +76,7 @@ onMounted(() => {
       <!-- grid列表拖拽 -->
       <el-row :gutter="25">
         <el-col :xs="25" :sm="8" :md="8" :lg="8">
-          <el-card>
+          <el-card shadow="never">
             <template #header>
               <div class="card-header">
                 <span>grid列表拖拽</span>
@@ -100,7 +100,7 @@ onMounted(() => {
         </el-col>
 
         <el-col :xs="25" :sm="8" :md="8" :lg="8">
-          <el-card>
+          <el-card shadow="never">
             <template #header>
               <div class="card-header">
                 <span>单列拖拽</span>
@@ -123,7 +123,7 @@ onMounted(() => {
         </el-col>
 
         <el-col :xs="25" :sm="8" :md="8" :lg="8">
-          <el-card>
+          <el-card shadow="never">
             <template #header>
               <div class="card-header">
                 <span>拖拽实现元素位置交换</span>

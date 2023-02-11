@@ -27,7 +27,12 @@ const selectedVal = ({ left, right }): void => {
 
 <template>
   <div>
-    <el-card class="box-card" v-for="(item, key) in dataLists" :key="key">
+    <el-card
+      class="box-card"
+      v-for="(item, key) in dataLists"
+      :key="key"
+      shadow="never"
+    >
       <template #header>
         <div class="card-header">
           <span>{{ item.title }}</span>
