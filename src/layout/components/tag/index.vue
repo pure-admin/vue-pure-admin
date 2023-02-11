@@ -318,13 +318,6 @@ function onClickDrop(key, item, selectRoute?: RouteConfigs) {
   });
 }
 
-document.addEventListener("fullscreenchange", () => {
-  if (!isFullscreen.value) {
-    tagsViews[6].icon = Fullscreen;
-    tagsViews[6].text = $t("buttons.hswholeFullScreen");
-  }
-});
-
 function handleCommand(command: any) {
   const { key, item } = command;
   onClickDrop(key, item);
@@ -495,6 +488,11 @@ onBeforeMount(() => {
 watch([route], () => {
   activeIndex.value = -1;
   dynamicTagView();
+});
+
+watch(isFullscreen, () => {
+  tagsViews[6].icon = Fullscreen;
+  tagsViews[6].text = $t("buttons.hswholeFullScreen");
 });
 
 onMounted(() => {
