@@ -216,6 +216,7 @@
     .is-active.submenu-title-noDropdown.outer-most > * {
       z-index: 1;
       color: #fff;
+      background: transparent !important;
     }
     .is-active.submenu-title-noDropdown.outer-most::before {
       content: "";
