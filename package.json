@@ -47,7 +47,7 @@
     "dayjs": "^1.11.7",
     "echarts": "^5.4.1",
     "el-table-infinite-scroll": "^3.0.1",
-    "element-plus": "2.2.28",
+    "element-plus": "^2.2.30",
     "element-resize-detector": "^1.2.4",
     "intro.js": "^6.0.0",
     "js-cookie": "^3.0.1",
