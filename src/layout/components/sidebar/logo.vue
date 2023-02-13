@@ -18,11 +18,7 @@ const { title } = useNav();
         class="sidebar-logo-link"
         to="/"
       >
-        <FontIcon
-          icon="pure-iconfont-logo"
-          svg
-          style="width: 35px; height: 35px"
-        />
+        <img src="/logo.svg" alt="logo" />
         <span class="sidebar-title">{{ title }}</span>
       </router-link>
       <router-link
@@ -32,11 +28,7 @@ const { title } = useNav();
         class="sidebar-logo-link"
         to="/"
       >
-        <FontIcon
-          icon="pure-iconfont-logo"
-          svg
-          style="width: 35px; height: 35px"
-        />
+        <img src="/logo.svg" alt="logo" />
         <span class="sidebar-title">{{ title }}</span>
       </router-link>
     </transition>
@@ -45,37 +37,33 @@ const { title } = useNav();
 
 <style lang="scss" scoped>
 .sidebar-logo-container {
-  position: relative;
   width: 100%;
   height: 48px;
-  text-align: center;
   overflow: hidden;
+  position: relative;
 
   .sidebar-logo-link {
     height: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    margin-top: 5px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+
+    img {
+      height: 32px;
+      display: inline-block;
+    }
 
     .sidebar-title {
-      display: block;
-      width: 160px;
+      height: 32px;
+      line-height: 32px;
+      margin: 2px 0 0 12px;
+      color: $subMenuActiveText;
+      display: inline-block;
       overflow: hidden;
-      text-overflow: ellipsis;
       white-space: nowrap;
-      text-align: left;
-      color: #1890ff;
+      text-overflow: ellipsis;
+      font-size: 18px;
       font-weight: 600;
-      font-size: 20px;
-      margin-top: 10px;
-      font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
-    }
-  }
-
-  .collapses {
-    .sidebar-logo {
-      margin-right: 0;
     }
   }
 }
