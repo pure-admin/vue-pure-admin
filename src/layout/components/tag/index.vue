@@ -76,7 +76,7 @@ const moveToView = async (index: number): Promise<void> => {
     ? scrollbarDom.value?.offsetWidth
     : 0;
 
-  //获取视图更新后dom
+  // 获取视图更新后dom
   await nextTick();
 
   // 已有标签页总长度（包含溢出部分）
