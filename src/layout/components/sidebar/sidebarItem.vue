@@ -274,6 +274,9 @@ function resolvePath(routePath) {
           :is="useRenderIcon(props.item.meta && toRaw(props.item.meta.icon))"
         />
       </div>
+      <span v-if="layout === 'horizontal'">
+        {{ transformI18n(props.item.meta.title) }}
+      </span>
       <div
         :style="getSubMenuDivStyle(props.item)"
         v-if="
@@ -284,9 +287,6 @@ function resolvePath(routePath) {
           )
         "
       >
-        <span v-if="layout === 'horizontal'">
-          {{ transformI18n(props.item.meta.title) }}
-        </span>
         <el-tooltip
           v-if="layout !== 'horizontal'"
           placement="top"

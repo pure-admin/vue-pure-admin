@@ -2,6 +2,7 @@
 import { ListItem } from "./data";
 import { ref, PropType, nextTick } from "vue";
 import { useNav } from "@/layout/hooks/useNav";
+import { deviceDetection } from "@pureadmin/utils";
 
 const props = defineProps({
   noticeItem: {
@@ -15,6 +16,7 @@ const titleTooltip = ref(false);
 const descriptionRef = ref(null);
 const descriptionTooltip = ref(false);
 const { tooltipEffect } = useNav();
+const isMobile = deviceDetection();
 
 function hoverTitle() {
   nextTick(() => {
@@ -63,6 +65,7 @@ function hoverDescription(event, description) {
           :disabled="!titleTooltip"
           :content="props.noticeItem.title"
           placement="top-start"
+          :enterable="!isMobile"
         >
           <div
             ref="titleRef"

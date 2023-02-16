@@ -65,7 +65,7 @@ const dynamicTagView = () => {
   moveToView(index);
 };
 
-const moveToView = (index: number): void => {
+const moveToView = async (index: number): Promise<void> => {
   const tabNavPadding = 10;
   if (!instance.refs["dynamic" + index]) return;
   const tabItemEl = instance.refs["dynamic" + index][0];
@@ -75,8 +75,13 @@ const moveToView = (index: number): void => {
   const scrollbarDomWidth = scrollbarDom.value
     ? scrollbarDom.value?.offsetWidth
     : 0;
+
+  // 获取视图更新后dom
+  await nextTick();
+
   // 已有标签页总长度（包含溢出部分）
   const tabDomWidth = tabDom.value ? tabDom.value?.offsetWidth : 0;
+
   scrollbarDomWidth <= tabDomWidth
     ? (isShowArrow.value = true)
     : (isShowArrow.value = false);
@@ -188,6 +193,7 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
   ): void => {
     if (other) {
       useMultiTagsStoreHook().handleTags("equal", [routerArrays[0], obj]);
+      dynamicTagView();
     } else {
       delAliveRouteList = useMultiTagsStoreHook().handleTags("splice", "", {
         startIndex,
