@@ -121,7 +121,7 @@ router.beforeEach((to: toRouteType, _from, next) => {
   function toCorrectRoute() {
     whiteList.includes(to.fullPath) ? next(_from.fullPath) : next();
   }
-  if (userInfo) {
+  if (userInfo && userInfo.username && userInfo.username !== "") {
     // 无权限跳转403页面
     if (to.meta?.roles && !isOneOfArray(to.meta?.roles, userInfo?.roles)) {
       next({ path: "/error/403" });
