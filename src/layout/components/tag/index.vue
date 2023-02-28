@@ -193,13 +193,13 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
   ): void => {
     if (other) {
       useMultiTagsStoreHook().handleTags("equal", [routerArrays[0], obj]);
-      dynamicTagView();
     } else {
       delAliveRouteList = useMultiTagsStoreHook().handleTags("splice", "", {
         startIndex,
         length
       }) as any;
     }
+    dynamicTagView();
   };
 
   if (tag === "other") {
