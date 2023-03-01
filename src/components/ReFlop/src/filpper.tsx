@@ -1,5 +1,5 @@
 import { defineComponent, ref } from "vue";
-import { propTypes } from "@/utils/propTypes";
+import propTypes from "@/utils/propTypes";
 import "./filpper.css";
 
 const props = {

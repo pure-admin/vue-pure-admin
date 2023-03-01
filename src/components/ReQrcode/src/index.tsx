@@ -8,7 +8,7 @@ import {
   defineComponent
 } from "vue";
 import "./index.scss";
-import { propTypes } from "@/utils/propTypes";
+import propTypes from "@/utils/propTypes";
 import { isString, cloneDeep } from "@pureadmin/utils";
 import QRCode, { QRCodeRenderersOptions } from "qrcode";
 import RefreshRight from "@iconify-icons/ep/refresh-right";
