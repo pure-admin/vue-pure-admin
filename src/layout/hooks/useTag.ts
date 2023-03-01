@@ -120,9 +120,15 @@ export function useTags() {
   function conditionHandle(item, previous, next) {
     if (isBoolean(route?.meta?.showLink) && route?.meta?.showLink === false) {
       if (Object.keys(route.query).length > 0) {
-        return isEqual(route.query, item.query) ? previous : next;
+        return isEqual(route.query, item.query) &&
+          isEqual(route.path, item.path)
+          ? previous
+          : next;
       } else {
-        return isEqual(route.params, item.params) ? previous : next;
+        return isEqual(route.params, item.params) &&
+          isEqual(route.path, item.path)
+          ? previous
+          : next;
       }
     } else {
       return route.path === item.path ? previous : next;
