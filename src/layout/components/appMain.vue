@@ -1,14 +1,16 @@
 <script setup lang="ts">
 import { useGlobal } from "@pureadmin/utils";
 import backTop from "@/assets/svg/back_top.svg?component";
-import { h, computed, Transition, defineComponent } from "vue";
+import { h, computed, Transition, defineComponent, ref } from "vue";
 import { usePermissionStoreHook } from "@/store/modules/permission";
+import { ScrollbarInstance } from "element-plus";
 
 const props = defineProps({
   fixedHeader: Boolean
 });
 
 const { $storage, $config } = useGlobal<GlobalPropertiesApi>();
+const scrollBarRef = ref<ScrollbarInstance>();
 
 const keepAlive = computed(() => {
   return $config?.KeepAlive;
@@ -81,7 +83,11 @@ const transitionMain = defineComponent({
     <router-view>
       <template #default="{ Component, route }">
         <el-scrollbar v-if="props.fixedHeader">
-          <el-backtop title="回到顶部" target=".app-main .el-scrollbar__wrap">
+          <el-backtop
+            title="回到顶部"
+            target=".app-main .el-scrollbar__wrap"
+            v-if="scrollBarRef?.wrapRef"
+          >
             <backTop />
           </el-backtop>
           <transitionMain :route="route">
