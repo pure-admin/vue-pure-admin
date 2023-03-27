@@ -11,14 +11,14 @@ export const useSettingStore = defineStore({
     hiddenSideBar: getConfig().HiddenSideBar
   }),
   getters: {
-    getTitle() {
-      return this.title;
+    getTitle(state) {
+      return state.title;
     },
-    getFixedHeader() {
-      return this.fixedHeader;
+    getFixedHeader(state) {
+      return state.fixedHeader;
     },
-    getHiddenSideBar() {
-      return this.HiddenSideBar;
+    getHiddenSideBar(state) {
+      return state.hiddenSideBar;
     }
   },
   actions: {
