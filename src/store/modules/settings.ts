@@ -23,8 +23,7 @@ export const useSettingStore = defineStore({
   },
   actions: {
     CHANGE_SETTING({ key, value }) {
-      // eslint-disable-next-line no-prototype-builtins
-      if (this.hasOwnProperty(key)) {
+      if (Reflect.has(this, key)) {
         this[key] = value;
       }
     },
