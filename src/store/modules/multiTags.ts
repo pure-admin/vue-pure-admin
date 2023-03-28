@@ -17,8 +17,8 @@ export const useMultiTagsStore = defineStore({
     )?.multiTagsCache
   }),
   getters: {
-    getMultiTagsCache() {
-      return this.multiTagsCache;
+    getMultiTagsCache(state) {
+      return state.multiTagsCache;
     }
   },
   actions: {
