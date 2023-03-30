@@ -23,11 +23,11 @@ export const useAppStore = defineStore({
     sortSwap: false
   }),
   getters: {
-    getSidebarStatus() {
-      return this.sidebar.opened;
+    getSidebarStatus(state) {
+      return state.sidebar.opened;
     },
-    getDevice() {
-      return this.device;
+    getDevice(state) {
+      return state.device;
     }
   },
   actions: {

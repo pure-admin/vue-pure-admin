@@ -14,14 +14,14 @@ export const useEpThemeStore = defineStore({
       getConfig().Theme
   }),
   getters: {
-    getEpThemeColor() {
-      return this.epThemeColor;
+    getEpThemeColor(state) {
+      return state.epThemeColor;
     },
     /** 用于mix导航模式下hamburger-svg的fill属性 */
-    fill() {
-      if (this.epTheme === "light") {
+    fill(state) {
+      if (state.epTheme === "light") {
         return "#409eff";
-      } else if (this.epTheme === "yellow") {
+      } else if (state.epTheme === "yellow") {
         return "#d25f00";
       } else {
         return "#fff";

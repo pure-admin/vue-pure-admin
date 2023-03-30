@@ -11,20 +11,19 @@ export const useSettingStore = defineStore({
     hiddenSideBar: getConfig().HiddenSideBar
   }),
   getters: {
-    getTitle() {
-      return this.title;
+    getTitle(state) {
+      return state.title;
     },
-    getFixedHeader() {
-      return this.fixedHeader;
+    getFixedHeader(state) {
+      return state.fixedHeader;
     },
-    getHiddenSideBar() {
-      return this.HiddenSideBar;
+    getHiddenSideBar(state) {
+      return state.hiddenSideBar;
     }
   },
   actions: {
     CHANGE_SETTING({ key, value }) {
-      // eslint-disable-next-line no-prototype-builtins
-      if (this.hasOwnProperty(key)) {
+      if (Reflect.has(this, key)) {
         this[key] = value;
       }
     },

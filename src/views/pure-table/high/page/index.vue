@@ -66,8 +66,8 @@ const {
       "
       :columns="columns"
       :pagination="pagination"
-      @size-change="onSizeChange"
-      @current-change="onCurrentChange"
+      @page-size-change="onSizeChange"
+      @page-current-change="onCurrentChange"
     />
   </div>
 </template>

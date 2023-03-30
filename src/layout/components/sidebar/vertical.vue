@@ -27,6 +27,10 @@ const menuData = computed(() => {
     : usePermissionStoreHook().wholeMenus;
 });
 
+const loading = computed(() =>
+  pureApp.layout === "mix" ? false : menuData.value.length === 0 ? true : false
+);
+
 function getSubMenuData(path: string) {
   // path的上级路由组成的数组
   const parentPathArr = getParentPaths(
@@ -61,7 +65,7 @@ watch(
 
 <template>
   <div
-    v-loading="menuData.length === 0"
+    v-loading="loading"
     :class="['sidebar-container', showLogo ? 'has-logo' : '']"
   >
     <Logo v-if="showLogo" :collapse="isCollapse" />

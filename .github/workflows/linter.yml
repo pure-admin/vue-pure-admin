@@ -58,7 +58,7 @@ jobs:
 
       - name: Build
         run: |
-          pnpm install
+          pnpm install --no-frozen-lockfile
           pnpm lint
           pnpm typecheck
         env:
