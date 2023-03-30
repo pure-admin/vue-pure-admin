@@ -37,7 +37,7 @@ const columns: TableColumnList = [
       :data="tableData"
       :columns="columns"
       highlight-current-row
-      @current-change="handleCurrentChange"
+      @page-current-change="handleCurrentChange"
     />
     <div style="margin-top: 20px">
       <el-button @click="setCurrent(tableData[1])">Select second row</el-button>
