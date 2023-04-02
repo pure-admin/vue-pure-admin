@@ -27,15 +27,19 @@ interface MessageParams {
   /** 合并内容相同的消息，不支持 `VNode` 类型的消息，默认值 `false` */
   grouping?: boolean;
   /** 关闭时的回调函数, 参数为被关闭的 `message` 实例 */
-  onClose?: Function | null;
+  onClose?: () => void | null;
+  /** 允许显示的message数量, 默认 3*/
+  max?: number;
 }
+
+const instaceArray: MessageHandler[] = [];
 
 /** 用法非常简单，参考 src/views/components/message/index.vue 文件 */
 
 /**
  * `Message` 消息提示函数
  */
-const message = (
+const messageFn = (
   message: string | VNode | (() => VNode),
   params?: MessageParams
 ): MessageHandler => {
@@ -75,6 +79,24 @@ const message = (
       onClose: () => (isFunction(onClose) ? onClose() : null)
     });
   }
+};
+
+const message = (
+  messageText: string | VNode | (() => VNode),
+  params?: MessageParams
+) => {
+  let max;
+  if (params && Object.keys(params).length) {
+    max = params?.max ?? 3;
+  } else {
+    max = 3;
+  }
+  if (instaceArray.length >= max) {
+    const firsetInstance = instaceArray.shift();
+    firsetInstance && firsetInstance.close();
+  }
+  const instance = messageFn(messageText, params);
+  instaceArray.push(instance);
 };
 
 /**
