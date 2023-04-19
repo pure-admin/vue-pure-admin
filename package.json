@@ -145,6 +145,10 @@
         "rollup",
         "webpack"
       ]
+    },
+    "allowedDeprecatedVersions": {
+      "sourcemap-codec": "*",
+      "stable": "*"
     }
   },
   "repository": "git@github.com:pure-admin/vue-pure-admin.git",
