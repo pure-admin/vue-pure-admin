@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import { onMounted } from "vue";
-import Player from "xgplayer/dist/simple_player";
-import volume from "xgplayer/es/controls/volume";
 import { deviceDetection } from "@pureadmin/utils";
-import screenShot from "xgplayer/es/controls/screenShot";
-import playbackRate from "xgplayer/es/controls/playbackRate";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import VideoPlay from "@iconify-icons/ep/video-play";
+
+import Player from "xgplayer";
+import "xgplayer/dist/index.min.css";
 
 defineOptions({
   name: "Video"
@@ -15,15 +14,18 @@ defineOptions({
 onMounted(() => {
   new Player({
     id: "mse",
+    lang: "zh",
     // 默认静音
     volume: 0,
     autoplay: false,
     screenShot: true,
+    videoAttributes: {
+      crossOrigin: "anonymous"
+    },
     url: "https://sf1-hscdn-tos.pstatp.com/obj/media-fe/xgplayer_doc_video/mp4/xgplayer-demo-720p.mp4",
     poster:
       "https://s2.pstatp.com/cdn/expire-1-M/byted-player-videos/1.0.0/poster.jpg",
     fluid: deviceDetection(),
-    controlPlugins: [volume, playbackRate, screenShot],
     //传入倍速可选数组
     playbackRate: [0.5, 0.75, 1, 1.5, 2]
   });
@@ -37,7 +39,7 @@ onMounted(() => {
         <span class="font-medium">
           视频组件，采用开源的
           <el-link
-            href="https://v2.h5player.bytedance.com"
+            href="https://v3.h5player.bytedance.com/"
             target="_blank"
             :icon="useRenderIcon(VideoPlay)"
             style="font-size: 16px; margin: 0 4px 5px"
