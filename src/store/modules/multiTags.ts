@@ -3,17 +3,18 @@ import { store } from "@/store";
 import { routerArrays } from "@/layout/types";
 import { multiType, positionType } from "./types";
 import { isEqual, isBoolean, isUrl, storageLocal } from "@pureadmin/utils";
+import { nameSpace } from "@/utils/responsive";
 
 export const useMultiTagsStore = defineStore({
   id: "pure-multiTags",
   state: () => ({
     // 存储标签页信息（路由信息）
-    multiTags: storageLocal().getItem<StorageConfigs>("responsive-configure")
+    multiTags: storageLocal().getItem<StorageConfigs>(`${nameSpace}configure`)
       ?.multiTagsCache
-      ? storageLocal().getItem<StorageConfigs>("responsive-tags")
+      ? storageLocal().getItem<StorageConfigs>(`${nameSpace}tags`)
       : [...routerArrays],
     multiTagsCache: storageLocal().getItem<StorageConfigs>(
-      "responsive-configure"
+      `${nameSpace}configure`
     )?.multiTagsCache
   }),
   getters: {
@@ -25,14 +26,14 @@ export const useMultiTagsStore = defineStore({
     multiTagsCacheChange(multiTagsCache: boolean) {
       this.multiTagsCache = multiTagsCache;
       if (multiTagsCache) {
-        storageLocal().setItem("responsive-tags", this.multiTags);
+        storageLocal().setItem(`${nameSpace}tags`, this.multiTags);
       } else {
-        storageLocal().removeItem("responsive-tags");
+        storageLocal().removeItem(`${nameSpace}tags`);
       }
     },
     tagsCache(multiTags) {
       this.getMultiTagsCache &&
-        storageLocal().setItem("responsive-tags", multiTags);
+        storageLocal().setItem(`${nameSpace}tags`, multiTags);
     },
     handleTags<T>(
       mode: string,

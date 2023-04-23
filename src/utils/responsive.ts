@@ -3,7 +3,7 @@ import { App } from "vue";
 import Storage from "responsive-storage";
 import { routerArrays } from "@/layout/types";
 
-const nameSpace = "responsive-";
+const nameSpace = "miaoda-";
 
 export const injectResponsiveStorage = (app: App, config: ServerConfigs) => {
   const configObj = Object.assign(
@@ -39,3 +39,5 @@ export const injectResponsiveStorage = (app: App, config: ServerConfigs) => {
 
   app.use(Storage, { nameSpace, memory: configObj });
 };
+
+export { nameSpace };

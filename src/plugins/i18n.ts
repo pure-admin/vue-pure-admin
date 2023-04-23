@@ -2,6 +2,7 @@
 import { App, WritableComputedRef } from "vue";
 import { storageLocal } from "@pureadmin/utils";
 import { type I18n, createI18n } from "vue-i18n";
+import { nameSpace } from "@/utils/responsive";
 
 // element-plus国际化
 import enLocale from "element-plus/lib/locale/lang/en";
@@ -63,7 +64,8 @@ export const $t = (key: string) => key;
 export const i18n: I18n = createI18n({
   legacy: false,
   locale:
-    storageLocal().getItem<StorageConfigs>("responsive-locale")?.locale ?? "zh",
+    storageLocal().getItem<StorageConfigs>(`${nameSpace}locale`)?.locale ??
+    "zh",
   fallbackLocale: "en",
   messages: localesConfigs
 });

@@ -29,6 +29,7 @@ import CloseRightTags from "@iconify-icons/ri/text-direction-l";
 import CloseLeftTags from "@iconify-icons/ri/text-direction-r";
 import RefreshRight from "@iconify-icons/ep/refresh-right";
 import Close from "@iconify-icons/ep/close";
+import { nameSpace } from "@/utils/responsive";
 
 export function useTags() {
   const route = useRoute();
@@ -46,13 +47,13 @@ export function useTags() {
 
   /** 显示模式，默认灵动模式 */
   const showModel = ref(
-    storageLocal().getItem<StorageConfigs>("responsive-configure")?.showModel ||
-      "smart"
+    storageLocal().getItem<StorageConfigs>(`${nameSpace}configure`)
+      ?.showModel || "smart"
   );
   /** 是否隐藏标签页，默认显示 */
   const showTags =
     ref(
-      storageLocal().getItem<StorageConfigs>("responsive-configure").hideTabs
+      storageLocal().getItem<StorageConfigs>(`${nameSpace}configure`).hideTabs
     ) ?? ref("false");
   const multiTags: any = computed(() => {
     return useMultiTagsStoreHook().multiTags;
@@ -201,10 +202,10 @@ export function useTags() {
   onMounted(() => {
     if (!showModel.value) {
       const configure = storageLocal().getItem<StorageConfigs>(
-        "responsive-configure"
+        `${nameSpace}configure`
       );
       configure.showModel = "card";
-      storageLocal().setItem("responsive-configure", configure);
+      storageLocal().setItem(`${nameSpace}configure`, configure);
     }
   });
 

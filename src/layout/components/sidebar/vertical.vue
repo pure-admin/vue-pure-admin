@@ -9,10 +9,11 @@ import { storageLocal } from "@pureadmin/utils";
 import { ref, computed, watch, onBeforeMount } from "vue";
 import { findRouteByPath, getParentPaths } from "@/router/utils";
 import { usePermissionStoreHook } from "@/store/modules/permission";
+import { nameSpace } from "@/utils/responsive";
 
 const route = useRoute();
 const showLogo = ref(
-  storageLocal().getItem<StorageConfigs>("responsive-configure")?.showLogo ??
+  storageLocal().getItem<StorageConfigs>(`${nameSpace}configure`)?.showLogo ??
     true
 );
 
@@ -77,7 +78,7 @@ watch(
         router
         unique-opened
         mode="vertical"
-        class="outer-most select-none"
+        class="select-none outer-most"
         :collapse="isCollapse"
         :default-active="route.path"
         :collapse-transition="false"
@@ -88,7 +89,7 @@ watch(
           :key="routes.path"
           :item="routes"
           :base-path="routes.path"
-          class="outer-most select-none"
+          class="select-none outer-most"
         />
       </el-menu>
     </el-scrollbar>
