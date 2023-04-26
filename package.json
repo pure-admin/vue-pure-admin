@@ -126,7 +126,7 @@
     "stylelint-config-standard": "^29.0.0",
     "stylelint-order": "^5.0.0",
     "svgo": "^3.0.2",
-    "tailwindcss": "^3.3.1",
+    "tailwindcss": "^3.3.2",
     "terser": "^5.17.1",
     "typescript": "^5.0.4",
     "unplugin-vue-define-options": "1.1.6",
@@ -134,7 +134,7 @@
     "vite-plugin-cdn-import": "^0.3.5",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-mock": "^2.9.6",
-    "vite-plugin-remove-console": "^2.1.0",
+    "vite-plugin-remove-console": "^2.1.1",
     "vite-svg-loader": "^4.0.0",
     "vue-eslint-parser": "^9.1.1",
     "vue-tsc": "^1.2.0"
