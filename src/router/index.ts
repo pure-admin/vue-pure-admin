@@ -98,11 +98,10 @@ const whiteList = ["/login"];
 
 router.beforeEach((to: toRouteType, _from, next) => {
   if (to.meta?.keepAlive) {
-    const newMatched = to.matched;
-    handleAliveRoute(newMatched, "add");
+    handleAliveRoute(to, "add");
     // 页面整体刷新和点击标签页刷新
     if (_from.name === undefined || _from.name === "Redirect") {
-      handleAliveRoute(newMatched);
+      handleAliveRoute(to);
     }
   }
   const userInfo = storageSession().getItem<DataInfo<number>>(sessionKey);

@@ -35,7 +35,7 @@
     "@logicflow/extension": "^1.2.3",
     "@pureadmin/descriptions": "^1.1.1",
     "@pureadmin/table": "^2.0.0",
-    "@pureadmin/utils": "^1.8.7",
+    "@pureadmin/utils": "^1.8.8",
     "@vueuse/core": "^10.0.2",
     "@vueuse/motion": "2.0.0-beta.12",
     "@wangeditor/editor": "^5.1.21",

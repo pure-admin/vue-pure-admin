@@ -3,13 +3,11 @@ import {
   RouteRecordRaw,
   RouteComponent,
   createWebHistory,
-  createWebHashHistory,
-  RouteRecordNormalized
+  createWebHashHistory
 } from "vue-router";
 import { router } from "./index";
 import { isProxy, toRaw } from "vue";
 import { useTimeoutFn } from "@vueuse/core";
-import { RouteConfigs } from "@/layout/types";
 import {
   isString,
   cloneDeep,
@@ -92,16 +90,6 @@ function filterNoPermissionTree(data: RouteComponent[]) {
     (v: any) => v.children && (v.children = filterNoPermissionTree(v.children))
   );
   return filterChildrenTree(newTree);
-}
-
-/** 批量删除缓存路由(keepalive) */
-function delAliveRoutes(delAliveRouteList: Array<RouteConfigs>) {
-  delAliveRouteList.forEach(route => {
-    usePermissionStoreHook().cacheOperate({
-      mode: "delete",
-      name: route?.name
-    });
-  });
 }
 
 /** 通过path获取父级路径 */
@@ -266,27 +254,29 @@ function formatTwoStageRoutes(routesList: RouteRecordRaw[]) {
 }
 
 /** 处理缓存路由（添加、删除、刷新） */
-function handleAliveRoute(matched: RouteRecordNormalized[], mode?: string) {
+function handleAliveRoute({ name }: toRouteType, mode?: string) {
   switch (mode) {
     case "add":
-      matched.forEach(v => {
-        usePermissionStoreHook().cacheOperate({ mode: "add", name: v.name });
+      usePermissionStoreHook().cacheOperate({
+        mode: "add",
+        name
       });
       break;
     case "delete":
       usePermissionStoreHook().cacheOperate({
         mode: "delete",
-        name: matched[matched.length - 1].name
+        name
       });
       break;
     default:
       usePermissionStoreHook().cacheOperate({
         mode: "delete",
-        name: matched[matched.length - 1].name
+        name
       });
       useTimeoutFn(() => {
-        matched.forEach(v => {
-          usePermissionStoreHook().cacheOperate({ mode: "add", name: v.name });
+        usePermissionStoreHook().cacheOperate({
+          mode: "add",
+          name
         });
       }, 100);
   }
@@ -371,7 +361,6 @@ export {
   isOneOfArray,
   getHistoryMode,
   addAsyncRoutes,
-  delAliveRoutes,
   getParentPaths,
   findRouteByPath,
   handleAliveRoute,

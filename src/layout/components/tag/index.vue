@@ -4,10 +4,10 @@ import { emitter } from "@/utils/mitt";
 import { RouteConfigs } from "../../types";
 import { useTags } from "../../hooks/useTag";
 import { routerArrays } from "@/layout/types";
+import { handleAliveRoute } from "@/router/utils";
 import { isEqual, isAllEmpty } from "@pureadmin/utils";
 import { useSettingStoreHook } from "@/store/modules/settings";
 import { ref, watch, unref, nextTick, onBeforeMount } from "vue";
-import { handleAliveRoute, delAliveRoutes } from "@/router/utils";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
 import { useResizeObserver, useDebounceFn, useFullscreen } from "@vueuse/core";
 
@@ -170,8 +170,6 @@ function onFresh() {
 }
 
 function deleteDynamicTag(obj: any, current: any, tag?: string) {
-  // 存放被删除的缓存路由
-  let delAliveRouteList = [];
   const valueIndex: number = multiTags.value.findIndex((item: any) => {
     if (item.query) {
       if (item.path === obj.path) {
@@ -194,7 +192,7 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
     if (other) {
       useMultiTagsStoreHook().handleTags("equal", [routerArrays[0], obj]);
     } else {
-      delAliveRouteList = useMultiTagsStoreHook().handleTags("splice", "", {
+      useMultiTagsStoreHook().handleTags("splice", "", {
         startIndex,
         length
       }) as any;
@@ -214,10 +212,6 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
   }
   const newRoute = useMultiTagsStoreHook().handleTags("slice");
   if (current === route.path) {
-    // 删除缓存路由
-    tag
-      ? delAliveRoutes(delAliveRouteList)
-      : handleAliveRoute(route.matched, "delete");
     // 如果删除当前激活tag就自动切换到最后一个tag
     if (tag === "left") return;
     if (newRoute[0]?.query) {
@@ -228,8 +222,6 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
       router.push({ path: newRoute[0].path });
     }
   } else {
-    // 删除缓存路由
-    tag ? delAliveRoutes(delAliveRouteList) : delAliveRoutes([obj]);
     if (!multiTags.value.length) return;
     if (multiTags.value.some(item => item.path === route.path)) return;
     if (newRoute[0]?.query) {
@@ -244,6 +236,7 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
 
 function deleteMenu(item, tag?: string) {
   deleteDynamicTag(item, item.path, tag);
+  handleAliveRoute(route as toRouteType);
 }
 
 function onClickDrop(key, item, selectRoute?: RouteConfigs) {
@@ -291,6 +284,7 @@ function onClickDrop(key, item, selectRoute?: RouteConfigs) {
         length: multiTags.value.length
       });
       router.push("/welcome");
+      handleAliveRoute(route as toRouteType);
       break;
     case 6:
       // 整体页面全屏
