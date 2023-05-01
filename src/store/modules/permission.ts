@@ -27,7 +27,6 @@ export const usePermissionStore = defineStore({
       switch (mode) {
         case "add":
           this.cachePageList.push(name);
-          this.cachePageList = [...new Set(this.cachePageList)];
           break;
         case "delete":
           // eslint-disable-next-line no-case-declarations
