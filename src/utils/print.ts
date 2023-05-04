@@ -136,9 +136,11 @@ Print.prototype = {
     w = f.contentWindow || f.contentDocument;
     // eslint-disable-next-line prefer-const
     doc = f.contentDocument || f.contentWindow.document;
-    doc.open();
-    doc.write(content);
-    doc.close();
+    setTimeout(() => {
+      doc.open();
+      doc.write(content);
+      doc.close();
+    });
 
     const removes = document.querySelectorAll(".isNeedRemove");
     for (let k = 0; k < removes.length; k++) {

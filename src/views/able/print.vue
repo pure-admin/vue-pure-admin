@@ -36,7 +36,7 @@ const options = [
 
 function onPrint() {
   const el = options.filter(v => v.value === value.value)[0]?.el;
-  Print(el).toPrint;
+  Print(el);
 }
 
 const tableRowClassName = ({ rowIndex }: { row: User; rowIndex: number }) => {
