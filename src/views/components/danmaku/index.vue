@@ -110,7 +110,7 @@ function addDanmu() {
           <el-link
             href="https://github.com/hellodigua/vue-danmaku/tree/vue3"
             target="_blank"
-            style="font-size: 16px; margin: 0 4px 5px"
+            style="margin: 0 4px 5px; font-size: 16px"
           >
             vue3-danmaku
           </el-link>
@@ -197,10 +197,10 @@ function addDanmu() {
     align-items: center;
 
     .img {
-      height: 25px;
       width: 25px;
-      border-radius: 50%;
+      height: 25px;
       margin-right: 5px;
+      border-radius: 50%;
     }
   }
 }

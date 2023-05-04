@@ -32,8 +32,8 @@ html.dark {
   .tags-view {
     .arrow-left,
     .arrow-right {
-      box-shadow: none;
       border-right: 1px solid $border-style;
+      box-shadow: none;
     }
 
     .arrow-right {
@@ -46,6 +46,7 @@ html.dark {
     .el-divider__text {
       --el-bg-color: var(--el-bg-color);
     }
+
     .el-divider--horizontal {
       border-top: none;
     }
@@ -63,10 +64,10 @@ html.dark {
     }
 
     .form-edit-widget-label a {
+      color: $color-white;
       background: var(--el-color-primary);
       border: none;
       border-radius: 5px;
-      color: $color-white;
     }
 
     .el-aside {
@@ -84,14 +85,18 @@ html.dark {
   .el-table__cell {
     background: var(--el-bg-color);
   }
+
   .el-card {
     --el-card-bg-color: var(--el-bg-color);
+
     // border: none !important;
   }
+
   .el-backtop {
     --el-backtop-bg-color: var(--el-color-primary-light-9);
     --el-backtop-hover-bg-color: var(--el-color-primary);
   }
+
   .el-dropdown-menu__item:not(.is-disabled):hover {
     background: transparent;
   }
@@ -103,18 +108,18 @@ html.dark {
     &.el-message-box__close,
     &.el-notification__closeBtn {
       &:hover {
-        color: rgba(255, 255, 255, 0.85) !important;
-        background-color: rgba(255, 255, 255, 0.12);
+        color: rgb(255 255 255 / 85%) !important;
+        background-color: rgb(255 255 255 / 12%);
       }
     }
   }
 
   /* 克隆并自定义 ElMessage 样式，不会影响 ElMessage 原本样式，在 src/utils/message.ts 中调用自定义样式 ElMessage 方法即可，非暗黑模式在 src/style/element-plus.scss 文件进行了适配 */
   .pure-message {
+    background-color: rgb(36 37 37) !important;
     background-image: initial !important;
-    background-color: rgb(36, 37, 37) !important;
-    box-shadow: rgb(13 13 13 / 12%) 0px 3px 6px -4px,
-      rgb(13 13 13 / 8%) 0px 6px 16px 0px, rgb(13 13 13 / 5%) 0px 9px 28px 8px !important;
+    box-shadow: rgb(13 13 13 / 12%) 0 3px 6px -4px,
+      rgb(13 13 13 / 8%) 0 6px 16px 0, rgb(13 13 13 / 5%) 0 9px 28px 8px !important;
 
     & .el-message__content {
       color: $color-white !important;
@@ -124,8 +129,8 @@ html.dark {
 
     & .el-message__closeBtn {
       &:hover {
-        color: rgba(255, 255, 255, 0.85);
-        background-color: rgba(255, 255, 255, 0.12);
+        color: rgb(255 255 255 / 85%);
+        background-color: rgb(255 255 255 / 12%);
       }
     }
   }

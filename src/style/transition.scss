@@ -31,6 +31,7 @@
 }
 
 .breadcrumb-leave-active {
+  position: absolute;
   transition: all 0.3s;
 }
 
@@ -38,10 +39,6 @@
 .breadcrumb-leave-active {
   opacity: 0;
   transform: translateX(20px);
-}
-
-.breadcrumb-leave-active {
-  position: absolute;
 }
 
 /**

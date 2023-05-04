@@ -58,7 +58,7 @@ const columns = [
                 role="img"
                 aria-label="dingding"
                 class="anticon anticon-dingding flex items-center cursor-pointer"
-                style="color: rgb(0, 160, 233); margin-left: 8px"
+                style="margin-left: 8px; color: rgb(0 160 233)"
               >
                 <svg
                   viewBox="64 64 896 896"

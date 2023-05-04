@@ -40,7 +40,7 @@ function initLf() {
   LogicFlow.use(Menu);
   const domLf = new LogicFlow({
     ...unref(config),
-    container: document.querySelector("#LF-Turbo")
+    container: document.querySelector("#turbo")
   });
   lf.value = domLf;
   // 设置边类型bpmn:sequenceFlow为默认类型
@@ -74,7 +74,7 @@ onMounted(() => {
             href="http://logic-flow.org/"
             target="_blank"
             :icon="useRenderIcon(SetUp)"
-            style="font-size: 16px; margin: 0 4px 5px"
+            style="margin: 0 4px 5px; font-size: 16px"
           >
             LogicFlow
           </el-link>
@@ -93,7 +93,7 @@ onMounted(() => {
       <!-- 节点面板 -->
       <NodePanel :lf="lf" :nodeList="nodeList" />
       <!-- 画布 -->
-      <div id="LF-Turbo" />
+      <div id="turbo" />
       <!-- 数据查看面板 -->
       <el-dialog
         class="flow-dialog"
@@ -110,19 +110,19 @@ onMounted(() => {
 </template>
 
 <style scoped>
-#LF-Turbo {
+#turbo {
   width: 100%;
   height: 70vh;
 }
 
 .logic-flow-view {
-  margin: 10px;
   position: relative;
+  margin: 10px;
 }
 
 .demo-title {
-  text-align: center;
   margin: 20px;
+  text-align: center;
 }
 
 .demo-control {
@@ -139,23 +139,23 @@ onMounted(() => {
 .add-panel {
   position: absolute;
   z-index: 11;
-  background-color: white;
   padding: 10px 5px;
+  background-color: white;
 }
 
 .el-drawer__body {
-  height: 80%;
-  overflow: auto;
-  margin-top: -30px;
   z-index: 3;
+  height: 80%;
+  margin-top: -30px;
+  overflow: auto;
 }
 
 :deep(.flow-dialog) {
-  transform: none;
-  left: 0;
-  top: 5vh;
   position: relative;
+  top: 5vh;
+  left: 0;
   margin: 0 auto;
+  transform: none;
 }
 
 :deep(.flow-dialog) .el-dialog__body {

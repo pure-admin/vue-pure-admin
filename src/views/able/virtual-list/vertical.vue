@@ -60,9 +60,9 @@ const filteredItems = computed(() => {
 
 <style scoped>
 .dynamic-scroller-demo {
-  overflow: hidden;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .scroller {
@@ -70,9 +70,9 @@ const filteredItems = computed(() => {
 }
 
 .message {
+  box-sizing: border-box;
   display: flex;
   min-height: 32px;
   padding: 12px;
-  box-sizing: border-box;
 }
 </style>

@@ -46,8 +46,8 @@ notices.value.map(v => (noticesNum.value += v.list.length));
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 48px;
   width: 60px;
+  height: 48px;
   cursor: pointer;
 
   .header-notice-icon {
@@ -59,7 +59,7 @@ notices.value.map(v => (noticesNum.value += v.list.length));
   width: 330px;
 
   .noticeList-container {
-    padding: 15px 24px 0 24px;
+    padding: 15px 24px 0;
   }
 
   :deep(.el-tabs__header) {
@@ -71,7 +71,7 @@ notices.value.map(v => (noticesNum.value += v.list.length));
   }
 
   :deep(.el-tabs__nav-wrap) {
-    padding: 0 36px 0 36px;
+    padding: 0 36px;
   }
 }
 </style>

@@ -80,26 +80,26 @@ const activities = [
 
 <style scoped>
 .message {
+  position: relative;
+  box-sizing: border-box;
   width: 200px;
+  padding: 5px 12px;
+  line-height: 18px;
+  color: #fff;
+  word-break: break-all;
   background-color: var(--el-color-primary);
   border-color: var(--el-color-primary);
-  color: #fff;
-  line-height: 18px;
-  padding: 5px 12px 5px 12px;
-  box-sizing: border-box;
   border-radius: 6px;
-  position: relative;
-  word-break: break-all;
 }
 
 .message::after {
-  content: "";
   position: absolute;
   top: 8px;
   left: -10px;
   width: 0;
   height: 0;
   overflow: hidden;
+  content: "";
   border-color: var(--el-color-primary) transparent transparent;
   border-style: solid dashed dashed;
   border-width: 10px;

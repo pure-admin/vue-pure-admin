@@ -132,10 +132,10 @@ onMounted(() => {
 </template>
 
 <style scoped>
-@import "./assets/iconfont/iconfont.css";
+@import url("./assets/iconfont/iconfont.css");
 
 .control-container {
-  background: hsla(0, 0%, 100%, 0.8);
+  background: hsl(0deg 0% 100% / 80%);
   box-shadow: 0 1px 4px rgb(0 0 0 / 20%);
 }
 

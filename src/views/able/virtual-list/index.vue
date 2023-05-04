@@ -16,7 +16,7 @@ defineOptions({
         <el-link
           href="https://github.com/Akryum/vue-virtual-scroller/tree/next/packages/vue-virtual-scroller"
           target="_blank"
-          style="font-size: 16px; margin: 0 5px 4px 0"
+          style="margin: 0 5px 4px 0; font-size: 16px"
         >
           github地址
         </el-link>

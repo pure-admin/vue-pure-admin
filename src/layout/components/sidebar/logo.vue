@@ -37,33 +37,33 @@ const { title } = useNav();
 
 <style lang="scss" scoped>
 .sidebar-logo-container {
+  position: relative;
   width: 100%;
   height: 48px;
   overflow: hidden;
-  position: relative;
 
   .sidebar-logo-link {
-    height: 100%;
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
+    height: 100%;
 
     img {
-      height: 32px;
       display: inline-block;
+      height: 32px;
     }
 
     .sidebar-title {
-      height: 32px;
-      line-height: 32px;
-      margin: 2px 0 0 12px;
-      color: $subMenuActiveText;
       display: inline-block;
+      height: 32px;
+      margin: 2px 0 0 12px;
       overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
       font-size: 18px;
       font-weight: 600;
+      line-height: 32px;
+      color: $subMenuActiveText;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
 }

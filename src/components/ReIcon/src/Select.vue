@@ -200,8 +200,8 @@ watch(
 
 .icon-item {
   &:hover {
-    border-color: var(--el-color-primary);
     color: var(--el-color-primary);
+    border-color: var(--el-color-primary);
     transition: all 0.4s;
     transform: scaleX(1.05);
   }
@@ -224,15 +224,15 @@ watch(
 }
 
 :deep(.el-tabs__item) {
+  height: 30px;
   font-size: 12px;
   font-weight: normal;
-  height: 30px;
   line-height: 30px;
 }
 
 :deep(.el-tabs__header),
 :deep(.el-tabs__nav-wrap) {
-  margin: 0;
   position: static;
+  margin: 0;
 }
 </style>

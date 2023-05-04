@@ -94,25 +94,25 @@ const cardLogoClass = computed(() => [
   display: flex;
   flex-direction: column;
   margin-bottom: 12px;
-  border-radius: 3px;
   overflow: hidden;
   cursor: pointer;
+  border-radius: 3px;
 
   &_detail {
     flex: 1;
-    padding: 24px 32px;
     min-height: 140px;
+    padding: 24px 32px;
 
     &--logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 56px;
       height: 56px;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #e0ebff;
       font-size: 32px;
       color: #0052d9;
+      background: #e0ebff;
+      border-radius: 50%;
 
       &__disabled {
         color: #a1c4ff;
@@ -129,21 +129,21 @@ const cardLogoClass = computed(() => [
     }
 
     &--name {
-      margin: 24px 0 8px 0;
+      margin: 24px 0 8px;
       font-size: 16px;
       font-weight: 400;
     }
 
     &--desc {
+      display: -webkit-box;
+      height: 40px;
+      margin-bottom: 24px;
+      overflow: hidden;
       font-size: 12px;
       line-height: 20px;
-      overflow: hidden;
       text-overflow: ellipsis;
-      display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
-      margin-bottom: 24px;
-      height: 40px;
     }
   }
 

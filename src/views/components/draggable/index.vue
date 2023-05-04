@@ -65,7 +65,7 @@ onMounted(() => {
             href="https://sortablejs.github.io/vue.draggable.next/#/simple"
             target="_blank"
             :icon="useRenderIcon(Rank)"
-            style="font-size: 16px; margin: 0 4px 5px"
+            style="margin: 0 4px 5px; font-size: 16px"
           >
             vuedraggable
           </el-link>
@@ -150,35 +150,36 @@ onMounted(() => {
 /* grid列表拖拽 */
 .grid-container {
   display: grid;
-  grid-template-columns: 33.3% 33.3% 33.3%;
   grid-template-rows: 33.3% 33.3% 33.3%;
+  grid-template-columns: 33.3% 33.3% 33.3%;
 }
 
 .item-single {
-  font-size: 1.5em;
   height: 77px;
-  text-align: center;
+  font-size: 1.5em;
   line-height: 85px;
-  border: 1px solid #e5e4e9;
+  text-align: center;
   cursor: move;
+  border: 1px solid #e5e4e9;
 }
 
 .item-cut {
-  font-size: 1.5em;
   height: 77px;
+  font-size: 1.5em;
   line-height: 77px;
   text-align: center;
-  border: 1px solid #e5e4e9;
   cursor: move;
+  border: 1px solid #e5e4e9;
 }
 
 .item {
   font-size: 2em;
-  text-align: center;
   line-height: 100px;
-  border: 1px solid #e5e4e9;
+  text-align: center;
   cursor: move;
-  @media screen and (max-width: 750px) {
+  border: 1px solid #e5e4e9;
+
+  @media screen and (width <= 750px) {
     line-height: 90px;
   }
 }
