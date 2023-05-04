@@ -1,4 +1,4 @@
-@keyframes scheduleInWidth {
+@keyframes schedule-in-width {
   from {
     width: 0;
   }
@@ -8,7 +8,7 @@
   }
 }
 
-@keyframes scheduleOutWidth {
+@keyframes schedule-out-width {
   from {
     width: 100%;
   }
@@ -280,7 +280,7 @@
   width: 100%;
   height: 2px;
   background: var(--el-color-primary);
-  animation: scheduleInWidth 200ms ease-in;
+  animation: schedule-in-width 200ms ease-in;
 }
 
 /* 灵动模式下鼠标移出隐藏蓝色进度条 */
@@ -291,5 +291,5 @@
   width: 0;
   height: 2px;
   background: var(--el-color-primary);
-  animation: scheduleOutWidth 200ms ease-in;
+  animation: schedule-out-width 200ms ease-in;
 }

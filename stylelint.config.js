@@ -22,7 +22,6 @@ module.exports = {
   ],
   rules: {
     "selector-class-pattern": null,
-    "keyframes-name-pattern": null,
     "no-descending-specificity": null,
     "scss/dollar-variable-pattern": null,
     "selector-pseudo-class-no-unknown": [
