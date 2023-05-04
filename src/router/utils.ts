@@ -92,20 +92,20 @@ function filterNoPermissionTree(data: RouteComponent[]) {
   return filterChildrenTree(newTree);
 }
 
-/** 通过path获取父级路径 */
-function getParentPaths(path: string, routes: RouteRecordRaw[]) {
+/** 通过指定 `key` 获取父级路径集合，默认 `key` 为 `path` */
+function getParentPaths(value: string, routes: RouteRecordRaw[], key = "path") {
   // 深度遍历查找
-  function dfs(routes: RouteRecordRaw[], path: string, parents: string[]) {
+  function dfs(routes: RouteRecordRaw[], value: string, parents: string[]) {
     for (let i = 0; i < routes.length; i++) {
       const item = routes[i];
-      // 找到path则返回父级path
-      if (item.path === path) return parents;
+      // 返回父级path
+      if (item[key] === value) return parents;
       // children不存在或为空则不递归
       if (!item.children || !item.children.length) continue;
       // 往下查找时将当前path入栈
       parents.push(item.path);
 
-      if (dfs(item.children, path, parents).length) return parents;
+      if (dfs(item.children, value, parents).length) return parents;
       // 深度遍历查找未找到时当前path 出栈
       parents.pop();
     }
@@ -113,10 +113,10 @@ function getParentPaths(path: string, routes: RouteRecordRaw[]) {
     return [];
   }
 
-  return dfs(routes, path, []);
+  return dfs(routes, value, []);
 }
 
-/** 查找对应path的路由信息 */
+/** 查找对应 `path` 的路由信息 */
 function findRouteByPath(path: string, routes: RouteRecordRaw[]) {
   let res = routes.find((item: { path: string }) => item.path == path);
   if (res) {

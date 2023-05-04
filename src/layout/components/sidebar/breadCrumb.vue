@@ -38,9 +38,14 @@ const getBreadcrumb = (): void => {
     currentRoute = findRouteByPath(router.currentRoute.value.path, multiTags);
   }
   // 当前路由的父级路径组成的数组
-  const parentRoutes = getParentPaths(router.currentRoute.value.path, routes);
+  const parentRoutes = getParentPaths(
+    router.currentRoute.value.name as string,
+    routes,
+    "name"
+  );
   // 存放组成面包屑的数组
   let matched = [];
+
   // 获取每个父级路径对应的路由信息
   parentRoutes.forEach(path => {
     if (path !== "/") matched.push(findRouteByPath(path, routes));
