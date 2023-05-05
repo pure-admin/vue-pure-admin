@@ -4,11 +4,11 @@ import { emitter } from "@/utils/mitt";
 import { RouteConfigs } from "../../types";
 import { useTags } from "../../hooks/useTag";
 import { routerArrays } from "@/layout/types";
-import { handleAliveRoute } from "@/router/utils";
 import { isEqual, isAllEmpty } from "@pureadmin/utils";
+import { handleAliveRoute, getTopMenu } from "@/router/utils";
 import { useSettingStoreHook } from "@/store/modules/settings";
-import { ref, watch, unref, nextTick, onBeforeMount } from "vue";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
+import { ref, watch, unref, toRaw, nextTick, onBeforeMount } from "vue";
 import { useResizeObserver, useDebounceFn, useFullscreen } from "@vueuse/core";
 
 import ExitFullscreen from "@iconify-icons/ri/fullscreen-exit-fill";
@@ -50,6 +50,8 @@ const tabDom = ref();
 const containerDom = ref();
 const scrollbarDom = ref();
 const isShowArrow = ref(false);
+const topPath = getTopMenu().path;
+const { VITE_HIDE_HOME } = import.meta.env;
 const { isFullscreen, toggle } = useFullscreen();
 
 const dynamicTagView = () => {
@@ -165,7 +167,7 @@ function onFresh() {
   const { fullPath, query } = unref(route);
   router.replace({
     path: "/redirect" + fullPath,
-    query: query
+    query
   });
 }
 
@@ -190,7 +192,10 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
     other?: boolean
   ): void => {
     if (other) {
-      useMultiTagsStoreHook().handleTags("equal", [routerArrays[0], obj]);
+      useMultiTagsStoreHook().handleTags("equal", [
+        VITE_HIDE_HOME === "false" ? routerArrays[0] : toRaw(getTopMenu()),
+        obj
+      ]);
     } else {
       useMultiTagsStoreHook().handleTags("splice", "", {
         startIndex,
@@ -283,7 +288,7 @@ function onClickDrop(key, item, selectRoute?: RouteConfigs) {
         startIndex: 1,
         length: multiTags.value.length
       });
-      router.push("/welcome");
+      router.push(topPath);
       handleAliveRoute(route as toRouteType);
       break;
     case 6:
@@ -340,7 +345,7 @@ function disabledMenus(value: boolean) {
   });
 }
 
-/** 检查当前右键的菜单两边是否存在别的菜单，如果左侧的菜单是首页，则不显示关闭左侧标签页，如果右侧没有菜单，则不显示关闭右侧标签页 */
+/** 检查当前右键的菜单两边是否存在别的菜单，如果左侧的菜单是顶级菜单，则不显示关闭左侧标签页，如果右侧没有菜单，则不显示关闭右侧标签页 */
 function showMenuModel(
   currentPath: string,
   query: object = {},
@@ -362,11 +367,11 @@ function showMenuModel(
   }
 
   /**
-   * currentIndex为1时，左侧的菜单是首页，则不显示关闭左侧标签页
+   * currentIndex为1时，左侧的菜单顶级菜单，则不显示关闭左侧标签页
    * 如果currentIndex等于routeLength-1，右侧没有菜单，则不显示关闭右侧标签页
    */
   if (currentIndex === 1 && routeLength !== 2) {
-    // 左侧的菜单是首页，右侧存在别的菜单
+    // 左侧的菜单是顶级菜单，右侧存在别的菜单
     tagsViews[2].show = false;
     Array.of(1, 3, 4, 5).forEach(v => {
       tagsViews[v].disabled = false;
@@ -374,7 +379,7 @@ function showMenuModel(
     tagsViews[2].disabled = true;
   } else if (currentIndex === 1 && routeLength === 2) {
     disabledMenus(false);
-    // 左侧的菜单是首页，右侧不存在别的菜单
+    // 左侧的菜单是顶级菜单，右侧不存在别的菜单
     Array.of(2, 3, 4).forEach(v => {
       tagsViews[v].show = false;
       tagsViews[v].disabled = true;
@@ -386,8 +391,8 @@ function showMenuModel(
       tagsViews[v].disabled = false;
     });
     tagsViews[3].disabled = true;
-  } else if (currentIndex === 0 || currentPath === "/redirect/welcome") {
-    // 当前路由为首页
+  } else if (currentIndex === 0 || currentPath === `/redirect${topPath}`) {
+    // 当前路由为顶级菜单
     disabledMenus(true);
   } else {
     disabledMenus(false);
@@ -396,8 +401,8 @@ function showMenuModel(
 
 function openMenu(tag, e) {
   closeMenu();
-  if (tag.path === "/welcome") {
-    // 右键菜单为首页，只显示刷新
+  if (tag.path === topPath) {
+    // 右键菜单为顶级菜单，只显示刷新
     showMenus(false);
     tagsViews[0].show = true;
   } else if (route.path !== tag.path && route.name !== tag.name) {

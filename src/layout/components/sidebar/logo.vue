@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { getTopMenu } from "@/router/utils";
 import { useNav } from "@/layout/hooks/useNav";
 
 const props = defineProps({
@@ -6,6 +7,7 @@ const props = defineProps({
 });
 
 const { title } = useNav();
+const topPath = getTopMenu().path;
 </script>
 
 <template>
@@ -16,7 +18,7 @@ const { title } = useNav();
         key="props.collapse"
         :title="title"
         class="sidebar-logo-link"
-        to="/"
+        :to="topPath"
       >
         <img src="/logo.svg" alt="logo" />
         <span class="sidebar-title">{{ title }}</span>
@@ -26,7 +28,7 @@ const { title } = useNav();
         key="expand"
         :title="title"
         class="sidebar-logo-link"
-        to="/"
+        :to="topPath"
       >
         <img src="/logo.svg" alt="logo" />
         <span class="sidebar-title">{{ title }}</span>

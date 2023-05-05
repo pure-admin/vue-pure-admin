@@ -19,7 +19,7 @@ const {
   title,
   routers,
   logout,
-  backHome,
+  backTopMenu,
   onPanel,
   menuSelect,
   username,
@@ -45,7 +45,7 @@ watch(
     v-loading="usePermissionStoreHook().wholeMenus.length === 0"
     class="horizontal-header"
   >
-    <div class="horizontal-header-left" @click="backHome">
+    <div class="horizontal-header-left" @click="backTopMenu">
       <img src="/logo.svg" alt="logo" />
       <span>{{ title }}</span>
     </div>

@@ -31,7 +31,7 @@ export const injectResponsiveStorage = (app: App, config: ServerConfigs) => {
     },
     config.MultiTagsCache
       ? {
-          // 默认显示首页tag
+          // 默认显示顶级菜单tag
           tags: Storage.getData("tags", nameSpace) ?? routerArrays
         }
       : {}

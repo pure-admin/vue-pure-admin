@@ -17,8 +17,10 @@ import {
   isIncludeAllChildren
 } from "@pureadmin/utils";
 import { getConfig } from "@/config";
+import { menuType } from "@/layout/types";
 import { buildHierarchyTree } from "@/utils/tree";
 import { sessionKey, type DataInfo } from "@/utils/auth";
+import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
 import { usePermissionStoreHook } from "@/store/modules/permission";
 const IFrame = () => import("@/layout/frameView.vue");
 // https://cn.vitejs.dev/guide/features.html#glob-import
@@ -351,12 +353,20 @@ function hasAuth(value: string | Array<string>): boolean {
   return isAuths ? true : false;
 }
 
+/** 获取所有菜单中的第一个菜单（顶级菜单）*/
+function getTopMenu(tag = false): menuType {
+  const topMenu = usePermissionStoreHook().wholeMenus[0]?.children[0];
+  tag && useMultiTagsStoreHook().handleTags("push", topMenu);
+  return topMenu;
+}
+
 export {
   hasAuth,
   getAuths,
   ascending,
   filterTree,
   initRouter,
+  getTopMenu,
   addPathMatch,
   isOneOfArray,
   getHistoryMode,

@@ -12,7 +12,6 @@ const include = [
   "axios",
   "pinia",
   "swiper",
-  "echarts",
   "intro.js",
   "vue-i18n",
   "js-cookie",
