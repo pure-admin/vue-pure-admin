@@ -65,7 +65,7 @@ axios
           }
         }"
       >
-        <el-card shadow="never" style="height: 347px">
+        <el-card shadow="never" style="height: 425px">
           <template #header>
             <a
               :class="titleClass"
@@ -120,7 +120,7 @@ axios
           }
         }"
       >
-        <el-card shadow="never" style="height: 347px">
+        <el-card shadow="never" style="height: 425px">
           <template #header>
             <a
               :class="titleClass"
