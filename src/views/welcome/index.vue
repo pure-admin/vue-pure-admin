@@ -281,6 +281,6 @@ axios
 }
 
 .main-content {
-  margin: 20px 20px 0 20px !important;
+  margin: 20px 20px 0 !important;
 }
 </style>

@@ -3,13 +3,11 @@ import {
   RouteRecordRaw,
   RouteComponent,
   createWebHistory,
-  createWebHashHistory,
-  RouteRecordNormalized
+  createWebHashHistory
 } from "vue-router";
 import { router } from "./index";
 import { isProxy, toRaw } from "vue";
 import { useTimeoutFn } from "@vueuse/core";
-import { RouteConfigs } from "@/layout/types";
 import {
   isString,
   cloneDeep,
@@ -19,8 +17,10 @@ import {
   isIncludeAllChildren
 } from "@pureadmin/utils";
 import { getConfig } from "@/config";
+import { menuType } from "@/layout/types";
 import { buildHierarchyTree } from "@/utils/tree";
 import { sessionKey, type DataInfo } from "@/utils/auth";
+import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
 import { usePermissionStoreHook } from "@/store/modules/permission";
 const IFrame = () => import("@/layout/frameView.vue");
 // https://cn.vitejs.dev/guide/features.html#glob-import
@@ -94,30 +94,20 @@ function filterNoPermissionTree(data: RouteComponent[]) {
   return filterChildrenTree(newTree);
 }
 
-/** 批量删除缓存路由(keepalive) */
-function delAliveRoutes(delAliveRouteList: Array<RouteConfigs>) {
-  delAliveRouteList.forEach(route => {
-    usePermissionStoreHook().cacheOperate({
-      mode: "delete",
-      name: route?.name
-    });
-  });
-}
-
-/** 通过path获取父级路径 */
-function getParentPaths(path: string, routes: RouteRecordRaw[]) {
+/** 通过指定 `key` 获取父级路径集合，默认 `key` 为 `path` */
+function getParentPaths(value: string, routes: RouteRecordRaw[], key = "path") {
   // 深度遍历查找
-  function dfs(routes: RouteRecordRaw[], path: string, parents: string[]) {
+  function dfs(routes: RouteRecordRaw[], value: string, parents: string[]) {
     for (let i = 0; i < routes.length; i++) {
       const item = routes[i];
-      // 找到path则返回父级path
-      if (item.path === path) return parents;
+      // 返回父级path
+      if (item[key] === value) return parents;
       // children不存在或为空则不递归
       if (!item.children || !item.children.length) continue;
       // 往下查找时将当前path入栈
       parents.push(item.path);
 
-      if (dfs(item.children, path, parents).length) return parents;
+      if (dfs(item.children, value, parents).length) return parents;
       // 深度遍历查找未找到时当前path 出栈
       parents.pop();
     }
@@ -125,10 +115,10 @@ function getParentPaths(path: string, routes: RouteRecordRaw[]) {
     return [];
   }
 
-  return dfs(routes, path, []);
+  return dfs(routes, value, []);
 }
 
-/** 查找对应path的路由信息 */
+/** 查找对应 `path` 的路由信息 */
 function findRouteByPath(path: string, routes: RouteRecordRaw[]) {
   let res = routes.find((item: { path: string }) => item.path == path);
   if (res) {
@@ -266,27 +256,29 @@ function formatTwoStageRoutes(routesList: RouteRecordRaw[]) {
 }
 
 /** 处理缓存路由（添加、删除、刷新） */
-function handleAliveRoute(matched: RouteRecordNormalized[], mode?: string) {
+function handleAliveRoute({ name }: toRouteType, mode?: string) {
   switch (mode) {
     case "add":
-      matched.forEach(v => {
-        usePermissionStoreHook().cacheOperate({ mode: "add", name: v.name });
+      usePermissionStoreHook().cacheOperate({
+        mode: "add",
+        name
       });
       break;
     case "delete":
       usePermissionStoreHook().cacheOperate({
         mode: "delete",
-        name: matched[matched.length - 1].name
+        name
       });
       break;
     default:
       usePermissionStoreHook().cacheOperate({
         mode: "delete",
-        name: matched[matched.length - 1].name
+        name
       });
       useTimeoutFn(() => {
-        matched.forEach(v => {
-          usePermissionStoreHook().cacheOperate({ mode: "add", name: v.name });
+        usePermissionStoreHook().cacheOperate({
+          mode: "add",
+          name
         });
       }, 100);
   }
@@ -361,17 +353,24 @@ function hasAuth(value: string | Array<string>): boolean {
   return isAuths ? true : false;
 }
 
+/** 获取所有菜单中的第一个菜单（顶级菜单）*/
+function getTopMenu(tag = false): menuType {
+  const topMenu = usePermissionStoreHook().wholeMenus[0]?.children[0];
+  tag && useMultiTagsStoreHook().handleTags("push", topMenu);
+  return topMenu;
+}
+
 export {
   hasAuth,
   getAuths,
   ascending,
   filterTree,
   initRouter,
+  getTopMenu,
   addPathMatch,
   isOneOfArray,
   getHistoryMode,
   addAsyncRoutes,
-  delAliveRoutes,
   getParentPaths,
   findRouteByPath,
   handleAliveRoute,

@@ -30,7 +30,7 @@ const disabledClick = () => {
           <el-link
             href="https://github.com/soldair/node-qrcode"
             target="_blank"
-            style="font-size: 16px; margin: 0 5px 4px 0"
+            style="margin: 0 5px 4px 0; font-size: 16px"
           >
             qrcode
           </el-link>

@@ -32,6 +32,7 @@ const loading = computed(() =>
 );
 
 function getSubMenuData(path: string) {
+  subMenuData.value = [];
   // path的上级路由组成的数组
   const parentPathArr = getParentPaths(
     path,

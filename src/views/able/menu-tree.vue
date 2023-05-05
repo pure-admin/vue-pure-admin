@@ -52,7 +52,7 @@ const filterMethod = (query: string, node: treeNode) => {
             href="https://element-plus.gitee.io/zh-CN/component/tree-v2.html"
             target="_blank"
             :icon="useRenderIcon(NodeTree)"
-            style="font-size: 16px; margin: 0 5px 4px 0"
+            style="margin: 0 5px 4px 0; font-size: 16px"
           >
             Tree V2
           </el-link>

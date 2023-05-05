@@ -60,9 +60,9 @@ emitter.on("openPanel", () => {
 
 <style>
 .showright-panel {
-  overflow: hidden;
   position: relative;
   width: calc(100% - 15px);
+  overflow: hidden;
 }
 </style>
 
@@ -71,23 +71,23 @@ emitter.on("openPanel", () => {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: -1;
+  background: rgb(0 0 0 / 20%);
   opacity: 0;
   transition: opacity 0.3s cubic-bezier(0.7, 0.3, 0.1, 1);
-  background: rgba(0, 0, 0, 0.2);
-  z-index: -1;
 }
 
 .right-panel {
-  width: 100%;
-  max-width: 315px;
-  height: 100vh;
   position: fixed;
   top: 0;
   right: 0;
-  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.05);
+  z-index: 40000;
+  width: 100%;
+  max-width: 315px;
+  height: 100vh;
+  box-shadow: 0 0 15px 0 rgb(0 0 0 / 5%);
   transition: all 0.25s cubic-bezier(0.7, 0.3, 0.1, 1);
   transform: translate(100%);
-  z-index: 40000;
 }
 
 .show {
@@ -95,9 +95,9 @@ emitter.on("openPanel", () => {
 
   .right-panel-background {
     z-index: 20000;
-    opacity: 1;
     width: 100%;
     height: 100%;
+    opacity: 1;
   }
 
   .right-panel {
@@ -106,20 +106,20 @@ emitter.on("openPanel", () => {
 }
 
 .handle-button {
+  position: absolute;
+  top: 45%;
+  left: -48px;
+  z-index: 0;
   width: 48px;
   height: 48px;
-  position: absolute;
-  left: -48px;
-  text-align: center;
   font-size: 24px;
-  border-radius: 6px 0 0 6px !important;
-  z-index: 0;
+  line-height: 48px;
+  color: #fff;
+  text-align: center;
   pointer-events: auto;
   cursor: pointer;
-  color: #fff;
-  line-height: 48px;
-  top: 45%;
-  background: rgb(24, 144, 255);
+  background: rgb(24 144 255);
+  border-radius: 6px 0 0 6px !important;
 
   i {
     font-size: 24px;
@@ -128,24 +128,24 @@ emitter.on("openPanel", () => {
 }
 
 .right-panel-items {
-  margin-top: 60px;
   height: calc(100vh - 60px);
+  margin-top: 60px;
   overflow-y: auto;
 }
 
 .project-configuration {
+  position: fixed;
+  top: 15px;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
   height: 30px;
-  position: fixed;
-  justify-content: space-between;
-  align-items: center;
-  top: 15px;
   margin-left: 10px;
 }
 
 :deep(.el-divider--horizontal) {
   width: 90%;
-  margin: 20px auto 0 auto;
+  margin: 20px auto 0;
 }
 </style>

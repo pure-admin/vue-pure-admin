@@ -91,7 +91,7 @@ const swiperExample: any[] = [
         <el-link
           href="https://github.com/nolimits4web/swiper"
           target="_blank"
-          style="font-size: 16px; margin: 0 5px 4px 0"
+          style="margin: 0 5px 4px 0; font-size: 16px"
         >
           github地址
         </el-link>

@@ -18,21 +18,21 @@ defineOptions({
 
 <style lang="scss" scoped>
 .back {
-  width: 200px;
-  height: 200px;
-  cursor: pointer;
-  border-radius: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: relative;
   top: 50%;
   left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  cursor: pointer;
+  background: rgb(138 150 160 / 8%);
+  border-radius: 18px;
   transform: translate(-50%, -50%);
-  background: rgba(138, 150, 160, 0.08);
 
   &:hover {
-    background: rgba(138, 150, 160, 0.2);
+    background: rgb(138 150 160 / 20%);
     transition: background 0.6s;
   }
 }

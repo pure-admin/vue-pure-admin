@@ -63,12 +63,12 @@ export default defineComponent({
 <style scoped>
 .wrapper {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   width: 300px;
   height: 200px;
-  border: 3px dashed rgba(90, 167, 164, 0.9);
+  background-color: rgb(90 167 164 / 20%);
+  border: 3px dashed rgb(90 167 164 / 90%);
   border-radius: 8px;
-  background-color: rgba(90, 167, 164, 0.2);
 }
 </style>

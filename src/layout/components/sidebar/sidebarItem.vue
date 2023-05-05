@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import path from "path";
 import { getConfig } from "@/config";
+import { menuType } from "../../types";
 import extraIcon from "./extraIcon.vue";
-import { childrenType } from "../../types";
 import { useNav } from "@/layout/hooks/useNav";
 import { transformI18n } from "@/plugins/i18n";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
@@ -17,7 +17,7 @@ const { layout, isCollapse, tooltipEffect, getDivStyle } = useNav();
 
 const props = defineProps({
   item: {
-    type: Object as PropType<childrenType>
+    type: Object as PropType<menuType>
   },
   isNest: {
     type: Boolean,
@@ -112,7 +112,7 @@ const expandCloseIcon = computed(() => {
   };
 });
 
-const onlyOneChild: childrenType = ref(null);
+const onlyOneChild: menuType = ref(null);
 // 存放菜单是否存在showTooltip属性标识
 const hoverMenuMap = new WeakMap();
 // 存储菜单文本dom元素
@@ -149,10 +149,7 @@ function overflowSlice(text, item?: any) {
   return newText;
 }
 
-function hasOneShowingChild(
-  children: childrenType[] = [],
-  parent: childrenType
-) {
+function hasOneShowingChild(children: menuType[] = [], parent: menuType) {
   const showingChildren = children.filter((item: any) => {
     onlyOneChild.value = item;
     return true;

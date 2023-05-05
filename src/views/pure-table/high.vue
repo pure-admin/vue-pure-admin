@@ -22,7 +22,7 @@ function tabClick({ index }) {
           <el-link
             href="https://github.com/pure-admin/pure-admin-table"
             target="_blank"
-            style="font-size: 16px; margin: 0 4px 5px"
+            style="margin: 0 4px 5px; font-size: 16px"
           >
             @pureadmin/table
           </el-link>

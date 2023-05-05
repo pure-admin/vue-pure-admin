@@ -2,9 +2,9 @@
 ::before,
 ::after {
   box-sizing: border-box;
-  border-width: 0;
-  border-style: solid;
   border-color: currentColor;
+  border-style: solid;
+  border-width: 0;
 }
 
 #app {
@@ -13,25 +13,24 @@
 }
 
 html {
-  line-height: 1.5;
-  -webkit-text-size-adjust: 100%;
-  -moz-tab-size: 4;
-  tab-size: 4;
+  box-sizing: border-box;
   width: 100%;
   height: 100%;
-  box-sizing: border-box;
+  line-height: 1.5;
+  tab-size: 4;
+  text-size-adjust: 100%;
 }
 
 body {
-  margin: 0;
-  line-height: inherit;
   width: 100%;
   height: 100%;
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  line-height: inherit;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizelegibility;
-  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
-    "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
 }
 
 hr {
@@ -69,9 +68,9 @@ small {
 
 sub,
 sup {
+  position: relative;
   font-size: 75%;
   line-height: 0;
-  position: relative;
   vertical-align: baseline;
 }
 
@@ -85,8 +84,8 @@ sup {
 
 table {
   text-indent: 0;
-  border-color: inherit;
   border-collapse: collapse;
+  border-color: inherit;
 }
 
 button,
@@ -94,12 +93,12 @@ input,
 optgroup,
 select,
 textarea {
+  padding: 0;
+  margin: 0;
   font-family: inherit;
   font-size: 100%;
   line-height: inherit;
   color: inherit;
-  margin: 0;
-  padding: 0;
 }
 
 button,
@@ -160,8 +159,8 @@ pre {
 }
 
 fieldset {
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 
 legend {
@@ -171,9 +170,9 @@ legend {
 ol,
 ul,
 menu {
-  list-style: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
 textarea {
@@ -182,8 +181,8 @@ textarea {
 
 input::placeholder,
 textarea::placeholder {
-  opacity: 1;
   color: #9ca3af;
+  opacity: 1;
 }
 
 button,
@@ -238,9 +237,9 @@ a:active {
 a,
 a:focus,
 a:hover {
-  cursor: pointer;
   color: inherit;
   text-decoration: none;
+  cursor: pointer;
 }
 
 div:focus {
@@ -249,11 +248,11 @@ div:focus {
 
 .clearfix {
   &::after {
-    visibility: hidden;
     display: block;
-    font-size: 0;
-    content: " ";
-    clear: both;
     height: 0;
+    clear: both;
+    font-size: 0;
+    visibility: hidden;
+    content: " ";
   }
 }
