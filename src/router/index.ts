@@ -13,6 +13,7 @@ import {
 } from "vue-router";
 import {
   ascending,
+  getTopMenu,
   initRouter,
   isOneOfArray,
   getHistoryMode,
@@ -152,6 +153,7 @@ router.beforeEach((to: toRouteType, _from, next) => {
               path,
               router.options.routes[0].children
             );
+            getTopMenu(true);
             // query、params模式路由传参数的标签页不在此处处理
             if (route && route.meta?.title) {
               useMultiTagsStoreHook().handleTags("push", {

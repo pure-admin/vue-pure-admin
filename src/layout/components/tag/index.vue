@@ -7,8 +7,8 @@ import { routerArrays } from "@/layout/types";
 import { isEqual, isAllEmpty } from "@pureadmin/utils";
 import { handleAliveRoute, getTopMenu } from "@/router/utils";
 import { useSettingStoreHook } from "@/store/modules/settings";
-import { ref, watch, unref, nextTick, onBeforeMount } from "vue";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
+import { ref, watch, unref, toRaw, nextTick, onBeforeMount } from "vue";
 import { useResizeObserver, useDebounceFn, useFullscreen } from "@vueuse/core";
 
 import ExitFullscreen from "@iconify-icons/ri/fullscreen-exit-fill";
@@ -51,6 +51,7 @@ const containerDom = ref();
 const scrollbarDom = ref();
 const isShowArrow = ref(false);
 const topPath = getTopMenu().path;
+const { VITE_HIDE_HOME } = import.meta.env;
 const { isFullscreen, toggle } = useFullscreen();
 
 const dynamicTagView = () => {
@@ -191,7 +192,10 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
     other?: boolean
   ): void => {
     if (other) {
-      useMultiTagsStoreHook().handleTags("equal", [routerArrays[0], obj]);
+      useMultiTagsStoreHook().handleTags("equal", [
+        VITE_HIDE_HOME === "false" ? routerArrays[0] : toRaw(getTopMenu()),
+        obj
+      ]);
     } else {
       useMultiTagsStoreHook().handleTags("splice", "", {
         startIndex,
