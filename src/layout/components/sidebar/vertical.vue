@@ -6,14 +6,16 @@ import SidebarItem from "./sidebarItem.vue";
 import leftCollapse from "./leftCollapse.vue";
 import { useNav } from "@/layout/hooks/useNav";
 import { storageLocal } from "@pureadmin/utils";
+import { responsiveStorageNameSpace } from "@/config";
 import { ref, computed, watch, onBeforeMount } from "vue";
 import { findRouteByPath, getParentPaths } from "@/router/utils";
 import { usePermissionStoreHook } from "@/store/modules/permission";
 
 const route = useRoute();
 const showLogo = ref(
-  storageLocal().getItem<StorageConfigs>("responsive-configure")?.showLogo ??
-    true
+  storageLocal().getItem<StorageConfigs>(
+    `${responsiveStorageNameSpace()}configure`
+  )?.showLogo ?? true
 );
 
 const { routers, device, pureApp, isCollapse, menuSelect, toggleSideBar } =

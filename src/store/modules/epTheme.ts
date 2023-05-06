@@ -1,17 +1,19 @@
 import { store } from "@/store";
 import { defineStore } from "pinia";
-import { getConfig } from "@/config";
 import { storageLocal } from "@pureadmin/utils";
+import { getConfig, responsiveStorageNameSpace } from "@/config";
 
 export const useEpThemeStore = defineStore({
   id: "pure-epTheme",
   state: () => ({
     epThemeColor:
-      storageLocal().getItem<StorageConfigs>("responsive-layout")
-        ?.epThemeColor ?? getConfig().EpThemeColor,
+      storageLocal().getItem<StorageConfigs>(
+        `${responsiveStorageNameSpace()}layout`
+      )?.epThemeColor ?? getConfig().EpThemeColor,
     epTheme:
-      storageLocal().getItem<StorageConfigs>("responsive-layout")?.theme ??
-      getConfig().Theme
+      storageLocal().getItem<StorageConfigs>(
+        `${responsiveStorageNameSpace()}layout`
+      )?.theme ?? getConfig().Theme
   }),
   getters: {
     getEpThemeColor(state) {
@@ -30,13 +32,14 @@ export const useEpThemeStore = defineStore({
   },
   actions: {
     setEpThemeColor(newColor: string): void {
-      const layout =
-        storageLocal().getItem<StorageConfigs>("responsive-layout");
+      const layout = storageLocal().getItem<StorageConfigs>(
+        `${responsiveStorageNameSpace()}layout`
+      );
       this.epTheme = layout?.theme;
       this.epThemeColor = newColor;
       if (!layout) return;
       layout.epThemeColor = newColor;
-      storageLocal().setItem("responsive-layout", layout);
+      storageLocal().setItem(`${responsiveStorageNameSpace()}layout`, layout);
     }
   }
 });
