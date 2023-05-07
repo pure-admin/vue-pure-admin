@@ -14,7 +14,7 @@ specifiers:
   "@pureadmin/descriptions": ^1.1.1
   "@pureadmin/table": ^2.0.0
   "@pureadmin/theme": ^3.0.0
-  "@pureadmin/utils": ^1.8.8
+  "@pureadmin/utils": ^1.8.9
   "@types/element-resize-detector": 1.1.3
   "@types/intro.js": ^5.1.1
   "@types/js-cookie": ^3.0.3
@@ -54,7 +54,7 @@ specifiers:
   js-cookie: ^3.0.5
   jsbarcode: ^3.11.5
   lint-staged: ^13.2.2
-  md-editor-v3: ^3.0.0
+  md-editor-v3: ^3.0.1
   mitt: ^3.0.0
   mockjs: ^1.1.0
   nprogress: ^0.2.0
@@ -101,7 +101,7 @@ specifiers:
   vite-plugin-remove-console: ^2.1.1
   vite-svg-loader: ^4.0.0
   vue: ^3.2.47
-  vue-eslint-parser: ^9.1.1
+  vue-eslint-parser: ^9.2.1
   vue-i18n: ^9.2.2
   vue-json-pretty: ^2.2.4
   vue-pdf-embed: ^1.1.6
@@ -111,7 +111,7 @@ specifiers:
   vue-virtual-scroller: 2.0.0-beta.7
   vue3-danmaku: 1.4.0-beta.1
   vuedraggable: ^4.1.0
-  xgplayer: ^3.0.1
+  xgplayer: ^3.0.2
   xlsx: ^0.18.5
 
 dependencies:
@@ -121,7 +121,7 @@ dependencies:
   "@logicflow/extension": 1.2.5
   "@pureadmin/descriptions": 1.1.1_element-plus@2.3.4
   "@pureadmin/table": 2.0.0_element-plus@2.3.4
-  "@pureadmin/utils": 1.8.8_echarts@5.4.2+vue@3.2.47
+  "@pureadmin/utils": 1.8.9_echarts@5.4.2+vue@3.2.47
   "@vueuse/core": 10.1.2_vue@3.2.47
   "@vueuse/motion": 2.0.0-beta.12_vue@3.2.47
   "@wangeditor/editor": 5.1.23
@@ -138,7 +138,7 @@ dependencies:
   intro.js: 7.0.1
   js-cookie: 3.0.5
   jsbarcode: 3.11.5
-  md-editor-v3: 3.0.0_vue@3.2.47
+  md-editor-v3: 3.0.1_vue@3.2.47
   mitt: 3.0.0
   mockjs: 1.1.0
   nprogress: 0.2.0
@@ -160,7 +160,7 @@ dependencies:
   vue-virtual-scroller: 2.0.0-beta.7_vue@3.2.47
   vue3-danmaku: 1.4.0-beta.1_vue@3.2.47
   vuedraggable: 4.1.0_vue@3.2.47
-  xgplayer: 3.0.1
+  xgplayer: 3.0.2
   xlsx: 0.18.5
 
 devDependencies:
@@ -227,7 +227,7 @@ devDependencies:
   vite-plugin-mock: 2.9.8_mockjs@1.1.0+vite@4.3.5
   vite-plugin-remove-console: 2.1.1
   vite-svg-loader: 4.0.0
-  vue-eslint-parser: 9.1.1_eslint@8.39.0
+  vue-eslint-parser: 9.2.1_eslint@8.39.0
   vue-tsc: 1.2.0_typescript@5.0.4
 
 packages:
@@ -2518,10 +2518,10 @@ packages:
       string-hash: 1.1.3
     dev: true
 
-  /@pureadmin/utils/1.8.8_echarts@5.4.2+vue@3.2.47:
+  /@pureadmin/utils/1.8.9_echarts@5.4.2+vue@3.2.47:
     resolution:
       {
-        integrity: sha512-3GzYqRkbO/Iaqja0kCdm754QyxhgPo23T42FrTZk6UHG60/DEJQlRKwyq5qsye5quHLOg3RZtIGBCqNqWfzcMw==
+        integrity: sha512-P+MfCuCImwHXeXmZuKQVEYdx7O0FDTuhSUD0HaXamPRerbd5LTuwSV0MN2pMsNUCYrHySHKRPkmah2wXl0XDjw==
       }
     peerDependencies:
       echarts: "*"
@@ -3362,7 +3362,7 @@ packages:
       eslint: 8.39.0
       eslint-plugin-vue: 9.11.0_eslint@8.39.0
       typescript: 5.0.4
-      vue-eslint-parser: 9.1.1_eslint@8.39.0
+      vue-eslint-parser: 9.2.1_eslint@8.39.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -6130,7 +6130,7 @@ packages:
       nth-check: 2.1.1
       postcss-selector-parser: 6.0.12
       semver: 7.5.0
-      vue-eslint-parser: 9.1.1_eslint@8.39.0
+      vue-eslint-parser: 9.2.1_eslint@8.39.0
       xml-name-validator: 4.0.0
     transitivePeerDependencies:
       - supports-color
@@ -8674,10 +8674,10 @@ packages:
       }
     dev: true
 
-  /md-editor-v3/3.0.0_vue@3.2.47:
+  /md-editor-v3/3.0.1_vue@3.2.47:
     resolution:
       {
-        integrity: sha512-/O3XIWnof3cneqvZwTmTW00KjHFuBImY13ou3cShbBZBesXVswbUGs1NOMq0bSfbJJOHDp2G636d3GnwqRl30w==
+        integrity: sha512-8R39w/AeS3RYhdEBGvGsOvEqG9PTvV7/9fl1UMwCNbrCONboegv0TUXr+jggjD6z2kmShEVkQMYWQCyRgrEW2Q==
       }
     peerDependencies:
       vue: ^3.2.47
@@ -12452,10 +12452,10 @@ packages:
       vue: 3.2.47
     dev: false
 
-  /vue-eslint-parser/9.1.1_eslint@8.39.0:
+  /vue-eslint-parser/9.2.1_eslint@8.39.0:
     resolution:
       {
-        integrity: sha512-C2aI/r85Q6tYcz4dpgvrs4wH/MqVrRAVIdpYedrxnATDHHkb+TroeRcDpKWGZCx/OcECMWfz7tVwQ8e+Opy6rA==
+        integrity: sha512-tPOex4n6jit4E7h68auOEbDMwE58XiP4dylfaVTCOVCouR45g+QFDBjgIdEU52EXJxKyjgh91dLfN2rxUcV0bQ==
       }
     engines: { node: ^14.17.0 || >=16.0.0 }
     peerDependencies:
@@ -12852,10 +12852,10 @@ packages:
         optional: true
     dev: false
 
-  /xgplayer-subtitles/1.1.0:
+  /xgplayer-subtitles/1.1.1:
     resolution:
       {
-        integrity: sha512-V9KWIUl2jo9FgLdlMqFwwG5G7HVIZaXC5ED0vu3ZqidvcRoFtr4eMG3POtVStZY+lUucHSWLHM2sRGVD27gPYQ==
+        integrity: sha512-GYzrK/e4ydAATP3Xg06sXYliiSCcyNIqqQSwnWbs7pw+cc5NwyrYXuLfa3Bp9skIxT6pT+A7qTicUps58N3eEQ==
       }
     peerDependencies:
       core-js: ">=3.12.1"
@@ -12866,10 +12866,10 @@ packages:
       eventemitter3: 4.0.7
     dev: false
 
-  /xgplayer/3.0.1:
+  /xgplayer/3.0.2:
     resolution:
       {
-        integrity: sha512-Cdu5AF+jZfGyLWAbzgfVOBgkLHko+EWFQJrldioCRCc6ukeuHFMHxqtNmE0p5LXXq6IefGY2sqSP28nv7fCQSg==
+        integrity: sha512-vgSo5exPlyl7BxxxOWeYA1+x1nLmZDiWDjPJmaaxeW9jFghGBSf3XP+yLKSOJmKOlTw/LpmOcNAsJxqNhi6Bzw==
       }
     peerDependencies:
       core-js: ">=3.12.1"
@@ -12881,7 +12881,7 @@ packages:
       delegate: 3.2.0
       downloadjs: 1.4.7
       eventemitter3: 4.0.7
-      xgplayer-subtitles: 1.1.0
+      xgplayer-subtitles: 1.1.1
     dev: false
 
   /xlsx/0.18.5:

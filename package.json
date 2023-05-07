@@ -35,7 +35,7 @@
     "@logicflow/extension": "^1.2.5",
     "@pureadmin/descriptions": "^1.1.1",
     "@pureadmin/table": "^2.0.0",
-    "@pureadmin/utils": "^1.8.8",
+    "@pureadmin/utils": "^1.8.9",
     "@vueuse/core": "^10.1.2",
     "@vueuse/motion": "2.0.0-beta.12",
     "@wangeditor/editor": "^5.1.21",
@@ -52,7 +52,7 @@
     "intro.js": "^7.0.1",
     "js-cookie": "^3.0.5",
     "jsbarcode": "^3.11.5",
-    "md-editor-v3": "^3.0.0",
+    "md-editor-v3": "^3.0.1",
     "mitt": "^3.0.0",
     "mockjs": "^1.1.0",
     "nprogress": "^0.2.0",
@@ -74,7 +74,7 @@
     "vue-virtual-scroller": "2.0.0-beta.7",
     "vue3-danmaku": "1.4.0-beta.1",
     "vuedraggable": "^4.1.0",
-    "xgplayer": "^3.0.1",
+    "xgplayer": "^3.0.2",
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
@@ -141,7 +141,7 @@
     "vite-plugin-mock": "^2.9.6",
     "vite-plugin-remove-console": "^2.1.1",
     "vite-svg-loader": "^4.0.0",
-    "vue-eslint-parser": "^9.1.1",
+    "vue-eslint-parser": "^9.2.1",
     "vue-tsc": "^1.2.0"
   },
   "pnpm": {
