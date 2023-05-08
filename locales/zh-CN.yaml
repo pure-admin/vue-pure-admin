@@ -36,6 +36,7 @@ menus:
   hsfourZeroOne: "403"
   hsFive: "500"
   hscomponents: 组件
+  hsdialog: 函数式弹框组件
   hsmessage: 消息提示组件
   hsvideo: 视频组件
   hsmap: 地图组件

@@ -163,8 +163,16 @@ interface DialogOptions extends DialogProps {
     options: DialogOptions;
     index: number;
   }) => void;
-  /** `Dialog` 关闭后的回调，会返回 `command`。`command` 值解析：`cancel` 点击取消按钮、`sure` 点击确定按钮、`close` 点击右上角关闭按钮或者空白页  */
-  closeCallBack?: (args: any) => void;
+  /** `Dialog` 关闭后的回调。 `args` 返回的 `command` 值解析：`cancel` 点击取消按钮、`sure` 点击确定按钮、`close` 点击右上角关闭按钮或者空白页  */
+  closeCallBack?: ({
+    options,
+    index,
+    args
+  }: {
+    options: DialogOptions;
+    index: number;
+    args: any;
+  }) => void;
   /** 输入焦点聚焦在 `Dialog` 内容时的回调 */
   openAutoFocus?: ({
     options,

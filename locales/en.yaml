@@ -36,6 +36,7 @@ menus:
   hsfourZeroOne: "403"
   hsFive: "500"
   hscomponents: Components
+  hsdialog: Dialog Components
   hsmessage: Message Tips Components
   hsvideo: Video Components
   hsmap: Map Components

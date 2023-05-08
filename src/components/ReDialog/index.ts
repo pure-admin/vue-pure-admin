@@ -24,9 +24,9 @@ const addDialog = (options: DialogOptions) => {
   }
 };
 
-const closeDialog = (options: DialogOptions, index: number, args: any) => {
+const closeDialog = (options: DialogOptions, index: number, args?: any) => {
   dialogStore.value.splice(index, 1);
-  options.closeCallBack && options.closeCallBack(args);
+  options.closeCallBack && options.closeCallBack({ options, index, args });
 };
 
 const closeAllDialog = () => {
