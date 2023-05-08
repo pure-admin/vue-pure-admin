@@ -150,7 +150,7 @@ If you think this project is helpful to you, you can help the author buy a glass
 
 In principle, no fees and copyrights are charged, and you can use it with confidence, but if you need secondary open source, please contact the author for permission!
 
-[MIT © xiaoxian521-2023](./LICENSE)
+[MIT © 2020-present, pure-admin](./LICENSE)
 
 ## Backers
 

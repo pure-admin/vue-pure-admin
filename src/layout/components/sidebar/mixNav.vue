@@ -188,9 +188,9 @@ watch(
   max-width: 120px;
 
   ::v-deep(.el-dropdown-menu__item) {
-    min-width: 100%;
     display: inline-flex;
     flex-wrap: wrap;
+    min-width: 100%;
   }
 }
 </style>

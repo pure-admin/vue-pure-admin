@@ -11,16 +11,24 @@ export default {
   },
   children: [
     {
-      path: "/components/message",
-      name: "Message",
-      component: () => import("@/views/components/message/index.vue"),
+      path: "/components/dialog",
+      name: "Dialog",
+      component: () => import("@/views/components/dialog/index.vue"),
       meta: {
-        title: $t("menus.hsmessage"),
+        title: $t("menus.hsdialog"),
         extraIcon: "IF-pure-iconfont-new svg",
         transition: {
           enterTransition: "animate__fadeInLeft",
           leaveTransition: "animate__fadeOutRight"
         }
+      }
+    },
+    {
+      path: "/components/message",
+      name: "Message",
+      component: () => import("@/views/components/message/index.vue"),
+      meta: {
+        title: $t("menus.hsmessage")
       }
     },
     {

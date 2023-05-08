@@ -44,8 +44,8 @@ const onCropper = (): void => {
 <style scoped>
 .cropper-container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
 
 .el-button {

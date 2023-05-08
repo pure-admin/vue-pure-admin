@@ -49,4 +49,7 @@ export const getServerConfig = async (app: App): Promise<undefined> => {
     });
 };
 
-export { getConfig, setConfig };
+/** 本地响应式存储的命名空间 */
+const responsiveStorageNameSpace = () => getConfig().ResponsiveStorageNameSpace;
+
+export { getConfig, setConfig, responsiveStorageNameSpace };

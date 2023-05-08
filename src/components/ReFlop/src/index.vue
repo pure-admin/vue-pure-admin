@@ -123,9 +123,9 @@ onUnmounted(() => {
 
 .flip-clock em {
   display: inline-block;
-  line-height: 102px;
   font-size: 66px;
   font-style: normal;
+  line-height: 102px;
   vertical-align: top;
 }
 </style>

@@ -84,11 +84,11 @@ function handleTo() {
     display: flex;
     align-items: center;
     height: 56px;
-    margin-top: 8px;
     padding: 14px;
-    border-radius: 4px;
+    margin-top: 8px;
     cursor: pointer;
     border: 0.1px solid #ccc;
+    border-radius: 4px;
     transition: all 0.3s;
 
     &-title {

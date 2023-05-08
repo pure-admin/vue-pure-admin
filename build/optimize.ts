@@ -12,7 +12,6 @@ const include = [
   "axios",
   "pinia",
   "swiper",
-  "echarts",
   "intro.js",
   "vue-i18n",
   "js-cookie",
@@ -38,11 +37,7 @@ const include = [
   "@amap/amap-jsapi-loader",
   "el-table-infinite-scroll",
   "@wangeditor/editor-for-vue",
-  "xgplayer/dist/simple_player",
-  "xgplayer/es/controls/volume",
-  "vuedraggable/src/vuedraggable",
-  "xgplayer/es/controls/screenShot",
-  "xgplayer/es/controls/playbackRate"
+  "vuedraggable/src/vuedraggable"
 ];
 
 /**

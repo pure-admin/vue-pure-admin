@@ -125,8 +125,8 @@ function changeDirection(val) {
 <style lang="scss" scoped>
 .card-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 
   span {
     margin-right: 20px;
@@ -134,23 +134,23 @@ function changeDirection(val) {
 }
 
 .warp {
-  height: 270px;
   width: 360px;
+  height: 270px;
   margin: 0 auto;
   overflow: hidden;
 
   ul {
-    list-style: none;
     padding: 0;
     margin: 0 auto;
+    list-style: none;
 
     li,
     a {
-      height: 30px;
-      line-height: 30px;
       display: flex;
       justify-content: space-between;
+      height: 30px;
       font-size: 15px;
+      line-height: 30px;
     }
   }
 }

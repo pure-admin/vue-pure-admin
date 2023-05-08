@@ -63,6 +63,7 @@ declare global {
     VITE_PUBLIC_PATH: string;
     VITE_ROUTER_HISTORY: string;
     VITE_CDN: boolean;
+    VITE_HIDE_HOME: string;
     VITE_COMPRESSION: ViteCompression;
   }
 
@@ -96,6 +97,7 @@ declare global {
     MenuArrowIconNoTransition?: boolean;
     CachingAsyncRoutes?: boolean;
     TooltipEffect?: Effect;
+    ResponsiveStorageNameSpace?: string;
     MapConfigure?: {
       amapKey?: string;
       options: {

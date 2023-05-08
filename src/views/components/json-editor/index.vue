@@ -80,7 +80,7 @@ watch(
           <el-link
             href="https://github.com/leezng/vue-json-pretty"
             target="_blank"
-            style="font-size: 16px; margin: 0 4px 5px"
+            style="margin: 0 4px 5px; font-size: 16px"
           >
             vue-json-pretty
           </el-link>
@@ -91,7 +91,7 @@ watch(
           <el-link
             href="https://github.com/surmon-china/vue-codemirror"
             target="_blank"
-            style="font-size: 16px; margin: 0 4px 5px"
+            style="margin: 0 4px 5px; font-size: 16px"
           >
             codemirror6
           </el-link>

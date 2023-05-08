@@ -48,7 +48,7 @@ const handleCreated = editor => {
             href="https://www.wangeditor.com"
             target="_blank"
             :icon="useRenderIcon(Edit)"
-            style="font-size: 16px; margin: 0 4px 5px"
+            style="margin: 0 4px 5px; font-size: 16px"
           >
             Wangeditor
           </el-link>

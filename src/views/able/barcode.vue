@@ -38,7 +38,7 @@ const barcodes = [
           <el-link
             href="https://lindell.me/JsBarcode/"
             target="_blank"
-            style="font-size: 16px; margin: 0 5px 4px 0"
+            style="margin: 0 5px 4px 0; font-size: 16px"
           >
             JsBarcode
           </el-link>
