@@ -6,6 +6,7 @@ import Bar from "./components/Bar.vue";
 import Pie from "./components/Pie.vue";
 import Line from "./components/Line.vue";
 import TypeIt from "@/components/ReTypeit";
+import { useWindowSize } from "@vueuse/core";
 import { ref, computed, markRaw } from "vue";
 import Github from "./components/Github.vue";
 import { randomColor } from "@pureadmin/utils";
@@ -17,9 +18,12 @@ defineOptions({
 
 const list = ref();
 const loading = ref<boolean>(true);
+const { version } = __APP_INFO__.pkg;
 const titleClass = computed(() => {
   return ["text-base", "font-medium"];
 });
+
+const { height } = useWindowSize();
 
 setTimeout(() => {
   loading.value = !loading.value;
@@ -65,7 +69,10 @@ axios
           }
         }"
       >
-        <el-card shadow="never" style="height: 347px">
+        <el-card
+          shadow="never"
+          :style="{ height: `calc(${height}px - 35vh - 250px)` }"
+        >
           <template #header>
             <a
               :class="titleClass"
@@ -74,15 +81,15 @@ axios
             >
               <TypeIt
                 :className="'type-it2'"
-                :values="['PureAdmin 版本日志']"
+                :values="[`PureAdmin 版本日志（当前版本 v${version}）`]"
                 :cursor="false"
-                :speed="80"
+                :speed="60"
               />
             </a>
           </template>
           <el-skeleton animated :rows="7" :loading="loading">
             <template #default>
-              <el-scrollbar height="324px">
+              <el-scrollbar :height="`calc(${height}px - 35vh - 340px)`">
                 <el-timeline v-show="list?.length > 0">
                   <el-timeline-item
                     v-for="(item, index) in list"
@@ -120,7 +127,10 @@ axios
           }
         }"
       >
-        <el-card shadow="never" style="height: 347px">
+        <el-card
+          shadow="never"
+          :style="{ height: `calc(${height}px - 35vh - 250px)` }"
+        >
           <template #header>
             <a
               :class="titleClass"

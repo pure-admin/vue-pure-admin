@@ -270,6 +270,12 @@ function handleAliveRoute({ name }: toRouteType, mode?: string) {
         name
       });
       break;
+    case "refresh":
+      usePermissionStoreHook().cacheOperate({
+        mode: "refresh",
+        name
+      });
+      break;
     default:
       usePermissionStoreHook().cacheOperate({
         mode: "delete",

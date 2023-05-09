@@ -1,3 +1,53 @@
+# 4.0.0 (2023-05-09)
+
+[View 4.0.0 version optimization details](https://github.com/pure-admin/vue-pure-admin/issues/428#issuecomment-1422191158)
+
+### ✔️ refactor
+
+- Use `css` pseudo-class `before` to refactor the activation background of the menu, similar to [ant.design-menu](https://ant.design/components/menu-cn#components-menu-demo-inline-collapsed)
+
+### 🎫 Feat
+
+- Optimize the extra icon on the right side of the menu name to support more icon rendering modes
+- Configurable home menu display and hide
+- Promote the namespace of the local reactive store into the global configuration
+- Added functional popup components and `demo` examples, making it easier to use
+- `PureTableBar` component adds column display function
+
+### 🐞 Bug fixes
+
+- Fixed the `echarts` chart on the home page not adapting to the container when the menu is collapsed or expanded
+- Fixed the problem that when there is only one submenu, the search function cannot find the submenu
+- Fix the problem that the global configuration `Theme` is empty cache for `light` and re-login theme configuration does not take effect
+- Fixed the problem that the search boxes were not automatically gathered after the menu search function pop-up box was opened
+- Fixed the problem of toolbar button text display after pressing `ESC` to exit full screen
+- Fix the problem of `tooltip` click penetration in the notification bar of the mobile terminal
+- Fixed the problem that the text is not displayed when switching to `horizontal` navigation mode after the left menu is collapsed
+- Fixed the problem that the status cannot be reset when closing other tabs when navigating `tab`
+- Fix the page hot update error caused by uninitialized environment variables in the `getHistoryMode` function
+- Fixed too many `tabs` in the navigation, which caused the tabs on the left to be closed and could not be displayed normally
+- Fixed the problem of full-screen error reporting when clicking on the content area
+- Fixed the problem that the left navigation bar is always loading after opening `showLink:false` page under hybrid navigation and refreshing
+- Fixed the left navigation memory overflow problem caused by calling `initRouter` function in mixed mode navigation
+- Fixed the problem that the cached page was not destroyed when closing the left, right, other, and all tab operations
+- Fix the problem that the route passes parameters through `query` or `params`, and the cache invalidation problem occurs when the tab page is closed after the cache is enabled
+- Fixed the problem that the breadcrumbs could not find the parent path in the `params` route parameter passing mode
+
+### 🍏 Perf
+
+- Optimize `buttons` named slot of `RePureTableBar` component
+- Optimize navigation style and menu collapse animation
+- Optimize the extra icon on the right side of the menu name to support more icon rendering modes
+- Optimize `logo` image and text layout and unified configuration
+- After the routing information `showLink` is set to `false`, the current routing information will not be added to the tab
+- Export `addPathMatch` function
+- All `getters` in `pinia` are changed to the official recommended way of writing, and `this` is changed to `state` to automatically deduce the type
+- Adapt to the `api` of the latest version of `pure-table`
+- Ignore `deprecation` warnings for `sourcemap-codec` and `stable` dependencies
+- Remove `"incremental": true` from `tsconfig.json` file
+- Update `stylelint` and related configurations to the latest, strengthen style validation
+- Breadcrumbs are removed from the homepage, and are displayed according to the selected menu. The homepage is no longer fixed in the breadcrumbs, and the routing monitoring of the breadcrumbs page is optimized
+
 # 3.9.7 (2022-12-26)
 
 ### 🍏 Perf

@@ -24,13 +24,15 @@ export const usePermissionStore = defineStore({
       );
     },
     cacheOperate({ mode, name }: cacheType) {
+      const delIndex = this.cachePageList.findIndex(v => v === name);
       switch (mode) {
+        case "refresh":
+          this.cachePageList = this.cachePageList.filter(v => v !== name);
+          break;
         case "add":
           this.cachePageList.push(name);
           break;
         case "delete":
-          // eslint-disable-next-line no-case-declarations
-          const delIndex = this.cachePageList.findIndex(v => v === name);
           delIndex !== -1 && this.cachePageList.splice(delIndex, 1);
           break;
       }
