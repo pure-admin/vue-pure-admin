@@ -85,13 +85,13 @@ const {
       </el-form-item>
     </el-form>
 
-    <PureTableBar title="角色列表" @refresh="onSearch">
+    <PureTableBar title="角色列表" :columns="columns" @refresh="onSearch">
       <template #buttons>
         <el-button type="primary" :icon="useRenderIcon(AddFill)">
           新增角色
         </el-button>
       </template>
-      <template v-slot="{ size, checkList }">
+      <template v-slot="{ size, dynamicColumns }">
         <pure-table
           border
           align-whole="center"
@@ -100,8 +100,7 @@ const {
           :loading="loading"
           :size="size"
           :data="dataList"
-          :columns="columns"
-          :checkList="checkList"
+          :columns="dynamicColumns"
           :pagination="pagination"
           :paginationSmall="size === 'small' ? true : false"
           :header-cell-style="{
