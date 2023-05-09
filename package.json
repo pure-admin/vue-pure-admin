@@ -52,7 +52,7 @@
     "intro.js": "^7.0.1",
     "js-cookie": "^3.0.5",
     "jsbarcode": "^3.11.5",
-    "md-editor-v3": "^3.0.1",
+    "md-editor-v3": "2.7.2",
     "mitt": "^3.0.0",
     "mockjs": "^1.1.0",
     "nprogress": "^0.2.0",
