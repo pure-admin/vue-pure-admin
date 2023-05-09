@@ -1,6 +1,8 @@
 <script setup lang="tsx">
-import { h, createVNode } from "vue";
+import { h, createVNode, ref } from "vue";
 import { message } from "@/utils/message";
+import { cloneDeep } from "@pureadmin/utils";
+import forms, { type FormProps } from "./form.vue";
 import { addDialog, closeDialog, closeAllDialog } from "@/components/ReDialog";
 
 defineOptions({
@@ -225,6 +227,102 @@ function onNestingClick() {
     )
   });
 }
+
+// 结合Form表单（第一种方式，弹框关闭立刻恢复初始值）通过 props 属性接收子组件的 prop 并赋值
+function onFormOneClick() {
+  addDialog({
+    width: "30%",
+    title: "结合Form表单（第一种方式）",
+    contentRenderer: () => forms,
+    props: {
+      // 赋默认值
+      formInline: {
+        user: "菜虚鲲",
+        region: "浙江"
+      }
+    },
+    closeCallBack: ({ options, args }) => {
+      // options.props 是响应式的
+      const { formInline } = options.props as FormProps;
+      const text = `姓名：${formInline.user} 城市：${formInline.region}`;
+      if (args?.command === "cancel") {
+        // 您点击了取消按钮
+        message(`您点击了取消按钮，当前表单数据为 ${text}`);
+      } else if (args?.command === "sure") {
+        message(`您点击了确定按钮，当前表单数据为 ${text}`);
+      } else {
+        message(`您点击了右上角关闭按钮或者空白页，当前表单数据为 ${text}`);
+      }
+    }
+  });
+}
+
+// 结合Form表单（第二种方式）h 渲染函数 https://cn.vuejs.org/api/render-function.html#h
+const formInline = ref({
+  user: "菜虚鲲",
+  region: "浙江"
+});
+const resetFormInline = cloneDeep(formInline.value);
+function onFormTwoClick() {
+  addDialog({
+    width: "30%",
+    title: "结合Form表单（第二种方式）",
+    contentRenderer: () => h(forms, { formInline: formInline.value }),
+    closeCallBack: () => {
+      message(
+        `当前表单数据为 姓名：${formInline.value.user} 城市：${formInline.value.region}`
+      );
+      // 重置表单数据
+      formInline.value = cloneDeep(resetFormInline);
+    }
+  });
+}
+
+// 结合Form表单（第三种方式）createVNode 渲染函数 https://cn.vuejs.org/guide/extras/render-function.html#creating-vnodes
+const formThreeInline = ref({
+  user: "菜虚鲲",
+  region: "浙江"
+});
+const resetFormThreeInline = cloneDeep(formThreeInline.value);
+function onFormThreeClick() {
+  addDialog({
+    width: "30%",
+    title: "结合Form表单（第三种方式）",
+    contentRenderer: () =>
+      createVNode(forms, { formInline: formThreeInline.value }),
+    closeCallBack: () => {
+      message(
+        `当前表单数据为 姓名：${formThreeInline.value.user} 城市：${formThreeInline.value.region}`
+      );
+      // 重置表单数据
+      formThreeInline.value = cloneDeep(resetFormThreeInline);
+    }
+  });
+}
+
+// 结合Form表单（第四种方式）使用jsx语法
+// 需要注意的是如果 forms 没注册，这里 forms 注册了是因为上面 contentRenderer: () => forms、h(forms) 、createVNode(createVNode) 间接给注册了
+// 如果只使用了jsx语法，如下 `contentRenderer: () => <forms formInline={formFourInline.value} />` 是不会给 forms 组件进行注册的，需要在 `script` 中任意位置（最好是末尾）写上 forms 即可
+// 同理如果在 tsx 文件中，这么使用 `contentRenderer: () => <forms formInline={formFourInline.value} />`，也是不会给 forms 组件进行注册，需要在 return 中写上 forms
+const formFourInline = ref({
+  user: "菜虚鲲",
+  region: "浙江"
+});
+const resetFormFourInline = cloneDeep(formFourInline.value);
+function onFormFourClick() {
+  addDialog({
+    width: "30%",
+    title: "结合Form表单（第四种方式）",
+    contentRenderer: () => <forms formInline={formFourInline.value} />,
+    closeCallBack: () => {
+      message(
+        `当前表单数据为 姓名：${formFourInline.value.user} 城市：${formFourInline.value.region}`
+      );
+      // 重置表单数据
+      formFourInline.value = cloneDeep(resetFormFourInline);
+    }
+  });
+}
 </script>
 
 <template>
@@ -266,6 +364,21 @@ function onNestingClick() {
       <el-button @click="onOpenClick"> 打开后的回调 </el-button>
       <el-button @click="onCloseCallBackClick"> 关闭后的回调 </el-button>
       <el-button @click="onNestingClick"> 嵌套的弹框 </el-button>
+    </el-space>
+    <el-divider />
+    <el-space wrap>
+      <el-button @click="onFormOneClick">
+        结合Form表单（第一种方式）
+      </el-button>
+      <el-button @click="onFormTwoClick">
+        结合Form表单（第二种方式）
+      </el-button>
+      <el-button @click="onFormThreeClick">
+        结合Form表单（第三种方式）
+      </el-button>
+      <el-button @click="onFormFourClick">
+        结合Form表单（第四种方式）
+      </el-button>
     </el-space>
   </el-card>
 </template>

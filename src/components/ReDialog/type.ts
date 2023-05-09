@@ -128,7 +128,7 @@ interface DialogOptions extends DialogProps {
     close: Function;
     titleId: string;
     titleClass: string;
-  }) => VNode;
+  }) => VNode | Component;
   /** 自定义内容渲染器 */
   contentRenderer?: ({
     options,
@@ -136,7 +136,7 @@ interface DialogOptions extends DialogProps {
   }: {
     options: DialogOptions;
     index: number;
-  }) => VNode;
+  }) => VNode | Component;
   /** 自定义按钮操作区的内容渲染器，会覆盖`footerButtons`以及默认的 `取消` 和 `确定` 按钮 */
   footerRenderer?: ({
     options,
@@ -144,7 +144,7 @@ interface DialogOptions extends DialogProps {
   }: {
     options: DialogOptions;
     index: number;
-  }) => VNode;
+  }) => VNode | Component;
   /** 自定义底部按钮操作 */
   footerButtons?: Array<ButtonProps>;
   /** `Dialog` 打开后的回调 */
