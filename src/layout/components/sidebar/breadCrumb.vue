@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { isEqual } from "@pureadmin/utils";
-import { routerArrays } from "@/layout/types";
 import { transformI18n } from "@/plugins/i18n";
 import { ref, watch, onMounted, toRaw } from "vue";
 import { getParentPaths, findRouteByPath } from "@/router/utils";
@@ -11,7 +10,6 @@ const route = useRoute();
 const levelList = ref([]);
 const router = useRouter();
 const routes: any = router.options.routes;
-const { VITE_HIDE_HOME } = import.meta.env;
 const multiTags: any = useMultiTagsStoreHook().multiTags;
 
 const getBreadcrumb = (): void => {
@@ -33,6 +31,7 @@ const getBreadcrumb = (): void => {
   } else {
     currentRoute = findRouteByPath(router.currentRoute.value.path, routes);
   }
+
   // 当前路由的父级路径组成的数组
   const parentRoutes = getParentPaths(
     router.currentRoute.value.name as string,
@@ -40,16 +39,14 @@ const getBreadcrumb = (): void => {
     "name"
   );
   // 存放组成面包屑的数组
-  let matched = [];
+  const matched = [];
 
   // 获取每个父级路径对应的路由信息
   parentRoutes.forEach(path => {
     if (path !== "/") matched.push(findRouteByPath(path, routes));
   });
 
-  if (currentRoute?.path !== "/welcome") matched.push(currentRoute);
-
-  if (VITE_HIDE_HOME === "false") matched = routerArrays.concat(matched);
+  matched.push(currentRoute);
 
   matched.forEach((item, index) => {
     if (currentRoute?.query || currentRoute?.params) return;
@@ -84,6 +81,9 @@ watch(
   () => route.path,
   () => {
     getBreadcrumb();
+  },
+  {
+    deep: true
   }
 );
 </script>

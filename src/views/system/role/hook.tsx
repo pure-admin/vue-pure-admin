@@ -22,16 +22,15 @@ export function useRole() {
   });
   const columns: TableColumnList = [
     {
+      label: "勾选列", // 如果需要表格多选，此处label必须设置
       type: "selection",
       width: 55,
-      align: "left",
-      hide: ({ checkList }) => !checkList.includes("勾选列")
+      align: "left"
     },
     {
       label: "序号",
       type: "index",
-      width: 70,
-      hide: ({ checkList }) => !checkList.includes("序号列")
+      width: 70
     },
     {
       label: "角色编号",

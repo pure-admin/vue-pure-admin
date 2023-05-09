@@ -26,7 +26,7 @@ jobs:
 
       - name: Deploy 🔧
         run: |
-          pnpm install
+          pnpm install --no-frozen-lockfile
           sed -i "s#VITE_PUBLIC_PATH = /#VITE_PUBLIC_PATH = /vue-pure-admin/#g" $(pwd)/.env.production
           pnpm build
           cd dist

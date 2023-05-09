@@ -1,5 +1,5 @@
-import { delay } from "@pureadmin/utils";
 import { useEpThemeStoreHook } from "@/store/modules/epTheme";
+import { delay, getKeyList, cloneDeep } from "@pureadmin/utils";
 import { defineComponent, ref, computed, type PropType } from "vue";
 import ExpandIcon from "./svg/expand.svg?component";
 import RefreshIcon from "./svg/refresh.svg?component";
@@ -15,6 +15,11 @@ const props = {
   /** 对于树形表格，如果想启用展开和折叠功能，传入当前表格的ref即可 */
   tableRef: {
     type: Object as PropType<any>
+  },
+  /** 需要展示的列 */
+  columns: {
+    type: Array as PropType<TableColumnList>,
+    default: () => []
   }
 };
 
@@ -24,10 +29,14 @@ export default defineComponent({
   emits: ["refresh"],
   setup(props, { emit, slots, attrs }) {
     const buttonRef = ref();
-    const checkList = ref([]);
     const size = ref("default");
     const isExpandAll = ref(true);
     const loading = ref(false);
+    const checkAll = ref(true);
+    const isIndeterminate = ref(false);
+    let checkColumnList = getKeyList(cloneDeep(props?.columns), "label");
+    const checkedColumns = ref(checkColumnList);
+    const dynamicColumns = ref(cloneDeep(props?.columns));
 
     const getDropdownItemStyle = computed(() => {
       return s => {
@@ -50,6 +59,19 @@ export default defineComponent({
       ];
     });
 
+    const topClass = computed(() => {
+      return [
+        "flex",
+        "justify-between",
+        "pt-[3px]",
+        "px-[11px]",
+        "border-b-[1px]",
+        "border-solid",
+        "border-[#dcdfe6]",
+        "dark:border-[#303030]"
+      ];
+    });
+
     function onReFresh() {
       loading.value = true;
       emit("refresh");
@@ -68,6 +90,33 @@ export default defineComponent({
           toggleRowExpansionAll(item.children, isExpansion);
         }
       });
+    }
+
+    function handleCheckAllChange(val: boolean) {
+      checkedColumns.value = val ? checkColumnList : [];
+      isIndeterminate.value = false;
+      dynamicColumns.value.map(column =>
+        val ? (column.hide = false) : (column.hide = true)
+      );
+    }
+
+    function handleCheckedColumnsChange(value: string[]) {
+      const checkedCount = value.length;
+      checkAll.value = checkedCount === checkColumnList.length;
+      isIndeterminate.value =
+        checkedCount > 0 && checkedCount < checkColumnList.length;
+    }
+
+    function handleCheckColumnListChange(val: boolean, index: number) {
+      dynamicColumns.value[index].hide = !val;
+    }
+
+    function onReset() {
+      checkAll.value = true;
+      isIndeterminate.value = false;
+      checkColumnList = getKeyList(cloneDeep(props?.columns), "label");
+      checkedColumns.value = checkColumnList;
+      dynamicColumns.value = cloneDeep(props?.columns);
     }
 
     const dropdown = {
@@ -150,11 +199,56 @@ export default defineComponent({
               </el-tooltip>
               <el-divider direction="vertical" />
 
-              <el-popover v-slots={reference} width="200" trigger="click">
-                <el-checkbox-group v-model={checkList.value}>
-                  <el-checkbox label="序号列" />
-                  <el-checkbox label="勾选列" />
-                </el-checkbox-group>
+              <el-popover
+                v-slots={reference}
+                popper-style={{ padding: 0 }}
+                width="160"
+                trigger="click"
+              >
+                <div class={[topClass.value]}>
+                  <el-checkbox
+                    class="!-mr-1"
+                    label="列展示"
+                    v-model={checkAll.value}
+                    indeterminate={isIndeterminate.value}
+                    onChange={value => handleCheckAllChange(value)}
+                  />
+                  <el-button type="primary" link onClick={() => onReset()}>
+                    重置
+                  </el-button>
+                </div>
+
+                <div class="pt-[6px] pl-[11px]">
+                  <el-checkbox-group
+                    v-model={checkedColumns.value}
+                    onChange={value => handleCheckedColumnsChange(value)}
+                  >
+                    <el-space
+                      direction="vertical"
+                      alignment="flex-start"
+                      size={0}
+                    >
+                      {checkColumnList.map((item, index) => {
+                        return (
+                          <el-checkbox
+                            key={item}
+                            label={item}
+                            onChange={value =>
+                              handleCheckColumnListChange(value, index)
+                            }
+                          >
+                            <span
+                              title={item}
+                              class="inline-block w-[120px] truncate hover:text-text_color_primary"
+                            >
+                              {item}
+                            </span>
+                          </el-checkbox>
+                        );
+                      })}
+                    </el-space>
+                  </el-checkbox-group>
+                </div>
               </el-popover>
             </div>
 
@@ -177,7 +271,10 @@ export default defineComponent({
               content="列设置"
             />
           </div>
-          {slots.default({ size: size.value, checkList: checkList.value })}
+          {slots.default({
+            size: size.value,
+            dynamicColumns: dynamicColumns.value
+          })}
         </div>
       </>
     );

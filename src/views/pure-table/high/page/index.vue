@@ -54,7 +54,7 @@ const {
       row-key="id"
       alignWhole="center"
       showOverflowTooltip
-      :size="tableSize"
+      :size="tableSize as any"
       :loading="loading"
       :loading-config="loadingConfig"
       :height="tableSize === 'small' ? 352 : 440"

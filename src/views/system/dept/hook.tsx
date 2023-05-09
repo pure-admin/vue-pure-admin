@@ -13,16 +13,9 @@ export function useDept() {
 
   const columns: TableColumnList = [
     {
-      type: "selection",
-      width: 55,
-      align: "left",
-      hide: ({ checkList }) => !checkList.includes("勾选列")
-    },
-    {
       label: "序号",
       type: "index",
-      minWidth: 70,
-      hide: ({ checkList }) => !checkList.includes("序号列")
+      minWidth: 70
     },
     {
       label: "部门名称",
