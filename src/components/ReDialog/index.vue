@@ -19,7 +19,13 @@ const footerButtons = computed(() => {
             text: true,
             bg: true,
             btnClick: ({ dialog: { options, index } }) => {
-              closeDialog(options, index, { command: "cancel" });
+              const done = () =>
+                closeDialog(options, index, { command: "cancel" });
+              if (options?.beforeCancel && isFunction(options?.beforeCancel)) {
+                options.beforeCancel(done);
+              } else {
+                done();
+              }
             }
           },
           {
@@ -28,7 +34,13 @@ const footerButtons = computed(() => {
             text: true,
             bg: true,
             btnClick: ({ dialog: { options, index } }) => {
-              closeDialog(options, index, { command: "sure" });
+              const done = () =>
+                closeDialog(options, index, { command: "sure" });
+              if (options?.beforeSure && isFunction(options?.beforeSure)) {
+                options.beforeSure(done);
+              } else {
+                done();
+              }
             }
           }
         ] as Array<ButtonProps>);
