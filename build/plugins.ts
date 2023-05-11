@@ -10,7 +10,6 @@ import { visualizer } from "rollup-plugin-visualizer";
 import removeConsole from "vite-plugin-remove-console";
 import themePreprocessorPlugin from "@pureadmin/theme";
 import VueI18nPlugin from "@intlify/unplugin-vue-i18n/vite";
-import DefineOptions from "unplugin-vue-define-options/vite";
 import { genScssMultipleScopeVars } from "../src/layout/theme";
 
 export function getPluginsList(
@@ -31,7 +30,6 @@ export function getPluginsList(
     vueJsx(),
     VITE_CDN ? cdn : null,
     configCompressPlugin(VITE_COMPRESSION),
-    DefineOptions(),
     // 线上环境删除console
     removeConsole({ external: ["src/assets/iconfont/iconfont.js"] }),
     viteBuildInfo(),
