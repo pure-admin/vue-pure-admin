@@ -113,12 +113,14 @@ export default defineComponent({
       dynamicColumns.value[index].hide = !val;
     }
 
-    function onReset() {
+    async function onReset() {
       checkAll.value = true;
       isIndeterminate.value = false;
-      checkColumnList = getKeyList(cloneDeep(props?.columns), "label");
-      checkedColumns.value = checkColumnList;
       dynamicColumns.value = cloneDeep(props?.columns);
+      checkColumnList = [];
+      checkColumnList = await getKeyList(cloneDeep(props?.columns), "label");
+      console.log(checkColumnList);
+      checkedColumns.value = checkColumnList;
     }
 
     const dropdown = {
@@ -161,7 +163,6 @@ export default defineComponent({
             const wrapperElem = targetThElem.parentNode as HTMLElement;
             const oldColumn = dynamicColumns.value[oldIndex];
             const newColumn = dynamicColumns.value[newIndex];
-            console.log(oldColumn);
             if (oldColumn?.fixed || newColumn?.fixed) {
               // 错误的移动
               const oldThElem = wrapperElem.children[oldIndex] as HTMLElement;
@@ -177,10 +178,13 @@ export default defineComponent({
             }
             const currentRow = dynamicColumns.value.splice(oldIndex, 1)[0];
             dynamicColumns.value.splice(newIndex, 0, currentRow);
-            console.log(dynamicColumns.value);
           }
         });
       });
+    };
+
+    const isFixedColumn = (label: string) => {
+      return dynamicColumns.value.filter(item => item.label === label)[0].fixed;
     };
 
     const reference = {
@@ -282,6 +286,7 @@ export default defineComponent({
                             <el-checkbox
                               key={item}
                               label={item}
+                              disabled={isFixedColumn(item)}
                               onChange={value =>
                                 handleCheckColumnListChange(value, index)
                               }
