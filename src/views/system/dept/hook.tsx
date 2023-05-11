@@ -15,7 +15,8 @@ export function useDept() {
     {
       label: "序号",
       type: "index",
-      minWidth: 70
+      minWidth: 70,
+      fixed: "left"
     },
     {
       label: "部门名称",

@@ -30,7 +30,8 @@ export function useRole() {
     {
       label: "序号",
       type: "index",
-      width: 70
+      width: 70,
+      fixed: "left"
     },
     {
       label: "角色编号",

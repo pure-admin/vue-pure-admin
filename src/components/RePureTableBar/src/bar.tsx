@@ -1,10 +1,12 @@
 import { useEpThemeStoreHook } from "@/store/modules/epTheme";
 import { delay, getKeyList, cloneDeep } from "@pureadmin/utils";
-import { defineComponent, ref, computed, type PropType } from "vue";
+import { defineComponent, ref, computed, type PropType, nextTick } from "vue";
 import ExpandIcon from "./svg/expand.svg?component";
 import RefreshIcon from "./svg/refresh.svg?component";
 import SettingIcon from "./svg/settings.svg?component";
 import CollapseIcon from "./svg/collapse.svg?component";
+import DragIcon from "./svg/drag.svg?component";
+import Sortable from "sortablejs";
 
 const props = {
   /** 头部最左边的标题 */
@@ -144,6 +146,43 @@ export default defineComponent({
       )
     };
 
+    // 拖拽排序
+    const rowDrop = (event: { preventDefault: () => void }) => {
+      event.preventDefault();
+      nextTick(() => {
+        const wrapper: HTMLElement = document.querySelector(
+          ".el-checkbox-group>div"
+        );
+        Sortable.create(wrapper, {
+          animation: 300,
+          handle: ".el-space__item",
+          onEnd: ({ newIndex, oldIndex, item }) => {
+            const targetThElem = item;
+            const wrapperElem = targetThElem.parentNode as HTMLElement;
+            const oldColumn = dynamicColumns.value[oldIndex];
+            const newColumn = dynamicColumns.value[newIndex];
+            console.log(oldColumn);
+            if (oldColumn?.fixed || newColumn?.fixed) {
+              // 错误的移动
+              const oldThElem = wrapperElem.children[oldIndex] as HTMLElement;
+              if (newIndex > oldIndex) {
+                wrapperElem.insertBefore(targetThElem, oldThElem);
+              } else {
+                wrapperElem.insertBefore(
+                  targetThElem,
+                  oldThElem ? oldThElem.nextElementSibling : oldThElem
+                );
+              }
+              return;
+            }
+            const currentRow = dynamicColumns.value.splice(oldIndex, 1)[0];
+            dynamicColumns.value.splice(newIndex, 0, currentRow);
+            console.log(dynamicColumns.value);
+          }
+        });
+      });
+    };
+
     const reference = {
       reference: () => (
         <SettingIcon
@@ -230,20 +269,31 @@ export default defineComponent({
                     >
                       {checkColumnList.map((item, index) => {
                         return (
-                          <el-checkbox
-                            key={item}
-                            label={item}
-                            onChange={value =>
-                              handleCheckColumnListChange(value, index)
-                            }
-                          >
-                            <span
-                              title={item}
-                              class="inline-block w-[120px] truncate hover:text-text_color_primary"
+                          <div class="flex items-center">
+                            <DragIcon
+                              class={[
+                                "w-[16px] mr-2 drag-btn cursor-grab",
+                                iconClass.value
+                              ]}
+                              onMouseenter={(event: {
+                                preventDefault: () => void;
+                              }) => rowDrop(event)}
+                            />
+                            <el-checkbox
+                              key={item}
+                              label={item}
+                              onChange={value =>
+                                handleCheckColumnListChange(value, index)
+                              }
                             >
-                              {item}
-                            </span>
-                          </el-checkbox>
+                              <span
+                                title={item}
+                                class="inline-block w-[120px] truncate hover:text-text_color_primary"
+                              >
+                                {item}
+                              </span>
+                            </el-checkbox>
+                          </div>
                         );
                       })}
                     </el-space>
