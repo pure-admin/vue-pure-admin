@@ -24,7 +24,8 @@ export function useUser() {
     {
       label: "序号",
       type: "index",
-      width: 70
+      width: 70,
+      fixed: "left"
     },
     {
       label: "用户编号",

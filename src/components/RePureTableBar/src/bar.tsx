@@ -1,6 +1,9 @@
 import { useEpThemeStoreHook } from "@/store/modules/epTheme";
 import { delay, getKeyList, cloneDeep } from "@pureadmin/utils";
-import { defineComponent, ref, computed, type PropType } from "vue";
+import { defineComponent, ref, computed, type PropType, nextTick } from "vue";
+
+import Sortable from "sortablejs";
+import DragIcon from "./svg/drag.svg?component";
 import ExpandIcon from "./svg/expand.svg?component";
 import RefreshIcon from "./svg/refresh.svg?component";
 import SettingIcon from "./svg/settings.svg?component";
@@ -107,16 +110,17 @@ export default defineComponent({
         checkedCount > 0 && checkedCount < checkColumnList.length;
     }
 
-    function handleCheckColumnListChange(val: boolean, index: number) {
-      dynamicColumns.value[index].hide = !val;
+    function handleCheckColumnListChange(val: boolean, label: string) {
+      dynamicColumns.value.filter(item => item.label === label)[0].hide = !val;
     }
 
-    function onReset() {
+    async function onReset() {
       checkAll.value = true;
       isIndeterminate.value = false;
-      checkColumnList = getKeyList(cloneDeep(props?.columns), "label");
-      checkedColumns.value = checkColumnList;
       dynamicColumns.value = cloneDeep(props?.columns);
+      checkColumnList = [];
+      checkColumnList = await getKeyList(cloneDeep(props?.columns), "label");
+      checkedColumns.value = checkColumnList;
     }
 
     const dropdown = {
@@ -142,6 +146,47 @@ export default defineComponent({
           </el-dropdown-item>
         </el-dropdown-menu>
       )
+    };
+
+    /** 列展示拖拽排序 */
+    const rowDrop = (event: { preventDefault: () => void }) => {
+      event.preventDefault();
+      nextTick(() => {
+        const wrapper: HTMLElement = document.querySelector(
+          ".el-checkbox-group>div"
+        );
+        Sortable.create(wrapper, {
+          animation: 300,
+          handle: ".drag-btn",
+          onEnd: ({ newIndex, oldIndex, item }) => {
+            const targetThElem = item;
+            const wrapperElem = targetThElem.parentNode as HTMLElement;
+            const oldColumn = dynamicColumns.value[oldIndex];
+            const newColumn = dynamicColumns.value[newIndex];
+            if (oldColumn?.fixed || newColumn?.fixed) {
+              // 当前列存在fixed属性 则不可拖拽
+              const oldThElem = wrapperElem.children[oldIndex] as HTMLElement;
+              if (newIndex > oldIndex) {
+                wrapperElem.insertBefore(targetThElem, oldThElem);
+              } else {
+                wrapperElem.insertBefore(
+                  targetThElem,
+                  oldThElem ? oldThElem.nextElementSibling : oldThElem
+                );
+              }
+              return;
+            }
+            const currentRow = dynamicColumns.value.splice(oldIndex, 1)[0];
+            dynamicColumns.value.splice(newIndex, 0, currentRow);
+          }
+        });
+      });
+    };
+
+    const isFixedColumn = (label: string) => {
+      return dynamicColumns.value.filter(item => item.label === label)[0].fixed
+        ? true
+        : false;
     };
 
     const reference = {
@@ -191,7 +236,6 @@ export default defineComponent({
                 />
               </el-tooltip>
               <el-divider direction="vertical" />
-
               <el-tooltip effect="dark" content="密度" placement="top">
                 <el-dropdown v-slots={dropdown} trigger="click">
                   <CollapseIcon class={["w-[16px]", iconClass.value]} />
@@ -228,22 +272,35 @@ export default defineComponent({
                       alignment="flex-start"
                       size={0}
                     >
-                      {checkColumnList.map((item, index) => {
+                      {checkColumnList.map(item => {
                         return (
-                          <el-checkbox
-                            key={item}
-                            label={item}
-                            onChange={value =>
-                              handleCheckColumnListChange(value, index)
-                            }
-                          >
-                            <span
-                              title={item}
-                              class="inline-block w-[120px] truncate hover:text-text_color_primary"
+                          <div class="flex items-center">
+                            <DragIcon
+                              class={[
+                                "drag-btn w-[16px] mr-2",
+                                isFixedColumn(item)
+                                  ? "!cursor-no-drop"
+                                  : "!cursor-grab"
+                              ]}
+                              onMouseenter={(event: {
+                                preventDefault: () => void;
+                              }) => rowDrop(event)}
+                            />
+                            <el-checkbox
+                              key={item}
+                              label={item}
+                              onChange={value =>
+                                handleCheckColumnListChange(value, item)
+                              }
                             >
-                              {item}
-                            </span>
-                          </el-checkbox>
+                              <span
+                                title={item}
+                                class="inline-block w-[120px] truncate hover:text-text_color_primary"
+                              >
+                                {item}
+                              </span>
+                            </el-checkbox>
+                          </div>
                         );
                       })}
                     </el-space>
