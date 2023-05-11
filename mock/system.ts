@@ -1,6 +1,7 @@
 import { MockMethod } from "vite-plugin-mock";
 
 export default [
+  // 角色
   {
     url: "/role",
     method: "post",
@@ -10,7 +11,7 @@ export default [
         data: {
           list: [
             {
-              createTime: 1609837428000,
+              createTime: 1605456000000,
               updateTime: 1645477701000,
               creator: "admin",
               updater: "",
@@ -27,7 +28,7 @@ export default [
               dataScopeDeptIds: null
             },
             {
-              createTime: 1609837428000,
+              createTime: 1605456000000,
               updateTime: 1645477700000,
               creator: "admin",
               updater: "",
@@ -44,7 +45,7 @@ export default [
               dataScopeDeptIds: null
             },
             {
-              createTime: 1609912175000,
+              createTime: 1605456000000,
               updateTime: 1647698441000,
               creator: "",
               updater: "1",
@@ -66,6 +67,7 @@ export default [
       };
     }
   },
+  // 部门
   {
     url: "/dept",
     method: "post",
@@ -75,138 +77,139 @@ export default [
         data: [
           {
             name: "杭州总公司",
-            type: 1, // 1 公司 2 分公司 3 部门
             parentId: 0,
-            sort: 0,
-            leaderUserId: 1,
-            phone: "15888888888",
-            email: "ry@qq.com",
-            status: 0,
             id: 100,
-            createTime: 1609837427000,
-            remark: "备注、备注、备注、备注、备注、备注、备注"
+            sort: 0,
+            phone: "15888888888",
+            principal: "@cname()",
+            email: "@email",
+            status: 1,
+            type: 1, // 1 公司 2 分公司 3 部门
+            createTime: 1605456000000,
+            remark: "@cparagraph(1, 3)"
           },
           {
             name: "郑州分公司",
-            type: 2,
             parentId: 100,
-            sort: 1,
-            leaderUserId: 104,
-            phone: "15888888888",
-            email: "ry@qq.com",
-            status: 0,
             id: 101,
-            createTime: 1609837427000,
-            remark: "备注、备注、备注、备注、备注、备注、备注"
+            sort: 1,
+            phone: "15888888888",
+            principal: "@cname()",
+            email: "@email",
+            status: 1,
+            type: 2,
+            createTime: 1605456000000,
+            remark: "@cparagraph(1, 3)"
           },
           {
             name: "研发部门",
-            type: 3,
             parentId: 101,
-            sort: 1,
-            leaderUserId: 104,
-            phone: "15888888888",
-            email: "ry@qq.com",
-            status: 0,
             id: 103,
-            createTime: 1609837427000,
-            remark: "备注、备注、备注、备注、备注、备注、备注"
+            sort: 1,
+            phone: "15888888888",
+            principal: "@cname()",
+            email: "@email",
+            status: 1,
+            type: 3,
+            createTime: 1605456000000,
+            remark: "@cparagraph(1, 3)"
           },
           {
             name: "市场部门",
-            type: 3,
             parentId: 102,
-            sort: 1,
-            leaderUserId: null,
-            phone: "15888888888",
-            email: "ry@qq.com",
-            status: 0,
             id: 108,
-            createTime: 1609837427000,
-            remark: "备注、备注、备注、备注、备注、备注、备注"
+            sort: 1,
+            phone: "15888888888",
+            principal: "@cname()",
+            email: "@email",
+            status: 1,
+            type: 3,
+            createTime: 1605456000000,
+            remark: "@cparagraph(1, 3)"
           },
           {
             name: "深圳分公司",
-            type: 2,
             parentId: 100,
-            sort: 2,
-            leaderUserId: null,
-            phone: "15888888888",
-            email: "ry@qq.com",
-            status: 0,
             id: 102,
-            createTime: 1609837427000,
-            remark: "备注、备注、备注、备注、备注、备注、备注"
+            sort: 2,
+            phone: "15888888888",
+            principal: "@cname()",
+            email: "@email",
+            status: 1,
+            type: 2,
+            createTime: 1605456000000,
+            remark: "@cparagraph(1, 3)"
           },
           {
             name: "市场部门",
-            type: 3,
             parentId: 101,
-            sort: 2,
-            leaderUserId: null,
-            phone: "15888888888",
-            email: "ry@qq.com",
-            status: 1,
             id: 104,
-            createTime: 1609837427000,
-            remark: "备注、备注、备注、备注、备注、备注、备注"
+            sort: 2,
+            phone: "15888888888",
+            principal: "@cname()",
+            email: "@email",
+            status: 1,
+            type: 3,
+            createTime: 1605456000000,
+            remark: "@cparagraph(1, 3)"
           },
           {
             name: "财务部门",
-            type: 3,
             parentId: 102,
-            sort: 2,
-            leaderUserId: null,
-            phone: "15888888888",
-            email: "ry@qq.com",
-            status: 0,
             id: 109,
-            createTime: 1609837427000,
-            remark: "备注、备注、备注、备注、备注、备注、备注"
+            sort: 2,
+            phone: "15888888888",
+            principal: "@cname()",
+            email: "@email",
+            status: 1,
+            type: 3,
+            createTime: 1605456000000,
+            remark: "@cparagraph(1, 3)"
           },
           {
             name: "测试部门",
-            type: 3,
             parentId: 101,
-            sort: 3,
-            leaderUserId: null,
-            phone: "15888888888",
-            email: "ry@qq.com",
-            status: 0,
             id: 105,
-            createTime: 1609837427000,
-            remark: "备注、备注、备注、备注、备注、备注、备注"
+            sort: 3,
+            phone: "15888888888",
+            principal: "@cname()",
+            email: "@email",
+            status: 0,
+            type: 3,
+            createTime: 1605456000000,
+            remark: "@cparagraph(1, 3)"
           },
           {
             name: "财务部门",
-            type: 3,
             parentId: 101,
-            sort: 4,
-            leaderUserId: 103,
-            phone: "15888888888",
-            email: "ry@qq.com",
-            status: 1,
             id: 106,
-            createTime: 1609837427000,
-            remark: "备注、备注、备注、备注、备注、备注、备注"
+            sort: 4,
+            phone: "15888888888",
+            principal: "@cname()",
+            email: "@email",
+            status: 1,
+            type: 3,
+            createTime: 1605456000000,
+            remark: "@cparagraph(1, 3)"
           },
           {
             name: "运维部门",
-            type: 3,
             parentId: 101,
-            sort: 5,
-            leaderUserId: null,
-            phone: "15888888888",
-            email: "ry@qq.com",
-            status: 0,
             id: 107,
-            createTime: 1609837427000,
-            remark: "备注、备注、备注、备注、备注、备注、备注"
+            sort: 5,
+            phone: "15888888888",
+            principal: "@cname()",
+            email: "@email",
+            status: 0,
+            type: 3,
+            createTime: 1605456000000,
+            remark: "@cparagraph(1, 3)"
           }
         ]
       };
     }
   },
+  // 用户
   {
     url: "/user",
     method: "post",
@@ -225,7 +228,7 @@ export default [
               sex: 0,
               id: 1,
               status: 0,
-              createTime: 1609837427000,
+              createTime: 1605456000000,
               dept: {
                 id: 103,
                 name: "研发部门"
@@ -241,7 +244,7 @@ export default [
               sex: 0,
               id: 100,
               status: 1,
-              createTime: 1609981637000,
+              createTime: 1605456000000,
               dept: {
                 id: 104,
                 name: "市场部门"
@@ -257,7 +260,7 @@ export default [
               sex: 1,
               id: 103,
               status: 1,
-              createTime: 1610553035000,
+              createTime: 1605456000000,
               dept: {
                 id: 106,
                 name: "财务部门"
@@ -273,7 +276,7 @@ export default [
               sex: 0,
               id: 104,
               status: 0,
-              createTime: 1611166433000,
+              createTime: 1605456000000,
               dept: {
                 id: 107,
                 name: "运维部门"
