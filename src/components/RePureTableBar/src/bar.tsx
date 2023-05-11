@@ -184,7 +184,9 @@ export default defineComponent({
     };
 
     const isFixedColumn = (label: string) => {
-      return dynamicColumns.value.filter(item => item.label === label)[0].fixed;
+      return dynamicColumns.value.filter(item => item.label === label)[0].fixed
+        ? true
+        : false;
     };
 
     const reference = {
