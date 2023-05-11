@@ -1,1 +1,0 @@
-import{u as t}from"./hooks-f5028e91.js";import"./index-c61a73ff.js";const u=Vue.defineComponent({name:"TabParamsDetail",__name:"params-detail",setup(n){const{initToDetail:e,id:a}=t();return e("params"),(r,i)=>(Vue.openBlock(),Vue.createElementBlock("div",null,Vue.toDisplayString(Vue.unref(a))+" - 详情页内容在此（params传参）",1))}});export{u as default};
