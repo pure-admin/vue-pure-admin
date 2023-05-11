@@ -1,1 +1,0 @@
-import{u as n}from"./hooks-ddbb9e5f.js";import"./index-28562d9d.js";const u=Vue.defineComponent({name:"TabQueryDetail"}),c=Vue.defineComponent({...u,setup(o){const{initToDetail:e,id:t}=n();return e("query"),(r,i)=>(Vue.openBlock(),Vue.createElementBlock("div",null,Vue.toDisplayString(Vue.unref(t))+" - 详情页内容在此（query传参）",1))}});export{c as default};
