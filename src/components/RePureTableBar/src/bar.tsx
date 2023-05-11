@@ -109,8 +109,8 @@ export default defineComponent({
         checkedCount > 0 && checkedCount < checkColumnList.length;
     }
 
-    function handleCheckColumnListChange(val: boolean, index: number) {
-      dynamicColumns.value[index].hide = !val;
+    function handleCheckColumnListChange(val: boolean, label: string) {
+      dynamicColumns.value.filter(item => item.label === label)[0].hide = !val;
     }
 
     async function onReset() {
@@ -119,7 +119,6 @@ export default defineComponent({
       dynamicColumns.value = cloneDeep(props?.columns);
       checkColumnList = [];
       checkColumnList = await getKeyList(cloneDeep(props?.columns), "label");
-      console.log(checkColumnList);
       checkedColumns.value = checkColumnList;
     }
 
@@ -236,7 +235,6 @@ export default defineComponent({
                 />
               </el-tooltip>
               <el-divider direction="vertical" />
-
               <el-tooltip effect="dark" content="密度" placement="top">
                 <el-dropdown v-slots={dropdown} trigger="click">
                   <CollapseIcon class={["w-[16px]", iconClass.value]} />
@@ -273,7 +271,7 @@ export default defineComponent({
                       alignment="flex-start"
                       size={0}
                     >
-                      {checkColumnList.map((item, index) => {
+                      {checkColumnList.map(item => {
                         return (
                           <div class="flex items-center">
                             <DragIcon
@@ -290,7 +288,7 @@ export default defineComponent({
                               label={item}
                               disabled={isFixedColumn(item)}
                               onChange={value =>
-                                handleCheckColumnListChange(value, index)
+                                handleCheckColumnListChange(value, item)
                               }
                             >
                               <span
