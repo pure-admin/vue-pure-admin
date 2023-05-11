@@ -1,1 +1,0 @@
-import{useColumns as t}from"./columns-10d0f1a4.js";const s=Vue.defineComponent({__name:"index",setup(u){const{columns:e,tableData:n}=t();return(a,c)=>{const o=Vue.resolveComponent("pure-table");return Vue.openBlock(),Vue.createBlock(o,{data:Vue.unref(n),columns:Vue.unref(e)},null,8,["data","columns"])}}});export{s as _};

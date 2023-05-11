@@ -1,1 +1,0 @@
-import{t as a}from"./data-1a802aad.js";const l=Vue.defineComponent({__name:"stripe",setup(o){const e=[{label:"日期",prop:"date"},{label:"姓名",prop:"name"},{label:"地址",prop:"address"}];return(n,p)=>{const t=Vue.resolveComponent("pure-table");return Vue.openBlock(),Vue.createBlock(t,{data:Vue.unref(a),columns:e,stripe:""},null,8,["data"])}}});export{l as _};
