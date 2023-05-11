@@ -1,12 +1,13 @@
 import { useEpThemeStoreHook } from "@/store/modules/epTheme";
 import { delay, getKeyList, cloneDeep } from "@pureadmin/utils";
 import { defineComponent, ref, computed, type PropType, nextTick } from "vue";
+
+import Sortable from "sortablejs";
+import DragIcon from "./svg/drag.svg?component";
 import ExpandIcon from "./svg/expand.svg?component";
 import RefreshIcon from "./svg/refresh.svg?component";
 import SettingIcon from "./svg/settings.svg?component";
 import CollapseIcon from "./svg/collapse.svg?component";
-import DragIcon from "./svg/drag.svg?component";
-import Sortable from "sortablejs";
 
 const props = {
   /** 头部最左边的标题 */
@@ -147,7 +148,7 @@ export default defineComponent({
       )
     };
 
-    // 拖拽排序
+    /** 列展示拖拽排序 */
     const rowDrop = (event: { preventDefault: () => void }) => {
       event.preventDefault();
       nextTick(() => {
@@ -156,14 +157,14 @@ export default defineComponent({
         );
         Sortable.create(wrapper, {
           animation: 300,
-          handle: ".el-space__item",
+          handle: ".drag-btn",
           onEnd: ({ newIndex, oldIndex, item }) => {
             const targetThElem = item;
             const wrapperElem = targetThElem.parentNode as HTMLElement;
             const oldColumn = dynamicColumns.value[oldIndex];
             const newColumn = dynamicColumns.value[newIndex];
             if (oldColumn?.fixed || newColumn?.fixed) {
-              // 错误的移动
+              // 当前列存在fixed属性 则不可拖拽
               const oldThElem = wrapperElem.children[oldIndex] as HTMLElement;
               if (newIndex > oldIndex) {
                 wrapperElem.insertBefore(targetThElem, oldThElem);
@@ -276,8 +277,10 @@ export default defineComponent({
                           <div class="flex items-center">
                             <DragIcon
                               class={[
-                                "w-[16px] mr-2 drag-btn cursor-grab",
-                                iconClass.value
+                                "drag-btn w-[16px] mr-2",
+                                isFixedColumn(item)
+                                  ? "!cursor-no-drop"
+                                  : "!cursor-grab"
                               ]}
                               onMouseenter={(event: {
                                 preventDefault: () => void;
@@ -286,7 +289,6 @@ export default defineComponent({
                             <el-checkbox
                               key={item}
                               label={item}
-                              disabled={isFixedColumn(item)}
                               onChange={value =>
                                 handleCheckColumnListChange(value, item)
                               }

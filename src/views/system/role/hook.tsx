@@ -21,12 +21,13 @@ export function useRole() {
     background: true
   });
   const columns: TableColumnList = [
-    {
-      label: "勾选列", // 如果需要表格多选，此处label必须设置
-      type: "selection",
-      width: 55,
-      align: "left"
-    },
+    // {
+    //   label: "勾选列", // 如果需要表格多选，此处label必须设置
+    //   type: "selection",
+    //   width: 55,
+    //   align: "left",
+    //   fixed: "left"
+    // },
     {
       label: "序号",
       type: "index",
