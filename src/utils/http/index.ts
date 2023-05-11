@@ -7,7 +7,8 @@ import {
   PureHttpError,
   RequestMethods,
   PureHttpResponse,
-  PureHttpRequestConfig
+  PureHttpRequestConfig,
+  PureHttpPayload
 } from "./types.d";
 import { stringify } from "qs";
 import NProgress from "../progress";
@@ -149,13 +150,13 @@ class PureHttp {
   public request<T>(
     method: RequestMethods,
     url: string,
-    param?: AxiosRequestConfig,
+    payload?: PureHttpPayload,
     axiosConfig?: PureHttpRequestConfig
   ): Promise<T> {
     const config = {
       method,
       url,
-      ...param,
+      ...payload,
       ...axiosConfig
     } as PureHttpRequestConfig;
 
@@ -173,21 +174,21 @@ class PureHttp {
   }
 
   /** 单独抽离的post工具函数 */
-  public post<T, P>(
+  public post<P, D = any>(
     url: string,
-    params?: AxiosRequestConfig<T>,
+    payload?: PureHttpPayload<D>,
     config?: PureHttpRequestConfig
   ): Promise<P> {
-    return this.request<P>("post", url, params, config);
+    return this.request<P>("post", url, payload, config);
   }
 
   /** 单独抽离的get工具函数 */
-  public get<T, P>(
+  public get<P>(
     url: string,
-    params?: AxiosRequestConfig<T>,
+    payload?: PureHttpPayload,
     config?: PureHttpRequestConfig
   ): Promise<P> {
-    return this.request<P>("get", url, params, config);
+    return this.request<P>("get", url, payload, config);
   }
 }
 

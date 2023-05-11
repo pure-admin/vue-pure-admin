@@ -45,3 +45,9 @@ export default class PureHttp {
     config?: PureHttpRequestConfig
   ): Promise<P>;
 }
+
+// 请求的负载参数(query.params + post.data)
+export type PureHttpPayload<D = any> = Pick<
+  AxiosRequestConfig<D>,
+  "params" | "data"
+>;
