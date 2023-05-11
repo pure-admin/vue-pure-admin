@@ -22,7 +22,7 @@ const footerButtons = computed(() => {
               const done = () =>
                 closeDialog(options, index, { command: "cancel" });
               if (options?.beforeCancel && isFunction(options?.beforeCancel)) {
-                options.beforeCancel(done);
+                options.beforeCancel(done, { options, index });
               } else {
                 done();
               }
@@ -37,7 +37,7 @@ const footerButtons = computed(() => {
               const done = () =>
                 closeDialog(options, index, { command: "sure" });
               if (options?.beforeSure && isFunction(options?.beforeSure)) {
-                options.beforeSure(done);
+                options.beforeSure(done, { options, index });
               } else {
                 done();
               }

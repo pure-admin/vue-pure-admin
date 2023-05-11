@@ -191,6 +191,7 @@ function onCloseCallBackClick() {
   });
 }
 
+// 这里为了演示方便，使用了嵌套写法，实际情况下最好把 addDialog 函数抽出来 套娃不可取
 function onNestingClick() {
   addDialog({
     title: "嵌套的弹框",
@@ -323,6 +324,44 @@ function onFormFourClick() {
     }
   });
 }
+
+function onBeforeCancelClick() {
+  addDialog({
+    title: "点击底部取消按钮的回调",
+    contentRenderer: () => (
+      <p>弹框内容-点击底部取消按钮的回调（会暂停弹框的关闭）</p>
+    ),
+    beforeCancel: (done, { options, index }) => {
+      console.log(
+        "%coptions, index===>>>: ",
+        "color: MidnightBlue; background: Aquamarine; font-size: 20px;",
+        options,
+        index
+      );
+      // done(); // 需要关闭把注释解开即可
+    }
+  });
+}
+
+function onBeforeSureClick() {
+  addDialog({
+    title: "点击底部确定按钮的回调",
+    contentRenderer: () => (
+      <p>
+        弹框内容-点击底部确定按钮的回调（会暂停弹框的关闭，经常用于新增、编辑弹框内容后调用接口）
+      </p>
+    ),
+    beforeSure: (done, { options, index }) => {
+      console.log(
+        "%coptions, index===>>>: ",
+        "color: MidnightBlue; background: Aquamarine; font-size: 20px;",
+        options,
+        index
+      );
+      // done(); // 需要关闭把注释解开即可
+    }
+  });
+}
 </script>
 
 <template>
@@ -338,7 +377,13 @@ function onFormFourClick() {
           >
             Dialog
           </el-link>
-          ，采用函数式调用弹框组件
+          ，采用函数式调用弹框组件（更多操作实例请参考
+          <span
+            class="cursor-pointer text-primary"
+            @click="$router.push({ name: 'Dept' })"
+            >系统管理页面</span
+          >
+          ）
         </span>
       </div>
     </template>
@@ -378,6 +423,15 @@ function onFormFourClick() {
       </el-button>
       <el-button @click="onFormFourClick">
         结合Form表单（第四种方式）
+      </el-button>
+    </el-space>
+    <el-divider />
+    <el-space wrap>
+      <el-button @click="onBeforeCancelClick">
+        点击底部取消按钮的回调（会暂停弹框的关闭）
+      </el-button>
+      <el-button @click="onBeforeSureClick">
+        点击底部确定按钮的回调（会暂停弹框的关闭，经常用于新增、编辑弹框内容后调用接口）
       </el-button>
     </el-space>
   </el-card>
