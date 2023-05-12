@@ -12,6 +12,8 @@ defineOptions({
 function onBaseClick() {
   addDialog({
     title: "基本使用",
+    fullscreen: false,
+    fullscreenIcon: true,
     contentRenderer: () => <p>弹框内容-基本使用</p> // jsx 语法 （注意在.vue文件启用jsx语法，需要在script开启lang="tsx"）
   });
 }

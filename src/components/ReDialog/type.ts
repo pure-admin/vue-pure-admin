@@ -17,6 +17,8 @@ type DialogProps = {
   width?: string | number;
   /** 是否为全屏 `Dialog`，默认 `false` */
   fullscreen?: boolean;
+  /** 是否显示全屏操作图标，默认 `false` */
+  fullscreenIcon?: boolean;
   /** `Dialog CSS` 中的 `margin-top` 值，默认 `15vh` */
   top?: string;
   /** 是否需要遮罩层，默认 `true` */

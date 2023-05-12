@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { computed } from "vue";
-import { isFunction } from "@pureadmin/utils";
 import {
   type DialogOptions,
   type ButtonProps,
@@ -8,6 +6,12 @@ import {
   dialogStore,
   closeDialog
 } from "./index";
+import { ref, computed } from "vue";
+import { isFunction } from "@pureadmin/utils";
+import Fullscreen from "@iconify-icons/ri/fullscreen-fill";
+import ExitFullscreen from "@iconify-icons/ri/fullscreen-exit-fill";
+
+const fullscreen = ref(false);
 
 const footerButtons = computed(() => {
   return (options: DialogOptions) => {
@@ -65,6 +69,14 @@ function handleClose(
   closeDialog(options, index, args);
   eventsCallBack("close", options, index);
 }
+
+function onFullScreen(full) {
+  if (fullscreen.value !== full) {
+    fullscreen.value = full;
+  } else {
+    fullscreen.value = !fullscreen.value;
+  }
+}
 </script>
 
 <template>
@@ -73,21 +85,45 @@ function handleClose(
     :key="index"
     v-bind="options"
     v-model="options.visible"
-    @opened="eventsCallBack('open', options, index)"
+    :fullscreen="fullscreen ? true : options?.fullscreen ? true : false"
     @close="handleClose(options, index)"
+    @opened="eventsCallBack('open', options, index)"
     @openAutoFocus="eventsCallBack('openAutoFocus', options, index)"
     @closeAutoFocus="eventsCallBack('closeAutoFocus', options, index)"
   >
     <!-- header -->
     <template
-      v-if="options?.headerRenderer"
+      v-if="options?.fullscreenIcon || options?.headerRenderer"
       #header="{ close, titleId, titleClass }"
     >
+      <div
+        v-if="options?.fullscreenIcon"
+        class="flex items-center justify-between"
+      >
+        <span :id="titleId" :class="titleClass">{{ options?.title }}</span>
+        <el-tooltip
+          effect="dark"
+          :content="fullscreen ? '还原' : '最大化'"
+          placement="bottom"
+        >
+          <IconifyIconOffline
+            :icon="
+              options?.fullscreen
+                ? ExitFullscreen
+                : fullscreen
+                ? ExitFullscreen
+                : Fullscreen
+            "
+            class="-translate-x-5 cursor-pointer !text-[var(--el-color-info)] el-icon"
+            @click="onFullScreen(options?.fullscreenIcon)"
+          />
+        </el-tooltip>
+      </div>
       <component
+        v-else
         :is="options?.headerRenderer({ close, titleId, titleClass })"
       />
     </template>
-    <!-- default -->
     <component
       v-bind="options?.props"
       :is="options.contentRenderer({ options, index })"
