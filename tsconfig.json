@@ -27,10 +27,9 @@
       "vite/client",
       "element-plus/global",
       "@pureadmin/table/volar",
-      "@pureadmin/descriptions/volar",
-      "unplugin-vue-define-options/macros-global"
+      "@pureadmin/descriptions/volar"
     ],
-    "typeRoots": ["./node_modules/@types/", "./types"]
+    "typeRoots": ["./types", "./node_modules/@types/"]
   },
   "include": [
     "mock/*.ts",
@@ -40,5 +39,5 @@
     "types/*.d.ts",
     "vite.config.ts"
   ],
-  "exclude": ["node_modules", "dist", "**/*.js"]
+  "exclude": ["dist", "**/*.js", "node_modules"]
 }
