@@ -525,7 +525,7 @@ onMounted(() => {
           :class="[
             'scroll-item is-closable',
             linkIsActive(item),
-            $route.path === item.path && showModel === 'card'
+            route.path === item.path && showModel === 'card'
               ? 'card-active'
               : ''
           ]"
