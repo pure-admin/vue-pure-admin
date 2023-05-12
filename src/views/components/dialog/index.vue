@@ -1,4 +1,5 @@
 <script setup lang="tsx">
+import { useRouter } from "vue-router";
 import { h, createVNode, ref } from "vue";
 import { message } from "@/utils/message";
 import { cloneDeep } from "@pureadmin/utils";
@@ -8,6 +9,8 @@ import { addDialog, closeDialog, closeAllDialog } from "@/components/ReDialog";
 defineOptions({
   name: "Dialog"
 });
+
+const router = useRouter();
 
 function onBaseClick() {
   addDialog({
@@ -382,7 +385,7 @@ function onBeforeSureClick() {
           ，采用函数式调用弹框组件（更多操作实例请参考
           <span
             class="cursor-pointer text-primary"
-            @click="$router.push({ name: 'Dept' })"
+            @click="router.push({ name: 'Dept' })"
             >系统管理页面</span
           >
           ）
