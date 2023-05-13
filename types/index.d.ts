@@ -41,6 +41,10 @@ type DeepPartial<T> = {
   [P in keyof T]?: DeepPartial<T[P]>;
 };
 
+type Without<T, U> = { [P in Exclude<keyof T, keyof U>]?: never };
+
+type Exclusive<T, U> = (Without<T, U> & U) | (Without<U, T> & T);
+
 type TimeoutHandle = ReturnType<typeof setTimeout>;
 
 type IntervalHandle = ReturnType<typeof setInterval>;
