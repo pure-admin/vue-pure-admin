@@ -110,6 +110,10 @@ html.dark {
       &:hover {
         color: rgb(255 255 255 / 85%) !important;
         background-color: rgb(255 255 255 / 12%);
+
+        .pure-dialog-svg {
+          color: rgb(255 255 255 / 85%) !important;
+        }
       }
     }
   }

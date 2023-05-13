@@ -35,6 +35,14 @@ function onFullscreenClick() {
   });
 }
 
+function onFullscreenIconClick() {
+  addDialog({
+    title: "全屏按钮",
+    fullscreenIcon: true,
+    contentRenderer: () => <p>弹框内容-全屏按钮</p>
+  });
+}
+
 function onModalClick() {
   addDialog({
     title: "无背景遮罩层",
@@ -394,6 +402,7 @@ function onBeforeSureClick() {
       <el-button @click="onBaseClick"> 基本使用 </el-button>
       <el-button @click="onDraggableClick"> 可拖拽 </el-button>
       <el-button @click="onFullscreenClick"> 全屏 </el-button>
+      <el-button @click="onFullscreenIconClick"> 全屏按钮 </el-button>
       <el-button @click="onModalClick"> 无背景遮罩层 </el-button>
       <el-button @click="onStyleClick"> 自定义弹出位置 </el-button>
       <el-button @click="onoOpenDelayClick"> 延时2秒打开弹框 </el-button>
