@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import {
-  type DialogOptions,
-  type ButtonProps,
-  type EventType,
+  closeDialog,
   dialogStore,
-  closeDialog
+  type EventType,
+  type ButtonProps,
+  type DialogOptions
 } from "./index";
 import { ref, computed } from "vue";
 import { isFunction } from "@pureadmin/utils";
@@ -51,11 +51,22 @@ const footerButtons = computed(() => {
   };
 });
 
+const fullscreenClass = computed(() => {
+  return [
+    "el-icon",
+    "el-dialog__close",
+    "-translate-x-2",
+    "cursor-pointer",
+    "hover:!text-[red]"
+  ];
+});
+
 function eventsCallBack(
   event: EventType,
   options: DialogOptions,
   index: number
 ) {
+  fullscreen.value = options?.fullscreen ?? false;
   if (options?.[event] && isFunction(options?.[event])) {
     return options?.[event]({ options, index });
   }
@@ -69,18 +80,11 @@ function handleClose(
   closeDialog(options, index, args);
   eventsCallBack("close", options, index);
 }
-
-function onFullScreen(full) {
-  if (fullscreen.value !== full) {
-    fullscreen.value = full;
-  } else {
-    fullscreen.value = !fullscreen.value;
-  }
-}
 </script>
 
 <template>
   <el-dialog
+    class="pure-dialog"
     v-for="(options, index) in dialogStore"
     :key="index"
     v-bind="options"
@@ -101,12 +105,13 @@ function onFullScreen(full) {
         class="flex items-center justify-between"
       >
         <span :id="titleId" :class="titleClass">{{ options?.title }}</span>
-        <el-tooltip
-          effect="dark"
-          :content="fullscreen ? '还原' : '最大化'"
-          placement="bottom"
+        <i
+          v-if="!options?.fullscreen"
+          :class="fullscreenClass"
+          @click="fullscreen = !fullscreen"
         >
           <IconifyIconOffline
+            class="pure-dialog-svg"
             :icon="
               options?.fullscreen
                 ? ExitFullscreen
@@ -114,10 +119,8 @@ function onFullScreen(full) {
                 ? ExitFullscreen
                 : Fullscreen
             "
-            class="-translate-x-5 cursor-pointer !text-[var(--el-color-info)] el-icon"
-            @click="onFullScreen(options?.fullscreenIcon)"
           />
-        </el-tooltip>
+        </i>
       </div>
       <component
         v-else

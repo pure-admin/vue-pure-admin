@@ -69,6 +69,19 @@
   }
 }
 
+.pure-dialog {
+  .pure-dialog-svg {
+    color: var(--el-color-info);
+  }
+
+  .el-dialog__headerbtn {
+    top: 20px;
+    right: 14px;
+    width: 24px;
+    height: 24px;
+  }
+}
+
 /* 全局覆盖element-plus的el-dialog、el-drawer、el-message-box、el-notification组件右上角关闭图标的样式，表现更鲜明 */
 .el-dialog__headerbtn,
 .el-message-box__headerbtn {
@@ -94,6 +107,10 @@
       color: rgb(0 0 0 / 88%) !important;
       text-decoration: none;
       background-color: rgb(0 0 0 / 6%);
+
+      .pure-dialog-svg {
+        color: rgb(0 0 0 / 88%) !important;
+      }
     }
   }
 }

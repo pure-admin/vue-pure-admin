@@ -15,8 +15,6 @@ const router = useRouter();
 function onBaseClick() {
   addDialog({
     title: "基本使用",
-    fullscreen: false,
-    fullscreenIcon: true,
     contentRenderer: () => <p>弹框内容-基本使用</p> // jsx 语法 （注意在.vue文件启用jsx语法，需要在script开启lang="tsx"）
   });
 }
@@ -34,6 +32,14 @@ function onFullscreenClick() {
     title: "全屏",
     fullscreen: true,
     contentRenderer: () => createVNode("p", null, "弹框内容-全屏") // createVNode 渲染函数 https://cn.vuejs.org/guide/extras/render-function.html#creating-vnodes
+  });
+}
+
+function onFullscreenIconClick() {
+  addDialog({
+    title: "全屏按钮",
+    fullscreenIcon: true,
+    contentRenderer: () => <p>弹框内容-全屏按钮</p>
   });
 }
 
@@ -396,6 +402,7 @@ function onBeforeSureClick() {
       <el-button @click="onBaseClick"> 基本使用 </el-button>
       <el-button @click="onDraggableClick"> 可拖拽 </el-button>
       <el-button @click="onFullscreenClick"> 全屏 </el-button>
+      <el-button @click="onFullscreenIconClick"> 全屏按钮 </el-button>
       <el-button @click="onModalClick"> 无背景遮罩层 </el-button>
       <el-button @click="onStyleClick"> 自定义弹出位置 </el-button>
       <el-button @click="onoOpenDelayClick"> 延时2秒打开弹框 </el-button>

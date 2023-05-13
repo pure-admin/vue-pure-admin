@@ -120,6 +120,7 @@ export function useDept() {
       },
       width: "40%",
       draggable: true,
+      fullscreenIcon: true,
       closeOnClickModal: false,
       contentRenderer: () => h(editForm, { ref: formRef }),
       beforeSure: (done, { options }) => {
