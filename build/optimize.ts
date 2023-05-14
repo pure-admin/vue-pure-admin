@@ -36,6 +36,7 @@ const include = [
   "element-resize-detector",
   "@amap/amap-jsapi-loader",
   "el-table-infinite-scroll",
+  "vue-waterfall-plugin-next",
   "@wangeditor/editor-for-vue",
   "vuedraggable/src/vuedraggable"
 ];

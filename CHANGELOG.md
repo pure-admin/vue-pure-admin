@@ -1,3 +1,23 @@
+# 4.1.0 (2023-05-12)
+
+### 🎫 Feat
+
+- Add a `demo` example combined with `Form` for the functional pop-up box component
+- wrapper `el-col` component of `element-plus`
+- Add `beforeCancel` and `beforeSure` callbacks to the functional popup component, which can suspend the closing of the popup
+- Improve `System Management-Department Management` page
+- Optimize `PureTableBar` component, add drag and drop function for column display
+
+### 🐞 Bug fixes
+
+- Fix the problem that the page cache still exists when you click the tab to reload after turning on `keepAlive`
+- Fix the problem that the left menu will flicker after refreshing the tab in the mixed mode menu
+
+### 🍏 Perf
+
+- Optimize home page layout
+- Dependency update to `vue3.3+` and remove `unplugin-vue-define-options` plugin
+
 # 4.0.0 (2023-05-09)
 
 [View 4.0.0 version optimization details](https://github.com/pure-admin/vue-pure-admin/issues/428#issuecomment-1422191158)

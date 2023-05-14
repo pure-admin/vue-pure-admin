@@ -1,4 +1,5 @@
 <script setup lang="tsx">
+import { useRouter } from "vue-router";
 import { h, createVNode, ref } from "vue";
 import { message } from "@/utils/message";
 import { cloneDeep } from "@pureadmin/utils";
@@ -8,6 +9,8 @@ import { addDialog, closeDialog, closeAllDialog } from "@/components/ReDialog";
 defineOptions({
   name: "Dialog"
 });
+
+const router = useRouter();
 
 function onBaseClick() {
   addDialog({
@@ -29,6 +32,14 @@ function onFullscreenClick() {
     title: "全屏",
     fullscreen: true,
     contentRenderer: () => createVNode("p", null, "弹框内容-全屏") // createVNode 渲染函数 https://cn.vuejs.org/guide/extras/render-function.html#creating-vnodes
+  });
+}
+
+function onFullscreenIconClick() {
+  addDialog({
+    title: "全屏按钮",
+    fullscreenIcon: true,
+    contentRenderer: () => <p>弹框内容-全屏按钮</p>
   });
 }
 
@@ -380,7 +391,7 @@ function onBeforeSureClick() {
           ，采用函数式调用弹框组件（更多操作实例请参考
           <span
             class="cursor-pointer text-primary"
-            @click="$router.push({ name: 'Dept' })"
+            @click="router.push({ name: 'Dept' })"
             >系统管理页面</span
           >
           ）
@@ -391,6 +402,7 @@ function onBeforeSureClick() {
       <el-button @click="onBaseClick"> 基本使用 </el-button>
       <el-button @click="onDraggableClick"> 可拖拽 </el-button>
       <el-button @click="onFullscreenClick"> 全屏 </el-button>
+      <el-button @click="onFullscreenIconClick"> 全屏按钮 </el-button>
       <el-button @click="onModalClick"> 无背景遮罩层 </el-button>
       <el-button @click="onStyleClick"> 自定义弹出位置 </el-button>
       <el-button @click="onoOpenDelayClick"> 延时2秒打开弹框 </el-button>

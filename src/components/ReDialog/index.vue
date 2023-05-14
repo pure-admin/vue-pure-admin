@@ -1,13 +1,17 @@
 <script setup lang="ts">
-import { computed } from "vue";
-import { isFunction } from "@pureadmin/utils";
 import {
-  type DialogOptions,
-  type ButtonProps,
-  type EventType,
+  closeDialog,
   dialogStore,
-  closeDialog
+  type EventType,
+  type ButtonProps,
+  type DialogOptions
 } from "./index";
+import { ref, computed } from "vue";
+import { isFunction } from "@pureadmin/utils";
+import Fullscreen from "@iconify-icons/ri/fullscreen-fill";
+import ExitFullscreen from "@iconify-icons/ri/fullscreen-exit-fill";
+
+const fullscreen = ref(false);
 
 const footerButtons = computed(() => {
   return (options: DialogOptions) => {
@@ -47,11 +51,22 @@ const footerButtons = computed(() => {
   };
 });
 
+const fullscreenClass = computed(() => {
+  return [
+    "el-icon",
+    "el-dialog__close",
+    "-translate-x-2",
+    "cursor-pointer",
+    "hover:!text-[red]"
+  ];
+});
+
 function eventsCallBack(
   event: EventType,
   options: DialogOptions,
   index: number
 ) {
+  fullscreen.value = options?.fullscreen ?? false;
   if (options?.[event] && isFunction(options?.[event])) {
     return options?.[event]({ options, index });
   }
@@ -69,25 +84,49 @@ function handleClose(
 
 <template>
   <el-dialog
+    class="pure-dialog"
     v-for="(options, index) in dialogStore"
     :key="index"
     v-bind="options"
     v-model="options.visible"
-    @opened="eventsCallBack('open', options, index)"
+    :fullscreen="fullscreen ? true : options?.fullscreen ? true : false"
     @close="handleClose(options, index)"
+    @opened="eventsCallBack('open', options, index)"
     @openAutoFocus="eventsCallBack('openAutoFocus', options, index)"
     @closeAutoFocus="eventsCallBack('closeAutoFocus', options, index)"
   >
     <!-- header -->
     <template
-      v-if="options?.headerRenderer"
+      v-if="options?.fullscreenIcon || options?.headerRenderer"
       #header="{ close, titleId, titleClass }"
     >
+      <div
+        v-if="options?.fullscreenIcon"
+        class="flex items-center justify-between"
+      >
+        <span :id="titleId" :class="titleClass">{{ options?.title }}</span>
+        <i
+          v-if="!options?.fullscreen"
+          :class="fullscreenClass"
+          @click="fullscreen = !fullscreen"
+        >
+          <IconifyIconOffline
+            class="pure-dialog-svg"
+            :icon="
+              options?.fullscreen
+                ? ExitFullscreen
+                : fullscreen
+                ? ExitFullscreen
+                : Fullscreen
+            "
+          />
+        </i>
+      </div>
       <component
+        v-else
         :is="options?.headerRenderer({ close, titleId, titleClass })"
       />
     </template>
-    <!-- default -->
     <component
       v-bind="options?.props"
       :is="options.contentRenderer({ options, index })"

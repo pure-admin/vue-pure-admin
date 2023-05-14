@@ -39,6 +39,7 @@ menus:
   hsdialog: Dialog Components
   hsmessage: Message Tips Components
   hsvideo: Video Components
+  hswaterfall: Waterfall Components
   hsmap: Map Components
   hsdraggable: Draggable Components
   hssplitPane: Split Pane

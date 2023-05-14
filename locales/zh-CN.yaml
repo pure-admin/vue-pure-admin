@@ -39,6 +39,7 @@ menus:
   hsdialog: 函数式弹框组件
   hsmessage: 消息提示组件
   hsvideo: 视频组件
+  hswaterfall: 瀑布流组件
   hsmap: 地图组件
   hsdraggable: 拖拽组件
   hssplitPane: 切割面板
