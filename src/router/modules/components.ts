@@ -32,6 +32,15 @@ export default {
       }
     },
     {
+      path: "/components/waterfall",
+      name: "Waterfall",
+      component: () => import("@/views/components/waterfall/index.vue"),
+      meta: {
+        title: $t("menus.hswaterfall"),
+        extraIcon: "IF-pure-iconfont-new svg"
+      }
+    },
+    {
       path: "/components/video",
       name: "Video",
       component: () => import("@/views/components/video/index.vue"),
