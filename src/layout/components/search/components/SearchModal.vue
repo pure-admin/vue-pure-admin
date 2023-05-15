@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
-import { cloneDeep } from "@pureadmin/utils";
+import { cloneDeep } from "@/utils";
 import SearchResult from "./SearchResult.vue";
 import SearchFooter from "./SearchFooter.vue";
 import { useNav } from "@/layout/hooks/useNav";
@@ -27,6 +27,7 @@ const router = useRouter();
 const keyword = ref("");
 const activePath = ref("");
 const inputRef = ref<HTMLInputElement | null>(null);
+const dialogRef = ref(null);
 const resultOptions = shallowRef([]);
 const handleSearch = useDebounceFn(search, 300);
 
@@ -43,6 +44,18 @@ const show = computed({
     emit("update:value", val);
   }
 });
+
+/** 获取el-overlay元素 */
+function getElOverLay() {
+  return dialogRef.value.$el.nextElementSibling.querySelector(
+    ".el-overlay-dialog"
+  );
+}
+
+/** el-dialog弹窗聚焦 */
+function dialogContentFocus() {
+  dialogRef.value.dialogContentRef.$el.focus();
+}
 
 /** 将菜单树形结构扁平化为一维数组，用于菜单查询 */
 function flatTree(arr) {
@@ -85,6 +98,8 @@ function handleClose() {
 
 /** key up */
 function handleUp() {
+  dialogContentFocus();
+  const elOverLay = getElOverLay();
   const { length } = resultOptions.value;
   if (length === 0) return;
   const index = resultOptions.value.findIndex(
@@ -92,6 +107,7 @@ function handleUp() {
   );
   if (index === 0) {
     activePath.value = resultOptions.value[length - 1].path;
+    elOverLay.scrollTop = elOverLay.scrollHeight;
   } else {
     activePath.value = resultOptions.value[index - 1].path;
   }
@@ -99,6 +115,8 @@ function handleUp() {
 
 /** key down */
 function handleDown() {
+  dialogContentFocus();
+  const elOverLay = getElOverLay();
   const { length } = resultOptions.value;
   if (length === 0) return;
   const index = resultOptions.value.findIndex(
@@ -106,6 +124,7 @@ function handleDown() {
   );
   if (index + 1 === length) {
     activePath.value = resultOptions.value[0].path;
+    elOverLay.scrollTop = 0;
   } else {
     activePath.value = resultOptions.value[index + 1].path;
   }
@@ -127,6 +146,7 @@ onKeyStroke("ArrowDown", handleDown);
 <template>
   <el-dialog
     top="5vh"
+    ref="dialogRef"
     v-model="show"
     :width="device === 'mobile' ? '80vw' : '50vw'"
     :before-close="handleClose"
@@ -136,6 +156,7 @@ onKeyStroke("ArrowDown", handleDown);
     <el-input
       ref="inputRef"
       v-model="keyword"
+      size="default"
       clearable
       placeholder="请输入关键词搜索"
       @input="handleSearch"
