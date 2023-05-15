@@ -99,6 +99,7 @@ function handleUp() {
 
 /** key down */
 function handleDown() {
+  inputRef.value.blur();
   const { length } = resultOptions.value;
   if (length === 0) return;
   const index = resultOptions.value.findIndex(
@@ -113,6 +114,7 @@ function handleDown() {
 
 /** key enter */
 function handleEnter() {
+  inputRef.value.blur();
   const { length } = resultOptions.value;
   if (length === 0 || activePath.value === "") return;
   router.push(activePath.value);
