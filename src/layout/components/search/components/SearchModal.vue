@@ -156,7 +156,6 @@ onKeyStroke("ArrowDown", handleDown);
     <el-input
       ref="inputRef"
       v-model="keyword"
-      size="default"
       clearable
       placeholder="请输入关键词搜索"
       @input="handleSearch"
