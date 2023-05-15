@@ -1,0 +1,78 @@
+.pure-segmented {
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 2px;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.65);
+  background-color: rgb(0 0 0 / 4%);
+  border-radius: 2px;
+  transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.pure-segmented-group {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  justify-items: flex-start;
+  width: 100%;
+}
+
+.pure-segmented-item-selected {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  display: none;
+  width: 0;
+  height: 100%;
+  padding: 4px 0;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px -2px rgb(0 0 0 / 5%), 0 1px 4px -1px rgb(0 0 0 / 7%),
+    0 0 1px rgb(0 0 0 / 7%);
+  transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1),
+    width 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+  will-change: transform, width;
+}
+
+.pure-segmented-item {
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.pure-segmented-item > div {
+  min-height: 28px;
+  line-height: 28px;
+  padding: 0 11px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.pure-segmented-item > input {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pure-segmented-item-label {
+  display: flex;
+  align-items: center;
+}
+
+.pure-segmented-item-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.pure-segmented-item-disabled {
+  color: rgba(0, 0, 0, 0.25);
+  cursor: not-allowed;
+}
