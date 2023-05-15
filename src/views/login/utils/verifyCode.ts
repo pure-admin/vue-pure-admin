@@ -17,11 +17,12 @@ export const useVerifyCode = () => {
     await formEl.validateField(props, isValid => {
       if (isValid) {
         clearInterval(timer.value);
+        isDisabled.value = true;
+        text.value = `${time}`;
         timer.value = setInterval(() => {
           if (time > 0) {
-            text.value = `${time}`;
-            isDisabled.value = true;
             time -= 1;
+            text.value = `${time}`;
           } else {
             text.value = "";
             isDisabled.value = false;
