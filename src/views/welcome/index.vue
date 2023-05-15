@@ -30,7 +30,9 @@ setTimeout(() => {
 }, 800);
 
 axios
-  .get("https://api.github.com/repos/pure-admin/vue-pure-admin/releases")
+  .get(
+    "https://gitee.com/api/v5/repos/yiming_chang/vue-pure-admin/releases?page=1&per_page=50&direction=desc"
+  )
   .then(res => {
     list.value = res.data.map(v => {
       return {
