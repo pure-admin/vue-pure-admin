@@ -3,6 +3,7 @@ import { getConfig } from "@/config";
 import { useRouter } from "vue-router";
 import { emitter } from "@/utils/mitt";
 import { routeMetaType } from "../types";
+import userAvatar from "@/assets/user.jpg";
 import { getTopMenu } from "@/router/utils";
 import { useGlobal } from "@pureadmin/utils";
 import { transformI18n } from "@/plugins/i18n";
@@ -166,6 +167,7 @@ export function useNav() {
     isCollapse,
     pureApp,
     username,
+    userAvatar,
     avatarsStyle,
     tooltipEffect,
     getDropdownItemStyle,
