@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, nextTick, ref, watch } from "vue";
 import { useI18n } from "vue-i18n";
 import { useEpThemeStoreHook } from "@/store/modules/epTheme";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
@@ -49,6 +49,29 @@ const active = computed({
   }
 });
 
+const isInViewport = element => {
+  const rect = element.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <=
+      (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+};
+
+watch(
+  () => props.value,
+  () => {
+    nextTick(() => {
+      const dom = resultRef.value.querySelector(".active-item");
+      if (!isInViewport(dom)) {
+        dom.scrollIntoView();
+      }
+    });
+  }
+);
+
 /** 鼠标移入 */
 async function handleMouse(item) {
   active.value = item.path;
@@ -60,10 +83,11 @@ function handleTo() {
 </script>
 
 <template>
-  <div class="result">
+  <div class="result" ref="resultRef">
     <template v-for="item in options" :key="item.path">
       <div
         class="result-item dark:bg-[#1d1d1d]"
+        :class="{ 'active-item': item.path === active }"
         :style="itemStyle(item)"
         @click="handleTo"
         @mouseenter="handleMouse(item)"
