@@ -1,3 +1,17 @@
+# 4.2.0 (2023-05-15)
+
+### 🎫 Feat
+
+- Added segment controller component and adapted to dark mode
+- Static routing supports configuration array format
+- Functional bullet box component adds full screen and exit full screen operation buttons
+- New component - Waterfall `demo`
+- Add `Exclusive` type mutual exclusion syntactic sugar
+
+### 🍏 Perf
+
+- Standardize the way of writing routes in `template` template, no longer use `$route` and `$router`, this way of writing `vue-tsc` fails to compile
+
 # 4.1.0 (2023-05-12)
 
 ### 🎫 Feat
