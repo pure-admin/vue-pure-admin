@@ -32,6 +32,15 @@ export default {
       }
     },
     {
+      path: "/components/segmented",
+      name: "Segmented",
+      component: () => import("@/views/components/segmented/index.vue"),
+      meta: {
+        title: $t("menus.hssegmented"),
+        extraIcon: "IF-pure-iconfont-new svg"
+      }
+    },
+    {
       path: "/components/waterfall",
       name: "Waterfall",
       component: () => import("@/views/components/waterfall/index.vue"),
