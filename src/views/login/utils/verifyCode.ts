@@ -18,11 +18,11 @@ export const useVerifyCode = () => {
       if (isValid) {
         clearInterval(timer.value);
         isDisabled.value = true;
-        text.value = time;
+        text.value = `${time}`;
         timer.value = setInterval(() => {
           if (time > 0) {
             time -= 1;
-            text.value = time;
+            text.value = `${time}`;
           } else {
             text.value = "";
             isDisabled.value = false;
