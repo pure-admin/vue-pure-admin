@@ -245,6 +245,7 @@ export default defineComponent({
 
               <el-popover
                 v-slots={reference}
+                placement="bottom-start"
                 popper-style={{ padding: 0 }}
                 width="160"
                 trigger="click"
