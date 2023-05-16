@@ -13,7 +13,7 @@
     "typecheck": "tsc --noEmit && vue-tsc --noEmit --skipLibCheck",
     "svgo": "svgo -f src/assets/svg -o src/assets/svg",
     "cloc": "NODE_OPTIONS=--max-old-space-size=4096 cloc . --exclude-dir=node_modules --exclude-lang=YAML",
-    "clean:cache": "rm -rf node_modules && rm -rf .eslintcache && pnpm install",
+    "clean:cache": "rimraf node_modules && rimraf .eslintcache && pnpm install",
     "lint:eslint": "eslint --cache --max-warnings 0  \"{src,mock,build}/**/*.{vue,js,ts,tsx}\" --fix",
     "lint:prettier": "prettier --write  \"src/**/*.{js,ts,json,tsx,css,scss,vue,html,md}\"",
     "lint:stylelint": "stylelint --cache --fix \"**/*.{html,vue,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
