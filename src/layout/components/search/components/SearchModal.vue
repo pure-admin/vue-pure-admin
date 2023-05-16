@@ -8,7 +8,7 @@ import { transformI18n } from "@/plugins/i18n";
 import { ref, computed, shallowRef } from "vue";
 import { useDebounceFn, onKeyStroke } from "@vueuse/core";
 import { usePermissionStoreHook } from "@/store/modules/permission";
-import Search from "@iconify-icons/ep/search";
+import Search from "@iconify-icons/ri/search-line";
 
 interface Props {
   /** 弹窗显隐 */
@@ -25,6 +25,8 @@ const props = withDefaults(defineProps<Props>(), {});
 const router = useRouter();
 
 const keyword = ref("");
+const scrollbarRef = ref();
+const resultRef = ref();
 const activePath = ref("");
 const inputRef = ref<HTMLInputElement | null>(null);
 const resultOptions = shallowRef([]);
@@ -83,6 +85,11 @@ function handleClose() {
   }, 200);
 }
 
+function scrollTo(index) {
+  const scrollTop = resultRef.value.handleScroll(index);
+  scrollbarRef.value.setScrollTop(scrollTop);
+}
+
 /** key up */
 function handleUp() {
   const { length } = resultOptions.value;
@@ -92,8 +99,10 @@ function handleUp() {
   );
   if (index === 0) {
     activePath.value = resultOptions.value[length - 1].path;
+    scrollTo(resultOptions.value.length - 1);
   } else {
     activePath.value = resultOptions.value[index - 1].path;
+    scrollTo(index - 1);
   }
 }
 
@@ -109,6 +118,7 @@ function handleDown() {
   } else {
     activePath.value = resultOptions.value[index + 1].path;
   }
+  scrollTo(index + 1);
 }
 
 /** key enter */
@@ -127,41 +137,55 @@ onKeyStroke("ArrowDown", handleDown);
 <template>
   <el-dialog
     top="5vh"
+    class="pure-search-dialog"
     v-model="show"
-    :width="device === 'mobile' ? '80vw' : '50vw'"
+    :show-close="false"
+    :width="device === 'mobile' ? '80vw' : '40vw'"
     :before-close="handleClose"
+    :style="{
+      borderRadius: '6px'
+    }"
     @opened="inputRef.focus()"
     @closed="inputRef.blur()"
   >
     <el-input
       ref="inputRef"
+      size="large"
       v-model="keyword"
       clearable
-      placeholder="请输入关键词搜索"
+      placeholder="搜索菜单"
       @input="handleSearch"
     >
       <template #prefix>
-        <span class="el-input__icon">
-          <IconifyIconOffline :icon="Search" />
-        </span>
+        <IconifyIconOffline
+          :icon="Search"
+          class="text-primary w-[24px] h-[24px]"
+        />
       </template>
     </el-input>
     <div class="search-result-container">
-      <el-empty v-if="resultOptions.length === 0" description="暂无搜索结果" />
-      <SearchResult
-        v-else
-        v-model:value="activePath"
-        :options="resultOptions"
-        @click="handleEnter"
-      />
+      <el-scrollbar ref="scrollbarRef" max-height="600px">
+        <el-empty
+          v-if="resultOptions.length === 0"
+          description="暂无搜索结果"
+        />
+        <SearchResult
+          v-else
+          ref="resultRef"
+          v-model:value="activePath"
+          :options="resultOptions"
+          @click="handleEnter"
+        />
+      </el-scrollbar>
     </div>
     <template #footer>
-      <SearchFooter />
+      <SearchFooter :total="resultOptions.length" />
     </template>
   </el-dialog>
 </template>
+
 <style lang="scss" scoped>
 .search-result-container {
-  margin-top: 20px;
+  margin-top: 12px;
 }
 </style>
