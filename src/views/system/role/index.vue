@@ -27,6 +27,7 @@ const {
   buttonClass,
   onSearch,
   resetForm,
+  openDialog,
   handleUpdate,
   handleDelete,
   handleSizeChange,
@@ -66,8 +67,8 @@ const {
           clearable
           class="!w-[180px]"
         >
-          <el-option label="已开启" value="1" />
-          <el-option label="已关闭" value="0" />
+          <el-option label="已启用" value="1" />
+          <el-option label="已停用" value="0" />
         </el-select>
       </el-form-item>
       <el-form-item>
@@ -85,9 +86,17 @@ const {
       </el-form-item>
     </el-form>
 
-    <PureTableBar title="角色列表" :columns="columns" @refresh="onSearch">
+    <PureTableBar
+      title="角色列表（仅演示，操作后不生效）"
+      :columns="columns"
+      @refresh="onSearch"
+    >
       <template #buttons>
-        <el-button type="primary" :icon="useRenderIcon(AddFill)">
+        <el-button
+          type="primary"
+          :icon="useRenderIcon(AddFill)"
+          @click="openDialog()"
+        >
           新增角色
         </el-button>
       </template>
@@ -118,11 +127,14 @@ const {
               type="primary"
               :size="size"
               :icon="useRenderIcon(EditPen)"
-              @click="handleUpdate(row)"
+              @click="openDialog('编辑', row)"
             >
               修改
             </el-button>
-            <el-popconfirm title="是否确认删除?">
+            <el-popconfirm
+              :title="`是否确认删除角色名称为${row.name}的这条数据`"
+              @confirm="handleDelete(row)"
+            >
               <template #reference>
                 <el-button
                   class="reset-margin"
@@ -130,7 +142,6 @@ const {
                   type="primary"
                   :size="size"
                   :icon="useRenderIcon(Delete)"
-                  @click="handleDelete(row)"
                 >
                   删除
                 </el-button>

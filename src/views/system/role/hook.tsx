@@ -1,9 +1,13 @@
 import dayjs from "dayjs";
+import editForm from "./form.vue";
+import { usePublicHooks } from "../hooks";
 import { message } from "@/utils/message";
 import { getRoleList } from "@/api/system";
 import { ElMessageBox } from "element-plus";
+import { type FormItemProps } from "./types";
+import { addDialog } from "@/components/ReDialog";
 import { type PaginationProps } from "@pureadmin/table";
-import { reactive, ref, computed, onMounted } from "vue";
+import { reactive, ref, computed, onMounted, h } from "vue";
 
 export function useRole() {
   const form = reactive({
@@ -11,9 +15,11 @@ export function useRole() {
     code: "",
     status: ""
   });
+  const formRef = ref();
   const dataList = ref([]);
   const loading = ref(true);
   const switchLoadMap = ref({});
+  const { switchStyle } = usePublicHooks();
   const pagination = reactive<PaginationProps>({
     total: 0,
     pageSize: 10,
@@ -21,19 +27,6 @@ export function useRole() {
     background: true
   });
   const columns: TableColumnList = [
-    // {
-    //   label: "勾选列", // 如果需要表格多选，此处label必须设置
-    //   type: "selection",
-    //   width: 55,
-    //   align: "left",
-    //   fixed: "left"
-    // },
-    {
-      label: "序号",
-      type: "index",
-      width: 70,
-      fixed: "left"
-    },
     {
       label: "角色编号",
       prop: "id",
@@ -50,25 +43,6 @@ export function useRole() {
       minWidth: 150
     },
     {
-      label: "角色类型",
-      prop: "type",
-      minWidth: 150,
-      cellRenderer: ({ row, props }) => (
-        <el-tag
-          size={props.size}
-          type={row.type === 1 ? "danger" : ""}
-          effect="plain"
-        >
-          {row.type === 1 ? "内置" : "自定义"}
-        </el-tag>
-      )
-    },
-    {
-      label: "显示顺序",
-      prop: "sort",
-      minWidth: 100
-    },
-    {
       label: "状态",
       minWidth: 130,
       cellRenderer: scope => (
@@ -78,12 +52,18 @@ export function useRole() {
           v-model={scope.row.status}
           active-value={1}
           inactive-value={0}
-          active-text="已开启"
-          inactive-text="已关闭"
+          active-text="已启用"
+          inactive-text="已停用"
           inline-prompt
+          style={switchStyle.value}
           onChange={() => onChange(scope as any)}
         />
       )
+    },
+    {
+      label: "备注",
+      prop: "remark",
+      minWidth: 150
     },
     {
       label: "创建时间",
@@ -156,7 +136,8 @@ export function useRole() {
   }
 
   function handleDelete(row) {
-    console.log(row);
+    message(`您删除了角色名称为${row.name}的这条数据`, { type: "success" });
+    onSearch();
   }
 
   function handleSizeChange(val: number) {
@@ -176,6 +157,9 @@ export function useRole() {
     const { data } = await getRoleList();
     dataList.value = data.list;
     pagination.total = data.total;
+    pagination.pageSize = data.pageSize;
+    pagination.currentPage = data.currentPage;
+
     setTimeout(() => {
       loading.value = false;
     }, 500);
@@ -186,6 +170,48 @@ export function useRole() {
     formEl.resetFields();
     onSearch();
   };
+
+  function openDialog(title = "新增", row?: FormItemProps) {
+    addDialog({
+      title: `${title}角色`,
+      props: {
+        formInline: {
+          name: row?.name ?? "",
+          code: row?.code ?? "",
+          remark: row?.remark ?? ""
+        }
+      },
+      width: "40%",
+      draggable: true,
+      fullscreenIcon: true,
+      closeOnClickModal: false,
+      contentRenderer: () => h(editForm, { ref: formRef }),
+      beforeSure: (done, { options }) => {
+        const FormRef = formRef.value.getRef();
+        const curData = options.props.formInline as FormItemProps;
+        function chores() {
+          message(`您${title}了角色名称为${curData.name}的这条数据`, {
+            type: "success"
+          });
+          done(); // 关闭弹框
+          onSearch(); // 刷新表格数据
+        }
+        FormRef.validate(valid => {
+          if (valid) {
+            console.log("curData", curData);
+            // 表单规则校验通过
+            if (title === "新增") {
+              // 实际开发先调用新增接口，再进行下面操作
+              chores();
+            } else {
+              // 实际开发先调用编辑接口，再进行下面操作
+              chores();
+            }
+          }
+        });
+      }
+    });
+  }
 
   onMounted(() => {
     onSearch();
@@ -200,6 +226,7 @@ export function useRole() {
     buttonClass,
     onSearch,
     resetForm,
+    openDialog,
     handleUpdate,
     handleDelete,
     handleSizeChange,
