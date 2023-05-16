@@ -105,7 +105,8 @@ watch(
         props.modelValue.indexOf(":") + 1
       );
     }
-  }
+  },
+  { immediate: true }
 );
 watch(
   () => {
