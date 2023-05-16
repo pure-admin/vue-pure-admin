@@ -139,6 +139,23 @@ html.dark {
     }
   }
 
+  /* 自定义菜单搜索样式 */
+  .pure-search-dialog {
+    .el-dialog__footer {
+      box-shadow: 0 -1px 0 0 #555a64, 0 -3px 6px 0 rgb(69 98 155 / 12%);
+    }
+
+    .search-footer {
+      .search-footer-item {
+        color: rgb(235 235 235 / 60%);
+
+        .icon {
+          box-shadow: none;
+        }
+      }
+    }
+  }
+
   /* ReSegmented 组件 */
   .pure-segmented {
     color: rgb(255 255 255 / 65%);

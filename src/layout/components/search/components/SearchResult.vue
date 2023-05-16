@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed } from "vue";
 import { useI18n } from "vue-i18n";
+import { computed, getCurrentInstance } from "vue";
 import { useEpThemeStoreHook } from "@/store/modules/epTheme";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import enterOutlined from "@/assets/svg/enter_outlined.svg?component";
@@ -28,6 +28,7 @@ interface Emits {
 
 const props = withDefaults(defineProps<Props>(), {});
 const emit = defineEmits<Emits>();
+const instance = getCurrentInstance()!;
 
 const itemStyle = computed(() => {
   return item => {
@@ -57,22 +58,33 @@ async function handleMouse(item) {
 function handleTo() {
   emit("enter");
 }
+
+function handleScroll(index: number) {
+  const curInstance = instance?.proxy?.$refs[`resultItemRef${index}`];
+  if (!curInstance) return 0;
+  const curRef = curInstance[0] as ElRef;
+  const scrollTop = curRef.offsetTop + 128; // 128 两个result-item（56px+56px=112px）高度加上下margin（8px+8px=16px）
+  return scrollTop > 600 ? scrollTop - 600 : 0; // 600 el-scrollbar max-height="600px"
+}
+
+defineExpose({ handleScroll });
 </script>
 
 <template>
   <div class="result">
-    <template v-for="item in options" :key="item.path">
-      <div
-        class="result-item dark:bg-[#1d1d1d]"
-        :style="itemStyle(item)"
-        @click="handleTo"
-        @mouseenter="handleMouse(item)"
-      >
-        <component :is="useRenderIcon(item.meta?.icon ?? Bookmark2Line)" />
-        <span class="result-item-title">{{ t(item.meta?.title) }}</span>
-        <enterOutlined />
-      </div>
-    </template>
+    <div
+      v-for="(item, index) in options"
+      :key="item.path"
+      :ref="'resultItemRef' + index"
+      class="result-item dark:bg-[#1d1d1d]"
+      :style="itemStyle(item)"
+      @click="handleTo"
+      @mouseenter="handleMouse(item)"
+    >
+      <component :is="useRenderIcon(item.meta?.icon ?? Bookmark2Line)" />
+      <span class="result-item-title">{{ t(item.meta?.title) }}</span>
+      <enterOutlined />
+    </div>
   </div>
 </template>
 
