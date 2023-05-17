@@ -4,8 +4,8 @@ import { useRole } from "./utils/hook";
 import { PureTableBar } from "@/components/RePureTableBar";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 
-import Database from "@iconify-icons/ri/database-2-line";
-import More from "@iconify-icons/ep/more-filled";
+// import Database from "@iconify-icons/ri/database-2-line";
+// import More from "@iconify-icons/ep/more-filled";
 import Delete from "@iconify-icons/ep/delete";
 import EditPen from "@iconify-icons/ep/edit-pen";
 import Search from "@iconify-icons/ep/search";
@@ -24,12 +24,13 @@ const {
   columns,
   dataList,
   pagination,
-  buttonClass,
+  // buttonClass,
   onSearch,
   resetForm,
   openDialog,
-  handleUpdate,
+  handleMenu,
   handleDelete,
+  // handleDatabase,
   handleSizeChange,
   handleCurrentChange,
   handleSelectionChange
@@ -131,6 +132,16 @@ const {
             >
               修改
             </el-button>
+            <el-button
+              class="reset-margin"
+              link
+              type="primary"
+              :size="size"
+              :icon="useRenderIcon(Menu)"
+              @click="handleMenu"
+            >
+              菜单权限
+            </el-button>
             <el-popconfirm
               :title="`是否确认删除角色名称为${row.name}的这条数据`"
               @confirm="handleDelete(row)"
@@ -147,14 +158,13 @@ const {
                 </el-button>
               </template>
             </el-popconfirm>
-            <el-dropdown>
+            <!-- <el-dropdown>
               <el-button
                 class="ml-3 mt-[2px]"
                 link
                 type="primary"
                 :size="size"
                 :icon="useRenderIcon(More)"
-                @click="handleUpdate(row)"
               />
               <template #dropdown>
                 <el-dropdown-menu>
@@ -165,6 +175,7 @@ const {
                       type="primary"
                       :size="size"
                       :icon="useRenderIcon(Menu)"
+                      @click="handleMenu"
                     >
                       菜单权限
                     </el-button>
@@ -176,13 +187,14 @@ const {
                       type="primary"
                       :size="size"
                       :icon="useRenderIcon(Database)"
+                      @click="handleDatabase"
                     >
                       数据权限
                     </el-button>
                   </el-dropdown-item>
                 </el-dropdown-menu>
               </template>
-            </el-dropdown>
+            </el-dropdown> -->
           </template>
         </pure-table>
       </template>

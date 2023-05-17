@@ -7,7 +7,7 @@ import { usePublicHooks } from "../../hooks";
 import { addDialog } from "@/components/ReDialog";
 import { type FormItemProps } from "../utils/types";
 import { type PaginationProps } from "@pureadmin/table";
-import { reactive, ref, computed, onMounted, h, toRaw } from "vue";
+import { reactive, ref, onMounted, h, toRaw } from "vue";
 
 export function useRole() {
   const form = reactive({
@@ -75,19 +75,19 @@ export function useRole() {
     {
       label: "操作",
       fixed: "right",
-      width: 180,
+      width: 240,
       slot: "operation"
     }
   ];
-  const buttonClass = computed(() => {
-    return [
-      "!h-[20px]",
-      "reset-margin",
-      "!text-gray-500",
-      "dark:!text-white",
-      "dark:hover:!text-primary"
-    ];
-  });
+  // const buttonClass = computed(() => {
+  //   return [
+  //     "!h-[20px]",
+  //     "reset-margin",
+  //     "!text-gray-500",
+  //     "dark:!text-white",
+  //     "dark:hover:!text-primary"
+  //   ];
+  // });
 
   function onChange({ row, index }) {
     ElMessageBox.confirm(
@@ -95,7 +95,7 @@ export function useRole() {
         row.status === 0 ? "停用" : "启用"
       }</strong><strong style='color:var(--el-color-primary)'>${
         row.name
-      }</strong>角色吗?`,
+      }</strong>吗?`,
       "系统提示",
       {
         confirmButtonText: "确定",
@@ -121,7 +121,7 @@ export function useRole() {
               loading: false
             }
           );
-          message("已成功修改角色状态", {
+          message(`已${row.status === 0 ? "停用" : "启用"}${row.name}`, {
             type: "success"
           });
         }, 300);
@@ -129,10 +129,6 @@ export function useRole() {
       .catch(() => {
         row.status === 0 ? (row.status = 1) : (row.status = 0);
       });
-  }
-
-  function handleUpdate(row) {
-    console.log(row);
   }
 
   function handleDelete(row) {
@@ -213,6 +209,14 @@ export function useRole() {
     });
   }
 
+  /** 菜单权限 */
+  function handleMenu() {
+    message("等菜单管理页面开发后完善");
+  }
+
+  /** 数据权限 可自行开发 */
+  // function handleDatabase() {}
+
   onMounted(() => {
     onSearch();
   });
@@ -223,12 +227,13 @@ export function useRole() {
     columns,
     dataList,
     pagination,
-    buttonClass,
+    // buttonClass,
     onSearch,
     resetForm,
     openDialog,
-    handleUpdate,
+    handleMenu,
     handleDelete,
+    // handleDatabase,
     handleSizeChange,
     handleCurrentChange,
     handleSelectionChange
