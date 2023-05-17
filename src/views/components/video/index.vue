@@ -8,7 +8,7 @@ import Player from "xgplayer";
 import "xgplayer/dist/index.min.css";
 
 defineOptions({
-  name: "Video"
+  name: "VideoPage"
 });
 
 onMounted(() => {

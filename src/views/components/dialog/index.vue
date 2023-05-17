@@ -7,7 +7,7 @@ import forms, { type FormProps } from "./form.vue";
 import { addDialog, closeDialog, closeAllDialog } from "@/components/ReDialog";
 
 defineOptions({
-  name: "Dialog"
+  name: "DialogPage"
 });
 
 const router = useRouter();

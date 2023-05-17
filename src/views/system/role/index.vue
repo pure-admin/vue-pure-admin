@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { useRole } from "./hook";
+import { useRole } from "./utils/hook";
 import { PureTableBar } from "@/components/RePureTableBar";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 
-import Database from "@iconify-icons/ri/database-2-line";
-import More from "@iconify-icons/ep/more-filled";
+// import Database from "@iconify-icons/ri/database-2-line";
+// import More from "@iconify-icons/ep/more-filled";
 import Delete from "@iconify-icons/ep/delete";
 import EditPen from "@iconify-icons/ep/edit-pen";
 import Search from "@iconify-icons/ep/search";
@@ -24,11 +24,13 @@ const {
   columns,
   dataList,
   pagination,
-  buttonClass,
+  // buttonClass,
   onSearch,
   resetForm,
-  handleUpdate,
+  openDialog,
+  handleMenu,
   handleDelete,
+  // handleDatabase,
   handleSizeChange,
   handleCurrentChange,
   handleSelectionChange
@@ -66,8 +68,8 @@ const {
           clearable
           class="!w-[180px]"
         >
-          <el-option label="已开启" value="1" />
-          <el-option label="已关闭" value="0" />
+          <el-option label="已启用" value="1" />
+          <el-option label="已停用" value="0" />
         </el-select>
       </el-form-item>
       <el-form-item>
@@ -85,9 +87,17 @@ const {
       </el-form-item>
     </el-form>
 
-    <PureTableBar title="角色列表" :columns="columns" @refresh="onSearch">
+    <PureTableBar
+      title="角色列表（仅演示，操作后不生效）"
+      :columns="columns"
+      @refresh="onSearch"
+    >
       <template #buttons>
-        <el-button type="primary" :icon="useRenderIcon(AddFill)">
+        <el-button
+          type="primary"
+          :icon="useRenderIcon(AddFill)"
+          @click="openDialog()"
+        >
           新增角色
         </el-button>
       </template>
@@ -118,11 +128,24 @@ const {
               type="primary"
               :size="size"
               :icon="useRenderIcon(EditPen)"
-              @click="handleUpdate(row)"
+              @click="openDialog('编辑', row)"
             >
               修改
             </el-button>
-            <el-popconfirm title="是否确认删除?">
+            <el-button
+              class="reset-margin"
+              link
+              type="primary"
+              :size="size"
+              :icon="useRenderIcon(Menu)"
+              @click="handleMenu"
+            >
+              菜单权限
+            </el-button>
+            <el-popconfirm
+              :title="`是否确认删除角色名称为${row.name}的这条数据`"
+              @confirm="handleDelete(row)"
+            >
               <template #reference>
                 <el-button
                   class="reset-margin"
@@ -130,20 +153,18 @@ const {
                   type="primary"
                   :size="size"
                   :icon="useRenderIcon(Delete)"
-                  @click="handleDelete(row)"
                 >
                   删除
                 </el-button>
               </template>
             </el-popconfirm>
-            <el-dropdown>
+            <!-- <el-dropdown>
               <el-button
                 class="ml-3 mt-[2px]"
                 link
                 type="primary"
                 :size="size"
                 :icon="useRenderIcon(More)"
-                @click="handleUpdate(row)"
               />
               <template #dropdown>
                 <el-dropdown-menu>
@@ -154,6 +175,7 @@ const {
                       type="primary"
                       :size="size"
                       :icon="useRenderIcon(Menu)"
+                      @click="handleMenu"
                     >
                       菜单权限
                     </el-button>
@@ -165,13 +187,14 @@ const {
                       type="primary"
                       :size="size"
                       :icon="useRenderIcon(Database)"
+                      @click="handleDatabase"
                     >
                       数据权限
                     </el-button>
                   </el-dropdown-item>
                 </el-dropdown-menu>
               </template>
-            </el-dropdown>
+            </el-dropdown> -->
           </template>
         </pure-table>
       </template>

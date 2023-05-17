@@ -2,7 +2,7 @@
 import { Amap } from "@/components/ReMap";
 
 defineOptions({
-  name: "Map"
+  name: "MapPage"
 });
 </script>
 

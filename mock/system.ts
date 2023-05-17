@@ -1,9 +1,9 @@
 import { MockMethod } from "vite-plugin-mock";
 
 export default [
-  // 角色
+  // 用户
   {
-    url: "/role",
+    url: "/user",
     method: "post",
     response: () => {
       return {
@@ -11,58 +11,114 @@ export default [
         data: {
           list: [
             {
-              createTime: 1605456000000,
-              updateTime: 1645477701000,
-              creator: "admin",
-              updater: "",
-              deleted: false,
-              tenantId: 1,
+              username: "admin",
+              nickname: "admin",
+              remark: "管理员",
+              deptId: 103,
+              postIds: [1],
+              mobile: "15888888888",
+              sex: 0,
               id: 1,
-              name: "超级管理员",
-              code: "super_admin",
-              sort: 1,
               status: 0,
-              type: 1,
-              remark: "超级管理员",
-              dataScope: 1,
-              dataScopeDeptIds: null
+              createTime: 1605456000000,
+              dept: {
+                id: 103,
+                name: "研发部门"
+              }
             },
             {
+              username: "pure",
+              nickname: "pure",
+              remark: "不要吓我",
+              deptId: 104,
+              postIds: [1],
+              mobile: "15888888888",
+              sex: 0,
+              id: 100,
+              status: 1,
               createTime: 1605456000000,
-              updateTime: 1645477700000,
-              creator: "admin",
-              updater: "",
-              deleted: false,
-              tenantId: 1,
-              id: 2,
-              name: "普通角色",
-              code: "common",
-              sort: 2,
-              status: 0,
-              type: 1,
-              remark: "普通角色",
-              dataScope: 2,
-              dataScopeDeptIds: null
+              dept: {
+                id: 104,
+                name: "市场部门"
+              }
             },
             {
+              username: "小姐姐",
+              nickname: "girl",
+              remark: null,
+              deptId: 106,
+              postIds: null,
+              mobile: "15888888888",
+              sex: 1,
+              id: 103,
+              status: 1,
               createTime: 1605456000000,
-              updateTime: 1647698441000,
-              creator: "",
-              updater: "1",
-              deleted: false,
-              tenantId: 1,
-              id: 101,
-              name: "测试账号",
-              code: "test",
-              sort: 0,
+              dept: {
+                id: 106,
+                name: "财务部门"
+              }
+            },
+            {
+              username: "小哥哥",
+              nickname: "boy",
+              remark: null,
+              deptId: 107,
+              postIds: [],
+              mobile: "15888888888",
+              sex: 0,
+              id: 104,
               status: 0,
-              type: 2,
-              remark: "132",
-              dataScope: 1,
-              dataScopeDeptIds: []
+              createTime: 1605456000000,
+              dept: {
+                id: 107,
+                name: "运维部门"
+              }
             }
           ],
-          total: 3
+          total: 4
+        }
+      };
+    }
+  },
+  // 角色
+  {
+    url: "/role",
+    method: "post",
+    response: ({ body }) => {
+      let list = [
+        {
+          createTime: 1605456000000, // 时间戳（毫秒ms）
+          updateTime: 1684512000000,
+          creator: "admin",
+          id: 1,
+          name: "超级管理员",
+          code: "admin",
+          status: 1, // 状态 1 启用 0 停用
+          remark: "超级管理员拥有最高权限"
+        },
+        {
+          createTime: 1605456000000,
+          updateTime: 1684512000000,
+          creator: "admin",
+          id: 2,
+          name: "普通角色",
+          code: "common",
+          status: 1,
+          remark: "普通角色拥有部分权限"
+        }
+      ];
+      list = list.filter(item => item.name.includes(body?.name));
+      list = list.filter(item =>
+        String(item.status).includes(String(body?.status))
+      );
+      if (body.code) list = list.filter(item => item.code === body.code);
+      return {
+        success: true,
+        data: {
+          list,
+          total: list.length, // 总条目数
+          pageSize: 10, // 每页显示条目个数
+          currentPage: 1 // 当前页数
         }
       };
     }
@@ -83,7 +139,7 @@ export default [
             phone: "15888888888",
             principal: "@cname()",
             email: "@email",
-            status: 1,
+            status: 1, // 状态 1 启用 0 停用
             type: 1, // 1 公司 2 分公司 3 部门
             createTime: 1605456000000,
             remark: "@cparagraph(1, 3)"
@@ -206,85 +262,6 @@ export default [
             remark: "@cparagraph(1, 3)"
           }
         ]
-      };
-    }
-  },
-  // 用户
-  {
-    url: "/user",
-    method: "post",
-    response: () => {
-      return {
-        success: true,
-        data: {
-          list: [
-            {
-              username: "admin",
-              nickname: "admin",
-              remark: "管理员",
-              deptId: 103,
-              postIds: [1],
-              mobile: "15888888888",
-              sex: 0,
-              id: 1,
-              status: 0,
-              createTime: 1605456000000,
-              dept: {
-                id: 103,
-                name: "研发部门"
-              }
-            },
-            {
-              username: "pure",
-              nickname: "pure",
-              remark: "不要吓我",
-              deptId: 104,
-              postIds: [1],
-              mobile: "15888888888",
-              sex: 0,
-              id: 100,
-              status: 1,
-              createTime: 1605456000000,
-              dept: {
-                id: 104,
-                name: "市场部门"
-              }
-            },
-            {
-              username: "小姐姐",
-              nickname: "girl",
-              remark: null,
-              deptId: 106,
-              postIds: null,
-              mobile: "15888888888",
-              sex: 1,
-              id: 103,
-              status: 1,
-              createTime: 1605456000000,
-              dept: {
-                id: 106,
-                name: "财务部门"
-              }
-            },
-            {
-              username: "小哥哥",
-              nickname: "boy",
-              remark: null,
-              deptId: 107,
-              postIds: [],
-              mobile: "15888888888",
-              sex: 0,
-              id: 104,
-              status: 0,
-              createTime: 1605456000000,
-              dept: {
-                id: 107,
-                name: "运维部门"
-              }
-            }
-          ],
-          total: 4
-        }
       };
     }
   }

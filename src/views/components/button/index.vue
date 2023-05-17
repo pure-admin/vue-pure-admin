@@ -2,7 +2,7 @@
 import { ref } from "vue";
 
 defineOptions({
-  name: "Button"
+  name: "ButtonPage"
 });
 
 const { VITE_PUBLIC_PATH } = import.meta.env;
