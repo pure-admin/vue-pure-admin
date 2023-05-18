@@ -65,6 +65,7 @@
     "swiper": "^9.3.1",
     "typeit": "^8.7.1",
     "v-contextmenu": "3.0.0",
+    "v3-infinite-loading": "^1.2.2",
     "vue": "^3.3.2",
     "vue-i18n": "^9.2.2",
     "vue-json-pretty": "^2.2.4",

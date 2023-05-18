@@ -93,6 +93,7 @@ specifiers:
   typeit: ^8.7.1
   typescript: ^5.0.4
   v-contextmenu: 3.0.0
+  v3-infinite-loading: ^1.2.2
   vite: ^4.3.7
   vite-plugin-cdn-import: ^0.3.5
   vite-plugin-compression: ^0.5.1
@@ -151,6 +152,7 @@ dependencies:
   swiper: 9.3.1
   typeit: 8.7.1
   v-contextmenu: 3.0.0_vue@3.3.2
+  v3-infinite-loading: 1.2.2
   vue: 3.3.2
   vue-i18n: 9.2.2_vue@3.3.2
   vue-json-pretty: 2.2.4_vue@3.3.2
@@ -11658,6 +11660,13 @@ packages:
       vue: ^3.0.0
     dependencies:
       vue: 3.3.2
+    dev: false
+
+  /v3-infinite-loading/1.2.2:
+    resolution:
+      {
+        integrity: sha512-MWJc6yChnqeUasBFJ3Enu8IGPcQgRMSTrAEtT1MsHBEx+QjwvNTaY8o+8V9DgVt1MVhQSl3MC55hsaWLJmpRMw==
+      }
     dev: false
 
   /v8-compile-cache-lib/3.0.1:
