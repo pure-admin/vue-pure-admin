@@ -43,7 +43,7 @@ const {
       ref="formRef"
       :inline="true"
       :model="form"
-      class="bg-bg_color w-[99/100] pl-8 pt-4"
+      class="search-form bg-bg_color w-[99/100] pl-8 pt-[12px]"
     >
       <el-form-item label="角色名称：" prop="name">
         <el-input
@@ -205,5 +205,11 @@ const {
 <style scoped lang="scss">
 :deep(.el-dropdown-menu__item i) {
   margin: 0;
+}
+
+.search-form {
+  :deep(.el-form-item) {
+    margin-bottom: 12px;
+  }
 }
 </style>

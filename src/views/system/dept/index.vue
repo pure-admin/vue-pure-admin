@@ -35,7 +35,7 @@ const {
       ref="formRef"
       :inline="true"
       :model="form"
-      class="bg-bg_color w-[99/100] pl-8 pt-4"
+      class="search-form bg-bg_color w-[99/100] pl-8 pt-[12px]"
     >
       <el-form-item label="部门名称：" prop="name">
         <el-input
@@ -138,3 +138,11 @@ const {
     </PureTableBar>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.search-form {
+  :deep(.el-form-item) {
+    margin-bottom: 12px;
+  }
+}
+</style>
