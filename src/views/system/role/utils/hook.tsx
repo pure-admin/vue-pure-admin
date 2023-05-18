@@ -1,9 +1,13 @@
 import dayjs from "dayjs";
+import editForm from "../form.vue";
 import { message } from "@/utils/message";
 import { getRoleList } from "@/api/system";
 import { ElMessageBox } from "element-plus";
+import { usePublicHooks } from "../../hooks";
+import { addDialog } from "@/components/ReDialog";
+import { type FormItemProps } from "../utils/types";
 import { type PaginationProps } from "@pureadmin/table";
-import { reactive, ref, computed, onMounted } from "vue";
+import { reactive, ref, onMounted, h, toRaw } from "vue";
 
 export function useRole() {
   const form = reactive({
@@ -11,9 +15,11 @@ export function useRole() {
     code: "",
     status: ""
   });
+  const formRef = ref();
   const dataList = ref([]);
   const loading = ref(true);
   const switchLoadMap = ref({});
+  const { switchStyle } = usePublicHooks();
   const pagination = reactive<PaginationProps>({
     total: 0,
     pageSize: 10,
@@ -21,19 +27,6 @@ export function useRole() {
     background: true
   });
   const columns: TableColumnList = [
-    // {
-    //   label: "勾选列", // 如果需要表格多选，此处label必须设置
-    //   type: "selection",
-    //   width: 55,
-    //   align: "left",
-    //   fixed: "left"
-    // },
-    {
-      label: "序号",
-      type: "index",
-      width: 70,
-      fixed: "left"
-    },
     {
       label: "角色编号",
       prop: "id",
@@ -50,25 +43,6 @@ export function useRole() {
       minWidth: 150
     },
     {
-      label: "角色类型",
-      prop: "type",
-      minWidth: 150,
-      cellRenderer: ({ row, props }) => (
-        <el-tag
-          size={props.size}
-          type={row.type === 1 ? "danger" : ""}
-          effect="plain"
-        >
-          {row.type === 1 ? "内置" : "自定义"}
-        </el-tag>
-      )
-    },
-    {
-      label: "显示顺序",
-      prop: "sort",
-      minWidth: 100
-    },
-    {
       label: "状态",
       minWidth: 130,
       cellRenderer: scope => (
@@ -78,12 +52,18 @@ export function useRole() {
           v-model={scope.row.status}
           active-value={1}
           inactive-value={0}
-          active-text="已开启"
-          inactive-text="已关闭"
+          active-text="已启用"
+          inactive-text="已停用"
           inline-prompt
+          style={switchStyle.value}
           onChange={() => onChange(scope as any)}
         />
       )
+    },
+    {
+      label: "备注",
+      prop: "remark",
+      minWidth: 150
     },
     {
       label: "创建时间",
@@ -95,19 +75,19 @@ export function useRole() {
     {
       label: "操作",
       fixed: "right",
-      width: 180,
+      width: 240,
       slot: "operation"
     }
   ];
-  const buttonClass = computed(() => {
-    return [
-      "!h-[20px]",
-      "reset-margin",
-      "!text-gray-500",
-      "dark:!text-white",
-      "dark:hover:!text-primary"
-    ];
-  });
+  // const buttonClass = computed(() => {
+  //   return [
+  //     "!h-[20px]",
+  //     "reset-margin",
+  //     "!text-gray-500",
+  //     "dark:!text-white",
+  //     "dark:hover:!text-primary"
+  //   ];
+  // });
 
   function onChange({ row, index }) {
     ElMessageBox.confirm(
@@ -115,7 +95,7 @@ export function useRole() {
         row.status === 0 ? "停用" : "启用"
       }</strong><strong style='color:var(--el-color-primary)'>${
         row.name
-      }</strong>角色吗?`,
+      }</strong>吗?`,
       "系统提示",
       {
         confirmButtonText: "确定",
@@ -141,7 +121,7 @@ export function useRole() {
               loading: false
             }
           );
-          message("已成功修改角色状态", {
+          message(`已${row.status === 0 ? "停用" : "启用"}${row.name}`, {
             type: "success"
           });
         }, 300);
@@ -151,12 +131,9 @@ export function useRole() {
       });
   }
 
-  function handleUpdate(row) {
-    console.log(row);
-  }
-
   function handleDelete(row) {
-    console.log(row);
+    message(`您删除了角色名称为${row.name}的这条数据`, { type: "success" });
+    onSearch();
   }
 
   function handleSizeChange(val: number) {
@@ -173,9 +150,12 @@ export function useRole() {
 
   async function onSearch() {
     loading.value = true;
-    const { data } = await getRoleList();
+    const { data } = await getRoleList(toRaw(form));
     dataList.value = data.list;
     pagination.total = data.total;
+    pagination.pageSize = data.pageSize;
+    pagination.currentPage = data.currentPage;
+
     setTimeout(() => {
       loading.value = false;
     }, 500);
@@ -187,6 +167,56 @@ export function useRole() {
     onSearch();
   };
 
+  function openDialog(title = "新增", row?: FormItemProps) {
+    addDialog({
+      title: `${title}角色`,
+      props: {
+        formInline: {
+          name: row?.name ?? "",
+          code: row?.code ?? "",
+          remark: row?.remark ?? ""
+        }
+      },
+      width: "40%",
+      draggable: true,
+      fullscreenIcon: true,
+      closeOnClickModal: false,
+      contentRenderer: () => h(editForm, { ref: formRef }),
+      beforeSure: (done, { options }) => {
+        const FormRef = formRef.value.getRef();
+        const curData = options.props.formInline as FormItemProps;
+        function chores() {
+          message(`您${title}了角色名称为${curData.name}的这条数据`, {
+            type: "success"
+          });
+          done(); // 关闭弹框
+          onSearch(); // 刷新表格数据
+        }
+        FormRef.validate(valid => {
+          if (valid) {
+            console.log("curData", curData);
+            // 表单规则校验通过
+            if (title === "新增") {
+              // 实际开发先调用新增接口，再进行下面操作
+              chores();
+            } else {
+              // 实际开发先调用编辑接口，再进行下面操作
+              chores();
+            }
+          }
+        });
+      }
+    });
+  }
+
+  /** 菜单权限 */
+  function handleMenu() {
+    message("等菜单管理页面开发后完善");
+  }
+
+  /** 数据权限 可自行开发 */
+  // function handleDatabase() {}
+
   onMounted(() => {
     onSearch();
   });
@@ -197,11 +227,13 @@ export function useRole() {
     columns,
     dataList,
     pagination,
-    buttonClass,
+    // buttonClass,
     onSearch,
     resetForm,
-    handleUpdate,
+    openDialog,
+    handleMenu,
     handleDelete,
+    // handleDatabase,
     handleSizeChange,
     handleCurrentChange,
     handleSelectionChange

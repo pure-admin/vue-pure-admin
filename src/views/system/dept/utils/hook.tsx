@@ -1,12 +1,12 @@
 import dayjs from "dayjs";
-import editForm from "./form.vue";
+import editForm from "../form.vue";
 import { handleTree } from "@/utils/tree";
-import { usePublicHooks } from "../hooks";
 import { message } from "@/utils/message";
 import { getDeptList } from "@/api/system";
-import { type FormItemProps } from "./types";
+import { usePublicHooks } from "../../hooks";
 import { addDialog } from "@/components/ReDialog";
 import { reactive, ref, onMounted, h } from "vue";
+import { type FormItemProps } from "../utils/types";
 import { cloneDeep, isAllEmpty } from "@pureadmin/utils";
 
 export function useDept() {
