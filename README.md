@@ -146,10 +146,6 @@ pnpm build
 
 <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f69bf13c5b854ed5b699807cafa0e3ce~tplv-k3u1fbpfcp-zoom-in-crop-mark:1304:0:0:0.awebp?" width="150px" height="150px" />
 
-## `QQ` 交流群
-
-[点击去加入](https://yiming_chang.gitee.io/pure-admin-doc/pages/support/#qq-%E4%BA%A4%E6%B5%81%E7%BE%A4)
-
 ## 许可证
 
 原则上不收取任何费用及版权，可以放心使用，不过如需二次开源（比如用此平台二次开发并开源）请联系作者获取许可！
