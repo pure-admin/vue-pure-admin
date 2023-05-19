@@ -164,7 +164,7 @@ onKeyStroke("ArrowDown", handleDown);
       </template>
     </el-input>
     <div class="search-result-container">
-      <el-scrollbar ref="scrollbarRef" max-height="600px">
+      <el-scrollbar ref="scrollbarRef" max-height="calc(90vh - 140px)">
         <el-empty
           v-if="resultOptions.length === 0"
           description="暂无搜索结果"
