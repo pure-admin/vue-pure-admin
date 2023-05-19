@@ -20,6 +20,11 @@ interface Tree {
   children?: Tree[];
 }
 
+interface ChangeEvent {
+  id: string;
+  name: string;
+}
+
 const treeRef = ref();
 const treeData = ref([]);
 const isExpand = ref(true);
@@ -30,6 +35,11 @@ const defaultProps = {
   children: "children",
   label: "name"
 };
+
+const emits = defineEmits<{
+  (e: "change", data: ChangeEvent): void;
+}>();
+
 const buttonClass = computed(() => {
   return [
     "!h-[20px]",
@@ -46,6 +56,10 @@ const filterNode = (value: string, data: Tree) => {
 };
 
 function nodeClick(value) {
+  emits("change", {
+    id: value.id,
+    name: value.name
+  });
   const nodeId = value.$treeNodeId;
   highlightMap.value[nodeId] = highlightMap.value[nodeId]?.highlight
     ? Object.assign({ id: nodeId }, highlightMap.value[nodeId], {
@@ -87,9 +101,9 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="h-full min-h-[780px] bg-bg_color overflow-auto">
+  <div class="h-full overflow-auto bg-bg_color">
     <div class="flex items-center h-[34px]">
-      <p class="flex-1 ml-2 font-bold text-base truncate" title="部门列表">
+      <p class="flex-1 ml-2 text-base font-bold truncate" title="部门列表">
         部门列表
       </p>
       <el-input

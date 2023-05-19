@@ -3,13 +3,15 @@ import { message } from "@/utils/message";
 import { getUserList } from "@/api/system";
 import { ElMessageBox } from "element-plus";
 import { type PaginationProps } from "@pureadmin/table";
-import { reactive, ref, computed, onMounted } from "vue";
+import AlertFill from "@iconify-icons/ri/alert-fill";
+import { reactive, ref, computed, onMounted, VNode, Fragment } from "vue";
 
 export function useUser() {
   const form = reactive({
     username: "",
     mobile: "",
-    status: ""
+    status: "",
+    deptId: null
   });
   const dataList = ref([]);
   const loading = ref(true);
@@ -35,7 +37,32 @@ export function useUser() {
     {
       label: "用户名称",
       prop: "username",
-      minWidth: 130
+      minWidth: 130,
+      cellRenderer: ({ row, props }) => {
+        if (form.username) {
+          const data: string[] = row.username.split(form.username);
+          const nodes: Array<VNode> = [];
+          if (data.length > 1) {
+            for (let index = 0; index < data.length; index++) {
+              if (data[index].length > 0) {
+                nodes.push(<el-text size={props.size}>{data[index]}</el-text>);
+              }
+              if (index < data.length - 1) {
+                nodes.push(
+                  <el-text size={props.size} tag="mark">
+                    {form.username}
+                  </el-text>
+                );
+              }
+            }
+            return <Fragment>{nodes}</Fragment>;
+          } else {
+            return <el-text size={props.size}>{row.username}</el-text>;
+          }
+        } else {
+          return <el-text size={props.size}>{row.username}</el-text>;
+        }
+      }
     },
     {
       label: "用户昵称",
@@ -65,7 +92,32 @@ export function useUser() {
     {
       label: "手机号码",
       prop: "mobile",
-      minWidth: 90
+      minWidth: 90,
+      headerRenderer: ({ column, props }) => {
+        return (
+          <el-tooltip placement="top">
+            {{
+              content: () => (
+                <div>
+                  😈假的！都是假的！
+                  <br />
+                  这些号码都是随机生成的毫无意义的演示数据
+                </div>
+              ),
+              default: () => (
+                <div>
+                  <el-text class="font-bold" size={props.size}>
+                    {column.label}
+                  </el-text>
+                  <el-icon color="red">
+                    <iconify-icon-offline icon={AlertFill} />
+                  </el-icon>
+                </div>
+              )
+            }}
+          </el-tooltip>
+        );
+      }
     },
     {
       label: "状态",
@@ -173,7 +225,7 @@ export function useUser() {
 
   async function onSearch() {
     loading.value = true;
-    const { data } = await getUserList();
+    const { data } = await getUserList(form);
     dataList.value = data.list;
     pagination.total = data.total;
     setTimeout(() => {

@@ -20,8 +20,8 @@ type ResultDept = {
 };
 
 /** 获取用户管理列表 */
-export const getUserList = (data?: object) => {
-  return http.request<Result>("post", "/user", { data });
+export const getUserList = (params?: object) => {
+  return http.request<Result>("get", "/user", { params });
 };
 
 /** 获取角色管理列表 */
@@ -31,5 +31,5 @@ export const getRoleList = (data?: object) => {
 
 /** 获取部门管理列表 */
 export const getDeptList = (data?: object) => {
-  return http.request<ResultDept>("post", "/dept", { data });
+  return http.request<ResultDept>("get", "/dept", { data });
 };

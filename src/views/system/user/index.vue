@@ -19,6 +19,8 @@ defineOptions({
 });
 
 const formRef = ref();
+const deptName = ref();
+
 const {
   form,
   loading,
@@ -34,12 +36,18 @@ const {
   handleCurrentChange,
   handleSelectionChange
 } = useUser();
+
+function onDeptChange({ id, name }) {
+  deptName.value = name;
+  form.deptId = id;
+  onSearch();
+}
 </script>
 
 <template>
-  <div class="main">
-    <tree class="w-[17%] float-left" />
-    <div class="float-right w-[81%]">
+  <div class="flex flex-wrap justify-between gap-x-3 main main-content">
+    <tree class="flex-none mb-3 w-fit" @change="onDeptChange" />
+    <div class="flex-auto w-2/3">
       <el-form
         ref="formRef"
         :inline="true"
@@ -89,6 +97,14 @@ const {
       </el-form>
 
       <PureTableBar title="用户管理" :columns="columns" @refresh="onSearch">
+        <template #title>
+          <div class="flex content-between gap-3">
+            <p class="font-bold">用户管理</p>
+            <el-text type="primary">{{
+              deptName ? deptName : "未选择部门"
+            }}</el-text>
+          </div>
+        </template>
         <template #buttons>
           <el-button type="primary" :icon="useRenderIcon(AddFill)">
             新增用户
