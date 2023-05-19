@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
-import { computed, getCurrentInstance } from "vue";
+import { useResizeObserver } from "@vueuse/core";
 import { useEpThemeStoreHook } from "@/store/modules/epTheme";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
+import { ref, computed, getCurrentInstance, onMounted } from "vue";
 import enterOutlined from "@/assets/svg/enter_outlined.svg?component";
 import Bookmark2Line from "@iconify-icons/ri/bookmark-2-line";
 
@@ -26,6 +27,8 @@ interface Emits {
   (e: "enter"): void;
 }
 
+const resultRef = ref();
+const innerHeight = ref();
 const props = withDefaults(defineProps<Props>(), {});
 const emit = defineEmits<Emits>();
 const instance = getCurrentInstance()!;
@@ -59,19 +62,32 @@ function handleTo() {
   emit("enter");
 }
 
+function resizeResult() {
+  // el-scrollbar max-height="calc(90vh - 140px)"
+  innerHeight.value = window.innerHeight - window.innerHeight / 10 - 140;
+}
+
+useResizeObserver(resultRef, () => {
+  resizeResult();
+});
+
 function handleScroll(index: number) {
   const curInstance = instance?.proxy?.$refs[`resultItemRef${index}`];
   if (!curInstance) return 0;
   const curRef = curInstance[0] as ElRef;
   const scrollTop = curRef.offsetTop + 128; // 128 两个result-item（56px+56px=112px）高度加上下margin（8px+8px=16px）
-  return scrollTop > 600 ? scrollTop - 600 : 0; // 600 el-scrollbar max-height="600px"
+  return scrollTop > innerHeight.value ? scrollTop - innerHeight.value : 0;
 }
+
+onMounted(() => {
+  resizeResult();
+});
 
 defineExpose({ handleScroll });
 </script>
 
 <template>
-  <div class="result">
+  <div ref="resultRef" class="result">
     <div
       v-for="(item, index) in options"
       :key="item.path"
