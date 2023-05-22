@@ -22,7 +22,7 @@ The simplified version is based on the shelf extracted from [vue-pure-admin](htt
 - [Click Watch Tutorial](https://www.bilibili.com/video/BV1kg411v7QT)
 - [Click Watch UI Design](https://www.bilibili.com/video/BV17g411T7rq)
 
-## Docs (support `PWA` fast, offline access)
+## Docs
 
 - [Click me to view the domestic documentation site](https://yiming_chang.gitee.io/pure-admin-doc)
 - [Click me to view foreign document site](https://pure-admin.github.io/pure-admin-doc)
@@ -140,33 +140,11 @@ Support modern browsers, not IE
 
 [xiaoxian521](https://github.com/xiaoxian521)、[Ten-K](https://github.com/Ten-K)
 
-## Donate
-
-If you think this project is helpful to you, you can help the author buy a glass of juice 🍹 Show your support
-
-<img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f69bf13c5b854ed5b699807cafa0e3ce~tplv-k3u1fbpfcp-zoom-in-crop-mark:1304:0:0:0.awebp?" width="150px" height="150px" />
-
 ## License
 
-In principle, no fees and copyrights are charged, and you can use it with confidence, but if you need secondary open source, please contact the author for permission!
+In principle, no fees and copyrights are charged, and it is commercially available, but if you need secondary open source (such as using this platform for secondary development and open source, the front-end code must be open source and free), please contact the author for permission! (Free, just take a record)
 
 [MIT © 2020-present, pure-admin](./LICENSE)
-
-## Backers
-
-Thank you very much for your support, I believe the project will get better and better :heart:
-
-|                                                                xueyuheng                                                                 |                                                                taolei1990                                                                 |                                                                hang-kim                                                                 |                                                               madwolfcrazy                                                                |                                                                limuen                                                                 |                                                                BenLakes                                                                 |
-| :--------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------: |
-| <a href="https://github.com/xueyuheng"><img src="https://avatars.githubusercontent.com/u/48202935?v=4" width="60px" height="60px" /></a> | <a href="https://github.com/taolei1990"><img src="https://avatars.githubusercontent.com/u/23173640?v=4" width="60px" height="60px" /></a> | <a href="https://github.com/hang-kim"><img src="https://avatars.githubusercontent.com/u/52914259?v=4" width="60px" height="60px" /></a> | <a href="https://github.com/madwolfcrazy"><img src="https://avatars.githubusercontent.com/u/223671?v=4" width="60px" height="60px" /></a> | <a href="https://github.com/limuen"><img src="https://avatars.githubusercontent.com/u/31790606?v=4" width="60px" height="60px" /></a> | <a href="https://github.com/BenLakes"><img src="https://avatars.githubusercontent.com/u/15206046?v=4" width="60px" height="60px" /></a> |
-|                                                                mollerzhu                                                                 |                                                                  TLovers                                                                  |                                                                  cnyyk                                                                  |                                                                                                                                           |                                                                                                                                       |                                                                                                                                         |
-| <a href="https://github.com/mollerzhu"><img src="https://avatars.githubusercontent.com/u/49627902?v=4" width="60px" height="60px" /></a> |  <a href="https://github.com/TLovers"><img src="https://avatars.githubusercontent.com/u/26561694?v=4" width="60px" height="60px" /></a>   |   <a href="https://github.com/cnyyk"><img src="https://avatars.githubusercontent.com/u/275233?v=4" width="60px" height="60px" /></a>    |                                                                                                                                           |                                                                                                                                       |                                                                                                                                         |
-
-## Contributors
-
-Thanks to all the people who contribute :heart:
-
-<a href="https://github.com/pure-admin/vue-pure-admin/graphs/contributors"><img src="https://contrib.rocks/image?repo=pure-admin/vue-pure-admin" /></a>
 
 ## `Star`
 
