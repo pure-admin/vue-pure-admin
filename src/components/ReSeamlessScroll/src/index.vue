@@ -51,20 +51,21 @@ let startPosX = null;
 let isHover = false;
 let ease = "ease-in";
 
-// eslint-disable-next-line vue/no-setup-props-destructure
-const { classOption } = props;
-
-if (classOption["key"] === undefined) {
-  classOption["key"] = 0;
+if (props.classOption["key"] === undefined) {
+  // eslint-disable-next-line vue/no-mutating-props
+  props.classOption["key"] = 0;
 }
 
-const wrap = templateRef<HTMLElement | null>(`wrap${classOption["key"]}`, null);
+const wrap = templateRef<HTMLElement | null>(
+  `wrap${props.classOption["key"]}`,
+  null
+);
 const slotList = templateRef<HTMLElement | null>(
-  `slotList${classOption["key"]}`,
+  `slotList${props.classOption["key"]}`,
   null
 );
 const realBox = templateRef<HTMLElement | null>(
-  `realBox${classOption["key"]}`,
+  `realBox${props.classOption["key"]}`,
   null
 );
 
@@ -107,7 +108,7 @@ const defaultOption = computed(() => {
 
 const options = computed(() => {
   // @ts-expect-error
-  return copyObj({}, unref(defaultOption), classOption);
+  return copyObj({}, unref(defaultOption), props.classOption);
 });
 
 const leftSwitchClass = computed(() => {
@@ -495,7 +496,7 @@ defineExpose({
 </script>
 
 <template>
-  <div :ref="'wrap' + classOption['key']">
+  <div :ref="'wrap' + props.classOption['key']">
     <div
       :style="leftSwitch"
       v-if="navigation"
@@ -513,7 +514,7 @@ defineExpose({
       <slot name="right-switch" />
     </div>
     <div
-      :ref="'realBox' + classOption['key']"
+      :ref="'realBox' + props.classOption['key']"
       :style="pos"
       @mouseenter="enter"
       @mouseleave="leave"
@@ -522,7 +523,7 @@ defineExpose({
       @touchend="touchEnd"
       @mousewheel.passive="wheel"
     >
-      <div :ref="'slotList' + classOption['key']" :style="float">
+      <div :ref="'slotList' + props.classOption['key']" :style="float">
         <slot />
       </div>
       <div v-html="copyHtml" :style="float" />
