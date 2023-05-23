@@ -2,9 +2,14 @@
 import { useRouter } from "vue-router";
 import { h, createVNode, ref } from "vue";
 import { message } from "@/utils/message";
-import { cloneDeep } from "@pureadmin/utils";
 import forms, { type FormProps } from "./form.vue";
-import { addDialog, closeDialog, closeAllDialog } from "@/components/ReDialog";
+import { cloneDeep, debounce } from "@pureadmin/utils";
+import {
+  addDialog,
+  closeDialog,
+  updateDialog,
+  closeAllDialog
+} from "@/components/ReDialog";
 
 defineOptions({
   name: "DialogPage"
@@ -60,13 +65,16 @@ function onStyleClick() {
   });
 }
 
-function onoOpenDelayClick() {
-  addDialog({
-    title: "延时2秒打开弹框",
-    openDelay: 2000,
-    contentRenderer: () => <p>弹框内容-延时2秒打开弹框</p>
-  });
-}
+// 添加 600ms 防抖
+const onoOpenDelayClick = debounce(
+  () =>
+    addDialog({
+      title: "延时2秒打开弹框",
+      openDelay: 2000 - 600,
+      contentRenderer: () => <p>弹框内容-延时2秒打开弹框</p>
+    }),
+  600
+);
 
 function onCloseDelayClick() {
   addDialog({
@@ -236,6 +244,35 @@ function onNestingClick() {
       >
         点击打开第{index + 1}个子弹框
       </el-button>
+    )
+  });
+}
+
+// 满足在 contentRenderer 内容区更改弹框自身属性值的场景
+function onUpdateClick() {
+  const curPage = ref(1);
+  addDialog({
+    title: `第${curPage.value}页`,
+    contentRenderer: () => (
+      <>
+        <el-button
+          disabled={curPage.value > 1 ? false : true}
+          onClick={() => {
+            curPage.value -= 1;
+            updateDialog(`第${curPage.value}页`);
+          }}
+        >
+          上一页
+        </el-button>
+        <el-button
+          onClick={() => {
+            curPage.value += 1;
+            updateDialog(`第${curPage.value}页`);
+          }}
+        >
+          下一页
+        </el-button>
+      </>
     )
   });
 }
@@ -421,6 +458,7 @@ function onBeforeSureClick() {
       <el-button @click="onOpenClick"> 打开后的回调 </el-button>
       <el-button @click="onCloseCallBackClick"> 关闭后的回调 </el-button>
       <el-button @click="onNestingClick"> 嵌套的弹框 </el-button>
+      <el-button @click="onUpdateClick"> 更改弹框自身属性值 </el-button>
     </el-space>
     <el-divider />
     <el-space wrap>
