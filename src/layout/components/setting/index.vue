@@ -32,6 +32,7 @@ import dayIcon from "@/assets/svg/day.svg?component";
 import darkIcon from "@/assets/svg/dark.svg?component";
 import Check from "@iconify-icons/ep/check";
 import Logout from "@iconify-icons/ri/logout-circle-r-line";
+import InfoFilled from "@iconify-icons/ep/info-filled";
 
 const router = useRouter();
 const { isDark } = useDark();
@@ -72,7 +73,9 @@ const settings = reactive({
   tabsVal: $storage.configure.hideTabs,
   showLogo: $storage.configure.showLogo,
   showModel: $storage.configure.showModel,
-  multiTagsCache: $storage.configure.multiTagsCache
+  multiTagsCache: $storage.configure.multiTagsCache,
+  breadcrumbIcon: $storage.configure.breadcrumbIcon,
+  tabsIcon: $storage.configure.tabsIcon
 });
 
 const getThemeColorStyle = computed(() => {
@@ -117,10 +120,23 @@ const weekChange = (value): void => {
   storageConfigureChange("weak", value);
 };
 
+/** 面包屑图标 */
+const breadcrumbIconChange = (): void => {
+  const showVal = settings.breadcrumbIcon;
+  storageConfigureChange("breadcrumbIcon", showVal);
+  emitter.emit("breadcrumbIconChange", showVal);
+};
+
 const tagsChange = () => {
   const showVal = settings.tabsVal;
   storageConfigureChange("hideTabs", showVal);
   emitter.emit("tagViewsChange", showVal as unknown as string);
+};
+
+const tabsIconChange = () => {
+  const showVal = settings.tabsIcon;
+  storageConfigureChange("tabsIcon", showVal);
+  emitter.emit("tabsIconChange", showVal);
 };
 
 const multiTagsCacheChange = () => {
@@ -342,14 +358,30 @@ onBeforeMount(() => {
         />
       </li>
       <li>
-        <span class="dark:text-white">隐藏标签页</span>
+        <span class="dark:text-white">
+          显示面包屑图标
+          <el-tooltip
+            v-if="layoutTheme.layout !== 'vertical'"
+            :effect="tooltipEffect"
+            content="仅在左侧导航模式下有效"
+            placement="bottom"
+            popper-class="pure-tooltip"
+          >
+            <el-icon :size="14" color="red">
+              <IconifyIconOffline :icon="InfoFilled" />
+            </el-icon>
+          </el-tooltip>
+        </span>
         <el-switch
-          v-model="settings.tabsVal"
+          v-model="settings.breadcrumbIcon"
           inline-prompt
+          :active-value="true"
+          :inactive-value="false"
           inactive-color="#a6a6a6"
           active-text="开"
           inactive-text="关"
-          @change="tagsChange"
+          :disabled="layoutTheme.layout !== 'vertical'"
+          @change="breadcrumbIconChange"
         />
       </li>
       <li>
@@ -363,6 +395,44 @@ onBeforeMount(() => {
           active-text="开"
           inactive-text="关"
           @change="logoChange"
+        />
+      </li>
+      <li>
+        <span class="dark:text-white">隐藏标签页</span>
+        <el-switch
+          v-model="settings.tabsVal"
+          inline-prompt
+          inactive-color="#a6a6a6"
+          active-text="开"
+          inactive-text="关"
+          @change="tagsChange"
+        />
+      </li>
+      <li>
+        <span class="dark:text-white">
+          显示标签图标
+          <el-tooltip
+            v-if="settings.tabsVal"
+            :effect="tooltipEffect"
+            content="启用标签页时有效"
+            placement="bottom"
+            popper-class="pure-tooltip"
+          >
+            <el-icon :size="14">
+              <IconifyIconOffline :icon="InfoFilled" />
+            </el-icon>
+          </el-tooltip>
+        </span>
+        <el-switch
+          v-model="settings.tabsIcon"
+          inline-prompt
+          :active-value="true"
+          :inactive-value="false"
+          inactive-color="#a6a6a6"
+          active-text="开"
+          inactive-text="关"
+          :disabled="settings.tabsVal"
+          @change="tabsIconChange"
         />
       </li>
       <li>

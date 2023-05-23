@@ -1,16 +1,25 @@
 <script setup lang="ts">
-import { isEqual } from "@pureadmin/utils";
+import { isEqual, storageLocal } from "@pureadmin/utils";
 import { transformI18n } from "@/plugins/i18n";
 import { ref, watch, onMounted, toRaw } from "vue";
+import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import { getParentPaths, findRouteByPath } from "@/router/utils";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
 import { useRoute, useRouter, RouteLocationMatched } from "vue-router";
+import { onBeforeMount } from "vue";
+import { responsiveStorageNameSpace } from "@/config";
+import { emitter } from "@/utils/mitt";
 
 const route = useRoute();
 const levelList = ref([]);
 const router = useRouter();
 const routes: any = router.options.routes;
 const multiTags: any = useMultiTagsStoreHook().multiTags;
+const showIcon = ref(
+  storageLocal().getItem<StorageConfigs>(
+    `${responsiveStorageNameSpace()}configure`
+  )?.breadcrumbIcon ?? true
+);
 
 const getBreadcrumb = (): void => {
   // 当前路由信息
@@ -77,6 +86,13 @@ onMounted(() => {
   getBreadcrumb();
 });
 
+onBeforeMount(() => {
+  // 面包屑图标动态改变
+  emitter.on("breadcrumbIconChange", show => {
+    showIcon.value = show;
+  });
+});
+
 watch(
   () => route.path,
   () => {
@@ -97,6 +113,9 @@ watch(
         :key="item.path"
       >
         <a @click.prevent="handleLink(item)">
+          <div v-if="showIcon && item.meta.icon" class="el-icon">
+            <component :is="useRenderIcon(item.meta.icon)" />
+          </div>
           {{ transformI18n(item.meta.title) }}
         </a>
       </el-breadcrumb-item>

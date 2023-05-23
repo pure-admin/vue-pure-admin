@@ -11,7 +11,9 @@ type Events = {
   openPanel: string;
   tagViewsChange: string;
   tagViewsShowModel: string;
+  tabsIconChange: boolean;
   logoChange: boolean;
+  breadcrumbIconChange: boolean;
   changLayoutRoute: {
     indexPath: string;
     parentPath: string;

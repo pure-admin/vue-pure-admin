@@ -58,6 +58,12 @@ export function useTags() {
         `${responsiveStorageNameSpace()}configure`
       ).hideTabs
     ) ?? ref("false");
+  /** 是否显示图标，默认隐藏 */
+  const showIcon = ref(
+    storageLocal().getItem<StorageConfigs>(
+      `${responsiveStorageNameSpace()}configure`
+    )?.tabsIcon ?? false
+  );
   const multiTags: any = computed(() => {
     return useMultiTagsStoreHook().multiTags;
   });
@@ -230,6 +236,7 @@ export function useTags() {
     instance,
     multiTags,
     showModel,
+    showIcon,
     tagsViews,
     buttonTop,
     buttonLeft,

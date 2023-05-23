@@ -90,6 +90,7 @@ declare global {
     Grey?: boolean;
     Weak?: boolean;
     HideTabs?: boolean;
+    TabsIcon?: boolean;
     SidebarStatus?: boolean;
     EpThemeColor?: string;
     ShowLogo?: boolean;
@@ -98,6 +99,7 @@ declare global {
     CachingAsyncRoutes?: boolean;
     TooltipEffect?: Effect;
     ResponsiveStorageNameSpace?: string;
+    BreadcrumbIcon?: boolean;
     MapConfigure?: {
       amapKey?: string;
       options: {
@@ -126,10 +128,12 @@ declare global {
     grey?: boolean;
     weak?: boolean;
     hideTabs?: boolean;
+    tabsIcon?: boolean;
     sidebarStatus?: boolean;
     epThemeColor?: string;
     showLogo?: boolean;
     showModel?: string;
+    breadcrumbIcon?: boolean;
     mapConfigure?: {
       amapKey?: string;
       options: {
@@ -162,6 +166,8 @@ declare global {
       showLogo?: boolean;
       showModel?: string;
       multiTagsCache?: boolean;
+      breadcrumbIcon?: boolean;
+      tabsIcon?: boolean;
     };
     tags?: Array<any>;
   }

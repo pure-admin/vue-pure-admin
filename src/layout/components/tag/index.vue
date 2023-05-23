@@ -7,6 +7,7 @@ import { routerArrays } from "@/layout/types";
 import { isEqual, isAllEmpty } from "@pureadmin/utils";
 import { handleAliveRoute, getTopMenu } from "@/router/utils";
 import { useSettingStoreHook } from "@/store/modules/settings";
+import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
 import { ref, watch, unref, toRaw, nextTick, onBeforeMount } from "vue";
 import { useResizeObserver, useDebounceFn, useFullscreen } from "@vueuse/core";
@@ -29,6 +30,7 @@ const {
   buttonTop,
   buttonLeft,
   showModel,
+  showIcon,
   translateX,
   pureSetting,
   activeIndex,
@@ -477,6 +479,11 @@ onBeforeMount(() => {
     (showTags as any).value = key;
   });
 
+  // 显示或隐藏标签页图标
+  emitter.on("tabsIconChange", key => {
+    showIcon.value = key;
+  });
+
   // 改变标签风格
   emitter.on("tagViewsShowModel", key => {
     showModel.value = key;
@@ -517,7 +524,7 @@ onMounted(() => {
       <IconifyIconOffline :icon="ArrowLeftSLine" @click="handleScroll(200)" />
     </span>
     <div ref="scrollbarDom" class="scroll-container">
-      <div class="tab select-none" ref="tabDom" :style="getTabStyle">
+      <div class="select-none tab" ref="tabDom" :style="getTabStyle">
         <div
           :ref="'dynamic' + index"
           v-for="(item, index) in multiTags"
@@ -538,6 +545,9 @@ onMounted(() => {
             :to="item.path"
             class="dark:!text-text_color_primary dark:hover:!text-primary"
           >
+            <div v-if="showIcon && item.meta.icon" class="el-icon">
+              <component :is="useRenderIcon(item.meta.icon)" />
+            </div>
             {{ transformI18n(item.meta.title) }}
           </router-link>
           <span
