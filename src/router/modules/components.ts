@@ -3,7 +3,7 @@ import { components } from "@/router/enums";
 
 export default {
   path: "/components",
-  redirect: "/components/video",
+  redirect: "/components/dialog",
   meta: {
     icon: "menu",
     title: $t("menus.hscomponents"),
