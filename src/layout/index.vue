@@ -8,7 +8,15 @@ import { useLayout } from "./hooks/useLayout";
 import { useAppStoreHook } from "@/store/modules/app";
 import { useSettingStoreHook } from "@/store/modules/settings";
 import { deviceDetection, useDark, useGlobal } from "@pureadmin/utils";
-import { h, reactive, computed, onMounted, defineComponent } from "vue";
+import { useDataThemeChange } from "@/layout/hooks/useDataThemeChange";
+import {
+  h,
+  reactive,
+  computed,
+  onMounted,
+  onBeforeMount,
+  defineComponent
+} from "vue";
 
 import navbar from "./components/navbar.vue";
 import tag from "./components/tag/index.vue";
@@ -100,6 +108,10 @@ onMounted(() => {
   if (isMobile) {
     toggle("mobile", false);
   }
+});
+
+onBeforeMount(() => {
+  useDataThemeChange().dataThemeChange();
 });
 
 const layoutHeader = defineComponent({

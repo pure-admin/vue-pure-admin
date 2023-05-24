@@ -54,14 +54,14 @@ export function useColumns() {
       }
     },
     {
-      label: "QQ交流群",
+      label: "精简版",
       cellRenderer: () => {
         return (
           <a
-            href="https://yiming_chang.gitee.io/pure-admin-doc/pages/support/#qq-%E4%BA%A4%E6%B5%81%E7%BE%A4"
+            href="https://github.com/pure-admin/pure-admin-thin"
             target="_blank"
           >
-            <span style="color: var(--el-color-primary)">点击加群</span>
+            <span style="color: var(--el-color-primary)">精简版</span>
           </a>
         );
       }

@@ -23,7 +23,7 @@ import {
   formatFlatteningRoutes
 } from "./utils";
 import { buildHierarchyTree } from "@/utils/tree";
-import { isUrl, openLink, storageSession } from "@pureadmin/utils";
+import { isUrl, openLink, storageSession, isAllEmpty } from "@pureadmin/utils";
 
 import remainingRouter from "./modules/remaining";
 
@@ -158,11 +158,22 @@ router.beforeEach((to: toRouteType, _from, next) => {
             getTopMenu(true);
             // query、params模式路由传参数的标签页不在此处处理
             if (route && route.meta?.title) {
-              useMultiTagsStoreHook().handleTags("push", {
-                path: route.path,
-                name: route.name,
-                meta: route.meta
-              });
+              if (isAllEmpty(route.parentId) && route.meta?.backstage) {
+                // 此处为动态顶级路由（目录）
+                const { path, name, meta } = route.children[0];
+                useMultiTagsStoreHook().handleTags("push", {
+                  path,
+                  name,
+                  meta
+                });
+              } else {
+                const { path, name, meta } = route;
+                useMultiTagsStoreHook().handleTags("push", {
+                  path,
+                  name,
+                  meta
+                });
+              }
             }
           }
           router.push(to.fullPath);
