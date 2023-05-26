@@ -24,8 +24,7 @@ The simplified version is based on the shelf extracted from [vue-pure-admin](htt
 
 ## Docs
 
-- [Click me to view the domestic documentation site](https://yiming_chang.gitee.io/pure-admin-doc)
-- [Click me to view foreign document site](https://pure-admin.github.io/pure-admin-doc)
+- [documentation site](https://yiming_chang.gitee.io/pure-admin-doc)
 
 ## Tauri
 
@@ -37,8 +36,7 @@ The simplified version is based on the shelf extracted from [vue-pure-admin](htt
 
 ## Preview
 
-- [Click me to view the domestic preview station](https://yiming_chang.gitee.io/vue-pure-admin)
-- [Click me to view foreign preview site](https://pure-admin.github.io/vue-pure-admin)
+- [preview station](https://yiming_chang.gitee.io/vue-pure-admin)
 
 - PC
 <p align="center">
