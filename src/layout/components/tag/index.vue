@@ -50,7 +50,7 @@ const tabDom = ref();
 const containerDom = ref();
 const scrollbarDom = ref();
 const isShowArrow = ref(false);
-const topPath = getTopMenu().path;
+const topPath = getTopMenu()?.path;
 const { VITE_HIDE_HOME } = import.meta.env;
 const { isFullscreen, toggle } = useFullscreen();
 
