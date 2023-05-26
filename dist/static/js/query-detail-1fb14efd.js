@@ -1,0 +1,1 @@
+import{u as a}from"./hooks-6925dbcf.js";import{d as r,e as n,k as o,C as i,h as s}from"./index-16a5163c.js";const _=r({name:"TabQueryDetail",__name:"query-detail",setup(u){const{initToDetail:e,id:t}=a();return e("query"),(l,c)=>(n(),o("div",null,i(s(t))+" - 详情页内容在此（query传参）",1))}});export{_ as default};
