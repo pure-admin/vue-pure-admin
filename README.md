@@ -24,8 +24,7 @@
 
 ## 配套保姆级文档
 
-- [点我查看国内文档站](https://yiming_chang.gitee.io/pure-admin-doc)
-- [点我查看国外文档站](https://pure-admin.github.io/pure-admin-doc)
+- [查看文档](https://yiming_chang.gitee.io/pure-admin-doc)
 
 ## `Tauri` 版
 
@@ -37,8 +36,7 @@
 
 ## 预览
 
-- [点我查看国内预览站](https://yiming_chang.gitee.io/vue-pure-admin)
-- [点我查看国外预览站](https://pure-admin.github.io/vue-pure-admin)
+- [查看预览](https://yiming_chang.gitee.io/vue-pure-admin)
 
 - PC 端
 <p align="center">
