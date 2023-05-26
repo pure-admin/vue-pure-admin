@@ -7,7 +7,7 @@ const props = defineProps({
 });
 
 const { title } = useNav();
-const topPath = getTopMenu().path;
+const topPath = getTopMenu()?.path;
 </script>
 
 <template>
