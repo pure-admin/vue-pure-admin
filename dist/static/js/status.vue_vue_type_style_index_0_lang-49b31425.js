@@ -1,0 +1,2 @@
+import{t as r}from"./data-39deef8c.js";import{d as n,b as o,e as l,c as p,u}from"./index-17f10454.js";const i=n({__name:"status",setup(_){const a=({rowIndex:e})=>e===1||e===5?"pure-warning-row":e===3||e===7?"pure-success-row":"",t=[{label:"日期",prop:"date"},{label:"姓名",prop:"name"},{label:"地址",prop:"address"}];return(e,c)=>{const s=o("pure-table");return l(),p(s,{data:u(r),columns:t,"row-class-name":a},null,8,["data"])}}});export{i as _};
+//# sourceMappingURL=status.vue_vue_type_style_index_0_lang-49b31425.js.map

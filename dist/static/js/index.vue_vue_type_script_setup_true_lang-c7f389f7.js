@@ -1,0 +1,2 @@
+import{useColumns as a}from"./columns-36b7d366.js";import{d as r,b as u,e as c,c as m,u as o}from"./index-17f10454.js";const f=r({__name:"index",setup(p){const{columns:e,dataList:n,showMouseMenu:t}=a();return(_,l)=>{const s=u("pure-table");return c(),m(s,{"row-key":"id",border:"",data:o(n),columns:o(e),onRowContextmenu:o(t)},null,8,["data","columns","onRowContextmenu"])}}});export{f as _};
+//# sourceMappingURL=index.vue_vue_type_script_setup_true_lang-c7f389f7.js.map

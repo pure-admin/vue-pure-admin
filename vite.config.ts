@@ -52,7 +52,7 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
       exclude
     },
     build: {
-      sourcemap: false,
+      sourcemap: true,
       // 消除打包大小超过500kb警告
       chunkSizeWarningLimit: 4000,
       rollupOptions: {

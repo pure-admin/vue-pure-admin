@@ -1,0 +1,2 @@
+import{b as r}from"./data-239f5f56.js";import{r as l,K as s,o as p,aA as n,l as i}from"./index-17f10454.js";function u(a){const e=l(s(r,!0)),t=[{label:"ID",prop:"id"},{label:"日期",prop:"date"},{label:"姓名",prop:"name"},{label:"地址",prop:"address"}];return p(()=>{n().then(()=>{const{setWatermark:o}=i(a.value.getTableDoms().tableWrapper);o("编程即艺术",{font:"16px Microsoft YaHei",globalAlpha:.8,forever:!0,width:252,height:80})})}),{columns:t,dataList:e}}export{u as useColumns};
+//# sourceMappingURL=columns-6f3c1f2a.js.map

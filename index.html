@@ -1,87 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="renderer" content="webkit" />
-    <meta
-      name="viewport"
-      content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0"
-    />
-    <title>vue-pure-admin</title>
-    <link rel="icon" href="/favicon.ico" />
-    <script>
-      window.process = {};
-    </script>
-  </head>
 
-  <body>
-    <div id="app">
-      <style>
-        html,
-        body,
-        #app {
-          position: relative;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 100%;
-          height: 100%;
-          overflow: hidden;
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="renderer" content="webkit" />
+  <meta name="viewport"
+    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+  <title>vue-pure-admin</title>
+  <link rel="icon" href="/favicon.ico" />
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+      var hm = document.createElement("script")
+      hm.src = "https://hm.baidu.com/hm.js?23a157b7d0d9867f7a51e42628f052f5"
+      var s = document.getElementsByTagName("script")[0]
+      s.parentNode.insertBefore(hm, s)
+    })();
+  </script>
+  <script>
+    window.process = {};
+  </script>
+</head>
+
+<body>
+  <div id="app">
+    <style>
+      html,
+      body,
+      #app {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .loader,
+      .loader::before,
+      .loader::after {
+        width: 2.5em;
+        height: 2.5em;
+        border-radius: 50%;
+        animation: load-animation 1.8s infinite ease-in-out;
+        animation-fill-mode: both;
+      }
+
+      .loader {
+        position: relative;
+        top: 0;
+        margin: 80px auto;
+        font-size: 10px;
+        color: #406eeb;
+        text-indent: -9999em;
+        transform: translateZ(0);
+        transform: translate(-50%, 0);
+        animation-delay: -0.16s;
+      }
+
+      .loader::before,
+      .loader::after {
+        position: absolute;
+        top: 0;
+        content: "";
+      }
+
+      .loader::before {
+        left: -3.5em;
+        animation-delay: -0.32s;
+      }
+
+      .loader::after {
+        left: 3.5em;
+      }
+
+      @keyframes load-animation {
+
+        0%,
+        80%,
+        100% {
+          box-shadow: 0 2.5em 0 -1.3em;
         }
 
-        .loader,
-        .loader::before,
-        .loader::after {
-          width: 2.5em;
-          height: 2.5em;
-          border-radius: 50%;
-          animation: load-animation 1.8s infinite ease-in-out;
-          animation-fill-mode: both;
+        40% {
+          box-shadow: 0 2.5em 0 0;
         }
+      }
+    </style>
+    <div class="loader"></div>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
 
-        .loader {
-          position: relative;
-          top: 0;
-          margin: 80px auto;
-          font-size: 10px;
-          color: #406eeb;
-          text-indent: -9999em;
-          transform: translateZ(0);
-          transform: translate(-50%, 0);
-          animation-delay: -0.16s;
-        }
-
-        .loader::before,
-        .loader::after {
-          position: absolute;
-          top: 0;
-          content: "";
-        }
-
-        .loader::before {
-          left: -3.5em;
-          animation-delay: -0.32s;
-        }
-
-        .loader::after {
-          left: 3.5em;
-        }
-
-        @keyframes load-animation {
-          0%,
-          80%,
-          100% {
-            box-shadow: 0 2.5em 0 -1.3em;
-          }
-
-          40% {
-            box-shadow: 0 2.5em 0 0;
-          }
-        }
-      </style>
-      <div class="loader"></div>
-    </div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
 </html>
