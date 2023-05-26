@@ -1,2 +1,0 @@
-import{useColumns as r}from"./columns-d67c0094.js";import{d as u,b as t,e as a,j as i,k as p,f as _,F as d}from"./index-17f10454.js";const h=u({__name:"Github",setup(f){const{columnsA:o,columnsB:e,columnsC:s}=r(),c=[{columns:o,column:3},{columns:e,column:2},{columns:s,column:1}];return(k,C)=>{const l=t("PureDescriptions");return a(),i(d,null,p(c,(n,m)=>_(l,{key:m,columns:n.columns,column:n.column,direction:"vertical",border:""},null,8,["columns","column"])),64)}}});export{h as _};
-//# sourceMappingURL=Github.vue_vue_type_script_setup_true_lang-0bb37aba.js.map

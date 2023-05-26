@@ -1,2 +1,0 @@
-import{useColumns as n}from"./columns-cb68266a.js";import{d as r,b as c,e as l,c as u,w as m,h as p,u as e}from"./index-17f10454.js";const x=r({__name:"index",setup(_){const{columns:o,dataList:a}=n();return(d,i)=>{const t=c("pure-table");return l(),u(t,{"row-key":"id",border:"",data:e(a),columns:e(o)},{echart:m(({index:s})=>[p("div",{ref:"PieChartRef"+s,class:"w-full h-[100px]"},null,512)]),_:1},8,["data","columns"])}}});export{x as _};
-//# sourceMappingURL=index.vue_vue_type_script_setup_true_lang-a94ad17e.js.map

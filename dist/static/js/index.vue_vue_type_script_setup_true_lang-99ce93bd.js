@@ -1,2 +1,0 @@
-import{useColumns as s}from"./columns-8879ebfd.js";import{d as a,b as r,e as c,c as m,u as e}from"./index-17f10454.js";const i=a({__name:"index",setup(u){const{columns:o,dataList:n}=s();return(p,_)=>{const t=r("pure-table");return c(),m(t,{"row-key":"id",border:"",data:e(n),columns:e(o)},null,8,["data","columns"])}}});export{i as _};
-//# sourceMappingURL=index.vue_vue_type_script_setup_true_lang-99ce93bd.js.map
