@@ -96,11 +96,12 @@ emitter.on("resize", ({ detail }) => {
       toggle("desktop", false);
       isAutoCloseSidebar = false;
     }
-  } else if (width > 990) {
-    if (!set.sidebar.isClickCollapse) {
-      toggle("desktop", true);
-      isAutoCloseSidebar = true;
-    }
+  } else if (width > 990 && !set.sidebar.isClickCollapse) {
+    toggle("desktop", true);
+    isAutoCloseSidebar = true;
+  } else {
+    toggle("desktop", false);
+    isAutoCloseSidebar = false;
   }
 });
 
