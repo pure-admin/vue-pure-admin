@@ -77,3 +77,17 @@ export function removeToken() {
 export const formatToken = (token: string): string => {
   return "Bearer " + token;
 };
+
+/** 是否拥有某个角色 */
+export const hasRole = (role: string | string[]): boolean => {
+  if ("string" === typeof role) {
+    return useUserStoreHook().roles.indexOf(role) >= 0;
+  } else {
+    for (const r in role) {
+      if (useUserStoreHook().roles.indexOf(r) >= 0) {
+        return true;
+      }
+    }
+  }
+  return false;
+};
