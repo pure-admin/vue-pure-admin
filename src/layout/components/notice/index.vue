@@ -46,8 +46,9 @@ notices.value.map(v => (noticesNum.value += v.list.length));
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 60px;
+  width: 40px;
   height: 48px;
+  margin-right: 10px;
   cursor: pointer;
 
   .header-notice-icon {

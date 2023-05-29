@@ -5,10 +5,13 @@ defineOptions({
   name: "TabParamsDetail"
 });
 
-const { initToDetail, id } = useDetail();
+const { initToDetail, getParameter } = useDetail();
 initToDetail("params");
 </script>
 
 <template>
-  <div>{{ id }} - 详情页内容在此（params传参）</div>
+  <div>
+    {{ getParameter.id }} - 详情页内容在此（params传参）
+    <p>当前页面参数为：{{ getParameter }}</p>
+  </div>
 </template>

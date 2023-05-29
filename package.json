@@ -36,7 +36,7 @@
     "@pureadmin/table": "^2.2.0",
     "@pureadmin/utils": "^1.9.2",
     "@vueuse/core": "^10.1.2",
-    "@vueuse/motion": "2.0.0-beta.12",
+    "@vueuse/motion": "^2.0.0",
     "@wangeditor/editor": "^5.1.23",
     "@wangeditor/editor-for-vue": "^5.1.12",
     "animate.css": "^4.1.1",
@@ -73,7 +73,7 @@
     "vue-types": "^5.0.3",
     "vue-virtual-scroller": "2.0.0-beta.7",
     "vue-waterfall-plugin-next": "^2.2.1",
-    "vue3-danmaku": "1.4.0-beta.1",
+    "vue3-danmaku": "^1.4.0",
     "vuedraggable": "^4.1.0",
     "xgplayer": "^3.0.2",
     "xlsx": "^0.18.5"

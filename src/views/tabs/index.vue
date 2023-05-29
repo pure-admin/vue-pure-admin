@@ -56,9 +56,16 @@ function onCloseTags() {
         class="m-2"
         v-for="index in 6"
         :key="index"
-        @click="toDetail(index, 'query')"
+        @click="toDetail({ id: index }, 'query')"
       >
         打开{{ index }}详情页
+      </el-button>
+      <el-button
+        @click="
+          toDetail({ id: 666, name: '小明', age: 18, job: '工程师' }, 'query')
+        "
+      >
+        多个参数
       </el-button>
     </div>
 
@@ -70,7 +77,7 @@ function onCloseTags() {
         class="m-2"
         v-for="index in 6"
         :key="index"
-        @click="toDetail(index, 'params')"
+        @click="toDetail({ id: index }, 'params')"
       >
         打开{{ index }}详情页
       </el-button>
