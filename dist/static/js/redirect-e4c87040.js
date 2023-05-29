@@ -1,0 +1,1 @@
+const p=Vue.defineComponent({name:"Redirect",__name:"redirect",setup(u){const{currentRoute:t,replace:r}=VueRouter.useRouter(),{params:n,query:c}=Vue.unref(t),{path:e}=n,o=Array.isArray(e)?e.join("/"):e;return r({path:"/"+o,query:c}),(a,s)=>(Vue.openBlock(),Vue.createElementBlock("div"))}});export{p as default};

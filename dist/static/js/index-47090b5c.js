@@ -1,0 +1,1 @@
+const l=Vue.defineComponent({name:"ReCol",props:{value:{type:Number,default:24}},render(){const t=this.$attrs,e=this.value;return Vue.h(ElementPlus.ElCol,{xs:e,sm:e,md:e,lg:e,xl:e,...t},{default:()=>this.$slots.default()})}});export{l as R};
