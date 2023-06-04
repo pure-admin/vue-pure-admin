@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "NODE_OPTIONS=--max-old-space-size=4096 vite",
     "serve": "pnpm dev",
-    "build": "rimraf dist && NODE_OPTIONS=--max-old-space-size=8192 vite build",
+    "build": "rimraf dist && NODE_OPTIONS=--max-old-space-size=8192 vite build && generate-version-file",
     "build:staging": "rimraf dist && vite build --mode staging",
     "report": "rimraf dist && vite build",
     "preview": "vite preview",
@@ -66,6 +66,7 @@
     "typeit": "^8.7.1",
     "v-contextmenu": "3.0.0",
     "v3-infinite-loading": "^1.2.2",
+    "version-rocket": "^1.6.2",
     "vue": "^3.3.4",
     "vue-i18n": "^9.2.2",
     "vue-json-pretty": "^2.2.4",
