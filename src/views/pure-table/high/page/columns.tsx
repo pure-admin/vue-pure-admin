@@ -6,11 +6,18 @@ import type { PaginationProps, LoadingConfig, Align } from "@pureadmin/table";
 export function useColumns() {
   const dataList = ref([]);
   const loading = ref(true);
+  const select = ref("no");
   const hideVal = ref("nohide");
   const tableSize = ref("default");
   const paginationSmall = ref(false);
   const paginationAlign = ref("right");
   const columns: TableColumnList = [
+    {
+      type: "selection",
+      align: "left",
+      reserveSelection: true,
+      hide: () => (select.value === "no" ? true : false)
+    },
     {
       label: "日期",
       prop: "date",
@@ -83,7 +90,9 @@ export function useColumns() {
       Array.from({ length: 6 }).forEach(() => {
         newList.push(clone(tableData, true));
       });
-      dataList.value = newList.flat(Infinity);
+      newList.flat(Infinity).forEach((item, index) => {
+        dataList.value.push({ id: index, ...item });
+      });
       pagination.total = dataList.value.length;
       loading.value = false;
     });
@@ -93,6 +102,7 @@ export function useColumns() {
     loading,
     columns,
     dataList,
+    select,
     hideVal,
     tableSize,
     pagination,
