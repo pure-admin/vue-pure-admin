@@ -1,7 +1,7 @@
 import { useNav } from "./useNav";
 import { useI18n } from "vue-i18n";
 import { useRoute } from "vue-router";
-import { watch, type Ref } from "vue";
+import { watch, onBeforeMount, type Ref } from "vue";
 
 export function useTranslationLang(ref?: Ref) {
   const { $storage, changeTitle, handleResize } = useNav();
@@ -26,6 +26,10 @@ export function useTranslationLang(ref?: Ref) {
       changeTitle(route.meta);
     }
   );
+
+  onBeforeMount(() => {
+    locale.value = $storage.locale?.locale ?? "zh";
+  });
 
   return {
     t,
