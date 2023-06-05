@@ -3,6 +3,7 @@
     "christian-kohler.path-intellisense",
     "vscode-icons-team.vscode-icons",
     "davidanson.vscode-markdownlint",
+    "ms-azuretools.vscode-docker",
     "stylelint.vscode-stylelint",
     "bradlc.vscode-tailwindcss",
     "dbaeumer.vscode-eslint",
