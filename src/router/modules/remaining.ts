@@ -38,5 +38,13 @@ export default [
       showLink: false,
       rank: 103
     }
+  },
+  // 消除警告提示，在添加的动态路由页面刷新后，因为没有获取到该动态路由会出现警告信息
+  {
+    path: "/:catchAll(.*)",
+    component: () => import("@/views/error/404.vue"),
+    meta: {
+      showLink: false
+    }
   }
 ] as Array<RouteConfigsTable>;
