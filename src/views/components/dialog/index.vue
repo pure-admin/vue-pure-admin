@@ -316,7 +316,11 @@ function onFormTwoClick() {
   addDialog({
     width: "30%",
     title: "结合Form表单（第二种方式）",
-    contentRenderer: () => h(forms, { formInline: formInline.value }),
+    contentRenderer: () =>
+      h(forms, {
+        formInline: formInline.value,
+        "onUpdate:formInline": val => (formInline.value = val)
+      }),
     closeCallBack: () => {
       message(
         `当前表单数据为 姓名：${formInline.value.user} 城市：${formInline.value.region}`
@@ -338,7 +342,10 @@ function onFormThreeClick() {
     width: "30%",
     title: "结合Form表单（第三种方式）",
     contentRenderer: () =>
-      createVNode(forms, { formInline: formThreeInline.value }),
+      createVNode(forms, {
+        formInline: formThreeInline.value,
+        "onUpdate:formInline": val => (formThreeInline.value = val)
+      }),
     closeCallBack: () => {
       message(
         `当前表单数据为 姓名：${formThreeInline.value.user} 城市：${formThreeInline.value.region}`
@@ -362,7 +369,7 @@ function onFormFourClick() {
   addDialog({
     width: "30%",
     title: "结合Form表单（第四种方式）",
-    contentRenderer: () => <forms formInline={formFourInline.value} />,
+    contentRenderer: () => <forms v-model:formInline={formFourInline.value} />,
     closeCallBack: () => {
       message(
         `当前表单数据为 姓名：${formFourInline.value.user} 城市：${formFourInline.value.region}`

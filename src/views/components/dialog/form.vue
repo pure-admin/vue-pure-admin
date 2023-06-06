@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, watch } from "vue";
 
 // 声明 props 类型
 export interface FormProps {
@@ -18,7 +18,16 @@ const props = withDefaults(defineProps<FormProps>(), {
 // vue 规定所有的 prop 都遵循着单向绑定原则，不能在子组件中更改 prop 值，该 form.vue 文件为子组件
 // 如果需要拿到初始化的 prop 值并使得组件变量可修改，则需要在子组件定义一个新的变量接受这个子组件的 prop
 // 推荐阅读：https://cn.vuejs.org/guide/components/props.html#one-way-data-flow
-const newFormInline = ref(props.formInline);
+
+const emit = defineEmits(["update:formInline"]);
+const newFormInline = ref({ ...props.formInline });
+watch(
+  newFormInline,
+  newVal => {
+    emit("update:formInline", newVal);
+  },
+  { deep: true }
+);
 </script>
 
 <template>
