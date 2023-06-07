@@ -12,7 +12,7 @@ export const REGEXP_PWD =
   /^(?![0-9]+$)(?![a-z]+$)(?![A-Z]+$)(?!([^(0-9a-zA-Z)]|[()])+$)(?!^.*[\u4E00-\u9FA5].*$)([^(0-9a-zA-Z)]|[()]|[a-z]|[A-Z]|[0-9]){8,18}$/;
 
 /** 登录校验 */
-const loginRules = reactive(<FormRules>{
+const loginRules = reactive<FormRules>({
   password: [
     {
       validator: (rule, value, callback) => {
@@ -44,7 +44,7 @@ const loginRules = reactive(<FormRules>{
 });
 
 /** 手机登录校验 */
-const phoneRules = reactive(<FormRules>{
+const phoneRules = reactive<FormRules>({
   phone: [
     {
       validator: (rule, value, callback) => {
@@ -76,7 +76,7 @@ const phoneRules = reactive(<FormRules>{
 });
 
 /** 忘记密码校验 */
-const updateRules = reactive(<FormRules>{
+const updateRules = reactive<FormRules>({
   phone: [
     {
       validator: (rule, value, callback) => {
