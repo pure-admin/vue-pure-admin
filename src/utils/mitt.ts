@@ -16,6 +16,7 @@ type Events = {
     indexPath: string;
     parentPath: string;
   };
+  setAdaptive: string;
 };
 
 export const emitter: Emitter<Events> = mitt<Events>();
