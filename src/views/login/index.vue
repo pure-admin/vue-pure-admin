@@ -104,6 +104,9 @@ onBeforeUnmount(() => {
 });
 
 watch(imgCode, value => {
+  if (import.meta.env.MODE === "development") {
+    ruleForm.verifyCode = value;
+  }
   useUserStoreHook().SET_VERIFYCODE(value);
 });
 </script>
