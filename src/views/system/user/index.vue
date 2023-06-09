@@ -39,7 +39,7 @@ const {
 <template>
   <div class="main">
     <tree class="w-[17%] float-left" />
-    <div class="float-right w-[81%]">
+    <div class="float-right w-[82%]">
       <el-form
         ref="formRef"
         :inline="true"
@@ -97,6 +97,7 @@ const {
         <template v-slot="{ size, dynamicColumns }">
           <pure-table
             border
+            adaptive
             align-whole="center"
             table-layout="auto"
             :loading="loading"
