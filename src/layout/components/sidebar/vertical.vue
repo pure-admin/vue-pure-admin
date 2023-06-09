@@ -7,9 +7,9 @@ import leftCollapse from "./leftCollapse.vue";
 import { useNav } from "@/layout/hooks/useNav";
 import { storageLocal } from "@pureadmin/utils";
 import { responsiveStorageNameSpace } from "@/config";
-import { ref, computed, watch, onBeforeMount } from "vue";
 import { findRouteByPath, getParentPaths } from "@/router/utils";
 import { usePermissionStoreHook } from "@/store/modules/permission";
+import { ref, computed, watch, onMounted, onBeforeUnmount } from "vue";
 
 const route = useRoute();
 const showLogo = ref(
@@ -51,12 +51,6 @@ function getSubMenuData(path: string) {
 
 getSubMenuData(route.path);
 
-onBeforeMount(() => {
-  emitter.on("logoChange", key => {
-    showLogo.value = key;
-  });
-});
-
 watch(
   () => [route.path, usePermissionStoreHook().wholeMenus],
   () => {
@@ -65,6 +59,17 @@ watch(
     menuSelect(route.path, routers);
   }
 );
+
+onMounted(() => {
+  emitter.on("logoChange", key => {
+    showLogo.value = key;
+  });
+});
+
+onBeforeUnmount(() => {
+  // 解绑`logoChange`公共事件，防止多次触发
+  emitter.off("logoChange");
+});
 </script>
 
 <template>

@@ -109,6 +109,7 @@ const {
           table-layout="auto"
           :loading="loading"
           :size="size"
+          adaptive
           :data="dataList"
           :columns="dynamicColumns"
           :pagination="pagination"

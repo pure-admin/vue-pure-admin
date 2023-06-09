@@ -8,7 +8,7 @@ import { isEqual, isAllEmpty } from "@pureadmin/utils";
 import { handleAliveRoute, getTopMenu } from "@/router/utils";
 import { useSettingStoreHook } from "@/store/modules/settings";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
-import { ref, watch, unref, toRaw, nextTick, onBeforeMount } from "vue";
+import { ref, watch, unref, toRaw, nextTick, onBeforeUnmount } from "vue";
 import { useResizeObserver, useDebounceFn, useFullscreen } from "@vueuse/core";
 
 import ExitFullscreen from "@iconify-icons/ri/fullscreen-exit-fill";
@@ -465,7 +465,17 @@ function tagOnClick(item) {
   // showMenuModel(item?.path, item?.query);
 }
 
-onBeforeMount(() => {
+watch([route], () => {
+  activeIndex.value = -1;
+  dynamicTagView();
+});
+
+watch(isFullscreen, () => {
+  tagsViews[6].icon = Fullscreen;
+  tagsViews[6].text = $t("buttons.hswholeFullScreen");
+});
+
+onMounted(() => {
   if (!instance) return;
 
   // 根据当前路由初始化操作标签页的禁用状态
@@ -489,25 +499,20 @@ onBeforeMount(() => {
       showMenuModel(indexPath);
     });
   });
-});
 
-watch([route], () => {
-  activeIndex.value = -1;
-  dynamicTagView();
-});
-
-watch(isFullscreen, () => {
-  tagsViews[6].icon = Fullscreen;
-  tagsViews[6].text = $t("buttons.hswholeFullScreen");
-});
-
-onMounted(() => {
   useResizeObserver(
     scrollbarDom,
     useDebounceFn(() => {
       dynamicTagView();
     }, 200)
   );
+});
+
+onBeforeUnmount(() => {
+  // 解绑`tagViewsChange`、`tagViewsShowModel`、`changLayoutRoute`公共事件，防止多次触发
+  emitter.off("tagViewsChange");
+  emitter.off("tagViewsShowModel");
+  emitter.off("changLayoutRoute");
 });
 </script>
 

@@ -145,7 +145,9 @@ getReleases().then(({ data }) => {
           </template>
           <el-skeleton animated :rows="7" :loading="loading">
             <template #default>
-              <Github />
+              <el-scrollbar :height="`calc(${height}px - 35vh - 340px)`">
+                <Github />
+              </el-scrollbar>
             </template>
           </el-skeleton>
         </el-card>

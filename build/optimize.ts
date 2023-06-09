@@ -33,7 +33,6 @@ const include = [
   "@howdyjs/mouse-menu",
   "@logicflow/extension",
   "vue-virtual-scroller",
-  "element-resize-detector",
   "@amap/amap-jsapi-loader",
   "el-table-infinite-scroll",
   "vue-waterfall-plugin-next",
