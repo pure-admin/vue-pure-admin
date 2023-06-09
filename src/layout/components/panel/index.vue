@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
 import { emitter } from "@/utils/mitt";
 import { onClickOutside } from "@vueuse/core";
+import { ref, computed, onMounted, onBeforeUnmount } from "vue";
 import Close from "@iconify-icons/ep/close";
 
 const target = ref(null);
@@ -27,8 +27,15 @@ onClickOutside(target, (event: any) => {
   show.value = false;
 });
 
-emitter.on("openPanel", () => {
-  show.value = true;
+onMounted(() => {
+  emitter.on("openPanel", () => {
+    show.value = true;
+  });
+});
+
+onBeforeUnmount(() => {
+  // 解绑`openPanel`公共事件，防止多次触发
+  emitter.off("openPanel");
 });
 </script>
 

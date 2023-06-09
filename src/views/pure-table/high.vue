@@ -1,7 +1,6 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import { list } from "./high/list";
-import { ref, nextTick } from "vue";
-import { emitter } from "@/utils/mitt";
 
 defineOptions({
   name: "PureTableHigh"
@@ -10,11 +9,6 @@ defineOptions({
 const selected = ref(0);
 
 function tabClick({ index }) {
-  if (index == 0) {
-    nextTick(() => {
-      emitter.emit("setAdaptive");
-    });
-  }
   selected.value = index;
 }
 </script>
