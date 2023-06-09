@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useIntervalFn } from "@vueuse/core";
 import { ref, computed, watch, type Ref } from "vue";
-import { useAppStoreHook } from "@/store/modules/app";
+import { useSettingStoreHook } from "@/store/modules/settings";
 import {
   delay,
   useDark,
@@ -20,6 +20,8 @@ const { setOptions, getInstance, resize } = useECharts(
   lineChartRef as Ref<HTMLDivElement>,
   { theme }
 );
+
+const pureSetting = useSettingStoreHook();
 
 const xData = (() => {
   const data: any[] = [];
@@ -175,7 +177,7 @@ useIntervalFn(() => {
 }, 2000);
 
 watch(
-  () => useAppStoreHook().getSidebarStatus,
+  () => pureSetting.hiddenSideBar,
   () => {
     delay(600).then(() => resize());
   }

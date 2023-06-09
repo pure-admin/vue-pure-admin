@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, watch, type Ref } from "vue";
-import { useAppStoreHook } from "@/store/modules/app";
+import { useSettingStoreHook } from "@/store/modules/settings";
 import {
   delay,
   useDark,
@@ -18,6 +18,8 @@ const pieChartRef = ref<HTMLDivElement | null>(null);
 const { setOptions, resize } = useECharts(pieChartRef as Ref<HTMLDivElement>, {
   theme
 });
+
+const pureSetting = useSettingStoreHook();
 
 setOptions(
   {
@@ -69,7 +71,7 @@ setOptions(
 );
 
 watch(
-  () => useAppStoreHook().getSidebarStatus,
+  () => pureSetting.hiddenSideBar,
   () => {
     delay(600).then(() => resize());
   }
