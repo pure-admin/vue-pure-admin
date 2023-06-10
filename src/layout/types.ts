@@ -6,7 +6,6 @@ export const routerArrays: Array<RouteConfigs> =
     ? [
         {
           path: "/welcome",
-          parentPath: "/",
           meta: {
             title: "menus.hshome",
             icon: "homeFilled"
@@ -25,7 +24,6 @@ export type routeMetaType = {
 
 export type RouteConfigs = {
   path?: string;
-  parentPath?: string;
   query?: object;
   params?: object;
   meta?: routeMetaType;

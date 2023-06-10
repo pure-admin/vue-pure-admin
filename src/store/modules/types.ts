@@ -24,7 +24,6 @@ export type appType = {
 
 export type multiType = {
   path: string;
-  parentPath: string;
   name: string;
   meta: any;
   query?: object;

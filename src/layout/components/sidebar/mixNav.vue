@@ -21,10 +21,8 @@ const { t, route, locale, translationCh, translationEn } =
   useTranslationLang(menuRef);
 const {
   device,
-  routers,
   logout,
   onPanel,
-  menuSelect,
   resolvePath,
   username,
   userAvatar,
@@ -72,7 +70,6 @@ watch(
       mode="horizontal"
       class="horizontal-header-menu"
       :default-active="defaultActive"
-      @select="indexPath => menuSelect(indexPath, routers)"
     >
       <el-menu-item
         v-for="route in usePermissionStoreHook().wholeMenus"

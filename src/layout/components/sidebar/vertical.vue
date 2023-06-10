@@ -18,8 +18,7 @@ const showLogo = ref(
   )?.showLogo ?? true
 );
 
-const { routers, device, pureApp, isCollapse, menuSelect, toggleSideBar } =
-  useNav();
+const { device, pureApp, isCollapse, menuSelect, toggleSideBar } = useNav();
 
 const subMenuData = ref([]);
 
@@ -56,7 +55,7 @@ watch(
   () => {
     if (route.path.includes("/redirect")) return;
     getSubMenuData(route.path);
-    menuSelect(route.path, routers);
+    menuSelect(route.path);
   }
 );
 
@@ -90,7 +89,6 @@ onBeforeUnmount(() => {
         :collapse="isCollapse"
         :default-active="route.path"
         :collapse-transition="false"
-        @select="indexPath => menuSelect(indexPath, routers)"
       >
         <sidebar-item
           v-for="routes in menuData"
