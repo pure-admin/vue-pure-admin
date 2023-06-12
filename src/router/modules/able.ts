@@ -11,6 +11,15 @@ export default {
   },
   children: [
     {
+      path: "/able/directives",
+      name: "Directives",
+      component: () => import("@/views/able/directives.vue"),
+      meta: {
+        title: $t("menus.hsOptimize"),
+        extraIcon: "IF-pure-iconfont-new svg"
+      }
+    },
+    {
       path: "/able/watermark",
       name: "WaterMark",
       component: () => import("@/views/able/watermark.vue"),
