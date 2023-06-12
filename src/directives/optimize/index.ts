@@ -38,7 +38,7 @@ export const optimize: Directive = {
               )
             : throttle(
                 params ? () => value.fn(...params) : value.fn,
-                value?.timeout ?? 200
+                value?.timeout ?? 1000
               )
         );
       } else {
