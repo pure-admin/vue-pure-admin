@@ -166,7 +166,7 @@ function onFresh() {
     path: "/redirect" + fullPath,
     query
   });
-  handleAliveRoute(route as toRouteType, "refresh");
+  handleAliveRoute(route as ToRouteType, "refresh");
 }
 
 function deleteDynamicTag(obj: any, current: any, tag?: string) {
@@ -239,7 +239,7 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
 
 function deleteMenu(item, tag?: string) {
   deleteDynamicTag(item, item.path, tag);
-  handleAliveRoute(route as toRouteType);
+  handleAliveRoute(route as ToRouteType);
 }
 
 function onClickDrop(key, item, selectRoute?: RouteConfigs) {
@@ -287,7 +287,7 @@ function onClickDrop(key, item, selectRoute?: RouteConfigs) {
         length: multiTags.value.length
       });
       router.push(topPath);
-      handleAliveRoute(route as toRouteType);
+      handleAliveRoute(route as ToRouteType);
       break;
     case 6:
       // 整体页面全屏

@@ -2,6 +2,7 @@
 import extraIcon from "./extraIcon.vue";
 import Search from "../search/index.vue";
 import Notice from "../notice/index.vue";
+import { isAllEmpty } from "@pureadmin/utils";
 import { useNav } from "@/layout/hooks/useNav";
 import { transformI18n } from "@/plugins/i18n";
 import { ref, toRaw, watch, onMounted, nextTick } from "vue";
@@ -36,10 +37,9 @@ function getDefaultActive(routePath) {
   const wholeMenus = usePermissionStoreHook().wholeMenus;
   /** 当前路由的父级路径 */
   const parentRoutes = getParentPaths(routePath, wholeMenus)[0];
-  defaultActive.value = findRouteByPath(
-    parentRoutes,
-    wholeMenus
-  )?.children[0]?.path;
+  defaultActive.value = !isAllEmpty(route.meta?.activePath)
+    ? route.meta.activePath
+    : findRouteByPath(parentRoutes, wholeMenus)?.children[0]?.path;
 }
 
 onMounted(() => {

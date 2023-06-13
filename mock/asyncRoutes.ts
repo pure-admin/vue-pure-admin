@@ -179,6 +179,7 @@ const tabsRouter = {
       meta: {
         // 不在menu菜单中显示
         showLink: false,
+        activePath: "/tabs/index",
         roles: ["admin", "common"]
       }
     },
@@ -190,6 +191,7 @@ const tabsRouter = {
       meta: {
         // 不在menu菜单中显示
         showLink: false,
+        activePath: "/tabs/index",
         roles: ["admin", "common"]
       }
     }
