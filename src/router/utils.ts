@@ -256,7 +256,7 @@ function formatTwoStageRoutes(routesList: RouteRecordRaw[]) {
 }
 
 /** 处理缓存路由（添加、删除、刷新） */
-function handleAliveRoute({ name }: toRouteType, mode?: string) {
+function handleAliveRoute({ name }: ToRouteType, mode?: string) {
   switch (mode) {
     case "add":
       usePermissionStoreHook().cacheOperate({
