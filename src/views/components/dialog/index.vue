@@ -2,9 +2,15 @@
 import { useRouter } from "vue-router";
 import { h, createVNode, ref } from "vue";
 import { message } from "@/utils/message";
-import { cloneDeep } from "@pureadmin/utils";
 import forms, { type FormProps } from "./form.vue";
-import { addDialog, closeDialog, closeAllDialog } from "@/components/ReDialog";
+import formPrimitive from "./formPrimitive.vue";
+import { cloneDeep, debounce } from "@pureadmin/utils";
+import {
+  addDialog,
+  closeDialog,
+  updateDialog,
+  closeAllDialog
+} from "@/components/ReDialog";
 
 defineOptions({
   name: "DialogPage"
@@ -60,13 +66,16 @@ function onStyleClick() {
   });
 }
 
-function onoOpenDelayClick() {
-  addDialog({
-    title: "延时2秒打开弹框",
-    openDelay: 2000,
-    contentRenderer: () => <p>弹框内容-延时2秒打开弹框</p>
-  });
-}
+// 添加 600ms 防抖
+const onoOpenDelayClick = debounce(
+  () =>
+    addDialog({
+      title: "延时2秒打开弹框",
+      openDelay: 2000 - 600,
+      contentRenderer: () => <p>弹框内容-延时2秒打开弹框</p>
+    }),
+  600
+);
 
 function onCloseDelayClick() {
   addDialog({
@@ -240,6 +249,35 @@ function onNestingClick() {
   });
 }
 
+// 满足在 contentRenderer 内容区更改弹框自身属性值的场景
+function onUpdateClick() {
+  const curPage = ref(1);
+  addDialog({
+    title: `第${curPage.value}页`,
+    contentRenderer: () => (
+      <>
+        <el-button
+          disabled={curPage.value > 1 ? false : true}
+          onClick={() => {
+            curPage.value -= 1;
+            updateDialog(`第${curPage.value}页`);
+          }}
+        >
+          上一页
+        </el-button>
+        <el-button
+          onClick={() => {
+            curPage.value += 1;
+            updateDialog(`第${curPage.value}页`);
+          }}
+        >
+          下一页
+        </el-button>
+      </>
+    )
+  });
+}
+
 // 结合Form表单（第一种方式，弹框关闭立刻恢复初始值）通过 props 属性接收子组件的 prop 并赋值
 function onFormOneClick() {
   addDialog({
@@ -279,7 +317,10 @@ function onFormTwoClick() {
   addDialog({
     width: "30%",
     title: "结合Form表单（第二种方式）",
-    contentRenderer: () => h(forms, { formInline: formInline.value }),
+    contentRenderer: () =>
+      h(forms, {
+        formInline: formInline.value
+      }),
     closeCallBack: () => {
       message(
         `当前表单数据为 姓名：${formInline.value.user} 城市：${formInline.value.region}`
@@ -301,7 +342,9 @@ function onFormThreeClick() {
     width: "30%",
     title: "结合Form表单（第三种方式）",
     contentRenderer: () =>
-      createVNode(forms, { formInline: formThreeInline.value }),
+      createVNode(forms, {
+        formInline: formThreeInline.value
+      }),
     closeCallBack: () => {
       message(
         `当前表单数据为 姓名：${formThreeInline.value.user} 城市：${formThreeInline.value.region}`
@@ -332,6 +375,26 @@ function onFormFourClick() {
       );
       // 重置表单数据
       formFourInline.value = cloneDeep(resetFormFourInline);
+    }
+  });
+}
+
+// 子组件 prop 为 primitive 类型的 demo
+const formPrimitiveParam = ref("Hello World");
+const resetFormPrimitiveParam = ref(formPrimitiveParam.value);
+function onFormPrimitiveFormClick() {
+  addDialog({
+    width: "30%",
+    title: "子组件 prop 为 primitive 类型 demo",
+    contentRenderer: () =>
+      h(formPrimitive, {
+        data: formPrimitiveParam.value,
+        "onUpdate:data": val => (formPrimitiveParam.value = val)
+      }),
+    closeCallBack: () => {
+      message(`当前表单内容：${formPrimitiveParam.value}`);
+      // 重置表单数据
+      formPrimitiveParam.value = resetFormPrimitiveParam.value;
     }
   });
 }
@@ -421,6 +484,7 @@ function onBeforeSureClick() {
       <el-button @click="onOpenClick"> 打开后的回调 </el-button>
       <el-button @click="onCloseCallBackClick"> 关闭后的回调 </el-button>
       <el-button @click="onNestingClick"> 嵌套的弹框 </el-button>
+      <el-button @click="onUpdateClick"> 更改弹框自身属性值 </el-button>
     </el-space>
     <el-divider />
     <el-space wrap>
@@ -435,6 +499,9 @@ function onBeforeSureClick() {
       </el-button>
       <el-button @click="onFormFourClick">
         结合Form表单（第四种方式）
+      </el-button>
+      <el-button @click="onFormPrimitiveFormClick">
+        子组件 prop 为 primitive 类型
       </el-button>
     </el-space>
     <el-divider />

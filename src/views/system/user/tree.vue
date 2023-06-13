@@ -87,7 +87,10 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="h-full min-h-[780px] bg-bg_color overflow-auto">
+  <div
+    class="h-full bg-bg_color overflow-auto"
+    :style="{ minHeight: `calc(100vh - 133px)` }"
+  >
     <div class="flex items-center h-[34px]">
       <p class="flex-1 ml-2 font-bold text-base truncate" title="部门列表">
         部门列表

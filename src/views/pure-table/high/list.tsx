@@ -1,3 +1,4 @@
+import Adaptive from "./adaptive/index.vue";
 import Page from "./page/index.vue";
 import RowDrag from "./drag/row/index.vue";
 import ColumnDrag from "./drag/column/index.vue";
@@ -13,6 +14,12 @@ const rendContent = (val: string) =>
   `代码位置：src/views/pure-table/high/${val}/index.vue`;
 
 export const list = [
+  {
+    key: "adaptive",
+    content: rendContent("adaptive"),
+    title: "自适应内容区高度",
+    component: Adaptive
+  },
   {
     key: "page",
     content: rendContent("page"),

@@ -145,6 +145,7 @@ onKeyStroke("ArrowDown", handleDown);
     :style="{
       borderRadius: '6px'
     }"
+    append-to-body
     @opened="inputRef.focus()"
     @closed="inputRef.blur()"
   >

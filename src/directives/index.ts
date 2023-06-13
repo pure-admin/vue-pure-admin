@@ -1,2 +1,3 @@
 export * from "./auth";
-export * from "./elResizeDetector";
+export * from "./copy";
+export * from "./optimize";

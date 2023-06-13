@@ -1,3 +1,33 @@
+# 4.3.0 (2023-06-04)
+
+### 🎫 Feat
+
+- Add `docker` support
+- Add project version real-time update detection function
+- Improve system management - role management page
+- Waterfall component adds infinite scrolling
+- Add `updateDialog` to the functional bullet box to change the property value of the bullet box itself
+- `wangeditor` rich text add multiple rich text and custom image upload examples
+- Advanced usage of `pure-table` table added keep checked `CheckBox` option example
+- Added `title` slot to `RePureTableBar` component
+
+### 🐞 Bug fixes
+
+- Fixed the problem that the countdown to obtain the verification code will be disabled with a delay of `1s`
+- Fixed the problem that the icon selector did not initialize the preview correctly
+- Fixed dynamic routing redirection causing duplicate content on tabs
+- Fix the problem that the `getTopMenu()` function cannot get `path` and report an error when the page is forced to refresh
+- Fix the problem that the left menu does not display as a whole due to the sudden pull up after the left menu is folded
+- Fixed `RePureTableBar` scrollbar issue in `windows` after turning off column settings
+
+### 🍏 Perf
+
+-Optimized tab page operation-routing parameter transfer mode usage
+
+- Optimize menu search function and style
+- Update `vscode` code snippets
+- Optimize the initialization call timing of `dataThemeChange` theme setting
+
 # 4.2.0 (2023-05-15)
 
 ### 🎫 Feat

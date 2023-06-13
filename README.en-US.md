@@ -24,8 +24,7 @@ The simplified version is based on the shelf extracted from [vue-pure-admin](htt
 
 ## Docs
 
-- [Click me to view the domestic documentation site](https://yiming_chang.gitee.io/pure-admin-doc)
-- [Click me to view foreign document site](https://pure-admin.github.io/pure-admin-doc)
+- [documentation site](https://yiming_chang.gitee.io/pure-admin-doc)
 
 ## Tauri
 
@@ -37,8 +36,7 @@ The simplified version is based on the shelf extracted from [vue-pure-admin](htt
 
 ## Preview
 
-- [Click me to view the domestic preview station](https://yiming_chang.gitee.io/vue-pure-admin)
-- [Click me to view foreign preview site](https://pure-admin.github.io/vue-pure-admin)
+- [preview station](https://yiming_chang.gitee.io/vue-pure-admin)
 
 - PC
 <p align="center">
@@ -91,6 +89,28 @@ pnpm serve
 ```bash
 pnpm build
 ```
+
+## Docker support
+
+1. Customize the image named `vue-pure-admin` (please note that there is a dot `.` at the end of the command below, indicating that the `Dockerfile` file in the current path is used, and the path can be specified according to the actual situation)
+
+```bash
+docker build -t vue-pure-admin .
+```
+
+2. Port mapping and start the `docker` container (`8080:80`: indicates that the `80` port is used in the container, and the port is forwarded to the `8080` port of the host; `pure-admin`: indicates a custom container name; `vue-pure-admin`: indicates the custom image name)
+
+```bash
+docker run -dp 8080:80  --name pure-admin vue-pure-admin
+```
+
+After operating the above two commands, open `http://localhost:8080` in the browser to preview
+
+Of course, you can also operate the `docker` project through the [Docker Desktop](https://www.docker.com/products/docker-desktop/) visual interface, as shown below
+
+<p align="center">
+  <img alt="docker" width="100%" src="https://yiming_chang.gitee.io/pure-admin-doc/img/docker/1.jpg">
+</p>
 
 ## Change Log
 

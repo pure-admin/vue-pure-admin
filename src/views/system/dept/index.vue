@@ -90,6 +90,8 @@ const {
         <pure-table
           ref="tableRef"
           border
+          adaptive
+          :adaptiveConfig="{ offsetBottom: 32 }"
           align-whole="center"
           row-key="id"
           showOverflowTooltip

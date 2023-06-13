@@ -1,45 +1,35 @@
+import type {
+  LoadingConfig,
+  AdaptiveConfig,
+  PaginationProps
+} from "@pureadmin/table";
 import { tableData } from "../data";
+import { ref, onMounted, reactive } from "vue";
 import { clone, delay } from "@pureadmin/utils";
-import { ref, onMounted, reactive, watchEffect } from "vue";
-import type { PaginationProps, LoadingConfig, Align } from "@pureadmin/table";
 
 export function useColumns() {
   const dataList = ref([]);
   const loading = ref(true);
-  const select = ref("no");
-  const hideVal = ref("nohide");
-  const tableSize = ref("default");
-  const paginationSmall = ref(false);
-  const paginationAlign = ref("right");
   const columns: TableColumnList = [
     {
-      type: "selection",
-      align: "left",
-      reserveSelection: true,
-      hide: () => (select.value === "no" ? true : false)
-    },
-    {
       label: "日期",
-      prop: "date",
-      hide: () => (hideVal.value === "hideDate" ? true : false)
+      prop: "date"
     },
     {
       label: "姓名",
-      prop: "name",
-      hide: () => (hideVal.value === "hideName" ? true : false)
+      prop: "name"
     },
     {
       label: "地址",
-      prop: "address",
-      hide: () => (hideVal.value === "hideAddress" ? true : false)
+      prop: "address"
     }
   ];
 
   /** 分页配置 */
   const pagination = reactive<PaginationProps>({
-    pageSize: 10,
+    pageSize: 20,
     currentPage: 1,
-    pageSizes: [10, 15, 20],
+    pageSizes: [20, 40, 60],
     total: 0,
     align: "right",
     background: true,
@@ -64,9 +54,17 @@ export function useColumns() {
     // background: rgba()
   });
 
-  function onChange(val) {
-    pagination.small = val;
-  }
+  /** 撑满内容区自适应高度相关配置 */
+  const adaptiveConfig: AdaptiveConfig = {
+    /** 表格距离页面底部的偏移量，默认值为 `96` */
+    offsetBottom: 110
+    /** 是否固定表头，默认值为 `true`（如果不想固定表头，fixHeader设置为false并且表格要设置table-layout="auto"） */
+    // fixHeader: true
+    /** 页面 `resize` 时的防抖时间，默认值为 `60` ms */
+    // timeout: 60
+    /** 表头的 `z-index`，默认值为 `100` */
+    // zIndex: 100
+  };
 
   function onSizeChange(val) {
     console.log("onSizeChange", val);
@@ -79,10 +77,6 @@ export function useColumns() {
       loading.value = false;
     });
   }
-
-  watchEffect(() => {
-    pagination.align = paginationAlign.value as Align;
-  });
 
   onMounted(() => {
     delay(600).then(() => {
@@ -102,14 +96,9 @@ export function useColumns() {
     loading,
     columns,
     dataList,
-    select,
-    hideVal,
-    tableSize,
     pagination,
     loadingConfig,
-    paginationAlign,
-    paginationSmall,
-    onChange,
+    adaptiveConfig,
     onSizeChange,
     onCurrentChange
   };

@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import dayjs from "dayjs";
-import axios from "axios";
 import MdEditor from "md-editor-v3";
 import Bar from "./components/Bar.vue";
 import Pie from "./components/Pie.vue";
 import Line from "./components/Line.vue";
+import { getReleases } from "@/api/list";
 import TypeIt from "@/components/ReTypeit";
 import { useWindowSize } from "@vueuse/core";
 import { ref, computed, markRaw } from "vue";
@@ -29,23 +29,19 @@ setTimeout(() => {
   loading.value = !loading.value;
 }, 800);
 
-axios
-  .get(
-    "https://gitee.com/api/v5/repos/yiming_chang/vue-pure-admin/releases?page=1&per_page=50&direction=desc"
-  )
-  .then(res => {
-    list.value = res.data.map(v => {
-      return {
-        content: v.body,
-        timestamp: dayjs(v.published_at).format("YYYY/MM/DD hh:mm:ss A"),
-        icon: markRaw(
-          useRenderFlicker({
-            background: randomColor({ type: "hex" }) as string
-          })
-        )
-      };
-    });
+getReleases().then(({ data }) => {
+  list.value = data.list.map(v => {
+    return {
+      content: v.body,
+      timestamp: dayjs(v.published_at).format("YYYY/MM/DD hh:mm:ss A"),
+      icon: markRaw(
+        useRenderFlicker({
+          background: randomColor({ type: "hex" }) as string
+        })
+      )
+    };
   });
+});
 </script>
 
 <template>
@@ -149,7 +145,9 @@ axios
           </template>
           <el-skeleton animated :rows="7" :loading="loading">
             <template #default>
-              <Github />
+              <el-scrollbar :height="`calc(${height}px - 35vh - 340px)`">
+                <Github />
+              </el-scrollbar>
             </template>
           </el-skeleton>
         </el-card>

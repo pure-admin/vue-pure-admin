@@ -234,7 +234,6 @@ watch($storage, ({ layout }) => {
 });
 
 onBeforeMount(() => {
-  dataThemeChange();
   /* 初始化项目配置 */
   nextTick(() => {
     settings.greyVal &&

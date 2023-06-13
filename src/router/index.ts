@@ -101,7 +101,7 @@ const whiteList = ["/login"];
 
 const { VITE_HIDE_HOME } = import.meta.env;
 
-router.beforeEach((to: toRouteType, _from, next) => {
+router.beforeEach((to: ToRouteType, _from, next) => {
   if (to.meta?.keepAlive) {
     handleAliveRoute(to, "add");
     // 页面整体刷新和点击标签页刷新
@@ -176,7 +176,8 @@ router.beforeEach((to: toRouteType, _from, next) => {
               }
             }
           }
-          router.push(to.fullPath);
+          // 确保动态路由完全加入路由列表并且不影响静态路由（注意：动态路由刷新时router.beforeEach可能会触发两次，第一次触发动态路由还未完全添加，第二次动态路由才完全添加到路由列表，如果需要在router.beforeEach做一些判断可以在to.name存在的条件下去判断，这样就只会触发一次）
+          if (isAllEmpty(to.name)) router.push(to.fullPath);
         });
       }
       toCorrectRoute();
