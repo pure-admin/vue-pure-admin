@@ -1,1 +1,0 @@
-import{_ as o}from"./regist.vue_vue_type_script_setup_true_lang-18a541ea.js";import"./index-2864f194.js";import"./motion-2dcabcc4.js";import"./verifyCode-fda4371c.js";import"./hooks-368305b7.js";import"./lock-fill-34b71c6c.js";import"./iphone-bcaa848c.js";import"./user-3-fill-70ba8c19.js";export{o as default};
