@@ -462,6 +462,11 @@ export default [
         data: {
           list: [
             {
+              created_at: "2023-06-14T02:52:19Z",
+              published_at: "2023-06-14T02:54:41Z",
+              body: "# 4.4.0 (2023-06-14)\r\n\r\n### 🎫 Feat\r\n\r\n- 路由 `meta` 添加 `activePath` 属性，可将某个菜单激活（主要用于通过 `query` 或 `params` 传参的路由，当它们通过配置 `showLink: false` 后不在菜单中显示，就不会有任何菜单高亮，而通过设置 `activePath` 指定激活菜单即可获得高亮，`activePath` 为指定激活菜单的 `path` [查看详情](https://github.com/pure-admin/vue-pure-admin/commit/58cafbc73ffa27253446ee93077e1e382519ce8a#commitcomment-117834411)）\r\n- `pure-admin-table` 高级用法添加自适应内容区高度示例\r\n- 添加防抖、节流和文本复制指令并规范自定义指令用法错误时的提示以及添加使用示例\r\n- `notice` 消息提示组件空数据时添加 `el-empty` 组件\r\n- 函数式弹窗示例代码添加子组件 `prop` 为 `primitive` 类型的示例\r\n- 添加 `vscode-docker` 插件\r\n\r\n### 🐞 Bug fixes\r\n\r\n- 修复国际化切换到英文模式刷新会回到中文模式\r\n- 修复搜索菜单功能的弹框遮罩未覆盖左侧菜单的问题\r\n\r\n### 🍏 Perf\r\n\r\n- 页面切换性能优化，不考虑网络的情况下，页面切换逻辑的速度差不多比之前快 `3-4` 倍 [查看优化详情](https://github.com/pure-admin/vue-pure-admin/pull/600#issuecomment-1586094078)\r\n- 优化标签页操作-路由传参模式用法\r\n- 系统管理中表格均改为自适应内容区高度，需将 `@pureadmin/table` 升级到最新版\r\n- 使用 `vueuse` 的 `useResizeObserver` 函数替换 `v-resize` 自定义指令，从测试后的表现来看性能会更好\r\n- 对未解绑的公共事件，在页面销毁时解绑"
+            },
+            {
               created_at: "2023-06-04T04:11:51Z",
               published_at: "2023-06-04T04:13:24Z",
               body: "# 4.3.0 (2023-06-04)\r\n\r\n### 🎫 Feat\r\n\r\n- 添加 `docker` 支持\r\n- 添加项目版本实时更新检测功能\r\n- 完善系统管理-角色管理页面\r\n- 瀑布流组件添加无限滚动\r\n- 函数式弹框添加 `updateDialog` 更改弹框自身属性值方法\r\n- `wangeditor` 富文本添加多个富文本和自定义图片上传示例\r\n- `pure-table` 表格高级用法添加保留已选中的 `CheckBox` 选项示例\r\n- `RePureTableBar` 组件添加 `title` 插槽\r\n\r\n### 🐞 Bug fixes\r\n\r\n- 修复获取验证码倒计时会有 `1s` 延时禁用的问题\r\n- 修复图标选择器未正确初始化预览问题\r\n- 修复动态路由重定向造成标签页出现重复内容\r\n- 修复强制刷新页面 `getTopMenu()` 函数获取不到 `path` 报错的问题\r\n- 修复左侧菜单折叠后突然拉升造成左侧菜单整体不显示的问题\r\n- 修复 `RePureTableBar` 关闭列设置后在 `windows` 出现滚动条的问题\r\n\r\n### 🍏 Perf\r\n\r\n- 优化标签页操作-路由传参模式用法\r\n- 优化菜单搜索功能和样式\r\n- 更新 `vscode` 代码片段\r\n- 优化 `dataThemeChange` 主题设置的初始化调用时机"
