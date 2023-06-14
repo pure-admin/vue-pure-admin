@@ -1,3 +1,27 @@
+# 4.4.0 (2023-06-14)
+
+### 🎫 Feat
+
+- Route `meta` adds `activePath` attribute, which can activate a menu (mainly used for routes that pass parameters through `query` or `params`, when they are not displayed in the menu after configuring `showLink: false`, they will be There will be no menu highlighting, but you can get highlighting by setting `activePath` to specify the active menu, `activePath` is the `path` of the specified active menu [View details](https://github.com/pure-admin/vue-pure-admin/commit/58cafbc73ffa27253446ee93077e1e382519ce8a#commitcomment-117834411))
+- Example of advanced usage of `pure-admin-table` to add adaptive content area height
+- Add anti-shake, throttling and text copy instructions and standardize the prompts when custom instructions are used incorrectly and add usage examples
+- Add `el-empty` component when the `notice` message prompts the component to have empty data
+- Example code of functional popup window adding subcomponent `prop` as `primitive` type example
+- Add `vscode-docker` plugin
+
+### 🐞 Bug fixes
+
+- Fix internationalization switch to English mode and refresh will return to Chinese mode
+- Fixed the problem that the pop-up mask of the search menu function did not cover the left menu
+
+### 🍏 Perf
+
+- Page switching performance optimization, regardless of the network, the speed of page switching logic is almost `3-4` times faster than before [View optimization details](https://github.com/pure-admin/vue-pure-admin/pull/600#issuecomment-1586094078)
+-Optimized tab page operation-routing parameter transfer mode usage
+- All tables in the system management are changed to adaptive content area height, need to upgrade `@pureadmin/table` to the latest version
+- Use the `useResizeObserver` function of `vueuse` to replace the `v-resize` custom directive, and the performance will be better from the performance after testing
+- For unbound public events, unbind when the page is destroyed
+
 # 4.3.0 (2023-06-04)
 
 ### 🎫 Feat
