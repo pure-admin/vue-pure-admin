@@ -1,0 +1,38 @@
+name: "\U0001F41E Bug report"
+description: Report an issue with vue-pure-admin
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢您花时间填写此错误报告 (Thanks for taking the time to fill out this bug report)
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: 描述问题 (Describe the problem)
+      placeholder: 请描述您的问题 (Please describe your problem)
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction-steps
+    attributes:
+      label: 如何复现该问题 (How to reproduce the problem)
+      placeholder: 请提供复现问题的具体操作步骤，以便平台快速定位、高效地解决问题。当然如果问题的操作步骤较复杂，您可以fork平台，然后去改动代码复现问题，这样更高效 (Please provide specific steps to reproduce the problem, so that the platform can quickly locate and solve the problem efficiently. Of course, if the operation steps of the problem are more complicated, you can fork the platform, and then modify the code to reproduce the problem, which is more efficient)
+    validations:
+      required: true
+  - type: textarea
+    id: system-info
+    attributes:
+      label: 操作系统和浏览器信息 (Operating system and browser information)
+      placeholder: 如果您遇到操作系统或浏览器兼容性问题，可选填此项 (Optional if you encounter operating system or browser compatibility issues)
+    validations:
+      required: false
+  - type: checkboxes
+    id: checkboxes
+    attributes:
+      label: 验证 (Verify)
+      description: 在提交问题之前，请确保您执行以下操作 (Before submitting an issue, please ensure you do the following)
+      options:
+        - label: 是否仔细阅读过 [文档](https://yiming_chang.gitee.io/pure-admin-doc/) (Have you read [documentation](https://yiming_chang.gitee.io/pure-admin-doc/) carefully)
+          required: true
+        - label: 检查是否存在相同或类似的问题 [issues](https://github.com/pure-admin/vue-pure-admin/issues) (Check for the same or similar [issues](https://github.com/pure-admin/vue-pure-admin/issues))
+          required: true
