@@ -13,7 +13,7 @@ specifiers:
   "@logicflow/extension": ^1.2.8
   "@pureadmin/descriptions": ^1.1.1
   "@pureadmin/table": ^2.3.2
-  "@pureadmin/theme": ^3.0.0
+  "@pureadmin/theme": ^3.1.0
   "@pureadmin/utils": ^1.9.3
   "@types/intro.js": ^5.1.1
   "@types/js-cookie": ^3.0.3
@@ -142,12 +142,12 @@ dependencies:
   mockjs: 1.1.0
   nprogress: 0.2.0
   path: 0.12.7
-  pinia: 2.1.3_typescript@5.0.4+vue@3.3.4
+  pinia: 2.1.4_typescript@5.0.4+vue@3.3.4
   qrcode: 1.5.3
   qs: 6.11.2
   responsive-storage: 2.2.0
   sortablejs: 1.15.0
-  swiper: 9.4.0
+  swiper: 9.4.1
   typeit: 8.7.1
   v-contextmenu: 3.0.0_vue@3.3.4
   v3-infinite-loading: 1.2.2
@@ -172,7 +172,7 @@ devDependencies:
   "@iconify-icons/ri": 1.2.8
   "@iconify/vue": 4.1.1_vue@3.3.4
   "@intlify/unplugin-vue-i18n": 0.11.0_vue-i18n@9.2.2
-  "@pureadmin/theme": 3.0.0
+  "@pureadmin/theme": 3.1.0
   "@types/intro.js": 5.1.1
   "@types/js-cookie": 3.0.3
   "@types/mockjs": 1.0.7
@@ -204,8 +204,8 @@ devDependencies:
   pretty-quick: 3.1.3_prettier@2.8.8
   rimraf: 5.0.1
   rollup-plugin-visualizer: 5.9.2
-  sass: 1.63.3
-  sass-loader: 13.3.2_sass@1.63.3
+  sass: 1.63.4
+  sass-loader: 13.3.2_sass@1.63.4
   stylelint: 15.7.0
   stylelint-config-html: 1.1.0_h5gzvjkqhi5vajvmsbjsgdr3uq
   stylelint-config-recess-order: 4.2.0_stylelint@15.7.0
@@ -221,7 +221,7 @@ devDependencies:
   tailwindcss: 3.3.2
   terser: 5.18.0
   typescript: 5.0.4
-  vite: 4.3.9_ra4urspesw57s7uh5v75upricm
+  vite: 4.3.9_pliwzynf6o24nw6a5hdplg4xiq
   vite-plugin-cdn-import: 0.3.5
   vite-plugin-compression: 0.5.1_vite@4.3.9
   vite-plugin-mock: 2.9.6_mockjs@1.1.0+vite@4.3.9
@@ -2107,14 +2107,14 @@ packages:
       vue: 3.3.4
     dev: false
 
-  /@pureadmin/theme/3.0.0:
+  /@pureadmin/theme/3.1.0:
     resolution:
       {
-        integrity: sha512-1qs0fve9DY4XgI5xafTd9qRPuWSo2QGON7avBqKSSSjXpCbo2BOccsH6qh5N2BxVBVZQJBYZoMq3bAUdK2Q0Jw==
+        integrity: sha512-3kBbqB6Uua096w91w1SrGna0dM8AYO5HFk/HU8G0DsEaijgRrm+dYIJUrqbv+stLUxlYPNVXpDS/APZjF0cOAg==
       }
     dependencies:
       "@zougt/some-loader-utils": 1.4.3
-      fs-extra: 10.1.0
+      fs-extra: 11.1.1
       string-hash: 1.1.3
     dev: true
 
@@ -2762,7 +2762,7 @@ packages:
       "@babel/core": 7.22.5
       "@babel/plugin-transform-typescript": 7.22.5_@babel+core@7.22.5
       "@vue/babel-plugin-jsx": 1.1.1_@babel+core@7.22.5
-      vite: 4.3.9_ra4urspesw57s7uh5v75upricm
+      vite: 4.3.9_pliwzynf6o24nw6a5hdplg4xiq
       vue: 3.3.4
     transitivePeerDependencies:
       - supports-color
@@ -2778,7 +2778,7 @@ packages:
       vite: ^4.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 4.3.9_ra4urspesw57s7uh5v75upricm
+      vite: 4.3.9_pliwzynf6o24nw6a5hdplg4xiq
       vue: 3.3.4
     dev: true
 
@@ -3660,7 +3660,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.21.8
-      caniuse-lite: 1.0.30001502
+      caniuse-lite: 1.0.30001503
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -3850,8 +3850,8 @@ packages:
     engines: { node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7 }
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001502
-      electron-to-chromium: 1.4.428
+      caniuse-lite: 1.0.30001503
+      electron-to-chromium: 1.4.431
       node-releases: 2.0.12
       update-browserslist-db: 1.0.11_browserslist@4.21.8
 
@@ -3966,15 +3966,15 @@ packages:
       }
     dependencies:
       browserslist: 4.21.8
-      caniuse-lite: 1.0.30001502
+      caniuse-lite: 1.0.30001503
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
     dev: true
 
-  /caniuse-lite/1.0.30001502:
+  /caniuse-lite/1.0.30001503:
     resolution:
       {
-        integrity: sha512-AZ+9tFXw1sS0o0jcpJQIXvFTOB/xGiQ4OQ2t98QX3NDn2EZTSRBC801gxrsGgViuq2ak/NLkNgSNEPtCr5lfKg==
+        integrity: sha512-Sf9NiF+wZxPfzv8Z3iS0rXM1Do+iOy2Lxvib38glFX+08TCYYYGR5fRJXk4d77C4AYwhUjgYgMsMudbh2TqCKw==
       }
 
   /cfb/1.2.2:
@@ -5143,10 +5143,10 @@ packages:
       - "@vue/composition-api"
     dev: false
 
-  /electron-to-chromium/1.4.428:
+  /electron-to-chromium/1.4.431:
     resolution:
       {
-        integrity: sha512-L7uUknyY286of0AYC8CKfgWstD0Smk2DvHDi9F0GWQhSH90Bzi7iDrmCbZKz75tYJxeGSAc7TYeKpmbjMDoh1w==
+        integrity: sha512-m232JTVmCawA2vG+1azVxhKZ9Sv1Q//xxNv5PkP5rWxGgQE8c3CiZFrh8Xnp+d1NmNxlu3QQrGIfdeW5TtXX5w==
       }
 
   /element-plus/2.3.6_vue@3.3.4:
@@ -8883,10 +8883,10 @@ packages:
     engines: { node: ">=0.10.0" }
     dev: true
 
-  /pinia/2.1.3_typescript@5.0.4+vue@3.3.4:
+  /pinia/2.1.4_typescript@5.0.4+vue@3.3.4:
     resolution:
       {
-        integrity: sha512-XNA/z/ye4P5rU1pieVmh0g/hSuDO98/a5UC8oSP0DNdvt6YtetJNHTrXwpwsQuflkGT34qKxAEcp7lSxXNjf/A==
+        integrity: sha512-vYlnDu+Y/FXxv1ABo1vhjC+IbqvzUdiUC3sfDRrRyY2CQSrqqaa+iiHmqtARFxJVqWQMCJfXx1PBvFs9aJVLXQ==
       }
     peerDependencies:
       "@vue/composition-api": ^1.4.0
@@ -10367,7 +10367,7 @@ packages:
       }
     dev: false
 
-  /sass-loader/13.3.2_sass@1.63.3:
+  /sass-loader/13.3.2_sass@1.63.4:
     resolution:
       {
         integrity: sha512-CQbKl57kdEv+KDLquhC+gE3pXt74LEAzm+tzywcA0/aHZuub8wTErbjAoNI57rPUWRYRNC5WUnNl8eGJNbDdwg==
@@ -10392,13 +10392,13 @@ packages:
         optional: true
     dependencies:
       neo-async: 2.6.2
-      sass: 1.63.3
+      sass: 1.63.4
     dev: true
 
-  /sass/1.63.3:
+  /sass/1.63.4:
     resolution:
       {
-        integrity: sha512-ySdXN+DVpfwq49jG1+hmtDslYqpS7SkOR5GpF6o2bmb1RL/xS+wvPmegMvMywyfsmAV6p7TgwXYGrCZIFFbAHg==
+        integrity: sha512-Sx/+weUmK+oiIlI+9sdD0wZHsqpbgQg8wSwSnGBjwb5GwqFhYNwwnI+UWZtLjKvKyFlKkatRK235qQ3mokyPoQ==
       }
     engines: { node: ">=14.0.0" }
     hasBin: true
@@ -11307,10 +11307,10 @@ packages:
       picocolors: 1.0.0
     dev: true
 
-  /swiper/9.4.0:
+  /swiper/9.4.1:
     resolution:
       {
-        integrity: sha512-AKame5qkFnNKCJ8Bfn3YuOi/LoUuAESVdCv/BJH5fKgdAUFRtImZXV3gdYlYovXbasJDV6hHNWdQvdzPB6aebw==
+        integrity: sha512-1nT2T8EzUpZ0FagEqaN/YAhRj33F2x/lN6cyB0/xoYJDMf8KwTFT3hMOeoB8Tg4o3+P/CKqskP+WX0Df046fqA==
       }
     engines: { node: ">= 4.7.0" }
     dependencies:
@@ -11987,7 +11987,7 @@ packages:
       chalk: 4.1.2
       debug: 4.3.4
       fs-extra: 10.1.0
-      vite: 4.3.9_ra4urspesw57s7uh5v75upricm
+      vite: 4.3.9_pliwzynf6o24nw6a5hdplg4xiq
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -12012,7 +12012,7 @@ packages:
       fast-glob: 3.2.12
       mockjs: 1.1.0
       path-to-regexp: 6.2.1
-      vite: 4.3.9_ra4urspesw57s7uh5v75upricm
+      vite: 4.3.9_pliwzynf6o24nw6a5hdplg4xiq
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -12035,7 +12035,7 @@ packages:
       svgo: 3.0.2
     dev: true
 
-  /vite/4.3.9_ra4urspesw57s7uh5v75upricm:
+  /vite/4.3.9_pliwzynf6o24nw6a5hdplg4xiq:
     resolution:
       {
         integrity: sha512-qsTNZjO9NoJNW7KnOrgYwczm0WctJ8m/yqYAMAK9Lxt4SoySUfS5S8ia9K7JHpa3KEeMfyF8LoJ3c5NeBJy6pg==
@@ -12067,7 +12067,7 @@ packages:
       esbuild: 0.17.19
       postcss: 8.4.24
       rollup: 3.25.1
-      sass: 1.63.3
+      sass: 1.63.4
       terser: 5.18.0
     optionalDependencies:
       fsevents: 2.3.2
