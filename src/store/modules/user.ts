@@ -62,6 +62,7 @@ export const useUserStore = defineStore({
       useMultiTagsStoreHook().handleTags("equal", [...routerArrays]);
       resetRouter();
       router.push("/login");
+      window.location.reload();
     },
     /** 刷新`token` */
     async handRefreshToken(data) {
