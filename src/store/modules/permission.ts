@@ -2,8 +2,8 @@ import { defineStore } from "pinia";
 import { store } from "@/store";
 import { cacheType } from "./types";
 import { constantMenus } from "@/router";
-import { getKeyList } from "@pureadmin/utils";
 import { useMultiTagsStoreHook } from "./multiTags";
+import { debounce, getKeyList } from "@pureadmin/utils";
 import { ascending, filterTree, filterNoPermissionTree } from "@/router/utils";
 
 export const usePermissionStore = defineStore({
@@ -37,7 +37,7 @@ export const usePermissionStore = defineStore({
           break;
       }
       /** 监听缓存页面是否存在于标签页，不存在则删除 */
-      (() => {
+      debounce(() => {
         let cacheLength = this.cachePageList.length;
         const nameList = getKeyList(useMultiTagsStoreHook().multiTags, "name");
         while (cacheLength > 0) {
