@@ -1,11 +1,13 @@
 <script setup lang="ts">
+import { match } from "pinyin-pro";
+import { useI18n } from "vue-i18n";
 import { useRouter } from "vue-router";
-import { cloneDeep } from "@pureadmin/utils";
 import SearchResult from "./SearchResult.vue";
 import SearchFooter from "./SearchFooter.vue";
 import { useNav } from "@/layout/hooks/useNav";
 import { transformI18n } from "@/plugins/i18n";
 import { ref, computed, shallowRef } from "vue";
+import { cloneDeep, isAllEmpty } from "@pureadmin/utils";
 import { useDebounceFn, onKeyStroke } from "@vueuse/core";
 import { usePermissionStoreHook } from "@/store/modules/permission";
 import Search from "@iconify-icons/ri/search-line";
@@ -23,6 +25,7 @@ const { device } = useNav();
 const emit = defineEmits<Emits>();
 const props = withDefaults(defineProps<Props>(), {});
 const router = useRouter();
+const { locale } = useI18n();
 
 const keyword = ref("");
 const scrollbarRef = ref();
@@ -62,12 +65,19 @@ function flatTree(arr) {
 /** 查询 */
 function search() {
   const flatMenusData = flatTree(menusData.value);
-  resultOptions.value = flatMenusData.filter(
-    menu =>
-      keyword.value &&
-      transformI18n(menu.meta?.title)
-        .toLocaleLowerCase()
-        .includes(keyword.value.toLocaleLowerCase().trim())
+  resultOptions.value = flatMenusData.filter(menu =>
+    keyword.value
+      ? transformI18n(menu.meta?.title)
+          .toLocaleLowerCase()
+          .includes(keyword.value.toLocaleLowerCase().trim()) ||
+        (locale.value === "zh" &&
+          !isAllEmpty(
+            match(
+              transformI18n(menu.meta?.title).toLocaleLowerCase(),
+              keyword.value.toLocaleLowerCase().trim()
+            )
+          ))
+      : false
   );
   if (resultOptions.value?.length > 0) {
     activePath.value = resultOptions.value[0].path;
