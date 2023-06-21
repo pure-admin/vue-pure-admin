@@ -100,6 +100,7 @@ menus:
   hsPdf: PDF预览
   hsExecl: 导出Excel
   hsInfiniteScroll: 表格无限滚动
+  hsSensitive: 敏感词过滤
   hsdanmaku: 弹幕组件
   hsPureTableBase: 基础用法（23个示例）
   hsPureTableHigh: 高级用法（11个示例）

@@ -53,6 +53,7 @@ specifiers:
   jsbarcode: ^3.11.5
   lint-staged: ^13.2.2
   md-editor-v3: 2.7.2
+  mint-filter: ^4.0.3
   mitt: ^3.0.0
   mockjs: ^1.1.0
   nprogress: ^0.2.0
@@ -138,6 +139,7 @@ dependencies:
   js-cookie: 3.0.5
   jsbarcode: 3.11.5
   md-editor-v3: 2.7.2
+  mint-filter: 4.0.3
   mitt: 3.0.0
   mockjs: 1.1.0
   nprogress: 0.2.0
@@ -8314,6 +8316,13 @@ packages:
       yallist: 4.0.0
     dev: false
     optional: true
+
+  /mint-filter/4.0.3:
+    resolution:
+      {
+        integrity: sha512-CKh2zKv9oFHEmYCXFk5REG2480FBNYixK+hw0mlRd/TgDJVhPpRhHPNhWa3Q6zF1tpE2q7w7y+Ylu1YJusXDpA==
+      }
+    dev: false
 
   /mitt/2.1.0:
     resolution:

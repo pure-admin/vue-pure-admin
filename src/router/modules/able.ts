@@ -146,6 +146,15 @@ export default {
       meta: {
         title: $t("menus.hsInfiniteScroll")
       }
+    },
+    {
+      path: "/able/sensitive",
+      name: "Sensitive",
+      component: () => import("@/views/able/sensitive.vue"),
+      meta: {
+        title: $t("menus.hsSensitive"),
+        extraIcon: "IF-pure-iconfont-new svg"
+      }
     }
   ]
 } as RouteConfigsTable;
