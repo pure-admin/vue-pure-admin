@@ -60,6 +60,7 @@ specifiers:
   path: ^0.12.7
   picocolors: ^1.0.0
   pinia: ^2.1.4
+  pinyin-pro: ^3.15.2
   postcss: ^8.4.24
   postcss-html: ^1.5.0
   postcss-import: ^15.1.0
@@ -145,6 +146,7 @@ dependencies:
   nprogress: 0.2.0
   path: 0.12.7
   pinia: 2.1.4_typescript@5.0.4+vue@3.3.4
+  pinyin-pro: 3.15.2
   qrcode: 1.5.3
   qs: 6.11.2
   responsive-storage: 2.2.0
@@ -8920,6 +8922,13 @@ packages:
       typescript: 5.0.4
       vue: 3.3.4
       vue-demi: 0.14.5_vue@3.3.4
+    dev: false
+
+  /pinyin-pro/3.15.2:
+    resolution:
+      {
+        integrity: sha512-kvbPYwTzz3mXZj7OLheB6LysDi/lIPRFvSXX6fCko03l4joruzrn+2GfO9BqIsHSjqipeH6qPB3jIfl8iRUQWA==
+      }
     dev: false
 
   /pirates/4.0.5:

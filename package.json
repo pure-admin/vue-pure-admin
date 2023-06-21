@@ -58,6 +58,7 @@
     "nprogress": "^0.2.0",
     "path": "^0.12.7",
     "pinia": "^2.1.4",
+    "pinyin-pro": "^3.15.2",
     "qrcode": "^1.5.3",
     "qs": "^6.11.2",
     "responsive-storage": "^2.2.0",
