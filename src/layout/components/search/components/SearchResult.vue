@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
+import { transformI18n } from "@/plugins/i18n";
 import { useResizeObserver } from "@vueuse/core";
 import { useEpThemeStoreHook } from "@/store/modules/epTheme";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import { ref, computed, getCurrentInstance, onMounted } from "vue";
 import enterOutlined from "@/assets/svg/enter_outlined.svg?component";
 import Bookmark2Line from "@iconify-icons/ri/bookmark-2-line";
-
-const { t } = useI18n();
 
 interface optionsItem {
   path: string;
@@ -98,7 +96,9 @@ defineExpose({ handleScroll });
       @mouseenter="handleMouse(item)"
     >
       <component :is="useRenderIcon(item.meta?.icon ?? Bookmark2Line)" />
-      <span class="result-item-title">{{ t(item.meta?.title) }}</span>
+      <span class="result-item-title">
+        {{ transformI18n(item.meta?.title) }}
+      </span>
       <enterOutlined />
     </div>
   </div>

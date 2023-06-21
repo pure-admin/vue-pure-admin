@@ -146,6 +146,24 @@ export default {
       meta: {
         title: $t("menus.hsInfiniteScroll")
       }
+    },
+    {
+      path: "/able/sensitive",
+      name: "Sensitive",
+      component: () => import("@/views/able/sensitive.vue"),
+      meta: {
+        title: $t("menus.hsSensitive"),
+        extraIcon: "IF-pure-iconfont-new svg"
+      }
+    },
+    {
+      path: "/able/pinyin",
+      name: "Pinyin",
+      component: () => import("@/views/able/pinyin.vue"),
+      meta: {
+        title: $t("menus.hsPinyin"),
+        extraIcon: "IF-pure-iconfont-new svg"
+      }
     }
   ]
 } as RouteConfigsTable;

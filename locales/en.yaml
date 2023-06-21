@@ -100,6 +100,8 @@ menus:
   hsPdf: PDF Preview
   hsExecl: Export Excel
   hsInfiniteScroll: Table Infinite Scroll
+  hsSensitive: Sensitive Filter
+  hsPinyin: PinYin
   hsdanmaku: Danmaku Components
   hsPureTableBase: Base Usage
   hsPureTableHigh: High Usage
