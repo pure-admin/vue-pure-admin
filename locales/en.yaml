@@ -68,7 +68,7 @@ menus:
   hsguide: Guide
   hsAble: Able
   hsMenuTree: Menu Tree
-  hsOptimize: Debounce、Throttle、Copy Directives
+  hsOptimize: Debounce、Throttle、Copy、Longpress Directives
   hsWatermark: Water Mark
   hsPrint: Print
   hsDownload: Download
