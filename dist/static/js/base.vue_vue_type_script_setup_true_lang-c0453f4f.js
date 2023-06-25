@@ -1,0 +1,1 @@
+import{t as o}from"./data-ce9440dd.js";import{d as t,a as n,o as r,c as p,u as s}from"./index-ceadd577.js";const b=t({__name:"base",setup(l){const e=[{label:"日期",prop:"date"},{label:"姓名",prop:"name"},{label:"地址",prop:"address"}];return(c,_)=>{const a=n("pure-table");return r(),p(a,{data:s(o),columns:e},null,8,["data"])}}});export{b as _};

@@ -1,1 +1,0 @@
-import{d as s,a1 as c,u as p,i as u,o as i}from"./index-037de6e8.js";const l=s({name:"Redirect",__name:"redirect",setup(_){const{currentRoute:r,replace:t}=c(),{params:a,query:n}=p(r),{path:e}=a,o=Array.isArray(e)?e.join("/"):e;return t({path:"/"+o,query:n}),(m,d)=>(i(),u("div"))}});export{l as default};
