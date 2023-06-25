@@ -1,0 +1,11 @@
+@import "cropperjs/dist/cropper.css";
+@import "tippy.js/dist/tippy.css";
+@import "tippy.js/themes/light.css";
+@import "tippy.js/animations/perspective.css";
+
+.re-circled {
+  .cropper-view-box,
+  .cropper-face {
+    border-radius: 50%;
+  }
+}

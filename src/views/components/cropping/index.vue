@@ -1,60 +1,75 @@
-<script setup lang="ts">
-import { ref, nextTick } from "vue";
-import Cropper from "@/components/ReCropper";
-import img from "./picture.jpeg";
+<script setup lang="tsx">
+import { ref } from "vue";
+import avatar from "./avatar.png";
+import ReCropper from "@/components/ReCropper";
+import { formatBytes } from "@pureadmin/utils";
 
 defineOptions({
   name: "Cropping"
 });
 
+const infos = ref();
 const refCropper = ref();
-const info = ref<object>(null);
+const showPopover = ref(false);
 const cropperImg = ref<string>("");
 
-const onCropper = (): void => {
-  nextTick(() => {
-    refCropper.value.cropper.getCroppedCanvas().toBlob(blob => {
-      const fileReader: FileReader = new FileReader();
-      fileReader.onloadend = (e: ProgressEvent) => {
-        cropperImg.value = (e.target as any).result;
-        info.value = refCropper.value.cropper.getData();
-      };
-      fileReader.readAsDataURL(blob);
-    }, "image/jpeg");
-  });
-};
+function onCropper({ base64, blob, info }) {
+  console.log(blob);
+  infos.value = info;
+  cropperImg.value = base64;
+}
 </script>
 
 <template>
   <el-card shadow="never">
     <template #header>
       <div class="card-header">
-        <span class="font-medium">图片裁剪组件</span>
+        <span class="font-medium">
+          图片裁剪组件，基于开源的
+          <el-link
+            href="https://fengyuanchen.github.io/cropperjs/"
+            target="_blank"
+            style="margin: 0 4px 5px; font-size: 16px"
+          >
+            cropperjs
+          </el-link>
+          进行二次封装（提示：右键下面左侧裁剪区可开启功能菜单）
+        </span>
       </div>
     </template>
-    <div class="cropper-container">
-      <Cropper ref="refCropper" :width="'40vw'" :src="img" />
-      <img :src="cropperImg" class="croppered" v-if="cropperImg" />
-    </div>
-    <el-button type="primary" @click="onCropper">裁剪</el-button>
-    <p v-if="cropperImg">裁剪后图片信息：{{ info }}</p>
+    <el-popover
+      :visible="showPopover"
+      placement="right"
+      width="300px"
+      :teleported="false"
+    >
+      <template #reference>
+        <ReCropper
+          ref="refCropper"
+          class="w-[30vw]"
+          :src="avatar"
+          circled
+          @cropper="onCropper"
+          @readied="showPopover = true"
+        />
+      </template>
+      <div class="flex flex-wrap justify-center items-center text-center">
+        <el-image
+          v-if="cropperImg"
+          :src="cropperImg"
+          :preview-src-list="Array.of(cropperImg)"
+          fit="cover"
+        />
+        <div v-if="infos" class="mt-1">
+          <p>
+            图像大小：{{ parseInt(infos.width) }} ×
+            {{ parseInt(infos.height) }}像素
+          </p>
+          <p>
+            文件大小：{{ formatBytes(infos.size) }}（{{ infos.size }} 字节）
+          </p>
+        </div>
+      </div>
+    </el-popover>
   </el-card>
 </template>
-
-<style scoped>
-.cropper-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.el-button {
-  margin-top: 10px;
-}
-
-.croppered {
-  display: block;
-  width: 45%;
-  height: 360px;
-}
-</style>
