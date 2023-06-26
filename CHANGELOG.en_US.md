@@ -1,3 +1,26 @@
+# 4.5.0 (2023-06-26)
+
+### ✔️ refactor
+
+- Refactor image crop `ReCropper` component, add more useful functions
+
+### 🎫 Feat
+
+- The menu search function supports pinyin search, such as searching for image cropping, input `tp` or `tupian` and other corresponding pinyin
+- Add long press command and usage example, the long press command supports continuous callback of custom duration
+- Add an example of sensitive word filtering function
+- Add an example of Chinese Pinyin function
+
+### 🐞 Bug fixes
+
+- Fixed `V4.4.0` version, the problem that the page does not cache the page for the first time after the `keepAlive` cache is enabled
+- Fixed the issue that the column setting tick option was not correctly initialized according to the `hide` property when the `RePureTableBar` component was initialized
+
+### 🍏 Perf
+
+- Change `VITE_PUBLIC_PATH` to `./` by default to be compatible with more path scenarios,
+- Compatible with the `OSS` scene where `VITE_PUBLIC_PATH` is `url`, need to upgrade `@pureadin/theme` to the latest version
+
 # 4.4.0 (2023-06-14)
 
 ### 🎫 Feat
@@ -17,7 +40,7 @@
 ### 🍏 Perf
 
 - Page switching performance optimization, regardless of the network, the speed of page switching logic is almost `3-4` times faster than before [View optimization details](https://github.com/pure-admin/vue-pure-admin/pull/600#issuecomment-1586094078)
--Optimized tab page operation-routing parameter transfer mode usage
+- Optimized tab page operation-routing parameter transfer mode usage
 - All tables in the system management are changed to adaptive content area height, need to upgrade `@pureadmin/table` to the latest version
 - Use the `useResizeObserver` function of `vueuse` to replace the `v-resize` custom directive, and the performance will be better from the performance after testing
 - For unbound public events, unbind when the page is destroyed
