@@ -1,6 +1,6 @@
 {
   "name": "vue-pure-admin",
-  "version": "4.4.0",
+  "version": "4.5.0",
   "private": true,
   "scripts": {
     "dev": "NODE_OPTIONS=--max-old-space-size=4096 vite",
