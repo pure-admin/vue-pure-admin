@@ -83,19 +83,19 @@ const frameRouter = {
   },
   children: [
     {
-      path: "/external",
-      name: "https://yiming_chang.gitee.io/pure-admin-doc",
-      meta: {
-        title: "menus.externalLink",
-        roles: ["admin", "common"]
-      }
-    },
-    {
       path: "/iframe/pure",
       name: "FramePure",
       meta: {
         title: "menus.hsPureDocument",
         frameSrc: "https://yiming_chang.gitee.io/pure-admin-doc",
+        roles: ["admin", "common"]
+      }
+    },
+    {
+      path: "/external",
+      name: "https://yiming_chang.gitee.io/pure-admin-doc",
+      meta: {
+        title: "menus.externalLink",
         roles: ["admin", "common"]
       }
     },
