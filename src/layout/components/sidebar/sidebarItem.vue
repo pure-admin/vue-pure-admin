@@ -307,13 +307,28 @@ function resolvePath(routePath) {
         <extraIcon v-if="!isCollapse" :extraIcon="props.item.meta.extraIcon" />
       </div>
     </template>
-    <sidebar-item
-      v-for="child in props.item.children"
-      :key="child.path"
-      :is-nest="true"
-      :item="child"
-      :base-path="resolvePath(child.path)"
-      class="nest-menu"
-    />
+    <el-menu-item-group class="scroll-menu">
+      <sidebar-item
+        v-for="child in props.item.children"
+        :key="child.path"
+        :is-nest="true"
+        :item="child"
+        :base-path="resolvePath(child.path)"
+        class="nest-menu"
+      />
+    </el-menu-item-group>
   </el-sub-menu>
 </template>
+
+<style>
+.scroll-menu {
+  max-height: 700px;
+  overflow-y: auto;
+  -ms-overflow-style: none; /* IE和Edge浏览器 */
+  scrollbar-width: none;
+}
+
+.scroll-menu::-webkit-scrollbar {
+  display: none; /* Chrome和Safari浏览器 */
+}
+</style>
