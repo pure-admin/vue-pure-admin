@@ -1,5 +1,5 @@
 import { useEpThemeStoreHook } from "@/store/modules/epTheme";
-import { defineComponent, ref, computed, type PropType, nextTick } from "vue";
+import { defineComponent, ref, computed, watch, type PropType, nextTick } from "vue";
 import {
   delay,
   cloneDeep,
@@ -85,6 +85,12 @@ export default defineComponent({
         "dark:border-[#303030]"
       ];
     });
+
+    // 解决先异步获取表格数据, 再配置数据到筛选列中, 页面表格不渲染问题
+    watch(
+      () => props.columns,
+      (newVal) => (dynamicColumns.value = newVal)
+    );
 
     function onReFresh() {
       loading.value = true;
