@@ -35,7 +35,7 @@
     "@logicflow/extension": "^1.2.9",
     "@pureadmin/descriptions": "^1.1.1",
     "@pureadmin/table": "^2.3.2",
-    "@pureadmin/utils": "^1.9.6",
+    "@pureadmin/utils": "^1.9.7",
     "@vueuse/core": "^10.2.0",
     "@vueuse/motion": "^2.0.0",
     "@wangeditor/editor": "^5.1.23",
@@ -79,6 +79,7 @@
     "vue-waterfall-plugin-next": "^2.2.1",
     "vue3-danmaku": "^1.4.0",
     "vuedraggable": "^4.1.0",
+    "wavesurfer.js": "^7.0.3",
     "xgplayer": "^3.0.4",
     "xlsx": "^0.18.5"
   },

@@ -11,12 +11,20 @@ export default {
   },
   children: [
     {
+      path: "/able/wavesurfer",
+      name: "Wavesurfer",
+      component: () => import("@/views/able/wavesurfer/index.vue"),
+      meta: {
+        title: $t("menus.hsWavesurfer"),
+        extraIcon: "IF-pure-iconfont-new svg"
+      }
+    },
+    {
       path: "/able/directives",
       name: "Directives",
       component: () => import("@/views/able/directives.vue"),
       meta: {
-        title: $t("menus.hsOptimize"),
-        extraIcon: "IF-pure-iconfont-new svg"
+        title: $t("menus.hsOptimize")
       }
     },
     {
