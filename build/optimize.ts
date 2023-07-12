@@ -27,6 +27,7 @@ const include = [
   "vue3-danmaku",
   "v-contextmenu",
   "vue-pdf-embed",
+  "wavesurfer.js",
   "china-area-data",
   "vue-json-pretty",
   "@logicflow/core",
