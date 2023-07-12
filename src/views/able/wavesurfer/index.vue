@@ -23,6 +23,9 @@ const curTime = ref();
 // 音频是否正在播放
 const isPlay = ref(false);
 
+const { VITE_PUBLIC_PATH } = import.meta.env;
+const url = `${VITE_PUBLIC_PATH}audio/海阔天空.mp3`;
+
 function init() {
   wavesurfer.value = WaveSurfer.create({
     container: wavesurferRef.value,
@@ -32,7 +35,7 @@ function init() {
     cursorColor: "rgb(64, 158, 255)",
     cursorWidth: 4,
     // backend: "MediaElement",
-    url: "/audio/海阔天空.mp3"
+    url
   });
 
   // 音频被解码后触发
