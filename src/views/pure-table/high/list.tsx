@@ -3,7 +3,7 @@ import Page from "./page/index.vue";
 import RowDrag from "./drag/row/index.vue";
 import ColumnDrag from "./drag/column/index.vue";
 import Contextmenu from "./contextmenu/index.vue";
-import Execl from "./execl/index.vue";
+import Excel from "./excel/index.vue";
 import Edit from "./edit/index.vue";
 import Watermark from "./watermark/index.vue";
 import Print from "./prints/index.vue";
@@ -57,10 +57,10 @@ export const list = [
     component: Edit
   },
   {
-    key: "execl",
-    content: rendContent("execl"),
-    title: "导出execl",
-    component: Execl
+    key: "excel",
+    content: rendContent("excel"),
+    title: "导出excel",
+    component: Excel
   },
   {
     key: "print",
