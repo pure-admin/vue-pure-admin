@@ -164,7 +164,7 @@ onKeyStroke("ArrowDown", handleDown);
       size="large"
       v-model="keyword"
       clearable
-      placeholder="搜索菜单"
+      placeholder="搜索菜单（中文模式下支持拼音搜索）"
       @input="handleSearch"
     >
       <template #prefix>
