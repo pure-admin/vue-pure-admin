@@ -11,6 +11,15 @@ export default {
   },
   children: [
     {
+      path: "/able/videoFrame",
+      name: "VideoFrame",
+      component: () => import("@/views/able/video-frame/index.vue"),
+      meta: {
+        title: $t("menus.hsVideoFrame"),
+        extraIcon: "IF-pure-iconfont-new svg"
+      }
+    },
+    {
       path: "/able/wavesurfer",
       name: "Wavesurfer",
       component: () => import("@/views/able/wavesurfer/index.vue"),
