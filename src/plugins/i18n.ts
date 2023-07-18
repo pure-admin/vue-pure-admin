@@ -1,8 +1,8 @@
 // 多组件库的国际化和本地项目国际化兼容
 import { App, WritableComputedRef } from "vue";
-import { storageLocal } from "@pureadmin/utils";
 import { type I18n, createI18n } from "vue-i18n";
 import { responsiveStorageNameSpace } from "@/config";
+import { storageLocal, isObject } from "@pureadmin/utils";
 
 // element-plus国际化
 import enLocale from "element-plus/lib/locale/lang/en";
@@ -30,6 +30,30 @@ export const localesConfigs = {
   }
 };
 
+/** 获取对象中所有嵌套对象的key键，并将它们用点号分割组成字符串 */
+function getObjectKeys(obj) {
+  const stack = [];
+  const keys = [];
+
+  stack.push({ obj, key: "" });
+
+  while (stack.length > 0) {
+    const { obj, key } = stack.pop();
+
+    for (const k in obj) {
+      const newKey = key ? `${key}.${k}` : k;
+
+      if (obj[k] && isObject(obj[k])) {
+        stack.push({ obj: obj[k], key: newKey });
+      } else {
+        keys.push(newKey);
+      }
+    }
+  }
+
+  return keys;
+}
+
 /**
  * 国际化转换工具函数（自动读取根目录locales文件夹下文件进行国际化匹配）
  * @param message message
@@ -47,8 +71,9 @@ export function transformI18n(message: any = "") {
     return message[locale?.value];
   }
 
-  const key = message.match(/(\S*)\./)?.[1];
-  if (key && Object.keys(siphonI18n("zh-CN")).includes(key)) {
+  const key = message.match(/(\S*)\./)?.input;
+
+  if (key && getObjectKeys(siphonI18n("zh-CN")).find(item => item === key)) {
     return i18n.global.t.call(i18n.global.locale, message);
   } else if (!key && Object.keys(siphonI18n("zh-CN")).includes(message)) {
     // 兼容非嵌套形式的国际化写法
