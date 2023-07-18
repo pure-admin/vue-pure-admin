@@ -100,7 +100,7 @@ menus:
   hsSwiper: Swiper Plugin
   hsVirtualList: Virtual List
   hsPdf: PDF Preview
-  hsExecl: Export Excel
+  hsExcel: Export Excel
   hsInfiniteScroll: Table Infinite Scroll
   hsSensitive: Sensitive Filter
   hsPinyin: PinYin
