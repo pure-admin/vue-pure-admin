@@ -149,11 +149,11 @@ export default {
       }
     },
     {
-      path: "/able/execl",
-      name: "Execl",
-      component: () => import("@/views/able/execl.vue"),
+      path: "/able/excel",
+      name: "Excel",
+      component: () => import("@/views/able/excel.vue"),
       meta: {
-        title: $t("menus.hsExecl")
+        title: $t("menus.hsExcel")
       }
     },
     {

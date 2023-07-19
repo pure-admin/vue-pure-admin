@@ -465,7 +465,7 @@
 - Add full routing configuration table type declaration
 - Add virtual listing page demo
 - Add `PDF` preview page demo
-- Added export `execl` page demo
+- Added export `excel` page demo
 - Added blank page demo without `Layout`
 
 ### ✔️ refactor

@@ -46,10 +46,10 @@ import { Auth } from "@/components/ReAuth";
 app.component("Auth", Auth);
 
 getServerConfig(app).then(async config => {
+  setupStore(app);
   app.use(router);
   await router.isReady();
   injectResponsiveStorage(app, config);
-  setupStore(app);
   app
     .use(MotionPlugin)
     .use(useI18n)

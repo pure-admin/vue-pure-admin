@@ -464,7 +464,7 @@
 - 添加完整路由配置表类型声明
 - 添加虚拟列表页面 demo
 - 添加 `PDF` 预览页面 demo
-- 添加导出 `execl` 页面 demo
+- 添加导出 `excel` 页面 demo
 - 添加无 `Layout` 的空白页面 demo
 
 ### ✔️ refactor
