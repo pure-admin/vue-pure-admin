@@ -1,11 +1,6 @@
 <script setup lang="ts">
-import {
-  closeDialog,
-  dialogStore,
-  type EventType,
-  type ButtonProps,
-  type DialogOptions
-} from "./index";
+import { closeDialog, dialogStore } from "./index";
+import type { EventType, ButtonProps, DialogOptions } from "./type";
 import { ref, computed } from "vue";
 import { isFunction } from "@pureadmin/utils";
 import Fullscreen from "@iconify-icons/ri/fullscreen-fill";
@@ -155,3 +150,4 @@ function handleClose(
     </template>
   </el-dialog>
 </template>
+.
