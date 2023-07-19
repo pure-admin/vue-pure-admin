@@ -34,7 +34,7 @@
     l();
   }
   (t = function () {
-    var e,
+    let e,
       t = document.createElement("div");
     (t.innerHTML = i),
       (i = null),
