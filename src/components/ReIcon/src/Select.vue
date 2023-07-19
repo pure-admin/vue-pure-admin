@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { cloneDeep } from "@pureadmin/utils";
-import { IconJson } from "@/components/ReIcon/data";
+import { IconJson } from "@/components/ReIcon";
 import { ref, computed, CSSProperties, toRef, watch } from "vue";
 type ParameterCSSProperties = (item?: string) => CSSProperties | undefined;
 
@@ -235,3 +235,4 @@ watch(
   margin-top: 4px;
 }
 </style>
+@/components/ReIcon/src/data

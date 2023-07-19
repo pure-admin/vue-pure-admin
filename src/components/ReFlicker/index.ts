@@ -1,1 +1,1 @@
-export * from "./src";
+export { type attrsType, useRenderFlicker } from "./src";

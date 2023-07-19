@@ -10,3 +10,5 @@ const IconifyIconOnline = iconifyIconOnline;
 const FontIcon = fontIcon;
 
 export { IconifyIconOffline, IconifyIconOnline, FontIcon };
+
+export * from "./src/data";
