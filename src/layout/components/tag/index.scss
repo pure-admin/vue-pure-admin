@@ -90,7 +90,7 @@
     }
   }
 
-  a {
+  .tag-title {
     padding: 0 4px;
     color: var(--el-text-color-primary);
     text-decoration: none;
@@ -204,7 +204,7 @@
     transform: translate(0, -50%);
   }
 
-  a {
+  .tag-title {
     color: var(--el-color-primary) !important;
   }
 }
@@ -247,7 +247,7 @@
 .card-in {
   color: var(--el-color-primary);
 
-  a {
+  .tag-title {
     color: var(--el-color-primary);
   }
 }
@@ -257,7 +257,7 @@
   color: #666;
   border: none;
 
-  a {
+  .tag-title {
     color: #666;
   }
 }
