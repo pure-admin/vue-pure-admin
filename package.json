@@ -109,6 +109,7 @@
     "cloc": "^2.11.0",
     "cssnano": "^6.0.1",
     "eslint": "^8.43.0",
+    "eslint-define-config": "^1.21.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^9.15.1",
     "husky": "^8.0.3",
