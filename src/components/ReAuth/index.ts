@@ -1,5 +1,5 @@
-import auth from "./src/auth";
+import _Auth from "./src";
+import { withInstall } from "@pureadmin/utils";
 
-const Auth = auth;
-
-export { Auth };
+export const Auth = withInstall(_Auth);
+export default Auth;
