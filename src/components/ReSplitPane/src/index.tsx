@@ -10,7 +10,7 @@ export interface ContextProps {
 
 /** 切割面板组件 */
 export default defineComponent({
-  name: "SplitPane",
+  name: "ReSplitPane",
   components: { resizer },
   props: {
     splitSet: {
