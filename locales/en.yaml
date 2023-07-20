@@ -68,6 +68,7 @@ menus:
   hsguide: Guide
   hsAble: Able
   hsMenuTree: Menu Tree
+  hsVideoFrame: Video Frame Capture
   hsWavesurfer: Audio Visualization
   hsOptimize: Debounce、Throttle、Copy、Longpress Directives
   hsWatermark: Water Mark
@@ -99,7 +100,7 @@ menus:
   hsSwiper: Swiper Plugin
   hsVirtualList: Virtual List
   hsPdf: PDF Preview
-  hsExecl: Export Excel
+  hsExcel: Export Excel
   hsInfiniteScroll: Table Infinite Scroll
   hsSensitive: Sensitive Filter
   hsPinyin: PinYin

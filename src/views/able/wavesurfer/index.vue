@@ -43,6 +43,7 @@ function init() {
 
   // 当音频已解码并可以播放时触发
   wavesurfer.value.on("ready", () => {
+    if (!wavesurfer.value) return;
     const { duration } = wavesurfer.value;
     const { m, s } = getTime(duration);
     totalTime.value = `${m}:${s}`;

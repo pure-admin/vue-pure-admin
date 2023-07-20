@@ -175,7 +175,7 @@ export function useTags() {
       toggleClass(true, "schedule-in", instance.refs["schedule" + index][0]);
       toggleClass(false, "schedule-out", instance.refs["schedule" + index][0]);
     } else {
-      if (hasClass(instance.refs["dynamic" + index][0], "card-active")) return;
+      if (hasClass(instance.refs["dynamic" + index][0], "is-active")) return;
       toggleClass(true, "card-in", instance.refs["dynamic" + index][0]);
       toggleClass(false, "card-out", instance.refs["dynamic" + index][0]);
     }
@@ -190,7 +190,7 @@ export function useTags() {
       toggleClass(false, "schedule-in", instance.refs["schedule" + index][0]);
       toggleClass(true, "schedule-out", instance.refs["schedule" + index][0]);
     } else {
-      if (hasClass(instance.refs["dynamic" + index][0], "card-active")) return;
+      if (hasClass(instance.refs["dynamic" + index][0], "is-active")) return;
       toggleClass(false, "card-in", instance.refs["dynamic" + index][0]);
       toggleClass(true, "card-out", instance.refs["dynamic" + index][0]);
     }

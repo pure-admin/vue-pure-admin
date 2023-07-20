@@ -11,6 +11,15 @@ export default {
   },
   children: [
     {
+      path: "/able/videoFrame",
+      name: "VideoFrame",
+      component: () => import("@/views/able/video-frame/index.vue"),
+      meta: {
+        title: $t("menus.hsVideoFrame"),
+        extraIcon: "IF-pure-iconfont-new svg"
+      }
+    },
+    {
       path: "/able/wavesurfer",
       name: "Wavesurfer",
       component: () => import("@/views/able/wavesurfer/index.vue"),
@@ -140,11 +149,11 @@ export default {
       }
     },
     {
-      path: "/able/execl",
-      name: "Execl",
-      component: () => import("@/views/able/execl.vue"),
+      path: "/able/excel",
+      name: "Excel",
+      component: () => import("@/views/able/excel.vue"),
       meta: {
-        title: $t("menus.hsExecl")
+        title: $t("menus.hsExcel")
       }
     },
     {

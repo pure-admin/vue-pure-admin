@@ -68,6 +68,7 @@ menus:
   hsguide: 引导页
   hsAble: 功能
   hsMenuTree: 菜单树结构
+  hsVideoFrame: 视频帧截取-wasm版
   hsWavesurfer: 音频可视化
   hsOptimize: 防抖、截流、复制、长按指令
   hsWatermark: 水印
@@ -99,7 +100,7 @@ menus:
   hsSwiper: Swiper插件
   hsVirtualList: 虚拟列表
   hsPdf: PDF预览
-  hsExecl: 导出Excel
+  hsExcel: 导出Excel
   hsInfiniteScroll: 表格无限滚动
   hsSensitive: 敏感词过滤
   hsPinyin: 汉语拼音
