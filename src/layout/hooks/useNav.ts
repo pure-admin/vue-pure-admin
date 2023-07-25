@@ -114,9 +114,9 @@ export function useNav() {
     }
   }
 
-  function menuSelect(indexPath: string) {
+  function menuSelect(indexPath: string, query: any, params: any) {
     if (wholeMenus.value.length === 0 || isRemaining(indexPath)) return;
-    emitter.emit("changLayoutRoute", indexPath);
+    emitter.emit("changLayoutRoute", { path: indexPath, query, params });
   }
 
   /** 判断路径是否参与菜单 */

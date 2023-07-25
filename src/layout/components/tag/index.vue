@@ -10,6 +10,7 @@ import { useResizeObserver, useFullscreen } from "@vueuse/core";
 import { isEqual, isAllEmpty, debounce } from "@pureadmin/utils";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
 import { ref, watch, unref, toRaw, nextTick, onBeforeUnmount } from "vue";
+import { pathToRegexp } from "path-to-regexp";
 
 import ExitFullscreen from "@iconify-icons/ri/fullscreen-exit-fill";
 import Fullscreen from "@iconify-icons/ri/fullscreen-fill";
@@ -134,19 +135,27 @@ const handleScroll = (offset: number): void => {
   }
 };
 
-function dynamicRouteTag(value: string): void {
+function dynamicRouteTag(value: string, query: any, params: any): void {
   const hasValue = multiTags.value.some(item => {
-    return item.path === value;
+    return (
+      (item.path == route.path || pathToRegexp(item.path).test(route.path)) &&
+      isEqual(
+        { query: item.query ?? {}, params: item.params ?? {} },
+        { query: query ?? {}, params: params ?? {} }
+      )
+    );
   });
 
   function concatPath(arr: object[], value: string) {
     if (!hasValue) {
       arr.forEach((arrItem: any) => {
-        if (arrItem.path === value || arrItem.path === value) {
+        if (arrItem.path === value) {
           useMultiTagsStoreHook().handleTags("push", {
             path: value,
             meta: arrItem.meta,
-            name: arrItem.name
+            name: arrItem.name,
+            query: query,
+            params: params
           });
         } else {
           if (arrItem.children && arrItem.children.length > 0) {
@@ -490,10 +499,10 @@ onMounted(() => {
   });
 
   //  接收侧边栏切换传递过来的参数
-  emitter.on("changLayoutRoute", indexPath => {
-    dynamicRouteTag(indexPath);
+  emitter.on("changLayoutRoute", ({ path, query, params }) => {
+    dynamicRouteTag(path, query, params);
     setTimeout(() => {
-      showMenuModel(indexPath);
+      showMenuModel(path);
     });
   });
 

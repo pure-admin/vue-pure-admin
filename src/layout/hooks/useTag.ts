@@ -15,13 +15,8 @@ import { transformI18n, $t } from "@/plugins/i18n";
 import { responsiveStorageNameSpace } from "@/config";
 import { useSettingStoreHook } from "@/store/modules/settings";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
-import {
-  isEqual,
-  isBoolean,
-  storageLocal,
-  toggleClass,
-  hasClass
-} from "@pureadmin/utils";
+import { isEqual, storageLocal, toggleClass, hasClass } from "@pureadmin/utils";
+import { pathToRegexp } from "path-to-regexp";
 
 import Fullscreen from "@iconify-icons/ri/fullscreen-fill";
 import CloseAllTags from "@iconify-icons/ri/subtract-line";
@@ -122,15 +117,18 @@ export function useTags() {
   ]);
 
   function conditionHandle(item, previous, next) {
-    if (isBoolean(route?.meta?.showLink) && route?.meta?.showLink === false) {
-      if (Object.keys(route.query).length > 0) {
-        return isEqual(route.query, item.query) ? previous : next;
-      } else {
-        return isEqual(route.params, item.params) ? previous : next;
-      }
-    } else {
-      return route.path === item.path ? previous : next;
-    }
+    /*
+      route 中存储的 path 是完整路径, e.g. /tabs/params-detail/2
+      而item ( multiTags ) 中存储的是模式化路径, e.g. /tabs/params-detail/:id
+      因此与vue-router同样选择使用path-to-regexp库判断路径是否匹配
+    */
+    const result =
+      (item.path == route.path || pathToRegexp(item.path).test(route.path)) &&
+      isEqual(
+        { query: route.query ?? {}, params: route.params ?? {} },
+        { query: item.query ?? {}, params: item.params ?? {} }
+      );
+    return result ? previous : next;
   }
 
   const iconIsActive = computed(() => {

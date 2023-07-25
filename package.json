@@ -57,6 +57,7 @@
     "mockjs": "^1.1.0",
     "nprogress": "^0.2.0",
     "path": "^0.12.7",
+    "path-to-regexp": "^6.2.1",
     "pinia": "^2.1.4",
     "pinyin-pro": "^3.15.2",
     "qrcode": "^1.5.3",
