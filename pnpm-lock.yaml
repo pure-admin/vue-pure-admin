@@ -116,7 +116,7 @@ specifiers:
   vuedraggable: ^4.1.0
   wavesurfer.js: ^7.0.3
   xgplayer: ^3.0.4
-  xlsx: ^0.18.5
+  xlsx: https://cdn.sheetjs.com/xlsx-0.20.0/xlsx-0.20.0.tgz
 
 dependencies:
   '@amap/amap-jsapi-loader': 1.0.1
