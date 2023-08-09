@@ -28,6 +28,7 @@ const include = [
   "v-contextmenu",
   "vue-pdf-embed",
   "wavesurfer.js",
+  "swiper/modules",
   "china-area-data",
   "vue-json-pretty",
   "@logicflow/core",

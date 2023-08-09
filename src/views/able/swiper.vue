@@ -2,8 +2,9 @@
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import SwiperCore from "swiper";
 import { Swiper, SwiperSlide } from "swiper/vue";
-import SwiperCore, { Autoplay, Navigation, Pagination } from "swiper";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 
 defineOptions({
   name: "Swiper"
