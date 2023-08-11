@@ -43,7 +43,7 @@ specifiers:
   dayjs: ^1.11.9
   echarts: ^5.4.3
   el-table-infinite-scroll: ^3.0.1
-  element-plus: 2.3.6
+  element-plus: ^2.3.9
   eslint: ^8.43.0
   eslint-plugin-prettier: ^4.2.1
   eslint-plugin-vue: ^9.15.1
@@ -123,8 +123,8 @@ dependencies:
   "@howdyjs/mouse-menu": 2.0.9_vue@3.3.4
   "@logicflow/core": 1.2.10
   "@logicflow/extension": 1.2.10
-  "@pureadmin/descriptions": 1.1.1_element-plus@2.3.6
-  "@pureadmin/table": 2.3.3_element-plus@2.3.6
+  "@pureadmin/descriptions": 1.1.1_element-plus@2.3.9
+  "@pureadmin/table": 2.3.3_element-plus@2.3.9
   "@pureadmin/utils": 1.9.7_echarts@5.4.3+vue@3.3.4
   "@vueuse/core": 10.3.0_vue@3.3.4
   "@vueuse/motion": 2.0.0_vue@3.3.4
@@ -137,7 +137,7 @@ dependencies:
   dayjs: 1.11.9
   echarts: 5.4.3
   el-table-infinite-scroll: 3.0.1
-  element-plus: 2.3.6_vue@3.3.4
+  element-plus: 2.3.9_vue@3.3.4
   intro.js: 7.0.1
   js-cookie: 3.0.5
   jsbarcode: 3.11.5
@@ -2091,7 +2091,7 @@ packages:
       }
     dev: false
 
-  /@pureadmin/descriptions/1.1.1_element-plus@2.3.6:
+  /@pureadmin/descriptions/1.1.1_element-plus@2.3.9:
     resolution:
       {
         integrity: sha512-4BHLKomLU/LxGs5EUA+h+aKNrJEkhrU6+QE8VoWfJZ8VTU6ddvFLT/Pi4WuO5CWNXM9ZjqvHLFFVwEPlKntqtg==
@@ -2100,11 +2100,11 @@ packages:
       element-plus: ^2.0.0
     dependencies:
       "@element-plus/icons-vue": 2.1.0_vue@3.3.4
-      element-plus: 2.3.6_vue@3.3.4
+      element-plus: 2.3.9_vue@3.3.4
       vue: 3.3.4
     dev: false
 
-  /@pureadmin/table/2.3.3_element-plus@2.3.6:
+  /@pureadmin/table/2.3.3_element-plus@2.3.9:
     resolution:
       {
         integrity: sha512-MQK4rPdfQRamGVLD5aRzzqhXiBRfMLqIAUJAVLIl2CErPUH1/4NkiOq1ZNroJMow28XxTQDWyG0tHka5HfmHUA==
@@ -2112,7 +2112,7 @@ packages:
     peerDependencies:
       element-plus: ^2.0.0
     dependencies:
-      element-plus: 2.3.6_vue@3.3.4
+      element-plus: 2.3.9_vue@3.3.4
       vue: 3.3.4
     dev: false
 
@@ -5182,7 +5182,7 @@ packages:
       }
     dependencies:
       core-js: 3.32.0
-      element-plus: 2.3.6_vue@3.3.4
+      element-plus: 2.3.9_vue@3.3.4
       vue: 3.3.4
     transitivePeerDependencies:
       - "@vue/composition-api"
@@ -5194,10 +5194,10 @@ packages:
         integrity: sha512-6s7NVJz+sATdYnIwhdshx/N/9O6rvMxmhVoDSDFdj6iA45gHR8EQje70+RYsF4GeB+k0IeNSBnP7yG9ZXJFr7A==
       }
 
-  /element-plus/2.3.6_vue@3.3.4:
+  /element-plus/2.3.9_vue@3.3.4:
     resolution:
       {
-        integrity: sha512-GLz0pXUYI2zRfIgyI6W7SWmHk6dSEikP9yR++hsQUyy63+WjutoiGpA3SZD4cGPSXUzRFeKfVr8CnYhK5LqXZw==
+        integrity: sha512-TIOLnPl4cnoCPXqK3QYh+jpkthUBQnAM21O7o3Lhbse8v9pfrRXRTaBJtoEKnYNa8GZ4lZptUfH0PeZgDCNLUg==
       }
     peerDependencies:
       vue: ^3.2.0
@@ -12320,7 +12320,7 @@ packages:
       }
     dependencies:
       animate.css: 4.1.1
-      element-plus: 2.3.6_vue@3.3.4
+      element-plus: 2.3.9_vue@3.3.4
     transitivePeerDependencies:
       - "@vue/composition-api"
       - vue
@@ -12333,7 +12333,7 @@ packages:
       }
     dependencies:
       animate.css: 4.1.1
-      element-plus: 2.3.6_vue@3.3.4
+      element-plus: 2.3.9_vue@3.3.4
       vue-waterfall-plugin-next: 2.2.0_vue@3.3.4
     transitivePeerDependencies:
       - "@vue/composition-api"

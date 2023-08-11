@@ -5,8 +5,8 @@ import { responsiveStorageNameSpace } from "@/config";
 import { storageLocal, isObject } from "@pureadmin/utils";
 
 // element-plus国际化
-import enLocale from "element-plus/lib/locale/lang/en";
-import zhLocale from "element-plus/lib/locale/lang/zh-cn";
+import enLocale from "element-plus/dist/locale/en.mjs";
+import zhLocale from "element-plus/dist/locale/zh-cn.mjs";
 
 function siphonI18n(prefix = "zh-CN") {
   return Object.fromEntries(
