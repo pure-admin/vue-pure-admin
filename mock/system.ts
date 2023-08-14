@@ -5,77 +5,56 @@ export default [
   {
     url: "/user",
     method: "post",
-    response: () => {
+    response: ({ body }) => {
+      let list = [
+        {
+          username: "admin",
+          nickname: "admin",
+          avatar:
+            "https://yiming_chang.gitee.io/vue-pure-admin/static/jpg/user.jpg",
+          mobile: "15888886789",
+          sex: 0,
+          id: 1,
+          status: 1,
+          dept: {
+            // 部门id
+            id: 103,
+            // 部门名称
+            name: "研发部门"
+          },
+          remark: "管理员",
+          createTime: 1605456000000
+        },
+        {
+          username: "common",
+          nickname: "common",
+          avatar:
+            "https://yiming_chang.gitee.io/vue-pure-admin/static/png/avatar.png",
+          mobile: "18288882345",
+          sex: 1,
+          id: 2,
+          status: 1,
+          dept: {
+            id: 105,
+            name: "测试部门"
+          },
+          remark: "普通用户",
+          createTime: 1605456000000
+        }
+      ];
+      list = list.filter(item => item.username.includes(body?.username));
+      list = list.filter(item =>
+        String(item.status).includes(String(body?.status))
+      );
+      if (body.mobile) list = list.filter(item => item.mobile === body.mobile);
+      if (body.deptId) list = list.filter(item => item.dept.id === body.deptId);
       return {
         success: true,
         data: {
-          list: [
-            {
-              username: "admin",
-              nickname: "admin",
-              remark: "管理员",
-              deptId: 103,
-              postIds: [1],
-              mobile: "15888888888",
-              sex: 0,
-              id: 1,
-              status: 0,
-              createTime: 1605456000000,
-              dept: {
-                id: 103,
-                name: "研发部门"
-              }
-            },
-            {
-              username: "pure",
-              nickname: "pure",
-              remark: "不要吓我",
-              deptId: 104,
-              postIds: [1],
-              mobile: "15888888888",
-              sex: 0,
-              id: 100,
-              status: 1,
-              createTime: 1605456000000,
-              dept: {
-                id: 104,
-                name: "市场部门"
-              }
-            },
-            {
-              username: "小姐姐",
-              nickname: "girl",
-              remark: null,
-              deptId: 106,
-              postIds: null,
-              mobile: "15888888888",
-              sex: 1,
-              id: 103,
-              status: 1,
-              createTime: 1605456000000,
-              dept: {
-                id: 106,
-                name: "财务部门"
-              }
-            },
-            {
-              username: "小哥哥",
-              nickname: "boy",
-              remark: null,
-              deptId: 107,
-              postIds: [],
-              mobile: "15888888888",
-              sex: 0,
-              id: 104,
-              status: 0,
-              createTime: 1605456000000,
-              dept: {
-                id: 107,
-                name: "运维部门"
-              }
-            }
-          ],
-          total: 4
+          list,
+          total: list.length, // 总条目数
+          pageSize: 10, // 每页显示条目个数
+          currentPage: 1 // 当前页数
         }
       };
     }
