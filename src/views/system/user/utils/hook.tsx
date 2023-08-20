@@ -2,6 +2,7 @@ import dayjs from "dayjs";
 import editForm from "../form.vue";
 import { handleTree } from "@/utils/tree";
 import { message } from "@/utils/message";
+import croppingUpload from "../upload.vue";
 import { ElMessageBox } from "element-plus";
 import { addDialog } from "@/components/ReDialog";
 import { getDeptList, getUserList } from "@/api/system";
@@ -21,6 +22,7 @@ export function useUser(tableRef: Ref, treeRef: Ref) {
   const formRef = ref();
   const dataList = ref([]);
   const loading = ref(true);
+  const avatarInfo = ref();
   const switchLoadMap = ref({});
   const higherDeptOptions = ref();
   const treeData = ref([]);
@@ -304,6 +306,27 @@ export function useUser(tableRef: Ref, treeRef: Ref) {
     });
   }
 
+  /** 上传头像 */
+  function handleUpload(row) {
+    addDialog({
+      title: "裁剪、上传头像",
+      width: "40%",
+      draggable: true,
+      closeOnClickModal: false,
+      contentRenderer: () =>
+        h(croppingUpload, {
+          imgSrc: row.avatar,
+          onCropper: info => (avatarInfo.value = info)
+        }),
+      beforeSure: done => {
+        console.log("裁剪后的图片信息：", avatarInfo.value);
+        // 根据实际业务使用avatarInfo.value和row里的某些字段去调用上传头像接口即可
+        done(); // 关闭弹框
+        onSearch(); // 刷新表格数据
+      }
+    });
+  }
+
   onMounted(async () => {
     treeLoading.value = true;
     onSearch();
@@ -332,6 +355,7 @@ export function useUser(tableRef: Ref, treeRef: Ref) {
     onTreeSelect,
     handleUpdate,
     handleDelete,
+    handleUpload,
     handleSizeChange,
     onSelectionCancel,
     handleCurrentChange,

@@ -10,8 +10,7 @@ export default [
         {
           username: "admin",
           nickname: "admin",
-          avatar:
-            "https://yiming_chang.gitee.io/vue-pure-admin/static/jpg/user.jpg",
+          avatar: "https://avatars.githubusercontent.com/u/44761321",
           mobile: "15888886789",
           sex: 0,
           id: 1,
@@ -28,8 +27,7 @@ export default [
         {
           username: "common",
           nickname: "common",
-          avatar:
-            "https://yiming_chang.gitee.io/vue-pure-admin/static/png/avatar.png",
+          avatar: "https://avatars.githubusercontent.com/u/52823142",
           mobile: "18288882345",
           sex: 1,
           id: 2,

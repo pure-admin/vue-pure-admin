@@ -40,6 +40,7 @@ const {
   onTreeSelect,
   handleUpdate,
   handleDelete,
+  handleUpload,
   handleSizeChange,
   onSelectionCancel,
   handleCurrentChange,
@@ -194,8 +195,8 @@ const {
                   link
                   type="primary"
                   :size="size"
-                  @click="handleUpdate(row)"
                   :icon="useRenderIcon(More)"
+                  @click="handleUpdate(row)"
                 />
                 <template #dropdown>
                   <el-dropdown-menu>
@@ -206,6 +207,7 @@ const {
                         type="primary"
                         :size="size"
                         :icon="useRenderIcon(Upload)"
+                        @click="handleUpload(row)"
                       >
                         上传头像
                       </el-button>
@@ -246,6 +248,10 @@ const {
 <style scoped lang="scss">
 :deep(.el-dropdown-menu__item i) {
   margin: 0;
+}
+
+:deep(.el-button:focus-visible) {
+  outline: none;
 }
 
 .search-form {

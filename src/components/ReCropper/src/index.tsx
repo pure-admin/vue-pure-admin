@@ -376,7 +376,7 @@ export default defineComponent({
         appendTo: "parent",
         // hideOnClick: false,
         animation: "perspective",
-        placement: "bottom-start"
+        placement: "bottom-end"
       });
 
       setProps({
