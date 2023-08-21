@@ -33,6 +33,7 @@ specifiers:
   "@vueuse/motion": ^2.0.0
   "@wangeditor/editor": ^5.1.23
   "@wangeditor/editor-for-vue": ^5.1.12
+  "@zxcvbn-ts/core": ^3.0.3
   animate.css: ^4.1.1
   autoprefixer: ^10.4.14
   axios: ^1.4.0
@@ -130,6 +131,7 @@ dependencies:
   "@vueuse/motion": 2.0.0_vue@3.3.4
   "@wangeditor/editor": 5.1.23
   "@wangeditor/editor-for-vue": 5.1.12_ni3htjq3zmaywymvtkxe6555ve
+  "@zxcvbn-ts/core": 3.0.3
   animate.css: 4.1.1
   axios: 1.4.0
   china-area-data: 5.0.1
@@ -3358,6 +3360,15 @@ packages:
       uuid: 8.3.2
     dev: true
 
+  /@zxcvbn-ts/core/3.0.3:
+    resolution:
+      {
+        integrity: sha512-GQo19iG/hQzs5uVxLCbNiaNTmTwGcfYZtge6L8CZiAULk0zieqZd0eThDQstljgjQWu4oO5olnPA3jnsV5sjaA==
+      }
+    dependencies:
+      fastest-levenshtein: 1.0.16
+    dev: false
+
   /JSONStream/1.3.5:
     resolution:
       {
@@ -5861,7 +5872,6 @@ packages:
         integrity: sha512-eRnCtTTtGZFpQCwhJiUOuxPQWRXVKYDn0b2PeHfXL6/Zi53SLAzAHfVhVWK2AryC/WH05kGfxhFIPvTF0SXQzg==
       }
     engines: { node: ">= 4.9.1" }
-    dev: true
 
   /fastq/1.15.0:
     resolution:

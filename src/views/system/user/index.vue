@@ -41,6 +41,7 @@ const {
   handleUpdate,
   handleDelete,
   handleUpload,
+  handleReset,
   handleSizeChange,
   onSelectionCancel,
   handleCurrentChange,
@@ -219,6 +220,7 @@ const {
                         type="primary"
                         :size="size"
                         :icon="useRenderIcon(Password)"
+                        @click="handleReset(row)"
                       >
                         重置密码
                       </el-button>
