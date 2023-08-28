@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import ReCol from "@/components/ReCol";
-import { formRules } from "./utils/rule";
-import { FormProps } from "./utils/types";
-import { usePublicHooks } from "../hooks";
+import { formRules } from "../utils/rule";
+import { FormProps } from "../utils/types";
+import { usePublicHooks } from "../../hooks";
 
 const props = withDefaults(defineProps<FormProps>(), {
   formInline: () => ({

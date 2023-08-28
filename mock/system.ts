@@ -1,7 +1,7 @@
 import { MockMethod } from "vite-plugin-mock";
 
 export default [
-  // 用户
+  // 用户管理
   {
     url: "/user",
     method: "post",
@@ -57,7 +57,46 @@ export default [
       };
     }
   },
-  // 角色
+  // 用户管理-获取所有角色列表
+  {
+    url: "/list-all-role",
+    method: "get",
+    response: () => {
+      return {
+        success: true,
+        data: [
+          { id: 1, name: "超级管理员" },
+          { id: 2, name: "普通角色" }
+        ]
+      };
+    }
+  },
+  // 用户管理-根据userId，获取对应角色id列表（userId：用户id）
+  {
+    url: "/list-role-ids",
+    method: "post",
+    response: ({ body }) => {
+      if (body.userId) {
+        if (body.userId == 1) {
+          return {
+            success: true,
+            data: [1]
+          };
+        } else if (body.userId == 2) {
+          return {
+            success: true,
+            data: [2]
+          };
+        }
+      } else {
+        return {
+          success: false,
+          data: []
+        };
+      }
+    }
+  },
+  // 角色管理
   {
     url: "/role",
     method: "post",
@@ -66,7 +105,6 @@ export default [
         {
           createTime: 1605456000000, // 时间戳（毫秒ms）
           updateTime: 1684512000000,
-          creator: "admin",
           id: 1,
           name: "超级管理员",
           code: "admin",
@@ -76,7 +114,6 @@ export default [
         {
           createTime: 1605456000000,
           updateTime: 1684512000000,
-          creator: "admin",
           id: 2,
           name: "普通角色",
           code: "common",
@@ -100,7 +137,7 @@ export default [
       };
     }
   },
-  // 部门
+  // 部门管理
   {
     url: "/dept",
     method: "post",

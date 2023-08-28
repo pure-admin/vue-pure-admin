@@ -1,15 +1,21 @@
 import "./reset.css";
 import dayjs from "dayjs";
-import editForm from "../form.vue";
+import roleForm from "../form/role.vue";
+import editForm from "../form/index.vue";
 import { zxcvbn } from "@zxcvbn-ts/core";
 import { handleTree } from "@/utils/tree";
 import { message } from "@/utils/message";
 import croppingUpload from "../upload.vue";
 import { addDialog } from "@/components/ReDialog";
-import { type FormItemProps } from "../utils/types";
-import { getDeptList, getUserList } from "@/api/system";
 import { type PaginationProps } from "@pureadmin/table";
+import type { FormItemProps, RoleFormItemProps } from "../utils/types";
 import { hideTextAtIndex, getKeyList, isAllEmpty } from "@pureadmin/utils";
+import {
+  getRoleIds,
+  getDeptList,
+  getUserList,
+  getAllRoleList
+} from "@/api/system";
 import {
   ElForm,
   ElInput,
@@ -167,6 +173,7 @@ export function useUser(tableRef: Ref, treeRef: Ref) {
   ];
   // 当前密码强度（0-4）
   const curScore = ref();
+  const roleOptions = ref([]);
 
   function onChange({ row, index }) {
     ElMessageBox.confirm(
@@ -438,6 +445,34 @@ export function useUser(tableRef: Ref, treeRef: Ref) {
     });
   }
 
+  /** 分配角色 */
+  async function handleRole(row) {
+    // 选中的角色列表
+    const ids = (await getRoleIds({ userId: row.id })).data ?? [];
+    addDialog({
+      title: `分配 ${row.username} 用户的角色`,
+      props: {
+        formInline: {
+          username: row?.username ?? "",
+          nickname: row?.nickname ?? "",
+          roleOptions: roleOptions.value ?? [],
+          ids
+        }
+      },
+      width: "400px",
+      draggable: true,
+      fullscreenIcon: true,
+      closeOnClickModal: false,
+      contentRenderer: () => h(roleForm),
+      beforeSure: (done, { options }) => {
+        const curData = options.props.formInline as RoleFormItemProps;
+        console.log("curIds", curData.ids);
+        // 根据实际业务使用curData.ids和row里的某些字段去调用修改角色接口即可
+        done(); // 关闭弹框
+      }
+    });
+  }
+
   onMounted(async () => {
     treeLoading.value = true;
     onSearch();
@@ -447,6 +482,9 @@ export function useUser(tableRef: Ref, treeRef: Ref) {
     higherDeptOptions.value = handleTree(data);
     treeData.value = handleTree(data);
     treeLoading.value = false;
+
+    // 角色列表
+    roleOptions.value = (await getAllRoleList()).data;
   });
 
   return {
@@ -468,6 +506,7 @@ export function useUser(tableRef: Ref, treeRef: Ref) {
     handleDelete,
     handleUpload,
     handleReset,
+    handleRole,
     handleSizeChange,
     onSelectionCancel,
     handleCurrentChange,
