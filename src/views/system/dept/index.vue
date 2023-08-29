@@ -89,7 +89,6 @@ const {
       <template v-slot="{ size, dynamicColumns }">
         <pure-table
           ref="tableRef"
-          border
           adaptive
           :adaptiveConfig="{ offsetBottom: 32 }"
           align-whole="center"
@@ -102,7 +101,7 @@ const {
           :data="dataList"
           :columns="dynamicColumns"
           :header-cell-style="{
-            background: 'var(--el-table-row-hover-bg-color)',
+            background: 'var(--el-fill-color-light)',
             color: 'var(--el-text-color-primary)'
           }"
           @selection-change="handleSelectionChange"
