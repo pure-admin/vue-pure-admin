@@ -74,9 +74,9 @@ const {
             class="!w-[160px]"
           />
         </el-form-item>
-        <el-form-item label="手机号码：" prop="mobile">
+        <el-form-item label="手机号码：" prop="phone">
           <el-input
-            v-model="form.mobile"
+            v-model="form.phone"
             placeholder="请输入手机号码"
             clearable
             class="!w-[160px]"
@@ -148,6 +148,7 @@ const {
             </el-popconfirm>
           </div>
           <pure-table
+            row-key="id"
             ref="tableRef"
             adaptive
             align-whole="center"
@@ -177,7 +178,10 @@ const {
               >
                 修改
               </el-button>
-              <el-popconfirm title="是否确认删除?">
+              <el-popconfirm
+                :title="`是否确认删除用户编号为${row.id}的这条数据`"
+                @confirm="handleDelete(row)"
+              >
                 <template #reference>
                   <el-button
                     class="reset-margin"
@@ -185,7 +189,6 @@ const {
                     type="primary"
                     :size="size"
                     :icon="useRenderIcon(Delete)"
-                    @click="handleDelete(row)"
                   >
                     删除
                   </el-button>

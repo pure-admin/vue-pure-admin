@@ -7,18 +7,30 @@ import { usePublicHooks } from "../../hooks";
 
 const props = withDefaults(defineProps<FormProps>(), {
   formInline: () => ({
+    title: "新增",
     higherDeptOptions: [],
     parentId: 0,
-    name: "",
-    principal: "",
+    nickname: "",
+    username: "",
+    password: "",
     phone: "",
     email: "",
-    sort: 0,
+    sex: "",
     status: 1,
     remark: ""
   })
 });
 
+const sexOptions = [
+  {
+    value: 0,
+    label: "男"
+  },
+  {
+    value: 1,
+    label: "女"
+  }
+];
 const ruleFormRef = ref();
 const { switchStyle } = usePublicHooks();
 const newFormInline = ref(props.formInline);
@@ -39,14 +51,75 @@ defineExpose({ getRef });
   >
     <el-row :gutter="30">
       <re-col :value="12" :xs="24" :sm="24">
-        <el-form-item label="用户昵称" prop="name">
+        <el-form-item label="用户昵称" prop="nickname">
           <el-input
-            v-model="newFormInline.name"
+            v-model="newFormInline.nickname"
             clearable
-            placeholder="请输入部门名称"
+            placeholder="请输入用户昵称"
           />
         </el-form-item>
       </re-col>
+      <re-col :value="12" :xs="24" :sm="24">
+        <el-form-item label="用户名称" prop="username">
+          <el-input
+            v-model="newFormInline.username"
+            clearable
+            placeholder="请输入用户名称"
+          />
+        </el-form-item>
+      </re-col>
+
+      <re-col
+        :value="12"
+        :xs="24"
+        :sm="24"
+        v-if="newFormInline.title === '新增'"
+      >
+        <el-form-item label="用户密码" prop="password">
+          <el-input
+            v-model="newFormInline.password"
+            clearable
+            placeholder="请输入用户密码"
+          />
+        </el-form-item>
+      </re-col>
+      <re-col :value="12" :xs="24" :sm="24">
+        <el-form-item label="手机号" prop="phone">
+          <el-input
+            v-model="newFormInline.phone"
+            clearable
+            placeholder="请输入手机号"
+          />
+        </el-form-item>
+      </re-col>
+
+      <re-col :value="12" :xs="24" :sm="24">
+        <el-form-item label="邮箱" prop="email">
+          <el-input
+            v-model="newFormInline.email"
+            clearable
+            placeholder="请输入邮箱"
+          />
+        </el-form-item>
+      </re-col>
+      <re-col :value="12" :xs="24" :sm="24">
+        <el-form-item label="用户性别">
+          <el-select
+            v-model="newFormInline.sex"
+            placeholder="请选择用户性别"
+            class="w-full"
+            clearable
+          >
+            <el-option
+              v-for="(item, index) in sexOptions"
+              :key="index"
+              :label="item.label"
+              :value="item.value"
+            />
+          </el-select>
+        </el-form-item>
+      </re-col>
+
       <re-col :value="12" :xs="24" :sm="24">
         <el-form-item label="归属部门">
           <el-cascader
@@ -70,56 +143,12 @@ defineExpose({ getRef });
           </el-cascader>
         </el-form-item>
       </re-col>
-
-      <re-col :value="12" :xs="24" :sm="24">
-        <el-form-item label="用户名称" prop="name">
-          <el-input
-            v-model="newFormInline.name"
-            clearable
-            placeholder="请输入用户名称"
-          />
-        </el-form-item>
-      </re-col>
-      <re-col :value="12" :xs="24" :sm="24">
-        <el-form-item label="用户密码" prop="name">
-          <el-input
-            v-model="newFormInline.name"
-            clearable
-            placeholder="请输入用户密码"
-          />
-        </el-form-item>
-      </re-col>
-
-      <re-col :value="12" :xs="24" :sm="24">
-        <el-form-item label="手机号" prop="phone">
-          <el-input
-            v-model="newFormInline.phone"
-            clearable
-            placeholder="请输入手机号"
-          />
-        </el-form-item>
-      </re-col>
-      <re-col :value="12" :xs="24" :sm="24">
-        <el-form-item label="邮箱" prop="email">
-          <el-input
-            v-model="newFormInline.email"
-            clearable
-            placeholder="请输入邮箱"
-          />
-        </el-form-item>
-      </re-col>
-
-      <re-col :value="12" :xs="24" :sm="24">
-        <el-form-item label="用户性别">
-          <el-input-number
-            v-model="newFormInline.sort"
-            :min="0"
-            :max="9999"
-            controls-position="right"
-          />
-        </el-form-item>
-      </re-col>
-      <re-col :value="12" :xs="24" :sm="24">
+      <re-col
+        :value="12"
+        :xs="24"
+        :sm="24"
+        v-if="newFormInline.title === '新增'"
+      >
         <el-form-item label="用户状态">
           <el-switch
             v-model="newFormInline.status"

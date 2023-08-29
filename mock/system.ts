@@ -11,7 +11,8 @@ export default [
           username: "admin",
           nickname: "admin",
           avatar: "https://avatars.githubusercontent.com/u/44761321",
-          mobile: "15888886789",
+          phone: "15888886789",
+          email: "@email",
           sex: 0,
           id: 1,
           status: 1,
@@ -28,7 +29,8 @@ export default [
           username: "common",
           nickname: "common",
           avatar: "https://avatars.githubusercontent.com/u/52823142",
-          mobile: "18288882345",
+          phone: "18288882345",
+          email: "@email",
           sex: 1,
           id: 2,
           status: 1,
@@ -44,7 +46,7 @@ export default [
       list = list.filter(item =>
         String(item.status).includes(String(body?.status))
       );
-      if (body.mobile) list = list.filter(item => item.mobile === body.mobile);
+      if (body.phone) list = list.filter(item => item.phone === body.phone);
       if (body.deptId) list = list.filter(item => item.dept.id === body.deptId);
       return {
         success: true,

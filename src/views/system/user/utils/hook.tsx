@@ -6,6 +6,7 @@ import { zxcvbn } from "@zxcvbn-ts/core";
 import { handleTree } from "@/utils/tree";
 import { message } from "@/utils/message";
 import croppingUpload from "../upload.vue";
+import { usePublicHooks } from "../../hooks";
 import { addDialog } from "@/components/ReDialog";
 import { type PaginationProps } from "@pureadmin/table";
 import type { FormItemProps, RoleFormItemProps } from "../utils/types";
@@ -39,7 +40,7 @@ export function useUser(tableRef: Ref, treeRef: Ref) {
     // 左侧部门树的id
     deptId: "",
     username: "",
-    mobile: "",
+    phone: "",
     status: ""
   });
   const formRef = ref();
@@ -49,6 +50,7 @@ export function useUser(tableRef: Ref, treeRef: Ref) {
   // 上传头像信息
   const avatarInfo = ref();
   const switchLoadMap = ref({});
+  const { switchStyle } = usePublicHooks();
   const higherDeptOptions = ref();
   const treeData = ref([]);
   const treeLoading = ref(true);
@@ -63,7 +65,8 @@ export function useUser(tableRef: Ref, treeRef: Ref) {
     {
       label: "勾选列", // 如果需要表格多选，此处label必须设置
       type: "selection",
-      fixed: "left"
+      fixed: "left",
+      reserveSelection: true // 数据刷新后保留选项
     },
     {
       label: "用户编号",
@@ -115,9 +118,9 @@ export function useUser(tableRef: Ref, treeRef: Ref) {
     },
     {
       label: "手机号码",
-      prop: "mobile",
+      prop: "phone",
       minWidth: 90,
-      formatter: ({ mobile }) => hideTextAtIndex(mobile, { start: 3, end: 6 })
+      formatter: ({ phone }) => hideTextAtIndex(phone, { start: 3, end: 6 })
     },
     {
       label: "状态",
@@ -130,9 +133,10 @@ export function useUser(tableRef: Ref, treeRef: Ref) {
           v-model={scope.row.status}
           active-value={1}
           inactive-value={0}
-          active-text="已开启"
-          inactive-text="已关闭"
+          active-text="已启用"
+          inactive-text="已停用"
           inline-prompt
+          style={switchStyle.value}
           onChange={() => onChange(scope as any)}
         />
       )
@@ -222,7 +226,7 @@ export function useUser(tableRef: Ref, treeRef: Ref) {
   }
 
   function handleDelete(row) {
-    message(`您删除了角色名称为${row.name}的这条数据`, { type: "success" });
+    message(`您删除了用户编号为${row.id}的这条数据`, { type: "success" });
     onSearch();
   }
 
@@ -253,7 +257,7 @@ export function useUser(tableRef: Ref, treeRef: Ref) {
     // 返回当前选中的行
     const curSelected = tableRef.value.getTableRef().getSelectionRows();
     // 接下来根据实际业务，通过选中行的某项数据，比如下面的id，调用接口进行批量删除
-    message(`已删除id为 ${getKeyList(curSelected, "id")} 的数据`, {
+    message(`已删除用户编号为 ${getKeyList(curSelected, "id")} 的数据`, {
       type: "success"
     });
     tableRef.value.getTableRef().clearSelection();
@@ -302,18 +306,20 @@ export function useUser(tableRef: Ref, treeRef: Ref) {
       title: `${title}用户`,
       props: {
         formInline: {
+          title,
           higherDeptOptions: formatHigherDeptOptions(higherDeptOptions.value),
-          parentId: row?.parentId ?? 0,
-          name: row?.name ?? "",
-          principal: row?.principal ?? "",
+          parentId: row?.dept.id ?? 0,
+          nickname: row?.nickname ?? "",
+          username: row?.username ?? "",
+          password: row?.password ?? "",
           phone: row?.phone ?? "",
           email: row?.email ?? "",
-          sort: row?.sort ?? 0,
+          sex: row?.sex ?? "",
           status: row?.status ?? 1,
           remark: row?.remark ?? ""
         }
       },
-      width: "40%",
+      width: "46%",
       draggable: true,
       fullscreenIcon: true,
       closeOnClickModal: false,
@@ -322,7 +328,7 @@ export function useUser(tableRef: Ref, treeRef: Ref) {
         const FormRef = formRef.value.getRef();
         const curData = options.props.formInline as FormItemProps;
         function chores() {
-          message(`您${title}了用户名称为${curData.name}的这条数据`, {
+          message(`您${title}了用户名称为${curData.username}的这条数据`, {
             type: "success"
           });
           done(); // 关闭弹框
