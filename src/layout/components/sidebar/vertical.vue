@@ -80,7 +80,7 @@ onBeforeUnmount(() => {
 <template>
   <div
     v-loading="loading"
-    :class="['sidebar-container', showLogo ? 'has-logo' : '']"
+    :class="['sidebar-container', showLogo ? 'has-logo' : 'no-logo']"
   >
     <Logo v-if="showLogo" :collapse="isCollapse" />
     <el-scrollbar
