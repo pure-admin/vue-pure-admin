@@ -1,1 +1,2 @@
 import{useColumns as _}from"./columns6.js";import{d as p,c as o,g as m,n as u,j as s,w as d,h as t,t as i,u as e}from"./index.js";const f={class:"flex"},h={class:"w-[700px]"},k=p({__name:"index",setup(x){const{columns:a,dataList:n,columnsDrag:c}=_();return(b,g)=>{const l=o("el-scrollbar"),r=o("pure-table");return m(),u("div",f,[s(l,{height:"700px"},{default:d(()=>[t("code",null,[t("pre",h," "+i(e(c)),1)])]),_:1}),s(r,{"row-key":"id",data:e(n),columns:e(a)},null,8,["data","columns"])])}}});export{k as _};
+//# sourceMappingURL=index.vue_vue_type_script_setup_true_lang6.js.map

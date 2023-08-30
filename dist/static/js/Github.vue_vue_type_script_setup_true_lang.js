@@ -1,1 +1,2 @@
 import{useColumns as r}from"./columns17.js";import{d as u,c as t,g as a,n as i,y as p,j as _,F as d}from"./index.js";const g=u({__name:"Github",setup(f){const{columnsA:o,columnsB:c,columnsC:e}=r(),s=[{columns:o,column:3},{columns:c,column:2},{columns:e,column:1}];return(C,k)=>{const l=t("PureDescriptions");return a(),i(d,null,p(s,(n,m)=>_(l,{key:m,columns:n.columns,column:n.column,direction:"vertical",border:""},null,8,["columns","column"])),64)}}});export{g as _};
+//# sourceMappingURL=Github.vue_vue_type_script_setup_true_lang.js.map

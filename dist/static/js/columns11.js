@@ -8,3 +8,4 @@ import{t as C}from"./data2.js";import{r as a,al as u,b5 as S,o as x,aB as c,L as
           L 15 15
         " style="stroke-width: 4px; fill: rgba(0, 0, 0, 0)"/>
       `});function g(e){l.small=e}function p(e){}function v(e){r.text=`正在加载第${e}页...`,t.value=!0,c(600).then(()=>{t.value=!1})}return S(()=>{l.align=i.value}),x(()=>{c(600).then(()=>{const e=[];Array.from({length:6}).forEach(()=>{e.push(A(C,!0))}),e.flat(1/0).forEach((m,b)=>{o.value.push({id:b,...m})}),l.total=o.value.length,t.value=!1})}),{loading:t,columns:d,dataList:o,select:s,hideVal:n,tableSize:f,pagination:l,loadingConfig:r,paginationAlign:i,paginationSmall:h,onChange:g,onSizeChange:p,onCurrentChange:v}}export{y as useColumns};
+//# sourceMappingURL=columns11.js.map
