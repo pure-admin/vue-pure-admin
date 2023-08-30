@@ -9,9 +9,9 @@
 import { defineComponent } from "vue";
 import { checkVersion } from "version-rocket";
 import { ElConfigProvider } from "element-plus";
-import en from "element-plus/lib/locale/lang/en";
+import en from "element-plus/dist/locale/en.mjs";
 import { ReDialog } from "@/components/ReDialog";
-import zhCn from "element-plus/lib/locale/lang/zh-cn";
+import zhCn from "element-plus/dist/locale/zh-cn.mjs";
 
 export default defineComponent({
   name: "app",

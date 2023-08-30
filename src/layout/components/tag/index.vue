@@ -522,24 +522,17 @@ onBeforeUnmount(() => {
           :ref="'dynamic' + index"
           v-for="(item, index) in multiTags"
           :key="index"
-          :class="[
-            'scroll-item is-closable',
-            linkIsActive(item),
-            route.path === item.path && showModel === 'card'
-              ? 'card-active'
-              : ''
-          ]"
+          :class="['scroll-item is-closable', linkIsActive(item)]"
           @contextmenu.prevent="openMenu(item, $event)"
           @mouseenter.prevent="onMouseenter(index)"
           @mouseleave.prevent="onMouseleave(index)"
           @click="tagOnClick(item)"
         >
-          <router-link
-            :to="item.path"
-            class="dark:!text-text_color_primary dark:hover:!text-primary"
+          <span
+            class="tag-title dark:!text-text_color_primary dark:hover:!text-primary"
           >
             {{ transformI18n(item.meta.title) }}
-          </router-link>
+          </span>
           <span
             v-if="
               iconIsActive(item, index) ||

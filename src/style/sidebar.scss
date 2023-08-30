@@ -54,7 +54,7 @@
     top: 0;
     right: 0;
     z-index: 998;
-    width: calc(100% - 210px);
+    width: calc(100% - #{$sideBarWidth});
 
     /* fixed-header 属性左上角动画 */
     transition: width var(--pure-transition-duration);
@@ -96,14 +96,22 @@
       right: 0;
     }
 
-    .el-scrollbar {
-      height: calc(100% - 44px);
-    }
-
     &.has-logo {
       .el-scrollbar.pc {
         /* logo: 48px、leftCollapse: 40px、leftCollapse-shadow: 4px */
         height: calc(100% - 92px);
+      }
+
+      /* logo: 48px */
+      .el-scrollbar.mobile {
+        height: calc(100% - 48px);
+      }
+    }
+
+    &.no-logo {
+      .el-scrollbar.pc {
+        /* leftCollapse: 40px、leftCollapse-shadow: 4px */
+        height: calc(100% - 44px);
       }
 
       .el-scrollbar.mobile {

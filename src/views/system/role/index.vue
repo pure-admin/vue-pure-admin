@@ -103,7 +103,6 @@ const {
       </template>
       <template v-slot="{ size, dynamicColumns }">
         <pure-table
-          border
           align-whole="center"
           showOverflowTooltip
           table-layout="auto"
@@ -115,7 +114,7 @@ const {
           :pagination="pagination"
           :paginationSmall="size === 'small' ? true : false"
           :header-cell-style="{
-            background: 'var(--el-table-row-hover-bg-color)',
+            background: 'var(--el-fill-color-light)',
             color: 'var(--el-text-color-primary)'
           }"
           @selection-change="handleSelectionChange"

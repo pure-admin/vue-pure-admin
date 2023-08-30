@@ -72,7 +72,7 @@ const exportExcel = () => {
   <el-card shadow="never">
     <template #header>
       <div class="font-medium">
-        导出Execl（
+        导出Excel（
         <el-link
           href="https://github.com/SheetJS/sheetjs"
           target="_blank"

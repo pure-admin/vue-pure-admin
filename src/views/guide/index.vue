@@ -11,25 +11,29 @@ const guide = () => {
     .setOptions({
       steps: [
         {
-          element: document.querySelector("#header-notice"),
+          element: document.querySelector("#header-notice") as
+            | string
+            | HTMLElement,
           title: "消息通知",
           intro: "您可以在这里查看管理员发送的消息",
           position: "left"
         },
         {
-          element: document.querySelector("#header-translation"),
+          element: document.querySelector("#header-translation") as
+            | string
+            | HTMLElement,
           title: "国际化",
           intro: "您可以在这里进行语言切换",
           position: "left"
         },
         {
-          element: document.querySelector(".set-icon"),
+          element: document.querySelector(".set-icon") as string | HTMLElement,
           title: "项目配置",
           intro: "您可以在这里查看项目配置",
           position: "left"
         },
         {
-          element: document.querySelector(".tags-view"),
+          element: document.querySelector(".tags-view") as string | HTMLElement,
           title: "多标签页",
           intro: "这里是您访问过的页面的历史",
           position: "bottom"
