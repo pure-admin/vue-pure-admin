@@ -97,7 +97,7 @@ export function resetRouter() {
 }
 
 /** 路由白名单 */
-const whiteList = ["/login"];
+const whiteList = ["/login", "/newTab"];
 
 const { VITE_HIDE_HOME } = import.meta.env;
 
@@ -111,7 +111,7 @@ router.beforeEach((to: ToRouteType, _from, next) => {
   }
   const userInfo = storageSession().getItem<DataInfo<number>>(sessionKey);
   NProgress.start();
-  const externalLink = isUrl(to?.name as string);
+  const externalLink = isUrl(to?.name as string) || to?.meta?.newTab;
   if (!externalLink) {
     to.matched.some(item => {
       if (!item.meta.title) return "";
@@ -135,9 +135,16 @@ router.beforeEach((to: ToRouteType, _from, next) => {
       next({ path: "/error/404" });
     }
     if (_from?.name) {
-      // name为超链接
+      // 新标签页中打开
       if (externalLink) {
-        openLink(to?.name as string);
+        // 路由映射
+        const routeObj = { Chat: "chat" };
+        let name = to?.name as string;
+        const baseUrl = document.baseURI.split("#")[0];
+        if (Object.keys(routeObj).includes(name)) {
+          name = baseUrl + "#/" + routeObj[name];
+        }
+        openLink(name);
         NProgress.done();
       } else {
         toCorrectRoute();

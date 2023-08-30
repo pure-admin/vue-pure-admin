@@ -31,6 +31,8 @@ declare global {
     frameSrc?: string;
     /** `iframe`页是否开启首次加载动画（默认`true`）`可选` */
     frameLoading?: boolean;
+    /** 是否在新标签中打开 */
+    newTab?: boolean;
     /** 页面加载动画（有两种形式，一种直接采用vue内置的`transitions`动画，另一种是使用`animate.css`写进、离场动画）`可选` */
     transition?: {
       /**
@@ -101,5 +103,5 @@ declare global {
 
 // https://router.vuejs.org/zh/guide/advanced/meta.html#typescript
 declare module "vue-router" {
-  interface RouteMeta extends CustomizeRouteMeta {}
+  interface RouteMeta extends CustomizeRouteMeta { }
 }
