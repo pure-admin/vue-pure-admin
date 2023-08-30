@@ -16,8 +16,10 @@ const vTippy = tippy;
 const loading = ref(true);
 const wavesurfer = ref(null);
 const wavesurferRef = ref();
-// 音频总时长
+// 音频总时长（格式化后 mm:ss）
 const totalTime = ref();
+// 音频总时长（单位秒）
+const totalSecondTime = ref();
 // 音频当前播放位置时长
 const curTime = ref();
 // 音频是否正在播放
@@ -44,17 +46,19 @@ function init() {
   // 当音频已解码并可以播放时触发
   wavesurfer.value.on("ready", () => {
     if (!wavesurfer.value) return;
-    const { duration } = wavesurfer.value;
-    const { m, s } = getTime(duration);
+    const { decodedData } = wavesurfer.value;
+    totalSecondTime.value = decodedData.duration;
+    const { m, s } = getTime(decodedData.duration);
     totalTime.value = `${m}:${s}`;
     // 光标位置取中
-    wavesurfer.value.setTime(duration / 2);
+    wavesurfer.value.setTime(decodedData.duration / 2);
     // 设置音频音量（范围0-1）
     // wavesurfer.value.setVolume(1);
   });
 
   // 音频位置改变时，播放期间连续触发
   wavesurfer.value.on("timeupdate", timer => {
+    if (timer > totalSecondTime.value) return;
     const { m, s } = getTime(timer);
     curTime.value = `${m}:${s}`;
   });
