@@ -150,6 +150,11 @@ function overflowSlice(text, item?: any) {
 }
 
 function hasOneShowingChild(children: menuType[] = [], parent: menuType) {
+  // fixed 添加容错
+  if (!children) {
+    return false;
+  }
+  // ----
   const showingChildren = children.filter((item: any) => {
     onlyOneChild.value = item;
     return true;

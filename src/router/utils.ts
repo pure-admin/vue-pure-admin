@@ -296,7 +296,8 @@ function addAsyncRoutes(arrRoutes: Array<RouteRecordRaw>) {
   const modulesRoutesKeys = Object.keys(modulesRoutes);
   arrRoutes.forEach((v: RouteRecordRaw) => {
     // 将backstage属性加入meta，标识此路由为后端返回路由
-    v.meta.backstage = true;
+    v.meta ? (v.meta.backstage = true) : (v.meta = { title: "" }); // fixed 添加容错
+    v.children ? v.children : []; // fixed 添加容错
     // 父级的redirect属性取值：如果子级存在且父级的redirect属性不存在，默认取第一个子级的path；如果子级存在且父级的redirect属性存在，取存在的redirect属性，会覆盖默认值
     if (v?.children && v.children.length && !v.redirect)
       v.redirect = v.children[0].path;
