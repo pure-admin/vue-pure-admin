@@ -122,8 +122,10 @@ html.dark {
   .pure-message {
     background-color: rgb(36 37 37) !important;
     background-image: initial !important;
-    box-shadow: rgb(13 13 13 / 12%) 0 3px 6px -4px,
-      rgb(13 13 13 / 8%) 0 6px 16px 0, rgb(13 13 13 / 5%) 0 9px 28px 8px !important;
+    box-shadow:
+      rgb(13 13 13 / 12%) 0 3px 6px -4px,
+      rgb(13 13 13 / 8%) 0 6px 16px 0,
+      rgb(13 13 13 / 5%) 0 9px 28px 8px !important;
 
     & .el-message__content {
       color: $color-white !important;
@@ -142,7 +144,9 @@ html.dark {
   /* 自定义菜单搜索样式 */
   .pure-search-dialog {
     .el-dialog__footer {
-      box-shadow: 0 -1px 0 0 #555a64, 0 -3px 6px 0 rgb(69 98 155 / 12%);
+      box-shadow:
+        0 -1px 0 0 #555a64,
+        0 -3px 6px 0 rgb(69 98 155 / 12%);
     }
 
     .search-footer {
