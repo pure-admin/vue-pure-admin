@@ -4,7 +4,7 @@
 
 [ -n "$CI" ] && exit 0
 
-# Format and submit code according to lintstagedrc.js configuration
-npm run lint:lint-staged
+PATH="/usr/local/bin:$PATH"
 
-npm run lint:pretty
+# Perform lint check on files in the staging area through .lintstagedrc configuration
+pnpm exec lint-staged

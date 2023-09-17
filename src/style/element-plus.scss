@@ -63,7 +63,8 @@
   }
 
   & .peg {
-    box-shadow: 0 0 10px var(--el-color-primary),
+    box-shadow:
+      0 0 10px var(--el-color-primary),
       0 0 5px var(--el-color-primary) !important;
   }
 
@@ -105,7 +106,9 @@
     height: 24px;
     border-radius: 4px;
     outline: none;
-    transition: background-color 0.2s, color 0.2s;
+    transition:
+      background-color 0.2s,
+      color 0.2s;
 
     &:hover {
       color: rgb(0 0 0 / 88%) !important;
@@ -124,7 +127,9 @@
   padding: 10px 13px !important;
   background: #fff !important;
   border-width: 0 !important;
-  box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014,
+  box-shadow:
+    0 3px 6px -4px #0000001f,
+    0 6px 16px #00000014,
     0 9px 28px 8px #0000000d !important;
 
   &.el-message.is-closable .el-message__content {
@@ -145,7 +150,9 @@
     right: 9px !important;
     border-radius: 4px;
     outline: none;
-    transition: background-color 0.2s, color 0.2s;
+    transition:
+      background-color 0.2s,
+      color 0.2s;
 
     &:hover {
       background-color: rgb(0 0 0 / 6%);
@@ -170,6 +177,8 @@
 
   .el-dialog__footer {
     padding-bottom: 10px;
-    box-shadow: 0 -1px 0 0 #e0e3e8, 0 -3px 6px 0 rgb(69 98 155 / 12%);
+    box-shadow:
+      0 -1px 0 0 #e0e3e8,
+      0 -3px 6px 0 rgb(69 98 155 / 12%);
   }
 }

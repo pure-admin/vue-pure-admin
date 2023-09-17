@@ -28,9 +28,12 @@
   padding: 4px 0;
   background-color: #fff;
   border-radius: 4px;
-  box-shadow: 0 2px 8px -2px rgb(0 0 0 / 5%), 0 1px 4px -1px rgb(0 0 0 / 7%),
+  box-shadow:
+    0 2px 8px -2px rgb(0 0 0 / 5%),
+    0 1px 4px -1px rgb(0 0 0 / 7%),
     0 0 1px rgb(0 0 0 / 7%);
-  transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1),
+  transition:
+    transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1),
     width 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
   will-change: transform, width;
 }
