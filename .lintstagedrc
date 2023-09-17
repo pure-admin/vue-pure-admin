@@ -3,7 +3,7 @@
     "prettier --cache --ignore-unknown  --write",
     "eslint --cache --fix"
   ],
-  "{!(package)*.json,*.code-snippets,.!(browserslist)*rc}": [
+  "{!(package)*.json,*.code-snippets,.!({browserslist,nvm})*rc}": [
     "prettier --cache --write--parser json"
   ],
   "package.json": ["prettier --cache --write"],

@@ -2,7 +2,7 @@ FROM node:16-alpine as build-stage
 
 WORKDIR /app
 RUN corepack enable
-RUN corepack prepare pnpm@7.32.1 --activate
+RUN corepack prepare pnpm@8.6.10 --activate
 
 RUN npm config set registry https://registry.npmmirror.com
 
