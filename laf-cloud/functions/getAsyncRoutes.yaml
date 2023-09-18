@@ -1,0 +1,5 @@
+name: getAsyncRoutes
+methods:
+  - GET
+  - POST
+tags: []

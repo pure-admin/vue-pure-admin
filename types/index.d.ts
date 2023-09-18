@@ -78,3 +78,10 @@ interface ComponentElRef<T extends HTMLElement = HTMLDivElement> {
 function parseInt(s: string | number, radix?: number): number;
 
 function parseFloat(string: string | number): number;
+
+// 在全局范围声明属性存在于 import.meta 上
+declare global {
+  interface ImportMeta {
+    customProperty: string;
+  }
+}

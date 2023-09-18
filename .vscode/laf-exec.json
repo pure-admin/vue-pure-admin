@@ -1,0 +1,7 @@
+{
+  "method": "get",
+  "query": "key1=val1&key2=val2",
+  "body": {
+    "key1": "val1"
+  }
+}

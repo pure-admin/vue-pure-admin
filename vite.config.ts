@@ -43,7 +43,12 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
       port: VITE_PORT,
       host: "0.0.0.0",
       // 本地跨域代理 https://cn.vitejs.dev/config/server-options.html#server-proxy
-      proxy: {}
+      proxy: {
+        "/api": {
+          target: "https://wk0ntw.console.hysli.cn", //将这个强行转到laf的详细远程地址
+          changeOrigin: true //设置允许跨域
+        }
+      }
     },
     plugins: getPluginsList(command, VITE_CDN, VITE_COMPRESSION),
     // https://cn.vitejs.dev/config/dep-optimization-options.html#dep-optimization-options
@@ -53,7 +58,9 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
     },
     build: {
       sourcemap: false,
+
       // 消除打包大小超过500kb警告
+      target: "esm",
       chunkSizeWarningLimit: 4000,
       rollupOptions: {
         input: {

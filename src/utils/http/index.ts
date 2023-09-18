@@ -191,4 +191,7 @@ class PureHttp {
   }
 }
 
+// Now you can use the customProperty on import.meta
+console.log(import.meta.env.VITE_BASE_URL);
+
 export const http = new PureHttp();

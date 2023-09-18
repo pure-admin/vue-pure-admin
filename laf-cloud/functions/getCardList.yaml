@@ -1,0 +1,5 @@
+name: getCardList
+methods:
+  - GET
+  - POST
+tags: []

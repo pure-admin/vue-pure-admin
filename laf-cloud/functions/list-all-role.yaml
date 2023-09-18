@@ -1,0 +1,5 @@
+name: list-all-role
+methods:
+  - GET
+  - POST
+tags: []

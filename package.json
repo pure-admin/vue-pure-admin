@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "NODE_OPTIONS=--max-old-space-size=4096 vite",
-    "serve": "pnpm dev",
+    "serve": "pnpm dev --mode development",
     "build": "rimraf dist && NODE_OPTIONS=--max-old-space-size=8192 vite build && generate-version-file",
     "build:staging": "rimraf dist && vite build --mode staging",
     "report": "rimraf dist && vite build",
@@ -36,6 +36,7 @@
     "@pureadmin/descriptions": "^1.1.1",
     "@pureadmin/table": "^2.3.3",
     "@pureadmin/utils": "^1.9.7",
+    "@styils/vue": "^1.1.6",
     "@vueuse/core": "^10.4.0",
     "@vueuse/motion": "^2.0.0",
     "@wangeditor/editor": "^5.1.23",

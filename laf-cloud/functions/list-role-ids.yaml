@@ -1,0 +1,5 @@
+name: list-role-ids
+methods:
+  - GET
+  - POST
+tags: []

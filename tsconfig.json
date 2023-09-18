@@ -1,8 +1,11 @@
 {
   "compilerOptions": {
+    // 其他选项...
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
     "target": "esnext",
     "module": "esnext",
-    "moduleResolution": "Node",
+    "moduleResolution": "bundler",
     "strict": false,
     "jsx": "preserve",
     "importHelpers": true,
@@ -16,6 +19,8 @@
     "sourceMap": true,
     "baseUrl": ".",
     "allowJs": false,
+    "noUnusedLocals": false, // 关闭未使用的局部变量检查
+    "noUnusedParameters": false, // 关闭未使用的函数参数检查
     "resolveJsonModule": true,
     "lib": ["dom", "esnext"],
     "paths": {
