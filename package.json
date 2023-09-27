@@ -69,6 +69,7 @@
     "intro.js": "^7.2.0",
     "js-cookie": "^3.0.5",
     "jsbarcode": "^3.11.5",
+    "localforage": "^1.10.0",
     "md-editor-v3": "2.7.2",
     "mint-filter": "^4.0.3",
     "mitt": "^3.0.1",
