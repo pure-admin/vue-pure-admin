@@ -25,7 +25,7 @@ const mapList = (): Array<mapType> => {
 
 export default [
   {
-    url: "/getMapInfo",
+    url: "/get-map-info",
     method: "get",
     response: () => {
       return {
