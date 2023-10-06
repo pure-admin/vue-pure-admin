@@ -51,7 +51,15 @@ export function setToken(data: DataInfo<Date>) {
       })
     : Cookies.set(TokenKey, cookieString);
 
-  Cookies.set(multipleTabsKey, "true");
+  Cookies.set(
+    multipleTabsKey,
+    "true",
+    useUserStoreHook().isRemembered
+      ? {
+          expires: 7
+        }
+      : {}
+  );
 
   function setUserKey(username: string, roles: Array<string>) {
     useUserStoreHook().SET_USERNAME(username);
@@ -79,6 +87,7 @@ export function setToken(data: DataInfo<Date>) {
 /** 删除`token`以及key值为`user-info`的localStorage信息 */
 export function removeToken() {
   Cookies.remove(TokenKey);
+  Cookies.remove(multipleTabsKey);
   storageLocal().removeItem(userKey);
 }
 

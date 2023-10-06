@@ -19,7 +19,9 @@ export const useUserStore = defineStore({
     // 前端生成的验证码（按实际需求替换）
     verifyCode: "",
     // 判断登录页面显示哪个组件（0：登录（默认）、1：手机登录、2：二维码登录、3：注册、4：忘记密码）
-    currentPage: 0
+    currentPage: 0,
+    // 是否勾选了7天内免登录
+    isRemembered: false
   }),
   actions: {
     /** 存储用户名 */
@@ -37,6 +39,10 @@ export const useUserStore = defineStore({
     /** 存储登录页面显示哪个组件 */
     SET_CURRENTPAGE(value: number) {
       this.currentPage = value;
+    },
+    /** 存储是否勾选了7天内免登录 */
+    SET_ISREMEMBERED(bool: boolean) {
+      this.isRemembered = bool;
     },
     /** 登入 */
     async loginByUsername(data) {
