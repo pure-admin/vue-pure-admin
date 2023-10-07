@@ -454,9 +454,10 @@ function onBeforeSureClick() {
           ，采用函数式调用弹框组件（更多操作实例请参考
           <span
             class="cursor-pointer text-primary"
-            @click="router.push({ name: 'Dept' })"
-            >系统管理页面</span
+            @click="router.push({ name: 'SystemDept' })"
           >
+            系统管理页面
+          </span>
           ）
         </span>
       </div>

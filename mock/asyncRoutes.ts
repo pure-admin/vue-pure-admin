@@ -18,7 +18,7 @@ const systemRouter = {
   children: [
     {
       path: "/system/user/index",
-      name: "User",
+      name: "SystemUser",
       meta: {
         icon: "flUser",
         title: "menus.hsUser",
@@ -27,7 +27,7 @@ const systemRouter = {
     },
     {
       path: "/system/role/index",
-      name: "Role",
+      name: "SystemRole",
       meta: {
         icon: "role",
         title: "menus.hsRole",
@@ -35,8 +35,17 @@ const systemRouter = {
       }
     },
     {
+      path: "/system/menu/index",
+      name: "SystemMenu",
+      meta: {
+        icon: "menu",
+        title: "menus.hsSystemMenu",
+        roles: ["admin"]
+      }
+    },
+    {
       path: "/system/dept/index",
-      name: "Dept",
+      name: "SystemDept",
       meta: {
         icon: "dept",
         title: "menus.hsDept",
