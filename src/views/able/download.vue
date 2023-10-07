@@ -16,7 +16,7 @@ const base64 =
 
 function down() {
   axios
-    .get("https://pure-admin.github.io/pure-admin-doc/img/pure.png", {
+    .get("https://xiaoxian521.github.io/hyperlink/img/pure.png", {
       responseType: "blob"
     })
     .then(({ data }) => {
@@ -34,7 +34,7 @@ function down() {
       <el-button
         @click="
           downloadByOnlineUrl(
-            'https://pure-admin.github.io/pure-admin-doc/img/pure.png',
+            'https://xiaoxian521.github.io/hyperlink/img/pure.png',
             'test-url.png'
           )
         "

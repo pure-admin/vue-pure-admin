@@ -8,13 +8,6 @@ import {
   nextTick,
   onBeforeMount
 } from "vue";
-import {
-  useDark,
-  debounce,
-  useGlobal,
-  storageLocal,
-  storageSession
-} from "@pureadmin/utils";
 import { getConfig } from "@/config";
 import { useRouter } from "vue-router";
 import panel from "../panel/index.vue";
@@ -27,6 +20,7 @@ import { useAppStoreHook } from "@/store/modules/app";
 import { toggleTheme } from "@pureadmin/theme/dist/browser-utils";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
 import { useDataThemeChange } from "@/layout/hooks/useDataThemeChange";
+import { useDark, debounce, useGlobal, storageLocal } from "@pureadmin/utils";
 
 import dayIcon from "@/assets/svg/day.svg?component";
 import darkIcon from "@/assets/svg/dark.svg?component";
@@ -133,7 +127,6 @@ const multiTagsCacheChange = () => {
 function onReset() {
   removeToken();
   storageLocal().clear();
-  storageSession().clear();
   const { Grey, Weak, MultiTagsCache, EpThemeColor, Layout } = getConfig();
   useAppStoreHook().setLayout(Layout);
   setEpThemeColor(EpThemeColor);

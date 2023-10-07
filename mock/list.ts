@@ -2,7 +2,7 @@ import { MockMethod } from "vite-plugin-mock";
 
 export default [
   {
-    url: "/getCardList",
+    url: "/get-card-list",
     method: "post",
     response: () => {
       return {
@@ -559,7 +559,7 @@ export default [
             {
               created_at: "2022-11-21T09:14:22Z",
               published_at: "2022-11-21T09:15:24Z",
-              body: "# 3.7.0 (2022-11-21)\r\n\r\n### ✔️ refactor\r\n\r\n- 使用 `intro.js` 替换 `driver.js`\r\n\r\n### 🎫 Feat\r\n\r\n- 添加前端单点登录，测试地址 https://yiming_chang.gitee.io/vue-pure-admin/#/pure-table/index?username=sso&roles=admin&accessToken=eyJhbGciOiJIUzUxMiJ9.admin\r\n- 为 [@pureadmin/table](https://github.com/xiaoxian521/pure-admin-table) 添加更多的示例和 `element-plus` 的 [table](https://element-plus.org/zh-CN/component/table.html) 示例保持一致\r\n- 丰富水印功能页面（支持自定义各种颜色、阴影、文字、额外属性、设置不可删除水印以及给指定元素设置水印）\r\n- 优化菜单，添加 `MenuArrowIconNoTransition` 全局配置，在 `public/serverConfig.json` 中配置即可，对于出现左侧菜单模式，菜单展开卡顿的可设置 `MenuArrowIconNoTransition: true` 即可解决\r\n- 更换表单设计器组件演示\r\n\r\n### 🐞 Bug fixes\r\n\r\n- 修复页内菜单带参互相跳转，标签没有选中高亮\r\n\r\n### 🍏 Perf\r\n\r\n- 删除已废弃的 `$baseUrl`\r\n- 兼容引入某个库导致 `global is not defined` 报错，将 `src/utils/globalPolyfills.ts` 文件引入 `src/main.ts` 即可解决\r\n- 删除 `@vitejs/plugin-legacy`，`vue3` 无法通过任何工具使其支持 `ie`"
+              body: "# 3.7.0 (2022-11-21)\r\n\r\n### ✔️ refactor\r\n\r\n- 使用 `intro.js` 替换 `driver.js`\r\n\r\n### 🎫 Feat\r\n\r\n- 添加前端单点登录，测试地址 https://yiming_chang.gitee.io/vue-pure-admin/#/pure-table/index?username=sso&roles=admin&accessToken=eyJhbGciOiJIUzUxMiJ9.admin\r\n- 为 [@pureadmin/table](https://github.com/xiaoxian521/pure-admin-table) 添加更多的示例和 `element-plus` 的 [table](https://element-plus.org/zh-CN/component/table.html) 示例保持一致\r\n- 丰富水印功能页面（支持自定义各种颜色、阴影、文字、额外属性、设置不可删除水印以及给指定元素设置水印）\r\n- 优化菜单，添加 `MenuArrowIconNoTransition` 全局配置，在 `public/platform-config.json` 中配置即可，对于出现左侧菜单模式，菜单展开卡顿的可设置 `MenuArrowIconNoTransition: true` 即可解决\r\n- 更换表单设计器组件演示\r\n\r\n### 🐞 Bug fixes\r\n\r\n- 修复页内菜单带参互相跳转，标签没有选中高亮\r\n\r\n### 🍏 Perf\r\n\r\n- 删除已废弃的 `$baseUrl`\r\n- 兼容引入某个库导致 `global is not defined` 报错，将 `src/utils/globalPolyfills.ts` 文件引入 `src/main.ts` 即可解决\r\n- 删除 `@vitejs/plugin-legacy`，`vue3` 无法通过任何工具使其支持 `ie`"
             },
             {
               created_at: "2022-11-10T04:17:05Z",

@@ -3,7 +3,7 @@ import { MockMethod } from "vite-plugin-mock";
 // 模拟刷新token接口
 export default [
   {
-    url: "/refreshToken",
+    url: "/refresh-token",
     method: "post",
     response: ({ body }) => {
       if (body.refreshToken) {
