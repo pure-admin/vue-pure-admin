@@ -37,6 +37,7 @@ import globalization from "@/assets/svg/globalization.svg?component";
 import Lock from "@iconify-icons/ri/lock-fill";
 import Check from "@iconify-icons/ep/check";
 import User from "@iconify-icons/ri/user-3-fill";
+import Info from "@iconify-icons/ri/information-line";
 
 defineOptions({
   name: "Login"
@@ -106,6 +107,9 @@ onBeforeUnmount(() => {
 
 watch(imgCode, value => {
   useUserStoreHook().SET_VERIFYCODE(value);
+});
+watch(checked, bool => {
+  useUserStoreHook().SET_ISREMEMBERED(bool);
 });
 </script>
 
@@ -225,7 +229,16 @@ watch(imgCode, value => {
               <el-form-item>
                 <div class="w-full h-[20px] flex justify-between items-center">
                   <el-checkbox v-model="checked">
-                    {{ t("login.remember") }}
+                    <span class="flex">
+                      {{ t("login.remember") }}
+                      <el-tooltip
+                        effect="dark"
+                        placement="top"
+                        :content="t('login.rememberInfo')"
+                      >
+                        <IconifyIconOffline :icon="Info" class="ml-1" />
+                      </el-tooltip>
+                    </span>
                   </el-checkbox>
                   <el-button
                     link
