@@ -72,7 +72,7 @@ const {
     </el-form>
 
     <PureTableBar
-      title="部门列表（仅演示，操作后不生效）"
+      title="部门管理（仅演示，操作后不生效）"
       :columns="columns"
       :tableRef="tableRef?.getTableRef()"
       @refresh="onSearch"
