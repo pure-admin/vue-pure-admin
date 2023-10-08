@@ -112,6 +112,16 @@ const {
               link
               type="primary"
               :size="size"
+              :icon="useRenderIcon(AddFill)"
+              @click="openDialog('新增', { parentId: row.id } as any)"
+            >
+              新增
+            </el-button>
+            <el-button
+              class="reset-margin"
+              link
+              type="primary"
+              :size="size"
               :icon="useRenderIcon(EditPen)"
               @click="openDialog('编辑', row)"
             >
