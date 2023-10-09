@@ -123,9 +123,9 @@ const {
               type="primary"
               :size="size"
               :icon="useRenderIcon(EditPen)"
-              @click="openDialog('编辑', row)"
+              @click="openDialog('修改', row)"
             >
-              编辑
+              修改
             </el-button>
             <el-popconfirm
               :title="`是否确认删除部门名称为${row.name}的这条数据`"
