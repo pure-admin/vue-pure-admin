@@ -44,6 +44,7 @@ defineOptions({
 });
 
 const imgCode = ref("");
+const loginDay = ref(7);
 const router = useRouter();
 const loading = ref(false);
 const checked = ref(false);
@@ -110,6 +111,9 @@ watch(imgCode, value => {
 });
 watch(checked, bool => {
   useUserStoreHook().SET_ISREMEMBERED(bool);
+});
+watch(loginDay, value => {
+  useUserStoreHook().SET_LOGINDAY(value);
 });
 </script>
 
@@ -230,6 +234,19 @@ watch(checked, bool => {
                 <div class="w-full h-[20px] flex justify-between items-center">
                   <el-checkbox v-model="checked">
                     <span class="flex">
+                      <select
+                        v-model="loginDay"
+                        :style="{
+                          width: loginDay < 10 ? '10px' : '16px',
+                          outline: 'none',
+                          background: 'none',
+                          appearance: 'none'
+                        }"
+                      >
+                        <option value="1">1</option>
+                        <option value="7">7</option>
+                        <option value="30">30</option>
+                      </select>
                       {{ t("login.remember") }}
                       <el-tooltip
                         effect="dark"
