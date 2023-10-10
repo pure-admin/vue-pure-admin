@@ -109,7 +109,7 @@ After operating the above two commands, open `http://localhost:8080` in the brow
 Of course, you can also operate the `docker` project through the [Docker Desktop](https://www.docker.com/products/docker-desktop/) visual interface, as shown below
 
 <p align="center">
-  <img alt="docker" width="100%" src="https://yiming_chang.gitee.io/pure-admin-doc/img/docker/1.jpg">
+  <img alt="docker-desktop" width="100%" src="https://xiaoxian521.github.io/hyperlink/img/docker-desktop.jpg">
 </p>
 
 ## Change Log
