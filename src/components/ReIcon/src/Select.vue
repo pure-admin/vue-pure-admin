@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { cloneDeep } from "@pureadmin/utils";
 import { IconJson } from "@/components/ReIcon/data";
+import { cloneDeep, isAllEmpty } from "@pureadmin/utils";
 import { ref, computed, CSSProperties, toRef, watch } from "vue";
+import Search from "@iconify-icons/ri/search-eye-line";
+
 type ParameterCSSProperties = (item?: string) => CSSProperties | undefined;
 
 defineOptions({
@@ -16,15 +18,15 @@ const props = defineProps({
 });
 const emit = defineEmits<{ (e: "update:modelValue", v: string) }>();
 
-const visible = ref(false);
 const inputValue = toRef(props, "modelValue");
 const iconList = ref(IconJson);
-const icon = ref("add-location");
+const icon = ref();
 const currentActiveType = ref("ep:");
 // 深拷贝图标数据，前端做搜索
 const copyIconList = cloneDeep(iconList.value);
-
-const pageSize = ref(96);
+const totalPage = ref(0);
+// 每页显示35个图标
+const pageSize = ref(35);
 const currentPage = ref(1);
 
 // 搜索条件
@@ -36,8 +38,8 @@ const tabsList = [
     name: "ep:"
   },
   {
-    label: "Font Awesome 4",
-    name: "fa:"
+    label: "Remix Icon",
+    name: "ri:"
   },
   {
     label: "Font Awesome 5 Solid",
@@ -45,20 +47,14 @@ const tabsList = [
   }
 ];
 
-const pageList = computed(() => {
-  if (currentPage.value === 1) {
-    return copyIconList[currentActiveType.value]
-      .filter(v => v.includes(filterValue.value))
-      .slice(currentPage.value - 1, pageSize.value);
-  } else {
-    return copyIconList[currentActiveType.value]
-      .filter(v => v.includes(filterValue.value))
-      .slice(
-        pageSize.value * (currentPage.value - 1),
-        pageSize.value * (currentPage.value - 1) + pageSize.value
-      );
-  }
-});
+const pageList = computed(() =>
+  copyIconList[currentActiveType.value]
+    .filter(i => i.includes(filterValue.value))
+    .slice(
+      (currentPage.value - 1) * pageSize.value,
+      currentPage.value * pageSize.value
+    )
+);
 
 const iconItemStyle = computed((): ParameterCSSProperties => {
   return item => {
@@ -71,50 +67,63 @@ const iconItemStyle = computed((): ParameterCSSProperties => {
   };
 });
 
+function setVal() {
+  currentActiveType.value = props.modelValue.substring(
+    0,
+    props.modelValue.indexOf(":") + 1
+  );
+  icon.value = props.modelValue.substring(props.modelValue.indexOf(":") + 1);
+}
+
+function onBeforeEnter() {
+  if (isAllEmpty(icon.value)) return;
+  setVal();
+  // 寻找当前图标在第几页
+  const curIconIndex = copyIconList[currentActiveType.value].findIndex(
+    i => i === icon.value
+  );
+  currentPage.value = Math.ceil((curIconIndex + 1) / pageSize.value);
+}
+
+function onAfterLeave() {
+  filterValue.value = "";
+}
+
 function handleClick({ props }) {
   currentPage.value = 1;
   currentActiveType.value = props.name;
-  emit(
-    "update:modelValue",
-    currentActiveType.value + iconList.value[currentActiveType.value][0]
-  );
-  icon.value = iconList.value[currentActiveType.value][0];
 }
 
 function onChangeIcon(item) {
   icon.value = item;
   emit("update:modelValue", currentActiveType.value + item);
-  visible.value = false;
 }
 
 function onCurrentChange(page) {
   currentPage.value = page;
 }
 
+function onClear() {
+  icon.value = "";
+  emit("update:modelValue", "");
+}
+
 watch(
-  () => {
-    return props.modelValue;
-  },
-  () => {
-    if (props.modelValue) {
-      currentActiveType.value = props.modelValue.substring(
-        0,
-        props.modelValue.indexOf(":") + 1
-      );
-      icon.value = props.modelValue.substring(
-        props.modelValue.indexOf(":") + 1
-      );
-    }
-  },
+  () => pageList.value,
+  () =>
+    (totalPage.value = copyIconList[currentActiveType.value].filter(i =>
+      i.includes(filterValue.value)
+    ).length),
   { immediate: true }
 );
 watch(
-  () => {
-    return filterValue.value;
-  },
-  () => {
-    currentPage.value = 1;
-  }
+  () => props.modelValue,
+  val => val && setVal(),
+  { immediate: true }
+);
+watch(
+  () => filterValue.value,
+  () => (currentPage.value = 1)
 );
 </script>
 
@@ -129,14 +138,15 @@ watch(
           :popper-options="{
             placement: 'auto'
           }"
-          :visible="visible"
+          @before-enter="onBeforeEnter"
+          @after-leave="onAfterLeave"
         >
           <template #reference>
             <div
               class="w-[40px] h-[32px] cursor-pointer flex justify-center items-center"
-              @click="visible = !visible"
             >
-              <IconifyIconOnline :icon="currentActiveType + icon" />
+              <IconifyIconOffline v-if="!icon" :icon="Search" />
+              <IconifyIconOnline v-else :icon="inputValue" />
             </div>
           </template>
 
@@ -160,7 +170,7 @@ watch(
                     v-for="(item, key) in pageList"
                     :key="key"
                     :title="item"
-                    class="icon-item p-2 cursor-pointer mr-2 mt-1 flex justify-center items-center border border-solid"
+                    class="icon-item p-2 cursor-pointer mr-2 mt-1 flex justify-center items-center border border-[#e5e7eb]"
                     :style="iconItemStyle(item)"
                     @click="onChangeIcon(item)"
                   >
@@ -175,16 +185,31 @@ watch(
             </el-tab-pane>
           </el-tabs>
 
-          <el-pagination
-            small
-            :total="copyIconList[currentActiveType].length"
-            :page-size="pageSize"
-            :current-page="currentPage"
-            background
-            layout="prev, pager, next"
-            class="flex items-center justify-center h-10"
-            @current-change="onCurrentChange"
-          />
+          <div
+            class="w-full h-9 flex items-center overflow-auto border-t border-[#e5e7eb]"
+          >
+            <el-pagination
+              class="flex-auto ml-2"
+              :total="totalPage"
+              :current-page="currentPage"
+              :page-size="pageSize"
+              :pager-count="5"
+              layout="pager"
+              background
+              small
+              @current-change="onCurrentChange"
+            />
+            <el-button
+              class="justify-end mr-2 ml-2"
+              type="danger"
+              size="small"
+              text
+              bg
+              @click="onClear"
+            >
+              清空
+            </el-button>
+          </div>
         </el-popover>
       </template>
     </el-input>
@@ -229,6 +254,14 @@ watch(
   position: static;
   margin: 0;
   box-shadow: 0 2px 5px rgb(0 0 0 / 6%);
+}
+
+:deep(.el-tabs__nav-wrap::after) {
+  height: 0;
+}
+
+:deep(.el-tabs__nav-wrap) {
+  padding: 0 24px;
 }
 
 :deep(.el-tabs__content) {
