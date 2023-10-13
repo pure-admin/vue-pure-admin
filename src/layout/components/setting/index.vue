@@ -66,6 +66,7 @@ const settings = reactive({
   tabsVal: $storage.configure.hideTabs,
   showLogo: $storage.configure.showLogo,
   showModel: $storage.configure.showModel,
+  hideFooter: $storage.configure.hideFooter,
   multiTagsCache: $storage.configure.multiTagsCache
 });
 
@@ -111,12 +112,20 @@ const weekChange = (value): void => {
   storageConfigureChange("weak", value);
 };
 
+/** 隐藏标签页设置 */
 const tagsChange = () => {
   const showVal = settings.tabsVal;
   storageConfigureChange("hideTabs", showVal);
   emitter.emit("tagViewsChange", showVal as unknown as string);
 };
 
+/** 隐藏页脚设置 */
+const hideFooterChange = () => {
+  const hideFooter = settings.hideFooter;
+  storageConfigureChange("hideFooter", hideFooter);
+};
+
+/** 标签页持久化设置 */
 const multiTagsCacheChange = () => {
   const multiTagsCache = settings.multiTagsCache;
   storageConfigureChange("multiTagsCache", multiTagsCache);
@@ -218,6 +227,7 @@ onBeforeMount(() => {
     settings.weakVal &&
       document.querySelector("html")?.setAttribute("class", "html-weakness");
     settings.tabsVal && tagsChange();
+    settings.hideFooter && hideFooterChange();
   });
 });
 </script>
@@ -342,6 +352,17 @@ onBeforeMount(() => {
           active-text="开"
           inactive-text="关"
           @change="tagsChange"
+        />
+      </li>
+      <li>
+        <span class="dark:text-white">隐藏页脚</span>
+        <el-switch
+          v-model="settings.hideFooter"
+          inline-prompt
+          inactive-color="#a6a6a6"
+          active-text="开"
+          inactive-text="关"
+          @change="hideFooterChange"
         />
       </li>
       <li>

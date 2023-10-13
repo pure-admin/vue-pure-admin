@@ -25,6 +25,10 @@ const hideTabs = computed(() => {
   return $storage?.configure.hideTabs;
 });
 
+const hideFooter = computed(() => {
+  return $storage?.configure.hideFooter;
+});
+
 const layout = computed(() => {
   return $storage?.layout.layout === "vertical";
 });
@@ -126,7 +130,7 @@ const transitionMain = defineComponent({
     </router-view>
 
     <!-- 页脚 -->
-    <Footer />
+    <Footer v-if="!hideFooter" />
   </section>
 </template>
 
