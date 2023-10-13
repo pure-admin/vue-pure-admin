@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Footer from "./footer/index.vue";
 import { useGlobal } from "@pureadmin/utils";
 import backTop from "@/assets/svg/back_top.svg?component";
 import { h, computed, Transition, defineComponent } from "vue";
@@ -78,7 +79,7 @@ const transitionMain = defineComponent({
   >
     <router-view>
       <template #default="{ Component, route }">
-        <el-scrollbar v-if="props.fixedHeader">
+        <el-scrollbar v-if="props.fixedHeader" class="flex-1">
           <el-backtop title="回到顶部" target=".app-main .el-scrollbar__wrap">
             <backTop />
           </el-backtop>
@@ -101,7 +102,7 @@ const transitionMain = defineComponent({
             />
           </transitionMain>
         </el-scrollbar>
-        <div v-else>
+        <div v-else class="flex-1">
           <transitionMain :route="route">
             <keep-alive
               v-if="isKeepAlive"
@@ -123,12 +124,17 @@ const transitionMain = defineComponent({
         </div>
       </template>
     </router-view>
+
+    <!-- 页脚 -->
+    <Footer />
   </section>
 </template>
 
 <style scoped>
 .app-main {
   position: relative;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100vh;
   overflow-x: hidden;
@@ -136,8 +142,10 @@ const transitionMain = defineComponent({
 
 .app-main-nofixed-header {
   position: relative;
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  min-height: 100vh;
+  min-height: calc(100vh - 86px);
 }
 
 .main-content {
