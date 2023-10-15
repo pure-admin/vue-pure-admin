@@ -83,30 +83,44 @@ const transitionMain = defineComponent({
   >
     <router-view>
       <template #default="{ Component, route }">
-        <el-scrollbar v-if="props.fixedHeader" class="flex-1">
+        <el-scrollbar
+          v-if="props.fixedHeader"
+          :wrap-style="{
+            display: 'flex'
+          }"
+          :view-style="{
+            display: 'flex',
+            flex: 'auto',
+            overflow: 'auto',
+            'flex-direction': 'column'
+          }"
+        >
           <el-backtop title="回到顶部" target=".app-main .el-scrollbar__wrap">
             <backTop />
           </el-backtop>
-          <transitionMain :route="route">
-            <keep-alive
-              v-if="isKeepAlive"
-              :include="usePermissionStoreHook().cachePageList"
-            >
+          <div class="grow">
+            <transitionMain :route="route">
+              <keep-alive
+                v-if="isKeepAlive"
+                :include="usePermissionStoreHook().cachePageList"
+              >
+                <component
+                  :is="Component"
+                  :key="route.fullPath"
+                  class="main-content"
+                />
+              </keep-alive>
               <component
+                v-else
                 :is="Component"
                 :key="route.fullPath"
                 class="main-content"
               />
-            </keep-alive>
-            <component
-              v-else
-              :is="Component"
-              :key="route.fullPath"
-              class="main-content"
-            />
-          </transitionMain>
+            </transitionMain>
+          </div>
+          <Footer v-if="!hideFooter" />
         </el-scrollbar>
-        <div v-else class="flex-1">
+        <div v-else class="grow">
           <transitionMain :route="route">
             <keep-alive
               v-if="isKeepAlive"
@@ -130,15 +144,13 @@ const transitionMain = defineComponent({
     </router-view>
 
     <!-- 页脚 -->
-    <Footer v-if="!hideFooter" />
+    <Footer v-if="!hideFooter && !props.fixedHeader" />
   </section>
 </template>
 
 <style scoped>
 .app-main {
   position: relative;
-  display: flex;
-  flex-direction: column;
   width: 100%;
   height: 100vh;
   overflow-x: hidden;
