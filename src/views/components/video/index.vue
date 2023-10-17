@@ -22,9 +22,9 @@ onMounted(() => {
     videoAttributes: {
       crossOrigin: "anonymous"
     },
-    url: "https://sf1-hscdn-tos.pstatp.com/obj/media-fe/xgplayer_doc_video/mp4/xgplayer-demo-720p.mp4",
+    url: "//lf3-static.bytednsdoc.com/obj/eden-cn/nupenuvpxnuvo/xgplayer_doc/xgplayer-demo.mp4",
     poster:
-      "https://s2.pstatp.com/cdn/expire-1-M/byted-player-videos/1.0.0/poster.jpg",
+      "//lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/byted-player-videos/1.0.0/poster.jpg",
     fluid: deviceDetection(),
     //传入倍速可选数组
     playbackRate: [0.5, 0.75, 1, 1.5, 2]

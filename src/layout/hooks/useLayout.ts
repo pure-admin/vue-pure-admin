@@ -36,6 +36,7 @@ export function useLayout() {
         grey: $config?.Grey ?? false,
         weak: $config?.Weak ?? false,
         hideTabs: $config?.HideTabs ?? false,
+        hideFooter: $config.HideFooter ?? false,
         showLogo: $config?.ShowLogo ?? true,
         showModel: $config?.ShowModel ?? "smart",
         multiTagsCache: $config?.MultiTagsCache ?? false
