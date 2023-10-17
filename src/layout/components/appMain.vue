@@ -37,9 +37,15 @@ const getSectionStyle = computed(() => {
   return [
     hideTabs.value && layout ? "padding-top: 48px;" : "",
     !hideTabs.value && layout ? "padding-top: 85px;" : "",
-    hideTabs.value && !layout.value ? "padding-top: 48px" : "",
+    hideTabs.value && !layout.value ? "padding-top: 48px;" : "",
     !hideTabs.value && !layout.value ? "padding-top: 85px;" : "",
-    props.fixedHeader ? "" : "padding-top: 0;"
+    props.fixedHeader
+      ? ""
+      : `padding-top: 0;${
+          hideTabs.value
+            ? "min-height: calc(100vh - 48px);"
+            : "min-height: calc(100vh - 86px);"
+        }`
   ];
 });
 
@@ -161,7 +167,6 @@ const transitionMain = defineComponent({
   display: flex;
   flex-direction: column;
   width: 100%;
-  min-height: calc(100vh - 86px);
 }
 
 .main-content {
