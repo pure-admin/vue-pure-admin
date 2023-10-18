@@ -3,7 +3,7 @@ import router from "./router";
 import { setupStore } from "@/store";
 import ElementPlus from "element-plus";
 import { useI18n } from "@/plugins/i18n";
-import { getServerConfig } from "./config";
+import { getPlatformConfig } from "./config";
 import { createApp, Directive } from "vue";
 import { MotionPlugin } from "@vueuse/motion";
 import { useEcharts } from "@/plugins/echarts";
@@ -45,7 +45,7 @@ app.component("FontIcon", FontIcon);
 import { Auth } from "@/components/ReAuth";
 app.component("Auth", Auth);
 
-getServerConfig(app).then(async config => {
+getPlatformConfig(app).then(async config => {
   setupStore(app);
   app.use(router);
   await router.isReady();

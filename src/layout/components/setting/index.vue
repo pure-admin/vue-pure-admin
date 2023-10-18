@@ -8,13 +8,6 @@ import {
   nextTick,
   onBeforeMount
 } from "vue";
-import {
-  useDark,
-  debounce,
-  useGlobal,
-  storageLocal,
-  storageSession
-} from "@pureadmin/utils";
 import { getConfig } from "@/config";
 import { useRouter } from "vue-router";
 import panel from "../panel/index.vue";
@@ -27,6 +20,7 @@ import { useAppStoreHook } from "@/store/modules/app";
 import { toggleTheme } from "@pureadmin/theme/dist/browser-utils";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
 import { useDataThemeChange } from "@/layout/hooks/useDataThemeChange";
+import { useDark, debounce, useGlobal, storageLocal } from "@pureadmin/utils";
 
 import dayIcon from "@/assets/svg/day.svg?component";
 import darkIcon from "@/assets/svg/dark.svg?component";
@@ -72,6 +66,7 @@ const settings = reactive({
   tabsVal: $storage.configure.hideTabs,
   showLogo: $storage.configure.showLogo,
   showModel: $storage.configure.showModel,
+  hideFooter: $storage.configure.hideFooter,
   multiTagsCache: $storage.configure.multiTagsCache
 });
 
@@ -117,12 +112,20 @@ const weekChange = (value): void => {
   storageConfigureChange("weak", value);
 };
 
+/** 隐藏标签页设置 */
 const tagsChange = () => {
   const showVal = settings.tabsVal;
   storageConfigureChange("hideTabs", showVal);
   emitter.emit("tagViewsChange", showVal as unknown as string);
 };
 
+/** 隐藏页脚设置 */
+const hideFooterChange = () => {
+  const hideFooter = settings.hideFooter;
+  storageConfigureChange("hideFooter", hideFooter);
+};
+
+/** 标签页持久化设置 */
 const multiTagsCacheChange = () => {
   const multiTagsCache = settings.multiTagsCache;
   storageConfigureChange("multiTagsCache", multiTagsCache);
@@ -133,7 +136,6 @@ const multiTagsCacheChange = () => {
 function onReset() {
   removeToken();
   storageLocal().clear();
-  storageSession().clear();
   const { Grey, Weak, MultiTagsCache, EpThemeColor, Layout } = getConfig();
   useAppStoreHook().setLayout(Layout);
   setEpThemeColor(EpThemeColor);
@@ -225,6 +227,7 @@ onBeforeMount(() => {
     settings.weakVal &&
       document.querySelector("html")?.setAttribute("class", "html-weakness");
     settings.tabsVal && tagsChange();
+    settings.hideFooter && hideFooterChange();
   });
 });
 </script>
@@ -349,6 +352,17 @@ onBeforeMount(() => {
           active-text="开"
           inactive-text="关"
           @change="tagsChange"
+        />
+      </li>
+      <li>
+        <span class="dark:text-white">隐藏页脚</span>
+        <el-switch
+          v-model="settings.hideFooter"
+          inline-prompt
+          inactive-color="#a6a6a6"
+          active-text="开"
+          inactive-text="关"
+          @change="hideFooterChange"
         />
       </li>
       <li>

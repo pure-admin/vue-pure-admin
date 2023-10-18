@@ -72,10 +72,10 @@ declare global {
   interface TableColumnList extends Array<TableColumns> {}
 
   /**
-   * 对应 `public/serverConfig.json` 文件的类型声明
-   * @see {@link https://yiming_chang.gitee.io/pure-admin-doc/pages/config/#serverconfig-json}
+   * 对应 `public/platform-config.json` 文件的类型声明
+   * @see {@link https://yiming_chang.gitee.io/pure-admin-doc/pages/config/#platform-config-json}
    */
-  interface ServerConfigs {
+  interface PlatformConfigs {
     Version?: string;
     Title?: string;
     FixedHeader?: boolean;
@@ -89,6 +89,7 @@ declare global {
     Grey?: boolean;
     Weak?: boolean;
     HideTabs?: boolean;
+    HideFooter?: boolean;
     SidebarStatus?: boolean;
     EpThemeColor?: string;
     ShowLogo?: boolean;
@@ -108,8 +109,8 @@ declare global {
   }
 
   /**
-   * 与 `ServerConfigs` 类型不同，这里是缓存到浏览器本地存储的类型声明
-   * @see {@link https://yiming_chang.gitee.io/pure-admin-doc/pages/config/#serverconfig-json}
+   * 与 `PlatformConfigs` 类型不同，这里是缓存到浏览器本地存储的类型声明
+   * @see {@link https://yiming_chang.gitee.io/pure-admin-doc/pages/config/#platform-config-json}
    */
   interface StorageConfigs {
     version?: string;
@@ -125,6 +126,7 @@ declare global {
     grey?: boolean;
     weak?: boolean;
     hideTabs?: boolean;
+    hideFooter?: boolean;
     sidebarStatus?: boolean;
     epThemeColor?: string;
     showLogo?: boolean;
@@ -158,6 +160,7 @@ declare global {
       grey?: boolean;
       weak?: boolean;
       hideTabs?: boolean;
+      hideFooter?: boolean;
       showLogo?: boolean;
       showModel?: string;
       multiTagsCache?: boolean;
@@ -171,6 +174,6 @@ declare global {
   interface GlobalPropertiesApi {
     $echarts: ECharts;
     $storage: ResponsiveStorage;
-    $config: ServerConfigs;
+    $config: PlatformConfigs;
   }
 }

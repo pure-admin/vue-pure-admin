@@ -116,7 +116,8 @@ login:
   username: Username
   password: Password
   verifyCode: VerifyCode
-  remember: Remember Password
+  remember: days no need to login
+  rememberInfo: After checking and logging in, will automatically log in to the system without entering your username and password within the specified number of days.
   sure: Sure Password
   forget: Forget Password?
   login: Login

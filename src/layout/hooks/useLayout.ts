@@ -36,6 +36,7 @@ export function useLayout() {
         grey: $config?.Grey ?? false,
         weak: $config?.Weak ?? false,
         hideTabs: $config?.HideTabs ?? false,
+        hideFooter: $config.HideFooter ?? false,
         showLogo: $config?.ShowLogo ?? true,
         showModel: $config?.ShowModel ?? "smart",
         multiTagsCache: $config?.MultiTagsCache ?? false
@@ -43,7 +44,7 @@ export function useLayout() {
     }
   };
 
-  /** 清空缓存后从serverConfig.json读取默认配置并赋值到storage中 */
+  /** 清空缓存后从platform-config.json读取默认配置并赋值到storage中 */
   const layout = computed(() => {
     return $storage?.layout.layout;
   });

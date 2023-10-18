@@ -17,7 +17,7 @@ const showAllPages = ref(false);
 const rotations = [0, 90, 180, 270];
 
 const source =
-  "https://pure-admin.github.io/pure-admin-doc/pdf/Cookie%E5%92%8CSession%E5%8C%BA%E5%88%AB%E7%94%A8%E6%B3%95.pdf";
+  "https://xiaoxian521.github.io/hyperlink/pdf/Cookie%E5%92%8CSession%E5%8C%BA%E5%88%AB%E7%94%A8%E6%B3%95.pdf";
 
 const handleDocumentRender = () => {
   loading.value = false;
