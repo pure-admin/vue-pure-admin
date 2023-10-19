@@ -140,12 +140,16 @@ declare global {
       };
     };
     username?: string;
+    path?: string;
   }
 
   /**
    * `responsive-storage` 本地响应式 `storage` 的类型声明
    */
   interface ResponsiveStorage {
+    redirect: {
+      path?: string;
+    };
     locale: {
       locale?: string;
     };

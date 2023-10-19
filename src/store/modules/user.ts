@@ -8,6 +8,7 @@ import { getLogin, refreshTokenApi } from "@/api/user";
 import { UserResult, RefreshTokenResult } from "@/api/user";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
 import { type DataInfo, setToken, removeToken, userKey } from "@/utils/auth";
+import { responsiveStorageNameSpace } from "@/config";
 
 export const useUserStore = defineStore({
   id: "pure-user",
@@ -72,6 +73,9 @@ export const useUserStore = defineStore({
       removeToken();
       useMultiTagsStoreHook().handleTags("equal", [...routerArrays]);
       resetRouter();
+      storageLocal().setItem(`${responsiveStorageNameSpace()}redirect`, {
+        path: router.currentRoute.value.fullPath
+      });
       router.push("/login");
     },
     /** 刷新`token` */

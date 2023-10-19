@@ -8,6 +8,10 @@ export const injectResponsiveStorage = (app: App, config: PlatformConfigs) => {
   const nameSpace = responsiveStorageNameSpace();
   const configObj = Object.assign(
     {
+      // 登入後 redirect 路徑
+      redirect: Storage.getData("redirect", nameSpace) ?? {
+        path: ""
+      },
       // 国际化 默认中文zh
       locale: Storage.getData("locale", nameSpace) ?? {
         locale: config.Locale ?? "zh"

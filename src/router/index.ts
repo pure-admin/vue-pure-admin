@@ -1,6 +1,6 @@
 import "@/utils/sso";
 import Cookies from "js-cookie";
-import { getConfig } from "@/config";
+import { getConfig, responsiveStorageNameSpace } from "@/config";
 import NProgress from "@/utils/progress";
 import { transformI18n } from "@/plugins/i18n";
 import { buildHierarchyTree } from "@/utils/tree";
@@ -193,6 +193,9 @@ router.beforeEach((to: ToRouteType, _from, next) => {
         next();
       } else {
         removeToken();
+        storageLocal().setItem(`${responsiveStorageNameSpace()}redirect`, {
+          path: to.path
+        });
         next({ path: "/login" });
       }
     } else {

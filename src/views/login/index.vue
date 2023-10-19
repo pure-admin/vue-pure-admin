@@ -10,6 +10,7 @@ import {
 } from "vue";
 import { useI18n } from "vue-i18n";
 import Motion from "./utils/motion";
+import { useGlobal } from "@pureadmin/utils";
 import { useRouter } from "vue-router";
 import { message } from "@/utils/message";
 import { loginRules } from "./utils/rule";
@@ -24,7 +25,7 @@ import { $t, transformI18n } from "@/plugins/i18n";
 import { operates, thirdParty } from "./utils/enums";
 import { useLayout } from "@/layout/hooks/useLayout";
 import { useUserStoreHook } from "@/store/modules/user";
-import { initRouter, getTopMenu } from "@/router/utils";
+import { initRouter, getTopMenu, getRedirectMenu } from "@/router/utils";
 import { bg, avatar, illustration } from "./utils/static";
 import { ReImageVerify } from "@/components/ReImageVerify";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
@@ -42,6 +43,8 @@ import Info from "@iconify-icons/ri/information-line";
 defineOptions({
   name: "Login"
 });
+
+const { $storage } = useGlobal<GlobalPropertiesApi>();
 
 const imgCode = ref("");
 const loginDay = ref(7);
@@ -78,7 +81,14 @@ const onLogin = async (formEl: FormInstance | undefined) => {
           if (res.success) {
             // 获取后端路由
             initRouter().then(() => {
-              router.push(getTopMenu(true).path);
+              const redirect = $storage.redirect.path;
+              const redirectMenu = getRedirectMenu(true, redirect);
+              router.push(
+                redirect && redirectMenu
+                  ? redirectMenu.path
+                  : getTopMenu(true).path
+              );
+              $storage.redirect = { path: "" };
               message("登录成功", { type: "success" });
             });
           }

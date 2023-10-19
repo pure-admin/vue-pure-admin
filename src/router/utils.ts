@@ -366,6 +366,15 @@ function getTopMenu(tag = false): menuType {
   return topMenu;
 }
 
+function getRedirectMenu(tag = false, redirectPath: string): menuType {
+  const redirectMenu = usePermissionStoreHook().wholeMenus.find(
+    item => item.redirect === redirectPath
+  );
+  if (redirectMenu)
+    tag && useMultiTagsStoreHook().handleTags("push", redirectMenu);
+  return redirectMenu;
+}
+
 export {
   hasAuth,
   getAuths,
@@ -373,6 +382,7 @@ export {
   filterTree,
   initRouter,
   getTopMenu,
+  getRedirectMenu,
   addPathMatch,
   isOneOfArray,
   getHistoryMode,
