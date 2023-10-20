@@ -157,7 +157,7 @@
     "tailwindcss": "^3.3.3",
     "terser": "^5.22.0",
     "typescript": "^5.2.2",
-    "vite": "5.0.0-beta.10",
+    "vite": "5.0.0-beta.11",
     "vite-plugin-cdn-import": "^0.3.5",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-mock": "2.9.6",
