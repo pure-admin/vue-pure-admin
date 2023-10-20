@@ -1,7 +1,7 @@
-import { MockMethod } from "vite-plugin-mock";
+import { defineFakeRoute } from "vite-plugin-fake-server/client";
 
 // 模拟刷新token接口
-export default [
+export default defineFakeRoute([
   {
     url: "/refresh-token",
     method: "post",
@@ -24,4 +24,4 @@ export default [
       }
     }
   }
-] as MockMethod[];
+]);
