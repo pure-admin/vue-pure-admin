@@ -1,5 +1,5 @@
 <script setup lang="tsx">
-import { h } from "vue";
+import { h, ref } from "vue";
 import { message } from "@/utils/message";
 import HomeFilled from "@iconify-icons/ep/home-filled";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
@@ -10,51 +10,43 @@ defineOptions({
 });
 
 /** 基础用法 */
+const value = ref(4); // 必须为number类型
+
 const optionsBasis: Array<OptionsType> = [
   {
-    label: "周一",
-    value: 1
+    label: "周一"
   },
   {
-    label: "周二",
-    value: 2
+    label: "周二"
   },
   {
-    label: "周三",
-    value: 3
+    label: "周三"
   },
   {
-    label: "周四",
-    value: 4
+    label: "周四"
   },
   {
-    label: "周五",
-    value: 5
+    label: "周五"
   }
 ];
 
 /** 禁用 */
 const optionsDisabled: Array<OptionsType> = [
   {
-    label: "周一",
-    value: 1
+    label: "周一"
   },
   {
-    label: "周二",
-    value: 2
+    label: "周二"
   },
   {
     label: "周三",
-    value: 3,
     disabled: true
   },
   {
-    label: "周四",
-    value: 4
+    label: "周四"
   },
   {
     label: "周五",
-    value: 5,
     disabled: true
   }
 ];
@@ -63,26 +55,21 @@ const optionsDisabled: Array<OptionsType> = [
 const optionsIcon: Array<OptionsType> = [
   {
     label: "周一",
-    value: 1,
     icon: HomeFilled
   },
   {
-    label: "周二",
-    value: 2
+    label: "周二"
   },
   {
     label: "周三",
-    value: 3,
     icon: "terminalWindowLine"
   },
   {
     label: "周四",
-    value: 4,
     icon: "streamline-emojis:airplane"
   },
   {
     label: "周五",
-    value: 5,
     icon: "streamline-emojis:2"
   }
 ];
@@ -90,23 +77,18 @@ const optionsIcon: Array<OptionsType> = [
 /** 只设置图标 */
 const optionsOnlyIcon: Array<OptionsType> = [
   {
-    value: 1,
     icon: HomeFilled
   },
   {
-    value: 2,
     icon: "terminalWindowLine"
   },
   {
-    value: 3,
     icon: "streamline-emojis:cow-face"
   },
   {
-    value: 4,
     icon: "streamline-emojis:airplane"
   },
   {
-    value: 5,
     icon: "streamline-emojis:2"
   }
 ];
@@ -121,8 +103,7 @@ const optionsLabel: Array<OptionsType> = [
         })}
         <p>周一</p>
       </div>
-    ),
-    value: 1
+    )
   },
   {
     label: () => (
@@ -132,8 +113,7 @@ const optionsLabel: Array<OptionsType> = [
         })}
         <p>周二</p>
       </div>
-    ),
-    value: 2
+    )
   },
   {
     label: () => (
@@ -143,8 +123,7 @@ const optionsLabel: Array<OptionsType> = [
         })}
         <p>周三</p>
       </div>
-    ),
-    value: 3
+    )
   }
 ];
 
@@ -179,11 +158,15 @@ function onChange({ index, option }) {
         <span class="font-medium">分段控制器</span>
       </div>
     </template>
-    <p class="mb-2">基础用法</p>
-    <Segmented :options="optionsBasis" />
+    <p class="mb-2">
+      基础用法（v-model）<span class="text-primary">
+        {{ optionsBasis[value].label }}
+      </span>
+    </p>
+    <Segmented :options="optionsBasis" v-model="value" />
     <el-divider />
-    <p class="mb-2">默认选中和禁用</p>
-    <Segmented :options="optionsDisabled" :defaultValue="2" />
+    <p class="mb-2">禁用</p>
+    <Segmented :options="optionsDisabled" />
     <el-divider />
     <p class="mb-2">设置图标</p>
     <Segmented :options="optionsIcon" />
