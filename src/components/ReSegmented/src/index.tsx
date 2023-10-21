@@ -2,31 +2,33 @@ import "./index.css";
 import {
   h,
   ref,
+  toRef,
   watch,
   nextTick,
   defineComponent,
   getCurrentInstance
 } from "vue";
 import type { OptionsType } from "./type";
-import { isFunction, useDark } from "@pureadmin/utils";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
+import { isFunction, isNumber, useDark } from "@pureadmin/utils";
 
 const props = {
   options: {
     type: Array<OptionsType>,
     default: () => []
   },
-  /** 默认选中，按照第一个索引为 `0` 的模式 */
-  defaultValue: {
-    type: Number,
-    default: 0
+  /** 默认选中，按照第一个索引为 `0` 的模式，可选（`modelValue`只有传`number`类型时才为响应式） */
+  modelValue: {
+    type: undefined,
+    require: false,
+    default: "0"
   }
 };
 
 export default defineComponent({
   name: "ReSegmented",
   props,
-  emits: ["change"],
+  emits: ["change", "update:modelValue"],
   setup(props, { emit }) {
     const width = ref(0);
     const translateX = ref(0);
@@ -35,12 +37,16 @@ export default defineComponent({
     const curMouseActive = ref(-1);
     const segmentedItembg = ref("");
     const instance = getCurrentInstance()!;
-    const curIndex = ref(props.defaultValue);
+    const curIndex = isNumber(props.modelValue)
+      ? toRef(props, "modelValue")
+      : ref(0);
 
     function handleChange({ option, index }, event: Event) {
       if (option.disabled) return;
       event.preventDefault();
-      curIndex.value = index;
+      isNumber(props.modelValue)
+        ? emit("update:modelValue", index)
+        : (curIndex.value = index);
       segmentedItembg.value = "";
       emit("change", { index, option });
     }
