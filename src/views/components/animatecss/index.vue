@@ -6,7 +6,7 @@ defineOptions({
   name: "AnimateCss"
 });
 
-const icon = ref("pulse");
+const icon = ref("");
 
 watch(icon, () => console.log("icon", icon.value));
 </script>

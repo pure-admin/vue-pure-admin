@@ -90,7 +90,7 @@ function onMouseleave() {
           noresize
           height="212px"
           :view-style="{ overflow: 'hidden' }"
-          class="border-t border-[#e5e7eb] mt-1"
+          class="border-t border-[#e5e7eb]"
         >
           <ul class="flex flex-wrap justify-around mb-1">
             <li
@@ -115,6 +115,11 @@ function onMouseleave() {
               </h4>
             </li>
           </ul>
+          <el-empty
+            v-show="animatesList.length === 0"
+            description="暂无动画"
+            :image-size="60"
+          />
         </el-scrollbar>
       </div>
     </template>
