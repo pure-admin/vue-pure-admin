@@ -47,6 +47,7 @@ menus:
   hssplitPane: Split Pane
   hsbutton: Button Components
   hscropping: Picture Cropping
+  hsanimatecss: AnimateCss Selector
   hscountTo: Digital Animation
   hsselector: Selector Components
   hsflowChart: Flow Chart

@@ -47,6 +47,7 @@ menus:
   hssplitPane: 切割面板
   hsbutton: 按钮组件
   hscropping: 图片裁剪
+  hsanimatecss: AnimateCss选择器组件
   hscountTo: 数字动画
   hsselector: 选择器组件
   hsflowChart: 流程图
