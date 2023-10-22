@@ -5,7 +5,7 @@ dist-ssr
 *.local
 .eslintcache
 report.html
-vite.config.mts.timestamp*
+vite.config.*.timestamp*
 
 yarn.lock
 npm-debug.log*
