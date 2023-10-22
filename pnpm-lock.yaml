@@ -191,8 +191,8 @@ devDependencies:
     specifier: ^1.4.0
     version: 1.4.0(vue-i18n@9.5.0)
   '@pureadmin/theme':
-    specifier: ^3.1.0
-    version: 3.1.0
+    specifier: ^3.2.0
+    version: 3.2.0
   '@types/intro.js':
     specifier: ^5.1.3
     version: 5.1.3
@@ -1774,8 +1774,8 @@ packages:
       vue: 3.3.4
     dev: false
 
-  /@pureadmin/theme@3.1.0:
-    resolution: {integrity: sha512-3kBbqB6Uua096w91w1SrGna0dM8AYO5HFk/HU8G0DsEaijgRrm+dYIJUrqbv+stLUxlYPNVXpDS/APZjF0cOAg==}
+  /@pureadmin/theme@3.2.0:
+    resolution: {integrity: sha512-SBlTvEl0rmfqTW/mOJUPftvZe4yF+38CJdlBOvVITpehzCytqlG5i8XKpcs8aAR9SVfhcrLVS5Q6xh7xDVQcJQ==}
     dependencies:
       '@zougt/some-loader-utils': 1.4.3
       fs-extra: 11.1.1

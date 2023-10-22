@@ -1,8 +1,8 @@
 import type { Plugin } from "vite";
+import picocolors from "picocolors";
 import dayjs, { Dayjs } from "dayjs";
-import utils from "@pureadmin/utils";
+import { getPackageSize } from "./utils";
 import duration from "dayjs/plugin/duration";
-import { green, blue, bold } from "picocolors";
 dayjs.extend(duration);
 
 export function viteBuildInfo(): Plugin {
@@ -10,6 +10,7 @@ export function viteBuildInfo(): Plugin {
   let startTime: Dayjs;
   let endTime: Dayjs;
   let outDir: string;
+  const { green, blue, bold } = picocolors;
   return {
     name: "vite:buildInfo",
     configResolved(resolvedConfig) {
@@ -33,7 +34,7 @@ export function viteBuildInfo(): Plugin {
     closeBundle() {
       if (config.command === "build") {
         endTime = dayjs(new Date());
-        utils.getPackageSize({
+        getPackageSize({
           folder: outDir,
           callback: (size: string) => {
             console.log(
