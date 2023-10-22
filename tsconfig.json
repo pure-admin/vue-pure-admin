@@ -36,7 +36,7 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "types/*.d.ts",
-    "vite.config.ts"
+    "vite.config.mts"
   ],
   "exclude": ["dist", "**/*.js", "node_modules"]
 }
