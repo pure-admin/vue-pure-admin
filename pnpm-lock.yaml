@@ -13,7 +13,7 @@ specifiers:
   '@logicflow/extension': ^1.2.16
   '@pureadmin/descriptions': ^1.1.1
   '@pureadmin/table': ^2.3.3
-  '@pureadmin/theme': ^3.1.0
+  '@pureadmin/theme': ^3.2.0
   '@pureadmin/utils': ^1.9.10
   '@types/intro.js': ^5.1.2
   '@types/js-cookie': ^3.0.4
@@ -183,7 +183,7 @@ devDependencies:
   '@iconify-icons/ri': 1.2.10
   '@iconify/vue': 4.1.1_vue@3.3.4
   '@intlify/unplugin-vue-i18n': 1.4.0_vue-i18n@9.5.0
-  '@pureadmin/theme': 3.1.0
+  '@pureadmin/theme': 3.2.0
   '@types/intro.js': 5.1.2
   '@types/js-cookie': 3.0.4
   '@types/mockjs': 1.0.8
@@ -1654,8 +1654,8 @@ packages:
       vue: 3.3.4
     dev: false
 
-  /@pureadmin/theme/3.1.0:
-    resolution: {integrity: sha512-3kBbqB6Uua096w91w1SrGna0dM8AYO5HFk/HU8G0DsEaijgRrm+dYIJUrqbv+stLUxlYPNVXpDS/APZjF0cOAg==}
+  /@pureadmin/theme/3.2.0:
+    resolution: {integrity: sha512-SBlTvEl0rmfqTW/mOJUPftvZe4yF+38CJdlBOvVITpehzCytqlG5i8XKpcs8aAR9SVfhcrLVS5Q6xh7xDVQcJQ==}
     dependencies:
       '@zougt/some-loader-utils': 1.4.3
       fs-extra: 11.1.1
