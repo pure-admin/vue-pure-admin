@@ -109,7 +109,7 @@
     "@iconify-icons/ri": "^1.2.10",
     "@iconify/vue": "^4.1.1",
     "@intlify/unplugin-vue-i18n": "^1.4.0",
-    "@pureadmin/theme": "^3.1.0",
+    "@pureadmin/theme": "^3.2.0",
     "@types/intro.js": "^5.1.2",
     "@types/js-cookie": "^3.0.4",
     "@types/mockjs": "^1.0.8",
