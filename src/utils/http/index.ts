@@ -12,6 +12,7 @@ import {
 import { stringify } from "qs";
 import NProgress from "../progress";
 import { getToken, formatToken } from "@/utils/auth";
+import { message } from "@/utils/message";
 import { useUserStoreHook } from "@/store/modules/user";
 
 // 相关配置请参考：www.axios-js.com/zh-cn/docs/#axios-request-config-1
@@ -85,13 +86,24 @@ class PureHttp {
                   if (!PureHttp.isRefreshing) {
                     PureHttp.isRefreshing = true;
                     // token过期刷新
+                    const handleRefreshError = () => {
+                      message("登录失效，请重新登入", { type: "error" });
+                      useUserStoreHook().logOut();
+                    };
                     useUserStoreHook()
                       .handRefreshToken({ refreshToken: data.refreshToken })
                       .then(res => {
-                        const token = res.data.accessToken;
-                        config.headers["Authorization"] = formatToken(token);
-                        PureHttp.requests.forEach(cb => cb(token));
-                        PureHttp.requests = [];
+                        if (res.success) {
+                          const token = res.data.accessToken;
+                          config.headers["Authorization"] = formatToken(token);
+                          PureHttp.requests.forEach(cb => cb(token));
+                          PureHttp.requests = [];
+                        } else {
+                          handleRefreshError();
+                        }
+                      })
+                      .catch(() => {
+                        handleRefreshError();
                       })
                       .finally(() => {
                         PureHttp.isRefreshing = false;
