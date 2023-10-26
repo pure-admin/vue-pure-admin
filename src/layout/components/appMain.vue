@@ -160,6 +160,7 @@ const transitionMain = defineComponent({
   width: 100%;
   height: 100vh;
   overflow-x: hidden;
+  z-index:0;
 }
 
 .app-main-nofixed-header {
