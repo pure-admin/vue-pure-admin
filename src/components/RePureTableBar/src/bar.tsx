@@ -262,7 +262,7 @@ export default defineComponent({
                 v-slots={reference}
                 placement="bottom-start"
                 popper-style={{ padding: 0 }}
-                width="160"
+                width="200"
                 trigger="click"
               >
                 <div class={[topClass.value]}>
@@ -279,48 +279,50 @@ export default defineComponent({
                 </div>
 
                 <div class="pt-[6px] pl-[11px]">
-                  <el-checkbox-group
-                    v-model={checkedColumns.value}
-                    onChange={value => handleCheckedColumnsChange(value)}
-                  >
-                    <el-space
-                      direction="vertical"
-                      alignment="flex-start"
-                      size={0}
+                  <el-scrollbar max-height="36vh">
+                    <el-checkbox-group
+                      v-model={checkedColumns.value}
+                      onChange={value => handleCheckedColumnsChange(value)}
                     >
-                      {checkColumnList.map(item => {
-                        return (
-                          <div class="flex items-center">
-                            <DragIcon
-                              class={[
-                                "drag-btn w-[16px] mr-2",
-                                isFixedColumn(item)
-                                  ? "!cursor-no-drop"
-                                  : "!cursor-grab"
-                              ]}
-                              onMouseenter={(event: {
-                                preventDefault: () => void;
-                              }) => rowDrop(event)}
-                            />
-                            <el-checkbox
-                              key={item}
-                              label={item}
-                              onChange={value =>
-                                handleCheckColumnListChange(value, item)
-                              }
-                            >
-                              <span
-                                title={item}
-                                class="inline-block w-[120px] truncate hover:text-text_color_primary"
+                      <el-space
+                        direction="vertical"
+                        alignment="flex-start"
+                        size={0}
+                      >
+                        {checkColumnList.map(item => {
+                          return (
+                            <div class="flex items-center">
+                              <DragIcon
+                                class={[
+                                  "drag-btn w-[16px] mr-2",
+                                  isFixedColumn(item)
+                                    ? "!cursor-no-drop"
+                                    : "!cursor-grab"
+                                ]}
+                                onMouseenter={(event: {
+                                  preventDefault: () => void;
+                                }) => rowDrop(event)}
+                              />
+                              <el-checkbox
+                                key={item}
+                                label={item}
+                                onChange={value =>
+                                  handleCheckColumnListChange(value, item)
+                                }
                               >
-                                {item}
-                              </span>
-                            </el-checkbox>
-                          </div>
-                        );
-                      })}
-                    </el-space>
-                  </el-checkbox-group>
+                                <span
+                                  title={item}
+                                  class="inline-block w-[120px] truncate hover:text-text_color_primary"
+                                >
+                                  {item}
+                                </span>
+                              </el-checkbox>
+                            </div>
+                          );
+                        })}
+                      </el-space>
+                    </el-checkbox-group>
+                  </el-scrollbar>
                 </div>
               </el-popover>
             </div>
