@@ -279,7 +279,7 @@ export default defineComponent({
                 </div>
 
                 <div class="pt-[6px] pl-[11px]">
-                  <el-scrollbar max-height="40vh">
+                  <el-scrollbar max-height="36vh">
                     <el-checkbox-group
                       v-model={checkedColumns.value}
                       onChange={value => handleCheckedColumnsChange(value)}
