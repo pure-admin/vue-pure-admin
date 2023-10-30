@@ -42,7 +42,7 @@ export function getPluginsList(
     // svg组件化支持
     svgLoader(),
     // mock支持
-    vitePluginFakeServer({ logger: false, enableProd: true }),
+    vitePluginFakeServer({ enableProd: true }),
     // 打包分析
     lifecycle === "report"
       ? visualizer({ open: true, brotliSize: true, filename: "report.html" })

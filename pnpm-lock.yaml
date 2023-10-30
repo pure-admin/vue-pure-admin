@@ -98,7 +98,7 @@ specifiers:
   vite: ^4.5.0
   vite-plugin-cdn-import: ^0.3.5
   vite-plugin-compression: ^0.5.1
-  vite-plugin-fake-server: ^0.0.3
+  vite-plugin-fake-server: ^1.0.2
   vite-plugin-remove-console: ^2.1.1
   vite-svg-loader: ^4.0.0
   vue: ^3.3.4
@@ -232,7 +232,7 @@ devDependencies:
   vite: 4.5.0_tj2crrh4m4qcs4daazkhu3ynvq
   vite-plugin-cdn-import: 0.3.5
   vite-plugin-compression: 0.5.1_vite@4.5.0
-  vite-plugin-fake-server: 0.0.3
+  vite-plugin-fake-server: 1.0.2
   vite-plugin-remove-console: 2.1.1
   vite-svg-loader: 4.0.0
   vue-eslint-parser: 9.3.2_eslint@8.52.0
@@ -8660,8 +8660,8 @@ packages:
       - supports-color
     dev: true
 
-  /vite-plugin-fake-server/0.0.3:
-    resolution: {integrity: sha512-fKcQug79KMK13gkt289ZnwwuOW/5hR30m2KMF5ObMZv+JOannrBmsDxOiSRxitsh9W/MDwSpwdIiLv/w05n3fg==}
+  /vite-plugin-fake-server/1.0.2:
+    resolution: {integrity: sha512-AI+n5yzwtzeMLd9AorvYPwGHGNTjumWOor2bYZT2QJAN8t/5UInfEC9xpUEvdRxUvoPBvrj2mXULgqEYJX0HZQ==}
     dependencies:
       bundle-require: 4.0.2
       chokidar: 3.5.3
