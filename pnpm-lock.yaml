@@ -13,7 +13,7 @@ specifiers:
   '@logicflow/extension': ^1.2.16
   '@pureadmin/descriptions': ^1.1.1
   '@pureadmin/table': ^2.3.3
-  '@pureadmin/theme': ^3.1.0
+  '@pureadmin/theme': ^3.2.0
   '@pureadmin/utils': ^1.9.10
   '@types/intro.js': ^5.1.2
   '@types/js-cookie': ^3.0.4
@@ -88,7 +88,7 @@ specifiers:
   stylelint-prettier: ^4.0.2
   stylelint-scss: ^5.2.1
   svgo: ^3.0.2
-  swiper: ^10.3.1
+  swiper: ^11.0.0
   tailwindcss: ^3.3.3
   terser: ^5.21.0
   typeit: ^8.7.1
@@ -156,7 +156,7 @@ dependencies:
   qs: 6.11.2
   responsive-storage: 2.2.0
   sortablejs: 1.15.0
-  swiper: 10.3.1
+  swiper: 11.0.0
   typeit: 8.7.1
   v-contextmenu: 3.0.0_vue@3.3.4
   v3-infinite-loading: 1.3.1
@@ -183,7 +183,7 @@ devDependencies:
   '@iconify-icons/ri': 1.2.10
   '@iconify/vue': 4.1.1_vue@3.3.4
   '@intlify/unplugin-vue-i18n': 1.4.0_vue-i18n@9.5.0
-  '@pureadmin/theme': 3.1.0
+  '@pureadmin/theme': 3.2.0
   '@types/intro.js': 5.1.2
   '@types/js-cookie': 3.0.4
   '@types/mockjs': 1.0.8
@@ -1654,8 +1654,8 @@ packages:
       vue: 3.3.4
     dev: false
 
-  /@pureadmin/theme/3.1.0:
-    resolution: {integrity: sha512-3kBbqB6Uua096w91w1SrGna0dM8AYO5HFk/HU8G0DsEaijgRrm+dYIJUrqbv+stLUxlYPNVXpDS/APZjF0cOAg==}
+  /@pureadmin/theme/3.2.0:
+    resolution: {integrity: sha512-SBlTvEl0rmfqTW/mOJUPftvZe4yF+38CJdlBOvVITpehzCytqlG5i8XKpcs8aAR9SVfhcrLVS5Q6xh7xDVQcJQ==}
     dependencies:
       '@zougt/some-loader-utils': 1.4.3
       fs-extra: 11.1.1
@@ -8228,8 +8228,8 @@ packages:
       picocolors: 1.0.0
     dev: true
 
-  /swiper/10.3.1:
-    resolution: {integrity: sha512-24Wk3YUdZHxjc9faID97GTu6xnLNia+adMt6qMTZG/HgdSUt4fS0REsGUXJOgpTED0Amh/j+gRGQxsLayJUlBQ==}
+  /swiper/11.0.0:
+    resolution: {integrity: sha512-JHTJDUBVkG5L5bD+ZOw/6GkM0vArxV26b/EnciyCSgUPOa9MvAfVQLJJd+dJjo4dj5Yjp6zQaDYqOj+pF+lgzQ==}
     engines: {node: '>= 4.7.0'}
     dev: false
 
