@@ -1,4 +1,4 @@
-import{t as h}from"./data2.js";import{r as l,al as s,a as d,aB as r,D as m}from"./index.js";function C(){const e=l([]),t=l(!0),i=[{label:"日期",prop:"date"},{label:"姓名",prop:"name"},{label:"地址",prop:"address"}],n=s({pageSize:20,currentPage:1,pageSizes:[20,40,60],total:0,align:"right",background:!0,small:!1}),o=s({text:"正在加载第一页...",viewBox:"-10, -10, 50, 50",spinner:`
+import{t as h}from"./data2.js";import{r as s,an as l,a as d,aD as r,D as m}from"./index.js";function C(){const e=s([]),t=s(!0),i=[{label:"日期",prop:"date"},{label:"姓名",prop:"name"},{label:"地址",prop:"address"}],n=l({pageSize:20,currentPage:1,pageSizes:[20,40,60],total:0,align:"right",background:!0,small:!1}),o=l({text:"正在加载第一页...",viewBox:"-10, -10, 50, 50",spinner:`
         <path class="path" d="
           M 30 15
           L 28 17
