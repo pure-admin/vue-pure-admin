@@ -2,6 +2,7 @@
   "name": "vue-pure-admin",
   "version": "4.5.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "NODE_OPTIONS=--max-old-space-size=4096 vite",
     "serve": "pnpm dev",
@@ -31,10 +32,6 @@
     "vue3",
     "vite"
   ],
-  "engines": {
-    "node": "^18.0.0 || >=20.0.0",
-    "pnpm": ">=8.6.10"
-  },
   "homepage": "https://github.com/pure-admin/vue-pure-admin",
   "repository": {
     "type": "git",
@@ -122,8 +119,8 @@
     "@types/qrcode": "^1.5.2",
     "@types/qs": "^6.9.8",
     "@types/sortablejs": "^1.15.3",
-    "@typescript-eslint/eslint-plugin": "^6.8.0",
-    "@typescript-eslint/parser": "^6.8.0",
+    "@typescript-eslint/eslint-plugin": "^6.9.1",
+    "@typescript-eslint/parser": "^6.9.1",
     "@vitejs/plugin-vue": "^4.4.0",
     "@vitejs/plugin-vue-jsx": "^3.0.2",
     "@vue/eslint-config-prettier": "^8.0.0",
@@ -131,9 +128,10 @@
     "autoprefixer": "^10.4.16",
     "cloc": "^2.11.0",
     "cssnano": "^6.0.1",
-    "eslint": "^8.51.0",
+    "eslint": "^8.52.0",
+    "eslint-define-config": "^1.24.1",
     "eslint-plugin-prettier": "^5.0.1",
-    "eslint-plugin-vue": "^9.17.0",
+    "eslint-plugin-vue": "^9.18.1",
     "husky": "^8.0.3",
     "lint-staged": "^15.0.1",
     "picocolors": "^1.0.0",
@@ -169,6 +167,10 @@
     "vite-svg-loader": "^4.0.0",
     "vue-eslint-parser": "^9.3.2",
     "vue-tsc": "^1.8.19"
+  },
+  "engines": {
+    "node": "^18.0.0 || >=20.0.0",
+    "pnpm": ">=8.6.10"
   },
   "packageManager": "pnpm@8.6.10",
   "pnpm": {

@@ -3,11 +3,11 @@ dist
 *.d.ts
 /src/assets
 package.json
-.eslintrc.js
-.prettierrc.js
-commitlint.config.js
+.eslintrc.cjs
+.prettierrc.json
+commitlint.config.cjs
 postcss.config.cjs
-tailwind.config.js
-stylelint.config.js
+tailwind.config.ts
+stylelint.config.cjs
 src/components/ReSplitPane/iconfont
 src/components/ReFlowChart/src/assets/iconfont
