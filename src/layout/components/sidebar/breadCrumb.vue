@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { isEqual } from "@pureadmin/utils";
 import { transformI18n } from "@/plugins/i18n";
+import { useRoute, useRouter } from "vue-router";
 import { ref, watch, onMounted, toRaw } from "vue";
 import { getParentPaths, findRouteByPath } from "@/router/utils";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
-import { useRoute, useRouter, RouteLocationMatched } from "vue-router";
 
 const route = useRoute();
 const levelList = ref([]);
@@ -64,12 +64,28 @@ const getBreadcrumb = (): void => {
   );
 };
 
-const handleLink = (item: RouteLocationMatched): void => {
-  const { redirect, path } = item;
+const handleLink = item => {
+  const { redirect, name, path } = item;
   if (redirect) {
     router.push(redirect as any);
   } else {
-    router.push(path);
+    if (name) {
+      if (item.query) {
+        router.push({
+          name,
+          query: item.query
+        });
+      } else if (item.params) {
+        router.push({
+          name,
+          params: item.params
+        });
+      } else {
+        router.push({ name });
+      }
+    } else {
+      router.push({ path });
+    }
   }
 };
 
