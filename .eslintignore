@@ -4,7 +4,7 @@ dist
 /src/assets
 package.json
 .eslintrc.cjs
-.prettierrc.json
+.prettierrc.js
 commitlint.config.cjs
 postcss.config.cjs
 tailwind.config.ts

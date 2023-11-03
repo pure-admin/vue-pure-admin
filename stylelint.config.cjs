@@ -1,3 +1,6 @@
+// @ts-check
+
+/** @type {import("stylelint").Config} */
 module.exports = {
   root: true,
   extends: [

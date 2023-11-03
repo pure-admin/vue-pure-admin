@@ -17,10 +17,17 @@
     "baseUrl": ".",
     "allowJs": false,
     "resolveJsonModule": true,
-    "lib": ["dom", "esnext"],
+    "lib": [
+      "dom",
+      "esnext"
+    ],
     "paths": {
-      "@/*": ["src/*"],
-      "@build/*": ["build/*"]
+      "@/*": [
+        "src/*"
+      ],
+      "@build/*": [
+        "build/*"
+      ]
     },
     "types": [
       "node",
@@ -38,5 +45,9 @@
     "types/*.d.ts",
     "vite.config.ts"
   ],
-  "exclude": ["dist", "**/*.js", "node_modules"]
+  "exclude": [
+    "dist",
+    "**/*.js",
+    "node_modules"
+  ]
 }
