@@ -331,15 +331,12 @@ devDependencies:
   tailwindcss:
     specifier: ^3.3.5
     version: 3.3.5(ts-node@10.9.1)
-  terser:
-    specifier: ^5.24.0
-    version: 5.24.0
   typescript:
     specifier: ^5.2.2
     version: 5.2.2
   vite:
     specifier: 5.0.0-beta.15
-    version: 5.0.0-beta.15(@types/node@20.8.6)(sass@1.69.4)(terser@5.24.0)
+    version: 5.0.0-beta.15(@types/node@20.8.6)(sass@1.69.4)
   vite-plugin-cdn-import:
     specifier: ^0.3.5
     version: 0.3.5
@@ -1614,13 +1611,6 @@ packages:
     resolution: {integrity: sha512-xnkseuNADM0gt2bs+BvhO0p78Mk762YnZdsuzFV018NoG1Sj1SCQvpSqa7XUaTam5vAGasABV9qXASMKnFMwMw==}
     engines: {node: '>=6.0.0'}
 
-  /@jridgewell/source-map@0.3.5:
-    resolution: {integrity: sha512-UTYAUj/wviwdsMfzoSJspJxbkH5o1snzwX0//0ENX1u/55kkZZkcTZP6u9bwKGkv+dkk9at4m1Cpt0uY80kcpQ==}
-    dependencies:
-      '@jridgewell/gen-mapping': 0.3.3
-      '@jridgewell/trace-mapping': 0.3.20
-    dev: true
-
   /@jridgewell/sourcemap-codec@1.4.15:
     resolution: {integrity: sha512-eF2rxCRulEKXHTRiDrDy6erMYWqNw4LPdQ8UQA4huuxaQsVeRPFl2oM8oDGxMFhJUWZf9McpLtJasDDZb/Bpeg==}
 
@@ -2347,7 +2337,7 @@ packages:
       '@babel/core': 7.23.2
       '@babel/plugin-transform-typescript': 7.22.15(@babel/core@7.23.2)
       '@vue/babel-plugin-jsx': 1.1.5(@babel/core@7.23.2)
-      vite: 5.0.0-beta.15(@types/node@20.8.6)(sass@1.69.4)(terser@5.24.0)
+      vite: 5.0.0-beta.15(@types/node@20.8.6)(sass@1.69.4)
       vue: 3.3.7(typescript@5.2.2)
     transitivePeerDependencies:
       - supports-color
@@ -2360,7 +2350,7 @@ packages:
       vite: ^4.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 5.0.0-beta.15(@types/node@20.8.6)(sass@1.69.4)(terser@5.24.0)
+      vite: 5.0.0-beta.15(@types/node@20.8.6)(sass@1.69.4)
       vue: 3.3.7(typescript@5.2.2)
     dev: true
 
@@ -3182,6 +3172,7 @@ packages:
 
   /buffer-from@1.1.2:
     resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
+    dev: false
 
   /builtin-modules@3.3.0:
     resolution: {integrity: sha512-zhaCDicdLuWN5UbN5IMnFqNMhNfo919sH85y2/ea+5Yg9TsTkeZxpL+JLbp6cgYFS4sRLp3YV4S6yDuqVWHYOw==}
@@ -3451,10 +3442,6 @@ packages:
   /commander@11.1.0:
     resolution: {integrity: sha512-yPVavfyCcRhmorC7rWlkHn15b4wDVgVmBA7kV4QVBsF7kv/9TKJAbAXVTxvTnwP8HHKjRCJDClKbciiYS7p0DQ==}
     engines: {node: '>=16'}
-
-  /commander@2.20.3:
-    resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
-    dev: true
 
   /commander@4.1.1:
     resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
@@ -7031,7 +7018,7 @@ packages:
       lilconfig: 2.1.0
       postcss: 8.4.31
       ts-node: 10.9.1(@types/node@20.8.6)(typescript@5.2.2)
-      yaml: 2.3.3
+      yaml: 2.3.4
     dev: true
 
   /postcss-media-query-parser@0.2.3:
@@ -8092,6 +8079,7 @@ packages:
     dependencies:
       buffer-from: 1.1.2
       source-map: 0.6.1
+    dev: false
 
   /source-map@0.6.1:
     resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
@@ -8647,17 +8635,6 @@ packages:
       supports-hyperlinks: 2.3.0
     dev: false
 
-  /terser@5.24.0:
-    resolution: {integrity: sha512-ZpGR4Hy3+wBEzVEnHvstMvqpD/nABNelQn/z2r0fjVWGQsN3bpOLzQlqDxmb4CDZnXq5lpjnQ+mHQLAOpfM5iw==}
-    engines: {node: '>=10'}
-    hasBin: true
-    dependencies:
-      '@jridgewell/source-map': 0.3.5
-      acorn: 8.11.2
-      commander: 2.20.3
-      source-map-support: 0.5.21
-    dev: true
-
   /test-exclude@6.0.0:
     resolution: {integrity: sha512-cAGWPIyOHU6zlmg88jwm7VRyXnMN7iV68OGAbYDk/Mh/xC/pzVPlQtY6ngoIH/5/tciuhGfvESU8GrHrcxD56w==}
     engines: {node: '>=8'}
@@ -9066,7 +9043,7 @@ packages:
       chalk: 4.1.2
       debug: 4.3.4
       fs-extra: 10.1.0
-      vite: 5.0.0-beta.15(@types/node@20.8.6)(sass@1.69.4)(terser@5.24.0)
+      vite: 5.0.0-beta.15(@types/node@20.8.6)(sass@1.69.4)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -9088,7 +9065,7 @@ packages:
       fast-glob: 3.3.1
       mockjs: 1.1.0
       path-to-regexp: 6.2.1
-      vite: 5.0.0-beta.15(@types/node@20.8.6)(sass@1.69.4)(terser@5.24.0)
+      vite: 5.0.0-beta.15(@types/node@20.8.6)(sass@1.69.4)
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -9105,7 +9082,7 @@ packages:
       svgo: 3.0.2
     dev: true
 
-  /vite@5.0.0-beta.15(@types/node@20.8.6)(sass@1.69.4)(terser@5.24.0):
+  /vite@5.0.0-beta.15(@types/node@20.8.6)(sass@1.69.4):
     resolution: {integrity: sha512-VXJpxpD1Gren+pm9mRn9Av8JKEOtNe/xZz+6MT820dnfu5OcJntHW5JxipqyfFVZT4dQigGVndjJpB0JiihU3g==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -9138,7 +9115,6 @@ packages:
       postcss: 8.4.31
       rollup: 4.2.0
       sass: 1.69.4
-      terser: 5.24.0
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
@@ -9558,7 +9534,7 @@ packages:
     dependencies:
       eslint-visitor-keys: 3.4.3
       lodash: 4.17.21
-      yaml: 2.3.3
+      yaml: 2.3.4
     dev: true
 
   /yaml@1.10.2:
@@ -9571,8 +9547,8 @@ packages:
     engines: {node: '>= 14'}
     dev: true
 
-  /yaml@2.3.3:
-    resolution: {integrity: sha512-zw0VAJxgeZ6+++/su5AFoqBbZbrEakwu+X0M5HmcwUiBL7AzcuPKjj5we4xfQLp78LkEMpD0cOnUhmgOVy3KdQ==}
+  /yaml@2.3.4:
+    resolution: {integrity: sha512-8aAvwVUSHpfEqTQ4w/KMlf3HcRdt50E5ODIQJBw1fQ5RL34xabzxtUlzTXVqc4rkZsPbvrXKWnABCD7kWSmocA==}
     engines: {node: '>= 14'}
     dev: true
 
