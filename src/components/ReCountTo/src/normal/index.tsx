@@ -119,12 +119,12 @@ export default defineComponent({
           state.printVal =
             state.localStartVal -
             (state.localStartVal - endVal) *
-              (progress / (state.localDuration as number));
+            (progress / (state.localDuration as number));
         } else {
           state.printVal =
             state.localStartVal +
             (endVal - state.localStartVal) *
-              (progress / (state.localDuration as number));
+            (progress / (state.localDuration as number));
         }
       }
       if (unref(getCountDown)) {
@@ -153,7 +153,15 @@ export default defineComponent({
           x1 = x1.replace(rgx, "$1" + separator + "$2");
         }
       }
-      return prefix + x1 + x2 + suffix;
+      return (
+        <>
+          {prefix && <span class={"count-prefix"}>{prefix}</span>}
+          {x1 && <span class={"count-integer"}>{x1}</span>}
+          {x2 && <span class={"count-decimal-point"}>{decimal}</span>}
+          {x2 && <span class={"count-decimal"}>{x2}</span>}
+          {suffix && <span class={"count-suffix"}>{suffix}</span>}
+        </>
+      );
     }
 
     onMounted(() => {
