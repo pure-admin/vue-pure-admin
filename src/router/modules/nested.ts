@@ -79,4 +79,4 @@ export default {
       }
     }
   ]
-} as RouteConfigsTable;
+} satisfies RouteConfigsTable;
