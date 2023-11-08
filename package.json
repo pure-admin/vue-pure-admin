@@ -159,7 +159,7 @@
     "vite": "^4.5.0",
     "vite-plugin-cdn-import": "^0.3.5",
     "vite-plugin-compression": "^0.5.1",
-    "vite-plugin-fake-server": "^1.0.2",
+    "vite-plugin-fake-server": "2.0.0-beta.0",
     "vite-plugin-remove-console": "^2.1.1",
     "vite-svg-loader": "^4.0.0",
     "vue-eslint-parser": "^9.3.2",
