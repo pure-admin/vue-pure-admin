@@ -1,7 +1,4 @@
-// @ts-check
-
-/** @type {import("@commitlint/types").UserConfig} */
-export default {
+module.exports = {
   ignores: [commit => commit.includes("init")],
   extends: ["@commitlint/config-conventional"],
   rules: {

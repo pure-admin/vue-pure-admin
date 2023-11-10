@@ -163,7 +163,7 @@ function onChange({ index, option }) {
         {{ optionsBasis[value].label }}
       </span>
     </p>
-    <Segmented :options="optionsBasis" v-model="value" />
+    <Segmented v-model="value" :options="optionsBasis" />
     <el-divider />
     <p class="mb-2">禁用</p>
     <Segmented :options="optionsDisabled" />

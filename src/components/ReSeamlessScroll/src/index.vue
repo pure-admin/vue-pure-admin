@@ -498,16 +498,16 @@ defineExpose({
 <template>
   <div :ref="'wrap' + props.classOption['key']">
     <div
-      :style="leftSwitch"
       v-if="navigation"
+      :style="leftSwitch"
       :class="leftSwitchClass"
       @click="leftSwitchClick"
     >
       <slot name="left-switch" />
     </div>
     <div
-      :style="rightSwitch"
       v-if="navigation"
+      :style="rightSwitch"
       :class="rightSwitchClass"
       @click="rightSwitchClick"
     >
@@ -526,7 +526,7 @@ defineExpose({
       <div :ref="'slotList' + props.classOption['key']" :style="float">
         <slot />
       </div>
-      <div v-html="copyHtml" :style="float" />
+      <div :style="float" v-html="copyHtml" />
     </div>
   </div>
 </template>

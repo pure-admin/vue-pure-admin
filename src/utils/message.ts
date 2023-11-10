@@ -1,4 +1,4 @@
-import { type VNode } from "vue";
+import type { VNode } from "vue";
 import { isFunction } from "@pureadmin/utils";
 import { type MessageHandler, ElMessage } from "element-plus";
 

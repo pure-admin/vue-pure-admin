@@ -4,10 +4,10 @@ import {
   computed,
   reactive,
   onMounted,
-  CSSProperties,
+  type CSSProperties,
   getCurrentInstance
 } from "vue";
-import { tagsViewsType } from "../types";
+import type { tagsViewsType } from "../types";
 import { useRoute, useRouter } from "vue-router";
 import { transformI18n, $t } from "@/plugins/i18n";
 import { responsiveStorageNameSpace } from "@/config";

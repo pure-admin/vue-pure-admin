@@ -84,11 +84,11 @@ function handleClose(
 
 <template>
   <el-dialog
-    class="pure-dialog"
     v-for="(options, index) in dialogStore"
     :key="index"
     v-bind="options"
     v-model="options.visible"
+    class="pure-dialog"
     :fullscreen="fullscreen ? true : options?.fullscreen ? true : false"
     @close="handleClose(options, index)"
     @opened="eventsCallBack('open', options, index)"
@@ -123,8 +123,8 @@ function handleClose(
         </i>
       </div>
       <component
-        v-else
         :is="options?.headerRenderer({ close, titleId, titleClass })"
+        v-else
       />
     </template>
     <component

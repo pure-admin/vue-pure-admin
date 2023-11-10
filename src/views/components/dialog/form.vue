@@ -27,15 +27,15 @@ const newFormInline = ref(props.formInline);
   <el-form :model="newFormInline">
     <el-form-item label="姓名">
       <el-input
-        class="!w-[220px]"
         v-model="newFormInline.user"
+        class="!w-[220px]"
         placeholder="请输入姓名"
       />
     </el-form-item>
     <el-form-item label="城市">
       <el-select
-        class="!w-[220px]"
         v-model="newFormInline.region"
+        class="!w-[220px]"
         placeholder="请选择城市"
       >
         <el-option label="上海" value="上海" />

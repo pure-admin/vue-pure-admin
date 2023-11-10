@@ -9,13 +9,13 @@ const { columns, dataList, print, cellStyle, rowStyle, headerCellStyle } =
 
 <template>
   <div>
-    <el-button type="primary" @click="print" class="mb-[20px] float-right">
+    <el-button type="primary" class="mb-[20px] float-right" @click="print">
       打印
     </el-button>
     <!-- rowHoverBgColor="transparent" 鼠标经过行时，去掉行的背景色 -->
     <pure-table
-      rowHoverBgColor="transparent"
       ref="printRef"
+      rowHoverBgColor="transparent"
       row-key="id"
       border
       :data="dataList"
