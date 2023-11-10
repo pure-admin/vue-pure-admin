@@ -1,5 +1,5 @@
 // 模拟后端动态生成路由
-import { MockMethod } from "vite-plugin-mock";
+import { defineFakeRoute } from "vite-plugin-fake-server/client";
 import { system, permission, frame, tabs } from "@/router/enums";
 
 /**
@@ -198,7 +198,7 @@ const tabsRouter = {
   ]
 };
 
-export default [
+export default defineFakeRoute([
   {
     url: "/get-async-routes",
     method: "get",
@@ -209,4 +209,4 @@ export default [
       };
     }
   }
-] as MockMethod[];
+]);

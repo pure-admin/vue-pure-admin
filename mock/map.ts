@@ -1,29 +1,33 @@
-import { MockMethod } from "vite-plugin-mock";
+import { defineFakeRoute } from "vite-plugin-fake-server/client";
+import { faker } from "@faker-js/faker/locale/zh_CN";
 
 type mapType = {
   plateNumber: string;
   driver: string;
-  "orientation|1-360": number;
-  "lng|113-114.1-10": number;
-  "lat|34-35.1-10": number;
+  orientation: number;
+  lng: number;
+  lat: number;
 };
 
-// http://mockjs.com/examples.html#Object
 const mapList = (): Array<mapType> => {
   const result: Array<mapType> = [];
   for (let index = 0; index < 200; index++) {
     result.push({
-      plateNumber: "豫A@natural(11111, 99999)@character('upper')",
-      driver: "@cname()",
-      "orientation|1-360": 100,
-      "lng|113-114.1-10": 1,
-      "lat|34-35.1-10": 1
+      plateNumber: `豫A${faker.string.numeric({
+        length: 5
+      })}${faker.string.alphanumeric({
+        casing: "upper"
+      })}`,
+      driver: faker.person.firstName(),
+      orientation: faker.number.int({ min: 1, max: 360 }),
+      lng: faker.location.latitude({ max: 114.1, min: 113 }),
+      lat: faker.location.latitude({ max: 35.1, min: 34 })
     });
   }
   return result;
 };
 
-export default [
+export default defineFakeRoute([
   {
     url: "/get-map-info",
     method: "get",
@@ -34,4 +38,4 @@ export default [
       };
     }
   }
-] as MockMethod[];
+]);
