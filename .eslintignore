@@ -5,7 +5,7 @@ dist
 package.json
 eslint.config.js 
 .prettierrc.js
-commitlint.config.js
+commitlint.config.cjs
 postcss.config.js
 tailwind.config.ts
 stylelint.config.cjs
