@@ -105,41 +105,41 @@ onBeforeUnmount(() => {
       element-loading-background="transparent"
     >
       <div ref="wavesurferRef" />
-      <div class="flex justify-between" v-show="totalTime">
+      <div v-show="totalTime" class="flex justify-between">
         <span class="text-[#81888f]">00:00</span>
         <h1 class="text-4xl mt-2">{{ curTime }}</h1>
         <span class="text-[#81888f]">{{ totalTime }}</span>
       </div>
-      <div class="flex mt-2 w-[180px] justify-around m-auto" v-show="totalTime">
+      <div v-show="totalTime" class="flex mt-2 w-[180px] justify-around m-auto">
         <Rewind
-          class="cursor-pointer"
           v-tippy="{
             content: '快退（可长按）',
             placement: 'bottom',
             animation: 'scale'
           }"
           v-longpress:0:100="() => wavesurfer?.skip(-1)"
+          class="cursor-pointer"
         />
         <div
-          class="cursor-pointer"
           v-tippy="{
             content: isPlay ? '暂停' : '播放',
             placement: 'bottom',
             animation: 'scale'
           }"
+          class="cursor-pointer"
           @click="wavesurfer?.playPause()"
         >
           <Play v-if="isPlay" v-motion-pop />
           <Pause v-else v-motion-pop />
         </div>
         <Forward
-          class="cursor-pointer"
           v-tippy="{
             content: '快进（可长按）',
             placement: 'bottom',
             animation: 'scale'
           }"
           v-longpress:0:100="() => wavesurfer?.skip(1)"
+          class="cursor-pointer"
         />
       </div>
     </div>

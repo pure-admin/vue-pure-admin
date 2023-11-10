@@ -25,7 +25,7 @@ const newFormInline = ref(props.formInline);
       </re-col> -->
       <re-col>
         <el-form-item label="用户昵称" prop="nickname">
-          <el-input disabled v-model="newFormInline.nickname" />
+          <el-input v-model="newFormInline.nickname" disabled />
         </el-form-item>
       </re-col>
       <re-col>

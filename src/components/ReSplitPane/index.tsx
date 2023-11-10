@@ -1,4 +1,4 @@
-import { defineComponent, ref, unref, computed, PropType } from "vue";
+import { defineComponent, ref, unref, computed, type PropType } from "vue";
 import resizer from "./resizer";
 import "./index.css";
 

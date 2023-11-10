@@ -84,8 +84,8 @@ onMounted(() => {
     <div class="logic-flow-view">
       <!-- 辅助工具栏 -->
       <Control
-        class="demo-control"
         v-if="lf"
+        class="demo-control"
         :lf="lf"
         :catTurboData="false"
         @catData="catData"
@@ -96,9 +96,9 @@ onMounted(() => {
       <div id="turbo" />
       <!-- 数据查看面板 -->
       <el-dialog
+        v-model="dataVisible"
         class="flow-dialog"
         title="数据"
-        v-model="dataVisible"
         width="50%"
       >
         <el-scrollbar>

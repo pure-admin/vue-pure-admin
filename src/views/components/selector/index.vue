@@ -28,9 +28,9 @@ const selectedVal = ({ left, right }): void => {
 <template>
   <div>
     <el-card
-      class="box-card"
       v-for="(item, key) in dataLists"
       :key="key"
+      class="box-card"
       shadow="never"
     >
       <template #header>
@@ -41,10 +41,10 @@ const selectedVal = ({ left, right }): void => {
       <Selector
         :HsKey="key"
         :echo="item.echo"
-        @selectedVal="selectedVal"
         :disabled="item.disabled"
+        @selectedVal="selectedVal"
       />
-      <h4 class="mt-3" v-if="!item.disabled">选中范围：{{ selectRange }}</h4>
+      <h4 v-if="!item.disabled" class="mt-3">选中范围：{{ selectRange }}</h4>
     </el-card>
   </div>
 </template>

@@ -18,5 +18,5 @@ const data = useVModel(props, "data", emit);
 </script>
 
 <template>
-  <el-input class="!w-[220px]" v-model="data" placeholder="请输入内容" />
+  <el-input v-model="data" class="!w-[220px]" placeholder="请输入内容" />
 </template>

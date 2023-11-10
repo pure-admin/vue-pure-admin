@@ -1,9 +1,9 @@
 import Axios, {
-  AxiosInstance,
-  AxiosRequestConfig,
-  CustomParamsSerializer
+  type AxiosInstance,
+  type AxiosRequestConfig,
+  type CustomParamsSerializer
 } from "axios";
-import {
+import type {
   PureHttpError,
   RequestMethods,
   PureHttpResponse,

@@ -23,9 +23,9 @@ const filteredItems = computed(() => {
     <div class="flex-ac mb-4 shadow-2xl">
       水平模式 horizontal
       <el-input
+        v-model="search"
         class="mr-2 !w-[1/1.5]"
         clearable
-        v-model="search"
         placeholder="Filter..."
         style="width: 300px"
       />

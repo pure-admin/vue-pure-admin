@@ -48,8 +48,8 @@ function onBack() {
     <Motion>
       <el-form-item prop="phone">
         <el-input
-          clearable
           v-model="ruleForm.phone"
+          clearable
           :placeholder="t('login.phone')"
           :prefix-icon="useRenderIcon(Iphone)"
         />
@@ -60,8 +60,8 @@ function onBack() {
       <el-form-item prop="verifyCode">
         <div class="w-full flex justify-between">
           <el-input
-            clearable
             v-model="ruleForm.verifyCode"
+            clearable
             :placeholder="t('login.smsVerifyCode')"
             :prefix-icon="useRenderIcon('ri:shield-keyhole-line')"
           />

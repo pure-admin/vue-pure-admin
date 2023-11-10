@@ -103,12 +103,12 @@ const tableData: User[] = [
     </template>
     <el-row :gutter="24">
       <el-col
+        v-motion
         :xs="24"
         :sm="24"
         :md="24"
         :lg="24"
         :xl="24"
-        v-motion
         :initial="{
           opacity: 0,
           y: 100
@@ -138,12 +138,12 @@ const tableData: User[] = [
       <el-divider />
 
       <el-col
+        v-motion
         :xs="11"
         :sm="11"
         :md="11"
         :lg="11"
         :xl="11"
-        v-motion
         :initial="{
           opacity: 0,
           y: 100
@@ -161,12 +161,12 @@ const tableData: User[] = [
       </el-col>
 
       <el-col
+        v-motion
         :xs="11"
         :sm="11"
         :md="11"
         :lg="11"
         :xl="11"
-        v-motion
         :initial="{
           opacity: 0,
           y: 100

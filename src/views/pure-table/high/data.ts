@@ -61,15 +61,15 @@ const tableDataImage = clone(tableData, true).map((item, index) =>
 );
 
 const tableDataSortable = clone(tableData, true).map((item, index) => {
-  delete item["date"];
+  delete item.date;
   Object.assign(item, {
     date: `${dayjs(new Date()).format("YYYY-MM")}-${index + 1}`
   });
 });
 
 const tableDataDrag = clone(tableData, true).map((item, index) => {
-  delete item["address"];
-  delete item["date"];
+  delete item.address;
+  delete item.date;
   return Object.assign(
     {
       id: index + 1,
@@ -80,7 +80,7 @@ const tableDataDrag = clone(tableData, true).map((item, index) => {
 });
 
 const tableDataEdit = clone(tableData, true).map((item, index) => {
-  delete item["date"];
+  delete item.date;
   return Object.assign(
     {
       id: index + 1,

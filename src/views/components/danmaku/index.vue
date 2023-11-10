@@ -120,8 +120,8 @@ function addDanmu() {
     <div class="flex gap-5">
       <vue-danmaku
         ref="danmaku"
-        class="demo"
         v-model:danmus="danmus"
+        class="demo"
         isSuspend
         v-bind="config"
       >
@@ -176,9 +176,9 @@ function addDanmu() {
         </p>
         <p class="flex">
           <el-input
+            v-model="danmuMsg"
             type="text"
             placeholder="输入评论后，回车发送弹幕"
-            v-model="danmuMsg"
             @keyup.enter="addDanmu"
           />
         </p>

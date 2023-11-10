@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { store } from "@/store";
 import { routerArrays } from "@/layout/types";
-import { multiType, positionType } from "./types";
+import type { multiType, positionType } from "./types";
 import { responsiveStorageNameSpace } from "@/config";
 import { isEqual, isBoolean, isUrl, storageLocal } from "@pureadmin/utils";
 

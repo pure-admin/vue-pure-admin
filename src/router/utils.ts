@@ -1,7 +1,7 @@
 import {
-  RouterHistory,
-  RouteRecordRaw,
-  RouteComponent,
+  type RouterHistory,
+  type RouteRecordRaw,
+  type RouteComponent,
   createWebHistory,
   createWebHashHistory
 } from "vue-router";
@@ -17,7 +17,7 @@ import {
   isIncludeAllChildren
 } from "@pureadmin/utils";
 import { getConfig } from "@/config";
-import { menuType } from "@/layout/types";
+import type { menuType } from "@/layout/types";
 import { buildHierarchyTree } from "@/utils/tree";
 import { userKey, type DataInfo } from "@/utils/auth";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";

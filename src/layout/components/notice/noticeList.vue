@@ -15,8 +15,8 @@ const props = defineProps({
   <div v-if="props.list.length">
     <NoticeItem
       v-for="(item, index) in props.list"
-      :noticeItem="item"
       :key="index"
+      :noticeItem="item"
     />
   </div>
   <el-empty v-else description="暂无数据" />

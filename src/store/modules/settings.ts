@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { store } from "@/store";
-import { setType } from "./types";
+import type { setType } from "./types";
 import { getConfig } from "@/config";
 
 export const useSettingStore = defineStore({
