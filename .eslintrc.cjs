@@ -1,4 +1,7 @@
-module.exports = {
+// @ts-check
+const { defineConfig } = require("eslint-define-config");
+
+module.exports = defineConfig({
   root: true,
   env: {
     node: true
@@ -42,7 +45,7 @@ module.exports = {
   parser: "vue-eslint-parser",
   parserOptions: {
     parser: "@typescript-eslint/parser",
-    ecmaVersion: 2020,
+    ecmaVersion: "latest",
     sourceType: "module",
     jsxPragma: "React",
     ecmaFeatures: {
@@ -117,4 +120,4 @@ module.exports = {
       }
     ]
   }
-}
+});

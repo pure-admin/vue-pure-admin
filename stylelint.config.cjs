@@ -1,3 +1,6 @@
+// @ts-check
+
+/** @type {import("stylelint").Config} */
 module.exports = {
   root: true,
   extends: [
@@ -81,4 +84,4 @@ module.exports = {
     ]
   },
   ignoreFiles: ["**/*.js", "**/*.ts", "**/*.jsx", "**/*.tsx"]
-}
+};
