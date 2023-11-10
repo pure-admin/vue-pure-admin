@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "Node",
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "strict": false,
     "jsx": "preserve",
     "importHelpers": true,
@@ -18,8 +18,8 @@
     "allowJs": false,
     "resolveJsonModule": true,
     "lib": [
-      "dom",
-      "esnext"
+      "ESNext",
+      "DOM"
     ],
     "paths": {
       "@/*": [
