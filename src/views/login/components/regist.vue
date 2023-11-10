@@ -89,8 +89,8 @@ function onBack() {
         prop="username"
       >
         <el-input
-          clearable
           v-model="ruleForm.username"
+          clearable
           :placeholder="t('login.username')"
           :prefix-icon="useRenderIcon(User)"
         />
@@ -100,8 +100,8 @@ function onBack() {
     <Motion :delay="100">
       <el-form-item prop="phone">
         <el-input
-          clearable
           v-model="ruleForm.phone"
+          clearable
           :placeholder="t('login.phone')"
           :prefix-icon="useRenderIcon(Iphone)"
         />
@@ -112,8 +112,8 @@ function onBack() {
       <el-form-item prop="verifyCode">
         <div class="w-full flex justify-between">
           <el-input
-            clearable
             v-model="ruleForm.verifyCode"
+            clearable
             :placeholder="t('login.smsVerifyCode')"
             :prefix-icon="useRenderIcon('ri:shield-keyhole-line')"
           />
@@ -135,9 +135,9 @@ function onBack() {
     <Motion :delay="200">
       <el-form-item prop="password">
         <el-input
+          v-model="ruleForm.password"
           clearable
           show-password
-          v-model="ruleForm.password"
           :placeholder="t('login.password')"
           :prefix-icon="useRenderIcon(Lock)"
         />
@@ -147,9 +147,9 @@ function onBack() {
     <Motion :delay="250">
       <el-form-item :rules="repeatPasswordRule" prop="repeatPassword">
         <el-input
+          v-model="ruleForm.repeatPassword"
           clearable
           show-password
-          v-model="ruleForm.repeatPassword"
           :placeholder="t('login.sure')"
           :prefix-icon="useRenderIcon(Lock)"
         />

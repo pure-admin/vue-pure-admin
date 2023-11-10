@@ -1,4 +1,4 @@
-import { App, Component } from "vue";
+import type { App, Component } from "vue";
 import {
   ElTag,
   ElAffix,

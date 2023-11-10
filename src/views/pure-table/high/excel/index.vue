@@ -8,8 +8,8 @@ const { columns, dataList, exportExcel } = useColumns();
   <div>
     <el-button
       type="primary"
-      @click="exportExcel"
       class="mb-[20px] float-right"
+      @click="exportExcel"
     >
       导出
     </el-button>

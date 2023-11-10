@@ -55,7 +55,6 @@ export default defineComponent({
   emits: ["selectedVal"],
   setup(props, { emit }) {
     const instance = getCurrentInstance();
-    // eslint-disable-next-line vue/no-setup-props-destructure
     const currentValue = props.value;
 
     const rateDisabled = computed(() => {

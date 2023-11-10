@@ -23,9 +23,9 @@ const filteredItems = computed(() => {
     <div class="flex-ac mb-4 shadow-2xl">
       垂直模式 vertical
       <el-input
+        v-model="search"
         class="!w-[350px]"
         clearable
-        v-model="search"
         placeholder="Filter..."
       />
     </div>

@@ -81,8 +81,8 @@ function onMouseleave() {
     placeholder="请选择动画"
     clearable
     filterable
-    @clear="onClear"
     :filter-method="filterMethod"
+    @clear="onClear"
   >
     <template #empty>
       <div class="w-[280px]">

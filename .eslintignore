@@ -3,9 +3,9 @@ dist
 *.d.ts
 /src/assets
 package.json
-.eslintrc.cjs
+eslint.config.js 
 .prettierrc.js
-commitlint.config.js
+commitlint.config.cjs
 postcss.config.js
 tailwind.config.ts
 stylelint.config.js

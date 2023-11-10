@@ -275,7 +275,6 @@ function resolvePath(routePath) {
         {{ transformI18n(props.item.meta.title) }}
       </span>
       <div
-        :style="getSubMenuDivStyle(props.item)"
         v-if="
           !(
             isCollapse &&
@@ -283,6 +282,7 @@ function resolvePath(routePath) {
             props.item.parentId === null
           )
         "
+        :style="getSubMenuDivStyle(props.item)"
       >
         <el-tooltip
           v-if="layout !== 'horizontal'"

@@ -518,15 +518,15 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div ref="containerDom" class="tags-view" v-if="!showTags">
+  <div v-if="!showTags" ref="containerDom" class="tags-view">
     <span v-show="isShowArrow" class="arrow-left">
       <IconifyIconOffline :icon="ArrowLeftSLine" @click="handleScroll(200)" />
     </span>
     <div ref="scrollbarDom" class="scroll-container">
-      <div class="tab select-none" ref="tabDom" :style="getTabStyle">
+      <div ref="tabDom" class="tab select-none" :style="getTabStyle">
         <div
-          :ref="'dynamic' + index"
           v-for="(item, index) in multiTags"
+          :ref="'dynamic' + index"
           :key="index"
           :class="['scroll-item is-closable', linkIsActive(item)]"
           @contextmenu.prevent="openMenu(item, $event)"
@@ -550,8 +550,8 @@ onBeforeUnmount(() => {
             <IconifyIconOffline :icon="CloseBold" />
           </span>
           <div
-            :ref="'schedule' + index"
             v-if="showModel !== 'card'"
+            :ref="'schedule' + index"
             :class="[scheduleIsActive(item)]"
           />
         </div>

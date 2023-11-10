@@ -4,13 +4,13 @@ import {
   watch,
   nextTick,
   computed,
-  PropType,
+  type PropType,
   defineComponent
 } from "vue";
 import "./index.scss";
 import propTypes from "@/utils/propTypes";
 import { isString, cloneDeep } from "@pureadmin/utils";
-import QRCode, { QRCodeRenderersOptions } from "qrcode";
+import QRCode, { type QRCodeRenderersOptions } from "qrcode";
 import RefreshRight from "@iconify-icons/ep/refresh-right";
 
 interface QrcodeLogo {

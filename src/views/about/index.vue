@@ -57,11 +57,11 @@ Object.keys(devDependencies).forEach(key => {
       </template>
       <el-descriptions border>
         <el-descriptions-item
+          v-for="(item, index) in schema"
+          :key="index"
           :label="item.label"
           label-align="left"
           align="left"
-          v-for="(item, index) in schema"
-          :key="index"
         >
           <a
             :href="'https://www.npmjs.com/package/' + item.label"
@@ -81,11 +81,11 @@ Object.keys(devDependencies).forEach(key => {
       </template>
       <el-descriptions border>
         <el-descriptions-item
+          v-for="(item, index) in devSchema"
+          :key="index"
           :label="item.label"
           label-align="left"
           align="left"
-          v-for="(item, index) in devSchema"
-          :key="index"
         >
           <a
             :href="'https://www.npmjs.com/package/' + item.label"

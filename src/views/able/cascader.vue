@@ -32,8 +32,8 @@ const handleChange = value => {
           <span class="imp">
             1. 二级联动（不带“全部”选项）
             <el-cascader
-              :options="provinceAndCityData"
               v-model="selectedOptions1"
+              :options="provinceAndCityData"
               @change="handleChange"
             />
           </span>
@@ -61,8 +61,8 @@ const handleChange = value => {
           <span class="imp">
             2. 二级联动（带有“全部”选项）
             <el-cascader
-              :options="provinceAndCityDataPlus"
               v-model="selectedOptions3"
+              :options="provinceAndCityDataPlus"
               @change="handleChange"
             />
           </span>
@@ -90,8 +90,8 @@ const handleChange = value => {
           <span class="imp">
             3. 三级联动（不带“全部”选项）
             <el-cascader
-              :options="regionData"
               v-model="selectedOptions2"
+              :options="regionData"
               @change="handleChange"
             />
           </span>
@@ -121,8 +121,8 @@ const handleChange = value => {
           <span class="imp">
             4. 三级联动（带"全部选项"）
             <el-cascader
-              :options="regionDataPlus"
               v-model="selectedOptions4"
+              :options="regionDataPlus"
               @change="handleChange"
             />
           </span>

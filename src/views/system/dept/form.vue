@@ -41,8 +41,8 @@ defineExpose({ getRef });
       <re-col>
         <el-form-item label="上级部门">
           <el-cascader
-            class="w-full"
             v-model="newFormInline.parentId"
+            class="w-full"
             :options="newFormInline.higherDeptOptions"
             :props="{
               value: 'id',
