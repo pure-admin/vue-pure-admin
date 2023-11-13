@@ -60,8 +60,8 @@ const getsubMenuIconStyle = computed((): CSSProperties => {
       layout.value === "horizontal"
         ? "0 5px 0 0"
         : isCollapse.value
-        ? "0 auto"
-        : "0 5px 0 0"
+          ? "0 auto"
+          : "0 5px 0 0"
   };
 });
 
@@ -96,8 +96,8 @@ const getSubMenuDivStyle = computed((): any => {
             item?.parentId === null
               ? "center"
               : layout.value === "mix" && item?.pathList?.length === 2
-              ? "center"
-              : ""
+                ? "center"
+                : ""
         };
   };
 });
