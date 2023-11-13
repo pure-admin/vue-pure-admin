@@ -62,8 +62,8 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
               @click="translationCh"
             >
               <IconifyIconOffline
-                class="check-zh"
                 v-show="locale === 'zh'"
+                class="check-zh"
                 :icon="Check"
               />
               简体中文
@@ -73,7 +73,7 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
               :class="['dark:!text-white', getDropdownItemClass(locale, 'en')]"
               @click="translationEn"
             >
-              <span class="check-en" v-show="locale === 'en'">
+              <span v-show="locale === 'en'" class="check-en">
                 <IconifyIconOffline :icon="Check" />
               </span>
               English

@@ -10,7 +10,7 @@ import {
   ref,
   unref,
   computed,
-  PropType,
+  type PropType,
   onMounted,
   onUnmounted,
   defineComponent

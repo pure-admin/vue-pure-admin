@@ -35,9 +35,9 @@ const nodeDragNode = item => {
   <!-- 左侧bpmn元素选择器 -->
   <div class="node-panel">
     <div
-      class="node-item dark:text-bg_color"
       v-for="item in props.nodeList"
       :key="item.text"
+      class="node-item dark:text-bg_color"
       @mousedown="nodeDragNode(item)"
     >
       <div class="node-item-icon" :class="item.class">

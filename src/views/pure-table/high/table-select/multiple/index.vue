@@ -18,9 +18,9 @@ const {
 
 <template>
   <el-select
-    class="w-[160px]"
     ref="selectRef"
     v-model="selectValue"
+    class="w-[160px]"
     placeholder="请选择"
     clearable
     multiple

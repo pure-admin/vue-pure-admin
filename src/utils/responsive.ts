@@ -1,5 +1,5 @@
 // 响应式storage
-import { App } from "vue";
+import type { App } from "vue";
 import Storage from "responsive-storage";
 import { routerArrays } from "@/layout/types";
 import { responsiveStorageNameSpace } from "@/config";
@@ -24,7 +24,7 @@ export const injectResponsiveStorage = (app: App, config: PlatformConfigs) => {
         grey: config.Grey ?? false,
         weak: config.Weak ?? false,
         hideTabs: config.HideTabs ?? false,
-        hideFooter: config.HideFooter ?? false,
+        hideFooter: config.HideFooter ?? true,
         showLogo: config.ShowLogo ?? true,
         showModel: config.ShowModel ?? "smart",
         multiTagsCache: config.MultiTagsCache ?? false

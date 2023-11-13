@@ -48,13 +48,13 @@ getReleases().then(({ data }) => {
   <div>
     <el-row :gutter="24">
       <el-col
+        v-motion
         :xs="24"
         :sm="24"
         :md="12"
         :lg="12"
         :xl="12"
         class="mb-[18px]"
-        v-motion
         :initial="{
           opacity: 0,
           y: 100
@@ -106,13 +106,13 @@ getReleases().then(({ data }) => {
       </el-col>
 
       <el-col
+        v-motion
         :xs="24"
         :sm="24"
         :md="12"
         :lg="12"
         :xl="12"
         class="mb-[18px]"
-        v-motion
         :initial="{
           opacity: 0,
           y: 100
@@ -154,13 +154,13 @@ getReleases().then(({ data }) => {
       </el-col>
 
       <el-col
+        v-motion
         :xs="24"
         :sm="24"
         :md="12"
         :lg="8"
         :xl="8"
         class="mb-[18px]"
-        v-motion
         :initial="{
           opacity: 0,
           y: 100
@@ -197,13 +197,13 @@ getReleases().then(({ data }) => {
       </el-col>
 
       <el-col
+        v-motion
         :xs="24"
         :sm="24"
         :md="12"
         :lg="8"
         :xl="8"
         class="mb-[18px]"
-        v-motion
         :initial="{
           opacity: 0,
           y: 100
@@ -240,13 +240,13 @@ getReleases().then(({ data }) => {
       </el-col>
 
       <el-col
+        v-motion
         :xs="24"
         :sm="24"
         :md="24"
         :lg="8"
         :xl="8"
         class="mb-[18px]"
-        v-motion
         :initial="{
           opacity: 0,
           y: 100

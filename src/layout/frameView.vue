@@ -46,11 +46,11 @@ onMounted(() => {
 
 <template>
   <div
-    class="frame"
     v-loading="loading"
+    class="frame"
     :element-loading-text="t('status.hsLoad')"
   >
-    <iframe :src="frameSrc" class="frame-iframe" ref="frameRef" />
+    <iframe ref="frameRef" :src="frameSrc" class="frame-iframe" />
   </div>
 </template>
 
@@ -58,7 +58,6 @@ onMounted(() => {
 .frame {
   position: absolute;
   inset: 0;
-  z-index: 998;
 
   .frame-iframe {
     box-sizing: border-box;

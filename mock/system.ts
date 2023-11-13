@@ -1,6 +1,7 @@
-import { MockMethod } from "vite-plugin-mock";
+import { defineFakeRoute } from "vite-plugin-fake-server/client";
+import { faker } from "@faker-js/faker/locale/zh_CN";
 
-export default [
+export default defineFakeRoute([
   // 用户管理
   {
     url: "/user",
@@ -12,7 +13,7 @@ export default [
           nickname: "admin",
           avatar: "https://avatars.githubusercontent.com/u/44761321",
           phone: "15888886789",
-          email: "@email",
+          email: faker.internet.email(),
           sex: 0,
           id: 1,
           status: 1,
@@ -30,7 +31,7 @@ export default [
           nickname: "common",
           avatar: "https://avatars.githubusercontent.com/u/52823142",
           phone: "18288882345",
-          email: "@email",
+          email: faker.internet.email(),
           sex: 1,
           id: 2,
           status: 1,
@@ -153,12 +154,12 @@ export default [
             id: 100,
             sort: 0,
             phone: "15888888888",
-            principal: "@cname()",
-            email: "@email",
+            principal: faker.person.firstName(),
+            email: faker.internet.email(),
             status: 1, // 状态 1 启用 0 停用
             type: 1, // 1 公司 2 分公司 3 部门
             createTime: 1605456000000,
-            remark: "@cparagraph(1, 3)"
+            remark: "这里是备注信息这里是备注信息这里是备注信息这里是备注信息"
           },
           {
             name: "郑州分公司",
@@ -166,12 +167,12 @@ export default [
             id: 101,
             sort: 1,
             phone: "15888888888",
-            principal: "@cname()",
-            email: "@email",
+            principal: faker.person.firstName(),
+            email: faker.internet.email(),
             status: 1,
             type: 2,
             createTime: 1605456000000,
-            remark: "@cparagraph(1, 3)"
+            remark: "这里是备注信息这里是备注信息这里是备注信息这里是备注信息"
           },
           {
             name: "研发部门",
@@ -179,12 +180,12 @@ export default [
             id: 103,
             sort: 1,
             phone: "15888888888",
-            principal: "@cname()",
-            email: "@email",
+            principal: faker.person.firstName(),
+            email: faker.internet.email(),
             status: 1,
             type: 3,
             createTime: 1605456000000,
-            remark: "@cparagraph(1, 3)"
+            remark: "这里是备注信息这里是备注信息这里是备注信息这里是备注信息"
           },
           {
             name: "市场部门",
@@ -192,12 +193,12 @@ export default [
             id: 108,
             sort: 1,
             phone: "15888888888",
-            principal: "@cname()",
-            email: "@email",
+            principal: faker.person.firstName(),
+            email: faker.internet.email(),
             status: 1,
             type: 3,
             createTime: 1605456000000,
-            remark: "@cparagraph(1, 3)"
+            remark: "这里是备注信息这里是备注信息这里是备注信息这里是备注信息"
           },
           {
             name: "深圳分公司",
@@ -205,12 +206,12 @@ export default [
             id: 102,
             sort: 2,
             phone: "15888888888",
-            principal: "@cname()",
-            email: "@email",
+            principal: faker.person.firstName(),
+            email: faker.internet.email(),
             status: 1,
             type: 2,
             createTime: 1605456000000,
-            remark: "@cparagraph(1, 3)"
+            remark: "这里是备注信息这里是备注信息这里是备注信息这里是备注信息"
           },
           {
             name: "市场部门",
@@ -218,12 +219,12 @@ export default [
             id: 104,
             sort: 2,
             phone: "15888888888",
-            principal: "@cname()",
-            email: "@email",
+            principal: faker.person.firstName(),
+            email: faker.internet.email(),
             status: 1,
             type: 3,
             createTime: 1605456000000,
-            remark: "@cparagraph(1, 3)"
+            remark: "这里是备注信息这里是备注信息这里是备注信息这里是备注信息"
           },
           {
             name: "财务部门",
@@ -231,12 +232,12 @@ export default [
             id: 109,
             sort: 2,
             phone: "15888888888",
-            principal: "@cname()",
-            email: "@email",
+            principal: faker.person.firstName(),
+            email: faker.internet.email(),
             status: 1,
             type: 3,
             createTime: 1605456000000,
-            remark: "@cparagraph(1, 3)"
+            remark: "这里是备注信息这里是备注信息这里是备注信息这里是备注信息"
           },
           {
             name: "测试部门",
@@ -244,12 +245,12 @@ export default [
             id: 105,
             sort: 3,
             phone: "15888888888",
-            principal: "@cname()",
-            email: "@email",
+            principal: faker.person.firstName(),
+            email: faker.internet.email(),
             status: 0,
             type: 3,
             createTime: 1605456000000,
-            remark: "@cparagraph(1, 3)"
+            remark: "这里是备注信息这里是备注信息这里是备注信息这里是备注信息"
           },
           {
             name: "财务部门",
@@ -257,12 +258,12 @@ export default [
             id: 106,
             sort: 4,
             phone: "15888888888",
-            principal: "@cname()",
-            email: "@email",
+            principal: faker.person.firstName(),
+            email: faker.internet.email(),
             status: 1,
             type: 3,
             createTime: 1605456000000,
-            remark: "@cparagraph(1, 3)"
+            remark: "这里是备注信息这里是备注信息这里是备注信息这里是备注信息"
           },
           {
             name: "运维部门",
@@ -270,15 +271,15 @@ export default [
             id: 107,
             sort: 5,
             phone: "15888888888",
-            principal: "@cname()",
-            email: "@email",
+            principal: faker.person.firstName(),
+            email: faker.internet.email(),
             status: 0,
             type: 3,
             createTime: 1605456000000,
-            remark: "@cparagraph(1, 3)"
+            remark: "这里是备注信息这里是备注信息这里是备注信息这里是备注信息"
           }
         ]
       };
     }
   }
-] as MockMethod[];
+]);

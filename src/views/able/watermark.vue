@@ -42,9 +42,9 @@ onBeforeUnmount(() => {
     </template>
     <span> 请输入要创建水印的值：</span>
     <el-input
+      v-model="value"
       class="mb-4 mr-4"
       style="width: 200px"
-      v-model="value"
       clearable
     />
     <span>请选择要创建水印的颜色：</span>

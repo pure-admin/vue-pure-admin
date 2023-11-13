@@ -6,7 +6,7 @@ import { getDeptList } from "@/api/system";
 import { usePublicHooks } from "../../hooks";
 import { addDialog } from "@/components/ReDialog";
 import { reactive, ref, onMounted, h } from "vue";
-import { type FormItemProps } from "../utils/types";
+import type { FormItemProps } from "../utils/types";
 import { cloneDeep, isAllEmpty } from "@pureadmin/utils";
 
 export function useDept() {

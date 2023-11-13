@@ -151,8 +151,8 @@ watch(
           </template>
 
           <el-input
-            class="px-2 pt-2"
             v-model="filterValue"
+            class="px-2 pt-2"
             placeholder="搜索图标"
             clearable
           />

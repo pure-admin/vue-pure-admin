@@ -20,10 +20,10 @@ import {
   formatFlatteningRoutes
 } from "./utils";
 import {
-  Router,
+  type Router,
   createRouter,
-  RouteRecordRaw,
-  RouteComponent
+  type RouteRecordRaw,
+  type RouteComponent
 } from "vue-router";
 import {
   type DataInfo,

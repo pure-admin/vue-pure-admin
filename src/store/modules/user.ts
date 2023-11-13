@@ -1,11 +1,11 @@
 import { defineStore } from "pinia";
 import { store } from "@/store";
-import { userType } from "./types";
+import type { userType } from "./types";
 import { routerArrays } from "@/layout/types";
 import { router, resetRouter } from "@/router";
 import { storageLocal } from "@pureadmin/utils";
 import { getLogin, refreshTokenApi } from "@/api/user";
-import { UserResult, RefreshTokenResult } from "@/api/user";
+import type { UserResult, RefreshTokenResult } from "@/api/user";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
 import { type DataInfo, setToken, removeToken, userKey } from "@/utils/auth";
 

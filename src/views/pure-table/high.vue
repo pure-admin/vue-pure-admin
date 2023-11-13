@@ -49,7 +49,7 @@ function tabClick({ index }) {
               <span>{{ item.title }}</span>
             </el-tooltip>
           </template>
-          <component v-if="selected == index" :is="item.component" />
+          <component :is="item.component" v-if="selected == index" />
         </el-tab-pane>
       </template>
     </el-tabs>

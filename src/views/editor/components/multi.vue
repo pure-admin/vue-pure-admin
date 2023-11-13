@@ -55,7 +55,7 @@ onBeforeUnmount(() => {
 
 <template>
   <el-row :gutter="30" justify="space-around">
-    <re-col :value="11" v-for="(edit, index) in editorList" :key="index">
+    <re-col v-for="(edit, index) in editorList" :key="index" :value="11">
       <div class="wangeditor">
         <Toolbar
           :editor="edit.editorRef"

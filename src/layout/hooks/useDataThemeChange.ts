@@ -1,8 +1,8 @@
 import { ref } from "vue";
 import { getConfig } from "@/config";
 import { useLayout } from "./useLayout";
-import { themeColorsType } from "../types";
 import { useGlobal } from "@pureadmin/utils";
+import type { themeColorsType } from "../types";
 import { useEpThemeStoreHook } from "@/store/modules/epTheme";
 import {
   darken,
