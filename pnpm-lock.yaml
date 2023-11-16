@@ -295,36 +295,18 @@ devDependencies:
   stylelint:
     specifier: ^15.11.0
     version: 15.11.0(typescript@5.2.2)
-  stylelint-config-html:
-    specifier: ^1.1.0
-    version: 1.1.0(postcss-html@1.5.0)(stylelint@15.11.0)
   stylelint-config-recess-order:
     specifier: ^4.3.0
     version: 4.3.0(stylelint@15.11.0)
-  stylelint-config-recommended:
-    specifier: ^13.0.0
-    version: 13.0.0(stylelint@15.11.0)
-  stylelint-config-recommended-scss:
-    specifier: ^13.1.0
-    version: 13.1.0(postcss@8.4.31)(stylelint@15.11.0)
   stylelint-config-recommended-vue:
     specifier: ^1.5.0
     version: 1.5.0(postcss-html@1.5.0)(stylelint@15.11.0)
-  stylelint-config-standard:
-    specifier: ^34.0.0
-    version: 34.0.0(stylelint@15.11.0)
   stylelint-config-standard-scss:
     specifier: ^11.1.0
     version: 11.1.0(postcss@8.4.31)(stylelint@15.11.0)
-  stylelint-order:
-    specifier: ^6.0.3
-    version: 6.0.3(stylelint@15.11.0)
   stylelint-prettier:
     specifier: ^4.0.2
     version: 4.0.2(prettier@3.1.0)(stylelint@15.11.0)
-  stylelint-scss:
-    specifier: ^5.3.1
-    version: 5.3.1(stylelint@15.11.0)
   svgo:
     specifier: ^3.0.3
     version: 3.0.3
