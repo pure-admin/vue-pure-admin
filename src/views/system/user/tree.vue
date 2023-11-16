@@ -191,8 +191,8 @@ defineExpose({ onTreeReset });
               data.type === 1
                 ? OfficeBuilding
                 : data.type === 2
-                ? LocationCompany
-                : Dept
+                  ? LocationCompany
+                  : Dept
             "
           />
           {{ node.label }}

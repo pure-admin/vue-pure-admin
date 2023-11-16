@@ -116,8 +116,8 @@ function handleClose(
               options?.fullscreen
                 ? ExitFullscreen
                 : fullscreen
-                ? ExitFullscreen
-                : Fullscreen
+                  ? ExitFullscreen
+                  : Fullscreen
             "
           />
         </i>
