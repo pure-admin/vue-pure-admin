@@ -24,12 +24,15 @@ export const usePermissionStore = defineStore({
       );
     },
     cacheOperate({ mode, name }: cacheType) {
-      const delIndex = this.cachePageList.findIndex(v => v === name);
+      const delIndex = this.cachePageList.findIndex((v:any) => v === name);
       switch (mode) {
         case "refresh":
-          this.cachePageList = this.cachePageList.filter(v => v !== name);
+          this.cachePageList = this.cachePageList.filter((v:any) => v !== name);
           break;
         case "add":
+          if (this.cachePageList.includes(name)) {
+            break;
+          }
           this.cachePageList.push(name);
           break;
         case "delete":
@@ -41,7 +44,7 @@ export const usePermissionStore = defineStore({
         let cacheLength = this.cachePageList.length;
         const nameList = getKeyList(useMultiTagsStoreHook().multiTags, "name");
         while (cacheLength > 0) {
-          nameList.findIndex(v => v === this.cachePageList[cacheLength - 1]) ===
+          nameList.findIndex((v:any) => v === this.cachePageList[cacheLength - 1]) ===
             -1 &&
             this.cachePageList.splice(
               this.cachePageList.indexOf(this.cachePageList[cacheLength - 1]),
