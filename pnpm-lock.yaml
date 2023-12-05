@@ -328,6 +328,9 @@ devDependencies:
   vite-plugin-remove-console:
     specifier: ^2.1.1
     version: 2.1.1
+  vite-plugin-router-warn:
+    specifier: ^1.0.0
+    version: registry.npmjs.org/vite-plugin-router-warn@1.0.0
   vite-svg-loader:
     specifier: ^4.0.0
     version: 4.0.0
@@ -9305,3 +9308,9 @@ packages:
     dependencies:
       tslib: 2.3.0
     dev: false
+
+  registry.npmjs.org/vite-plugin-router-warn@1.0.0:
+    resolution: {integrity: sha512-jnr7faHJPkKxukBXVpg7Ui1UDqhmxD7xU6JGidq8ivSHTsNAPqzSpPpwW8O1PBP/0+Owq4bLfNNk11drOkz4xA==, registry: https://registry.npmmirror.com/, tarball: https://registry.npmjs.org/vite-plugin-router-warn/-/vite-plugin-router-warn-1.0.0.tgz}
+    name: vite-plugin-router-warn
+    version: 1.0.0
+    dev: true
