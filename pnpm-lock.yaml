@@ -330,7 +330,7 @@ devDependencies:
     version: 2.1.1
   vite-plugin-router-warn:
     specifier: ^1.0.0
-    version: registry.npmjs.org/vite-plugin-router-warn@1.0.0
+    version: 1.0.0
   vite-svg-loader:
     specifier: ^4.0.0
     version: 4.0.0
@@ -8775,6 +8775,10 @@ packages:
     resolution: {integrity: sha512-AQOsKl9+1YO82otwSchf+P8SRo4RhMvPjOvjm9DXOnkff0SBwBPAzazEn06IUjhsm/zX4miMgicCQH1hPdktrw==}
     dev: true
 
+  /vite-plugin-router-warn@1.0.0:
+    resolution: {integrity: sha512-jnr7faHJPkKxukBXVpg7Ui1UDqhmxD7xU6JGidq8ivSHTsNAPqzSpPpwW8O1PBP/0+Owq4bLfNNk11drOkz4xA==}
+    dev: true
+
   /vite-svg-loader@4.0.0:
     resolution: {integrity: sha512-0MMf1yzzSYlV4MGePsLVAOqXsbF5IVxbn4EEzqRnWxTQl8BJg/cfwIzfQNmNQxZp5XXwd4kyRKF1LytuHZTnqA==}
     dependencies:
@@ -9308,9 +9312,3 @@ packages:
     dependencies:
       tslib: 2.3.0
     dev: false
-
-  registry.npmjs.org/vite-plugin-router-warn@1.0.0:
-    resolution: {integrity: sha512-jnr7faHJPkKxukBXVpg7Ui1UDqhmxD7xU6JGidq8ivSHTsNAPqzSpPpwW8O1PBP/0+Owq4bLfNNk11drOkz4xA==, registry: https://registry.npmmirror.com/, tarball: https://registry.npmjs.org/vite-plugin-router-warn/-/vite-plugin-router-warn-1.0.0.tgz}
-    name: vite-plugin-router-warn
-    version: 1.0.0
-    dev: true
