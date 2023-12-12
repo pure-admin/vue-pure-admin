@@ -1,8 +1,7 @@
 // @ts-check
 
 /** @type {import("stylelint").Config} */
-module.exports = {
-  root: true,
+export default {
   extends: [
     "stylelint-config-standard",
     "stylelint-config-html/vue",

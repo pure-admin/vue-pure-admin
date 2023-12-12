@@ -8,6 +8,6 @@ eslint.config.js
 commitlint.config.js
 postcss.config.js
 tailwind.config.ts
-stylelint.config.cjs
+stylelint.config.js
 src/components/ReSplitPane/iconfont
 src/components/ReFlowChart/src/assets/iconfont
