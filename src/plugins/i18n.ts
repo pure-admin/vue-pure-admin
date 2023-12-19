@@ -8,16 +8,20 @@ import { storageLocal, isObject } from "@pureadmin/utils";
 import enLocale from "element-plus/dist/locale/en.mjs";
 import zhLocale from "element-plus/dist/locale/zh-cn.mjs";
 
-function siphonI18n(prefix = "zh-CN") {
-  return Object.fromEntries(
+const siphonI18n = (function () {
+  // 仅初始化一次国际化配置
+  let cache = Object.fromEntries(
     Object.entries(
       import.meta.glob("../../locales/*.y(a)?ml", { eager: true })
     ).map(([key, value]: any) => {
       const matched = key.match(/([A-Za-z0-9-_]+)\./i)[1];
       return [matched, value.default];
     })
-  )[prefix];
-}
+  );
+  return (prefix = "zh-CN") => {
+    return cache[prefix];
+  };
+})();
 
 export const localesConfigs = {
   zh: {
@@ -33,7 +37,7 @@ export const localesConfigs = {
 /** 获取对象中所有嵌套对象的key键，并将它们用点号分割组成字符串 */
 function getObjectKeys(obj) {
   const stack = [];
-  const keys = [];
+  const keys: Set<string> = new Set();
 
   stack.push({ obj, key: "" });
 
@@ -46,13 +50,24 @@ function getObjectKeys(obj) {
       if (obj[k] && isObject(obj[k])) {
         stack.push({ obj: obj[k], key: newKey });
       } else {
-        keys.push(newKey);
+        keys.add(newKey);
       }
     }
   }
 
   return keys;
 }
+
+/** 将展开的key缓存 */
+const keysCache: Map<string, Set<string>> = new Map();
+const flatI18n = (prefix = "zh-CN") => {
+  let cache = keysCache.get(prefix);
+  if (!cache) {
+    cache = getObjectKeys(siphonI18n(prefix));
+    keysCache.set(prefix, cache);
+  }
+  return cache;
+};
 
 /**
  * 国际化转换工具函数（自动读取根目录locales文件夹下文件进行国际化匹配）
@@ -73,9 +88,9 @@ export function transformI18n(message: any = "") {
 
   const key = message.match(/(\S*)\./)?.input;
 
-  if (key && getObjectKeys(siphonI18n("zh-CN")).find(item => item === key)) {
+  if (key && flatI18n("zh-CN").has(key)) {
     return i18n.global.t.call(i18n.global.locale, message);
-  } else if (!key && Object.keys(siphonI18n("zh-CN")).includes(message)) {
+  } else if (!key && Object.hasOwn(siphonI18n("zh-CN"), message)) {
     // 兼容非嵌套形式的国际化写法
     return i18n.global.t.call(i18n.global.locale, message);
   } else {
