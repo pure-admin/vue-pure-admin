@@ -162,7 +162,7 @@ Support modern browsers, not IE
 
 ## License
 
-In principle, no fees and copyrights are charged, and it is commercially available, but if you need secondary open source (such as using this platform for secondary development and open source, the front-end code must be open source and free), please contact the author for permission! (Free, just take a record)
+Completely free and open source
 
 [MIT © 2020-present, pure-admin](./LICENSE)
 

@@ -162,7 +162,7 @@ docker run -dp 8080:80  --name pure-admin vue-pure-admin
 
 ## 许可证
 
-原则上不收取任何费用及版权，可商用，不过如需二次开源（比如用此平台二次开发并开源，要求前端代码必须开源免费）请联系作者获取许可！（免费，走个记录而已）
+完全免费开源
 
 [MIT © 2020-present, pure-admin](./LICENSE)
 

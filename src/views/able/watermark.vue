@@ -50,7 +50,7 @@ onBeforeUnmount(() => {
     <span>请选择要创建水印的颜色：</span>
     <el-color-picker v-model="color" show-alpha />
     <br />
-    <el-button @click="setWatermark(value, { fillStyle: color })">
+    <el-button @click="setWatermark(value, { color })">
       创建整页水印
     </el-button>
     <el-button
@@ -117,7 +117,7 @@ onBeforeUnmount(() => {
     <el-button
       @click="
         setLocalWatermark('局部水印', {
-          fillStyle: color,
+          color,
           width: 140,
           height: 60
         })

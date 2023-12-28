@@ -24,7 +24,7 @@ const wasmPath = getPath("capture.worker.wasm");
 loadScript({
   src
 }).then(mgs => {
-  if (mgs === "success") {
+  if (mgs[0].message === "加载成功") {
     // @ts-expect-error
     captureUtil.value = cheetahCapture.initCapture({
       workerPath,
