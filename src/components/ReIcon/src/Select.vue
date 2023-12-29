@@ -10,15 +10,8 @@ defineOptions({
   name: "IconSelect"
 });
 
-const props = defineProps({
-  modelValue: {
-    require: false,
-    type: String
-  }
-});
-const emit = defineEmits<{ (e: "update:modelValue", v: string) }>();
+const inputValue = defineModel({ type: String });
 
-const inputValue = toRef(props, "modelValue");
 const iconList = ref(IconJson);
 const icon = ref();
 const currentActiveType = ref("ep:");
@@ -68,11 +61,11 @@ const iconItemStyle = computed((): ParameterCSSProperties => {
 });
 
 function setVal() {
-  currentActiveType.value = props.modelValue.substring(
+  currentActiveType.value = inputValue.value.substring(
     0,
-    props.modelValue.indexOf(":") + 1
+    inputValue.value.indexOf(":") + 1
   );
-  icon.value = props.modelValue.substring(props.modelValue.indexOf(":") + 1);
+  icon.value = inputValue.value.substring(inputValue.value.indexOf(":") + 1);
 }
 
 function onBeforeEnter() {
@@ -96,7 +89,7 @@ function handleClick({ props }) {
 
 function onChangeIcon(item) {
   icon.value = item;
-  emit("update:modelValue", currentActiveType.value + item);
+  inputValue.value = currentActiveType.value + item;
 }
 
 function onCurrentChange(page) {
@@ -105,7 +98,7 @@ function onCurrentChange(page) {
 
 function onClear() {
   icon.value = "";
-  emit("update:modelValue", "");
+  inputValue.value = "";
 }
 
 watch(
@@ -117,7 +110,7 @@ watch(
   { immediate: true }
 );
 watch(
-  () => props.modelValue,
+  () => inputValue.value,
   val => val && setVal(),
   { immediate: true }
 );

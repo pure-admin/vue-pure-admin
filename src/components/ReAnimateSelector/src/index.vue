@@ -7,15 +7,8 @@ defineOptions({
   name: "ReAnimateSelector"
 });
 
-const props = defineProps({
-  modelValue: {
-    require: false,
-    type: String
-  }
-});
-const emit = defineEmits<{ (e: "update:modelValue", v: string) }>();
+const inputValue = defineModel({ type: String });
 
-const inputValue = toRef(props, "modelValue");
 const animatesList = ref(animates);
 const copyAnimatesList = cloneDeep(animatesList);
 
@@ -47,11 +40,11 @@ const animateStyle = computed(
 );
 
 function onChangeIcon(animate: string) {
-  emit("update:modelValue", animate);
+  inputValue.value = animate;
 }
 
 function onClear() {
-  emit("update:modelValue", "");
+  inputValue.value = "";
 }
 
 function filterMethod(value: any) {
