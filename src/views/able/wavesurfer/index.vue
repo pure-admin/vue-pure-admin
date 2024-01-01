@@ -4,15 +4,10 @@ import { getTime } from "@pureadmin/utils";
 import { Play, Pause, Forward, Rewind } from "./svg";
 import { ref, onMounted, onBeforeUnmount } from "vue";
 
-import "tippy.js/dist/tippy.css";
-import "tippy.js/animations/scale.css";
-import { directive as tippy } from "vue-tippy";
-
 defineOptions({
   name: "Wavesurfer"
 });
 
-const vTippy = tippy;
 const loading = ref(true);
 const wavesurfer = ref(null);
 const wavesurferRef = ref();
@@ -114,8 +109,7 @@ onBeforeUnmount(() => {
         <Rewind
           v-tippy="{
             content: '快退（可长按）',
-            placement: 'bottom',
-            animation: 'scale'
+            placement: 'bottom'
           }"
           v-longpress:0:100="() => wavesurfer?.skip(-1)"
           class="cursor-pointer"
@@ -123,8 +117,7 @@ onBeforeUnmount(() => {
         <div
           v-tippy="{
             content: isPlay ? '暂停' : '播放',
-            placement: 'bottom',
-            animation: 'scale'
+            placement: 'bottom'
           }"
           class="cursor-pointer"
           @click="wavesurfer?.playPause()"
@@ -135,8 +128,7 @@ onBeforeUnmount(() => {
         <Forward
           v-tippy="{
             content: '快进（可长按）',
-            placement: 'bottom',
-            animation: 'scale'
+            placement: 'bottom'
           }"
           v-longpress:0:100="() => wavesurfer?.skip(1)"
           class="cursor-pointer"

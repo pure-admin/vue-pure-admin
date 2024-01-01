@@ -1,9 +1,14 @@
 import { ref } from "vue";
 import { getConfig } from "@/config";
 import { useLayout } from "./useLayout";
-import { useGlobal } from "@pureadmin/utils";
+import { removeToken } from "@/utils/auth";
+import { routerArrays } from "@/layout/types";
+import { router, resetRouter } from "@/router";
 import type { themeColorsType } from "../types";
+import { useAppStoreHook } from "@/store/modules/app";
+import { useGlobal, storageLocal } from "@pureadmin/utils";
 import { useEpThemeStoreHook } from "@/store/modules/epTheme";
+import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
 import {
   darken,
   lighten,
@@ -36,6 +41,13 @@ export function useDataThemeChange() {
   const { $storage } = useGlobal<GlobalPropertiesApi>();
   const dataTheme = ref<boolean>($storage?.layout?.darkMode);
   const body = document.documentElement as HTMLElement;
+
+  function toggleClass(flag: boolean, clsName: string, target?: HTMLElement) {
+    const targetEl = target || document.body;
+    let { className } = targetEl;
+    className = className.replace(clsName, "").trim();
+    targetEl.className = flag ? `${className} ${clsName} ` : className;
+  }
 
   /** 设置导航主题色 */
   function setLayoutThemeColor(theme = getConfig().Theme ?? "default") {
@@ -78,9 +90,8 @@ export function useDataThemeChange() {
     }
   };
 
-  /** 日间、夜间主题切换 */
+  /** 亮色、暗色整体风格切换 */
   function dataThemeChange() {
-    /* 如果当前是light夜间主题，默认切换到default主题 */
     if (useEpThemeStoreHook().epTheme === "light" && dataTheme.value) {
       setLayoutThemeColor("default");
     } else {
@@ -94,11 +105,28 @@ export function useDataThemeChange() {
     }
   }
 
+  /** 清空缓存并返回登录页 */
+  function onReset() {
+    removeToken();
+    storageLocal().clear();
+    const { Grey, Weak, MultiTagsCache, EpThemeColor, Layout } = getConfig();
+    useAppStoreHook().setLayout(Layout);
+    setEpThemeColor(EpThemeColor);
+    useMultiTagsStoreHook().multiTagsCacheChange(MultiTagsCache);
+    toggleClass(Grey, "html-grey", document.querySelector("html"));
+    toggleClass(Weak, "html-weakness", document.querySelector("html"));
+    router.push("/login");
+    useMultiTagsStoreHook().handleTags("equal", [...routerArrays]);
+    resetRouter();
+  }
+
   return {
     body,
     dataTheme,
     layoutTheme,
     themeColors,
+    onReset,
+    toggleClass,
     dataThemeChange,
     setEpThemeColor,
     setLayoutThemeColor

@@ -45,6 +45,14 @@ app.component("FontIcon", FontIcon);
 import { Auth } from "@/components/ReAuth";
 app.component("Auth", Auth);
 
+// 全局注册`vue-tippy`
+import "tippy.js/dist/tippy.css";
+import "tippy.js/animations/perspective.css";
+import VueTippy from "vue-tippy";
+app.use(VueTippy, {
+  defaultProps: { animation: "perspective" }
+});
+
 getPlatformConfig(app).then(async config => {
   setupStore(app);
   app.use(router);

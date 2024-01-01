@@ -2,6 +2,7 @@
 import { emitter } from "@/utils/mitt";
 import { onClickOutside } from "@vueuse/core";
 import { ref, computed, onMounted, onBeforeUnmount } from "vue";
+import { useDataThemeChange } from "@/layout/hooks/useDataThemeChange";
 import Close from "@iconify-icons/ep/close";
 
 const target = ref(null);
@@ -9,7 +10,6 @@ const show = ref<Boolean>(false);
 
 const iconClass = computed(() => {
   return [
-    "mr-[20px]",
     "outline-none",
     "width-[20px]",
     "height-[20px]",
@@ -21,6 +21,8 @@ const iconClass = computed(() => {
     "dark:hover:text-[#ffffffd9]"
   ];
 });
+
+const { onReset } = useDataThemeChange();
 
 onClickOutside(target, (event: any) => {
   if (event.clientX > target.value.offsetLeft) return;
@@ -43,23 +45,47 @@ onBeforeUnmount(() => {
   <div :class="{ show: show }" class="right-panel-container">
     <div class="right-panel-background" />
     <div ref="target" class="right-panel bg-bg_color">
-      <div class="right-panel-items">
-        <div class="project-configuration">
-          <h4 class="dark:text-white">项目配置</h4>
-          <span title="关闭配置" :class="iconClass">
-            <IconifyIconOffline
-              class="dark:text-white"
-              width="20px"
-              height="20px"
-              :icon="Close"
-              @click="show = !show"
-            />
-          </span>
-        </div>
-        <div
-          class="border-b-[1px] border-solid border-[#dcdfe6] dark:border-[#303030]"
-        />
+      <div
+        class="project-configuration border-b-[1px] border-solid border-[var(--pure-border-color)]"
+      >
+        <h4 class="dark:text-white">项目配置</h4>
+        <span
+          v-tippy="{
+            content: '关闭配置',
+            placement: 'bottom-start',
+            zIndex: 41000
+          }"
+          :class="iconClass"
+        >
+          <IconifyIconOffline
+            class="dark:text-white"
+            width="20px"
+            height="20px"
+            :icon="Close"
+            @click="show = !show"
+          />
+        </span>
+      </div>
+      <el-scrollbar>
         <slot />
+      </el-scrollbar>
+
+      <div
+        class="flex justify-end p-3 border-t-[1px] border-solid border-[var(--pure-border-color)]"
+      >
+        <el-button
+          v-tippy="{
+            content: '清空缓存并返回登录页',
+            placement: 'left-start',
+            zIndex: 41000
+          }"
+          type="danger"
+          text
+          bg
+          @click="onReset"
+        >
+          清空缓存
+        </el-button>
       </div>
     </div>
   </div>
@@ -74,6 +100,10 @@ onBeforeUnmount(() => {
 </style>
 
 <style lang="scss" scoped>
+:deep(.el-scrollbar) {
+  height: calc(100vh - 110px);
+}
+
 .right-panel-background {
   position: fixed;
   top: 0;
@@ -90,7 +120,7 @@ onBeforeUnmount(() => {
   right: 0;
   z-index: 40000;
   width: 100%;
-  max-width: 315px;
+  max-width: 300px;
   height: 100vh;
   box-shadow: 0 0 15px 0 rgb(0 0 0 / 5%);
   transition: all 0.25s cubic-bezier(0.7, 0.3, 0.1, 1);
@@ -112,47 +142,10 @@ onBeforeUnmount(() => {
   }
 }
 
-.handle-button {
-  position: absolute;
-  top: 45%;
-  left: -48px;
-  z-index: 0;
-  width: 48px;
-  height: 48px;
-  font-size: 24px;
-  line-height: 48px;
-  color: #fff;
-  text-align: center;
-  pointer-events: auto;
-  cursor: pointer;
-  background: rgb(24 144 255);
-  border-radius: 6px 0 0 6px !important;
-
-  i {
-    font-size: 24px;
-    line-height: 48px;
-  }
-}
-
-.right-panel-items {
-  height: calc(100vh - 60px);
-  margin-top: 60px;
-  overflow-y: auto;
-}
-
 .project-configuration {
-  position: fixed;
-  top: 15px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  height: 30px;
-  margin-left: 10px;
-}
-
-:deep(.el-divider--horizontal) {
-  width: 90%;
-  margin: 20px auto 0;
+  padding: 14px 20px;
 }
 </style>
