@@ -83,7 +83,7 @@
     overflow: hidden;
     font-size: 0;
     background: $menuBg;
-    box-shadow: 0 0 1px #888;
+    border-right: 1px solid var(--pure-border-color);
 
     /* 展开动画 */
     transition: width var(--pure-transition-duration);
