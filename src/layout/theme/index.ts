@@ -50,17 +50,6 @@ const themeColors = {
     menuTitleHover: "#fff",
     menuActiveBefore: "#e85f33"
   },
-  yellow: {
-    subMenuActiveText: "#d25f00",
-    menuBg: "#2b2503",
-    menuHover: "#f6da4d",
-    subMenuBg: "#0f0603",
-    subMenuActiveBg: "#f6da4d",
-    menuText: "rgb(254 254 254 / 65%)",
-    sidebarLogo: "#443b05",
-    menuTitleHover: "#fff",
-    menuActiveBefore: "#f6da4d"
-  },
   mingQing: {
     subMenuActiveText: "#fff",
     menuBg: "#032121",

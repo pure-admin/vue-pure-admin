@@ -26,8 +26,6 @@ export function useDataThemeChange() {
     { color: "#f5222d", themeColor: "dusk" },
     /* 橙红色 */
     { color: "#fa541c", themeColor: "volcano" },
-    /* 金色 */
-    { color: "#fadb14", themeColor: "yellow" },
     /* 绿宝石 */
     { color: "#13c2c2", themeColor: "mingQing" },
     /* 酸橙绿 */
