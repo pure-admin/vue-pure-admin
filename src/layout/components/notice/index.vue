@@ -23,8 +23,8 @@ notices.value.map(v => (noticesNum.value += v.list.length));
     <template #dropdown>
       <el-dropdown-menu>
         <el-tabs
-          :stretch="true"
           v-model="activeKey"
+          :stretch="true"
           class="dropdown-tabs"
           :style="{ width: notices.length === 0 ? '200px' : '330px' }"
         >

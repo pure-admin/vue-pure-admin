@@ -60,8 +60,8 @@ const getsubMenuIconStyle = computed((): CSSProperties => {
       layout.value === "horizontal"
         ? "0 5px 0 0"
         : isCollapse.value
-        ? "0 auto"
-        : "0 5px 0 0"
+          ? "0 auto"
+          : "0 5px 0 0"
   };
 });
 
@@ -96,8 +96,8 @@ const getSubMenuDivStyle = computed((): any => {
             item?.parentId === null
               ? "center"
               : layout.value === "mix" && item?.pathList?.length === 2
-              ? "center"
-              : ""
+                ? "center"
+                : ""
         };
   };
 });
@@ -275,7 +275,6 @@ function resolvePath(routePath) {
         {{ transformI18n(props.item.meta.title) }}
       </span>
       <div
-        :style="getSubMenuDivStyle(props.item)"
         v-if="
           !(
             isCollapse &&
@@ -283,6 +282,7 @@ function resolvePath(routePath) {
             props.item.parentId === null
           )
         "
+        :style="getSubMenuDivStyle(props.item)"
       >
         <el-tooltip
           v-if="layout !== 'horizontal'"

@@ -1,11 +1,13 @@
-module.exports = {
-  root: true,
+// @ts-check
+
+/** @type {import("stylelint").Config} */
+export default {
   extends: [
     "stylelint-config-standard",
     "stylelint-config-html/vue",
     "stylelint-config-recess-order"
   ],
-  plugins: ["stylelint-order", "stylelint-prettier", "stylelint-scss"],
+  plugins: ["stylelint-scss", "stylelint-order", "stylelint-prettier"],
   overrides: [
     {
       files: ["**/*.(css|html|vue)"],
@@ -21,6 +23,7 @@ module.exports = {
     }
   ],
   rules: {
+    "prettier/prettier": true,
     "selector-class-pattern": null,
     "no-descending-specificity": null,
     "scss/dollar-variable-pattern": null,
@@ -80,5 +83,5 @@ module.exports = {
       { severity: "warning" }
     ]
   },
-  ignoreFiles: ["**/*.js", "**/*.ts", "**/*.jsx", "**/*.tsx"]
-}
+  ignoreFiles: ["**/*.js", "**/*.ts", "**/*.jsx", "**/*.tsx", "report.html"]
+};

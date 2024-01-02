@@ -23,8 +23,6 @@ export const useEpThemeStore = defineStore({
     fill(state) {
       if (state.epTheme === "light") {
         return "#409eff";
-      } else if (state.epTheme === "yellow") {
-        return "#d25f00";
       } else {
         return "#fff";
       }

@@ -53,9 +53,9 @@ function onCloseTags() {
     <div class="flex flex-wrap items-center">
       <p>query传参模式：</p>
       <el-button
-        class="m-2"
         v-for="index in 6"
         :key="index"
+        class="m-2"
         @click="toDetail({ id: index }, 'query')"
       >
         打开{{ index }}详情页
@@ -74,9 +74,9 @@ function onCloseTags() {
     <div class="flex flex-wrap items-center">
       <p>params传参模式：</p>
       <el-button
-        class="m-2"
         v-for="index in 6"
         :key="index"
+        class="m-2"
         @click="toDetail({ id: index }, 'params')"
       >
         打开{{ index }}详情页
@@ -85,6 +85,7 @@ function onCloseTags() {
 
     <el-divider />
     <el-tree-select
+      v-model="currentValues"
       class="w-[300px]"
       node-key="uniqueId"
       placeholder="请选择要关闭的标签"
@@ -99,7 +100,6 @@ function onCloseTags() {
         disabled: 'disabled'
       }"
       :data="treeData"
-      v-model="currentValues"
     >
       <template #default="{ data }">
         <span>{{ transformI18n(data.meta.title) }}</span>

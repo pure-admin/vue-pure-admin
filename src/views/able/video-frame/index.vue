@@ -24,7 +24,7 @@ const wasmPath = getPath("capture.worker.wasm");
 loadScript({
   src
 }).then(mgs => {
-  if (mgs === "success") {
+  if (mgs[0].message === "加载成功") {
     // @ts-expect-error
     captureUtil.value = cheetahCapture.initCapture({
       workerPath,
@@ -155,9 +155,9 @@ onBeforeUnmount(() => {
       />
     </div>
     <div
+      id="canvas-container"
       v-loading="loading"
       element-loading-text="温馨提示：可左右拖拽图片并单击选取所需的帧图片"
-      id="canvas-container"
       class="w-full h-[200px] overflow-hidden mt-6"
     />
   </el-card>

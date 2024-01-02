@@ -121,7 +121,11 @@ export default defineComponent({
                   class="pure-segmented-item-icon"
                   style={{ marginRight: option.label ? "6px" : 0 }}
                 >
-                  {h(useRenderIcon(option.icon))}
+                  {h(
+                    useRenderIcon(option.icon, {
+                      ...option?.iconAttrs
+                    })
+                  )}
                 </span>
               ) : null}
               {option.label ? (

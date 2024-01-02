@@ -3,6 +3,7 @@ node_modules
 *.local
 .eslintcache
 report.html
+vite.config.*.timestamp*
 
 yarn.lock
 npm-debug.log*

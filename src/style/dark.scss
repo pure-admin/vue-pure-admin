@@ -2,10 +2,17 @@
 
 /* 暗黑模式适配 */
 html.dark {
-  /* 自定义深色背景颜色 */
-  // --el-bg-color: #020409;
   $border-style: #303030;
   $color-white: #fff;
+
+  /* 自定义深色背景颜色 */
+  // --el-bg-color: #020409;
+
+  /* 常用border-color 需要时可取用 */
+  --pure-border-color: rgb(253 253 253 / 12%);
+
+  /* switch关闭状态下的color 需要时可取用 */
+  --pure-switch-off-color: #ffffff3f;
 
   .navbar,
   .tags-view,

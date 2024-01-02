@@ -1,4 +1,4 @@
-import Axios, {
+import type {
   Method,
   AxiosError,
   AxiosResponse,

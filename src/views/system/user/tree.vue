@@ -101,9 +101,9 @@ defineExpose({ onTreeReset });
   >
     <div class="flex items-center h-[34px]">
       <el-input
+        v-model="searchValue"
         class="ml-2"
         size="small"
-        v-model="searchValue"
         placeholder="请输入部门名称"
         clearable
       >
@@ -191,8 +191,8 @@ defineExpose({ onTreeReset });
               data.type === 1
                 ? OfficeBuilding
                 : data.type === 2
-                ? LocationCompany
-                : Dept
+                  ? LocationCompany
+                  : Dept
             "
           />
           {{ node.label }}

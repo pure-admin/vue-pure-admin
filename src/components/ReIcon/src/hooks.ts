@@ -1,5 +1,5 @@
-import { iconType } from "./types";
-import { h, defineComponent, Component } from "vue";
+import type { iconType } from "./types";
+import { h, defineComponent, type Component } from "vue";
 import { IconifyIconOnline, IconifyIconOffline, FontIcon } from "../index";
 
 /**
@@ -33,7 +33,7 @@ export function useRenderIcon(icon: any, attrs?: iconType): Component {
     });
   } else if (typeof icon === "function" || typeof icon?.render === "function") {
     // svg
-    return icon;
+    return attrs ? h(icon, { ...attrs }) : icon;
   } else if (typeof icon === "object") {
     return defineComponent({
       name: "OfflineIcon",

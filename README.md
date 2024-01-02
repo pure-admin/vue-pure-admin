@@ -8,7 +8,7 @@
 
 ## 简介
 
-`vue-pure-admin` 是一款开源免费且开箱即用的中后台管理系统模版。使用了最新的 `Vue3`、`Vite`、`Element-Plus`、`TypeScript`、`Pinia`、`Tailwindcss` 等主流技术开发
+`vue-pure-admin` 是一款开源免费且开箱即用的中后台管理系统模版。完全采用 `ECMAScript` 模块（`ESM`）规范来编写和组织代码，使用了最新的 `Vue3`、`Vite`、`Element-Plus`、`TypeScript`、`Pinia`、`Tailwindcss` 等主流技术开发
 
 ## 精简版（实际项目开发请用精简版，提供 `非国际化` 、`国际化` 两个版本选择）
 
@@ -109,7 +109,7 @@ docker run -dp 8080:80  --name pure-admin vue-pure-admin
 当然也可以通过 [Docker Desktop](https://www.docker.com/products/docker-desktop/) 可视化界面去操作 `docker` 项目，如下图
 
 <p align="center">
-  <img alt="docker" width="100%" src="https://yiming_chang.gitee.io/pure-admin-doc/img/docker/1.jpg">
+  <img alt="docker" width="100%" src="https://xiaoxian521.github.io/hyperlink/img/docker-desktop.jpg">
 </p>
 
 ## 更新日志
@@ -162,7 +162,7 @@ docker run -dp 8080:80  --name pure-admin vue-pure-admin
 
 ## 许可证
 
-原则上不收取任何费用及版权，可商用，不过如需二次开源（比如用此平台二次开发并开源，要求前端代码必须开源免费）请联系作者获取许可！（免费，走个记录而已）
+完全免费开源
 
 [MIT © 2020-present, pure-admin](./LICENSE)
 
@@ -170,10 +170,10 @@ docker run -dp 8080:80  --name pure-admin vue-pure-admin
 
 非常感谢留下星星的好心人，感谢您的支持 :heart:
 
-[![Stargazers for vue-pure-admin](https://reporoster.com/stars/pure-admin/vue-pure-admin)](https://github.com/pure-admin/vue-pure-admin/stargazers)
+[![Stargazers repo roster for @pure-admin/vue-pure-admin](https://bytecrank.com/nastyox/reporoster/php/stargazersSVG.php?user=pure-admin&repo=vue-pure-admin)](https://github.com/pure-admin/vue-pure-admin/stargazers)
 
 ## `Fork`
 
 瞧，那些 `小哥哥` 、`小姐姐` 认真 `学习` 的样子真滴是 `哎呦不错哦` :heart:
 
-[![Forkers repo roster for vue-pure-admin](https://reporoster.com/forks/pure-admin/vue-pure-admin)](https://github.com/pure-admin/vue-pure-admin/network/members)
+[![Forkers repo roster for @pure-admin/vue-pure-admin](https://bytecrank.com/nastyox/reporoster/php/forkersSVG.php?user=pure-admin&repo=vue-pure-admin)](https://github.com/pure-admin/vue-pure-admin/network/members)

@@ -8,7 +8,7 @@
 
 ## Introduction
 
-`vue-pure-admin` is an open source free and out-of-the-box middle and background management system template. Developed using the latest mainstream technologies such as `Vue3`, `Vite`, `Element-Plus`, `TypeScript`, `Pinia`, `Tailwindcss`
+`vue-pure-admin` is an open source, free and out-of-the-box middle and backend management system template. Completely adopts `ECMAScript` module (`ESM`) specifications to write and organize code, using the latest `Vue3`, `Vite`, `Element-Plus`, `TypeScript`, `Pinia`, `Tailwindcss` and other mainstream technologies develop
 
 ## Thin version (offering non-internationalized and internationalized versions)
 
@@ -109,7 +109,7 @@ After operating the above two commands, open `http://localhost:8080` in the brow
 Of course, you can also operate the `docker` project through the [Docker Desktop](https://www.docker.com/products/docker-desktop/) visual interface, as shown below
 
 <p align="center">
-  <img alt="docker" width="100%" src="https://yiming_chang.gitee.io/pure-admin-doc/img/docker/1.jpg">
+  <img alt="docker" width="100%" src="https://xiaoxian521.github.io/hyperlink/img/docker-desktop.jpg">
 </p>
 
 ## Change Log
@@ -162,7 +162,7 @@ Support modern browsers, not IE
 
 ## License
 
-In principle, no fees and copyrights are charged, and it is commercially available, but if you need secondary open source (such as using this platform for secondary development and open source, the front-end code must be open source and free), please contact the author for permission! (Free, just take a record)
+Completely free and open source
 
 [MIT © 2020-present, pure-admin](./LICENSE)
 
@@ -170,10 +170,10 @@ In principle, no fees and copyrights are charged, and it is commercially availab
 
 Many thanks to the kind individuals who leave a star. Your support is much appreciated :heart:
 
-[![Stargazers for vue-pure-admin](https://reporoster.com/stars/pure-admin/vue-pure-admin)](https://github.com/pure-admin/vue-pure-admin/stargazers)
+[![Stargazers repo roster for @pure-admin/vue-pure-admin](https://bytecrank.com/nastyox/reporoster/php/stargazersSVG.php?user=pure-admin&repo=vue-pure-admin)](https://github.com/pure-admin/vue-pure-admin/stargazers)
 
 ## `Fork`
 
 It's so cool that you study hard :heart:
 
-[![Forkers repo roster for vue-pure-admin](https://reporoster.com/forks/pure-admin/vue-pure-admin)](https://github.com/pure-admin/vue-pure-admin/network/members)
+[![Forkers repo roster for @pure-admin/vue-pure-admin](https://bytecrank.com/nastyox/reporoster/php/forkersSVG.php?user=pure-admin&repo=vue-pure-admin)](https://github.com/pure-admin/vue-pure-admin/network/members)

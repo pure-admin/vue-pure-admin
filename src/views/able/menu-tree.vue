@@ -61,8 +61,8 @@ const filterMethod = (query: string, node: treeNode) => {
       </div>
     </template>
     <el-input
-      class="mb-4"
       v-model="query"
+      class="mb-4"
       placeholder="请输入关键字查找"
       clearable
       @input="onQueryChanged"

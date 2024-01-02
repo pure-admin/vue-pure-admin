@@ -4,9 +4,9 @@ import { setupStore } from "@/store";
 import ElementPlus from "element-plus";
 import { useI18n } from "@/plugins/i18n";
 import { getPlatformConfig } from "./config";
-import { createApp, Directive } from "vue";
 import { MotionPlugin } from "@vueuse/motion";
 import { useEcharts } from "@/plugins/echarts";
+import { createApp, type Directive } from "vue";
 import { injectResponsiveStorage } from "@/utils/responsive";
 
 import Table from "@pureadmin/table";
@@ -44,6 +44,14 @@ app.component("FontIcon", FontIcon);
 // 全局注册按钮级别权限组件
 import { Auth } from "@/components/ReAuth";
 app.component("Auth", Auth);
+
+// 全局注册`vue-tippy`
+import "tippy.js/dist/tippy.css";
+import "tippy.js/animations/perspective.css";
+import VueTippy from "vue-tippy";
+app.use(VueTippy, {
+  defaultProps: { animation: "perspective" }
+});
 
 getPlatformConfig(app).then(async config => {
   setupStore(app);
