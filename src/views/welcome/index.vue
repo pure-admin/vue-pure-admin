@@ -46,6 +46,7 @@ getReleases().then(({ data }) => {
 
 <template>
   <div>
+    <!-- 重构，更美观的首页 -->
     <el-row :gutter="24">
       <el-col
         v-motion
