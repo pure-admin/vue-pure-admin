@@ -9,6 +9,7 @@ defineOptions({
 
 const inputValue = defineModel({ type: String });
 
+const searchVal = ref();
 const animatesList = ref(animates);
 const copyAnimatesList = cloneDeep(animatesList);
 
@@ -48,6 +49,7 @@ function onClear() {
 }
 
 function filterMethod(value: any) {
+  searchVal.value = value;
   animatesList.value = copyAnimatesList.value.filter((i: string | any[]) =>
     i.includes(value)
   );
@@ -110,7 +112,7 @@ function onMouseleave() {
           </ul>
           <el-empty
             v-show="animatesList.length === 0"
-            description="暂无动画"
+            :description="`${searchVal} 动画不存在`"
             :image-size="60"
           />
         </el-scrollbar>

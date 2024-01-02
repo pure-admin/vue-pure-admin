@@ -174,6 +174,11 @@ watch(
                     />
                   </li>
                 </ul>
+                <el-empty
+                  v-show="pageList.length === 0"
+                  :description="`${filterValue} 图标不存在`"
+                  :image-size="60"
+                />
               </el-scrollbar>
             </el-tab-pane>
           </el-tabs>
