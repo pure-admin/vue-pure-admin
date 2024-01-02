@@ -248,13 +248,14 @@ watch(loginDay, value => {
                         <option value="30">30</option>
                       </select>
                       {{ t("login.remember") }}
-                      <el-tooltip
-                        effect="dark"
-                        placement="top"
-                        :content="t('login.rememberInfo')"
-                      >
-                        <IconifyIconOffline :icon="Info" class="ml-1" />
-                      </el-tooltip>
+                      <IconifyIconOffline
+                        v-tippy="{
+                          maxWidth: 430,
+                          content: t('login.rememberInfo')
+                        }"
+                        :icon="Info"
+                        class="ml-1"
+                      />
                     </span>
                   </el-checkbox>
                   <el-button
