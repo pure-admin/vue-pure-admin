@@ -48,17 +48,23 @@ export function useDataThemeChange() {
   }
 
   /** 设置导航主题色 */
-  function setLayoutThemeColor(theme = getConfig().Theme ?? "default") {
+  function setLayoutThemeColor(
+    theme = getConfig().Theme ?? "light",
+    isClick = true
+  ) {
     layoutTheme.value.theme = theme;
     toggleTheme({
       scopeName: `layout-theme-${theme}`
     });
+    // 如果非isClick，保留之前的themeColor
+    const storageThemeColor = $storage.layout.themeColor;
     $storage.layout = {
       layout: layout.value,
       theme,
       darkMode: dataTheme.value,
       sidebarStatus: $storage.layout?.sidebarStatus,
-      epThemeColor: $storage.layout?.epThemeColor
+      epThemeColor: $storage.layout?.epThemeColor,
+      themeColor: isClick ? theme : storageThemeColor
     };
 
     if (theme === "default" || theme === "light") {
@@ -91,14 +97,17 @@ export function useDataThemeChange() {
   /** 亮色、暗色整体风格切换 */
   function dataThemeChange() {
     if (useEpThemeStoreHook().epTheme === "light" && dataTheme.value) {
-      setLayoutThemeColor("default");
+      setLayoutThemeColor("default", false);
     } else {
-      setLayoutThemeColor(useEpThemeStoreHook().epTheme);
+      setLayoutThemeColor(useEpThemeStoreHook().epTheme, false);
     }
 
     if (dataTheme.value) {
       document.documentElement.classList.add("dark");
     } else {
+      if ($storage.layout.themeColor === "light") {
+        setLayoutThemeColor("light", false);
+      }
       document.documentElement.classList.remove("dark");
     }
   }

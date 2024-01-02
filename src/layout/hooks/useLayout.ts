@@ -24,10 +24,11 @@ export function useLayout() {
     if (!$storage.layout) {
       $storage.layout = {
         layout: $config?.Layout ?? "vertical",
-        theme: $config?.Theme ?? "default",
+        theme: $config?.Theme ?? "light",
         darkMode: $config?.DarkMode ?? false,
         sidebarStatus: $config?.SidebarStatus ?? true,
-        epThemeColor: $config?.EpThemeColor ?? "#409EFF"
+        epThemeColor: $config?.EpThemeColor ?? "#409EFF",
+        themeColor: $config?.Theme ?? "light"
       };
     }
     /** 灰色模式、色弱模式、隐藏标签页 */
