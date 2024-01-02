@@ -83,7 +83,7 @@
     overflow: hidden;
     font-size: 0;
     background: $menuBg;
-    box-shadow: 0 0 1px #888;
+    border-right: 1px solid var(--pure-border-color);
 
     /* 展开动画 */
     transition: width var(--pure-transition-duration);
@@ -193,7 +193,7 @@
     .el-menu .el-menu--inline .el-sub-menu__title,
     & .el-sub-menu .el-menu-item {
       min-width: $sideBarWidth !important;
-      font-size: 12px;
+      font-size: 14px;
       background-color: $subMenuBg !important;
     }
 
@@ -247,7 +247,7 @@
 
       .el-menu-item {
         span {
-          font-size: 12px;
+          font-size: 14px;
         }
       }
     }
@@ -270,7 +270,7 @@
     /* 子菜单中还有子菜单 */
     .el-menu .el-sub-menu__title {
       min-width: $sideBarWidth !important;
-      font-size: 12px;
+      font-size: 14px;
       background-color: $subMenuBg !important;
     }
 
@@ -333,7 +333,7 @@
         background-color: $subMenuBg;
 
         span {
-          font-size: 12px;
+          font-size: 14px;
         }
       }
 
@@ -351,7 +351,7 @@
     /* 子菜单中还有子菜单 */
     .el-menu .el-sub-menu__title {
       min-width: $sideBarWidth !important;
-      font-size: 12px;
+      font-size: 14px;
       background-color: $subMenuBg !important;
 
       &:hover {

@@ -194,7 +194,8 @@ function setLayoutModel(layout: string) {
     theme: layoutTheme.value.theme,
     darkMode: $storage.layout?.darkMode,
     sidebarStatus: $storage.layout?.sidebarStatus,
-    epThemeColor: $storage.layout?.epThemeColor
+    epThemeColor: $storage.layout?.epThemeColor,
+    themeColor: layoutTheme.value.theme
   };
   useAppStoreHook().setLayout(layout);
 }
@@ -411,7 +412,7 @@ onBeforeMount(() => {
     cursor: pointer;
     border-radius: 4px;
 
-    &:nth-child(2) {
+    &:nth-child(1) {
       border: 1px solid #ddd;
     }
   }

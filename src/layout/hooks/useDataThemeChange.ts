@@ -18,24 +18,22 @@ import {
 export function useDataThemeChange() {
   const { layoutTheme, layout } = useLayout();
   const themeColors = ref<Array<themeColorsType>>([
-    /* 道奇蓝（默认） */
-    { color: "#1b2a47", themeColor: "default" },
     /* 亮白色 */
     { color: "#ffffff", themeColor: "light" },
+    /* 道奇蓝 */
+    { color: "#1b2a47", themeColor: "default" },
+    /* 深紫罗兰色 */
+    { color: "#722ed1", themeColor: "saucePurple" },
+    /* 深粉色 */
+    { color: "#eb2f96", themeColor: "pink" },
     /* 猩红色 */
     { color: "#f5222d", themeColor: "dusk" },
     /* 橙红色 */
     { color: "#fa541c", themeColor: "volcano" },
-    /* 金色 */
-    { color: "#fadb14", themeColor: "yellow" },
     /* 绿宝石 */
     { color: "#13c2c2", themeColor: "mingQing" },
     /* 酸橙绿 */
-    { color: "#52c41a", themeColor: "auroraGreen" },
-    /* 深粉色 */
-    { color: "#eb2f96", themeColor: "pink" },
-    /* 深紫罗兰色 */
-    { color: "#722ed1", themeColor: "saucePurple" }
+    { color: "#52c41a", themeColor: "auroraGreen" }
   ]);
 
   const { $storage } = useGlobal<GlobalPropertiesApi>();
@@ -50,17 +48,23 @@ export function useDataThemeChange() {
   }
 
   /** 设置导航主题色 */
-  function setLayoutThemeColor(theme = getConfig().Theme ?? "default") {
+  function setLayoutThemeColor(
+    theme = getConfig().Theme ?? "light",
+    isClick = true
+  ) {
     layoutTheme.value.theme = theme;
     toggleTheme({
       scopeName: `layout-theme-${theme}`
     });
+    // 如果非isClick，保留之前的themeColor
+    const storageThemeColor = $storage.layout.themeColor;
     $storage.layout = {
       layout: layout.value,
       theme,
       darkMode: dataTheme.value,
       sidebarStatus: $storage.layout?.sidebarStatus,
-      epThemeColor: $storage.layout?.epThemeColor
+      epThemeColor: $storage.layout?.epThemeColor,
+      themeColor: isClick ? theme : storageThemeColor
     };
 
     if (theme === "default" || theme === "light") {
@@ -93,14 +97,17 @@ export function useDataThemeChange() {
   /** 亮色、暗色整体风格切换 */
   function dataThemeChange() {
     if (useEpThemeStoreHook().epTheme === "light" && dataTheme.value) {
-      setLayoutThemeColor("default");
+      setLayoutThemeColor("default", false);
     } else {
-      setLayoutThemeColor(useEpThemeStoreHook().epTheme);
+      setLayoutThemeColor(useEpThemeStoreHook().epTheme, false);
     }
 
     if (dataTheme.value) {
       document.documentElement.classList.add("dark");
     } else {
+      if ($storage.layout.themeColor === "light") {
+        setLayoutThemeColor("light", false);
+      }
       document.documentElement.classList.remove("dark");
     }
   }
