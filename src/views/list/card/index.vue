@@ -133,7 +133,7 @@ const handleManageProduct = product => {
               v.name.toLowerCase().includes(searchValue.toLowerCase())
             ).length === 0
         "
-        description="暂无数据"
+        :description="`${searchValue} 产品不存在`"
       />
       <template v-if="pagination.total > 0">
         <el-row :gutter="16">
