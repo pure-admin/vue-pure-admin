@@ -33,7 +33,7 @@ export function useRenderIcon(icon: any, attrs?: iconType): Component {
     });
   } else if (typeof icon === "function" || typeof icon?.render === "function") {
     // svg
-    return h(icon, { ...attrs });
+    return attrs ? h(icon, { ...attrs }) : icon;
   } else if (typeof icon === "object") {
     return defineComponent({
       name: "OfflineIcon",
