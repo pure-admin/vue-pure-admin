@@ -411,7 +411,7 @@ onBeforeMount(() => {
     cursor: pointer;
     border-radius: 4px;
 
-    &:nth-child(2) {
+    &:nth-child(1) {
       border: 1px solid #ddd;
     }
   }

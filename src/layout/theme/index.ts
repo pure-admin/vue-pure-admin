@@ -6,17 +6,7 @@ import type { multipleScopeVarsOptions } from "@pureadmin/theme";
 
 /** 预设主题色 */
 const themeColors = {
-  default: {
-    subMenuActiveText: "#fff",
-    menuBg: "#001529",
-    menuHover: "#4091f7",
-    subMenuBg: "#0f0303",
-    subMenuActiveBg: "#4091f7",
-    menuText: "rgb(254 254 254 / 65%)",
-    sidebarLogo: "#002140",
-    menuTitleHover: "#fff",
-    menuActiveBefore: "#4091f7"
-  },
+  /* 亮白色 */
   light: {
     subMenuActiveText: "#409eff",
     menuBg: "#fff",
@@ -28,50 +18,31 @@ const themeColors = {
     menuTitleHover: "#000",
     menuActiveBefore: "#4091f7"
   },
-  dusk: {
+  /* 道奇蓝 */
+  default: {
     subMenuActiveText: "#fff",
-    menuBg: "#2a0608",
-    menuHover: "#e13c39",
-    subMenuBg: "#000",
-    subMenuActiveBg: "#e13c39",
-    menuText: "rgb(254 254 254 / 65.1%)",
-    sidebarLogo: "#42090c",
-    menuTitleHover: "#fff",
-    menuActiveBefore: "#e13c39"
-  },
-  volcano: {
-    subMenuActiveText: "#fff",
-    menuBg: "#2b0e05",
-    menuHover: "#e85f33",
-    subMenuBg: "#0f0603",
-    subMenuActiveBg: "#e85f33",
+    menuBg: "#001529",
+    menuHover: "#4091f7",
+    subMenuBg: "#0f0303",
+    subMenuActiveBg: "#4091f7",
     menuText: "rgb(254 254 254 / 65%)",
-    sidebarLogo: "#441708",
+    sidebarLogo: "#002140",
     menuTitleHover: "#fff",
-    menuActiveBefore: "#e85f33"
+    menuActiveBefore: "#4091f7"
   },
-  mingQing: {
+  /* 深紫罗兰色 */
+  saucePurple: {
     subMenuActiveText: "#fff",
-    menuBg: "#032121",
-    menuHover: "#59bfc1",
+    menuBg: "#130824",
+    menuHover: "#693ac9",
     subMenuBg: "#000",
-    subMenuActiveBg: "#59bfc1",
+    subMenuActiveBg: "#693ac9",
     menuText: "#7a80b4",
-    sidebarLogo: "#053434",
+    sidebarLogo: "#1f0c38",
     menuTitleHover: "#fff",
-    menuActiveBefore: "#59bfc1"
+    menuActiveBefore: "#693ac9"
   },
-  auroraGreen: {
-    subMenuActiveText: "#fff",
-    menuBg: "#0b1e15",
-    menuHover: "#60ac80",
-    subMenuBg: "#000",
-    subMenuActiveBg: "#60ac80",
-    menuText: "#7a80b4",
-    sidebarLogo: "#112f21",
-    menuTitleHover: "#fff",
-    menuActiveBefore: "#60ac80"
-  },
+  /* 深粉色 */
   pink: {
     subMenuActiveText: "#fff",
     menuBg: "#28081a",
@@ -83,16 +54,53 @@ const themeColors = {
     menuTitleHover: "#fff",
     menuActiveBefore: "#d84493"
   },
-  saucePurple: {
+  /* 猩红色 */
+  dusk: {
     subMenuActiveText: "#fff",
-    menuBg: "#130824",
-    menuHover: "#693ac9",
+    menuBg: "#2a0608",
+    menuHover: "#e13c39",
     subMenuBg: "#000",
-    subMenuActiveBg: "#693ac9",
-    menuText: "#7a80b4",
-    sidebarLogo: "#1f0c38",
+    subMenuActiveBg: "#e13c39",
+    menuText: "rgb(254 254 254 / 65.1%)",
+    sidebarLogo: "#42090c",
     menuTitleHover: "#fff",
-    menuActiveBefore: "#693ac9"
+    menuActiveBefore: "#e13c39"
+  },
+  /* 橙红色 */
+  volcano: {
+    subMenuActiveText: "#fff",
+    menuBg: "#2b0e05",
+    menuHover: "#e85f33",
+    subMenuBg: "#0f0603",
+    subMenuActiveBg: "#e85f33",
+    menuText: "rgb(254 254 254 / 65%)",
+    sidebarLogo: "#441708",
+    menuTitleHover: "#fff",
+    menuActiveBefore: "#e85f33"
+  },
+  /* 绿宝石 */
+  mingQing: {
+    subMenuActiveText: "#fff",
+    menuBg: "#032121",
+    menuHover: "#59bfc1",
+    subMenuBg: "#000",
+    subMenuActiveBg: "#59bfc1",
+    menuText: "#7a80b4",
+    sidebarLogo: "#053434",
+    menuTitleHover: "#fff",
+    menuActiveBefore: "#59bfc1"
+  },
+  /* 酸橙绿 */
+  auroraGreen: {
+    subMenuActiveText: "#fff",
+    menuBg: "#0b1e15",
+    menuHover: "#60ac80",
+    subMenuBg: "#000",
+    subMenuActiveBg: "#60ac80",
+    menuText: "#7a80b4",
+    sidebarLogo: "#112f21",
+    menuTitleHover: "#fff",
+    menuActiveBefore: "#60ac80"
   }
 };
 
