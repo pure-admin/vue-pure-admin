@@ -180,6 +180,7 @@ onKeyStroke("ArrowDown", handleDown);
           v-if="resultOptions.length === 0"
           description="暂无搜索结果"
         />
+        <!-- 在此处添加搜索历史和收藏功能 -->
         <SearchResult
           v-else
           ref="resultRef"
