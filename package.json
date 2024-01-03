@@ -155,7 +155,7 @@
     "vite": "^5.0.10",
     "vite-plugin-cdn-import": "^0.3.5",
     "vite-plugin-compression": "^0.5.1",
-    "vite-plugin-fake-server": "^2.0.1",
+    "vite-plugin-fake-server": "2.0.0",
     "vite-plugin-remove-console": "^2.2.0",
     "vite-plugin-router-warn": "^1.0.0",
     "vite-svg-loader": "^5.1.0",
