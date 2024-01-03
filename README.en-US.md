@@ -14,43 +14,48 @@
 
 The simplified version is based on the shelf extracted from [vue-pure-admin](https://github.com/pure-admin/vue-pure-admin), which contains main functions and is more suitable for actual project development. The packaged size is introduced globally [element-plus](https://element-plus.org) is still below `2.3MB`, and the full version of the code will be permanently synchronized. After enabling `brotli` compression and `cdn` to replace the local library mode, the package size is less than `350kb`
 
-- [Click me to view the non-internationalized version](https://github.com/pure-admin/pure-admin-thin)
-- [Click me to view Internationalization version](https://github.com/pure-admin/pure-admin-thin/tree/i18n)
+[Click to view the non-internationalized version](https://github.com/pure-admin/pure-admin-thin)  
+[Click to view Internationalization version](https://github.com/pure-admin/pure-admin-thin/tree/i18n)
 
 ## Supporting Video
 
-- [Click Watch Tutorial](https://www.bilibili.com/video/BV1kg411v7QT)
-- [Click Watch UI Design](https://www.bilibili.com/video/BV17g411T7rq)
+[Click Watch Tutorial](https://www.bilibili.com/video/BV1kg411v7QT)  
+[Click Watch UI Design](https://www.bilibili.com/video/BV17g411T7rq)
 
 ## Docs
 
-- [documentation site](https://yiming_chang.gitee.io/pure-admin-doc)
+[View vue-pure-admin documentation](https://yiming_chang.gitee.io/pure-admin-doc)  
+[View @pureadmin/utils documentation](https://pure-admin-utils.netlify.app)
 
 ## Tauri
 
-- [Click Watch Tauri](https://github.com/pure-admin/tauri-pure-admin)
+[Click Watch Tauri](https://github.com/pure-admin/tauri-pure-admin)
 
 ## Electron
 
-- [Click Watch Electron](https://github.com/pure-admin/electron-pure-admin)
+[Click Watch Electron](https://github.com/pure-admin/electron-pure-admin)
 
 ## Preview
 
-- [preview station](https://yiming_chang.gitee.io/vue-pure-admin)
+[preview station](https://yiming_chang.gitee.io/vue-pure-admin)
 
-- PC
+`PC`
+
 <p align="center">
-  <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d45c15ccbe674fe291a4faa528d11eda~tplv-k3u1fbpfcp-zoom-in-crop-mark:3024:0:0:0.awebp?">
+  <img alt="PureAdmin" src="https://xiaoxian521.github.io/hyperlink/img/vue-pure-admin/1.jpg">
+  <img alt="PureAdmin" src="https://xiaoxian521.github.io/hyperlink/img/vue-pure-admin/2.jpg">
 </p>
 
-- DarkMode
+`DarkMode`
+
 <p align="center">
-  <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/10a351f0d9c94b90ba3b408a786b9ede~tplv-k3u1fbpfcp-zoom-in-crop-mark:3024:0:0:0.awebp?">
+  <img alt="PureAdmin" src="https://xiaoxian521.github.io/hyperlink/img/vue-pure-admin/3.jpg">
 </p>
 
-- Mobile
+`Mobile`
+
 <p align="center">
-  <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3061c7b92f6d4cb4bcdf227d966ac696~tplv-k3u1fbpfcp-zoom-in-crop-mark:3024:0:0:0.awebp?">
+  <img alt="PureAdmin" src="https://xiaoxian521.github.io/hyperlink/img/vue-pure-admin/4.jpg">
 </p>
 
 ### Use Gitpod
@@ -59,32 +64,56 @@ Open the project in Gitpod (free online dev environment for GitHub) and start co
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/pure-admin/vue-pure-admin)
 
-## Install and use
+## Install And Use
 
-- Get the project code
+### Pull code
+
+#### It is recommended to use `@pureadmin/cli` scaffolding
+
+<br/>
+<img src="https://xiaoxian521.github.io/hyperlink/gif/pure-admin-cli.gif" alt="pure-admin-cli" />
+
+1. Global installation
+
+```bash
+npm install -g @pureadmin/cli
+```
+
+2. Interactively select templates and create projects
+
+```bash
+pure create
+```
+
+[Click to view the detailed usage of @pureadmin/cli scaffolding](https://github.com/pure-admin/pure-admin-cli#pureadmincli)
+
+#### Pull from `GitHub`
 
 ```bash
 git clone https://github.com/pure-admin/vue-pure-admin.git
-or
+```
+
+#### Pulled from `Gitee`
+
+```bash
 git clone https://gitee.com/yiming_chang/vue-pure-admin.git
 ```
 
-- Installation dependencies
+### Install dependencies
 
 ```bash
 cd vue-pure-admin
 
 pnpm install
-
 ```
 
-- run
+### Run platform
 
 ```bash
-pnpm serve
+pnpm dev
 ```
 
-- build
+### Project packaging
 
 ```bash
 pnpm build
@@ -130,27 +159,27 @@ You are very welcome to join！[Raise an issue](https://github.com/pure-admin/vu
 
 ## Git Contribution submission specification
 
-- reference [vue](https://github.com/vuejs/vue/blob/dev/.github/COMMIT_CONVENTION.md) specification ([Angular](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular))
+reference [vue](https://github.com/vuejs/vue/blob/dev/.github/COMMIT_CONVENTION.md) specification ([Angular](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular))
 
-  - `feat` Add new features
-  - `fix` Fix the problem/BUG
-  - `style` The code style is related and does not affect the running result
-  - `perf` Optimization/performance improvement
-  - `refactor` Refactor
-  - `revert` Undo edit
-  - `test` Test related
-  - `docs` Documentation/notes
-  - `chore` Dependency update/scaffolding configuration modification etc.
-  - `workflow` Workflow improvements
-  - `ci` Continuous integration
-  - `types` Type definition file changes
-  - `wip` In development
+- `feat` Add new features
+- `fix` Fix the problem/BUG
+- `style` The code style is related and does not affect the running result
+- `perf` Optimization/performance improvement
+- `refactor` Refactor
+- `revert` Undo edit
+- `test` Test related
+- `docs` Documentation/notes
+- `chore` Dependency update/scaffolding configuration modification etc.
+- `workflow` Workflow improvements
+- `ci` Continuous integration
+- `types` Type definition file changes
+- `wip` In development
 
 ## Browser support
 
-The `Chrome 80+` browser is recommended for local development
-
-Support modern browsers, not IE
+It is recommended to use `Chrome`, `Edge`, and `Firefox` browsers for local development. The author commonly uses the latest version of `Chrome` browser.  
+In actual use, I feel that `Firefox` is smoother in animation than other browsers, but the author is used to using `Chrome`. It depends on personal preference.  
+For more detailed browser compatibility support, please see [Which browsers does Vue support? ](https://vuejs.org/about/faq.html#what-browsers-does-vue-support) and [Vite browser compatibility](https://vitejs.dev/guide/build.html#browser-compatibility)
 
 | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt=" Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>IE | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt=" Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Safari |
 | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
