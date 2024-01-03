@@ -1,1 +1,0 @@
-import{d as s,u as c,m as p,a4 as u,f as m}from"./index-J-k3D_e7.js";const l=s({name:"Redirect",__name:"redirect",setup(_){const{currentRoute:r,replace:t}=u(),{params:a,query:n}=c(r),{path:e}=a,o=Array.isArray(e)?e.join("/"):e;return t({path:"/"+o,query:n}),(i,d)=>(m(),p("div"))}});export{l as default};
