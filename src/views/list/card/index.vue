@@ -6,7 +6,6 @@ import { ElMessageBox } from "element-plus";
 import { ref, onMounted, nextTick } from "vue";
 import dialogForm from "./components/DialogForm.vue";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
-import Search from "@iconify-icons/ep/search";
 import AddFill from "@iconify-icons/ri/add-circle-line";
 
 defineOptions({
@@ -111,7 +110,7 @@ const handleManageProduct = product => {
           <el-icon class="el-input__icon">
             <IconifyIconOffline
               v-show="searchValue.length === 0"
-              :icon="Search"
+              icon="search"
             />
           </el-icon>
         </template>
