@@ -1,13 +1,8 @@
-import {
-  clone,
-  useDark,
-  useECharts,
-  type EchartOptions
-} from "@pureadmin/utils";
+import { ref, computed } from "vue";
 import { tableDataDrag } from "../data";
 import { message } from "@/utils/message";
 import { templateRef } from "@vueuse/core";
-import { ref, type Ref, computed } from "vue";
+import { clone, useDark, useECharts } from "@pureadmin/utils";
 
 export function useColumns() {
   const dataList = ref(clone(tableDataDrag, true).splice(0, 4));
@@ -33,19 +28,13 @@ export function useColumns() {
 
   const { isDark } = useDark();
 
-  const theme: EchartOptions["theme"] = computed(() => {
-    return isDark.value ? "dark" : "light";
-  });
+  const theme = computed(() => (isDark.value ? "dark" : "light"));
 
   dataList.value.forEach((_, i) => {
-    const { setOptions } = useECharts(
-      templateRef(`PieChartRef${i}`) as Ref<HTMLDivElement>,
-      {
-        theme
-      }
-    );
+    const { setOptions } = useECharts(templateRef(`PieChartRef${i}`), {
+      theme
+    });
 
-    // https://pure-admin-utils.netlify.app/hooks/useEcharts/useEcharts.html
     setOptions(
       {
         tooltip: {

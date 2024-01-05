@@ -15,9 +15,7 @@ const props = defineProps({
 
 const { isDark } = useDark();
 
-const theme = computed(() => {
-  return isDark.value ? "dark" : "light";
-});
+const theme = computed(() => (isDark.value ? "dark" : "light"));
 
 const chartRef = ref();
 const { setOptions } = useECharts(chartRef, {
