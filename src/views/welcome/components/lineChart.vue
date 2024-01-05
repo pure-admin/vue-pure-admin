@@ -30,7 +30,7 @@ setOptions({
     data: props.data
   },
   grid: {
-    top: "30px",
+    top: "15px",
     bottom: 0,
     left: 0,
     right: 0
@@ -45,7 +45,12 @@ setOptions({
       type: "line",
       symbol: "none",
       smooth: true,
-      color: props.color
+      color: props.color,
+      lineStyle: {
+        shadowOffsetY: 3,
+        shadowBlur: 7,
+        shadowColor: props.color
+      }
     }
   ]
 });

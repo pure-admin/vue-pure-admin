@@ -13,18 +13,16 @@ const { setOptions } = useECharts(chartRef, {
 });
 
 setOptions({
-  title: [
-    {
-      text: "100%",
-      left: "47%",
-      top: "30%",
-      textAlign: "center",
-      textStyle: {
-        fontSize: "16",
-        fontWeight: 600
-      }
+  title: {
+    text: "100%",
+    left: "47%",
+    top: "30%",
+    textAlign: "center",
+    textStyle: {
+      fontSize: "16",
+      fontWeight: 600
     }
-  ],
+  },
   polar: {
     radius: ["100%", "90%"],
     center: ["50%", "50%"]
@@ -57,7 +55,13 @@ setOptions({
       },
       data: [100],
       coordinateSystem: "polar",
-      color: "#7846e5"
+      color: "#7846e5",
+      itemStyle: {
+        shadowBlur: 2,
+        shadowColor: "#7846e5",
+        shadowOffsetX: 0,
+        shadowOffsetY: 0
+      }
     }
   ]
 });

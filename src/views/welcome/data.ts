@@ -17,12 +17,12 @@ export const chartData = [
   {
     icon: Question,
     bgColor: "#fff5f4",
-    color: "#f83b29",
+    color: "#e85f33",
     duration: 1600,
     name: "提问数量",
     value: 16580,
     percent: "+70%",
-    data: [2216, 1148, 255, 1788, 4821, 1973, 4379]
+    data: [2216, 1148, 1255, 788, 4821, 1973, 4379]
   },
   {
     icon: CheckLine,
@@ -32,7 +32,7 @@ export const chartData = [
     name: "解决数量",
     value: 16499,
     percent: "+99%",
-    data: [161, 1002, 3895, 1715, 3666, 2415, 3645]
+    data: [861, 1002, 3195, 1715, 3666, 2415, 3645]
   },
   {
     icon: Smile,
@@ -43,5 +43,17 @@ export const chartData = [
     value: 100,
     percent: "+100%",
     data: [100]
+  }
+];
+
+/** 分析概览图表数据 */
+export const barChartData = [
+  {
+    requireData: [2101, 5288, 4239, 4962, 6752, 5208, 7450],
+    questionData: [2216, 1148, 1255, 1788, 4821, 1973, 4379]
+  },
+  {
+    requireData: [2101, 3280, 4400, 4962, 5752, 6889, 7600],
+    questionData: [2116, 3148, 3255, 3788, 4821, 4970, 5390]
   }
 ];
