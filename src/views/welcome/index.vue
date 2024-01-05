@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import ReCol from "@/components/ReCol";
-import { useDark } from "@pureadmin/utils";
-// import { useResizeObserver } from "@vueuse/core";
+import { useResizeObserver } from "@vueuse/core";
 import { chartData, barChartData } from "./data";
 import barChart from "./components/barChart.vue";
 import lineChart from "./components/lineChart.vue";
 import roundChart from "./components/roundChart.vue";
+import { useDark, debounce } from "@pureadmin/utils";
 import { ReNormalCountTo } from "@/components/ReCountTo";
 import Segmented, { type OptionsType } from "@/components/ReSegmented";
 
@@ -28,9 +28,10 @@ const optionsBasis: Array<OptionsType> = [
   }
 ];
 
-// useResizeObserver(barCardRef, () => {
-//   barChartRef.value.resize();
-// });
+useResizeObserver(
+  barCardRef,
+  debounce(() => barChartRef.value.resize(), 60)
+);
 </script>
 
 <template>
