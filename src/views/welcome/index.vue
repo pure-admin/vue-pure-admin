@@ -1,294 +1,75 @@
 <script setup lang="ts">
-import dayjs from "dayjs";
-import MdEditor from "md-editor-v3";
-import Bar from "./components/Bar.vue";
-import Pie from "./components/Pie.vue";
-import Line from "./components/Line.vue";
-import { getReleases } from "@/api/list";
-import TypeIt from "@/components/ReTypeit";
-import { useWindowSize } from "@vueuse/core";
-import { ref, computed, markRaw } from "vue";
-import Github from "./components/Github.vue";
-import { randomColor } from "@pureadmin/utils";
-import { useRenderFlicker } from "@/components/ReFlicker";
+import { chartData } from "./data";
+import ReCol from "@/components/ReCol";
+import { useDark } from "@pureadmin/utils";
+import lineChart from "./components/lineChart.vue";
+import roundChart from "./components/roundChart.vue";
+import { ReNormalCountTo } from "@/components/ReCountTo";
 
 defineOptions({
   name: "Welcome"
 });
 
-const list = ref();
-const loading = ref<boolean>(true);
-const { version } = __APP_INFO__.pkg;
-const titleClass = computed(() => {
-  return ["text-base", "font-medium"];
-});
-
-const { height } = useWindowSize();
-
-setTimeout(() => {
-  loading.value = !loading.value;
-}, 800);
-
-getReleases().then(({ data }) => {
-  list.value = data.list.map(v => {
-    return {
-      content: v.body,
-      timestamp: dayjs(v.published_at).format("YYYY/MM/DD hh:mm:ss A"),
-      icon: markRaw(
-        useRenderFlicker({
-          background: randomColor({ type: "hex" }) as string
-        })
-      )
-    };
-  });
-});
+const { isDark } = useDark();
 </script>
 
 <template>
   <div>
-    <!-- 重构，更美观的首页 -->
-    <el-row :gutter="24">
-      <el-col
-        v-motion
-        :xs="24"
-        :sm="24"
+    <el-row :gutter="24" justify="space-around">
+      <re-col
+        v-for="(item, index) in chartData"
+        :key="index"
+        :value="6"
         :md="12"
-        :lg="12"
-        :xl="12"
-        class="mb-[18px]"
-        :initial="{
-          opacity: 0,
-          y: 100
-        }"
-        :enter="{
-          opacity: 1,
-          y: 0,
-          transition: {
-            delay: 200
-          }
-        }"
-      >
-        <el-card
-          shadow="never"
-          :style="{ height: `calc(${height}px - 35vh - 250px)` }"
-        >
-          <template #header>
-            <a
-              :class="titleClass"
-              href="https://github.com/pure-admin/vue-pure-admin/releases"
-              target="_black"
-            >
-              <TypeIt
-                :className="'type-it2'"
-                :values="[`PureAdmin 版本日志（当前版本 v${version}）`]"
-                :cursor="false"
-                :speed="60"
-              />
-            </a>
-          </template>
-          <el-skeleton animated :rows="7" :loading="loading">
-            <template #default>
-              <el-scrollbar :height="`calc(${height}px - 35vh - 340px)`">
-                <el-timeline v-show="list?.length > 0">
-                  <el-timeline-item
-                    v-for="(item, index) in list"
-                    :key="index"
-                    :icon="item.icon"
-                    :timestamp="item.timestamp"
-                  >
-                    <md-editor v-model="item.content" preview-only />
-                  </el-timeline-item>
-                </el-timeline>
-                <el-empty v-show="list?.length === 0" />
-              </el-scrollbar>
-            </template>
-          </el-skeleton>
-        </el-card>
-      </el-col>
-
-      <el-col
-        v-motion
+        :sm="12"
         :xs="24"
-        :sm="24"
-        :md="12"
-        :lg="12"
-        :xl="12"
         class="mb-[18px]"
-        :initial="{
-          opacity: 0,
-          y: 100
-        }"
-        :enter="{
-          opacity: 1,
-          y: 0,
-          transition: {
-            delay: 200
-          }
-        }"
-      >
-        <el-card
-          shadow="never"
-          :style="{ height: `calc(${height}px - 35vh - 250px)` }"
-        >
-          <template #header>
-            <a
-              :class="titleClass"
-              href="https://github.com/xiaoxian521"
-              target="_black"
-            >
-              <TypeIt
-                :className="'type-it1'"
-                :values="['GitHub信息']"
-                :cursor="false"
-                :speed="120"
-              />
-            </a>
-          </template>
-          <el-skeleton animated :rows="7" :loading="loading">
-            <template #default>
-              <el-scrollbar :height="`calc(${height}px - 35vh - 340px)`">
-                <Github />
-              </el-scrollbar>
-            </template>
-          </el-skeleton>
-        </el-card>
-      </el-col>
-
-      <el-col
-        v-motion
-        :xs="24"
-        :sm="24"
-        :md="12"
-        :lg="8"
-        :xl="8"
-        class="mb-[18px]"
-        :initial="{
-          opacity: 0,
-          y: 100
-        }"
-        :enter="{
-          opacity: 1,
-          y: 0,
-          transition: {
-            delay: 400
-          }
-        }"
       >
         <el-card shadow="never">
-          <template #header>
-            <a
-              :class="titleClass"
-              href="https://github.com/pure-admin/vue-pure-admin"
-              target="_black"
+          <div class="flex justify-between">
+            <span class="text-md font-medium text-text_color_regular">
+              {{ item.name }}
+            </span>
+            <div
+              class="w-8 h-8 flex justify-center items-center rounded-md"
+              :style="{
+                backgroundColor: isDark ? 'transparent' : item.bgColor
+              }"
             >
-              <TypeIt
-                :className="'type-it4'"
-                :values="['GitHub折线图信息']"
-                :cursor="false"
-                :speed="120"
+              <IconifyIconOffline
+                :icon="item.icon"
+                :color="item.color"
+                width="18"
               />
-            </a>
-          </template>
-          <el-skeleton animated :rows="7" :loading="loading">
-            <template #default>
-              <Line />
-            </template>
-          </el-skeleton>
-        </el-card>
-      </el-col>
-
-      <el-col
-        v-motion
-        :xs="24"
-        :sm="24"
-        :md="12"
-        :lg="8"
-        :xl="8"
-        class="mb-[18px]"
-        :initial="{
-          opacity: 0,
-          y: 100
-        }"
-        :enter="{
-          opacity: 1,
-          y: 0,
-          transition: {
-            delay: 400
-          }
-        }"
-      >
-        <el-card shadow="never">
-          <template #header>
-            <a
-              :class="titleClass"
-              href="https://github.com/pure-admin/vue-pure-admin"
-              target="_black"
-            >
-              <TypeIt
-                :className="'type-it3'"
-                :values="['GitHub饼图信息']"
-                :cursor="false"
-                :speed="120"
+            </div>
+          </div>
+          <div class="flex justify-between items-start mt-3">
+            <div class="w-1/2">
+              <ReNormalCountTo
+                :duration="item.duration"
+                :fontSize="'1.6em'"
+                :startVal="100"
+                :endVal="item.value"
               />
-            </a>
-          </template>
-          <el-skeleton animated :rows="7" :loading="loading">
-            <template #default>
-              <Pie />
-            </template>
-          </el-skeleton>
+              <p class="font-medium text-green-500">{{ item.percent }}</p>
+            </div>
+            <lineChart
+              v-if="item.data.length > 1"
+              class="!w-1/2"
+              :color="item.color"
+              :data="item.data"
+            />
+            <roundChart v-else class="!w-1/2" />
+          </div>
         </el-card>
-      </el-col>
-
-      <el-col
-        v-motion
-        :xs="24"
-        :sm="24"
-        :md="24"
-        :lg="8"
-        :xl="8"
-        class="mb-[18px]"
-        :initial="{
-          opacity: 0,
-          y: 100
-        }"
-        :enter="{
-          opacity: 1,
-          y: 0,
-          transition: {
-            delay: 400
-          }
-        }"
-      >
-        <el-card shadow="never">
-          <template #header>
-            <a
-              :class="titleClass"
-              href="https://github.com/pure-admin/vue-pure-admin"
-              target="_black"
-            >
-              <TypeIt
-                :className="'type-it5'"
-                :values="['GitHub柱状图信息']"
-                :cursor="false"
-                :speed="120"
-              />
-            </a>
-          </template>
-          <el-skeleton animated :rows="7" :loading="loading">
-            <template #default>
-              <Bar />
-            </template>
-          </el-skeleton>
-        </el-card>
-      </el-col>
+      </re-col>
     </el-row>
   </div>
 </template>
 
 <style lang="scss" scoped>
-:deep(.el-timeline-item) {
-  margin: 6px 0 0 6px;
+:deep(.el-card) {
+  --el-card-border-color: none;
 }
 
 .main-content {
