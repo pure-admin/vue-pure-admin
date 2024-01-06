@@ -320,8 +320,8 @@ devDependencies:
     specifier: ^0.5.1
     version: 0.5.1(vite@5.0.10)
   vite-plugin-fake-server:
-    specifier: ^2.0.1
-    version: 2.0.1
+    specifier: 2.0.0
+    version: 2.0.0
   vite-plugin-remove-console:
     specifier: ^2.2.0
     version: 2.2.0
@@ -8664,8 +8664,8 @@ packages:
       - supports-color
     dev: true
 
-  /vite-plugin-fake-server@2.0.1:
-    resolution: {integrity: sha512-uQgOPHtMIrgVdpuJa2zQ+v6bMlSqczhlb4xfTE+K0lDfKTeJ+Z795HXYv2BItNPFYJ5E5wOlZ8MLDzjudK+22A==}
+  /vite-plugin-fake-server@2.0.0:
+    resolution: {integrity: sha512-RCKS7te5lNzJFEQqPEaMqthwJhYaYMUMAPj7no4tmirqf5YEd6b4t7JMSGTkP2HPSplPE/uDQ56k9XjNreq2CQ==}
     dependencies:
       bundle-import: 0.0.1
       chokidar: 3.5.3
