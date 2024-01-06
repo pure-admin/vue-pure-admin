@@ -5,6 +5,7 @@ import { useResizeObserver } from "@vueuse/core";
 import barChart from "./components/barChart.vue";
 import lineChart from "./components/lineChart.vue";
 import roundChart from "./components/roundChart.vue";
+import PureTable from "./components/table/index.vue";
 import { useDark, debounce } from "@pureadmin/utils";
 import { ReNormalCountTo } from "@/components/ReCountTo";
 import { chartData, barChartData, progressData } from "./data";
@@ -172,6 +173,55 @@ useResizeObserver(
             <span class="text-nowrap ml-2 text-text_color_regular text-sm">
               {{ item.week }}
             </span>
+          </div>
+        </el-card>
+      </re-col>
+
+      <re-col
+        v-motion
+        class="mb-[18px]"
+        :value="18"
+        :xs="24"
+        :initial="{
+          opacity: 0,
+          y: 100
+        }"
+        :enter="{
+          opacity: 1,
+          y: 0,
+          transition: {
+            delay: 400
+          }
+        }"
+      >
+        <el-card shadow="never">
+          <div class="flex justify-between">
+            <span class="text-md font-medium">数据统计</span>
+          </div>
+          <PureTable class="mt-3" />
+        </el-card>
+      </re-col>
+
+      <re-col
+        v-motion
+        class="mb-[18px]"
+        :value="6"
+        :xs="24"
+        :initial="{
+          opacity: 0,
+          y: 100
+        }"
+        :enter="{
+          opacity: 1,
+          y: 0,
+          transition: {
+            delay: 480
+          }
+        }"
+      >
+        <el-card shadow="never">
+          <div class="flex justify-between">
+            <span class="text-md font-medium">xxx</span>
           </div>
         </el-card>
       </re-col>

@@ -65,6 +65,9 @@ watch(
           type: "value",
           axisLabel: {
             fontSize: "0.875rem"
+          },
+          splitLine: {
+            show: false // 去网格线
           }
           // name: "单位: 个"
         }
