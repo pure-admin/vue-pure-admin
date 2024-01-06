@@ -19,6 +19,7 @@ export function useColumns() {
       label: "需求人数",
       prop: "requiredNumber",
       filterMultiple: false,
+      // filterClassName: "pure-table-filter", // TODO：https://github.com/element-plus/element-plus/pull/15389
       filters: [
         { text: "≥16000", value: "more" },
         { text: "<16000", value: "less" }
