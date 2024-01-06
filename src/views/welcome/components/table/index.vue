@@ -48,9 +48,13 @@ const { loading, columns, dataList, pagination, onCurrentChange } =
 }
 </style> -->
 
-<style scoped>
+<style lang="scss" scoped>
 :deep(.el-table) {
   --el-table-border: none;
   --el-table-border-color: transparent;
+
+  .el-scrollbar__bar {
+    display: none;
+  }
 }
 </style>

@@ -64,7 +64,7 @@ export function useColumns() {
     },
     {
       label: "操作",
-      // fixed: "right",
+      fixed: "right",
       slot: "operation"
     }
   ];
