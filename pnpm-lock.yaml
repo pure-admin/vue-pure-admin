@@ -77,9 +77,6 @@ dependencies:
   localforage:
     specifier: ^1.10.0
     version: 1.10.0
-  md-editor-v3:
-    specifier: 2.7.2
-    version: 2.7.2
   mint-filter:
     specifier: ^4.0.3
     version: 4.0.3
@@ -6034,11 +6031,6 @@ packages:
   /mathml-tag-names@2.1.3:
     resolution: {integrity: sha512-APMBEanjybaPzUrfqU0IMU5I0AswKMH7k8OTLs0vvV4KZpExkTkY87nR/zpbuTPj+gARop7aGUbl11pnDfW6xg==}
     dev: true
-
-  /md-editor-v3@2.7.2:
-    resolution: {integrity: sha512-CyLG7yZhMyKplXO/MYIccpL0AOcnys74cMpbBG77rmXWlANAmzLrznUU++g6MohTv3DCRNTz+5Uh/w9h9P2sSA==}
-    engines: {node: '>=12.0.0'}
-    dev: false
 
   /mdn-data@2.0.14:
     resolution: {integrity: sha512-dn6wd0uw5GsdswPFfsgMp5NSB0/aDe6fK94YJV/AJDYXL6HVLWBsxeq7js7Ad+mU2K9LAlwpk6kN2D5mwCPVow==}
