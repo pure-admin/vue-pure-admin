@@ -2,13 +2,11 @@
 import { ref } from "vue";
 import ReCol from "@/components/ReCol";
 import { useResizeObserver } from "@vueuse/core";
-import barChart from "./components/barChart.vue";
-import lineChart from "./components/lineChart.vue";
-import roundChart from "./components/roundChart.vue";
 import PureTable from "./components/table/index.vue";
 import { useDark, debounce } from "@pureadmin/utils";
 import { ReNormalCountTo } from "@/components/ReCountTo";
 import { chartData, barChartData, progressData } from "./data";
+import { barChart, lineChart, roundChart } from "./components/chart";
 import Segmented, { type OptionsType } from "@/components/ReSegmented";
 
 defineOptions({
