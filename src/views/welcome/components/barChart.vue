@@ -37,17 +37,24 @@ watch(
       },
       grid: {
         top: "20px",
-        left: "40px",
+        left: "50px",
         right: 0
       },
       legend: {
         data: ["需求人数", "提问数量"],
+        textStyle: {
+          color: "#606266",
+          fontSize: "0.875rem"
+        },
         bottom: 0
       },
       xAxis: [
         {
           type: "category",
           data: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
+          axisLabel: {
+            fontSize: "0.875rem"
+          },
           axisPointer: {
             type: "shadow"
           }
@@ -55,7 +62,10 @@ watch(
       ],
       yAxis: [
         {
-          type: "value"
+          type: "value",
+          axisLabel: {
+            fontSize: "0.875rem"
+          }
           // name: "单位: 个"
         }
       ],

@@ -57,3 +57,49 @@ export const barChartData = [
     questionData: [2116, 3148, 3255, 3788, 4821, 4970, 5390]
   }
 ];
+
+/** 解决概率数据 */
+export const progressData = [
+  {
+    week: "周一",
+    percentage: 85,
+    duration: 45,
+    color: "#41b6ff"
+  },
+  {
+    week: "周二",
+    percentage: 86,
+    duration: 44,
+    color: "#41b6ff"
+  },
+  {
+    week: "周三",
+    percentage: 88,
+    duration: 43,
+    color: "#41b6ff"
+  },
+  {
+    week: "周四",
+    percentage: 89,
+    duration: 42,
+    color: "#41b6ff"
+  },
+  {
+    week: "周五",
+    percentage: 94,
+    duration: 36,
+    color: "#26ce83"
+  },
+  {
+    week: "周六",
+    percentage: 96,
+    duration: 30,
+    color: "#26ce83"
+  },
+  {
+    week: "周日",
+    percentage: 100,
+    duration: 26,
+    color: "#26ce83"
+  }
+];

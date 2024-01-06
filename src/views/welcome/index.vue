@@ -2,12 +2,12 @@
 import { ref } from "vue";
 import ReCol from "@/components/ReCol";
 import { useResizeObserver } from "@vueuse/core";
-import { chartData, barChartData } from "./data";
 import barChart from "./components/barChart.vue";
 import lineChart from "./components/lineChart.vue";
 import roundChart from "./components/roundChart.vue";
 import { useDark, debounce } from "@pureadmin/utils";
 import { ReNormalCountTo } from "@/components/ReCountTo";
+import { chartData, barChartData, progressData } from "./data";
 import Segmented, { type OptionsType } from "@/components/ReSegmented";
 
 defineOptions({
@@ -60,7 +60,7 @@ useResizeObserver(
       >
         <el-card shadow="never">
           <div class="flex justify-between">
-            <span class="text-md font-medium text-text_color_regular">
+            <span class="text-md font-medium">
               {{ item.name }}
             </span>
             <div
@@ -116,9 +116,7 @@ useResizeObserver(
       >
         <el-card ref="barCardRef" shadow="never">
           <div class="flex justify-between">
-            <span class="text-md font-medium text-text_color_regular">
-              分析概览
-            </span>
+            <span class="text-md font-medium">分析概览</span>
             <Segmented v-model="curWeek" :options="optionsBasis" />
           </div>
           <div class="flex justify-between items-start mt-3">
@@ -150,11 +148,31 @@ useResizeObserver(
       >
         <el-card shadow="never">
           <div class="flex justify-between">
-            <span class="text-md font-medium text-text_color_regular">
-              解决概率
+            <span class="text-md font-medium">解决概率</span>
+          </div>
+          <div
+            v-for="(item, index) in progressData.reverse()"
+            :key="index"
+            :class="[
+              'flex',
+              'justify-between',
+              'items-start',
+              index === 0 ? 'mt-8' : 'mt-[2.15rem]'
+            ]"
+          >
+            <el-progress
+              :text-inside="true"
+              :percentage="item.percentage"
+              :stroke-width="21"
+              :color="item.color"
+              striped
+              striped-flow
+              :duration="item.duration"
+            />
+            <span class="text-nowrap ml-2 text-text_color_regular text-sm">
+              {{ item.week }}
             </span>
           </div>
-          <div class="flex justify-between items-start mt-3">111</div>
         </el-card>
       </re-col>
     </el-row>
@@ -162,8 +180,16 @@ useResizeObserver(
 </template>
 
 <style lang="scss" scoped>
+:deep(.el-progress-bar__innerText) {
+  font-size: 15px;
+}
+
 :deep(.el-card) {
   --el-card-border-color: none;
+}
+
+:deep(.el-progress--line) {
+  width: 85%;
 }
 
 .main-content {
