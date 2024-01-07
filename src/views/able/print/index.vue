@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import Print from "@/utils/print";
-import Line from "../welcome/components/Line.vue";
+import pieChart from "./pieChart.vue";
 
 defineOptions({
   name: "Print"
@@ -157,7 +157,7 @@ const tableData: User[] = [
         }"
       >
         <p class="font-medium pt-1">Echart</p>
-        <Line class="echart mt-[10px]" />
+        <pieChart class="echart mt-[10px]" />
       </el-col>
 
       <el-col
