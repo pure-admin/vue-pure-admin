@@ -150,7 +150,7 @@ useResizeObserver(
             <span class="text-md font-medium">解决概率</span>
           </div>
           <div
-            v-for="(item, index) in progressData.reverse()"
+            v-for="(item, index) in progressData"
             :key="index"
             :class="[
               'flex',

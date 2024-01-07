@@ -106,7 +106,7 @@ const progressData = [
     duration: 80,
     color: "#26ce83"
   }
-];
+].reverse();
 
 /** 数据统计 */
 const tableData = Array.from({ length: 30 }).map((_, index) => {
@@ -122,7 +122,7 @@ const tableData = Array.from({ length: 30 }).map((_, index) => {
 
 /** 最新动态 */
 const latestNewsData = cloneDeep(tableData)
-  .slice(0, 8)
+  .slice(0, 14)
   .map((item, index) => {
     return Object.assign(item, {
       date: `${dayjs().subtract(index, "day").format("YYYY-MM-DD")} ${
