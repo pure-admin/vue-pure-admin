@@ -4,6 +4,7 @@ import { ref, onMounted, reactive } from "vue";
 import type { PaginationProps } from "@pureadmin/table";
 import ThumbUp from "@iconify-icons/ri/thumb-up-line";
 import Hearts from "@iconify-icons/ri/hearts-line";
+import Empty from "./empty.svg?component";
 
 export function useColumns() {
   const dataList = ref([]);
@@ -93,6 +94,7 @@ export function useColumns() {
   });
 
   return {
+    Empty,
     loading,
     columns,
     dataList,

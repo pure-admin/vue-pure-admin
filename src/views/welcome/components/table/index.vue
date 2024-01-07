@@ -2,7 +2,7 @@
 import { useColumns } from "./columns";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 
-const { loading, columns, dataList, pagination, onCurrentChange } =
+const { loading, columns, dataList, pagination, Empty, onCurrentChange } =
   useColumns();
 </script>
 
@@ -23,6 +23,13 @@ const { loading, columns, dataList, pagination, onCurrentChange } =
     :pagination="pagination"
     @page-current-change="onCurrentChange"
   >
+    <template #empty>
+      <el-empty description="暂无数据" :image-size="60">
+        <template #image>
+          <Empty />
+        </template>
+      </el-empty>
+    </template>
     <template #operation="{ row }">
       <el-button
         plain
@@ -52,6 +59,10 @@ const { loading, columns, dataList, pagination, onCurrentChange } =
 :deep(.el-table) {
   --el-table-border: none;
   --el-table-border-color: transparent;
+
+  .el-empty__description {
+    margin: 0;
+  }
 
   .el-scrollbar__bar {
     display: none;
