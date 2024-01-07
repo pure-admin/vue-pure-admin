@@ -63,43 +63,43 @@ export const progressData = [
   {
     week: "周一",
     percentage: 85,
-    duration: 45,
+    duration: 110,
     color: "#41b6ff"
   },
   {
     week: "周二",
     percentage: 86,
-    duration: 44,
+    duration: 105,
     color: "#41b6ff"
   },
   {
     week: "周三",
     percentage: 88,
-    duration: 43,
+    duration: 100,
     color: "#41b6ff"
   },
   {
     week: "周四",
     percentage: 89,
-    duration: 42,
+    duration: 95,
     color: "#41b6ff"
   },
   {
     week: "周五",
     percentage: 94,
-    duration: 36,
+    duration: 90,
     color: "#26ce83"
   },
   {
     week: "周六",
     percentage: 96,
-    duration: 30,
+    duration: 85,
     color: "#26ce83"
   },
   {
     week: "周日",
     percentage: 100,
-    duration: 26,
+    duration: 80,
     color: "#26ce83"
   }
 ];
