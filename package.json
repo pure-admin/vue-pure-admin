@@ -67,7 +67,7 @@
     "dayjs": "^1.11.10",
     "echarts": "^5.4.3",
     "el-table-infinite-scroll": "^3.0.3",
-    "element-plus": "^2.4.4",
+    "element-plus": "npm:@element-plus/nightly@latest",
     "intro.js": "^7.2.0",
     "js-cookie": "^3.0.5",
     "jsbarcode": "^3.11.6",

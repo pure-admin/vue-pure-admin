@@ -254,12 +254,12 @@ function resolvePath(routePath) {
       </div>
     </template>
   </el-menu-item>
-
   <el-sub-menu
     v-else
     ref="subMenu"
-    v-bind="expandCloseIcon"
+    teleported
     :index="resolvePath(props.item.path)"
+    v-bind="expandCloseIcon"
   >
     <template #title>
       <div
@@ -307,6 +307,7 @@ function resolvePath(routePath) {
         <extraIcon v-if="!isCollapse" :extraIcon="props.item.meta.extraIcon" />
       </div>
     </template>
+
     <sidebar-item
       v-for="child in props.item.children"
       :key="child.path"

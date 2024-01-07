@@ -19,10 +19,10 @@ dependencies:
     version: 1.2.19
   '@pureadmin/descriptions':
     specifier: ^1.2.0
-    version: 1.2.0(element-plus@2.4.4)(typescript@5.3.3)
+    version: 1.2.0(@element-plus/nightly@0.0.20240107)(typescript@5.3.3)
   '@pureadmin/table':
     specifier: ^3.0.0
-    version: 3.0.0(element-plus@2.4.4)(typescript@5.3.3)
+    version: 3.0.0(@element-plus/nightly@0.0.20240107)(typescript@5.3.3)
   '@pureadmin/utils':
     specifier: ^2.1.2
     version: 2.1.2(echarts@5.4.3)(vue@3.4.5)
@@ -63,8 +63,8 @@ dependencies:
     specifier: ^3.0.3
     version: 3.0.3(typescript@5.3.3)
   element-plus:
-    specifier: ^2.4.4
-    version: 2.4.4(vue@3.4.5)
+    specifier: npm:@element-plus/nightly@latest
+    version: /@element-plus/nightly@0.0.20240107(vue@3.4.5)
   intro.js:
     specifier: ^7.2.0
     version: 7.2.0
@@ -971,6 +971,31 @@ packages:
       vue: 3.4.5(typescript@5.3.3)
     dev: false
 
+  /@element-plus/nightly@0.0.20240107(vue@3.4.5):
+    resolution: {integrity: sha512-vCALd/yFMD/K5jpYEcn677yt0gZG3gR9KeOsZBusaW0lu9+Ir4CSThBCTGlKEW4pmw3bSsmuHy8KhTBr0LlBgw==}
+    peerDependencies:
+      vue: ^3.2.0
+    dependencies:
+      '@ctrl/tinycolor': 3.6.1
+      '@element-plus/icons-vue': 2.3.1(vue@3.4.5)
+      '@floating-ui/dom': 1.5.4
+      '@popperjs/core': /@sxzz/popperjs-es@2.11.7
+      '@types/lodash': 4.14.202
+      '@types/lodash-es': 4.17.12
+      '@vueuse/core': 9.13.0(vue@3.4.5)
+      async-validator: 4.2.5
+      dayjs: 1.11.10
+      escape-html: 1.0.3
+      lodash: 4.17.21
+      lodash-es: 4.17.21
+      lodash-unified: 1.0.3(@types/lodash-es@4.17.12)(lodash-es@4.17.21)(lodash@4.17.21)
+      memoize-one: 6.0.0
+      normalize-wheel-es: 1.2.0
+      vue: 3.4.5(typescript@5.3.3)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+    dev: false
+
   /@esbuild/aix-ppc64@0.19.11:
     resolution: {integrity: sha512-FnzU0LyE3ySQk7UntJO4+qIiQgI7KoODnZg5xzXIrFJlKd2P2gwHsHY4927xj9y5PJmJSzULiUCWmv7iWnNa7g==}
     engines: {node: '>=12'}
@@ -1726,24 +1751,24 @@ packages:
     resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
     dev: false
 
-  /@pureadmin/descriptions@1.2.0(element-plus@2.4.4)(typescript@5.3.3):
+  /@pureadmin/descriptions@1.2.0(@element-plus/nightly@0.0.20240107)(typescript@5.3.3):
     resolution: {integrity: sha512-k2A3SGGKf0eKrSQB3hXzgGlAz7DKSM31WN/QGBn37UCIHfQlIVrvSPEAF2omHlukQT2Artap6veCqBcJ9dGAKQ==}
     peerDependencies:
       element-plus: ^2.0.0
     dependencies:
       '@element-plus/icons-vue': 2.3.1(vue@3.4.5)
-      element-plus: 2.4.4(vue@3.4.5)
+      element-plus: /@element-plus/nightly@0.0.20240107(vue@3.4.5)
       vue: 3.4.5(typescript@5.3.3)
     transitivePeerDependencies:
       - typescript
     dev: false
 
-  /@pureadmin/table@3.0.0(element-plus@2.4.4)(typescript@5.3.3):
+  /@pureadmin/table@3.0.0(@element-plus/nightly@0.0.20240107)(typescript@5.3.3):
     resolution: {integrity: sha512-Pfh1apzYwCfkNIrc9R0/Yi8dBZOhWZq0uwRa/b1OsDr7dYqfYs1lRxcGkPsmYgIKx8kZbaOaGBfHAsyf+WFgpQ==}
     peerDependencies:
       element-plus: ^2.0.0
     dependencies:
-      element-plus: 2.4.4(vue@3.4.5)
+      element-plus: /@element-plus/nightly@0.0.20240107(vue@3.4.5)
       vue: 3.4.5(typescript@5.3.3)
     transitivePeerDependencies:
       - typescript

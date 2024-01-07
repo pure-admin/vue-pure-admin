@@ -51,6 +51,7 @@ nextTick(() => {
       ref="menuRef"
       router
       mode="horizontal"
+      popper-class="pure-scrollbar"
       class="horizontal-header-menu"
       :default-active="defaultActive"
     >
