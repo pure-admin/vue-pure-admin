@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { type PropType, ref, computed, watch, nextTick } from "vue";
 import { useDark, useECharts } from "@pureadmin/utils";
+import { type PropType, ref, computed, watch, nextTick } from "vue";
 
 const props = defineProps({
   requireData: {

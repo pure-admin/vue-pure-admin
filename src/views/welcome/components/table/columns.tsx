@@ -1,4 +1,4 @@
-import { tableData } from "./data";
+import { tableData } from "../../data";
 import { delay } from "@pureadmin/utils";
 import { ref, onMounted, reactive } from "vue";
 import type { PaginationProps } from "@pureadmin/table";
@@ -72,7 +72,7 @@ export function useColumns() {
 
   /** 分页配置 */
   const pagination = reactive<PaginationProps>({
-    pageSize: 8,
+    pageSize: 10,
     currentPage: 1,
     layout: "prev, pager, next",
     total: 0,

@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, markRaw } from "vue";
 import ReCol from "@/components/ReCol";
-import { useResizeObserver } from "@vueuse/core";
 import PureTable from "./components/table/index.vue";
-import { useDark, debounce } from "@pureadmin/utils";
 import { ReNormalCountTo } from "@/components/ReCountTo";
-import { chartData, barChartData, progressData } from "./data";
+import { useRenderFlicker } from "@/components/ReFlicker";
 import { barChart, lineChart, roundChart } from "./components/chart";
 import Segmented, { type OptionsType } from "@/components/ReSegmented";
+import { useResizeObserver, useDark, debounce, randomGradient } from "./utils";
+import { chartData, barChartData, progressData, latestNewsData } from "./data";
 
 defineOptions({
   name: "Welcome"
@@ -188,11 +188,11 @@ useResizeObserver(
           opacity: 1,
           y: 0,
           transition: {
-            delay: 400
+            delay: 560
           }
         }"
       >
-        <el-card shadow="never">
+        <el-card shadow="never" class="h-[580px]">
           <div class="flex justify-between">
             <span class="text-md font-medium">数据统计</span>
           </div>
@@ -213,14 +213,40 @@ useResizeObserver(
           opacity: 1,
           y: 0,
           transition: {
-            delay: 480
+            delay: 640
           }
         }"
       >
         <el-card shadow="never">
           <div class="flex justify-between">
-            <span class="text-md font-medium">xxx</span>
+            <span class="text-md font-medium">最新动态</span>
           </div>
+          <el-scrollbar max-height="504" class="mt-3">
+            <el-timeline>
+              <el-timeline-item
+                v-for="(item, index) in latestNewsData"
+                :key="index"
+                center
+                placement="top"
+                :icon="
+                  markRaw(
+                    useRenderFlicker({
+                      background: randomGradient({
+                        randomizeHue: true
+                      })
+                    })
+                  )
+                "
+                :timestamp="item.date"
+              >
+                <p class="text-text_color_regular text-sm">
+                  {{
+                    `新增 ${item.requiredNumber} 条问题，${item.resolveNumber} 条已解决`
+                  }}
+                </p>
+              </el-timeline-item>
+            </el-timeline>
+          </el-scrollbar>
         </el-card>
       </re-col>
     </el-row>
@@ -228,16 +254,28 @@ useResizeObserver(
 </template>
 
 <style lang="scss" scoped>
-:deep(.el-progress-bar__innerText) {
-  font-size: 15px;
-}
-
 :deep(.el-card) {
   --el-card-border-color: none;
-}
 
-:deep(.el-progress--line) {
-  width: 85%;
+  /* 解决概率进度条宽度 */
+  .el-progress--line {
+    width: 85%;
+  }
+
+  /* 解决概率进度条字体大小 */
+  .el-progress-bar__innerText {
+    font-size: 15px;
+  }
+
+  /* 隐藏 el-scrollbar 滚动条 */
+  .el-scrollbar__bar {
+    display: none;
+  }
+
+  /* el-timeline 每一项上下、左右边距 */
+  .el-timeline-item {
+    margin: 0 6px;
+  }
 }
 
 .main-content {
