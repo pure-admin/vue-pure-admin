@@ -100,8 +100,10 @@ html.dark {
   }
 
   .el-backtop {
-    --el-backtop-bg-color: var(--el-color-primary-light-9);
+    --el-backtop-bg-color: rgb(72 72 78);
     --el-backtop-hover-bg-color: var(--el-color-primary);
+
+    transition: background-color 0.25s cubic-bezier(0.7, 0.3, 0.1, 1);
   }
 
   .el-dropdown-menu__item:not(.is-disabled):hover {

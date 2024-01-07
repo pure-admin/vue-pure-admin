@@ -24,8 +24,8 @@ dependencies:
     specifier: ^3.0.0
     version: 3.0.0(element-plus@2.4.4)(typescript@5.3.3)
   '@pureadmin/utils':
-    specifier: ^2.1.1
-    version: 2.1.1(echarts@5.4.3)(vue@3.4.3)
+    specifier: ^2.1.2
+    version: 2.1.2(echarts@5.4.3)(vue@3.4.3)
   '@vueuse/core':
     specifier: ^10.7.1
     version: 10.7.1(vue@3.4.3)
@@ -77,9 +77,6 @@ dependencies:
   localforage:
     specifier: ^1.10.0
     version: 1.10.0
-  md-editor-v3:
-    specifier: 2.7.2
-    version: 2.7.2
   mint-filter:
     specifier: ^4.0.3
     version: 4.0.3
@@ -1760,8 +1757,8 @@ packages:
       string-hash: 1.1.3
     dev: true
 
-  /@pureadmin/utils@2.1.1(echarts@5.4.3)(vue@3.4.3):
-    resolution: {integrity: sha512-4M0sA1OfLC2q3duTO/f56a7c7DdlCdZ1mddcnqeanCCmlB9Y16MsKLwozZ5mgrsSXEhG421b0g5Zuufxe+YShQ==}
+  /@pureadmin/utils@2.1.2(echarts@5.4.3)(vue@3.4.3):
+    resolution: {integrity: sha512-TjMLN6MBNa5WkJYMidk1LhTfmTlHcSEjFm1jtN3e5z9Q3jzfnu5jF8MC+b0WF0LzeRqnq6kICrxXpSn5/HqNIA==}
     peerDependencies:
       echarts: '*'
       vue: '*'
@@ -6034,11 +6031,6 @@ packages:
   /mathml-tag-names@2.1.3:
     resolution: {integrity: sha512-APMBEanjybaPzUrfqU0IMU5I0AswKMH7k8OTLs0vvV4KZpExkTkY87nR/zpbuTPj+gARop7aGUbl11pnDfW6xg==}
     dev: true
-
-  /md-editor-v3@2.7.2:
-    resolution: {integrity: sha512-CyLG7yZhMyKplXO/MYIccpL0AOcnys74cMpbBG77rmXWlANAmzLrznUU++g6MohTv3DCRNTz+5Uh/w9h9P2sSA==}
-    engines: {node: '>=12.0.0'}
-    dev: false
 
   /mdn-data@2.0.14:
     resolution: {integrity: sha512-dn6wd0uw5GsdswPFfsgMp5NSB0/aDe6fK94YJV/AJDYXL6HVLWBsxeq7js7Ad+mU2K9LAlwpk6kN2D5mwCPVow==}
