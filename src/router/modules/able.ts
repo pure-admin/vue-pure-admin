@@ -47,7 +47,7 @@ export default {
     {
       path: "/able/print",
       name: "Print",
-      component: () => import("@/views/able/print.vue"),
+      component: () => import("@/views/able/print/index.vue"),
       meta: {
         title: $t("menus.hsPrint")
       }
