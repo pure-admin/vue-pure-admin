@@ -1,6 +1,6 @@
 import { cdn } from "./cdn";
-import { resolve } from "path";
 import vue from "@vitejs/plugin-vue";
+import { pathResolve } from "./utils";
 import { viteBuildInfo } from "./info";
 import svgLoader from "vite-svg-loader";
 import type { PluginOption } from "vite";
@@ -26,7 +26,7 @@ export function getPluginsList(
     VueI18nPlugin({
       runtimeOnly: true,
       compositionOnly: true,
-      include: [resolve("locales/**")]
+      include: [pathResolve("../locales/**")]
     }),
     viteBuildInfo(),
     /**
