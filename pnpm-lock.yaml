@@ -111,8 +111,8 @@ dependencies:
     specifier: ^11.0.5
     version: 11.0.5
   typeit:
-    specifier: ^8.8.0
-    version: 8.8.0
+    specifier: 8.7.1
+    version: 8.7.1
   v-contextmenu:
     specifier: 3.0.0
     version: 3.0.0(vue@3.4.7)
@@ -2065,10 +2065,6 @@ packages:
 
   /@types/stack-utils@2.0.3:
     resolution: {integrity: sha512-9aEbYZ3TbYMznPdcdr3SmIrLXwC/AKZXQeCf9Pgao5CKb8CyHuEX5jzWPTkvregvhRJHcpRO6BFoGW9ycaOkYw==}
-    dev: false
-
-  /@types/web-animations-js@2.2.16:
-    resolution: {integrity: sha512-ATELeWMFwj8eQiH0KmvsCl1V2lu/qx/CjOBmv4ADSZS5u8r4reMyjCXtxG7khqyiwH3IOMNdrON/Ugn94OUcRA==}
     dev: false
 
   /@types/web-bluetooth@0.0.14:
@@ -8469,11 +8465,9 @@ packages:
       is-typedarray: 1.0.0
     dev: false
 
-  /typeit@8.8.0:
-    resolution: {integrity: sha512-GQp6OW7vxro1HN3F7UPL0C2KzkGs8bFtUgmJSeK+xNhdofI40mkWxrBT2AXQwtS5Txkg7ttwplxvWCQxnUXyrw==}
+  /typeit@8.7.1:
+    resolution: {integrity: sha512-Bx/O4NMz10NWh9FWYtVwV4XwGHF9UDJfpCZPJRtw2/oUcahFAStU8J0t19aroPfTV6s1UlS5ICoqilOqmEnh2Q==}
     requiresBuild: true
-    dependencies:
-      '@types/web-animations-js': 2.2.16
     dev: false
 
   /typescript@5.3.3:

@@ -81,10 +81,10 @@ const tableData: User[] = [
     <template #header>
       <div class="card-header">
         <span class="font-medium">打印功能（报表、图表、图片）</span>
-        <div>
+        <div class="flex">
           <el-select
             v-model="value"
-            class="m-2"
+            class="!w-[100px] mr-2"
             placeholder="Select"
             size="small"
           >
@@ -121,7 +121,7 @@ const tableData: User[] = [
           }
         }"
       >
-        <p class="font-medium pt-1">Table</p>
+        <p class="font-medium text-lg text-center">Table</p>
         <el-table
           border
           :data="tableData"
@@ -134,8 +134,6 @@ const tableData: User[] = [
           <el-table-column prop="address" label="Address" />
         </el-table>
       </el-col>
-
-      <el-divider />
 
       <el-col
         v-motion
@@ -156,7 +154,7 @@ const tableData: User[] = [
           }
         }"
       >
-        <p class="font-medium pt-1">Echart</p>
+        <p class="font-medium text-lg text-center">Echart</p>
         <pieChart class="echart mt-[10px]" />
       </el-col>
 
@@ -179,11 +177,11 @@ const tableData: User[] = [
           }
         }"
       >
-        <p class="font-medium pt-1">Image</p>
+        <p class="font-medium text-lg text-center">Image</p>
         <img
-          src="https://avatars.githubusercontent.com/u/44761321?v=4"
+          src="https://pure-admin-utils.netlify.app/logo.png"
           alt="avatars"
-          class="img mt-[10px] w-[250px] h-[250px] m-auto"
+          class="img mt-[10px] m-auto"
         />
       </el-col>
     </el-row>

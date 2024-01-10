@@ -41,7 +41,7 @@ const {
           v-model="form.name"
           placeholder="请输入部门名称"
           clearable
-          class="!w-[200px]"
+          class="!w-[180px]"
         />
       </el-form-item>
       <el-form-item label="状态：" prop="status">

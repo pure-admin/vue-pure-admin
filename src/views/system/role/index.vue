@@ -49,7 +49,7 @@ const {
           v-model="form.name"
           placeholder="请输入角色名称"
           clearable
-          class="!w-[200px]"
+          class="!w-[180px]"
         />
       </el-form-item>
       <el-form-item label="角色标识：" prop="code">
