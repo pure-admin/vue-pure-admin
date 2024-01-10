@@ -19,13 +19,13 @@ dependencies:
     version: 1.2.19
   '@pureadmin/descriptions':
     specifier: ^1.2.0
-    version: 1.2.0(element-plus@2.4.4)(typescript@5.3.3)
+    version: 1.2.0(element-plus@2.5.0)(typescript@5.3.3)
   '@pureadmin/table':
-    specifier: ^3.0.0
-    version: 3.0.0(element-plus@2.4.4)(typescript@5.3.3)
+    specifier: ^3.0.1
+    version: 3.0.1(element-plus@2.5.0)(typescript@5.3.3)
   '@pureadmin/utils':
-    specifier: ^2.2.0
-    version: 2.2.0(echarts@5.4.3)(vue@3.4.5)
+    specifier: ^2.3.1
+    version: 2.3.1(echarts@5.4.3)(vue@3.4.5)
   '@vueuse/core':
     specifier: ^10.7.1
     version: 10.7.1(vue@3.4.5)
@@ -63,8 +63,8 @@ dependencies:
     specifier: ^3.0.3
     version: 3.0.3(typescript@5.3.3)
   element-plus:
-    specifier: ^2.4.4
-    version: 2.4.4(vue@3.4.5)
+    specifier: ^2.5.0
+    version: 2.5.0(vue@3.4.5)
   intro.js:
     specifier: ^7.2.0
     version: 7.2.0
@@ -1726,24 +1726,24 @@ packages:
     resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
     dev: false
 
-  /@pureadmin/descriptions@1.2.0(element-plus@2.4.4)(typescript@5.3.3):
+  /@pureadmin/descriptions@1.2.0(element-plus@2.5.0)(typescript@5.3.3):
     resolution: {integrity: sha512-k2A3SGGKf0eKrSQB3hXzgGlAz7DKSM31WN/QGBn37UCIHfQlIVrvSPEAF2omHlukQT2Artap6veCqBcJ9dGAKQ==}
     peerDependencies:
       element-plus: ^2.0.0
     dependencies:
       '@element-plus/icons-vue': 2.3.1(vue@3.4.5)
-      element-plus: 2.4.4(vue@3.4.5)
+      element-plus: 2.5.0(vue@3.4.5)
       vue: 3.4.5(typescript@5.3.3)
     transitivePeerDependencies:
       - typescript
     dev: false
 
-  /@pureadmin/table@3.0.0(element-plus@2.4.4)(typescript@5.3.3):
-    resolution: {integrity: sha512-Pfh1apzYwCfkNIrc9R0/Yi8dBZOhWZq0uwRa/b1OsDr7dYqfYs1lRxcGkPsmYgIKx8kZbaOaGBfHAsyf+WFgpQ==}
+  /@pureadmin/table@3.0.1(element-plus@2.5.0)(typescript@5.3.3):
+    resolution: {integrity: sha512-DBIv0YRZogSIEtsBPNjm6tYuImaE8ZJXwAu/gutEyaH9wATN09doKDmAisyBj+XEydfM5R9hlvhQ8SzJkbtarA==}
     peerDependencies:
       element-plus: ^2.0.0
     dependencies:
-      element-plus: 2.4.4(vue@3.4.5)
+      element-plus: 2.5.0(vue@3.4.5)
       vue: 3.4.5(typescript@5.3.3)
     transitivePeerDependencies:
       - typescript
@@ -1757,8 +1757,8 @@ packages:
       string-hash: 1.1.3
     dev: true
 
-  /@pureadmin/utils@2.2.0(echarts@5.4.3)(vue@3.4.5):
-    resolution: {integrity: sha512-G4/Qzu0QosXlfTO/gWvgpygugFuUVpwUspfuejIqBnrJEudBllx17wZdDjNEL27Uwg+HjXYjofXQUGUX4E2NtA==}
+  /@pureadmin/utils@2.3.1(echarts@5.4.3)(vue@3.4.5):
+    resolution: {integrity: sha512-rg23cFs7y0jJ54TNCIM810ZKLf6G7Hk8h2Lr/D1Uw+ertDxCtIeQYpJ56Vo+I8ibUpVZDBA0qpKiUziUTs//WA==}
     peerDependencies:
       echarts: '*'
       vue: '*'
@@ -3963,7 +3963,7 @@ packages:
     resolution: {integrity: sha512-cmMHg4MxrNOV2dFziV3ISRo+rM/3tAH8TE3wWMGKd4ucjvk21Bfb6MJfPuNAicLOkq4fYZm+J+mr0NmDPnvolQ==}
     dependencies:
       core-js: 3.35.0
-      element-plus: 2.4.4(vue@3.4.5)
+      element-plus: 2.5.0(vue@3.4.5)
       vue: 3.4.5(typescript@5.3.3)
     transitivePeerDependencies:
       - '@vue/composition-api'
@@ -3996,8 +3996,8 @@ packages:
       - '@vue/composition-api'
     dev: false
 
-  /element-plus@2.4.4(vue@3.4.5):
-    resolution: {integrity: sha512-TlKubXJgxwhER0dw+8ULn9hr9kZjraV4R6Q/eidwWUwCKxwXYPBGmMKsZ/85tlxlhMYbcLZd/YZh6G3QkHX4fg==}
+  /element-plus@2.5.0(vue@3.4.5):
+    resolution: {integrity: sha512-NE58a5Exf0/vxgxRRR2Ibs7AjiqB72lMrg7plmSoZwgZy17IQAWgzOe7ZyRtEQM/3q3BAuJDTUUAuhP/mKVPKg==}
     peerDependencies:
       vue: ^3.2.0
     dependencies:
