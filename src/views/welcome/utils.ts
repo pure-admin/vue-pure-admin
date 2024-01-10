@@ -1,6 +1,5 @@
 export { default as dayjs } from "dayjs";
-export { useResizeObserver } from "@vueuse/core";
-export { useDark, debounce, cloneDeep, randomGradient } from "@pureadmin/utils";
+export { useDark, cloneDeep, randomGradient } from "@pureadmin/utils";
 
 export function getRandomIntBetween(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1)) + min;

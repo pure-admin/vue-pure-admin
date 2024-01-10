@@ -1,20 +1,18 @@
 <script setup lang="ts">
 import { ref, markRaw } from "vue";
 import ReCol from "@/components/ReCol";
+import { useDark, randomGradient } from "./utils";
 import PureTable from "./components/table/index.vue";
 import { ReNormalCountTo } from "@/components/ReCountTo";
 import { useRenderFlicker } from "@/components/ReFlicker";
 import { barChart, lineChart, roundChart } from "./components/chart";
 import Segmented, { type OptionsType } from "@/components/ReSegmented";
-import { useResizeObserver, useDark, debounce, randomGradient } from "./utils";
 import { chartData, barChartData, progressData, latestNewsData } from "./data";
 
 defineOptions({
   name: "Welcome"
 });
 
-const barCardRef = ref();
-const barChartRef = ref();
 const { isDark } = useDark();
 
 let curWeek = ref(1); // 0上周、1本周
@@ -26,11 +24,6 @@ const optionsBasis: Array<OptionsType> = [
     label: "本周"
   }
 ];
-
-useResizeObserver(
-  barCardRef,
-  debounce(() => barChartRef.value.resize(), 60)
-);
 </script>
 
 <template>
@@ -57,7 +50,7 @@ useResizeObserver(
           }
         }"
       >
-        <el-card shadow="never">
+        <el-card class="line-card" shadow="never">
           <div class="flex justify-between">
             <span class="text-md font-medium">
               {{ item.name }}
@@ -113,14 +106,13 @@ useResizeObserver(
           }
         }"
       >
-        <el-card ref="barCardRef" shadow="never">
+        <el-card class="bar-card" shadow="never">
           <div class="flex justify-between">
             <span class="text-md font-medium">分析概览</span>
             <Segmented v-model="curWeek" :options="optionsBasis" />
           </div>
           <div class="flex justify-between items-start mt-3">
             <barChart
-              ref="barChartRef"
               :requireData="barChartData[curWeek].requireData"
               :questionData="barChartData[curWeek].questionData"
             />

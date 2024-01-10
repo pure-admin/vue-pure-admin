@@ -13,6 +13,7 @@ const { setOptions } = useECharts(chartRef, {
 });
 
 setOptions({
+  container: ".line-card",
   title: {
     text: "100%",
     left: "47%",
