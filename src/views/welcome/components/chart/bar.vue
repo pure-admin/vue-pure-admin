@@ -18,7 +18,7 @@ const { isDark } = useDark();
 const theme = computed(() => (isDark.value ? "dark" : "light"));
 
 const chartRef = ref();
-const { setOptions, resize } = useECharts(chartRef, {
+const { setOptions } = useECharts(chartRef, {
   theme
 });
 
@@ -27,7 +27,7 @@ watch(
   async () => {
     await nextTick(); // 确保DOM更新完成后再执行
     setOptions({
-      resize: false,
+      container: ".bar-card",
       color: ["#41b6ff", "#e85f33"],
       tooltip: {
         trigger: "axis",
@@ -101,10 +101,6 @@ watch(
     immediate: true
   }
 );
-
-defineExpose({
-  resize
-});
 </script>
 
 <template>

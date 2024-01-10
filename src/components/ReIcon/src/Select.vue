@@ -121,7 +121,7 @@ watch(
 </script>
 
 <template>
-  <div class="selector w-[350px]">
+  <div class="selector w-[220px]">
     <el-input v-model="inputValue" disabled>
       <template #append>
         <el-popover

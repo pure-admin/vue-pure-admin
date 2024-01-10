@@ -29,7 +29,6 @@ html.dark {
     background: #020409 !important;
   }
 
-  .frame,
   .logic-flow-view,
   .wangeditor {
     filter: invert(0.9) hue-rotate(180deg);
@@ -180,6 +179,19 @@ html.dark {
 
     .pure-segmented-item-disabled {
       color: rgb(255 255 255 / 25%);
+    }
+  }
+
+  /* 仿 el-scrollbar 滚动条样式 支持大多数浏览器，如Chrome、Edge、Firefox、Safari等 */
+  .pure-scrollbar {
+    scrollbar-color: rgb(63 64 66) transparent;
+
+    ::-webkit-scrollbar-thumb {
+      background-color: rgb(63 64 66);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgb(92 93 96);
     }
   }
 }

@@ -41,7 +41,7 @@ const columns = [
         </div>
       </template>
     </el-result>
-    <div class="p-6 ml-10 mr-10 bg-[#fafafa] dark:bg-[#1d1d1d]">
+    <div class="p-6 w-[90%] m-auto bg-[#fafafa] dark:bg-[#1d1d1d]">
       <PureDescriptions title="项目名称" :columns="columns" class="mb-5" />
       <el-steps :active="2">
         <el-step title="创建项目">

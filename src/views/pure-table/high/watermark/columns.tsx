@@ -34,8 +34,8 @@ export function useColumns(waterRef: Ref) {
         font: "16px Microsoft YaHei",
         globalAlpha: 0.8,
         forever: true,
-        width: 252,
-        height: 80
+        width: 240,
+        height: 90
       });
     });
   });

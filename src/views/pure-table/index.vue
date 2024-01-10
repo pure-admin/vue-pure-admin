@@ -20,13 +20,13 @@ function tabClick({ index }) {
         <span class="font-medium">
           平台二次封装 element-plus 的 Table ，完全兼容 Api
           并提供灵活的配置项以及完善的类型提醒，再也不用将代码都写在 template
-          里了，欢迎 Star
+          里了
           <el-link
             href="https://github.com/pure-admin/pure-admin-table"
             target="_blank"
             style="margin: 0 4px 5px; font-size: 16px"
           >
-            @pureadmin/table
+            @pureadmin/table 源码
           </el-link>
         </span>
       </div>

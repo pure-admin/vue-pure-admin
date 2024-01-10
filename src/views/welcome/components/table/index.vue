@@ -42,7 +42,7 @@ const { loading, columns, dataList, pagination, Empty, onCurrentChange } =
   </pure-table>
 </template>
 
-<!-- <style lang="scss">
+<style lang="scss">
 .pure-table-filter {
   .el-table-filter__list {
     min-width: 80px;
@@ -53,7 +53,7 @@ const { loading, columns, dataList, pagination, Empty, onCurrentChange } =
     }
   }
 }
-</style> -->
+</style>
 
 <style lang="scss" scoped>
 :deep(.el-table) {

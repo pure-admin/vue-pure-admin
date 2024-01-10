@@ -72,6 +72,7 @@ function onMouseleave() {
 
 <template>
   <el-select
+    class="!w-[200px]"
     :model-value="inputValue"
     placeholder="请选择动画"
     clearable

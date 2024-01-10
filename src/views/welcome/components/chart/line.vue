@@ -24,6 +24,7 @@ const { setOptions } = useECharts(chartRef, {
 });
 
 setOptions({
+  container: ".line-card",
   xAxis: {
     type: "category",
     show: false,
