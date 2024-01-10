@@ -14,6 +14,12 @@
     }
   }
 
+  /* popper menu 超出内容区可滚动 */
+  .pure-scrollbar {
+    max-height: calc(100vh - calc(50px * 2.5));
+    overflow: hidden auto;
+  }
+
   .sub-menu-icon {
     margin-right: 5px;
     font-size: 18px;

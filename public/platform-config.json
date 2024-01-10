@@ -17,7 +17,7 @@
   "EpThemeColor": "#409EFF",
   "ShowLogo": true,
   "ShowModel": "smart",
-  "MenuArrowIconNoTransition": true,
+  "MenuArrowIconNoTransition": false,
   "CachingAsyncRoutes": false,
   "TooltipEffect": "light",
   "ResponsiveStorageNameSpace": "responsive-",
