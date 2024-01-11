@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>动态菜单</h1>
+    <p class="mb-2">动态菜单</p>
     <div v-contextmenu:contextmenu class="wrapper">
       <code>右键点击此区域</code>
     </div>

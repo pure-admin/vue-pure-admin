@@ -19,8 +19,8 @@ onMounted(() => {
   nextTick(() => {
     setPreventLocalWatermark("无法删除的水印", {
       forever: true,
-      width: 187,
-      height: 80
+      width: 180,
+      height: 70
     });
   });
 });
@@ -36,147 +36,170 @@ onBeforeUnmount(() => {
     <template #header>
       <div class="card-header">
         <span class="font-medium">
-          页面水印功能（将平台主题改为亮白色观察水印效果更明显哦）
+          页面水印菜单树结构
+          <el-link
+            href="https://pure-admin-utils.netlify.app/hooks/useWatermark/useWatermark"
+            target="_blank"
+            style="margin: 0 5px 4px 0; font-size: 16px"
+          >
+            （查看更详细的使用文档）
+          </el-link>
         </span>
       </div>
     </template>
-    <span> 请输入要创建水印的值：</span>
-    <el-input
-      v-model="value"
-      class="mb-4 mr-4"
-      style="width: 200px"
-      clearable
-    />
-    <span>请选择要创建水印的颜色：</span>
-    <el-color-picker v-model="color" show-alpha />
-    <br />
-    <el-button @click="setWatermark(value, { color })">
-      创建整页水印
-    </el-button>
-    <el-button
-      @click="
-        setWatermark(value, {
-          gradient: [
-            { value: 0, color: 'magenta' },
-            { value: 0.5, color: 'blue' },
-            { value: 1.0, color: 'red' }
-          ]
-        })
-      "
-    >
-      创建整页渐变水印
-    </el-button>
-    <el-button
-      @click="
-        setWatermark(value, {
-          rotate: 0,
-          gradient: [
-            { value: 0, color: 'magenta' },
-            { value: 0.5, color: 'blue' },
-            { value: 1.0, color: 'red' }
-          ]
-        })
-      "
-    >
-      创建整页渐变且水平90度的水印
-    </el-button>
-    <el-button
-      @click="
-        setWatermark(value, {
-          gradient: [
-            { value: 0, color: 'magenta' },
-            { value: 0.5, color: 'blue' },
-            { value: 1.0, color: 'red' }
-          ],
-          shadowConfig: [20]
-        })
-      "
-    >
-      创建整页渐变且有阴影的水印
-    </el-button>
-    <el-button
-      @click="
-        setWatermark(value, {
-          globalAlpha: 0.15, // 值越低越透明
-          gradient: [
-            { value: 0, color: 'magenta' },
-            { value: 0.5, color: 'blue' },
-            { value: 1.0, color: 'red' }
-          ]
-        })
-      "
-    >
-      创建整页高透明渐变水印
-    </el-button>
-    <el-button @click="clear">清除整页水印</el-button>
+    <el-space wrap class="!mb-2">
+      <span> 请输入要创建水印的值：</span>
+      <el-input v-model="value" class="mr-4" style="width: 200px" clearable />
+      <span>请选择要创建水印的颜色：</span>
+      <el-color-picker v-model="color" show-alpha />
+    </el-space>
 
-    <div
-      ref="local"
-      class="mt-4 mb-4 w-[1080px] h-[400px] border-dotted border-2 border-sky-500"
-    />
-    <el-button
-      @click="
-        setLocalWatermark('局部水印', {
-          color,
-          width: 140,
-          height: 60
-        })
-      "
-    >
-      创建局部水印
-    </el-button>
-    <el-button
-      @click="
-        setLocalWatermark('局部水印', {
-          width: 140,
-          height: 60,
-          gradient: [
-            { value: 0, color: 'magenta' },
-            { value: 0.5, color: 'blue' },
-            { value: 1.0, color: 'red' }
-          ]
-        })
-      "
-    >
-      创建局部渐变水印
-    </el-button>
-    <el-button
-      @click="
-        setLocalWatermark('局部水印', {
-          width: 140,
-          height: 56.5,
-          rotate: 0,
-          gradient: [
-            { value: 0, color: 'magenta' },
-            { value: 0.5, color: 'blue' },
-            { value: 1.0, color: 'red' }
-          ]
-        })
-      "
-    >
-      创建局部渐变且水平90度的水印
-    </el-button>
-    <el-button
-      @click="
-        setLocalWatermark('局部水印', {
-          width: 140,
-          height: 56.5,
-          gradient: [
-            { value: 0, color: 'magenta' },
-            { value: 0.5, color: 'blue' },
-            { value: 1.0, color: 'red' }
-          ],
-          shadowConfig: [20]
-        })
-      "
-    >
-      创建局部渐变且有阴影的水印
-    </el-button>
-    <el-button @click="clearLocal">清除局部水印</el-button>
+    <el-space wrap>
+      <el-button bg text @click="setWatermark(value, { color })">
+        创建整页水印
+      </el-button>
+      <el-button
+        bg
+        text
+        @click="
+          setWatermark(value, {
+            gradient: [
+              { value: 0, color: 'magenta' },
+              { value: 0.5, color: 'blue' },
+              { value: 1.0, color: 'red' }
+            ]
+          })
+        "
+      >
+        创建整页渐变水印
+      </el-button>
+      <el-button
+        bg
+        text
+        @click="
+          setWatermark(value, {
+            rotate: 0,
+            gradient: [
+              { value: 0, color: 'magenta' },
+              { value: 0.5, color: 'blue' },
+              { value: 1.0, color: 'red' }
+            ]
+          })
+        "
+      >
+        创建整页渐变且水平90度的水印
+      </el-button>
+      <el-button
+        bg
+        text
+        @click="
+          setWatermark(value, {
+            gradient: [
+              { value: 0, color: 'magenta' },
+              { value: 0.5, color: 'blue' },
+              { value: 1.0, color: 'red' }
+            ],
+            shadowConfig: [20]
+          })
+        "
+      >
+        创建整页渐变且有阴影的水印
+      </el-button>
+      <el-button
+        bg
+        text
+        @click="
+          setWatermark(value, {
+            globalAlpha: 0.15, // 值越低越透明
+            gradient: [
+              { value: 0, color: 'magenta' },
+              { value: 0.5, color: 'blue' },
+              { value: 1.0, color: 'red' }
+            ]
+          })
+        "
+      >
+        创建整页高透明渐变水印
+      </el-button>
+      <el-button bg text @click="clear">清除整页水印</el-button>
+    </el-space>
 
-    <div
-      ref="preventLocal"
-      class="mt-4 mb-4 w-[1080px] h-[400px] border-dotted border-2 border-indigo-500"
-    />
+    <el-divider />
+
+    <div ref="local" class="w-1/2 h-[200px] border border-sky-500" />
+
+    <el-space wrap class="mt-6">
+      <el-button
+        bg
+        text
+        @click="
+          setLocalWatermark('局部水印', {
+            color,
+            width: 140,
+            height: 65
+          })
+        "
+      >
+        创建局部水印
+      </el-button>
+      <el-button
+        bg
+        text
+        @click="
+          setLocalWatermark('局部水印', {
+            width: 140,
+            height: 65,
+            gradient: [
+              { value: 0, color: 'magenta' },
+              { value: 0.5, color: 'blue' },
+              { value: 1.0, color: 'red' }
+            ]
+          })
+        "
+      >
+        创建局部渐变水印
+      </el-button>
+      <el-button
+        bg
+        text
+        @click="
+          setLocalWatermark('局部水印', {
+            width: 140,
+            height: 65,
+            rotate: 0,
+            gradient: [
+              { value: 0, color: 'magenta' },
+              { value: 0.5, color: 'blue' },
+              { value: 1.0, color: 'red' }
+            ]
+          })
+        "
+      >
+        创建局部渐变且水平90度的水印
+      </el-button>
+      <el-button
+        bg
+        text
+        @click="
+          setLocalWatermark('局部水印', {
+            width: 140,
+            height: 65,
+            gradient: [
+              { value: 0, color: 'magenta' },
+              { value: 0.5, color: 'blue' },
+              { value: 1.0, color: 'red' }
+            ],
+            shadowConfig: [20]
+          })
+        "
+      >
+        创建局部渐变且有阴影的水印
+      </el-button>
+      <el-button bg text @click="clearLocal">清除局部水印</el-button>
+    </el-space>
+
+    <el-divider />
+
+    <div ref="preventLocal" class="w-1/2 h-[200px] border border-indigo-500" />
   </el-card>
 </template>

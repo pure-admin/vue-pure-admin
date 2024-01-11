@@ -53,7 +53,7 @@ function changeDirection(val) {
     <el-card class="box-card" shadow="never">
       <template #header>
         <div class="card-header">
-          <span>无缝滚动示例</span>
+          <span class="font-medium">无缝滚动示例</span>
           <el-button
             class="button"
             link

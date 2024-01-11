@@ -45,8 +45,7 @@ export default {
       name: "Waterfall",
       component: () => import("@/views/components/waterfall/index.vue"),
       meta: {
-        title: $t("menus.hswaterfall"),
-        extraIcon: "IF-pure-iconfont-new svg"
+        title: $t("menus.hswaterfall")
       }
     },
     {
@@ -110,8 +109,7 @@ export default {
       name: "AnimateCss",
       component: () => import("@/views/components/animatecss/index.vue"),
       meta: {
-        title: $t("menus.hsanimatecss"),
-        extraIcon: "IF-pure-iconfont-new svg"
+        title: $t("menus.hsanimatecss")
       }
     },
     {

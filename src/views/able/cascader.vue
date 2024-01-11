@@ -25,7 +25,7 @@ const handleChange = value => {
 
 <template>
   <el-card shadow="never">
-    <template #header> 区域级联选择器 </template>
+    <template #header> <p class="font-medium">区域级联选择器</p> </template>
     <el-row :gutter="20">
       <el-col :xl="12" :lg="12" :md="24" :sm="24" :xs="24">
         <div class="flex flex-col items-center justify-center">

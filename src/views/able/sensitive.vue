@@ -29,7 +29,7 @@ function onInput() {
       <el-tag
         v-for="(word, index) in words"
         :key="index"
-        type="danger"
+        type="warning"
         class="mx-1"
         effect="dark"
         round

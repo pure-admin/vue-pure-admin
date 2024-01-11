@@ -67,6 +67,7 @@ const filteredItems = computed(() => {
 
 .scroller {
   flex: auto 1 1;
+  border: 1px solid var(--el-border-color);
 }
 
 .message {
