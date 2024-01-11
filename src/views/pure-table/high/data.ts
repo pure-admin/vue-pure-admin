@@ -43,6 +43,16 @@ const tableData = [
     date,
     name: "Mike",
     address: "No. 189, Grove St, Los Angeles"
+  },
+  {
+    date,
+    name: "Mike1",
+    address: "No. 189, Grove St, Los Angeles"
+  },
+  {
+    date,
+    name: "Mike2",
+    address: "No. 189, Grove St, Los Angeles"
   }
 ];
 
@@ -70,24 +80,19 @@ const tableDataSortable = clone(tableData, true).map((item, index) => {
 const tableDataDrag = clone(tableData, true).map((item, index) => {
   delete item.address;
   delete item.date;
-  return Object.assign(
-    {
-      id: index + 1,
-      date: `${dayjs(new Date()).format("YYYY-MM")}-${index + 1}`
-    },
-    item
-  );
+  return Object.assign(item, {
+    id: index + 1,
+    date: `${dayjs(new Date()).format("YYYY-MM")}-${index + 1}`
+  });
 });
 
 const tableDataEdit = clone(tableData, true).map((item, index) => {
   delete item.date;
-  return Object.assign(
-    {
-      id: index + 1,
-      date: `${dayjs(new Date()).format("YYYY-MM")}-${index + 1}`
-    },
-    item
-  );
+  return Object.assign(item, {
+    id: index + 1,
+    date: `${dayjs(new Date()).format("YYYY-MM")}-${index + 1}`,
+    address: "China"
+  });
 });
 
 export {
