@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>基本使用</h1>
+    <p class="mb-2">基本使用</p>
     <div v-contextmenu:contextmenu class="wrapper">
       <code>右键点击此区域</code>
     </div>

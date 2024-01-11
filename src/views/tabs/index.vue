@@ -48,7 +48,7 @@ function onCloseTags() {
 <template>
   <el-card shadow="never">
     <template #header>
-      <div>标签页复用，超出限制自动关闭</div>
+      <div class="font-medium">标签页复用，超出限制自动关闭</div>
     </template>
     <div class="flex flex-wrap items-center">
       <p>query传参模式：</p>

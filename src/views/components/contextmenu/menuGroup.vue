@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>按钮组</h1>
+    <p class="mb-2">按钮组</p>
     <div v-contextmenu:contextmenu class="wrapper">
       <code>右键点击此区域</code>
     </div>

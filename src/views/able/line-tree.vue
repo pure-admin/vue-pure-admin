@@ -35,9 +35,7 @@ const dataProps = {
       <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12" class="mb-[20px]">
         <el-card shadow="never">
           <template #header>
-            <div class="card-header">
-              <span class="font-medium"> 普通树结构 </span>
-            </div>
+            <div class="card-header">普通树结构</div>
           </template>
           <div class="max-h-[550px] overflow-y-auto">
             <el-tree
@@ -64,9 +62,7 @@ const dataProps = {
       <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
         <el-card shadow="never">
           <template #header>
-            <div class="card-header">
-              <span class="font-medium"> 虚拟树结构 </span>
-            </div>
+            <div class="card-header">虚拟树结构</div>
           </template>
           <div class="max-h-[550px] overflow-y-auto">
             <el-tree-v2

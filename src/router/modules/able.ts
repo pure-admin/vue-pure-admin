@@ -15,8 +15,7 @@ export default {
       name: "VideoFrame",
       component: () => import("@/views/able/video-frame/index.vue"),
       meta: {
-        title: $t("menus.hsVideoFrame"),
-        extraIcon: "IF-pure-iconfont-new svg"
+        title: $t("menus.hsVideoFrame")
       }
     },
     {
@@ -24,8 +23,7 @@ export default {
       name: "Wavesurfer",
       component: () => import("@/views/able/wavesurfer/index.vue"),
       meta: {
-        title: $t("menus.hsWavesurfer"),
-        extraIcon: "IF-pure-iconfont-new svg"
+        title: $t("menus.hsWavesurfer")
       }
     },
     {
@@ -169,8 +167,7 @@ export default {
       name: "Sensitive",
       component: () => import("@/views/able/sensitive.vue"),
       meta: {
-        title: $t("menus.hsSensitive"),
-        extraIcon: "IF-pure-iconfont-new svg"
+        title: $t("menus.hsSensitive")
       }
     },
     {
@@ -178,8 +175,7 @@ export default {
       name: "Pinyin",
       component: () => import("@/views/able/pinyin.vue"),
       meta: {
-        title: $t("menus.hsPinyin"),
-        extraIcon: "IF-pure-iconfont-new svg"
+        title: $t("menus.hsPinyin")
       }
     }
   ]

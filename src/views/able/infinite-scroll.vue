@@ -13,12 +13,12 @@ const dataTemplate = new Array(10).fill({
 });
 
 const data = ref([]);
-const disabled = ref(false);
 const page = ref(0);
 const total = ref(10);
+const isBottom = ref(false);
 
 const load = () => {
-  if (disabled.value) return;
+  if (isBottom.value) return;
 
   page.value++;
   if (page.value <= total.value) {
@@ -26,7 +26,7 @@ const load = () => {
   }
 
   if (page.value === total.value) {
-    disabled.value = true;
+    isBottom.value = true;
   }
 };
 </script>
@@ -46,23 +46,18 @@ const load = () => {
         ）
       </div>
     </template>
-    <div>
-      <p class="mb-2">
-        <span>loaded page(total: {{ total }}): {{ page }}, </span>
-        disabled:
-        <el-switch v-model="disabled" :disabled="page >= total" />
-      </p>
-      <el-table
-        v-el-table-infinite-scroll="load"
-        :data="data"
-        :infinite-scroll-disabled="disabled"
-        height="435px"
-      >
-        <el-table-column type="index" />
-        <el-table-column prop="date" label="date" />
-        <el-table-column prop="name" label="name" />
-        <el-table-column prop="age" label="age" />
-      </el-table>
-    </div>
+    <p class="mb-2">{{ isBottom ? "已加载全部页" : `加载到第 ${page} 页` }}</p>
+    <el-table
+      v-el-table-infinite-scroll="load"
+      border
+      height="435px"
+      :data="data"
+      :infinite-scroll-disabled="isBottom"
+    >
+      <el-table-column width="80" type="index" label="序号" />
+      <el-table-column prop="date" label="日期" />
+      <el-table-column prop="name" label="名称" />
+      <el-table-column prop="age" label="年龄" />
+    </el-table>
   </el-card>
 </template>

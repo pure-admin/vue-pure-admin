@@ -13,31 +13,31 @@ defineOptions({
 SwiperCore.use([Autoplay, Navigation, Pagination]);
 
 const swiperExample: any[] = [
-  { id: 0, label: "Default", options: {} },
+  { id: 0, label: "基础滑动", options: {} },
   {
     id: 1,
-    label: "Navigation",
+    label: "按钮切换",
     options: {
       navigation: true
     }
   },
   {
     id: 2,
-    label: "Pagination",
+    label: "分页器",
     options: {
       pagination: true
     }
   },
   {
     id: 3,
-    label: "Pagination dynamic",
+    label: "分页器 / 动态指示点",
     options: {
       pagination: { dynamicBullets: true }
     }
   },
   {
     id: 4,
-    label: "Pagination progress",
+    label: "分页器 / 进度条",
     options: {
       navigation: true,
       pagination: {
@@ -47,7 +47,7 @@ const swiperExample: any[] = [
   },
   {
     id: 5,
-    label: "Pagination fraction",
+    label: "分页器 / 分式",
     options: {
       navigation: true,
       pagination: {
@@ -57,7 +57,7 @@ const swiperExample: any[] = [
   },
   {
     id: 6,
-    label: "Slides per view",
+    label: "一次显示多个Slides",
     options: {
       pagination: {
         clickable: true
@@ -68,7 +68,7 @@ const swiperExample: any[] = [
   },
   {
     id: 7,
-    label: "Infinite loop",
+    label: "无限循环",
     options: {
       autoplay: {
         delay: 2000,
@@ -101,11 +101,11 @@ const swiperExample: any[] = [
     </template>
     <el-row :gutter="10">
       <el-col v-for="item in swiperExample" :key="item.id" :span="12">
-        <h6 class="py-[24px] text-[24px] font-bold">{{ item.label }}</h6>
+        <h6 class="py-[16px] text-base">{{ item.label }}</h6>
         <swiper v-bind="item.options">
           <swiper-slide v-for="i in 5" :key="i">
             <div
-              class="flex justify-center items-center h-[240px] border-[1px] border-[#999] text-[18px] font-bold"
+              class="flex justify-center items-center h-[240px] border border-[#999]"
             >
               Slide{{ i }}
             </div>

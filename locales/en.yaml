@@ -76,14 +76,16 @@ menus:
   hsPrint: Print
   hsDownload: Download
   hsExternalPage: External Page
-  hsPureDocument: Pure Doc(Embedded)
-  externalLink: Pure Doc(External)
-  hsEpDocument: Element Plus Doc(Embedded)
-  hsVueDocument: Vue3 Doc(Embedded)
-  hsViteDocument: Vite Doc(Embedded)
-  hsPiniaDocument: Pinia Doc(Embedded)
-  hsRouterDocument: Vue Router Doc(Embedded)
-  hsTailwindcssDocument: Tailwindcss Doc(Embedded)
+  hsExternalDoc: Docs External
+  hsEmbeddedDoc: Docs Embedded
+  externalLink: Vue-Pure-Admin
+  pureutilsLink: Pure-Admin-Utils
+  hsEpDocument: Element-Plus
+  hsTailwindcssDocument: Tailwindcss
+  hsVueDocument: Vue3
+  hsViteDocument: Vite
+  hsPiniaDocument: Pinia
+  hsRouterDocument: Vue-Router
   hsAbout: About
   hsResult: Result Page
   hsSuccess: Success Page

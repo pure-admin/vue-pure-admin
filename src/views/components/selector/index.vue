@@ -30,13 +30,11 @@ const selectedVal = ({ left, right }): void => {
     <el-card
       v-for="(item, key) in dataLists"
       :key="key"
-      class="box-card"
+      class="mb-2"
       shadow="never"
     >
       <template #header>
-        <div class="card-header">
-          <span>{{ item.title }}</span>
-        </div>
+        <span class="font-medium">{{ item.title }}</span>
       </template>
       <Selector
         :HsKey="key"
@@ -48,9 +46,3 @@ const selectedVal = ({ left, right }): void => {
     </el-card>
   </div>
 </template>
-
-<style scoped>
-.el-card {
-  margin-bottom: 10px;
-}
-</style>
