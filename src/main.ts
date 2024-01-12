@@ -1,12 +1,12 @@
 import App from "./App.vue";
 import router from "./router";
 import { setupStore } from "@/store";
-import ElementPlus from "element-plus";
 import { useI18n } from "@/plugins/i18n";
 import { getPlatformConfig } from "./config";
 import { MotionPlugin } from "@vueuse/motion";
 import { useEcharts } from "@/plugins/echarts";
 import { createApp, type Directive } from "vue";
+import { useElementPlus } from "@/plugins/elementPlus";
 import { injectResponsiveStorage } from "@/utils/responsive";
 
 import Table from "@pureadmin/table";
@@ -61,7 +61,7 @@ getPlatformConfig(app).then(async config => {
   app
     .use(MotionPlugin)
     .use(useI18n)
-    .use(ElementPlus)
+    .use(useElementPlus)
     .use(Table)
     .use(PureDescriptions)
     .use(useEcharts);
