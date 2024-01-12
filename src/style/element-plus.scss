@@ -156,6 +156,18 @@
 
 /* 自定义菜单搜索样式 */
 .pure-search-dialog {
+  @media screen and (width > 760px) and (width <= 940px) {
+    .el-input__inner {
+      font-size: 12px;
+    }
+  }
+
+  @media screen and (width <= 470px) {
+    .el-input__inner {
+      font-size: 12px;
+    }
+  }
+
   .el-dialog__header {
     display: none;
   }
