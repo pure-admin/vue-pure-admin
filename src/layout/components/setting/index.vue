@@ -6,6 +6,7 @@ import {
   reactive,
   computed,
   nextTick,
+  onUnmounted,
   onBeforeMount
 } from "vue";
 import panel from "../panel/index.vue";
@@ -21,6 +22,7 @@ import { useDataThemeChange } from "@/layout/hooks/useDataThemeChange";
 import Check from "@iconify-icons/ep/check";
 import dayIcon from "@/assets/svg/day.svg?component";
 import darkIcon from "@/assets/svg/dark.svg?component";
+import systemIcon from "@/assets/svg/system.svg?component";
 
 const { device } = useNav();
 const { isDark } = useDark();
@@ -32,6 +34,7 @@ const horizontalRef = ref();
 
 const {
   dataTheme,
+  overallStyle,
   layoutTheme,
   themeColors,
   toggleClass,
@@ -70,7 +73,7 @@ const getThemeColorStyle = computed(() => {
   };
 });
 
-/** 当网页为暗黑模式时不显示亮白色切换选项 */
+/** 当网页整体为暗色风格时不显示亮白色主题配色切换选项 */
 const showThemeColors = computed(() => {
   return themeColor => {
     return themeColor === "light" && isDark.value ? false : true;
@@ -162,13 +165,24 @@ const getThemeColor = computed(() => {
 const themeOptions = computed<Array<OptionsType>>(() => {
   return [
     {
-      label: "亮色",
+      label: "浅色",
       icon: dayIcon,
+      theme: "light",
+      tip: "清新启航，点亮舒适的工作界面",
       iconAttrs: { fill: isDark.value ? "#fff" : "#000" }
     },
     {
-      label: "暗色",
+      label: "深色",
       icon: darkIcon,
+      theme: "dark",
+      tip: "月光序曲，沉醉于夜的静谧雅致",
+      iconAttrs: { fill: isDark.value ? "#fff" : "#000" }
+    },
+    {
+      label: "自动",
+      icon: systemIcon,
+      theme: "system",
+      tip: "同步时光，界面随晨昏自然呼应",
       iconAttrs: { fill: isDark.value ? "#fff" : "#000" }
     }
   ];
@@ -177,10 +191,12 @@ const themeOptions = computed<Array<OptionsType>>(() => {
 const markOptions: Array<OptionsType> = [
   {
     label: "灵动",
+    tip: "灵动标签，添趣生辉",
     value: "smart"
   },
   {
     label: "卡片",
+    tip: "卡片标签，高效浏览",
     value: "card"
   }
 ];
@@ -195,7 +211,8 @@ function setLayoutModel(layout: string) {
     darkMode: $storage.layout?.darkMode,
     sidebarStatus: $storage.layout?.sidebarStatus,
     epThemeColor: $storage.layout?.epThemeColor,
-    themeColor: layoutTheme.value.theme
+    themeColor: $storage.layout?.themeColor,
+    overallStyle: $storage.layout?.overallStyle
   };
   useAppStoreHook().setLayout(layout);
 }
@@ -220,9 +237,34 @@ watch($storage, ({ layout }) => {
   }
 });
 
+const mediaQueryList = window.matchMedia("(prefers-color-scheme: dark)");
+
+/** 根据操作系统主题设置平台整体风格 */
+function updateTheme() {
+  if (overallStyle.value !== "system") return;
+  if (mediaQueryList.matches) {
+    dataTheme.value = true;
+  } else {
+    dataTheme.value = false;
+  }
+  dataThemeChange(overallStyle.value);
+}
+
+function removeMatchMedia() {
+  mediaQueryList.removeEventListener("change", updateTheme);
+}
+
+/** 监听操作系统主题改变 */
+function watchSystemThemeChange() {
+  updateTheme();
+  removeMatchMedia();
+  mediaQueryList.addEventListener("change", updateTheme);
+}
+
 onBeforeMount(() => {
   /* 初始化项目配置 */
   nextTick(() => {
+    watchSystemThemeChange();
     settings.greyVal &&
       document.querySelector("html")?.setAttribute("class", "html-grey");
     settings.weakVal &&
@@ -231,6 +273,8 @@ onBeforeMount(() => {
     settings.hideFooter && hideFooterChange();
   });
 });
+
+onUnmounted(() => removeMatchMedia);
 </script>
 
 <template>
@@ -238,12 +282,17 @@ onBeforeMount(() => {
     <div class="p-6">
       <p class="mb-3 font-medium text-sm dark:text-white">整体风格</p>
       <Segmented
-        :modelValue="dataTheme ? 1 : 0"
+        class="select-none"
+        :modelValue="overallStyle === 'system' ? 2 : dataTheme ? 1 : 0"
         :options="themeOptions"
         @change="
-          {
-            dataTheme = !dataTheme;
-            dataThemeChange();
+          theme => {
+            theme.index === 1 && theme.index !== 2
+              ? (dataTheme = true)
+              : (dataTheme = false);
+            overallStyle = theme.option.theme;
+            dataThemeChange(theme.option.theme);
+            theme.index === 2 && watchSystemThemeChange();
           }
         "
       />
@@ -272,7 +321,7 @@ onBeforeMount(() => {
         <li
           ref="verticalRef"
           v-tippy="{
-            content: '左侧菜单',
+            content: '左侧菜单，亲切熟悉',
             zIndex: 41000
           }"
           :class="layoutTheme.layout === 'vertical' ? 'is-select' : ''"
@@ -285,7 +334,7 @@ onBeforeMount(() => {
           v-if="device !== 'mobile'"
           ref="horizontalRef"
           v-tippy="{
-            content: '顶部菜单',
+            content: '顶部菜单，简洁概览',
             zIndex: 41000
           }"
           :class="layoutTheme.layout === 'horizontal' ? 'is-select' : ''"
@@ -298,7 +347,7 @@ onBeforeMount(() => {
           v-if="device !== 'mobile'"
           ref="mixRef"
           v-tippy="{
-            content: '混合菜单',
+            content: '混合菜单，灵活多变',
             zIndex: 41000
           }"
           :class="layoutTheme.layout === 'mix' ? 'is-select' : ''"
@@ -311,6 +360,7 @@ onBeforeMount(() => {
 
       <p class="mt-5 mb-3 font-medium text-base dark:text-white">页签风格</p>
       <Segmented
+        class="select-none"
         :modelValue="markValue === 'smart' ? 0 : 1"
         :options="markOptions"
         @change="onChange"

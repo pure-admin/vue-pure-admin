@@ -15,4 +15,6 @@ export interface OptionsType {
   value?: string | number;
   /** 是否禁用 */
   disabled?: boolean;
+  /** `tooltip` 提示 */
+  tip?: string;
 }

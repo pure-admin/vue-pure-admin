@@ -1,6 +1,6 @@
 @use "element-plus/theme-chalk/src/dark/css-vars.scss" as *;
 
-/* 暗黑模式适配 */
+/* 整体暗色风格适配 */
 html.dark {
   $border-style: #303030;
   $color-white: #fff;
@@ -126,7 +126,7 @@ html.dark {
     }
   }
 
-  /* 克隆并自定义 ElMessage 样式，不会影响 ElMessage 原本样式，在 src/utils/message.ts 中调用自定义样式 ElMessage 方法即可，非暗黑模式在 src/style/element-plus.scss 文件进行了适配 */
+  /* 克隆并自定义 ElMessage 样式，不会影响 ElMessage 原本样式，在 src/utils/message.ts 中调用自定义样式 ElMessage 方法即可，整体浅色风格在 src/style/element-plus.scss 文件进行了适配 */
   .pure-message {
     background-color: rgb(36 37 37) !important;
     background-image: initial !important;

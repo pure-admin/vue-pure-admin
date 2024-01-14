@@ -28,7 +28,8 @@ export function useLayout() {
         darkMode: $config?.DarkMode ?? false,
         sidebarStatus: $config?.SidebarStatus ?? true,
         epThemeColor: $config?.EpThemeColor ?? "#409EFF",
-        themeColor: $config?.Theme ?? "light"
+        themeColor: $config?.Theme ?? "light",
+        overallStyle: $config?.OverallStyle ?? "light"
       };
     }
     /** 灰色模式、色弱模式、隐藏标签页 */

@@ -38,6 +38,7 @@ export function useDataThemeChange() {
 
   const { $storage } = useGlobal<GlobalPropertiesApi>();
   const dataTheme = ref<boolean>($storage?.layout?.darkMode);
+  const overallStyle = ref<string>($storage?.layout?.overallStyle);
   const body = document.documentElement as HTMLElement;
 
   function toggleClass(flag: boolean, clsName: string, target?: HTMLElement) {
@@ -64,7 +65,8 @@ export function useDataThemeChange() {
       darkMode: dataTheme.value,
       sidebarStatus: $storage.layout?.sidebarStatus,
       epThemeColor: $storage.layout?.epThemeColor,
-      themeColor: isClick ? theme : storageThemeColor
+      themeColor: isClick ? theme : storageThemeColor,
+      overallStyle: overallStyle.value
     };
 
     if (theme === "default" || theme === "light") {
@@ -94,8 +96,9 @@ export function useDataThemeChange() {
     }
   };
 
-  /** 亮色、暗色整体风格切换 */
-  function dataThemeChange() {
+  /** 浅色、深色整体风格切换 */
+  function dataThemeChange(overall?: string) {
+    overallStyle.value = overall;
     if (useEpThemeStoreHook().epTheme === "light" && dataTheme.value) {
       setLayoutThemeColor("default", false);
     } else {
@@ -130,6 +133,7 @@ export function useDataThemeChange() {
   return {
     body,
     dataTheme,
+    overallStyle,
     layoutTheme,
     themeColors,
     onReset,

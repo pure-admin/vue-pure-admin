@@ -73,7 +73,8 @@ function setTheme(layoutModel: string) {
     darkMode: $storage.layout?.darkMode,
     sidebarStatus: $storage.layout?.sidebarStatus,
     epThemeColor: $storage.layout?.epThemeColor,
-    themeColor: $storage.layout?.themeColor
+    themeColor: $storage.layout?.themeColor,
+    overallStyle: $storage.layout?.overallStyle
   };
 }
 
@@ -119,7 +120,7 @@ onMounted(() => {
 });
 
 onBeforeMount(() => {
-  useDataThemeChange().dataThemeChange();
+  useDataThemeChange().dataThemeChange($storage.layout?.overallStyle);
 });
 
 const layoutHeader = defineComponent({
