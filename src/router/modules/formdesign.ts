@@ -18,7 +18,8 @@ export default {
       meta: {
         title: $t("menus.hsFormDesign"),
         frameSrc:
-          "https://haixin-fang.github.io/vue-form-design/playground/index.html"
+          "https://haixin-fang.github.io/vue-form-design/playground/index.html",
+        frameLoading: false
       }
     }
   ]

@@ -111,6 +111,7 @@ menus:
   hsPureTableBase: 基础用法（23个示例）
   hsPureTableHigh: 高级用法（11个示例）
   hsTree: 大数据树业务组件
+  hsboard: 艺术画板
   hsMenuoverflow: 目录超出显示 Tooltip 文字提示
   hsChildMenuoverflow: 菜单超出显示 Tooltip 文字提示
 status:

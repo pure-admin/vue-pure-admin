@@ -111,6 +111,7 @@ menus:
   hsPureTableBase: Base Usage
   hsPureTableHigh: High Usage
   hsTree: Big Data Tree
+  hsboard: Paint Board
   hsMenuoverflow: Menu Overflow Show Tooltip Text
   hsChildMenuoverflow: Child Menu Overflow Show Tooltip Text
 status:
