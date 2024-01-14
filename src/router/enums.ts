@@ -13,10 +13,10 @@ const home = 0, // 平台规定只有 home 路由的 rank 才能为 0 ，所以�
   system = 10,
   tabs = 11,
   about = 12,
-  formdesign = 13,
+  editor = 13,
   flowchart = 14,
-  ppt = 15,
-  editor = 16,
+  formdesign = 15,
+  ppt = 16,
   guide = 17,
   menuoverflow = 18;
 

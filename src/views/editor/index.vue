@@ -6,7 +6,7 @@ defineOptions({
   name: "Editor"
 });
 
-const activeNames = ref(["1"]);
+const activeNames = ref("1");
 </script>
 
 <template>
@@ -27,13 +27,13 @@ const activeNames = ref(["1"]);
     </template>
     <el-collapse v-model="activeNames" accordion>
       <el-collapse-item title="基础用法" name="1">
-        <Base />
+        <Base v-if="activeNames === '1'" />
       </el-collapse-item>
       <el-collapse-item title="多个富文本" name="2">
-        <Multi />
+        <Multi v-if="activeNames === '2'" />
       </el-collapse-item>
       <el-collapse-item title="自定义图片上传" name="3">
-        <PicUpload />
+        <PicUpload v-if="activeNames === '3'" />
       </el-collapse-item>
     </el-collapse>
   </el-card>

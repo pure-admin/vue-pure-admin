@@ -36,7 +36,7 @@ onBeforeUnmount(() => {
     <template #header>
       <div class="card-header">
         <span class="font-medium">
-          页面水印菜单树结构
+          页面水印
           <el-link
             href="https://pure-admin-utils.netlify.app/hooks/useWatermark/useWatermark"
             target="_blank"
@@ -55,12 +55,11 @@ onBeforeUnmount(() => {
     </el-space>
 
     <el-space wrap>
-      <el-button bg text @click="setWatermark(value, { color })">
+      <el-button plain @click="setWatermark(value, { color })">
         创建整页水印
       </el-button>
       <el-button
-        bg
-        text
+        plain
         @click="
           setWatermark(value, {
             gradient: [
@@ -74,8 +73,7 @@ onBeforeUnmount(() => {
         创建整页渐变水印
       </el-button>
       <el-button
-        bg
-        text
+        plain
         @click="
           setWatermark(value, {
             rotate: 0,
@@ -90,8 +88,7 @@ onBeforeUnmount(() => {
         创建整页渐变且水平90度的水印
       </el-button>
       <el-button
-        bg
-        text
+        plain
         @click="
           setWatermark(value, {
             gradient: [
@@ -106,8 +103,7 @@ onBeforeUnmount(() => {
         创建整页渐变且有阴影的水印
       </el-button>
       <el-button
-        bg
-        text
+        plain
         @click="
           setWatermark(value, {
             globalAlpha: 0.15, // 值越低越透明
@@ -121,7 +117,7 @@ onBeforeUnmount(() => {
       >
         创建整页高透明渐变水印
       </el-button>
-      <el-button bg text @click="clear">清除整页水印</el-button>
+      <el-button plain @click="clear">清除整页水印</el-button>
     </el-space>
 
     <el-divider />
@@ -130,8 +126,7 @@ onBeforeUnmount(() => {
 
     <el-space wrap class="mt-6">
       <el-button
-        bg
-        text
+        plain
         @click="
           setLocalWatermark('局部水印', {
             color,
@@ -143,8 +138,7 @@ onBeforeUnmount(() => {
         创建局部水印
       </el-button>
       <el-button
-        bg
-        text
+        plain
         @click="
           setLocalWatermark('局部水印', {
             width: 140,
@@ -160,8 +154,7 @@ onBeforeUnmount(() => {
         创建局部渐变水印
       </el-button>
       <el-button
-        bg
-        text
+        plain
         @click="
           setLocalWatermark('局部水印', {
             width: 140,
@@ -178,8 +171,7 @@ onBeforeUnmount(() => {
         创建局部渐变且水平90度的水印
       </el-button>
       <el-button
-        bg
-        text
+        plain
         @click="
           setLocalWatermark('局部水印', {
             width: 140,
@@ -195,7 +187,7 @@ onBeforeUnmount(() => {
       >
         创建局部渐变且有阴影的水印
       </el-button>
-      <el-button bg text @click="clearLocal">清除局部水印</el-button>
+      <el-button plain @click="clearLocal">清除局部水印</el-button>
     </el-space>
 
     <el-divider />

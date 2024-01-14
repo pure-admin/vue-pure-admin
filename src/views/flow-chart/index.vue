@@ -87,7 +87,7 @@ onMounted(() => {
         @catData="catData"
       />
       <!-- 节点面板 -->
-      <NodePanel :lf="lf" :nodeList="nodeList" />
+      <NodePanel v-if="lf" :lf="lf" :nodeList="nodeList" />
       <!-- 画布 -->
       <div id="turbo" />
       <!-- 数据查看面板 -->

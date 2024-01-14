@@ -100,8 +100,9 @@ Object.keys(devDependencies).forEach(key => {
             <span
               :class="getMainLabel(item.label)"
               style="color: var(--el-color-primary)"
-              >{{ item.field }}</span
             >
+              {{ item.field }}
+            </span>
           </a>
         </el-descriptions-item>
       </el-descriptions>
@@ -129,8 +130,9 @@ Object.keys(devDependencies).forEach(key => {
             <span
               :class="getMainLabel(item.label)"
               style="color: var(--el-color-primary)"
-              >{{ item.field }}</span
             >
+              {{ item.field }}
+            </span>
           </a>
         </el-descriptions-item>
       </el-descriptions>
