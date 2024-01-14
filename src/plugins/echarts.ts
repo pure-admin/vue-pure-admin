@@ -1,7 +1,7 @@
 import type { App } from "vue";
 import * as echarts from "echarts/core";
-import { CanvasRenderer, SVGRenderer } from "echarts/renderers";
 import { PieChart, BarChart, LineChart } from "echarts/charts";
+import { CanvasRenderer, SVGRenderer } from "echarts/renderers";
 import {
   GridComponent,
   TitleComponent,

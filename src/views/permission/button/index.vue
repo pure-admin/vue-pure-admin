@@ -16,17 +16,17 @@ defineOptions({
       </template>
       <el-space wrap>
         <Auth value="btn_add">
-          <el-button text bg type="warning">
+          <el-button plain type="warning">
             拥有code：'btn_add' 权限可见
           </el-button>
         </Auth>
         <Auth :value="['btn_edit']">
-          <el-button text bg type="primary">
+          <el-button plain type="primary">
             拥有code：['btn_edit'] 权限可见
           </el-button>
         </Auth>
         <Auth :value="['btn_add', 'btn_edit', 'btn_delete']">
-          <el-button text bg type="danger">
+          <el-button plain type="danger">
             拥有code：['btn_add', 'btn_edit', 'btn_delete'] 权限可见
           </el-button>
         </Auth>
@@ -38,16 +38,15 @@ defineOptions({
         <div class="card-header">函数方式判断权限</div>
       </template>
       <el-space wrap>
-        <el-button v-if="hasAuth('btn_add')" text bg type="warning">
+        <el-button v-if="hasAuth('btn_add')" plain type="warning">
           拥有code：'btn_add' 权限可见
         </el-button>
-        <el-button v-if="hasAuth(['btn_edit'])" text bg type="primary">
+        <el-button v-if="hasAuth(['btn_edit'])" plain type="primary">
           拥有code：['btn_edit'] 权限可见
         </el-button>
         <el-button
           v-if="hasAuth(['btn_add', 'btn_edit', 'btn_delete'])"
-          text
-          bg
+          plain
           type="danger"
         >
           拥有code：['btn_add', 'btn_edit', 'btn_delete'] 权限可见
@@ -62,16 +61,15 @@ defineOptions({
         </div>
       </template>
       <el-space wrap>
-        <el-button v-auth="'btn_add'" text bg type="warning">
+        <el-button v-auth="'btn_add'" plain type="warning">
           拥有code：'btn_add' 权限可见
         </el-button>
-        <el-button v-auth="['btn_edit']" text bg type="primary">
+        <el-button v-auth="['btn_edit']" plain type="primary">
           拥有code：['btn_edit'] 权限可见
         </el-button>
         <el-button
           v-auth="['btn_add', 'btn_edit', 'btn_delete']"
-          text
-          bg
+          plain
           type="danger"
         >
           拥有code：['btn_add', 'btn_edit', 'btn_delete'] 权限可见

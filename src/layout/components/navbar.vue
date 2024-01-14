@@ -46,7 +46,7 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
 
     <div v-if="layout === 'vertical'" class="vertical-header-right">
       <!-- 菜单搜索 -->
-      <Search />
+      <Search id="header-search" />
       <!-- 通知 -->
       <Notice id="header-notice" />
       <!-- 国际化 -->

@@ -179,6 +179,5 @@ function onChange({ index, option }) {
     <el-divider />
     <p class="mb-2">change事件</p>
     <Segmented :options="optionsChange" @change="onChange" />
-    <el-divider />
   </el-card>
 </template>

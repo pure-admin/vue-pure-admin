@@ -18,7 +18,8 @@ export default {
       meta: {
         title: $t("menus.hsFormDesign"),
         frameSrc:
-          "https://haixin-fang.github.io/starfish-vue3-lowcode/playground/index.html#/"
+          "https://haixin-fang.github.io/vue-form-design/playground/index.html",
+        frameLoading: false
       }
     }
   ]
