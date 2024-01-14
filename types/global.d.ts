@@ -83,6 +83,7 @@ declare global {
     Layout?: string;
     Theme?: string;
     DarkMode?: boolean;
+    OverallStyle?: string;
     Grey?: boolean;
     Weak?: boolean;
     HideTabs?: boolean;
@@ -127,6 +128,7 @@ declare global {
     sidebarStatus?: boolean;
     epThemeColor?: string;
     themeColor?: string;
+    overallStyle?: string;
     showLogo?: boolean;
     showModel?: string;
     mapConfigure?: {
@@ -154,6 +156,7 @@ declare global {
       sidebarStatus?: boolean;
       epThemeColor?: string;
       themeColor?: string;
+      overallStyle?: string;
     };
     configure: {
       grey?: boolean;

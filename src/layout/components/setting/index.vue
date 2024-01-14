@@ -168,18 +168,21 @@ const themeOptions = computed<Array<OptionsType>>(() => {
       label: "浅色",
       icon: dayIcon,
       theme: "light",
+      tip: "清新启航，点亮舒适的工作界面",
       iconAttrs: { fill: isDark.value ? "#fff" : "#000" }
     },
     {
       label: "深色",
       icon: darkIcon,
       theme: "dark",
+      tip: "月光序曲，沉醉于夜的静谧雅致",
       iconAttrs: { fill: isDark.value ? "#fff" : "#000" }
     },
     {
       label: "自动",
       icon: systemIcon,
       theme: "system",
+      tip: "同步时光，界面随晨昏自然呼应",
       iconAttrs: { fill: isDark.value ? "#fff" : "#000" }
     }
   ];
@@ -188,10 +191,12 @@ const themeOptions = computed<Array<OptionsType>>(() => {
 const markOptions: Array<OptionsType> = [
   {
     label: "灵动",
+    tip: "灵动标签，添趣生辉",
     value: "smart"
   },
   {
     label: "卡片",
+    tip: "卡片标签，高效浏览",
     value: "card"
   }
 ];
@@ -206,7 +211,8 @@ function setLayoutModel(layout: string) {
     darkMode: $storage.layout?.darkMode,
     sidebarStatus: $storage.layout?.sidebarStatus,
     epThemeColor: $storage.layout?.epThemeColor,
-    themeColor: layoutTheme.value.theme
+    themeColor: $storage.layout?.themeColor,
+    overallStyle: $storage.layout?.overallStyle
   };
   useAppStoreHook().setLayout(layout);
 }
@@ -231,28 +237,34 @@ watch($storage, ({ layout }) => {
   }
 });
 
-// 根据操作系统主题设置平台整体风格
+const mediaQueryList = window.matchMedia("(prefers-color-scheme: dark)");
+
+/** 根据操作系统主题设置平台整体风格 */
 function updateTheme() {
   if (overallStyle.value !== "system") return;
-  if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+  if (mediaQueryList.matches) {
     dataTheme.value = true;
   } else {
     dataTheme.value = false;
   }
-  dataThemeChange();
+  dataThemeChange(overallStyle.value);
 }
 
-// 监听操作系统主题改变
+function removeMatchMedia() {
+  mediaQueryList.removeEventListener("change", updateTheme);
+}
+
+/** 监听操作系统主题改变 */
 function watchSystemThemeChange() {
-  const mediaQueryList = window.matchMedia("(prefers-color-scheme: dark)");
+  updateTheme();
+  removeMatchMedia();
   mediaQueryList.addEventListener("change", updateTheme);
-  updateTheme(); // 初始化
 }
 
 onBeforeMount(() => {
-  watchSystemThemeChange();
   /* 初始化项目配置 */
   nextTick(() => {
+    watchSystemThemeChange();
     settings.greyVal &&
       document.querySelector("html")?.setAttribute("class", "html-grey");
     settings.weakVal &&
@@ -262,11 +274,7 @@ onBeforeMount(() => {
   });
 });
 
-onUnmounted(() => {
-  window
-    .matchMedia("(prefers-color-scheme: dark)")
-    .removeEventListener("change", updateTheme);
-});
+onUnmounted(() => removeMatchMedia);
 </script>
 
 <template>
@@ -274,6 +282,7 @@ onUnmounted(() => {
     <div class="p-6">
       <p class="mb-3 font-medium text-sm dark:text-white">整体风格</p>
       <Segmented
+        class="select-none"
         :modelValue="overallStyle === 'system' ? 2 : dataTheme ? 1 : 0"
         :options="themeOptions"
         @change="
@@ -282,7 +291,7 @@ onUnmounted(() => {
               ? (dataTheme = true)
               : (dataTheme = false);
             overallStyle = theme.option.theme;
-            dataThemeChange();
+            dataThemeChange(theme.option.theme);
             theme.index === 2 && watchSystemThemeChange();
           }
         "
@@ -312,7 +321,7 @@ onUnmounted(() => {
         <li
           ref="verticalRef"
           v-tippy="{
-            content: '左侧菜单',
+            content: '左侧菜单，亲切熟悉',
             zIndex: 41000
           }"
           :class="layoutTheme.layout === 'vertical' ? 'is-select' : ''"
@@ -325,7 +334,7 @@ onUnmounted(() => {
           v-if="device !== 'mobile'"
           ref="horizontalRef"
           v-tippy="{
-            content: '顶部菜单',
+            content: '顶部菜单，简洁概览',
             zIndex: 41000
           }"
           :class="layoutTheme.layout === 'horizontal' ? 'is-select' : ''"
@@ -338,7 +347,7 @@ onUnmounted(() => {
           v-if="device !== 'mobile'"
           ref="mixRef"
           v-tippy="{
-            content: '混合菜单',
+            content: '混合菜单，灵活多变',
             zIndex: 41000
           }"
           :class="layoutTheme.layout === 'mix' ? 'is-select' : ''"
@@ -351,6 +360,7 @@ onUnmounted(() => {
 
       <p class="mt-5 mb-3 font-medium text-base dark:text-white">页签风格</p>
       <Segmented
+        class="select-none"
         :modelValue="markValue === 'smart' ? 0 : 1"
         :options="markOptions"
         @change="onChange"
