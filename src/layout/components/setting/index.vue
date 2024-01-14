@@ -6,6 +6,7 @@ import {
   reactive,
   computed,
   nextTick,
+  onUnmounted,
   onBeforeMount
 } from "vue";
 import panel from "../panel/index.vue";
@@ -21,6 +22,7 @@ import { useDataThemeChange } from "@/layout/hooks/useDataThemeChange";
 import Check from "@iconify-icons/ep/check";
 import dayIcon from "@/assets/svg/day.svg?component";
 import darkIcon from "@/assets/svg/dark.svg?component";
+import systemIcon from "@/assets/svg/system.svg?component";
 
 const { device } = useNav();
 const { isDark } = useDark();
@@ -32,6 +34,7 @@ const horizontalRef = ref();
 
 const {
   dataTheme,
+  overallStyle,
   layoutTheme,
   themeColors,
   toggleClass,
@@ -70,7 +73,7 @@ const getThemeColorStyle = computed(() => {
   };
 });
 
-/** 当网页为暗黑模式时不显示亮白色切换选项 */
+/** 当网页整体为暗色风格时不显示亮白色主题配色切换选项 */
 const showThemeColors = computed(() => {
   return themeColor => {
     return themeColor === "light" && isDark.value ? false : true;
@@ -162,13 +165,21 @@ const getThemeColor = computed(() => {
 const themeOptions = computed<Array<OptionsType>>(() => {
   return [
     {
-      label: "亮色",
+      label: "浅色",
       icon: dayIcon,
+      theme: "light",
       iconAttrs: { fill: isDark.value ? "#fff" : "#000" }
     },
     {
-      label: "暗色",
+      label: "深色",
       icon: darkIcon,
+      theme: "dark",
+      iconAttrs: { fill: isDark.value ? "#fff" : "#000" }
+    },
+    {
+      label: "自动",
+      icon: systemIcon,
+      theme: "system",
       iconAttrs: { fill: isDark.value ? "#fff" : "#000" }
     }
   ];
@@ -220,7 +231,26 @@ watch($storage, ({ layout }) => {
   }
 });
 
+// 根据操作系统主题设置平台整体风格
+function updateTheme() {
+  if (overallStyle.value !== "system") return;
+  if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    dataTheme.value = true;
+  } else {
+    dataTheme.value = false;
+  }
+  dataThemeChange();
+}
+
+// 监听操作系统主题改变
+function watchSystemThemeChange() {
+  const mediaQueryList = window.matchMedia("(prefers-color-scheme: dark)");
+  mediaQueryList.addEventListener("change", updateTheme);
+  updateTheme(); // 初始化
+}
+
 onBeforeMount(() => {
+  watchSystemThemeChange();
   /* 初始化项目配置 */
   nextTick(() => {
     settings.greyVal &&
@@ -231,6 +261,12 @@ onBeforeMount(() => {
     settings.hideFooter && hideFooterChange();
   });
 });
+
+onUnmounted(() => {
+  window
+    .matchMedia("(prefers-color-scheme: dark)")
+    .removeEventListener("change", updateTheme);
+});
 </script>
 
 <template>
@@ -238,12 +274,16 @@ onBeforeMount(() => {
     <div class="p-6">
       <p class="mb-3 font-medium text-sm dark:text-white">整体风格</p>
       <Segmented
-        :modelValue="dataTheme ? 1 : 0"
+        :modelValue="overallStyle === 'system' ? 2 : dataTheme ? 1 : 0"
         :options="themeOptions"
         @change="
-          {
-            dataTheme = !dataTheme;
+          theme => {
+            theme.index === 1 && theme.index !== 2
+              ? (dataTheme = true)
+              : (dataTheme = false);
+            overallStyle = theme.option.theme;
             dataThemeChange();
+            theme.index === 2 && watchSystemThemeChange();
           }
         "
       />
