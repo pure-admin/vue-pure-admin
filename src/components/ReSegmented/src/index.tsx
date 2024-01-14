@@ -115,7 +115,13 @@ export default defineComponent({
             onClick={event => handleChange({ option, index }, event)}
           >
             <input type="radio" name="segmented" />
-            <div class="pure-segmented-item-label">
+            <div
+              class="pure-segmented-item-label"
+              v-tippy={{
+                content: option?.tip,
+                zIndex: 41000
+              }}
+            >
               {option.icon && !isFunction(option.label) ? (
                 <span
                   class="pure-segmented-item-icon"
