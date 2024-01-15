@@ -199,7 +199,7 @@ const layoutHeader = defineComponent({
     <a
       target="_blank"
       href="https://www.bilibili.com/video/BV1He411m7Qs/"
-      class="absolute top-[53px] right-[50px] text-lg z-[9999] cursor-pointer review"
+      class="absolute top-[53px] right-[50px] text-lg z-[999] cursor-pointer review"
     >
       回顾2023！
     </a>
