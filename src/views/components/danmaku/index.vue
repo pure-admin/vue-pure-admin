@@ -186,7 +186,7 @@ function addDanmu() {
     </div>
   </el-card>
 </template>
-<style lang="scss">
+<style lang="scss" scoped>
 .demo {
   flex: 1;
   height: 600px;
