@@ -56,8 +56,8 @@ const currentPage = computed(() => {
 const { t } = useI18n();
 const { initStorage } = useLayout();
 initStorage();
-const { dataTheme, dataThemeChange } = useDataThemeChange();
-dataThemeChange();
+const { dataTheme, overallStyle, dataThemeChange } = useDataThemeChange();
+dataThemeChange(overallStyle.value);
 const { title, getDropdownItemStyle, getDropdownItemClass } = useNav();
 const { locale, translationCh, translationEn } = useTranslationLang();
 
@@ -77,7 +77,7 @@ const onLogin = async (formEl: FormInstance | undefined) => {
         .then(res => {
           if (res.success) {
             // 获取后端路由
-            initRouter().then(() => {
+            return initRouter().then(() => {
               router.push(getTopMenu(true).path);
               message("登录成功", { type: "success" });
             });

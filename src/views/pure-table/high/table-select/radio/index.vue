@@ -17,14 +17,16 @@ const {
   <el-select
     ref="selectRef"
     v-model="selectValue"
+    class="!w-[200px]"
     placeholder="请选择"
+    value-key="id"
     clearable
   >
     <template #empty>
-      <div class="w-[600px] m-4">
+      <div class="m-4">
         <pure-table
-          height="355"
           row-key="id"
+          alignWhole="center"
           :header-cell-style="{
             background: '#f5f7fa',
             color: '#303133'

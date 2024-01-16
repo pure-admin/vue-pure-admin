@@ -13,7 +13,8 @@ export function useColumns(selectRef: Ref) {
     },
     {
       label: "日期",
-      prop: "date"
+      prop: "date",
+      minWidth: 120
     },
     {
       label: "姓名",

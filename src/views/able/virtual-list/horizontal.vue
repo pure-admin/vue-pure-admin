@@ -67,11 +67,13 @@ const filteredItems = computed(() => {
 .dynamic-scroller-demo {
   display: flex;
   flex-direction: column;
+  height: 140px;
   overflow: hidden;
 }
 
 .scroller {
   flex: auto 1 1;
+  border: 1px solid var(--el-border-color);
 }
 
 .notice {

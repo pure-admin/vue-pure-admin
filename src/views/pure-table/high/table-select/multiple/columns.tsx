@@ -1,3 +1,4 @@
+import { message } from "@/utils/message";
 import { tableDataEdit } from "../../data";
 import { ref, reactive, type Ref } from "vue";
 import type { PaginationProps } from "@pureadmin/table";
@@ -7,6 +8,7 @@ export function useColumns(selectRef: Ref, tableRef: Ref) {
   const columns: TableColumnList = [
     {
       type: "selection",
+      reserveSelection: true,
       align: "left"
     },
     {
@@ -16,7 +18,8 @@ export function useColumns(selectRef: Ref, tableRef: Ref) {
     },
     {
       label: "日期",
-      prop: "date"
+      prop: "date",
+      minWidth: 120
     },
     {
       label: "姓名",
@@ -30,7 +33,7 @@ export function useColumns(selectRef: Ref, tableRef: Ref) {
 
   /** 分页配置 */
   const pagination = reactive<PaginationProps>({
-    pageSize: 10,
+    pageSize: 5,
     currentPage: 1,
     layout: "prev, pager, next",
     total: tableDataEdit.length,
@@ -41,15 +44,14 @@ export function useColumns(selectRef: Ref, tableRef: Ref) {
   const handleSelectionChange = val => {
     const arr = [];
     val.forEach(v => {
-      arr.push(v.name);
+      arr.push({ label: v.name, id: v.id });
     });
     selectValue.value = arr;
   };
 
-  const removeTag = val => {
-    // TODO optimize el-select add formatter
+  const removeTag = ({ id }) => {
     const { toggleRowSelection } = tableRef.value.getTableRef();
-    toggleRowSelection(tableDataEdit.filter(v => v.name === val)[0], false);
+    toggleRowSelection(tableDataEdit.filter(v => v.id == id)?.[0], false);
   };
 
   const onClear = () => {
@@ -59,6 +61,9 @@ export function useColumns(selectRef: Ref, tableRef: Ref) {
 
   const onSure = () => {
     selectRef.value.blur();
+    message(`当前选中的数据为：${JSON.stringify(selectValue.value)}`, {
+      type: "success"
+    });
   };
 
   return {

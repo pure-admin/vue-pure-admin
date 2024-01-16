@@ -48,7 +48,7 @@ function onCloseTags() {
 <template>
   <el-card shadow="never">
     <template #header>
-      <div>标签页复用，超出限制自动关闭</div>
+      <div class="font-medium">标签页复用，超出限制自动关闭</div>
     </template>
     <div class="flex flex-wrap items-center">
       <p>query传参模式：</p>
@@ -86,7 +86,7 @@ function onCloseTags() {
     <el-divider />
     <el-tree-select
       v-model="currentValues"
-      class="w-[300px]"
+      class="!w-[300px]"
       node-key="uniqueId"
       placeholder="请选择要关闭的标签"
       clearable

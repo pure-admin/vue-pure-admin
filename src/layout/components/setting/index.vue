@@ -6,30 +6,26 @@ import {
   reactive,
   computed,
   nextTick,
+  onUnmounted,
   onBeforeMount
 } from "vue";
-import { getConfig } from "@/config";
-import { useRouter } from "vue-router";
 import panel from "../panel/index.vue";
 import { emitter } from "@/utils/mitt";
-import { resetRouter } from "@/router";
-import { removeToken } from "@/utils/auth";
-import { routerArrays } from "@/layout/types";
 import { useNav } from "@/layout/hooks/useNav";
 import { useAppStoreHook } from "@/store/modules/app";
+import { useDark, debounce, useGlobal } from "@pureadmin/utils";
 import { toggleTheme } from "@pureadmin/theme/dist/browser-utils";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
+import Segmented, { type OptionsType } from "@/components/ReSegmented";
 import { useDataThemeChange } from "@/layout/hooks/useDataThemeChange";
-import { useDark, debounce, useGlobal, storageLocal } from "@pureadmin/utils";
 
+import Check from "@iconify-icons/ep/check";
 import dayIcon from "@/assets/svg/day.svg?component";
 import darkIcon from "@/assets/svg/dark.svg?component";
-import Check from "@iconify-icons/ep/check";
-import Logout from "@iconify-icons/ri/logout-circle-r-line";
+import systemIcon from "@/assets/svg/system.svg?component";
 
-const router = useRouter();
+const { device } = useNav();
 const { isDark } = useDark();
-const { device, tooltipEffect } = useNav();
 const { $storage } = useGlobal<GlobalPropertiesApi>();
 
 const mixRef = ref();
@@ -38,10 +34,11 @@ const horizontalRef = ref();
 
 const {
   dataTheme,
+  overallStyle,
   layoutTheme,
   themeColors,
+  toggleClass,
   dataThemeChange,
-  setEpThemeColor,
   setLayoutThemeColor
 } = useDataThemeChange();
 
@@ -76,7 +73,7 @@ const getThemeColorStyle = computed(() => {
   };
 });
 
-/** 当网页为暗黑模式时不显示亮白色切换选项 */
+/** 当网页整体为暗色风格时不显示亮白色主题配色切换选项 */
 const showThemeColors = computed(() => {
   return themeColor => {
     return themeColor === "light" && isDark.value ? false : true;
@@ -87,13 +84,6 @@ function storageConfigureChange<T>(key: string, val: T): void {
   const storageConfigure = $storage.configure;
   storageConfigure[key] = val;
   $storage.configure = storageConfigure;
-}
-
-function toggleClass(flag: boolean, clsName: string, target?: HTMLElement) {
-  const targetEl = target || document.body;
-  let { className } = targetEl;
-  className = className.replace(clsName, "").trim();
-  targetEl.className = flag ? `${className} ${clsName} ` : className;
 }
 
 /** 灰色模式设置 */
@@ -132,24 +122,11 @@ const multiTagsCacheChange = () => {
   useMultiTagsStoreHook().multiTagsCacheChange(multiTagsCache);
 };
 
-/** 清空缓存并返回登录页 */
-function onReset() {
-  removeToken();
-  storageLocal().clear();
-  const { Grey, Weak, MultiTagsCache, EpThemeColor, Layout } = getConfig();
-  useAppStoreHook().setLayout(Layout);
-  setEpThemeColor(EpThemeColor);
-  useMultiTagsStoreHook().multiTagsCacheChange(MultiTagsCache);
-  toggleClass(Grey, "html-grey", document.querySelector("html"));
-  toggleClass(Weak, "html-weakness", document.querySelector("html"));
-  router.push("/login");
-  useMultiTagsStoreHook().handleTags("equal", [...routerArrays]);
-  resetRouter();
-}
-
-function onChange(label) {
-  storageConfigureChange("showModel", label);
-  emitter.emit("tagViewsShowModel", label);
+function onChange({ option }) {
+  const { value } = option;
+  markValue.value = value;
+  storageConfigureChange("showModel", value);
+  emitter.emit("tagViewsShowModel", value);
 }
 
 /** 侧边栏Logo */
@@ -185,6 +162,45 @@ const getThemeColor = computed(() => {
   };
 });
 
+const themeOptions = computed<Array<OptionsType>>(() => {
+  return [
+    {
+      label: "浅色",
+      icon: dayIcon,
+      theme: "light",
+      tip: "清新启航，点亮舒适的工作界面",
+      iconAttrs: { fill: isDark.value ? "#fff" : "#000" }
+    },
+    {
+      label: "深色",
+      icon: darkIcon,
+      theme: "dark",
+      tip: "月光序曲，沉醉于夜的静谧雅致",
+      iconAttrs: { fill: isDark.value ? "#fff" : "#000" }
+    },
+    {
+      label: "自动",
+      icon: systemIcon,
+      theme: "system",
+      tip: "同步时光，界面随晨昏自然呼应",
+      iconAttrs: { fill: isDark.value ? "#fff" : "#000" }
+    }
+  ];
+});
+
+const markOptions: Array<OptionsType> = [
+  {
+    label: "灵动",
+    tip: "灵动标签，添趣生辉",
+    value: "smart"
+  },
+  {
+    label: "卡片",
+    tip: "卡片标签，高效浏览",
+    value: "card"
+  }
+];
+
 /** 设置导航模式 */
 function setLayoutModel(layout: string) {
   layoutTheme.value.layout = layout;
@@ -194,7 +210,9 @@ function setLayoutModel(layout: string) {
     theme: layoutTheme.value.theme,
     darkMode: $storage.layout?.darkMode,
     sidebarStatus: $storage.layout?.sidebarStatus,
-    epThemeColor: $storage.layout?.epThemeColor
+    epThemeColor: $storage.layout?.epThemeColor,
+    themeColor: $storage.layout?.themeColor,
+    overallStyle: $storage.layout?.overallStyle
   };
   useAppStoreHook().setLayout(layout);
 }
@@ -219,9 +237,34 @@ watch($storage, ({ layout }) => {
   }
 });
 
+const mediaQueryList = window.matchMedia("(prefers-color-scheme: dark)");
+
+/** 根据操作系统主题设置平台整体风格 */
+function updateTheme() {
+  if (overallStyle.value !== "system") return;
+  if (mediaQueryList.matches) {
+    dataTheme.value = true;
+  } else {
+    dataTheme.value = false;
+  }
+  dataThemeChange(overallStyle.value);
+}
+
+function removeMatchMedia() {
+  mediaQueryList.removeEventListener("change", updateTheme);
+}
+
+/** 监听操作系统主题改变 */
+function watchSystemThemeChange() {
+  updateTheme();
+  removeMatchMedia();
+  mediaQueryList.addEventListener("change", updateTheme);
+}
+
 onBeforeMount(() => {
   /* 初始化项目配置 */
   nextTick(() => {
+    watchSystemThemeChange();
     settings.greyVal &&
       document.querySelector("html")?.setAttribute("class", "html-grey");
     settings.weakVal &&
@@ -230,189 +273,165 @@ onBeforeMount(() => {
     settings.hideFooter && hideFooterChange();
   });
 });
+
+onUnmounted(() => removeMatchMedia);
 </script>
 
 <template>
   <panel>
-    <el-divider>主题</el-divider>
-    <el-switch
-      v-model="dataTheme"
-      inline-prompt
-      class="pure-datatheme"
-      :active-icon="dayIcon"
-      :inactive-icon="darkIcon"
-      @change="dataThemeChange"
-    />
+    <div class="p-6">
+      <p class="mb-3 font-medium text-sm dark:text-white">整体风格</p>
+      <Segmented
+        class="select-none"
+        :modelValue="overallStyle === 'system' ? 2 : dataTheme ? 1 : 0"
+        :options="themeOptions"
+        @change="
+          theme => {
+            theme.index === 1 && theme.index !== 2
+              ? (dataTheme = true)
+              : (dataTheme = false);
+            overallStyle = theme.option.theme;
+            dataThemeChange(theme.option.theme);
+            theme.index === 2 && watchSystemThemeChange();
+          }
+        "
+      />
 
-    <el-divider>导航栏模式</el-divider>
-    <ul class="pure-theme">
-      <el-tooltip
-        :effect="tooltipEffect"
-        class="item"
-        content="左侧模式"
-        placement="bottom"
-        popper-class="pure-tooltip"
-      >
+      <p class="mt-5 mb-3 font-medium text-sm dark:text-white">主题色</p>
+      <ul class="theme-color">
+        <li
+          v-for="(item, index) in themeColors"
+          v-show="showThemeColors(item.themeColor)"
+          :key="index"
+          :style="getThemeColorStyle(item.color)"
+          @click="setLayoutThemeColor(item.themeColor)"
+        >
+          <el-icon
+            style="margin: 0.1em 0.1em 0 0"
+            :size="17"
+            :color="getThemeColor(item.themeColor)"
+          >
+            <IconifyIconOffline :icon="Check" />
+          </el-icon>
+        </li>
+      </ul>
+
+      <p class="mt-5 mb-3 font-medium text-sm dark:text-white">导航模式</p>
+      <ul class="pure-theme">
         <li
           ref="verticalRef"
+          v-tippy="{
+            content: '左侧菜单，亲切熟悉',
+            zIndex: 41000
+          }"
           :class="layoutTheme.layout === 'vertical' ? 'is-select' : ''"
           @click="setLayoutModel('vertical')"
         >
           <div />
           <div />
         </li>
-      </el-tooltip>
-
-      <el-tooltip
-        v-if="device !== 'mobile'"
-        :effect="tooltipEffect"
-        class="item"
-        content="顶部模式"
-        placement="bottom"
-        popper-class="pure-tooltip"
-      >
         <li
+          v-if="device !== 'mobile'"
           ref="horizontalRef"
+          v-tippy="{
+            content: '顶部菜单，简洁概览',
+            zIndex: 41000
+          }"
           :class="layoutTheme.layout === 'horizontal' ? 'is-select' : ''"
           @click="setLayoutModel('horizontal')"
         >
           <div />
           <div />
         </li>
-      </el-tooltip>
-
-      <el-tooltip
-        v-if="device !== 'mobile'"
-        :effect="tooltipEffect"
-        class="item"
-        content="混合模式"
-        placement="bottom"
-        popper-class="pure-tooltip"
-      >
         <li
+          v-if="device !== 'mobile'"
           ref="mixRef"
+          v-tippy="{
+            content: '混合菜单，灵活多变',
+            zIndex: 41000
+          }"
           :class="layoutTheme.layout === 'mix' ? 'is-select' : ''"
           @click="setLayoutModel('mix')"
         >
           <div />
           <div />
         </li>
-      </el-tooltip>
-    </ul>
+      </ul>
 
-    <el-divider>主题色</el-divider>
-    <ul class="theme-color">
-      <li
-        v-for="(item, index) in themeColors"
-        v-show="showThemeColors(item.themeColor)"
-        :key="index"
-        :style="getThemeColorStyle(item.color)"
-        @click="setLayoutThemeColor(item.themeColor)"
-      >
-        <el-icon
-          style="margin: 0.1em 0.1em 0 0"
-          :size="17"
-          :color="getThemeColor(item.themeColor)"
-        >
-          <IconifyIconOffline :icon="Check" />
-        </el-icon>
-      </li>
-    </ul>
-
-    <el-divider>界面显示</el-divider>
-    <ul class="setting">
-      <li>
-        <span class="dark:text-white">灰色模式</span>
-        <el-switch
-          v-model="settings.greyVal"
-          inline-prompt
-          inactive-color="#a6a6a6"
-          active-text="开"
-          inactive-text="关"
-          @change="greyChange"
-        />
-      </li>
-      <li>
-        <span class="dark:text-white">色弱模式</span>
-        <el-switch
-          v-model="settings.weakVal"
-          inline-prompt
-          inactive-color="#a6a6a6"
-          active-text="开"
-          inactive-text="关"
-          @change="weekChange"
-        />
-      </li>
-      <li>
-        <span class="dark:text-white">隐藏标签页</span>
-        <el-switch
-          v-model="settings.tabsVal"
-          inline-prompt
-          inactive-color="#a6a6a6"
-          active-text="开"
-          inactive-text="关"
-          @change="tagsChange"
-        />
-      </li>
-      <li>
-        <span class="dark:text-white">隐藏页脚</span>
-        <el-switch
-          v-model="settings.hideFooter"
-          inline-prompt
-          inactive-color="#a6a6a6"
-          active-text="开"
-          inactive-text="关"
-          @change="hideFooterChange"
-        />
-      </li>
-      <li>
-        <span class="dark:text-white">侧边栏Logo</span>
-        <el-switch
-          v-model="logoVal"
-          inline-prompt
-          :active-value="true"
-          :inactive-value="false"
-          inactive-color="#a6a6a6"
-          active-text="开"
-          inactive-text="关"
-          @change="logoChange"
-        />
-      </li>
-      <li>
-        <span class="dark:text-white">标签页持久化</span>
-        <el-switch
-          v-model="settings.multiTagsCache"
-          inline-prompt
-          inactive-color="#a6a6a6"
-          active-text="开"
-          inactive-text="关"
-          @change="multiTagsCacheChange"
-        />
-      </li>
-
-      <li>
-        <span class="dark:text-white">标签风格</span>
-        <el-radio-group v-model="markValue" size="small" @change="onChange">
-          <el-radio label="card">卡片</el-radio>
-          <el-radio label="smart">灵动</el-radio>
-        </el-radio-group>
-      </li>
-    </ul>
-
-    <el-divider />
-    <el-button
-      type="danger"
-      style="width: 90%; margin: 24px 15px"
-      @click="onReset"
-    >
-      <IconifyIconOffline
-        :icon="Logout"
-        width="15"
-        height="15"
-        style="margin-right: 4px"
+      <p class="mt-5 mb-3 font-medium text-base dark:text-white">页签风格</p>
+      <Segmented
+        class="select-none"
+        :modelValue="markValue === 'smart' ? 0 : 1"
+        :options="markOptions"
+        @change="onChange"
       />
-      清空缓存并返回登录页
-    </el-button>
+
+      <p class="mt-5 mb-1 font-medium text-sm dark:text-white">界面显示</p>
+      <ul class="setting">
+        <li>
+          <span class="dark:text-white">灰色模式</span>
+          <el-switch
+            v-model="settings.greyVal"
+            inline-prompt
+            active-text="开"
+            inactive-text="关"
+            @change="greyChange"
+          />
+        </li>
+        <li>
+          <span class="dark:text-white">色弱模式</span>
+          <el-switch
+            v-model="settings.weakVal"
+            inline-prompt
+            active-text="开"
+            inactive-text="关"
+            @change="weekChange"
+          />
+        </li>
+        <li>
+          <span class="dark:text-white">隐藏标签页</span>
+          <el-switch
+            v-model="settings.tabsVal"
+            inline-prompt
+            active-text="开"
+            inactive-text="关"
+            @change="tagsChange"
+          />
+        </li>
+        <li>
+          <span class="dark:text-white">隐藏页脚</span>
+          <el-switch
+            v-model="settings.hideFooter"
+            inline-prompt
+            active-text="开"
+            inactive-text="关"
+            @change="hideFooterChange"
+          />
+        </li>
+        <li>
+          <span class="dark:text-white">Logo</span>
+          <el-switch
+            v-model="logoVal"
+            inline-prompt
+            :active-value="true"
+            :inactive-value="false"
+            active-text="开"
+            inactive-text="关"
+            @change="logoChange"
+          />
+        </li>
+        <li>
+          <span class="dark:text-white">页签持久化</span>
+          <el-switch
+            v-model="settings.multiTagsCache"
+            inline-prompt
+            active-text="开"
+            inactive-text="关"
+            @change="multiTagsCacheChange"
+          />
+        </li>
+      </ul>
+    </div>
   </panel>
 </template>
 
@@ -422,41 +441,41 @@ onBeforeMount(() => {
   font-weight: 700;
 }
 
-.is-select {
-  border: 2px solid var(--el-color-primary);
+:deep(.el-switch__core) {
+  --el-switch-off-color: var(--pure-switch-off-color);
+
+  min-width: 36px;
+  height: 18px;
 }
 
-.setting {
-  width: 100%;
+:deep(.el-switch__core .el-switch__action) {
+  height: 14px;
+}
+
+.theme-color {
+  height: 20px;
 
   li {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 25px;
-  }
-}
+    float: left;
+    height: 20px;
+    margin-right: 8px;
+    cursor: pointer;
+    border-radius: 4px;
 
-.pure-datatheme {
-  display: block;
-  width: 100%;
-  height: 50px;
-  padding-top: 25px;
-  text-align: center;
+    &:nth-child(1) {
+      border: 1px solid #ddd;
+    }
+  }
 }
 
 .pure-theme {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  width: 100%;
-  height: 50px;
-  margin-top: 25px;
+  gap: 12px;
 
   li {
     position: relative;
-    width: 18%;
-    height: 45px;
+    width: 46px;
+    height: 36px;
     overflow: hidden;
     cursor: pointer;
     background: #f0f2f5;
@@ -517,27 +536,17 @@ onBeforeMount(() => {
   }
 }
 
-.theme-color {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 40px;
-  margin-top: 20px;
+.is-select {
+  border: 2px solid var(--el-color-primary);
+}
 
+.setting {
   li {
-    float: left;
-    width: 20px;
-    height: 20px;
-    margin-top: 8px;
-    margin-right: 8px;
-    font-weight: 700;
-    text-align: center;
-    cursor: pointer;
-    border-radius: 2px;
-
-    &:nth-child(2) {
-      border: 1px solid #ddd;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 0;
+    font-size: 14px;
   }
 }
 </style>

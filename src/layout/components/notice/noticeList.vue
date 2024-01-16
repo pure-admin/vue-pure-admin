@@ -19,5 +19,5 @@ const props = defineProps({
       :noticeItem="item"
     />
   </div>
-  <el-empty v-else description="暂无数据" />
+  <el-empty v-else description="暂无消息" />
 </template>

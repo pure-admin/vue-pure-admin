@@ -6,7 +6,6 @@ import { ElMessageBox } from "element-plus";
 import { ref, onMounted, nextTick } from "vue";
 import dialogForm from "./components/DialogForm.vue";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
-import Search from "@iconify-icons/ep/search";
 import AddFill from "@iconify-icons/ri/add-circle-line";
 
 defineOptions({
@@ -111,7 +110,7 @@ const handleManageProduct = product => {
           <el-icon class="el-input__icon">
             <IconifyIconOffline
               v-show="searchValue.length === 0"
-              :icon="Search"
+              icon="search"
             />
           </el-icon>
         </template>
@@ -133,7 +132,7 @@ const handleManageProduct = product => {
               v.name.toLowerCase().includes(searchValue.toLowerCase())
             ).length === 0
         "
-        description="暂无数据"
+        :description="`${searchValue} 产品不存在`"
       />
       <template v-if="pagination.total > 0">
         <el-row :gutter="16">

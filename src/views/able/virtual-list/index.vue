@@ -12,7 +12,7 @@ defineOptions({
   <el-card shadow="never">
     <template #header>
       <div class="font-medium">
-        虚拟列表组件（
+        虚拟列表（
         <el-link
           href="https://github.com/Akryum/vue-virtual-scroller/tree/next/packages/vue-virtual-scroller"
           target="_blank"

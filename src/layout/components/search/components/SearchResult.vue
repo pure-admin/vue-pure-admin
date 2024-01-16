@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { transformI18n } from "@/plugins/i18n";
-import { useResizeObserver } from "@vueuse/core";
+import { useResizeObserver } from "@pureadmin/utils";
 import { useEpThemeStoreHook } from "@/store/modules/epTheme";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import { ref, computed, getCurrentInstance, onMounted } from "vue";
@@ -65,9 +65,7 @@ function resizeResult() {
   innerHeight.value = window.innerHeight - window.innerHeight / 10 - 140;
 }
 
-useResizeObserver(resultRef, () => {
-  resizeResult();
-});
+useResizeObserver(resultRef, resizeResult);
 
 function handleScroll(index: number) {
   const curInstance = instance?.proxy?.$refs[`resultItemRef${index}`];

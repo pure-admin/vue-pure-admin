@@ -50,12 +50,6 @@
   padding: 0 !important;
 }
 
-/* 自定义 tooltip 的类名 */
-.pure-tooltip {
-  // 右侧操作面板right-panel类名的z-index为40000，tooltip需要大于它才能显示
-  z-index: 41000 !important;
-}
-
 /* nprogress 适配 element-plus 的主题色 */
 #nprogress {
   & .bar {
@@ -122,7 +116,7 @@
   }
 }
 
-/* 克隆并自定义 ElMessage 样式，不会影响 ElMessage 原本样式，在 src/utils/message.ts 中调用自定义样式 ElMessage 方法即可，暗黑模式在 src/style/dark.scss 文件进行了适配 */
+/* 克隆并自定义 ElMessage 样式，不会影响 ElMessage 原本样式，在 src/utils/message.ts 中调用自定义样式 ElMessage 方法即可，整体暗色风格在 src/style/dark.scss 文件进行了适配 */
 .pure-message {
   padding: 10px 13px !important;
   background: #fff !important;
@@ -162,6 +156,18 @@
 
 /* 自定义菜单搜索样式 */
 .pure-search-dialog {
+  @media screen and (width > 760px) and (width <= 940px) {
+    .el-input__inner {
+      font-size: 12px;
+    }
+  }
+
+  @media screen and (width <= 470px) {
+    .el-input__inner {
+      font-size: 12px;
+    }
+  }
+
   .el-dialog__header {
     display: none;
   }
@@ -180,5 +186,31 @@
     box-shadow:
       0 -1px 0 0 #e0e3e8,
       0 -3px 6px 0 rgb(69 98 155 / 12%);
+  }
+}
+
+/* 仿 el-scrollbar 滚动条样式，支持大多数浏览器，如Chrome、Edge、Firefox、Safari等。整体暗色风格在 src/style/dark.scss 文件进行了适配 */
+.pure-scrollbar {
+  /* Firefox */
+  scrollbar-width: thin; /* 可选值为 'auto', 'thin', 'none' */
+  scrollbar-color: rgb(221 222 224) transparent; /* 滑块颜色、轨道颜色 */
+  ::-webkit-scrollbar {
+    width: 6px; /* 滚动条宽度 */
+  }
+
+  /* 滚动条轨道 */
+  ::-webkit-scrollbar-track {
+    background: transparent; /* 轨道颜色 */
+  }
+
+  /* 滚动条滑块 */
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(221 222 224);
+    border-radius: 4px;
+  }
+
+  /* 滚动条滑块：hover状态 */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(199 201 203); /* 滑块hover颜色 */
   }
 }

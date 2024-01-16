@@ -24,7 +24,7 @@ const router = useRouter();
           opacity: 1,
           y: 0,
           transition: {
-            delay: 100
+            delay: 80
           }
         }"
       >
@@ -41,7 +41,7 @@ const router = useRouter();
           opacity: 1,
           y: 0,
           transition: {
-            delay: 300
+            delay: 120
           }
         }"
       >
@@ -58,7 +58,7 @@ const router = useRouter();
           opacity: 1,
           y: 0,
           transition: {
-            delay: 500
+            delay: 160
           }
         }"
         @click="router.push('/')"

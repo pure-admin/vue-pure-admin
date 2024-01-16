@@ -6,7 +6,6 @@ import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 
 import Delete from "@iconify-icons/ep/delete";
 import EditPen from "@iconify-icons/ep/edit-pen";
-import Search from "@iconify-icons/ep/search";
 import Refresh from "@iconify-icons/ep/refresh";
 import AddFill from "@iconify-icons/ri/add-circle-line";
 
@@ -42,7 +41,7 @@ const {
           v-model="form.name"
           placeholder="请输入部门名称"
           clearable
-          class="!w-[200px]"
+          class="!w-[180px]"
         />
       </el-form-item>
       <el-form-item label="状态：" prop="status">
@@ -59,7 +58,7 @@ const {
       <el-form-item>
         <el-button
           type="primary"
-          :icon="useRenderIcon(Search)"
+          :icon="useRenderIcon('search')"
           :loading="loading"
           @click="onSearch"
         >

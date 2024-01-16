@@ -1,11 +1,18 @@
 @use "element-plus/theme-chalk/src/dark/css-vars.scss" as *;
 
-/* 暗黑模式适配 */
+/* 整体暗色风格适配 */
 html.dark {
-  /* 自定义深色背景颜色 */
-  // --el-bg-color: #020409;
   $border-style: #303030;
   $color-white: #fff;
+
+  /* 自定义深色背景颜色 */
+  // --el-bg-color: #020409;
+
+  /* 常用border-color 需要时可取用 */
+  --pure-border-color: rgb(253 253 253 / 12%);
+
+  /* switch关闭状态下的color 需要时可取用 */
+  --pure-switch-off-color: #ffffff3f;
 
   .navbar,
   .tags-view,
@@ -22,7 +29,6 @@ html.dark {
     background: #020409 !important;
   }
 
-  .frame,
   .logic-flow-view,
   .wangeditor {
     filter: invert(0.9) hue-rotate(180deg);
@@ -93,8 +99,10 @@ html.dark {
   }
 
   .el-backtop {
-    --el-backtop-bg-color: var(--el-color-primary-light-9);
+    --el-backtop-bg-color: rgb(72 72 78);
     --el-backtop-hover-bg-color: var(--el-color-primary);
+
+    transition: background-color 0.25s cubic-bezier(0.7, 0.3, 0.1, 1);
   }
 
   .el-dropdown-menu__item:not(.is-disabled):hover {
@@ -118,7 +126,7 @@ html.dark {
     }
   }
 
-  /* 克隆并自定义 ElMessage 样式，不会影响 ElMessage 原本样式，在 src/utils/message.ts 中调用自定义样式 ElMessage 方法即可，非暗黑模式在 src/style/element-plus.scss 文件进行了适配 */
+  /* 克隆并自定义 ElMessage 样式，不会影响 ElMessage 原本样式，在 src/utils/message.ts 中调用自定义样式 ElMessage 方法即可，整体浅色风格在 src/style/element-plus.scss 文件进行了适配 */
   .pure-message {
     background-color: rgb(36 37 37) !important;
     background-image: initial !important;
@@ -171,6 +179,19 @@ html.dark {
 
     .pure-segmented-item-disabled {
       color: rgb(255 255 255 / 25%);
+    }
+  }
+
+  /* 仿 el-scrollbar 滚动条样式 支持大多数浏览器，如Chrome、Edge、Firefox、Safari等 */
+  .pure-scrollbar {
+    scrollbar-color: rgb(63 64 66) transparent;
+
+    ::-webkit-scrollbar-thumb {
+      background-color: rgb(63 64 66);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgb(92 93 96);
     }
   }
 }

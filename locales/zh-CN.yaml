@@ -77,14 +77,16 @@ menus:
   hsPrint: 打印
   hsDownload: 下载
   hsExternalPage: 外部页面
-  hsPureDocument: 平台文档（内嵌）
-  externalLink: 平台文档（外链）
-  hsEpDocument: Element Plus 文档（内嵌）
-  hsVueDocument: Vue3 文档（内嵌）
-  hsViteDocument: Vite 文档（内嵌）
-  hsPiniaDocument: Pinia 文档（内嵌）
-  hsRouterDocument: Vue Router 文档（内嵌）
-  hsTailwindcssDocument: Tailwindcss 文档（内嵌）
+  hsExternalDoc: 文档外链
+  hsEmbeddedDoc: 文档内嵌
+  externalLink: vue-pure-admin
+  pureutilsLink: pure-admin-utils
+  hsEpDocument: element-plus
+  hsTailwindcssDocument: tailwindcss
+  hsVueDocument: vue3
+  hsViteDocument: vite
+  hsPiniaDocument: pinia
+  hsRouterDocument: vue-router
   hsAbout: 关于
   hsResult: 结果页面
   hsSuccess: 成功页面
@@ -110,6 +112,7 @@ menus:
   hsPureTableBase: 基础用法（23个示例）
   hsPureTableHigh: 高级用法（11个示例）
   hsTree: 大数据树业务组件
+  hsboard: 艺术画板
   hsMenuoverflow: 目录超出显示 Tooltip 文字提示
   hsChildMenuoverflow: 菜单超出显示 Tooltip 文字提示
 status:

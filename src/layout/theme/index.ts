@@ -6,10 +6,23 @@ import type { multipleScopeVarsOptions } from "@pureadmin/theme";
 
 /** 预设主题色 */
 const themeColors = {
+  /* 亮白色 */
+  light: {
+    subMenuActiveText: "#000000d9",
+    menuBg: "#fff",
+    menuHover: "#f6f6f6",
+    subMenuBg: "#fff",
+    subMenuActiveBg: "#e0ebf6",
+    menuText: "rgb(0 0 0 / 60%)",
+    sidebarLogo: "#fff",
+    menuTitleHover: "#000",
+    menuActiveBefore: "#4091f7"
+  },
+  /* 道奇蓝 */
   default: {
     subMenuActiveText: "#fff",
     menuBg: "#001529",
-    menuHover: "#4091f7",
+    menuHover: "rgb(64 145 247 / 15%)",
     subMenuBg: "#0f0303",
     subMenuActiveBg: "#4091f7",
     menuText: "rgb(254 254 254 / 65%)",
@@ -17,76 +30,23 @@ const themeColors = {
     menuTitleHover: "#fff",
     menuActiveBefore: "#4091f7"
   },
-  light: {
-    subMenuActiveText: "#409eff",
-    menuBg: "#fff",
-    menuHover: "#e0ebf6",
-    subMenuBg: "#fff",
-    subMenuActiveBg: "#e0ebf6",
-    menuText: "#7a80b4",
-    sidebarLogo: "#fff",
-    menuTitleHover: "#000",
-    menuActiveBefore: "#4091f7"
-  },
-  dusk: {
+  /* 深紫罗兰色 */
+  saucePurple: {
     subMenuActiveText: "#fff",
-    menuBg: "#2a0608",
-    menuHover: "#e13c39",
+    menuBg: "#130824",
+    menuHover: "rgb(105 58 201 / 15%)",
     subMenuBg: "#000",
-    subMenuActiveBg: "#e13c39",
-    menuText: "rgb(254 254 254 / 65.1%)",
-    sidebarLogo: "#42090c",
-    menuTitleHover: "#fff",
-    menuActiveBefore: "#e13c39"
-  },
-  volcano: {
-    subMenuActiveText: "#fff",
-    menuBg: "#2b0e05",
-    menuHover: "#e85f33",
-    subMenuBg: "#0f0603",
-    subMenuActiveBg: "#e85f33",
-    menuText: "rgb(254 254 254 / 65%)",
-    sidebarLogo: "#441708",
-    menuTitleHover: "#fff",
-    menuActiveBefore: "#e85f33"
-  },
-  yellow: {
-    subMenuActiveText: "#d25f00",
-    menuBg: "#2b2503",
-    menuHover: "#f6da4d",
-    subMenuBg: "#0f0603",
-    subMenuActiveBg: "#f6da4d",
-    menuText: "rgb(254 254 254 / 65%)",
-    sidebarLogo: "#443b05",
-    menuTitleHover: "#fff",
-    menuActiveBefore: "#f6da4d"
-  },
-  mingQing: {
-    subMenuActiveText: "#fff",
-    menuBg: "#032121",
-    menuHover: "#59bfc1",
-    subMenuBg: "#000",
-    subMenuActiveBg: "#59bfc1",
+    subMenuActiveBg: "#693ac9",
     menuText: "#7a80b4",
-    sidebarLogo: "#053434",
+    sidebarLogo: "#1f0c38",
     menuTitleHover: "#fff",
-    menuActiveBefore: "#59bfc1"
+    menuActiveBefore: "#693ac9"
   },
-  auroraGreen: {
-    subMenuActiveText: "#fff",
-    menuBg: "#0b1e15",
-    menuHover: "#60ac80",
-    subMenuBg: "#000",
-    subMenuActiveBg: "#60ac80",
-    menuText: "#7a80b4",
-    sidebarLogo: "#112f21",
-    menuTitleHover: "#fff",
-    menuActiveBefore: "#60ac80"
-  },
+  /* 深粉色 */
   pink: {
     subMenuActiveText: "#fff",
     menuBg: "#28081a",
-    menuHover: "#d84493",
+    menuHover: "rgb(216 68 147 / 15%)",
     subMenuBg: "#000",
     subMenuActiveBg: "#d84493",
     menuText: "#7a80b4",
@@ -94,16 +54,53 @@ const themeColors = {
     menuTitleHover: "#fff",
     menuActiveBefore: "#d84493"
   },
-  saucePurple: {
+  /* 猩红色 */
+  dusk: {
     subMenuActiveText: "#fff",
-    menuBg: "#130824",
-    menuHover: "#693ac9",
+    menuBg: "#2a0608",
+    menuHover: "rgb(225 60 57 / 15%)",
     subMenuBg: "#000",
-    subMenuActiveBg: "#693ac9",
-    menuText: "#7a80b4",
-    sidebarLogo: "#1f0c38",
+    subMenuActiveBg: "#e13c39",
+    menuText: "rgb(254 254 254 / 65.1%)",
+    sidebarLogo: "#42090c",
     menuTitleHover: "#fff",
-    menuActiveBefore: "#693ac9"
+    menuActiveBefore: "#e13c39"
+  },
+  /* 橙红色 */
+  volcano: {
+    subMenuActiveText: "#fff",
+    menuBg: "#2b0e05",
+    menuHover: "rgb(232 95 51 / 15%)",
+    subMenuBg: "#0f0603",
+    subMenuActiveBg: "#e85f33",
+    menuText: "rgb(254 254 254 / 65%)",
+    sidebarLogo: "#441708",
+    menuTitleHover: "#fff",
+    menuActiveBefore: "#e85f33"
+  },
+  /* 绿宝石 */
+  mingQing: {
+    subMenuActiveText: "#fff",
+    menuBg: "#032121",
+    menuHover: "rgb(89 191 193 / 15%)",
+    subMenuBg: "#000",
+    subMenuActiveBg: "#59bfc1",
+    menuText: "#7a80b4",
+    sidebarLogo: "#053434",
+    menuTitleHover: "#fff",
+    menuActiveBefore: "#59bfc1"
+  },
+  /* 酸橙绿 */
+  auroraGreen: {
+    subMenuActiveText: "#fff",
+    menuBg: "#0b1e15",
+    menuHover: "rgb(96 172 128 / 15%)",
+    subMenuBg: "#000",
+    subMenuActiveBg: "#60ac80",
+    menuText: "#7a80b4",
+    sidebarLogo: "#112f21",
+    menuTitleHover: "#fff",
+    menuActiveBefore: "#60ac80"
   }
 };
 

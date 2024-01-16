@@ -92,7 +92,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <el-scrollbar height="87vh" class="content">
+  <el-scrollbar max-height="calc(100vh - 90px)" class="content">
     <Waterfall :list="list" v-bind="options">
       <template #item="{ item, url, index }">
         <div
@@ -149,3 +149,13 @@ onMounted(() => {
     <InfiniteLoading :firstload="false" @infinite="handleLoadMore" />
   </el-scrollbar>
 </template>
+
+<style lang="scss" scoped>
+.main-content {
+  margin: 0 !important;
+}
+
+:deep(.el-loading-spinner .el-loading-text) {
+  font-size: 24px;
+}
+</style>

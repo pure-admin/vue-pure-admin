@@ -71,7 +71,7 @@ export const list = [
   {
     key: "watermark",
     content: rendContent("watermark"),
-    title: "水印（无法删除的水印哦🤓️）",
+    title: "水印",
     component: Watermark
   },
   {

@@ -19,7 +19,7 @@ const throttleClick = throttle(handle);
   <div>
     <el-card class="mb-5" shadow="never">
       <template #header>
-        <div>防抖：debounce</div>
+        <div class="font-medium">防抖：debounce</div>
       </template>
       <div class="mb-5">
         所谓防抖，就是指触发事件后在 n 秒内函数只能执行一次，如果在 n
@@ -34,7 +34,7 @@ const throttleClick = throttle(handle);
     </el-card>
     <el-card shadow="never">
       <template #header>
-        <div>节流：throttle</div>
+        <div class="font-medium">节流：throttle</div>
       </template>
       <div class="mb-5">
         所谓节流，就是指连续触发事件但是在 n

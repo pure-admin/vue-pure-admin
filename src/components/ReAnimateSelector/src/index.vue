@@ -7,15 +7,9 @@ defineOptions({
   name: "ReAnimateSelector"
 });
 
-const props = defineProps({
-  modelValue: {
-    require: false,
-    type: String
-  }
-});
-const emit = defineEmits<{ (e: "update:modelValue", v: string) }>();
+const inputValue = defineModel({ type: String });
 
-const inputValue = toRef(props, "modelValue");
+const searchVal = ref();
 const animatesList = ref(animates);
 const copyAnimatesList = cloneDeep(animatesList);
 
@@ -47,14 +41,15 @@ const animateStyle = computed(
 );
 
 function onChangeIcon(animate: string) {
-  emit("update:modelValue", animate);
+  inputValue.value = animate;
 }
 
 function onClear() {
-  emit("update:modelValue", "");
+  inputValue.value = "";
 }
 
 function filterMethod(value: any) {
+  searchVal.value = value;
   animatesList.value = copyAnimatesList.value.filter((i: string | any[]) =>
     i.includes(value)
   );
@@ -118,7 +113,7 @@ function onMouseleave() {
           </ul>
           <el-empty
             v-show="animatesList.length === 0"
-            description="暂无动画"
+            :description="`${searchVal} 动画不存在`"
             :image-size="60"
           />
         </el-scrollbar>

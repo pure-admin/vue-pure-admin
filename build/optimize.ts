@@ -25,7 +25,6 @@ const include = [
   "sortablejs",
   "swiper/vue",
   "mint-filter",
-  "md-editor-v3",
   "@vueuse/core",
   "vue3-danmaku",
   "v-contextmenu",

@@ -20,21 +20,21 @@ const {
   <el-select
     ref="selectRef"
     v-model="selectValue"
-    class="w-[160px]"
+    class="!w-[200px]"
     placeholder="请选择"
     clearable
     multiple
     collapse-tags
-    collapse-tags-tooltip
+    value-key="id"
     @remove-tag="removeTag"
     @clear="onClear"
   >
     <template #empty>
-      <div class="w-[600px] m-4">
+      <div class="m-4">
         <pure-table
           ref="tableRef"
-          height="355"
           row-key="id"
+          alignWhole="center"
           :header-cell-style="{
             background: '#f5f7fa',
             color: '#303133'

@@ -32,8 +32,8 @@ function tabClick({ index }) {
     </template>
 
     <el-alert
-      title="高级用法中所有表格都设置了 row-key ，后端需返回唯一值的字段，比如id 作用：1. 用来优化 Table
-      的渲染，尤其当字段在深层结构中；2. 防止拖拽后表格组件内部混乱（拖拽必须设置哦，坑都帮您们踩过啦 ❤️）"
+      title="高级用法中所有表格都设置了 row-key ，后端需返回唯一值的字段，比如id。作用：1. 用来优化 Table
+      的渲染，尤其当字段在深层结构中；2. 防止拖拽后表格组件内部混乱（拖拽必须设置）"
       type="info"
       :closable="false"
     />

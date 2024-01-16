@@ -3,8 +3,6 @@ import { ref, onMounted } from "vue";
 import Sortable, { Swap } from "sortablejs";
 import draggable from "vuedraggable/src/vuedraggable";
 import { useAppStoreHook } from "@/store/modules/app";
-import { useRenderIcon } from "@/components/ReIcon/src/hooks";
-import Rank from "@iconify-icons/ep/rank";
 
 defineOptions({
   name: "Draggable"
@@ -64,7 +62,6 @@ onMounted(() => {
           <el-link
             href="https://sortablejs.github.io/vue.draggable.next/#/simple"
             target="_blank"
-            :icon="useRenderIcon(Rank)"
             style="margin: 0 4px 5px; font-size: 16px"
           >
             vuedraggable
