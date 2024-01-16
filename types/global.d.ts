@@ -91,6 +91,8 @@ declare global {
     CachingAsyncRoutes?: boolean;
     TooltipEffect?: Effect;
     ResponsiveStorageNameSpace?: string;
+    KeepAliveFrame?: boolean;
+    KeepFrameMax?: number;
     MapConfigure?: {
       amapKey?: string;
       options: {
