@@ -351,6 +351,7 @@ export function useUser(tableRef: Ref, treeRef: Ref) {
     });
   }
 
+  const cropRef = ref();
   /** 上传头像 */
   function handleUpload(row) {
     addDialog({
@@ -360,6 +361,7 @@ export function useUser(tableRef: Ref, treeRef: Ref) {
       closeOnClickModal: false,
       contentRenderer: () =>
         h(croppingUpload, {
+          ref: cropRef,
           imgSrc: row.avatar,
           onCropper: info => (avatarInfo.value = info)
         }),
@@ -368,7 +370,8 @@ export function useUser(tableRef: Ref, treeRef: Ref) {
         // 根据实际业务使用avatarInfo.value和row里的某些字段去调用上传头像接口即可
         done(); // 关闭弹框
         onSearch(); // 刷新表格数据
-      }
+      },
+      closeCallBack: () => cropRef.value.hidePopover()
     });
   }
 

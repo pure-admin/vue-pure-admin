@@ -10,6 +10,7 @@ const props = defineProps({
 const emit = defineEmits(["cropper"]);
 
 const infos = ref();
+const popoverRef = ref();
 const refCropper = ref();
 const showPopover = ref(false);
 const cropperImg = ref<string>("");
@@ -19,11 +20,22 @@ function onCropper({ base64, blob, info }) {
   cropperImg.value = base64;
   emit("cropper", { base64, blob, info });
 }
+
+function hidePopover() {
+  popoverRef.value.hide();
+}
+
+defineExpose({ hidePopover });
 </script>
 
 <template>
   <div v-loading="!showPopover" element-loading-background="transparent">
-    <el-popover :visible="showPopover" placement="right" width="18vw">
+    <el-popover
+      ref="popoverRef"
+      :visible="showPopover"
+      placement="right"
+      width="18vw"
+    >
       <template #reference>
         <div class="w-[18vw]">
           <ReCropper
