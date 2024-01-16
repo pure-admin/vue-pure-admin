@@ -10,7 +10,7 @@ const themeColors = {
   light: {
     subMenuActiveText: "#000000d9",
     menuBg: "#fff",
-    menuHover: "#e0ebf6",
+    menuHover: "#f6f6f6",
     subMenuBg: "#fff",
     subMenuActiveBg: "#e0ebf6",
     menuText: "rgb(0 0 0 / 60%)",
@@ -22,7 +22,7 @@ const themeColors = {
   default: {
     subMenuActiveText: "#fff",
     menuBg: "#001529",
-    menuHover: "#4091f7",
+    menuHover: "rgb(64 145 247 / 15%)",
     subMenuBg: "#0f0303",
     subMenuActiveBg: "#4091f7",
     menuText: "rgb(254 254 254 / 65%)",
@@ -34,7 +34,7 @@ const themeColors = {
   saucePurple: {
     subMenuActiveText: "#fff",
     menuBg: "#130824",
-    menuHover: "#693ac9",
+    menuHover: "rgb(105 58 201 / 15%)",
     subMenuBg: "#000",
     subMenuActiveBg: "#693ac9",
     menuText: "#7a80b4",
@@ -46,7 +46,7 @@ const themeColors = {
   pink: {
     subMenuActiveText: "#fff",
     menuBg: "#28081a",
-    menuHover: "#d84493",
+    menuHover: "rgb(216 68 147 / 15%)",
     subMenuBg: "#000",
     subMenuActiveBg: "#d84493",
     menuText: "#7a80b4",
@@ -58,7 +58,7 @@ const themeColors = {
   dusk: {
     subMenuActiveText: "#fff",
     menuBg: "#2a0608",
-    menuHover: "#e13c39",
+    menuHover: "rgb(225 60 57 / 15%)",
     subMenuBg: "#000",
     subMenuActiveBg: "#e13c39",
     menuText: "rgb(254 254 254 / 65.1%)",
@@ -70,7 +70,7 @@ const themeColors = {
   volcano: {
     subMenuActiveText: "#fff",
     menuBg: "#2b0e05",
-    menuHover: "#e85f33",
+    menuHover: "rgb(232 95 51 / 15%)",
     subMenuBg: "#0f0603",
     subMenuActiveBg: "#e85f33",
     menuText: "rgb(254 254 254 / 65%)",
@@ -82,7 +82,7 @@ const themeColors = {
   mingQing: {
     subMenuActiveText: "#fff",
     menuBg: "#032121",
-    menuHover: "#59bfc1",
+    menuHover: "rgb(89 191 193 / 15%)",
     subMenuBg: "#000",
     subMenuActiveBg: "#59bfc1",
     menuText: "#7a80b4",
@@ -94,7 +94,7 @@ const themeColors = {
   auroraGreen: {
     subMenuActiveText: "#fff",
     menuBg: "#0b1e15",
-    menuHover: "#60ac80",
+    menuHover: "rgb(96 172 128 / 15%)",
     subMenuBg: "#000",
     subMenuActiveBg: "#60ac80",
     menuText: "#7a80b4",
