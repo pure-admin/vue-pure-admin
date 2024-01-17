@@ -196,13 +196,6 @@ const layoutHeader = defineComponent({
     </div>
     <!-- 系统设置 -->
     <setting />
-    <a
-      target="_blank"
-      href="https://www.bilibili.com/video/BV1He411m7Qs/"
-      class="absolute top-[53px] right-[50px] text-lg z-[999] cursor-pointer review"
-    >
-      回顾2023！
-    </a>
   </div>
 </template>
 
@@ -236,25 +229,5 @@ const layoutHeader = defineComponent({
 
 .re-screen {
   margin-top: 12px;
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.3);
-  }
-}
-
-.review {
-  font-size: 18px;
-  animation: pulse 2s 3;
-
-  &:hover {
-    opacity: 0.75;
-  }
 }
 </style>

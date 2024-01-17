@@ -6,9 +6,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, h } from "vue";
 import { checkVersion } from "version-rocket";
-import { ElConfigProvider } from "element-plus";
+import { ElConfigProvider, ElNotification } from "element-plus";
 import en from "element-plus/dist/locale/en.mjs";
 import { ReDialog } from "@/components/ReDialog";
 import zhCn from "element-plus/dist/locale/zh-cn.mjs";
@@ -46,6 +46,15 @@ export default defineComponent({
         }
       );
     }
+  },
+  mounted() {
+    ElNotification({
+      title: "回顾2023",
+      duration: 0,
+      dangerouslyUseHTMLString: true,
+      message:
+        "<a target='_blank' style='font-size: 16px' class='hover:text-[red]' href='https://www.bilibili.com/video/BV1He411m7Qs/'>这更像是三年来开源社区唯一的一次集体交流。欢迎大家在评论区留下您的想法。我们将认真回复所有评论，并将一些不错的建议或想法在2024年实施改进或开发，点击即可去留言</a>"
+    });
   }
 });
 </script>
