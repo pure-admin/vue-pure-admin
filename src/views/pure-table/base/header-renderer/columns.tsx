@@ -15,7 +15,7 @@ export function useColumns() {
   );
 
   const handleEdit = (index: number, row) => {
-    message(`您编辑了第 ${index} 行，数据为：${JSON.stringify(row)}`, {
+    message(`您修改了第 ${index} 行，数据为：${JSON.stringify(row)}`, {
       type: "success"
     });
   };

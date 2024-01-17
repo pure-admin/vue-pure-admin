@@ -72,11 +72,11 @@ function onMouseleave() {
 
 <template>
   <el-select
-    class="!w-[200px]"
-    :model-value="inputValue"
-    placeholder="请选择动画"
     clearable
     filterable
+    placeholder="请选择动画"
+    popper-class="pure-animate-popper"
+    :model-value="inputValue"
     :filter-method="filterMethod"
     @clear="onClear"
   >
@@ -121,3 +121,9 @@ function onMouseleave() {
     </template>
   </el-select>
 </template>
+
+<style>
+.pure-animate-popper {
+  min-width: 0 !important;
+}
+</style>

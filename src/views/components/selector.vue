@@ -9,7 +9,7 @@ defineOptions({
 const selectRange = ref<string>("");
 const dataLists = ref([
   {
-    title: "基本使用",
+    title: "基础用法",
     echo: [],
     disabled: false
   },

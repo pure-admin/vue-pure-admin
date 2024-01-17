@@ -342,7 +342,7 @@ export function useUser(tableRef: Ref, treeRef: Ref) {
               // 实际开发先调用新增接口，再进行下面操作
               chores();
             } else {
-              // 实际开发先调用编辑接口，再进行下面操作
+              // 实际开发先调用修改接口，再进行下面操作
               chores();
             }
           }

@@ -53,7 +53,7 @@ export const list = [
   {
     key: "edit",
     content: rendContent("edit"),
-    title: "单元格编辑",
+    title: "单元格修改",
     component: Edit
   },
   {

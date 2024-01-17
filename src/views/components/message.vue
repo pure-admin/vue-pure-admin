@@ -14,7 +14,7 @@ defineOptions({
   <el-card shadow="never">
     <template #header>
       <div class="card-header">
-        <span class="font-medium"> Message提示 </span>
+        <span class="font-medium"> 消息提示 </span>
       </div>
     </template>
 

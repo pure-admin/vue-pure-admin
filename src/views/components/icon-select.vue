@@ -16,6 +16,6 @@ const icon = ref("ep:add-location");
         <span class="font-medium">图标选择器</span>
       </div>
     </template>
-    <IconSelect v-model="icon" />
+    <IconSelect v-model="icon" class="w-[200px]" />
   </el-card>
 </template>

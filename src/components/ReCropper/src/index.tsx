@@ -129,6 +129,11 @@ export default defineComponent({
 
     onUnmounted(() => {
       cropper.value?.destroy();
+      isReady.value = false;
+      cropper.value = null;
+      imgBase64.value = "";
+      scaleX = 1;
+      scaleY = 1;
     });
 
     useResizeObserver(tippyElRef, () => handCropper("reset"));

@@ -76,7 +76,7 @@ watch(
     <template #header>
       <div class="card-header">
         <span class="font-medium">
-          JSON编辑器组件，采用开源的
+          JSON编辑器，采用开源的
           <el-link
             href="https://github.com/leezng/vue-json-pretty"
             target="_blank"
@@ -87,7 +87,7 @@ watch(
           （支持大数据量）。
         </span>
         <span class="font-medium">
-          当然我们还有一款代码编辑器组件推荐（这里就不做演示了），采用开源的
+          当然还有一款代码编辑器推荐（这里就不做演示了），采用开源的
           <el-link
             href="https://github.com/surmon-china/vue-codemirror"
             target="_blank"

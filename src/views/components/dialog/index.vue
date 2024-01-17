@@ -20,8 +20,8 @@ const router = useRouter();
 
 function onBaseClick() {
   addDialog({
-    title: "基本使用",
-    contentRenderer: () => <p>弹框内容-基本使用</p> // jsx 语法 （注意在.vue文件启用jsx语法，需要在script开启lang="tsx"）
+    title: "基础用法",
+    contentRenderer: () => <p>弹框内容-基础用法</p> // jsx 语法 （注意在.vue文件启用jsx语法，需要在script开启lang="tsx"）
   });
 }
 
@@ -422,7 +422,7 @@ function onBeforeSureClick() {
     title: "点击底部确定按钮的回调",
     contentRenderer: () => (
       <p>
-        弹框内容-点击底部确定按钮的回调（会暂停弹框的关闭，经常用于新增、编辑弹框内容后调用接口）
+        弹框内容-点击底部确定按钮的回调（会暂停弹框的关闭，经常用于新增、修改弹框内容后调用接口）
       </p>
     ),
     beforeSure: (done, { options, index }) => {
@@ -454,15 +454,16 @@ function onBeforeSureClick() {
           ，采用函数式调用弹框组件（更多操作实例请参考
           <span
             class="cursor-pointer text-primary"
-            @click="router.push({ name: 'Dept' })"
-            >系统管理页面</span
+            @click="router.push({ name: 'SystemDept' })"
           >
+            系统管理页面
+          </span>
           ）
         </span>
       </div>
     </template>
     <el-space wrap>
-      <el-button @click="onBaseClick"> 基本使用 </el-button>
+      <el-button @click="onBaseClick"> 基础用法 </el-button>
       <el-button @click="onDraggableClick"> 可拖拽 </el-button>
       <el-button @click="onFullscreenClick"> 全屏 </el-button>
       <el-button @click="onFullscreenIconClick"> 全屏按钮 </el-button>
@@ -510,7 +511,7 @@ function onBeforeSureClick() {
         点击底部取消按钮的回调（会暂停弹框的关闭）
       </el-button>
       <el-button @click="onBeforeSureClick">
-        点击底部确定按钮的回调（会暂停弹框的关闭，经常用于新增、编辑弹框内容后调用接口）
+        点击底部确定按钮的回调（会暂停弹框的关闭，经常用于新增、修改弹框内容后调用接口）
       </el-button>
     </el-space>
   </el-card>

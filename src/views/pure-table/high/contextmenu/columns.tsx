@@ -30,11 +30,11 @@ export function useColumns() {
         disabled: true
       },
       {
-        label: "编辑",
+        label: "修改",
         tips: "Edit",
         fn: row =>
           message(
-            `您编辑了第 ${
+            `您修改了第 ${
               dataList.value.findIndex(v => v.id === row.id) + 1
             } 行，数据为：${JSON.stringify(row)}`,
             {

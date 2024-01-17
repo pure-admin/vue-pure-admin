@@ -292,7 +292,7 @@
 - 添加 `@pureadmin/table` 行、列拖拽示例
 - 添加 `@pureadmin/table` 右键菜单示例
 - 添加 `@pureadmin/table` 导出 `Excel` 示例
-- 添加 `@pureadmin/table` 编辑单元格示例
+- 添加 `@pureadmin/table` 修改单元格示例
 - 添加 `@pureadmin/table` 水印示例
 - 添加 `@pureadmin/table` 打印示例
 - 添加 `@pureadmin/table` 内嵌 `echarts` 图表示例

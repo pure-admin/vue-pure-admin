@@ -10,7 +10,7 @@ import Refresh from "@iconify-icons/ep/refresh";
 import AddFill from "@iconify-icons/ri/add-circle-line";
 
 defineOptions({
-  name: "Dept"
+  name: "SystemDept"
 });
 
 const formRef = ref();
@@ -71,7 +71,7 @@ const {
     </el-form>
 
     <PureTableBar
-      title="部门列表（仅演示，操作后不生效）"
+      title="部门管理（仅演示，操作后不生效）"
       :columns="columns"
       :tableRef="tableRef?.getTableRef()"
       @refresh="onSearch"
@@ -111,10 +111,20 @@ const {
               link
               type="primary"
               :size="size"
-              :icon="useRenderIcon(EditPen)"
-              @click="openDialog('编辑', row)"
+              :icon="useRenderIcon(AddFill)"
+              @click="openDialog('新增', { parentId: row.id } as any)"
             >
-              编辑
+              新增
+            </el-button>
+            <el-button
+              class="reset-margin"
+              link
+              type="primary"
+              :size="size"
+              :icon="useRenderIcon(EditPen)"
+              @click="openDialog('修改', row)"
+            >
+              修改
             </el-button>
             <el-popconfirm
               :title="`是否确认删除部门名称为${row.name}的这条数据`"

@@ -57,7 +57,7 @@ export function useDept() {
     {
       label: "操作",
       fixed: "right",
-      width: 160,
+      width: 210,
       slot: "operation"
     }
   ];
@@ -141,7 +141,7 @@ export function useDept() {
               // 实际开发先调用新增接口，再进行下面操作
               chores();
             } else {
-              // 实际开发先调用编辑接口，再进行下面操作
+              // 实际开发先调用修改接口，再进行下面操作
               chores();
             }
           }
@@ -168,7 +168,7 @@ export function useDept() {
     onSearch,
     /** 重置 */
     resetForm,
-    /** 新增、编辑部门 */
+    /** 新增、修改部门 */
     openDialog,
     /** 删除部门 */
     handleDelete,

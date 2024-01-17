@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { markRaw } from "vue";
+import { randomGradient } from "@pureadmin/utils";
 import { useRenderFlicker } from "@/components/ReFlicker";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import Iphone from "@iconify-icons/ep/iphone";
@@ -11,14 +12,25 @@ defineOptions({
 const { lastBuildTime } = __APP_INFO__;
 const activities = [
   {
-    content: "支持圆点闪动",
+    content: "支持圆点发光",
     timestamp: lastBuildTime,
     icon: markRaw(useRenderFlicker())
   },
   {
-    content: "支持方形闪动",
+    content: "支持方形发光",
     timestamp: lastBuildTime,
     icon: markRaw(useRenderFlicker({ borderRadius: 0, background: "#67C23A" }))
+  },
+  {
+    content: "支持渐变发光",
+    timestamp: lastBuildTime,
+    icon: markRaw(
+      useRenderFlicker({
+        background: randomGradient({
+          randomizeHue: true
+        })
+      })
+    )
   },
   {
     content: "支持默认颜色",
@@ -70,7 +82,7 @@ const activities = [
           placement="bottom"
         >
           <div class="message">
-            vue-pure-admin是基于Vue3.0+TypeScript+Vite+Element-Plus编写的一套后台管理系统
+            vue-pure-admin 是一款开源免费且开箱即用的中后台管理系统模版
           </div>
         </el-timeline-item>
       </el-timeline>

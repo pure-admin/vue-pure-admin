@@ -36,23 +36,23 @@ menus:
   hsfourZeroOne: "403"
   hsFive: "500"
   hscomponents: 组件
-  hsdialog: 函数式弹框组件
-  hsmessage: 消息提示组件
-  hsvideo: 视频组件
-  hssegmented: 分段控制器组件
-  hswaterfall: 瀑布流无限滚动组件
-  hsmap: 地图组件
-  hsdraggable: 拖拽组件
+  hsdialog: 函数式弹框
+  hsmessage: 消息提示
+  hsvideo: 视频
+  hssegmented: 分段控制器
+  hswaterfall: 瀑布流无限滚动
+  hsmap: 地图
+  hsdraggable: 拖拽
   hssplitPane: 切割面板
-  hsbutton: 按钮组件
+  hsbutton: 按钮
   hscropping: 图片裁剪
-  hsanimatecss: AnimateCss选择器组件
+  hsanimatecss: animate.css选择器
   hscountTo: 数字动画
-  hsselector: 选择器组件
+  hsselector: 范围选择器
   hsflowChart: 流程图
   hsseamless: 无缝滚动
   hscontextmenu: 右键菜单
-  hstypeit: 打字机组件
+  hstypeit: 打字机
   hsjsoneditor: JSON编辑器
   hsmenus: 多级菜单
   hsmenu1: 菜单1
@@ -107,10 +107,9 @@ menus:
   hsInfiniteScroll: 表格无限滚动
   hsSensitive: 敏感词过滤
   hsPinyin: 汉语拼音
-  hsdanmaku: 弹幕组件
+  hsdanmaku: 弹幕
   hsPureTableBase: 基础用法（23个示例）
   hsPureTableHigh: 高级用法（11个示例）
-  hsTree: 大数据树业务组件
   hsboard: 艺术画板
   hsMenuoverflow: 目录超出显示 Tooltip 文字提示
   hsChildMenuoverflow: 菜单超出显示 Tooltip 文字提示
