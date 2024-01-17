@@ -58,6 +58,8 @@ watch(
     immediate: true
   }
 );
+// 渲染iframe时，避免重新渲染一次frameView
+const normalComp = computed(() => !keep.value && props.currComp);
 </script>
 <template>
   <template v-for="[fullPath, Comp] in compList" :key="fullPath">
@@ -66,6 +68,6 @@ watch(
     </div>
   </template>
   <div v-show="!keep" class="w-full h-full">
-    <slot :Comp="props.currComp" :fullPath="props.currRoute.fullPath"></slot>
+    <slot :Comp="normalComp" :fullPath="props.currRoute.fullPath"></slot>
   </div>
 </template>
