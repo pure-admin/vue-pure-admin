@@ -102,6 +102,7 @@ menus:
   hsCascader: Area Cascader
   hsSwiper: Swiper Plugin
   hsVirtualList: Virtual List
+  hsCheckButton: Check Button
   hsPdf: PDF Preview
   hsExcel: Export Excel
   hsInfiniteScroll: Table Infinite Scroll

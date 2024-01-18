@@ -15,8 +15,7 @@ export default {
       name: "DialogPage",
       component: () => import("@/views/components/dialog/index.vue"),
       meta: {
-        title: $t("menus.hsdialog"),
-        extraIcon: "IF-pure-iconfont-new svg"
+        title: $t("menus.hsdialog")
       }
     },
     {
@@ -52,12 +51,20 @@ export default {
       }
     },
     {
+      path: "/components/checkButton",
+      name: "CheckButton",
+      component: () => import("@/views/components/check-button.vue"),
+      meta: {
+        title: $t("menus.hsCheckButton"),
+        extraIcon: "IF-pure-iconfont-new svg"
+      }
+    },
+    {
       path: "/components/segmented",
       name: "Segmented",
       component: () => import("@/views/components/segmented.vue"),
       meta: {
-        title: $t("menus.hssegmented"),
-        extraIcon: "IF-pure-iconfont-new svg"
+        title: $t("menus.hssegmented")
       }
     },
     {
