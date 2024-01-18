@@ -15,7 +15,10 @@ const props = defineProps<{
 
 const compList = shallowRef([]);
 const keep = computed(
-  () => getConfig().KeepAliveFrame && !!props.currRoute.meta?.frameSrc
+  () =>
+    getConfig().KeepAlive &&
+    props.currRoute.meta?.keepAlive &&
+    !!props.currRoute.meta?.frameSrc
 );
 
 watch(useMultiTagsStoreHook().multiTags, (tags: any) => {
@@ -72,10 +75,6 @@ const normalComp = computed(() => !keep.value && props.currComp);
     </div>
   </template>
   <div v-show="!keep" class="w-full h-full">
-    <slot
-      :Comp="normalComp"
-      :fullPath="props.currRoute.fullPath"
-      frameInfo=""
-    />
+    <slot :Comp="normalComp" :fullPath="props.currRoute.fullPath" frameInfo />
   </div>
 </template>

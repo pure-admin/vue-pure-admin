@@ -118,6 +118,7 @@ const frameRouter = {
           meta: {
             title: "menus.hsEpDocument",
             frameSrc: "https://element-plus.org/zh-CN/",
+            keepAlive: true,
             roles: ["admin", "common"]
           }
         },
@@ -127,6 +128,7 @@ const frameRouter = {
           meta: {
             title: "menus.hsTailwindcssDocument",
             frameSrc: "https://tailwindcss.com/docs/installation",
+            keepAlive: true,
             roles: ["admin", "common"]
           }
         },
