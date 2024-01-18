@@ -27,7 +27,7 @@ export default {
       }
     },
     {
-      path: "/components/iconSelect",
+      path: "/components/icon-select",
       name: "IconSelect",
       component: () => import("@/views/components/icon-select.vue"),
       meta: {
@@ -51,7 +51,23 @@ export default {
       }
     },
     {
-      path: "/components/checkButton",
+      path: "/components/segmented",
+      name: "Segmented",
+      component: () => import("@/views/components/segmented.vue"),
+      meta: {
+        title: $t("menus.hssegmented")
+      }
+    },
+    {
+      path: "/components/el-button",
+      name: "PureButton",
+      component: () => import("@/views/components/el-button.vue"),
+      meta: {
+        title: $t("menus.hsElButton")
+      }
+    },
+    {
+      path: "/components/check-button",
       name: "CheckButton",
       component: () => import("@/views/components/check-button.vue"),
       meta: {
@@ -60,11 +76,11 @@ export default {
       }
     },
     {
-      path: "/components/segmented",
-      name: "Segmented",
-      component: () => import("@/views/components/segmented.vue"),
+      path: "/components/button",
+      name: "ButtonPage",
+      component: () => import("@/views/components/button.vue"),
       meta: {
-        title: $t("menus.hssegmented")
+        title: $t("menus.hsbutton")
       }
     },
     {
@@ -92,7 +108,7 @@ export default {
       }
     },
     {
-      path: "/components/splitPane",
+      path: "/components/split-pane",
       name: "SplitPane",
       component: () => import("@/views/components/split-pane.vue"),
       meta: {
@@ -116,7 +132,7 @@ export default {
       }
     },
     {
-      path: "/components/countTo",
+      path: "/components/count-to",
       name: "CountTo",
       component: () => import("@/views/components/count-to.vue"),
       meta: {
@@ -140,7 +156,7 @@ export default {
       }
     },
     {
-      path: "/components/seamlessScroll",
+      path: "/components/seamless-scroll",
       name: "SeamlessScroll",
       component: () => import("@/views/components/seamless-scroll.vue"),
       meta: {
@@ -148,19 +164,11 @@ export default {
       }
     },
     {
-      path: "/components/virtualList",
+      path: "/components/virtual-list",
       name: "VirtualList",
       component: () => import("@/views/components/virtual-list/index.vue"),
       meta: {
         title: $t("menus.hsVirtualList")
-      }
-    },
-    {
-      path: "/components/button",
-      name: "ButtonPage",
-      component: () => import("@/views/components/button.vue"),
-      meta: {
-        title: $t("menus.hsbutton")
       }
     }
   ]

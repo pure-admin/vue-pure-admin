@@ -123,7 +123,7 @@ export default {
       }
     },
     {
-      path: "/able/videoFrame",
+      path: "/able/video-frame",
       name: "VideoFrame",
       component: () => import("@/views/able/video-frame/index.vue"),
       meta: {
@@ -139,7 +139,7 @@ export default {
       }
     },
     {
-      path: "/able/infiniteScroll",
+      path: "/able/infinite-scroll",
       name: "InfiniteScroll",
       component: () => import("@/views/able/infinite-scroll.vue"),
       meta: {
@@ -147,7 +147,7 @@ export default {
       }
     },
     {
-      path: "/able/menuTree",
+      path: "/able/menu-tree",
       name: "MenuTree",
       component: () => import("@/views/able/menu-tree.vue"),
       meta: {
@@ -155,7 +155,7 @@ export default {
       }
     },
     {
-      path: "/able/lineTree",
+      path: "/able/line-tree",
       name: "LineTree",
       component: () => import("@/views/able/line-tree.vue"),
       meta: {

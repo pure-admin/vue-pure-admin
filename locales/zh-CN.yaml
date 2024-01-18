@@ -44,7 +44,9 @@ menus:
   hsmap: 地图
   hsdraggable: 拖拽
   hssplitPane: 切割面板
-  hsbutton: 按钮
+  hsElButton: 按钮
+  hsCheckButton: 可选按钮
+  hsbutton: 按钮动效
   hscropping: 图片裁剪
   hsanimatecss: animate.css选择器
   hscountTo: 数字动画
@@ -102,7 +104,6 @@ menus:
   hsCascader: 区域级联选择器
   hsSwiper: Swiper插件
   hsVirtualList: 虚拟列表
-  hsCheckButton: 可选按钮
   hsPdf: PDF预览
   hsExcel: 导出Excel
   hsInfiniteScroll: 表格无限滚动
