@@ -44,7 +44,9 @@ menus:
   hsmap: Map
   hsdraggable: Draggable
   hssplitPane: Split Pane
-  hsbutton: Button
+  hsElButton: Button
+  hsbutton: Button Animation
+  hsCheckButton: Check Button
   hscropping: Picture Cropping
   hsanimatecss: AnimateCss Selector
   hscountTo: Digital Animation
@@ -102,7 +104,6 @@ menus:
   hsCascader: Area Cascader
   hsSwiper: Swiper Plugin
   hsVirtualList: Virtual List
-  hsCheckButton: Check Button
   hsPdf: PDF Preview
   hsExcel: Export Excel
   hsInfiniteScroll: Table Infinite Scroll

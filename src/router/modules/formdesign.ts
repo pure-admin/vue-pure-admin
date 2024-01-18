@@ -3,8 +3,8 @@ import { formdesign } from "@/router/enums";
 const IFrame = () => import("@/layout/frameView.vue");
 
 export default {
-  path: "/formDesign",
-  redirect: "/formDesign/index",
+  path: "/form-design",
+  redirect: "/form-design/index",
   meta: {
     icon: "terminalWindowLine",
     title: $t("menus.hsFormDesign"),
@@ -12,7 +12,7 @@ export default {
   },
   children: [
     {
-      path: "/formDesign/index",
+      path: "/form-design/index",
       name: "FormDesign",
       component: IFrame,
       meta: {

@@ -10,6 +10,7 @@ defineOptions({
 const spaceSize = ref(20);
 const size = ref("default");
 const dynamicSize = ref();
+const checked = ref(true);
 
 const radio = ref("wait");
 const radioBox = ref("complete");
@@ -74,6 +75,11 @@ function onGroupChecked(tag, index) {
   checkGroupTag.value[index].checked = curTagGroupMap.value[index].checked;
 }
 
+function onSingleChecked() {
+  if (size.value === "disabled") return;
+  checked.value = !checked.value;
+}
+
 watch(size, val =>
   val === "disabled"
     ? (dynamicSize.value = "default")
@@ -89,10 +95,10 @@ watch(size, val =>
           可选按钮
           <br />
           <el-radio-group v-model="size" size="small">
-            <el-radio-button label="large">大尺寸</el-radio-button>
-            <el-radio-button label="default">默认尺寸</el-radio-button>
-            <el-radio-button label="small">小尺寸</el-radio-button>
-            <el-radio-button label="disabled">禁用</el-radio-button>
+            <el-radio label="large">大尺寸</el-radio>
+            <el-radio label="default">默认尺寸</el-radio>
+            <el-radio label="small">小尺寸</el-radio>
+            <el-radio label="disabled">禁用</el-radio>
           </el-radio-group>
         </span>
       </div>
@@ -253,6 +259,20 @@ watch(size, val =>
         {{ tag.title }}
       </el-check-tag>
     </el-space>
+    <el-divider />
+
+    <p class="mb-2">单个可选按钮</p>
+    <el-check-tag
+      :class="[
+        'select-none',
+        size === 'disabled' && 'tag-disabled',
+        checked && 'is-active'
+      ]"
+      :checked="checked"
+      @change="onSingleChecked"
+    >
+      一个人也要努力 😊
+    </el-check-tag>
   </el-card>
 </template>
 
