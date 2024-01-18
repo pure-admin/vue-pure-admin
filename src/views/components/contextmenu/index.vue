@@ -13,12 +13,12 @@ defineOptions({
   <el-card shadow="never">
     <template #header>
       <div class="card-header">
-        <span class="font-medium">右键菜单组件</span>
+        <span class="font-medium">右键菜单</span>
       </div>
     </template>
     <el-row :gutter="24">
       <el-col :xs="24" :sm="10" :md="10" :lg="8" :xl="10">
-        <!-- 基本使用 -->
+        <!-- 基础用法 -->
         <basic />
       </el-col>
       <el-col :xs="24" :sm="10" :md="10" :lg="8" :xl="10">

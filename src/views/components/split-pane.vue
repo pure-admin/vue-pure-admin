@@ -23,7 +23,7 @@ const settingTB: ContextProps = reactive({
   <el-card shadow="never">
     <template #header>
       <div class="card-header">
-        <span class="font-medium">切割面板组件</span>
+        <span class="font-medium">切割面板</span>
       </div>
     </template>
     <div class="split-pane">
@@ -31,17 +31,21 @@ const settingTB: ContextProps = reactive({
         <!-- #paneL 表示指定该组件为左侧面板 -->
         <template #paneL>
           <!-- 自定义左侧面板的内容 -->
-          <div class="dv-a">A</div>
+          <el-scrollbar>
+            <div class="dv-a">A</div>
+          </el-scrollbar>
         </template>
         <!-- #paneR 表示指定该组件为右侧面板 -->
         <template #paneR>
           <!-- 再次将右侧面板进行拆分 -->
           <splitpane :splitSet="settingTB">
             <template #paneL>
-              <div class="dv-b">B</div>
+              <el-scrollbar><div class="dv-b">B</div></el-scrollbar>
             </template>
             <template #paneR>
-              <div class="dv-c">C</div>
+              <el-scrollbar>
+                <div class="dv-c">C</div>
+              </el-scrollbar>
             </template>
           </splitpane>
         </template>
@@ -51,36 +55,25 @@ const settingTB: ContextProps = reactive({
 </template>
 
 <style lang="scss" scoped>
-$W: 100%;
-$H: 70vh;
-
 .split-pane {
-  width: 70vw;
-  height: $H;
+  width: 100%;
+  height: calc(100vh - 260px);
   font-size: 50px;
-  color: #fff;
   text-align: center;
   border: 1px solid #e5e6eb;
 
-  .dv-a,
-  .dv-b,
-  .dv-c {
-    width: $W;
-    height: $W;
-    line-height: $H;
+  .dv-a {
+    padding-top: 30vh;
     color: rgba($color: dodgerblue, $alpha: 80%);
   }
 
-  .dv-b,
-  .dv-c {
-    line-height: 250px;
-  }
-
   .dv-b {
+    padding-top: 10vh;
     color: rgba($color: #000, $alpha: 80%);
   }
 
   .dv-c {
+    padding-top: 18vh;
     color: rgba($color: #ce272d, $alpha: 80%);
   }
 }

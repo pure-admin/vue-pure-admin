@@ -36,23 +36,23 @@ menus:
   hsfourZeroOne: "403"
   hsFive: "500"
   hscomponents: Components
-  hsdialog: Dialog Components
-  hsmessage: Message Tips Components
-  hsvideo: Video Components
-  hssegmented: Segmented Components
-  hswaterfall: Waterfall Components
-  hsmap: Map Components
-  hsdraggable: Draggable Components
+  hsdialog: Dialog
+  hsmessage: Message Tips
+  hsvideo: Video
+  hssegmented: Segmented
+  hswaterfall: Waterfall
+  hsmap: Map
+  hsdraggable: Draggable
   hssplitPane: Split Pane
-  hsbutton: Button Components
+  hsbutton: Button
   hscropping: Picture Cropping
   hsanimatecss: AnimateCss Selector
   hscountTo: Digital Animation
-  hsselector: Selector Components
+  hsselector: Scope Selector
   hsflowChart: Flow Chart
   hsseamless: Seamless Scroll
   hscontextmenu: Context Menu
-  hstypeit: Typeit Components
+  hstypeit: Typeit
   hsjsoneditor: JSON Editor
   hsmenus: MultiLevel Menu
   hsmenu1: Menu1
@@ -102,15 +102,15 @@ menus:
   hsCascader: Area Cascader
   hsSwiper: Swiper Plugin
   hsVirtualList: Virtual List
+  hsCheckButton: Check Button
   hsPdf: PDF Preview
   hsExcel: Export Excel
   hsInfiniteScroll: Table Infinite Scroll
   hsSensitive: Sensitive Filter
   hsPinyin: PinYin
-  hsdanmaku: Danmaku Components
+  hsdanmaku: Danmaku
   hsPureTableBase: Base Usage
   hsPureTableHigh: High Usage
-  hsTree: Big Data Tree
   hsboard: Paint Board
   hsMenuoverflow: Menu Overflow Show Tooltip Text
   hsChildMenuoverflow: Child Menu Overflow Show Tooltip Text

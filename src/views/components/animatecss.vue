@@ -25,10 +25,10 @@ watch(icon, () => {
           >
             animate.css
           </el-link>
-          选择器组件
+          选择器
         </span>
       </div>
     </template>
-    <ReAnimateSelector v-model="icon" />
+    <ReAnimateSelector v-model="icon" class="!w-[200px]" />
   </el-card>
 </template>

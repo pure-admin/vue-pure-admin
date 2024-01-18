@@ -15,7 +15,7 @@ import Refresh from "@iconify-icons/ep/refresh";
 import AddFill from "@iconify-icons/ri/add-circle-line";
 
 defineOptions({
-  name: "User"
+  name: "SystemUser"
 });
 
 const treeRef = ref();
@@ -173,7 +173,7 @@ const {
                 type="primary"
                 :size="size"
                 :icon="useRenderIcon(EditPen)"
-                @click="openDialog('编辑', row)"
+                @click="openDialog('修改', row)"
               >
                 修改
               </el-button>

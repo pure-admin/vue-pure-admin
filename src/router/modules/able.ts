@@ -11,30 +11,6 @@ export default {
   },
   children: [
     {
-      path: "/able/videoFrame",
-      name: "VideoFrame",
-      component: () => import("@/views/able/video-frame/index.vue"),
-      meta: {
-        title: $t("menus.hsVideoFrame")
-      }
-    },
-    {
-      path: "/able/wavesurfer",
-      name: "Wavesurfer",
-      component: () => import("@/views/able/wavesurfer/index.vue"),
-      meta: {
-        title: $t("menus.hsWavesurfer")
-      }
-    },
-    {
-      path: "/able/directives",
-      name: "Directives",
-      component: () => import("@/views/able/directives.vue"),
-      meta: {
-        title: $t("menus.hsOptimize")
-      }
-    },
-    {
       path: "/able/watermark",
       name: "WaterMark",
       component: () => import("@/views/able/watermark.vue"),
@@ -59,35 +35,11 @@ export default {
       }
     },
     {
-      path: "/able/iconSelect",
-      name: "IconSelect",
-      component: () => import("@/views/able/icon-select.vue"),
+      path: "/able/excel",
+      name: "Excel",
+      component: () => import("@/views/able/excel.vue"),
       meta: {
-        title: $t("menus.hsIconSelect")
-      }
-    },
-    {
-      path: "/able/timeline",
-      name: "TimeLine",
-      component: () => import("@/views/able/timeline.vue"),
-      meta: {
-        title: $t("menus.hsTimeline")
-      }
-    },
-    {
-      path: "/able/menuTree",
-      name: "MenuTree",
-      component: () => import("@/views/able/menu-tree.vue"),
-      meta: {
-        title: $t("menus.hsMenuTree")
-      }
-    },
-    {
-      path: "/able/lineTree",
-      name: "LineTree",
-      component: () => import("@/views/able/line-tree.vue"),
-      meta: {
-        title: $t("menus.hsLineTree")
+        title: $t("menus.hsExcel")
       }
     },
     {
@@ -96,6 +48,34 @@ export default {
       component: () => import("@/views/able/debounce.vue"),
       meta: {
         title: $t("menus.hsDebounce")
+      }
+    },
+    {
+      path: "/able/directives",
+      name: "Directives",
+      component: () => import("@/views/able/directives.vue"),
+      meta: {
+        title: $t("menus.hsOptimize")
+      }
+    },
+    {
+      path: "/able/draggable",
+      name: "Draggable",
+      component: () => import("@/views/able/draggable.vue"),
+      meta: {
+        title: $t("menus.hsdraggable"),
+        transition: {
+          enterTransition: "animate__zoomIn",
+          leaveTransition: "animate__zoomOut"
+        }
+      }
+    },
+    {
+      path: "/able/pdf",
+      name: "Pdf",
+      component: () => import("@/views/able/pdf.vue"),
+      meta: {
+        title: $t("menus.hsPdf")
       }
     },
     {
@@ -115,43 +95,47 @@ export default {
       }
     },
     {
-      path: "/able/cascader",
-      name: "Cascader",
-      component: () => import("@/views/able/cascader.vue"),
+      path: "/able/map",
+      name: "MapPage",
+      component: () => import("@/views/able/map.vue"),
       meta: {
-        title: $t("menus.hsCascader")
+        title: $t("menus.hsmap"),
+        keepAlive: true,
+        transition: {
+          name: "fade"
+        }
       }
     },
     {
-      path: "/able/swiper",
-      name: "Swiper",
-      component: () => import("@/views/able/swiper.vue"),
+      path: "/able/wavesurfer",
+      name: "Wavesurfer",
+      component: () => import("@/views/able/wavesurfer/index.vue"),
       meta: {
-        title: $t("menus.hsSwiper")
+        title: $t("menus.hsWavesurfer")
       }
     },
     {
-      path: "/able/virtualList",
-      name: "VirtualList",
-      component: () => import("@/views/able/virtual-list/index.vue"),
+      path: "/able/video",
+      name: "VideoPage",
+      component: () => import("@/views/able/video.vue"),
       meta: {
-        title: $t("menus.hsVirtualList")
+        title: $t("menus.hsvideo")
       }
     },
     {
-      path: "/able/pdf",
-      name: "Pdf",
-      component: () => import("@/views/able/pdf.vue"),
+      path: "/able/videoFrame",
+      name: "VideoFrame",
+      component: () => import("@/views/able/video-frame/index.vue"),
       meta: {
-        title: $t("menus.hsPdf")
+        title: $t("menus.hsVideoFrame")
       }
     },
     {
-      path: "/able/excel",
-      name: "Excel",
-      component: () => import("@/views/able/excel.vue"),
+      path: "/able/danmaku",
+      name: "Danmaku",
+      component: () => import("@/views/able/danmaku/index.vue"),
       meta: {
-        title: $t("menus.hsExcel")
+        title: $t("menus.hsdanmaku")
       }
     },
     {
@@ -160,6 +144,30 @@ export default {
       component: () => import("@/views/able/infinite-scroll.vue"),
       meta: {
         title: $t("menus.hsInfiniteScroll")
+      }
+    },
+    {
+      path: "/able/menuTree",
+      name: "MenuTree",
+      component: () => import("@/views/able/menu-tree.vue"),
+      meta: {
+        title: $t("menus.hsMenuTree")
+      }
+    },
+    {
+      path: "/able/lineTree",
+      name: "LineTree",
+      component: () => import("@/views/able/line-tree.vue"),
+      meta: {
+        title: $t("menus.hsLineTree")
+      }
+    },
+    {
+      path: "/able/typeit",
+      name: "Typeit",
+      component: () => import("@/views/able/typeit.vue"),
+      meta: {
+        title: $t("menus.hstypeit")
       }
     },
     {

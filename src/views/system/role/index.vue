@@ -13,7 +13,7 @@ import Menu from "@iconify-icons/ep/menu";
 import AddFill from "@iconify-icons/ri/add-circle-line";
 
 defineOptions({
-  name: "Role"
+  name: "SystemRole"
 });
 
 const formRef = ref();
@@ -87,7 +87,7 @@ const {
     </el-form>
 
     <PureTableBar
-      title="角色列表（仅演示，操作后不生效）"
+      title="角色管理（仅演示，操作后不生效）"
       :columns="columns"
       @refresh="onSearch"
     >
@@ -127,7 +127,7 @@ const {
               type="primary"
               :size="size"
               :icon="useRenderIcon(EditPen)"
-              @click="openDialog('编辑', row)"
+              @click="openDialog('修改', row)"
             >
               修改
             </el-button>

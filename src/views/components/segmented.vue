@@ -30,6 +30,30 @@ const optionsBasis: Array<OptionsType> = [
   }
 ];
 
+/** tooltip 提示 */
+const optionsTooltip: Array<OptionsType> = [
+  {
+    label: "周一",
+    tip: "周一启航，新的篇章"
+  },
+  {
+    label: "周二",
+    tip: "周二律动，携手共进"
+  },
+  {
+    label: "周三",
+    tip: "周三昂扬，激情不减"
+  },
+  {
+    label: "周四",
+    tip: "周四精进，事半功倍"
+  },
+  {
+    label: "周五",
+    tip: "周五喜悦，收尾归档"
+  }
+];
+
 /** 禁用 */
 const optionsDisabled: Array<OptionsType> = [
   {
@@ -51,7 +75,7 @@ const optionsDisabled: Array<OptionsType> = [
   }
 ];
 
-/** 设置图标 */
+/** 可设置图标 */
 const optionsIcon: Array<OptionsType> = [
   {
     label: "周一",
@@ -65,8 +89,7 @@ const optionsIcon: Array<OptionsType> = [
     icon: "terminalWindowLine"
   },
   {
-    label: "周四",
-    icon: "streamline-emojis:airplane"
+    label: "周四"
   },
   {
     label: "周五",
@@ -99,7 +122,7 @@ const optionsLabel: Array<OptionsType> = [
     label: () => (
       <div>
         {h(useRenderIcon(HomeFilled), {
-          class: "m-auto w-[20px] h-[20px]"
+          class: "m-auto mt-1 w-[18px] h-[18px]"
         })}
         <p>周一</p>
       </div>
@@ -109,7 +132,7 @@ const optionsLabel: Array<OptionsType> = [
     label: () => (
       <div>
         {h(useRenderIcon("terminalWindowLine"), {
-          class: "m-auto w-[20px] h-[20px]"
+          class: "m-auto mt-1 w-[18px] h-[18px]"
         })}
         <p>周二</p>
       </div>
@@ -119,7 +142,7 @@ const optionsLabel: Array<OptionsType> = [
     label: () => (
       <div>
         {h(useRenderIcon("streamline-emojis:cow-face"), {
-          class: "m-auto w-[20px] h-[20px]"
+          class: "m-auto mt-1 w-[18px] h-[18px]"
         })}
         <p>周三</p>
       </div>
@@ -142,7 +165,7 @@ const optionsChange: Array<OptionsType> = [
   }
 ];
 
-/** change事件 */
+/** change 事件 */
 function onChange({ index, option }) {
   const { label, value } = option;
   message(`当前选中项索引为：${index}，名字为${label}，值为${value}`, {
@@ -158,26 +181,37 @@ function onChange({ index, option }) {
         <span class="font-medium">分段控制器</span>
       </div>
     </template>
-    <p class="mb-2">
-      基础用法（v-model）<span class="text-primary">
-        {{ optionsBasis[value].label }}
-      </span>
-    </p>
-    <Segmented v-model="value" :options="optionsBasis" />
-    <el-divider />
-    <p class="mb-2">禁用</p>
-    <Segmented :options="optionsDisabled" />
-    <el-divider />
-    <p class="mb-2">设置图标</p>
-    <Segmented :options="optionsIcon" />
-    <el-divider />
-    <p class="mb-2">只设置图标</p>
-    <Segmented :options="optionsOnlyIcon" />
-    <el-divider />
-    <p class="mb-2">自定义渲染</p>
-    <Segmented :options="optionsLabel" />
-    <el-divider />
-    <p class="mb-2">change事件</p>
-    <Segmented :options="optionsChange" @change="onChange" />
+    <el-scrollbar>
+      <p class="mb-2">
+        基础用法（v-model）<span class="text-primary">
+          {{ optionsBasis[value].label }}
+        </span>
+      </p>
+      <Segmented v-model="value" :options="optionsBasis" />
+      <el-divider />
+      <p class="mb-2">tooltip 提示</p>
+      <Segmented :options="optionsTooltip" />
+      <el-divider />
+      <p class="mb-2">change 事件</p>
+      <Segmented :options="optionsChange" @change="onChange" />
+      <el-divider />
+      <p class="mb-2">禁用</p>
+      <Segmented :options="optionsDisabled" />
+      <el-divider />
+      <p class="mb-2">可设置图标</p>
+      <Segmented :options="optionsIcon" />
+      <el-divider />
+      <p class="mb-2">只设置图标</p>
+      <Segmented :options="optionsOnlyIcon" />
+      <el-divider />
+      <p class="mb-2">自定义渲染</p>
+      <Segmented :options="optionsLabel" />
+    </el-scrollbar>
   </el-card>
 </template>
+
+<style scoped>
+:deep(.el-divider--horizontal) {
+  margin: 17px 0;
+}
+</style>

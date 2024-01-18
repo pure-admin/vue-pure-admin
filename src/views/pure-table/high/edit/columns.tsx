@@ -5,11 +5,11 @@ import { clone, delay } from "@pureadmin/utils";
 import EditPen from "@iconify-icons/ep/edit-pen";
 import Check from "@iconify-icons/ep/check";
 
-// 温馨提示：编辑整行方法雷同，将cellRenderer后面渲染的组件抽出来做对应处理即可
+// 温馨提示：修改整行方法雷同，将cellRenderer后面渲染的组件抽出来做对应处理即可
 export function useColumns() {
-  // 编辑值（可多个）
+  // 修改值（可多个）
   const inputValMap = ref({});
-  // 是否正处于编辑状态（可多个）
+  // 是否正处于修改状态（可多个）
   const editStatus = ref({});
   // 当前激活的单元格（唯一）
   const activeIndex = ref(-1);
@@ -43,7 +43,7 @@ export function useColumns() {
 
   const columns: TableColumnList = [
     {
-      label: "ID（可编辑）",
+      label: "ID（可修改）",
       prop: "id",
       // class="flex-bc" flex-bc 代表 flex justify-between items-center 具体看 src/style/tailwind.css 文件
       cellRenderer: ({ row, index }) => (
@@ -93,7 +93,7 @@ export function useColumns() {
     inputValMap.value[index] = Object.assign({}, inputValMap.value[index], {
       value: id
     });
-    // 处于编辑状态
+    // 处于修改状态
     editStatus.value[index] = Object.assign({}, editStatus.value[index], {
       editing: true
     });
@@ -112,14 +112,14 @@ export function useColumns() {
   function onSure(index) {
     dataList.value[index].id = inputValMap.value[index].value;
     message(
-      `您编辑了第 ${index + 1} 行，编辑后数据为：${JSON.stringify(
+      `您修改了第 ${index + 1} 行，修改后数据为：${JSON.stringify(
         dataList.value[index]
       )}`,
       {
         type: "success"
       }
     );
-    // 编辑状态关闭
+    // 修改状态关闭
     editStatus.value[index] = Object.assign({}, editStatus.value[index], {
       editing: false
     });

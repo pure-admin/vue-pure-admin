@@ -15,85 +15,31 @@ export default {
       name: "DialogPage",
       component: () => import("@/views/components/dialog/index.vue"),
       meta: {
-        title: $t("menus.hsdialog"),
-        extraIcon: "IF-pure-iconfont-new svg",
-        transition: {
-          enterTransition: "animate__fadeInLeft",
-          leaveTransition: "animate__fadeOutRight"
-        }
+        title: $t("menus.hsdialog")
       }
     },
     {
       path: "/components/message",
       name: "Message",
-      component: () => import("@/views/components/message/index.vue"),
+      component: () => import("@/views/components/message.vue"),
       meta: {
         title: $t("menus.hsmessage")
       }
     },
     {
-      path: "/components/segmented",
-      name: "Segmented",
-      component: () => import("@/views/components/segmented/index.vue"),
+      path: "/components/iconSelect",
+      name: "IconSelect",
+      component: () => import("@/views/components/icon-select.vue"),
       meta: {
-        title: $t("menus.hssegmented"),
-        extraIcon: "IF-pure-iconfont-new svg"
+        title: $t("menus.hsIconSelect")
       }
     },
     {
-      path: "/components/waterfall",
-      name: "Waterfall",
-      component: () => import("@/views/components/waterfall/index.vue"),
+      path: "/components/animatecss",
+      name: "AnimateCss",
+      component: () => import("@/views/components/animatecss.vue"),
       meta: {
-        title: $t("menus.hswaterfall")
-      }
-    },
-    {
-      path: "/components/video",
-      name: "VideoPage",
-      component: () => import("@/views/components/video/index.vue"),
-      meta: {
-        title: $t("menus.hsvideo")
-      }
-    },
-    {
-      path: "/components/map",
-      name: "MapPage",
-      component: () => import("@/views/components/map/index.vue"),
-      meta: {
-        title: $t("menus.hsmap"),
-        keepAlive: true,
-        transition: {
-          name: "fade"
-        }
-      }
-    },
-    {
-      path: "/components/draggable",
-      name: "Draggable",
-      component: () => import("@/views/components/draggable/index.vue"),
-      meta: {
-        title: $t("menus.hsdraggable"),
-        transition: {
-          enterTransition: "animate__zoomIn",
-          leaveTransition: "animate__zoomOut"
-        }
-      }
-    },
-    {
-      path: "/components/splitPane",
-      name: "SplitPane",
-      component: () => import("@/views/components/split-pane/index.vue"),
-      meta: {
-        title: $t("menus.hssplitPane")
-      }
-    },
-    {
-      path: "/components/button",
-      name: "ButtonPage",
-      component: () => import("@/views/components/button/index.vue"),
-      meta: {
-        title: $t("menus.hsbutton")
+        title: $t("menus.hsanimatecss")
       }
     },
     {
@@ -105,35 +51,76 @@ export default {
       }
     },
     {
-      path: "/components/animatecss",
-      name: "AnimateCss",
-      component: () => import("@/views/components/animatecss/index.vue"),
+      path: "/components/checkButton",
+      name: "CheckButton",
+      component: () => import("@/views/components/check-button.vue"),
       meta: {
-        title: $t("menus.hsanimatecss")
+        title: $t("menus.hsCheckButton"),
+        extraIcon: "IF-pure-iconfont-new svg"
       }
     },
     {
-      path: "/components/countTo",
-      name: "CountTo",
-      component: () => import("@/views/components/count-to/index.vue"),
+      path: "/components/segmented",
+      name: "Segmented",
+      component: () => import("@/views/components/segmented.vue"),
       meta: {
-        title: $t("menus.hscountTo")
+        title: $t("menus.hssegmented")
+      }
+    },
+    {
+      path: "/components/cascader",
+      name: "Cascader",
+      component: () => import("@/views/components/cascader.vue"),
+      meta: {
+        title: $t("menus.hsCascader")
       }
     },
     {
       path: "/components/selector",
       name: "Selector",
-      component: () => import("@/views/components/selector/index.vue"),
+      component: () => import("@/views/components/selector.vue"),
       meta: {
         title: $t("menus.hsselector")
       }
     },
     {
-      path: "/components/seamlessScroll",
-      name: "SeamlessScroll",
-      component: () => import("@/views/components/seamless-scroll/index.vue"),
+      path: "/components/waterfall",
+      name: "Waterfall",
+      component: () => import("@/views/components/waterfall/index.vue"),
       meta: {
-        title: $t("menus.hsseamless")
+        title: $t("menus.hswaterfall")
+      }
+    },
+    {
+      path: "/components/splitPane",
+      name: "SplitPane",
+      component: () => import("@/views/components/split-pane.vue"),
+      meta: {
+        title: $t("menus.hssplitPane")
+      }
+    },
+    {
+      path: "/components/swiper",
+      name: "Swiper",
+      component: () => import("@/views/components/swiper.vue"),
+      meta: {
+        title: $t("menus.hsSwiper")
+      }
+    },
+    {
+      path: "/components/timeline",
+      name: "TimeLine",
+      component: () => import("@/views/components/timeline.vue"),
+      meta: {
+        title: $t("menus.hsTimeline")
+      }
+    },
+    {
+      path: "/components/countTo",
+      name: "CountTo",
+      component: () => import("@/views/components/count-to.vue"),
+      meta: {
+        title: $t("menus.hscountTo")
       }
     },
     {
@@ -145,27 +132,35 @@ export default {
       }
     },
     {
-      path: "/components/typeit",
-      name: "Typeit",
-      component: () => import("@/views/components/typeit/index.vue"),
-      meta: {
-        title: $t("menus.hstypeit")
-      }
-    },
-    {
       path: "/components/json-editor",
       name: "JsonEditor",
-      component: () => import("@/views/components/json-editor/index.vue"),
+      component: () => import("@/views/components/json-editor.vue"),
       meta: {
         title: $t("menus.hsjsoneditor")
       }
     },
     {
-      path: "/components/danmaku",
-      name: "Danmaku",
-      component: () => import("@/views/components/danmaku/index.vue"),
+      path: "/components/seamlessScroll",
+      name: "SeamlessScroll",
+      component: () => import("@/views/components/seamless-scroll.vue"),
       meta: {
-        title: $t("menus.hsdanmaku")
+        title: $t("menus.hsseamless")
+      }
+    },
+    {
+      path: "/components/virtualList",
+      name: "VirtualList",
+      component: () => import("@/views/components/virtual-list/index.vue"),
+      meta: {
+        title: $t("menus.hsVirtualList")
+      }
+    },
+    {
+      path: "/components/button",
+      name: "ButtonPage",
+      component: () => import("@/views/components/button.vue"),
+      meta: {
+        title: $t("menus.hsbutton")
       }
     }
   ]

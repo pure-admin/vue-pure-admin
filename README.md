@@ -141,7 +141,7 @@ docker run -dp 8080:80  --name pure-admin vue-pure-admin
 当然也可以通过 [Docker Desktop](https://www.docker.com/products/docker-desktop/) 可视化界面去操作 `docker` 项目，如下图
 
 <p align="center">
-  <img alt="docker" width="100%" src="https://xiaoxian521.github.io/hyperlink/img/docker-desktop.jpg">
+  <img alt="docker-desktop" width="100%" src="https://xiaoxian521.github.io/hyperlink/img/docker-desktop.jpg">
 </p>
 
 ## 更新日志
