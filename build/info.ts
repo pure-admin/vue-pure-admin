@@ -3,14 +3,14 @@ import { getPackageSize } from "./utils";
 import dayjs, { type Dayjs } from "dayjs";
 import duration from "dayjs/plugin/duration";
 import gradientString from "gradient-string";
-import boxen, { type Options as boxenOptions } from "boxen";
+import boxen, { type Options as BoxenOptions } from "boxen";
 dayjs.extend(duration);
 
 const welcomeMessage = gradientString("cyan", "magenta").multiline(
   `Hello! 欢迎使用 vue-pure-admin\n我们为您精心准备了下面两个贴心的保姆级文档\nhttps://yiming_chang.gitee.io/pure-admin-doc\nhttps://pure-admin-utils.netlify.app`
 );
 
-const boxenOprions: boxenOptions = {
+const boxenOptions: BoxenOptions = {
   padding: 0.5,
   borderColor: "cyan",
   borderStyle: "round"
@@ -28,7 +28,7 @@ export function viteBuildInfo(): Plugin {
       outDir = resolvedConfig.build?.outDir ?? "dist";
     },
     buildStart() {
-      console.log(boxen(welcomeMessage, boxenOprions));
+      console.log(boxen(welcomeMessage, boxenOptions));
       if (config.command === "build") {
         startTime = dayjs(new Date());
       }
@@ -46,7 +46,7 @@ export function viteBuildInfo(): Plugin {
                     .duration(endTime.diff(startTime))
                     .format("mm分ss秒")}，打包后的大小为${size}）`
                 ),
-                boxenOprions
+                boxenOptions
               )
             );
           }

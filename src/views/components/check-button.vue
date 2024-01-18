@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { message } from "@/utils/message";
 import { getKeyList } from "@pureadmin/utils";
 
@@ -9,6 +9,7 @@ defineOptions({
 
 const spaceSize = ref(20);
 const size = ref("default");
+const dynamicSize = ref();
 
 const radio = ref("wait");
 const radioBox = ref("complete");
@@ -35,6 +36,7 @@ const checkTag = ref([
 ]);
 const curTagMap = ref({});
 function onChecked(tag, index) {
+  if (size.value === "disabled") return;
   curTagMap.value[index] = Object.assign({
     ...tag,
     checked: !tag.checked
@@ -64,12 +66,19 @@ const checkGroupTag = ref([
 ]);
 const curTagGroupMap = ref({});
 function onGroupChecked(tag, index) {
+  if (size.value === "disabled") return;
   curTagGroupMap.value[index] = Object.assign({
     ...tag,
     checked: !tag.checked
   });
   checkGroupTag.value[index].checked = curTagGroupMap.value[index].checked;
 }
+
+watch(size, val =>
+  val === "disabled"
+    ? (dynamicSize.value = "default")
+    : (dynamicSize.value = size.value)
+);
 </script>
 
 <template>
@@ -91,7 +100,7 @@ function onGroupChecked(tag, index) {
     <p class="mb-2">单选（紧凑风格的按钮样式）</p>
     <el-radio-group
       v-model="radio"
-      :size="size as any"
+      :size="dynamicSize"
       :disabled="size === 'disabled'"
     >
       <el-radio-button label="wait">等待中</el-radio-button>
@@ -103,7 +112,7 @@ function onGroupChecked(tag, index) {
     <p class="mb-2">单选（带有边框）</p>
     <el-radio-group
       v-model="radioBox"
-      :size="size as any"
+      :size="dynamicSize"
       :disabled="size === 'disabled'"
     >
       <el-radio label="wait" border>等待中</el-radio>
@@ -115,7 +124,7 @@ function onGroupChecked(tag, index) {
     <p class="mb-2">单选（自定义内容）</p>
     <el-radio-group
       v-model="radioCustom"
-      :size="size as any"
+      :size="dynamicSize"
       :disabled="size === 'disabled'"
     >
       <el-radio-button label="wait">
@@ -142,7 +151,7 @@ function onGroupChecked(tag, index) {
     <p class="mb-2">多选（紧凑风格的按钮样式）</p>
     <el-checkbox-group
       v-model="checkboxGroup"
-      :size="size as any"
+      :size="dynamicSize"
       :disabled="size === 'disabled'"
     >
       <el-checkbox-button label="apple">苹果</el-checkbox-button>
@@ -154,7 +163,7 @@ function onGroupChecked(tag, index) {
     <p class="mb-2">多选（带有边框）</p>
     <el-checkbox-group
       v-model="checkboxGroupBox"
-      :size="size as any"
+      :size="dynamicSize"
       :disabled="size === 'disabled'"
     >
       <el-checkbox label="cucumber" border>黄瓜</el-checkbox>
@@ -167,7 +176,7 @@ function onGroupChecked(tag, index) {
     <el-checkbox-group
       v-model="checkboxGroupCustom"
       class="pure-checkbox"
-      :size="size as any"
+      :size="dynamicSize"
       :disabled="size === 'disabled'"
     >
       <el-checkbox-button label="tomato">
@@ -209,7 +218,11 @@ function onGroupChecked(tag, index) {
       <el-check-tag
         v-for="(tag, index) in checkTag"
         :key="index"
-        class="select-none"
+        :class="[
+          'select-none',
+          size === 'disabled' && 'tag-disabled',
+          tag.checked && 'is-active'
+        ]"
         :checked="tag.checked"
         @change="onChecked(tag, index)"
       >
@@ -229,7 +242,11 @@ function onGroupChecked(tag, index) {
       <el-check-tag
         v-for="(tag, index) in checkGroupTag"
         :key="index"
-        class="select-none"
+        :class="[
+          'select-none',
+          size === 'disabled' && 'tag-disabled',
+          tag.checked && 'is-active'
+        ]"
         :checked="tag.checked"
         @change="onGroupChecked(tag, index)"
       >
@@ -270,6 +287,21 @@ function onGroupChecked(tag, index) {
         );
       }
     }
+  }
+}
+
+/** 可控制间距的按钮禁用样式 */
+.tag-disabled {
+  color: var(--el-disabled-text-color);
+  cursor: not-allowed;
+  background-color: var(--el-color-info-light-9);
+
+  &:hover {
+    background-color: var(--el-color-info-light-9);
+  }
+
+  &.is-active {
+    background-color: var(--el-color-primary-light-9);
   }
 }
 </style>
