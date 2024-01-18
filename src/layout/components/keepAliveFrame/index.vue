@@ -48,7 +48,7 @@ watch(
         const sameKey = [...MAP.keys()].find(i => path === i);
         if (!sameKey) {
           // 添加缓存
-          setMap(path, props.currComp, iframeTags);
+          setMap(path, props.currComp);
         }
       }
     }

@@ -1,16 +1,7 @@
-import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
-import { getConfig } from "@/config";
-
 const MAP = new Map();
-const maxCount = getConfig().KeepFrameMax;
+
 export const useMultiFrame = () => {
-  function setMap(path, Comp, tags) {
-    if (MAP.size > maxCount) {
-      // 第一条iframe
-      const rpath = tags[0].path;
-      useMultiTagsStoreHook().handleTags("splice", rpath);
-      delMap(rpath);
-    }
+  function setMap(path, Comp) {
     MAP.set(path, Comp);
   }
 
@@ -32,3 +23,4 @@ export const useMultiFrame = () => {
     MAP
   };
 };
+export default MAP;

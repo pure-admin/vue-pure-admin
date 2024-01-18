@@ -18,7 +18,6 @@ const loading = ref(true);
 const currentRoute = useRoute();
 const frameSrc = ref<string>("");
 const frameRef = ref<HTMLElement | null>(null);
-
 if (unref(currentRoute.meta)?.frameSrc) {
   frameSrc.value = unref(currentRoute.meta)?.frameSrc as string;
 }
@@ -32,6 +31,11 @@ watch(
   path => {
     if (props.frameInfo?.fullPath === path) {
       frameSrc.value = props.frameInfo?.frameSrc;
+    }
+    // 重新加载
+    if (path.indexOf("/redirect/") > -1) {
+      frameSrc.value = props.frameInfo?.fullPath;
+      loading.value = true;
     }
   }
 );
