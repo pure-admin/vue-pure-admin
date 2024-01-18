@@ -90,7 +90,7 @@ const transitionMain = defineComponent({
     <router-view>
       <template #default="{ Component, route }">
         <KeepAliveFrame :currComp="Component" :currRoute="route">
-          <template #default="{ Comp, fullPath }">
+          <template #default="{ Comp, fullPath, frameInfo }">
             <el-scrollbar
               v-if="props.fixedHeader"
               :wrap-style="{
@@ -119,6 +119,7 @@ const transitionMain = defineComponent({
                     <component
                       :is="Comp"
                       :key="fullPath"
+                      :frameInfo="frameInfo"
                       class="main-content"
                     />
                   </keep-alive>
@@ -126,6 +127,7 @@ const transitionMain = defineComponent({
                     :is="Comp"
                     v-else
                     :key="fullPath"
+                    :frameInfo="frameInfo"
                     class="main-content"
                   />
                 </transitionMain>
@@ -138,12 +140,18 @@ const transitionMain = defineComponent({
                   v-if="isKeepAlive"
                   :include="usePermissionStoreHook().cachePageList"
                 >
-                  <component :is="Comp" :key="fullPath" class="main-content" />
+                  <component
+                    :is="Comp"
+                    :key="fullPath"
+                    :frameInfo="frameInfo"
+                    class="main-content"
+                  />
                 </keep-alive>
                 <component
                   :is="Comp"
                   v-else
                   :key="fullPath"
+                  :frameInfo="frameInfo"
                   class="main-content"
                 />
               </transitionMain>

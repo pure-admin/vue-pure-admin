@@ -64,10 +64,18 @@ const normalComp = computed(() => !keep.value && props.currComp);
 <template>
   <template v-for="[fullPath, Comp] in compList" :key="fullPath">
     <div v-show="fullPath === props.currRoute.fullPath" class="w-full h-full">
-      <slot :Comp="Comp" :fullPath="fullPath"></slot>
+      <slot
+        :fullPath="fullPath"
+        :Comp="Comp"
+        :frameInfo="{ frameSrc: currRoute.meta?.frameSrc, fullPath }"
+      />
     </div>
   </template>
   <div v-show="!keep" class="w-full h-full">
-    <slot :Comp="normalComp" :fullPath="props.currRoute.fullPath"></slot>
+    <slot
+      :Comp="normalComp"
+      :fullPath="props.currRoute.fullPath"
+      frameInfo=""
+    />
   </div>
 </template>
