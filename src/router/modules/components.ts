@@ -108,6 +108,14 @@ export default {
       }
     },
     {
+      path: "/components/statistic",
+      name: "Statistic",
+      component: () => import("@/views/components/statistic.vue"),
+      meta: {
+        title: $t("menus.hsStatistic")
+      }
+    },
+    {
       path: "/components/cascader",
       name: "Cascader",
       component: () => import("@/views/components/cascader.vue"),

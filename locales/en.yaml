@@ -60,6 +60,7 @@ menus:
   hsDatePicker: Date Picker
   hsDateTimePicker: DateTimePicker
   hsTimePicker: TimePicker
+  hsStatistic: Statistic
   hsmenus: MultiLevel Menu
   hsmenu1: Menu1
   hsmenu1-1: Menu1-1
