@@ -43,6 +43,14 @@ export default {
       }
     },
     {
+      path: "/components/time-picker",
+      name: "TimePicker",
+      component: () => import("@/views/components/time-picker.vue"),
+      meta: {
+        title: $t("menus.hsTimePicker")
+      }
+    },
+    {
       path: "/components/icon-select",
       name: "IconSelect",
       component: () => import("@/views/components/icon-select.vue"),
