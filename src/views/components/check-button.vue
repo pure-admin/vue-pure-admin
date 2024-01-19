@@ -91,16 +91,15 @@ watch(size, val =>
   <el-card shadow="never">
     <template #header>
       <div class="card-header">
-        <span class="font-medium">
-          可选按钮
-          <br />
+        <el-space wrap :size="40">
+          <span style="font-size: 16px; font-weight: 800"> 可选按钮 </span>
           <el-radio-group v-model="size" size="small">
             <el-radio label="large">大尺寸</el-radio>
             <el-radio label="default">默认尺寸</el-radio>
             <el-radio label="small">小尺寸</el-radio>
             <el-radio label="disabled">禁用</el-radio>
           </el-radio-group>
-        </span>
+        </el-space>
       </div>
     </template>
     <p class="mb-2">单选（紧凑风格的按钮样式）</p>
