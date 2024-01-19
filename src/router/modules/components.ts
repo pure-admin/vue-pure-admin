@@ -108,6 +108,14 @@ export default {
       }
     },
     {
+      path: "/components/progress",
+      name: "PureProgress",
+      component: () => import("@/views/components/progress.vue"),
+      meta: {
+        title: $t("menus.hsProgress")
+      }
+    },
+    {
       path: "/components/tag",
       name: "PureTag",
       component: () => import("@/views/components/tag.vue"),

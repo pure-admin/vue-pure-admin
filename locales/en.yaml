@@ -63,6 +63,7 @@ menus:
   hsTag: Tag
   hsStatistic: Statistic
   hsCollapse: Collapse
+  hsProgress: Progress
   hsmenus: MultiLevel Menu
   hsmenu1: Menu1
   hsmenu1-1: Menu1-1

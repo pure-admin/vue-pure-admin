@@ -63,6 +63,7 @@ menus:
   hsTag: 标签
   hsStatistic: 统计组件
   hsCollapse: 折叠面板
+  hsProgress: 进度条
   hsmenus: 多级菜单
   hsmenu1: 菜单1
   hsmenu1-1: 菜单1-1
