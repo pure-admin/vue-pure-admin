@@ -124,6 +124,14 @@ export default {
       }
     },
     {
+      path: "/components/collapse",
+      name: "Collapse",
+      component: () => import("@/views/components/collapse.vue"),
+      meta: {
+        title: $t("menus.hsCollapse")
+      }
+    },
+    {
       path: "/components/cascader",
       name: "Cascader",
       component: () => import("@/views/components/cascader.vue"),

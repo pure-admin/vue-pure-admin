@@ -62,6 +62,7 @@ menus:
   hsTimePicker: TimePicker
   hsTag: Tag
   hsStatistic: Statistic
+  hsCollapse: Collapse
   hsmenus: MultiLevel Menu
   hsmenu1: Menu1
   hsmenu1-1: Menu1-1
