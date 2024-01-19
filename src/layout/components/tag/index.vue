@@ -9,7 +9,12 @@ import { handleAliveRoute, getTopMenu } from "@/router/utils";
 import { useSettingStoreHook } from "@/store/modules/settings";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
 import { ref, watch, unref, toRaw, nextTick, onBeforeUnmount } from "vue";
-import { isEqual, isAllEmpty, useResizeObserver } from "@pureadmin/utils";
+import {
+  delay,
+  isEqual,
+  isAllEmpty,
+  useResizeObserver
+} from "@pureadmin/utils";
 
 import ExitFullscreen from "@iconify-icons/ri/fullscreen-exit-fill";
 import Fullscreen from "@iconify-icons/ri/fullscreen-fill";
@@ -504,6 +509,7 @@ onMounted(() => {
   });
 
   useResizeObserver(scrollbarDom, dynamicTagView);
+  delay().then(() => dynamicTagView());
 });
 
 onBeforeUnmount(() => {

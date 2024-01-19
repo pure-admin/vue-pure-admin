@@ -45,22 +45,21 @@ function onClick() {
   <el-card shadow="never">
     <template #header>
       <div class="card-header">
-        <span class="font-medium">
+        <el-space wrap :size="40">
           <el-link
             href="https://element-plus.org/zh-CN/component/color-picker.html"
             target="_blank"
-            style="margin: 0 4px 5px; font-size: 16px"
+            style="font-size: 16px; font-weight: 800"
           >
             颜色选择器
           </el-link>
-          <br />
           <el-radio-group v-model="size" size="small">
             <el-radio label="large">大尺寸</el-radio>
             <el-radio label="default">默认尺寸</el-radio>
             <el-radio label="small">小尺寸</el-radio>
             <el-radio label="disabled">禁用</el-radio>
           </el-radio-group>
-        </span>
+        </el-space>
       </div>
     </template>
 
