@@ -108,6 +108,14 @@ export default {
       }
     },
     {
+      path: "/components/tag",
+      name: "PureTag",
+      component: () => import("@/views/components/tag.vue"),
+      meta: {
+        title: $t("menus.hsTag")
+      }
+    },
+    {
       path: "/components/statistic",
       name: "Statistic",
       component: () => import("@/views/components/statistic.vue"),

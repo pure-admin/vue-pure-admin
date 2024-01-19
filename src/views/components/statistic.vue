@@ -56,13 +56,13 @@ function reset() {
             format="HH:mm:ss"
             :value="value1"
           />
-          <el-button class="mt-2" type="primary" @click="reset">
-            Reset
+          <el-button class="mt-2" type="primary" text bg @click="reset">
+            重置
           </el-button>
         </re-col>
 
         <re-col :value="6" :xs="24" :sm="24">
-          <el-countdown format="DD 天 HH 时 mm 分 ss 秒" :value="value2">
+          <el-countdown format="DD天 HH时 mm分 ss秒" :value="value2">
             <template #title>
               <div style="display: inline-flex; align-items: center">
                 <IconifyIconOnline icon="ep:calendar" class="mr-2" />
