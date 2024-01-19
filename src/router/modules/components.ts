@@ -92,6 +92,14 @@ export default {
       }
     },
     {
+      path: "/components/color-picker",
+      name: "ColorPicker",
+      component: () => import("@/views/components/color-picker.vue"),
+      meta: {
+        title: $t("menus.hsColorPicker")
+      }
+    },
+    {
       path: "/components/selector",
       name: "Selector",
       component: () => import("@/views/components/selector.vue"),
