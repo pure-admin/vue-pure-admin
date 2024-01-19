@@ -57,6 +57,7 @@ menus:
   hstypeit: Typeit
   hsjsoneditor: JSON Editor
   hsColorPicker: Color Picker
+  hsDatePicker: Date Picker
   hsmenus: MultiLevel Menu
   hsmenu1: Menu1
   hsmenu1-1: Menu1-1

@@ -27,6 +27,14 @@ export default {
       }
     },
     {
+      path: "/components/date-picker",
+      name: "DatePicker",
+      component: () => import("@/views/components/date-picker.vue"),
+      meta: {
+        title: $t("menus.hsDatePicker")
+      }
+    },
+    {
       path: "/components/icon-select",
       name: "IconSelect",
       component: () => import("@/views/components/icon-select.vue"),
