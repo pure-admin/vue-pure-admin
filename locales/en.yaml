@@ -59,6 +59,7 @@ menus:
   hsColorPicker: Color Picker
   hsDatePicker: Date Picker
   hsDateTimePicker: DateTimePicker
+  hsTimePicker: TimePicker
   hsmenus: MultiLevel Menu
   hsmenu1: Menu1
   hsmenu1-1: Menu1-1
