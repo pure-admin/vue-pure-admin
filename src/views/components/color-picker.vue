@@ -47,6 +47,9 @@ function onClick() {
       <div class="card-header">
         <el-space wrap :size="40">
           <el-link
+            v-tippy="{
+              content: '点击查看详细文档'
+            }"
             href="https://element-plus.org/zh-CN/component/color-picker.html"
             target="_blank"
             style="font-size: 16px; font-weight: 800"
