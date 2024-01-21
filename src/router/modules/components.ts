@@ -27,6 +27,15 @@ export default {
       }
     },
     {
+      path: "/components/upload",
+      name: "PureUpload",
+      component: () => import("@/views/components/upload/index.vue"),
+      meta: {
+        title: $t("menus.hsUpload"),
+        extraIcon: "IF-pure-iconfont-new svg"
+      }
+    },
+    {
       path: "/components/date-picker",
       name: "DatePicker",
       component: () => import("@/views/components/date-picker.vue"),
@@ -105,6 +114,38 @@ export default {
       component: () => import("@/views/components/button.vue"),
       meta: {
         title: $t("menus.hsbutton")
+      }
+    },
+    {
+      path: "/components/progress",
+      name: "PureProgress",
+      component: () => import("@/views/components/progress.vue"),
+      meta: {
+        title: $t("menus.hsProgress")
+      }
+    },
+    {
+      path: "/components/tag",
+      name: "PureTag",
+      component: () => import("@/views/components/tag.vue"),
+      meta: {
+        title: $t("menus.hsTag")
+      }
+    },
+    {
+      path: "/components/statistic",
+      name: "Statistic",
+      component: () => import("@/views/components/statistic.vue"),
+      meta: {
+        title: $t("menus.hsStatistic")
+      }
+    },
+    {
+      path: "/components/collapse",
+      name: "Collapse",
+      component: () => import("@/views/components/collapse.vue"),
+      meta: {
+        title: $t("menus.hsCollapse")
       }
     },
     {

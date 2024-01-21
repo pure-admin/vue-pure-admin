@@ -198,7 +198,7 @@ watch(size, val =>
       @change="value1 = ''"
     >
       <el-radio label="">Date</el-radio>
-      <el-radio label="YYYY-MM-DD h:m:s a">年月日 时分秒</el-radio>
+      <el-radio label="YYYY-MM-DD HH:mm:ss">年月日 时分秒</el-radio>
       <el-radio label="x">时间戳</el-radio>
     </el-radio-group>
     <br />
