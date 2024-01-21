@@ -27,6 +27,15 @@ export default {
       }
     },
     {
+      path: "/components/upload",
+      name: "PureUpload",
+      component: () => import("@/views/components/upload/index.vue"),
+      meta: {
+        title: $t("menus.hsUpload"),
+        extraIcon: "IF-pure-iconfont-new svg"
+      }
+    },
+    {
       path: "/components/date-picker",
       name: "DatePicker",
       component: () => import("@/views/components/date-picker.vue"),

@@ -64,6 +64,7 @@ menus:
   hsStatistic: Statistic
   hsCollapse: Collapse
   hsProgress: Progress
+  hsUpload: File Upload
   hsmenus: MultiLevel Menu
   hsmenu1: Menu1
   hsmenu1-1: Menu1-1
