@@ -1,18 +1,24 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
 import { useRoute } from "vue-router";
-import { ref, unref, onMounted, nextTick } from "vue";
+import { ref, unref, watch, onMounted, nextTick } from "vue";
 
 defineOptions({
   name: "FrameView"
 });
+
+const props = defineProps<{
+  frameInfo?: {
+    frameSrc?: string;
+    fullPath?: string;
+  };
+}>();
 
 const { t } = useI18n();
 const loading = ref(true);
 const currentRoute = useRoute();
 const frameSrc = ref<string>("");
 const frameRef = ref<HTMLElement | null>(null);
-
 if (unref(currentRoute.meta)?.frameSrc) {
   frameSrc.value = unref(currentRoute.meta)?.frameSrc as string;
 }
@@ -38,6 +44,20 @@ function init() {
     }
   });
 }
+
+watch(
+  () => currentRoute.fullPath,
+  path => {
+    if (props.frameInfo?.fullPath === path) {
+      frameSrc.value = props.frameInfo?.frameSrc;
+    }
+    // 重新加载
+    if (path.indexOf("/redirect/") > -1) {
+      frameSrc.value = props.frameInfo?.fullPath;
+      loading.value = true;
+    }
+  }
+);
 
 onMounted(() => {
   init();
