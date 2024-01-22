@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Footer from "./footer/index.vue";
 import { useGlobal } from "@pureadmin/utils";
+import KeepAliveFrame from "./keepAliveFrame/index.vue";
 import backTop from "@/assets/svg/back_top.svg?component";
 import { h, computed, Transition, defineComponent } from "vue";
 import { usePermissionStoreHook } from "@/store/modules/permission";
@@ -89,64 +90,75 @@ const transitionMain = defineComponent({
   >
     <router-view>
       <template #default="{ Component, route }">
-        <el-scrollbar
-          v-if="props.fixedHeader"
-          :wrap-style="{
-            display: 'flex',
-            'flex-wrap': 'wrap'
-          }"
-          :view-style="{
-            display: 'flex',
-            flex: 'auto',
-            overflow: 'auto',
-            'flex-direction': 'column'
-          }"
-        >
-          <el-backtop title="回到顶部" target=".app-main .el-scrollbar__wrap">
-            <backTop />
-          </el-backtop>
-          <div class="grow">
-            <transitionMain :route="route">
-              <keep-alive
-                v-if="isKeepAlive"
-                :include="usePermissionStoreHook().cachePageList"
+        <KeepAliveFrame :currComp="Component" :currRoute="route">
+          <template #default="{ Comp, fullPath, frameInfo }">
+            <el-scrollbar
+              v-if="props.fixedHeader"
+              :wrap-style="{
+                display: 'flex',
+                'flex-wrap': 'wrap'
+              }"
+              :view-style="{
+                display: 'flex',
+                flex: 'auto',
+                overflow: 'auto',
+                'flex-direction': 'column'
+              }"
+            >
+              <el-backtop
+                title="回到顶部"
+                target=".app-main .el-scrollbar__wrap"
               >
+                <backTop />
+              </el-backtop>
+              <div class="grow">
+                <transitionMain :route="route">
+                  <keep-alive
+                    v-if="isKeepAlive"
+                    :include="usePermissionStoreHook().cachePageList"
+                  >
+                    <component
+                      :is="Comp"
+                      :key="fullPath"
+                      :frameInfo="frameInfo"
+                      class="main-content"
+                    />
+                  </keep-alive>
+                  <component
+                    :is="Comp"
+                    v-else
+                    :key="fullPath"
+                    :frameInfo="frameInfo"
+                    class="main-content"
+                  />
+                </transitionMain>
+              </div>
+              <Footer v-if="!hideFooter" />
+            </el-scrollbar>
+            <div v-else class="grow">
+              <transitionMain :route="route">
+                <keep-alive
+                  v-if="isKeepAlive"
+                  :include="usePermissionStoreHook().cachePageList"
+                >
+                  <component
+                    :is="Comp"
+                    :key="fullPath"
+                    :frameInfo="frameInfo"
+                    class="main-content"
+                  />
+                </keep-alive>
                 <component
-                  :is="Component"
-                  :key="route.fullPath"
+                  :is="Comp"
+                  v-else
+                  :key="fullPath"
+                  :frameInfo="frameInfo"
                   class="main-content"
                 />
-              </keep-alive>
-              <component
-                :is="Component"
-                v-else
-                :key="route.fullPath"
-                class="main-content"
-              />
-            </transitionMain>
-          </div>
-          <Footer v-if="!hideFooter" />
-        </el-scrollbar>
-        <div v-else class="grow">
-          <transitionMain :route="route">
-            <keep-alive
-              v-if="isKeepAlive"
-              :include="usePermissionStoreHook().cachePageList"
-            >
-              <component
-                :is="Component"
-                :key="route.fullPath"
-                class="main-content"
-              />
-            </keep-alive>
-            <component
-              :is="Component"
-              v-else
-              :key="route.fullPath"
-              class="main-content"
-            />
-          </transitionMain>
-        </div>
+              </transitionMain>
+            </div>
+          </template>
+        </KeepAliveFrame>
       </template>
     </router-view>
 
