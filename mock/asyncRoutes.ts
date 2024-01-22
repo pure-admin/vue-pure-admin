@@ -138,6 +138,7 @@ const frameRouter = {
           meta: {
             title: "menus.hsVueDocument",
             frameSrc: "https://cn.vuejs.org/",
+            keepAlive: true,
             roles: ["admin", "common"]
           }
         },
@@ -147,6 +148,7 @@ const frameRouter = {
           meta: {
             title: "menus.hsViteDocument",
             frameSrc: "https://cn.vitejs.dev/",
+            keepAlive: true,
             roles: ["admin", "common"]
           }
         },
@@ -156,6 +158,7 @@ const frameRouter = {
           meta: {
             title: "menus.hsPiniaDocument",
             frameSrc: "https://pinia.vuejs.org/zh/index.html",
+            keepAlive: true,
             roles: ["admin", "common"]
           }
         },
@@ -165,6 +168,7 @@ const frameRouter = {
           meta: {
             title: "menus.hsRouterDocument",
             frameSrc: "https://router.vuejs.org/zh/",
+            keepAlive: true,
             roles: ["admin", "common"]
           }
         }

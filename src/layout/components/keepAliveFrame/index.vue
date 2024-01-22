@@ -1,25 +1,27 @@
 <script setup lang="ts">
-import { useMultiFrame } from "@/layout/components/keepAliveFrame/useMultiFrame";
-import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
-import { shallowRef, watch } from "vue";
-import { type RouteRecordRaw, RouteLocationNormalizedLoaded } from "vue-router";
-import type { Component } from "vue";
-import { computed } from "vue";
 import { getConfig } from "@/config";
+import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
+import { type Component, shallowRef, watch, computed } from "vue";
+import { type RouteRecordRaw, RouteLocationNormalizedLoaded } from "vue-router";
+import { useMultiFrame } from "@/layout/components/keepAliveFrame/useMultiFrame";
 
-const { setMap, getMap, MAP, delMap } = useMultiFrame();
 const props = defineProps<{
   currRoute: RouteLocationNormalizedLoaded;
   currComp: Component;
 }>();
 
 const compList = shallowRef([]);
-const keep = computed(
-  () =>
+const { setMap, getMap, MAP, delMap } = useMultiFrame();
+
+const keep = computed(() => {
+  return (
     getConfig().KeepAlive &&
     props.currRoute.meta?.keepAlive &&
     !!props.currRoute.meta?.frameSrc
-);
+  );
+});
+// 避免重新渲染 frameView
+const normalComp = computed(() => !keep.value && props.currComp);
 
 watch(useMultiTagsStoreHook().multiTags, (tags: any) => {
   if (!Array.isArray(tags) || !keep.value) {
@@ -30,7 +32,6 @@ watch(useMultiTagsStoreHook().multiTags, (tags: any) => {
   if (iframeTags.length < MAP.size) {
     for (const i of MAP.keys()) {
       if (!tags.some(s => s.path === i)) {
-        // console.log("关闭标签，清空缓存", i);
         delMap(i);
         compList.value = getMap();
       }
@@ -61,8 +62,6 @@ watch(
     immediate: true
   }
 );
-// 渲染iframe时，避免重新渲染一次frameView
-const normalComp = computed(() => !keep.value && props.currComp);
 </script>
 <template>
   <template v-for="[fullPath, Comp] in compList" :key="fullPath">

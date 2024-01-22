@@ -1,18 +1,19 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
 import { useRoute } from "vue-router";
-import { ref, unref, onMounted, nextTick } from "vue";
-import { watch } from "vue";
+import { ref, unref, watch, onMounted, nextTick } from "vue";
 
 defineOptions({
   name: "FrameView"
 });
+
 const props = defineProps<{
   frameInfo?: {
     frameSrc?: string;
     fullPath?: string;
   };
 }>();
+
 const { t } = useI18n();
 const loading = ref(true);
 const currentRoute = useRoute();
@@ -26,19 +27,7 @@ unref(currentRoute.meta)?.frameLoading === false && hideLoading();
 function hideLoading() {
   loading.value = false;
 }
-watch(
-  () => currentRoute.fullPath,
-  path => {
-    if (props.frameInfo?.fullPath === path) {
-      frameSrc.value = props.frameInfo?.frameSrc;
-    }
-    // 重新加载
-    if (path.indexOf("/redirect/") > -1) {
-      frameSrc.value = props.frameInfo?.fullPath;
-      loading.value = true;
-    }
-  }
-);
+
 function init() {
   nextTick(() => {
     const iframe = unref(frameRef);
@@ -55,6 +44,20 @@ function init() {
     }
   });
 }
+
+watch(
+  () => currentRoute.fullPath,
+  path => {
+    if (props.frameInfo?.fullPath === path) {
+      frameSrc.value = props.frameInfo?.frameSrc;
+    }
+    // 重新加载
+    if (path.indexOf("/redirect/") > -1) {
+      frameSrc.value = props.frameInfo?.fullPath;
+      loading.value = true;
+    }
+  }
+);
 
 onMounted(() => {
   init();
