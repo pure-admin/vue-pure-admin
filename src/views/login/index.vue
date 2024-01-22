@@ -68,6 +68,7 @@ const ruleForm = reactive({
 });
 
 const onLogin = async (formEl: FormInstance | undefined) => {
+  if (loading.value) return;
   loading.value = true;
   if (!formEl) return;
   await formEl.validate((valid, fields) => {
@@ -83,7 +84,11 @@ const onLogin = async (formEl: FormInstance | undefined) => {
             });
           }
         })
-        .finally(() => (loading.value = false));
+        .finally(() =>
+          setTimeout(() => {
+            loading.value = false;
+          }, 300)
+        );
     } else {
       loading.value = false;
       return fields;
