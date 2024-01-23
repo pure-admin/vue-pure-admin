@@ -43,7 +43,6 @@ export function useTags() {
   const activeIndex = ref(-1);
   // 当前右键选中的路由信息
   const currentSelect = ref({});
-  const isScrolling = ref(false);
 
   /** 显示模式，默认灵动模式 */
   const showModel = ref(
@@ -154,8 +153,7 @@ export function useTags() {
 
   const getTabStyle = computed((): CSSProperties => {
     return {
-      transform: `translateX(${translateX.value}px)`,
-      transition: isScrolling.value ? "none" : "transform 0.5s ease-in-out"
+      transform: `translateX(${translateX.value}px)`
     };
   });
 
@@ -235,7 +233,6 @@ export function useTags() {
     pureSetting,
     activeIndex,
     getTabStyle,
-    isScrolling,
     iconIsActive,
     linkIsActive,
     currentSelect,

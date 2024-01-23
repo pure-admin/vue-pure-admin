@@ -38,7 +38,6 @@ const {
   pureSetting,
   activeIndex,
   getTabStyle,
-  isScrolling,
   iconIsActive,
   linkIsActive,
   currentSelect,
@@ -142,37 +141,6 @@ const handleScroll = (offset: number): void => {
       translateX.value = 0;
     }
   }
-  isScrolling.value = false;
-};
-
-const handleWheel = (event: WheelEvent): void => {
-  isScrolling.value = true;
-  const scrollIntensity = Math.abs(event.deltaX) + Math.abs(event.deltaY);
-  let offset = 0;
-  if (event.deltaX < 0) {
-    offset = scrollIntensity > 0 ? scrollIntensity : 100;
-  } else {
-    offset = scrollIntensity > 0 ? -scrollIntensity : -100;
-  }
-
-  smoothScroll(offset);
-};
-
-const smoothScroll = (offset: number): void => {
-  const scrollAmount = 20; // 每帧滚动的距离
-  let remaining = Math.abs(offset);
-
-  const scrollStep = () => {
-    const scrollOffset = Math.sign(offset) * Math.min(scrollAmount, remaining);
-    handleScroll(scrollOffset);
-    remaining -= Math.abs(scrollOffset);
-
-    if (remaining > 0) {
-      requestAnimationFrame(scrollStep);
-    }
-  };
-
-  requestAnimationFrame(scrollStep);
 };
 
 function dynamicRouteTag(value: string): void {
@@ -568,11 +536,7 @@ onBeforeUnmount(() => {
     <span v-show="isShowArrow" class="arrow-left">
       <IconifyIconOffline :icon="ArrowLeftSLine" @click="handleScroll(200)" />
     </span>
-    <div
-      ref="scrollbarDom"
-      class="scroll-container"
-      @wheel.prevent="handleWheel"
-    >
+    <div ref="scrollbarDom" class="scroll-container">
       <div ref="tabDom" class="tab select-none" :style="getTabStyle">
         <div
           v-for="(item, index) in multiTags"

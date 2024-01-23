@@ -97,8 +97,7 @@ const immediateDebounce: any = debounce(
 );
 
 useEventListener(document, "keypress", ({ code }) => {
-  if (code === "Enter" && !disabled.value && !loading.value)
-    immediateDebounce(ruleFormRef.value);
+  if (code === "Enter" && !disabled.value) immediateDebounce(ruleFormRef.value);
 });
 
 watch(imgCode, value => {

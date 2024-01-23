@@ -24,8 +24,8 @@ dependencies:
     specifier: ^3.0.1
     version: 3.0.1(element-plus@2.5.1)(typescript@5.3.3)
   '@pureadmin/utils':
-    specifier: ^2.4.4
-    version: 2.4.4(echarts@5.4.3)(vue@3.4.14)
+    specifier: ^2.4.3
+    version: 2.4.3(echarts@5.4.3)(vue@3.4.14)
   '@vueuse/core':
     specifier: ^10.7.2
     version: 10.7.2(vue@3.4.14)
@@ -1763,8 +1763,8 @@ packages:
       string-hash: 1.1.3
     dev: true
 
-  /@pureadmin/utils@2.4.4(echarts@5.4.3)(vue@3.4.14):
-    resolution: {integrity: sha512-dH1ml+/U50Te7KlZX8pkA08/o+XKYx8aFyds9aTBC34JDyn0GQSyhe0zFIfGwnFztWMToWn/cyitpXmDEcq3NA==}
+  /@pureadmin/utils@2.4.3(echarts@5.4.3)(vue@3.4.14):
+    resolution: {integrity: sha512-2CT8HIFUWiFZCJnclBRpng5kVQawvZWdAH4ERPnDZGt5pPltGzNNodpsDVHBCKYAbf/xDKpiNUkYwNbPCCIM9Q==}
     peerDependencies:
       echarts: '*'
       vue: '*'
