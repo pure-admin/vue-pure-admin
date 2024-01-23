@@ -100,7 +100,7 @@
     "vuedraggable": "^4.1.0",
     "wavesurfer.js": "^7.6.4",
     "xgplayer": "^3.0.11",
-    "xlsx": "^0.18.5"
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.1/xlsx-0.20.1.tgz"
   },
   "devDependencies": {
     "@commitlint/cli": "^18.4.4",
