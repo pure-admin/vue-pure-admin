@@ -1,13 +1,4 @@
 <script setup lang="ts">
-import {
-  ref,
-  toRaw,
-  reactive,
-  watch,
-  computed,
-  onMounted,
-  onBeforeUnmount
-} from "vue";
 import { useI18n } from "vue-i18n";
 import Motion from "./utils/motion";
 import { useRouter } from "vue-router";
@@ -15,10 +6,12 @@ import { message } from "@/utils/message";
 import { loginRules } from "./utils/rule";
 import phone from "./components/phone.vue";
 import TypeIt from "@/components/ReTypeit";
+import { debounce } from "@pureadmin/utils";
 import qrCode from "./components/qrCode.vue";
 import regist from "./components/regist.vue";
 import update from "./components/update.vue";
 import { useNav } from "@/layout/hooks/useNav";
+import { useEventListener } from "@vueuse/core";
 import type { FormInstance } from "element-plus";
 import { $t, transformI18n } from "@/plugins/i18n";
 import { operates, thirdParty } from "./utils/enums";
@@ -27,6 +20,7 @@ import { useUserStoreHook } from "@/store/modules/user";
 import { initRouter, getTopMenu } from "@/router/utils";
 import { bg, avatar, illustration } from "./utils/static";
 import { ReImageVerify } from "@/components/ReImageVerify";
+import { ref, toRaw, reactive, watch, computed } from "vue";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import { useTranslationLang } from "@/layout/hooks/useTranslationLang";
 import { useDataThemeChange } from "@/layout/hooks/useDataThemeChange";
@@ -48,6 +42,7 @@ const loginDay = ref(7);
 const router = useRouter();
 const loading = ref(false);
 const checked = ref(false);
+const disabled = ref(false);
 const ruleFormRef = ref<FormInstance>();
 const currentPage = computed(() => {
   return useUserStoreHook().currentPage;
@@ -68,42 +63,42 @@ const ruleForm = reactive({
 });
 
 const onLogin = async (formEl: FormInstance | undefined) => {
-  loading.value = true;
   if (!formEl) return;
   await formEl.validate((valid, fields) => {
     if (valid) {
+      loading.value = true;
       useUserStoreHook()
         .loginByUsername({ username: ruleForm.username, password: "admin123" })
         .then(res => {
           if (res.success) {
             // 获取后端路由
             return initRouter().then(() => {
-              router.push(getTopMenu(true).path);
-              message("登录成功", { type: "success" });
+              disabled.value = true;
+              router
+                .push(getTopMenu(true).path)
+                .then(() => {
+                  message("登录成功", { type: "success" });
+                })
+                .finally(() => (disabled.value = false));
             });
           }
         })
         .finally(() => (loading.value = false));
     } else {
-      loading.value = false;
       return fields;
     }
   });
 };
 
-/** 使用公共函数，避免`removeEventListener`失效 */
-function onkeypress({ code }: KeyboardEvent) {
-  if (code === "Enter") {
-    onLogin(ruleFormRef.value);
-  }
-}
+const immediateDebounce: any = debounce(
+  formRef => onLogin(formRef),
+  1000,
+  true
+);
 
-onMounted(() => {
-  window.document.addEventListener("keypress", onkeypress);
-});
-
-onBeforeUnmount(() => {
-  window.document.removeEventListener("keypress", onkeypress);
+useEventListener(document, "keypress", ({ code }) => {
+  if (code === "Enter" && !disabled.value && !loading.value)
+    immediateDebounce(ruleFormRef.value);
 });
 
 watch(imgCode, value => {
@@ -270,6 +265,7 @@ watch(loginDay, value => {
                   size="default"
                   type="primary"
                   :loading="loading"
+                  :disabled="disabled"
                   @click="onLogin(ruleFormRef)"
                 >
                   {{ t("login.login") }}
