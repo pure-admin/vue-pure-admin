@@ -551,8 +551,6 @@ onMounted(() => {
   useResizeObserver(scrollbarDom, dynamicTagView);
   delay().then(() => dynamicTagView());
 
-  console.log(dynamic0.value[0].clientWidth);
-
   /** 动态设置第一个tag min-width 适配不同长度字符 解决在Safari中第一个标签与其他标签重叠问题 */
   setTagFirstMinWidth();
 });
