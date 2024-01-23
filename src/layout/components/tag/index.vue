@@ -588,7 +588,7 @@ onBeforeUnmount(() => {
           >
             <IconifyIconOffline :icon="CloseBold" />
           </span>
-          <div
+          <span
             v-if="showModel !== 'card'"
             :ref="'schedule' + index"
             :class="[scheduleIsActive(item)]"
