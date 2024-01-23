@@ -38,6 +38,7 @@ export function useTags() {
   const buttonTop = ref(0);
   const buttonLeft = ref(0);
   const translateX = ref(0);
+  const firstTagWidth = ref(0);
   const visible = ref(false);
   const activeIndex = ref(-1);
   // 当前右键选中的路由信息
@@ -162,6 +163,10 @@ export function useTags() {
     return { left: buttonLeft.value + "px", top: buttonTop.value + "px" };
   });
 
+  const getFirstTagWidth = computed((): CSSProperties => {
+    return { minWidth: firstTagWidth.value + "px" };
+  });
+
   const closeMenu = () => {
     visible.value = false;
   };
@@ -236,6 +241,8 @@ export function useTags() {
     currentSelect,
     scheduleIsActive,
     getContextMenuStyle,
+    firstTagWidth,
+    getFirstTagWidth,
     $t,
     closeMenu,
     onMounted,

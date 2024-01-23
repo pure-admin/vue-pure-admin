@@ -44,6 +44,8 @@ const {
   currentSelect,
   scheduleIsActive,
   getContextMenuStyle,
+  firstTagWidth,
+  getFirstTagWidth,
   closeMenu,
   onMounted,
   onMouseenter,
@@ -53,6 +55,7 @@ const {
 } = useTags();
 
 const tabDom = ref();
+const dynamic0 = ref();
 const containerDom = ref();
 const scrollbarDom = ref();
 const contextmenuRef = ref();
@@ -501,6 +504,11 @@ function tagOnClick(item) {
   // showMenuModel(item?.path, item?.query);
 }
 
+/** 设置第一个tag width */
+function setTagFirstMinWidth() {
+  firstTagWidth.value = dynamic0.value[0].clientWidth || 0;
+}
+
 onClickOutside(contextmenuRef, closeMenu, {
   detectIframe: true
 });
@@ -542,6 +550,11 @@ onMounted(() => {
 
   useResizeObserver(scrollbarDom, dynamicTagView);
   delay().then(() => dynamicTagView());
+
+  console.log(dynamic0.value[0].clientWidth);
+
+  /** 动态设置第一个tag min-width 适配不同长度字符 解决在Safari中第一个标签与其他标签重叠问题 */
+  setTagFirstMinWidth();
 });
 
 onBeforeUnmount(() => {
@@ -568,6 +581,7 @@ onBeforeUnmount(() => {
           :ref="'dynamic' + index"
           :key="index"
           :class="['scroll-item is-closable', linkIsActive(item)]"
+          :style="!index ? getFirstTagWidth : ''"
           @contextmenu.prevent="openMenu(item, $event)"
           @mouseenter.prevent="onMouseenter(index)"
           @mouseleave.prevent="onMouseleave(index)"
