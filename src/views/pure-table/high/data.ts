@@ -91,7 +91,8 @@ const tableDataEdit = clone(tableData, true).map((item, index) => {
   return Object.assign(item, {
     id: index + 1,
     date: `${dayjs(new Date()).format("YYYY-MM")}-${index + 1}`,
-    address: "China"
+    address: "China",
+    sex: index % 2 === 0 ? "男" : "女"
   });
 });
 
