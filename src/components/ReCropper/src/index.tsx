@@ -218,6 +218,7 @@ export default defineComponent({
       if (event === "scaleX") {
         scaleX = arg = scaleX === -1 ? 1 : -1;
       }
+
       if (event === "scaleY") {
         scaleY = arg = scaleY === -1 ? 1 : -1;
       }
@@ -375,7 +376,7 @@ export default defineComponent({
     function onContextmenu(event) {
       event.preventDefault();
 
-      const { show, setProps } = useTippy(tippyElRef, {
+      const { show, setProps, destroy, state } = useTippy(tippyElRef, {
         content: menuContent,
         arrow: false,
         theme: "light",
@@ -399,6 +400,16 @@ export default defineComponent({
       });
 
       show();
+
+      function onContenmenuDestroy() {
+        if (state.value.isShown && state.value.isVisible) {
+          destroy();
+        }
+        // 不管是否显示先清除一遍 防止点击左键时拖动到菜单上导致菜单无法关闭，进而再点击右键生成新的菜单时导致上一个菜单监听的事件无法清除的问题
+        tippyElRef.value.removeEventListener("click", onContenmenuDestroy);
+      }
+
+      tippyElRef.value.addEventListener("click", onContenmenuDestroy);
     }
 
     return {
