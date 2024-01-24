@@ -228,30 +228,32 @@ function resolvePath(routePath) {
       {{ overflowSlice(transformI18n(onlyOneChild.meta.title)) }}
     </span>
     <template #title>
-      <div :style="getDivStyle">
-        <span v-if="layout === 'horizontal'">
-          {{ transformI18n(onlyOneChild.meta.title) }}
-        </span>
-        <el-tooltip
-          v-else
-          placement="top"
-          :effect="tooltipEffect"
-          :offset="-10"
-          :disabled="!onlyOneChild.showTooltip"
-        >
-          <template #content>
-            {{ transformI18n(onlyOneChild.meta.title) }}
-          </template>
-          <span
-            ref="menuTextRef"
-            :style="getMenuTextStyle"
-            @mouseover="hoverMenu(onlyOneChild)"
-          >
+      <a style="padding: 0" @click="ev => ev.preventDefault()">
+        <div :style="getDivStyle">
+          <span v-if="layout === 'horizontal'">
             {{ transformI18n(onlyOneChild.meta.title) }}
           </span>
-        </el-tooltip>
-        <extraIcon :extraIcon="onlyOneChild.meta.extraIcon" />
-      </div>
+          <el-tooltip
+            v-else
+            placement="top"
+            :effect="tooltipEffect"
+            :offset="-10"
+            :disabled="!onlyOneChild.showTooltip"
+          >
+            <template #content>
+              {{ transformI18n(onlyOneChild.meta.title) }}
+            </template>
+            <span
+              ref="menuTextRef"
+              :style="getMenuTextStyle"
+              @mouseover="hoverMenu(onlyOneChild)"
+            >
+              {{ transformI18n(onlyOneChild.meta.title) }}
+            </span>
+          </el-tooltip>
+          <extraIcon :extraIcon="onlyOneChild.meta.extraIcon" />
+        </div>
+      </a>
     </template>
   </el-menu-item>
   <el-sub-menu
