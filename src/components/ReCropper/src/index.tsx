@@ -66,6 +66,7 @@ const props = {
   src: { type: String, required: true },
   alt: { type: String },
   circled: { type: Boolean, default: false },
+  isClose: { type: Boolean, default: false },
   realTimePreview: { type: Boolean, default: true },
   height: { type: [String, Number], default: "360px" },
   crossorigin: {
@@ -87,6 +88,8 @@ export default defineComponent({
     const imgBase64 = ref();
     const inCircled = ref(props.circled);
     const inSrc = ref(props.src);
+    const isInClose = ref(props.isClose);
+
     let scaleX = 1;
     let scaleY = 1;
 
@@ -401,15 +404,15 @@ export default defineComponent({
 
       show();
 
-      function onContenmenuDestroy() {
-        if (state.value.isShown && state.value.isVisible) {
+      if (isInClose.value) {
+        function onContenmenuDestroy() {
+          if (!state.value.isShown && !state.value.isVisible) return;
           destroy();
+          tippyElRef.value.removeEventListener("click", onContenmenuDestroy);
         }
-        // 不管是否显示先清除一遍 防止点击左键时拖动到菜单上导致菜单无法关闭，进而再点击右键生成新的菜单时导致上一个菜单监听的事件无法清除的问题
-        tippyElRef.value.removeEventListener("click", onContenmenuDestroy);
-      }
 
-      tippyElRef.value.addEventListener("click", onContenmenuDestroy);
+        tippyElRef.value.addEventListener("click", onContenmenuDestroy);
+      }
     }
 
     return {
