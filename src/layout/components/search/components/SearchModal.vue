@@ -3,14 +3,18 @@ import { match } from "pinyin-pro";
 import { useI18n } from "vue-i18n";
 import { useRouter } from "vue-router";
 import SearchResult from "./SearchResult.vue";
+import SearchHistory from "./SearchHistory.vue";
 import SearchFooter from "./SearchFooter.vue";
+import { getConfig } from "@/config";
 import { useNav } from "@/layout/hooks/useNav";
 import { transformI18n } from "@/plugins/i18n";
 import { ref, computed, shallowRef } from "vue";
 import { cloneDeep, isAllEmpty } from "@pureadmin/utils";
 import { useDebounceFn, onKeyStroke } from "@vueuse/core";
 import { usePermissionStoreHook } from "@/store/modules/permission";
+import { localForage } from "@/utils/localforage";
 import Search from "@iconify-icons/ri/search-line";
+import type { optionsItem } from "../types";
 
 interface Props {
   /** 弹窗显隐 */
@@ -30,10 +34,14 @@ const { locale } = useI18n();
 const keyword = ref("");
 const scrollbarRef = ref();
 const resultRef = ref();
+const historyRef = ref();
 const activePath = ref("");
+const historyPath = ref("");
 const inputRef = ref<HTMLInputElement | null>(null);
 const resultOptions = shallowRef([]);
+const historyOptions = shallowRef([]);
 const handleSearch = useDebounceFn(search, 300);
+const historyNum = getConfig().MenuSearchHistory;
 
 /** 菜单树形结构 */
 const menusData = computed(() => {
@@ -42,6 +50,9 @@ const menusData = computed(() => {
 
 const show = computed({
   get() {
+    if (props.value) {
+      getHistory();
+    }
     return props.value;
   },
   set(val: boolean) {
@@ -96,46 +107,162 @@ function handleClose() {
 }
 
 function scrollTo(index) {
-  const scrollTop = resultRef.value.handleScroll(index);
+  const ref = resultOptions.value.length ? resultRef.value : historyRef.value;
+  const scrollTop = ref.handleScroll(index);
   scrollbarRef.value.setScrollTop(scrollTop);
+}
+
+/** 删除历史记录 */
+function handleDelete(item) {
+  localForage()
+    .removeItem(item.type + ":" + item.path)
+    .then(function () {
+      const index = historyOptions.value.findIndex(
+        historyItem => historyItem.path === item.path
+      );
+      if (index !== -1) {
+        historyOptions.value.splice(index, 1);
+      }
+      if (item.path === activePath.value) {
+        historyPath.value = historyOptions.value[0]?.path;
+      }
+      getHistory();
+    });
+}
+
+/** 收藏历史记录 */
+function handleCollect(item) {
+  localForage()
+    .removeItem("history:" + item.path)
+    .then(function () {
+      localForage()
+        .setItem("collect:" + item.path, {
+          ...item,
+          type: "collect"
+        })
+        .then(() => {
+          getHistory();
+        });
+    })
+    .catch(function (error) {
+      console.log("收藏失败：", error);
+    });
+}
+
+/** 本地存储搜索记录 */
+function saveHistory() {
+  const { path, meta } = resultOptions.value.find(
+    item => item.path === activePath.value
+  );
+  localForage()
+    .keys()
+    .then(function (keys) {
+      const saveKeys = keys.filter(key => key.startsWith("history:"));
+      const collectKeys = keys.filter(key => key.startsWith("collect:"));
+      if (collectKeys.includes("collect:" + path)) return;
+
+      if (saveKeys.length < historyNum) {
+        localForage().setItem("history:" + path, {
+          path,
+          meta,
+          type: "history"
+        });
+      } else {
+        const lastSaveKey = saveKeys[saveKeys.length - 1];
+        localForage()
+          .removeItem(lastSaveKey)
+          .then(function () {
+            localForage().setItem("history:" + path, {
+              path,
+              meta,
+              type: "history"
+            });
+          });
+      }
+    });
+}
+
+/** 获取本地历史记录 */
+async function getHistory() {
+  try {
+    const keys = await localForage().keys();
+    const historyPromises = keys.map(
+      key => localForage().getItem(key) as Promise<optionsItem>
+    );
+    const historyItems: optionsItem[] = await Promise.all(historyPromises);
+    historyOptions.value = historyItems;
+    const historyPathItem = historyItems.find(item => item.type === "history");
+    if (historyPathItem) {
+      historyPath.value = historyPathItem.path;
+    } else if (historyItems.length > 0) {
+      historyPath.value = historyItems[0].path;
+    }
+  } catch (error) {
+    console.log("获取记录失败：", error);
+  }
 }
 
 /** key up */
 function handleUp() {
-  const { length } = resultOptions.value;
-  if (length === 0) return;
-  const index = resultOptions.value.findIndex(
-    item => item.path === activePath.value
-  );
-  if (index === 0) {
-    activePath.value = resultOptions.value[length - 1].path;
-    scrollTo(resultOptions.value.length - 1);
+  const options = resultOptions.value.length
+    ? resultOptions.value
+    : historyOptions.value;
+  const currentPath = resultOptions.value.length
+    ? activePath.value
+    : historyPath.value;
+
+  if (options.length === 0) return;
+
+  const index = options.findIndex(item => item.path === currentPath);
+  const prevIndex = (index - 1 + options.length) % options.length;
+
+  if (resultOptions.value.length) {
+    activePath.value = resultOptions.value[prevIndex].path;
   } else {
-    activePath.value = resultOptions.value[index - 1].path;
-    scrollTo(index - 1);
+    historyPath.value = historyOptions.value[prevIndex].path;
   }
+
+  scrollTo(prevIndex);
 }
 
 /** key down */
 function handleDown() {
-  const { length } = resultOptions.value;
-  if (length === 0) return;
-  const index = resultOptions.value.findIndex(
-    item => item.path === activePath.value
-  );
-  if (index + 1 === length) {
-    activePath.value = resultOptions.value[0].path;
+  const options = resultOptions.value.length
+    ? resultOptions.value
+    : historyOptions.value;
+  const currentPath = resultOptions.value.length
+    ? activePath.value
+    : historyPath.value;
+
+  if (options.length === 0) return;
+
+  const index = options.findIndex(item => item.path === currentPath);
+  const nextIndex = (index + 1) % options.length;
+
+  if (resultOptions.value.length) {
+    activePath.value = resultOptions.value[nextIndex].path;
   } else {
-    activePath.value = resultOptions.value[index + 1].path;
+    historyPath.value = historyOptions.value[nextIndex].path;
   }
-  scrollTo(index + 1);
+
+  scrollTo(nextIndex);
 }
 
 /** key enter */
 function handleEnter() {
-  const { length } = resultOptions.value;
-  if (length === 0 || activePath.value === "") return;
-  router.push(activePath.value);
+  const options = resultOptions.value.length
+    ? resultOptions.value
+    : historyOptions.value;
+  const currentPath = resultOptions.value.length
+    ? activePath.value
+    : historyPath.value;
+
+  if (options.length === 0 || currentPath === "") return;
+  const index = options.findIndex(item => item.path === currentPath);
+  if (resultOptions.value.length) {
+    saveHistory();
+  }
+  router.push(options[index].path);
   handleClose();
 }
 
@@ -177,11 +304,20 @@ onKeyStroke("ArrowDown", handleDown);
     <div class="search-result-container">
       <el-scrollbar ref="scrollbarRef" max-height="calc(90vh - 140px)">
         <el-empty
-          v-if="resultOptions.length === 0"
+          v-if="resultOptions.length === 0 && historyOptions.length === 0"
           description="暂无搜索结果"
         />
+        <SearchHistory
+          v-if="historyOptions.length !== 0 && resultOptions.length === 0"
+          ref="historyRef"
+          v-model:value="historyPath"
+          :options="historyOptions"
+          @click="handleEnter"
+          @delete="handleDelete"
+          @collect="handleCollect"
+        />
         <SearchResult
-          v-else
+          v-if="resultOptions.length !== 0"
           ref="resultRef"
           v-model:value="activePath"
           :options="resultOptions"
