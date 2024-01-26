@@ -55,7 +55,6 @@ onBeforeUnmount(() => {
             class="w-[30vw]"
             :src="avatar"
             circled
-            isClose
             @cropper="onCropper"
             @readied="showPopover = true"
           />
