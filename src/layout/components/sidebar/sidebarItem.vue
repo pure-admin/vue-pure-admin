@@ -36,7 +36,7 @@ const getNoDropdownStyle = computed((): CSSProperties => {
   };
 });
 
-const getsubMenuIconStyle = computed((): CSSProperties => {
+const getSubMenuIconStyle = computed((): CSSProperties => {
   return {
     display: "flex",
     justifyContent: "center",
@@ -107,7 +107,7 @@ function resolvePath(routePath) {
     <div
       v-if="toRaw(props.item.meta.icon)"
       class="sub-menu-icon"
-      :style="getsubMenuIconStyle"
+      :style="getSubMenuIconStyle"
     >
       <component
         :is="
@@ -121,13 +121,14 @@ function resolvePath(routePath) {
     <template #title>
       <div :style="getDivStyle">
         <ReText
-          :text="transformI18n(onlyOneChild.meta.title)"
-          :tooltipProps="{
-            offset: -10,
-            effect: tooltipEffect
+          :tippyProps="{
+            offset: [0, -10],
+            theme: tooltipEffect
           }"
           class="!text-inherit"
-        />
+        >
+          {{ transformI18n(onlyOneChild.meta.title) }}
+        </ReText>
         <extraIcon :extraIcon="onlyOneChild.meta.extraIcon" />
       </div>
     </template>
@@ -142,7 +143,7 @@ function resolvePath(routePath) {
     <template #title>
       <div
         v-if="toRaw(props.item.meta.icon)"
-        :style="getsubMenuIconStyle"
+        :style="getSubMenuIconStyle"
         class="sub-menu-icon"
       >
         <component
@@ -157,16 +158,17 @@ function resolvePath(routePath) {
             props.item.parentId === null
           )
         "
-        :text="transformI18n(onlyOneChild.meta.title)"
-        :tooltipProps="{
-          offset: -10,
-          effect: tooltipEffect
+        :tippyProps="{
+          offset: [0, -10],
+          theme: tooltipEffect
         }"
         :class="{
           '!text-inherit': true,
           '!px-4': isCollapse
         }"
-      />
+      >
+        {{ transformI18n(onlyOneChild.meta.title) }}
+      </ReText>
       <extraIcon v-if="!isCollapse" :extraIcon="props.item.meta.extraIcon" />
     </template>
 

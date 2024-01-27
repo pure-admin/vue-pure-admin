@@ -48,6 +48,7 @@ app.component("Auth", Auth);
 // 全局注册`vue-tippy`
 import "tippy.js/dist/tippy.css";
 import "tippy.js/animations/perspective.css";
+import "tippy.js/themes/light.css";
 import VueTippy from "vue-tippy";
 app.use(VueTippy, {
   defaultProps: { animation: "perspective" }
