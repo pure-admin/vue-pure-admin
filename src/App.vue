@@ -49,11 +49,11 @@ export default defineComponent({
   },
   mounted() {
     ElNotification({
-      title: "回顾2023",
+      title: "2024年计划",
       duration: 0,
       dangerouslyUseHTMLString: true,
       message:
-        "<a target='_blank' style='font-size: 16px' class='hover:text-[red]' href='https://www.bilibili.com/video/BV1He411m7Qs/'>这更像是三年来开源社区唯一的一次集体交流。欢迎大家在评论区留下您的想法。我们将认真回复所有评论，并将一些不错的建议或想法在2024年实施改进或开发，点击即可去留言</a>"
+        "<a target='_blank' style='font-size: 16px' class='hover:text-[red]' href='https://github.com/pure-admin/vue-pure-admin/issues/897'>点击查看计划详情</a>"
     });
   }
 });
