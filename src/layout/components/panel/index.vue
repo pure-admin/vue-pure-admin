@@ -10,9 +10,12 @@ const show = ref<Boolean>(false);
 
 const iconClass = computed(() => {
   return [
+    "w-[22px]",
+    "h-[22px]",
+    "flex",
+    "justify-center",
+    "items-center",
     "outline-none",
-    "width-[20px]",
-    "height-[20px]",
     "rounded-[4px]",
     "cursor-pointer",
     "transition-colors",
@@ -42,7 +45,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div :class="{ show: show }" class="right-panel-container">
+  <div :class="{ show }">
     <div class="right-panel-background" />
     <div ref="target" class="right-panel bg-bg_color">
       <div
@@ -59,8 +62,8 @@ onBeforeUnmount(() => {
         >
           <IconifyIconOffline
             class="dark:text-white"
-            width="20px"
-            height="20px"
+            width="18px"
+            height="18px"
             :icon="Close"
             @click="show = !show"
           />
@@ -91,14 +94,6 @@ onBeforeUnmount(() => {
   </div>
 </template>
 
-<style>
-.showright-panel {
-  position: relative;
-  width: calc(100% - 15px);
-  overflow: hidden;
-}
-</style>
-
 <style lang="scss" scoped>
 :deep(.el-scrollbar) {
   height: calc(100vh - 110px);
@@ -121,7 +116,6 @@ onBeforeUnmount(() => {
   z-index: 40000;
   width: 100%;
   max-width: 280px;
-  height: 100vh;
   box-shadow: 0 0 15px 0 rgb(0 0 0 / 5%);
   transition: all 0.25s cubic-bezier(0.7, 0.3, 0.1, 1);
   transform: translate(100%);
