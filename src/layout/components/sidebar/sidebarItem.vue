@@ -128,6 +128,7 @@ function resolvePath(routePath) {
             theme: !isDark ? tooltipEffect : undefined
           }"
           class="!text-inherit"
+          :needPropsWatch="false"
         >
           {{ transformI18n(onlyOneChild.meta.title) }}
         </ReText>
@@ -168,6 +169,7 @@ function resolvePath(routePath) {
           '!text-inherit': true,
           '!px-4': isCollapse
         }"
+        :needPropsWatch="false"
       >
         {{ transformI18n(props.item.meta.title) }}
       </ReText>

@@ -3,10 +3,11 @@ import { ReText } from "@/components/ReText";
 import dayjs from "dayjs";
 import { ref } from "vue";
 defineOptions({
-  name: "ReTextDemo"
+  name: "PureText"
 });
 
 const customContent = ref("自定义tooltip内容");
+const customContent2 = ref("自定义tooltip内容2");
 
 const changeTooltipContent = () => {
   customContent.value =
@@ -52,6 +53,7 @@ const changeTooltipContent = () => {
       <ul class="con">
         <li>
           <ReText :tippyProps="{ content: customContent }">
+            props写法 -
             测试文本，这是一个稍微有点长的文本，过长省略后，鼠标悬浮会有tooltip提示
           </ReText>
         </li>
@@ -63,6 +65,7 @@ const changeTooltipContent = () => {
                 <div>{{ customContent }}</div>
               </div>
             </template>
+            插槽写法 -
             测试文本，这是一个稍微有点长的文本，过长省略后，鼠标悬浮会有tooltip提示
           </ReText>
         </li>
@@ -94,12 +97,14 @@ const changeTooltipContent = () => {
           <ReText
             :tippyProps="{ offset: [0, -20], theme: 'light', arrow: false }"
           >
-            偏移白色无箭头测试文本，这是一个稍微有点长的文本，过长省略后，鼠标悬浮会有tooltip提示
+            偏移白色无箭头 -
+            测试文本，这是一个稍微有点长的文本，过长省略后，鼠标悬浮会有tooltip提示
           </ReText>
         </li>
         <li>
           <ReText :lineClamp="4" :tippyProps="{ followCursor: true }">
-            鼠标跟随测试文本，这是一个非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长的文本，lineClamp参数为4，即四行过长省略后，鼠标悬浮会有tooltip提示
+            鼠标跟随 -
+            测试文本，这是一个非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长的文本，lineClamp参数为4，即四行过长省略后，鼠标悬浮会有tooltip提示
           </ReText>
         </li>
       </ul>
@@ -128,6 +133,42 @@ const changeTooltipContent = () => {
             <el-text tag="del">【Deleted】</el-text>
             <el-text tag="mark">【Marked】</el-text>
             Paragraph end.
+          </ReText>
+        </li>
+      </ul>
+    </el-space>
+    <el-divider />
+    <h4 class="mb-4">
+      监听默认开启，可通过
+      <span v-tippy="{ content: '监听文本宽度变化' }" class="text-primary">
+        needResizeObserver
+      </span>
+      和
+      <span v-tippy="{ content: '监听 props 变化' }" class="text-primary">
+        needPropsWatch
+      </span>
+      参数关闭
+    </h4>
+    <el-space wrap>
+      <ul class="con">
+        <li>
+          <ReText :needResizeObserver="false">
+            needResizeObserver=false -
+            测试文本，这是一个稍微有点长的文本，过长省略后，鼠标悬浮会有tooltip提示
+          </ReText>
+        </li>
+        <li>
+          <el-button @click="customContent2 = '修改不了了'">
+            点击切换下方tooltip的内容(无效)
+          </el-button>
+        </li>
+        <li>
+          <ReText
+            :tippyProps="{ content: customContent2 }"
+            :needPropsWatch="false"
+          >
+            needPropsWatch=false -
+            测试文本，这是一个稍微有点长的文本，过长省略后，鼠标悬浮会有tooltip提示
           </ReText>
         </li>
       </ul>

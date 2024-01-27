@@ -21,6 +21,14 @@ const props = defineProps({
   tippyProps: {
     type: Object as PropType<TippyOptions>,
     default: () => ({})
+  },
+  needPropsWatch: {
+    type: Boolean,
+    default: true
+  },
+  needResizeObserver: {
+    type: Boolean,
+    default: true
   }
 });
 const $attrs = useAttrs();
@@ -48,26 +56,35 @@ const getTextProps = computed(() => {
   );
 });
 
+const getTippyProps = computed(() => {
+  return Object.assign(
+    {
+      content: h($slots.content || $slots.default)
+    },
+    props.tippyProps
+  );
+});
+
 onMounted(() => {
-  const { disable, enable, setProps } = useTippy(textRef.value?.$el, {});
+  const { disable, enable, setProps } = useTippy(
+    textRef.value?.$el,
+    getTippyProps.value
+  );
 
-  // 监听 props 变化
-  watchEffect(() => {
-    setProps(
-      Object.assign(
-        {
-          content: h($slots.content || $slots.default)
-        },
-        props.tippyProps
-      )
-    );
-    isTextEllipsis() ? enable() : disable();
-  });
+  if (props.needPropsWatch) {
+    // 监听 props 变化
+    watchEffect(() => {
+      setProps(getTippyProps.value);
+      isTextEllipsis() ? enable() : disable();
+    });
+  }
 
-  // 监听文本宽度变化
-  useResizeObserver(textRef, () => {
-    isTextEllipsis() ? enable() : disable();
-  });
+  if (props.needResizeObserver) {
+    // 监听文本宽度变化
+    useResizeObserver(textRef, () => {
+      isTextEllipsis() ? enable() : disable();
+    });
+  }
 });
 </script>
 
