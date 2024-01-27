@@ -6,14 +6,7 @@ import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import { ref, computed, getCurrentInstance, onMounted } from "vue";
 import enterOutlined from "@/assets/svg/enter_outlined.svg?component";
 import Bookmark2Line from "@iconify-icons/ri/bookmark-2-line";
-
-interface optionsItem {
-  path: string;
-  meta?: {
-    icon?: string;
-    title?: string;
-  };
-}
+import type { optionsItem } from "../types";
 
 interface Props {
   value: string;

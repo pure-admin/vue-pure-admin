@@ -1,0 +1,154 @@
+<script setup lang="ts">
+import { useResizeObserver } from "@pureadmin/utils";
+import { useEpThemeStoreHook } from "@/store/modules/epTheme";
+import { ref, computed, getCurrentInstance, onMounted } from "vue";
+import SearchHistoryItem from "./SearchHistoryItem.vue";
+import type { optionsItem } from "../types";
+
+interface Props {
+  value: string;
+  options: Array<optionsItem>;
+}
+
+interface Emits {
+  (e: "update:value", val: string): void;
+  (e: "enter"): void;
+  (e: "collect", val: optionsItem): void;
+  (e: "delete", val: optionsItem): void;
+}
+
+const historyRef = ref();
+const innerHeight = ref();
+const props = withDefaults(defineProps<Props>(), {});
+const emit = defineEmits<Emits>();
+const instance = getCurrentInstance()!;
+
+const itemStyle = computed(() => {
+  return item => {
+    return {
+      background:
+        item?.path === active.value ? useEpThemeStoreHook().epThemeColor : "",
+      color: item.path === active.value ? "#fff" : "",
+      fontSize: item.path === active.value ? "16px" : "14px"
+    };
+  };
+});
+
+const titleStyle = computed(() => {
+  return {
+    color: useEpThemeStoreHook().epThemeColor,
+    fontSize: "14px",
+    fontWeight: 500
+  };
+});
+
+const active = computed({
+  get() {
+    return props.value;
+  },
+  set(val: string) {
+    emit("update:value", val);
+  }
+});
+
+const historyList = computed(() => {
+  return props.options.filter(item => item.type === "history");
+});
+
+const collectList = computed(() => {
+  return props.options.filter(item => item.type === "collect");
+});
+
+function handleCollect(item) {
+  emit("collect", item);
+}
+
+function handleDelete(item) {
+  emit("delete", item);
+}
+
+/** 鼠标移入 */
+async function handleMouse(item) {
+  active.value = item.path;
+}
+
+function handleTo() {
+  emit("enter");
+}
+
+function resizeResult() {
+  // el-scrollbar max-height="calc(90vh - 140px)"
+  innerHeight.value = window.innerHeight - window.innerHeight / 10 - 140;
+}
+
+useResizeObserver(historyRef, resizeResult);
+
+function handleScroll(index: number) {
+  const curInstance = instance?.proxy?.$refs[`historyItemRef${index}`];
+  if (!curInstance) return 0;
+  const curRef = curInstance[0] as ElRef;
+  const scrollTop = curRef.offsetTop + 128; // 128 两个history-item（56px+56px=112px）高度加上下margin（8px+8px=16px）
+  return scrollTop > innerHeight.value ? scrollTop - innerHeight.value : 0;
+}
+
+onMounted(() => {
+  resizeResult();
+});
+
+defineExpose({ handleScroll });
+</script>
+
+<template>
+  <div ref="historyRef" class="history">
+    <template v-if="historyList.length">
+      <div :style="titleStyle">搜索历史</div>
+      <div
+        v-for="(item, index) in historyList"
+        :key="item.path"
+        :ref="'historyItemRef' + index"
+        class="history-item dark:bg-[#1d1d1d]"
+        :style="itemStyle(item)"
+        @click="handleTo"
+        @mouseenter="handleMouse(item)"
+      >
+        <SearchHistoryItem
+          :item="item"
+          @delete-item="handleDelete"
+          @collect-item="handleCollect"
+        />
+      </div>
+    </template>
+    <template v-if="collectList.length">
+      <div :style="titleStyle" class="mt-4">收藏</div>
+      <div
+        v-for="(item, index) in collectList"
+        :key="item.path"
+        :ref="'historyItemRef' + index"
+        class="history-item dark:bg-[#1d1d1d]"
+        :style="itemStyle(item)"
+        @click="handleTo"
+        @mouseenter="handleMouse(item)"
+      >
+        <SearchHistoryItem :item="item" @delete-item="handleDelete" />
+      </div>
+    </template>
+  </div>
+</template>
+
+<style lang="scss" scoped>
+.history {
+  padding-bottom: 12px;
+
+  &-item {
+    display: flex;
+    align-items: center;
+    height: 56px;
+    padding: 14px;
+    margin-top: 8px;
+    cursor: pointer;
+    border: 0.1px solid #ccc;
+    border-radius: 4px;
+    transition: all 0.3s;
+  }
+}
+</style>
