@@ -8,12 +8,14 @@ import EpArrowDown from "@iconify-icons/ep/arrow-down-bold";
 import ArrowLeft from "@iconify-icons/ep/arrow-left-bold";
 import ArrowRight from "@iconify-icons/ep/arrow-right-bold";
 import ArrowUp from "@iconify-icons/ep/arrow-up-bold";
+import { useDark } from "@pureadmin/utils";
 import path from "path";
 import { CSSProperties, PropType, computed, ref, toRaw } from "vue";
 import { menuType } from "../../types";
 import extraIcon from "./extraIcon.vue";
 
 const { layout, isCollapse, tooltipEffect, getDivStyle } = useNav();
+const { isDark } = useDark();
 
 const props = defineProps({
   item: {
@@ -123,7 +125,7 @@ function resolvePath(routePath) {
         <ReText
           :tippyProps="{
             offset: [0, -10],
-            theme: tooltipEffect
+            theme: !isDark ? tooltipEffect : undefined
           }"
           class="!text-inherit"
         >
@@ -160,7 +162,7 @@ function resolvePath(routePath) {
         "
         :tippyProps="{
           offset: [0, -10],
-          theme: tooltipEffect
+          theme: !isDark ? tooltipEffect : undefined
         }"
         :class="{
           '!text-inherit': true,
