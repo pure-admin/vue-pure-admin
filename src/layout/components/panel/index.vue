@@ -10,9 +10,12 @@ const show = ref<Boolean>(false);
 
 const iconClass = computed(() => {
   return [
+    "w-[22px]",
+    "h-[22px]",
+    "flex",
+    "justify-center",
+    "items-center",
     "outline-none",
-    "width-[20px]",
-    "height-[20px]",
     "rounded-[4px]",
     "cursor-pointer",
     "transition-colors",
@@ -59,8 +62,8 @@ onBeforeUnmount(() => {
         >
           <IconifyIconOffline
             class="dark:text-white"
-            width="20px"
-            height="20px"
+            width="18px"
+            height="18px"
             :icon="Close"
             @click="show = !show"
           />
