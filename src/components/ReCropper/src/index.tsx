@@ -2,6 +2,7 @@ import "./circled.css";
 import Cropper from "cropperjs";
 import { ElUpload } from "element-plus";
 import type { CSSProperties } from "vue";
+import { useEventListener } from "@vueuse/core";
 import { longpress } from "@/directives/longpress";
 import { useTippy, directive as tippy } from "vue-tippy";
 import {
@@ -66,6 +67,8 @@ const props = {
   src: { type: String, required: true },
   alt: { type: String },
   circled: { type: Boolean, default: false },
+  /** 是否可以通过点击裁剪区域关闭右键弹出的功能菜单，默认 `true` */
+  isClose: { type: Boolean, default: true },
   realTimePreview: { type: Boolean, default: true },
   height: { type: [String, Number], default: "360px" },
   crossorigin: {
@@ -83,10 +86,12 @@ export default defineComponent({
     const tippyElRef = ref<ElRef<HTMLImageElement>>();
     const imgElRef = ref<ElRef<HTMLImageElement>>();
     const cropper = ref<Nullable<Cropper>>();
+    const inCircled = ref(props.circled);
+    const isInClose = ref(props.isClose);
+    const inSrc = ref(props.src);
     const isReady = ref(false);
     const imgBase64 = ref();
-    const inCircled = ref(props.circled);
-    const inSrc = ref(props.src);
+
     let scaleX = 1;
     let scaleY = 1;
 
@@ -218,6 +223,7 @@ export default defineComponent({
       if (event === "scaleX") {
         scaleX = arg = scaleX === -1 ? 1 : -1;
       }
+
       if (event === "scaleY") {
         scaleY = arg = scaleY === -1 ? 1 : -1;
       }
@@ -375,7 +381,7 @@ export default defineComponent({
     function onContextmenu(event) {
       event.preventDefault();
 
-      const { show, setProps } = useTippy(tippyElRef, {
+      const { show, setProps, destroy, state } = useTippy(tippyElRef, {
         content: menuContent,
         arrow: false,
         theme: "light",
@@ -399,6 +405,11 @@ export default defineComponent({
       });
 
       show();
+
+      if (isInClose.value) {
+        if (!state.value.isShown && !state.value.isVisible) return;
+        useEventListener(tippyElRef, "click", destroy);
+      }
     }
 
     return {
