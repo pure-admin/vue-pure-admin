@@ -167,7 +167,7 @@ function resolvePath(routePath) {
           '!px-4': isCollapse
         }"
       >
-        {{ transformI18n(onlyOneChild.meta.title) }}
+        {{ transformI18n(props.item.meta.title) }}
       </ReText>
       <extraIcon v-if="!isCollapse" :extraIcon="props.item.meta.extraIcon" />
     </template>
