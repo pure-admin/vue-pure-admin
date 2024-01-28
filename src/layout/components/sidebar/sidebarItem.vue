@@ -13,7 +13,6 @@ import path from "path";
 import { CSSProperties, PropType, computed, ref, toRaw } from "vue";
 import { menuType } from "../../types";
 import extraIcon from "./extraIcon.vue";
-import { en } from "@faker-js/faker";
 
 const { layout, isCollapse, tooltipEffect, getDivStyle } = useNav();
 const { isDark } = useDark();
