@@ -35,6 +35,15 @@ const systemRouter = {
       }
     },
     {
+      path: "/system/menu/index",
+      name: "SystemMenu",
+      meta: {
+        icon: "menu",
+        title: "menus.hsSystemMenu",
+        roles: ["admin"]
+      }
+    },
+    {
       path: "/system/dept/index",
       name: "SystemDept",
       meta: {
