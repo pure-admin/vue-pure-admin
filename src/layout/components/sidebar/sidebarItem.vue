@@ -13,6 +13,7 @@ import path from "path";
 import { CSSProperties, PropType, computed, ref, toRaw } from "vue";
 import { menuType } from "../../types";
 import extraIcon from "./extraIcon.vue";
+import { en } from "@faker-js/faker";
 
 const { layout, isCollapse, tooltipEffect, getDivStyle } = useNav();
 const { isDark } = useDark();
@@ -120,6 +121,23 @@ function resolvePath(routePath) {
         "
       />
     </div>
+    <el-text
+      v-if="
+        (!props.item?.meta.icon &&
+          isCollapse &&
+          layout === 'vertical' &&
+          props.item?.pathList?.length === 1) ||
+        (!onlyOneChild.meta.icon &&
+          isCollapse &&
+          layout === 'mix' &&
+          props.item?.pathList?.length === 2)
+      "
+      truncated
+      class="!px-4 !text-inherit"
+    >
+      {{ transformI18n(onlyOneChild.meta.title) }}
+    </el-text>
+
     <template #title>
       <div :style="getDivStyle">
         <ReText
@@ -156,6 +174,7 @@ function resolvePath(routePath) {
       <ReText
         v-if="
           !(
+            layout === 'vertical' &&
             isCollapse &&
             toRaw(props.item.meta.icon) &&
             props.item.parentId === null
@@ -167,7 +186,11 @@ function resolvePath(routePath) {
         }"
         :class="{
           '!text-inherit': true,
-          '!px-4': isCollapse
+          '!px-4':
+            layout !== 'horizontal' &&
+            isCollapse &&
+            !toRaw(props.item.meta.icon) &&
+            props.item.parentId === null
         }"
         :needPropsWatch="false"
       >
