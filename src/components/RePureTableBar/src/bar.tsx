@@ -37,7 +37,6 @@ export default defineComponent({
   props,
   emits: ["refresh"],
   setup(props, { emit, slots, attrs }) {
-    const buttonRef = ref();
     const size = ref("default");
     const isExpandAll = ref(true);
     const loading = ref(false);
@@ -200,11 +199,22 @@ export default defineComponent({
         : false;
     };
 
+    const rendTippyProps = (content: string) => {
+      // https://vue-tippy.netlify.app/props
+      return {
+        content,
+        offset: [0, 18],
+        duration: [300, 0],
+        followCursor: true,
+        hideOnClick: "toggle"
+      };
+    };
+
     const reference = {
       reference: () => (
         <SettingIcon
           class={["w-[16px]", iconClass.value]}
-          onMouseover={e => (buttonRef.value = e.currentTarget)}
+          v-tippy={rendTippyProps("列设置")}
         />
       )
     };
@@ -224,38 +234,36 @@ export default defineComponent({
               ) : null}
               {props.tableRef?.size ? (
                 <>
-                  <el-tooltip
-                    effect="dark"
-                    content={isExpandAll.value ? "折叠" : "展开"}
-                    placement="top"
-                  >
-                    <ExpandIcon
-                      class={["w-[16px]", iconClass.value]}
-                      style={{
-                        transform: isExpandAll.value ? "none" : "rotate(-90deg)"
-                      }}
-                      onClick={() => onExpand()}
-                    />
-                  </el-tooltip>
+                  <ExpandIcon
+                    class={["w-[16px]", iconClass.value]}
+                    style={{
+                      transform: isExpandAll.value ? "none" : "rotate(-90deg)"
+                    }}
+                    v-tippy={rendTippyProps(
+                      isExpandAll.value ? "折叠" : "展开"
+                    )}
+                    onClick={() => onExpand()}
+                  />
                   <el-divider direction="vertical" />
                 </>
               ) : null}
-              <el-tooltip effect="dark" content="刷新" placement="top">
-                <RefreshIcon
-                  class={[
-                    "w-[16px]",
-                    iconClass.value,
-                    loading.value ? "animate-spin" : ""
-                  ]}
-                  onClick={() => onReFresh()}
-                />
-              </el-tooltip>
+              <RefreshIcon
+                class={[
+                  "w-[16px]",
+                  iconClass.value,
+                  loading.value ? "animate-spin" : ""
+                ]}
+                v-tippy={rendTippyProps("刷新")}
+                onClick={() => onReFresh()}
+              />
               <el-divider direction="vertical" />
-              <el-tooltip effect="dark" content="密度" placement="top">
-                <el-dropdown v-slots={dropdown} trigger="click">
-                  <CollapseIcon class={["w-[16px]", iconClass.value]} />
-                </el-dropdown>
-              </el-tooltip>
+              <el-dropdown
+                v-slots={dropdown}
+                trigger="click"
+                v-tippy={rendTippyProps("密度")}
+              >
+                <CollapseIcon class={["w-[16px]", iconClass.value]} />
+              </el-dropdown>
               <el-divider direction="vertical" />
 
               <el-popover
@@ -326,25 +334,6 @@ export default defineComponent({
                 </div>
               </el-popover>
             </div>
-
-            <el-tooltip
-              popper-options={{
-                modifiers: [
-                  {
-                    name: "computeStyles",
-                    options: {
-                      adaptive: false,
-                      enabled: false
-                    }
-                  }
-                ]
-              }}
-              placement="top"
-              virtual-ref={buttonRef.value}
-              virtual-triggering
-              trigger="hover"
-              content="列设置"
-            />
           </div>
           {slots.default({
             size: size.value,
