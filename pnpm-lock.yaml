@@ -21,8 +21,8 @@ dependencies:
     specifier: ^1.2.0
     version: 1.2.0(element-plus@2.5.3)(typescript@5.3.3)
   '@pureadmin/table':
-    specifier: ^3.0.1
-    version: 3.0.1(element-plus@2.5.3)(typescript@5.3.3)
+    specifier: ^3.0.2
+    version: 3.0.2(element-plus@2.5.3)(typescript@5.3.3)
   '@pureadmin/utils':
     specifier: ^2.4.4
     version: 2.4.4(echarts@5.4.3)(vue@3.4.14)
@@ -1744,8 +1744,8 @@ packages:
       - typescript
     dev: false
 
-  /@pureadmin/table@3.0.1(element-plus@2.5.3)(typescript@5.3.3):
-    resolution: {integrity: sha512-DBIv0YRZogSIEtsBPNjm6tYuImaE8ZJXwAu/gutEyaH9wATN09doKDmAisyBj+XEydfM5R9hlvhQ8SzJkbtarA==}
+  /@pureadmin/table@3.0.2(element-plus@2.5.3)(typescript@5.3.3):
+    resolution: {integrity: sha512-VrtpuzKm4t2KS81MWBy2G1xayjvYIM5s3EUs91mZxmA+qLb8FdF2k4QdCufVA8ZZG85AeM2HA7Z0SvqMAwy0dA==}
     peerDependencies:
       element-plus: ^2.0.0
     dependencies:
