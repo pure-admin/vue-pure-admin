@@ -7,7 +7,7 @@ defineOptions({
 });
 
 const customContent = ref("自定义tooltip内容");
-const customContent2 = ref("自定义tooltip内容2");
+const customContent2 = ref("这个tooltip内容无法修改了");
 
 const changeTooltipContent = () => {
   customContent.value =
@@ -147,19 +147,19 @@ const changeTooltipContent = () => {
       <span v-tippy="{ content: '监听 props 变化' }" class="text-primary">
         needPropsWatch
       </span>
-      参数关闭
+      参数关闭, 可减少不必要的性能消耗, 以下是关闭后的效果
     </h4>
     <el-space wrap>
       <ul class="con">
         <li>
           <ReText :needResizeObserver="false">
             needResizeObserver=false -
-            测试文本，这是一个稍微有点长的文本，过长省略后，鼠标悬浮会有tooltip提示
+            needResizeObserver关闭后将无法再监听文本宽度变化，即使文本内容变化也不会重新判断是否需要显示tooltip
           </ReText>
         </li>
         <li>
-          <el-button @click="customContent2 = '修改不了了'">
-            点击切换下方tooltip的内容(无效)
+          <el-button @click="customContent2 = '怎么修改不了了?'">
+            点击尝试切换下方tooltip的内容(因为监听关闭, 所以无法修改)
           </el-button>
         </li>
         <li>
@@ -168,7 +168,7 @@ const changeTooltipContent = () => {
             :needPropsWatch="false"
           >
             needPropsWatch=false -
-            测试文本，这是一个稍微有点长的文本，过长省略后，鼠标悬浮会有tooltip提示
+            needPropsWatch关闭后将无法再监听props变化，即使props变化也不会重新渲染tooltip内容和配置
           </ReText>
         </li>
       </ul>
