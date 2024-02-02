@@ -13,7 +13,7 @@ interface Emits {
   (e: "collectItem", val: optionsItem): void;
   (e: "deleteItem", val: optionsItem): void;
 }
-const props = withDefaults(defineProps<Props>(), {});
+withDefaults(defineProps<Props>(), {});
 const emit = defineEmits<Emits>();
 
 function handleCollect(item) {
@@ -38,7 +38,7 @@ function handleDelete(item) {
   />
   <IconifyIconOffline
     :icon="Close"
-    class="w-[24px] h-[24px] hover:text-[#d7d5d4]"
+    class="w-[24px] h-[24px] hover:text-[#d7d5d4] cursor-pointer"
     @click.stop="handleDelete(item)"
   />
 </template>

@@ -8,13 +8,13 @@ import SearchFooter from "./SearchFooter.vue";
 import { getConfig } from "@/config";
 import { useNav } from "@/layout/hooks/useNav";
 import { transformI18n } from "@/plugins/i18n";
-import { ref, computed, shallowRef } from "vue";
+import { ref, computed, shallowRef, watch } from "vue";
 import { cloneDeep, isAllEmpty } from "@pureadmin/utils";
 import { useDebounceFn, onKeyStroke } from "@vueuse/core";
 import { usePermissionStoreHook } from "@/store/modules/permission";
-import { localForage } from "@/utils/localforage";
+import { storageLocal } from "@pureadmin/utils";
 import Search from "@iconify-icons/ri/search-line";
-import type { optionsItem } from "../types";
+import type { optionsItem, dragItem } from "../types";
 
 interface Props {
   /** 弹窗显隐 */
@@ -30,6 +30,11 @@ const emit = defineEmits<Emits>();
 const props = withDefaults(defineProps<Props>(), {});
 const router = useRouter();
 const { locale } = useI18n();
+
+const LOCALEHISTORYKEY = "pureadmin-search-history";
+const LOCALECOLLECTKEY = "pureadmin-search-collect";
+const HISTORY_TYPE = "history";
+const COLLECT_TYPE = "collect";
 
 const keyword = ref("");
 const scrollbarRef = ref();
@@ -50,15 +55,42 @@ const menusData = computed(() => {
 
 const show = computed({
   get() {
-    if (props.value) {
-      getHistory();
-    }
     return props.value;
   },
   set(val: boolean) {
     emit("update:value", val);
   }
 });
+
+watch(
+  () => props.value,
+  newValue => {
+    if (newValue) getHistory();
+  }
+);
+
+const showSearchResult = computed(() => {
+  return keyword.value && resultOptions.value.length > 0;
+});
+
+const showSearchHistory = computed(() => {
+  return !keyword.value && historyOptions.value.length > 0;
+});
+
+const showEmpty = computed(() => {
+  return (
+    (!keyword.value && historyOptions.value.length === 0) ||
+    (keyword.value && resultOptions.value.length === 0)
+  );
+});
+
+function getStorageItem(key) {
+  return storageLocal().getItem<optionsItem[]>(key) || [];
+}
+
+function setStorageItem(key, value) {
+  storageLocal().setItem(key, value);
+}
 
 /** 将菜单树形结构扁平化为一维数组，用于菜单查询 */
 function flatTree(arr) {
@@ -90,11 +122,8 @@ function search() {
           ))
       : false
   );
-  if (resultOptions.value?.length > 0) {
-    activePath.value = resultOptions.value[0].path;
-  } else {
-    activePath.value = "";
-  }
+  activePath.value =
+    resultOptions.value?.length > 0 ? resultOptions.value[0].path : "";
 }
 
 function handleClose() {
@@ -102,6 +131,7 @@ function handleClose() {
   /** 延时处理防止用户看到某些操作 */
   setTimeout(() => {
     resultOptions.value = [];
+    historyPath.value = "";
     keyword.value = "";
   }, 200);
 }
@@ -112,158 +142,139 @@ function scrollTo(index) {
   scrollbarRef.value.setScrollTop(scrollTop);
 }
 
-/** 删除历史记录 */
-function handleDelete(item) {
-  localForage()
-    .removeItem(item.type + ":" + item.path)
-    .then(function () {
-      const index = historyOptions.value.findIndex(
-        historyItem => historyItem.path === item.path
-      );
-      if (index !== -1) {
-        historyOptions.value.splice(index, 1);
-      }
-      if (item.path === activePath.value) {
-        historyPath.value = historyOptions.value[0]?.path;
-      }
-      getHistory();
-    });
+/** 获取当前选项和路径 */
+function getCurrentOptionsAndPath() {
+  const isResultOptions = resultOptions.value.length > 0;
+  const options = isResultOptions ? resultOptions.value : historyOptions.value;
+  const currentPath = isResultOptions ? activePath.value : historyPath.value;
+
+  return { options, currentPath, isResultOptions };
 }
-
-/** 收藏历史记录 */
-function handleCollect(item) {
-  localForage()
-    .removeItem("history:" + item.path)
-    .then(function () {
-      localForage()
-        .setItem("collect:" + item.path, {
-          ...item,
-          type: "collect"
-        })
-        .then(() => {
-          getHistory();
-        });
-    })
-    .catch(function (error) {
-      console.log("收藏失败：", error);
-    });
-}
-
-/** 本地存储搜索记录 */
-function saveHistory() {
-  const { path, meta } = resultOptions.value.find(
-    item => item.path === activePath.value
-  );
-  localForage()
-    .keys()
-    .then(function (keys) {
-      const saveKeys = keys.filter(key => key.startsWith("history:"));
-      const collectKeys = keys.filter(key => key.startsWith("collect:"));
-      if (collectKeys.includes("collect:" + path)) return;
-
-      if (saveKeys.length < historyNum) {
-        localForage().setItem("history:" + path, {
-          path,
-          meta,
-          type: "history"
-        });
-      } else {
-        const lastSaveKey = saveKeys[saveKeys.length - 1];
-        localForage()
-          .removeItem(lastSaveKey)
-          .then(function () {
-            localForage().setItem("history:" + path, {
-              path,
-              meta,
-              type: "history"
-            });
-          });
-      }
-    });
-}
-
-/** 获取本地历史记录 */
-async function getHistory() {
-  try {
-    const keys = await localForage().keys();
-    const historyPromises = keys.map(
-      key => localForage().getItem(key) as Promise<optionsItem>
-    );
-    const historyItems: optionsItem[] = await Promise.all(historyPromises);
-    historyOptions.value = historyItems;
-    const historyPathItem = historyItems.find(item => item.type === "history");
-    if (historyPathItem) {
-      historyPath.value = historyPathItem.path;
-    } else if (historyItems.length > 0) {
-      historyPath.value = historyItems[0].path;
-    }
-  } catch (error) {
-    console.log("获取记录失败：", error);
+/** 更新路径并滚动到指定项 */
+function updatePathAndScroll(newIndex, isResultOptions) {
+  if (isResultOptions) {
+    activePath.value = resultOptions.value[newIndex].path;
+  } else {
+    historyPath.value = historyOptions.value[newIndex].path;
   }
+  scrollTo(newIndex);
 }
 
 /** key up */
 function handleUp() {
-  const options = resultOptions.value.length
-    ? resultOptions.value
-    : historyOptions.value;
-  const currentPath = resultOptions.value.length
-    ? activePath.value
-    : historyPath.value;
+  const { options, currentPath, isResultOptions } = getCurrentOptionsAndPath();
 
   if (options.length === 0) return;
 
   const index = options.findIndex(item => item.path === currentPath);
   const prevIndex = (index - 1 + options.length) % options.length;
 
-  if (resultOptions.value.length) {
-    activePath.value = resultOptions.value[prevIndex].path;
-  } else {
-    historyPath.value = historyOptions.value[prevIndex].path;
-  }
-
-  scrollTo(prevIndex);
+  updatePathAndScroll(prevIndex, isResultOptions);
 }
-
 /** key down */
 function handleDown() {
-  const options = resultOptions.value.length
-    ? resultOptions.value
-    : historyOptions.value;
-  const currentPath = resultOptions.value.length
-    ? activePath.value
-    : historyPath.value;
-
+  const { options, currentPath, isResultOptions } = getCurrentOptionsAndPath();
   if (options.length === 0) return;
-
   const index = options.findIndex(item => item.path === currentPath);
   const nextIndex = (index + 1) % options.length;
 
-  if (resultOptions.value.length) {
-    activePath.value = resultOptions.value[nextIndex].path;
-  } else {
-    historyPath.value = historyOptions.value[nextIndex].path;
-  }
-
-  scrollTo(nextIndex);
+  updatePathAndScroll(nextIndex, isResultOptions);
 }
 
 /** key enter */
 function handleEnter() {
-  const options = resultOptions.value.length
-    ? resultOptions.value
-    : historyOptions.value;
-  const currentPath = resultOptions.value.length
-    ? activePath.value
-    : historyPath.value;
+  const { options, currentPath, isResultOptions } = getCurrentOptionsAndPath();
 
   if (options.length === 0 || currentPath === "") return;
+
   const index = options.findIndex(item => item.path === currentPath);
-  if (resultOptions.value.length) {
+  if (index === -1) return;
+
+  if (isResultOptions) {
     saveHistory();
+  } else {
+    updateHistory();
   }
+
   router.push(options[index].path);
   handleClose();
+}
+
+/** 删除历史记录 */
+function handleDelete(item) {
+  const key = item.type === HISTORY_TYPE ? LOCALEHISTORYKEY : LOCALECOLLECTKEY;
+  let list = getStorageItem(key);
+  list = list.filter(listItem => listItem.path !== item.path);
+  setStorageItem(key, list);
+  getHistory();
+}
+
+/** 收藏历史记录 */
+function handleCollect(item) {
+  let searchHistoryList = getStorageItem(LOCALEHISTORYKEY);
+  let searchCollectList = getStorageItem(LOCALECOLLECTKEY);
+
+  searchHistoryList = searchHistoryList.filter(
+    historyItem => historyItem.path !== item.path
+  );
+  setStorageItem(LOCALEHISTORYKEY, searchHistoryList);
+
+  if (!searchCollectList.some(collectItem => collectItem.path === item.path)) {
+    searchCollectList.unshift({ ...item, type: COLLECT_TYPE });
+    setStorageItem(LOCALECOLLECTKEY, searchCollectList);
+  }
+  getHistory();
+}
+
+/** 存储搜索记录 */
+function saveHistory() {
+  const { path, meta } = resultOptions.value.find(
+    item => item.path === activePath.value
+  );
+  const searchHistoryList = getStorageItem(LOCALEHISTORYKEY);
+  const searchCollectList = getStorageItem(LOCALECOLLECTKEY);
+  const isCollected = searchCollectList.some(item => item.path === path);
+  const existingIndex = searchHistoryList.findIndex(item => item.path === path);
+  if (!isCollected) {
+    if (existingIndex !== -1) searchHistoryList.splice(existingIndex, 1);
+    if (searchHistoryList.length >= historyNum) searchHistoryList.pop();
+    searchHistoryList.unshift({ path, meta, type: HISTORY_TYPE });
+    storageLocal().setItem(LOCALEHISTORYKEY, searchHistoryList);
+  }
+}
+
+/** 更新存储的搜索记录 */
+function updateHistory() {
+  let searchHistoryList = getStorageItem(LOCALEHISTORYKEY);
+  const historyIndex = searchHistoryList.findIndex(
+    item => item.path === historyPath.value
+  );
+  if (historyIndex !== -1) {
+    const [historyItem] = searchHistoryList.splice(historyIndex, 1);
+    searchHistoryList.unshift(historyItem);
+    setStorageItem(LOCALEHISTORYKEY, searchHistoryList);
+  }
+}
+
+/** 获取本地历史记录 */
+function getHistory() {
+  const searchHistoryList = getStorageItem(LOCALEHISTORYKEY);
+  const searchCollectList = getStorageItem(LOCALECOLLECTKEY);
+  historyOptions.value = [...searchHistoryList, ...searchCollectList];
+  historyPath.value = historyOptions.value[0]?.path;
+}
+
+/** 拖拽改变收藏顺序 */
+function handleDrag(item: dragItem) {
+  const searchCollectList = getStorageItem(LOCALECOLLECTKEY);
+  const [reorderedItem] = searchCollectList.splice(item.oldIndex, 1);
+  searchCollectList.splice(item.newIndex, 0, reorderedItem);
+  storageLocal().setItem(LOCALECOLLECTKEY, searchCollectList);
+  historyOptions.value = [
+    ...getStorageItem(LOCALEHISTORYKEY),
+    ...getStorageItem(LOCALECOLLECTKEY)
+  ];
+  historyPath.value = reorderedItem.path;
 }
 
 onKeyStroke("Enter", handleEnter);
@@ -301,23 +312,25 @@ onKeyStroke("ArrowDown", handleDown);
         />
       </template>
     </el-input>
-    <div class="search-result-container">
-      <el-scrollbar ref="scrollbarRef" max-height="calc(90vh - 140px)">
-        <el-empty
-          v-if="resultOptions.length === 0 && historyOptions.length === 0"
-          description="暂无搜索结果"
-        />
+    <div class="search-content">
+      <el-scrollbar
+        ref="scrollbarRef"
+        max-height="calc(90vh - 140px)"
+        class="pr-5"
+      >
+        <el-empty v-if="showEmpty" description="暂无搜索结果" />
         <SearchHistory
-          v-if="historyOptions.length !== 0 && resultOptions.length === 0"
+          v-if="showSearchHistory"
           ref="historyRef"
           v-model:value="historyPath"
           :options="historyOptions"
           @click="handleEnter"
           @delete="handleDelete"
           @collect="handleCollect"
+          @drag="handleDrag"
         />
         <SearchResult
-          v-if="resultOptions.length !== 0"
+          v-if="showSearchResult"
           ref="resultRef"
           v-model:value="activePath"
           :options="resultOptions"
@@ -332,7 +345,7 @@ onKeyStroke("ArrowDown", handleDown);
 </template>
 
 <style lang="scss" scoped>
-.search-result-container {
+.search-content {
   margin-top: 12px;
 }
 </style>

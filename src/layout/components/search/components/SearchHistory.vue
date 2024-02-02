@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { useResizeObserver } from "@pureadmin/utils";
 import { useEpThemeStoreHook } from "@/store/modules/epTheme";
-import { ref, computed, getCurrentInstance, onMounted } from "vue";
+import { ref, computed, watch, getCurrentInstance, onMounted } from "vue";
+import { isArray } from "@pureadmin/utils";
 import SearchHistoryItem from "./SearchHistoryItem.vue";
-import type { optionsItem } from "../types";
+import draggable from "vuedraggable/src/vuedraggable";
+import type { optionsItem, dragItem } from "../types";
 
 interface Props {
   value: string;
@@ -15,6 +17,7 @@ interface Emits {
   (e: "enter"): void;
   (e: "collect", val: optionsItem): void;
   (e: "delete", val: optionsItem): void;
+  (e: "drag", val: dragItem): void;
 }
 
 const historyRef = ref();
@@ -51,6 +54,19 @@ const active = computed({
   }
 });
 
+watch(
+  () => props.value,
+  newValue => {
+    if (newValue) {
+      if (stopMouseEvent.value) {
+        setTimeout(() => {
+          stopMouseEvent.value = false;
+        }, 100);
+      }
+    }
+  }
+);
+
 const historyList = computed(() => {
   return props.options.filter(item => item.type === "history");
 });
@@ -63,13 +79,15 @@ function handleCollect(item) {
   emit("collect", item);
 }
 
+const stopMouseEvent = ref(false); // 判断是否停止鼠标移入事件处理
 function handleDelete(item) {
+  stopMouseEvent.value = true;
   emit("delete", item);
 }
 
 /** 鼠标移入 */
 async function handleMouse(item) {
-  active.value = item.path;
+  if (!stopMouseEvent.value) active.value = item.path;
 }
 
 function handleTo() {
@@ -86,10 +104,16 @@ useResizeObserver(historyRef, resizeResult);
 function handleScroll(index: number) {
   const curInstance = instance?.proxy?.$refs[`historyItemRef${index}`];
   if (!curInstance) return 0;
-  const curRef = curInstance[0] as ElRef;
+  const curRef = isArray(curInstance)
+    ? (curInstance[0] as ElRef)
+    : (curInstance as ElRef);
   const scrollTop = curRef.offsetTop + 128; // 128 两个history-item（56px+56px=112px）高度加上下margin（8px+8px=16px）
   return scrollTop > innerHeight.value ? scrollTop - innerHeight.value : 0;
 }
+
+const handleChangeIndex = (evt): void => {
+  emit("drag", { oldIndex: evt.oldIndex, newIndex: evt.newIndex });
+};
 
 onMounted(() => {
   resizeResult();
@@ -120,17 +144,25 @@ defineExpose({ handleScroll });
     </template>
     <template v-if="collectList.length">
       <div :style="titleStyle" class="mt-4">收藏</div>
-      <div
-        v-for="(item, index) in collectList"
-        :key="item.path"
-        :ref="'historyItemRef' + index"
-        class="history-item dark:bg-[#1d1d1d]"
-        :style="itemStyle(item)"
-        @click="handleTo"
-        @mouseenter="handleMouse(item)"
+      <draggable
+        :list="collectList"
+        item-key="path"
+        chosen-class="chosen"
+        animation="200"
+        @update="handleChangeIndex"
       >
-        <SearchHistoryItem :item="item" @delete-item="handleDelete" />
-      </div>
+        <template #item="{ element, index }">
+          <div
+            :ref="'historyItemRef' + (index + historyList.length)"
+            class="history-item dark:bg-[#1d1d1d] !cursor-move"
+            :style="itemStyle(element)"
+            @click="handleTo"
+            @mouseenter="handleMouse(element)"
+          >
+            <SearchHistoryItem :item="element" @delete-item="handleDelete" />
+          </div>
+        </template>
+      </draggable>
     </template>
   </div>
 </template>
@@ -149,6 +181,10 @@ defineExpose({ handleScroll });
     border: 0.1px solid #ccc;
     border-radius: 4px;
     transition: all 0.3s;
+  }
+
+  .chosen {
+    border: solid 2px #3089dc !important;
   }
 }
 </style>

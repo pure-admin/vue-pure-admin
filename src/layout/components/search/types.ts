@@ -1,10 +1,15 @@
 interface optionsItem {
   path: string;
-  type?: "history" | "collect";
-  meta?: {
+  type: "history" | "collect";
+  meta: {
     icon?: string;
     title?: string;
   };
 }
 
-export type { optionsItem };
+interface dragItem {
+  oldIndex: number;
+  newIndex: number;
+}
+
+export type { optionsItem, dragItem };
