@@ -191,6 +191,7 @@ function resolvePath(routePath) {
             !toRaw(props.item.meta.icon) &&
             props.item.parentId === null
         }"
+        needResizeObserver
       >
         {{ transformI18n(props.item.meta.title) }}
       </ReText>
