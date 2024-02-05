@@ -24,11 +24,11 @@ const props = defineProps({
   },
   needPropsWatch: {
     type: Boolean,
-    default: true
+    default: false
   },
   needResizeObserver: {
     type: Boolean,
-    default: true
+    default: false
   }
 });
 const $attrs = useAttrs();
@@ -70,6 +70,9 @@ onMounted(() => {
     textRef.value?.$el,
     getTippyProps.value
   );
+
+  // 初始化 tippy 启用状态
+  isTextEllipsis() ? enable() : disable();
 
   if (props.needPropsWatch) {
     // 监听 props 变化

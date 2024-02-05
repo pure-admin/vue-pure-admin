@@ -145,7 +145,7 @@ function resolvePath(routePath) {
             theme: !isDark ? tooltipEffect : undefined
           }"
           class="!text-inherit"
-          :needPropsWatch="false"
+          needResizeObserver
         >
           {{ transformI18n(onlyOneChild.meta.title) }}
         </ReText>
@@ -191,7 +191,6 @@ function resolvePath(routePath) {
             !toRaw(props.item.meta.icon) &&
             props.item.parentId === null
         }"
-        :needPropsWatch="false"
       >
         {{ transformI18n(props.item.meta.title) }}
       </ReText>

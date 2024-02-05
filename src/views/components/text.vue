@@ -30,10 +30,10 @@ const changeTooltipContent = () => {
     <el-space wrap>
       <ul class="con">
         <li>
-          <ReText>
+          <ReText needResizeObserver>
             测试文本，这是一个稍微有点长的文本，过长省略后，鼠标悬浮会有tooltip提示
           </ReText>
-          <ReText :lineClamp="2">
+          <ReText :lineClamp="2" needResizeObserver>
             测试文本，这是一个稍微有点长的文本，lineClamp参数为2，即两行过长省略后，鼠标悬浮会有tooltip提示
           </ReText>
         </li>
@@ -52,13 +52,17 @@ const changeTooltipContent = () => {
     <el-space wrap>
       <ul class="con">
         <li>
-          <ReText :tippyProps="{ content: customContent }">
+          <ReText
+            :tippyProps="{ content: customContent }"
+            needResizeObserver
+            needPropsWatch
+          >
             props写法 -
             测试文本，这是一个稍微有点长的文本，过长省略后，鼠标悬浮会有tooltip提示
           </ReText>
         </li>
         <li>
-          <ReText>
+          <ReText needResizeObserver>
             <template #content>
               <div>
                 <b>这是插槽写法: </b>
@@ -77,12 +81,12 @@ const changeTooltipContent = () => {
     <el-space wrap>
       <ul class="con">
         <li>
-          <ReText type="primary" size="large">
+          <ReText type="primary" size="large" needResizeObserver>
             测试文本，这是一个稍微有点长的文本，过长省略后，鼠标悬浮会有tooltip提示
           </ReText>
         </li>
         <li>
-          <ReText :lineClamp="4" type="info">
+          <ReText :lineClamp="4" type="info" needResizeObserver>
             测试文本，这是一个非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长的文本，lineClamp参数为4，即四行过长省略后，鼠标悬浮会有tooltip提示
           </ReText>
         </li>
@@ -96,13 +100,18 @@ const changeTooltipContent = () => {
         <li>
           <ReText
             :tippyProps="{ offset: [0, -20], theme: 'light', arrow: false }"
+            needResizeObserver
           >
             偏移白色无箭头 -
             测试文本，这是一个稍微有点长的文本，过长省略后，鼠标悬浮会有tooltip提示
           </ReText>
         </li>
         <li>
-          <ReText :lineClamp="4" :tippyProps="{ followCursor: true }">
+          <ReText
+            :lineClamp="4"
+            :tippyProps="{ followCursor: true }"
+            needResizeObserver
+          >
             鼠标跟随 -
             测试文本，这是一个非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长的文本，lineClamp参数为4，即四行过长省略后，鼠标悬浮会有tooltip提示
           </ReText>
@@ -117,7 +126,7 @@ const changeTooltipContent = () => {
     <el-space wrap>
       <ul class="con">
         <li>
-          <ReText tag="p" :lineClamp="2">
+          <ReText tag="p" :lineClamp="2" needResizeObserver>
             This is a paragraph. Paragraph start
             <ReText :truncated="false">
               【 This is ReText
@@ -139,7 +148,7 @@ const changeTooltipContent = () => {
     </el-space>
     <el-divider />
     <h4 class="mb-4">
-      监听默认开启，可通过
+      监听默认关闭，可通过
       <span v-tippy="{ content: '监听文本宽度变化' }" class="text-primary">
         needResizeObserver
       </span>
@@ -147,14 +156,15 @@ const changeTooltipContent = () => {
       <span v-tippy="{ content: '监听 props 变化' }" class="text-primary">
         needPropsWatch
       </span>
-      参数关闭, 可减少不必要的性能消耗, 以下是关闭后的效果
+      参数开启, 会增加相应的性能消耗, 上方的几个示例都开启了所需的监听,
+      以下是关闭后的效果
     </h4>
     <el-space wrap>
-      <ul class="con">
+      <ul class="con !min-w-[600px]">
         <li>
-          <ReText :needResizeObserver="false">
+          <ReText>
             needResizeObserver=false -
-            needResizeObserver关闭后将无法再监听文本宽度变化，即使文本内容变化也不会重新判断是否需要显示tooltip
+            needResizeObserver未开启将无法再监听文本宽度变化，即使文本内容变化也不会重新判断是否需要显示tooltip
           </ReText>
         </li>
         <li>
@@ -163,12 +173,9 @@ const changeTooltipContent = () => {
           </el-button>
         </li>
         <li>
-          <ReText
-            :tippyProps="{ content: customContent2 }"
-            :needPropsWatch="false"
-          >
+          <ReText :tippyProps="{ content: customContent2 }" needResizeObserver>
             needPropsWatch=false -
-            needPropsWatch关闭后将无法再监听props变化，即使props变化也不会重新渲染tooltip内容和配置
+            needPropsWatch未开启将无法再监听props变化，即使props变化也不会重新渲染tooltip内容和配置
           </ReText>
         </li>
       </ul>
