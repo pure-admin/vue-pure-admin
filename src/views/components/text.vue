@@ -20,14 +20,29 @@ const changeTooltipContent = () => {
   <el-card shadow="never">
     <template #header>
       <div class="card-header">
-        <span class="font-medium"> 文本省略 </span>
-      </div>
-      <div class="mb-4 text-gray-600">
-        基于 El-Text 和 Tippy， 增加自动省略显示Tooltip功能， 支持多行省略
+        <span class="font-medium">
+          文本省略，基于
+          <el-link
+            href="https://element-plus.org/zh-CN/component/text.html"
+            target="_blank"
+            style="margin: 0 4px 5px; font-size: 16px"
+          >
+            el-text
+          </el-link>
+          和
+          <el-link
+            href="https://vue-tippy.netlify.app/basic-usage"
+            target="_blank"
+            style="margin: 0 4px 5px; font-size: 16px"
+          >
+            VueTippy
+          </el-link>
+          自动省略后显示 Tooltip 提示， 支持多行省略
+        </span>
       </div>
     </template>
 
-    <h4 class="mb-4">基础用法</h4>
+    <p class="mb-2">基础用法</p>
     <el-space wrap>
       <ul class="content">
         <li>
@@ -43,11 +58,10 @@ const changeTooltipContent = () => {
 
     <el-divider />
 
-    <h4 class="mb-4">自定义tooltip内容</h4>
-
+    <p class="mb-2">自定义 Tooltip 内容</p>
     <div class="mb-2">
       <el-button @click="changeTooltipContent">
-        点击切换下方tooltip的内容
+        点击切换下方 Tooltip 内容
       </el-button>
     </div>
     <el-space wrap>
@@ -74,7 +88,7 @@ const changeTooltipContent = () => {
     </el-space>
 
     <el-divider />
-    <h4 class="mb-4">El-Text 配置修改</h4>
+    <p class="mb-2">自定义 el-text 配置</p>
     <el-space wrap>
       <ul class="content">
         <li>
@@ -91,7 +105,7 @@ const changeTooltipContent = () => {
     </el-space>
 
     <el-divider />
-    <h4 class="mb-4">Tippy 配置修改</h4>
+    <p class="mb-2">自定义 VueTippy 配置</p>
     <el-space wrap>
       <ul class="content">
         <li>
@@ -113,9 +127,7 @@ const changeTooltipContent = () => {
     </el-space>
 
     <el-divider />
-    <h4 class="mb-4">
-      组件嵌套: 不需要省略的需设置truncated为false, 建议直接使用El-Text
-    </h4>
+    <p class="mb-2">组件嵌套: 不需要省略的需设置 truncated 为 false</p>
     <el-space wrap>
       <ul class="content">
         <li>
@@ -139,9 +151,10 @@ const changeTooltipContent = () => {
         </li>
       </ul>
     </el-space>
+
     <el-divider />
-    <h4 class="mb-4">
-      监听默认关闭，可通过
+    <p class="mb-2">
+      默认关闭监听，可通过
       <span v-tippy="{ content: '监听文本宽度变化' }" class="text-primary">
         resize
       </span>
@@ -149,26 +162,26 @@ const changeTooltipContent = () => {
       <span v-tippy="{ content: '监听 props 变化' }" class="text-primary">
         watch
       </span>
-      参数开启, 会增加相应的性能消耗, 上方的几个示例都开启了所需的监听,
-      以下是关闭后的效果
-    </h4>
+      参数自行开启
+    </p>
     <el-space wrap>
       <ul class="content !min-w-[600px]">
         <li>
           <ReText>
-            resize=false -
-            resize未开启将无法再监听文本宽度变化，即使文本内容变化也不会重新判断是否需要显示tooltip
+            resize 为 false
+            时将无法再监听文本宽度变化，即使文本内容变化也不会重新判断是否需要显示
+            tooltip
           </ReText>
         </li>
         <li>
           <el-button @click="customContent2 = '怎么修改不了了?'">
-            点击尝试切换下方tooltip的内容(因为监听关闭, 所以无法修改)
+            点击尝试切换下方 tooltip 的内容（因为默认关闭监听, 所以无法修改）
           </el-button>
         </li>
         <li>
           <ReText :tippyProps="{ content: customContent2 }" resize>
-            watch=false -
-            watch未开启将无法再监听props变化，即使props变化也不会重新渲染tooltip内容和配置
+            watch 为 false 时将无法再监听 props 变化，即使 props
+            变化也不会重新渲染 tooltip 内容和配置
           </ReText>
         </li>
       </ul>
