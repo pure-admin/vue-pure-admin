@@ -10,10 +10,10 @@ import { transformI18n } from "@/plugins/i18n";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import { type CSSProperties, type PropType, computed, ref, toRaw } from "vue";
 
+import ArrowUp from "@iconify-icons/ep/arrow-up-bold";
 import EpArrowDown from "@iconify-icons/ep/arrow-down-bold";
 import ArrowLeft from "@iconify-icons/ep/arrow-left-bold";
 import ArrowRight from "@iconify-icons/ep/arrow-right-bold";
-import ArrowUp from "@iconify-icons/ep/arrow-up-bold";
 
 const { layout, isCollapse, tooltipEffect, getDivStyle } = useNav();
 const { isDark } = useDark();
