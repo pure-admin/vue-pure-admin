@@ -1,17 +1,17 @@
 <script lang="ts" setup>
-import { useResizeObserver } from "@vueuse/core";
 import type { ElText } from "element-plus";
+import { useResizeObserver } from "@pureadmin/utils";
+import { type TippyOptions, useTippy } from "vue-tippy";
 import {
-  PropType,
-  computed,
+  type PropType,
   h,
-  onMounted,
   ref,
+  computed,
   useAttrs,
   useSlots,
+  onMounted,
   watchEffect
 } from "vue";
-import { TippyOptions, useTippy } from "vue-tippy";
 
 const props = defineProps({
   // 行数
@@ -22,19 +22,20 @@ const props = defineProps({
     type: Object as PropType<TippyOptions>,
     default: () => ({})
   },
-  needPropsWatch: {
+  watch: {
     type: Boolean,
     default: false
   },
-  needResizeObserver: {
+  resize: {
     type: Boolean,
     default: false
   }
 });
+
 const $attrs = useAttrs();
 const $slots = useSlots();
 
-const textRef = ref<InstanceType<typeof ElText>>();
+const textRef = ref();
 
 const isTextEllipsis = () => {
   if (!props.lineClamp) {
@@ -74,7 +75,7 @@ onMounted(() => {
   // 初始化 tippy 启用状态
   isTextEllipsis() ? enable() : disable();
 
-  if (props.needPropsWatch) {
+  if (props.watch) {
     // 监听 props 变化
     watchEffect(() => {
       setProps(getTippyProps.value);
@@ -82,7 +83,7 @@ onMounted(() => {
     });
   }
 
-  if (props.needResizeObserver) {
+  if (props.resize) {
     // 监听文本宽度变化
     useResizeObserver(textRef, () => {
       isTextEllipsis() ? enable() : disable();

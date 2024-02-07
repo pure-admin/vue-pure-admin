@@ -1,18 +1,19 @@
 <script setup lang="ts">
-import { useRenderIcon } from "@/components/ReIcon/src/hooks";
-import { ReText } from "@/components/ReText";
+import path from "path";
 import { getConfig } from "@/config";
+import { menuType } from "../../types";
+import extraIcon from "./extraIcon.vue";
+import { useDark } from "@pureadmin/utils";
+import { ReText } from "@/components/ReText";
 import { useNav } from "@/layout/hooks/useNav";
 import { transformI18n } from "@/plugins/i18n";
+import { useRenderIcon } from "@/components/ReIcon/src/hooks";
+import { type CSSProperties, type PropType, computed, ref, toRaw } from "vue";
+
 import EpArrowDown from "@iconify-icons/ep/arrow-down-bold";
 import ArrowLeft from "@iconify-icons/ep/arrow-left-bold";
 import ArrowRight from "@iconify-icons/ep/arrow-right-bold";
 import ArrowUp from "@iconify-icons/ep/arrow-up-bold";
-import { useDark } from "@pureadmin/utils";
-import path from "path";
-import { CSSProperties, PropType, computed, ref, toRaw } from "vue";
-import { menuType } from "../../types";
-import extraIcon from "./extraIcon.vue";
 
 const { layout, isCollapse, tooltipEffect, getDivStyle } = useNav();
 const { isDark } = useDark();
@@ -145,7 +146,7 @@ function resolvePath(routePath) {
             theme: !isDark ? tooltipEffect : undefined
           }"
           class="!text-inherit"
-          needResizeObserver
+          resize
         >
           {{ transformI18n(onlyOneChild.meta.title) }}
         </ReText>
@@ -191,7 +192,7 @@ function resolvePath(routePath) {
             !toRaw(props.item.meta.icon) &&
             props.item.parentId === null
         }"
-        needResizeObserver
+        resize
       >
         {{ transformI18n(props.item.meta.title) }}
       </ReText>

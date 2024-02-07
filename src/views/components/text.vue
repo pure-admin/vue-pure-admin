@@ -1,7 +1,8 @@
 <script lang="ts" setup>
-import { ReText } from "@/components/ReText";
 import dayjs from "dayjs";
 import { ref } from "vue";
+import { ReText } from "@/components/ReText";
+
 defineOptions({
   name: "PureText"
 });
@@ -28,12 +29,12 @@ const changeTooltipContent = () => {
 
     <h4 class="mb-4">基础用法</h4>
     <el-space wrap>
-      <ul class="con">
+      <ul class="content">
         <li>
-          <ReText needResizeObserver>
+          <ReText resize>
             测试文本，这是一个稍微有点长的文本，过长省略后，鼠标悬浮会有tooltip提示
           </ReText>
-          <ReText :lineClamp="2" needResizeObserver>
+          <ReText :lineClamp="2" resize>
             测试文本，这是一个稍微有点长的文本，lineClamp参数为2，即两行过长省略后，鼠标悬浮会有tooltip提示
           </ReText>
         </li>
@@ -45,24 +46,20 @@ const changeTooltipContent = () => {
     <h4 class="mb-4">自定义tooltip内容</h4>
 
     <div class="mb-2">
-      <el-button @click="changeTooltipContent()">
+      <el-button @click="changeTooltipContent">
         点击切换下方tooltip的内容
       </el-button>
     </div>
     <el-space wrap>
-      <ul class="con">
+      <ul class="content">
         <li>
-          <ReText
-            :tippyProps="{ content: customContent }"
-            needResizeObserver
-            needPropsWatch
-          >
+          <ReText :tippyProps="{ content: customContent }" resize watch>
             props写法 -
             测试文本，这是一个稍微有点长的文本，过长省略后，鼠标悬浮会有tooltip提示
           </ReText>
         </li>
         <li>
-          <ReText needResizeObserver>
+          <ReText resize>
             <template #content>
               <div>
                 <b>这是插槽写法: </b>
@@ -79,14 +76,14 @@ const changeTooltipContent = () => {
     <el-divider />
     <h4 class="mb-4">El-Text 配置修改</h4>
     <el-space wrap>
-      <ul class="con">
+      <ul class="content">
         <li>
-          <ReText type="primary" size="large" needResizeObserver>
+          <ReText type="primary" size="large" resize>
             测试文本，这是一个稍微有点长的文本，过长省略后，鼠标悬浮会有tooltip提示
           </ReText>
         </li>
         <li>
-          <ReText :lineClamp="4" type="info" needResizeObserver>
+          <ReText :lineClamp="4" type="info" resize>
             测试文本，这是一个非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长的文本，lineClamp参数为4，即四行过长省略后，鼠标悬浮会有tooltip提示
           </ReText>
         </li>
@@ -96,22 +93,18 @@ const changeTooltipContent = () => {
     <el-divider />
     <h4 class="mb-4">Tippy 配置修改</h4>
     <el-space wrap>
-      <ul class="con">
+      <ul class="content">
         <li>
           <ReText
             :tippyProps="{ offset: [0, -20], theme: 'light', arrow: false }"
-            needResizeObserver
+            resize
           >
             偏移白色无箭头 -
             测试文本，这是一个稍微有点长的文本，过长省略后，鼠标悬浮会有tooltip提示
           </ReText>
         </li>
         <li>
-          <ReText
-            :lineClamp="4"
-            :tippyProps="{ followCursor: true }"
-            needResizeObserver
-          >
+          <ReText :lineClamp="4" :tippyProps="{ followCursor: true }" resize>
             鼠标跟随 -
             测试文本，这是一个非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长的文本，lineClamp参数为4，即四行过长省略后，鼠标悬浮会有tooltip提示
           </ReText>
@@ -124,9 +117,9 @@ const changeTooltipContent = () => {
       组件嵌套: 不需要省略的需设置truncated为false, 建议直接使用El-Text
     </h4>
     <el-space wrap>
-      <ul class="con">
+      <ul class="content">
         <li>
-          <ReText tag="p" :lineClamp="2" needResizeObserver>
+          <ReText tag="p" :lineClamp="2" resize>
             This is a paragraph. Paragraph start
             <ReText :truncated="false">
               【 This is ReText
@@ -150,21 +143,21 @@ const changeTooltipContent = () => {
     <h4 class="mb-4">
       监听默认关闭，可通过
       <span v-tippy="{ content: '监听文本宽度变化' }" class="text-primary">
-        needResizeObserver
+        resize
       </span>
       和
       <span v-tippy="{ content: '监听 props 变化' }" class="text-primary">
-        needPropsWatch
+        watch
       </span>
       参数开启, 会增加相应的性能消耗, 上方的几个示例都开启了所需的监听,
       以下是关闭后的效果
     </h4>
     <el-space wrap>
-      <ul class="con !min-w-[600px]">
+      <ul class="content !min-w-[600px]">
         <li>
           <ReText>
-            needResizeObserver=false -
-            needResizeObserver未开启将无法再监听文本宽度变化，即使文本内容变化也不会重新判断是否需要显示tooltip
+            resize=false -
+            resize未开启将无法再监听文本宽度变化，即使文本内容变化也不会重新判断是否需要显示tooltip
           </ReText>
         </li>
         <li>
@@ -173,9 +166,9 @@ const changeTooltipContent = () => {
           </el-button>
         </li>
         <li>
-          <ReText :tippyProps="{ content: customContent2 }" needResizeObserver>
-            needPropsWatch=false -
-            needPropsWatch未开启将无法再监听props变化，即使props变化也不会重新渲染tooltip内容和配置
+          <ReText :tippyProps="{ content: customContent2 }" resize>
+            watch=false -
+            watch未开启将无法再监听props变化，即使props变化也不会重新渲染tooltip内容和配置
           </ReText>
         </li>
       </ul>
@@ -184,7 +177,7 @@ const changeTooltipContent = () => {
 </template>
 
 <style lang="scss" scoped>
-.con {
+.content {
   width: 400px;
   padding: 15px;
   overflow: hidden;
