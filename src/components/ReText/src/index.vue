@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import type { ElText } from "element-plus";
 import { useResizeObserver } from "@pureadmin/utils";
 import { type TippyOptions, useTippy } from "vue-tippy";
 import {
