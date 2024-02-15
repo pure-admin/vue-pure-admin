@@ -146,7 +146,6 @@ function resolvePath(routePath) {
             theme: !isDark ? tooltipEffect : undefined
           }"
           class="!text-inherit"
-          resize
         >
           {{ transformI18n(onlyOneChild.meta.title) }}
         </ReText>
@@ -192,7 +191,6 @@ function resolvePath(routePath) {
             !toRaw(props.item.meta.icon) &&
             props.item.parentId === null
         }"
-        resize
       >
         {{ transformI18n(props.item.meta.title) }}
       </ReText>

@@ -8,7 +8,6 @@ defineOptions({
 });
 
 const customContent = ref("自定义tooltip内容");
-const customContent2 = ref("这个tooltip内容无法修改了");
 
 const changeTooltipContent = () => {
   customContent.value =
@@ -46,10 +45,10 @@ const changeTooltipContent = () => {
     <el-space wrap>
       <ul class="content">
         <li>
-          <ReText resize>
+          <ReText>
             测试文本，这是一个稍微有点长的文本，过长省略后，鼠标悬浮会有tooltip提示
           </ReText>
-          <ReText :lineClamp="2" resize>
+          <ReText :lineClamp="2">
             测试文本，这是一个稍微有点长的文本，lineClamp参数为2，即两行过长省略后，鼠标悬浮会有tooltip提示
           </ReText>
         </li>
@@ -67,13 +66,13 @@ const changeTooltipContent = () => {
     <el-space wrap>
       <ul class="content">
         <li>
-          <ReText :tippyProps="{ content: customContent }" resize watch>
+          <ReText :tippyProps="{ content: customContent }">
             props写法 -
             测试文本，这是一个稍微有点长的文本，过长省略后，鼠标悬浮会有tooltip提示
           </ReText>
         </li>
         <li>
-          <ReText resize>
+          <ReText>
             <template #content>
               <div>
                 <b>这是插槽写法: </b>
@@ -92,12 +91,12 @@ const changeTooltipContent = () => {
     <el-space wrap>
       <ul class="content">
         <li>
-          <ReText type="primary" size="large" resize>
+          <ReText type="primary" size="large">
             测试文本，这是一个稍微有点长的文本，过长省略后，鼠标悬浮会有tooltip提示
           </ReText>
         </li>
         <li>
-          <ReText :lineClamp="4" type="info" resize>
+          <ReText :lineClamp="4" type="info">
             测试文本，这是一个非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长的文本，lineClamp参数为4，即四行过长省略后，鼠标悬浮会有tooltip提示
           </ReText>
         </li>
@@ -111,14 +110,13 @@ const changeTooltipContent = () => {
         <li>
           <ReText
             :tippyProps="{ offset: [0, -20], theme: 'light', arrow: false }"
-            resize
           >
             偏移白色无箭头 -
             测试文本，这是一个稍微有点长的文本，过长省略后，鼠标悬浮会有tooltip提示
           </ReText>
         </li>
         <li>
-          <ReText :lineClamp="4" :tippyProps="{ followCursor: true }" resize>
+          <ReText :lineClamp="4" :tippyProps="{ followCursor: true }">
             鼠标跟随 -
             测试文本，这是一个非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长，非常非常长的文本，lineClamp参数为4，即四行过长省略后，鼠标悬浮会有tooltip提示
           </ReText>
@@ -131,7 +129,7 @@ const changeTooltipContent = () => {
     <el-space wrap>
       <ul class="content">
         <li>
-          <ReText tag="p" :lineClamp="2" resize>
+          <ReText tag="p" :lineClamp="2">
             This is a paragraph. Paragraph start
             <ReText :truncated="false">
               【 This is ReText
@@ -147,41 +145,6 @@ const changeTooltipContent = () => {
             <el-text tag="del">【Deleted】</el-text>
             <el-text tag="mark">【Marked】</el-text>
             Paragraph end.
-          </ReText>
-        </li>
-      </ul>
-    </el-space>
-
-    <el-divider />
-    <p class="mb-2">
-      默认关闭监听，可通过
-      <span v-tippy="{ content: '监听文本宽度变化' }" class="text-primary">
-        resize
-      </span>
-      和
-      <span v-tippy="{ content: '监听 props 变化' }" class="text-primary">
-        watch
-      </span>
-      参数自行开启
-    </p>
-    <el-space wrap>
-      <ul class="content !min-w-[600px]">
-        <li>
-          <ReText>
-            resize 为 false
-            时将无法再监听文本宽度变化，即使文本内容变化也不会重新判断是否需要显示
-            tooltip
-          </ReText>
-        </li>
-        <li>
-          <el-button @click="customContent2 = '怎么修改不了了?'">
-            点击尝试切换下方 tooltip 的内容（因为默认关闭监听, 所以无法修改）
-          </el-button>
-        </li>
-        <li>
-          <ReText :tippyProps="{ content: customContent2 }" resize>
-            watch 为 false 时将无法再监听 props 变化，即使 props
-            变化也不会重新渲染 tooltip 内容和配置
           </ReText>
         </li>
       </ul>

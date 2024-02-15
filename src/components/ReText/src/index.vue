@@ -1,16 +1,6 @@
 <script lang="ts" setup>
-import { useResizeObserver } from "@pureadmin/utils";
-import { type TippyOptions, useTippy } from "vue-tippy";
-import {
-  type PropType,
-  h,
-  ref,
-  computed,
-  useAttrs,
-  useSlots,
-  onMounted,
-  watchEffect
-} from "vue";
+import { h, onMounted, reactive, ref, useAttrs, useSlots } from "vue";
+import { useTippy, type TippyOptions } from "vue-tippy";
 
 const props = defineProps({
   // 行数
@@ -20,14 +10,6 @@ const props = defineProps({
   tippyProps: {
     type: Object as PropType<TippyOptions>,
     default: () => ({})
-  },
-  watch: {
-    type: Boolean,
-    default: false
-  },
-  resize: {
-    type: Boolean,
-    default: false
   }
 });
 
@@ -35,64 +17,63 @@ const $attrs = useAttrs();
 const $slots = useSlots();
 
 const textRef = ref();
+const tippyFunc = reactive<{
+  enable: () => void;
+  disable: () => void;
+  setProps: (prop: TippyOptions) => void;
+}>({
+  enable: () => {},
+  disable: () => {},
+  setProps: () => {}
+});
 
-const isTextEllipsis = () => {
+const isTextEllipsis = (el: HTMLElement) => {
   if (!props.lineClamp) {
     // 单行省略判断
-    return textRef.value?.$el.scrollWidth > textRef.value?.$el.clientWidth;
+    return el.scrollWidth > el.clientWidth;
   } else {
     // 多行省略判断
-    return textRef.value?.$el.scrollHeight > textRef.value?.$el.clientHeight;
+    return el.scrollHeight > el.clientHeight;
   }
 };
 
-const getTextProps = computed(() => {
-  return Object.assign(
-    {
-      truncated: !props.lineClamp,
-      lineClamp: props.lineClamp
-    },
-    $attrs
-  );
+const getTippyProps = () => ({
+  content: h($slots.content || $slots.default),
+  ...props.tippyProps
 });
 
-const getTippyProps = computed(() => {
-  return Object.assign(
-    {
-      content: h($slots.content || $slots.default)
-    },
-    props.tippyProps
-  );
-});
+function handleHover(event: MouseEvent) {
+  if (isTextEllipsis(event.target as HTMLElement)) {
+    tippyFunc.setProps(getTippyProps());
+    tippyFunc.enable();
+  } else {
+    tippyFunc.disable();
+  }
+}
 
 onMounted(() => {
   const { disable, enable, setProps } = useTippy(
     textRef.value?.$el,
-    getTippyProps.value
+    getTippyProps()
   );
+  isTextEllipsis(textRef.value?.$el) ? enable() : disable();
 
-  // 初始化 tippy 启用状态
-  isTextEllipsis() ? enable() : disable();
-
-  if (props.watch) {
-    // 监听 props 变化
-    watchEffect(() => {
-      setProps(getTippyProps.value);
-      isTextEllipsis() ? enable() : disable();
-    });
-  }
-
-  if (props.resize) {
-    // 监听文本宽度变化
-    useResizeObserver(textRef, () => {
-      isTextEllipsis() ? enable() : disable();
-    });
-  }
+  tippyFunc.enable = enable;
+  tippyFunc.disable = disable;
+  tippyFunc.setProps = setProps;
 });
 </script>
 
 <template>
-  <el-text v-bind="getTextProps" ref="textRef">
+  <el-text
+    v-bind="{
+      truncated: !lineClamp,
+      lineClamp,
+      ...$attrs
+    }"
+    ref="textRef"
+    @mouseover.self="handleHover"
+  >
     <slot />
   </el-text>
 </template>
