@@ -56,8 +56,6 @@ onMounted(() => {
     textRef.value?.$el,
     getTippyProps()
   );
-  isTextEllipsis(textRef.value?.$el) ? enable() : disable();
-
   tippyFunc.enable = enable;
   tippyFunc.disable = disable;
   tippyFunc.setProps = setProps;
