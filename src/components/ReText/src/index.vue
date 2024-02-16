@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { h, onMounted, ref, useAttrs, useSlots } from "vue";
+import { h, onMounted, ref, useSlots } from "vue";
 import { useTippy, type TippyOptions } from "vue-tippy";
 
 const props = defineProps({
@@ -13,7 +13,6 @@ const props = defineProps({
   }
 });
 
-const $attrs = useAttrs();
 const $slots = useSlots();
 
 const textRef = ref();
