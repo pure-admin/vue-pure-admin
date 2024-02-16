@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { h, onMounted, reactive, ref, useAttrs, useSlots } from "vue";
+import { h, onMounted, ref, useAttrs, useSlots } from "vue";
 import { useTippy, type TippyOptions } from "vue-tippy";
 
 const props = defineProps({
@@ -17,15 +17,7 @@ const $attrs = useAttrs();
 const $slots = useSlots();
 
 const textRef = ref();
-const tippyFunc = reactive<{
-  enable: () => void;
-  disable: () => void;
-  setProps: (prop: TippyOptions) => void;
-}>({
-  enable: () => {},
-  disable: () => {},
-  setProps: () => {}
-});
+const tippyFunc = ref();
 
 const isTextEllipsis = (el: HTMLElement) => {
   if (!props.lineClamp) {
@@ -44,21 +36,15 @@ const getTippyProps = () => ({
 
 function handleHover(event: MouseEvent) {
   if (isTextEllipsis(event.target as HTMLElement)) {
-    tippyFunc.setProps(getTippyProps());
-    tippyFunc.enable();
+    tippyFunc.value.setProps(getTippyProps());
+    tippyFunc.value.enable();
   } else {
-    tippyFunc.disable();
+    tippyFunc.value.disable();
   }
 }
 
 onMounted(() => {
-  const { disable, enable, setProps } = useTippy(
-    textRef.value?.$el,
-    getTippyProps()
-  );
-  tippyFunc.enable = enable;
-  tippyFunc.disable = disable;
-  tippyFunc.setProps = setProps;
+  tippyFunc.value = useTippy(textRef.value?.$el, getTippyProps());
 });
 </script>
 
