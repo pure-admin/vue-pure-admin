@@ -5,7 +5,7 @@ import { useTippy, type TippyOptions } from "vue-tippy";
 const props = defineProps({
   // 行数
   lineClamp: {
-    type: Number
+    type: [String, Number]
   },
   tippyProps: {
     type: Object as PropType<TippyOptions>,
