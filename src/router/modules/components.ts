@@ -92,6 +92,15 @@ export default {
       }
     },
     {
+      path: "/components/text",
+      name: "PureText",
+      component: () => import("@/views/components/text.vue"),
+      meta: {
+        title: $t("menus.hsText"),
+        extraIcon: "IF-pure-iconfont-new svg"
+      }
+    },
+    {
       path: "/components/el-button",
       name: "PureButton",
       component: () => import("@/views/components/el-button.vue"),

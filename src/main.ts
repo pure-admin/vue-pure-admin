@@ -31,7 +31,7 @@ Object.keys(directives).forEach(key => {
   app.directive(key, (directives as { [key: string]: Directive })[key]);
 });
 
-// 全局注册`@iconify/vue`图标库
+// 全局注册@iconify/vue图标库
 import {
   IconifyIconOffline,
   IconifyIconOnline,
@@ -45,13 +45,11 @@ app.component("FontIcon", FontIcon);
 import { Auth } from "@/components/ReAuth";
 app.component("Auth", Auth);
 
-// 全局注册`vue-tippy`
+// 全局注册vue-tippy
 import "tippy.js/dist/tippy.css";
-import "tippy.js/animations/perspective.css";
+import "tippy.js/themes/light.css";
 import VueTippy from "vue-tippy";
-app.use(VueTippy, {
-  defaultProps: { animation: "perspective" }
-});
+app.use(VueTippy);
 
 getPlatformConfig(app).then(async config => {
   setupStore(app);
