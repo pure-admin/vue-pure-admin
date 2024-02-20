@@ -4,3 +4,5 @@ import type { TypeItOptions } from "typeit";
 const TypeIt = typeIt;
 
 export { TypeIt, TypeItOptions };
+
+export default TypeIt;
