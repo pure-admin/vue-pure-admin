@@ -44,6 +44,7 @@ menus:
   hsmap: Map
   hsdraggable: Draggable
   hssplitPane: Split Pane
+  hsText: Text Ellipsis
   hsElButton: Button
   hsbutton: Button Animation
   hsCheckButton: Check Button
