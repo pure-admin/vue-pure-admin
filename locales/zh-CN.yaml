@@ -45,6 +45,7 @@ menus:
   hsmap: 地图
   hsdraggable: 拖拽
   hssplitPane: 切割面板
+  hsText: 文本省略
   hsElButton: 按钮
   hsCheckButton: 可选按钮
   hsbutton: 按钮动效
