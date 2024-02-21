@@ -7,7 +7,8 @@ export default defineComponent({
   name: "TypeIt",
   props: {
     options: {
-      type: Object as PropType<TypeItOptions>
+      type: Object as PropType<TypeItOptions>,
+      default: () => ({}) as TypeItOptions
     }
   },
   setup(props, { slots, expose }) {
@@ -27,6 +28,7 @@ export default defineComponent({
     }
 
     const typedItRef = ref<Element | null>(null);
+
     onMounted(() => {
       const $typed = typedItRef.value!.querySelector(".type-it") as El;
 
@@ -37,12 +39,14 @@ export default defineComponent({
             : "Please make sure that there is only one element with a Class attribute with 'type-it'";
         throwError(errorMsg);
       }
+
       const typeIt = new TypeIt($typed, props.options).go();
 
       expose({
         typeIt
       });
     });
+
     return () => (
       <div ref={typedItRef}>
         {slots.default?.() ?? <span class="type-it"></span>}

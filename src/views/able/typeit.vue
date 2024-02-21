@@ -4,6 +4,7 @@ import { TypeIt, type TypeItOptions } from "@/components/ReTypeit";
 defineOptions({
   name: "Typeit"
 });
+
 const options: TypeItOptions = {
   strings: ["test1", "test2", "test3"]
 };

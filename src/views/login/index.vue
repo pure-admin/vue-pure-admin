@@ -166,7 +166,9 @@ watch(loginDay, value => {
           <avatar class="avatar" />
           <Motion>
             <h2 class="outline-none">
-              <TypeIt :values="[title]" :cursor="false" :speed="150" />
+              <TypeIt
+                :options="{ strings: [title], cursor: false, speed: 100 }"
+              />
             </h2>
           </Motion>
 
