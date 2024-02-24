@@ -153,7 +153,7 @@
     "svgo": "^3.2.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3",
-    "vite": "^5.1.1",
+    "vite": "^5.1.4",
     "vite-plugin-cdn-import": "^0.3.5",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-fake-server": "^2.1.1",
