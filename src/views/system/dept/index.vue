@@ -89,7 +89,7 @@ const {
         <pure-table
           ref="tableRef"
           adaptive
-          :adaptiveConfig="{ offsetBottom: 32 }"
+          :adaptiveConfig="{ offsetBottom: 45 }"
           align-whole="center"
           row-key="id"
           showOverflowTooltip
@@ -150,6 +150,10 @@ const {
 </template>
 
 <style lang="scss" scoped>
+.main-content {
+  margin: 24px 24px 0 !important;
+}
+
 .search-form {
   :deep(.el-form-item) {
     margin-bottom: 12px;
