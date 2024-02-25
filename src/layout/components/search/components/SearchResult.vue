@@ -115,7 +115,7 @@ defineExpose({ handleScroll });
     cursor: pointer;
     border: 0.1px solid #ccc;
     border-radius: 4px;
-    transition: all 0.3s;
+    transition: font-size 0.16s;
 
     &-title {
       display: flex;
