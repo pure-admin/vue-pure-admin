@@ -203,7 +203,7 @@ function onCloseCallBackClick() {
       } else if (args?.command === "sure") {
         text = "您点击了确定按钮";
       } else {
-        text = "您点击了右上角关闭按钮或者空白页";
+        text = "您点击了右上角关闭按钮或空白页或按下了esc键";
       }
       message(text);
     },
@@ -301,7 +301,9 @@ function onFormOneClick() {
       } else if (args?.command === "sure") {
         message(`您点击了确定按钮，当前表单数据为 ${text}`);
       } else {
-        message(`您点击了右上角关闭按钮或者空白页，当前表单数据为 ${text}`);
+        message(
+          `您点击了右上角关闭按钮或空白页或按下了esc键，当前表单数据为 ${text}`
+        );
       }
     }
   });
