@@ -48,15 +48,19 @@
     padding-right: 16px;
   }
 
-  .pure-dialog-svg {
-    color: var(--el-color-info);
-  }
-
   .el-dialog__headerbtn {
     top: 16px;
     right: 12px;
     width: 24px;
     height: 24px;
+  }
+
+  .pure-dialog-svg {
+    color: var(--el-color-info);
+  }
+
+  .el-dialog__footer {
+    padding-top: 0;
   }
 }
 
