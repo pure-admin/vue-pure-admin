@@ -111,20 +111,20 @@ const {
               link
               type="primary"
               :size="size"
-              :icon="useRenderIcon(AddFill)"
-              @click="openDialog('新增', { parentId: row.id } as any)"
+              :icon="useRenderIcon(EditPen)"
+              @click="openDialog('修改', row)"
             >
-              新增
+              修改
             </el-button>
             <el-button
               class="reset-margin"
               link
               type="primary"
               :size="size"
-              :icon="useRenderIcon(EditPen)"
-              @click="openDialog('修改', row)"
+              :icon="useRenderIcon(AddFill)"
+              @click="openDialog('新增', { parentId: row.id } as any)"
             >
-              修改
+              新增
             </el-button>
             <el-popconfirm
               :title="`是否确认删除部门名称为${row.name}的这条数据`"
