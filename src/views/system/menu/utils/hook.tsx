@@ -110,7 +110,9 @@ export function useMenu() {
     let newData = data;
     if (!isAllEmpty(form.title)) {
       // 前端搜索菜单名称
-      newData = newData.filter(item => item.name.includes(form.title));
+      newData = newData.filter(item =>
+        transformI18n(item.title).includes(form.title)
+      );
     }
     dataList.value = handleTree(newData); // 处理成树结构
     setTimeout(() => {
@@ -119,11 +121,10 @@ export function useMenu() {
   }
 
   function formatHigherMenuOptions(treeList) {
-    // 根据返回数据的status字段值判断追加是否禁用disabled字段，返回处理后的树结构，用于上级菜单级联选择器的展示（实际开发中也是如此，不可能前端需要的每个字段后端都会返回，这时需要前端自行根据后端返回的某些字段做逻辑处理）
     if (!treeList || !treeList.length) return;
     const newTreeList = [];
     for (let i = 0; i < treeList.length; i++) {
-      treeList[i].disabled = treeList[i].status === 0 ? true : false;
+      treeList[i].title = transformI18n(treeList[i].title);
       formatHigherMenuOptions(treeList[i].children);
       newTreeList.push(treeList[i]);
     }
@@ -142,7 +143,7 @@ export function useMenu() {
           name: row?.name ?? "",
           path: row?.path ?? "",
           component: row?.component ?? "",
-          rank: row?.rank ?? 1,
+          rank: row?.rank ?? 99,
           redirect: row?.redirect ?? "",
           icon: row?.icon ?? "",
           extraIcon: row?.extraIcon ?? "",
