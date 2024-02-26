@@ -4,7 +4,7 @@ export interface ListItem {
   datetime: string;
   type: string;
   description: string;
-  status?: "" | "success" | "warning" | "info" | "danger";
+  status?: "primary" | "success" | "warning" | "info" | "danger";
   extra?: string;
 }
 

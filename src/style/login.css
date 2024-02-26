@@ -1,6 +1,7 @@
 .wave {
   position: fixed;
   height: 100%;
+  width: 80%;
   left: 0;
   bottom: 0;
   z-index: -1;

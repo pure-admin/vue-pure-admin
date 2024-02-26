@@ -11,7 +11,7 @@ import { system, permission, frame, tabs } from "@/router/enums";
 const systemRouter = {
   path: "/system",
   meta: {
-    icon: "setting",
+    icon: "ri:settings-3-line",
     title: "menus.hssysManagement",
     rank: system
   },
@@ -20,7 +20,7 @@ const systemRouter = {
       path: "/system/user/index",
       name: "SystemUser",
       meta: {
-        icon: "flUser",
+        icon: "ri:admin-line",
         title: "menus.hsUser",
         roles: ["admin"]
       }
@@ -29,8 +29,17 @@ const systemRouter = {
       path: "/system/role/index",
       name: "SystemRole",
       meta: {
-        icon: "role",
+        icon: "ri:admin-fill",
         title: "menus.hsRole",
+        roles: ["admin"]
+      }
+    },
+    {
+      path: "/system/menu/index",
+      name: "SystemMenu",
+      meta: {
+        icon: "ep:menu",
+        title: "menus.hsSystemMenu",
         roles: ["admin"]
       }
     },
@@ -38,7 +47,7 @@ const systemRouter = {
       path: "/system/dept/index",
       name: "SystemDept",
       meta: {
-        icon: "dept",
+        icon: "ri:git-branch-line",
         title: "menus.hsDept",
         roles: ["admin"]
       }
@@ -50,7 +59,7 @@ const permissionRouter = {
   path: "/permission",
   meta: {
     title: "menus.permission",
-    icon: "lollipop",
+    icon: "ep:lollipop",
     rank: permission
   },
   children: [
@@ -68,7 +77,11 @@ const permissionRouter = {
       meta: {
         title: "menus.permissionButton",
         roles: ["admin", "common"],
-        auths: ["btn_add", "btn_edit", "btn_delete"]
+        auths: [
+          "permission:btn:add",
+          "permission:btn:edit",
+          "permission:btn:delete"
+        ]
       }
     }
   ]
@@ -77,7 +90,7 @@ const permissionRouter = {
 const frameRouter = {
   path: "/iframe",
   meta: {
-    icon: "monitor",
+    icon: "ep:monitor",
     title: "menus.hsExternalPage",
     rank: frame
   },
@@ -180,7 +193,7 @@ const frameRouter = {
 const tabsRouter = {
   path: "/tabs",
   meta: {
-    icon: "tag",
+    icon: "ri:bookmark-2-line",
     title: "menus.hstabs",
     rank: tabs
   },
