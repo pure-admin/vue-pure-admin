@@ -150,6 +150,10 @@ const {
 </template>
 
 <style lang="scss" scoped>
+:deep(.el-table__inner-wrapper::before) {
+  height: 0;
+}
+
 .main-content {
   margin: 24px 24px 0 !important;
 }
