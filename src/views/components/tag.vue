@@ -12,8 +12,8 @@ const checked2 = ref(false);
 const baseTag = ref("dark");
 const tagList = ref([
   {
-    type: "",
-    text: "Default"
+    type: "primary",
+    text: "Primary"
   },
   {
     type: "success",

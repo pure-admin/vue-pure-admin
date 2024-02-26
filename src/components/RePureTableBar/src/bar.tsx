@@ -29,6 +29,10 @@ const props = {
   columns: {
     type: Array as PropType<TableColumnList>,
     default: () => []
+  },
+  isExpandAll: {
+    type: Boolean,
+    default: true
   }
 };
 
@@ -38,10 +42,10 @@ export default defineComponent({
   emits: ["refresh"],
   setup(props, { emit, slots, attrs }) {
     const size = ref("default");
-    const isExpandAll = ref(true);
     const loading = ref(false);
     const checkAll = ref(true);
     const isIndeterminate = ref(false);
+    const isExpandAll = ref(props.isExpandAll);
     const filterColumns = cloneDeep(props?.columns).filter(column =>
       isBoolean(column?.hide)
         ? !column.hide

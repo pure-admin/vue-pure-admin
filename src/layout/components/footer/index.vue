@@ -5,14 +5,16 @@ const TITLE = getConfig("Title");
 </script>
 
 <template>
-  <footer class="layout-footer">
-    MIT © 2020-PRESENT
+  <footer
+    class="layout-footer text-[rgba(0,0,0,0.6)] dark:text-[rgba(220,220,242,0.8)]"
+  >
+    Copyright © 2020-present
     <a
-      class="ml-1 hover:text-primary"
+      class="hover:text-primary"
       href="https://github.com/pure-admin"
       target="_blank"
     >
-      {{ TITLE }}
+      &nbsp;{{ TITLE }}
     </a>
   </footer>
 </template>
@@ -24,6 +26,6 @@ const TITLE = getConfig("Title");
   justify-content: center;
   width: 100%;
   padding: 0 0 8px;
-  color: #c0c4cc;
+  font-size: 14px;
 }
 </style>

@@ -29,6 +29,7 @@ menus:
   hssysManagement: 系统管理
   hsUser: 用户管理
   hsRole: 角色管理
+  hsSystemMenu: 菜单管理
   hsDept: 部门管理
   hseditor: 编辑器
   hsabnormal: 异常页面

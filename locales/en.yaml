@@ -29,6 +29,7 @@ menus:
   hssysManagement: System Manage
   hsUser: User Manage
   hsRole: Role Manage
+  hsSystemMenu: Menu Manage
   hsDept: Dept Manage
   hseditor: Editor
   hsabnormal: Abnormal Page
