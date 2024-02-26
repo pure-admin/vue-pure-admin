@@ -168,9 +168,12 @@ export function useMenu() {
         const FormRef = formRef.value.getRef();
         const curData = options.props.formInline as FormItemProps;
         function chores() {
-          message(`您${title}了菜单名称为${curData.name}的这条数据`, {
-            type: "success"
-          });
+          message(
+            `您${title}了菜单名称为${transformI18n(curData.title)}的这条数据`,
+            {
+              type: "success"
+            }
+          );
           done(); // 关闭弹框
           onSearch(); // 刷新表格数据
         }
@@ -192,7 +195,9 @@ export function useMenu() {
   }
 
   function handleDelete(row) {
-    message(`您删除了菜单名称为${row.name}的这条数据`, { type: "success" });
+    message(`您删除了菜单名称为${transformI18n(row.title)}的这条数据`, {
+      type: "success"
+    });
     onSearch();
   }
 
