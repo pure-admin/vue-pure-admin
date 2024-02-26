@@ -3,7 +3,6 @@ import path from "path";
 import { getConfig } from "@/config";
 import { menuType } from "../../types";
 import extraIcon from "./extraIcon.vue";
-import { useDark } from "@pureadmin/utils";
 import { ReText } from "@/components/ReText";
 import { useNav } from "@/layout/hooks/useNav";
 import { transformI18n } from "@/plugins/i18n";
@@ -16,7 +15,6 @@ import ArrowLeft from "@iconify-icons/ep/arrow-left-bold";
 import ArrowRight from "@iconify-icons/ep/arrow-right-bold";
 
 const { layout, isCollapse, tooltipEffect, getDivStyle } = useNav();
-const { isDark } = useDark();
 
 const props = defineProps({
   item: {
@@ -143,7 +141,7 @@ function resolvePath(routePath) {
         <ReText
           :tippyProps="{
             offset: [0, -10],
-            theme: !isDark ? tooltipEffect : undefined
+            theme: tooltipEffect
           }"
           class="!text-inherit"
         >
@@ -181,7 +179,7 @@ function resolvePath(routePath) {
         "
         :tippyProps="{
           offset: [0, -10],
-          theme: !isDark ? tooltipEffect : undefined
+          theme: tooltipEffect
         }"
         :class="{
           '!text-inherit': true,

@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { computed } from "vue";
 import { useGlobal } from "@pureadmin/utils";
 import { useNav } from "@/layout/hooks/useNav";
+
 import MenuFold from "@iconify-icons/ri/menu-fold-fill";
 
 interface Props {
@@ -12,7 +13,6 @@ const props = withDefaults(defineProps<Props>(), {
   isActive: false
 });
 
-const visible = ref(false);
 const { tooltipEffect } = useNav();
 
 const iconClass = computed(() => {
@@ -42,21 +42,18 @@ const toggleClick = () => {
 
 <template>
   <div class="collapse-container">
-    <el-tooltip
-      placement="right"
-      :visible="visible"
-      :effect="tooltipEffect"
-      :content="props.isActive ? '点击折叠' : '点击展开'"
-    >
-      <IconifyIconOffline
-        :icon="MenuFold"
-        :class="[iconClass, themeColor === 'light' ? '' : 'text-primary']"
-        :style="{ transform: props.isActive ? 'none' : 'rotateY(180deg)' }"
-        @click="toggleClick"
-        @mouseenter="visible = true"
-        @mouseleave="visible = false"
-      />
-    </el-tooltip>
+    <IconifyIconOffline
+      v-tippy="{
+        content: props.isActive ? '点击折叠' : '点击展开',
+        theme: tooltipEffect,
+        hideOnClick: 'toggle',
+        placement: 'right'
+      }"
+      :icon="MenuFold"
+      :class="[iconClass, themeColor === 'light' ? '' : 'text-primary']"
+      :style="{ transform: props.isActive ? 'none' : 'rotateY(180deg)' }"
+      @click="toggleClick"
+    />
   </div>
 </template>
 

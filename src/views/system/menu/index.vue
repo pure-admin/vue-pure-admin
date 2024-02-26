@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useMenu } from "./utils/hook";
+import { transformI18n } from "@/plugins/i18n";
 import { PureTableBar } from "@/components/RePureTableBar";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 
@@ -106,6 +107,7 @@ const {
               修改
             </el-button>
             <el-button
+              v-show="row.menuType !== 3"
               class="reset-margin"
               link
               type="primary"
@@ -116,7 +118,7 @@ const {
               新增
             </el-button>
             <el-popconfirm
-              :title="`是否确认删除菜单名称为${row.name}的这条数据`"
+              :title="`是否确认删除菜单名称为${transformI18n(row.title)}的这条数据${row?.children?.length > 0 ? '。注意下级菜单也会一并删除，请谨慎操作' : ''}`"
               @confirm="handleDelete(row)"
             >
               <template #reference>

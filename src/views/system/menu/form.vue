@@ -96,7 +96,7 @@ defineExpose({ getRef });
       <re-col :value="12" :xs="24" :sm="24">
         <el-form-item label="菜单名称" prop="title">
           <el-input
-            v-model="newFormInline.title"
+            :modelValue="transformI18n(newFormInline.title)"
             clearable
             placeholder="请输入菜单名称"
           />
