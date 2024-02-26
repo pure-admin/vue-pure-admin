@@ -1,12 +1,13 @@
 import editForm from "../form.vue";
 import { handleTree } from "@/utils/tree";
 import { message } from "@/utils/message";
-import { getDeptList } from "@/api/system";
-import { usePublicHooks } from "../../hooks";
+import { getMenuList } from "@/api/system";
+import { transformI18n } from "@/plugins/i18n";
 import { addDialog } from "@/components/ReDialog";
 import { reactive, ref, onMounted, h } from "vue";
 import type { FormItemProps } from "../utils/types";
 import { cloneDeep, isAllEmpty } from "@pureadmin/utils";
+import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 
 export function useMenu() {
   const form = reactive({
@@ -16,49 +17,74 @@ export function useMenu() {
   const formRef = ref();
   const dataList = ref([]);
   const loading = ref(true);
-  const { tagStyle } = usePublicHooks();
+
+  const getMenuType = (type, text = false) => {
+    switch (type) {
+      case 0:
+        return text ? "菜单" : "primary";
+      case 1:
+        return text ? "iframe" : "warning";
+      case 2:
+        return text ? "外链" : "danger";
+      case 3:
+        return text ? "按钮" : "info";
+    }
+  };
 
   const columns: TableColumnList = [
     {
       label: "菜单名称",
-      prop: "name",
-      width: 180,
-      align: "left"
+      prop: "title",
+      align: "left",
+      cellRenderer: ({ row }) => (
+        <>
+          <span class="inline-block mr-1">
+            {h(useRenderIcon(row.icon), {
+              style: { paddingTop: "1px" }
+            })}
+          </span>
+          <span>{transformI18n(row.title)}</span>
+        </>
+      )
     },
     {
       label: "菜单类型",
-      prop: "status",
-      minWidth: 100,
+      prop: "menuType",
+      width: 100,
       cellRenderer: ({ row, props }) => (
-        <el-tag size={props.size} style={tagStyle.value(row.status)}>
-          {row.status === 1 ? "否" : "是"}
+        <el-tag
+          size={props.size}
+          type={getMenuType(row.menuType)}
+          effect="plain"
+        >
+          {getMenuType(row.menuType, true)}
         </el-tag>
       )
     },
     {
       label: "路由路径",
-      prop: "name",
-      width: 180
+      prop: "path"
     },
     {
       label: "组件路径",
-      prop: "name",
-      width: 180
+      prop: "component",
+      formatter: ({ path, component }) =>
+        isAllEmpty(component) ? path : component
+    },
+    {
+      label: "权限标识",
+      prop: "auths"
     },
     {
       label: "排序",
-      prop: "sort",
-      minWidth: 70
+      prop: "rank",
+      width: 100
     },
     {
       label: "隐藏",
-      prop: "status",
-      minWidth: 100,
-      cellRenderer: ({ row, props }) => (
-        <el-tag size={props.size} style={tagStyle.value(row.status)}>
-          {row.status === 1 ? "否" : "是"}
-        </el-tag>
-      )
+      prop: "showLink",
+      formatter: ({ showLink }) => (showLink ? "否" : "是"),
+      width: 100
     },
     {
       label: "操作",
@@ -80,7 +106,7 @@ export function useMenu() {
 
   async function onSearch() {
     loading.value = true;
-    const { data } = await getDeptList(); // 这里是返回一维数组结构，前端自行处理成树结构，返回格式要求：唯一id加父节点parentId，parentId取父节点id
+    const { data } = await getMenuList(); // 这里是返回一维数组结构，前端自行处理成树结构，返回格式要求：唯一id加父节点parentId，parentId取父节点id
     let newData = data;
     if (!isAllEmpty(form.title)) {
       // 前端搜索菜单名称

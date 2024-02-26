@@ -77,7 +77,11 @@ const permissionRouter = {
       meta: {
         title: "menus.permissionButton",
         roles: ["admin", "common"],
-        auths: ["btn_add", "btn_edit", "btn_delete"]
+        auths: [
+          "permission:btn:add",
+          "permission:btn:edit",
+          "permission:btn:delete"
+        ]
       }
     }
   ]

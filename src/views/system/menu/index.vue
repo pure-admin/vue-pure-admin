@@ -60,8 +60,9 @@ const {
     </el-form>
 
     <PureTableBar
-      title="菜单管理（目前是初版，正在完善中）"
+      title="菜单管理（初版，持续完善中）"
       :columns="columns"
+      :isExpandAll="false"
       :tableRef="tableRef?.getTableRef()"
       @refresh="onSearch"
     >
@@ -83,7 +84,6 @@ const {
           row-key="id"
           showOverflowTooltip
           table-layout="auto"
-          default-expand-all
           :loading="loading"
           :size="size"
           :data="dataList"
