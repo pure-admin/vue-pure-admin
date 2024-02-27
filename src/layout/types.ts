@@ -62,6 +62,7 @@ export interface setType {
 
 export type menuType = {
   id?: number;
+  name?: string;
   path?: string;
   noShowingChildren?: boolean;
   children?: menuType[];
