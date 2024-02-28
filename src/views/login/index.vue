@@ -315,9 +315,9 @@ watch(loginDay, value => {
           <!-- 手机号登录 -->
           <phone v-if="currentPage === 1" />
           <!-- 二维码登录 -->
-          <qrCode v-if="currentPage === 2" />
+          <qrCode v-else-if="currentPage === 2" />
           <!-- 注册 -->
-          <regist v-if="currentPage === 3" />
+          <regist v-show="currentPage === 3" />
           <!-- 忘记密码 -->
           <update v-if="currentPage === 4" />
         </div>
