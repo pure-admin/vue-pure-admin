@@ -14,6 +14,14 @@
     }
   }
 
+  /*
+    修复windows下双滚动条问题
+    https://github.com/pure-admin/vue-pure-admin/pull/936#issuecomment-1968125992
+  */
+  .el-popper.pure-scrollbar {
+    overflow: hidden;
+  }
+
   /* popper menu 超出内容区可滚动 */
   .pure-scrollbar {
     max-height: calc(100vh - calc(50px * 2.5));
