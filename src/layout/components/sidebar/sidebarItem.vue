@@ -7,7 +7,14 @@ import { ReText } from "@/components/ReText";
 import { useNav } from "@/layout/hooks/useNav";
 import { transformI18n } from "@/plugins/i18n";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
-import { type CSSProperties, type PropType, computed, ref, toRaw } from "vue";
+import {
+  type CSSProperties,
+  type PropType,
+  computed,
+  ref,
+  toRaw,
+  useAttrs
+} from "vue";
 
 import ArrowUp from "@iconify-icons/ep/arrow-up-bold";
 import EpArrowDown from "@iconify-icons/ep/arrow-down-bold";
@@ -94,6 +101,8 @@ function resolvePath(routePath) {
     return path.posix.resolve(props.basePath, routePath);
   }
 }
+
+const attrs = useAttrs();
 </script>
 
 <template>
@@ -105,9 +114,11 @@ function resolvePath(routePath) {
     :to="item"
   >
     <el-menu-item
+      class="w-full"
       :index="resolvePath(onlyOneChild.path)"
       :class="{ 'submenu-title-noDropdown': !isNest }"
       :style="getNoDropdownStyle"
+      v-bind="attrs"
     >
       <div
         v-if="toRaw(props.item.meta.icon)"

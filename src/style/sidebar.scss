@@ -130,11 +130,11 @@
     }
 
     a {
-      display: inline-block;
       display: flex;
       flex-wrap: wrap;
       width: 100%;
-      padding-left: 10px;
+
+      // padding-left: 10px;
     }
 
     .el-menu {
