@@ -391,6 +391,7 @@
 
     .el-menu-item.is-active {
       color: $subMenuActiveText !important;
+      border-bottom: 2px solid var(--el-menu-active-color);
       transition: color 0.3s;
     }
 
