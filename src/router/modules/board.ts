@@ -6,7 +6,7 @@ export default {
   path: "/board",
   redirect: "/board/index",
   meta: {
-    icon: "artboard",
+    icon: "ri:artboard-line",
     title: $t("menus.hsboard"),
     rank: board
   },

@@ -6,7 +6,7 @@ export default {
   path: "/form-design",
   redirect: "/form-design/index",
   meta: {
-    icon: "terminalWindowLine",
+    icon: "ri:terminal-window-line",
     title: $t("menus.hsFormDesign"),
     rank: formdesign
   },

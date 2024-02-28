@@ -8,7 +8,7 @@ export const routerArrays: Array<RouteConfigs> =
           path: "/welcome",
           meta: {
             title: "menus.hshome",
-            icon: "homeFilled"
+            icon: "ep:home-filled"
           }
         }
       ]

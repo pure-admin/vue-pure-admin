@@ -5,7 +5,7 @@ export default {
   path: "/result",
   redirect: "/result/success",
   meta: {
-    icon: "checkboxCircleLine",
+    icon: "ri:checkbox-circle-line",
     title: $t("menus.hsResult"),
     rank: result
   },
