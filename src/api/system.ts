@@ -43,3 +43,8 @@ export const getRoleList = (data?: object) => {
 export const getDeptList = (data?: object) => {
   return http.request<Result>("post", "/dept", { data });
 };
+
+/** 获取菜单管理列表 */
+export const getMenuList = (data?: object) => {
+  return http.request<Result>("post", "/menu", { data });
+};

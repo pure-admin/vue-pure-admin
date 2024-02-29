@@ -5,7 +5,7 @@ export default {
   path: "/guide",
   redirect: "/guide/index",
   meta: {
-    icon: "guide",
+    icon: "ep:guide",
     title: $t("menus.hsguide"),
     rank: guide
   },

@@ -95,7 +95,10 @@ const tableData = [
       :columns="columns"
     >
       <template #tag="{ row }">
-        <el-tag :type="row.tag === 'Home' ? '' : 'success'" disable-transitions>
+        <el-tag
+          :type="row.tag === 'Home' ? null : 'success'"
+          disable-transitions
+        >
           {{ row.tag }}
         </el-tag>
       </template>

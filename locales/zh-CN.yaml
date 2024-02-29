@@ -29,6 +29,7 @@ menus:
   hssysManagement: 系统管理
   hsUser: 用户管理
   hsRole: 角色管理
+  hsSystemMenu: 菜单管理
   hsDept: 部门管理
   hseditor: 编辑器
   hsabnormal: 异常页面
@@ -44,6 +45,7 @@ menus:
   hsmap: 地图
   hsdraggable: 拖拽
   hssplitPane: 切割面板
+  hsText: 文本省略
   hsElButton: 按钮
   hsCheckButton: 可选按钮
   hsbutton: 按钮动效
@@ -65,6 +67,7 @@ menus:
   hsCollapse: 折叠面板
   hsProgress: 进度条
   hsUpload: 文件上传
+  hsCheckCard: 多选卡片
   hsmenus: 多级菜单
   hsmenu1: 菜单1
   hsmenu1-1: 菜单1-1

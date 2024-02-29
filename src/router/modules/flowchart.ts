@@ -5,7 +5,7 @@ export default {
   path: "/flow-chart",
   redirect: "/flow-chart/index",
   meta: {
-    icon: "setUp",
+    icon: "ep:set-up",
     title: $t("menus.hsflowChart"),
     rank: flowchart
   },

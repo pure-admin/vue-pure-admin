@@ -5,7 +5,7 @@ export default {
   path: "/editor",
   redirect: "/editor/index",
   meta: {
-    icon: "edit",
+    icon: "ep:edit",
     title: $t("menus.hseditor"),
     rank: editor
   },

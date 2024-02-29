@@ -5,7 +5,7 @@ export default {
   path: "/components",
   redirect: "/components/dialog",
   meta: {
-    icon: "menu",
+    icon: "ep:menu",
     title: $t("menus.hscomponents"),
     rank: components
   },
@@ -31,7 +31,15 @@ export default {
       name: "PureUpload",
       component: () => import("@/views/components/upload/index.vue"),
       meta: {
-        title: $t("menus.hsUpload"),
+        title: $t("menus.hsUpload")
+      }
+    },
+    {
+      path: "/components/check-card",
+      name: "CheckCard",
+      component: () => import("@/views/components/check-card.vue"),
+      meta: {
+        title: $t("menus.hsCheckCard"),
         extraIcon: "IF-pure-iconfont-new svg"
       }
     },
@@ -89,6 +97,15 @@ export default {
       component: () => import("@/views/components/segmented.vue"),
       meta: {
         title: $t("menus.hssegmented")
+      }
+    },
+    {
+      path: "/components/text",
+      name: "PureText",
+      component: () => import("@/views/components/text.vue"),
+      meta: {
+        title: $t("menus.hsText"),
+        extraIcon: "IF-pure-iconfont-new svg"
       }
     },
     {

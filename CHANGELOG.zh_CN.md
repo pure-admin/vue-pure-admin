@@ -1,3 +1,96 @@
+# 5.0.0 (2024-02-26)
+
+全面`ESM`版本
+
+### ✔️ refactor
+
+- 升级`vite`至`v5`版本，规定`node`版本`>18.18.0`，`pnpm`版本`>=8.6.10`
+- 使用 [vite-plugin-fake-server](https://www.npmjs.com/package/vite-plugin-fake-server) 替换 [vite-plugin-mock](https://www.npmjs.com/package/vite-plugin-mock)，使用 [@faker-js/faker](https://www.npmjs.com/package/@faker-js/faker) 替换 [mockjs](https://www.npmjs.com/package/mockjs)
+- 重命名`tailwind.config.js`为`tailwind.config.ts`并更新其文件为`esm`语法
+- 更新`.prettierrc.js`文件为`esm`语法
+- 更新`postcss.config.js`文件为`esm`语法
+- 更新`commitlint.config.js`文件为`esm`语法
+- 使用`eslint.config.js`替换`.eslintrc.js`并遵循`esm`语法
+- 升级`stylelint`至`16`版本并遵循`esm`语法
+- 所有`search`搜索图标统一替换为`@iconify-icons/ri/search-line`它比较常用将其放入全局离线图标中
+- 移除`iframe`在暗模式下的滤镜效果
+- 带来更美观精致的首页
+- 更干净整洁的项目配置右侧弹出面板
+- 重构关于页面，整体更紧致，关键信息更突出
+
+### 🎫 Feat
+
+- 添加系统管理-菜单管理
+- 完善系统管理-用户管理
+- 内嵌`iframe`页支持设置`keepAlive`，保持页面状态
+- 优化导航，弹出的菜单超出内容区自适应且可滚动
+- 添加文件上传示例
+- 添加整体风格自适应操作系统浅色、深色、自动主题功能
+- 添加页脚
+- 支持多标签页打开已经登录的系统后无需再登录并添加内免登录功能（用户可选择免登录的天数）
+- 带来高级感的终端命令行
+- 添加音频可视化功能示例
+- 添加视频帧截取-`WebAssembly`版，支持`MP4`、`MOV`、`AVI`、`WebM`、`MKV`等主流格式
+- 添加阻止键盘`F12`、浏览器默认右键菜单、页面元素选中、图片默认可拖动方法
+- 二次封装`localforage`支持设置过期时间，提供完整的类型提示
+- 添加`AnimateCss`选择器组件`ReAnimateSelector`
+- 添加`ReText`组件，支持自动省略显示`Tooltip`功能, 支持多行省略, 高可复用性
+- 添加艺术画板功能，比如可以用来绘制一些设计思想架构图
+- 新增组件-可选按钮示例
+- 添加常用按钮示例
+- 添加颜色选择器组件示例
+- 添加日期选择器组件示例
+- 添加日期时间选择器示例
+- 添加时间选择(器)示例
+- 添加统计组件示例
+- 添加标签组件示例
+- 添加折叠面板组件示例
+- 添加进度条组件示例
+- 升级`Swiper 11`
+- 添加 [vite-plugin-router-warn](https://www.npmjs.com/package/vite-plugin-router-warn) 插件，根治非必要的`vue-router`动态路由警告`No match found for location with path`
+
+### 🐞 Bug fixes
+
+- 修复`query`路由传参模式下，点击标签页进行切换操作时会触发两次`router`跳转问题
+- 修复卡片标签页模式下，通过`query`路由传参时，离开激活的标签后仍存在`card-active`属性，导致鼠标`hover`时字体颜色未改变
+- 修复`src/layout/components/appMain.vue`文件中同名词读取解析错误
+- 修复内嵌页面`frameView`在隐藏标签页后高度没有自适应
+- 修复路由`meta.transition.name`配置无效的问题
+- 修复点击`iframe`页面无法关闭右键标签页面板以及在`iframe`页面时右键标签页面板被遮挡的问题
+- 修复在路由`query`、`params`模式下点击面包屑跳转页面少参问题
+
+### 🍏 Perf
+
+- 优化主题色
+- 标签页可按滑动力度进行左右滑动
+- 接口命名规则统一为`kebab-case`串式命名法
+- `el-form`的`label`和全局的`label`样式保持一致
+- `VITE_PUBLIC_PATH`默认还原为 `/` 对`VITE_ROUTER_HISTORY`为`h5`模式更友好
+- 优化`transformI18n`函数，国际化支持无限嵌套级别（当然平台还是推荐嵌套层级越少越好）
+- 页面初始化时先加载`pinia`再加载`router`，兼容更多使用场景
+- 优化请求白名单的判断逻辑
+- 左侧菜单导航样式调整，优化有无`logo`时`pc`端和移动端不同的展示方式
+- 升级代码规范风格相关库至最新
+- 优化登录页`loading`判断
+- 优化`IconSelect`图标选择器组件，提升用户体验
+- 优化分段控制器组件，添加`v-model`支持
+- 优化平台`logo`获取方式
+- 升级`@pureadmin/theme`，带来了更友好的`esm`支持
+- 优化`build/info.ts`文件中的一些函数，使其友好支持`esm`
+- 优化`PureTableBar`组件的列设置弹出框，设置最大高度，超出可滚动
+- 优化函数式弹框组件`ReDialog`保留关闭动画
+- 对中文路径做测试，删除`sass-loader`依赖
+- 打包后的代码改为默认原生支持 [ES2015](https://caniuse.com/es6) 的浏览器
+- 删除会自动安装的`stylelint`插件依赖
+- 增强`useRenderIcon`使用本地`svg`的方式
+- 优化左侧菜单最左下角的展开、折叠按钮在亮白主题配色下的样式
+- 优化所有`el-empty`的`description`内容。图标选择器内容为空时加上`el-empty`
+- 左侧菜单折叠后的`tooltip`主题与整体菜单保持统一
+- 更新`svgo`命令为`svgo -f . -r`（压缩当前目录下的所有`SVG`文件）
+- 优化项目构建相关函数
+- 增强`ReTypeit`组件，支持插槽以及所有`typeit`配置项
+- 优化国际化相关处理逻辑，初始化时添加缓存以避免不必要的性能消耗
+
 # 4.5.0 (2023-06-26)
 
 ### ✔️ refactor

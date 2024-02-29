@@ -1,6 +1,7 @@
 .wave {
   position: fixed;
   height: 100%;
+  width: 80%;
   left: 0;
   bottom: 0;
   z-index: -1;
@@ -9,6 +10,7 @@
 .login-container {
   width: 100vw;
   height: 100vh;
+  max-width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 18rem;

@@ -166,7 +166,9 @@ watch(loginDay, value => {
           <avatar class="avatar" />
           <Motion>
             <h2 class="outline-none">
-              <TypeIt :values="[title]" :cursor="false" :speed="150" />
+              <TypeIt
+                :options="{ strings: [title], cursor: false, speed: 100 }"
+              />
             </h2>
           </Motion>
 
@@ -320,6 +322,18 @@ watch(loginDay, value => {
           <update v-if="currentPage === 4" />
         </div>
       </div>
+    </div>
+    <div
+      class="w-full flex-c absolute bottom-3 text-sm text-[rgba(0,0,0,0.6)] dark:text-[rgba(220,220,242,0.8)]"
+    >
+      Copyright © 2020-present
+      <a
+        class="hover:text-primary"
+        href="https://github.com/pure-admin"
+        target="_blank"
+      >
+        &nbsp;{{ title }}
+      </a>
     </div>
   </div>
 </template>

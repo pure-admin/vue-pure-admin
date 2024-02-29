@@ -1,3 +1,96 @@
+# 5.0.0 (2024-02-26)
+
+Totally `ESM` version
+
+### ✔️refactor
+
+- Upgrade `vite` to `v5` version, specify `node` version `>18.18.0`, `pnpm` version `>=8.6.10`
+- Use [vite-plugin-fake-server](https://www.npmjs.com/package/vite-plugin-fake-server) to replace [vite-plugin-mock](https://www.npmjs.com/package/vite-plugin-mock), use [@faker-js/faker](https://www.npmjs.com/package/@faker-js/faker) to replace [mockjs](https://www.npmjs.com/package/mockjs)
+- Rename `tailwind.config.js` to `tailwind.config.ts` and update its file to `esm` syntax
+- Updated `.prettierrc.js` file to `esm` syntax
+- Updated `postcss.config.js` file to `esm` syntax
+- Updated `commitlint.config.js` file to `esm` syntax
+- Use `eslint.config.js` to replace `.eslintrc.js` and follow `esm` syntax
+- Upgrade `stylelint` to `16` version and follow `esm` syntax
+- All `search` search icons are uniformly replaced with `@iconify-icons/ri/search-line` which is more commonly used and put into the global offline icon
+- Removed the filter effect of `iframe` in dark mode
+- Bring a more beautiful and refined homepage
+- Cleaner and neater pop-up panel on the right side of project configuration
+- Restructure the About page to make it more compact and key information more prominent
+
+### 🎫Feat
+
+- Add system management-menu management
+- Improve system management-user management
+- Embedded `iframe` pages support setting `keepAlive` to maintain page status
+- Optimized navigation, the pop-up menu is adaptive and scrollable beyond the content area
+- Added file upload example
+- Added overall style adaptive operating system light, dark, and automatic theme functions
+- Add footer
+- Supports multi-tab pages to open systems that have already been logged in without logging in again and adds an internal login-free function (users can choose the number of days without login)
+- Terminal command line that brings a high-level feel
+- Add audio visualization function example
+- Added video frame interception - `WebAssembly` version, supports `MP4`, `MOV`, `AVI`, `WebM`, `MKV` and other mainstream formats
+- Added methods to block keyboard `F12`, browser default right-click menu, page element selection, and picture default draggability
+- The secondary package `localforage` supports setting expiration time and provides complete type prompts
+- Add `AnimateCss` selector component `ReAnimateSelector`
+- Added `ReText` component, supports automatic omission and display of `Tooltip` function, supports multi-line omission, high reusability
+- Add an art drawing board function, which can be used to draw some design idea architecture diagrams, for example
+- New component - optional button example
+- Add common button examples
+- Added color picker component example
+- Add date picker component example
+- Added datetime picker example
+- Added time selector example
+- Added statistics component example
+- Add label component example
+- Added accordion panel component example
+- Add progress bar component example
+- Upgrade `Swiper 11`
+- Add [vite-plugin-router-warn](https://www.npmjs.com/package/vite-plugin-router-warn) plug-in to eliminate unnecessary `vue-router` dynamic routing warning`No match found for location with path`
+
+### 🐞 Bug fixes
+
+- Fixed the problem that in `query` routing parameter passing mode, two `router` jumps will be triggered when clicking the tab page to switch operations.
+- Fixed an issue in card tab mode, when passing parameters through the `query` route, the `card-active` attribute still exists after leaving the active tab, resulting in the font color not changing when the mouse `hover`
+- Fixed the error in reading and parsing the same name in the `src/layout/components/appMain.vue` file
+- Fixed the issue where the height of the embedded page `frameView` does not adapt after hiding the tab page.
+- Fixed the problem of invalid routing `meta.transition.name` configuration
+- Fixed the problem that the right-click tab page panel cannot be closed when clicking on the `iframe` page and the right-click tab page panel is blocked when on the `iframe` page
+- Fixed the problem of missing parameters when clicking on breadcrumbs to jump to the page in routing `query` and `params` modes
+
+### 🍏Perf
+
+- Optimize theme color
+- Tabs can be slid left or right according to the sliding force
+- The interface naming rules are unified into `kebab-case` string naming method
+- The `label` of `el-form` is consistent with the global `label` style
+- `VITE_PUBLIC_PATH` defaults to `/`, which is more friendly to `VITE_ROUTER_HISTORY` in `h5` mode
+- Optimize the `transformI18n` function and support unlimited nesting levels for internationalization (of course, the platform still recommends that the fewer nesting levels, the better)
+- When initializing the page, load `pinia` first and then `router`, which is compatible with more usage scenarios.
+- Optimize the judgment logic of request whitelist
+- The navigation style of the left menu has been adjusted to optimize the different display methods on PC and mobile when there is no logo.
+- Upgrade code specification style related libraries to the latest
+- Optimize login page `loading` judgment
+- Optimize the `IconSelect` icon selector component to improve user experience
+- Optimize the segmented controller component and add `v-model` support
+- Optimize the method of obtaining platform `logo`
+- Upgraded `@pureadmin/theme`, bringing more friendly `esm` support
+- Optimize some functions in the `build/info.ts` file to make it friendly and support `esm`
+- Optimize the column setting pop-up box of the `PureTableBar` component, set the maximum height, and scroll beyond it
+- Optimize the functional pop-up component `ReDialog` to retain the closing animation
+- Test the Chinese path and delete the `sass-loader` dependency
+- The packaged code is changed to the browser that natively supports [ES2015](https://caniuse.com/es6) by default
+- Remove the `stylelint` plug-in dependency that will be automatically installed
+- Enhance the way `useRenderIcon` uses local `svg`
+- Optimize the style of the expand and collapse buttons in the lower left corner of the left menu under the bright white theme color scheme
+- Optimize all `description` contents of `el-empty`. Add `el-empty` when the icon selector content is empty
+- The `tooltip` theme after the left menu is collapsed is consistent with the overall menu
+- Update `svgo` command to `svgo -f . -r` (compress all `SVG` files in the current directory)
+- Optimize project construction related functions
+- Enhanced `ReTypeit` component to support slots and all `typeit` configuration items
+- Optimize internationalization-related processing logic and add cache during initialization to avoid unnecessary performance consumption
+
 # 4.5.0 (2023-06-26)
 
 ### ✔️ refactor
