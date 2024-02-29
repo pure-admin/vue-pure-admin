@@ -5,7 +5,7 @@ export default {
   path: "/able",
   redirect: "/able/watermark",
   meta: {
-    icon: "ubuntuFill",
+    icon: "ri:ubuntu-fill",
     title: $t("menus.hsAble"),
     rank: able
   },

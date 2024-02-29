@@ -5,7 +5,7 @@ export default {
   path: "/pure-table",
   redirect: "/pure-table/index",
   meta: {
-    icon: "table",
+    icon: "ri:table-line",
     title: "pure-admin-table",
     rank: table
   },

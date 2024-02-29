@@ -86,7 +86,7 @@ const optionsIcon: Array<OptionsType> = [
   },
   {
     label: "周三",
-    icon: "terminalWindowLine"
+    icon: "ri:terminal-window-line"
   },
   {
     label: "周四"
@@ -103,7 +103,7 @@ const optionsOnlyIcon: Array<OptionsType> = [
     icon: HomeFilled
   },
   {
-    icon: "terminalWindowLine"
+    icon: "ri:terminal-window-line"
   },
   {
     icon: "streamline-emojis:cow-face"
@@ -131,7 +131,7 @@ const optionsLabel: Array<OptionsType> = [
   {
     label: () => (
       <div>
-        {h(useRenderIcon("terminalWindowLine"), {
+        {h(useRenderIcon("ri:terminal-window-line"), {
           class: "m-auto mt-1 w-[18px] h-[18px]"
         })}
         <p>周二</p>

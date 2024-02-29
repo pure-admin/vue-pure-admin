@@ -37,6 +37,7 @@ const include = [
   "@pureadmin/utils",
   "@wangeditor/editor",
   "responsive-storage",
+  "plus-pro-components",
   "@howdyjs/mouse-menu",
   "@logicflow/extension",
   "vue-virtual-scroller",

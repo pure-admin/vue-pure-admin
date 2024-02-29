@@ -5,7 +5,7 @@ export default {
   path: "/list",
   redirect: "/list/card",
   meta: {
-    icon: "listCheck",
+    icon: "ri:list-check",
     title: $t("menus.hsList"),
     rank: list
   },
@@ -15,7 +15,7 @@ export default {
       name: "ListCard",
       component: () => import("@/views/list/card/index.vue"),
       meta: {
-        icon: "card",
+        icon: "ri:bank-card-line",
         title: $t("menus.hsListCard"),
         showParent: true
       }

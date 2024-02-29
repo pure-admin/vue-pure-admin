@@ -36,7 +36,7 @@ const { loading, columns, dataList, pagination, Empty, onCurrentChange } =
         circle
         size="small"
         :title="`查看序号为${row.id}的详情`"
-        :icon="useRenderIcon('search')"
+        :icon="useRenderIcon('ri:search-line')"
       />
     </template>
   </pure-table>

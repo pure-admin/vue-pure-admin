@@ -5,7 +5,7 @@ export default {
   path: "/error",
   redirect: "/error/403",
   meta: {
-    icon: "informationLine",
+    icon: "ri:information-line",
     // showLink: false,
     title: $t("menus.hsabnormal"),
     rank: error

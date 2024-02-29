@@ -67,6 +67,7 @@ menus:
   hsCollapse: Collapse
   hsProgress: Progress
   hsUpload: File Upload
+  hsCheckCard: CheckCard
   hsmenus: MultiLevel Menu
   hsmenu1: Menu1
   hsmenu1-1: Menu1-1
