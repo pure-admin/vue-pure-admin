@@ -395,6 +395,13 @@
       transition: color 0.3s;
     }
 
+    /* 子菜单不需要border
+     https://github.com/pure-admin/vue-pure-admin/pull/936#issuecomment-1970379705
+     */
+    .el-menu-item.is-active.nest-menu {
+      border-bottom: none;
+    }
+
     .el-menu-item.is-active.nest-menu > * {
       z-index: 1;
       color: #fff;
