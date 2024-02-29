@@ -95,6 +95,9 @@ dependencies:
   pinyin-pro:
     specifier: ^3.19.6
     version: 3.19.6
+  plus-pro-components:
+    specifier: ^0.0.1
+    version: 0.0.1(element-plus@2.5.6)(vue@3.4.14)
   qrcode:
     specifier: ^1.5.3
     version: 1.5.3
@@ -6708,6 +6711,19 @@ packages:
       jsonc-parser: 3.2.1
       mlly: 1.6.1
       pathe: 1.1.2
+
+  /plus-pro-components@0.0.1(element-plus@2.5.6)(vue@3.4.14):
+    resolution: {integrity: sha512-S4qvM6MF12y/G6ueqvgavVw8hVCIjVeO/Qol9uCiMpEJmxH60CfnfMVrx1mmea0jWquPWXFSk5U/Y1I2ua0BEQ==}
+    peerDependencies:
+      element-plus: ^2.3.4
+      vue: ^3.2.0
+    dependencies:
+      '@element-plus/icons-vue': 2.3.1(vue@3.4.14)
+      element-plus: 2.5.6(vue@3.4.14)
+      lodash-es: 4.17.21
+      sortablejs: 1.15.2
+      vue: 3.4.14(typescript@5.3.3)
+    dev: false
 
   /pngjs@5.0.0:
     resolution: {integrity: sha512-40QW5YalBNfQo5yRYmiw7Yz6TKKVr3h6970B2YE+3fQpsWcrbj1PzJgxeJ19DRQjhMbKPIuMY8rFaXc8moolVw==}

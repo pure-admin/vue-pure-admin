@@ -31,7 +31,15 @@ export default {
       name: "PureUpload",
       component: () => import("@/views/components/upload/index.vue"),
       meta: {
-        title: $t("menus.hsUpload"),
+        title: $t("menus.hsUpload")
+      }
+    },
+    {
+      path: "/components/check-card",
+      name: "CheckCard",
+      component: () => import("@/views/components/check-card.vue"),
+      meta: {
+        title: $t("menus.hsCheckCard"),
         extraIcon: "IF-pure-iconfont-new svg"
       }
     },
