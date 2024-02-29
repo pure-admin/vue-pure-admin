@@ -12,4 +12,9 @@ interface dragItem {
   newIndex: number;
 }
 
-export type { optionsItem, dragItem };
+interface Props {
+  value: string;
+  options: Array<optionsItem>;
+}
+
+export type { optionsItem, dragItem, Props };

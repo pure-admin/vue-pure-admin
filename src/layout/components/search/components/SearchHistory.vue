@@ -1,16 +1,10 @@
 <script setup lang="ts">
-import { useResizeObserver } from "@pureadmin/utils";
+import draggable from "vuedraggable/src/vuedraggable";
+import SearchHistoryItem from "./SearchHistoryItem.vue";
+import type { optionsItem, dragItem, Props } from "../types";
+import { useResizeObserver, isArray } from "@pureadmin/utils";
 import { useEpThemeStoreHook } from "@/store/modules/epTheme";
 import { ref, computed, watch, getCurrentInstance, onMounted } from "vue";
-import { isArray } from "@pureadmin/utils";
-import SearchHistoryItem from "./SearchHistoryItem.vue";
-import draggable from "vuedraggable/src/vuedraggable";
-import type { optionsItem, dragItem } from "../types";
-
-interface Props {
-  value: string;
-  options: Array<optionsItem>;
-}
 
 interface Emits {
   (e: "update:value", val: string): void;
@@ -22,9 +16,12 @@ interface Emits {
 
 const historyRef = ref();
 const innerHeight = ref();
-const props = withDefaults(defineProps<Props>(), {});
+/** 判断是否停止鼠标移入事件处理 */
+const stopMouseEvent = ref(false);
+
 const emit = defineEmits<Emits>();
 const instance = getCurrentInstance()!;
+const props = withDefaults(defineProps<Props>(), {});
 
 const itemStyle = computed(() => {
   return item => {
@@ -79,7 +76,6 @@ function handleCollect(item) {
   emit("collect", item);
 }
 
-const stopMouseEvent = ref(false); // 判断是否停止鼠标移入事件处理
 function handleDelete(item) {
   stopMouseEvent.value = true;
   emit("delete", item);
@@ -143,7 +139,9 @@ defineExpose({ handleScroll });
       </div>
     </template>
     <template v-if="collectList.length">
-      <div :style="titleStyle" class="mt-4">收藏</div>
+      <div :style="titleStyle" class="mt-4">
+        收藏{{ collectList.length > 1 ? "（可拖拽排序）" : "" }}
+      </div>
       <draggable
         :list="collectList"
         item-key="path"
@@ -180,7 +178,7 @@ defineExpose({ handleScroll });
     cursor: pointer;
     border: 0.1px solid #ccc;
     border-radius: 4px;
-    transition: all 0.3s;
+    transition: font-size 0.16s;
   }
 
   .chosen {
