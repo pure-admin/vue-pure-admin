@@ -37,7 +37,6 @@ const itemStyle = computed(() => {
 const titleStyle = computed(() => {
   return {
     color: useEpThemeStoreHook().epThemeColor,
-    fontSize: "14px",
     fontWeight: 500
   };
 });
@@ -139,7 +138,7 @@ defineExpose({ handleScroll });
       </div>
     </template>
     <template v-if="collectList.length">
-      <div :style="titleStyle" class="mt-4">
+      <div :style="titleStyle">
         收藏{{ collectList.length > 1 ? "（可拖拽排序）" : "" }}
       </div>
       <draggable
@@ -174,7 +173,7 @@ defineExpose({ handleScroll });
     align-items: center;
     height: 56px;
     padding: 14px;
-    margin-top: 8px;
+    margin: 8px auto 10px;
     cursor: pointer;
     border: 0.1px solid #ccc;
     border-radius: 4px;
