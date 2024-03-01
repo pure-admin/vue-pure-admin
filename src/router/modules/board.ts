@@ -17,8 +17,7 @@ export default {
       component: IFrame,
       meta: {
         title: $t("menus.hsboard"),
-        frameSrc: "https://songlh.top/paint-board/",
-        extraIcon: "IF-pure-iconfont-new svg"
+        frameSrc: "https://songlh.top/paint-board/"
       }
     }
   ]

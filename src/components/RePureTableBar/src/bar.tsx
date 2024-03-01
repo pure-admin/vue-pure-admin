@@ -317,7 +317,7 @@ export default defineComponent({
                               />
                               <el-checkbox
                                 key={item}
-                                label={item}
+                                value={item}
                                 onChange={value =>
                                   handleCheckColumnListChange(value, item)
                                 }

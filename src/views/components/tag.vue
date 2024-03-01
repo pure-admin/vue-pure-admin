@@ -79,9 +79,9 @@ const handleInputConfirm = () => {
             Tag 标签
           </el-link>
           <el-radio-group v-model="size" size="small">
-            <el-radio label="large">大尺寸</el-radio>
-            <el-radio label="default">默认尺寸</el-radio>
-            <el-radio label="small">小尺寸</el-radio>
+            <el-radio value="large">大尺寸</el-radio>
+            <el-radio value="default">默认尺寸</el-radio>
+            <el-radio value="small">小尺寸</el-radio>
           </el-radio-group>
         </el-space>
       </div>
@@ -89,9 +89,9 @@ const handleInputConfirm = () => {
 
     <p class="mb-2">基础按钮</p>
     <el-radio-group v-model="baseTag" class="mb-3">
-      <el-radio label="dark" />
-      <el-radio label="light" />
-      <el-radio label="plain" />
+      <el-radio label="dark" value="dark" />
+      <el-radio label="light" value="light" />
+      <el-radio label="plain" value="plain" />
     </el-radio-group>
     <br />
     <el-space class="mb-3">

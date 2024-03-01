@@ -102,7 +102,6 @@
 
 /* 克隆并自定义 ElMessage 样式，不会影响 ElMessage 原本样式，在 src/utils/message.ts 中调用自定义样式 ElMessage 方法即可，整体暗色风格在 src/style/dark.scss 文件进行了适配 */
 .pure-message {
-  padding: 10px 13px !important;
   background: #fff !important;
   border-width: 0 !important;
   box-shadow:
@@ -110,22 +109,13 @@
     0 6px 16px #00000014,
     0 9px 28px 8px #0000000d !important;
 
-  &.el-message.is-closable .el-message__content {
-    padding-right: 17px !important;
-  }
-
   & .el-message__content {
     color: #000000d9 !important;
     pointer-events: all !important;
     background-image: initial !important;
   }
 
-  & .el-message__icon {
-    margin-right: 8px !important;
-  }
-
   & .el-message__closeBtn {
-    right: 9px !important;
     border-radius: 4px;
     outline: none;
     transition:

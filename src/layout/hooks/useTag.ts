@@ -216,6 +216,7 @@ export function useTags() {
   });
 
   return {
+    Close,
     route,
     router,
     visible,

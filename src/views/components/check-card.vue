@@ -53,10 +53,10 @@ watch(size, val =>
             多选卡片组
           </el-link>
           <el-radio-group v-model="size" size="small">
-            <el-radio label="large">大尺寸</el-radio>
-            <el-radio label="default">默认尺寸</el-radio>
-            <el-radio label="small">小尺寸</el-radio>
-            <el-radio label="disabled">禁用</el-radio>
+            <el-radio value="large">大尺寸</el-radio>
+            <el-radio value="default">默认尺寸</el-radio>
+            <el-radio value="small">小尺寸</el-radio>
+            <el-radio value="disabled">禁用</el-radio>
           </el-radio-group>
         </el-space>
       </div>

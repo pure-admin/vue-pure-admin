@@ -94,10 +94,10 @@ watch(size, val =>
         <el-space wrap :size="40">
           <span style="font-size: 16px; font-weight: 800"> 可选按钮 </span>
           <el-radio-group v-model="size" size="small">
-            <el-radio label="large">大尺寸</el-radio>
-            <el-radio label="default">默认尺寸</el-radio>
-            <el-radio label="small">小尺寸</el-radio>
-            <el-radio label="disabled">禁用</el-radio>
+            <el-radio value="large">大尺寸</el-radio>
+            <el-radio value="default">默认尺寸</el-radio>
+            <el-radio value="small">小尺寸</el-radio>
+            <el-radio value="disabled">禁用</el-radio>
           </el-radio-group>
         </el-space>
       </div>
@@ -108,9 +108,9 @@ watch(size, val =>
       :size="dynamicSize"
       :disabled="size === 'disabled'"
     >
-      <el-radio-button label="wait">等待中</el-radio-button>
-      <el-radio-button label="progress">进行中</el-radio-button>
-      <el-radio-button label="complete">已完成</el-radio-button>
+      <el-radio-button value="wait">等待中</el-radio-button>
+      <el-radio-button value="progress">进行中</el-radio-button>
+      <el-radio-button value="complete">已完成</el-radio-button>
     </el-radio-group>
     <el-divider />
 
@@ -120,9 +120,9 @@ watch(size, val =>
       :size="dynamicSize"
       :disabled="size === 'disabled'"
     >
-      <el-radio label="wait" border>等待中</el-radio>
-      <el-radio label="progress" border>进行中</el-radio>
-      <el-radio label="complete" border>已完成</el-radio>
+      <el-radio value="wait" border>等待中</el-radio>
+      <el-radio value="progress" border>进行中</el-radio>
+      <el-radio value="complete" border>已完成</el-radio>
     </el-radio-group>
     <el-divider />
 
@@ -132,19 +132,19 @@ watch(size, val =>
       :size="dynamicSize"
       :disabled="size === 'disabled'"
     >
-      <el-radio-button label="wait">
+      <el-radio-button value="wait">
         <span class="flex">
           <IconifyIconOnline icon="ri:progress-8-fill" class="mr-1" />
           等待中
         </span>
       </el-radio-button>
-      <el-radio-button label="progress">
+      <el-radio-button value="progress">
         <span class="flex">
           <IconifyIconOnline icon="ri:progress-6-line" class="mr-1" />
           进行中
         </span>
       </el-radio-button>
-      <el-radio-button label="complete">
+      <el-radio-button value="complete">
         <span class="flex">
           <IconifyIconOnline icon="ri:progress-8-line" class="mr-1" />
           已完成
@@ -159,9 +159,9 @@ watch(size, val =>
       :size="dynamicSize"
       :disabled="size === 'disabled'"
     >
-      <el-checkbox-button label="apple">苹果</el-checkbox-button>
-      <el-checkbox-button label="tomato">西红柿</el-checkbox-button>
-      <el-checkbox-button label="banana">香蕉</el-checkbox-button>
+      <el-checkbox-button value="apple">苹果</el-checkbox-button>
+      <el-checkbox-button value="tomato">西红柿</el-checkbox-button>
+      <el-checkbox-button value="banana">香蕉</el-checkbox-button>
     </el-checkbox-group>
     <el-divider />
 
@@ -171,9 +171,9 @@ watch(size, val =>
       :size="dynamicSize"
       :disabled="size === 'disabled'"
     >
-      <el-checkbox label="cucumber" border>黄瓜</el-checkbox>
-      <el-checkbox label="onion" border>洋葱</el-checkbox>
-      <el-checkbox label="blueberry" border>蓝莓</el-checkbox>
+      <el-checkbox value="cucumber" border>黄瓜</el-checkbox>
+      <el-checkbox value="onion" border>洋葱</el-checkbox>
+      <el-checkbox value="blueberry" border>蓝莓</el-checkbox>
     </el-checkbox-group>
     <el-divider />
 
@@ -184,13 +184,13 @@ watch(size, val =>
       :size="dynamicSize"
       :disabled="size === 'disabled'"
     >
-      <el-checkbox-button label="tomato">
+      <el-checkbox-button value="tomato">
         <span class="flex">
           <IconifyIconOnline icon="streamline-emojis:tomato" class="mr-1" />
           番茄
         </span>
       </el-checkbox-button>
-      <el-checkbox-button label="watermelon">
+      <el-checkbox-button value="watermelon">
         <span class="flex">
           <IconifyIconOnline
             icon="streamline-emojis:watermelon-1"
@@ -199,7 +199,7 @@ watch(size, val =>
           西瓜
         </span>
       </el-checkbox-button>
-      <el-checkbox-button label="strawberry">
+      <el-checkbox-button value="strawberry">
         <span class="flex">
           <IconifyIconOnline
             icon="streamline-emojis:strawberry-1"
