@@ -102,8 +102,8 @@ const rules = {
       </el-form-item>
       <el-form-item label="产品状态" prop="status">
         <el-radio-group v-model="formData.status">
-          <el-radio label="0">已停用</el-radio>
-          <el-radio label="1">已启用</el-radio>
+          <el-radio value="0">已停用</el-radio>
+          <el-radio value="1">已启用</el-radio>
         </el-radio-group>
       </el-form-item>
       <el-form-item label="产品描述" prop="description">

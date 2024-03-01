@@ -91,7 +91,7 @@ const {
           @selection-change="handleSelectionChange"
         />
         <el-button
-          class="absolute bottom-[17px]"
+          class="absolute bottom-[25px] left-[20px]"
           type="primary"
           size="small"
           text

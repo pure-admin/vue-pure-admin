@@ -25,8 +25,8 @@ const columns: TableColumnList = [
 <template>
   <div>
     <el-radio-group v-model="tableLayout">
-      <el-radio-button label="fixed" />
-      <el-radio-button label="auto" />
+      <el-radio-button label="fixed" value="fixed" />
+      <el-radio-button label="auto" value="auto" />
     </el-radio-group>
 
     <pure-table

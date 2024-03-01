@@ -144,10 +144,10 @@ watch(size, val =>
             日期选择器
           </el-link>
           <el-radio-group v-model="size" size="small">
-            <el-radio label="large">大尺寸</el-radio>
-            <el-radio label="default">默认尺寸</el-radio>
-            <el-radio label="small">小尺寸</el-radio>
-            <el-radio label="disabled">禁用</el-radio>
+            <el-radio value="large">大尺寸</el-radio>
+            <el-radio value="default">默认尺寸</el-radio>
+            <el-radio value="small">小尺寸</el-radio>
+            <el-radio value="disabled">禁用</el-radio>
           </el-radio-group>
         </el-space>
       </div>
@@ -245,9 +245,9 @@ watch(size, val =>
       :disabled="size === 'disabled'"
       @change="value7 = ''"
     >
-      <el-radio label="">Date</el-radio>
-      <el-radio label="YYYY-MM-DD">年月日</el-radio>
-      <el-radio label="x">时间戳</el-radio>
+      <el-radio value="">Date</el-radio>
+      <el-radio value="YYYY-MM-DD">年月日</el-radio>
+      <el-radio value="x">时间戳</el-radio>
     </el-radio-group>
     <br />
     <el-space wrap>
