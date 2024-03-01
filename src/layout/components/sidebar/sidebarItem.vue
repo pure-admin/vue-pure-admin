@@ -41,6 +41,7 @@ const props = defineProps({
 
 const getNoDropdownStyle = computed((): CSSProperties => {
   return {
+    width: "100%",
     display: "flex",
     alignItems: "center"
   };
@@ -113,7 +114,6 @@ function resolvePath(routePath) {
     :to="item"
   >
     <el-menu-item
-      class="w-full"
       :index="resolvePath(onlyOneChild.path)"
       :class="{ 'submenu-title-noDropdown': !isNest }"
       :style="getNoDropdownStyle"
