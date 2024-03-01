@@ -2,9 +2,9 @@
 import Sortable from "sortablejs";
 import SearchHistoryItem from "./SearchHistoryItem.vue";
 import type { optionsItem, dragItem, Props } from "../types";
-import { useResizeObserver, isArray } from "@pureadmin/utils";
 import { useEpThemeStoreHook } from "@/store/modules/epTheme";
-import { ref, computed, watch, getCurrentInstance, onMounted } from "vue";
+import { useResizeObserver, isArray, delay } from "@pureadmin/utils";
+import { ref, watch, nextTick, computed, getCurrentInstance } from "vue";
 
 interface Emits {
   (e: "update:value", val: string): void;
@@ -55,9 +55,7 @@ watch(
   newValue => {
     if (newValue) {
       if (stopMouseEvent.value) {
-        setTimeout(() => {
-          stopMouseEvent.value = false;
-        }, 100);
+        delay(100).then(() => (stopMouseEvent.value = false));
       }
     }
   }
@@ -110,14 +108,32 @@ const handleChangeIndex = (evt): void => {
   emit("drag", { oldIndex: evt.oldIndex, newIndex: evt.newIndex });
 };
 
-onMounted(() => {
-  new Sortable(document.querySelector(".collect-container"), {
-    chosenClass: "chosen",
-    animation: 300,
-    onUpdate: handleChangeIndex
-  });
-  resizeResult();
-});
+let sortableInstance = null;
+
+watch(
+  collectList,
+  val => {
+    if (val.length > 1) {
+      nextTick(() => {
+        const wrapper: HTMLElement =
+          document.querySelector(".collect-container");
+        if (!wrapper || sortableInstance) return;
+        sortableInstance = Sortable.create(wrapper, {
+          animation: 160,
+          onStart: event => {
+            event.item.style.cursor = "move";
+          },
+          onEnd: event => {
+            event.item.style.cursor = "pointer";
+          },
+          onUpdate: handleChangeIndex
+        });
+        resizeResult();
+      });
+    }
+  },
+  { deep: true, immediate: true }
+);
 
 defineExpose({ handleScroll });
 </script>
@@ -151,7 +167,7 @@ defineExpose({ handleScroll });
           v-for="(item, index) in collectList"
           :key="item.path"
           :ref="'historyItemRef' + (index + historyList.length)"
-          class="history-item dark:bg-[#1d1d1d] !cursor-move"
+          class="history-item dark:bg-[#1d1d1d]"
           :style="itemStyle(item)"
           @click="handleTo"
           @mouseenter="handleMouse(item)"
@@ -177,10 +193,6 @@ defineExpose({ handleScroll });
     border: 0.1px solid #ccc;
     border-radius: 4px;
     transition: font-size 0.16s;
-  }
-
-  .chosen {
-    border: solid 2px #3089dc !important;
   }
 }
 </style>
