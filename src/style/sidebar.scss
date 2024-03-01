@@ -14,6 +14,11 @@
     }
   }
 
+  /* 修复 windows 下双滚动条问题 https://github.com/pure-admin/vue-pure-admin/pull/936#issuecomment-1968125992 */
+  .el-popper.pure-scrollbar {
+    overflow: hidden;
+  }
+
   /* popper menu 超出内容区可滚动 */
   .pure-scrollbar {
     max-height: calc(100vh - calc(50px * 2.5));
@@ -130,11 +135,9 @@
     }
 
     a {
-      display: inline-block;
       display: flex;
       flex-wrap: wrap;
       width: 100%;
-      padding-left: 10px;
     }
 
     .el-menu {
@@ -331,8 +334,17 @@
       margin-top: 0;
     }
 
+    /* 无子菜单时激活 border-bottom */
+    a > .is-active.submenu-title-noDropdown {
+      border-bottom: 2px solid var(--el-menu-active-color);
+    }
+
     .el-menu--popup {
       background-color: $subMenuBg !important;
+
+      a > .is-active.submenu-title-noDropdown {
+        border-bottom: none;
+      }
 
       .el-menu-item {
         color: $menuText;
@@ -346,12 +358,6 @@
       .el-sub-menu__title {
         color: $menuText;
       }
-    }
-
-    /* 无子菜单时激活 border-bottom */
-    .router-link-exact-active > .submenu-title-noDropdown {
-      height: 60px;
-      border-bottom: 2px solid var(--el-menu-active-color);
     }
 
     /* 子菜单中还有子菜单 */
