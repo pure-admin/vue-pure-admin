@@ -18,26 +18,6 @@
   }
 }
 
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes close {
-  from {
-    transform: translate(-50%, -50%);
-  }
-
-  to {
-    transform: translate(0, -50%);
-  }
-}
-
 .tags-view {
   position: relative;
   display: flex;
@@ -51,41 +31,35 @@
   .scroll-item {
     position: relative;
     display: inline-block;
-    height: 28px;
-    padding: 0 6px;
-    margin-right: 4px;
-    line-height: 28px;
+    height: 34px;
+    padding-left: 6px;
+    line-height: 34px;
     cursor: pointer;
-    border-radius: 3px 3px 0 0;
-    box-shadow: 0 0 1px #888;
     transition: all 0.4s;
+
+    &:not(:first-child) {
+      padding-right: 24px;
+    }
 
     .el-icon-close {
       position: absolute;
       top: 50%;
-      font-size: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
       color: var(--el-color-primary);
       cursor: pointer;
-      transition: font-size 0.2s;
-      transform: translate(-50%, -50%);
+      border-radius: 4px;
+      transition:
+        background-color 0.12s,
+        color 0.12s;
+      transform: translate(0, -50%);
 
       &:hover {
-        font-size: 13px;
-        color: #fff;
-        background: #b4bccc;
-        border-radius: 50%;
-      }
-    }
-
-    &.is-closable:not(:first-child) {
-      &:hover {
-        padding-right: 18px;
-
-        &:not(.is-active) {
-          .el-icon-close {
-            animation: close 200ms ease-in forwards;
-          }
-        }
+        color: rgb(0 0 0 / 88%) !important;
+        background-color: rgb(0 0 0 / 6%);
       }
     }
   }
@@ -99,7 +73,6 @@
   .scroll-container {
     position: relative;
     flex: 1;
-    padding: 5px 0;
     overflow: hidden;
     white-space: nowrap;
 
@@ -114,7 +87,7 @@
         transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
 
         &:nth-child(1) {
-          margin-left: 5px;
+          padding: 0 12px;
         }
       }
     }
@@ -194,14 +167,7 @@
 .scroll-item.is-active {
   position: relative;
   color: #fff;
-
-  &:not(:first-child) {
-    padding-right: 18px;
-  }
-
-  .el-icon-close {
-    transform: translate(0, -50%);
-  }
+  box-shadow: 0 0 0.7px #888;
 
   .tag-title {
     color: var(--el-color-primary) !important;
@@ -212,16 +178,16 @@
 .arrow-right,
 .arrow-down {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 40px;
-  height: 38px;
+  height: 34px;
   color: var(--el-text-color-primary);
 
   svg {
-    position: absolute;
-    left: 50%;
     width: 20px;
     height: 20px;
-    transform: translate(-50%, 50%);
   }
 }
 
