@@ -1,0 +1,1 @@
+import{ay as e}from"./index-WfHhNpgX.js";const r=t=>e.request("post","/user",{data:t}),o=()=>e.request("get","/list-all-role"),u=t=>e.request("post","/list-role-ids",{data:t}),n=t=>e.request("post","/role",{data:t}),l=t=>e.request("post","/dept",{data:t}),a=t=>e.request("post","/menu",{data:t});export{a,n as b,o as c,r as d,u as e,l as g};
