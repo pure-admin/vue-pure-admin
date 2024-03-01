@@ -23,36 +23,36 @@ const {
     <el-space class="float-right mb-4">
       <p class="text-sm">多选：</p>
       <el-radio-group v-model="select" size="small">
-        <el-radio-button label="yes">是</el-radio-button>
-        <el-radio-button label="no">否</el-radio-button>
+        <el-radio-button value="yes">是</el-radio-button>
+        <el-radio-button value="no">否</el-radio-button>
       </el-radio-group>
       <el-divider direction="vertical" />
       <p class="text-sm">动态列：</p>
       <el-radio-group v-model="hideVal" size="small">
-        <el-radio-button label="nohide">不隐藏</el-radio-button>
-        <el-radio-button label="hideDate">隐藏日期</el-radio-button>
-        <el-radio-button label="hideName">隐藏姓名</el-radio-button>
-        <el-radio-button label="hideAddress">隐藏地址</el-radio-button>
+        <el-radio-button value="nohide">不隐藏</el-radio-button>
+        <el-radio-button value="hideDate">隐藏日期</el-radio-button>
+        <el-radio-button value="hideName">隐藏姓名</el-radio-button>
+        <el-radio-button value="hideAddress">隐藏地址</el-radio-button>
       </el-radio-group>
       <el-divider direction="vertical" />
       <p class="text-sm">表格大小：</p>
       <el-radio-group v-model="tableSize" size="small">
-        <el-radio-button label="large">large</el-radio-button>
-        <el-radio-button label="default">default</el-radio-button>
-        <el-radio-button label="small">small</el-radio-button>
+        <el-radio-button value="large">large</el-radio-button>
+        <el-radio-button value="default">default</el-radio-button>
+        <el-radio-button value="small">small</el-radio-button>
       </el-radio-group>
       <el-divider direction="vertical" />
       <p class="text-sm">分页大小：</p>
       <el-radio-group v-model="paginationSmall" size="small" @change="onChange">
-        <el-radio-button :label="false">no small</el-radio-button>
-        <el-radio-button :label="true">small</el-radio-button>
+        <el-radio-button :value="false">no small</el-radio-button>
+        <el-radio-button :value="true">small</el-radio-button>
       </el-radio-group>
       <el-divider direction="vertical" />
       <p class="text-sm">分页的对齐方式：</p>
       <el-radio-group v-model="paginationAlign" size="small">
-        <el-radio-button label="right">right</el-radio-button>
-        <el-radio-button label="center">center</el-radio-button>
-        <el-radio-button label="left">left</el-radio-button>
+        <el-radio-button value="right">right</el-radio-button>
+        <el-radio-button value="center">center</el-radio-button>
+        <el-radio-button value="left">left</el-radio-button>
       </el-radio-group>
     </el-space>
 
