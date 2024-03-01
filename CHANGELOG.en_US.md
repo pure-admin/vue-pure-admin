@@ -1,8 +1,28 @@
+# 5.1.0 (2024-03-02)
+
+### ✔️ refactor
+
+- Reconstruct the tab page `UI` to make it more convenient to click the close button
+
+### 🎫 Feat
+
+- Added multi-select card example
+- The menu supports all browser behaviors of right-clicking on the `a` tag (opening links in new tabs, new windows, dragging and dropping to open in new tabs, etc.)
+- Added search history and collection functions to menu search
+
+### 🐞 Bug fixes
+
+- Fixed the problem of scroll bars appearing on the login page under `windows` system
+
+### 🍏 Perf
+
+- Standardize the naming rules when registering local icons to better match the icon selector
+
 # 5.0.0 (2024-02-26)
 
 Totally `ESM` version
 
-### ✔️refactor
+### ✔️ refactor
 
 - Upgrade `vite` to `v5` version, specify `node` version `>18.18.0`, `pnpm` version `>=8.6.10`
 - Use [vite-plugin-fake-server](https://www.npmjs.com/package/vite-plugin-fake-server) to replace [vite-plugin-mock](https://www.npmjs.com/package/vite-plugin-mock), use [@faker-js/faker](https://www.npmjs.com/package/@faker-js/faker) to replace [mockjs](https://www.npmjs.com/package/mockjs)
@@ -18,7 +38,7 @@ Totally `ESM` version
 - Cleaner and neater pop-up panel on the right side of project configuration
 - Restructure the About page to make it more compact and key information more prominent
 
-### 🎫Feat
+### 🎫 Feat
 
 - Add system management-menu management
 - Improve system management-user management
@@ -59,7 +79,7 @@ Totally `ESM` version
 - Fixed the problem that the right-click tab page panel cannot be closed when clicking on the `iframe` page and the right-click tab page panel is blocked when on the `iframe` page
 - Fixed the problem of missing parameters when clicking on breadcrumbs to jump to the page in routing `query` and `params` modes
 
-### 🍏Perf
+### 🍏 Perf
 
 - Optimize theme color
 - Tabs can be slid left or right according to the sliding force
