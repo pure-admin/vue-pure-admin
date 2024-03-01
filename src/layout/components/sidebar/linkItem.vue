@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { computed } from "vue";
 import { isUrl } from "@pureadmin/utils";
 import { menuType } from "@/layout/types";
-import { computed } from "vue";
 
 defineOptions({
   name: "LinkItem"

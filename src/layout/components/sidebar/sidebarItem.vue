@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import path from "path";
 import { getConfig } from "@/config";
+import LinkItem from "./linkItem.vue";
 import { menuType } from "../../types";
 import extraIcon from "./extraIcon.vue";
 import { ReText } from "@/components/ReText";
@@ -8,11 +9,11 @@ import { useNav } from "@/layout/hooks/useNav";
 import { transformI18n } from "@/plugins/i18n";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import {
-  type CSSProperties,
   type PropType,
-  computed,
+  type CSSProperties,
   ref,
   toRaw,
+  computed,
   useAttrs
 } from "vue";
 
@@ -20,8 +21,8 @@ import ArrowUp from "@iconify-icons/ep/arrow-up-bold";
 import EpArrowDown from "@iconify-icons/ep/arrow-down-bold";
 import ArrowLeft from "@iconify-icons/ep/arrow-left-bold";
 import ArrowRight from "@iconify-icons/ep/arrow-right-bold";
-import LinkItem from "./linkItem.vue";
 
+const attrs = useAttrs();
 const { layout, isCollapse, tooltipEffect, getDivStyle } = useNav();
 
 const props = defineProps({
@@ -101,8 +102,6 @@ function resolvePath(routePath) {
     return path.posix.resolve(props.basePath, routePath);
   }
 }
-
-const attrs = useAttrs();
 </script>
 
 <template>
