@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import draggable from "vuedraggable/src/vuedraggable";
+import Sortable from "sortablejs";
 import SearchHistoryItem from "./SearchHistoryItem.vue";
 import type { optionsItem, dragItem, Props } from "../types";
 import { useResizeObserver, isArray } from "@pureadmin/utils";
@@ -111,6 +111,11 @@ const handleChangeIndex = (evt): void => {
 };
 
 onMounted(() => {
+  new Sortable(document.querySelector(".collect-container"), {
+    chosenClass: "chosen",
+    animation: 300,
+    onUpdate: handleChangeIndex
+  });
   resizeResult();
 });
 
@@ -141,25 +146,19 @@ defineExpose({ handleScroll });
       <div :style="titleStyle">
         收藏{{ collectList.length > 1 ? "（可拖拽排序）" : "" }}
       </div>
-      <draggable
-        :list="collectList"
-        item-key="path"
-        chosen-class="chosen"
-        animation="200"
-        @update="handleChangeIndex"
-      >
-        <template #item="{ element, index }">
-          <div
-            :ref="'historyItemRef' + (index + historyList.length)"
-            class="history-item dark:bg-[#1d1d1d] !cursor-move"
-            :style="itemStyle(element)"
-            @click="handleTo"
-            @mouseenter="handleMouse(element)"
-          >
-            <SearchHistoryItem :item="element" @delete-item="handleDelete" />
-          </div>
-        </template>
-      </draggable>
+      <div class="collect-container">
+        <div
+          v-for="(item, index) in collectList"
+          :key="item.path"
+          :ref="'historyItemRef' + (index + historyList.length)"
+          class="history-item dark:bg-[#1d1d1d] !cursor-move"
+          :style="itemStyle(item)"
+          @click="handleTo"
+          @mouseenter="handleMouse(item)"
+        >
+          <SearchHistoryItem :item="item" @delete-item="handleDelete" />
+        </div>
+      </div>
     </template>
   </div>
 </template>
