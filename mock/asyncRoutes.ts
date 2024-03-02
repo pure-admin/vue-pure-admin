@@ -74,7 +74,7 @@ const systemMonitorRouter = {
       }
     },
     {
-      path: "/monitor/login-log",
+      path: "/monitor/login-logs",
       component: "monitor/logs/login",
       name: "LoginLog",
       meta: {
@@ -84,7 +84,7 @@ const systemMonitorRouter = {
       }
     },
     {
-      path: "/monitor/operation-log",
+      path: "/monitor/operation-logs",
       component: "monitor/logs/operation",
       name: "OperationLog",
       meta: {
@@ -94,7 +94,7 @@ const systemMonitorRouter = {
       }
     },
     {
-      path: "/monitor/system-log",
+      path: "/monitor/system-logs",
       component: "monitor/logs/system",
       name: "SystemLog",
       meta: {
