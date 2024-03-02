@@ -688,7 +688,7 @@ export default defineFakeRoute([
             title: "menus.hsOnlineUser",
             name: "OnlineUser",
             path: "/monitor/online-user",
-            component: "monitor/online",
+            component: "monitor/online/index",
             rank: null,
             redirect: "",
             icon: "ri:user-voice-line",
@@ -1009,6 +1009,43 @@ export default defineFakeRoute([
             remark: "这里是备注信息这里是备注信息这里是备注信息这里是备注信息"
           }
         ]
+      };
+    }
+  },
+  // 在线用户
+  {
+    url: "/online",
+    method: "post",
+    response: ({ body }) => {
+      let list = [
+        {
+          id: 1,
+          username: "admin",
+          ip: faker.internet.ipv4(),
+          address: "中国河南省信阳市",
+          system: "macOS",
+          browser: "Chrome",
+          loginTime: new Date()
+        },
+        {
+          id: 2,
+          username: "common",
+          ip: faker.internet.ipv4(),
+          address: "中国广东省深圳市",
+          system: "Windows",
+          browser: "Firefox",
+          loginTime: new Date()
+        }
+      ];
+      list = list.filter(item => item.username.includes(body?.username));
+      return {
+        success: true,
+        data: {
+          list,
+          total: list.length, // 总条目数
+          pageSize: 10, // 每页显示条目个数
+          currentPage: 1 // 当前页数
+        }
       };
     }
   }

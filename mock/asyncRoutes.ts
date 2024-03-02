@@ -65,7 +65,7 @@ const systemMonitorRouter = {
   children: [
     {
       path: "/monitor/online-user",
-      component: "monitor/online",
+      component: "monitor/online/index",
       name: "OnlineUser",
       meta: {
         icon: "ri:user-voice-line",
