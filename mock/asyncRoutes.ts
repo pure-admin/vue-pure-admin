@@ -55,7 +55,6 @@ const systemManagementRouter = {
   ]
 };
 
-// https://yiming_chang.gitee.io/pure-admin-doc/pages/routerMenu/#%E4%BC%A0-path-%E5%92%8C-component-%E6%A8%A1%E5%BC%8F
 const systemMonitorRouter = {
   path: "/monitor",
   meta: {
@@ -66,7 +65,7 @@ const systemMonitorRouter = {
   children: [
     {
       path: "/monitor/online-user",
-      component: "monitor/online-user",
+      component: "monitor/online",
       name: "OnlineUser",
       meta: {
         icon: "ri:user-voice-line",
@@ -76,7 +75,7 @@ const systemMonitorRouter = {
     },
     {
       path: "/monitor/login-log",
-      component: "monitor/login-log",
+      component: "monitor/logs/login",
       name: "LoginLog",
       meta: {
         icon: "ri:window-line",
@@ -86,7 +85,7 @@ const systemMonitorRouter = {
     },
     {
       path: "/monitor/operation-log",
-      component: "monitor/operation-log",
+      component: "monitor/logs/operation",
       name: "OperationLog",
       meta: {
         icon: "ri:history-fill",
@@ -96,7 +95,7 @@ const systemMonitorRouter = {
     },
     {
       path: "/monitor/system-log",
-      component: "monitor/system-log",
+      component: "monitor/logs/system",
       name: "SystemLog",
       meta: {
         icon: "ri:file-search-line",
