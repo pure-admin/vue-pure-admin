@@ -31,6 +31,11 @@ menus:
   hsRole: 角色管理
   hsSystemMenu: 菜单管理
   hsDept: 部门管理
+  hssysMonitor: 系统监控
+  hsOnlineUser: 在线用户
+  hsLoginLog: 登录日志
+  hsOperationLog: 操作日志
+  hsSystemLog: 系统日志
   hseditor: 编辑器
   hsabnormal: 异常页面
   hsfourZeroFour: "404"

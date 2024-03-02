@@ -31,6 +31,11 @@ menus:
   hsRole: Role Manage
   hsSystemMenu: Menu Manage
   hsDept: Dept Manage
+  hssysMonitor: System Monitor
+  hsOnlineUser: Online User
+  hsLoginLog: Login Log
+  hsOperationLog: Operation Log
+  hsSystemLog: System Log
   hseditor: Editor
   hsabnormal: Abnormal Page
   hsfourZeroFour: "404"

@@ -159,7 +159,7 @@ export default defineFakeRoute([
             component: "",
             rank: 7,
             redirect: "",
-            icon: "ep:monitor",
+            icon: "ri:links-fill",
             extraIcon: "",
             enterTransition: "",
             leaveTransition: "",
