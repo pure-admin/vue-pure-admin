@@ -49,11 +49,11 @@ export default defineComponent({
   },
   mounted() {
     ElNotification({
-      title: "2024年计划",
+      title: "优质服务",
       duration: 0,
       dangerouslyUseHTMLString: true,
       message:
-        "<a target='_blank' style='font-size: 16px' class='hover:text-[red]' href='https://github.com/pure-admin/vue-pure-admin/issues/897'>点击查看计划详情</a>"
+        "<a target='_blank' style='font-size: 16px' class='hover:text-[red]' href='https://yiming_chang.gitee.io/pure-admin-doc/pages/service/'>点击查看优质服务详情</a>"
     });
   }
 });
