@@ -27,6 +27,10 @@ The simplified version is based on the shelf extracted from [vue-pure-admin](htt
 [View vue-pure-admin documentation](https://yiming_chang.gitee.io/pure-admin-doc)  
 [View @pureadmin/utils documentation](https://pure-admin-utils.netlify.app)
 
+## Quality service, software outsourcing, sponsorship support
+
+[Click me for details](https://yiming_chang.gitee.io/pure-admin-doc/pages/service/)
+
 ## Tauri
 
 [Click Watch Tauri](https://github.com/pure-admin/tauri-pure-admin)
