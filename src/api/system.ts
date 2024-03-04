@@ -19,32 +19,42 @@ type ResultTable = {
   };
 };
 
-/** 获取用户管理列表 */
+/** 获取系统管理-用户管理列表 */
 export const getUserList = (data?: object) => {
   return http.request<ResultTable>("post", "/user", { data });
 };
 
-/** 用户管理-获取所有角色列表 */
+/** 系统管理-用户管理-获取所有角色列表 */
 export const getAllRoleList = () => {
   return http.request<Result>("get", "/list-all-role");
 };
 
-/** 用户管理-根据userId，获取对应角色id列表（userId：用户id） */
+/** 系统管理-用户管理-根据userId，获取对应角色id列表（userId：用户id） */
 export const getRoleIds = (data?: object) => {
   return http.request<Result>("post", "/list-role-ids", { data });
 };
 
-/** 获取角色管理列表 */
+/** 获取系统管理-角色管理列表 */
 export const getRoleList = (data?: object) => {
   return http.request<ResultTable>("post", "/role", { data });
 };
 
-/** 获取部门管理列表 */
+/** 获取系统管理-菜单管理列表 */
+export const getMenuList = (data?: object) => {
+  return http.request<Result>("post", "/menu", { data });
+};
+
+/** 获取系统管理-部门管理列表 */
 export const getDeptList = (data?: object) => {
   return http.request<Result>("post", "/dept", { data });
 };
 
-/** 获取菜单管理列表 */
-export const getMenuList = (data?: object) => {
-  return http.request<Result>("post", "/menu", { data });
+/** 获取系统监控-在线用户列表 */
+export const getOnlineLogsList = (data?: object) => {
+  return http.request<ResultTable>("post", "/online-logs", { data });
+};
+
+/** 获取系统监控-登录日志列表 */
+export const getLoginLogsList = (data?: object) => {
+  return http.request<ResultTable>("post", "/login-logs", { data });
 };
