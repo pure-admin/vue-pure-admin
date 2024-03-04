@@ -21,11 +21,11 @@ dependencies:
     specifier: ^1.2.0
     version: 1.2.0(element-plus@2.6.0)(typescript@5.3.3)
   '@pureadmin/table':
-    specifier: ^3.1.0
-    version: 3.1.0(element-plus@2.6.0)(typescript@5.3.3)
+    specifier: ^3.1.2
+    version: 3.1.2(element-plus@2.6.0)(typescript@5.3.3)
   '@pureadmin/utils':
-    specifier: ^2.4.4
-    version: 2.4.4(echarts@5.5.0)(vue@3.4.21)
+    specifier: ^2.4.5
+    version: 2.4.5(echarts@5.5.0)(vue@3.4.21)
   '@vueuse/core':
     specifier: ^10.9.0
     version: 10.9.0(vue@3.4.21)
@@ -1748,8 +1748,8 @@ packages:
       - typescript
     dev: false
 
-  /@pureadmin/table@3.1.0(element-plus@2.6.0)(typescript@5.3.3):
-    resolution: {integrity: sha512-0K/6nXMlq0GdMxWc44Z5BaJVHYhZFD1PHFsG5CSg864//gcA4TppQqM/2KO+0Fcl+VHlGij5AxRYLhAPB3aVBA==}
+  /@pureadmin/table@3.1.2(element-plus@2.6.0)(typescript@5.3.3):
+    resolution: {integrity: sha512-6GrZCjBDFn/kKjn/HGkx0BH9RiArg5QktPN2u5PNpzHBhZZXWMoFcKCkysWLfDdWfpCowQWgnOpr0KjTPEgT0A==}
     peerDependencies:
       element-plus: ^2.0.0
     dependencies:
@@ -1767,8 +1767,8 @@ packages:
       string-hash: 1.1.3
     dev: true
 
-  /@pureadmin/utils@2.4.4(echarts@5.5.0)(vue@3.4.21):
-    resolution: {integrity: sha512-dH1ml+/U50Te7KlZX8pkA08/o+XKYx8aFyds9aTBC34JDyn0GQSyhe0zFIfGwnFztWMToWn/cyitpXmDEcq3NA==}
+  /@pureadmin/utils@2.4.5(echarts@5.5.0)(vue@3.4.21):
+    resolution: {integrity: sha512-0JAUv2YzdzkO2VVwE8g2aw7cOpDSaDtt3bCl11Uwve7TKHGwE7o6fK22p6u48Jfz5LZwVNB5ugI7qrmXYC4TDw==}
     peerDependencies:
       echarts: '*'
       vue: '*'

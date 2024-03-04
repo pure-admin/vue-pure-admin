@@ -711,7 +711,7 @@ export default defineFakeRoute([
             title: "menus.hsLoginLog",
             name: "LoginLog",
             path: "/monitor/login-logs",
-            component: "monitor/logs/login",
+            component: "monitor/logs/login/index",
             rank: null,
             redirect: "",
             icon: "ri:window-line",
@@ -1014,7 +1014,7 @@ export default defineFakeRoute([
   },
   // 在线用户
   {
-    url: "/online",
+    url: "/online-logs",
     method: "post",
     response: ({ body }) => {
       let list = [
@@ -1034,6 +1034,47 @@ export default defineFakeRoute([
           address: "中国广东省深圳市",
           system: "Windows",
           browser: "Firefox",
+          loginTime: new Date()
+        }
+      ];
+      list = list.filter(item => item.username.includes(body?.username));
+      return {
+        success: true,
+        data: {
+          list,
+          total: list.length, // 总条目数
+          pageSize: 10, // 每页显示条目个数
+          currentPage: 1 // 当前页数
+        }
+      };
+    }
+  },
+  // 登录日志
+  {
+    url: "/login-logs",
+    method: "post",
+    response: ({ body }) => {
+      let list = [
+        {
+          id: 1,
+          username: "admin",
+          ip: faker.internet.ipv4(),
+          address: "中国河南省信阳市",
+          system: "macOS",
+          browser: "Chrome",
+          status: 1, // 登录状态 1 成功 0 失败
+          behavior: "账号登录",
+          loginTime: new Date()
+        },
+        {
+          id: 2,
+          username: "common",
+          ip: faker.internet.ipv4(),
+          address: "中国广东省深圳市",
+          system: "Windows",
+          browser: "Firefox",
+          status: 0,
+          behavior: "第三方登录",
           loginTime: new Date()
         }
       ];

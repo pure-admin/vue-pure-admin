@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { message } from "@/utils/message";
-import { getOnlineList } from "@/api/system";
+import { getOnlineLogsList } from "@/api/system";
 import { reactive, ref, onMounted, toRaw } from "vue";
 import type { PaginationProps } from "@pureadmin/table";
 
@@ -80,7 +80,7 @@ export function useRole() {
 
   async function onSearch() {
     loading.value = true;
-    const { data } = await getOnlineList(toRaw(form));
+    const { data } = await getOnlineLogsList(toRaw(form));
     dataList.value = data.list;
     pagination.total = data.total;
     pagination.pageSize = data.pageSize;

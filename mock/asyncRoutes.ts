@@ -75,7 +75,7 @@ const systemMonitorRouter = {
     },
     {
       path: "/monitor/login-logs",
-      component: "monitor/logs/login",
+      component: "monitor/logs/login/index",
       name: "LoginLog",
       meta: {
         icon: "ri:window-line",

@@ -50,6 +50,11 @@ export const getDeptList = (data?: object) => {
 };
 
 /** 获取系统监控-在线用户列表 */
-export const getOnlineList = (data?: object) => {
-  return http.request<ResultTable>("post", "/online", { data });
+export const getOnlineLogsList = (data?: object) => {
+  return http.request<ResultTable>("post", "/online-logs", { data });
+};
+
+/** 获取系统监控-登录日志列表 */
+export const getLoginLogsList = (data?: object) => {
+  return http.request<ResultTable>("post", "/login-logs", { data });
 };
