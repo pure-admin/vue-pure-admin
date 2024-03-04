@@ -261,6 +261,7 @@ export function useUser(tableRef: Ref, treeRef: Ref) {
       type: "success"
     });
     tableRef.value.getTableRef().clearSelection();
+    onSearch();
   }
 
   async function onSearch() {

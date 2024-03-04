@@ -159,7 +159,7 @@ export default defineFakeRoute([
             component: "",
             rank: 7,
             redirect: "",
-            icon: "ep:monitor",
+            icon: "ri:links-fill",
             extraIcon: "",
             enterTransition: "",
             leaveTransition: "",
@@ -657,18 +657,18 @@ export default defineFakeRoute([
             showLink: true,
             showParent: false
           },
-          // 标签页操作
+          // 系统监控
           {
             parentId: 0,
             id: 400,
             menuType: 0,
-            title: "menus.hstabs",
-            name: "PureTabs",
-            path: "/tabs",
+            title: "menus.hssysMonitor",
+            name: "PureMonitor",
+            path: "/monitor",
             component: "",
             rank: 11,
             redirect: "",
-            icon: "ri:bookmark-2-line",
+            icon: "ep:monitor",
             extraIcon: "",
             enterTransition: "",
             leaveTransition: "",
@@ -684,6 +684,122 @@ export default defineFakeRoute([
           {
             parentId: 400,
             id: 401,
+            menuType: 0,
+            title: "menus.hsOnlineUser",
+            name: "OnlineUser",
+            path: "/monitor/online-user",
+            component: "monitor/online/index",
+            rank: null,
+            redirect: "",
+            icon: "ri:user-voice-line",
+            extraIcon: "",
+            enterTransition: "",
+            leaveTransition: "",
+            activePath: "",
+            auths: "",
+            frameSrc: "",
+            frameLoading: true,
+            keepAlive: false,
+            hiddenTag: false,
+            showLink: true,
+            showParent: false
+          },
+          {
+            parentId: 400,
+            id: 402,
+            menuType: 0,
+            title: "menus.hsLoginLog",
+            name: "LoginLog",
+            path: "/monitor/login-logs",
+            component: "monitor/logs/login/index",
+            rank: null,
+            redirect: "",
+            icon: "ri:window-line",
+            extraIcon: "",
+            enterTransition: "",
+            leaveTransition: "",
+            activePath: "",
+            auths: "",
+            frameSrc: "",
+            frameLoading: true,
+            keepAlive: false,
+            hiddenTag: false,
+            showLink: true,
+            showParent: false
+          },
+          {
+            parentId: 400,
+            id: 403,
+            menuType: 0,
+            title: "menus.hsOperationLog",
+            name: "OperationLog",
+            path: "/monitor/operation-logs",
+            component: "monitor/logs/operation",
+            rank: null,
+            redirect: "",
+            icon: "ri:history-fill",
+            extraIcon: "",
+            enterTransition: "",
+            leaveTransition: "",
+            activePath: "",
+            auths: "",
+            frameSrc: "",
+            frameLoading: true,
+            keepAlive: false,
+            hiddenTag: false,
+            showLink: true,
+            showParent: false
+          },
+          {
+            parentId: 400,
+            id: 404,
+            menuType: 0,
+            title: "menus.hsSystemLog",
+            name: "SystemLog",
+            path: "/monitor/system-logs",
+            component: "monitor/logs/system",
+            rank: null,
+            redirect: "",
+            icon: "ri:file-search-line",
+            extraIcon: "",
+            enterTransition: "",
+            leaveTransition: "",
+            activePath: "",
+            auths: "",
+            frameSrc: "",
+            frameLoading: true,
+            keepAlive: false,
+            hiddenTag: false,
+            showLink: true,
+            showParent: false
+          },
+          // 标签页操作
+          {
+            parentId: 0,
+            id: 500,
+            menuType: 0,
+            title: "menus.hstabs",
+            name: "PureTabs",
+            path: "/tabs",
+            component: "",
+            rank: 12,
+            redirect: "",
+            icon: "ri:bookmark-2-line",
+            extraIcon: "",
+            enterTransition: "",
+            leaveTransition: "",
+            activePath: "",
+            auths: "",
+            frameSrc: "",
+            frameLoading: true,
+            keepAlive: false,
+            hiddenTag: false,
+            showLink: true,
+            showParent: false
+          },
+          {
+            parentId: 500,
+            id: 501,
             menuType: 0,
             title: "menus.hstabs",
             name: "Tabs",
@@ -705,8 +821,8 @@ export default defineFakeRoute([
             showParent: false
           },
           {
-            parentId: 400,
-            id: 402,
+            parentId: 500,
+            id: 502,
             menuType: 0,
             title: "query传参模式",
             name: "TabQueryDetail",
@@ -728,8 +844,8 @@ export default defineFakeRoute([
             showParent: false
           },
           {
-            parentId: 400,
-            id: 403,
+            parentId: 500,
+            id: 503,
             menuType: 0,
             title: "params传参模式",
             name: "TabParamsDetail",
@@ -893,6 +1009,84 @@ export default defineFakeRoute([
             remark: "这里是备注信息这里是备注信息这里是备注信息这里是备注信息"
           }
         ]
+      };
+    }
+  },
+  // 在线用户
+  {
+    url: "/online-logs",
+    method: "post",
+    response: ({ body }) => {
+      let list = [
+        {
+          id: 1,
+          username: "admin",
+          ip: faker.internet.ipv4(),
+          address: "中国河南省信阳市",
+          system: "macOS",
+          browser: "Chrome",
+          loginTime: new Date()
+        },
+        {
+          id: 2,
+          username: "common",
+          ip: faker.internet.ipv4(),
+          address: "中国广东省深圳市",
+          system: "Windows",
+          browser: "Firefox",
+          loginTime: new Date()
+        }
+      ];
+      list = list.filter(item => item.username.includes(body?.username));
+      return {
+        success: true,
+        data: {
+          list,
+          total: list.length, // 总条目数
+          pageSize: 10, // 每页显示条目个数
+          currentPage: 1 // 当前页数
+        }
+      };
+    }
+  },
+  // 登录日志
+  {
+    url: "/login-logs",
+    method: "post",
+    response: ({ body }) => {
+      let list = [
+        {
+          id: 1,
+          username: "admin",
+          ip: faker.internet.ipv4(),
+          address: "中国河南省信阳市",
+          system: "macOS",
+          browser: "Chrome",
+          status: 1, // 登录状态 1 成功 0 失败
+          behavior: "账号登录",
+          loginTime: new Date()
+        },
+        {
+          id: 2,
+          username: "common",
+          ip: faker.internet.ipv4(),
+          address: "中国广东省深圳市",
+          system: "Windows",
+          browser: "Firefox",
+          status: 0,
+          behavior: "第三方登录",
+          loginTime: new Date()
+        }
+      ];
+      list = list.filter(item => item.username.includes(body?.username));
+      return {
+        success: true,
+        data: {
+          list,
+          total: list.length, // 总条目数
+          pageSize: 10, // 每页显示条目个数
+          currentPage: 1 // 当前页数
+        }
       };
     }
   }
