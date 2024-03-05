@@ -13,7 +13,7 @@ import panel from "../panel/index.vue";
 import { emitter } from "@/utils/mitt";
 import { useNav } from "@/layout/hooks/useNav";
 import { useAppStoreHook } from "@/store/modules/app";
-import { useDark, debounce, useGlobal } from "@pureadmin/utils";
+import { useDark, useGlobal, debounce } from "@pureadmin/utils";
 import { toggleTheme } from "@pureadmin/theme/dist/browser-utils";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
 import Segmented, { type OptionsType } from "@/components/ReSegmented";
@@ -88,17 +88,15 @@ function storageConfigureChange<T>(key: string, val: T): void {
 
 /** 灰色模式设置 */
 const greyChange = (value): void => {
-  toggleClass(settings.greyVal, "html-grey", document.querySelector("html"));
+  const htmlEl = document.querySelector("html");
+  toggleClass(settings.greyVal, "html-grey", htmlEl);
   storageConfigureChange("grey", value);
 };
 
 /** 色弱模式设置 */
 const weekChange = (value): void => {
-  toggleClass(
-    settings.weakVal,
-    "html-weakness",
-    document.querySelector("html")
-  );
+  const htmlEl = document.querySelector("html");
+  toggleClass(settings.weakVal, "html-weakness", htmlEl);
   storageConfigureChange("weak", value);
 };
 
@@ -266,9 +264,9 @@ onBeforeMount(() => {
   nextTick(() => {
     watchSystemThemeChange();
     settings.greyVal &&
-      document.querySelector("html")?.setAttribute("class", "html-grey");
+      document.querySelector("html")?.classList.add("html-grey");
     settings.weakVal &&
-      document.querySelector("html")?.setAttribute("class", "html-weakness");
+      document.querySelector("html")?.classList.add("html-weakness");
     settings.tabsVal && tagsChange();
     settings.hideFooter && hideFooterChange();
   });
