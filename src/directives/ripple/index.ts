@@ -1,16 +1,6 @@
-// Styles
 import "./index.scss";
-
-// Utilities
 import { isObject } from "@pureadmin/utils";
-
-// Types
 import type { Directive, DirectiveBinding } from "vue";
-
-function transform(el: HTMLElement, value: string) {
-  el.style.transform = value;
-  el.style.webkitTransform = value;
-}
 
 interface RippleOptions {
   class?: string;
@@ -25,6 +15,11 @@ export interface RippleDirectiveBinding
     center?: boolean;
     circle?: boolean;
   };
+}
+
+function transform(el: HTMLElement, value: string) {
+  el.style.transform = value;
+  el.style.webkitTransform = value;
 }
 
 const calculate = (
@@ -81,7 +76,7 @@ const ripples = {
 
     const { radius, scale, x, y, centerX, centerY } = calculate(e, el, value);
 
-    // ripple圆大小
+    // ripple 圆大小
     const size = `${radius * 2}px`;
 
     animation.className = "v-ripple__animation";
@@ -92,7 +87,7 @@ const ripples = {
 
     // 获取目标元素样式表
     const computed = window.getComputedStyle(el);
-    // 防止position被覆盖导致ripple位置有问题
+    // 防止 position 被覆盖导致 ripple 位置有问题
     if (computed && computed.position === "static") {
       el.style.position = "relative";
       el.dataset.previousPosition = "static";
@@ -226,13 +221,11 @@ function updated(el: HTMLElement, binding: RippleDirectiveBinding) {
 }
 
 /**
- * 指令 v-ripple
- *
- * 自定义 ripple 颜色, 支持 tailwindcss，生效样式是color
- * v-ripple="{ class: 'text-red' }"
- *
- * 从中心扩散
- * v-ripple.center
+ * @description 指令 v-ripple
+ * @use 用法如下
+ * 1. v-ripple 代表启用基本的 ripple 功能
+ * 2. v-ripple="{ class: 'text-red' }" 代表自定义 ripple 颜色，支持 tailwindcss，生效样式是 color
+ * 3. v-ripple.center 代表从中心扩散
  */
 export const Ripple: Directive = {
   mounted,
