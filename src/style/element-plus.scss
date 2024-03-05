@@ -64,7 +64,7 @@
   }
 }
 
-/* 全局覆盖element-plus的el-dialog、el-drawer、el-message-box、el-notification组件右上角关闭图标和el-upload上传文件列表右侧关闭图标的样式，表现更鲜明 */
+/* 全局覆盖element-plus的el-tour、el-dialog、el-drawer、el-message-box、el-notification组件右上角关闭图标和el-upload上传文件列表右侧关闭图标的样式，表现更鲜明 */
 .el-dialog__headerbtn,
 .el-message-box__headerbtn {
   &:hover {
@@ -75,6 +75,7 @@
 }
 
 .el-icon {
+  &.el-tour__close,
   &.el-dialog__close,
   &.el-drawer__close,
   &.el-message-box__close,
