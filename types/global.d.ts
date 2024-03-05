@@ -180,4 +180,18 @@ declare global {
     $storage: ResponsiveStorage;
     $config: PlatformConfigs;
   }
+
+  /**
+   * 扩展 Elemet
+   */
+  interface Element {
+    // v-ripple
+    _ripple?: {
+      enabled?: boolean;
+      centered?: boolean;
+      class?: string;
+      circle?: boolean;
+      touched?: boolean;
+    };
+  }
 }
