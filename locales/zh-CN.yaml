@@ -90,6 +90,7 @@ menus:
   hsMenuTree: 菜单树结构
   hsVideoFrame: 视频帧截取-wasm版
   hsWavesurfer: 音频可视化
+  hsRipple: 波纹(Ripple)
   hsOptimize: 防抖、截流、复制、长按指令
   hsWatermark: 水印
   hsPrint: 打印

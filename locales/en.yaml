@@ -90,6 +90,7 @@ menus:
   hsMenuTree: Menu Tree
   hsVideoFrame: Video Frame Capture
   hsWavesurfer: Audio Visualization
+  hsRipple: Ripple
   hsOptimize: Debounce、Throttle、Copy、Longpress Directives
   hsWatermark: Water Mark
   hsPrint: Print
