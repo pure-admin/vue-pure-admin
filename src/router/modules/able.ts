@@ -43,6 +43,15 @@ export default {
       }
     },
     {
+      path: "/components/ripple",
+      name: "Ripple",
+      component: () => import("@/views/able/ripple.vue"),
+      meta: {
+        title: $t("menus.hsRipple"),
+        extraIcon: "IF-pure-iconfont-new svg"
+      }
+    },
+    {
       path: "/able/debounce",
       name: "Debounce",
       component: () => import("@/views/able/debounce.vue"),

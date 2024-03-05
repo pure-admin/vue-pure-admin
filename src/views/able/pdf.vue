@@ -21,7 +21,7 @@ const source =
 
 const handleDocumentRender = () => {
   loading.value = false;
-  pageCount.value = pdfRef.value.pageCount;
+  pageCount.value = pdfRef.value.doc.numPages;
 };
 
 const showAllPagesChange = () => {
@@ -29,6 +29,7 @@ const showAllPagesChange = () => {
 };
 
 const onPrint = () => {
+  // 如果在打印时，打印页面是本身的两倍，在打印配置 页面 设置 仅限页码为奇数的页面 即可
   pdfRef.value.print();
 };
 </script>
