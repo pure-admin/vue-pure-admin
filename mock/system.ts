@@ -757,7 +757,7 @@ export default defineFakeRoute([
             title: "menus.hsSystemLog",
             name: "SystemLog",
             path: "/monitor/system-logs",
-            component: "monitor/logs/system",
+            component: "monitor/logs/system/index",
             rank: null,
             redirect: "",
             icon: "ri:file-search-line",
@@ -1128,6 +1128,64 @@ export default defineFakeRoute([
       list = list.filter(item =>
         String(item.status).includes(String(body?.status))
       );
+      return {
+        success: true,
+        data: {
+          list,
+          total: list.length, // 总条目数
+          pageSize: 10, // 每页显示条目个数
+          currentPage: 1 // 当前页数
+        }
+      };
+    }
+  },
+  // 系统日志
+  {
+    url: "/system-logs",
+    method: "post",
+    response: ({ body }) => {
+      let list = [
+        {
+          id: 1, // 日志ID
+          /**
+           * 日志级别
+           * 0 debug调试（最低级别的日志，用于调试和开发阶段）
+           * 1 info信息（默认级别，用于记录一般的信息）
+           * 2 warn警告（表示可能出现的问题或潜在的错误，但不会影响系统的正常运行）
+           * 3 error错误（表示发生了错误，但不会导致系统崩溃）
+           * 4 fatal致命（最高级别的日志，表示发生了严重错误，导致系统无法继续运行）
+           */
+          level: 1,
+          module: "菜单管理", // 所属模块
+          url: "/menu", // 请求接口
+          method: "post", // 请求方法
+          ip: faker.internet.ipv4(),
+          address: "中国河南省信阳市",
+          system: "macOS",
+          browser: "Chrome",
+          /**
+           * 请求耗时（单位：ms 毫秒）
+           * 正常耗时：一般认为在几百毫秒（0.1-0.5秒）范围内的请求耗时较为正常
+           * 较慢耗时：在1秒以上的耗时可以被认为是较慢的请求，但具体是否较慢还需要根据具体业务场景和性能要求来判断
+           */
+          takesTime: 10,
+          requestTime: new Date() // 请求时间
+        },
+        {
+          id: 2,
+          level: 0,
+          module: "地图",
+          url: "/get-map-info",
+          method: "get",
+          ip: faker.internet.ipv4(),
+          address: "中国广东省深圳市",
+          system: "Windows",
+          browser: "Firefox",
+          takesTime: 1200,
+          requestTime: new Date()
+        }
+      ];
+      list = list.filter(item => item.module.includes(body?.module));
       return {
         success: true,
         data: {

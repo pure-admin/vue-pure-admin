@@ -95,7 +95,7 @@ const systemMonitorRouter = {
     },
     {
       path: "/monitor/system-logs",
-      component: "monitor/logs/system",
+      component: "monitor/logs/system/index",
       name: "SystemLog",
       meta: {
         icon: "ri:file-search-line",
