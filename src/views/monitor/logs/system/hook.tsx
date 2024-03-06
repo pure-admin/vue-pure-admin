@@ -1,21 +1,20 @@
 import dayjs from "dayjs";
 import { message } from "@/utils/message";
-import { getKeyList } from "@pureadmin/utils";
-import { getOperationLogsList } from "@/api/system";
-import { usePublicHooks } from "@/views/system/hooks";
+import { getSystemLogsList } from "@/api/system";
 import type { PaginationProps } from "@pureadmin/table";
 import { type Ref, reactive, ref, onMounted, toRaw } from "vue";
+import { getKeyList, useCopyToClipboard } from "@pureadmin/utils";
+import Info from "@iconify-icons/ri/question-line";
 
 export function useRole(tableRef: Ref) {
   const form = reactive({
     module: "",
-    status: "",
-    operatingTime: ""
+    requestTime: ""
   });
   const dataList = ref([]);
   const loading = ref(true);
   const selectedNum = ref(0);
-  const { tagStyle } = usePublicHooks();
+  const { copied, update } = useCopyToClipboard();
 
   const pagination = reactive<PaginationProps>({
     total: 0,
@@ -23,6 +22,22 @@ export function useRole(tableRef: Ref) {
     currentPage: 1,
     background: true
   });
+
+  // const getLevelType = (type, text = false) => {
+  //   switch (type) {
+  //     case 0:
+  //       return text ? "debug" : "primary";
+  //     case 1:
+  //       return text ? "info" : "success";
+  //     case 2:
+  //       return text ? "warn" : "info";
+  //     case 3:
+  //       return text ? "error" : "warning";
+  //     case 4:
+  //       return text ? "fatal" : "danger";
+  //   }
+  // };
+
   const columns: TableColumnList = [
     {
       label: "勾选列", // 如果需要表格多选，此处label必须设置
@@ -31,32 +46,43 @@ export function useRole(tableRef: Ref) {
       reserveSelection: true // 数据刷新后保留选项
     },
     {
-      label: "序号",
+      label: "ID",
       prop: "id",
       minWidth: 90
     },
     {
-      label: "操作人员",
-      prop: "username",
+      label: "所属模块",
+      prop: "module",
       minWidth: 100
     },
     {
-      label: "所属模块",
-      prop: "module",
+      headerRenderer: () => (
+        <span class="flex-c">
+          请求接口
+          <iconifyIconOffline
+            icon={Info}
+            class="ml-1 cursor-help"
+            v-tippy={{
+              content: "双击下面请求接口进行拷贝"
+            }}
+          />
+        </span>
+      ),
+      prop: "url",
       minWidth: 140
     },
     {
-      label: "操作概要",
-      prop: "summary",
+      label: "请求方法",
+      prop: "method",
       minWidth: 140
     },
     {
-      label: "操作 IP",
+      label: "IP 地址",
       prop: "ip",
       minWidth: 100
     },
     {
-      label: "操作地点",
+      label: "地点",
       prop: "address",
       minWidth: 140
     },
@@ -70,23 +96,42 @@ export function useRole(tableRef: Ref) {
       prop: "browser",
       minWidth: 100
     },
+    // {
+    //   label: "级别",
+    //   prop: "level",
+    //   minWidth: 90,
+    //   cellRenderer: ({ row, props }) => (
+    //     <el-tag size={props.size} type={getLevelType(row.level)} effect="plain">
+    //       {getLevelType(row.level, true)}
+    //     </el-tag>
+    //   )
+    // },
     {
-      label: "操作状态",
-      prop: "status",
+      label: "请求耗时",
+      prop: "takesTime",
       minWidth: 100,
       cellRenderer: ({ row, props }) => (
-        <el-tag size={props.size} style={tagStyle.value(row.status)}>
-          {row.status === 1 ? "成功" : "失败"}
+        <el-tag
+          size={props.size}
+          type={row.takesTime < 1000 ? "success" : "warning"}
+          effect="plain"
+        >
+          {row.takesTime} ms
         </el-tag>
       )
     },
     {
-      label: "操作时间",
-      prop: "operatingTime",
+      label: "请求时间",
+      prop: "requestTime",
       minWidth: 180,
-      formatter: ({ operatingTime }) =>
-        dayjs(operatingTime).format("YYYY-MM-DD HH:mm:ss")
+      formatter: ({ requestTime }) =>
+        dayjs(requestTime).format("YYYY-MM-DD HH:mm:ss")
     }
+    // {
+    //   label: "操作",
+    //   fixed: "right",
+    //   slot: "operation"
+    // }
   ];
 
   function handleSizeChange(val: number) {
@@ -109,6 +154,14 @@ export function useRole(tableRef: Ref) {
     selectedNum.value = 0;
     // 用于多选表格，清空用户的选择
     tableRef.value.getTableRef().clearSelection();
+  }
+
+  /** 拷贝请求接口，表格单元格被双击时触发 */
+  function handleCellDblclick({ url }) {
+    update(url);
+    copied.value
+      ? message(`${url} 已拷贝`, { type: "success" })
+      : message("拷贝失败", { type: "warning" });
   }
 
   /** 批量删除 */
@@ -134,7 +187,7 @@ export function useRole(tableRef: Ref) {
 
   async function onSearch() {
     loading.value = true;
-    const { data } = await getOperationLogsList(toRaw(form));
+    const { data } = await getSystemLogsList(toRaw(form));
     dataList.value = data.list;
     pagination.total = data.total;
     pagination.pageSize = data.pageSize;
@@ -168,6 +221,7 @@ export function useRole(tableRef: Ref) {
     onbatchDel,
     handleSizeChange,
     onSelectionCancel,
+    handleCellDblclick,
     handleCurrentChange,
     handleSelectionChange
   };
