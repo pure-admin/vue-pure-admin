@@ -1,5 +1,5 @@
 import typeIt from "./src/index";
-import type { TypeItOptions } from "typeit";
+import type { Options as TypeItOptions } from "typeit";
 
 const TypeIt = typeIt;
 
