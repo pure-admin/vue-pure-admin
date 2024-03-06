@@ -85,7 +85,7 @@ const systemMonitorRouter = {
     },
     {
       path: "/monitor/operation-logs",
-      component: "monitor/logs/operation",
+      component: "monitor/logs/operation/index",
       name: "OperationLog",
       meta: {
         icon: "ri:history-fill",
