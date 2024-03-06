@@ -58,3 +58,8 @@ export const getOnlineLogsList = (data?: object) => {
 export const getLoginLogsList = (data?: object) => {
   return http.request<ResultTable>("post", "/login-logs", { data });
 };
+
+/** 获取系统监控-操作日志列表 */
+export const getOperationLogsList = (data?: object) => {
+  return http.request<ResultTable>("post", "/operation-logs", { data });
+};
