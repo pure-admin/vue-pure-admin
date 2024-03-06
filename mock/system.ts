@@ -1079,6 +1079,9 @@ export default defineFakeRoute([
         }
       ];
       list = list.filter(item => item.username.includes(body?.username));
+      list = list.filter(item =>
+        String(item.status).includes(String(body?.status))
+      );
       return {
         success: true,
         data: {

@@ -28,8 +28,8 @@ const {
           row-key="id"
           alignWhole="center"
           :header-cell-style="{
-            background: '#f5f7fa',
-            color: '#303133'
+            background: 'var(--el-fill-color-light)',
+            color: 'var(--el-text-color-primary)'
           }"
           :row-style="rowStyle"
           :data="
