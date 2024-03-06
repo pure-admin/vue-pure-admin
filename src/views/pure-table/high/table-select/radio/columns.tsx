@@ -40,7 +40,7 @@ export function useColumns(selectRef: Ref) {
   function rowStyle({ row: { name } }) {
     return {
       cursor: "pointer",
-      background: name === selectValue.value ? "#f5f7fa" : ""
+      background: name === selectValue.value ? "var(--el-fill-color-light)" : ""
     };
   }
 

@@ -46,8 +46,19 @@ const {
           v-model="form.username"
           placeholder="请输入用户名"
           clearable
-          class="!w-[180px]"
+          class="!w-[150px]"
         />
+      </el-form-item>
+      <el-form-item label="登录状态" prop="status">
+        <el-select
+          v-model="form.status"
+          placeholder="请选择"
+          clearable
+          class="!w-[150px]"
+        >
+          <el-option label="成功" value="1" />
+          <el-option label="失败" value="0" />
+        </el-select>
       </el-form-item>
       <el-form-item label="登录时间" prop="loginTime">
         <el-date-picker
