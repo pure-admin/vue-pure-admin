@@ -52,10 +52,7 @@ export default defineComponent({
       title: "优质服务",
       duration: 0,
       dangerouslyUseHTMLString: true,
-      message: `<a target='_blank' style='font-size: 16px' class='hover:text-[red]' href='https://yiming_chang.gitee.io/pure-admin-doc/pages/service/'>点击查看优质服务详情</a>
-                  <br />
-                <a target='_blank' style='font-size: 16px' class='hover:text-[red]' href='https://github.com/pure-admin/vue-pure-admin/issues/954'>点击查看 pure-admin 组织所有项目全面进入持续维护、持续开发状态！</a>
-               `
+      message: `<a target='_blank' style='font-size: 16px' class='hover:text-[red]' href='https://www.bilibili.com/video/BV15r421W7U9/?vd_source=5a992808de6229d78e7810536c5f9ab3'>视频介绍</a>`
     });
   }
 });
