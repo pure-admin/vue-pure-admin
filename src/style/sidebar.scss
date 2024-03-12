@@ -35,7 +35,8 @@
     }
   }
 
-  .set-icon {
+  .set-icon,
+  .fullscreen-icon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -461,10 +462,12 @@
 
       /* 搜索 */
       .search-container,
-      /* 告警 */
-      .dropdown-badge,
       /* 国际化 */
       .globalization,
+      /* 全屏 */
+      .fullscreen-icon,
+      /* 消息通知 */
+      .dropdown-badge,
       /* 用户名 */
       .el-dropdown-link,
       /* 设置 */
@@ -643,10 +646,12 @@ body[layout="vertical"] {
 
   /* 搜索 */
   .search-container,
-  /* 告警 */
-  .dropdown-badge,
   /* 国际化 */
   .globalization,
+  /* 全屏 */
+  .fullscreen-icon,
+  /* 消息通知 */
+  .dropdown-badge,
   /* 用户名 */
   .el-dropdown-link,
   /* 设置 */
