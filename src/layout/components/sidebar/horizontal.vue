@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Search from "../search/index.vue";
 import Notice from "../notice/index.vue";
+import FullScreen from "./fullScreen.vue";
 import SidebarItem from "./sidebarItem.vue";
 import { isAllEmpty } from "@pureadmin/utils";
 import { ref, nextTick, computed } from "vue";
@@ -18,17 +19,13 @@ const { t, route, locale, translationCh, translationEn } =
   useTranslationLang(menuRef);
 const {
   title,
-  toggle,
   logout,
   backTopMenu,
   onPanel,
   getLogo,
   username,
   userAvatar,
-  Fullscreen,
-  isFullscreen,
   avatarsStyle,
-  ExitFullscreen,
   getDropdownItemStyle,
   getDropdownItemClass
 } = useNav();
@@ -100,11 +97,7 @@ nextTick(() => {
         </template>
       </el-dropdown>
       <!-- 全屏 -->
-      <span class="fullscreen-icon navbar-bg-hover" @click="toggle">
-        <IconifyIconOffline
-          :icon="isFullscreen ? ExitFullscreen : Fullscreen"
-        />
-      </span>
+      <FullScreen id="full-screen" />
       <!-- 消息通知 -->
       <Notice id="header-notice" />
       <!-- 退出登录 -->

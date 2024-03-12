@@ -3,6 +3,7 @@ import Search from "./search/index.vue";
 import Notice from "./notice/index.vue";
 import mixNav from "./sidebar/mixNav.vue";
 import { useNav } from "@/layout/hooks/useNav";
+import FullScreen from "./sidebar/fullScreen.vue";
 import Breadcrumb from "./sidebar/breadCrumb.vue";
 import topCollapse from "./sidebar/topCollapse.vue";
 import { useTranslationLang } from "../hooks/useTranslationLang";
@@ -13,17 +14,13 @@ import Check from "@iconify-icons/ep/check";
 const {
   layout,
   device,
-  toggle,
   logout,
   onPanel,
   pureApp,
   username,
   userAvatar,
-  Fullscreen,
-  isFullscreen,
   avatarsStyle,
   toggleSideBar,
-  ExitFullscreen,
   getDropdownItemStyle,
   getDropdownItemClass
 } = useNav();
@@ -83,11 +80,7 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
         </template>
       </el-dropdown>
       <!-- 全屏 -->
-      <span class="fullscreen-icon navbar-bg-hover" @click="toggle">
-        <IconifyIconOffline
-          :icon="isFullscreen ? ExitFullscreen : Fullscreen"
-        />
-      </span>
+      <FullScreen id="full-screen" />
       <!-- 消息通知 -->
       <Notice id="header-notice" />
       <!-- 退出登录 -->

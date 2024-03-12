@@ -2,6 +2,7 @@
 import extraIcon from "./extraIcon.vue";
 import Search from "../search/index.vue";
 import Notice from "../notice/index.vue";
+import FullScreen from "./fullScreen.vue";
 import { isAllEmpty } from "@pureadmin/utils";
 import { useNav } from "@/layout/hooks/useNav";
 import { transformI18n } from "@/plugins/i18n";
@@ -22,17 +23,13 @@ const { t, route, locale, translationCh, translationEn } =
   useTranslationLang(menuRef);
 const {
   device,
-  toggle,
   logout,
   onPanel,
   resolvePath,
   username,
   userAvatar,
-  Fullscreen,
-  isFullscreen,
   getDivStyle,
   avatarsStyle,
-  ExitFullscreen,
   getDropdownItemStyle,
   getDropdownItemClass
 } = useNav();
@@ -133,11 +130,7 @@ watch(
         </template>
       </el-dropdown>
       <!-- 全屏 -->
-      <span class="fullscreen-icon navbar-bg-hover" @click="toggle">
-        <IconifyIconOffline
-          :icon="isFullscreen ? ExitFullscreen : Fullscreen"
-        />
-      </span>
+      <FullScreen id="full-screen" />
       <!-- 消息通知 -->
       <Notice id="header-notice" />
       <!-- 退出登录 -->
