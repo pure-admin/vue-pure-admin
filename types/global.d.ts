@@ -39,6 +39,15 @@ declare global {
   }
 
   /**
+   * Document 的类型提示
+   */
+  interface Document {
+    webkitFullscreenElement?: Element;
+    mozFullScreenElement?: Element;
+    msFullscreenElement?: Element;
+  }
+
+  /**
    * 打包压缩格式的类型声明
    */
   type ViteCompression =
