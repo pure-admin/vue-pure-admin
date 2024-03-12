@@ -14,6 +14,7 @@
   "Weak": false,
   "HideTabs": false,
   "HideFooter": false,
+  "Stretch": true,
   "SidebarStatus": true,
   "EpThemeColor": "#409EFF",
   "ShowLogo": true,

@@ -64,7 +64,8 @@ const settings = reactive({
   showLogo: $storage.configure.showLogo,
   showModel: $storage.configure.showModel,
   hideFooter: $storage.configure.hideFooter,
-  multiTagsCache: $storage.configure.multiTagsCache
+  multiTagsCache: $storage.configure.multiTagsCache,
+  stretch: $storage.configure?.stretch
 });
 
 const getThemeColorStyle = computed(() => {
@@ -140,6 +141,12 @@ function setFalse(Doms): any {
     toggleClass(false, "is-select", unref(v));
   });
 }
+
+/** 页宽 */
+const stretchChange = () => {
+  settings.stretch = !settings.stretch;
+  storageConfigureChange("stretch", settings.stretch);
+};
 
 /** 主题色 激活选择项 */
 const getThemeColor = computed(() => {
@@ -356,7 +363,41 @@ onUnmounted(() => removeMatchMedia);
         </li>
       </ul>
 
-      <p class="mt-5 mb-3 font-medium text-base dark:text-white">页签风格</p>
+      <p class="mt-5 mb-3 font-medium text-sm dark:text-white">页宽</p>
+      <button
+        v-ripple="{ class: 'text-gray-300' }"
+        class="bg-transparent flex justify-center items-center w-full h-20 rounded-md border border-gray-100"
+        @click="stretchChange"
+      >
+        <div
+          class="flex justify-between items-center transition-all duration-300"
+          :class="[settings.stretch ? 'w-[50%]' : 'w-[24%]']"
+          style="color: var(--el-color-primary)"
+        >
+          <IconifyIconOnline
+            :icon="
+              settings.stretch
+                ? 'ri:arrow-left-s-line'
+                : 'ri:arrow-right-s-line'
+            "
+            style="width: 20px; height: 20px"
+          />
+          <div
+            class="flex-grow border-b border-dashed"
+            style="border-color: var(--el-color-primary)"
+          />
+          <IconifyIconOnline
+            :icon="
+              settings.stretch
+                ? 'ri:arrow-right-s-line'
+                : 'ri:arrow-left-s-line'
+            "
+            style="width: 20px; height: 20px"
+          />
+        </div>
+      </button>
+
+      <p class="mt-5 mb-3 font-medium text-sm dark:text-white">页签风格</p>
       <Segmented
         class="select-none"
         :modelValue="markValue === 'smart' ? 0 : 1"

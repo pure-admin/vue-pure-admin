@@ -30,6 +30,10 @@ const hideFooter = computed(() => {
   return $storage?.configure.hideFooter;
 });
 
+const stretch = computed(() => {
+  return $storage?.configure.stretch;
+});
+
 const layout = computed(() => {
   return $storage?.layout.layout === "vertical";
 });
@@ -96,7 +100,10 @@ const transitionMain = defineComponent({
               v-if="props.fixedHeader"
               :wrap-style="{
                 display: 'flex',
-                'flex-wrap': 'wrap'
+                'flex-wrap': 'wrap',
+                width: stretch ? '100%' : '1400px',
+                margin: '0 auto',
+                transition: 'all 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms'
               }"
               :view-style="{
                 display: 'flex',
