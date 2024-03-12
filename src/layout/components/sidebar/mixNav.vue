@@ -2,6 +2,7 @@
 import extraIcon from "./extraIcon.vue";
 import Search from "../search/index.vue";
 import Notice from "../notice/index.vue";
+import FullScreen from "./fullScreen.vue";
 import { isAllEmpty } from "@pureadmin/utils";
 import { useNav } from "@/layout/hooks/useNav";
 import { transformI18n } from "@/plugins/i18n";
@@ -98,8 +99,6 @@ watch(
     <div class="horizontal-header-right">
       <!-- 菜单搜索 -->
       <Search id="header-search" />
-      <!-- 通知 -->
-      <Notice id="header-notice" />
       <!-- 国际化 -->
       <el-dropdown id="header-translation" trigger="click">
         <globalization
@@ -130,6 +129,10 @@ watch(
           </el-dropdown-menu>
         </template>
       </el-dropdown>
+      <!-- 全屏 -->
+      <FullScreen id="full-screen" />
+      <!-- 消息通知 -->
+      <Notice id="header-notice" />
       <!-- 退出登录 -->
       <el-dropdown trigger="click">
         <span class="el-dropdown-link navbar-bg-hover select-none">

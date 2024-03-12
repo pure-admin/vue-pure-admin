@@ -30,17 +30,23 @@ const GUIDE_STEPS = [
     position: "left"
   },
   {
-    element: document.querySelector("#header-notice") as string | HTMLElement,
-    title: "消息通知",
-    intro: "您可以在这里查看管理员发送的消息",
-    position: "left"
-  },
-  {
     element: document.querySelector("#header-translation") as
       | string
       | HTMLElement,
     title: "国际化",
     intro: "您可以在这里进行语言切换",
+    position: "left"
+  },
+  {
+    element: document.querySelector("#full-screen") as string | HTMLElement,
+    title: "全屏",
+    intro: "您可以在这里进行全屏切换",
+    position: "left"
+  },
+  {
+    element: document.querySelector("#header-notice") as string | HTMLElement,
+    title: "消息通知",
+    intro: "您可以在这里查看管理员发送的消息",
     position: "left"
   },
   {
