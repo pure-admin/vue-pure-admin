@@ -5,6 +5,7 @@ import { getPickerShortcuts } from "../../utils";
 import { PureTableBar } from "@/components/RePureTableBar";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 
+import View from "@iconify-icons/ep/view";
 import Delete from "@iconify-icons/ep/delete";
 import Refresh from "@iconify-icons/ep/refresh";
 
@@ -23,6 +24,7 @@ const {
   pagination,
   selectedNum,
   onSearch,
+  onDetail,
   clearAll,
   resetForm,
   onbatchDel,
@@ -133,7 +135,20 @@ const {
           @page-size-change="handleSizeChange"
           @page-current-change="handleCurrentChange"
           @cell-dblclick="handleCellDblclick"
-        />
+        >
+          <template #operation="{ row }">
+            <el-button
+              class="reset-margin !outline-none"
+              link
+              type="primary"
+              :size="size"
+              :icon="useRenderIcon(View)"
+              @click="onDetail(row)"
+            >
+              详情
+            </el-button>
+          </template>
+        </pure-table>
       </template>
     </PureTableBar>
   </div>

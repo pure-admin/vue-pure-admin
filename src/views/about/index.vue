@@ -82,8 +82,11 @@ Object.keys(devDependencies).forEach(key => {
 
     <el-card class="m-4 box-card" shadow="never">
       <template #header>
-        <div class="card-header">
+        <div class="card-header flex items-center">
           <span class="font-medium">生产环境依赖</span>
+          <el-tag type="primary" effect="dark" size="small" round class="ml-1">
+            {{ schema.length }}
+          </el-tag>
         </div>
       </template>
       <el-scrollbar>
@@ -114,8 +117,11 @@ Object.keys(devDependencies).forEach(key => {
 
     <el-card class="m-4 box-card" shadow="never">
       <template #header>
-        <div class="card-header">
+        <div class="card-header flex items-center">
           <span class="font-medium">开发环境依赖</span>
+          <el-tag type="primary" effect="dark" size="small" round class="ml-1">
+            {{ devSchema.length }}
+          </el-tag>
         </div>
       </template>
       <el-scrollbar>

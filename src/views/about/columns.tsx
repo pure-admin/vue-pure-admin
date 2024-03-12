@@ -4,6 +4,7 @@ export function useColumns() {
   const columns = [
     {
       label: "当前版本",
+      minWidth: 100,
       cellRenderer: () => {
         return (
           <el-tag size="large" class="!text-base">
@@ -14,6 +15,7 @@ export function useColumns() {
     },
     {
       label: "最后编译时间",
+      minWidth: 120,
       cellRenderer: () => {
         return (
           <el-tag size="large" class="!text-base">
@@ -24,6 +26,7 @@ export function useColumns() {
     },
     {
       label: "推荐 node 版本",
+      minWidth: 140,
       cellRenderer: () => {
         return (
           <el-tag size="large" class="!text-base">
@@ -34,6 +37,7 @@ export function useColumns() {
     },
     {
       label: "推荐 pnpm 版本",
+      minWidth: 140,
       cellRenderer: () => {
         return (
           <el-tag size="large" class="!text-base">
@@ -44,6 +48,7 @@ export function useColumns() {
     },
     {
       label: "完整版代码地址",
+      minWidth: 140,
       className: "pure-version",
       cellRenderer: () => {
         return (
@@ -58,6 +63,7 @@ export function useColumns() {
     },
     {
       label: "精简版代码地址",
+      minWidth: 140,
       className: "pure-version",
       cellRenderer: () => {
         return (
@@ -72,6 +78,7 @@ export function useColumns() {
     },
     {
       label: "文档地址",
+      minWidth: 100,
       className: "pure-version",
       cellRenderer: () => {
         return (
@@ -86,6 +93,7 @@ export function useColumns() {
     },
     {
       label: "预览地址",
+      minWidth: 100,
       className: "pure-version",
       cellRenderer: () => {
         return (
