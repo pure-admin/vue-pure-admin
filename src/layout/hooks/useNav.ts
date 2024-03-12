@@ -4,6 +4,7 @@ import { useRouter } from "vue-router";
 import { emitter } from "@/utils/mitt";
 import userAvatar from "@/assets/user.jpg";
 import { getTopMenu } from "@/router/utils";
+import { useFullscreen } from "@vueuse/core";
 import { useGlobal } from "@pureadmin/utils";
 import type { routeMetaType } from "../types";
 import { transformI18n } from "@/plugins/i18n";
@@ -13,12 +14,15 @@ import { useAppStoreHook } from "@/store/modules/app";
 import { useUserStoreHook } from "@/store/modules/user";
 import { useEpThemeStoreHook } from "@/store/modules/epTheme";
 import { usePermissionStoreHook } from "@/store/modules/permission";
+import ExitFullscreen from "@iconify-icons/ri/fullscreen-exit-fill";
+import Fullscreen from "@iconify-icons/ri/fullscreen-fill";
 
 const errorInfo = "当前路由配置不正确，请检查配置";
 
 export function useNav() {
   const pureApp = useAppStoreHook();
   const routers = useRouter().options.routes;
+  const { isFullscreen, toggle } = useFullscreen();
   const { wholeMenus } = storeToRefs(usePermissionStoreHook());
   /** 平台`layout`中所有`el-tooltip`的`effect`配置，默认`light` */
   const tooltipEffect = getConfig()?.TooltipEffect ?? "light";
@@ -136,6 +140,10 @@ export function useNav() {
     logout,
     routers,
     $storage,
+    isFullscreen,
+    Fullscreen,
+    ExitFullscreen,
+    toggle,
     backTopMenu,
     onPanel,
     getDivStyle,

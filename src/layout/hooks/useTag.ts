@@ -106,15 +106,8 @@ export function useTags() {
     },
     {
       icon: Fullscreen,
-      text: $t("buttons.hswholeFullScreen"),
-      divided: true,
-      disabled: false,
-      show: true
-    },
-    {
-      icon: Fullscreen,
       text: $t("buttons.hscontentFullScreen"),
-      divided: false,
+      divided: true,
       disabled: false,
       show: true
     }

@@ -10,17 +10,20 @@ import globalization from "@/assets/svg/globalization.svg?component";
 import LogoutCircleRLine from "@iconify-icons/ri/logout-circle-r-line";
 import Setting from "@iconify-icons/ri/settings-3-line";
 import Check from "@iconify-icons/ep/check";
-
 const {
   layout,
   device,
+  toggle,
   logout,
   onPanel,
   pureApp,
   username,
   userAvatar,
+  Fullscreen,
+  isFullscreen,
   avatarsStyle,
   toggleSideBar,
+  ExitFullscreen,
   getDropdownItemStyle,
   getDropdownItemClass
 } = useNav();
@@ -47,8 +50,6 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
     <div v-if="layout === 'vertical'" class="vertical-header-right">
       <!-- 菜单搜索 -->
       <Search id="header-search" />
-      <!-- 通知 -->
-      <Notice id="header-notice" />
       <!-- 国际化 -->
       <el-dropdown id="header-translation" trigger="click">
         <globalization
@@ -81,6 +82,14 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
           </el-dropdown-menu>
         </template>
       </el-dropdown>
+      <!-- 全屏 -->
+      <span class="fullscreen-icon navbar-bg-hover" @click="toggle">
+        <IconifyIconOffline
+          :icon="isFullscreen ? ExitFullscreen : Fullscreen"
+        />
+      </span>
+      <!-- 消息通知 -->
+      <Notice id="header-notice" />
       <!-- 退出登录 -->
       <el-dropdown trigger="click">
         <span class="el-dropdown-link navbar-bg-hover select-none">
