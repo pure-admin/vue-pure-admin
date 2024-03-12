@@ -5,6 +5,13 @@ import { useNav } from "@/layout/hooks/useNav";
 const screenIcon = ref();
 const { toggle, isFullscreen, Fullscreen, ExitFullscreen } = useNav();
 
+isFullscreen.value = !!(
+  document.fullscreenElement ||
+  document.webkitFullscreenElement ||
+  document.mozFullScreenElement ||
+  document.msFullscreenElement
+);
+
 watch(
   isFullscreen,
   full => {
