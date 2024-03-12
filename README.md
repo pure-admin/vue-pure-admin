@@ -164,6 +164,18 @@ docker run -dp 8080:80  --name pure-admin vue-pure-admin
 4. 推送您的分支: `git push origin feat/xxxx`
 5. 提交`pull request`
 
+## 特别代码贡献
+
+非常感谢你们能深入了解源码并对 `pure-admin` 组织作出优秀贡献 ❤️
+
+|                   **贡献人**                    |                                   **具体代码**                                   |
+| :---------------------------------------------: | :------------------------------------------------------------------------------: |
+|       [hb0730](https://github.com/hb0730)       |    [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=hb0730)    |
+|         [o-cc](https://github.com/o-cc)         |     [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=o-cc)     |
+| [yj-liuzepeng](https://github.com/yj-liuzepeng) | [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=yj-liuzepeng) |
+| [shark-lajiao](https://github.com/shark-lajiao) | [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=shark-lajiao) |
+|      [WitMiao](https://github.com/WitMiao)      |   [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=WitMiao)    |
+
 ## `Git` 贡献提交规范
 
 参考 [vue](https://github.com/vuejs/vue/blob/dev/.github/COMMIT_CONVENTION.md) 规范 ([Angular](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular))
