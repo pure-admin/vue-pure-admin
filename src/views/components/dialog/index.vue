@@ -2,8 +2,8 @@
 import { useRouter } from "vue-router";
 import { h, createVNode, ref } from "vue";
 import { message } from "@/utils/message";
-import forms, { type FormProps } from "./form.vue";
 import formPrimitive from "./formPrimitive.vue";
+import forms, { type FormProps } from "./form.vue";
 import { cloneDeep, debounce } from "@pureadmin/utils";
 import {
   addDialog,

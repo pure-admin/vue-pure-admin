@@ -1,13 +1,13 @@
 import { message } from "@/utils/message";
 import { tableDataEdit } from "../../data";
-import { type Ref, ref, reactive } from "vue";
 import type { PaginationProps } from "@pureadmin/table";
 import { cloneDeep, isAllEmpty } from "@pureadmin/utils";
+import { type Ref, ref, reactive, watch, nextTick } from "vue";
 
 export function useColumns(selectRef: Ref, formRef: Ref, tableRef: Ref) {
   const tableData = ref(tableDataEdit);
   const cloneTableData = cloneDeep(tableData.value);
-  const selectValue = ref([]);
+  const selectValue = ref([1, 3, 4]);
   const searchForm = reactive({
     sexValue: "",
     searchDate: ""
@@ -109,6 +109,21 @@ export function useColumns(selectRef: Ref, formRef: Ref, tableRef: Ref) {
       type: "success"
     });
   };
+
+  watch(
+    selectValue,
+    async () => {
+      await nextTick();
+      const { toggleRowSelection } = tableRef.value.getTableRef();
+      selectValue.value.forEach(val => {
+        tableData.value.forEach(row => {
+          // 默认回显
+          row.id === val ? toggleRowSelection(row) : undefined;
+        });
+      });
+    },
+    { immediate: true }
+  );
 
   return {
     searchForm,
