@@ -34,20 +34,16 @@ const stretch = computed(() => {
   return $storage?.configure.stretch;
 });
 
-const stretchType = computed(() => {
-  return $storage?.configure.stretchType;
-});
-
 const layout = computed(() => {
   return $storage?.layout.layout === "vertical";
 });
 
 const getMainWidth = computed(() => {
-  return stretchType.value === "fixed"
-    ? stretch.value
+  return typeof stretch.value === "number"
+    ? stretch.value + "px"
+    : stretch.value
       ? "1440px"
-      : "100%"
-    : stretchType.value === "custom" && stretch.value + "px";
+      : "100%";
 });
 
 const getSectionStyle = computed(() => {

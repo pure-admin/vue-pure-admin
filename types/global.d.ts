@@ -88,7 +88,6 @@ declare global {
     Weak?: boolean;
     HideTabs?: boolean;
     HideFooter?: boolean;
-    StretchType?: "fixed" | "custom";
     Stretch?: boolean | number;
     SidebarStatus?: boolean;
     EpThemeColor?: string;
@@ -170,7 +169,6 @@ declare global {
       showLogo?: boolean;
       showModel?: string;
       multiTagsCache?: boolean;
-      stretchType?: "fixed" | "custom";
       stretch?: boolean | number;
     };
     tags?: Array<any>;

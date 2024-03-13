@@ -57,8 +57,6 @@ const markValue = ref($storage.configure?.showModel ?? "smart");
 
 const logoVal = ref($storage.configure?.showLogo ?? true);
 
-const stretchType = ref($storage.configure?.stretchType ?? "fixed");
-
 const settings = reactive({
   greyVal: $storage.configure.grey,
   weakVal: $storage.configure.weak,
@@ -156,25 +154,14 @@ const stretchTypeOptions: Array<OptionsType> = [
   }
 ];
 
-const stretchTypeChange = ({ option }) => {
-  const { value } = option;
-  stretchType.value = value;
-  storageConfigureChange("stretchType", value);
-  if (value === "custom") {
-    settings.stretch = 1440;
-  } else {
-    settings.stretch = false;
-  }
-  storageConfigureChange("stretch", settings.stretch);
-};
-
-const stretchChange = () => {
-  settings.stretch = !settings.stretch;
-  storageConfigureChange("stretch", settings.stretch);
-};
-const stretchCustomChange = value => {
+const setStretch = value => {
   settings.stretch = value;
   storageConfigureChange("stretch", value);
+};
+
+const stretchTypeChange = ({ option }) => {
+  const { value } = option;
+  value === "custom" ? setStretch(1440) : setStretch(false);
 };
 
 /** 主题色 激活选择项 */
@@ -396,24 +383,24 @@ onUnmounted(() => removeMatchMedia);
         <p class="font-medium text-sm dark:text-white mr-5">页宽</p>
         <Segmented
           class="select-none"
-          :modelValue="stretchType === 'fixed' ? 0 : 1"
+          :modelValue="typeof settings.stretch === 'number' ? 1 : 0"
           :options="stretchTypeOptions"
           @change="stretchTypeChange"
         />
       </div>
       <el-input-number
-        v-if="stretchType === 'custom'"
+        v-if="typeof settings.stretch === 'number'"
         v-model="settings.stretch as number"
         :min="1280"
         :max="1600"
         controls-position="right"
-        @change="stretchCustomChange"
+        @change="value => setStretch(value)"
       />
       <button
-        v-if="stretchType === 'fixed'"
+        v-else
         v-ripple="{ class: 'text-gray-300' }"
         class="bg-transparent flex justify-center items-center w-full h-20 rounded-md border border-gray-100"
-        @click="stretchChange"
+        @click="setStretch(!settings.stretch)"
       >
         <div
           class="flex justify-between items-center transition-all duration-300"
