@@ -57,6 +57,8 @@ const markValue = ref($storage.configure?.showModel ?? "smart");
 
 const logoVal = ref($storage.configure?.showLogo ?? true);
 
+const stretchType = ref($storage.configure?.stretchType ?? "fixed");
+
 const settings = reactive({
   greyVal: $storage.configure.grey,
   weakVal: $storage.configure.weak,
@@ -65,7 +67,7 @@ const settings = reactive({
   showModel: $storage.configure.showModel,
   hideFooter: $storage.configure.hideFooter,
   multiTagsCache: $storage.configure.multiTagsCache,
-  stretch: $storage.configure?.stretch
+  stretch: $storage.configure.stretch
 });
 
 const getThemeColorStyle = computed(() => {
@@ -143,9 +145,36 @@ function setFalse(Doms): any {
 }
 
 /** 页宽 */
+const stretchTypeOptions: Array<OptionsType> = [
+  {
+    label: "固定",
+    value: "fixed"
+  },
+  {
+    label: "自定义",
+    value: "custom"
+  }
+];
+
+const stretchTypeChange = ({ option }) => {
+  const { value } = option;
+  stretchType.value = value;
+  storageConfigureChange("stretchType", value);
+  if (value === "custom") {
+    settings.stretch = 1440;
+  } else {
+    settings.stretch = false;
+  }
+  storageConfigureChange("stretch", settings.stretch);
+};
+
 const stretchChange = () => {
   settings.stretch = !settings.stretch;
   storageConfigureChange("stretch", settings.stretch);
+};
+const stretchCustomChange = value => {
+  settings.stretch = value;
+  storageConfigureChange("stretch", value);
 };
 
 /** 主题色 激活选择项 */
@@ -363,22 +392,39 @@ onUnmounted(() => removeMatchMedia);
         </li>
       </ul>
 
-      <p class="mt-5 mb-3 font-medium text-sm dark:text-white">页宽</p>
+      <div class="mt-7 mb-3 flex items-center">
+        <p class="font-medium text-sm dark:text-white mr-5">页宽</p>
+        <Segmented
+          class="select-none"
+          :modelValue="stretchType === 'fixed' ? 0 : 1"
+          :options="stretchTypeOptions"
+          @change="stretchTypeChange"
+        />
+      </div>
+      <el-input-number
+        v-if="stretchType === 'custom'"
+        v-model="settings.stretch"
+        :min="1280"
+        :max="1600"
+        controls-position="right"
+        @change="stretchCustomChange"
+      />
       <button
+        v-if="stretchType === 'fixed'"
         v-ripple="{ class: 'text-gray-300' }"
         class="bg-transparent flex justify-center items-center w-full h-20 rounded-md border border-gray-100"
         @click="stretchChange"
       >
         <div
           class="flex justify-between items-center transition-all duration-300"
-          :class="[settings.stretch ? 'w-[50%]' : 'w-[24%]']"
+          :class="[settings.stretch ? 'w-[24%]' : 'w-[50%]']"
           style="color: var(--el-color-primary)"
         >
           <IconifyIconOnline
             :icon="
               settings.stretch
-                ? 'ri:arrow-left-s-line'
-                : 'ri:arrow-right-s-line'
+                ? 'ri:arrow-right-s-line'
+                : 'ri:arrow-left-s-line'
             "
             style="width: 20px; height: 20px"
           />
@@ -389,8 +435,8 @@ onUnmounted(() => removeMatchMedia);
           <IconifyIconOnline
             :icon="
               settings.stretch
-                ? 'ri:arrow-right-s-line'
-                : 'ri:arrow-left-s-line'
+                ? 'ri:arrow-left-s-line'
+                : 'ri:arrow-right-s-line'
             "
             style="width: 20px; height: 20px"
           />
