@@ -1,9 +1,11 @@
 import dayjs from "dayjs";
+import Detail from "./detail.vue";
 import { message } from "@/utils/message";
-import { getSystemLogsList } from "@/api/system";
+import { addDialog } from "@/components/ReDialog";
 import type { PaginationProps } from "@pureadmin/table";
 import { type Ref, reactive, ref, onMounted, toRaw } from "vue";
 import { getKeyList, useCopyToClipboard } from "@pureadmin/utils";
+import { getSystemLogsList, getSystemLogsDetail } from "@/api/system";
 import Info from "@iconify-icons/ri/question-line";
 
 export function useRole(tableRef: Ref) {
@@ -126,12 +128,12 @@ export function useRole(tableRef: Ref) {
       minWidth: 180,
       formatter: ({ requestTime }) =>
         dayjs(requestTime).format("YYYY-MM-DD HH:mm:ss")
+    },
+    {
+      label: "操作",
+      fixed: "right",
+      slot: "operation"
     }
-    // {
-    //   label: "操作",
-    //   fixed: "right",
-    //   slot: "operation"
-    // }
   ];
 
   function handleSizeChange(val: number) {
@@ -157,7 +159,8 @@ export function useRole(tableRef: Ref) {
   }
 
   /** 拷贝请求接口，表格单元格被双击时触发 */
-  function handleCellDblclick({ url }) {
+  function handleCellDblclick({ url }, { property }) {
+    if (property !== "url") return;
     update(url);
     copied.value
       ? message(`${url} 已拷贝`, { type: "success" })
@@ -183,6 +186,20 @@ export function useRole(tableRef: Ref) {
       type: "success"
     });
     onSearch();
+  }
+
+  function onDetail(row) {
+    getSystemLogsDetail({ id: row.id }).then(res => {
+      addDialog({
+        title: "系统日志详情",
+        fullscreen: true,
+        hideFooter: true,
+        contentRenderer: () => Detail,
+        props: {
+          data: [res]
+        }
+      });
+    });
   }
 
   async function onSearch() {
@@ -216,6 +233,7 @@ export function useRole(tableRef: Ref) {
     pagination,
     selectedNum,
     onSearch,
+    onDetail,
     clearAll,
     resetForm,
     onbatchDel,

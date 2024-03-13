@@ -164,6 +164,19 @@ You are very welcome to join！[Raise an issue](https://github.com/pure-admin/vu
 4. Push your branch: `git push origin feat/xxxx`
 5. submit`pull request`
 
+## Special code contributions
+
+Thank you very much for your in-depth understanding of the source code and your outstanding contributions to the `pure-admin` organization ❤️
+
+|                   **Contributor**                    |                                   **SpecificCode**                                   |
+| :---------------------------------------------: | :------------------------------------------------------------------------------: |
+|       [hb0730](https://github.com/hb0730)       |    [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=hb0730)    |
+|         [o-cc](https://github.com/o-cc)         |     [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=o-cc)     |
+| [yj-liuzepeng](https://github.com/yj-liuzepeng) | [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=yj-liuzepeng) |
+|   [skyline523](https://github.com/skyline523)   |  [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=skyline523)  |
+| [shark-lajiao](https://github.com/shark-lajiao) | [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=shark-lajiao) |
+|      [WitMiao](https://github.com/WitMiao)      |   [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=WitMiao)    |
+
 ## Git Contribution submission specification
 
 reference [vue](https://github.com/vuejs/vue/blob/dev/.github/COMMIT_CONVENTION.md) specification ([Angular](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular))

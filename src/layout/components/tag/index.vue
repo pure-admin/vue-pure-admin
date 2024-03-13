@@ -4,7 +4,7 @@ import { emitter } from "@/utils/mitt";
 import { RouteConfigs } from "../../types";
 import { useTags } from "../../hooks/useTag";
 import { routerArrays } from "@/layout/types";
-import { useFullscreen, onClickOutside } from "@vueuse/core";
+import { onClickOutside } from "@vueuse/core";
 import { handleAliveRoute, getTopMenu } from "@/router/utils";
 import { useSettingStoreHook } from "@/store/modules/settings";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
@@ -59,7 +59,6 @@ const contextmenuRef = ref();
 const isShowArrow = ref(false);
 const topPath = getTopMenu()?.path;
 const { VITE_HIDE_HOME } = import.meta.env;
-const { isFullscreen, toggle } = useFullscreen();
 
 const dynamicTagView = async () => {
   await nextTick();
@@ -329,28 +328,15 @@ function onClickDrop(key, item, selectRoute?: RouteConfigs) {
       handleAliveRoute(route as ToRouteType);
       break;
     case 6:
-      // 整体页面全屏
-      toggle();
-      setTimeout(() => {
-        if (isFullscreen.value) {
-          tagsViews[6].icon = ExitFullscreen;
-          tagsViews[6].text = $t("buttons.hswholeExitFullScreen");
-        } else {
-          tagsViews[6].icon = Fullscreen;
-          tagsViews[6].text = $t("buttons.hswholeFullScreen");
-        }
-      }, 100);
-      break;
-    case 7:
       // 内容区全屏
       onContentFullScreen();
       setTimeout(() => {
         if (pureSetting.hiddenSideBar) {
-          tagsViews[7].icon = ExitFullscreen;
-          tagsViews[7].text = $t("buttons.hscontentExitFullScreen");
+          tagsViews[6].icon = ExitFullscreen;
+          tagsViews[6].text = $t("buttons.hscontentExitFullScreen");
         } else {
-          tagsViews[7].icon = Fullscreen;
-          tagsViews[7].text = $t("buttons.hscontentFullScreen");
+          tagsViews[6].icon = Fullscreen;
+          tagsViews[6].text = $t("buttons.hscontentFullScreen");
         }
       }, 100);
       break;
@@ -509,11 +495,6 @@ onClickOutside(contextmenuRef, closeMenu, {
 watch(route, () => {
   activeIndex.value = -1;
   dynamicTagView();
-});
-
-watch(isFullscreen, () => {
-  tagsViews[6].icon = Fullscreen;
-  tagsViews[6].text = $t("buttons.hswholeFullScreen");
 });
 
 onMounted(() => {
