@@ -403,7 +403,7 @@ onUnmounted(() => removeMatchMedia);
       </div>
       <el-input-number
         v-if="stretchType === 'custom'"
-        v-model="settings.stretch"
+        v-model="settings.stretch as number"
         :min="1280"
         :max="1600"
         controls-position="right"
