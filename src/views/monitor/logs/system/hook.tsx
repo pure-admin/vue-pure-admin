@@ -159,7 +159,8 @@ export function useRole(tableRef: Ref) {
   }
 
   /** 拷贝请求接口，表格单元格被双击时触发 */
-  function handleCellDblclick({ url }) {
+  function handleCellDblclick({ url }, { property }) {
+    if (property !== "url") return;
     update(url);
     copied.value
       ? message(`${url} 已拷贝`, { type: "success" })
