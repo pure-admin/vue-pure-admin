@@ -1,11 +1,11 @@
 import dayjs from "dayjs";
 import Detail from "./detail.vue";
 import { message } from "@/utils/message";
-import { getSystemLogsList } from "@/api/system";
 import { addDialog } from "@/components/ReDialog";
 import type { PaginationProps } from "@pureadmin/table";
-import { getKeyList, useCopyToClipboard } from "@pureadmin/utils";
 import { type Ref, reactive, ref, onMounted, toRaw } from "vue";
+import { getKeyList, useCopyToClipboard } from "@pureadmin/utils";
+import { getSystemLogsList, getSystemLogsDetail } from "@/api/system";
 import Info from "@iconify-icons/ri/question-line";
 
 export function useRole(tableRef: Ref) {
@@ -188,14 +188,16 @@ export function useRole(tableRef: Ref) {
   }
 
   function onDetail(row) {
-    addDialog({
-      title: "系统日志详情",
-      fullscreen: true,
-      hideFooter: true,
-      contentRenderer: () => Detail,
-      props: {
-        data: row
-      }
+    getSystemLogsDetail({ id: row.id }).then(res => {
+      addDialog({
+        title: "系统日志详情",
+        fullscreen: true,
+        hideFooter: true,
+        contentRenderer: () => Detail,
+        props: {
+          data: [res]
+        }
+      });
     });
   }
 

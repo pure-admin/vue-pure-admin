@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactive, watch } from "vue";
-import VueJsonPretty from "vue-json-pretty";
 import "vue-json-pretty/lib/styles.css";
+import VueJsonPretty from "vue-json-pretty";
 
 defineOptions({
   name: "JsonEditor"
