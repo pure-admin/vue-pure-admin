@@ -1,4 +1,4 @@
-.layout-theme-saucePurple body[layout=vertical] .sidebar-container{background:#130824}.layout-theme-saucePurple body[layout=vertical] .sidebar-container .el-menu-item,
+.layout-theme-saucePurple .sidebar-logo-container .sidebar-logo-link .sidebar-title{color:#fff}.layout-theme-saucePurple body[layout=vertical] .sidebar-container{background:#130824}.layout-theme-saucePurple body[layout=vertical] .sidebar-container .el-menu-item,
 .layout-theme-saucePurple body[layout=vertical] .sidebar-container .el-sub-menu__title{color:#7a80b4}.layout-theme-saucePurple body[layout=vertical] .sidebar-container .el-menu-item:hover,
 .layout-theme-saucePurple body[layout=vertical] .sidebar-container .el-sub-menu__title:hover{color:#fff!important}.layout-theme-saucePurple body[layout=vertical] .sidebar-container .is-active > .el-sub-menu__title,
 .layout-theme-saucePurple body[layout=vertical] .sidebar-container .is-active.submenu-title-noDropdown{color:#fff!important}.layout-theme-saucePurple body[layout=vertical] .sidebar-container .is-active > .el-sub-menu__title i,
@@ -61,4 +61,4 @@
 .layout-theme-saucePurple body[layout=mix] .horizontal-header .el-sub-menu__title:hover{color:#fff!important}.layout-theme-saucePurple body[layout=mix] .horizontal-header .submenu-title-noDropdown,
 .layout-theme-saucePurple body[layout=mix] .horizontal-header .el-sub-menu__title{background:#130824}.layout-theme-saucePurple body[layout=mix] .horizontal-header .is-active > .el-sub-menu__title,
 .layout-theme-saucePurple body[layout=mix] .horizontal-header .is-active.submenu-title-noDropdown{color:#fff!important}.layout-theme-saucePurple body[layout=mix] .horizontal-header .is-active > .el-sub-menu__title i,
-.layout-theme-saucePurple body[layout=mix] .horizontal-header .is-active.submenu-title-noDropdown i{color:#fff!important}.layout-theme-saucePurple body[layout=mix] .horizontal-header .is-active{color:#fff!important}.layout-theme-saucePurple .sidebar-logo-container .sidebar-logo-link .sidebar-title{color:#fff}
+.layout-theme-saucePurple body[layout=mix] .horizontal-header .is-active.submenu-title-noDropdown i{color:#fff!important}.layout-theme-saucePurple body[layout=mix] .horizontal-header .is-active{color:#fff!important}
