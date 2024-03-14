@@ -13,13 +13,15 @@ import panel from "../panel/index.vue";
 import { emitter } from "@/utils/mitt";
 import { useNav } from "@/layout/hooks/useNav";
 import { useAppStoreHook } from "@/store/modules/app";
-import { useDark, useGlobal, debounce } from "@pureadmin/utils";
 import { toggleTheme } from "@pureadmin/theme/dist/browser-utils";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
 import Segmented, { type OptionsType } from "@/components/ReSegmented";
 import { useDataThemeChange } from "@/layout/hooks/useDataThemeChange";
+import { useDark, useGlobal, debounce, isNumber } from "@pureadmin/utils";
 
 import Check from "@iconify-icons/ep/check";
+import LeftArrow from "@iconify-icons/ri/arrow-left-s-line";
+import RightArrow from "@iconify-icons/ri/arrow-right-s-line";
 import dayIcon from "@/assets/svg/day.svg?component";
 import darkIcon from "@/assets/svg/dark.svg?component";
 import systemIcon from "@/assets/svg/system.svg?component";
@@ -64,7 +66,8 @@ const settings = reactive({
   showLogo: $storage.configure.showLogo,
   showModel: $storage.configure.showModel,
   hideFooter: $storage.configure.hideFooter,
-  multiTagsCache: $storage.configure.multiTagsCache
+  multiTagsCache: $storage.configure.multiTagsCache,
+  stretch: $storage.configure.stretch
 });
 
 const getThemeColorStyle = computed(() => {
@@ -141,6 +144,30 @@ function setFalse(Doms): any {
   });
 }
 
+/** 页宽 */
+const stretchTypeOptions: Array<OptionsType> = [
+  {
+    label: "固定",
+    tip: "紧凑页面，轻松找到所需信息",
+    value: "fixed"
+  },
+  {
+    label: "自定义",
+    tip: "最小1280、最大1600",
+    value: "custom"
+  }
+];
+
+const setStretch = value => {
+  settings.stretch = value;
+  storageConfigureChange("stretch", value);
+};
+
+const stretchTypeChange = ({ option }) => {
+  const { value } = option;
+  value === "custom" ? setStretch(1440) : setStretch(false);
+};
+
 /** 主题色 激活选择项 */
 const getThemeColor = computed(() => {
   return current => {
@@ -158,6 +185,10 @@ const getThemeColor = computed(() => {
       return "transparent";
     }
   };
+});
+
+const pClass = computed(() => {
+  return ["mb-[12px]", "font-medium", "text-sm", "dark:text-white"];
 });
 
 const themeOptions = computed<Array<OptionsType>>(() => {
@@ -277,8 +308,8 @@ onUnmounted(() => removeMatchMedia);
 
 <template>
   <panel>
-    <div class="p-6">
-      <p class="mb-3 font-medium text-sm dark:text-white">整体风格</p>
+    <div class="p-5">
+      <p :class="pClass">整体风格</p>
       <Segmented
         class="select-none"
         :modelValue="overallStyle === 'system' ? 2 : dataTheme ? 1 : 0"
@@ -295,7 +326,7 @@ onUnmounted(() => removeMatchMedia);
         "
       />
 
-      <p class="mt-5 mb-3 font-medium text-sm dark:text-white">主题色</p>
+      <p :class="['mt-5', pClass]">主题色</p>
       <ul class="theme-color">
         <li
           v-for="(item, index) in themeColors"
@@ -314,7 +345,7 @@ onUnmounted(() => removeMatchMedia);
         </li>
       </ul>
 
-      <p class="mt-5 mb-3 font-medium text-sm dark:text-white">导航模式</p>
+      <p :class="['mt-5', pClass]">导航模式</p>
       <ul class="pure-theme">
         <li
           ref="verticalRef"
@@ -356,7 +387,50 @@ onUnmounted(() => removeMatchMedia);
         </li>
       </ul>
 
-      <p class="mt-5 mb-3 font-medium text-base dark:text-white">页签风格</p>
+      <span v-if="device !== 'mobile'">
+        <p :class="['mt-5', pClass]">页宽</p>
+        <Segmented
+          class="mb-2 select-none"
+          :modelValue="isNumber(settings.stretch) ? 1 : 0"
+          :options="stretchTypeOptions"
+          @change="stretchTypeChange"
+        />
+        <el-input-number
+          v-if="isNumber(settings.stretch)"
+          v-model="settings.stretch as number"
+          :min="1280"
+          :max="1600"
+          controls-position="right"
+          @change="value => setStretch(value)"
+        />
+        <button
+          v-else
+          v-ripple="{ class: 'text-gray-300' }"
+          class="bg-transparent flex-c w-full h-20 rounded-md border border-gray-100"
+          @click="setStretch(!settings.stretch)"
+        >
+          <div
+            class="flex-bc transition-all duration-300"
+            :class="[settings.stretch ? 'w-[24%]' : 'w-[50%]']"
+            style="color: var(--el-color-primary)"
+          >
+            <IconifyIconOffline
+              :icon="settings.stretch ? LeftArrow : RightArrow"
+              height="20"
+            />
+            <div
+              class="flex-grow border-b border-dashed"
+              style="border-color: var(--el-color-primary)"
+            />
+            <IconifyIconOffline
+              :icon="settings.stretch ? RightArrow : LeftArrow"
+              height="20"
+            />
+          </div>
+        </button>
+      </span>
+
+      <p :class="['mt-4', pClass]">页签风格</p>
       <Segmented
         class="select-none"
         :modelValue="markValue === 'smart' ? 0 : 1"
@@ -364,7 +438,7 @@ onUnmounted(() => removeMatchMedia);
         @change="onChange"
       />
 
-      <p class="mt-5 mb-1 font-medium text-sm dark:text-white">界面显示</p>
+      <p class="mt-5 font-medium text-sm dark:text-white">界面显示</p>
       <ul class="setting">
         <li>
           <span class="dark:text-white">灰色模式</span>
@@ -543,7 +617,7 @@ onUnmounted(() => removeMatchMedia);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 4px 0;
+    padding: 3px 0;
     font-size: 14px;
   }
 }
