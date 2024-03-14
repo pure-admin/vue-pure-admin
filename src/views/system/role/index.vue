@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { useRole } from "./utils/hook";
 import { PureTableBar } from "@/components/RePureTableBar";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
@@ -11,16 +11,37 @@ import EditPen from "@iconify-icons/ep/edit-pen";
 import Refresh from "@iconify-icons/ep/refresh";
 import Menu from "@iconify-icons/ep/menu";
 import AddFill from "@iconify-icons/ri/add-circle-line";
+import Close from "@iconify-icons/ep/close";
 
 defineOptions({
   name: "SystemRole"
 });
 
+const iconClass = computed(() => {
+  return [
+    "w-[22px]",
+    "h-[22px]",
+    "flex",
+    "justify-center",
+    "items-center",
+    "outline-none",
+    "rounded-[4px]",
+    "cursor-pointer",
+    "transition-colors",
+    "hover:bg-[#0000000f]",
+    "dark:hover:bg-[#ffffff1f]",
+    "dark:hover:text-[#ffffffd9]"
+  ];
+});
+
 const formRef = ref();
 const {
   form,
+  isShow,
+  curRow,
   loading,
   columns,
+  rowStyle,
   dataList,
   pagination,
   // buttonClass,
@@ -86,79 +107,83 @@ const {
       </el-form-item>
     </el-form>
 
-    <PureTableBar
-      title="角色管理（仅演示，操作后不生效）"
-      :columns="columns"
-      @refresh="onSearch"
-    >
-      <template #buttons>
-        <el-button
-          type="primary"
-          :icon="useRenderIcon(AddFill)"
-          @click="openDialog()"
-        >
-          新增角色
-        </el-button>
-      </template>
-      <template v-slot="{ size, dynamicColumns }">
-        <pure-table
-          align-whole="center"
-          showOverflowTooltip
-          table-layout="auto"
-          :loading="loading"
-          :size="size"
-          adaptive
-          :adaptiveConfig="{ offsetBottom: 108 }"
-          :data="dataList"
-          :columns="dynamicColumns"
-          :pagination="pagination"
-          :paginationSmall="size === 'small' ? true : false"
-          :header-cell-style="{
-            background: 'var(--el-fill-color-light)',
-            color: 'var(--el-text-color-primary)'
-          }"
-          @selection-change="handleSelectionChange"
-          @page-size-change="handleSizeChange"
-          @page-current-change="handleCurrentChange"
-        >
-          <template #operation="{ row }">
-            <el-button
-              class="reset-margin"
-              link
-              type="primary"
-              :size="size"
-              :icon="useRenderIcon(EditPen)"
-              @click="openDialog('修改', row)"
-            >
-              修改
-            </el-button>
-            <el-button
-              class="reset-margin"
-              link
-              type="primary"
-              :size="size"
-              :icon="useRenderIcon(Menu)"
-              @click="handleMenu"
-            >
-              菜单权限
-            </el-button>
-            <el-popconfirm
-              :title="`是否确认删除角色名称为${row.name}的这条数据`"
-              @confirm="handleDelete(row)"
-            >
-              <template #reference>
-                <el-button
-                  class="reset-margin"
-                  link
-                  type="primary"
-                  :size="size"
-                  :icon="useRenderIcon(Delete)"
-                >
-                  删除
-                </el-button>
-              </template>
-            </el-popconfirm>
-            <!-- <el-dropdown>
+    <div class="flex">
+      <PureTableBar
+        :class="[isShow ? '!w-[60vw]' : 'w-full']"
+        style="transition: width 220ms cubic-bezier(0.4, 0, 0.2, 1)"
+        title="角色管理（仅演示，操作后不生效）"
+        :columns="columns"
+        @refresh="onSearch"
+      >
+        <template #buttons>
+          <el-button
+            type="primary"
+            :icon="useRenderIcon(AddFill)"
+            @click="openDialog()"
+          >
+            新增角色
+          </el-button>
+        </template>
+        <template v-slot="{ size, dynamicColumns }">
+          <pure-table
+            align-whole="center"
+            showOverflowTooltip
+            table-layout="auto"
+            :loading="loading"
+            :size="size"
+            adaptive
+            :row-style="rowStyle"
+            :adaptiveConfig="{ offsetBottom: 108 }"
+            :data="dataList"
+            :columns="dynamicColumns"
+            :pagination="pagination"
+            :paginationSmall="size === 'small' ? true : false"
+            :header-cell-style="{
+              background: 'var(--el-fill-color-light)',
+              color: 'var(--el-text-color-primary)'
+            }"
+            @selection-change="handleSelectionChange"
+            @page-size-change="handleSizeChange"
+            @page-current-change="handleCurrentChange"
+          >
+            <template #operation="{ row }">
+              <el-button
+                class="reset-margin"
+                link
+                type="primary"
+                :size="size"
+                :icon="useRenderIcon(EditPen)"
+                @click="openDialog('修改', row)"
+              >
+                修改
+              </el-button>
+              <el-popconfirm
+                :title="`是否确认删除角色名称为${row.name}的这条数据`"
+                @confirm="handleDelete(row)"
+              >
+                <template #reference>
+                  <el-button
+                    class="reset-margin"
+                    link
+                    type="primary"
+                    :size="size"
+                    :icon="useRenderIcon(Delete)"
+                  >
+                    删除
+                  </el-button>
+                </template>
+              </el-popconfirm>
+              <el-button
+                class="reset-margin"
+                link
+                type="primary"
+                :size="size"
+                :icon="useRenderIcon(Menu)"
+                @click="handleMenu(row)"
+              >
+                权限
+              </el-button>
+              <!-- <el-dropdown>
               <el-button
                 class="ml-3 mt-[2px]"
                 link
@@ -195,10 +220,33 @@ const {
                 </el-dropdown-menu>
               </template>
             </el-dropdown> -->
-          </template>
-        </pure-table>
-      </template>
-    </PureTableBar>
+            </template>
+          </pure-table>
+        </template>
+      </PureTableBar>
+
+      <div
+        v-if="isShow"
+        v-motion-fade
+        class="!w-[38vw] mt-2 px-2 pb-2 bg-bg_color h-full ml-2"
+      >
+        <div class="flex justify-between w-full h-[60px] p-4">
+          <p class="font-bold truncate">
+            菜单权限
+            {{ `${curRow?.name ? `（${curRow.name}）` : ""}` }}
+          </p>
+          <span :class="iconClass">
+            <IconifyIconOffline
+              class="dark:text-white"
+              width="18px"
+              height="18px"
+              :icon="Close"
+              @click="handleMenu"
+            />
+          </span>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

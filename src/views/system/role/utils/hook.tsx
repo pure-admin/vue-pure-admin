@@ -15,9 +15,11 @@ export function useRole() {
     code: "",
     status: ""
   });
+  const curRow = ref();
   const formRef = ref();
   const dataList = ref([]);
   const loading = ref(true);
+  const isShow = ref(true);
   const switchLoadMap = ref({});
   const { switchStyle } = usePublicHooks();
   const pagination = reactive<PaginationProps>({
@@ -29,22 +31,18 @@ export function useRole() {
   const columns: TableColumnList = [
     {
       label: "角色编号",
-      prop: "id",
-      minWidth: 100
+      prop: "id"
     },
     {
       label: "角色名称",
-      prop: "name",
-      minWidth: 120
+      prop: "name"
     },
     {
       label: "角色标识",
-      prop: "code",
-      minWidth: 150
+      prop: "code"
     },
     {
       label: "状态",
-      minWidth: 130,
       cellRenderer: scope => (
         <el-switch
           size={scope.props.size === "small" ? "small" : "default"}
@@ -58,24 +56,25 @@ export function useRole() {
           style={switchStyle.value}
           onChange={() => onChange(scope as any)}
         />
-      )
+      ),
+      minWidth: 90
     },
     {
       label: "备注",
       prop: "remark",
-      minWidth: 150
+      minWidth: 160
     },
     {
       label: "创建时间",
-      minWidth: 180,
       prop: "createTime",
+      minWidth: 160,
       formatter: ({ createTime }) =>
         dayjs(createTime).format("YYYY-MM-DD HH:mm:ss")
     },
     {
       label: "操作",
       fixed: "right",
-      width: 240,
+      width: 210,
       slot: "operation"
     }
   ];
@@ -210,8 +209,23 @@ export function useRole() {
   }
 
   /** 菜单权限 */
-  function handleMenu() {
-    message("等菜单管理页面开发后完善");
+  function handleMenu(row?: any) {
+    const { id } = row;
+    if (id) {
+      curRow.value = row;
+      isShow.value = true;
+    } else {
+      curRow.value = null;
+      isShow.value = false;
+    }
+  }
+
+  /** 高亮当前权限选中行 */
+  function rowStyle({ row: { id } }) {
+    return {
+      cursor: "pointer",
+      background: id === curRow.value?.id ? "var(--el-fill-color-light)" : ""
+    };
   }
 
   /** 数据权限 可自行开发 */
@@ -223,8 +237,11 @@ export function useRole() {
 
   return {
     form,
+    isShow,
+    curRow,
     loading,
     columns,
+    rowStyle,
     dataList,
     pagination,
     // buttonClass,
