@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Footer from "./footer/index.vue";
-import { useGlobal } from "@pureadmin/utils";
+import { useGlobal, isNumber } from "@pureadmin/utils";
 import KeepAliveFrame from "./keepAliveFrame/index.vue";
 import backTop from "@/assets/svg/back_top.svg?component";
 import { h, computed, Transition, defineComponent } from "vue";
@@ -39,7 +39,7 @@ const layout = computed(() => {
 });
 
 const getMainWidth = computed(() => {
-  return typeof stretch.value === "number"
+  return isNumber(stretch.value)
     ? stretch.value + "px"
     : stretch.value
       ? "1440px"
@@ -111,7 +111,7 @@ const transitionMain = defineComponent({
                 'flex-wrap': 'wrap',
                 'max-width': getMainWidth,
                 margin: '0 auto',
-                transition: 'all 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms'
+                transition: 'all 300ms cubic-bezier(0.4, 0, 0.2, 1)'
               }"
               :view-style="{
                 display: 'flex',
