@@ -415,7 +415,7 @@ onUnmounted(() => removeMatchMedia);
             style="color: var(--el-color-primary)"
           >
             <IconifyIconOffline
-              :icon="settings.stretch ? LeftArrow : RightArrow"
+              :icon="settings.stretch ? RightArrow : LeftArrow"
               height="20"
             />
             <div
@@ -423,7 +423,7 @@ onUnmounted(() => removeMatchMedia);
               style="border-color: var(--el-color-primary)"
             />
             <IconifyIconOffline
-              :icon="settings.stretch ? RightArrow : LeftArrow"
+              :icon="settings.stretch ? LeftArrow : RightArrow"
               height="20"
             />
           </div>
