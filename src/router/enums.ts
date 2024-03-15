@@ -15,12 +15,13 @@ const home = 0, // 平台规定只有 home 路由的 rank 才能为 0 ，所以�
   tabs = 12,
   about = 13,
   editor = 14,
-  flowchart = 15,
-  formdesign = 16,
-  board = 17,
-  ppt = 18,
-  guide = 19,
-  menuoverflow = 20;
+  ganttchart = 15,
+  flowchart = 16,
+  formdesign = 17,
+  board = 18,
+  ppt = 19,
+  guide = 20,
+  menuoverflow = 21;
 
 export {
   home,
@@ -39,6 +40,7 @@ export {
   about,
   editor,
   flowchart,
+  ganttchart,
   formdesign,
   board,
   ppt,

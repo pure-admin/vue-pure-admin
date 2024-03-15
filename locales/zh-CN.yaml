@@ -59,6 +59,7 @@ menus:
   hscountTo: 数字动画
   hsselector: 范围选择器
   hsflowChart: 流程图
+  hsganttChart: 甘特图
   hsseamless: 无缝滚动
   hscontextmenu: 右键菜单
   hstypeit: 打字机
