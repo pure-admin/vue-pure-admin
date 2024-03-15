@@ -49,10 +49,10 @@ export default defineComponent({
   },
   mounted() {
     ElNotification({
-      title: "优质服务",
+      title: "永久解答服务",
       duration: 0,
       dangerouslyUseHTMLString: true,
-      message: `<a target='_blank' style='font-size: 16px' class='hover:text-[red]' href='https://www.bilibili.com/video/BV15r421W7U9/?vd_source=5a992808de6229d78e7810536c5f9ab3'>视频介绍</a>`
+      message: `<a target='_blank' style='font-size: 16px' class='hover:text-[red]' href='https://yiming_chang.gitee.io/pure-admin-doc/pages/service/#%E6%B0%B8%E4%B9%85%E8%A7%A3%E7%AD%94%E5%BE%AE%E4%BF%A1%E7%BE%A4'>不久后恢复原价<br />感兴趣的朋友可以入手啦</a>`
     });
   }
 });
