@@ -96,7 +96,7 @@ onMounted(() => {
       ref="formRef"
       :inline="true"
       :model="form"
-      class="search-form bg-bg_color w-[99/100] pl-8 pt-[12px]"
+      class="search-form bg-bg_color w-[99/100] pl-8 pt-[12px] overflow-auto"
     >
       <el-form-item label="角色名称：" prop="name">
         <el-input

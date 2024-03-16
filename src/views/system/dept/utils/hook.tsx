@@ -7,7 +7,7 @@ import { usePublicHooks } from "../../hooks";
 import { addDialog } from "@/components/ReDialog";
 import { reactive, ref, onMounted, h } from "vue";
 import type { FormItemProps } from "../utils/types";
-import { cloneDeep, isAllEmpty } from "@pureadmin/utils";
+import { cloneDeep, isAllEmpty, deviceDetection } from "@pureadmin/utils";
 
 export function useDept() {
   const form = reactive({
@@ -120,6 +120,7 @@ export function useDept() {
       },
       width: "40%",
       draggable: true,
+      fullscreen: deviceDetection(),
       fullscreenIcon: true,
       closeOnClickModal: false,
       contentRenderer: () => h(editForm, { ref: formRef }),
