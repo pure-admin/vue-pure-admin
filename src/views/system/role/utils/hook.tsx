@@ -4,11 +4,13 @@ import { handleTree } from "@/utils/tree";
 import { message } from "@/utils/message";
 import { ElMessageBox } from "element-plus";
 import { usePublicHooks } from "../../hooks";
+import { getKeyList } from "@pureadmin/utils";
+import { transformI18n } from "@/plugins/i18n";
 import { addDialog } from "@/components/ReDialog";
 import type { FormItemProps } from "../utils/types";
 import type { PaginationProps } from "@pureadmin/table";
-import { type Ref, reactive, ref, onMounted, h, toRaw } from "vue";
 import { getRoleList, getRoleMenu, getRoleMenuIds } from "@/api/system";
+import { type Ref, reactive, ref, onMounted, h, toRaw, watch } from "vue";
 
 export function useRole(treeRef: Ref) {
   const form = reactive({
@@ -19,10 +21,15 @@ export function useRole(treeRef: Ref) {
   const curRow = ref();
   const formRef = ref();
   const dataList = ref([]);
+  const treeIds = ref([]);
   const treeData = ref([]);
-  const isShow = ref(true);
+  const isShow = ref(false);
   const loading = ref(true);
+  const isLinkage = ref(false);
+  const treeSearchValue = ref();
   const switchLoadMap = ref({});
+  const isExpandAll = ref(false);
+  const isSelectAll = ref(false);
   const { switchStyle } = usePublicHooks();
   const treeProps = {
     value: "id",
@@ -237,13 +244,44 @@ export function useRole(treeRef: Ref) {
     };
   }
 
+  /** 菜单权限-保存 */
+  function handleSave() {
+    const { id, name } = curRow.value;
+    // 根据用户 id 调用实际项目中菜单权限修改接口
+    console.log(id, treeRef.value.getCheckedKeys());
+    message(`角色名称为${name}的菜单权限修改成功`, {
+      type: "success"
+    });
+  }
+
   /** 数据权限 可自行开发 */
   // function handleDatabase() {}
+
+  const onQueryChanged = (query: string) => {
+    treeRef.value!.filter(query);
+  };
+
+  const filterMethod = (query: string, node) => {
+    return transformI18n(node.title)!.includes(query);
+  };
 
   onMounted(async () => {
     onSearch();
     const { data } = await getRoleMenu();
+    treeIds.value = getKeyList(data, "id");
     treeData.value = handleTree(data);
+  });
+
+  watch(isExpandAll, val => {
+    val
+      ? treeRef.value.setExpandedKeys(treeIds.value)
+      : treeRef.value.setExpandedKeys([]);
+  });
+
+  watch(isSelectAll, val => {
+    val
+      ? treeRef.value.setCheckedKeys(treeIds.value)
+      : treeRef.value.setCheckedKeys([]);
   });
 
   return {
@@ -256,13 +294,21 @@ export function useRole(treeRef: Ref) {
     dataList,
     treeData,
     treeProps,
+    isLinkage,
     pagination,
+    isExpandAll,
+    isSelectAll,
+    treeSearchValue,
     // buttonClass,
     onSearch,
     resetForm,
     openDialog,
     handleMenu,
+    handleSave,
     handleDelete,
+    filterMethod,
+    transformI18n,
+    onQueryChanged,
     // handleDatabase,
     handleSizeChange,
     handleCurrentChange,

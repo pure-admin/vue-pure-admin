@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import { useRole } from "./utils/hook";
-import { transformI18n } from "@/plugins/i18n";
 import { ref, computed, nextTick, onMounted } from "vue";
 import { PureTableBar } from "@/components/RePureTableBar";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
-import { subBefore, useResizeObserver, delay } from "@pureadmin/utils";
+import {
+  delay,
+  subBefore,
+  deviceDetection,
+  useResizeObserver
+} from "@pureadmin/utils";
 
 // import Database from "@iconify-icons/ri/database-2-line";
 // import More from "@iconify-icons/ep/more-filled";
@@ -14,6 +18,7 @@ import Refresh from "@iconify-icons/ep/refresh";
 import Menu from "@iconify-icons/ep/menu";
 import AddFill from "@iconify-icons/ri/add-circle-line";
 import Close from "@iconify-icons/ep/close";
+import Check from "@iconify-icons/ep/check";
 
 defineOptions({
   name: "SystemRole"
@@ -52,13 +57,21 @@ const {
   dataList,
   treeData,
   treeProps,
+  isLinkage,
   pagination,
+  isExpandAll,
+  isSelectAll,
+  treeSearchValue,
   // buttonClass,
   onSearch,
   resetForm,
   openDialog,
   handleMenu,
+  handleSave,
   handleDelete,
+  filterMethod,
+  transformI18n,
+  onQueryChanged,
   // handleDatabase,
   handleSizeChange,
   handleCurrentChange,
@@ -69,13 +82,9 @@ onMounted(() => {
   useResizeObserver(contentRef, async () => {
     await nextTick();
     delay(60).then(() => {
-      treeHeight.value =
-        parseFloat(
-          subBefore(
-            tableRef.value.getTableDoms().tableWrapper.style.height,
-            "px"
-          )
-        ) + 64;
+      treeHeight.value = parseFloat(
+        subBefore(tableRef.value.getTableDoms().tableWrapper.style.height, "px")
+      );
     });
   });
 });
@@ -131,13 +140,15 @@ onMounted(() => {
       </el-form-item>
     </el-form>
 
-    <div ref="contentRef" class="flex">
+    <div
+      ref="contentRef"
+      :class="['flex', deviceDetection() ? 'flex-wrap' : '']"
+    >
       <PureTableBar
-        :class="[isShow ? '!w-[65vw]' : 'w-full']"
+        :class="[isShow && !deviceDetection() ? '!w-[60vw]' : 'w-full']"
         style="transition: width 220ms cubic-bezier(0.4, 0, 0.2, 1)"
         title="角色管理（仅演示，操作后不生效）"
         :columns="columns"
-        :tableRef="tableRef?.getTableRef()"
         @refresh="onSearch"
       >
         <template #buttons>
@@ -253,30 +264,60 @@ onMounted(() => {
 
       <div
         v-if="isShow"
-        v-motion-fade
-        class="!w-[33vw] mt-2 px-2 pb-2 bg-bg_color h-full ml-2"
+        class="!min-w-[calc(100vw-60vw-268px)] mt-2 px-2 pb-2 bg-bg_color ml-2 overflow-auto"
       >
-        <div class="flex justify-between w-full p-5">
-          <span :class="iconClass">
-            <IconifyIconOffline
-              class="dark:text-white"
-              width="18px"
-              height="18px"
-              :icon="Close"
-              @click="handleMenu"
-            />
-          </span>
+        <div class="flex justify-between w-full px-3 pt-5 pb-4">
+          <div class="flex">
+            <span :class="iconClass">
+              <IconifyIconOffline
+                v-tippy="{
+                  content: '关闭'
+                }"
+                class="dark:text-white"
+                width="18px"
+                height="18px"
+                :icon="Close"
+                @click="handleMenu"
+              />
+            </span>
+            <span :class="[iconClass, 'ml-2']">
+              <IconifyIconOffline
+                v-tippy="{
+                  content: '保存菜单权限'
+                }"
+                class="dark:text-white"
+                width="18px"
+                height="18px"
+                :icon="Check"
+                @click="handleSave"
+              />
+            </span>
+          </div>
           <p class="font-bold truncate">
             菜单权限
             {{ `${curRow?.name ? `（${curRow.name}）` : ""}` }}
           </p>
         </div>
+        <el-input
+          v-model="treeSearchValue"
+          placeholder="请输入菜单进行搜索"
+          class="mb-1"
+          clearable
+          @input="onQueryChanged"
+        />
+        <div class="flex flex-wrap">
+          <el-checkbox v-model="isExpandAll" label="展开/折叠" />
+          <el-checkbox v-model="isSelectAll" label="全选/全不选" />
+          <el-checkbox v-model="isLinkage" label="父子联动" />
+        </div>
         <el-tree-v2
           ref="treeRef"
+          show-checkbox
           :data="treeData"
           :props="treeProps"
-          show-checkbox
           :height="treeHeight"
+          :check-strictly="!isLinkage"
+          :filter-method="filterMethod"
         >
           <template #default="{ node }">
             <span>{{ transformI18n(node.label) }}</span>
