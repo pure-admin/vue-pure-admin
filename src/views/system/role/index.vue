@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
 import { useRole } from "./utils/hook";
+import { transformI18n } from "@/plugins/i18n";
+import { ref, computed, nextTick, onMounted } from "vue";
 import { PureTableBar } from "@/components/RePureTableBar";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
+import { subBefore, useResizeObserver, delay } from "@pureadmin/utils";
 
 // import Database from "@iconify-icons/ri/database-2-line";
 // import More from "@iconify-icons/ep/more-filled";
@@ -34,7 +36,12 @@ const iconClass = computed(() => {
   ];
 });
 
+const treeRef = ref();
 const formRef = ref();
+const tableRef = ref();
+const contentRef = ref();
+const treeHeight = ref();
+
 const {
   form,
   isShow,
@@ -43,6 +50,8 @@ const {
   columns,
   rowStyle,
   dataList,
+  treeData,
+  treeProps,
   pagination,
   // buttonClass,
   onSearch,
@@ -54,7 +63,22 @@ const {
   handleSizeChange,
   handleCurrentChange,
   handleSelectionChange
-} = useRole();
+} = useRole(treeRef);
+
+onMounted(() => {
+  useResizeObserver(contentRef, async () => {
+    await nextTick();
+    delay(60).then(() => {
+      treeHeight.value =
+        parseFloat(
+          subBefore(
+            tableRef.value.getTableDoms().tableWrapper.style.height,
+            "px"
+          )
+        ) + 64;
+    });
+  });
+});
 </script>
 
 <template>
@@ -107,12 +131,13 @@ const {
       </el-form-item>
     </el-form>
 
-    <div class="flex">
+    <div ref="contentRef" class="flex">
       <PureTableBar
-        :class="[isShow ? '!w-[60vw]' : 'w-full']"
+        :class="[isShow ? '!w-[65vw]' : 'w-full']"
         style="transition: width 220ms cubic-bezier(0.4, 0, 0.2, 1)"
         title="角色管理（仅演示，操作后不生效）"
         :columns="columns"
+        :tableRef="tableRef?.getTableRef()"
         @refresh="onSearch"
       >
         <template #buttons>
@@ -126,6 +151,7 @@ const {
         </template>
         <template v-slot="{ size, dynamicColumns }">
           <pure-table
+            ref="tableRef"
             align-whole="center"
             showOverflowTooltip
             table-layout="auto"
@@ -228,13 +254,9 @@ const {
       <div
         v-if="isShow"
         v-motion-fade
-        class="!w-[38vw] mt-2 px-2 pb-2 bg-bg_color h-full ml-2"
+        class="!w-[33vw] mt-2 px-2 pb-2 bg-bg_color h-full ml-2"
       >
-        <div class="flex justify-between w-full h-[60px] p-4">
-          <p class="font-bold truncate">
-            菜单权限
-            {{ `${curRow?.name ? `（${curRow.name}）` : ""}` }}
-          </p>
+        <div class="flex justify-between w-full p-5">
           <span :class="iconClass">
             <IconifyIconOffline
               class="dark:text-white"
@@ -244,7 +266,22 @@ const {
               @click="handleMenu"
             />
           </span>
+          <p class="font-bold truncate">
+            菜单权限
+            {{ `${curRow?.name ? `（${curRow.name}）` : ""}` }}
+          </p>
         </div>
+        <el-tree-v2
+          ref="treeRef"
+          :data="treeData"
+          :props="treeProps"
+          show-checkbox
+          :height="treeHeight"
+        >
+          <template #default="{ node }">
+            <span>{{ transformI18n(node.label) }}</span>
+          </template>
+        </el-tree-v2>
       </div>
     </div>
   </div>

@@ -1,15 +1,16 @@
 import dayjs from "dayjs";
 import editForm from "../form.vue";
+import { handleTree } from "@/utils/tree";
 import { message } from "@/utils/message";
-import { getRoleList } from "@/api/system";
 import { ElMessageBox } from "element-plus";
 import { usePublicHooks } from "../../hooks";
 import { addDialog } from "@/components/ReDialog";
 import type { FormItemProps } from "../utils/types";
 import type { PaginationProps } from "@pureadmin/table";
-import { reactive, ref, onMounted, h, toRaw } from "vue";
+import { type Ref, reactive, ref, onMounted, h, toRaw } from "vue";
+import { getRoleList, getRoleMenu, getRoleMenuIds } from "@/api/system";
 
-export function useRole() {
+export function useRole(treeRef: Ref) {
   const form = reactive({
     name: "",
     code: "",
@@ -18,10 +19,16 @@ export function useRole() {
   const curRow = ref();
   const formRef = ref();
   const dataList = ref([]);
-  const loading = ref(true);
+  const treeData = ref([]);
   const isShow = ref(true);
+  const loading = ref(true);
   const switchLoadMap = ref({});
   const { switchStyle } = usePublicHooks();
+  const treeProps = {
+    value: "id",
+    label: "title",
+    children: "children"
+  };
   const pagination = reactive<PaginationProps>({
     total: 0,
     pageSize: 10,
@@ -209,11 +216,13 @@ export function useRole() {
   }
 
   /** 菜单权限 */
-  function handleMenu(row?: any) {
+  async function handleMenu(row?: any) {
     const { id } = row;
     if (id) {
       curRow.value = row;
       isShow.value = true;
+      const { data } = await getRoleMenuIds({ id });
+      treeRef.value.setCheckedKeys(data);
     } else {
       curRow.value = null;
       isShow.value = false;
@@ -231,8 +240,10 @@ export function useRole() {
   /** 数据权限 可自行开发 */
   // function handleDatabase() {}
 
-  onMounted(() => {
+  onMounted(async () => {
     onSearch();
+    const { data } = await getRoleMenu();
+    treeData.value = handleTree(data);
   });
 
   return {
@@ -243,6 +254,8 @@ export function useRole() {
     columns,
     rowStyle,
     dataList,
+    treeData,
+    treeProps,
     pagination,
     // buttonClass,
     onSearch,

@@ -140,6 +140,234 @@ export default defineFakeRoute([
       };
     }
   },
+  // 角色管理-权限-菜单权限
+  {
+    url: "/role-menu",
+    method: "post",
+    response: () => {
+      return {
+        success: true,
+        data: [
+          // 外部页面
+          {
+            parentId: 0,
+            id: 100,
+            menuType: 0, // 菜单类型（0代表菜单、1代表iframe、2代表外链、3代表按钮）
+            title: "menus.hsExternalPage"
+          },
+          {
+            parentId: 100,
+            id: 101,
+            menuType: 0,
+            title: "menus.hsExternalDoc"
+          },
+          {
+            parentId: 101,
+            id: 102,
+            menuType: 2,
+            title: "menus.externalLink"
+          },
+          {
+            parentId: 101,
+            id: 103,
+            menuType: 2,
+            title: "menus.pureutilsLink"
+          },
+          {
+            parentId: 100,
+            id: 104,
+            menuType: 1,
+            title: "menus.hsEmbeddedDoc"
+          },
+          {
+            parentId: 104,
+            id: 105,
+            menuType: 1,
+            title: "menus.hsEpDocument"
+          },
+          {
+            parentId: 104,
+            id: 106,
+            menuType: 1,
+            title: "menus.hsTailwindcssDocument"
+          },
+          {
+            parentId: 104,
+            id: 107,
+            menuType: 1,
+            title: "menus.hsVueDocument"
+          },
+          {
+            parentId: 104,
+            id: 108,
+            menuType: 1,
+            title: "menus.hsViteDocument"
+          },
+          {
+            parentId: 104,
+            id: 109,
+            menuType: 1,
+            title: "menus.hsPiniaDocument"
+          },
+          {
+            parentId: 104,
+            id: 110,
+            menuType: 1,
+            title: "menus.hsRouterDocument"
+          },
+          // 权限管理
+          {
+            parentId: 0,
+            id: 200,
+            menuType: 0,
+            title: "menus.permission"
+          },
+          {
+            parentId: 200,
+            id: 201,
+            menuType: 0,
+            title: "menus.permissionPage"
+          },
+          {
+            parentId: 200,
+            id: 202,
+            menuType: 0,
+            title: "menus.permissionButton"
+          },
+          {
+            parentId: 202,
+            id: 203,
+            menuType: 3,
+            title: "添加"
+          },
+          {
+            parentId: 202,
+            id: 204,
+            menuType: 3,
+            title: "修改"
+          },
+          {
+            parentId: 202,
+            id: 205,
+            menuType: 3,
+            title: "删除"
+          },
+          // 系统管理
+          {
+            parentId: 0,
+            id: 300,
+            menuType: 0,
+            title: "menus.hssysManagement"
+          },
+          {
+            parentId: 300,
+            id: 301,
+            menuType: 0,
+            title: "menus.hsUser"
+          },
+          {
+            parentId: 300,
+            id: 302,
+            menuType: 0,
+            title: "menus.hsRole"
+          },
+          {
+            parentId: 300,
+            id: 303,
+            menuType: 0,
+            title: "menus.hsSystemMenu"
+          },
+          {
+            parentId: 300,
+            id: 304,
+            menuType: 0,
+            title: "menus.hsDept"
+          },
+          // 系统监控
+          {
+            parentId: 0,
+            id: 400,
+            menuType: 0,
+            title: "menus.hssysMonitor"
+          },
+          {
+            parentId: 400,
+            id: 401,
+            menuType: 0,
+            title: "menus.hsOnlineUser"
+          },
+          {
+            parentId: 400,
+            id: 402,
+            menuType: 0,
+            title: "menus.hsLoginLog"
+          },
+          {
+            parentId: 400,
+            id: 403,
+            menuType: 0,
+            title: "menus.hsOperationLog"
+          },
+          {
+            parentId: 400,
+            id: 404,
+            menuType: 0,
+            title: "menus.hsSystemLog"
+          },
+          // 标签页操作
+          {
+            parentId: 0,
+            id: 500,
+            menuType: 0,
+            title: "menus.hstabs"
+          },
+          {
+            parentId: 500,
+            id: 501,
+            menuType: 0,
+            title: "menus.hstabs"
+          },
+          {
+            parentId: 500,
+            id: 502,
+            menuType: 0,
+            title: "query传参模式"
+          },
+          {
+            parentId: 500,
+            id: 503,
+            menuType: 0,
+            title: "params传参模式"
+          }
+        ]
+      };
+    }
+  },
+  // 角色管理-权限-菜单权限-根据角色 id 查对应菜单
+  {
+    url: "/role-menu-ids",
+    method: "post",
+    response: ({ body }) => {
+      if (body.id == 1) {
+        return {
+          success: true,
+          data: [
+            100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 200, 201,
+            202, 203, 204, 205, 300, 301, 302, 303, 304, 400, 401, 402, 403,
+            404, 500, 501, 502, 503
+          ]
+        };
+      } else if (body.id == 2) {
+        return {
+          success: true,
+          data: [
+            100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 404, 500,
+            501, 502, 503
+          ]
+        };
+      }
+    }
+  },
   // 菜单管理
   {
     url: "/menu",
