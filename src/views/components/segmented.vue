@@ -164,6 +164,7 @@ const optionsChange: Array<OptionsType> = [
     value: 3
   }
 ];
+const modelValue = ref(1);
 
 /** change 事件 */
 function onChange({ index, option }) {
@@ -194,6 +195,13 @@ function onChange({ index, option }) {
       <el-divider />
       <p class="mb-2">change 事件</p>
       <Segmented :options="optionsChange" @change="onChange" />
+      <el-divider />
+      <p class="mb-3">默认值</p>
+      <Segmented
+        v-model="modelValue"
+        :options="optionsChange"
+        @change="onChange"
+      />
       <el-divider />
       <p class="mb-2">禁用</p>
       <Segmented :options="optionsDisabled" />
