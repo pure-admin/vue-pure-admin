@@ -1,26 +1,8 @@
 import { ref } from "vue";
+import { options } from "../data";
 
 export function useColumns() {
   const dataList = ref([]);
-
-  const options = [
-    {
-      value: 0,
-      label: "上午写代码"
-    },
-    {
-      value: 1,
-      label: "下午写代码"
-    },
-    {
-      value: 2,
-      label: "晚上写代码"
-    },
-    {
-      value: 3,
-      label: "凌晨休息了"
-    }
-  ];
 
   const columns: TableColumnList = [
     {
