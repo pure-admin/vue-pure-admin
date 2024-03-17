@@ -1,68 +1,47 @@
-import dayjs from "dayjs";
-
-const date = dayjs(new Date()).format("YYYY-MM-DD");
-
 const tableData = [
   {
-    date,
     name: "Tom",
     sex: 0, // 0代表男 1代表女
-    hobby: null
+    hobby: 2,
+    date: "2024-03-17"
   },
   {
-    date,
     name: "Jack",
     sex: 0,
-    hobby: null
+    hobby: 1,
+    date: "2024-03-18"
   },
   {
-    date,
-    name: "Dick",
-    sex: 0,
-    hobby: null
+    name: "Lily",
+    sex: 1,
+    hobby: 1,
+    date: "2024-03-19"
   },
   {
-    date,
-    name: "Harry",
-    sex: 0,
-    hobby: null
-  },
-  {
-    date,
-    name: "Sam",
-    sex: 0,
-    hobby: null
-  },
-  {
-    date,
-    name: "Lucy",
-    sex: 0,
-    hobby: null
-  },
-  {
-    date,
-    name: "Mary",
-    sex: 0,
-    hobby: null
-  },
-  {
-    date,
-    name: "Mike",
-    sex: 0,
-    hobby: null
-  },
-  {
-    date,
-    name: "Mike1",
-    sex: 0,
-    hobby: null
-  },
-  {
-    date,
-    name: "Mike2",
-    sex: 0,
-    hobby: null
+    name: "Mia",
+    sex: 1,
+    hobby: 3,
+    date: "2024-03-20"
   }
 ];
 
-export { tableData };
+const options = [
+  {
+    value: 0,
+    label: "上午写代码"
+  },
+  {
+    value: 1,
+    label: "下午写代码"
+  },
+  {
+    value: 2,
+    label: "晚上写代码"
+  },
+  {
+    value: 3,
+    label: "凌晨休息了"
+  }
+];
+
+export { tableData, options };
