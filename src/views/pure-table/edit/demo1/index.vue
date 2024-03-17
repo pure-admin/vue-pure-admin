@@ -16,12 +16,12 @@ const { columns, dataList, onAdd, onDel } = useColumns();
       </code>
     </el-scrollbar>
     <pure-table
+      row-key="id"
       align-whole="center"
       :header-cell-style="{
         background: 'var(--el-fill-color-light)',
         color: 'var(--el-text-color-primary)'
       }"
-      row-key="id"
       :data="dataList"
       :columns="columns"
     >
@@ -50,3 +50,9 @@ const { columns, dataList, onAdd, onDel } = useColumns();
     </pure-table>
   </div>
 </template>
+
+<style scoped>
+:deep(.el-table__inner-wrapper::before) {
+  height: 0;
+}
+</style>
