@@ -1,1 +1,0 @@
-import{_ as o}from"./index.vue_vue_type_script_setup_true_lang-CUs_8Nfh.js";import"./columns-CzBInC8c.js";import"./index-WGKmNNf0.js";import"./hooks-Cm2X3NoP.js";import"./plus-C98eNXam.js";import"./delete-Ce0TSdK5.js";const e=t=>`代码位置：src/views/pure-table/edit/${t}/index.vue`,c=[{key:"demo1",content:e("demo1"),title:"示例一",component:o}];export{c as list};
