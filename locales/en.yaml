@@ -130,6 +130,7 @@ menus:
   hsdanmaku: Danmaku
   hsPureTableBase: Base Usage
   hsPureTableHigh: High Usage
+  hsPureTableEdit: Edit Usage
   hsboard: Paint Board
   hsMenuoverflow: Menu Overflow Show Tooltip Text
   hsChildMenuoverflow: Child Menu Overflow Show Tooltip Text
