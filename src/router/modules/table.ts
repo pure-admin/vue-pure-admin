@@ -25,6 +25,15 @@ export default {
       meta: {
         title: $t("menus.hsPureTableHigh")
       }
+    },
+    {
+      path: "/pure-table/edit",
+      name: "PureTableEdit",
+      component: () => import("@/views/pure-table/edit.vue"),
+      meta: {
+        title: $t("menus.hsPureTableEdit"),
+        extraIcon: "IF-pure-iconfont-new svg"
+      }
     }
   ]
 } satisfies RouteConfigsTable;
