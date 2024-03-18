@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { toRefs } from "vue";
 import { useColumns } from "./columns";
 
 const { editMap, columns, dataList, onEdit, onSave, onCancel } = useColumns();
