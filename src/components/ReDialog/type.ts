@@ -1,7 +1,12 @@
 import type { CSSProperties, VNode, Component } from "vue";
 
 type DoneFn = (cancel?: boolean) => void;
-type EventType = "open" | "close" | "openAutoFocus" | "closeAutoFocus";
+type EventType =
+  | "open"
+  | "close"
+  | "openAutoFocus"
+  | "closeAutoFocus"
+  | "fullscreenCallBack";
 type ArgsType = {
   /** `cancel` 点击取消按钮、`sure` 点击确定按钮、`close` 点击右上角关闭按钮或空白页或按下了esc键 */
   command: "cancel" | "sure" | "close";
@@ -174,6 +179,14 @@ interface DialogOptions extends DialogProps {
     options: DialogOptions;
     index: number;
     args: any;
+  }) => void;
+  /** 点击全屏按钮时的回调 */
+  fullscreenCallBack?: ({
+    options,
+    index
+  }: {
+    options: DialogOptions;
+    index: number;
   }) => void;
   /** 输入焦点聚焦在 `Dialog` 内容时的回调 */
   openAutoFocus?: ({
