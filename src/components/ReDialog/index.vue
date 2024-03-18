@@ -64,9 +64,10 @@ const fullscreenClass = computed(() => {
 function eventsCallBack(
   event: EventType,
   options: DialogOptions,
-  index: number
+  index: number,
+  isClickFullScreen = false
 ) {
-  fullscreen.value = options?.fullscreen ?? false;
+  if (!isClickFullScreen) fullscreen.value = options?.fullscreen ?? false;
   if (options?.[event] && isFunction(options?.[event])) {
     return options?.[event]({ options, index });
   }
@@ -108,7 +109,17 @@ function handleClose(
         <i
           v-if="!options?.fullscreen"
           :class="fullscreenClass"
-          @click="fullscreen = !fullscreen"
+          @click="
+            () => {
+              fullscreen = !fullscreen;
+              eventsCallBack(
+                'fullscreenCallBack',
+                { ...options, fullscreen },
+                index,
+                true
+              );
+            }
+          "
         >
           <IconifyIconOffline
             class="pure-dialog-svg"
