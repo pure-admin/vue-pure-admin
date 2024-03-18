@@ -23,3 +23,8 @@ export const formUpload = data => {
     }
   );
 };
+
+/**所在区域数据*/
+export const getRegions = (params?: object) => {
+  return http.request<Result>("get", "/get-regions", { params });
+};
