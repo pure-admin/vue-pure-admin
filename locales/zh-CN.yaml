@@ -1,4 +1,5 @@
 buttons:
+  hsUserSettings: 账户设置 
   hsLoginOut: 退出系统
   hsfullscreen: 全屏
   hsexitfullscreen: 退出全屏

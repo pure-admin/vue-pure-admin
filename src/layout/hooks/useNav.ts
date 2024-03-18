@@ -99,6 +99,10 @@ export function useNav() {
     emitter.emit("openPanel");
   }
 
+  function handleOpenUserSettings() {
+    router.push({ name: "UserInfoManage" });
+  }
+
   function toggleSideBar() {
     pureApp.toggleSideBar();
   }
@@ -160,6 +164,7 @@ export function useNav() {
     avatarsStyle,
     tooltipEffect,
     getDropdownItemStyle,
-    getDropdownItemClass
+    getDropdownItemClass,
+    handleOpenUserSettings
   };
 }

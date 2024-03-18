@@ -11,10 +11,13 @@ import globalization from "@/assets/svg/globalization.svg?component";
 import LogoutCircleRLine from "@iconify-icons/ri/logout-circle-r-line";
 import Setting from "@iconify-icons/ri/settings-3-line";
 import Check from "@iconify-icons/ep/check";
+import UserSettingsLine from "@iconify-icons/ri/user-settings-line";
+
 const {
   layout,
   device,
   logout,
+  handleOpenUserSettings,
   onPanel,
   pureApp,
   username,
@@ -91,6 +94,13 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
         </span>
         <template #dropdown>
           <el-dropdown-menu class="logout">
+            <el-dropdown-item @click="handleOpenUserSettings">
+              <IconifyIconOffline
+                :icon="UserSettingsLine"
+                style="margin: 5px"
+              />
+              {{ t("buttons.hsUserSettings") }}
+            </el-dropdown-item>
             <el-dropdown-item @click="logout">
               <IconifyIconOffline
                 :icon="LogoutCircleRLine"

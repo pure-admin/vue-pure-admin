@@ -28,6 +28,20 @@ export type RefreshTokenResult = {
   };
 };
 
+export type UserInfo = {
+  avatarUrl: string;
+  nickName: string;
+  introduce: string;
+  regionCode: string;
+  address: string;
+  userName: string;
+};
+
+export type UserInfoResult = {
+  success: boolean;
+  data: UserInfo;
+};
+
 /** 登录 */
 export const getLogin = (data?: object) => {
   return http.request<UserResult>("post", "/login", { data });
@@ -36,4 +50,9 @@ export const getLogin = (data?: object) => {
 /** 刷新token */
 export const refreshTokenApi = (data?: object) => {
   return http.request<RefreshTokenResult>("post", "/refresh-token", { data });
+};
+
+/**获取个人信息 */
+export const getUserInfo = (data?: object) => {
+  return http.request<UserInfoResult>("get", "/get-user-info", { data });
 };
