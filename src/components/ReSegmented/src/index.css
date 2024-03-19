@@ -8,6 +8,21 @@
   border-radius: 2px;
 }
 
+.pure-segmented-block {
+  display: flex;
+}
+
+.pure-segmented-block .pure-segmented-item {
+  flex: 1;
+  min-width: 0;
+}
+
+.pure-segmented-block .pure-segmented-item > .pure-segmented-item-label > span {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 .pure-segmented-group {
   position: relative;
   display: flex;
@@ -67,6 +82,7 @@
 .pure-segmented-item-label {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .pure-segmented-item-icon svg {
