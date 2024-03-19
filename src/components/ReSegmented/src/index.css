@@ -64,6 +64,9 @@
   min-height: 28px;
   line-height: 28px;
   padding: 0 11px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .pure-segmented-item > input {
