@@ -26,6 +26,9 @@ dependencies:
   '@pureadmin/utils':
     specifier: ^2.4.7
     version: 2.4.7(echarts@5.5.0)(vue@3.4.21)
+  '@vue-flow/background':
+    specifier: ^1.3.0
+    version: 1.3.0(@vue-flow/core@1.33.4)(vue@3.4.21)
   '@vue-flow/core':
     specifier: ^1.33.4
     version: 1.33.4(vue@3.4.21)
@@ -2364,6 +2367,16 @@ packages:
       '@volar/language-core': 1.11.1
       path-browserify: 1.0.1
     dev: true
+
+  /@vue-flow/background@1.3.0(@vue-flow/core@1.33.4)(vue@3.4.21):
+    resolution: {integrity: sha512-fu/8s9wzSOQIitnSTI10XT3bzTtagh4h8EF2SWwtlDklOZjAaKy75lqv4htHa3wigy/r4LGCOGwLw3Pk88/AxA==}
+    peerDependencies:
+      '@vue-flow/core': ^1.23.0
+      vue: ^3.3.0
+    dependencies:
+      '@vue-flow/core': 1.33.4(vue@3.4.21)
+      vue: 3.4.21(typescript@5.4.2)
+    dev: false
 
   /@vue-flow/core@1.33.4(vue@3.4.21):
     resolution: {integrity: sha512-ryoamKfQ5pgtdv//Gjpyc4nsawMOwfI2jVzOPvZ92VQs78L4lidiWD7UybqeEkrGw6UPue1CGlzoy/4KlOWcSg==}

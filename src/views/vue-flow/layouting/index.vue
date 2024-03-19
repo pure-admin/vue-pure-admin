@@ -1,64 +1,50 @@
 <script lang="ts" setup>
 import "@vue-flow/core/dist/style.css";
 import "@vue-flow/core/dist/theme-default.css";
-import dagre from "dagre";
-import { ref, nextTick } from "vue";
+import Icon from "./icon.vue";
+import { nextTick, ref } from "vue";
+import { useLayout } from "./useLayout";
+import { useShuffle } from "./useShuffle";
 import ProcessNode from "./processNode.vue";
-import AnimationEdge from "./animationEdge.vue";
 import { useRunProcess } from "./useRunProcess";
+import AnimationEdge from "./animationEdge.vue";
+import { Background } from "@vue-flow/background";
+import { Panel, VueFlow, useVueFlow } from "@vue-flow/core";
 import { initialEdges, initialNodes } from "./initialElements";
-import {
-  ConnectionMode,
-  Panel,
-  Position,
-  VueFlow,
-  useVueFlow
-} from "@vue-flow/core";
 
 const nodes = ref(initialNodes);
 
 const edges = ref(initialEdges);
 
-const dagreGraph = ref(new dagre.graphlib.Graph());
+const cancelOnError = ref(true);
 
-dagreGraph.value.setDefaultEdgeLabel(() => ({}));
+const shuffle = useShuffle();
 
-const { run, stop, isRunning } = useRunProcess(dagreGraph);
+const { graph, layout, previousDirection } = useLayout();
 
-const { findNode, fitView } = useVueFlow();
+// @ts-expect-error
+const { run, stop, reset, isRunning } = useRunProcess({ graph, cancelOnError });
 
-function handleLayout(direction: "TB" | "LR") {
-  dagreGraph.value = new dagre.graphlib.Graph();
-  dagreGraph.value.setDefaultEdgeLabel(() => ({}));
+const { fitView } = useVueFlow();
 
-  const isHorizontal = direction === "LR";
-  dagreGraph.value.setGraph({ rankdir: direction });
+async function shuffleGraph() {
+  await stop();
 
-  for (const node of nodes.value) {
-    const graphNode = findNode(node.id)!;
+  reset(nodes.value);
 
-    dagreGraph.value.setNode(node.id, {
-      width: graphNode.dimensions.width || 150,
-      height: graphNode.dimensions.height || 50
-    });
-  }
+  edges.value = shuffle(nodes.value);
 
-  for (const edge of edges.value) {
-    dagreGraph.value.setEdge(edge.source, edge.target);
-  }
-
-  dagre.layout(dagreGraph.value);
-
-  nodes.value = nodes.value.map(node => {
-    const nodeWithPosition = dagreGraph.value.node(node.id);
-
-    return {
-      ...node,
-      targetPosition: isHorizontal ? Position.Left : Position.Top,
-      sourcePosition: isHorizontal ? Position.Right : Position.Bottom,
-      position: { x: nodeWithPosition.x, y: nodeWithPosition.y }
-    };
+  nextTick(() => {
+    layoutGraph(previousDirection.value);
   });
+}
+
+async function layoutGraph(direction) {
+  await stop();
+
+  reset(nodes.value);
+
+  nodes.value = layout(nodes.value, edges.value, direction);
 
   nextTick(() => {
     fitView();
@@ -68,44 +54,86 @@ function handleLayout(direction: "TB" | "LR") {
 </script>
 
 <template>
-  <div class="layoutflow">
+  <div class="layout-flow">
     <VueFlow
       :nodes="nodes"
       :edges="edges"
-      :connection-mode="ConnectionMode.Loose"
-      @nodes-initialized="handleLayout('LR')"
+      @nodes-initialized="layoutGraph('LR')"
     >
       <template #node-process="props">
-        <ProcessNode v-bind="props" />
+        <ProcessNode
+          :data="props.data"
+          :source-position="props.sourcePosition"
+          :target-position="props.targetPosition"
+        />
       </template>
 
-      <template #edge-animation="props">
-        <AnimationEdge v-bind="props" />
+      <template #edge-animation="edgeProps">
+        <AnimationEdge
+          :id="edgeProps.id"
+          :source="edgeProps.source"
+          :target="edgeProps.target"
+          :source-x="edgeProps.sourceX"
+          :source-y="edgeProps.sourceY"
+          :targetX="edgeProps.targetX"
+          :targetY="edgeProps.targetY"
+          :source-position="edgeProps.sourcePosition"
+          :target-position="edgeProps.targetPosition"
+        />
       </template>
 
-      <Panel class="layout-panel" position="top-left">
-        <button @click="handleLayout('TB')">垂直模式</button>
-        <button @click="handleLayout('LR')">水平模式</button>
-      </Panel>
+      <Background />
 
       <Panel class="process-panel" position="top-right">
-        <button v-if="isRunning" @click="stop">🛑</button>
-        <button v-else @click="run(nodes)">▶️</button>
+        <div class="layout-panel">
+          <button v-if="isRunning" class="stop-btn" title="stop" @click="stop">
+            <Icon name="stop" />
+            <span class="spinner" />
+          </button>
+          <button v-else title="start" @click="run(nodes)">
+            <Icon name="play" />
+          </button>
+
+          <button title="set horizontal layout" @click="layoutGraph('LR')">
+            <Icon name="horizontal" />
+          </button>
+
+          <button title="set vertical layout" @click="layoutGraph('TB')">
+            <Icon name="vertical" />
+          </button>
+
+          <button title="shuffle graph" @click="shuffleGraph">
+            <Icon name="shuffle" />
+          </button>
+        </div>
+
+        <!-- <div class="checkbox-panel">
+          <label>Cancel on error</label>
+          <input v-model="cancelOnError" type="checkbox" />
+        </div> -->
       </Panel>
     </VueFlow>
   </div>
 </template>
 
 <style scoped>
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .main-content {
   margin: 0 !important;
 }
 
-.layoutflow {
+.layout-flow {
   width: 100%;
   height: 100%;
-
-  /* background-color: #1a192b; */
 }
 
 .process-panel,
@@ -114,34 +142,65 @@ function handleLayout(direction: "TB" | "LR") {
   gap: 10px;
 }
 
-.process-panel button,
-.layout-panel button {
-  color: white;
-  cursor: pointer;
+.process-panel {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
   background-color: #2d3748;
-  border: none;
   border-radius: 8px;
   box-shadow: 0 0 10px rgb(0 0 0 / 50%);
 }
 
 .process-panel button {
-  width: 50px;
-  height: 50px;
-  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  background-color: #4a5568;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgb(0 0 0 / 50%);
 }
+
+/* .checkbox-panel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+} */
 
 .process-panel button:hover,
 .layout-panel button:hover {
-  background-color: #4b5563;
+  background-color: #2563eb;
   transition: background-color 0.2s;
 }
 
-.process-panel button:disabled {
-  cursor: not-allowed;
-  background-color: #4b5563;
+.process-panel label {
+  font-size: 12px;
+  color: white;
 }
 
-.layout-panel button {
-  padding: 10px;
+.stop-btn svg {
+  display: none;
+}
+
+.stop-btn:hover svg {
+  display: block;
+}
+
+.stop-btn:hover .spinner {
+  display: none;
+}
+
+.spinner {
+  width: 10px;
+  height: 10px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #2563eb;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
 }
 </style>

@@ -1,9 +1,19 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { toRef } from "vue";
-import type { NodeProps } from "@vue-flow/core";
 import { Handle, useHandleConnections } from "@vue-flow/core";
 
-const props = defineProps<NodeProps>();
+const props = defineProps({
+  data: {
+    type: Object,
+    required: true
+  },
+  sourcePosition: {
+    type: String
+  },
+  targetPosition: {
+    type: String
+  }
+});
 
 const sourceConnections = useHandleConnections({
   type: "target"
@@ -19,7 +29,7 @@ const isReceiver = toRef(() => targetConnections.value.length <= 0);
 
 const bgColor = toRef(() => {
   if (isSender.value) {
-    return "#4b5563";
+    return "#2563eb";
   }
 
   if (props.data.hasError) {
@@ -27,7 +37,7 @@ const bgColor = toRef(() => {
   }
 
   if (props.data.isFinished) {
-    return "#10b981";
+    return "#42B983";
   }
 
   if (props.data.isCancelled) {
@@ -58,16 +68,37 @@ const processLabel = toRef(() => {
     return "😎";
   }
 
-  return "📥";
+  return "🏠";
 });
 </script>
 
 <template>
-  <div class="process-node" :style="{ backgroundColor: bgColor }">
-    <Handle v-if="!isSender" type="target" :position="targetPosition" />
-    <Handle v-if="!isReceiver" type="source" :position="sourcePosition" />
+  <div
+    class="process-node"
+    :style="{
+      backgroundColor: bgColor,
+      boxShadow: data.isRunning ? '0 0 10px rgba(0, 0, 0, 0.5)' : ''
+    }"
+  >
+    <Handle v-if="!isSender" type="target" :position="targetPosition as any">
+      <span
+        v-if="
+          !data.isRunning &&
+          !data.isFinished &&
+          !data.isCancelled &&
+          !data.isSkipped &&
+          !data.hasError
+        "
+        >📥
+      </span>
+    </Handle>
+    <Handle
+      v-if="!isReceiver"
+      type="source"
+      :position="sourcePosition as any"
+    />
 
-    <div v-if="data.isRunning" class="spinner" />
+    <div v-if="!isSender && data.isRunning" class="spinner" />
     <span v-else>
       {{ processLabel }}
     </span>
@@ -79,31 +110,17 @@ const processLabel = toRef(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 18px;
-  height: 18px;
+  width: 24px;
+  height: 24px;
   padding: 10px;
-  font-size: 12px;
-  color: white;
-  border: 1px solid #4b5563;
   border-radius: 99px;
 }
 
-.spinner {
-  width: 10px;
-  height: 10px;
-  border: 3px solid #f3f3f3;
-  border-top: 3px solid #10b981;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
+.process-node .vue-flow__handle {
+  width: unset;
+  height: unset;
+  font-size: 12px;
+  background: transparent;
+  border: none;
 }
 </style>
