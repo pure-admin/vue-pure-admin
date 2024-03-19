@@ -75,6 +75,26 @@ const optionsDisabled: Array<OptionsType> = [
   }
 ];
 
+/** block */
+const optionsBlock: Array<OptionsType> = [
+  {
+    label: "周一"
+  },
+  {
+    label: "周二"
+  },
+  {
+    label: "周三"
+  },
+  {
+    label: "周四"
+  },
+  {
+    label: "周五喜悦，收尾归档，周末倒计时",
+    tip: "周五喜悦，收尾归档，周末倒计时"
+  }
+];
+
 /** 可设置图标 */
 const optionsIcon: Array<OptionsType> = [
   {
@@ -197,6 +217,9 @@ function onChange({ index, option }) {
       <el-divider />
       <p class="mb-2">禁用</p>
       <Segmented :options="optionsDisabled" />
+      <el-divider />
+      <p class="mb-2">block 属性(将宽度调整为父元素宽度)</p>
+      <Segmented :options="optionsBlock" block />
       <el-divider />
       <p class="mb-2">可设置图标</p>
       <Segmented :options="optionsIcon" />

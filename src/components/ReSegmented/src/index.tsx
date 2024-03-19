@@ -10,7 +10,12 @@ import {
 } from "vue";
 import type { OptionsType } from "./type";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
-import { isFunction, isNumber, useDark } from "@pureadmin/utils";
+import {
+  isFunction,
+  isNumber,
+  useDark,
+  useResizeObserver
+} from "@pureadmin/utils";
 
 const props = {
   options: {
@@ -22,6 +27,11 @@ const props = {
     type: undefined,
     require: false,
     default: "0"
+  },
+  /** 将宽度调整为父元素宽度	 */
+  block: {
+    type: Boolean,
+    default: false
   }
 };
 
@@ -74,6 +84,14 @@ export default defineComponent({
         width.value = curLabelRef.clientWidth;
         translateX.value = curLabelRef.offsetLeft;
         initStatus.value = true;
+      });
+    }
+
+    if (props.block) {
+      useResizeObserver(".pure-segmented", () => {
+        nextTick(() => {
+          handleInit(curIndex.value);
+        });
       });
     }
 
@@ -148,7 +166,9 @@ export default defineComponent({
     };
 
     return () => (
-      <div class="pure-segmented">
+      <div
+        class={["pure-segmented", props.block ? "pure-segmented-block" : ""]}
+      >
         <div class="pure-segmented-group">
           <div
             class="pure-segmented-item-selected"
