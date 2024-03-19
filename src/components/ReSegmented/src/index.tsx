@@ -8,6 +8,7 @@ import {
   defineComponent,
   getCurrentInstance
 } from "vue";
+import propTypes from "@/utils/propTypes";
 import type { OptionsType } from "./type";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import { isFunction, isNumber, useDark } from "@pureadmin/utils";
@@ -22,7 +23,9 @@ const props = {
     type: undefined,
     require: false,
     default: "0"
-  }
+  },
+  /** 将宽度调整为父元素宽度	 */
+  block: propTypes.bool.def(false)
 };
 
 export default defineComponent({
@@ -148,7 +151,9 @@ export default defineComponent({
     };
 
     return () => (
-      <div class="pure-segmented">
+      <div
+        class={["pure-segmented", props.block ? "pure-segmented-block" : ""]}
+      >
         <div class="pure-segmented-group">
           <div
             class="pure-segmented-item-selected"
