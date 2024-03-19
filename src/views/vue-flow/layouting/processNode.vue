@@ -106,6 +106,16 @@ const processLabel = toRef(() => {
 </template>
 
 <style scoped>
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .process-node {
   display: flex;
   align-items: center;
@@ -122,5 +132,14 @@ const processLabel = toRef(() => {
   font-size: 12px;
   background: transparent;
   border: none;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #f3f3f3;
+  border-top: 1px solid #2563eb;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
 }
 </style>

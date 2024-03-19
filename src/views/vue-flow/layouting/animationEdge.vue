@@ -2,12 +2,12 @@
 import { computed, nextTick, ref, toRef, watch } from "vue";
 import { TransitionPresets, executeTransition } from "@vueuse/core";
 import {
-  BaseEdge,
-  EdgeLabelRenderer,
   Position,
-  getSmoothStepPath,
+  BaseEdge,
+  useVueFlow,
   useNodesData,
-  useVueFlow
+  getSmoothStepPath,
+  EdgeLabelRenderer
 } from "@vue-flow/core";
 
 const props = defineProps({
@@ -104,7 +104,6 @@ watch(isAnimating, isAnimating => {
   const edge = findEdge(props.id);
 
   if (edge) {
-    // we set the `isAnimating` flag, so we can wait until the next node gets executed
     edge.data = {
       ...edge.data,
       isAnimating
@@ -121,7 +120,6 @@ watch(edgePoint, point => {
 
   const nextLength = pathEl.getTotalLength();
 
-  // if length changed, restart animation
   if (currentLength.value !== nextLength) {
     runAnimation();
     return;
@@ -145,15 +143,12 @@ async function runAnimation() {
 
   const totalLength = pathEl.getTotalLength();
 
-  // if animation restarted, use last edgePoint value to continue from
   const from = edgePoint.value || 0;
 
-  // update initial label position
   labelPosition.value = pathEl.getPointAtLength(from);
 
   isAnimating.value = true;
 
-  // update currentLength value, so we can check if the path length changed during animation
   if (currentLength.value !== totalLength) {
     currentLength.value = totalLength;
   }

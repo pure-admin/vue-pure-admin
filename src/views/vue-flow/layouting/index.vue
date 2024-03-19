@@ -84,7 +84,7 @@ async function layoutGraph(direction) {
 
       <Background />
 
-      <Panel class="process-panel" position="top-right">
+      <Panel class="process-panel" position="top-left">
         <div class="layout-panel">
           <button v-if="isRunning" class="stop-btn" title="stop" @click="stop">
             <Icon name="stop" />
@@ -117,6 +117,8 @@ async function layoutGraph(direction) {
 </template>
 
 <style scoped>
+
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -125,6 +127,12 @@ async function layoutGraph(direction) {
   100% {
     transform: rotate(360deg);
   }
+}
+
+*,
+::before,
+::after {
+  box-sizing: content-box;
 }
 
 .main-content {
@@ -196,8 +204,8 @@ async function layoutGraph(direction) {
 }
 
 .spinner {
-  width: 10px;
-  height: 10px;
+  width: 20px;
+  height: 20px;
   border: 3px solid #f3f3f3;
   border-top: 3px solid #2563eb;
   border-radius: 50%;
