@@ -73,3 +73,13 @@ export const getSystemLogsList = (data?: object) => {
 export const getSystemLogsDetail = (data?: object) => {
   return http.request<Result>("post", "/system-logs-detail", { data });
 };
+
+/** 获取角色管理-权限-菜单权限 */
+export const getRoleMenu = (data?: object) => {
+  return http.request<Result>("post", "/role-menu", { data });
+};
+
+/** 获取角色管理-权限-菜单权限-根据角色 id 查对应菜单 */
+export const getRoleMenuIds = (data?: object) => {
+  return http.request<Result>("post", "/role-menu-ids", { data });
+};
