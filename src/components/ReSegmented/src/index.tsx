@@ -8,10 +8,14 @@ import {
   defineComponent,
   getCurrentInstance
 } from "vue";
-import propTypes from "@/utils/propTypes";
 import type { OptionsType } from "./type";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
-import { isFunction, isNumber, useDark } from "@pureadmin/utils";
+import {
+  isFunction,
+  isNumber,
+  useDark,
+  useResizeObserver
+} from "@pureadmin/utils";
 
 const props = {
   options: {
@@ -25,7 +29,10 @@ const props = {
     default: "0"
   },
   /** 将宽度调整为父元素宽度	 */
-  block: propTypes.bool.def(false)
+  block: {
+    type: Boolean,
+    default: false
+  }
 };
 
 export default defineComponent({
@@ -77,6 +84,14 @@ export default defineComponent({
         width.value = curLabelRef.clientWidth;
         translateX.value = curLabelRef.offsetLeft;
         initStatus.value = true;
+      });
+    }
+
+    if (props.block) {
+      useResizeObserver(".pure-segmented", () => {
+        nextTick(() => {
+          handleInit(curIndex.value);
+        });
       });
     }
 
