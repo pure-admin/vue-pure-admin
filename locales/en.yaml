@@ -128,6 +128,7 @@ menus:
   hsSensitive: Sensitive Filter
   hsPinyin: PinYin
   hsdanmaku: Danmaku
+  hsSchemaForm: Form
   hsPureTableBase: Base Usage
   hsPureTableHigh: High Usage
   hsPureTableEdit: Edit Usage

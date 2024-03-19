@@ -9,9 +9,11 @@
 import { defineComponent } from "vue";
 import { checkVersion } from "version-rocket";
 import { ElConfigProvider } from "element-plus";
-import en from "element-plus/dist/locale/en.mjs";
 import { ReDialog } from "@/components/ReDialog";
+import en from "element-plus/dist/locale/en.mjs";
 import zhCn from "element-plus/dist/locale/zh-cn.mjs";
+import plusEn from "plus-pro-components/locale/en.mjs";
+import plusZhCn from "plus-pro-components/locale/zh-cn.mjs";
 
 export default defineComponent({
   name: "app",
@@ -21,7 +23,9 @@ export default defineComponent({
   },
   computed: {
     currentLocale() {
-      return this.$storage.locale?.locale === "zh" ? zhCn : en;
+      return this.$storage.locale?.locale === "zh"
+        ? { ...zhCn, ...plusZhCn }
+        : { ...en, ...plusEn };
     }
   },
   beforeCreate() {

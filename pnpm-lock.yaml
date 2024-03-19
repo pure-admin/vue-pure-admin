@@ -96,8 +96,8 @@ dependencies:
     specifier: ^3.19.6
     version: 3.19.6
   plus-pro-components:
-    specifier: ^0.0.2
-    version: 0.0.2(element-plus@2.6.1)(vue@3.4.21)
+    specifier: ^0.0.4
+    version: 0.0.4(element-plus@2.6.1)(vue@3.4.21)
   qrcode:
     specifier: ^1.5.3
     version: 1.5.3
@@ -6803,8 +6803,8 @@ packages:
       mlly: 1.6.1
       pathe: 1.1.2
 
-  /plus-pro-components@0.0.2(element-plus@2.6.1)(vue@3.4.21):
-    resolution: {integrity: sha512-r75t3O413czu1A4gryeCcBrZ857UGsvsGnLTLTCFMGAL+91bv1t60v6loOOXttR36yR+ithZTBxrgTGNwGOgeQ==}
+  /plus-pro-components@0.0.4(element-plus@2.6.1)(vue@3.4.21):
+    resolution: {integrity: sha512-pcvUAecwXBOZ1jtrgkeuYedEjLCaD1a7xXZQ+QJWdVAebY/KKuWD3i882XBQsPKs5KfztNK19GuxFWC/hZf13g==}
     peerDependencies:
       element-plus: ^2.3.4
       vue: ^3.2.0

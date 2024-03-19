@@ -113,7 +113,7 @@ menus:
   hsIconSelect: 图标选择器
   hsTimeline: 时间线
   hsLineTree: 树形连接线
-  hsList: 列表页
+  hsList: 列表页面
   hsListCard: 卡片列表页
   hsDebounce: 防抖节流
   hsFormDesign: 表单设计器
@@ -128,6 +128,7 @@ menus:
   hsSensitive: 敏感词过滤
   hsPinyin: 汉语拼音
   hsdanmaku: 弹幕
+  hsSchemaForm: 表单
   hsPureTableBase: 基础用法
   hsPureTableHigh: 高级用法
   hsPureTableEdit: 可编辑用法
