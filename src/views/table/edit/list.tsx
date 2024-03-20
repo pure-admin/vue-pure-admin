@@ -3,7 +3,7 @@ import Demo2 from "./demo2/index.vue";
 import Demo3 from "./demo3/index.vue";
 
 const rendContent = (val: string) =>
-  `代码位置：src/views/pure-table/edit/${val}/index.vue`;
+  `代码位置：src/views/table/edit/${val}/index.vue`;
 
 export const list = [
   {

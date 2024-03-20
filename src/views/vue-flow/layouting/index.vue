@@ -117,8 +117,6 @@ async function layoutGraph(direction) {
 </template>
 
 <style scoped>
-
-
 @keyframes spin {
   0% {
     transform: rotate(0deg);

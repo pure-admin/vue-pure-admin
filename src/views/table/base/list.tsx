@@ -22,7 +22,7 @@ import NestProp from "./nestProp.vue";
 import ImgPreview from "./imgPreview.vue";
 
 const rendContent = (val: string) =>
-  `代码位置：src/views/pure-table/base/${val}.vue`;
+  `代码位置：src/views/table/base/${val}.vue`;
 
 export const list = [
   {

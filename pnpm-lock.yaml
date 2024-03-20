@@ -164,6 +164,9 @@ dependencies:
   vuedraggable:
     specifier: ^4.1.0
     version: 4.1.0(vue@3.4.21)
+  vxe-table:
+    specifier: ^4.5.21
+    version: 4.5.21(vue@3.4.21)(xe-utils@3.5.22)
   wavesurfer.js:
     specifier: ^7.7.5
     version: 7.7.5
@@ -4140,6 +4143,10 @@ packages:
       domhandler: 5.0.3
       entities: 4.5.0
     dev: true
+
+  /dom-zindex@1.0.1:
+    resolution: {integrity: sha512-M/MERVDZ8hguvjl6MAlLWSLYLS7PzEyXaTb5gEeJ+SF+e9iUC0sdvlzqe91MMDHBoy+nqw7wKcUOrDSyvMCrRg==}
+    dev: false
 
   /dom7@3.0.0:
     resolution: {integrity: sha512-oNlcUdHsC4zb7Msx7JN3K0Nro1dzJ48knvBOnDPKJ2GV9wl1i5vydJZUSyOfrkKFDZEud/jBsTk92S/VGSAe/g==}
@@ -9224,6 +9231,17 @@ packages:
       vue: 3.4.21(typescript@5.4.2)
     dev: false
 
+  /vxe-table@4.5.21(vue@3.4.21)(xe-utils@3.5.22):
+    resolution: {integrity: sha512-yp+BNGCy61lk7ayf0LI3UNcR2fRmipGSiIAh3lNOIdyW1nAobf/GwIx3rXghjzFb0a6NNJeYxv2NM+gwXxtmww==}
+    peerDependencies:
+      vue: ^3.2.28
+      xe-utils: ^3.5.0
+    dependencies:
+      dom-zindex: 1.0.1
+      vue: 3.4.21(typescript@5.4.2)
+      xe-utils: 3.5.22
+    dev: false
+
   /w3c-hr-time@1.0.2:
     resolution: {integrity: sha512-z8P5DvDNjKDoFIHK7q8r8lackT6l+jo/Ye3HOle7l9nICP9lf1Ci25fy9vHd0JOWewkIFzXIEig3TdKT7JQ5fQ==}
     deprecated: Use your platform's native performance.now() and performance.timeOrigin.
@@ -9412,6 +9430,10 @@ packages:
         optional: true
       utf-8-validate:
         optional: true
+    dev: false
+
+  /xe-utils@3.5.22:
+    resolution: {integrity: sha512-rhWuM2fVXsdrqUtyjRAsYTDLvVzYSSZqg/uCRyDqcw96AweB1AWsnTJZyl9g68ejnP0xhxfSoNBSrIcOeX1yxA==}
     dev: false
 
   /xgplayer-subtitles@3.0.14(core-js@3.36.0):
