@@ -94,6 +94,7 @@ menus:
   hsWavesurfer: Audio Visualization
   hsRipple: Ripple
   hsOptimize: Debounce、Throttle、Copy、Longpress Directives
+  hsVerify: Captcha
   hsWatermark: Water Mark
   hsPrint: Print
   hsDownload: Download
