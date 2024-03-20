@@ -94,6 +94,7 @@ menus:
   hsWavesurfer: 音频可视化
   hsRipple: 波纹(Ripple)
   hsOptimize: 防抖、截流、复制、长按指令
+  hsVerify: 图形验证码
   hsWatermark: 水印
   hsPrint: 打印
   hsDownload: 下载

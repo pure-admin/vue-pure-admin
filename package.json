@@ -101,6 +101,7 @@
     "vue-virtual-scroller": "2.0.0-beta.8",
     "vue-waterfall-plugin-next": "^2.4.3",
     "vue3-danmaku": "^1.6.0",
+    "vue3-puzzle-vcode": "^1.1.7",
     "vuedraggable": "^4.1.0",
     "vxe-table": "^4.5.21",
     "wavesurfer.js": "^7.7.5",

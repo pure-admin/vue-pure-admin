@@ -164,6 +164,9 @@ dependencies:
   vue3-danmaku:
     specifier: ^1.6.0
     version: 1.6.0(vue@3.4.21)
+  vue3-puzzle-vcode:
+    specifier: ^1.1.7
+    version: 1.1.7
   vuedraggable:
     specifier: ^4.1.0
     version: 4.1.0(vue@3.4.21)
@@ -9221,6 +9224,10 @@ packages:
       vue: ^3.0.0
     dependencies:
       vue: 3.4.21(typescript@5.4.2)
+    dev: false
+
+  /vue3-puzzle-vcode@1.1.7:
+    resolution: {integrity: sha512-mW780dz7HKjrElnE60CeYSeHGidKBKHoMjTDYfqF21330rTkFOsfDK1FQKZ22MktgMtTEoS/imfpEDlM1cxY/g==}
     dev: false
 
   /vue@3.4.21(typescript@5.4.2):
