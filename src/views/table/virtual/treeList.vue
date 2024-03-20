@@ -40,17 +40,17 @@ loadList();
     </div>
 
     <vxe-table
+      ref="tableRef"
       show-overflow
       height="500"
-      ref="tableRef"
       :loading="loading"
       :tree-config="{ transform: true }"
       :scroll-y="{ enabled: true, gt: 20 }"
       :data="tableData"
     >
-      <vxe-column type="seq" title="序号" width="200" tree-node></vxe-column>
-      <vxe-column field="id" title="Id"></vxe-column>
-      <vxe-column field="name" title="地点"></vxe-column>
+      <vxe-column type="seq" title="序号" width="200" tree-node />
+      <vxe-column field="id" title="Id" />
+      <vxe-column field="name" title="地点" />
     </vxe-table>
   </div>
 </template>

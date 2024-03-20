@@ -27,9 +27,9 @@ setTimeout(() => {
     :data="tableData"
     :scroll-y="{ enabled: true }"
   >
-    <vxe-column type="seq" title="序号" width="100"></vxe-column>
-    <vxe-column field="name" title="名称" sortable></vxe-column>
-    <vxe-column field="role" title="角色"></vxe-column>
-    <vxe-column field="sex" title="性别"></vxe-column>
+    <vxe-column type="seq" title="序号" width="100" />
+    <vxe-column field="name" title="名称" sortable />
+    <vxe-column field="role" title="角色" />
+    <vxe-column field="sex" title="性别" />
   </vxe-table>
 </template>
