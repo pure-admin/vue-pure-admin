@@ -71,6 +71,7 @@ menus:
   hsTag: 标签
   hsStatistic: 统计组件
   hsCollapse: 折叠面板
+  hsGanttastic: 甘特图
   hsProgress: 进度条
   hsUpload: 文件上传
   hsCheckCard: 多选卡片

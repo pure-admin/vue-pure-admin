@@ -71,6 +71,7 @@ menus:
   hsTag: Tag
   hsStatistic: Statistic
   hsCollapse: Collapse
+  hsGanttastic: Gantt Chart
   hsProgress: Progress
   hsUpload: File Upload
   hsCheckCard: CheckCard
