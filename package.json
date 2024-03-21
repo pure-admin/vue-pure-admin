@@ -78,7 +78,7 @@
     "path": "^0.12.7",
     "pinia": "^2.1.7",
     "pinyin-pro": "^3.19.6",
-    "plus-pro-components": "^0.0.4",
+    "plus-pro-components": "^0.0.5",
     "qrcode": "^1.5.3",
     "qs": "^6.12.0",
     "responsive-storage": "^2.2.0",

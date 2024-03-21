@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 // https://plus-pro-components.com/components/drawer-form.html
-import "plus-pro-components/es/components/form/style/css";
+import "plus-pro-components/es/components/drawer-form/style/css";
 import {
   type PlusColumn,
   type FieldValues,

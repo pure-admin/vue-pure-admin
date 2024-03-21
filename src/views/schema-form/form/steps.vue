@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 // https://plus-pro-components.com/components/steps-form.html
-import "plus-pro-components/es/components/form/style/css";
+import "plus-pro-components/es/components/steps-form/style/css";
 import { PlusStepsForm } from "plus-pro-components";
 
 const stepForm = ref([
