@@ -1,4 +1,4 @@
-.layout-theme-dusk .sidebar-logo-container .sidebar-logo-link .sidebar-title{color:#fff}.layout-theme-dusk body[layout=vertical] .sidebar-container{background:#2a0608}.layout-theme-dusk body[layout=vertical] .sidebar-container .el-menu-item,
+.layout-theme-dusk body[layout=vertical] .sidebar-container{background:#2a0608}.layout-theme-dusk body[layout=vertical] .sidebar-container .el-menu-item,
 .layout-theme-dusk body[layout=vertical] .sidebar-container .el-sub-menu__title{color:rgba(254,254,254,0.651)}.layout-theme-dusk body[layout=vertical] .sidebar-container .el-menu-item:hover,
 .layout-theme-dusk body[layout=vertical] .sidebar-container .el-sub-menu__title:hover{color:#fff!important}.layout-theme-dusk body[layout=vertical] .sidebar-container .is-active > .el-sub-menu__title,
 .layout-theme-dusk body[layout=vertical] .sidebar-container .is-active.submenu-title-noDropdown{color:#fff!important}.layout-theme-dusk body[layout=vertical] .sidebar-container .is-active > .el-sub-menu__title i,
@@ -61,4 +61,4 @@
 .layout-theme-dusk body[layout=mix] .horizontal-header .el-sub-menu__title:hover{color:#fff!important}.layout-theme-dusk body[layout=mix] .horizontal-header .submenu-title-noDropdown,
 .layout-theme-dusk body[layout=mix] .horizontal-header .el-sub-menu__title{background:#2a0608}.layout-theme-dusk body[layout=mix] .horizontal-header .is-active > .el-sub-menu__title,
 .layout-theme-dusk body[layout=mix] .horizontal-header .is-active.submenu-title-noDropdown{color:#fff!important}.layout-theme-dusk body[layout=mix] .horizontal-header .is-active > .el-sub-menu__title i,
-.layout-theme-dusk body[layout=mix] .horizontal-header .is-active.submenu-title-noDropdown i{color:#fff!important}.layout-theme-dusk body[layout=mix] .horizontal-header .is-active{color:#fff!important}
+.layout-theme-dusk body[layout=mix] .horizontal-header .is-active.submenu-title-noDropdown i{color:#fff!important}.layout-theme-dusk body[layout=mix] .horizontal-header .is-active{color:#fff!important}.layout-theme-dusk .sidebar-logo-container .sidebar-logo-link .sidebar-title{color:#fff}

@@ -1,4 +1,4 @@
-.layout-theme-light .sidebar-logo-container .sidebar-logo-link .sidebar-title{color:rgba(0,0,0,0.8509803922)}.layout-theme-light body[layout=vertical] .sidebar-container{background:#fff}.layout-theme-light body[layout=vertical] .sidebar-container .el-menu-item,
+.layout-theme-light body[layout=vertical] .sidebar-container{background:#fff}.layout-theme-light body[layout=vertical] .sidebar-container .el-menu-item,
 .layout-theme-light body[layout=vertical] .sidebar-container .el-sub-menu__title{color:rgba(0,0,0,0.6)}.layout-theme-light body[layout=vertical] .sidebar-container .el-menu-item:hover,
 .layout-theme-light body[layout=vertical] .sidebar-container .el-sub-menu__title:hover{color:#000!important}.layout-theme-light body[layout=vertical] .sidebar-container .is-active > .el-sub-menu__title,
 .layout-theme-light body[layout=vertical] .sidebar-container .is-active.submenu-title-noDropdown{color:rgba(0,0,0,0.8509803922)!important}.layout-theme-light body[layout=vertical] .sidebar-container .is-active > .el-sub-menu__title i,
@@ -61,4 +61,4 @@
 .layout-theme-light body[layout=mix] .horizontal-header .el-sub-menu__title:hover{color:#000!important}.layout-theme-light body[layout=mix] .horizontal-header .submenu-title-noDropdown,
 .layout-theme-light body[layout=mix] .horizontal-header .el-sub-menu__title{background:#fff}.layout-theme-light body[layout=mix] .horizontal-header .is-active > .el-sub-menu__title,
 .layout-theme-light body[layout=mix] .horizontal-header .is-active.submenu-title-noDropdown{color:rgba(0,0,0,0.8509803922)!important}.layout-theme-light body[layout=mix] .horizontal-header .is-active > .el-sub-menu__title i,
-.layout-theme-light body[layout=mix] .horizontal-header .is-active.submenu-title-noDropdown i{color:rgba(0,0,0,0.8509803922)!important}.layout-theme-light body[layout=mix] .horizontal-header .is-active{color:rgba(0,0,0,0.8509803922)!important}
+.layout-theme-light body[layout=mix] .horizontal-header .is-active.submenu-title-noDropdown i{color:rgba(0,0,0,0.8509803922)!important}.layout-theme-light body[layout=mix] .horizontal-header .is-active{color:rgba(0,0,0,0.8509803922)!important}.layout-theme-light .sidebar-logo-container .sidebar-logo-link .sidebar-title{color:rgba(0,0,0,0.8509803922)}
