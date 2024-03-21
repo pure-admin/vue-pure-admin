@@ -1,0 +1,1 @@
+import{d as e,x as n,e as o}from"./index-BAaep8yZ.js";const l=e({name:"MenuOverflow",__name:"index",setup(t){return(a,r)=>(o(),n("div",null,"目录、菜单文字超出显示 Tooltip 文字提示"))}});export{l as default};

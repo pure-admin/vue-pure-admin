@@ -1,1 +1,0 @@
-import{_ as n}from"./list.vue_vue_type_script_setup_true_lang-W6h4WnSP.js";import{_ as o}from"./treeList.vue_vue_type_script_setup_true_lang-Cc8t6kKK.js";import"./index-DZuaHQDs.js";const t=e=>`代码位置：src/views/table/virtual/${e}.vue`,c=[{key:"list",content:t("list"),title:"虚拟列表",component:n},{key:"treeList",content:t("treeList"),title:"虚拟树",component:o}];export{c as list};
