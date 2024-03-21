@@ -8,7 +8,7 @@ const TITLE = getConfig("Title");
   <footer
     class="layout-footer text-[rgba(0,0,0,0.6)] dark:text-[rgba(220,220,242,0.8)]"
   >
-    Copyright © 2020-present
+    Copyright © 2020-2024
     <a
       class="hover:text-primary"
       href="https://github.com/pure-admin"
@@ -18,10 +18,9 @@ const TITLE = getConfig("Title");
     </a>
     <span class="ml-10">赞助商：</span>
     <a
-      class="logo"
+      class="hover:text-primary"
       href="https://ai-tools.cn/resume/start"
       target="_blank"
-      rel="sponsored noopener"
     >
       二猫 AI 简历
     </a>
