@@ -11,6 +11,15 @@ export default {
   },
   children: [
     {
+      path: "/able/verify",
+      name: "Verify",
+      component: () => import("@/views/able/verify.vue"),
+      meta: {
+        title: $t("menus.hsVerify"),
+        extraIcon: "IF-pure-iconfont-new svg"
+      }
+    },
+    {
       path: "/able/watermark",
       name: "WaterMark",
       component: () => import("@/views/able/watermark.vue"),

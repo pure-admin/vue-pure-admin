@@ -2,36 +2,45 @@ import { $t } from "@/plugins/i18n";
 import { table } from "@/router/enums";
 
 export default {
-  path: "/pure-table",
-  redirect: "/pure-table/index",
+  path: "/table",
+  redirect: "/table/index",
   meta: {
     icon: "ri:table-line",
-    title: "pure-admin-table",
+    title: $t("menus.hstable"),
     rank: table
   },
   children: [
     {
-      path: "/pure-table/index",
+      path: "/table/index",
       name: "PureTable",
-      component: () => import("@/views/pure-table/index.vue"),
+      component: () => import("@/views/table/index.vue"),
       meta: {
         title: $t("menus.hsPureTableBase")
       }
     },
     {
-      path: "/pure-table/high",
+      path: "/table/high",
       name: "PureTableHigh",
-      component: () => import("@/views/pure-table/high.vue"),
+      component: () => import("@/views/table/high.vue"),
       meta: {
         title: $t("menus.hsPureTableHigh")
       }
     },
     {
-      path: "/pure-table/edit",
+      path: "/table/edit",
       name: "PureTableEdit",
-      component: () => import("@/views/pure-table/edit.vue"),
+      component: () => import("@/views/table/edit.vue"),
       meta: {
         title: $t("menus.hsPureTableEdit"),
+        extraIcon: "IF-pure-iconfont-new svg"
+      }
+    },
+    {
+      path: "/table/virtual",
+      name: "VxeTable",
+      component: () => import("@/views/table/virtual.vue"),
+      meta: {
+        title: $t("menus.hsVxeTable"),
         extraIcon: "IF-pure-iconfont-new svg"
       }
     }

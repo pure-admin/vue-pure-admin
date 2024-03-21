@@ -10,6 +10,12 @@
 
 `vue-pure-admin` is an open source, free and out-of-the-box middle and backend management system template. Completely adopts `ECMAScript` module (`ESM`) specifications to write and organize code, using the latest `Vue3`, `Vite`, `Element-Plus`, `TypeScript`, `Pinia`, `Tailwindcss` and other mainstream technologies develop
 
+## Sponsors
+
+<a class="logo" href="https://ai-tools.cn/resume/start" target="_blank" rel="sponsored noopener">
+  <img src="./public/sponsors/aitools.svg" alt="aitools">
+</a>
+
 ## Thin version (offering non-internationalized and internationalized versions)
 
 The simplified version is based on the shelf extracted from [vue-pure-admin](https://github.com/pure-admin/vue-pure-admin), which contains main functions and is more suitable for actual project development. The packaged size is introduced globally [element-plus](https://element-plus.org) is still below `2.3MB`, and the full version of the code will be permanently synchronized. After enabling `brotli` compression and `cdn` to replace the local library mode, the package size is less than `350kb`
@@ -168,7 +174,7 @@ You are very welcome to join！[Raise an issue](https://github.com/pure-admin/vu
 
 Thank you very much for your in-depth understanding of the source code and your outstanding contributions to the `pure-admin` organization ❤️
 
-|                   **Contributor**                    |                                   **SpecificCode**                                   |
+|                 **Contributor**                 |                                 **SpecificCode**                                 |
 | :---------------------------------------------: | :------------------------------------------------------------------------------: |
 |       [hb0730](https://github.com/hb0730)       |    [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=hb0730)    |
 |         [o-cc](https://github.com/o-cc)         |     [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=o-cc)     |

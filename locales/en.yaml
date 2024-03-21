@@ -26,6 +26,7 @@ menus:
   hshome: Home
   hslogin: Login
   hsempty: Empty Page
+  hstable: Table
   hssysManagement: System Manage
   hsUser: User Manage
   hsRole: Role Manage
@@ -70,6 +71,7 @@ menus:
   hsTag: Tag
   hsStatistic: Statistic
   hsCollapse: Collapse
+  hsGanttastic: Gantt Chart
   hsProgress: Progress
   hsUpload: File Upload
   hsCheckCard: CheckCard
@@ -92,6 +94,7 @@ menus:
   hsWavesurfer: Audio Visualization
   hsRipple: Ripple
   hsOptimize: Debounce、Throttle、Copy、Longpress Directives
+  hsVerify: Captcha
   hsWatermark: Water Mark
   hsPrint: Print
   hsDownload: Download
@@ -132,6 +135,7 @@ menus:
   hsPureTableBase: Base Usage
   hsPureTableHigh: High Usage
   hsPureTableEdit: Edit Usage
+  hsVxeTable: Virtual Usage
   hsboard: Paint Board
   hsMenuoverflow: Menu Overflow Show Tooltip Text
   hsChildMenuoverflow: Child Menu Overflow Show Tooltip Text

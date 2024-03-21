@@ -10,7 +10,7 @@ import Echarts from "./echarts/index.vue";
 import TableSelect from "./table-select/index.vue";
 
 const rendContent = (val: string) =>
-  `代码位置：src/views/pure-table/high/${val}/index.vue`;
+  `代码位置：src/views/table/high/${val}/index.vue`;
 
 export const list = [
   {
