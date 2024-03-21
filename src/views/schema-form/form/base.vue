@@ -127,6 +127,7 @@ const columns: PlusColumn[] = [
     fieldProps: {
       maxlength: 10,
       showWordLimit: true,
+      // @ts-expect-error
       autosize: { minRows: 2, maxRows: 4 }
     }
   }
