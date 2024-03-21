@@ -53,10 +53,23 @@ export default defineComponent({
   },
   mounted() {
     ElNotification({
-      title: "永久解答服务",
+      title: "最新消息",
       duration: 0,
+      position: "bottom-right",
       dangerouslyUseHTMLString: true,
-      message: `<a target='_blank' style='font-size: 16px' class='hover:text-[red]' href='https://yiming_chang.gitee.io/pure-admin-doc/pages/service/#%E6%B0%B8%E4%B9%85%E8%A7%A3%E7%AD%94%E5%BE%AE%E4%BF%A1%E7%BE%A4'>不久后恢复原价<br />感兴趣的朋友可以入手啦</a>`
+      message: `<a target='_blank' style='font-size: 16px' class='!mb-2 text-[red] hover:text-[var(--el-color-primary)]' href='https://yiming_chang.gitee.io/pure-admin-doc/pages/service/#%E6%B0%B8%E4%B9%85%E8%A7%A3%E7%AD%94%E5%BE%AE%E4%BF%A1%E7%BE%A4'>
+        永久解答服务不久后恢复原价
+        <br />
+        感兴趣的朋友可以入手啦
+        </a>
+        <br />
+        <a target='_blank' style='font-size: 16px' class='hover:text-[red]' href='https://github.com/pure-admin/vue-pure-admin/issues/994'>
+        5.2.0 版本即将发布
+        </a>
+        <br />
+        <a target='_blank' style='font-size: 16px' class='hover:text-[red]' href='https://github.com/pure-admin/vue-pure-admin/issues/1004'>
+        5.3.0 版本计划、字典管理、多租户
+        </a>`
     });
   }
 });

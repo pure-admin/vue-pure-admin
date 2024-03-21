@@ -16,6 +16,15 @@ const TITLE = getConfig("Title");
     >
       &nbsp;{{ TITLE }}
     </a>
+    <span class="ml-10">赞助商：</span>
+    <a
+      class="logo"
+      href="https://ai-tools.cn/resume/start"
+      target="_blank"
+      rel="sponsored noopener"
+    >
+      二猫 AI 简历
+    </a>
   </footer>
 </template>
 
