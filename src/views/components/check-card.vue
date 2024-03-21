@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
 // https://plus-pro-components.com/components/check-card-group.html
-import { PlusCheckCardGroup } from "plus-pro-components";
 import "plus-pro-components/es/components/check-card-group/style/css";
+import { PlusCheckCardGroup } from "plus-pro-components";
 
 defineOptions({
   name: "CheckCard"
