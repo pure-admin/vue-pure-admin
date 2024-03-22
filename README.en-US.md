@@ -23,15 +23,16 @@ The simplified version is based on the shelf extracted from [vue-pure-admin](htt
 [Click to view the non-internationalized version](https://github.com/pure-admin/pure-admin-thin)  
 [Click to view Internationalization version](https://github.com/pure-admin/pure-admin-thin/tree/i18n)
 
-## Supporting Video
+## Supporting video
 
-[Click Watch Tutorial](https://www.bilibili.com/video/BV1kg411v7QT)  
-[Click Watch UI Design](https://www.bilibili.com/video/BV17g411T7rq)
+[Click me to view UI design](https://www.bilibili.com/video/BV17g411T7rq)  
+[Click me to view the rapid development tutorial](https://www.bilibili.com/video/BV1kg411v7QT)  
+[Click me to view all pages and function demonstrations of vue-pure-admin](https://www.bilibili.com/video/BV1Rx4y1U7Mv)
 
-## Docs
+## Nanny-level documents
 
-[View vue-pure-admin documentation](https://yiming_chang.gitee.io/pure-admin-doc)  
-[View @pureadmin/utils documentation](https://pure-admin-utils.netlify.app)
+[Click me to view vue-pure-admin documentation](https://yiming_chang.gitee.io/pure-admin-doc)  
+[Click me to view @pureadmin/utils documentation](https://pure-admin-utils.netlify.app)
 
 ## Quality service, software outsourcing, sponsorship support
 

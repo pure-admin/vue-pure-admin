@@ -26,8 +26,9 @@
 
 ## 配套视频
 
+[点我查看 UI 设计](https://www.bilibili.com/video/BV17g411T7rq)  
 [点我查看快速开发教程](https://www.bilibili.com/video/BV1kg411v7QT)  
-[点我查看 UI 设计](https://www.bilibili.com/video/BV17g411T7rq)
+[点我查看 vue-pure-admin 的所有页面、功能演示](https://www.bilibili.com/video/BV1Rx4y1U7Mv)
 
 ## 配套保姆级文档
 
