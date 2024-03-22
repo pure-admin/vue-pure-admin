@@ -92,7 +92,7 @@
     z-index: 1001;
     width: $sideBarWidth !important;
     height: 100%;
-    overflow: hidden;
+    overflow: visible;
     font-size: 0;
     background: $menuBg;
     border-right: 1px solid var(--pure-border-color);
