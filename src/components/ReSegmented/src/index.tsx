@@ -92,11 +92,15 @@ export default defineComponent({
       });
     }
 
-    useResizeObserver(".pure-segmented", () => {
-      nextTick(() => {
-        handleInit(curIndex.value);
+    function handleResizeInit() {
+      useResizeObserver(".pure-segmented", () => {
+        nextTick(() => {
+          handleInit(curIndex.value);
+        });
       });
-    });
+    }
+
+    props.block && handleResizeInit();
 
     watch(
       () => curIndex.value,
@@ -110,6 +114,11 @@ export default defineComponent({
         immediate: true
       }
     );
+
+    watch(() => props.size, handleResizeInit, {
+      deep: true,
+      immediate: true
+    });
 
     const rendLabel = () => {
       return props.options.map((option, index) => {
