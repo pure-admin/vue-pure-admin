@@ -5,6 +5,7 @@ import {
   toRef,
   watch,
   nextTick,
+  type PropType,
   defineComponent,
   getCurrentInstance
 } from "vue";
@@ -32,6 +33,10 @@ const props = {
   block: {
     type: Boolean,
     default: false
+  },
+  /** 配置尺寸，可使用 large和small两种值	 */
+  size: {
+    type: String as PropType<"small" | "default" | "large">
   }
 };
 
@@ -87,13 +92,11 @@ export default defineComponent({
       });
     }
 
-    if (props.block) {
-      useResizeObserver(".pure-segmented", () => {
-        nextTick(() => {
-          handleInit(curIndex.value);
-        });
+    useResizeObserver(".pure-segmented", () => {
+      nextTick(() => {
+        handleInit(curIndex.value);
       });
-    }
+    });
 
     watch(
       () => curIndex.value,
@@ -167,7 +170,12 @@ export default defineComponent({
 
     return () => (
       <div
-        class={["pure-segmented", props.block ? "pure-segmented-block" : ""]}
+        class={{
+          "pure-segmented": true,
+          "pure-segmented-block": props.block,
+          "pure-segmented--large": props.size === "large",
+          "pure-segmented--small": props.size === "small"
+        }}
       >
         <div class="pure-segmented-group">
           <div
