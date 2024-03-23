@@ -387,7 +387,7 @@ onUnmounted(() => removeMatchMedia);
         </li>
       </ul>
 
-      <span v-if="device !== 'mobile'">
+      <span v-if="useAppStoreHook().getViewportWidth > 1280">
         <p :class="['mt-5', pClass]">页宽</p>
         <Segmented
           class="mb-2 select-none"

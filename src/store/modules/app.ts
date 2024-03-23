@@ -21,6 +21,11 @@ export const useAppStore = defineStore({
         `${responsiveStorageNameSpace()}layout`
       )?.layout ?? getConfig().Layout,
     device: deviceDetection() ? "mobile" : "desktop",
+    // 浏览器窗口的可视区域大小
+    viewportSize: {
+      width: document.documentElement.clientWidth,
+      height: document.documentElement.clientHeight
+    },
     // 作用于 src/views/components/draggable/index.vue 页面，当离开页面并不会销毁 new Swap()，sortablejs 官网也没有提供任何销毁的 api
     sortSwap: false
   }),
@@ -30,6 +35,12 @@ export const useAppStore = defineStore({
     },
     getDevice(state) {
       return state.device;
+    },
+    getViewportWidth(state) {
+      return state.viewportSize.width;
+    },
+    getViewportHeight(state) {
+      return state.viewportSize.height;
     }
   },
   actions: {
@@ -61,6 +72,9 @@ export const useAppStore = defineStore({
     },
     setLayout(layout) {
       this.layout = layout;
+    },
+    setViewportSize(size) {
+      this.viewportSize = size;
     },
     setSortSwap(val) {
       this.sortSwap = val;
