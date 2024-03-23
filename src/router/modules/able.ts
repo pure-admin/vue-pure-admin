@@ -89,6 +89,22 @@ export default {
       }
     },
     {
+      path: "/able/word",
+      name: "Word",
+      component: () => import("@/views/able/word.vue"),
+      meta: {
+        title: $t("menus.hsWord")
+      }
+    },
+    {
+      path: "/able/excels",
+      name: "Excels",
+      component: () => import("@/views/able/excels.vue"),
+      meta: {
+        title: $t("menus.hsExcels")
+      }
+    },
+    {
       path: "/able/pdf",
       name: "Pdf",
       component: () => import("@/views/able/pdf.vue"),
