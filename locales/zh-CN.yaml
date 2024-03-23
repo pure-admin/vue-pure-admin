@@ -126,6 +126,8 @@ menus:
   hsSwiper: Swiper插件
   hsVirtualList: 虚拟列表
   hsPdf: PDF预览
+  hsWord: Word预览
+  hsExcels: Excel预览
   hsExcel: 导出Excel
   hsInfiniteScroll: 表格无限滚动
   hsSensitive: 敏感词过滤

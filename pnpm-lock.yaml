@@ -35,6 +35,12 @@ dependencies:
   '@vue-flow/core':
     specifier: ^1.33.4
     version: 1.33.4(vue@3.4.21)
+  '@vue-office/docx':
+    specifier: ^1.6.0
+    version: 1.6.0(vue-demi@0.14.7)(vue@3.4.21)
+  '@vue-office/excel':
+    specifier: ^1.7.2
+    version: 1.7.2(vue-demi@0.14.7)(vue@3.4.21)
   '@vueuse/core':
     specifier: ^10.9.0
     version: 10.9.0(vue@3.4.21)
@@ -2628,6 +2634,36 @@ packages:
       vue: 3.4.21(typescript@5.4.3)
     transitivePeerDependencies:
       - '@vue/composition-api'
+    dev: false
+
+  /@vue-office/docx@1.6.0(vue-demi@0.14.7)(vue@3.4.21):
+    resolution: {integrity: sha512-OKEapOPq223uszA8mRSOWPhdfBchJa6sIqP46eMrMMe5RSUrG9m3QE/o0JBIaMgxDrtNd7aI9CvF2kDvb7G2hw==}
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.7.1
+      vue: ^2.0.0 || >=3.0.0
+      vue-demi: ^0.14.6
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      vue: 3.4.21(typescript@5.4.3)
+      vue-demi: 0.14.7(vue@3.4.21)
+    dev: false
+
+  /@vue-office/excel@1.7.2(vue-demi@0.14.7)(vue@3.4.21):
+    resolution: {integrity: sha512-b3d/lnqM6QVT6kYTQ0FYazY5w0XApG6S706Hi9gdr4/wcateebqdlYpNggnuS0MXIWM3ZlNMOEO7Veui989k4g==}
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.7.1
+      vue: ^2.0.0 || >=3.0.0
+      vue-demi: ^0.14.6
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      vue: 3.4.21(typescript@5.4.3)
+      vue-demi: 0.14.7(vue@3.4.21)
     dev: false
 
   /@vue/babel-helper-vue-transform-on@1.2.2:
