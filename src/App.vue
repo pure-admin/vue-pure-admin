@@ -57,19 +57,16 @@ export default defineComponent({
       duration: 0,
       position: "bottom-right",
       dangerouslyUseHTMLString: true,
-      message: `<a target='_blank' style='font-size: 16px' class='!mb-2 text-[red] hover:text-[var(--el-color-primary)]' href='https://yiming_chang.gitee.io/pure-admin-doc/pages/service/#%E6%B0%B8%E4%B9%85%E8%A7%A3%E7%AD%94%E5%BE%AE%E4%BF%A1%E7%BE%A4'>
-        永久解答服务不久后恢复原价
-        <br />
-        感兴趣的朋友可以入手啦
+      message: `<a target='_blank' style='font-size: 16px' class='block text-center border mb-2 rounded hover:text-[red]' href='https://github.com/pure-admin/vue-pure-admin/issues/994'>
+        5.2.0 版本已发布，精简版已同步
         </a>
-        <br />
-        <a target='_blank' style='font-size: 16px' class='hover:text-[red]' href='https://github.com/pure-admin/vue-pure-admin/issues/994'>
-        5.2.0 版本即将发布
+        <a target='_blank' style='font-size: 16px' class='block text-center hover:text-[red] rounded border mb-2' href='https://www.bilibili.com/video/BV1Rx4y1U7Mv/'>
+        vue-pure-admin 的所有<br>页面、功能演示、后续计划
         </a>
-        <br />
-        <a target='_blank' style='font-size: 16px' class='hover:text-[red]' href='https://github.com/pure-admin/vue-pure-admin/issues/1004'>
-        5.3.0 版本计划、字典管理、多租户
-        </a>`
+        <a target='_blank' style='font-size: 16px' class='block text-center text-[red] rounded hover:text-[var(--el-color-primary)] border' href='https://yiming_chang.gitee.io/pure-admin-doc/pages/service/#%E6%B0%B8%E4%B9%85%E8%A7%A3%E7%AD%94%E5%BE%AE%E4%BF%A1%E7%BE%A4'>
+        永久解答服务不久后恢复原价感兴趣的朋友可以入手啦
+        </a>
+      `
     });
   }
 });
