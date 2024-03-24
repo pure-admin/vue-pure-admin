@@ -11,12 +11,20 @@ export default {
   },
   children: [
     {
+      path: "/components/mqtt-client",
+      name: "MqttClient",
+      component: () => import("@/views/able/mqtt-client.vue"),
+      meta: {
+        title: $t("menus.hsMqtt"),
+        extraIcon: "IF-pure-iconfont-new svg"
+      }
+    },
+    {
       path: "/able/verify",
       name: "Verify",
       component: () => import("@/views/able/verify.vue"),
       meta: {
-        title: $t("menus.hsVerify"),
-        extraIcon: "IF-pure-iconfont-new svg"
+        title: $t("menus.hsVerify")
       }
     },
     {
@@ -56,8 +64,7 @@ export default {
       name: "Ripple",
       component: () => import("@/views/able/ripple.vue"),
       meta: {
-        title: $t("menus.hsRipple"),
-        extraIcon: "IF-pure-iconfont-new svg"
+        title: $t("menus.hsRipple")
       }
     },
     {
@@ -162,15 +169,6 @@ export default {
       component: () => import("@/views/able/video-frame/index.vue"),
       meta: {
         title: $t("menus.hsVideoFrame")
-      }
-    },
-    {
-      path: "/components/mqtt-client",
-      name: "MqttClient",
-      component: () => import("@/views/able/mqtt-client.vue"),
-      meta: {
-        title: $t("menus.hsMqtt"),
-        extraIcon: "IF-pure-iconfont-new svg"
       }
     },
     {
