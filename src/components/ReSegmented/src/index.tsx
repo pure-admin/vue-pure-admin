@@ -1,22 +1,22 @@
 import "./index.css";
+import type { OptionsType } from "./type";
+import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import {
+  useDark,
+  isNumber,
+  isFunction,
+  useResizeObserver
+} from "@pureadmin/utils";
+import {
+  type PropType,
   h,
   ref,
   toRef,
   watch,
   nextTick,
-  type PropType,
   defineComponent,
   getCurrentInstance
 } from "vue";
-import type { OptionsType } from "./type";
-import { useRenderIcon } from "@/components/ReIcon/src/hooks";
-import {
-  isFunction,
-  isNumber,
-  useDark,
-  useResizeObserver
-} from "@pureadmin/utils";
 
 const props = {
   options: {
@@ -34,7 +34,7 @@ const props = {
     type: Boolean,
     default: false
   },
-  /** 配置尺寸，可使用 large和small两种值	 */
+  /** 控件尺寸	 */
   size: {
     type: String as PropType<"small" | "default" | "large">
   }
@@ -86,6 +86,7 @@ export default defineComponent({
     function handleInit(index = curIndex.value) {
       nextTick(() => {
         const curLabelRef = instance?.proxy?.$refs[`labelRef${index}`] as ElRef;
+        if (!curLabelRef) return;
         width.value = curLabelRef.clientWidth;
         translateX.value = curLabelRef.offsetLeft;
         initStatus.value = true;
@@ -110,15 +111,11 @@ export default defineComponent({
         });
       },
       {
-        deep: true,
         immediate: true
       }
     );
 
-    watch(() => props.size, handleResizeInit, {
-      deep: true,
-      immediate: true
-    });
+    watch(() => props.size, handleResizeInit);
 
     const rendLabel = () => {
       return props.options.map((option, index) => {
