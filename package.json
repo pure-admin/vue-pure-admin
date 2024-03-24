@@ -79,6 +79,7 @@
     "localforage": "^1.10.0",
     "mint-filter": "^4.0.3",
     "mitt": "^3.0.1",
+    "mqtt": "^5.5.0",
     "nprogress": "^0.2.0",
     "path": "^0.12.7",
     "pinia": "^2.1.7",
