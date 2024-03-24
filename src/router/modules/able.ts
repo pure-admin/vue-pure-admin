@@ -11,6 +11,15 @@ export default {
   },
   children: [
     {
+      path: "/able/verify",
+      name: "Verify",
+      component: () => import("@/views/able/verify.vue"),
+      meta: {
+        title: $t("menus.hsVerify"),
+        extraIcon: "IF-pure-iconfont-new svg"
+      }
+    },
+    {
       path: "/able/watermark",
       name: "WaterMark",
       component: () => import("@/views/able/watermark.vue"),
@@ -77,6 +86,22 @@ export default {
           enterTransition: "animate__zoomIn",
           leaveTransition: "animate__zoomOut"
         }
+      }
+    },
+    {
+      path: "/able/word",
+      name: "Word",
+      component: () => import("@/views/able/word.vue"),
+      meta: {
+        title: $t("menus.hsWord")
+      }
+    },
+    {
+      path: "/able/excels",
+      name: "Excels",
+      component: () => import("@/views/able/excels.vue"),
+      meta: {
+        title: $t("menus.hsExcels")
       }
     },
     {

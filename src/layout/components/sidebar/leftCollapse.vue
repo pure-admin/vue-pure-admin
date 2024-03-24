@@ -41,7 +41,7 @@ const toggleClick = () => {
 </script>
 
 <template>
-  <div class="collapse-container">
+  <div class="left-collapse">
     <IconifyIconOffline
       v-tippy="{
         content: props.isActive ? '点击折叠' : '点击展开',
@@ -58,7 +58,7 @@ const toggleClick = () => {
 </template>
 
 <style lang="scss" scoped>
-.collapse-container {
+.left-collapse {
   position: absolute;
   bottom: 0;
   width: 100%;

@@ -27,6 +27,7 @@ menus:
   hshome: 首页
   hslogin: 登录
   hsempty: 无Layout页
+  hstable: 表格
   hssysManagement: 系统管理
   hsUser: 用户管理
   hsRole: 角色管理
@@ -71,6 +72,7 @@ menus:
   hsTag: 标签
   hsStatistic: 统计组件
   hsCollapse: 折叠面板
+  hsGanttastic: 甘特图
   hsProgress: 进度条
   hsUpload: 文件上传
   hsCheckCard: 多选卡片
@@ -93,6 +95,7 @@ menus:
   hsWavesurfer: 音频可视化
   hsRipple: 波纹(Ripple)
   hsOptimize: 防抖、截流、复制、长按指令
+  hsVerify: 图形验证码
   hsWatermark: 水印
   hsPrint: 打印
   hsDownload: 下载
@@ -114,7 +117,7 @@ menus:
   hsIconSelect: 图标选择器
   hsTimeline: 时间线
   hsLineTree: 树形连接线
-  hsList: 列表页
+  hsList: 列表页面
   hsListCard: 卡片列表页
   hsDebounce: 防抖节流
   hsFormDesign: 表单设计器
@@ -124,14 +127,18 @@ menus:
   hsSwiper: Swiper插件
   hsVirtualList: 虚拟列表
   hsPdf: PDF预览
+  hsWord: Word预览
+  hsExcels: Excel预览
   hsExcel: 导出Excel
   hsInfiniteScroll: 表格无限滚动
   hsSensitive: 敏感词过滤
   hsPinyin: 汉语拼音
   hsdanmaku: 弹幕
+  hsSchemaForm: 表单
   hsPureTableBase: 基础用法
   hsPureTableHigh: 高级用法
   hsPureTableEdit: 可编辑用法
+  hsVxeTable: 虚拟滚动
   hsboard: 艺术画板
   hsMenuoverflow: 目录超出显示 Tooltip 文字提示
   hsChildMenuoverflow: 菜单超出显示 Tooltip 文字提示

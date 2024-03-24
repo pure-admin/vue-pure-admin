@@ -8,7 +8,14 @@
 
 ## 简介
 
-`vue-pure-admin` 是一款开源免费且开箱即用的中后台管理系统模版。完全采用 `ECMAScript` 模块（`ESM`）规范来编写和组织代码，使用了最新的 `Vue3`、`Vite`、`Element-Plus`、`TypeScript`、`Pinia`、`Tailwindcss` 等主流技术开发
+`vue-pure-admin` 是一款开源免费且开箱即用的中后台管理系统模版。完全采用 `ECMAScript` 模块（`ESM`）规范来编写和组织代码，使用了最新的 `Vue3`、
+`Vite`、`Element-Plus`、`TypeScript`、`Pinia`、`Tailwindcss` 等主流技术开发
+
+## 赞助商
+
+<a class="logo" href="https://ai-tools.cn/resume/start" target="_blank" rel="sponsored noopener">
+  <img src="./public/sponsors/aitools.svg" alt="aitools">
+</a>
 
 ## 精简版本（实际项目开发请用精简版本，提供 `非国际化` 、`国际化` 两个版本选择）
 
@@ -19,8 +26,9 @@
 
 ## 配套视频
 
+[点我查看 UI 设计](https://www.bilibili.com/video/BV17g411T7rq)  
 [点我查看快速开发教程](https://www.bilibili.com/video/BV1kg411v7QT)  
-[点我查看 UI 设计](https://www.bilibili.com/video/BV17g411T7rq)
+[点我查看 vue-pure-admin 的所有页面、功能演示](https://www.bilibili.com/video/BV1Rx4y1U7Mv)
 
 ## 配套保姆级文档
 

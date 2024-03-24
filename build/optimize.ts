@@ -16,6 +16,7 @@ const include = [
   "qrcode",
   "intro.js",
   "vue-i18n",
+  "vxe-table",
   "vue-types",
   "js-cookie",
   "vue-tippy",
@@ -35,6 +36,8 @@ const include = [
   "vue-json-pretty",
   "@logicflow/core",
   "@pureadmin/utils",
+  "@vue-office/docx",
+  "@vue-office/excel",
   "@wangeditor/editor",
   "responsive-storage",
   "plus-pro-components",
@@ -44,6 +47,7 @@ const include = [
   "@amap/amap-jsapi-loader",
   "el-table-infinite-scroll",
   "vue-waterfall-plugin-next",
+  "@infectoone/vue-ganttastic",
   "@wangeditor/editor-for-vue",
   "vuedraggable/src/vuedraggable"
 ];
