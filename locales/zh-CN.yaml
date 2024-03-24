@@ -94,6 +94,7 @@ menus:
   hsVideoFrame: 视频帧截取-wasm版
   hsWavesurfer: 音频可视化
   hsRipple: 波纹(Ripple)
+  hsMqtt: MQTT客户端(mqtt)
   hsOptimize: 防抖、截流、复制、长按指令
   hsVerify: 图形验证码
   hsWatermark: 水印
