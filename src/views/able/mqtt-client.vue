@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // vue 3 + vite use MQTT.js refer to https://github.com/mqttjs/MQTT.js/issues/1269
-import mqtt from "mqtt";
+import * as mqtt from "mqtt/dist/mqtt.min";
 import { reactive, ref, onUnmounted } from "vue";
 
 const protocol = location.protocol === "https:" ? "wss" : "ws";
