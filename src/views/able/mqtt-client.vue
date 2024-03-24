@@ -25,19 +25,20 @@ const connection = reactive({
 // 订阅 topic/mqttx 主题
 const subscription = ref({
   topic: "topic/mqttx",
-  qos: 0 as mqtt.QoS
+  qos: 0 as any
 });
 
 // 发布 topic/browser 主题
 const publish = ref({
   topic: "topic/browser",
-  qos: 0 as mqtt.QoS,
+  qos: 0 as any,
   payload: '{ "msg": "Hello, I am browser." }'
 });
 
 let client = ref({
   connected: false
 } as mqtt.MqttClient);
+
 const receivedMessages = ref("");
 const subscribedSuccess = ref(false);
 const btnLoadingType = ref("");
@@ -175,37 +176,37 @@ const handleProtocolChange = (value: string) => {
 };
 
 onUnmounted(() => {
-  client.value.end();
+  try {
+    if (client.value.end) {
+      client.value.end();
+      console.log("disconnected successfully");
+    }
+  } catch (error) {
+    console.log(error);
+  }
 });
 </script>
 
 <template>
   <el-card shadow="never" :body-style="{ padding: '20px' }">
     <template #header>
-      <p>
-        基于
-        <el-link
-          type="primary"
-          :underline="false"
-          href="https://github.com/mqttjs/MQTT.js"
-          target="_blank"
-          >MQTT.js</el-link
-        >
-        和 免费的公共MQTT代理
-        <el-link
-          type="primary"
-          :underline="false"
-          href="broker.emqx.io"
-          target="_blank"
-          >EMQX</el-link
-        >
-        实现的一套 MQTT 客户端。
-      </p>
-      <p>
-        <el-text
-          >可将订阅主题设置为 topic/browser，测试MQTT的自发自收。</el-text
-        >
-      </p>
+      基于
+      <el-link
+        type="primary"
+        :underline="false"
+        href="https://github.com/mqttjs/MQTT.js"
+        target="_blank"
+        >MQTT.js</el-link
+      >
+      和 免费的公共MQTT代理
+      <el-link
+        type="primary"
+        :underline="false"
+        href="broker.emqx.io"
+        target="_blank"
+        >EMQX</el-link
+      >
+      实现的一套 MQTT 客户端。
     </template>
     <template #default>
       <el-card shadow="never">
@@ -287,7 +288,7 @@ onUnmounted(() => {
                 />
               </el-form-item>
             </el-col>
-            <el-col :span="4">
+            <el-col :span="8">
               <el-form-item prop="qos" label="通信质量">
                 <el-select
                   v-model="subscription.qos"
@@ -302,7 +303,9 @@ onUnmounted(() => {
                 </el-select>
               </el-form-item>
             </el-col>
-            <el-col :span="12">
+          </el-row>
+          <el-row>
+            <el-col>
               <el-button
                 type="primary"
                 class="sub-btn"
@@ -331,7 +334,13 @@ onUnmounted(() => {
         <el-form label-position="top" :model="publish">
           <el-row :gutter="20">
             <el-col :span="8">
-              <el-form-item prop="topic" label="主题">
+              <el-form-item prop="topic">
+                <template #label>
+                  <span>主题</span>
+                  <el-text type="info" size="small">
+                    可将订阅主题设置为topic/browser，测试MQTT的自发自收。
+                  </el-text>
+                </template>
                 <el-input v-model="publish.topic" />
               </el-form-item>
             </el-col>
@@ -354,7 +363,7 @@ onUnmounted(() => {
             </el-col>
           </el-row>
         </el-form>
-        <el-col :span="24" class="text-right">
+        <el-col :span="24">
           <el-button
             type="primary"
             :loading="btnLoadingType === 'publish'"
