@@ -93,6 +93,7 @@ menus:
   hsVideoFrame: Video Frame Capture
   hsWavesurfer: Audio Visualization
   hsRipple: Ripple
+  hsMqtt: Mqtt Client
   hsOptimize: Debounce、Throttle、Copy、Longpress Directives
   hsVerify: Captcha
   hsWatermark: Water Mark
