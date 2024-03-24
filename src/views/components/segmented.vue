@@ -1,5 +1,5 @@
 <script setup lang="tsx">
-import { h, ref } from "vue";
+import { h, ref, watch } from "vue";
 import { message } from "@/utils/message";
 import HomeFilled from "@iconify-icons/ep/home-filled";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
@@ -11,6 +11,8 @@ defineOptions({
 
 /** 基础用法 */
 const value = ref(4); // 必须为number类型
+const size = ref("default");
+const dynamicSize = ref();
 
 const optionsBasis: Array<OptionsType> = [
   {
@@ -192,13 +194,22 @@ function onChange({ index, option }) {
     type: "success"
   });
 }
+
+watch(size, val => (dynamicSize.value = size.value));
 </script>
 
 <template>
   <el-card shadow="never">
     <template #header>
       <div class="card-header">
-        <span class="font-medium">分段控制器</span>
+        <el-space wrap :size="40">
+          <span style="font-size: 16px; font-weight: 800"> 分段控制器 </span>
+          <el-radio-group v-model="size" size="small">
+            <el-radio value="large">大尺寸</el-radio>
+            <el-radio value="default">默认尺寸</el-radio>
+            <el-radio value="small">小尺寸</el-radio>
+          </el-radio-group>
+        </el-space>
       </div>
     </template>
     <el-scrollbar>
@@ -207,28 +218,32 @@ function onChange({ index, option }) {
           {{ optionsBasis[value].label }}
         </span>
       </p>
-      <Segmented v-model="value" :options="optionsBasis" />
+      <Segmented v-model="value" :options="optionsBasis" :size="dynamicSize" />
       <el-divider />
       <p class="mb-2">tooltip 提示</p>
-      <Segmented :options="optionsTooltip" />
+      <Segmented :options="optionsTooltip" :size="dynamicSize" />
       <el-divider />
       <p class="mb-2">change 事件</p>
-      <Segmented :options="optionsChange" @change="onChange" />
+      <Segmented
+        :options="optionsChange"
+        :size="dynamicSize"
+        @change="onChange"
+      />
       <el-divider />
       <p class="mb-2">禁用</p>
-      <Segmented :options="optionsDisabled" />
+      <Segmented :options="optionsDisabled" :size="dynamicSize" />
       <el-divider />
       <p class="mb-2">block 属性(将宽度调整为父元素宽度)</p>
-      <Segmented :options="optionsBlock" block />
+      <Segmented :options="optionsBlock" block :size="dynamicSize" />
       <el-divider />
       <p class="mb-2">可设置图标</p>
-      <Segmented :options="optionsIcon" />
+      <Segmented :options="optionsIcon" :size="dynamicSize" />
       <el-divider />
       <p class="mb-2">只设置图标</p>
-      <Segmented :options="optionsOnlyIcon" />
+      <Segmented :options="optionsOnlyIcon" :size="dynamicSize" />
       <el-divider />
       <p class="mb-2">自定义渲染</p>
-      <Segmented :options="optionsLabel" />
+      <Segmented :options="optionsLabel" :size="dynamicSize" />
     </el-scrollbar>
   </el-card>
 </template>
