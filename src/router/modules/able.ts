@@ -165,6 +165,15 @@ export default {
       }
     },
     {
+      path: "/components/mqtt-client",
+      name: "MqttClient",
+      component: () => import("@/views/able/mqtt-client.vue"),
+      meta: {
+        title: $t("menus.hsMqtt"),
+        extraIcon: "IF-pure-iconfont-new svg"
+      }
+    },
+    {
       path: "/able/danmaku",
       name: "Danmaku",
       component: () => import("@/views/able/danmaku/index.vue"),
