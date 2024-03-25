@@ -10,6 +10,7 @@ import { usePublicHooks } from "../../hooks";
 import { addDialog } from "@/components/ReDialog";
 import type { PaginationProps } from "@pureadmin/table";
 import type { FormItemProps, RoleFormItemProps } from "../utils/types";
+import userAvatar from "@/assets/user.jpg";
 import {
   getKeyList,
   isAllEmpty,
@@ -85,8 +86,8 @@ export function useUser(tableRef: Ref, treeRef: Ref) {
         <el-image
           fit="cover"
           preview-teleported={true}
-          src={row.avatar}
-          preview-src-list={Array.of(row.avatar)}
+          src={row.avatar || userAvatar}
+          preview-src-list={Array.of(row.avatar || userAvatar)}
           class="w-[24px] h-[24px] rounded-full align-middle"
         />
       ),
@@ -370,7 +371,7 @@ export function useUser(tableRef: Ref, treeRef: Ref) {
       contentRenderer: () =>
         h(croppingUpload, {
           ref: cropRef,
-          imgSrc: row.avatar,
+          imgSrc: row.avatar || userAvatar,
           onCropper: info => (avatarInfo.value = info)
         }),
       beforeSure: done => {
