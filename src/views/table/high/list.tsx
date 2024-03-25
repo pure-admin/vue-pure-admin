@@ -4,14 +4,13 @@ import RowDrag from "./drag/row/index.vue";
 import ColumnDrag from "./drag/column/index.vue";
 import Contextmenu from "./contextmenu/index.vue";
 import Excel from "./excel/index.vue";
-import Edit from "./edit/index.vue";
 import Watermark from "./watermark/index.vue";
 import Print from "./prints/index.vue";
 import Echarts from "./echarts/index.vue";
 import TableSelect from "./table-select/index.vue";
 
 const rendContent = (val: string) =>
-  `代码位置：src/views/pure-table/high/${val}/index.vue`;
+  `代码位置：src/views/table/high/${val}/index.vue`;
 
 export const list = [
   {
@@ -49,12 +48,6 @@ export const list = [
     content: rendContent("contextmenu"),
     title: "右键菜单",
     component: Contextmenu
-  },
-  {
-    key: "edit",
-    content: rendContent("edit"),
-    title: "单元格修改",
-    component: Edit
   },
   {
     key: "excel",

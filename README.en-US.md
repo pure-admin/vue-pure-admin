@@ -10,6 +10,12 @@
 
 `vue-pure-admin` is an open source, free and out-of-the-box middle and backend management system template. Completely adopts `ECMAScript` module (`ESM`) specifications to write and organize code, using the latest `Vue3`, `Vite`, `Element-Plus`, `TypeScript`, `Pinia`, `Tailwindcss` and other mainstream technologies develop
 
+## Sponsors
+
+<a class="logo" href="https://ai-tools.cn/resume/start" target="_blank" rel="sponsored noopener">
+  <img src="./public/sponsors/aitools.svg" alt="aitools">
+</a>
+
 ## Thin version (offering non-internationalized and internationalized versions)
 
 The simplified version is based on the shelf extracted from [vue-pure-admin](https://github.com/pure-admin/vue-pure-admin), which contains main functions and is more suitable for actual project development. The packaged size is introduced globally [element-plus](https://element-plus.org) is still below `2.3MB`, and the full version of the code will be permanently synchronized. After enabling `brotli` compression and `cdn` to replace the local library mode, the package size is less than `350kb`
@@ -17,15 +23,16 @@ The simplified version is based on the shelf extracted from [vue-pure-admin](htt
 [Click to view the non-internationalized version](https://github.com/pure-admin/pure-admin-thin)  
 [Click to view Internationalization version](https://github.com/pure-admin/pure-admin-thin/tree/i18n)
 
-## Supporting Video
+## Supporting video
 
-[Click Watch Tutorial](https://www.bilibili.com/video/BV1kg411v7QT)  
-[Click Watch UI Design](https://www.bilibili.com/video/BV17g411T7rq)
+[Click me to view UI design](https://www.bilibili.com/video/BV17g411T7rq)  
+[Click me to view the rapid development tutorial](https://www.bilibili.com/video/BV1kg411v7QT)  
+[Click me to view all pages and function demonstrations of vue-pure-admin](https://www.bilibili.com/video/BV1Rx4y1U7Mv)
 
-## Docs
+## Nanny-level documents
 
-[View vue-pure-admin documentation](https://yiming_chang.gitee.io/pure-admin-doc)  
-[View @pureadmin/utils documentation](https://pure-admin-utils.netlify.app)
+[Click me to view vue-pure-admin documentation](https://yiming_chang.gitee.io/pure-admin-doc)  
+[Click me to view @pureadmin/utils documentation](https://pure-admin-utils.netlify.app)
 
 ## Quality service, software outsourcing, sponsorship support
 
@@ -168,7 +175,7 @@ You are very welcome to join！[Raise an issue](https://github.com/pure-admin/vu
 
 Thank you very much for your in-depth understanding of the source code and your outstanding contributions to the `pure-admin` organization ❤️
 
-|                   **Contributor**                    |                                   **SpecificCode**                                   |
+|                 **Contributor**                 |                                 **SpecificCode**                                 |
 | :---------------------------------------------: | :------------------------------------------------------------------------------: |
 |       [hb0730](https://github.com/hb0730)       |    [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=hb0730)    |
 |         [o-cc](https://github.com/o-cc)         |     [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=o-cc)     |
@@ -176,6 +183,7 @@ Thank you very much for your in-depth understanding of the source code and your 
 |   [skyline523](https://github.com/skyline523)   |  [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=skyline523)  |
 | [shark-lajiao](https://github.com/shark-lajiao) | [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=shark-lajiao) |
 |      [WitMiao](https://github.com/WitMiao)      |   [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=WitMiao)    |
+|     [QFifteen](https://github.com/QFifteen)     |   [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=QFifteen)   |
 
 ## Git Contribution submission specification
 

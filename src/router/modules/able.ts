@@ -11,6 +11,23 @@ export default {
   },
   children: [
     {
+      path: "/components/mqtt-client",
+      name: "MqttClient",
+      component: () => import("@/views/able/mqtt-client.vue"),
+      meta: {
+        title: $t("menus.hsMqtt"),
+        extraIcon: "IF-pure-iconfont-new svg"
+      }
+    },
+    {
+      path: "/able/verify",
+      name: "Verify",
+      component: () => import("@/views/able/verify.vue"),
+      meta: {
+        title: $t("menus.hsVerify")
+      }
+    },
+    {
       path: "/able/watermark",
       name: "WaterMark",
       component: () => import("@/views/able/watermark.vue"),
@@ -47,8 +64,7 @@ export default {
       name: "Ripple",
       component: () => import("@/views/able/ripple.vue"),
       meta: {
-        title: $t("menus.hsRipple"),
-        extraIcon: "IF-pure-iconfont-new svg"
+        title: $t("menus.hsRipple")
       }
     },
     {
@@ -77,6 +93,22 @@ export default {
           enterTransition: "animate__zoomIn",
           leaveTransition: "animate__zoomOut"
         }
+      }
+    },
+    {
+      path: "/able/word",
+      name: "Word",
+      component: () => import("@/views/able/word.vue"),
+      meta: {
+        title: $t("menus.hsWord")
+      }
+    },
+    {
+      path: "/able/excels",
+      name: "Excels",
+      component: () => import("@/views/able/excels.vue"),
+      meta: {
+        title: $t("menus.hsExcels")
       }
     },
     {

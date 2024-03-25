@@ -26,6 +26,7 @@ menus:
   hshome: Home
   hslogin: Login
   hsempty: Empty Page
+  hstable: Table
   hssysManagement: System Manage
   hsUser: User Manage
   hsRole: Role Manage
@@ -70,6 +71,7 @@ menus:
   hsTag: Tag
   hsStatistic: Statistic
   hsCollapse: Collapse
+  hsGanttastic: Gantt Chart
   hsProgress: Progress
   hsUpload: File Upload
   hsCheckCard: CheckCard
@@ -91,7 +93,9 @@ menus:
   hsVideoFrame: Video Frame Capture
   hsWavesurfer: Audio Visualization
   hsRipple: Ripple
+  hsMqtt: Mqtt Client
   hsOptimize: Debounce、Throttle、Copy、Longpress Directives
+  hsVerify: Captcha
   hsWatermark: Water Mark
   hsPrint: Print
   hsDownload: Download
@@ -123,13 +127,18 @@ menus:
   hsSwiper: Swiper Plugin
   hsVirtualList: Virtual List
   hsPdf: PDF Preview
+  hsWord: Word Preview
+  hsExcels: Excel Preview
   hsExcel: Export Excel
   hsInfiniteScroll: Table Infinite Scroll
   hsSensitive: Sensitive Filter
   hsPinyin: PinYin
   hsdanmaku: Danmaku
+  hsSchemaForm: Form
   hsPureTableBase: Base Usage
   hsPureTableHigh: High Usage
+  hsPureTableEdit: Edit Usage
+  hsVxeTable: Virtual Usage
   hsboard: Paint Board
   hsMenuoverflow: Menu Overflow Show Tooltip Text
   hsChildMenuoverflow: Child Menu Overflow Show Tooltip Text

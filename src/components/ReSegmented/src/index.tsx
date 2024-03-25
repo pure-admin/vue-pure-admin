@@ -1,5 +1,14 @@
 import "./index.css";
+import type { OptionsType } from "./type";
+import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import {
+  useDark,
+  isNumber,
+  isFunction,
+  useResizeObserver
+} from "@pureadmin/utils";
+import {
+  type PropType,
   h,
   ref,
   toRef,
@@ -8,9 +17,6 @@ import {
   defineComponent,
   getCurrentInstance
 } from "vue";
-import type { OptionsType } from "./type";
-import { useRenderIcon } from "@/components/ReIcon/src/hooks";
-import { isFunction, isNumber, useDark } from "@pureadmin/utils";
 
 const props = {
   options: {
@@ -22,6 +28,15 @@ const props = {
     type: undefined,
     require: false,
     default: "0"
+  },
+  /** 将宽度调整为父元素宽度	 */
+  block: {
+    type: Boolean,
+    default: false
+  },
+  /** 控件尺寸	 */
+  size: {
+    type: String as PropType<"small" | "default" | "large">
   }
 };
 
@@ -71,11 +86,22 @@ export default defineComponent({
     function handleInit(index = curIndex.value) {
       nextTick(() => {
         const curLabelRef = instance?.proxy?.$refs[`labelRef${index}`] as ElRef;
+        if (!curLabelRef) return;
         width.value = curLabelRef.clientWidth;
         translateX.value = curLabelRef.offsetLeft;
         initStatus.value = true;
       });
     }
+
+    function handleResizeInit() {
+      useResizeObserver(".pure-segmented", () => {
+        nextTick(() => {
+          handleInit(curIndex.value);
+        });
+      });
+    }
+
+    props.block && handleResizeInit();
 
     watch(
       () => curIndex.value,
@@ -85,10 +111,11 @@ export default defineComponent({
         });
       },
       {
-        deep: true,
         immediate: true
       }
     );
+
+    watch(() => props.size, handleResizeInit);
 
     const rendLabel = () => {
       return props.options.map((option, index) => {
@@ -148,7 +175,14 @@ export default defineComponent({
     };
 
     return () => (
-      <div class="pure-segmented">
+      <div
+        class={{
+          "pure-segmented": true,
+          "pure-segmented-block": props.block,
+          "pure-segmented--large": props.size === "large",
+          "pure-segmented--small": props.size === "small"
+        }}
+      >
         <div class="pure-segmented-group">
           <div
             class="pure-segmented-item-selected"

@@ -89,7 +89,8 @@ let isAutoCloseSidebar = true;
 useResizeObserver(appWrapperRef, entries => {
   if (isMobile) return;
   const entry = entries[0];
-  const [{ inlineSize: width }] = entry.borderBoxSize;
+  const [{ inlineSize: width, blockSize: height }] = entry.borderBoxSize;
+  useAppStoreHook().setViewportSize({ width, height });
   width <= 760 ? setTheme("vertical") : setTheme(useAppStoreHook().layout);
   /** width app-wrapper类容器宽度
    * 0 < width <= 760 隐藏侧边栏
