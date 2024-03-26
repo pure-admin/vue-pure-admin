@@ -205,4 +205,10 @@ declare global {
       touched?: boolean;
     };
   }
+
+  /**通用请求响应类型 */
+  interface ResponseResult<T> {
+    success: boolean;
+    data?: T;
+  }
 }

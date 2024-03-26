@@ -151,7 +151,7 @@ class PureHttp {
     url: string,
     param?: AxiosRequestConfig,
     axiosConfig?: PureHttpRequestConfig
-  ): Promise<T> {
+  ): Promise<ResponseResult<T>> {
     const config = {
       method,
       url,
@@ -177,7 +177,7 @@ class PureHttp {
     url: string,
     params?: AxiosRequestConfig<T>,
     config?: PureHttpRequestConfig
-  ): Promise<P> {
+  ): Promise<ResponseResult<P>> {
     return this.request<P>("post", url, params, config);
   }
 
@@ -186,7 +186,7 @@ class PureHttp {
     url: string,
     params?: AxiosRequestConfig<T>,
     config?: PureHttpRequestConfig
-  ): Promise<P> {
+  ): Promise<ResponseResult<P>> {
     return this.request<P>("get", url, params, config);
   }
 }

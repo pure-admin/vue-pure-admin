@@ -52,7 +52,7 @@ export const useUserStore = defineStore({
     },
     /** 登入 */
     async loginByUsername(data) {
-      return new Promise<UserResult>((resolve, reject) => {
+      return new Promise<ResponseResult<UserResult>>((resolve, reject) => {
         getLogin(data)
           .then(data => {
             if (data) {
@@ -76,18 +76,20 @@ export const useUserStore = defineStore({
     },
     /** 刷新`token` */
     async handRefreshToken(data) {
-      return new Promise<RefreshTokenResult>((resolve, reject) => {
-        refreshTokenApi(data)
-          .then(data => {
-            if (data) {
-              setToken(data.data);
-              resolve(data);
-            }
-          })
-          .catch(error => {
-            reject(error);
-          });
-      });
+      return new Promise<ResponseResult<RefreshTokenResult>>(
+        (resolve, reject) => {
+          refreshTokenApi(data)
+            .then(data => {
+              if (data) {
+                setToken(data.data);
+                resolve(data);
+              }
+            })
+            .catch(error => {
+              reject(error);
+            });
+        }
+      );
     }
   }
 });

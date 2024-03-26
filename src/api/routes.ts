@@ -1,10 +1,6 @@
 import { http } from "@/utils/http";
 
-type Result = {
-  success: boolean;
-  data: Array<any>;
-};
-
+/**动态路由 */
 export const getAsyncRoutes = () => {
-  return http.request<Result>("get", "/get-async-routes");
+  return http.request<Array<any>>("get", "/get-async-routes");
 };
