@@ -12,6 +12,7 @@ import globalization from "@/assets/svg/globalization.svg?component";
 import LogoutCircleRLine from "@iconify-icons/ri/logout-circle-r-line";
 import Setting from "@iconify-icons/ri/settings-3-line";
 import Check from "@iconify-icons/ep/check";
+import UserSettingsLine from "@iconify-icons/ri/user-settings-line";
 
 const menuRef = ref();
 
@@ -27,7 +28,8 @@ const {
   userAvatar,
   avatarsStyle,
   getDropdownItemStyle,
-  getDropdownItemClass
+  getDropdownItemClass,
+  handleOpenUserSettings
 } = useNav();
 
 const defaultActive = computed(() =>
@@ -107,6 +109,10 @@ nextTick(() => {
           <p v-if="username" class="dark:text-white">{{ username }}</p>
         </span>
         <template #dropdown>
+          <el-dropdown-item @click="handleOpenUserSettings">
+            <IconifyIconOffline :icon="UserSettingsLine" style="margin: 5px" />
+            {{ t("buttons.hsUserSettings") }}
+          </el-dropdown-item>
           <el-dropdown-menu class="logout">
             <el-dropdown-item @click="logout">
               <IconifyIconOffline
