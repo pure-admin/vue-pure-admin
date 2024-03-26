@@ -28,6 +28,13 @@ watch(animate, () => {
           选择器
         </span>
       </div>
+      <el-link
+        class="mt-2"
+        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/components/animatecss.vue"
+        target="_blank"
+      >
+        代码位置 src/views/components/animatecss.vue
+      </el-link>
     </template>
     <ReAnimateSelector v-model="animate" class="!w-[200px]" />
   </el-card>

@@ -38,21 +38,26 @@ const onPrint = () => {
   <el-card shadow="never">
     <template #header>
       <div class="font-medium">
-        PDF预览（
         <el-link
           href="https://github.com/hrynko/vue-pdf-embed"
           target="_blank"
           style="margin: 0 5px 4px 0; font-size: 16px"
         >
-          github地址
+          PDF预览
         </el-link>
-        ）
       </div>
+      <el-link
+        class="mt-2"
+        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/able/pdf.vue"
+        target="_blank"
+      >
+        代码位置 src/views/able/pdf.vue
+      </el-link>
     </template>
     <div
       v-loading="loading"
       class="h-[calc(100vh-239px)]"
-      :element-loading-text="t('status.hsLoad')"
+      :element-loading-text="t('status.pureLoad')"
     >
       <div class="flex justify-between items-center h-9">
         <div v-if="showAllPages" class="font-medium ml-1.25 text-xl">

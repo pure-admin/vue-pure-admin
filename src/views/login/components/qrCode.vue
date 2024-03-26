@@ -8,10 +8,12 @@ const { t } = useI18n();
 </script>
 
 <template>
-  <Motion class="-mt-2 -mb-2"> <ReQrcode :text="t('login.test')" /> </Motion>
+  <Motion class="-mt-2 -mb-2">
+    <ReQrcode :text="t('login.pureTest')" />
+  </Motion>
   <Motion :delay="100">
     <el-divider>
-      <p class="text-gray-500 text-xs">{{ t("login.tip") }}</p>
+      <p class="text-gray-500 text-xs">{{ t("login.pureTip") }}</p>
     </el-divider>
   </Motion>
   <Motion :delay="150">
@@ -19,7 +21,7 @@ const { t } = useI18n();
       class="w-full mt-4"
       @click="useUserStoreHook().SET_CURRENTPAGE(0)"
     >
-      {{ t("login.back") }}
+      {{ t("login.pureBack") }}
     </el-button>
   </Motion>
 </template>

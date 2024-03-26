@@ -14,7 +14,7 @@ function tabClick({ index }) {
 </script>
 
 <template>
-  <el-card shadow="never" :body-style="{ height: 'calc(100vh - 180px)' }">
+  <el-card shadow="never" :body-style="{ height: 'calc(100vh - 260px)' }">
     <template #header>
       <div class="card-header">
         <span class="font-medium">
@@ -29,6 +29,13 @@ function tabClick({ index }) {
           ，维护整体表单只需操作 columns 配置即可
         </span>
       </div>
+      <el-link
+        class="mt-2"
+        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/schema-form"
+        target="_blank"
+      >
+        代码位置 src/views/schema-form
+      </el-link>
     </template>
 
     <el-tabs @tab-click="tabClick">

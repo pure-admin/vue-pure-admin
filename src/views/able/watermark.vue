@@ -36,16 +36,22 @@ onBeforeUnmount(() => {
     <template #header>
       <div class="card-header">
         <span class="font-medium">
-          页面水印
           <el-link
             href="https://pure-admin-utils.netlify.app/hooks/useWatermark/useWatermark"
             target="_blank"
             style="margin: 0 5px 4px 0; font-size: 16px"
           >
-            （查看更详细的使用文档）
+            页面水印
           </el-link>
         </span>
       </div>
+      <el-link
+        class="mt-2"
+        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/able/watermark.vue"
+        target="_blank"
+      >
+        代码位置 src/views/able/watermark.vue
+      </el-link>
     </template>
     <el-space wrap class="!mb-2">
       <span> 请输入要创建水印的值：</span>

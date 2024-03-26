@@ -28,6 +28,13 @@ function tabClick({ index }) {
           </el-link>
         </span>
       </div>
+      <el-link
+        class="mt-2"
+        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/table/virtual"
+        target="_blank"
+      >
+        代码位置 src/views/table/virtual
+      </el-link>
     </template>
 
     <el-tabs @tab-click="tabClick">

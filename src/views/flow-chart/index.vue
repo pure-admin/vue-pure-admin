@@ -76,6 +76,13 @@ onMounted(() => {
           </el-link>
         </span>
       </div>
+      <el-link
+        class="mt-2"
+        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/flow-chart"
+        target="_blank"
+      >
+        代码位置 src/views/flow-chart
+      </el-link>
     </template>
     <div class="logic-flow-view">
       <!-- 辅助工具栏 -->

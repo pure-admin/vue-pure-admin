@@ -184,7 +184,7 @@ watch(loginDay, value => {
                 :rules="[
                   {
                     required: true,
-                    message: transformI18n($t('login.usernameReg')),
+                    message: transformI18n($t('login.pureUsernameReg')),
                     trigger: 'blur'
                   }
                 ]"
@@ -193,7 +193,7 @@ watch(loginDay, value => {
                 <el-input
                   v-model="ruleForm.username"
                   clearable
-                  :placeholder="t('login.username')"
+                  :placeholder="t('login.pureUsername')"
                   :prefix-icon="useRenderIcon(User)"
                 />
               </el-form-item>
@@ -205,7 +205,7 @@ watch(loginDay, value => {
                   v-model="ruleForm.password"
                   clearable
                   show-password
-                  :placeholder="t('login.password')"
+                  :placeholder="t('login.purePassword')"
                   :prefix-icon="useRenderIcon(Lock)"
                 />
               </el-form-item>
@@ -216,7 +216,7 @@ watch(loginDay, value => {
                 <el-input
                   v-model="ruleForm.verifyCode"
                   clearable
-                  :placeholder="t('login.verifyCode')"
+                  :placeholder="t('login.pureVerifyCode')"
                   :prefix-icon="useRenderIcon('ri:shield-keyhole-line')"
                 >
                   <template v-slot:append>
@@ -244,11 +244,11 @@ watch(loginDay, value => {
                         <option value="7">7</option>
                         <option value="30">30</option>
                       </select>
-                      {{ t("login.remember") }}
+                      {{ t("login.pureRemember") }}
                       <el-tooltip
                         effect="dark"
                         placement="top"
-                        :content="t('login.rememberInfo')"
+                        :content="t('login.pureRememberInfo')"
                       >
                         <IconifyIconOffline :icon="Info" class="ml-1" />
                       </el-tooltip>
@@ -259,7 +259,7 @@ watch(loginDay, value => {
                     type="primary"
                     @click="useUserStoreHook().SET_CURRENTPAGE(4)"
                   >
-                    {{ t("login.forget") }}
+                    {{ t("login.pureForget") }}
                   </el-button>
                 </div>
                 <el-button
@@ -270,7 +270,7 @@ watch(loginDay, value => {
                   :disabled="disabled"
                   @click="onLogin(ruleFormRef)"
                 >
-                  {{ t("login.login") }}
+                  {{ t("login.pureLogin") }}
                 </el-button>
               </el-form-item>
             </Motion>
@@ -295,7 +295,9 @@ watch(loginDay, value => {
           <Motion v-if="currentPage === 0" :delay="350">
             <el-form-item>
               <el-divider>
-                <p class="text-gray-500 text-xs">{{ t("login.thirdLogin") }}</p>
+                <p class="text-gray-500 text-xs">
+                  {{ t("login.pureThirdLogin") }}
+                </p>
               </el-divider>
               <div class="w-full flex justify-evenly">
                 <span

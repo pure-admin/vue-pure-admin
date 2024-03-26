@@ -23,7 +23,14 @@ const settingTB: ContextProps = reactive({
   <el-card shadow="never">
     <template #header>
       <div class="card-header">
-        <span class="font-medium">切割面板</span>
+        <p class="font-medium">切割面板</p>
+        <el-link
+          class="mt-2"
+          href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/components/split-pane.vue"
+          target="_blank"
+        >
+          代码位置 src/views/components/split-pane.vue
+        </el-link>
       </div>
     </template>
     <div class="split-pane">

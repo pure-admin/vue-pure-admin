@@ -18,7 +18,7 @@ function tabClick({ index }) {
     <template #header>
       <div class="card-header">
         <span class="font-medium">
-          二次封装 element-plus 的
+          二次封装 Element Plus 的
           <el-link
             href="https://element-plus.org/zh-CN/component/table.html"
             target="_blank"
@@ -37,6 +37,13 @@ function tabClick({ index }) {
           </el-link>
         </span>
       </div>
+      <el-link
+        class="mt-2"
+        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/table/base"
+        target="_blank"
+      >
+        代码位置 src/views/table/base
+      </el-link>
     </template>
 
     <el-alert
@@ -74,7 +81,7 @@ function tabClick({ index }) {
 }
 
 :deep(.el-alert__title) {
-  font-size: 16px;
+  font-size: 15px;
 }
 
 :deep(.el-tabs__nav-next),

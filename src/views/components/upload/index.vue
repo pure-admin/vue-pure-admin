@@ -114,14 +114,19 @@ const onDownload = () => {
         >
           文件上传
         </el-link>
-        <span class="header-right">
-          <el-button class="ml-1" text bg @click="onDownload">
-            点击下载安全文件进行上传测试
-          </el-button>
-        </span>
       </div>
+      <el-link
+        class="mt-2"
+        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/components/upload"
+        target="_blank"
+      >
+        代码位置 src/views/components/upload
+      </el-link>
     </template>
 
+    <el-button class="mb-4" text bg @click="onDownload">
+      点击下载安全文件进行上传测试
+    </el-button>
     <p class="mb-4">
       综合示例<span class="text-[14px]">
         （ <span class="text-[red]">自动上传</span>

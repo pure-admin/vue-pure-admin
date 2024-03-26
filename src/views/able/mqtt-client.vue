@@ -190,203 +190,211 @@ onUnmounted(() => {
 <template>
   <el-card shadow="never" :body-style="{ padding: '20px' }">
     <template #header>
-      基于
+      <div>
+        基于
+        <el-link
+          type="primary"
+          :underline="false"
+          href="https://github.com/mqttjs/MQTT.js"
+          target="_blank"
+        >
+          MQTT.js
+        </el-link>
+        和 免费的公共MQTT代理
+        <el-link
+          type="primary"
+          :underline="false"
+          href="broker.emqx.io"
+          target="_blank"
+        >
+          EMQX
+        </el-link>
+        实现的一套 MQTT 客户端
+      </div>
       <el-link
-        type="primary"
-        :underline="false"
-        href="https://github.com/mqttjs/MQTT.js"
+        class="mt-2"
+        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/able/mqtt-client.vue"
         target="_blank"
       >
-        MQTT.js
+        代码位置 src/views/able/mqtt-client.vue
       </el-link>
-      和 免费的公共MQTT代理
-      <el-link
-        type="primary"
-        :underline="false"
-        href="broker.emqx.io"
-        target="_blank"
-      >
-        EMQX
-      </el-link>
-      实现的一套 MQTT 客户端。
     </template>
-    <template #default>
-      <el-card shadow="never">
-        <h1>设置</h1>
-        <el-form label-position="top" :model="connection">
-          <el-row :gutter="20">
-            <el-col :span="8">
-              <el-form-item prop="protocol" label="协议">
-                <el-select
-                  v-model="connection.protocol"
-                  @change="handleProtocolChange"
-                >
-                  <el-option label="ws://" value="ws" />
-                  <el-option label="wss://" value="wss" />
-                </el-select>
-              </el-form-item>
-            </el-col>
-            <el-col :span="8">
-              <el-form-item prop="host" label="主机">
-                <el-input v-model="connection.host" />
-              </el-form-item>
-            </el-col>
-            <el-col :span="8">
-              <el-form-item prop="port" label="端口">
-                <el-input
-                  v-model.number="connection.port"
-                  type="number"
-                  placeholder="8083/8084"
-                />
-              </el-form-item>
-            </el-col>
-            <el-col :span="8">
-              <el-form-item prop="clientId" label="客户端ID">
-                <el-input v-model="connection.clientId" />
-              </el-form-item>
-            </el-col>
-            <el-col :span="8">
-              <el-form-item prop="username" label="用户名">
-                <el-input v-model="connection.username" />
-              </el-form-item>
-            </el-col>
-            <el-col :span="8">
-              <el-form-item prop="password" label="密码">
-                <el-input v-model="connection.password" />
-              </el-form-item>
-            </el-col>
 
-            <el-col :span="24">
-              <el-button
-                type="primary"
-                :disabled="client.connected"
-                :loading="btnLoadingType === 'connect'"
-                @click="createConnection"
+    <el-card shadow="never">
+      <h1>设置</h1>
+      <el-form label-position="top" :model="connection">
+        <el-row :gutter="20">
+          <el-col :span="8">
+            <el-form-item prop="protocol" label="协议">
+              <el-select
+                v-model="connection.protocol"
+                @change="handleProtocolChange"
               >
-                {{ client.connected ? "已连接" : "连接" }}
-              </el-button>
+                <el-option label="ws://" value="ws" />
+                <el-option label="wss://" value="wss" />
+              </el-select>
+            </el-form-item>
+          </el-col>
+          <el-col :span="8">
+            <el-form-item prop="host" label="主机">
+              <el-input v-model="connection.host" />
+            </el-form-item>
+          </el-col>
+          <el-col :span="8">
+            <el-form-item prop="port" label="端口">
+              <el-input
+                v-model.number="connection.port"
+                type="number"
+                placeholder="8083/8084"
+              />
+            </el-form-item>
+          </el-col>
+          <el-col :span="8">
+            <el-form-item prop="clientId" label="客户端ID">
+              <el-input v-model="connection.clientId" />
+            </el-form-item>
+          </el-col>
+          <el-col :span="8">
+            <el-form-item prop="username" label="用户名">
+              <el-input v-model="connection.username" />
+            </el-form-item>
+          </el-col>
+          <el-col :span="8">
+            <el-form-item prop="password" label="密码">
+              <el-input v-model="connection.password" />
+            </el-form-item>
+          </el-col>
 
-              <el-button
-                v-if="client.connected"
-                type="danger"
-                :loading="btnLoadingType === 'disconnect'"
-                @click="destroyConnection"
+          <el-col :span="24">
+            <el-button
+              type="primary"
+              :disabled="client.connected"
+              :loading="btnLoadingType === 'connect'"
+              @click="createConnection"
+            >
+              {{ client.connected ? "已连接" : "连接" }}
+            </el-button>
+
+            <el-button
+              v-if="client.connected"
+              type="danger"
+              :loading="btnLoadingType === 'disconnect'"
+              @click="destroyConnection"
+            >
+              断开连接
+            </el-button>
+          </el-col>
+        </el-row>
+      </el-form>
+    </el-card>
+    <el-card shadow="never" class="mt-4">
+      <h1>订阅</h1>
+      <el-form label-position="top" :model="subscription">
+        <el-row :gutter="20" :align="'middle'">
+          <el-col :span="8">
+            <el-form-item prop="topic" label="主题">
+              <el-input
+                v-model="subscription.topic"
+                :disabled="subscribedSuccess"
+              />
+            </el-form-item>
+          </el-col>
+          <el-col :span="8">
+            <el-form-item prop="qos" label="通信质量">
+              <el-select
+                v-model="subscription.qos"
+                :disabled="subscribedSuccess"
               >
-                断开连接
-              </el-button>
-            </el-col>
-          </el-row>
-        </el-form>
-      </el-card>
-      <el-card shadow="never" class="mt-4">
-        <h1>订阅</h1>
-        <el-form label-position="top" :model="subscription">
-          <el-row :gutter="20" :align="'middle'">
-            <el-col :span="8">
-              <el-form-item prop="topic" label="主题">
-                <el-input
-                  v-model="subscription.topic"
-                  :disabled="subscribedSuccess"
+                <el-option
+                  v-for="qos in qosList"
+                  :key="qos"
+                  :label="qos"
+                  :value="qos"
                 />
-              </el-form-item>
-            </el-col>
-            <el-col :span="8">
-              <el-form-item prop="qos" label="通信质量">
-                <el-select
-                  v-model="subscription.qos"
-                  :disabled="subscribedSuccess"
-                >
-                  <el-option
-                    v-for="qos in qosList"
-                    :key="qos"
-                    :label="qos"
-                    :value="qos"
-                  />
-                </el-select>
-              </el-form-item>
-            </el-col>
-          </el-row>
-          <el-row>
-            <el-col>
-              <el-button
-                type="primary"
-                class="sub-btn"
-                :loading="btnLoadingType === 'subscribe'"
-                :disabled="!client.connected || subscribedSuccess"
-                @click="doSubscribe"
-              >
-                {{ subscribedSuccess ? "已订阅" : "订阅" }}
-              </el-button>
-              <el-button
-                v-if="subscribedSuccess"
-                type="primary"
-                class="sub-btn"
-                :loading="btnLoadingType === 'unsubscribe'"
-                :disabled="!client.connected"
-                @click="doUnSubscribe"
-              >
-                取消订阅
-              </el-button>
-            </el-col>
-          </el-row>
-        </el-form>
-      </el-card>
-      <el-card shadow="never" class="mt-4">
-        <h1>发布</h1>
-        <el-form label-position="top" :model="publish">
-          <el-row :gutter="20">
-            <el-col :span="8">
-              <el-form-item prop="topic">
-                <template #label>
-                  <span>主题</span>
-                  <el-text type="info" size="small">
-                    可将订阅主题设置为topic/browser，测试MQTT的自发自收。
-                  </el-text>
-                </template>
-                <el-input v-model="publish.topic" />
-              </el-form-item>
-            </el-col>
-            <el-col :span="8">
-              <el-form-item prop="payload" label="有效载荷">
-                <el-input v-model="publish.payload" />
-              </el-form-item>
-            </el-col>
-            <el-col :span="8">
-              <el-form-item prop="qos" label="通信质量">
-                <el-select v-model="publish.qos">
-                  <el-option
-                    v-for="qos in qosList"
-                    :key="qos"
-                    :label="qos"
-                    :value="qos"
-                  />
-                </el-select>
-              </el-form-item>
-            </el-col>
-          </el-row>
-        </el-form>
-        <el-col :span="24">
-          <el-button
-            type="primary"
-            :loading="btnLoadingType === 'publish'"
-            :disabled="!client.connected"
-            @click="doPublish"
-          >
-            发布
-          </el-button>
-        </el-col>
-      </el-card>
-      <el-card shadow="never" class="mt-4">
-        <h1>接收</h1>
-        <el-col :span="24">
-          <el-input
-            v-model="receivedMessages"
-            type="textarea"
-            :rows="3"
-            readonly
-          />
-        </el-col>
-      </el-card>
-    </template>
+              </el-select>
+            </el-form-item>
+          </el-col>
+        </el-row>
+        <el-row>
+          <el-col>
+            <el-button
+              type="primary"
+              class="sub-btn"
+              :loading="btnLoadingType === 'subscribe'"
+              :disabled="!client.connected || subscribedSuccess"
+              @click="doSubscribe"
+            >
+              {{ subscribedSuccess ? "已订阅" : "订阅" }}
+            </el-button>
+            <el-button
+              v-if="subscribedSuccess"
+              type="primary"
+              class="sub-btn"
+              :loading="btnLoadingType === 'unsubscribe'"
+              :disabled="!client.connected"
+              @click="doUnSubscribe"
+            >
+              取消订阅
+            </el-button>
+          </el-col>
+        </el-row>
+      </el-form>
+    </el-card>
+    <el-card shadow="never" class="mt-4">
+      <h1>发布</h1>
+      <el-form label-position="top" :model="publish">
+        <el-row :gutter="20">
+          <el-col :span="8">
+            <el-form-item prop="topic">
+              <template #label>
+                <span>主题</span>
+                <el-text type="info" size="small">
+                  可将订阅主题设置为topic/browser，测试MQTT的自发自收。
+                </el-text>
+              </template>
+              <el-input v-model="publish.topic" />
+            </el-form-item>
+          </el-col>
+          <el-col :span="8">
+            <el-form-item prop="payload" label="有效载荷">
+              <el-input v-model="publish.payload" />
+            </el-form-item>
+          </el-col>
+          <el-col :span="8">
+            <el-form-item prop="qos" label="通信质量">
+              <el-select v-model="publish.qos">
+                <el-option
+                  v-for="qos in qosList"
+                  :key="qos"
+                  :label="qos"
+                  :value="qos"
+                />
+              </el-select>
+            </el-form-item>
+          </el-col>
+        </el-row>
+      </el-form>
+      <el-col :span="24">
+        <el-button
+          type="primary"
+          :loading="btnLoadingType === 'publish'"
+          :disabled="!client.connected"
+          @click="doPublish"
+        >
+          发布
+        </el-button>
+      </el-col>
+    </el-card>
+    <el-card shadow="never" class="mt-4">
+      <h1>接收</h1>
+      <el-col :span="24">
+        <el-input
+          v-model="receivedMessages"
+          type="textarea"
+          :rows="3"
+          readonly
+        />
+      </el-col>
+    </el-card>
   </el-card>
 </template>
