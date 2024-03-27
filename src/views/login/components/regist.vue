@@ -29,7 +29,7 @@ const repeatPasswordRule = [
   {
     validator: (rule, value, callback) => {
       if (value === "") {
-        callback(new Error(transformI18n($t("login.purePassWordRuleReg"))));
+        callback(new Error(transformI18n($t("login.purePassWordSureReg"))));
       } else if (ruleForm.password !== value) {
         callback(
           new Error(transformI18n($t("login.purePassWordDifferentReg")))
@@ -118,7 +118,7 @@ function onBack() {
           <el-input
             v-model="ruleForm.verifyCode"
             clearable
-            :placeholder="t('login.pureVerifyCode')"
+            :placeholder="t('login.pureSmsVerifyCode')"
             :prefix-icon="useRenderIcon('ri:shield-keyhole-line')"
           />
           <el-button
