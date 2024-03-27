@@ -115,7 +115,7 @@ onMounted(() => {
 <style scoped>
 #turbo {
   width: 100%;
-  height: 70vh;
+  height: 65vh;
 }
 
 .logic-flow-view {

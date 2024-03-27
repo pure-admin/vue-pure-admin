@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import {
-  closeDialog,
-  dialogStore,
   type EventType,
   type ButtonProps,
-  type DialogOptions
+  type DialogOptions,
+  closeDialog,
+  dialogStore
 } from "./index";
 import { ref, computed } from "vue";
 import { isFunction } from "@pureadmin/utils";

@@ -126,9 +126,7 @@ onBeforeUnmount(() => {
       <el-button plain @click="clear">清除整页水印</el-button>
     </el-space>
 
-    <el-divider />
-
-    <div ref="local" class="w-1/2 h-[200px] border border-sky-500" />
+    <div ref="local" class="w-1/2 h-[200px] border border-sky-500 mt-4" />
 
     <el-space wrap class="mt-6">
       <el-button
@@ -196,8 +194,9 @@ onBeforeUnmount(() => {
       <el-button plain @click="clearLocal">清除局部水印</el-button>
     </el-space>
 
-    <el-divider />
-
-    <div ref="preventLocal" class="w-1/2 h-[200px] border border-indigo-500" />
+    <div
+      ref="preventLocal"
+      class="w-1/2 h-[200px] border border-indigo-500 mt-4"
+    />
   </el-card>
 </template>

@@ -56,7 +56,7 @@ const onPrint = () => {
     </template>
     <div
       v-loading="loading"
-      class="h-[calc(100vh-239px)]"
+      class="h-[calc(100vh-295px)]"
       :element-loading-text="t('status.pureLoad')"
     >
       <div class="flex justify-between items-center h-9">

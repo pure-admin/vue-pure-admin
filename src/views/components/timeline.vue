@@ -89,7 +89,7 @@ const activities = [
           placement="bottom"
         >
           <div class="message">
-            vue-pure-admin 是一款开源免费且开箱即用的中后台管理系统模版
+            vue-pure-admin 第{{ activities.length - index }}个版本发布啦
           </div>
         </el-timeline-item>
       </el-timeline>

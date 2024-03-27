@@ -1,6 +1,6 @@
-import { defineComponent, ref, unref, computed, type PropType } from "vue";
-import resizer from "./resizer";
 import "./index.css";
+import resizer from "./resizer";
+import { type PropType, defineComponent, ref, unref, computed } from "vue";
 
 export interface ContextProps {
   minPercent: number;

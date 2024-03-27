@@ -92,7 +92,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <el-scrollbar max-height="calc(100vh - 90px)" class="content">
+  <el-scrollbar max-height="calc(100vh - 120px)" class="content">
     <Waterfall :list="list" v-bind="options">
       <template #item="{ item, url, index }">
         <div
@@ -139,6 +139,7 @@ onMounted(() => {
     <el-backtop
       title="回到顶部"
       :right="35"
+      :bottom="50"
       :visibility-height="400"
       target=".content .el-scrollbar__wrap"
     >

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { h, onMounted, ref, useSlots } from "vue";
-import { useTippy, type TippyOptions } from "vue-tippy";
+import { type TippyOptions, useTippy } from "vue-tippy";
 
 const props = defineProps({
   // 行数

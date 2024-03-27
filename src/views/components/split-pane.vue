@@ -64,7 +64,7 @@ const settingTB: ContextProps = reactive({
 <style lang="scss" scoped>
 .split-pane {
   width: 100%;
-  height: calc(100vh - 260px);
+  height: calc(100vh - 300px);
   font-size: 50px;
   text-align: center;
   border: 1px solid #e5e6eb;
