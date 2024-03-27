@@ -117,8 +117,10 @@ export function useTags() {
     if (isBoolean(route?.meta?.showLink) && route?.meta?.showLink === false) {
       if (Object.keys(route.query).length > 0) {
         return isEqual(route.query, item.query) ? previous : next;
-      } else {
+      } else if (Object.keys(route.params).length > 0) {
         return isEqual(route.params, item.params) ? previous : next;
+      } else {
+        return route.path === item.path ? previous : next;
       }
     } else {
       return route.path === item.path ? previous : next;

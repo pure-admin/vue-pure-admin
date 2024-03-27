@@ -59,11 +59,30 @@ export function useDetail() {
       router.push({ name: "TabParamsDetail", params: parameter });
     }
   }
+  function toDetailNoParameter() {
+    // 保存信息到标签页
+    useMultiTagsStoreHook().handleTags("push", {
+      path: `/tabs/no-parameter-detail`,
+      name: "TabNoParameterDetail",
+      meta: {
+        title: {
+          zh: `无参数 - 详情信息`,
+          en: `no parameter - DetailInfo`
+        },
+        // 如果使用的是非国际化精简版title可以像下面这么写
+        // title: `No.${index} - 详情信息`,
+        // 最大打开标签数
+        dynamicLevel: 3
+      }
+    });
+    // 路由跳转
+    router.push({ name: "TabNoParameterDetail" });
+  }
 
   // 用于页面刷新，重新获取浏览器地址栏参数并保存到标签页
   const initToDetail = (model: "query" | "params") => {
     if (getParameter) toDetail(getParameter, model);
   };
 
-  return { toDetail, initToDetail, getParameter, router };
+  return { toDetail, toDetailNoParameter, initToDetail, getParameter, router };
 }
