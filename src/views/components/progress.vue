@@ -23,6 +23,13 @@ const format = percentage => (percentage === 100 ? "Full" : `${percentage}%`);
           进度条
         </el-link>
       </div>
+      <el-link
+        class="mt-2"
+        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/components/progress.vue"
+        target="_blank"
+      >
+        代码位置 src/views/components/progress.vue
+      </el-link>
     </template>
 
     <p class="mb-4">直线进度条动画</p>

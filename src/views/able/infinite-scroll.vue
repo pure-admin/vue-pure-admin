@@ -35,16 +35,21 @@ const load = () => {
   <el-card shadow="never">
     <template #header>
       <div class="font-medium">
-        表格无限滚动（
         <el-link
           href="https://github.com/yujinpan/el-table-infinite-scroll"
           target="_blank"
           style="margin: 0 5px 4px 0; font-size: 16px"
         >
-          github地址
+          表格无限滚动
         </el-link>
-        ）
       </div>
+      <el-link
+        class="mt-2"
+        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/able/infinite-scroll.vue"
+        target="_blank"
+      >
+        代码位置 src/views/able/infinite-scroll.vue
+      </el-link>
     </template>
     <p class="mb-2">{{ isBottom ? "已加载全部页" : `加载到第 ${page} 页` }}</p>
     <el-table

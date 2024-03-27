@@ -92,7 +92,7 @@ const handleManageProduct = product => {
 </script>
 
 <template>
-  <div class="main">
+  <div>
     <div class="w-full flex justify-between mb-4">
       <el-button
         :icon="useRenderIcon(AddFill)"

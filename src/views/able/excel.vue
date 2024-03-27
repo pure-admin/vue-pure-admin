@@ -72,16 +72,21 @@ const exportExcel = () => {
   <el-card shadow="never">
     <template #header>
       <div class="font-medium">
-        导出Excel（
         <el-link
           href="https://github.com/SheetJS/sheetjs"
           target="_blank"
           style="margin: 0 5px 4px 0; font-size: 16px"
         >
-          github地址
+          导出Excel
         </el-link>
-        ）
       </div>
+      <el-link
+        class="mt-2"
+        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/able/excel.vue"
+        target="_blank"
+      >
+        代码位置 src/views/able/excel.vue
+      </el-link>
     </template>
     <el-button type="primary" @click="exportExcel">导出Excel</el-button>
     <div class="h-[25rem] mt-3">

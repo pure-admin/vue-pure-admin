@@ -93,6 +93,13 @@ onBeforeUnmount(() => {
           </span>
         </span>
       </div>
+      <el-link
+        class="mt-2"
+        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/able/wavesurfer"
+        target="_blank"
+      >
+        代码位置 src/views/able/wavesurfer
+      </el-link>
     </template>
     <div
       v-loading="loading"

@@ -10,7 +10,14 @@ defineOptions({
   <el-card shadow="never">
     <template #header>
       <div class="card-header">
-        <span class="font-medium">数字动画</span>
+        <p class="font-medium">数字动画</p>
+        <el-link
+          class="mt-2"
+          href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/components/count-to.vue"
+          target="_blank"
+        >
+          代码位置 src/views/components/count-to.vue
+        </el-link>
       </div>
     </template>
     <ReNormalCountTo

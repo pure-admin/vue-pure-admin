@@ -1,6 +1,6 @@
-import { defineComponent, ref } from "vue";
-import propTypes from "@/utils/propTypes";
 import "./filpper.css";
+import propTypes from "@/utils/propTypes";
+import { defineComponent, ref } from "vue";
 
 const props = {
   // front paper text
