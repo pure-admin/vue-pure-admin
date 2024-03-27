@@ -78,28 +78,28 @@ const onPrint = () => {
           <el-checkbox v-model="showAllPages" @change="showAllPagesChange">
             显示所有页面
           </el-checkbox>
-          <el-tooltip
-            effect="dark"
-            :content="`翻转（当前角度${rotations[currentRotation]}度）`"
-            placement="top"
-          >
-            <IconifyIconOnline
-              icon="ic:baseline-rotate-90-degrees-ccw"
-              class="cursor-pointer outline-transparent"
-              @click="
-                currentRotation === 3
-                  ? (currentRotation = 0)
-                  : (currentRotation += 1)
-              "
-            />
-          </el-tooltip>
-          <el-tooltip effect="dark" content="打印" placement="top">
-            <IconifyIconOnline
-              icon="ri:printer-line"
-              class="cursor-pointer outline-transparent"
-              @click="onPrint"
-            />
-          </el-tooltip>
+          <IconifyIconOnline
+            v-tippy="{
+              maxWidth: 'none',
+              content: `翻转（当前角度${rotations[currentRotation]}度）`
+            }"
+            icon="ic:baseline-rotate-90-degrees-ccw"
+            class="cursor-pointer outline-transparent"
+            @click="
+              currentRotation === 3
+                ? (currentRotation = 0)
+                : (currentRotation += 1)
+            "
+          />
+          <IconifyIconOnline
+            v-tippy="{
+              maxWidth: 'none',
+              content: '打印'
+            }"
+            icon="ri:printer-line"
+            class="cursor-pointer outline-transparent"
+            @click="onPrint"
+          />
         </div>
       </div>
       <el-scrollbar>
