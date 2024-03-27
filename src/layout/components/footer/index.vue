@@ -16,20 +16,23 @@ const TITLE = getConfig("Title");
     >
       &nbsp;{{ TITLE }}
     </a>
-    <span class="ml-10">赞助商：</span>
-    <a
-      class="hover:text-primary"
-      href="https://ai-tools.cn/resume/start"
-      target="_blank"
-    >
-      二猫 AI 简历
-    </a>
+    <div class="ml-8">
+      <span>赞助商：</span>
+      <a
+        class="hover:text-primary"
+        href="https://ai-tools.cn/resume/start"
+        target="_blank"
+      >
+        二猫 AI 简历
+      </a>
+    </div>
   </footer>
 </template>
 
 <style lang="scss" scoped>
 .layout-footer {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   width: 100%;
