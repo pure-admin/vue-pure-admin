@@ -48,6 +48,13 @@ onMounted(() => {
           </el-link>
         </span>
       </div>
+      <el-link
+        class="mt-2"
+        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/able/video.vue"
+        target="_blank"
+      >
+        代码位置 src/views/able/video.vue
+      </el-link>
     </template>
     <div id="mse" />
   </el-card>

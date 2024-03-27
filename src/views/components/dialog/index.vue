@@ -447,7 +447,7 @@ function onBeforeSureClick() {
     <template #header>
       <div class="card-header">
         <span class="font-medium">
-          二次封装 element-plus 的
+          二次封装 Element Plus 的
           <el-link
             href="https://element-plus.org/zh-CN/component/dialog.html"
             target="_blank"
@@ -465,6 +465,12 @@ function onBeforeSureClick() {
           ）
         </span>
       </div>
+      <el-link
+        href="https://github.com/pure-admin/vue-pure-admin/tree/main/src/views/components/dialog"
+        target="_blank"
+      >
+        代码位置 src/views/components/dialog
+      </el-link>
     </template>
     <el-space wrap>
       <el-button @click="onBaseClick"> 基础用法 </el-button>

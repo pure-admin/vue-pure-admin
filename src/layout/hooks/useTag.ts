@@ -64,49 +64,49 @@ export function useTags() {
   const tagsViews = reactive<Array<tagsViewsType>>([
     {
       icon: RefreshRight,
-      text: $t("buttons.hsreload"),
+      text: $t("buttons.pureReload"),
       divided: false,
       disabled: false,
       show: true
     },
     {
       icon: Close,
-      text: $t("buttons.hscloseCurrentTab"),
+      text: $t("buttons.pureCloseCurrentTab"),
       divided: false,
       disabled: multiTags.value.length > 1 ? false : true,
       show: true
     },
     {
       icon: CloseLeftTags,
-      text: $t("buttons.hscloseLeftTabs"),
+      text: $t("buttons.pureCloseLeftTabs"),
       divided: true,
       disabled: multiTags.value.length > 1 ? false : true,
       show: true
     },
     {
       icon: CloseRightTags,
-      text: $t("buttons.hscloseRightTabs"),
+      text: $t("buttons.pureCloseRightTabs"),
       divided: false,
       disabled: multiTags.value.length > 1 ? false : true,
       show: true
     },
     {
       icon: CloseOtherTags,
-      text: $t("buttons.hscloseOtherTabs"),
+      text: $t("buttons.pureCloseOtherTabs"),
       divided: true,
       disabled: multiTags.value.length > 2 ? false : true,
       show: true
     },
     {
       icon: CloseAllTags,
-      text: $t("buttons.hscloseAllTabs"),
+      text: $t("buttons.pureCloseAllTabs"),
       divided: false,
       disabled: multiTags.value.length > 1 ? false : true,
       show: true
     },
     {
       icon: Fullscreen,
-      text: $t("buttons.hscontentFullScreen"),
+      text: $t("buttons.pureContentFullScreen"),
       divided: true,
       disabled: false,
       show: true

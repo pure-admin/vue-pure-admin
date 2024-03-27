@@ -1,6 +1,12 @@
 <script setup lang="ts">
-import { computed, ref, unref, nextTick } from "vue";
-import type { CSSProperties, PropType } from "vue";
+import {
+  type PropType,
+  type CSSProperties,
+  ref,
+  unref,
+  nextTick,
+  computed
+} from "vue";
 import {
   tryOnMounted,
   tryOnUnmounted,

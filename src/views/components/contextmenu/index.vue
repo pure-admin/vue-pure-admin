@@ -13,7 +13,14 @@ defineOptions({
   <el-card shadow="never">
     <template #header>
       <div class="card-header">
-        <span class="font-medium">右键菜单</span>
+        <p class="font-medium">右键菜单</p>
+        <el-link
+          class="mt-2"
+          href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/components/contextmenu"
+          target="_blank"
+        >
+          代码位置 src/views/components/contextmenu
+        </el-link>
       </div>
     </template>
     <el-row :gutter="24">

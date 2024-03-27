@@ -39,6 +39,13 @@ const changeTooltipContent = () => {
           自动省略后显示 Tooltip 提示， 支持多行省略
         </span>
       </div>
+      <el-link
+        class="mt-2"
+        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/components/text.vue"
+        target="_blank"
+      >
+        代码位置 src/views/components/text.vue
+      </el-link>
     </template>
 
     <p class="mb-2">基础用法</p>

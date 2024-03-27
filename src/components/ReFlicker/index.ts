@@ -1,5 +1,5 @@
 import "./index.css";
-import { h, defineComponent, type Component } from "vue";
+import { type Component, h, defineComponent } from "vue";
 
 export interface attrsType {
   width?: string;

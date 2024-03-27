@@ -27,6 +27,13 @@ const columns = [
       <div class="card-header">
         <span class="font-medium">成功页</span>
       </div>
+      <el-link
+        class="mt-2"
+        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/result/success.vue"
+        target="_blank"
+      >
+        代码位置 src/views/result/success.vue
+      </el-link>
     </template>
     <el-result
       icon="success"

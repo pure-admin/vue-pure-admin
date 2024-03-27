@@ -38,21 +38,26 @@ const onPrint = () => {
   <el-card shadow="never">
     <template #header>
       <div class="font-medium">
-        PDF预览（
         <el-link
           href="https://github.com/hrynko/vue-pdf-embed"
           target="_blank"
           style="margin: 0 5px 4px 0; font-size: 16px"
         >
-          github地址
+          PDF预览
         </el-link>
-        ）
       </div>
+      <el-link
+        class="mt-2"
+        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/able/pdf.vue"
+        target="_blank"
+      >
+        代码位置 src/views/able/pdf.vue
+      </el-link>
     </template>
     <div
       v-loading="loading"
-      class="h-[calc(100vh-239px)]"
-      :element-loading-text="t('status.hsLoad')"
+      class="h-[calc(100vh-295px)]"
+      :element-loading-text="t('status.pureLoad')"
     >
       <div class="flex justify-between items-center h-9">
         <div v-if="showAllPages" class="font-medium ml-1.25 text-xl">
@@ -73,28 +78,28 @@ const onPrint = () => {
           <el-checkbox v-model="showAllPages" @change="showAllPagesChange">
             显示所有页面
           </el-checkbox>
-          <el-tooltip
-            effect="dark"
-            :content="`翻转（当前角度${rotations[currentRotation]}度）`"
-            placement="top"
-          >
-            <IconifyIconOnline
-              icon="ic:baseline-rotate-90-degrees-ccw"
-              class="cursor-pointer outline-transparent"
-              @click="
-                currentRotation === 3
-                  ? (currentRotation = 0)
-                  : (currentRotation += 1)
-              "
-            />
-          </el-tooltip>
-          <el-tooltip effect="dark" content="打印" placement="top">
-            <IconifyIconOnline
-              icon="ri:printer-line"
-              class="cursor-pointer outline-transparent"
-              @click="onPrint"
-            />
-          </el-tooltip>
+          <IconifyIconOnline
+            v-tippy="{
+              maxWidth: 'none',
+              content: `翻转（当前角度${rotations[currentRotation]}度）`
+            }"
+            icon="ic:baseline-rotate-90-degrees-ccw"
+            class="cursor-pointer outline-transparent"
+            @click="
+              currentRotation === 3
+                ? (currentRotation = 0)
+                : (currentRotation += 1)
+            "
+          />
+          <IconifyIconOnline
+            v-tippy="{
+              maxWidth: 'none',
+              content: '打印'
+            }"
+            icon="ri:printer-line"
+            class="cursor-pointer outline-transparent"
+            @click="onPrint"
+          />
         </div>
       </div>
       <el-scrollbar>

@@ -1,6 +1,6 @@
 import type { El } from "typeit/dist/types";
 import TypeIt, { type Options as TypeItOptions } from "typeit";
-import { ref, defineComponent, onMounted, type PropType } from "vue";
+import { type PropType, ref, defineComponent, onMounted } from "vue";
 
 // 打字机效果组件（配置项详情请查阅 https://www.typeitjs.com/docs/vanilla/usage#options）
 export default defineComponent({
