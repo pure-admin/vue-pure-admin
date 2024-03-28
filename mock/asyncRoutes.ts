@@ -277,6 +277,16 @@ const tabsRouter = {
         roles: ["admin", "common"]
       }
     },
+    {
+      path: "/tabs/no-parameter-detail",
+      name: "TabNoParameterDetail",
+      meta: {
+        // 不在menu菜单中显示
+        showLink: false,
+        activePath: "/tabs/index",
+        roles: ["admin", "common"]
+      }
+    },
     // query 传参模式
     {
       path: "/tabs/query-detail",

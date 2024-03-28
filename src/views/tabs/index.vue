@@ -15,7 +15,7 @@ defineOptions({
   name: "Tabs"
 });
 
-const { toDetail, router } = useDetail();
+const { toDetail, toDetailNoParameter, router } = useDetail();
 const menusTree = clone(usePermissionStoreHook().wholeMenus, true);
 
 const treeData = computed(() => {
@@ -58,6 +58,12 @@ function onCloseTags() {
       </el-link>
     </template>
     <div class="flex flex-wrap items-center">
+      <p>无参数：</p>
+      <el-button class="m-2" @click="toDetailNoParameter()">
+        无参模式
+      </el-button>
+      <el-divider />
+
       <p>query传参模式：</p>
       <el-button
         v-for="index in 6"
@@ -155,7 +161,6 @@ function onCloseTags() {
     >
       点击查看更多跳转方式
     </el-link>
-
     <el-divider />
     <el-button @click="router.push({ name: 'Empty' })">
       跳转无Layout的空白页面
