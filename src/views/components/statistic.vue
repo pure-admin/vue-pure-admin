@@ -44,7 +44,7 @@ function reset() {
           href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/components/statistic.vue"
           target="_blank"
         >
-          代码位 src/views/components/statistic.vue
+          代码位置 src/views/components/statistic.vue
         </el-link>
       </template>
 

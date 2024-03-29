@@ -32,7 +32,7 @@ const handleChange = value => {
         href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/components/cascader.vue"
         target="_blank"
       >
-        代码位 src/views/components/cascader.vue
+        代码位置 src/views/components/cascader.vue
       </el-link>
     </template>
     <el-row :gutter="24">
