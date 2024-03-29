@@ -55,12 +55,13 @@ export default defineComponent({
     ElNotification({
       title: "永久解答服务",
       duration: 0,
-      // style: { width: "370px" },
+      //@ts-expect-error
+      style: { width: "370px" },
       position: "top-right",
       dangerouslyUseHTMLString: true,
       message: `
         <a target='_blank' style='font-size: 16px' class='text-center text-[red] rounded hover:text-[var(--el-color-primary)]' href='https://yiming_chang.gitee.io/pure-admin-doc/pages/service/#%E6%B0%B8%E4%B9%85%E8%A7%A3%E7%AD%94%E5%BE%AE%E4%BF%A1%E7%BE%A4'>
-        服务即将迎来重大升级
+        服务已升级！！！点击查看升级详情！！！
         </a>
       `
     });
