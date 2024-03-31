@@ -240,6 +240,13 @@ watch(size, val => (dynamicSize.value = size.value));
       <p class="mb-2">禁用</p>
       <Segmented :options="optionsDisabled" :size="dynamicSize" />
       <el-divider />
+      <p class="mb-2">全局禁用</p>
+      <Segmented
+        :options="optionsDisabled"
+        :size="dynamicSize"
+        :disabled="true"
+      />
+      <el-divider />
       <p class="mb-2">block 属性(将宽度调整为父元素宽度)</p>
       <Segmented :options="optionsBlock" block :size="dynamicSize" />
       <el-divider />
