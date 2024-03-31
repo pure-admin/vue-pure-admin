@@ -130,6 +130,7 @@ menus:
   pureTableEdit: Edit Usage
   pureVxeTable: Virtual Usage
   pureBoard: Paint Board
+  pureMindMap: Mind Map
   pureMenuOverflow: Menu Overflow Show Tooltip Text
   pureChildMenuOverflow: Child Menu Overflow Show Tooltip Text
 status:
