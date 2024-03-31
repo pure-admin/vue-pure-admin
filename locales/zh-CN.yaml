@@ -130,6 +130,7 @@ menus:
   pureTableEdit: 可编辑用法
   pureVxeTable: 虚拟滚动
   pureBoard: 艺术画板
+  pureMindMap: 思维导图
   pureMenuOverflow: 目录超出显示 Tooltip 文字提示
   pureChildMenuOverflow: 菜单超出显示 Tooltip 文字提示
 status:
