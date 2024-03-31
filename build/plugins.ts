@@ -19,13 +19,18 @@ export function getPluginsList(
   VITE_COMPRESSION: ViteCompression
 ): PluginOption[] {
   const lifecycle = process.env.npm_lifecycle_event;
+
   return [
     vue(),
     // jsx、tsx语法支持
     vueJsx(),
     VueI18nPlugin({
+      runtimeOnly: true,
       jitCompilation: false,
-      include: [pathResolve("../locales/**")]
+      compositionOnly: true,
+      include: [
+        pathResolve(process.env.FARM_FE ? "./locales/**" : "../locales/**")
+      ]
     }),
     viteBuildInfo(),
     /**
@@ -53,7 +58,9 @@ export function getPluginsList(
     VITE_CDN ? cdn : null,
     configCompressPlugin(VITE_COMPRESSION),
     // 线上环境删除console
-    removeConsole({ external: ["src/assets/iconfont/iconfont.js"] }),
+    process.env.FARM_FE
+      ? null
+      : removeConsole({ external: ["src/assets/iconfont/iconfont.js"] }),
     // 打包分析
     lifecycle === "report"
       ? visualizer({ open: true, brotliSize: true, filename: "report.html" })

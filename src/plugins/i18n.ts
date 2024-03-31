@@ -12,7 +12,7 @@ const siphonI18n = (function () {
   // 仅初始化一次国际化配置
   let cache = Object.fromEntries(
     Object.entries(
-      import.meta.glob("../../locales/*.y(a)?ml", { eager: true })
+      import.meta.glob("../../locales/*.{yml,yaml}", { eager: true })
     ).map(([key, value]: any) => {
       const matched = key.match(/([A-Za-z0-9-_]+)\./i)[1];
       return [matched, value.default];
