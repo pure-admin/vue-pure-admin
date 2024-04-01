@@ -4,7 +4,7 @@ import { h, createVNode, ref } from "vue";
 import { message } from "@/utils/message";
 import formPrimitive from "./formPrimitive.vue";
 import forms, { type FormProps } from "./form.vue";
-import { cloneDeep, debounce } from "@pureadmin/utils";
+import { cloneDeep, debounce, isFunction } from "@pureadmin/utils";
 import {
   addDialog,
   closeDialog,
@@ -280,6 +280,44 @@ function onUpdateClick() {
   });
 }
 
+// popconfirm 确认框
+function onPopconfirmClick() {
+  addDialog({
+    width: "30%",
+    title: "popconfirm确认框示例",
+    footerButtons: [
+      {
+        label: "取消",
+        bg: true,
+        btnClick: ({ dialog: { options, index } }) => {
+          const done = () => closeDialog(options, index, { command: "cancel" });
+          if (options?.beforeCancel && isFunction(options?.beforeCancel)) {
+            options.beforeCancel(done, { options, index });
+          } else {
+            done();
+          }
+        }
+      },
+      {
+        label: "确认",
+        type: "primary",
+        bg: true,
+        popconfirm: true,
+        tips: `是否确认修改当前数据`,
+        btnClick: ({ dialog: { options, index } }) => {
+          const done = () => closeDialog(options, index, { command: "sure" });
+          if (options?.beforeSure && isFunction(options?.beforeSure)) {
+            options.beforeSure(done, { options, index });
+          } else {
+            done();
+          }
+        }
+      }
+    ],
+    contentRenderer: () => <p>这是`Popconfirm`确认框示例</p>
+  });
+}
+
 // 结合Form表单（第一种方式，弹框关闭立刻恢复初始值）通过 props 属性接收子组件的 prop 并赋值
 function onFormOneClick() {
   addDialog({
@@ -496,6 +534,7 @@ function onBeforeSureClick() {
       <el-button @click="onCloseCallBackClick"> 关闭后的回调 </el-button>
       <el-button @click="onNestingClick"> 嵌套的弹框 </el-button>
       <el-button @click="onUpdateClick"> 更改弹框自身属性值 </el-button>
+      <el-button @click="onPopconfirmClick">popconfirm确认框</el-button>
     </el-space>
     <el-divider />
     <el-space wrap>

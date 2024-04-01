@@ -78,6 +78,10 @@ type ButtonProps = {
   plain?: boolean;
   /** 是否为文字按钮，默认 `false` */
   text?: boolean;
+  /** 是否使用`Popconfirm 气泡确认框`进行确认button，默认 `false` */
+  popconfirm?: boolean;
+  /** `Popconfirm`确认框提示信息 */
+  tips?: string;
   /** 是否显示文字按钮背景颜色，默认 `false` */
   bg?: boolean;
   /** 是否为链接按钮，默认 `false` */
