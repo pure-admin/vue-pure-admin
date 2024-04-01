@@ -18,7 +18,8 @@ export default {
         title: "PPT",
         keepAlive: true,
         frameSrc: "https://pipipi-pikachu.github.io/PPTist/",
-        frameLoading: false
+        frameLoading: false,
+        fixedTag: true
       }
     }
   ]

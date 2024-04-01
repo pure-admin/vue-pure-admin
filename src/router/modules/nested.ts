@@ -42,7 +42,8 @@ export default {
               name: "Menu1-2-1",
               meta: {
                 title: $t("menus.pureMenu1-2-1"),
-                keepAlive: true
+                keepAlive: true,
+                fixedTag: true
               }
             },
             {

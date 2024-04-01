@@ -425,7 +425,7 @@ function showMenuModel(
 
 function openMenu(tag, e) {
   closeMenu();
-  if (tag.path === topPath) {
+  if (tag.path === topPath || tag?.meta?.fixedTag) {
     // 右键菜单为顶级菜单，只显示刷新
     showMenus(false);
     tagsViews[0].show = true;
@@ -549,7 +549,11 @@ onBeforeUnmount(() => {
           v-for="(item, index) in multiTags"
           :ref="'dynamic' + index"
           :key="index"
-          :class="['scroll-item is-closable', linkIsActive(item)]"
+          :class="[
+            'scroll-item is-closable',
+            linkIsActive(item),
+            !isAllEmpty(item?.meta?.fixedTag) && 'fixed-tag'
+          ]"
           @contextmenu.prevent="openMenu(item, $event)"
           @mouseenter.prevent="onMouseenter(index)"
           @mouseleave.prevent="onMouseleave(index)"
@@ -562,8 +566,10 @@ onBeforeUnmount(() => {
           </span>
           <span
             v-if="
-              iconIsActive(item, index) ||
-              (index === activeIndex && index !== 0)
+              isAllEmpty(item?.meta?.fixedTag)
+                ? iconIsActive(item, index) ||
+                  (index === activeIndex && index !== 0)
+                : false
             "
             class="el-icon-close"
             @click.stop="deleteMenu(item)"

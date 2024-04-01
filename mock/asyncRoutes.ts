@@ -40,7 +40,8 @@ const systemManagementRouter = {
       meta: {
         icon: "ep:menu",
         title: "menus.pureSystemMenu",
-        roles: ["admin"]
+        roles: ["admin"],
+        fixedTag: true
       }
     },
     {
@@ -119,7 +120,8 @@ const permissionRouter = {
       name: "PermissionPage",
       meta: {
         title: "menus.purePermissionPage",
-        roles: ["admin", "common"]
+        roles: ["admin", "common"],
+        fixedTag: true
       }
     },
     {
@@ -243,7 +245,8 @@ const frameRouter = {
             title: "menus.purePiniaDoc",
             frameSrc: "https://pinia.vuejs.org/zh/index.html",
             keepAlive: true,
-            roles: ["admin", "common"]
+            roles: ["admin", "common"],
+            fixedTag: true
           }
         },
         {

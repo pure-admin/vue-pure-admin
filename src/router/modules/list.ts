@@ -17,7 +17,8 @@ export default {
       meta: {
         icon: "ri:bank-card-line",
         title: $t("menus.pureListCard"),
-        showParent: true
+        showParent: true,
+        fixedTag: true
       }
     }
   ]
