@@ -8,6 +8,7 @@ import { onClickOutside } from "@vueuse/core";
 import { handleAliveRoute, getTopMenu } from "@/router/utils";
 import { useSettingStoreHook } from "@/store/modules/settings";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
+import { usePermissionStoreHook } from "@/store/modules/permission";
 import { ref, watch, unref, toRaw, nextTick, onBeforeUnmount } from "vue";
 import {
   delay,
@@ -228,10 +229,20 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
     other?: boolean
   ): void => {
     if (other) {
-      useMultiTagsStoreHook().handleTags("equal", [
-        VITE_HIDE_HOME === "false" ? routerArrays[0] : toRaw(getTopMenu()),
-        obj
-      ]);
+      useMultiTagsStoreHook().handleTags(
+        "equal",
+        [
+          VITE_HIDE_HOME === "false"
+            ? [
+                ...routerArrays,
+                ...usePermissionStoreHook().tagLists.filter(
+                  v => v?.meta?.fixedTag
+                )
+              ]
+            : toRaw(getTopMenu()),
+          obj
+        ].flat()
+      );
     } else {
       useMultiTagsStoreHook().handleTags("splice", "", {
         startIndex,
@@ -363,10 +374,14 @@ function showMenus(value: boolean) {
   });
 }
 
-function disabledMenus(value: boolean) {
+function disabledMenus(value: boolean, fixedTag = false) {
   Array.of(1, 2, 3, 4, 5).forEach(v => {
     tagsViews[v].disabled = value;
   });
+  if (fixedTag) {
+    tagsViews[2].show = false;
+    tagsViews[2].disabled = true;
+  }
 }
 
 /** 检查当前右键的菜单两边是否存在别的菜单，如果左侧的菜单是顶级菜单，则不显示关闭左侧标签页，如果右侧没有菜单，则不显示关闭右侧标签页 */
@@ -415,18 +430,22 @@ function showMenuModel(
       tagsViews[v].disabled = false;
     });
     tagsViews[3].disabled = true;
+    if (allRoute[currentIndex - 1]?.meta?.fixedTag) {
+      tagsViews[2].show = false;
+      tagsViews[2].disabled = true;
+    }
   } else if (currentIndex === 0 || currentPath === `/redirect${topPath}`) {
     // 当前路由为顶级菜单
     disabledMenus(true);
   } else {
-    disabledMenus(false);
+    disabledMenus(false, allRoute[currentIndex - 1]?.meta?.fixedTag);
   }
 }
 
 function openMenu(tag, e) {
   closeMenu();
   if (tag.path === topPath || tag?.meta?.fixedTag) {
-    // 右键菜单为顶级菜单，只显示刷新
+    // 右键菜单为顶级菜单或拥有 fixedTag 属性，只显示刷新
     showMenus(false);
     tagsViews[0].show = true;
   } else if (route.path !== tag.path && route.name !== tag.name) {
@@ -485,7 +504,6 @@ function tagOnClick(item) {
   } else {
     router.push({ path });
   }
-  // showMenuModel(item?.path, item?.query);
 }
 
 onClickOutside(contextmenuRef, closeMenu, {
