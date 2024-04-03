@@ -60,6 +60,10 @@ const contextmenuRef = ref();
 const isShowArrow = ref(false);
 const topPath = getTopMenu()?.path;
 const { VITE_HIDE_HOME } = import.meta.env;
+const fixedTags = [
+  ...routerArrays,
+  ...usePermissionStoreHook().tagLists.filter(v => v?.meta?.fixedTag)
+];
 
 const dynamicTagView = async () => {
   await nextTick();
@@ -232,14 +236,7 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
       useMultiTagsStoreHook().handleTags(
         "equal",
         [
-          VITE_HIDE_HOME === "false"
-            ? [
-                ...routerArrays,
-                ...usePermissionStoreHook().tagLists.filter(
-                  v => v?.meta?.fixedTag
-                )
-              ]
-            : toRaw(getTopMenu()),
+          VITE_HIDE_HOME === "false" ? fixedTags : toRaw(getTopMenu()),
           obj
         ].flat()
       );
@@ -255,7 +252,7 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
   if (tag === "other") {
     spliceRoute(1, 1, true);
   } else if (tag === "left") {
-    spliceRoute(1, valueIndex - 1);
+    spliceRoute(fixedTags.length, valueIndex - 1, true);
   } else if (tag === "right") {
     spliceRoute(valueIndex + 1, multiTags.value.length);
   } else {
@@ -332,10 +329,11 @@ function onClickDrop(key, item, selectRoute?: RouteConfigs) {
     case 5:
       // 关闭全部标签页
       useMultiTagsStoreHook().handleTags("splice", "", {
-        startIndex: 1,
+        startIndex: fixedTags.length,
         length: multiTags.value.length
       });
       router.push(topPath);
+      // router.push(fixedTags[fixedTags.length - 1]?.path);
       handleAliveRoute(route as ToRouteType);
       break;
     case 6:
