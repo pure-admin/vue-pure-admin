@@ -4,6 +4,7 @@ import { h, createVNode, ref } from "vue";
 import { message } from "@/utils/message";
 import formPrimitive from "./formPrimitive.vue";
 import forms, { type FormProps } from "./form.vue";
+import ReCodePath from "@/components/ReCodePath";
 import { cloneDeep, debounce } from "@pureadmin/utils";
 import {
   addDialog,
@@ -445,32 +446,30 @@ function onBeforeSureClick() {
 <template>
   <el-card shadow="never">
     <template #header>
-      <div class="card-header">
-        <span class="font-medium">
-          二次封装 Element Plus 的
-          <el-link
-            href="https://element-plus.org/zh-CN/component/dialog.html"
-            target="_blank"
-            style="margin: 0 4px 5px; font-size: 16px"
-          >
-            Dialog
-          </el-link>
-          ，采用函数式调用弹框组件（更多操作实例请参考
-          <span
-            class="cursor-pointer text-primary"
-            @click="router.push({ name: 'SystemDept' })"
-          >
-            系统管理页面
-          </span>
-          ）
-        </span>
-      </div>
-      <el-link
-        href="https://github.com/pure-admin/vue-pure-admin/tree/main/src/views/components/dialog"
-        target="_blank"
-      >
-        代码位置 src/views/components/dialog
-      </el-link>
+      <ReCodePath is-dir>
+        <template #title>
+          <div class="card-header">
+            <span class="font-medium">
+              二次封装 Element Plus 的
+              <el-link
+                href="https://element-plus.org/zh-CN/component/dialog.html"
+                target="_blank"
+                style="margin: 0 4px 5px; font-size: 16px"
+              >
+                Dialog
+              </el-link>
+              ，采用函数式调用弹框组件（更多操作实例请参考
+              <span
+                class="cursor-pointer text-primary"
+                @click="router.push({ name: 'SystemDept' })"
+              >
+                系统管理页面
+              </span>
+              ）
+            </span>
+          </div>
+        </template>
+      </ReCodePath>
     </template>
     <el-space wrap>
       <el-button @click="onBaseClick"> 基础用法 </el-button>

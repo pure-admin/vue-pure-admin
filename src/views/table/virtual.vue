@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { list } from "./virtual/list";
+import ReCodePath from "@/components/ReCodePath";
 
 defineOptions({
   name: "VxeTable"
@@ -16,25 +17,20 @@ function tabClick({ index }) {
 <template>
   <el-card shadow="never">
     <template #header>
-      <div class="card-header">
-        <span class="font-medium">
-          虚拟滚动采用
-          <el-link
-            href="https://vxetable.cn/#/table/scroll/scroll"
-            target="_blank"
-            style="margin: 0 4px 5px; font-size: 16px"
-          >
-            vxe-table
-          </el-link>
-        </span>
-      </div>
-      <el-link
-        class="mt-2"
-        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/table/virtual"
-        target="_blank"
-      >
-        代码位置 src/views/table/virtual
-      </el-link>
+      <ReCodePath>
+        <template #title>
+          <span>
+            虚拟滚动采用
+            <el-link
+              href="https://vxetable.cn/#/table/scroll/scroll"
+              target="_blank"
+              style="margin: 0 4px 5px; font-size: 16px"
+            >
+              vxe-table
+            </el-link>
+          </span>
+        </template>
+      </ReCodePath>
     </template>
 
     <el-tabs @tab-click="tabClick">

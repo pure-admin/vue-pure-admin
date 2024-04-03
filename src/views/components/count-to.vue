@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ReNormalCountTo, ReboundCountTo } from "@/components/ReCountTo";
+import ReCodePath from "@/components/ReCodePath";
 
 defineOptions({
   name: "CountTo"
@@ -9,16 +10,7 @@ defineOptions({
 <template>
   <el-card shadow="never">
     <template #header>
-      <div class="card-header">
-        <p class="font-medium">数字动画</p>
-        <el-link
-          class="mt-2"
-          href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/components/count-to.vue"
-          target="_blank"
-        >
-          代码位置 src/views/components/count-to.vue
-        </el-link>
-      </div>
+      <ReCodePath />
     </template>
     <ReNormalCountTo
       prefix="$"

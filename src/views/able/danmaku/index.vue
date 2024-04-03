@@ -104,25 +104,20 @@ function addDanmu() {
 <template>
   <el-card shadow="never">
     <template #header>
-      <div class="card-header">
-        <span class="font-medium">
-          弹幕组件，采用开源的
-          <el-link
-            href="https://github.com/hellodigua/vue-danmaku/tree/vue3"
-            target="_blank"
-            style="margin: 0 4px 5px; font-size: 16px"
-          >
-            vue3-danmaku
-          </el-link>
-        </span>
-      </div>
-      <el-link
-        class="mt-2"
-        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/able/danmaku"
-        target="_blank"
-      >
-        代码位置 src/views/able/danmaku
-      </el-link>
+      <ReCodePath is-dir>
+        <template #title>
+          <span>
+            弹幕组件，采用开源的
+            <el-link
+              href="https://github.com/hellodigua/vue-danmaku/tree/vue3"
+              target="_blank"
+              style="margin: 0 4px 5px; font-size: 16px"
+            >
+              vue3-danmaku
+            </el-link>
+          </span>
+        </template>
+      </ReCodePath>
     </template>
     <div class="flex gap-5">
       <vue-danmaku

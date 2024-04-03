@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import splitpane, { ContextProps } from "@/components/ReSplitPane";
 import { reactive } from "vue";
+import ReCodePath from "@/components/ReCodePath";
 
 defineOptions({
   name: "SplitPane"
@@ -23,14 +24,7 @@ const settingTB: ContextProps = reactive({
   <el-card shadow="never">
     <template #header>
       <div class="card-header">
-        <p class="font-medium">切割面板</p>
-        <el-link
-          class="mt-2"
-          href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/components/split-pane.vue"
-          target="_blank"
-        >
-          代码位置 src/views/components/split-pane.vue
-        </el-link>
+        <ReCodePath />
       </div>
     </template>
     <div class="split-pane">

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, nextTick } from "vue";
 import { cloneDeep, isAllEmpty } from "@pureadmin/utils";
+import ReCodePath from "@/components/ReCodePath";
 
 defineOptions({
   name: "PureTag"
@@ -66,32 +67,27 @@ const handleInputConfirm = () => {
 <template>
   <el-card shadow="never">
     <template #header>
-      <div class="card-header">
-        <el-space wrap :size="40">
-          <el-link
-            v-tippy="{
-              content: '点击查看详细文档'
-            }"
-            href="https://element-plus.org/zh-CN/component/tag.html"
-            target="_blank"
-            style="font-size: 16px; font-weight: 800"
-          >
-            Tag 标签
-          </el-link>
-          <el-radio-group v-model="size">
-            <el-radio value="large">大尺寸</el-radio>
-            <el-radio value="default">默认尺寸</el-radio>
-            <el-radio value="small">小尺寸</el-radio>
-          </el-radio-group>
-        </el-space>
-      </div>
-      <el-link
-        class="mt-2"
-        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/components/tag.vue"
-        target="_blank"
-      >
-        代码位置 src/views/components/tag.vue
-      </el-link>
+      <ReCodePath>
+        <template #title>
+          <el-space wrap :size="40">
+            <el-link
+              v-tippy="{
+                content: '点击查看详细文档'
+              }"
+              href="https://element-plus.org/zh-CN/component/tag.html"
+              target="_blank"
+              style="font-size: 16px; font-weight: 800"
+            >
+              Tag 标签
+            </el-link>
+            <el-radio-group v-model="size">
+              <el-radio value="large">大尺寸</el-radio>
+              <el-radio value="default">默认尺寸</el-radio>
+              <el-radio value="small">小尺寸</el-radio>
+            </el-radio-group>
+          </el-space>
+        </template>
+      </ReCodePath>
     </template>
 
     <p class="mb-2">基础按钮</p>

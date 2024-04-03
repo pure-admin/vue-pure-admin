@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import Selector from "@/components/ReSelector";
+import ReCodePath from "@/components/ReCodePath";
 
 defineOptions({
   name: "Selector"
@@ -34,14 +35,7 @@ const selectedVal = ({ left, right }): void => {
       shadow="never"
     >
       <template #header>
-        <p class="font-medium">{{ item.title }}</p>
-        <el-link
-          class="mt-2"
-          href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/components/selector.vue"
-          target="_blank"
-        >
-          代码位置 src/views/components/selector.vue
-        </el-link>
+        <ReCodePath />
       </template>
       <Selector
         :HsKey="key"

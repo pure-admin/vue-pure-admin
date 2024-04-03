@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, nextTick, onBeforeUnmount } from "vue";
 import { useWatermark } from "@pureadmin/utils";
+import ReCodePath from "@/components/ReCodePath";
 
 defineOptions({
   name: "WaterMark"
@@ -34,8 +35,8 @@ onBeforeUnmount(() => {
 <template>
   <el-card shadow="never">
     <template #header>
-      <div class="card-header">
-        <span class="font-medium">
+      <ReCodePath>
+        <template #title>
           <el-link
             href="https://pure-admin-utils.netlify.app/hooks/useWatermark/useWatermark"
             target="_blank"
@@ -43,15 +44,8 @@ onBeforeUnmount(() => {
           >
             页面水印
           </el-link>
-        </span>
-      </div>
-      <el-link
-        class="mt-2"
-        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/able/watermark.vue"
-        target="_blank"
-      >
-        代码位置 src/views/able/watermark.vue
-      </el-link>
+        </template>
+      </ReCodePath>
     </template>
     <el-space wrap class="!mb-2">
       <span> 请输入要创建水印的值：</span>

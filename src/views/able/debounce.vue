@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { message } from "@/utils/message";
+import ReCodePath from "@/components/ReCodePath";
 import { debounce, throttle } from "@pureadmin/utils";
 
 defineOptions({
@@ -20,13 +21,8 @@ const throttleClick = throttle(handle);
     <el-card class="mb-5" shadow="never">
       <template #header>
         <p class="font-medium">防抖：debounce</p>
-        <el-link
-          class="mt-2"
-          href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/able/debounce.vue"
-          target="_blank"
-        >
-          代码位置 src/views/able/debounce.vue
-        </el-link>
+
+        <ReCodePath path="/able/debounce.vue" />
       </template>
       <div class="mb-5">
         所谓防抖，就是指触发事件后在 n 秒内函数只能执行一次，如果在 n

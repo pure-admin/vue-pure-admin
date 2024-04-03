@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ReCodePath from "@/components/ReCodePath";
 import ReBarcode from "@/components/ReBarcode";
 
 defineOptions({
@@ -33,24 +34,21 @@ const barcodes = [
   <div>
     <el-card shadow="never">
       <template #header>
-        <div class="font-medium">
-          条形码（基于
-          <el-link
-            href="https://lindell.me/JsBarcode/"
-            target="_blank"
-            style="margin: 0 5px 4px 0; font-size: 16px"
-          >
-            JsBarcode
-          </el-link>
-          生成）
-        </div>
-        <el-link
-          class="mt-2"
-          href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/able/barcode.vue"
-          target="_blank"
-        >
-          代码位置 src/views/able/barcode.vue
-        </el-link>
+        <ReCodePath>
+          <template #title>
+            <div>
+              条形码（基于
+              <el-link
+                href="https://lindell.me/JsBarcode/"
+                target="_blank"
+                style="margin: 0 5px 4px 0; font-size: 16px"
+              >
+                JsBarcode
+              </el-link>
+              生成）
+            </div>
+          </template>
+        </ReCodePath>
       </template>
       <el-row :gutter="12">
         <template v-for="(item, index) in barcodes" :key="index">

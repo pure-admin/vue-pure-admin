@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
-
+import ReCodePath from "@/components/ReCodePath";
 defineOptions({
   name: "ColorPicker"
 });
@@ -44,33 +44,28 @@ function onClick() {
 <template>
   <el-card shadow="never">
     <template #header>
-      <div class="card-header">
-        <el-space wrap :size="40">
-          <el-link
-            v-tippy="{
-              content: '点击查看详细文档'
-            }"
-            href="https://element-plus.org/zh-CN/component/color-picker.html"
-            target="_blank"
-            style="font-size: 16px; font-weight: 800"
-          >
-            颜色选择器
-          </el-link>
-          <el-radio-group v-model="size">
-            <el-radio value="large">大尺寸</el-radio>
-            <el-radio value="default">默认尺寸</el-radio>
-            <el-radio value="small">小尺寸</el-radio>
-            <el-radio value="disabled">禁用</el-radio>
-          </el-radio-group>
-        </el-space>
-      </div>
-      <el-link
-        class="mt-2"
-        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/components/color-picker.vue"
-        target="_blank"
-      >
-        代码位置 src/views/components/color-picker.vue
-      </el-link>
+      <ReCodePath>
+        <template #title>
+          <el-space wrap :size="40">
+            <el-link
+              v-tippy="{
+                content: '点击查看详细文档'
+              }"
+              href="https://element-plus.org/zh-CN/component/color-picker.html"
+              target="_blank"
+              style="font-size: 16px; font-weight: 800"
+            >
+              颜色选择器
+            </el-link>
+            <el-radio-group v-model="size">
+              <el-radio value="large">大尺寸</el-radio>
+              <el-radio value="default">默认尺寸</el-radio>
+              <el-radio value="small">小尺寸</el-radio>
+              <el-radio value="disabled">禁用</el-radio>
+            </el-radio-group>
+          </el-space>
+        </template>
+      </ReCodePath>
     </template>
 
     <p class="mb-2">不同尺寸、选择透明度、预定义颜色</p>

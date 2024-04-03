@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ReCodePath from "@/components/ReCodePath";
 import {
   downloadByOnlineUrl,
   downloadByBase64,
@@ -28,14 +29,7 @@ function down() {
 <template>
   <el-card shadow="never">
     <template #header>
-      <p class="font-medium">文件下载功能</p>
-      <el-link
-        class="mt-2"
-        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/able/download.vue"
-        target="_blank"
-      >
-        代码位置 src/views/able/download.vue
-      </el-link>
+      <ReCodePath />
     </template>
     <div class="flex flex-wrap">
       <el-button

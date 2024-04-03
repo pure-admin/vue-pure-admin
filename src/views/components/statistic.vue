@@ -3,6 +3,7 @@ import { ref } from "vue";
 import dayjs from "dayjs";
 import ReCol from "@/components/ReCol";
 import { useTransition } from "@vueuse/core";
+import ReCodePath from "@/components/ReCodePath";
 
 defineOptions({
   name: "Statistic"
@@ -27,25 +28,20 @@ function reset() {
   <div>
     <el-card shadow="never">
       <template #header>
-        <div class="card-header">
-          <el-link
-            v-tippy="{
-              content: '点击查看详细文档'
-            }"
-            href="https://element-plus.org/zh-CN/component/statistic.html"
-            target="_blank"
-            style="font-size: 16px; font-weight: 800"
-          >
-            统计组件
-          </el-link>
-        </div>
-        <el-link
-          class="mt-2"
-          href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/components/statistic.vue"
-          target="_blank"
-        >
-          代码位置 src/views/components/statistic.vue
-        </el-link>
+        <ReCodePath>
+          <template #title>
+            <el-link
+              v-tippy="{
+                content: '点击查看详细文档'
+              }"
+              href="https://element-plus.org/zh-CN/component/statistic.html"
+              target="_blank"
+              style="font-size: 16px; font-weight: 800"
+            >
+              统计组件
+            </el-link>
+          </template>
+        </ReCodePath>
       </template>
 
       <el-row :gutter="24">

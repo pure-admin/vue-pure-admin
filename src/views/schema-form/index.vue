@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { list } from "./list";
+import ReCodePath from "@/components/ReCodePath";
 
 defineOptions({
   name: "SchemaForm"
@@ -16,26 +17,21 @@ function tabClick({ index }) {
 <template>
   <el-card shadow="never" :body-style="{ height: 'calc(100vh - 260px)' }">
     <template #header>
-      <div class="card-header">
-        <span class="font-medium">
-          JSON 格式配置表单，采用优秀开源的
-          <el-link
-            href="https://plus-pro-components.com/components/form.html"
-            target="_blank"
-            style="margin: 0 4px 5px; font-size: 16px"
-          >
-            PlusProComponents
-          </el-link>
-          ，维护整体表单只需操作 columns 配置即可
-        </span>
-      </div>
-      <el-link
-        class="mt-2"
-        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/schema-form"
-        target="_blank"
-      >
-        代码位置 src/views/schema-form
-      </el-link>
+      <ReCodePath path="/schema-form" is-dir>
+        <template #title>
+          <span>
+            JSON 格式配置表单，采用优秀开源的
+            <el-link
+              href="https://plus-pro-components.com/components/form.html"
+              target="_blank"
+              style="margin: 0 4px 5px; font-size: 16px"
+            >
+              PlusProComponents
+            </el-link>
+            ，维护整体表单只需操作 columns 配置即可
+          </span>
+        </template>
+      </ReCodePath>
     </template>
 
     <el-tabs @tab-click="tabClick">

@@ -3,6 +3,7 @@ import { ref, watch } from "vue";
 // https://plus-pro-components.com/components/check-card-group.html
 import "plus-pro-components/es/components/check-card-group/style/css";
 import { PlusCheckCardGroup } from "plus-pro-components";
+import ReCodePath from "@/components/ReCodePath";
 
 defineOptions({
   name: "CheckCard"
@@ -40,33 +41,28 @@ watch(size, val =>
 <template>
   <el-card shadow="never">
     <template #header>
-      <div class="card-header">
-        <el-space wrap :size="40">
-          <el-link
-            v-tippy="{
-              content: '点击查看详细文档'
-            }"
-            href="https://plus-pro-components.com/components/check-card-group.html"
-            target="_blank"
-            style="font-size: 16px; font-weight: 800"
-          >
-            多选卡片组
-          </el-link>
-          <el-radio-group v-model="size">
-            <el-radio value="large">大尺寸</el-radio>
-            <el-radio value="default">默认尺寸</el-radio>
-            <el-radio value="small">小尺寸</el-radio>
-            <el-radio value="disabled">禁用</el-radio>
-          </el-radio-group>
-        </el-space>
-      </div>
-      <el-link
-        class="mt-2"
-        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/components/check-card.vue"
-        target="_blank"
-      >
-        代码位置 src/views/components/check-card.vue
-      </el-link>
+      <ReCodePath>
+        <template #title>
+          <el-space wrap :size="40">
+            <el-link
+              v-tippy="{
+                content: '点击查看详细文档'
+              }"
+              href="https://plus-pro-components.com/components/check-card-group.html"
+              target="_blank"
+              style="font-size: 16px; font-weight: 800"
+            >
+              多选卡片组
+            </el-link>
+            <el-radio-group v-model="size">
+              <el-radio value="large">大尺寸</el-radio>
+              <el-radio value="default">默认尺寸</el-radio>
+              <el-radio value="small">小尺寸</el-radio>
+              <el-radio value="disabled">禁用</el-radio>
+            </el-radio-group>
+          </el-space>
+        </template>
+      </ReCodePath>
     </template>
 
     <p class="mb-2 mt-4">单选</p>

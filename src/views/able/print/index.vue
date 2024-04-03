@@ -98,13 +98,7 @@ const tableData: User[] = [
           打印
         </el-button>
       </div>
-      <el-link
-        class="mt-2"
-        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/able/print"
-        target="_blank"
-      >
-        代码位置 src/views/able/print
-      </el-link>
+      <ReCodePath is-dir />
     </template>
     <el-row :gutter="24">
       <el-col

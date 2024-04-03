@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
+import ReCodePath from "@/components/ReCodePath";
 
 defineOptions({
   name: "PureProgress"
@@ -11,25 +12,20 @@ const format = percentage => (percentage === 100 ? "Full" : `${percentage}%`);
 <template>
   <el-card shadow="never">
     <template #header>
-      <div class="card-header">
-        <el-link
-          v-tippy="{
-            content: '点击查看详细文档'
-          }"
-          href="https://element-plus.org/zh-CN/component/progress.html"
-          target="_blank"
-          style="font-size: 16px; font-weight: 800"
-        >
-          进度条
-        </el-link>
-      </div>
-      <el-link
-        class="mt-2"
-        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/components/progress.vue"
-        target="_blank"
-      >
-        代码位置 src/views/components/progress.vue
-      </el-link>
+      <ReCodePath>
+        <template #title>
+          <el-link
+            v-tippy="{
+              content: '点击查看详细文档'
+            }"
+            href="https://element-plus.org/zh-CN/component/progress.html"
+            target="_blank"
+            style="font-size: 16px; font-weight: 800"
+          >
+            进度条
+          </el-link>
+        </template>
+      </ReCodePath>
     </template>
 
     <p class="mb-4">直线进度条动画</p>

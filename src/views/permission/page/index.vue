@@ -4,6 +4,7 @@ import { storageLocal } from "@pureadmin/utils";
 import { type CSSProperties, ref, computed } from "vue";
 import { useUserStoreHook } from "@/store/modules/user";
 import { usePermissionStoreHook } from "@/store/modules/permission";
+import ReCodePath from "@/components/ReCodePath";
 
 defineOptions({
   name: "PermissionPage"

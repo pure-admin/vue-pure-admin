@@ -60,7 +60,7 @@ export default {
       }
     },
     {
-      path: "/components/ripple",
+      path: "/able/ripple",
       name: "Ripple",
       component: () => import("@/views/able/ripple.vue"),
       meta: {

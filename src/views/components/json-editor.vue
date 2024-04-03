@@ -2,6 +2,7 @@
 import { reactive, watch } from "vue";
 import "vue-json-pretty/lib/styles.css";
 import VueJsonPretty from "vue-json-pretty";
+import ReCodePath from "@/components/ReCodePath";
 
 defineOptions({
   name: "JsonEditor"
@@ -74,36 +75,31 @@ watch(
 <template>
   <el-card shadow="never">
     <template #header>
-      <div class="card-header">
-        <span class="font-medium">
-          JSON编辑器，采用开源的
-          <el-link
-            href="https://github.com/leezng/vue-json-pretty"
-            target="_blank"
-            style="margin: 0 4px 5px; font-size: 16px"
-          >
-            vue-json-pretty
-          </el-link>
-          （支持大数据量）。
-        </span>
-        <span class="font-medium">
-          当然还有一款代码编辑器推荐（这里就不做演示了），采用开源的
-          <el-link
-            href="https://github.com/surmon-china/vue-codemirror"
-            target="_blank"
-            style="margin: 0 4px 5px; font-size: 16px"
-          >
-            codemirror6
-          </el-link>
-        </span>
-      </div>
-      <el-link
-        class="mt-2"
-        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/components/json-editor.vue"
-        target="_blank"
-      >
-        代码位置 src/views/components/json-editor.vue
-      </el-link>
+      <ReCodePath>
+        <template #title>
+          <span>
+            JSON编辑器，采用开源的
+            <el-link
+              href="https://github.com/leezng/vue-json-pretty"
+              target="_blank"
+              style="margin: 0 4px 5px; font-size: 16px"
+            >
+              vue-json-pretty
+            </el-link>
+            （支持大数据量）。
+          </span>
+          <span class="font-medium">
+            当然还有一款代码编辑器推荐（这里就不做演示了），采用开源的
+            <el-link
+              href="https://github.com/surmon-china/vue-codemirror"
+              target="_blank"
+              style="margin: 0 4px 5px; font-size: 16px"
+            >
+              codemirror6
+            </el-link>
+          </span>
+        </template>
+      </ReCodePath>
     </template>
     <vue-json-pretty
       v-model:data="state.data"

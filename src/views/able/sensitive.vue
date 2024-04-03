@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import Mint from "mint-filter";
+import ReCodePath from "@/components/ReCodePath";
 
 defineOptions({
   name: "Sensitive"
@@ -20,16 +21,7 @@ function onInput() {
 <template>
   <el-card shadow="never">
     <template #header>
-      <div class="card-header">
-        <p class="font-medium">敏感词过滤</p>
-        <el-link
-          class="mt-2"
-          href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/able/sensitive.vue"
-          target="_blank"
-        >
-          代码位置 src/views/able/sensitive.vue
-        </el-link>
-      </div>
+      <ReCodePath />
     </template>
     <div class="flex flex-wrap gap-2 my-2">
       <span>自定义敏感词</span>

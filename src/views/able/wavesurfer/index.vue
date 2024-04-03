@@ -78,28 +78,23 @@ onBeforeUnmount(() => {
 <template>
   <el-card shadow="never">
     <template #header>
-      <div class="card-header">
-        <span class="font-medium">
-          音频可视化，采用开源的
-          <el-link
-            href="https://wavesurfer-js.org/"
-            target="_blank"
-            style="margin: 0 4px 5px; font-size: 16px"
-          >
-            wavesurfer.js
-          </el-link>
-          <span class="text-[red]">
-            （温馨提示：音频默认最大声音，播放时请调低电脑声音，以免影响到您）
+      <ReCodePath is-dir>
+        <template #title>
+          <span>
+            音频可视化，采用开源的
+            <el-link
+              href="https://wavesurfer-js.org/"
+              target="_blank"
+              style="margin: 0 4px 5px; font-size: 16px"
+            >
+              wavesurfer.js
+            </el-link>
+            <span class="text-[red]">
+              （温馨提示：音频默认最大声音，播放时请调低电脑声音，以免影响到您）
+            </span>
           </span>
-        </span>
-      </div>
-      <el-link
-        class="mt-2"
-        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/able/wavesurfer"
-        target="_blank"
-      >
-        代码位置 src/views/able/wavesurfer
-      </el-link>
+        </template>
+      </ReCodePath>
     </template>
     <div
       v-loading="loading"

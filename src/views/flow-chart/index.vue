@@ -9,6 +9,7 @@ import { BpmnNode } from "@/components/ReFlowChart/src/config";
 import { Snapshot, BpmnElement, Menu } from "@logicflow/extension";
 import { Control, NodePanel, DataDialog } from "@/components/ReFlowChart";
 import { toLogicflowData } from "@/components/ReFlowChart/src/adpterForTurbo";
+import ReCodePath from "@/components/ReCodePath";
 
 defineOptions({
   name: "FlowChart"
@@ -64,25 +65,20 @@ onMounted(() => {
 <template>
   <el-card shadow="never">
     <template #header>
-      <div class="card-header">
-        <span class="font-medium">
-          流程图组件，采用开源的
-          <el-link
-            href="https://site.logic-flow.cn/docs/#/zh/guide/start"
-            target="_blank"
-            style="margin: 0 4px 5px; font-size: 16px"
-          >
-            LogicFlow
-          </el-link>
-        </span>
-      </div>
-      <el-link
-        class="mt-2"
-        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/flow-chart"
-        target="_blank"
-      >
-        代码位置 src/views/flow-chart
-      </el-link>
+      <ReCodePath>
+        <template #title>
+          <span>
+            流程图组件，采用开源的
+            <el-link
+              href="https://site.logic-flow.cn/docs/#/zh/guide/start"
+              target="_blank"
+              style="margin: 0 4px 5px; font-size: 16px"
+            >
+              LogicFlow
+            </el-link>
+          </span>
+        </template>
+      </ReCodePath>
     </template>
     <div class="logic-flow-view">
       <!-- 辅助工具栏 -->

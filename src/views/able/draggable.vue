@@ -56,25 +56,22 @@ onMounted(() => {
 <template>
   <el-card shadow="never">
     <template #header>
-      <div class="card-header">
-        <span class="font-medium">
-          拖拽组件，采用开源的
-          <el-link
-            href="https://sortablejs.github.io/vue.draggable.next/#/simple"
-            target="_blank"
-            style="margin: 0 4px 5px; font-size: 16px"
-          >
-            vuedraggable
-          </el-link>
-        </span>
-      </div>
-      <el-link
-        class="mt-2"
-        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/able/draggable.vue"
-        target="_blank"
-      >
-        代码位置 src/views/able/draggable.vue
-      </el-link>
+      <ReCodePath>
+        <template #title>
+          <div class="card-header">
+            <span class="font-medium">
+              拖拽组件，采用开源的
+              <el-link
+                href="https://sortablejs.github.io/vue.draggable.next/#/simple"
+                target="_blank"
+                style="margin: 0 4px 5px; font-size: 16px"
+              >
+                vuedraggable
+              </el-link>
+            </span>
+          </div>
+        </template>
+      </ReCodePath>
     </template>
     <div class="drag-container">
       <!-- grid列表拖拽 -->

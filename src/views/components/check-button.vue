@@ -2,6 +2,7 @@
 import { ref, watch } from "vue";
 import { message } from "@/utils/message";
 import { getKeyList } from "@pureadmin/utils";
+import ReCodePath from "@/components/ReCodePath";
 
 defineOptions({
   name: "CheckButton"
@@ -90,24 +91,19 @@ watch(size, val =>
 <template>
   <el-card shadow="never">
     <template #header>
-      <div class="card-header">
-        <el-space wrap :size="40">
-          <span style="font-size: 16px; font-weight: 800"> 可选按钮 </span>
-          <el-radio-group v-model="size">
-            <el-radio value="large">大尺寸</el-radio>
-            <el-radio value="default">默认尺寸</el-radio>
-            <el-radio value="small">小尺寸</el-radio>
-            <el-radio value="disabled">禁用</el-radio>
-          </el-radio-group>
-        </el-space>
-      </div>
-      <el-link
-        class="mt-2"
-        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/components/check-button.vue"
-        target="_blank"
-      >
-        代码位置 src/views/components/check-button.vue
-      </el-link>
+      <ReCodePath>
+        <template #title>
+          <el-space wrap :size="40">
+            <span style="font-size: 16px; font-weight: 800"> 可选按钮 </span>
+            <el-radio-group v-model="size">
+              <el-radio value="large">大尺寸</el-radio>
+              <el-radio value="default">默认尺寸</el-radio>
+              <el-radio value="small">小尺寸</el-radio>
+              <el-radio value="disabled">禁用</el-radio>
+            </el-radio-group>
+          </el-space>
+        </template>
+      </ReCodePath>
     </template>
     <p class="mb-2">单选（紧凑风格的按钮样式）</p>
     <el-radio-group

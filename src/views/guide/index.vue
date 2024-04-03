@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import intro from "intro.js";
 import "intro.js/minified/introjs.min.css";
+import ReCodePath from "@/components/ReCodePath";
 
 type GuideStep = {
   element: string | HTMLElement;
@@ -81,18 +82,9 @@ const onTour = () => {
 <template>
   <el-card shadow="never">
     <template #header>
-      <div class="card-header">
-        <span class="font-medium">
-          引导页常用于引导式介绍项目的基本功能或亮点
-        </span>
-      </div>
-      <el-link
-        class="mt-2"
-        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/guide/index.vue"
-        target="_blank"
-      >
-        代码位置 src/views/guide/index.vue
-      </el-link>
+      <ReCodePath>
+        <template #title> 引导页常用于引导式介绍项目的基本功能或亮点 </template>
+      </ReCodePath>
     </template>
     <el-button @click="onGuide"> 打开引导页 (intro.js) </el-button>
     <el-button @click="onTour"> 打开引导页 (el-tour) </el-button>

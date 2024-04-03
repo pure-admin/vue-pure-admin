@@ -2,6 +2,7 @@
 import dayjs from "dayjs";
 import { ref } from "vue";
 import { ReText } from "@/components/ReText";
+import ReCodePath from "@/components/ReCodePath";
 
 defineOptions({
   name: "PureText"
@@ -18,34 +19,29 @@ const changeTooltipContent = () => {
 <template>
   <el-card shadow="never">
     <template #header>
-      <div class="card-header">
-        <span class="font-medium">
-          文本省略，基于
-          <el-link
-            href="https://element-plus.org/zh-CN/component/text.html"
-            target="_blank"
-            style="margin: 0 4px 5px; font-size: 16px"
-          >
-            el-text
-          </el-link>
-          和
-          <el-link
-            href="https://vue-tippy.netlify.app/basic-usage"
-            target="_blank"
-            style="margin: 0 4px 5px; font-size: 16px"
-          >
-            VueTippy
-          </el-link>
-          自动省略后显示 Tooltip 提示， 支持多行省略
-        </span>
-      </div>
-      <el-link
-        class="mt-2"
-        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/components/text.vue"
-        target="_blank"
-      >
-        代码位置 src/views/components/text.vue
-      </el-link>
+      <ReCodePath>
+        <template #title>
+          <span>
+            文本省略，基于
+            <el-link
+              href="https://element-plus.org/zh-CN/component/text.html"
+              target="_blank"
+              style="margin: 0 4px 5px; font-size: 16px"
+            >
+              el-text
+            </el-link>
+            和
+            <el-link
+              href="https://vue-tippy.netlify.app/basic-usage"
+              target="_blank"
+              style="margin: 0 4px 5px; font-size: 16px"
+            >
+              VueTippy
+            </el-link>
+            自动省略后显示 Tooltip 提示， 支持多行省略
+          </span>
+        </template>
+      </ReCodePath>
     </template>
 
     <p class="mb-2">基础用法</p>

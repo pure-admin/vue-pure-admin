@@ -5,6 +5,7 @@ import "swiper/css/pagination";
 import SwiperCore from "swiper";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import ReCodePath from "@/components/ReCodePath";
 
 defineOptions({
   name: "Swiper"
@@ -87,22 +88,17 @@ const swiperExample: any[] = [
 <template>
   <el-card shadow="never">
     <template #header>
-      <div class="font-medium">
-        <el-link
-          href="https://github.com/nolimits4web/swiper"
-          target="_blank"
-          style="margin: 0 5px 4px 0; font-size: 16px"
-        >
-          Swiper插件
-        </el-link>
-      </div>
-      <el-link
-        class="mt-2"
-        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/components/swiper.vue"
-        target="_blank"
-      >
-        代码位置 src/views/components/swiper.vue
-      </el-link>
+      <ReCodePath>
+        <template #title>
+          <el-link
+            href="https://github.com/nolimits4web/swiper"
+            target="_blank"
+            style="margin: 0 5px 4px 0; font-size: 16px"
+          >
+            Swiper插件
+          </el-link>
+        </template>
+      </ReCodePath>
     </template>
     <el-row :gutter="10">
       <el-col v-for="item in swiperExample" :key="item.id" :span="12">

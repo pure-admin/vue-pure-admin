@@ -10,6 +10,7 @@ import { clone } from "@pureadmin/utils";
 import { transformI18n } from "@/plugins/i18n";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
 import { usePermissionStoreHook } from "@/store/modules/permission";
+import ReCodePath from "@/components/ReCodePath";
 
 defineOptions({
   name: "Tabs"
@@ -48,14 +49,7 @@ function onCloseTags() {
 <template>
   <el-card shadow="never">
     <template #header>
-      <div class="font-medium">标签页复用，超出限制自动关闭</div>
-      <el-link
-        class="mt-2"
-        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/tabs"
-        target="_blank"
-      >
-        代码位置 src/views/tabs
-      </el-link>
+      <ReCodePath />
     </template>
     <div class="flex flex-wrap items-center">
       <p>query传参模式：</p>

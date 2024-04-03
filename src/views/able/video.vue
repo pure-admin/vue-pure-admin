@@ -3,6 +3,7 @@ import { onMounted } from "vue";
 import { deviceDetection } from "@pureadmin/utils";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import VideoPlay from "@iconify-icons/ep/video-play";
+import ReCodePath from "@/components/ReCodePath";
 
 import Player from "xgplayer";
 import "xgplayer/dist/index.min.css";
@@ -35,26 +36,21 @@ onMounted(() => {
 <template>
   <el-card shadow="never">
     <template #header>
-      <div class="card-header">
-        <span class="font-medium">
-          视频组件，采用开源的
-          <el-link
-            href="https://v3.h5player.bytedance.com/"
-            target="_blank"
-            :icon="useRenderIcon(VideoPlay)"
-            style="margin: 0 4px 5px; font-size: 16px"
-          >
-            西瓜播放器
-          </el-link>
-        </span>
-      </div>
-      <el-link
-        class="mt-2"
-        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/able/video.vue"
-        target="_blank"
-      >
-        代码位置 src/views/able/video.vue
-      </el-link>
+      <ReCodePath>
+        <template #title>
+          <span class="font-medium">
+            视频组件，采用开源的
+            <el-link
+              href="https://v3.h5player.bytedance.com/"
+              target="_blank"
+              :icon="useRenderIcon(VideoPlay)"
+              style="margin: 0 4px 5px; font-size: 16px"
+            >
+              西瓜播放器
+            </el-link>
+          </span>
+        </template>
+      </ReCodePath>
     </template>
     <div id="mse" />
   </el-card>

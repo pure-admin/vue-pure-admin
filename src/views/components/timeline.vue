@@ -4,6 +4,7 @@ import { randomGradient } from "@pureadmin/utils";
 import { useRenderFlicker } from "@/components/ReFlicker";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import Iphone from "@iconify-icons/ep/iphone";
+import ReCodePath from "@/components/ReCodePath";
 
 defineOptions({
   name: "TimeLine"
@@ -55,16 +56,7 @@ const activities = [
 <template>
   <el-card shadow="never">
     <template #header>
-      <div class="card-header">
-        <p class="font-medium">时间线</p>
-        <el-link
-          class="mt-2"
-          href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/components/timeline.vue"
-          target="_blank"
-        >
-          代码位置 src/views/components/timeline.vue
-        </el-link>
-      </div>
+      <ReCodePath />
     </template>
     <div class="flex">
       <el-timeline>

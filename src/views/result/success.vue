@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import ReCodePath from "@/components/ReCodePath";
+
 defineOptions({
   name: "Success"
 });
@@ -24,16 +26,7 @@ const columns = [
 <template>
   <el-card shadow="never">
     <template #header>
-      <div class="card-header">
-        <span class="font-medium">成功页</span>
-      </div>
-      <el-link
-        class="mt-2"
-        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/result/success.vue"
-        target="_blank"
-      >
-        代码位置 src/views/result/success.vue
-      </el-link>
+      <ReCodePath />
     </template>
     <el-result
       icon="success"

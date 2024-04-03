@@ -4,6 +4,7 @@ import hot from "@/assets/svg/hot.svg?component";
 import { message, closeAllMessage } from "@/utils/message";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import Check from "@iconify-icons/ep/check";
+import ReCodePath from "@/components/ReCodePath";
 
 defineOptions({
   name: "Message"
@@ -13,16 +14,7 @@ defineOptions({
 <template>
   <el-card shadow="never">
     <template #header>
-      <div class="card-header">
-        <span class="font-medium"> 消息提示 </span>
-      </div>
-      <el-link
-        class="mt-2"
-        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/components/message.vue"
-        target="_blank"
-      >
-        代码位置 src/views/components/message.vue
-      </el-link>
+      <ReCodePath />
     </template>
 
     <h4 class="mb-4">Element Plus 的消息提示，点击弹出提示信息</h4>

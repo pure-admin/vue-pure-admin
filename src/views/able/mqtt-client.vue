@@ -2,6 +2,7 @@
 // vue 3 + vite use MQTT.js refer to https://github.com/mqttjs/MQTT.js/issues/1269
 import * as mqtt from "mqtt/dist/mqtt.min";
 import { reactive, ref, onUnmounted } from "vue";
+import ReCodePath from "@/components/ReCodePath";
 
 const protocol = location.protocol === "https:" ? "wss" : "ws";
 const port = protocol === "wss" ? 8084 : 8083;
@@ -190,34 +191,31 @@ onUnmounted(() => {
 <template>
   <el-card shadow="never" :body-style="{ padding: '20px' }">
     <template #header>
-      <div>
-        基于
-        <el-link
-          type="primary"
-          :underline="false"
-          href="https://github.com/mqttjs/MQTT.js"
-          target="_blank"
-        >
-          MQTT.js
-        </el-link>
-        和 免费的公共MQTT代理
-        <el-link
-          type="primary"
-          :underline="false"
-          href="broker.emqx.io"
-          target="_blank"
-        >
-          EMQX
-        </el-link>
-        实现的一套 MQTT 客户端
-      </div>
-      <el-link
-        class="mt-2"
-        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/able/mqtt-client.vue"
-        target="_blank"
-      >
-        代码位置 src/views/able/mqtt-client.vue
-      </el-link>
+      <ReCodePath>
+        <template #title>
+          <div>
+            基于
+            <el-link
+              type="primary"
+              :underline="false"
+              href="https://github.com/mqttjs/MQTT.js"
+              target="_blank"
+            >
+              MQTT.js
+            </el-link>
+            和 免费的公共MQTT代理
+            <el-link
+              type="primary"
+              :underline="false"
+              href="broker.emqx.io"
+              target="_blank"
+            >
+              EMQX
+            </el-link>
+            实现的一套 MQTT 客户端
+          </div>
+        </template>
+      </ReCodePath>
     </template>
 
     <el-card shadow="never">

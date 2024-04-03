@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ReCodePath from "@/components/ReCodePath";
 defineOptions({
   name: "Ripple"
 });
@@ -7,14 +8,7 @@ defineOptions({
 <template>
   <el-card shadow="never">
     <template #header>
-      <p class="font-medium">波纹(Ripple)</p>
-      <el-link
-        class="mt-2"
-        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/able/ripple.vue"
-        target="_blank"
-      >
-        代码位置 src/views/able/ripple.vue
-      </el-link>
+      <ReCodePath />
     </template>
     <div class="mb-5">组件中的波纹</div>
     <el-alert

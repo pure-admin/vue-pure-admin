@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import { useI18n } from "vue-i18n";
 import VuePdfEmbed from "vue-pdf-embed";
+import ReCodePath from "@/components/ReCodePath";
 
 defineOptions({
   name: "Pdf"
@@ -37,22 +38,18 @@ const onPrint = () => {
 <template>
   <el-card shadow="never">
     <template #header>
-      <div class="font-medium">
-        <el-link
-          href="https://github.com/hrynko/vue-pdf-embed"
-          target="_blank"
-          style="margin: 0 5px 4px 0; font-size: 16px"
-        >
-          PDF预览
-        </el-link>
-      </div>
-      <el-link
-        class="mt-2"
-        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/able/pdf.vue"
-        target="_blank"
-      >
-        代码位置 src/views/able/pdf.vue
-      </el-link>
+      <ReCodePath>
+        <template #title>
+          PDF预览 基于
+          <el-link
+            href="https://github.com/hrynko/vue-pdf-embed"
+            target="_blank"
+            style="margin: 0 5px 4px 0; font-size: 16px"
+          >
+            vue-pdf-embed
+          </el-link>
+        </template>
+      </ReCodePath>
     </template>
     <div
       v-loading="loading"

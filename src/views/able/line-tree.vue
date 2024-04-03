@@ -24,18 +24,7 @@ const dataProps = {
 <template>
   <el-card shadow="never">
     <template #header>
-      <div class="card-header">
-        <p class="font-medium">
-          扩展 Elemenet Plus 的树形组件包括虚拟树组件，支持连接线
-        </p>
-        <el-link
-          class="mt-2"
-          href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/able/line-tree.vue"
-          target="_blank"
-        >
-          代码位置 src/views/able/line-tree.vue
-        </el-link>
-      </div>
+      <ReCodePath />
     </template>
 
     <el-row :gutter="24">

@@ -3,6 +3,7 @@ import avatar from "./avatar.png";
 import { ref, onBeforeUnmount } from "vue";
 import ReCropper from "@/components/ReCropper";
 import { formatBytes } from "@pureadmin/utils";
+import ReCodePath from "@/components/ReCodePath";
 
 defineOptions({
   name: "Cropping"
@@ -28,26 +29,21 @@ onBeforeUnmount(() => {
 <template>
   <el-card shadow="never">
     <template #header>
-      <div class="card-header">
-        <span class="font-medium">
-          图片裁剪，基于开源的
-          <el-link
-            href="https://fengyuanchen.github.io/cropperjs/"
-            target="_blank"
-            style="margin: 0 4px 5px; font-size: 16px"
-          >
-            cropperjs
-          </el-link>
-          进行二次封装（提示：右键下面左侧裁剪区可开启功能菜单）
-        </span>
-      </div>
-      <el-link
-        class="mt-2"
-        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/components/cropping"
-        target="_blank"
-      >
-        代码位置 src/views/components/cropping
-      </el-link>
+      <ReCodePath>
+        <template #title>
+          <span class="font-medium">
+            图片裁剪，基于开源的
+            <el-link
+              href="https://fengyuanchen.github.io/cropperjs/"
+              target="_blank"
+              style="margin: 0 4px 5px; font-size: 16px"
+            >
+              cropperjs
+            </el-link>
+            进行二次封装（提示：右键下面左侧裁剪区可开启功能菜单）
+          </span>
+        </template>
+      </ReCodePath>
     </template>
     <div v-loading="!showPopover" element-loading-background="transparent">
       <el-popover

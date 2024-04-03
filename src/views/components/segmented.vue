@@ -4,6 +4,7 @@ import { message } from "@/utils/message";
 import HomeFilled from "@iconify-icons/ep/home-filled";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import Segmented, { type OptionsType } from "@/components/ReSegmented";
+import ReCodePath from "@/components/ReCodePath";
 
 defineOptions({
   name: "Segmented"
@@ -201,23 +202,18 @@ watch(size, val => (dynamicSize.value = size.value));
 <template>
   <el-card shadow="never">
     <template #header>
-      <div class="card-header">
-        <el-space wrap :size="40">
-          <span style="font-size: 16px; font-weight: 800"> 分段控制器 </span>
-          <el-radio-group v-model="size">
-            <el-radio value="large">大尺寸</el-radio>
-            <el-radio value="default">默认尺寸</el-radio>
-            <el-radio value="small">小尺寸</el-radio>
-          </el-radio-group>
-        </el-space>
-      </div>
-      <el-link
-        class="mt-2"
-        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/components/segmented.vue"
-        target="_blank"
-      >
-        代码位置 src/views/components/segmented.vue
-      </el-link>
+      <ReCodePath>
+        <template #title>
+          <el-space wrap :size="40">
+            <span style="font-size: 16px; font-weight: 800"> 分段控制器 </span>
+            <el-radio-group v-model="size">
+              <el-radio value="large">大尺寸</el-radio>
+              <el-radio value="default">默认尺寸</el-radio>
+              <el-radio value="small">小尺寸</el-radio>
+            </el-radio-group>
+          </el-space>
+        </template>
+      </ReCodePath>
     </template>
     <el-scrollbar>
       <p class="mb-2">

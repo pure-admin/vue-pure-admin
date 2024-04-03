@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-
+import ReCodePath from "@/components/ReCodePath";
 defineOptions({
   name: "Collapse"
 });
@@ -27,27 +27,22 @@ const handleChange = (val: string[]) => {
 <template>
   <el-card shadow="never">
     <template #header>
-      <div class="card-header">
-        <el-space wrap :size="40">
-          <el-link
-            v-tippy="{
-              content: '点击查看详细文档'
-            }"
-            href="https://element-plus.org/zh-CN/component/collapse.html"
-            target="_blank"
-            style="font-size: 16px; font-weight: 800"
-          >
-            折叠面板
-          </el-link>
-        </el-space>
-      </div>
-      <el-link
-        class="mt-2"
-        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/components/collapse.vue"
-        target="_blank"
-      >
-        代码位置 src/views/components/collapse.vue
-      </el-link>
+      <ReCodePath>
+        <template #title>
+          <el-space wrap :size="40">
+            <el-link
+              v-tippy="{
+                content: '点击查看详细文档'
+              }"
+              href="https://element-plus.org/zh-CN/component/collapse.html"
+              target="_blank"
+              style="font-size: 16px; font-weight: 800"
+            >
+              折叠面板
+            </el-link>
+          </el-space>
+        </template>
+      </ReCodePath>
     </template>
 
     <p class="mb-2">基础用法</p>

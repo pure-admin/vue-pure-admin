@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, reactive, unref } from "vue";
 import SeamlessScroll from "@/components/ReSeamlessScroll";
+import ReCodePath from "@/components/ReCodePath";
 
 defineOptions({
   name: "SeamlessScroll"
@@ -52,66 +53,65 @@ function changeDirection(val) {
   <el-space wrap>
     <el-card class="box-card" shadow="never">
       <template #header>
-        <div class="card-header">
-          <span class="font-medium">无缝滚动</span>
-          <el-button
-            class="button"
-            link
-            type="primary"
-            @click="changeDirection('top')"
-          >
-            <span
-              :style="{ color: classOption.direction === 'top' ? 'red' : '' }"
+        <ReCodePath>
+          <template #title>
+            <span class="font-medium">无缝滚动</span>
+            <el-button
+              class="button"
+              link
+              type="primary"
+              @click="changeDirection('top')"
             >
-              向上滚动
-            </span>
-          </el-button>
-          <el-button
-            class="button"
-            link
-            type="primary"
-            @click="changeDirection('bottom')"
-          >
-            <span
-              :style="{
-                color: classOption.direction === 'bottom' ? 'red' : ''
-              }"
+              <span
+                :style="{ color: classOption.direction === 'top' ? 'red' : '' }"
+              >
+                向上滚动
+              </span>
+            </el-button>
+            <el-button
+              class="button"
+              link
+              type="primary"
+              @click="changeDirection('bottom')"
             >
-              向下滚动
-            </span>
-          </el-button>
-          <el-button
-            class="button"
-            link
-            type="primary"
-            @click="changeDirection('left')"
-          >
-            <span
-              :style="{ color: classOption.direction === 'left' ? 'red' : '' }"
+              <span
+                :style="{
+                  color: classOption.direction === 'bottom' ? 'red' : ''
+                }"
+              >
+                向下滚动
+              </span>
+            </el-button>
+            <el-button
+              class="button"
+              link
+              type="primary"
+              @click="changeDirection('left')"
             >
-              向左滚动
-            </span>
-          </el-button>
-          <el-button
-            class="button"
-            link
-            type="primary"
-            @click="changeDirection('right')"
-          >
-            <span
-              :style="{ color: classOption.direction === 'right' ? 'red' : '' }"
+              <span
+                :style="{
+                  color: classOption.direction === 'left' ? 'red' : ''
+                }"
+              >
+                向左滚动
+              </span>
+            </el-button>
+            <el-button
+              class="button"
+              link
+              type="primary"
+              @click="changeDirection('right')"
             >
-              向右滚动
-            </span>
-          </el-button>
-        </div>
-        <el-link
-          class="mt-2"
-          href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/components/seamless-scroll.vue"
-          target="_blank"
-        >
-          代码位置 src/views/components/seamless-scroll.vue
-        </el-link>
+              <span
+                :style="{
+                  color: classOption.direction === 'right' ? 'red' : ''
+                }"
+              >
+                向右滚动
+              </span>
+            </el-button>
+          </template>
+        </ReCodePath>
       </template>
       <SeamlessScroll
         ref="scroll"
