@@ -81,6 +81,8 @@ const onLogin = async (formEl: FormInstance | undefined) => {
                 })
                 .finally(() => (disabled.value = false));
             });
+          } else {
+            message("登录失败", { type: "error" });
           }
         })
         .finally(() => (loading.value = false));
