@@ -285,36 +285,8 @@ function onPopconfirmClick() {
   addDialog({
     width: "30%",
     title: "popconfirm确认框示例",
-    footerButtons: [
-      {
-        label: "取消",
-        bg: true,
-        btnClick: ({ dialog: { options, index } }) => {
-          const done = () => closeDialog(options, index, { command: "cancel" });
-          if (options?.beforeCancel && isFunction(options?.beforeCancel)) {
-            options.beforeCancel(done, { options, index });
-          } else {
-            done();
-          }
-        }
-      },
-      {
-        label: "确认",
-        type: "primary",
-        bg: true,
-        popconfirm: true,
-        tips: `是否确认修改当前数据`,
-        btnClick: ({ dialog: { options, index } }) => {
-          const done = () => closeDialog(options, index, { command: "sure" });
-          if (options?.beforeSure && isFunction(options?.beforeSure)) {
-            options.beforeSure(done, { options, index });
-          } else {
-            done();
-          }
-        }
-      }
-    ],
-    contentRenderer: () => <p>这是`Popconfirm`确认框示例</p>
+    popconfirm: { title: "是否确认修改当前数据" },
+    contentRenderer: () => <p>点击右下方确定按钮看看效果吧</p>
   });
 }
 

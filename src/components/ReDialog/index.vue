@@ -37,6 +37,7 @@ const footerButtons = computed(() => {
             type: "primary",
             text: true,
             bg: true,
+            popconfirm: options?.popconfirm,
             btnClick: ({ dialog: { options, index } }) => {
               const done = () =>
                 closeDialog(options, index, { command: "sure" });
@@ -152,7 +153,7 @@ function handleClose(
         <template v-for="(btn, key) in footerButtons(options)" :key="key">
           <el-popconfirm
             v-if="btn.popconfirm"
-            :title="btn?.tips"
+            v-bind="btn.popconfirm"
             @confirm="
               btn.btnClick({
                 dialog: { options, index },
