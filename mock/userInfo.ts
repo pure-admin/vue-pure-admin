@@ -10,9 +10,9 @@ export default defineFakeRoute([
         data: {
           avatarUrl: "https://avatars.githubusercontent.com/u/44761321",
           nickName: "企丸丸",
-          introduce: "我是幻兽帕鲁里的NO.1",
+          introduce: "我是幻兽帕鲁里的明星",
           regionCode: "001002001",
-          address: "体育路冰鸟密域祭坛地下城",
+          address: "冰鸟密域祭坛地下城",
           userName: "admin"
         }
       };

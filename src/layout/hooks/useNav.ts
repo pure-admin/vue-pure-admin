@@ -100,7 +100,7 @@ export function useNav() {
   }
 
   function handleOpenUserSettings() {
-    router.push({ name: "UserInfoManage" });
+    router.push({ name: "UserSettings" });
   }
 
   function toggleSideBar() {

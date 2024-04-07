@@ -47,20 +47,6 @@ export default [
       title: $t("buttons.hsUserSettings"),
       showLink: false,
       rank: 103
-    },
-    children: [
-      {
-        path: "user-info-manage",
-        name: "UserInfoManage",
-        component: () =>
-          import("@/layout/components/userSettings/userInfoManage.vue")
-      },
-      {
-        path: "safe-manage",
-        name: "SafeManage",
-        component: () =>
-          import("@/layout/components/userSettings/safeManage.vue")
-      }
-    ]
+    }
   }
 ] satisfies Array<RouteConfigsTable>;
