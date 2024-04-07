@@ -26,8 +26,7 @@ The simplified version is based on the shelf extracted from [vue-pure-admin](htt
 ## Supporting video
 
 [Click me to view UI design](https://www.bilibili.com/video/BV17g411T7rq)  
-[Click me to view the rapid development tutorial](https://www.bilibili.com/video/BV1kg411v7QT)  
-[Click me to view all pages and function demonstrations of vue-pure-admin](https://www.bilibili.com/video/BV1Rx4y1U7Mv)
+[Click me to view the rapid development tutorial](https://www.bilibili.com/video/BV1kg411v7QT)
 
 ## Nanny-level documents
 

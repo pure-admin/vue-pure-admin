@@ -134,6 +134,13 @@ onBeforeUnmount(() => {
             工具，可以在浏览器内进行视频和音频录制、转换和流式传输等，不过通过一些实践，对于时长较长的视频性能还是不太行，不过用于时长较短的短视频还是可以上生产的
           </p>
         </span>
+        <el-link
+          class="mt-2"
+          href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/able/video-frame"
+          target="_blank"
+        >
+          代码位置 src/views/able/video-frame
+        </el-link>
       </div>
     </template>
     <div class="flex flex-wrap">

@@ -88,16 +88,21 @@ const swiperExample: any[] = [
   <el-card shadow="never">
     <template #header>
       <div class="font-medium">
-        Swiper插件（
         <el-link
           href="https://github.com/nolimits4web/swiper"
           target="_blank"
           style="margin: 0 5px 4px 0; font-size: 16px"
         >
-          github地址
+          Swiper插件
         </el-link>
-        ）
       </div>
+      <el-link
+        class="mt-2"
+        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/components/swiper.vue"
+        target="_blank"
+      >
+        代码位置 src/views/components/swiper.vue
+      </el-link>
     </template>
     <el-row :gutter="10">
       <el-col v-for="item in swiperExample" :key="item.id" :span="12">

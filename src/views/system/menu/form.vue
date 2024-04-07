@@ -26,7 +26,7 @@ const props = withDefaults(defineProps<FormProps>(), {
     path: "",
     component: "",
     rank: 99,
-    redirect: " ",
+    redirect: "",
     icon: "",
     extraIcon: "",
     enterTransition: "",

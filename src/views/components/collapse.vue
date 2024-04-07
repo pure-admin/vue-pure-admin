@@ -41,6 +41,13 @@ const handleChange = (val: string[]) => {
           </el-link>
         </el-space>
       </div>
+      <el-link
+        class="mt-2"
+        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/components/collapse.vue"
+        target="_blank"
+      >
+        代码位置 src/views/components/collapse.vue
+      </el-link>
     </template>
 
     <p class="mb-2">基础用法</p>

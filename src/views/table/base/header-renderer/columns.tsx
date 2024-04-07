@@ -2,7 +2,6 @@ import { message } from "@/utils/message";
 import { tableData } from "../data";
 import { ref, computed } from "vue";
 
-// 如果您不习惯tsx写法，可以传slot，然后在template里写
 // 需是hooks写法（函数中有return），避免失去响应性
 export function useColumns() {
   const search = ref("");
@@ -26,8 +25,9 @@ export function useColumns() {
 
   const columns: TableColumnList = [
     {
-      label: "日期",
-      prop: "date"
+      prop: "date",
+      // 自定义表头，slot用法  #nameHeader="{ column, $index }"
+      headerSlot: "nameHeader"
     },
     {
       label: "姓名",
@@ -39,7 +39,7 @@ export function useColumns() {
     },
     {
       align: "right",
-      // 自定义表头
+      // 自定义表头，tsx用法
       headerRenderer: () => (
         <el-input
           v-model={search.value}

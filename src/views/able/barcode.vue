@@ -44,6 +44,13 @@ const barcodes = [
           </el-link>
           生成）
         </div>
+        <el-link
+          class="mt-2"
+          href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/able/barcode.vue"
+          target="_blank"
+        >
+          代码位置 src/views/able/barcode.vue
+        </el-link>
       </template>
       <el-row :gutter="12">
         <template v-for="(item, index) in barcodes" :key="index">

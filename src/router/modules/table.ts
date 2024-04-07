@@ -6,7 +6,7 @@ export default {
   redirect: "/table/index",
   meta: {
     icon: "ri:table-line",
-    title: $t("menus.hstable"),
+    title: $t("menus.pureTable"),
     rank: table
   },
   children: [
@@ -15,7 +15,7 @@ export default {
       name: "PureTable",
       component: () => import("@/views/table/index.vue"),
       meta: {
-        title: $t("menus.hsPureTableBase")
+        title: $t("menus.pureTableBase")
       }
     },
     {
@@ -23,7 +23,7 @@ export default {
       name: "PureTableHigh",
       component: () => import("@/views/table/high.vue"),
       meta: {
-        title: $t("menus.hsPureTableHigh")
+        title: $t("menus.pureTableHigh")
       }
     },
     {
@@ -31,7 +31,7 @@ export default {
       name: "PureTableEdit",
       component: () => import("@/views/table/edit.vue"),
       meta: {
-        title: $t("menus.hsPureTableEdit"),
+        title: $t("menus.pureTableEdit"),
         extraIcon: "IF-pure-iconfont-new svg"
       }
     },
@@ -40,7 +40,7 @@ export default {
       name: "VxeTable",
       component: () => import("@/views/table/virtual.vue"),
       meta: {
-        title: $t("menus.hsVxeTable"),
+        title: $t("menus.pureVxeTable"),
         extraIcon: "IF-pure-iconfont-new svg"
       }
     }

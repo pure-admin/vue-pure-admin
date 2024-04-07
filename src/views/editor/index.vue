@@ -24,6 +24,13 @@ const activeNames = ref("1");
           </el-link>
         </span>
       </div>
+      <el-link
+        class="mt-2"
+        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/editor"
+        target="_blank"
+      >
+        代码位置 src/views/editor
+      </el-link>
     </template>
     <el-collapse v-model="activeNames" accordion>
       <el-collapse-item title="基础用法" name="1">

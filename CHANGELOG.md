@@ -1,3 +1,16 @@
+# 5.3.0 (2024-03-28)
+
+### ✔️ refactor
+
+- Reconstruct internationalized file naming conventions and demo pages with code location hints
+
+### 🎫 Feat
+
+- Add `MQTT` example
+- Added `docx` and `excel` file preview examples
+- The `ReSegmented` segmented controller has a new `size` attribute, which can set three sizes
+- The `RePureTableBar` component and `pure-admin-table` support international switching of table headers
+
 # 5.2.0 (2024-03-22)
 
 ### ✔️ refactor

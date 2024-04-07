@@ -25,7 +25,16 @@ const handleChange = value => {
 
 <template>
   <el-card shadow="never">
-    <template #header> <p class="font-medium">区域级联选择器</p> </template>
+    <template #header>
+      <p class="font-medium">区域级联选择器</p>
+      <el-link
+        class="mt-2"
+        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/components/cascader.vue"
+        target="_blank"
+      >
+        代码位置 src/views/components/cascader.vue
+      </el-link>
+    </template>
     <el-row :gutter="24">
       <el-col :xl="12" :lg="12" :md="24" :sm="24" :xs="24">
         <div class="flex flex-col items-center justify-center">

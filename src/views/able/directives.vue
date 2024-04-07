@@ -56,7 +56,14 @@ function onReset() {
   <el-card shadow="never">
     <template #header>
       <div class="card-header">
-        <span class="font-medium">自定义防抖、截流、文本复制、长按指令</span>
+        <p class="font-medium">自定义防抖、截流、文本复制、长按指令</p>
+        <el-link
+          class="mt-2"
+          href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/able/directives.vue"
+          target="_blank"
+        >
+          代码位置 src/views/able/directives.vue
+        </el-link>
       </div>
     </template>
     <div class="mb-2">

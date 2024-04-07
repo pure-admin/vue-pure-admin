@@ -24,8 +24,7 @@ export function getPluginsList(
     // jsx、tsx语法支持
     vueJsx(),
     VueI18nPlugin({
-      runtimeOnly: true,
-      compositionOnly: true,
+      jitCompilation: false,
       include: [pathResolve("../locales/**")]
     }),
     viteBuildInfo(),

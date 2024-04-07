@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, unref, nextTick, onUnmounted } from "vue";
 import flippers from "./filpper";
+import { ref, unref, nextTick, onUnmounted } from "vue";
 
 const timer = ref(null);
 const flipObjs = ref([]);
