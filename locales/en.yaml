@@ -1,186 +1,178 @@
 buttons:
-  hsLoginOut: LoginOut
-  hsfullscreen: FullScreen
-  hsexitfullscreen: ExitFullscreen
-  hsrefreshRoute: RefreshRoute
-  hslogin: Login
-  hsadd: Add
-  hsmark: Mark/Cancel
-  hssave: Save
-  hssearch: Search
-  hsexpendAll: Expand All
-  hscollapseAll: Collapse All
-  hssystemSet: Open ProjectConfig
-  hsdelete: Delete
-  hsreload: Reload
-  hscloseCurrentTab: Close CurrentTab
-  hscloseLeftTabs: Close LeftTabs
-  hscloseRightTabs: Close RightTabs
-  hscloseOtherTabs: Close OtherTabs
-  hscloseAllTabs: Close AllTabs
-  hswholeFullScreen: FullScreen
-  hswholeExitFullScreen: ExitFull
-  hscontentFullScreen: Content FullScreen
-  hscontentExitFullScreen: Content ExitFullScreen
+  pureLoginOut: LoginOut
+  pureLogin: Login
+  pureSystemSet: Open ProjectConfig
+  pureReload: Reload
+  pureCloseCurrentTab: Close CurrentTab
+  pureCloseLeftTabs: Close LeftTabs
+  pureCloseRightTabs: Close RightTabs
+  pureCloseOtherTabs: Close OtherTabs
+  pureCloseAllTabs: Close AllTabs
+  pureContentFullScreen: Content FullScreen
+  pureContentExitFullScreen: Content ExitFullScreen
 menus:
-  hshome: Home
-  hslogin: Login
-  hsempty: Empty Page
-  hstable: Table
-  hssysManagement: System Manage
-  hsUser: User Manage
-  hsRole: Role Manage
-  hsSystemMenu: Menu Manage
-  hsDept: Dept Manage
-  hssysMonitor: System Monitor
-  hsOnlineUser: Online User
-  hsLoginLog: Login Log
-  hsOperationLog: Operation Log
-  hsSystemLog: System Log
-  hseditor: Editor
-  hsabnormal: Abnormal Page
-  hsfourZeroFour: "404"
-  hsfourZeroOne: "403"
-  hsFive: "500"
-  hscomponents: Components
-  hsdialog: Dialog
-  hsmessage: Message Tips
-  hsvideo: Video
-  hssegmented: Segmented
-  hswaterfall: Waterfall
-  hsmap: Map
-  hsdraggable: Draggable
-  hssplitPane: Split Pane
-  hsText: Text Ellipsis
-  hsElButton: Button
-  hsbutton: Button Animation
-  hsCheckButton: Check Button
-  hscropping: Picture Cropping
-  hsanimatecss: AnimateCss Selector
-  hscountTo: Digital Animation
-  hsselector: Scope Selector
-  hsflowChart: Flow Chart
-  hsseamless: Seamless Scroll
-  hscontextmenu: Context Menu
-  hstypeit: Typeit
-  hsjsoneditor: JSON Editor
-  hsColorPicker: Color Picker
-  hsDatePicker: Date Picker
-  hsDateTimePicker: DateTimePicker
-  hsTimePicker: TimePicker
-  hsTag: Tag
-  hsStatistic: Statistic
-  hsCollapse: Collapse
-  hsGanttastic: Gantt Chart
-  hsProgress: Progress
-  hsUpload: File Upload
-  hsCheckCard: CheckCard
-  hsmenus: MultiLevel Menu
-  hsmenu1: Menu1
-  hsmenu1-1: Menu1-1
-  hsmenu1-2: Menu1-2
-  hsmenu1-2-1: Menu1-2-1
-  hsmenu1-2-2: Menu1-2-2
-  hsmenu1-3: Menu1-3
-  hsmenu2: Menu2
-  permission: Permission Manage
-  permissionPage: Page Permission
-  permissionButton: Button Permission
-  hstabs: Tabs Operate
-  hsguide: Guide
-  hsAble: Able
-  hsMenuTree: Menu Tree
-  hsVideoFrame: Video Frame Capture
-  hsWavesurfer: Audio Visualization
-  hsRipple: Ripple
-  hsOptimize: Debounce、Throttle、Copy、Longpress Directives
-  hsVerify: Captcha
-  hsWatermark: Water Mark
-  hsPrint: Print
-  hsDownload: Download
-  hsExternalPage: External Page
-  hsExternalDoc: Docs External
-  hsEmbeddedDoc: Docs Embedded
-  externalLink: Vue-Pure-Admin
-  pureutilsLink: Pure-Admin-Utils
-  hsEpDocument: Element-Plus
-  hsTailwindcssDocument: Tailwindcss
-  hsVueDocument: Vue3
-  hsViteDocument: Vite
-  hsPiniaDocument: Pinia
-  hsRouterDocument: Vue-Router
-  hsAbout: About
-  hsResult: Result Page
-  hsSuccess: Success Page
-  hsFail: Fail Page
-  hsIconSelect: Icon Select
-  hsTimeline: Time Line
-  hsLineTree: LineTree
-  hsList: List Page
-  hsListCard: Card List Page
-  hsDebounce: Debounce & Throttle
-  hsFormDesign: Form Design
-  hsBarcode: Barcode
-  hsQrcode: Qrcode
-  hsCascader: Area Cascader
-  hsSwiper: Swiper Plugin
-  hsVirtualList: Virtual List
-  hsPdf: PDF Preview
-  hsWord: Word Preview
-  hsExcels: Excel Preview
-  hsExcel: Export Excel
-  hsInfiniteScroll: Table Infinite Scroll
-  hsSensitive: Sensitive Filter
-  hsPinyin: PinYin
-  hsdanmaku: Danmaku
-  hsSchemaForm: Form
-  hsPureTableBase: Base Usage
-  hsPureTableHigh: High Usage
-  hsPureTableEdit: Edit Usage
-  hsVxeTable: Virtual Usage
-  hsboard: Paint Board
-  hsMenuoverflow: Menu Overflow Show Tooltip Text
-  hsChildMenuoverflow: Child Menu Overflow Show Tooltip Text
+  pureHome: Home
+  pureLogin: Login
+  pureEmpty: Empty Page
+  pureTable: Table
+  pureSysManagement: System Manage
+  pureUser: User Manage
+  pureRole: Role Manage
+  pureSystemMenu: Menu Manage
+  pureDept: Dept Manage
+  pureSysMonitor: System Monitor
+  pureOnlineUser: Online User
+  pureLoginLog: Login Log
+  pureOperationLog: Operation Log
+  pureSystemLog: System Log
+  pureEditor: Editor
+  pureAbnormal: Abnormal Page
+  pureFourZeroFour: "404"
+  pureFourZeroOne: "403"
+  pureFive: "500"
+  pureComponents: Components
+  pureDialog: Dialog
+  pureMessage: Message Tips
+  pureVideo: Video
+  pureSegmented: Segmented
+  pureWaterfall: Waterfall
+  pureMap: Map
+  pureDraggable: Draggable
+  pureSplitPane: Split Pane
+  pureText: Text Ellipsis
+  pureElButton: Button
+  pureButton: Button Animation
+  pureCheckButton: Check Button
+  pureCropping: Picture Cropping
+  pureAnimatecss: AnimateCss Selector
+  pureCountTo: Digital Animation
+  pureSelector: Scope Selector
+  pureFlowChart: Flow Chart
+  pureSeamless: Seamless Scroll
+  pureContextmenu: Context Menu
+  pureTypeit: Typeit
+  pureJsonEditor: JSON Editor
+  pureColorPicker: Color Picker
+  pureDatePicker: Date Picker
+  pureDateTimePicker: DateTimePicker
+  pureTimePicker: TimePicker
+  pureTag: Tag
+  pureStatistic: Statistic
+  pureCollapse: Collapse
+  pureGanttastic: Gantt Chart
+  pureProgress: Progress
+  pureUpload: File Upload
+  pureCheckCard: CheckCard
+  pureMenus: MultiLevel Menu
+  pureMenu1: Menu1
+  pureMenu1-1: Menu1-1
+  pureMenu1-2: Menu1-2
+  pureMenu1-2-1: Menu1-2-1
+  pureMenu1-2-2: Menu1-2-2
+  pureMenu1-3: Menu1-3
+  pureMenu2: Menu2
+  purePermission: Permission Manage
+  purePermissionPage: Page Permission
+  purePermissionButton: Button Permission
+  pureTabs: Tabs Operate
+  pureGuide: Guide
+  pureAble: Able
+  pureMenuTree: Menu Tree
+  pureVideoFrame: Video Frame Capture
+  pureWavesurfer: Audio Visualization
+  pureRipple: Ripple
+  pureMqtt: Mqtt Client
+  pureOptimize: Debounce、Throttle、Copy、Longpress Directives
+  pureVerify: Captcha
+  pureWatermark: Water Mark
+  purePrint: Print
+  pureDownload: Download
+  pureExternalPage: External Page
+  pureExternalDoc: Docs External
+  pureEmbeddedDoc: Docs Embedded
+  pureExternalLink: Vue-Pure-Admin
+  pureUtilsLink: Pure-Admin-Utils
+  pureColorHuntDoc: ColorHunt
+  pureUiGradients: UiGradients
+  pureEpDoc: Element-Plus
+  pureTailwindcssDoc: Tailwindcss
+  pureVueDoc: Vue3
+  pureViteDoc: Vite
+  purePiniaDoc: Pinia
+  pureRouterDoc: Vue-Router
+  pureAbout: About
+  pureResult: Result Page
+  pureSuccess: Success Page
+  pureFail: Fail Page
+  pureIconSelect: Icon Select
+  pureTimeline: Time Line
+  pureLineTree: LineTree
+  pureList: List Page
+  pureListCard: Card List Page
+  pureDebounce: Debounce & Throttle
+  pureFormDesign: Form Design
+  pureBarcode: Barcode
+  pureQrcode: Qrcode
+  pureCascader: Area Cascader
+  pureSwiper: Swiper Plugin
+  pureVirtualList: Virtual List
+  purePdf: PDF Preview
+  pureWord: Word Preview
+  pureExcels: Excel Preview
+  pureExcel: Export Excel
+  pureInfiniteScroll: Table Infinite Scroll
+  pureSensitive: Sensitive Filter
+  purePinyin: PinYin
+  pureDanmaku: Danmaku
+  pureSchemaForm: Form
+  pureTableBase: Base Usage
+  pureTableHigh: High Usage
+  pureTableEdit: Edit Usage
+  pureVxeTable: Virtual Usage
+  pureBoard: Paint Board
+  pureMindMap: Mind Map
+  pureMenuOverflow: Menu Overflow Show Tooltip Text
+  pureChildMenuOverflow: Child Menu Overflow Show Tooltip Text
 status:
-  hsLoad: Loading...
+  pureLoad: Loading...
 login:
-  username: Username
-  password: Password
-  verifyCode: VerifyCode
-  remember: days no need to login
-  rememberInfo: After checking and logging in, will automatically log in to the system without entering your username and password within the specified number of days.
-  sure: Sure Password
-  forget: Forget Password?
-  login: Login
-  thirdLogin: Third Login
-  phoneLogin: Phone Login
-  qRCodeLogin: QRCode Login
-  register: Register
-  weChatLogin: WeChat Login
-  alipayLogin: Alipay Login
-  qqLogin: QQ Login
-  weiboLogin: Weibo Login
-  phone: Phone
-  smsVerifyCode: SMS VerifyCode
-  back: Back
-  test: Mock Test
-  tip: After scanning the code, click "Confirm" to complete the login
-  definite: Definite
-  loginSuccess: Login Success
-  registerSuccess: Regist Success
-  tickPrivacy: Please tick Privacy Policy
-  readAccept: I have read it carefully and accept
-  privacyPolicy: Privacy Policy
-  getVerifyCode: Get VerifyCode
-  info: Seconds
-  usernameReg: Please enter username
-  passwordReg: Please enter password
-  verifyCodeReg: Please enter verify code
-  verifyCodeCorrectReg: Please enter correct verify code
-  verifyCodeSixReg: Please enter a 6-digit verify code
-  phoneReg: Please enter the phone
-  phoneCorrectReg: Please enter the correct phone number format
-  passwordRuleReg: The password format should be any combination of 8-18 digits
-  passwordSureReg: Please enter confirm password
-  passwordDifferentReg: The two passwords do not match!
-  passwordUpdateReg: Password has been updated
+  pureUsername: Username
+  purePassword: Password
+  pureVerifyCode: VerifyCode
+  pureRemember: days no need to login
+  pureRememberInfo: After checking and logging in, will automatically log in to the system without entering your username and password within the specified number of days.
+  pureSure: Sure Password
+  pureForget: Forget Password?
+  pureLogin: Login
+  pureThirdLogin: Third Login
+  purePhoneLogin: Phone Login
+  pureQRCodeLogin: QRCode Login
+  pureRegister: Register
+  pureWeChatLogin: WeChat Login
+  pureAlipayLogin: Alipay Login
+  pureQQLogin: QQ Login
+  pureWeiBoLogin: Weibo Login
+  purePhone: Phone
+  pureSmsVerifyCode: SMS VerifyCode
+  pureBack: Back
+  pureTest: Mock Test
+  pureTip: After scanning the code, click "Confirm" to complete the login
+  pureDefinite: Definite
+  pureLoginSuccess: Login Success
+  pureRegisterSuccess: Regist Success
+  pureTickPrivacy: Please tick Privacy Policy
+  pureReadAccept: I have read it carefully and accept
+  purePrivacyPolicy: Privacy Policy
+  pureGetVerifyCode: Get VerifyCode
+  pureInfo: Seconds
+  pureUsernameReg: Please enter username
+  purePassWordReg: Please enter password
+  pureVerifyCodeReg: Please enter verify code
+  pureVerifyCodeCorrectReg: Please enter correct verify code
+  pureVerifyCodeSixReg: Please enter a 6-digit verify code
+  purePhoneReg: Please enter the phone
+  purePhoneCorrectReg: Please enter the correct phone number format
+  purePassWordRuleReg: The password format should be any combination of 8-18 digits
+  purePassWordSureReg: Please enter confirm password
+  purePassWordDifferentReg: The two passwords do not match!
+  purePassWordUpdateReg: Password has been updated

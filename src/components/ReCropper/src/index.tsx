@@ -6,10 +6,10 @@ import { useEventListener } from "@vueuse/core";
 import { longpress } from "@/directives/longpress";
 import { useTippy, directive as tippy } from "vue-tippy";
 import {
+  type PropType,
   ref,
   unref,
   computed,
-  type PropType,
   onMounted,
   onUnmounted,
   defineComponent

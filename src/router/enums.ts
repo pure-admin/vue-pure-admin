@@ -22,8 +22,9 @@ const home = 0, // 平台规定只有 home 路由的 rank 才能为 0 ，所以�
   formdesign = 19,
   board = 20,
   ppt = 21,
-  guide = 22,
-  menuoverflow = 23;
+  mind = 22,
+  guide = 23,
+  menuoverflow = 24;
 
 export {
   home,
@@ -48,6 +49,7 @@ export {
   formdesign,
   board,
   ppt,
+  mind,
   guide,
   menuoverflow
 };

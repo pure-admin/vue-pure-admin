@@ -41,6 +41,13 @@ onBeforeUnmount(() => {
           进行二次封装（提示：右键下面左侧裁剪区可开启功能菜单）
         </span>
       </div>
+      <el-link
+        class="mt-2"
+        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/components/cropping"
+        target="_blank"
+      >
+        代码位置 src/views/components/cropping
+      </el-link>
     </template>
     <div v-loading="!showPopover" element-loading-background="transparent">
       <el-popover

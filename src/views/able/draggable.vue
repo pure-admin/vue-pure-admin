@@ -68,6 +68,13 @@ onMounted(() => {
           </el-link>
         </span>
       </div>
+      <el-link
+        class="mt-2"
+        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/able/draggable.vue"
+        target="_blank"
+      >
+        代码位置 src/views/able/draggable.vue
+      </el-link>
     </template>
     <div class="drag-container">
       <!-- grid列表拖拽 -->

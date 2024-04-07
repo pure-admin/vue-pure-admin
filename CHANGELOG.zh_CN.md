@@ -1,3 +1,16 @@
+# 5.3.0 (2024-03-28)
+
+### ✔️ refactor
+
+- 重构国际化文件命名规范以及演示页加上代码位置提示
+
+### 🎫 Feat
+
+- 添加`MQTT`示例
+- 添加`docx`、`excel`文件预览示例
+- `ReSegmented`分段控制器新增`size`属性，可设置三种尺寸
+- `RePureTableBar`组件搭配`pure-admin-table`支持表头国际化切换
+
 # 5.2.0 (2024-03-22)
 
 ### ✔️ refactor

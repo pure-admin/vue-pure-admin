@@ -204,13 +204,20 @@ watch(size, val => (dynamicSize.value = size.value));
       <div class="card-header">
         <el-space wrap :size="40">
           <span style="font-size: 16px; font-weight: 800"> 分段控制器 </span>
-          <el-radio-group v-model="size" size="small">
+          <el-radio-group v-model="size">
             <el-radio value="large">大尺寸</el-radio>
             <el-radio value="default">默认尺寸</el-radio>
             <el-radio value="small">小尺寸</el-radio>
           </el-radio-group>
         </el-space>
       </div>
+      <el-link
+        class="mt-2"
+        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/components/segmented.vue"
+        target="_blank"
+      >
+        代码位置 src/views/components/segmented.vue
+      </el-link>
     </template>
     <el-scrollbar>
       <p class="mb-2">
@@ -232,6 +239,9 @@ watch(size, val => (dynamicSize.value = size.value));
       <el-divider />
       <p class="mb-2">禁用</p>
       <Segmented :options="optionsDisabled" :size="dynamicSize" />
+      <el-divider />
+      <p class="mb-2">全局禁用</p>
+      <Segmented :options="optionsBasis" :size="dynamicSize" disabled />
       <el-divider />
       <p class="mb-2">block 属性(将宽度调整为父元素宽度)</p>
       <Segmented :options="optionsBlock" block :size="dynamicSize" />

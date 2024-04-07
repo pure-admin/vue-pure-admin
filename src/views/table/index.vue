@@ -18,7 +18,7 @@ function tabClick({ index }) {
     <template #header>
       <div class="card-header">
         <span class="font-medium">
-          二次封装 element-plus 的
+          二次封装 Element Plus 的
           <el-link
             href="https://element-plus.org/zh-CN/component/table.html"
             target="_blank"
@@ -37,6 +37,13 @@ function tabClick({ index }) {
           </el-link>
         </span>
       </div>
+      <el-link
+        class="mt-2"
+        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/table/base"
+        target="_blank"
+      >
+        代码位置 src/views/table/base
+      </el-link>
     </template>
 
     <el-alert
@@ -50,12 +57,14 @@ function tabClick({ index }) {
       <template v-for="(item, index) of list" :key="item.key">
         <el-tab-pane :lazy="true">
           <template #label>
-            <el-tooltip
-              :content="`（第 ${index + 1} 个示例）${item.content}`"
-              placement="top-end"
+            <span
+              v-tippy="{
+                maxWidth: 'none',
+                content: `（第 ${index + 1} 个示例）${item.content}`
+              }"
             >
-              <span>{{ item.title }}</span>
-            </el-tooltip>
+              {{ item.title }}
+            </span>
           </template>
           <component :is="item.component" v-if="selected == index" />
         </el-tab-pane>
@@ -74,7 +83,7 @@ function tabClick({ index }) {
 }
 
 :deep(.el-alert__title) {
-  font-size: 16px;
+  font-size: 15px;
 }
 
 :deep(.el-tabs__nav-next),

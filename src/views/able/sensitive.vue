@@ -21,7 +21,14 @@ function onInput() {
   <el-card shadow="never">
     <template #header>
       <div class="card-header">
-        <span class="font-medium">敏感词过滤</span>
+        <p class="font-medium">敏感词过滤</p>
+        <el-link
+          class="mt-2"
+          href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/able/sensitive.vue"
+          target="_blank"
+        >
+          代码位置 src/views/able/sensitive.vue
+        </el-link>
       </div>
     </template>
     <div class="flex flex-wrap gap-2 my-2">

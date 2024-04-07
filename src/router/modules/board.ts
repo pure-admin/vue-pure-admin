@@ -7,7 +7,7 @@ export default {
   redirect: "/board/index",
   meta: {
     icon: "ri:artboard-line",
-    title: $t("menus.hsboard"),
+    title: $t("menus.pureBoard"),
     rank: board
   },
   children: [
@@ -16,7 +16,8 @@ export default {
       name: "FrameBoard",
       component: IFrame,
       meta: {
-        title: $t("menus.hsboard"),
+        title: $t("menus.pureBoard"),
+        keepAlive: true,
         frameSrc: "https://songlh.top/paint-board/"
       }
     }

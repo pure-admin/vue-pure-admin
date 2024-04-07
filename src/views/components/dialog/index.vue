@@ -280,6 +280,16 @@ function onUpdateClick() {
   });
 }
 
+// popconfirm 确认框
+function onPopconfirmClick() {
+  addDialog({
+    width: "30%",
+    title: "popconfirm确认框示例",
+    popconfirm: { title: "是否确认修改当前数据" },
+    contentRenderer: () => <p>点击右下方确定按钮看看效果吧</p>
+  });
+}
+
 // 结合Form表单（第一种方式，弹框关闭立刻恢复初始值）通过 props 属性接收子组件的 prop 并赋值
 function onFormOneClick() {
   addDialog({
@@ -447,7 +457,7 @@ function onBeforeSureClick() {
     <template #header>
       <div class="card-header">
         <span class="font-medium">
-          二次封装 element-plus 的
+          二次封装 Element Plus 的
           <el-link
             href="https://element-plus.org/zh-CN/component/dialog.html"
             target="_blank"
@@ -465,6 +475,12 @@ function onBeforeSureClick() {
           ）
         </span>
       </div>
+      <el-link
+        href="https://github.com/pure-admin/vue-pure-admin/tree/main/src/views/components/dialog"
+        target="_blank"
+      >
+        代码位置 src/views/components/dialog
+      </el-link>
     </template>
     <el-space wrap>
       <el-button @click="onBaseClick"> 基础用法 </el-button>
@@ -490,6 +506,7 @@ function onBeforeSureClick() {
       <el-button @click="onCloseCallBackClick"> 关闭后的回调 </el-button>
       <el-button @click="onNestingClick"> 嵌套的弹框 </el-button>
       <el-button @click="onUpdateClick"> 更改弹框自身属性值 </el-button>
+      <el-button @click="onPopconfirmClick">popconfirm确认框</el-button>
     </el-space>
     <el-divider />
     <el-space wrap>

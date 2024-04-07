@@ -116,6 +116,13 @@ function addDanmu() {
           </el-link>
         </span>
       </div>
+      <el-link
+        class="mt-2"
+        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/able/danmaku"
+        target="_blank"
+      >
+        代码位置 src/views/able/danmaku
+      </el-link>
     </template>
     <div class="flex gap-5">
       <vue-danmaku

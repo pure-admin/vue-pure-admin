@@ -27,7 +27,9 @@ const onLogin = async (formEl: FormInstance | undefined) => {
     if (valid) {
       // 模拟登录请求，需根据实际开发进行修改
       setTimeout(() => {
-        message(transformI18n($t("login.loginSuccess")), { type: "success" });
+        message(transformI18n($t("login.pureLoginSuccess")), {
+          type: "success"
+        });
         loading.value = false;
       }, 2000);
     } else {
@@ -50,7 +52,7 @@ function onBack() {
         <el-input
           v-model="ruleForm.phone"
           clearable
-          :placeholder="t('login.phone')"
+          :placeholder="t('login.purePhone')"
           :prefix-icon="useRenderIcon(Iphone)"
         />
       </el-form-item>
@@ -62,7 +64,7 @@ function onBack() {
           <el-input
             v-model="ruleForm.verifyCode"
             clearable
-            :placeholder="t('login.smsVerifyCode')"
+            :placeholder="t('login.pureSmsVerifyCode')"
             :prefix-icon="useRenderIcon('ri:shield-keyhole-line')"
           />
           <el-button
@@ -72,8 +74,8 @@ function onBack() {
           >
             {{
               text.length > 0
-                ? text + t("login.info")
-                : t("login.getVerifyCode")
+                ? text + t("login.pureInfo")
+                : t("login.pureGetVerifyCode")
             }}
           </el-button>
         </div>
@@ -89,7 +91,7 @@ function onBack() {
           :loading="loading"
           @click="onLogin(ruleFormRef)"
         >
-          {{ t("login.login") }}
+          {{ t("login.pureLogin") }}
         </el-button>
       </el-form-item>
     </Motion>
@@ -97,7 +99,7 @@ function onBack() {
     <Motion :delay="200">
       <el-form-item>
         <el-button class="w-full" size="default" @click="onBack">
-          {{ t("login.back") }}
+          {{ t("login.pureBack") }}
         </el-button>
       </el-form-item>
     </Motion>
