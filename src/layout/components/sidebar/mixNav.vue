@@ -144,7 +144,7 @@ watch(
         <template #dropdown>
           <el-dropdown-item @click="handleOpenUserSettings">
             <IconifyIconOffline :icon="UserSettingsLine" style="margin: 5px" />
-            {{ t("buttons.hsUserSettings") }}
+            {{ t("buttons.pureUserSettings") }}
           </el-dropdown-item>
           <el-dropdown-menu class="logout">
             <el-dropdown-item @click="logout">

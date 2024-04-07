@@ -99,7 +99,7 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
                 :icon="UserSettingsLine"
                 style="margin: 5px"
               />
-              {{ t("buttons.hsUserSettings") }}
+              {{ t("buttons.pureUserSettings") }}
             </el-dropdown-item>
             <el-dropdown-item @click="logout">
               <IconifyIconOffline

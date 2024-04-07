@@ -44,7 +44,7 @@ export default [
     name: "UserSettings",
     component: () => import("@/layout/components/userSettings/index.vue"),
     meta: {
-      title: $t("buttons.hsUserSettings"),
+      title: $t("buttons.pureUserSettings"),
       showLink: false,
       rank: 103
     }

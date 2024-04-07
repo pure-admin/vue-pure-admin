@@ -10,6 +10,7 @@ buttons:
   pureCloseAllTabs: 关闭全部标签页
   pureContentFullScreen: 内容区全屏
   pureContentExitFullScreen: 内容区退出全屏
+  pureUserSettings: 个人设置
 menus:
   pureHome: 首页
   pureLogin: 登录

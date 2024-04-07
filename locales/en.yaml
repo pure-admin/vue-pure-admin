@@ -10,6 +10,7 @@ buttons:
   pureCloseAllTabs: Close AllTabs
   pureContentFullScreen: Content FullScreen
   pureContentExitFullScreen: Content ExitFullScreen
+  pureUserSettings: User Settings
 menus:
   pureHome: Home
   pureLogin: Login
