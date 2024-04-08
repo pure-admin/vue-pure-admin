@@ -132,6 +132,11 @@ pnpm dev
 pnpm build
 ```
 
+### Code statistics
+
+1. [Install tokei](https://github.com/XAMPPRocky/tokei?tab=readme-ov-file#installation)
+2. `pnpm tokei`
+
 ## Docker support
 
 1. Customize the image named `vue-pure-admin` (please note that there is a dot `.` at the end of the command below, indicating that the `Dockerfile` file in the current path is used, and the path can be specified according to the actual situation)

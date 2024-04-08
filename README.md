@@ -133,6 +133,11 @@ pnpm dev
 pnpm build
 ```
 
+### 代码统计
+
+1. [安装 tokei](https://github.com/XAMPPRocky/tokei?tab=readme-ov-file#installation)
+2. `pnpm tokei`
+
 ## Docker 支持
 
 1. 自定义镜像名为 `vue-pure-admin` 的镜像（请注意下面命令末尾有一个点 `.` 表示使用当前路径下的 `Dockerfile` 文件，可根据实际情况指定路径）

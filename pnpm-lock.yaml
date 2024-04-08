@@ -268,9 +268,6 @@ devDependencies:
   boxen:
     specifier: ^7.1.1
     version: 7.1.1
-  cloc:
-    specifier: ^2.11.0
-    version: 2.11.0
   cssnano:
     specifier: ^6.1.2
     version: 6.1.2(postcss@8.4.38)
@@ -3737,11 +3734,6 @@ packages:
       string-width: 4.2.3
       strip-ansi: 6.0.1
       wrap-ansi: 7.0.0
-    dev: true
-
-  /cloc@2.11.0:
-    resolution: {integrity: sha512-+mxuCHo7ESOQadlsyMjmPZ4hGBtvQzmNGHfLdBNvXKbnRhtmOTslU4XF2cyFSaOCHaaF26ba2CGjU6lpeIFB0w==}
-    hasBin: true
     dev: true
 
   /co@4.6.0:
