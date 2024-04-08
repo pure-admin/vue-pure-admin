@@ -396,6 +396,13 @@ function showMenuModel(
   } else {
     currentIndex = allRoute.findIndex(v => isEqual(v.query, query));
   }
+  function fixedTagDisabled() {
+    if (allRoute[currentIndex]?.meta?.fixedTag) {
+      Array.of(1, 2, 3, 4, 5).forEach(v => {
+        tagsViews[v].disabled = true;
+      });
+    }
+  }
 
   showMenus(true);
 
@@ -414,6 +421,7 @@ function showMenuModel(
       tagsViews[v].disabled = false;
     });
     tagsViews[2].disabled = true;
+    fixedTagDisabled();
   } else if (currentIndex === 1 && routeLength === 2) {
     disabledMenus(false);
     // 左侧的菜单是顶级菜单，右侧不存在别的菜单
@@ -432,11 +440,13 @@ function showMenuModel(
       tagsViews[2].show = false;
       tagsViews[2].disabled = true;
     }
+    fixedTagDisabled();
   } else if (currentIndex === 0 || currentPath === `/redirect${topPath}`) {
     // 当前路由为顶级菜单
     disabledMenus(true);
   } else {
     disabledMenus(false, allRoute[currentIndex - 1]?.meta?.fixedTag);
+    fixedTagDisabled();
   }
 }
 
