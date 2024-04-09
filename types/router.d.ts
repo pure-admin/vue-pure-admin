@@ -45,8 +45,10 @@ declare global {
       /** 离场动画 */
       leaveTransition?: string;
     };
-    // 是否不添加信息到标签页，（默认`false`）
+    /** 当前菜单名称或自定义信息禁止添加到标签页（默认`false`） */
     hiddenTag?: boolean;
+    /** 当前菜单名称是否固定显示在标签页且不可关闭（默认`false`） */
+    fixedTag?: boolean;
     /** 动态路由可打开的最大数量 `可选` */
     dynamicLevel?: number;
     /** 将某个菜单激活

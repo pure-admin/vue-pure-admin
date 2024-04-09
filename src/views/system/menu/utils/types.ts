@@ -19,6 +19,7 @@ interface FormItemProps {
   frameLoading: boolean;
   keepAlive: boolean;
   hiddenTag: boolean;
+  fixedTag: boolean;
   showLink: boolean;
   showParent: boolean;
 }
