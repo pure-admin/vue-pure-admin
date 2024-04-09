@@ -178,10 +178,14 @@ function handleAsyncRoutes(routeList) {
     );
     usePermissionStoreHook().handleWholeMenus(routeList);
   }
-  useMultiTagsStoreHook().handleTags("equal", [
-    ...routerArrays,
-    ...usePermissionStoreHook().flatteningRoutes.filter(v => v?.meta?.fixedTag)
-  ]);
+  if (!useMultiTagsStoreHook().getMultiTagsCache) {
+    useMultiTagsStoreHook().handleTags("equal", [
+      ...routerArrays,
+      ...usePermissionStoreHook().flatteningRoutes.filter(
+        v => v?.meta?.fixedTag
+      )
+    ]);
+  }
   addPathMatch();
 }
 
