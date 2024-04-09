@@ -17,9 +17,9 @@ import {
   isIncludeAllChildren
 } from "@pureadmin/utils";
 import { getConfig } from "@/config";
-import type { menuType } from "@/layout/types";
 import { buildHierarchyTree } from "@/utils/tree";
 import { userKey, type DataInfo } from "@/utils/auth";
+import { type menuType, routerArrays } from "@/layout/types";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
 import { usePermissionStoreHook } from "@/store/modules/permission";
 const IFrame = () => import("@/layout/frameView.vue");
@@ -178,6 +178,10 @@ function handleAsyncRoutes(routeList) {
     );
     usePermissionStoreHook().handleWholeMenus(routeList);
   }
+  useMultiTagsStoreHook().handleTags("equal", [
+    ...routerArrays,
+    ...usePermissionStoreHook().flatteningRoutes.filter(v => v?.meta?.fixedTag)
+  ]);
   addPathMatch();
 }
 
