@@ -429,6 +429,7 @@ function showMenuModel(
       tagsViews[v].show = false;
       tagsViews[v].disabled = true;
     });
+    fixedTagDisabled();
   } else if (routeLength - 1 === currentIndex && currentIndex !== 0) {
     // 当前路由是所有路由中的最后一个
     tagsViews[3].show = false;

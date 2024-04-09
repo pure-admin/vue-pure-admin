@@ -23,8 +23,7 @@ export default {
       name: "PureTableHigh",
       component: () => import("@/views/table/high.vue"),
       meta: {
-        title: $t("menus.pureTableHigh"),
-        fixedTag: true
+        title: $t("menus.pureTableHigh")
       }
     },
     {

@@ -32,8 +32,7 @@ export default {
       name: "WaterMark",
       component: () => import("@/views/able/watermark.vue"),
       meta: {
-        title: $t("menus.pureWatermark"),
-        fixedTag: true
+        title: $t("menus.pureWatermark")
       }
     },
     {
@@ -73,8 +72,7 @@ export default {
       name: "Debounce",
       component: () => import("@/views/able/debounce.vue"),
       meta: {
-        title: $t("menus.pureDebounce"),
-        fixedTag: true
+        title: $t("menus.pureDebounce")
       }
     },
     {
