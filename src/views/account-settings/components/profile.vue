@@ -8,8 +8,7 @@ import type { FormInstance, FormRules } from "element-plus";
 import { formUpload } from "@/api/mock";
 import { message } from "@/utils/message";
 import { createFormData } from "@pureadmin/utils";
-import { getRegions } from "@/api/mock";
-import { getUserInfo, UserInfo } from "@/api/user";
+import { getMine, UserInfo } from "@/api/user";
 const { userAvatar, getLogo, username } = useNav();
 const cropRef = ref();
 const upload = ref();
@@ -18,19 +17,19 @@ const userInfoFormRef = ref<FormInstance>();
 // 从服务器拉取用户信息，然后填充表单
 
 const userInfoFormData = reactive({
-  avatarUrl: "",
-  nickName: "",
-  introduce: "",
-  regionCode: "",
-  address: ""
+  avatar: "",
+  nickname: "",
+  email: "",
+  phone: "",
+  description: ""
 });
 
-getUserInfo().then(res => {
+getMine().then(res => {
   Object.assign(userInfoFormData, res.data);
 });
 
 const rules = reactive<FormRules<UserInfo>>({
-  nickName: [
+  nickname: [
     { required: true, message: "昵称必填", trigger: "blur" },
     { min: 3, max: 5, message: "长度最小3最大16", trigger: "blur" }
   ]
@@ -81,13 +80,6 @@ const handleSubmitImage = () => {
     });
 };
 
-const options = ref(); // 级联选择器的选项数据
-
-// 设置区域数据
-getRegions().then(res => {
-  options.value = res.data;
-});
-
 // 监听级联选择器的值变化
 const handleCascaderChange = value => {
   console.log(value);
@@ -104,11 +96,34 @@ const onSubmit = async (formEl: FormInstance) => {
     }
   });
 };
+
+function createFilter(queryString) {
+  return item => {
+    return item.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0;
+  };
+}
+
+function querySearchEmail(queryString, callback) {
+  const emailList = [
+    { value: "@qq.com" },
+    { value: "@126.com" },
+    { value: "@163.com" }
+  ];
+  let results = [];
+  let queryList = [];
+  emailList.map(item =>
+    queryList.push({ value: queryString.split("@")[0] + item.value })
+  );
+  results = queryString
+    ? queryList.filter(createFilter(queryString))
+    : queryList;
+  callback(results);
+}
 </script>
 
 <template>
-  <el-card shadow="never">
-    <template #header>基本信息</template>
+  <div class="ml-[120px] min-w-[180px] max-w-[70%]">
+    <h3 class="my-8">个人信息</h3>
     <el-form
       ref="userInfoFormRef"
       label-position="top"
@@ -132,37 +147,42 @@ const onSubmit = async (formEl: FormInstance) => {
           </el-button>
         </el-upload>
       </el-form-item>
-      <el-form-item label="昵称" prop="nickName">
-        <el-input v-model="userInfoFormData.nickName" />
-      </el-form-item>
-      <el-form-item label="简介">
+      <el-form-item label="昵称" prop="nickname">
         <el-input
-          v-model="userInfoFormData.introduce"
-          type="textarea"
-          :autosize="{ minRows: 4, maxRows: 6 }"
+          v-model="userInfoFormData.nickname"
+          placeholder="请输入昵称"
         />
       </el-form-item>
-      <el-form-item label="所在地区">
-        <el-cascader
-          v-model="userInfoFormData.regionCode"
-          :options="options"
-          :props="{ value: 'code', label: 'name', emitPath: false }"
-          placeholder="请选择"
-          @change="handleCascaderChange"
+      <el-form-item label="邮箱" prop="email">
+        <el-autocomplete
+          v-model="userInfoFormData.email"
+          :fetch-suggestions="querySearchEmail"
+          :trigger-on-focus="false"
+          placeholder="请输入邮箱"
+          clearable
+          class="w-full"
         />
       </el-form-item>
-      <el-form-item label="街道地址">
+      <el-form-item label="联系电话">
         <el-input
-          v-model="userInfoFormData.address"
-          placeholder="请输入"
+          v-model="userInfoFormData.phone"
+          placeholder="请输入联系电话"
           clearable
         />
       </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="onSubmit(userInfoFormRef)"
-          >更新基本信息</el-button
-        >
+      <el-form-item label="简介">
+        <el-input
+          v-model="userInfoFormData.description"
+          placeholder="请输入简介"
+          type="textarea"
+          :autosize="{ minRows: 6, maxRows: 8 }"
+          maxlength="56"
+          show-word-limit
+        />
       </el-form-item>
+      <el-button type="primary" @click="onSubmit(userInfoFormRef)">
+        更新信息
+      </el-button>
     </el-form>
     <el-dialog
       v-model="isShow"
@@ -180,5 +200,5 @@ const onSubmit = async (formEl: FormInstance) => {
         </div>
       </template>
     </el-dialog>
-  </el-card>
+  </div>
 </template>

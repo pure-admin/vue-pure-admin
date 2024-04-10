@@ -29,12 +29,18 @@ export type RefreshTokenResult = {
 };
 
 export type UserInfo = {
-  avatarUrl: string;
-  nickName: string;
-  introduce: string;
-  regionCode: string;
-  address: string;
-  userName: string;
+  /** 头像 */
+  avatar: string;
+  /** 用户名 */
+  username: string;
+  /** 昵称 */
+  nickname: string;
+  /** 邮箱 */
+  email: string;
+  /** 联系电话 */
+  phone: string;
+  /** 简介 */
+  description: string;
 };
 
 export type UserInfoResult = {
@@ -47,12 +53,12 @@ export const getLogin = (data?: object) => {
   return http.request<UserResult>("post", "/login", { data });
 };
 
-/** 刷新token */
+/** 刷新`token` */
 export const refreshTokenApi = (data?: object) => {
   return http.request<RefreshTokenResult>("post", "/refresh-token", { data });
 };
 
-/**获取个人信息 */
-export const getUserInfo = (data?: object) => {
-  return http.request<UserInfoResult>("get", "/get-user-info", { data });
+/** 账户设置-个人信息 */
+export const getMine = (data?: object) => {
+  return http.request<UserInfoResult>("get", "/mine", { data });
 };

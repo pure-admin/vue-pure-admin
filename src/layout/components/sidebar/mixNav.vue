@@ -12,10 +12,10 @@ import { getParentPaths, findRouteByPath } from "@/router/utils";
 import { useTranslationLang } from "../../hooks/useTranslationLang";
 import { usePermissionStoreHook } from "@/store/modules/permission";
 import globalization from "@/assets/svg/globalization.svg?component";
+import AccountSettingsIcon from "@iconify-icons/ri/user-settings-line";
 import LogoutCircleRLine from "@iconify-icons/ri/logout-circle-r-line";
 import Setting from "@iconify-icons/ri/settings-3-line";
 import Check from "@iconify-icons/ep/check";
-import UserSettingsLine from "@iconify-icons/ri/user-settings-line";
 
 const menuRef = ref();
 const defaultActive = ref(null);
@@ -31,9 +31,9 @@ const {
   userAvatar,
   getDivStyle,
   avatarsStyle,
+  toAccountSettings,
   getDropdownItemStyle,
-  getDropdownItemClass,
-  handleOpenUserSettings
+  getDropdownItemClass
 } = useNav();
 
 function getDefaultActive(routePath) {
@@ -142,9 +142,12 @@ watch(
           <p v-if="username" class="dark:text-white">{{ username }}</p>
         </span>
         <template #dropdown>
-          <el-dropdown-item @click="handleOpenUserSettings">
-            <IconifyIconOffline :icon="UserSettingsLine" style="margin: 5px" />
-            {{ t("buttons.pureUserSettings") }}
+          <el-dropdown-item @click="toAccountSettings">
+            <IconifyIconOffline
+              :icon="AccountSettingsIcon"
+              style="margin: 5px"
+            />
+            {{ t("buttons.pureAccountSettings") }}
           </el-dropdown-item>
           <el-dropdown-menu class="logout">
             <el-dropdown-item @click="logout">

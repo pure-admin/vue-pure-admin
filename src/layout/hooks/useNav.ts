@@ -99,8 +99,8 @@ export function useNav() {
     emitter.emit("openPanel");
   }
 
-  function handleOpenUserSettings() {
-    router.push({ name: "UserSettings" });
+  function toAccountSettings() {
+    router.push({ name: "AccountSettings" });
   }
 
   function toggleSideBar() {
@@ -163,8 +163,8 @@ export function useNav() {
     userAvatar,
     avatarsStyle,
     tooltipEffect,
+    toAccountSettings,
     getDropdownItemStyle,
-    getDropdownItemClass,
-    handleOpenUserSettings
+    getDropdownItemClass
   };
 }

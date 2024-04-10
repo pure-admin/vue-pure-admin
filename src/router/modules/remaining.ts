@@ -40,13 +40,13 @@ export default [
     }
   },
   {
-    path: "/user-settings",
-    name: "UserSettings",
-    component: () => import("@/layout/components/userSettings/index.vue"),
+    path: "/account-settings",
+    name: "AccountSettings",
+    component: () => import("@/views/account-settings/index.vue"),
     meta: {
-      title: $t("buttons.pureUserSettings"),
+      title: $t("buttons.pureAccountSettings"),
       showLink: false,
-      rank: 103
+      rank: 104
     }
   }
 ] satisfies Array<RouteConfigsTable>;
