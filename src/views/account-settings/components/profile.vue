@@ -7,7 +7,7 @@ import CroppingUpload from "@/views/system/user/upload.vue";
 import type { FormInstance, FormRules } from "element-plus";
 import { formUpload } from "@/api/mock";
 import { message } from "@/utils/message";
-import { createFormData } from "@pureadmin/utils";
+import { createFormData, deviceDetection } from "@pureadmin/utils";
 import { getMine, UserInfo } from "@/api/user";
 const { userAvatar, getLogo, username } = useNav();
 const cropRef = ref();
@@ -122,7 +122,12 @@ function querySearchEmail(queryString, callback) {
 </script>
 
 <template>
-  <div class="ml-[120px] min-w-[180px] max-w-[70%]">
+  <div
+    :class="[
+      'min-w-[180px]',
+      deviceDetection() ? 'max-w-[100%]' : 'max-w-[70%]'
+    ]"
+  >
     <h3 class="my-8">个人信息</h3>
     <el-form
       ref="userInfoFormRef"

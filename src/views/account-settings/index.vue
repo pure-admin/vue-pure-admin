@@ -2,12 +2,13 @@
 import { getMine } from "@/api/user";
 import { useRouter } from "vue-router";
 import { ref, onBeforeMount } from "vue";
-import { useGlobal } from "@pureadmin/utils";
 import { ReText } from "@/components/ReText";
 import Profile from "./components/profile.vue";
 import Preferences from "./components/preferences.vue";
 import SecurityLog from "./components/securityLog.vue";
+import { useGlobal, deviceDetection } from "@pureadmin/utils";
 import AccountManagement from "./components/accountManagement.vue";
+import TopCollapse from "@/layout/components/sidebar/topCollapse.vue";
 import { useDataThemeChange } from "@/layout/hooks/useDataThemeChange";
 
 import leftLine from "@iconify-icons/ri/arrow-left-s-line";
@@ -21,6 +22,7 @@ defineOptions({
 });
 
 const router = useRouter();
+const isOpen = ref(deviceDetection() ? false : true);
 const { $storage } = useGlobal<GlobalPropertiesApi>();
 onBeforeMount(() => {
   useDataThemeChange().dataThemeChange($storage.layout?.overallStyle);
@@ -67,8 +69,9 @@ getMine().then(res => {
 <template>
   <el-container class="h-full">
     <el-aside
+      v-if="isOpen"
       class="settings-sidebar px-2 dark:!bg-[var(--el-bg-color)]"
-      width="240px"
+      :width="deviceDetection() ? '180px' : '240px'"
     >
       <el-menu :default-active="witchPane" class="settings-menu">
         <el-menu-item
@@ -95,7 +98,14 @@ getMine().then(res => {
           v-for="item in panes"
           :key="item.key"
           :index="item.key"
-          @click="witchPane = item.key"
+          @click="
+            () => {
+              witchPane = item.key;
+              if (deviceDetection()) {
+                isOpen = !isOpen;
+              }
+            }
+          "
         >
           <div class="flex items-center z-10">
             <el-icon><IconifyIconOffline :icon="item.icon" /></el-icon>
@@ -105,7 +115,16 @@ getMine().then(res => {
       </el-menu>
     </el-aside>
     <el-main>
-      <component :is="panes.find(item => item.key === witchPane).component" />
+      <TopCollapse
+        v-if="deviceDetection()"
+        class="px-0"
+        :is-active="isOpen"
+        @toggleClick="isOpen = !isOpen"
+      />
+      <component
+        :is="panes.find(item => item.key === witchPane).component"
+        :class="[!deviceDetection() && 'ml-[120px]']"
+      />
     </el-main>
   </el-container>
 </template>

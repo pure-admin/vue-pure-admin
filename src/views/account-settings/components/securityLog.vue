@@ -2,6 +2,7 @@
 import dayjs from "dayjs";
 import { getMineLogs } from "@/api/user";
 import { reactive, ref, onMounted } from "vue";
+import { deviceDetection } from "@pureadmin/utils";
 import type { PaginationProps } from "@pureadmin/table";
 
 const loading = ref(true);
@@ -67,7 +68,12 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="ml-[120px] min-w-[180px] max-w-[70%]">
+  <div
+    :class="[
+      'min-w-[180px]',
+      deviceDetection() ? 'max-w-[100%]' : 'max-w-[70%]'
+    ]"
+  >
     <h3 class="my-8">安全日志</h3>
     <pure-table
       row-key="id"
