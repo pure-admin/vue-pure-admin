@@ -1,12 +1,14 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import { getMine } from "@/api/user";
 import { useRouter } from "vue-router";
+import { ref, onBeforeMount } from "vue";
+import { useGlobal } from "@pureadmin/utils";
 import { ReText } from "@/components/ReText";
 import Profile from "./components/profile.vue";
 import Preferences from "./components/preferences.vue";
 import SecurityLog from "./components/securityLog.vue";
 import AccountManagement from "./components/accountManagement.vue";
+import { useDataThemeChange } from "@/layout/hooks/useDataThemeChange";
 
 import leftLine from "@iconify-icons/ri/arrow-left-s-line";
 import ProfileIcon from "@iconify-icons/ri/user-3-line";
@@ -19,6 +21,10 @@ defineOptions({
 });
 
 const router = useRouter();
+const { $storage } = useGlobal<GlobalPropertiesApi>();
+onBeforeMount(() => {
+  useDataThemeChange().dataThemeChange($storage.layout?.overallStyle);
+});
 
 const userInfo = ref({
   avatar: "",
@@ -60,10 +66,13 @@ getMine().then(res => {
 
 <template>
   <el-container class="h-full">
-    <el-aside class="settings-sidebar px-2" width="240px">
+    <el-aside
+      class="settings-sidebar px-2 dark:!bg-[var(--el-bg-color)]"
+      width="240px"
+    >
       <el-menu :default-active="witchPane" class="settings-menu">
         <el-menu-item
-          class="hover:transition-all hover:duration-200 hover:text-base"
+          class="hover:!transition-all hover:!duration-200 hover:!text-base !h-[50px]"
           @click="router.go(-1)"
         >
           <div class="flex items-center">
@@ -88,7 +97,7 @@ getMine().then(res => {
           :index="item.key"
           @click="witchPane = item.key"
         >
-          <div class="flex items-center">
+          <div class="flex items-center z-10">
             <el-icon><IconifyIconOffline :icon="item.icon" /></el-icon>
             <span>{{ item.label }}</span>
           </div>
@@ -109,24 +118,23 @@ getMine().then(res => {
 }
 
 .settings-menu {
-  color: $subMenuActiveText;
-  background-color: transparent !important;
-  border: none !important;
+  background-color: transparent;
+  border: none;
 
   ::v-deep(.el-menu-item) {
-    position: relative;
+    height: 48px !important;
+    color: $menuText !important;
     background-color: transparent !important;
+    transition: color 0.2s;
 
-    div {
-      z-index: 1;
+    &:hover {
+      color: $menuTitleHover !important;
     }
 
     &.is-active {
-      span {
-        color: #fff !important;
-      }
+      color: #fff !important;
 
-      i {
+      &:hover {
         color: #fff !important;
       }
 
@@ -136,9 +144,20 @@ getMine().then(res => {
         margin: 4px 0;
         clear: both;
         content: "";
-        background: var(--el-color-primary) !important;
+        background: var(--el-color-primary);
         border-radius: 3px;
       }
+    }
+  }
+}
+
+body[layout] {
+  .el-menu--vertical .is-active {
+    color: #fff !important;
+    transition: color 0.2s;
+
+    &:hover {
+      color: #fff !important;
     }
   }
 }

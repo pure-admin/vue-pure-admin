@@ -26,8 +26,8 @@ const list = ref([
 ]);
 
 function onClick(item) {
-  console.log(item.title);
-  message("仅提供示例，请根据具体业务自行实现", { type: "success" });
+  console.log("onClick", item.title);
+  message("请根据具体业务自行实现", { type: "success" });
 }
 </script>
 
