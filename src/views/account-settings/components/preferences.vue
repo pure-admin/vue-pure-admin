@@ -16,7 +16,7 @@ const list = ref([
   {
     title: "待办任务",
     illustrate: "待办任务将以站内信的形式通知",
-    checked: false
+    checked: true
   }
 ]);
 
