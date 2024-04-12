@@ -155,6 +155,7 @@ export function useMenu() {
           frameLoading: row?.frameLoading ?? true,
           keepAlive: row?.keepAlive ?? false,
           hiddenTag: row?.hiddenTag ?? false,
+          fixedTag: row?.fixedTag ?? false,
           showLink: row?.showLink ?? true,
           showParent: row?.showParent ?? false
         }

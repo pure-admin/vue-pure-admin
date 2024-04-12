@@ -32,6 +32,19 @@ const showLinkOptions: Array<OptionsType> = [
   }
 ];
 
+const fixedTagOptions: Array<OptionsType> = [
+  {
+    label: "固定",
+    tip: "当前菜单名称固定显示在标签页且不可关闭",
+    value: true
+  },
+  {
+    label: "不固定",
+    tip: "当前菜单名称不固定显示在标签页且可关闭",
+    value: false
+  }
+];
+
 const keepAliveOptions: Array<OptionsType> = [
   {
     label: "缓存",
@@ -87,6 +100,7 @@ const frameLoadingOptions: Array<OptionsType> = [
 export {
   menuTypeOptions,
   showLinkOptions,
+  fixedTagOptions,
   keepAliveOptions,
   hiddenTagOptions,
   showParentOptions,

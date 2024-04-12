@@ -20,6 +20,7 @@
 | `frameLoading`    | 加载动画（内嵌的`iframe`页面是否开启首次加载动画）           |
 | `keepAlive`       | 缓存页面（是否缓存该路由页面，开启后会保存该页面的整体状态，刷新后会清空状态） |
 | `hiddenTag`       | 标签页（当前菜单名称或自定义信息禁止添加到标签页）           |
+| `fixedTag`        | 固定标签页（当前菜单名称是否固定显示在标签页且不可关闭）           |
 | `showLink`        | 菜单（是否显示该菜单）                                       |
 | `showParent`      | 父级菜单（是否显示父级菜单 [点击查看更多](https://yiming_chang.gitee.io/pure-admin-doc/pages/routerMenu/#%E7%AC%AC%E4%B8%80%E7%A7%8D-%E8%AF%A5%E6%A8%A1%E5%BC%8F%E9%92%88%E5%AF%B9%E7%88%B6%E7%BA%A7%E8%8F%9C%E5%8D%95%E4%B8%8B%E5%8F%AA%E6%9C%89%E4%B8%80%E4%B8%AA%E5%AD%90%E8%8F%9C%E5%8D%95%E7%9A%84%E6%83%85%E5%86%B5-%E5%9C%A8%E5%AD%90%E8%8F%9C%E5%8D%95%E7%9A%84-meta-%E5%B1%9E%E6%80%A7%E4%B8%AD%E5%8A%A0%E4%B8%8A-showparent-true-%E5%8D%B3%E5%8F%AF)） |
 

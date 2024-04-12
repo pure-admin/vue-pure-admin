@@ -10,6 +10,7 @@ import ReAnimateSelector from "@/components/ReAnimateSelector";
 import {
   menuTypeOptions,
   showLinkOptions,
+  fixedTagOptions,
   keepAliveOptions,
   hiddenTagOptions,
   showParentOptions,
@@ -26,7 +27,7 @@ const props = withDefaults(defineProps<FormProps>(), {
     path: "",
     component: "",
     rank: 99,
-    redirect: " ",
+    redirect: "",
     icon: "",
     extraIcon: "",
     enterTransition: "",
@@ -37,6 +38,7 @@ const props = withDefaults(defineProps<FormProps>(), {
     frameLoading: true,
     keepAlive: false,
     hiddenTag: false,
+    fixedTag: false,
     showLink: true,
     showParent: false
   })
@@ -258,33 +260,6 @@ defineExpose({ getRef });
         </el-form-item>
       </re-col>
 
-      <re-col v-show="newFormInline.menuType < 2" :value="12" :xs="24" :sm="24">
-        <el-form-item label="缓存页面">
-          <Segmented
-            :modelValue="newFormInline.keepAlive ? 0 : 1"
-            :options="keepAliveOptions"
-            @change="
-              ({ option: { value } }) => {
-                newFormInline.keepAlive = value;
-              }
-            "
-          />
-        </el-form-item>
-      </re-col>
-      <re-col v-show="newFormInline.menuType < 2" :value="12" :xs="24" :sm="24">
-        <el-form-item label="标签页">
-          <Segmented
-            :modelValue="newFormInline.hiddenTag ? 1 : 0"
-            :options="hiddenTagOptions"
-            @change="
-              ({ option: { value } }) => {
-                newFormInline.hiddenTag = value;
-              }
-            "
-          />
-        </el-form-item>
-      </re-col>
-
       <re-col
         v-show="newFormInline.menuType !== 3"
         :value="12"
@@ -305,7 +280,7 @@ defineExpose({ getRef });
       </re-col>
       <re-col
         v-show="newFormInline.menuType !== 3"
-        :value="8"
+        :value="12"
         :xs="24"
         :sm="24"
       >
@@ -316,6 +291,47 @@ defineExpose({ getRef });
             @change="
               ({ option: { value } }) => {
                 newFormInline.showParent = value;
+              }
+            "
+          />
+        </el-form-item>
+      </re-col>
+
+      <re-col v-show="newFormInline.menuType < 2" :value="12" :xs="24" :sm="24">
+        <el-form-item label="缓存页面">
+          <Segmented
+            :modelValue="newFormInline.keepAlive ? 0 : 1"
+            :options="keepAliveOptions"
+            @change="
+              ({ option: { value } }) => {
+                newFormInline.keepAlive = value;
+              }
+            "
+          />
+        </el-form-item>
+      </re-col>
+
+      <re-col v-show="newFormInline.menuType < 2" :value="12" :xs="24" :sm="24">
+        <el-form-item label="标签页">
+          <Segmented
+            :modelValue="newFormInline.hiddenTag ? 1 : 0"
+            :options="hiddenTagOptions"
+            @change="
+              ({ option: { value } }) => {
+                newFormInline.hiddenTag = value;
+              }
+            "
+          />
+        </el-form-item>
+      </re-col>
+      <re-col v-show="newFormInline.menuType < 2" :value="12" :xs="24" :sm="24">
+        <el-form-item label="固定标签页">
+          <Segmented
+            :modelValue="newFormInline.fixedTag ? 0 : 1"
+            :options="fixedTagOptions"
+            @change="
+              ({ option: { value } }) => {
+                newFormInline.fixedTag = value;
               }
             "
           />

@@ -5,11 +5,11 @@ import editForm from "../form/index.vue";
 import { zxcvbn } from "@zxcvbn-ts/core";
 import { handleTree } from "@/utils/tree";
 import { message } from "@/utils/message";
-import croppingUpload from "../upload.vue";
 import userAvatar from "@/assets/user.jpg";
 import { usePublicHooks } from "../../hooks";
 import { addDialog } from "@/components/ReDialog";
 import type { PaginationProps } from "@pureadmin/table";
+import ReCropperPreview from "@/components/ReCropperPreview";
 import type { FormItemProps, RoleFormItemProps } from "../utils/types";
 import {
   getKeyList,
@@ -365,11 +365,10 @@ export function useUser(tableRef: Ref, treeRef: Ref) {
     addDialog({
       title: "裁剪、上传头像",
       width: "40%",
-      draggable: true,
       closeOnClickModal: false,
       fullscreen: deviceDetection(),
       contentRenderer: () =>
-        h(croppingUpload, {
+        h(ReCropperPreview, {
           ref: cropRef,
           imgSrc: row.avatar || userAvatar,
           onCropper: info => (avatarInfo.value = info)
