@@ -3,6 +3,10 @@ import { ref } from "vue";
 import ReCropper from "@/components/ReCropper";
 import { formatBytes } from "@pureadmin/utils";
 
+defineOptions({
+  name: "ReCropperPreview"
+});
+
 const props = defineProps({
   imgSrc: String
 });

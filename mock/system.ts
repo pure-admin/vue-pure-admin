@@ -9,9 +9,9 @@ export default defineFakeRoute([
     response: ({ body }) => {
       let list = [
         {
-          username: "admin",
-          nickname: "admin",
           avatar: "https://avatars.githubusercontent.com/u/44761321",
+          username: "admin",
+          nickname: "小铭",
           phone: "15888886789",
           email: faker.internet.email(),
           sex: 0,
@@ -27,9 +27,9 @@ export default defineFakeRoute([
           createTime: 1605456000000
         },
         {
-          username: "common",
-          nickname: "common",
           avatar: "https://avatars.githubusercontent.com/u/52823142",
+          username: "common",
+          nickname: "小林",
           phone: "18288882345",
           email: faker.internet.email(),
           sex: 1,
@@ -397,6 +397,7 @@ export default defineFakeRoute([
             frameLoading: true,
             keepAlive: false,
             hiddenTag: false,
+            fixedTag: false,
             showLink: true,
             showParent: false
           },
@@ -420,6 +421,7 @@ export default defineFakeRoute([
             frameLoading: true,
             keepAlive: false,
             hiddenTag: false,
+            fixedTag: false,
             showLink: true,
             showParent: false
           },
@@ -443,6 +445,7 @@ export default defineFakeRoute([
             frameLoading: true,
             keepAlive: false,
             hiddenTag: false,
+            fixedTag: false,
             showLink: true,
             showParent: false
           },
@@ -466,6 +469,7 @@ export default defineFakeRoute([
             frameLoading: true,
             keepAlive: false,
             hiddenTag: false,
+            fixedTag: false,
             showLink: true,
             showParent: false
           },
@@ -489,6 +493,7 @@ export default defineFakeRoute([
             frameLoading: true,
             keepAlive: false,
             hiddenTag: false,
+            fixedTag: false,
             showLink: true,
             showParent: false
           },
@@ -512,6 +517,7 @@ export default defineFakeRoute([
             frameLoading: true,
             keepAlive: true,
             hiddenTag: false,
+            fixedTag: false,
             showLink: true,
             showParent: false
           },
@@ -535,6 +541,7 @@ export default defineFakeRoute([
             frameLoading: true,
             keepAlive: true,
             hiddenTag: false,
+            fixedTag: false,
             showLink: true,
             showParent: false
           },
@@ -558,6 +565,7 @@ export default defineFakeRoute([
             frameLoading: true,
             keepAlive: true,
             hiddenTag: false,
+            fixedTag: false,
             showLink: true,
             showParent: false
           },
@@ -581,6 +589,7 @@ export default defineFakeRoute([
             frameLoading: true,
             keepAlive: true,
             hiddenTag: false,
+            fixedTag: false,
             showLink: true,
             showParent: false
           },
@@ -604,6 +613,7 @@ export default defineFakeRoute([
             frameLoading: true,
             keepAlive: true,
             hiddenTag: false,
+            fixedTag: false,
             showLink: true,
             showParent: false
           },
@@ -627,6 +637,7 @@ export default defineFakeRoute([
             frameLoading: true,
             keepAlive: true,
             hiddenTag: false,
+            fixedTag: false,
             showLink: true,
             showParent: false
           },
@@ -651,6 +662,7 @@ export default defineFakeRoute([
             frameLoading: true,
             keepAlive: false,
             hiddenTag: false,
+            fixedTag: false,
             showLink: true,
             showParent: false
           },
@@ -674,6 +686,7 @@ export default defineFakeRoute([
             frameLoading: true,
             keepAlive: false,
             hiddenTag: false,
+            fixedTag: false,
             showLink: true,
             showParent: false
           },
@@ -697,6 +710,7 @@ export default defineFakeRoute([
             frameLoading: true,
             keepAlive: false,
             hiddenTag: false,
+            fixedTag: false,
             showLink: true,
             showParent: false
           },
@@ -720,6 +734,7 @@ export default defineFakeRoute([
             frameLoading: true,
             keepAlive: false,
             hiddenTag: false,
+            fixedTag: false,
             showLink: true,
             showParent: false
           },
@@ -743,6 +758,7 @@ export default defineFakeRoute([
             frameLoading: true,
             keepAlive: false,
             hiddenTag: false,
+            fixedTag: false,
             showLink: true,
             showParent: false
           },
@@ -766,6 +782,7 @@ export default defineFakeRoute([
             frameLoading: true,
             keepAlive: false,
             hiddenTag: false,
+            fixedTag: false,
             showLink: true,
             showParent: false
           },
@@ -790,6 +807,7 @@ export default defineFakeRoute([
             frameLoading: true,
             keepAlive: false,
             hiddenTag: false,
+            fixedTag: false,
             showLink: true,
             showParent: false
           },
@@ -813,6 +831,7 @@ export default defineFakeRoute([
             frameLoading: true,
             keepAlive: false,
             hiddenTag: false,
+            fixedTag: false,
             showLink: true,
             showParent: false
           },
@@ -836,6 +855,7 @@ export default defineFakeRoute([
             frameLoading: true,
             keepAlive: false,
             hiddenTag: false,
+            fixedTag: false,
             showLink: true,
             showParent: false
           },
@@ -859,6 +879,7 @@ export default defineFakeRoute([
             frameLoading: true,
             keepAlive: false,
             hiddenTag: false,
+            fixedTag: false,
             showLink: true,
             showParent: false
           },
@@ -882,6 +903,7 @@ export default defineFakeRoute([
             frameLoading: true,
             keepAlive: false,
             hiddenTag: false,
+            fixedTag: false,
             showLink: true,
             showParent: false
           },
@@ -906,6 +928,7 @@ export default defineFakeRoute([
             frameLoading: true,
             keepAlive: false,
             hiddenTag: false,
+            fixedTag: false,
             showLink: true,
             showParent: false
           },
@@ -929,6 +952,7 @@ export default defineFakeRoute([
             frameLoading: true,
             keepAlive: false,
             hiddenTag: false,
+            fixedTag: false,
             showLink: true,
             showParent: false
           },
@@ -952,6 +976,7 @@ export default defineFakeRoute([
             frameLoading: true,
             keepAlive: false,
             hiddenTag: false,
+            fixedTag: false,
             showLink: true,
             showParent: false
           },
@@ -975,6 +1000,7 @@ export default defineFakeRoute([
             frameLoading: true,
             keepAlive: false,
             hiddenTag: false,
+            fixedTag: false,
             showLink: true,
             showParent: false
           },
@@ -998,6 +1024,7 @@ export default defineFakeRoute([
             frameLoading: true,
             keepAlive: false,
             hiddenTag: false,
+            fixedTag: false,
             showLink: true,
             showParent: false
           },
@@ -1022,6 +1049,7 @@ export default defineFakeRoute([
             frameLoading: true,
             keepAlive: false,
             hiddenTag: false,
+            fixedTag: false,
             showLink: true,
             showParent: false
           },
@@ -1045,6 +1073,7 @@ export default defineFakeRoute([
             frameLoading: true,
             keepAlive: false,
             hiddenTag: false,
+            fixedTag: false,
             showLink: true,
             showParent: false
           },
@@ -1068,6 +1097,7 @@ export default defineFakeRoute([
             frameLoading: true,
             keepAlive: false,
             hiddenTag: false,
+            fixedTag: false,
             showLink: false,
             showParent: false
           },
@@ -1091,6 +1121,7 @@ export default defineFakeRoute([
             frameLoading: true,
             keepAlive: false,
             hiddenTag: false,
+            fixedTag: false,
             showLink: false,
             showParent: false
           }
@@ -1472,6 +1503,7 @@ export default defineFakeRoute([
                 frameLoading: true,
                 keepAlive: false,
                 hiddenTag: false,
+                fixedTag: false,
                 showLink: true,
                 showParent: false
               },
@@ -1495,6 +1527,7 @@ export default defineFakeRoute([
                 frameLoading: true,
                 keepAlive: false,
                 hiddenTag: false,
+                fixedTag: false,
                 showLink: true,
                 showParent: false
               },
@@ -1518,6 +1551,7 @@ export default defineFakeRoute([
                 frameLoading: true,
                 keepAlive: false,
                 hiddenTag: false,
+                fixedTag: false,
                 showLink: true,
                 showParent: false
               },
@@ -1541,6 +1575,7 @@ export default defineFakeRoute([
                 frameLoading: true,
                 keepAlive: false,
                 hiddenTag: false,
+                fixedTag: false,
                 showLink: true,
                 showParent: false
               },
@@ -1564,6 +1599,7 @@ export default defineFakeRoute([
                 frameLoading: true,
                 keepAlive: false,
                 hiddenTag: false,
+                fixedTag: false,
                 showLink: true,
                 showParent: false
               }

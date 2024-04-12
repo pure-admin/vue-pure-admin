@@ -1,22 +1,21 @@
 <script setup lang="ts">
-// [TO DO] 只有销毁dialog，再修改cropper src，编辑的图片才变。
 import { reactive, ref } from "vue";
-import { useNav } from "@/layout/hooks/useNav";
-import uploadLine from "@iconify-icons/ri/upload-line";
-import CroppingUpload from "@/views/system/user/upload.vue";
-import type { FormInstance, FormRules } from "element-plus";
 import { formUpload } from "@/api/mock";
 import { message } from "@/utils/message";
+import { type UserInfo, getMine } from "@/api/user";
+import type { FormInstance, FormRules } from "element-plus";
+import ReCropperPreview from "@/components/ReCropperPreview";
 import { createFormData, deviceDetection } from "@pureadmin/utils";
-import { getMine, UserInfo } from "@/api/user";
-const { userAvatar, getLogo, username } = useNav();
+import uploadLine from "@iconify-icons/ri/upload-line";
+
+const imgSrc = ref("");
+const cropperInfo = ref();
 const cropRef = ref();
-const upload = ref();
+const uploadRef = ref();
 const isShow = ref(false);
 const userInfoFormRef = ref<FormInstance>();
-// 从服务器拉取用户信息，然后填充表单
 
-const userInfoFormData = reactive({
+const userInfos = reactive({
   avatar: "",
   nickname: "",
   email: "",
@@ -24,86 +23,11 @@ const userInfoFormData = reactive({
   description: ""
 });
 
-getMine().then(res => {
-  Object.assign(userInfoFormData, res.data);
-});
-
 const rules = reactive<FormRules<UserInfo>>({
-  nickname: [
-    { required: true, message: "昵称必填", trigger: "blur" },
-    { min: 3, max: 5, message: "长度最小3最大16", trigger: "blur" }
-  ]
+  nickname: [{ required: true, message: "昵称必填", trigger: "blur" }]
 });
-const imgSrc = ref("");
-const onChange = uploadFile => {
-  const reader = new FileReader();
-  reader.onload = e => {
-    imgSrc.value = e.target.result as string;
-    isShow.value = true;
-  };
 
-  // reader.onloadend = () => {
-  //   cropRef.value.init();
-  // };
-  reader.readAsDataURL(uploadFile.raw);
-  /*   imgSrc.value = uploadFile.row;
-  isShow.value = true; */
-};
-
-let cropperInfo: any;
-const onCropper = info => {
-  cropperInfo = info;
-};
-
-const handleClose = () => {
-  cropRef.value.hidePopover();
-  upload.value.clearFiles();
-  isShow.value = false;
-};
-
-// 在编辑弹框中上传图片，获取在服务器上的url，
-const handleSubmitImage = () => {
-  const formData = createFormData({
-    files: new File([cropperInfo], "avatar") // file 文件
-  });
-  formUpload(formData)
-    .then(({ success, data }) => {
-      if (success) {
-        message("提交成功", { type: "success" });
-        handleClose();
-      } else {
-        message("提交失败");
-      }
-    })
-    .catch(error => {
-      message(`提交异常 ${error}`, { type: "error" });
-    });
-};
-
-// 监听级联选择器的值变化
-const handleCascaderChange = value => {
-  console.log(value);
-};
-
-// 更新基本信息
-const onSubmit = async (formEl: FormInstance) => {
-  await formEl.validate((valid, fields) => {
-    if (valid) {
-      console.log(userInfoFormData);
-      console.log("验证成功!");
-    } else {
-      console.log("error submit!", fields);
-    }
-  });
-};
-
-function createFilter(queryString) {
-  return item => {
-    return item.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0;
-  };
-}
-
-function querySearchEmail(queryString, callback) {
+function queryEmail(queryString, callback) {
   const emailList = [
     { value: "@qq.com" },
     { value: "@126.com" },
@@ -115,10 +39,64 @@ function querySearchEmail(queryString, callback) {
     queryList.push({ value: queryString.split("@")[0] + item.value })
   );
   results = queryString
-    ? queryList.filter(createFilter(queryString))
+    ? queryList.filter(
+        item =>
+          item.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0
+      )
     : queryList;
   callback(results);
 }
+
+const onChange = uploadFile => {
+  const reader = new FileReader();
+  reader.onload = e => {
+    imgSrc.value = e.target.result as string;
+    isShow.value = true;
+  };
+  reader.readAsDataURL(uploadFile.raw);
+};
+
+const handleClose = () => {
+  cropRef.value.hidePopover();
+  uploadRef.value.clearFiles();
+  isShow.value = false;
+};
+
+const onCropper = info => (cropperInfo.value = info);
+
+const handleSubmitImage = () => {
+  const formData = createFormData({
+    files: new File([cropperInfo.value], "avatar")
+  });
+  formUpload(formData)
+    .then(({ success, data }) => {
+      if (success) {
+        message("更新头像成功", { type: "success" });
+        handleClose();
+      } else {
+        message("更新头像失败");
+      }
+    })
+    .catch(error => {
+      message(`提交异常 ${error}`, { type: "error" });
+    });
+};
+
+// 更新信息
+const onSubmit = async (formEl: FormInstance) => {
+  await formEl.validate((valid, fields) => {
+    if (valid) {
+      console.log(userInfos);
+      message("更新信息成功", { type: "success" });
+    } else {
+      console.log("error submit!", fields);
+    }
+  });
+};
+
+getMine().then(res => {
+  Object.assign(userInfos, res.data);
+});
 </script>
 
 <template>
@@ -133,18 +111,18 @@ function querySearchEmail(queryString, callback) {
       ref="userInfoFormRef"
       label-position="top"
       :rules="rules"
-      :model="userInfoFormData"
+      :model="userInfos"
     >
       <el-form-item label="头像">
-        <el-avatar :size="80" :src="userAvatar" />
+        <el-avatar :size="80" :src="userInfos.avatar" />
         <el-upload
-          ref="upload"
+          ref="uploadRef"
+          accept="image/*"
           action="#"
           :limit="1"
           :auto-upload="false"
           :show-file-list="false"
           :on-change="onChange"
-          accept="image/*"
         >
           <el-button plain class="ml-4">
             <IconifyIconOffline :icon="uploadLine" />
@@ -153,15 +131,12 @@ function querySearchEmail(queryString, callback) {
         </el-upload>
       </el-form-item>
       <el-form-item label="昵称" prop="nickname">
-        <el-input
-          v-model="userInfoFormData.nickname"
-          placeholder="请输入昵称"
-        />
+        <el-input v-model="userInfos.nickname" placeholder="请输入昵称" />
       </el-form-item>
       <el-form-item label="邮箱" prop="email">
         <el-autocomplete
-          v-model="userInfoFormData.email"
-          :fetch-suggestions="querySearchEmail"
+          v-model="userInfos.email"
+          :fetch-suggestions="queryEmail"
           :trigger-on-focus="false"
           placeholder="请输入邮箱"
           clearable
@@ -170,14 +145,14 @@ function querySearchEmail(queryString, callback) {
       </el-form-item>
       <el-form-item label="联系电话">
         <el-input
-          v-model="userInfoFormData.phone"
+          v-model="userInfos.phone"
           placeholder="请输入联系电话"
           clearable
         />
       </el-form-item>
       <el-form-item label="简介">
         <el-input
-          v-model="userInfoFormData.description"
+          v-model="userInfos.description"
           placeholder="请输入简介"
           type="textarea"
           :autosize="{ minRows: 6, maxRows: 8 }"
@@ -191,15 +166,18 @@ function querySearchEmail(queryString, callback) {
     </el-form>
     <el-dialog
       v-model="isShow"
+      width="40%"
       title="编辑头像"
-      :before-close="handleClose"
       destroy-on-close
+      :closeOnClickModal="false"
+      :before-close="handleClose"
+      :fullscreen="deviceDetection()"
     >
-      <CroppingUpload ref="cropRef" :imgSrc="imgSrc" @cropper="onCropper" />
+      <ReCropperPreview ref="cropRef" :imgSrc="imgSrc" @cropper="onCropper" />
       <template #footer>
         <div class="dialog-footer">
-          <el-button @click="handleClose">取消</el-button>
-          <el-button type="primary" @click="handleSubmitImage">
+          <el-button bg text @click="handleClose">取消</el-button>
+          <el-button bg text type="primary" @click="handleSubmitImage">
             确定
           </el-button>
         </div>
