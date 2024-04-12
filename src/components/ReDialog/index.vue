@@ -11,6 +11,10 @@ import { isFunction } from "@pureadmin/utils";
 import Fullscreen from "@iconify-icons/ri/fullscreen-fill";
 import ExitFullscreen from "@iconify-icons/ri/fullscreen-exit-fill";
 
+defineOptions({
+  name: "ReDialog"
+});
+
 const fullscreen = ref(false);
 
 const footerButtons = computed(() => {

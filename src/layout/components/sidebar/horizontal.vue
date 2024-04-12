@@ -9,6 +9,7 @@ import { useNav } from "@/layout/hooks/useNav";
 import { useTranslationLang } from "../../hooks/useTranslationLang";
 import { usePermissionStoreHook } from "@/store/modules/permission";
 import globalization from "@/assets/svg/globalization.svg?component";
+import AccountSettingsIcon from "@iconify-icons/ri/user-settings-line";
 import LogoutCircleRLine from "@iconify-icons/ri/logout-circle-r-line";
 import Setting from "@iconify-icons/ri/settings-3-line";
 import Check from "@iconify-icons/ep/check";
@@ -26,6 +27,7 @@ const {
   username,
   userAvatar,
   avatarsStyle,
+  toAccountSettings,
   getDropdownItemStyle,
   getDropdownItemClass
 } = useNav();
@@ -107,6 +109,13 @@ nextTick(() => {
           <p v-if="username" class="dark:text-white">{{ username }}</p>
         </span>
         <template #dropdown>
+          <el-dropdown-item @click="toAccountSettings">
+            <IconifyIconOffline
+              :icon="AccountSettingsIcon"
+              style="margin: 5px"
+            />
+            {{ t("buttons.pureAccountSettings") }}
+          </el-dropdown-item>
           <el-dropdown-menu class="logout">
             <el-dropdown-item @click="logout">
               <IconifyIconOffline
@@ -151,7 +160,7 @@ nextTick(() => {
 }
 
 .logout {
-  max-width: 120px;
+  width: 120px;
 
   ::v-deep(.el-dropdown-menu__item) {
     display: inline-flex;

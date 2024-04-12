@@ -1,4 +1,5 @@
 buttons:
+  pureAccountSettings: 账户设置
   pureLoginOut: 退出系统
   pureLogin: 登录
   pureSystemSet: 打开项目配置

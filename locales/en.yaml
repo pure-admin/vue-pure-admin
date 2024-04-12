@@ -1,4 +1,5 @@
 buttons:
+  pureAccountSettings: Account Settings
   pureLoginOut: LoginOut
   pureLogin: Login
   pureSystemSet: Open ProjectConfig
