@@ -184,6 +184,7 @@ docker run -dp 8080:80  --name pure-admin vue-pure-admin
 | [shark-lajiao](https://github.com/shark-lajiao) | [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=shark-lajiao) |
 |      [WitMiao](https://github.com/WitMiao)      |   [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=WitMiao)    |
 |     [QFifteen](https://github.com/QFifteen)     |   [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=QFifteen)   |
+|     [edgexie](https://github.com/edgexie)     |   [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=edgexie)   |
 
 ## `Git` 贡献提交规范
 
