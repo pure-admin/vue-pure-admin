@@ -19,7 +19,6 @@ const Print = function (dom, options?: object): PrintFunction {
     printDoneCallBack: null
   };
   for (const key in this.conf) {
-    // eslint-disable-next-line no-prototype-builtins
     if (key && options.hasOwnProperty(key)) {
       this.conf[key] = options[key];
     }
@@ -132,9 +131,9 @@ Print.prototype = {
       "style",
       "position:absolute;width:0;height:0;top:-10px;left:-10px;"
     );
-    // eslint-disable-next-line prefer-const
+
     w = f.contentWindow || f.contentDocument;
-    // eslint-disable-next-line prefer-const
+
     doc = f.contentDocument || f.contentWindow.document;
     doc.open();
     doc.write(content);

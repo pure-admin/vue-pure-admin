@@ -461,11 +461,7 @@ function openMenu(tag, e) {
     // 右键菜单不匹配当前路由，隐藏刷新
     tagsViews[0].show = false;
     showMenuModel(tag.path, tag.query);
-  } else if (
-    // eslint-disable-next-line no-dupe-else-if
-    multiTags.value.length === 2 &&
-    route.path !== tag.path
-  ) {
+  } else if (multiTags.value.length === 2 && route.path !== tag.path) {
     showMenus(true);
     // 只有两个标签时不显示关闭其他标签页
     tagsViews[4].show = false;

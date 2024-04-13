@@ -307,7 +307,7 @@ function touchMove(e) {
 
 function touchEnd() {
   if (!unref(canTouchScroll)) return;
-  // eslint-disable-next-line prefer-const
+
   let timer: any;
   const direction = unref(options).direction;
   delay.value = 50;

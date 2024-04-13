@@ -10,10 +10,10 @@ import { defineComponent } from "vue";
 import { checkVersion } from "version-rocket";
 import { ElConfigProvider } from "element-plus";
 import { ReDialog } from "@/components/ReDialog";
-import en from "element-plus/dist/locale/en.mjs";
-import zhCn from "element-plus/dist/locale/zh-cn.mjs";
-import plusEn from "plus-pro-components/locale/en.mjs";
-import plusZhCn from "plus-pro-components/locale/zh-cn.mjs";
+import en from "element-plus/es/locale/lang/en";
+import zhCn from "element-plus/es/locale/lang/zh-cn";
+import plusEn from "plus-pro-components/es/locale/lang/en";
+import plusZhCn from "plus-pro-components/es/locale/lang/zh-cn";
 
 export default defineComponent({
   name: "app",
