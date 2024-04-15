@@ -70,10 +70,10 @@ getMine().then(res => {
   <el-container class="h-full">
     <el-aside
       v-if="isOpen"
-      class="settings-sidebar px-2 dark:!bg-[var(--el-bg-color)]"
+      class="pure-account-settings overflow-hidden px-2 dark:!bg-[var(--el-bg-color)] border-r-[1px] border-[var(--pure-border-color)]"
       :width="deviceDetection() ? '180px' : '240px'"
     >
-      <el-menu :default-active="witchPane" class="settings-menu">
+      <el-menu :default-active="witchPane" class="pure-account-settings-menu">
         <el-menu-item
           class="hover:!transition-all hover:!duration-200 hover:!text-base !h-[50px]"
           @click="router.go(-1)"
@@ -129,20 +129,18 @@ getMine().then(res => {
   </el-container>
 </template>
 
-<style lang="scss" scoped>
-.settings-sidebar {
-  overflow: hidden;
+<style lang="scss">
+.pure-account-settings {
   background: $menuBg;
-  border-right: 1px solid var(--pure-border-color);
 }
 
-.settings-menu {
+.pure-account-settings-menu {
   background-color: transparent;
   border: none;
 
-  ::v-deep(.el-menu-item) {
+  .el-menu-item {
     height: 48px !important;
-    color: $menuText !important;
+    color: $menuText;
     background-color: transparent !important;
     transition: color 0.2s;
 
@@ -169,7 +167,9 @@ getMine().then(res => {
     }
   }
 }
+</style>
 
+<style lang="scss" scoped>
 body[layout] {
   .el-menu--vertical .is-active {
     color: #fff !important;
