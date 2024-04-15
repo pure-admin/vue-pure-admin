@@ -145,7 +145,7 @@ function resolvePath(routePath) {
             props.item?.pathList?.length === 2)
         "
         truncated
-        class="!px-4 !text-inherit"
+        class="!w-full !px-4 !text-inherit"
       >
         {{ transformI18n(onlyOneChild.meta.title) }}
       </el-text>
@@ -157,7 +157,7 @@ function resolvePath(routePath) {
               offset: [0, -10],
               theme: tooltipEffect
             }"
-            class="!text-inherit"
+            class="!w-full !text-inherit"
           >
             {{ transformI18n(onlyOneChild.meta.title) }}
           </ReText>
@@ -185,18 +185,21 @@ function resolvePath(routePath) {
       </div>
       <ReText
         v-if="
-          !(
-            layout === 'vertical' &&
-            isCollapse &&
-            toRaw(props.item.meta.icon) &&
-            props.item.parentId === null
-          )
+          layout === 'mix' && toRaw(props.item.meta.icon)
+            ? !isCollapse || props.item?.pathList?.length !== 2
+            : !(
+                layout === 'vertical' &&
+                isCollapse &&
+                toRaw(props.item.meta.icon) &&
+                props.item.parentId === null
+              )
         "
         :tippyProps="{
           offset: [0, -10],
           theme: tooltipEffect
         }"
         :class="{
+          '!w-full': true,
           '!text-inherit': true,
           '!px-4':
             layout !== 'horizontal' &&
