@@ -1,10 +1,16 @@
-import { defineStore } from "pinia";
-import { store } from "@/store";
-import { routerArrays } from "@/layout/types";
+import {
+  type multiType,
+  type positionType,
+  store,
+  isUrl,
+  isEqual,
+  isBoolean,
+  defineStore,
+  routerArrays,
+  storageLocal,
+  responsiveStorageNameSpace
+} from "../utils";
 import { usePermissionStoreHook } from "./permission";
-import { responsiveStorageNameSpace } from "@/config";
-import type { multiType, positionType } from "./types";
-import { isEqual, isBoolean, isUrl, storageLocal } from "@pureadmin/utils";
 
 export const useMultiTagsStore = defineStore({
   id: "pure-multiTags",
