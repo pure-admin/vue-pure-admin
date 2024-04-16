@@ -4,7 +4,9 @@ import {
   store,
   isUrl,
   isEqual,
+  isNumber,
   isBoolean,
+  getConfig,
   defineStore,
   routerArrays,
   storageLocal,
@@ -112,6 +114,14 @@ export const useMultiTagsStore = defineStore({
             }
             this.multiTags.push(value);
             this.tagsCache(this.multiTags);
+            if (
+              getConfig()?.MaxTagsLevel &&
+              isNumber(getConfig().MaxTagsLevel)
+            ) {
+              if (this.multiTags.length > getConfig().MaxTagsLevel) {
+                this.multiTags.splice(1, 1);
+              }
+            }
           }
           break;
         case "splice":

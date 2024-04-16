@@ -12,6 +12,7 @@ export {
 export {
   isUrl,
   isEqual,
+  isNumber,
   debounce,
   isBoolean,
   getKeyList,

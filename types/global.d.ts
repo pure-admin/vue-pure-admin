@@ -87,6 +87,7 @@ declare global {
     FixedHeader?: boolean;
     HiddenSideBar?: boolean;
     MultiTagsCache?: boolean;
+    MaxTagsLevel?: number;
     KeepAlive?: boolean;
     Locale?: string;
     Layout?: string;
