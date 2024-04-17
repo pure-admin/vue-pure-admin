@@ -317,6 +317,7 @@ onUnmounted(() => removeMatchMedia);
     <div class="p-5">
       <p :class="pClass">{{ t("panel.pureOverallStyle") }}</p>
       <Segmented
+        resize
         class="select-none"
         :modelValue="overallStyle === 'system' ? 2 : dataTheme ? 1 : 0"
         :options="themeOptions"
@@ -396,6 +397,7 @@ onUnmounted(() => removeMatchMedia);
       <span v-if="useAppStoreHook().getViewportWidth > 1280">
         <p :class="['mt-5', pClass]">{{ t("panel.pureStretch") }}</p>
         <Segmented
+          resize
           class="mb-2 select-none"
           :modelValue="isNumber(settings.stretch) ? 1 : 0"
           :options="stretchTypeOptions"
@@ -438,6 +440,7 @@ onUnmounted(() => removeMatchMedia);
 
       <p :class="['mt-4', pClass]">{{ t("panel.pureTagsStyle") }}</p>
       <Segmented
+        resize
         class="select-none"
         :modelValue="markValue === 'smart' ? 0 : 1"
         :options="markOptions"
