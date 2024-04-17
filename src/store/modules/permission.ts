@@ -1,15 +1,16 @@
-import { defineStore } from "pinia";
-import { store } from "@/store";
-import type { cacheType } from "./types";
-import { constantMenus } from "@/router";
-import { useMultiTagsStoreHook } from "./multiTags";
-import { debounce, getKeyList } from "@pureadmin/utils";
 import {
+  type cacheType,
+  store,
+  debounce,
   ascending,
+  getKeyList,
   filterTree,
+  defineStore,
+  constantMenus,
   filterNoPermissionTree,
   formatFlatteningRoutes
-} from "@/router/utils";
+} from "../utils";
+import { useMultiTagsStoreHook } from "./multiTags";
 
 export const usePermissionStore = defineStore({
   id: "pure-permission",

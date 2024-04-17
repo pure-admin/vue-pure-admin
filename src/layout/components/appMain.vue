@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
 import Footer from "./footer/index.vue";
 import { useGlobal, isNumber } from "@pureadmin/utils";
 import KeepAliveFrame from "./keepAliveFrame/index.vue";
@@ -10,6 +11,7 @@ const props = defineProps({
   fixedHeader: Boolean
 });
 
+const { t } = useI18n();
 const { $storage, $config } = useGlobal<GlobalPropertiesApi>();
 
 const isKeepAlive = computed(() => {
@@ -121,7 +123,7 @@ const transitionMain = defineComponent({
               }"
             >
               <el-backtop
-                title="回到顶部"
+                :title="t('buttons.pureBackTop')"
                 target=".app-main .el-scrollbar__wrap"
               >
                 <backTop />

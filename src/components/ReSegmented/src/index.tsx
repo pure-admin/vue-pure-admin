@@ -42,6 +42,11 @@ const props = {
   disabled: {
     type: Boolean,
     default: false
+  },
+  /** 当内容发生变化时，设置 `resize` 可使其自适应容器位置 */
+  resize: {
+    type: Boolean,
+    default: false
   }
 };
 
@@ -108,7 +113,7 @@ export default defineComponent({
       });
     }
 
-    props.block && handleResizeInit();
+    (props.block || props.resize) && handleResizeInit();
 
     watch(
       () => curIndex.value,

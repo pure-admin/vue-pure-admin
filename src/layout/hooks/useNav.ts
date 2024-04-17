@@ -17,7 +17,8 @@ import { usePermissionStoreHook } from "@/store/modules/permission";
 import ExitFullscreen from "@iconify-icons/ri/fullscreen-exit-fill";
 import Fullscreen from "@iconify-icons/ri/fullscreen-fill";
 
-const errorInfo = "当前路由配置不正确，请检查配置";
+const errorInfo =
+  "The current routing configuration is incorrect, please check the configuration";
 
 export function useNav() {
   const pureApp = useAppStoreHook();

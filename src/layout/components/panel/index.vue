@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
 import { emitter } from "@/utils/mitt";
 import { onClickOutside } from "@vueuse/core";
 import { ref, computed, onMounted, onBeforeUnmount } from "vue";
@@ -25,6 +26,7 @@ const iconClass = computed(() => {
   ];
 });
 
+const { t } = useI18n();
 const { onReset } = useDataThemeChange();
 
 onClickOutside(target, (event: any) => {
@@ -51,10 +53,12 @@ onBeforeUnmount(() => {
       <div
         class="project-configuration border-b-[1px] border-solid border-[var(--pure-border-color)]"
       >
-        <h4 class="dark:text-white">项目配置</h4>
+        <h4 class="dark:text-white">
+          {{ t("panel.pureSystemSet") }}
+        </h4>
         <span
           v-tippy="{
-            content: '关闭配置',
+            content: t('panel.pureCloseSystemSet'),
             placement: 'bottom-start',
             zIndex: 41000
           }"
@@ -78,7 +82,7 @@ onBeforeUnmount(() => {
       >
         <el-button
           v-tippy="{
-            content: '清空缓存并返回登录页',
+            content: t('panel.pureClearCacheAndToLogin'),
             placement: 'left-start',
             zIndex: 41000
           }"
@@ -87,7 +91,7 @@ onBeforeUnmount(() => {
           bg
           @click="onReset"
         >
-          清空缓存
+          {{ t("panel.pureClearCache") }}
         </el-button>
       </div>
     </div>

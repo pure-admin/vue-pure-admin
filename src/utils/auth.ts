@@ -15,7 +15,7 @@ export interface DataInfo<T> {
   username?: string;
   /** 昵称 */
   nickname?: string;
-  /** 当前登陆用户的角色 */
+  /** 当前登录用户的角色 */
   roles?: Array<string>;
 }
 

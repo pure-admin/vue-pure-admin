@@ -2,7 +2,7 @@ buttons:
   pureAccountSettings: 账户设置
   pureLoginOut: 退出系统
   pureLogin: 登录
-  pureSystemSet: 打开项目配置
+  pureOpenSystemSet: 打开系统配置
   pureReload: 重新加载
   pureCloseCurrentTab: 关闭当前标签页
   pureCloseLeftTabs: 关闭左侧标签页
@@ -11,6 +11,54 @@ buttons:
   pureCloseAllTabs: 关闭全部标签页
   pureContentFullScreen: 内容区全屏
   pureContentExitFullScreen: 内容区退出全屏
+  pureClickCollapse: 点击折叠
+  pureClickExpand: 点击展开
+  pureConfirm: 确认
+  pureSwitch: 切换
+  pureClose: 关闭
+  pureBackTop: 回到顶部
+  pureOpenText: 开
+  pureCloseText: 关
+search:
+  pureTotal: 共
+  pureHistory: 搜索历史
+  pureCollect: 收藏
+  pureDragSort: （可拖拽排序）
+  pureEmpty: 暂无搜索结果
+  purePlaceholder: 搜索菜单（支持拼音搜索）
+panel:
+  pureSystemSet: 系统配置
+  pureCloseSystemSet: 关闭配置
+  pureClearCacheAndToLogin: 清空缓存并返回登录页
+  pureClearCache: 清空缓存
+  pureOverallStyle: 整体风格
+  pureOverallStyleLight: 浅色
+  pureOverallStyleLightTip: 清新启航，点亮舒适的工作界面
+  pureOverallStyleDark: 深色
+  pureOverallStyleDarkTip: 月光序曲，沉醉于夜的静谧雅致
+  pureOverallStyleSystem: 自动
+  pureOverallStyleSystemTip: 同步时光，界面随晨昏自然呼应
+  pureThemeColor: 主题色
+  pureLayoutModel: 导航模式
+  pureVerticalTip: 左侧菜单，亲切熟悉
+  pureHorizontalTip: 顶部菜单，简洁概览
+  pureMixTip: 混合菜单，灵活多变
+  pureStretch: 页宽
+  pureStretchFixed: 固定
+  pureStretchFixedTip: 紧凑页面，轻松找到所需信息
+  pureStretchCustom: 自定义
+  pureStretchCustomTip: 最小1280、最大1600
+  pureTagsStyle: 页签风格
+  pureTagsStyleSmart: 灵动
+  pureTagsStyleSmartTip: 灵动标签，添趣生辉
+  pureTagsStyleCard: 卡片
+  pureTagsStyleCardTip: 卡片标签，高效浏览
+  pureInterfaceDisplay: 界面显示
+  pureGreyModel: 灰色模式
+  pureWeakModel: 色弱模式
+  pureHiddenTags: 隐藏标签页
+  pureHiddenFooter: 隐藏页脚
+  pureMultiTagsCache: 页签持久化
 menus:
   pureHome: 首页
   pureLogin: 登录
@@ -136,6 +184,7 @@ menus:
   pureChildMenuOverflow: 菜单超出显示 Tooltip 文字提示
 status:
   pureLoad: 加载中...
+  pureNoMessage: 暂无消息
 login:
   pureUsername: 账号
   purePassword: 密码
@@ -160,6 +209,7 @@ login:
   pureTip: 扫码后点击"确认"，即可完成登录
   pureDefinite: 确定
   pureLoginSuccess: 登录成功
+  pureLoginFail: 登录失败
   pureRegisterSuccess: 注册成功
   pureTickPrivacy: 请勾选隐私政策
   pureReadAccept: 我已仔细阅读并接受

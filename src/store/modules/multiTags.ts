@@ -1,10 +1,18 @@
-import { defineStore } from "pinia";
-import { store } from "@/store";
-import { routerArrays } from "@/layout/types";
+import {
+  type multiType,
+  type positionType,
+  store,
+  isUrl,
+  isEqual,
+  isNumber,
+  isBoolean,
+  getConfig,
+  defineStore,
+  routerArrays,
+  storageLocal,
+  responsiveStorageNameSpace
+} from "../utils";
 import { usePermissionStoreHook } from "./permission";
-import { responsiveStorageNameSpace } from "@/config";
-import type { multiType, positionType } from "./types";
-import { isEqual, isBoolean, isUrl, storageLocal } from "@pureadmin/utils";
 
 export const useMultiTagsStore = defineStore({
   id: "pure-multiTags",
@@ -106,6 +114,14 @@ export const useMultiTagsStore = defineStore({
             }
             this.multiTags.push(value);
             this.tagsCache(this.multiTags);
+            if (
+              getConfig()?.MaxTagsLevel &&
+              isNumber(getConfig().MaxTagsLevel)
+            ) {
+              if (this.multiTags.length > getConfig().MaxTagsLevel) {
+                this.multiTags.splice(1, 1);
+              }
+            }
           }
           break;
         case "splice":
