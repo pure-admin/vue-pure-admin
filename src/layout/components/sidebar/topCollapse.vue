@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { transformI18n, $t } from "@/plugins/i18n";
 import MenuFold from "@iconify-icons/ri/menu-fold-fill";
 import MenuUnfold from "@iconify-icons/ri/menu-unfold-fill";
 
@@ -22,7 +23,13 @@ const toggleClick = () => {
 <template>
   <div
     class="px-3 mr-1 navbar-bg-hover"
-    :title="props.isActive ? '点击折叠' : '点击展开'"
+    :title="
+      transformI18n(
+        props.isActive
+          ? $t('buttons.pureClickCollapse')
+          : $t('buttons.pureClickExpand')
+      )
+    "
     @click="toggleClick"
   >
     <IconifyIconOffline

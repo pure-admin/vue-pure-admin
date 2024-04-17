@@ -11,6 +11,18 @@ buttons:
   pureCloseAllTabs: 关闭全部标签页
   pureContentFullScreen: 内容区全屏
   pureContentExitFullScreen: 内容区退出全屏
+  pureClickCollapse: 点击折叠
+  pureClickExpand: 点击展开
+  pureConfirm: 确认
+  pureSwitch: 切换
+  pureClose: 关闭
+search:
+  pureTotal: 共
+  pureHistory: 搜索历史
+  pureCollect: 收藏
+  pureDragSort: （可拖拽排序）
+  pureEmpty: 暂无搜索结果
+  purePlaceholder: 搜索菜单（支持拼音搜索）
 menus:
   pureHome: 首页
   pureLogin: 登录

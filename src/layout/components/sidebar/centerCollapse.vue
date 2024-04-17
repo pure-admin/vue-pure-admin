@@ -2,6 +2,7 @@
 import { computed } from "vue";
 import { useGlobal } from "@pureadmin/utils";
 import { useNav } from "@/layout/hooks/useNav";
+import { transformI18n, $t } from "@/plugins/i18n";
 
 import ArrowLeft from "@iconify-icons/ri/arrow-left-double-fill";
 
@@ -34,7 +35,11 @@ const toggleClick = () => {
 <template>
   <div
     v-tippy="{
-      content: props.isActive ? '点击折叠' : '点击展开',
+      content: transformI18n(
+        props.isActive
+          ? $t('buttons.pureClickCollapse')
+          : $t('buttons.pureClickExpand')
+      ),
       theme: tooltipEffect,
       hideOnClick: 'toggle',
       placement: 'right'

@@ -11,6 +11,18 @@ buttons:
   pureCloseAllTabs: Close AllTabs
   pureContentFullScreen: Content FullScreen
   pureContentExitFullScreen: Content ExitFullScreen
+  pureClickCollapse: Collapse
+  pureClickExpand: Expand
+  pureConfirm: Confirm
+  pureSwitch: Switch
+  pureClose: Close
+search:
+  pureTotal: Total
+  pureHistory: History
+  pureCollect: Collect
+  pureDragSort: （Drag Sort）
+  pureEmpty: Empty
+  purePlaceholder: Search Menu
 menus:
   pureHome: Home
   pureLogin: Login
