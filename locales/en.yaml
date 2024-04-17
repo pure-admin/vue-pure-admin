@@ -209,6 +209,7 @@ login:
   pureTip: After scanning the code, click "Confirm" to complete the login
   pureDefinite: Definite
   pureLoginSuccess: Login Success
+  pureLoginFail: Login Fail
   pureRegisterSuccess: Regist Success
   pureTickPrivacy: Please tick Privacy Policy
   pureReadAccept: I have read it carefully and accept
