@@ -77,12 +77,12 @@ const onLogin = async (formEl: FormInstance | undefined) => {
               router
                 .push(getTopMenu(true).path)
                 .then(() => {
-                  message("登录成功", { type: "success" });
+                  message(t("login.pureLoginSuccess"), { type: "success" });
                 })
                 .finally(() => (disabled.value = false));
             });
           } else {
-            message("登录失败", { type: "error" });
+            message(t("login.pureLoginFail"), { type: "error" });
           }
         })
         .finally(() => (loading.value = false));

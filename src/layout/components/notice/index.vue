@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { useI18n } from "vue-i18n";
 import { noticesData } from "./data";
 import NoticeList from "./noticeList.vue";
 import Bell from "@iconify-icons/ep/bell";
 
+const { t } = useI18n();
 const noticesNum = ref(0);
 const notices = ref(noticesData);
 const activeKey = ref(noticesData[0].key);
@@ -30,7 +32,7 @@ notices.value.map(v => (noticesNum.value += v.list.length));
         >
           <el-empty
             v-if="notices.length === 0"
-            description="暂无消息"
+            :description="t('status.pureNoMessage')"
             :image-size="60"
           />
           <span v-else>

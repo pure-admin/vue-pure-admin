@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { PropType } from "vue";
 import { ListItem } from "./data";
+import { useI18n } from "vue-i18n";
 import NoticeItem from "./noticeItem.vue";
 
 const props = defineProps({
@@ -9,6 +10,8 @@ const props = defineProps({
     default: () => []
   }
 });
+
+const { t } = useI18n();
 </script>
 
 <template>
@@ -19,5 +22,5 @@ const props = defineProps({
       :noticeItem="item"
     />
   </div>
-  <el-empty v-else description="暂无消息" />
+  <el-empty v-else :description="t('status.pureNoMessage')" />
 </template>

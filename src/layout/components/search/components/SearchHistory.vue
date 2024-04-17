@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Sortable from "sortablejs";
+import { useI18n } from "vue-i18n";
 import SearchHistoryItem from "./SearchHistoryItem.vue";
 import type { optionsItem, dragItem, Props } from "../types";
 import { useEpThemeStoreHook } from "@/store/modules/epTheme";
@@ -19,6 +20,7 @@ const innerHeight = ref();
 /** 判断是否停止鼠标移入事件处理 */
 const stopMouseEvent = ref(false);
 
+const { t } = useI18n();
 const emit = defineEmits<Emits>();
 const instance = getCurrentInstance()!;
 const props = withDefaults(defineProps<Props>(), {});
@@ -141,7 +143,9 @@ defineExpose({ handleScroll });
 <template>
   <div ref="historyRef" class="history">
     <template v-if="historyList.length">
-      <div :style="titleStyle">搜索历史</div>
+      <div :style="titleStyle">
+        {{ t("search.pureHistory") }}
+      </div>
       <div
         v-for="(item, index) in historyList"
         :key="item.path"
@@ -160,7 +164,9 @@ defineExpose({ handleScroll });
     </template>
     <template v-if="collectList.length">
       <div :style="titleStyle">
-        收藏{{ collectList.length > 1 ? "（可拖拽排序）" : "" }}
+        {{
+          `${t("search.pureCollect")}${collectList.length > 1 ? t("search.pureDragSort") : ""}`
+        }}
       </div>
       <div class="collect-container">
         <div

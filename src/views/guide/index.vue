@@ -51,8 +51,8 @@ const GUIDE_STEPS = [
   },
   {
     element: document.querySelector(".set-icon") as string | HTMLElement,
-    title: "项目配置",
-    intro: "您可以在这里查看项目配置",
+    title: "系统配置",
+    intro: "您可以在这里查看系统配置",
     position: "left"
   },
   {
