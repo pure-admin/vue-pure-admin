@@ -1,10 +1,10 @@
 import {
+  type PropType,
   ref,
   unref,
   watch,
   nextTick,
   computed,
-  type PropType,
   defineComponent
 } from "vue";
 import "./index.scss";

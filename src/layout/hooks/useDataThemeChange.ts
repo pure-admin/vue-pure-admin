@@ -45,7 +45,7 @@ export function useDataThemeChange() {
     const targetEl = target || document.body;
     let { className } = targetEl;
     className = className.replace(clsName, "").trim();
-    targetEl.className = flag ? `${className} ${clsName} ` : className;
+    targetEl.className = flag ? `${className} ${clsName}` : className;
   }
 
   /** 设置导航主题色 */

@@ -6,10 +6,10 @@ defineOptions({
   name: "AnimateCss"
 });
 
-const icon = ref("");
+const animate = ref("");
 
-watch(icon, () => {
-  console.log("icon", icon.value);
+watch(animate, () => {
+  console.log("animate", animate.value);
 });
 </script>
 
@@ -28,7 +28,14 @@ watch(icon, () => {
           选择器
         </span>
       </div>
+      <el-link
+        class="mt-2"
+        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/components/animatecss.vue"
+        target="_blank"
+      >
+        代码位置 src/views/components/animatecss.vue
+      </el-link>
     </template>
-    <ReAnimateSelector v-model="icon" class="!w-[200px]" />
+    <ReAnimateSelector v-model="animate" class="!w-[200px]" />
   </el-card>
 </template>

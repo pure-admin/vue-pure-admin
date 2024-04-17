@@ -68,14 +68,21 @@ const endTime = ref("");
             >
               时间选择器
             </el-link>
-            <el-radio-group v-model="size" size="small">
-              <el-radio label="large">大尺寸</el-radio>
-              <el-radio label="default">默认尺寸</el-radio>
-              <el-radio label="small">小尺寸</el-radio>
-              <el-radio label="disabled">禁用</el-radio>
+            <el-radio-group v-model="size">
+              <el-radio value="large">大尺寸</el-radio>
+              <el-radio value="default">默认尺寸</el-radio>
+              <el-radio value="small">小尺寸</el-radio>
+              <el-radio value="disabled">禁用</el-radio>
             </el-radio-group>
           </el-space>
         </div>
+        <el-link
+          class="mt-2"
+          href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/components/time-picker.vue"
+          target="_blank"
+        >
+          代码位置 src/views/components/time-picker.vue
+        </el-link>
       </template>
 
       <p class="mb-2">日期和时间点</p>

@@ -1,5 +1,5 @@
-import { computed, unref, defineComponent } from "vue";
 import "./resizer.css";
+import { computed, unref, defineComponent } from "vue";
 
 export default defineComponent({
   name: "Resizer",

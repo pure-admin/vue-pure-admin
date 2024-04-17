@@ -1,10 +1,17 @@
 <script setup lang="ts">
+import { ref, computed } from "vue";
 import { animates } from "./animate";
-import { ref, computed, toRef } from "vue";
 import { cloneDeep } from "@pureadmin/utils";
 
 defineOptions({
   name: "ReAnimateSelector"
+});
+
+const props = defineProps({
+  placeholder: {
+    type: String,
+    default: "请选择动画"
+  }
 });
 
 const inputValue = defineModel({ type: String });
@@ -74,7 +81,7 @@ function onMouseleave() {
   <el-select
     clearable
     filterable
-    placeholder="请选择动画"
+    :placeholder="props.placeholder"
     popper-class="pure-animate-popper"
     :model-value="inputValue"
     :filter-method="filterMethod"

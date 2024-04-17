@@ -5,8 +5,8 @@ export default {
   path: "/about",
   redirect: "/about/index",
   meta: {
-    icon: "info",
-    title: $t("menus.hsAbout"),
+    icon: "ri:file-info-line",
+    title: $t("menus.pureAbout"),
     rank: about
   },
   children: [
@@ -15,7 +15,7 @@ export default {
       name: "About",
       component: () => import("@/views/about/index.vue"),
       meta: {
-        title: $t("menus.hsAbout")
+        title: $t("menus.pureAbout")
       }
     }
   ]

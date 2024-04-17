@@ -2,23 +2,28 @@ import { storeToRefs } from "pinia";
 import { getConfig } from "@/config";
 import { useRouter } from "vue-router";
 import { emitter } from "@/utils/mitt";
-import userAvatar from "@/assets/user.jpg";
+import Avatar from "@/assets/user.jpg";
 import { getTopMenu } from "@/router/utils";
-import { useGlobal } from "@pureadmin/utils";
+import { useFullscreen } from "@vueuse/core";
 import type { routeMetaType } from "../types";
 import { transformI18n } from "@/plugins/i18n";
 import { router, remainingPaths } from "@/router";
 import { computed, type CSSProperties } from "vue";
 import { useAppStoreHook } from "@/store/modules/app";
 import { useUserStoreHook } from "@/store/modules/user";
+import { useGlobal, isAllEmpty } from "@pureadmin/utils";
 import { useEpThemeStoreHook } from "@/store/modules/epTheme";
 import { usePermissionStoreHook } from "@/store/modules/permission";
+import ExitFullscreen from "@iconify-icons/ri/fullscreen-exit-fill";
+import Fullscreen from "@iconify-icons/ri/fullscreen-fill";
 
-const errorInfo = "当前路由配置不正确，请检查配置";
+const errorInfo =
+  "The current routing configuration is incorrect, please check the configuration";
 
 export function useNav() {
   const pureApp = useAppStoreHook();
   const routers = useRouter().options.routes;
+  const { isFullscreen, toggle } = useFullscreen();
   const { wholeMenus } = storeToRefs(usePermissionStoreHook());
   /** 平台`layout`中所有`el-tooltip`的`effect`配置，默认`light` */
   const tooltipEffect = getConfig()?.TooltipEffect ?? "light";
@@ -33,9 +38,18 @@ export function useNav() {
     };
   });
 
-  /** 用户名 */
+  /** 头像（如果头像为空则使用 src/assets/user.jpg ） */
+  const userAvatar = computed(() => {
+    return isAllEmpty(useUserStoreHook()?.avatar)
+      ? Avatar
+      : useUserStoreHook()?.avatar;
+  });
+
+  /** 昵称（如果昵称为空则显示用户名） */
   const username = computed(() => {
-    return useUserStoreHook()?.username;
+    return isAllEmpty(useUserStoreHook()?.nickname)
+      ? useUserStoreHook()?.username
+      : useUserStoreHook()?.nickname;
   });
 
   /** 设置国际化选中后的样式 */
@@ -95,6 +109,10 @@ export function useNav() {
     emitter.emit("openPanel");
   }
 
+  function toAccountSettings() {
+    router.push({ name: "AccountSettings" });
+  }
+
   function toggleSideBar() {
     pureApp.toggleSideBar();
   }
@@ -136,6 +154,10 @@ export function useNav() {
     logout,
     routers,
     $storage,
+    isFullscreen,
+    Fullscreen,
+    ExitFullscreen,
+    toggle,
     backTopMenu,
     onPanel,
     getDivStyle,
@@ -151,6 +173,7 @@ export function useNav() {
     userAvatar,
     avatarsStyle,
     tooltipEffect,
+    toAccountSettings,
     getDropdownItemStyle,
     getDropdownItemClass
   };

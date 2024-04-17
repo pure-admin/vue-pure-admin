@@ -1,5 +1,14 @@
 import "./index.css";
+import type { OptionsType } from "./type";
+import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import {
+  useDark,
+  isNumber,
+  isFunction,
+  useResizeObserver
+} from "@pureadmin/utils";
+import {
+  type PropType,
   h,
   ref,
   toRef,
@@ -8,9 +17,6 @@ import {
   defineComponent,
   getCurrentInstance
 } from "vue";
-import type { OptionsType } from "./type";
-import { useRenderIcon } from "@/components/ReIcon/src/hooks";
-import { isFunction, isNumber, useDark } from "@pureadmin/utils";
 
 const props = {
   options: {
@@ -22,6 +28,25 @@ const props = {
     type: undefined,
     require: false,
     default: "0"
+  },
+  /** 将宽度调整为父元素宽度	 */
+  block: {
+    type: Boolean,
+    default: false
+  },
+  /** 控件尺寸 */
+  size: {
+    type: String as PropType<"small" | "default" | "large">
+  },
+  /** 是否全局禁用，默认 `false` */
+  disabled: {
+    type: Boolean,
+    default: false
+  },
+  /** 当内容发生变化时，设置 `resize` 可使其自适应容器位置 */
+  resize: {
+    type: Boolean,
+    default: false
   }
 };
 
@@ -42,7 +67,7 @@ export default defineComponent({
       : ref(0);
 
     function handleChange({ option, index }, event: Event) {
-      if (option.disabled) return;
+      if (props.disabled || option.disabled) return;
       event.preventDefault();
       isNumber(props.modelValue)
         ? emit("update:modelValue", index)
@@ -52,6 +77,7 @@ export default defineComponent({
     }
 
     function handleMouseenter({ option, index }, event: Event) {
+      if (props.disabled) return;
       event.preventDefault();
       curMouseActive.value = index;
       if (option.disabled || curIndex.value === index) {
@@ -64,6 +90,7 @@ export default defineComponent({
     }
 
     function handleMouseleave(_, event: Event) {
+      if (props.disabled) return;
       event.preventDefault();
       curMouseActive.value = -1;
     }
@@ -71,11 +98,22 @@ export default defineComponent({
     function handleInit(index = curIndex.value) {
       nextTick(() => {
         const curLabelRef = instance?.proxy?.$refs[`labelRef${index}`] as ElRef;
+        if (!curLabelRef) return;
         width.value = curLabelRef.clientWidth;
         translateX.value = curLabelRef.offsetLeft;
         initStatus.value = true;
       });
     }
+
+    function handleResizeInit() {
+      useResizeObserver(".pure-segmented", () => {
+        nextTick(() => {
+          handleInit(curIndex.value);
+        });
+      });
+    }
+
+    (props.block || props.resize) && handleResizeInit();
 
     watch(
       () => curIndex.value,
@@ -85,10 +123,11 @@ export default defineComponent({
         });
       },
       {
-        deep: true,
         immediate: true
       }
     );
+
+    watch(() => props.size, handleResizeInit);
 
     const rendLabel = () => {
       return props.options.map((option, index) => {
@@ -97,14 +136,16 @@ export default defineComponent({
             ref={`labelRef${index}`}
             class={[
               "pure-segmented-item",
-              option?.disabled && "pure-segmented-item-disabled"
+              (props.disabled || option?.disabled) &&
+                "pure-segmented-item-disabled"
             ]}
             style={{
               background:
                 curMouseActive.value === index ? segmentedItembg.value : "",
-              color:
-                !option.disabled &&
-                (curIndex.value === index || curMouseActive.value === index)
+              color: props.disabled
+                ? null
+                : !option.disabled &&
+                    (curIndex.value === index || curMouseActive.value === index)
                   ? isDark.value
                     ? "rgba(255, 255, 255, 0.85)"
                     : "rgba(0,0,0,.88)"
@@ -148,7 +189,14 @@ export default defineComponent({
     };
 
     return () => (
-      <div class="pure-segmented">
+      <div
+        class={{
+          "pure-segmented": true,
+          "pure-segmented-block": props.block,
+          "pure-segmented--large": props.size === "large",
+          "pure-segmented--small": props.size === "small"
+        }}
+      >
         <div class="pure-segmented-group">
           <div
             class="pure-segmented-item-selected"

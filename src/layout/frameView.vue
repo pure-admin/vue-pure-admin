@@ -48,13 +48,16 @@ function init() {
 watch(
   () => currentRoute.fullPath,
   path => {
+    if (
+      currentRoute.name === "Redirect" &&
+      path.includes(props.frameInfo?.fullPath)
+    ) {
+      frameSrc.value = path; // redirect时，置换成任意值，待重定向后 重新赋值
+      loading.value = true;
+    }
+    // 重新赋值
     if (props.frameInfo?.fullPath === path) {
       frameSrc.value = props.frameInfo?.frameSrc;
-    }
-    // 重新加载
-    if (path.indexOf("/redirect/") > -1) {
-      frameSrc.value = props.frameInfo?.fullPath;
-      loading.value = true;
     }
   }
 );
@@ -68,7 +71,7 @@ onMounted(() => {
   <div
     v-loading="loading"
     class="frame"
-    :element-loading-text="t('status.hsLoad')"
+    :element-loading-text="t('status.pureLoad')"
   >
     <iframe ref="frameRef" :src="frameSrc" class="frame-iframe" />
   </div>

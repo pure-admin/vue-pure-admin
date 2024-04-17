@@ -13,21 +13,35 @@ defineOptions({
     <el-card shadow="never" class="mb-2">
       <template #header>
         <div class="card-header">组件方式判断权限</div>
+        <el-link
+          class="mt-2"
+          href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/permission/button/index.vue"
+          target="_blank"
+        >
+          代码位置 src/views/permission/button/index.vue
+        </el-link>
       </template>
       <el-space wrap>
-        <Auth value="btn_add">
+        <Auth value="permission:btn:add">
           <el-button plain type="warning">
-            拥有code：'btn_add' 权限可见
+            拥有code：'permission:btn:add' 权限可见
           </el-button>
         </Auth>
-        <Auth :value="['btn_edit']">
+        <Auth :value="['permission:btn:edit']">
           <el-button plain type="primary">
-            拥有code：['btn_edit'] 权限可见
+            拥有code：['permission:btn:edit'] 权限可见
           </el-button>
         </Auth>
-        <Auth :value="['btn_add', 'btn_edit', 'btn_delete']">
+        <Auth
+          :value="[
+            'permission:btn:add',
+            'permission:btn:edit',
+            'permission:btn:delete'
+          ]"
+        >
           <el-button plain type="danger">
-            拥有code：['btn_add', 'btn_edit', 'btn_delete'] 权限可见
+            拥有code：['permission:btn:add', 'permission:btn:edit',
+            'permission:btn:delete'] 权限可见
           </el-button>
         </Auth>
       </el-space>
@@ -38,18 +52,25 @@ defineOptions({
         <div class="card-header">函数方式判断权限</div>
       </template>
       <el-space wrap>
-        <el-button v-if="hasAuth('btn_add')" plain type="warning">
-          拥有code：'btn_add' 权限可见
+        <el-button v-if="hasAuth('permission:btn:add')" plain type="warning">
+          拥有code：'permission:btn:add' 权限可见
         </el-button>
-        <el-button v-if="hasAuth(['btn_edit'])" plain type="primary">
-          拥有code：['btn_edit'] 权限可见
+        <el-button v-if="hasAuth(['permission:btn:edit'])" plain type="primary">
+          拥有code：['permission:btn:edit'] 权限可见
         </el-button>
         <el-button
-          v-if="hasAuth(['btn_add', 'btn_edit', 'btn_delete'])"
+          v-if="
+            hasAuth([
+              'permission:btn:add',
+              'permission:btn:edit',
+              'permission:btn:delete'
+            ])
+          "
           plain
           type="danger"
         >
-          拥有code：['btn_add', 'btn_edit', 'btn_delete'] 权限可见
+          拥有code：['permission:btn:add', 'permission:btn:edit',
+          'permission:btn:delete'] 权限可见
         </el-button>
       </el-space>
     </el-card>
@@ -61,18 +82,23 @@ defineOptions({
         </div>
       </template>
       <el-space wrap>
-        <el-button v-auth="'btn_add'" plain type="warning">
-          拥有code：'btn_add' 权限可见
+        <el-button v-auth="'permission:btn:add'" plain type="warning">
+          拥有code：'permission:btn:add' 权限可见
         </el-button>
-        <el-button v-auth="['btn_edit']" plain type="primary">
-          拥有code：['btn_edit'] 权限可见
+        <el-button v-auth="['permission:btn:edit']" plain type="primary">
+          拥有code：['permission:btn:edit'] 权限可见
         </el-button>
         <el-button
-          v-auth="['btn_add', 'btn_edit', 'btn_delete']"
+          v-auth="[
+            'permission:btn:add',
+            'permission:btn:edit',
+            'permission:btn:delete'
+          ]"
           plain
           type="danger"
         >
-          拥有code：['btn_add', 'btn_edit', 'btn_delete'] 权限可见
+          拥有code：['permission:btn:add', 'permission:btn:edit',
+          'permission:btn:delete'] 权限可见
         </el-button>
       </el-space>
     </el-card>

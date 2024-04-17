@@ -41,12 +41,19 @@ const handleChange = (val: string[]) => {
           </el-link>
         </el-space>
       </div>
+      <el-link
+        class="mt-2"
+        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/components/collapse.vue"
+        target="_blank"
+      >
+        代码位置 src/views/components/collapse.vue
+      </el-link>
     </template>
 
     <p class="mb-2">基础用法</p>
     <el-radio-group v-model="radio" class="mb-3">
-      <el-radio label="">可同时展开多个面板</el-radio>
-      <el-radio label="accordion">每次只能展开一个面板</el-radio>
+      <el-radio value="">可同时展开多个面板</el-radio>
+      <el-radio value="accordion">每次只能展开一个面板</el-radio>
     </el-radio-group>
     <el-button size="small" text bg class="ml-8 mb-1" @click="onClick">
       外部触发打开、关闭

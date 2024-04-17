@@ -1,5 +1,15 @@
+import Sortable from "sortablejs";
+import { transformI18n } from "@/plugins/i18n";
 import { useEpThemeStoreHook } from "@/store/modules/epTheme";
-import { defineComponent, ref, computed, type PropType, nextTick } from "vue";
+import {
+  type PropType,
+  ref,
+  unref,
+  computed,
+  nextTick,
+  defineComponent,
+  getCurrentInstance
+} from "vue";
 import {
   delay,
   cloneDeep,
@@ -8,7 +18,6 @@ import {
   getKeyList
 } from "@pureadmin/utils";
 
-import Sortable from "sortablejs";
 import DragIcon from "./svg/drag.svg?component";
 import ExpandIcon from "./svg/expand.svg?component";
 import RefreshIcon from "./svg/refresh.svg?component";
@@ -29,6 +38,14 @@ const props = {
   columns: {
     type: Array as PropType<TableColumnList>,
     default: () => []
+  },
+  isExpandAll: {
+    type: Boolean,
+    default: true
+  },
+  tableKey: {
+    type: [String, Number] as PropType<string | number>,
+    default: "0"
   }
 };
 
@@ -37,12 +54,12 @@ export default defineComponent({
   props,
   emits: ["refresh"],
   setup(props, { emit, slots, attrs }) {
-    const buttonRef = ref();
     const size = ref("default");
-    const isExpandAll = ref(true);
     const loading = ref(false);
     const checkAll = ref(true);
     const isIndeterminate = ref(false);
+    const instance = getCurrentInstance()!;
+    const isExpandAll = ref(props.isExpandAll);
     const filterColumns = cloneDeep(props?.columns).filter(column =>
       isBoolean(column?.hide)
         ? !column.hide
@@ -115,6 +132,7 @@ export default defineComponent({
     }
 
     function handleCheckedColumnsChange(value: string[]) {
+      checkedColumns.value = value;
       const checkedCount = value.length;
       checkAll.value = checkedCount === checkColumnList.length;
       isIndeterminate.value =
@@ -122,7 +140,9 @@ export default defineComponent({
     }
 
     function handleCheckColumnListChange(val: boolean, label: string) {
-      dynamicColumns.value.filter(item => item.label === label)[0].hide = !val;
+      dynamicColumns.value.filter(
+        item => transformI18n(item.label) === transformI18n(label)
+      )[0].hide = !val;
     }
 
     async function onReset() {
@@ -163,9 +183,9 @@ export default defineComponent({
     const rowDrop = (event: { preventDefault: () => void }) => {
       event.preventDefault();
       nextTick(() => {
-        const wrapper: HTMLElement = document.querySelector(
-          ".el-checkbox-group>div"
-        );
+        const wrapper: HTMLElement = (
+          instance?.proxy?.$refs[`GroupRef${unref(props.tableKey)}`] as any
+        ).$el.firstElementChild;
         Sortable.create(wrapper, {
           animation: 300,
           handle: ".drag-btn",
@@ -195,16 +215,29 @@ export default defineComponent({
     };
 
     const isFixedColumn = (label: string) => {
-      return dynamicColumns.value.filter(item => item.label === label)[0].fixed
+      return dynamicColumns.value.filter(
+        item => transformI18n(item.label) === transformI18n(label)
+      )[0].fixed
         ? true
         : false;
+    };
+
+    const rendTippyProps = (content: string) => {
+      // https://vue-tippy.netlify.app/props
+      return {
+        content,
+        offset: [0, 18],
+        duration: [300, 0],
+        followCursor: true,
+        hideOnClick: "toggle"
+      };
     };
 
     const reference = {
       reference: () => (
         <SettingIcon
           class={["w-[16px]", iconClass.value]}
-          onMouseover={e => (buttonRef.value = e.currentTarget)}
+          v-tippy={rendTippyProps("列设置")}
         />
       )
     };
@@ -224,38 +257,36 @@ export default defineComponent({
               ) : null}
               {props.tableRef?.size ? (
                 <>
-                  <el-tooltip
-                    effect="dark"
-                    content={isExpandAll.value ? "折叠" : "展开"}
-                    placement="top"
-                  >
-                    <ExpandIcon
-                      class={["w-[16px]", iconClass.value]}
-                      style={{
-                        transform: isExpandAll.value ? "none" : "rotate(-90deg)"
-                      }}
-                      onClick={() => onExpand()}
-                    />
-                  </el-tooltip>
+                  <ExpandIcon
+                    class={["w-[16px]", iconClass.value]}
+                    style={{
+                      transform: isExpandAll.value ? "none" : "rotate(-90deg)"
+                    }}
+                    v-tippy={rendTippyProps(
+                      isExpandAll.value ? "折叠" : "展开"
+                    )}
+                    onClick={() => onExpand()}
+                  />
                   <el-divider direction="vertical" />
                 </>
               ) : null}
-              <el-tooltip effect="dark" content="刷新" placement="top">
-                <RefreshIcon
-                  class={[
-                    "w-[16px]",
-                    iconClass.value,
-                    loading.value ? "animate-spin" : ""
-                  ]}
-                  onClick={() => onReFresh()}
-                />
-              </el-tooltip>
+              <RefreshIcon
+                class={[
+                  "w-[16px]",
+                  iconClass.value,
+                  loading.value ? "animate-spin" : ""
+                ]}
+                v-tippy={rendTippyProps("刷新")}
+                onClick={() => onReFresh()}
+              />
               <el-divider direction="vertical" />
-              <el-tooltip effect="dark" content="密度" placement="top">
-                <el-dropdown v-slots={dropdown} trigger="click">
-                  <CollapseIcon class={["w-[16px]", iconClass.value]} />
-                </el-dropdown>
-              </el-tooltip>
+              <el-dropdown
+                v-slots={dropdown}
+                trigger="click"
+                v-tippy={rendTippyProps("密度")}
+              >
+                <CollapseIcon class={["w-[16px]", iconClass.value]} />
+              </el-dropdown>
               <el-divider direction="vertical" />
 
               <el-popover
@@ -281,7 +312,8 @@ export default defineComponent({
                 <div class="pt-[6px] pl-[11px]">
                   <el-scrollbar max-height="36vh">
                     <el-checkbox-group
-                      v-model={checkedColumns.value}
+                      ref={`GroupRef${unref(props.tableKey)}`}
+                      modelValue={checkedColumns.value}
                       onChange={value => handleCheckedColumnsChange(value)}
                     >
                       <el-space
@@ -289,7 +321,7 @@ export default defineComponent({
                         alignment="flex-start"
                         size={0}
                       >
-                        {checkColumnList.map(item => {
+                        {checkColumnList.map((item, index) => {
                           return (
                             <div class="flex items-center">
                               <DragIcon
@@ -304,17 +336,18 @@ export default defineComponent({
                                 }) => rowDrop(event)}
                               />
                               <el-checkbox
-                                key={item}
+                                key={index}
                                 label={item}
+                                value={item}
                                 onChange={value =>
                                   handleCheckColumnListChange(value, item)
                                 }
                               >
                                 <span
-                                  title={item}
+                                  title={transformI18n(item)}
                                   class="inline-block w-[120px] truncate hover:text-text_color_primary"
                                 >
-                                  {item}
+                                  {transformI18n(item)}
                                 </span>
                               </el-checkbox>
                             </div>
@@ -326,25 +359,6 @@ export default defineComponent({
                 </div>
               </el-popover>
             </div>
-
-            <el-tooltip
-              popper-options={{
-                modifiers: [
-                  {
-                    name: "computeStyles",
-                    options: {
-                      adaptive: false,
-                      enabled: false
-                    }
-                  }
-                ]
-              }}
-              placement="top"
-              virtual-ref={buttonRef.value}
-              virtual-triggering
-              trigger="hover"
-              content="列设置"
-            />
           </div>
           {slots.default({
             size: size.value,

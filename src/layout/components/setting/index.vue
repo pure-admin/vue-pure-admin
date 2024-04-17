@@ -9,21 +9,25 @@ import {
   onUnmounted,
   onBeforeMount
 } from "vue";
+import { useI18n } from "vue-i18n";
 import panel from "../panel/index.vue";
 import { emitter } from "@/utils/mitt";
 import { useNav } from "@/layout/hooks/useNav";
 import { useAppStoreHook } from "@/store/modules/app";
-import { useDark, debounce, useGlobal } from "@pureadmin/utils";
 import { toggleTheme } from "@pureadmin/theme/dist/browser-utils";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
 import Segmented, { type OptionsType } from "@/components/ReSegmented";
 import { useDataThemeChange } from "@/layout/hooks/useDataThemeChange";
+import { useDark, useGlobal, debounce, isNumber } from "@pureadmin/utils";
 
 import Check from "@iconify-icons/ep/check";
+import LeftArrow from "@iconify-icons/ri/arrow-left-s-line";
+import RightArrow from "@iconify-icons/ri/arrow-right-s-line";
 import dayIcon from "@/assets/svg/day.svg?component";
 import darkIcon from "@/assets/svg/dark.svg?component";
 import systemIcon from "@/assets/svg/system.svg?component";
 
+const { t } = useI18n();
 const { device } = useNav();
 const { isDark } = useDark();
 const { $storage } = useGlobal<GlobalPropertiesApi>();
@@ -64,7 +68,8 @@ const settings = reactive({
   showLogo: $storage.configure.showLogo,
   showModel: $storage.configure.showModel,
   hideFooter: $storage.configure.hideFooter,
-  multiTagsCache: $storage.configure.multiTagsCache
+  multiTagsCache: $storage.configure.multiTagsCache,
+  stretch: $storage.configure.stretch
 });
 
 const getThemeColorStyle = computed(() => {
@@ -88,17 +93,15 @@ function storageConfigureChange<T>(key: string, val: T): void {
 
 /** 灰色模式设置 */
 const greyChange = (value): void => {
-  toggleClass(settings.greyVal, "html-grey", document.querySelector("html"));
+  const htmlEl = document.querySelector("html");
+  toggleClass(settings.greyVal, "html-grey", htmlEl);
   storageConfigureChange("grey", value);
 };
 
 /** 色弱模式设置 */
 const weekChange = (value): void => {
-  toggleClass(
-    settings.weakVal,
-    "html-weakness",
-    document.querySelector("html")
-  );
+  const htmlEl = document.querySelector("html");
+  toggleClass(settings.weakVal, "html-weakness", htmlEl);
   storageConfigureChange("weak", value);
 };
 
@@ -143,6 +146,32 @@ function setFalse(Doms): any {
   });
 }
 
+/** 页宽 */
+const stretchTypeOptions = computed<Array<OptionsType>>(() => {
+  return [
+    {
+      label: t("panel.pureStretchFixed"),
+      tip: t("panel.pureStretchFixedTip"),
+      value: "fixed"
+    },
+    {
+      label: t("panel.pureStretchCustom"),
+      tip: t("panel.pureStretchCustomTip"),
+      value: "custom"
+    }
+  ];
+});
+
+const setStretch = value => {
+  settings.stretch = value;
+  storageConfigureChange("stretch", value);
+};
+
+const stretchTypeChange = ({ option }) => {
+  const { value } = option;
+  value === "custom" ? setStretch(1440) : setStretch(false);
+};
+
 /** 主题色 激活选择项 */
 const getThemeColor = computed(() => {
   return current => {
@@ -162,44 +191,50 @@ const getThemeColor = computed(() => {
   };
 });
 
+const pClass = computed(() => {
+  return ["mb-[12px]", "font-medium", "text-sm", "dark:text-white"];
+});
+
 const themeOptions = computed<Array<OptionsType>>(() => {
   return [
     {
-      label: "浅色",
+      label: t("panel.pureOverallStyleLight"),
       icon: dayIcon,
       theme: "light",
-      tip: "清新启航，点亮舒适的工作界面",
+      tip: t("panel.pureOverallStyleLightTip"),
       iconAttrs: { fill: isDark.value ? "#fff" : "#000" }
     },
     {
-      label: "深色",
+      label: t("panel.pureOverallStyleDark"),
       icon: darkIcon,
       theme: "dark",
-      tip: "月光序曲，沉醉于夜的静谧雅致",
+      tip: t("panel.pureOverallStyleDarkTip"),
       iconAttrs: { fill: isDark.value ? "#fff" : "#000" }
     },
     {
-      label: "自动",
+      label: t("panel.pureOverallStyleSystem"),
       icon: systemIcon,
       theme: "system",
-      tip: "同步时光，界面随晨昏自然呼应",
+      tip: t("panel.pureOverallStyleSystemTip"),
       iconAttrs: { fill: isDark.value ? "#fff" : "#000" }
     }
   ];
 });
 
-const markOptions: Array<OptionsType> = [
-  {
-    label: "灵动",
-    tip: "灵动标签，添趣生辉",
-    value: "smart"
-  },
-  {
-    label: "卡片",
-    tip: "卡片标签，高效浏览",
-    value: "card"
-  }
-];
+const markOptions = computed<Array<OptionsType>>(() => {
+  return [
+    {
+      label: t("panel.pureTagsStyleSmart"),
+      tip: t("panel.pureTagsStyleSmartTip"),
+      value: "smart"
+    },
+    {
+      label: t("panel.pureTagsStyleCard"),
+      tip: t("panel.pureTagsStyleCardTip"),
+      value: "card"
+    }
+  ];
+});
 
 /** 设置导航模式 */
 function setLayoutModel(layout: string) {
@@ -262,13 +297,13 @@ function watchSystemThemeChange() {
 }
 
 onBeforeMount(() => {
-  /* 初始化项目配置 */
+  /* 初始化系统配置 */
   nextTick(() => {
     watchSystemThemeChange();
     settings.greyVal &&
-      document.querySelector("html")?.setAttribute("class", "html-grey");
+      document.querySelector("html")?.classList.add("html-grey");
     settings.weakVal &&
-      document.querySelector("html")?.setAttribute("class", "html-weakness");
+      document.querySelector("html")?.classList.add("html-weakness");
     settings.tabsVal && tagsChange();
     settings.hideFooter && hideFooterChange();
   });
@@ -279,9 +314,10 @@ onUnmounted(() => removeMatchMedia);
 
 <template>
   <panel>
-    <div class="p-6">
-      <p class="mb-3 font-medium text-sm dark:text-white">整体风格</p>
+    <div class="p-5">
+      <p :class="pClass">{{ t("panel.pureOverallStyle") }}</p>
       <Segmented
+        resize
         class="select-none"
         :modelValue="overallStyle === 'system' ? 2 : dataTheme ? 1 : 0"
         :options="themeOptions"
@@ -297,7 +333,7 @@ onUnmounted(() => removeMatchMedia);
         "
       />
 
-      <p class="mt-5 mb-3 font-medium text-sm dark:text-white">主题色</p>
+      <p :class="['mt-5', pClass]">{{ t("panel.pureThemeColor") }}</p>
       <ul class="theme-color">
         <li
           v-for="(item, index) in themeColors"
@@ -316,12 +352,12 @@ onUnmounted(() => removeMatchMedia);
         </li>
       </ul>
 
-      <p class="mt-5 mb-3 font-medium text-sm dark:text-white">导航模式</p>
+      <p :class="['mt-5', pClass]">{{ t("panel.pureLayoutModel") }}</p>
       <ul class="pure-theme">
         <li
           ref="verticalRef"
           v-tippy="{
-            content: '左侧菜单，亲切熟悉',
+            content: t('panel.pureVerticalTip'),
             zIndex: 41000
           }"
           :class="layoutTheme.layout === 'vertical' ? 'is-select' : ''"
@@ -334,7 +370,7 @@ onUnmounted(() => removeMatchMedia);
           v-if="device !== 'mobile'"
           ref="horizontalRef"
           v-tippy="{
-            content: '顶部菜单，简洁概览',
+            content: t('panel.pureHorizontalTip'),
             zIndex: 41000
           }"
           :class="layoutTheme.layout === 'horizontal' ? 'is-select' : ''"
@@ -347,7 +383,7 @@ onUnmounted(() => removeMatchMedia);
           v-if="device !== 'mobile'"
           ref="mixRef"
           v-tippy="{
-            content: '混合菜单，灵活多变',
+            content: t('panel.pureMixTip'),
             zIndex: 41000
           }"
           :class="layoutTheme.layout === 'mix' ? 'is-select' : ''"
@@ -358,53 +394,100 @@ onUnmounted(() => removeMatchMedia);
         </li>
       </ul>
 
-      <p class="mt-5 mb-3 font-medium text-base dark:text-white">页签风格</p>
+      <span v-if="useAppStoreHook().getViewportWidth > 1280">
+        <p :class="['mt-5', pClass]">{{ t("panel.pureStretch") }}</p>
+        <Segmented
+          resize
+          class="mb-2 select-none"
+          :modelValue="isNumber(settings.stretch) ? 1 : 0"
+          :options="stretchTypeOptions"
+          @change="stretchTypeChange"
+        />
+        <el-input-number
+          v-if="isNumber(settings.stretch)"
+          v-model="settings.stretch as number"
+          :min="1280"
+          :max="1600"
+          controls-position="right"
+          @change="value => setStretch(value)"
+        />
+        <button
+          v-else
+          v-ripple="{ class: 'text-gray-300' }"
+          class="bg-transparent flex-c w-full h-20 rounded-md border border-[var(--pure-border-color)]"
+          @click="setStretch(!settings.stretch)"
+        >
+          <div
+            class="flex-bc transition-all duration-300"
+            :class="[settings.stretch ? 'w-[24%]' : 'w-[50%]']"
+            style="color: var(--el-color-primary)"
+          >
+            <IconifyIconOffline
+              :icon="settings.stretch ? RightArrow : LeftArrow"
+              height="20"
+            />
+            <div
+              class="flex-grow border-b border-dashed"
+              style="border-color: var(--el-color-primary)"
+            />
+            <IconifyIconOffline
+              :icon="settings.stretch ? LeftArrow : RightArrow"
+              height="20"
+            />
+          </div>
+        </button>
+      </span>
+
+      <p :class="['mt-4', pClass]">{{ t("panel.pureTagsStyle") }}</p>
       <Segmented
+        resize
         class="select-none"
         :modelValue="markValue === 'smart' ? 0 : 1"
         :options="markOptions"
         @change="onChange"
       />
 
-      <p class="mt-5 mb-1 font-medium text-sm dark:text-white">界面显示</p>
+      <p class="mt-5 font-medium text-sm dark:text-white">
+        {{ t("panel.pureInterfaceDisplay") }}
+      </p>
       <ul class="setting">
         <li>
-          <span class="dark:text-white">灰色模式</span>
+          <span class="dark:text-white">{{ t("panel.pureGreyModel") }}</span>
           <el-switch
             v-model="settings.greyVal"
             inline-prompt
-            active-text="开"
-            inactive-text="关"
+            :active-text="t('buttons.pureOpenText')"
+            :inactive-text="t('buttons.pureCloseText')"
             @change="greyChange"
           />
         </li>
         <li>
-          <span class="dark:text-white">色弱模式</span>
+          <span class="dark:text-white">{{ t("panel.pureWeakModel") }}</span>
           <el-switch
             v-model="settings.weakVal"
             inline-prompt
-            active-text="开"
-            inactive-text="关"
+            :active-text="t('buttons.pureOpenText')"
+            :inactive-text="t('buttons.pureCloseText')"
             @change="weekChange"
           />
         </li>
         <li>
-          <span class="dark:text-white">隐藏标签页</span>
+          <span class="dark:text-white">{{ t("panel.pureHiddenTags") }}</span>
           <el-switch
             v-model="settings.tabsVal"
             inline-prompt
-            active-text="开"
-            inactive-text="关"
+            :active-text="t('buttons.pureOpenText')"
+            :inactive-text="t('buttons.pureCloseText')"
             @change="tagsChange"
           />
         </li>
         <li>
-          <span class="dark:text-white">隐藏页脚</span>
+          <span class="dark:text-white">{{ t("panel.pureHiddenFooter") }}</span>
           <el-switch
             v-model="settings.hideFooter"
             inline-prompt
-            active-text="开"
-            inactive-text="关"
+            :active-text="t('buttons.pureOpenText')"
+            :inactive-text="t('buttons.pureCloseText')"
             @change="hideFooterChange"
           />
         </li>
@@ -415,18 +498,20 @@ onUnmounted(() => removeMatchMedia);
             inline-prompt
             :active-value="true"
             :inactive-value="false"
-            active-text="开"
-            inactive-text="关"
+            :active-text="t('buttons.pureOpenText')"
+            :inactive-text="t('buttons.pureCloseText')"
             @change="logoChange"
           />
         </li>
         <li>
-          <span class="dark:text-white">页签持久化</span>
+          <span class="dark:text-white">
+            {{ t("panel.pureMultiTagsCache") }}
+          </span>
           <el-switch
             v-model="settings.multiTagsCache"
             inline-prompt
-            active-text="开"
-            inactive-text="关"
+            :active-text="t('buttons.pureOpenText')"
+            :inactive-text="t('buttons.pureCloseText')"
             @change="multiTagsCacheChange"
           />
         </li>
@@ -545,7 +630,7 @@ onUnmounted(() => removeMatchMedia);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 4px 0;
+    padding: 3px 0;
     font-size: 14px;
   }
 }

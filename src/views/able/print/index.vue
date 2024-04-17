@@ -81,25 +81,30 @@ const tableData: User[] = [
     <template #header>
       <div class="card-header">
         <span class="font-medium">打印功能（报表、图表、图片）</span>
-        <div class="flex">
-          <el-select
-            v-model="value"
-            class="!w-[100px] mr-2"
-            placeholder="Select"
-            size="small"
-          >
-            <el-option
-              v-for="item in options"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-            />
-          </el-select>
-          <el-button size="small" type="primary" @click="onPrint">
-            打印
-          </el-button>
-        </div>
+        <el-select
+          v-model="value"
+          class="!w-[100px] mr-2"
+          placeholder="Select"
+          size="small"
+        >
+          <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          />
+        </el-select>
+        <el-button size="small" type="primary" @click="onPrint">
+          打印
+        </el-button>
       </div>
+      <el-link
+        class="mt-2"
+        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/able/print"
+        target="_blank"
+      >
+        代码位置 src/views/able/print
+      </el-link>
     </template>
     <el-row :gutter="24">
       <el-col
@@ -195,11 +200,5 @@ const tableData: User[] = [
 
 :deep(.el-table__row.success-row) {
   --el-table-tr-bg-color: var(--el-color-success-light-9);
-}
-
-.card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 </style>

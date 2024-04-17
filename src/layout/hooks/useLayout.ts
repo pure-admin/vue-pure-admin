@@ -41,7 +41,8 @@ export function useLayout() {
         hideFooter: $config.HideFooter ?? true,
         showLogo: $config?.ShowLogo ?? true,
         showModel: $config?.ShowModel ?? "smart",
-        multiTagsCache: $config?.MultiTagsCache ?? false
+        multiTagsCache: $config?.MultiTagsCache ?? false,
+        stretch: $config?.Stretch ?? false
       };
     }
   };

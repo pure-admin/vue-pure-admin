@@ -85,6 +85,22 @@ class StorageProxy implements ProxyStorage {
         });
     });
   }
+
+  /**
+   * @description 获取数据仓库中所有的key
+   */
+  public async keys() {
+    return new Promise<string[]>((resolve, reject) => {
+      this.storage
+        .keys()
+        .then(keys => {
+          resolve(keys);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
 }
 
 /**

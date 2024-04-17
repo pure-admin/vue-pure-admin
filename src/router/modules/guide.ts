@@ -5,8 +5,8 @@ export default {
   path: "/guide",
   redirect: "/guide/index",
   meta: {
-    icon: "guide",
-    title: $t("menus.hsguide"),
+    icon: "ep:guide",
+    title: $t("menus.pureGuide"),
     rank: guide
   },
   children: [
@@ -15,7 +15,7 @@ export default {
       name: "Guide",
       component: () => import("@/views/guide/index.vue"),
       meta: {
-        title: $t("menus.hsguide")
+        title: $t("menus.pureGuide")
       }
     }
   ]

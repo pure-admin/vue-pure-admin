@@ -10,7 +10,14 @@ defineOptions({
   <el-card shadow="never">
     <template #header>
       <div class="card-header">
-        <span class="font-medium">汉语拼音</span>
+        <p class="font-medium">汉语拼音</p>
+        <el-link
+          class="mt-2"
+          href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/able/pinyin.vue"
+          target="_blank"
+        >
+          代码位置 src/views/able/pinyin.vue
+        </el-link>
       </div>
     </template>
     <p v-html="html('带 音 调')" />

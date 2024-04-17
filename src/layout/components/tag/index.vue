@@ -4,10 +4,11 @@ import { emitter } from "@/utils/mitt";
 import { RouteConfigs } from "../../types";
 import { useTags } from "../../hooks/useTag";
 import { routerArrays } from "@/layout/types";
-import { useFullscreen, onClickOutside } from "@vueuse/core";
+import { onClickOutside } from "@vueuse/core";
 import { handleAliveRoute, getTopMenu } from "@/router/utils";
 import { useSettingStoreHook } from "@/store/modules/settings";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
+import { usePermissionStoreHook } from "@/store/modules/permission";
 import { ref, watch, unref, toRaw, nextTick, onBeforeUnmount } from "vue";
 import {
   delay,
@@ -21,9 +22,9 @@ import Fullscreen from "@iconify-icons/ri/fullscreen-fill";
 import ArrowDown from "@iconify-icons/ri/arrow-down-s-line";
 import ArrowRightSLine from "@iconify-icons/ri/arrow-right-s-line";
 import ArrowLeftSLine from "@iconify-icons/ri/arrow-left-s-line";
-import CloseBold from "@iconify-icons/ep/close-bold";
 
 const {
+  Close,
   route,
   router,
   visible,
@@ -38,6 +39,7 @@ const {
   pureSetting,
   activeIndex,
   getTabStyle,
+  isScrolling,
   iconIsActive,
   linkIsActive,
   currentSelect,
@@ -58,7 +60,10 @@ const contextmenuRef = ref();
 const isShowArrow = ref(false);
 const topPath = getTopMenu()?.path;
 const { VITE_HIDE_HOME } = import.meta.env;
-const { isFullscreen, toggle } = useFullscreen();
+const fixedTags = [
+  ...routerArrays,
+  ...usePermissionStoreHook().flatteningRoutes.filter(v => v?.meta?.fixedTag)
+];
 
 const dynamicTagView = async () => {
   await nextTick();
@@ -138,6 +143,38 @@ const handleScroll = (offset: number): void => {
       translateX.value = 0;
     }
   }
+  isScrolling.value = false;
+};
+
+const handleWheel = (event: WheelEvent): void => {
+  isScrolling.value = true;
+  const scrollIntensity = Math.abs(event.deltaX) + Math.abs(event.deltaY);
+  let offset = 0;
+  if (event.deltaX < 0) {
+    offset = scrollIntensity > 0 ? scrollIntensity : 100;
+  } else {
+    offset = scrollIntensity > 0 ? -scrollIntensity : -100;
+  }
+
+  smoothScroll(offset);
+};
+
+const smoothScroll = (offset: number): void => {
+  // 每帧滚动的距离
+  const scrollAmount = 20;
+  let remaining = Math.abs(offset);
+
+  const scrollStep = () => {
+    const scrollOffset = Math.sign(offset) * Math.min(scrollAmount, remaining);
+    handleScroll(scrollOffset);
+    remaining -= Math.abs(scrollOffset);
+
+    if (remaining > 0) {
+      requestAnimationFrame(scrollStep);
+    }
+  };
+
+  requestAnimationFrame(scrollStep);
 };
 
 function dynamicRouteTag(value: string): void {
@@ -196,10 +233,13 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
     other?: boolean
   ): void => {
     if (other) {
-      useMultiTagsStoreHook().handleTags("equal", [
-        VITE_HIDE_HOME === "false" ? routerArrays[0] : toRaw(getTopMenu()),
-        obj
-      ]);
+      useMultiTagsStoreHook().handleTags(
+        "equal",
+        [
+          VITE_HIDE_HOME === "false" ? fixedTags : toRaw(getTopMenu()),
+          obj
+        ].flat()
+      );
     } else {
       useMultiTagsStoreHook().handleTags("splice", "", {
         startIndex,
@@ -212,7 +252,7 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
   if (tag === "other") {
     spliceRoute(1, 1, true);
   } else if (tag === "left") {
-    spliceRoute(1, valueIndex - 1);
+    spliceRoute(fixedTags.length, valueIndex - 1, true);
   } else if (tag === "right") {
     spliceRoute(valueIndex + 1, multiTags.value.length);
   } else {
@@ -289,35 +329,23 @@ function onClickDrop(key, item, selectRoute?: RouteConfigs) {
     case 5:
       // 关闭全部标签页
       useMultiTagsStoreHook().handleTags("splice", "", {
-        startIndex: 1,
+        startIndex: fixedTags.length,
         length: multiTags.value.length
       });
       router.push(topPath);
+      // router.push(fixedTags[fixedTags.length - 1]?.path);
       handleAliveRoute(route as ToRouteType);
       break;
     case 6:
-      // 整体页面全屏
-      toggle();
-      setTimeout(() => {
-        if (isFullscreen.value) {
-          tagsViews[6].icon = ExitFullscreen;
-          tagsViews[6].text = $t("buttons.hswholeExitFullScreen");
-        } else {
-          tagsViews[6].icon = Fullscreen;
-          tagsViews[6].text = $t("buttons.hswholeFullScreen");
-        }
-      }, 100);
-      break;
-    case 7:
       // 内容区全屏
       onContentFullScreen();
       setTimeout(() => {
         if (pureSetting.hiddenSideBar) {
-          tagsViews[7].icon = ExitFullscreen;
-          tagsViews[7].text = $t("buttons.hscontentExitFullScreen");
+          tagsViews[6].icon = ExitFullscreen;
+          tagsViews[6].text = $t("buttons.pureContentExitFullScreen");
         } else {
-          tagsViews[7].icon = Fullscreen;
-          tagsViews[7].text = $t("buttons.hscontentFullScreen");
+          tagsViews[6].icon = Fullscreen;
+          tagsViews[6].text = $t("buttons.pureContentFullScreen");
         }
       }, 100);
       break;
@@ -344,10 +372,14 @@ function showMenus(value: boolean) {
   });
 }
 
-function disabledMenus(value: boolean) {
+function disabledMenus(value: boolean, fixedTag = false) {
   Array.of(1, 2, 3, 4, 5).forEach(v => {
     tagsViews[v].disabled = value;
   });
+  if (fixedTag) {
+    tagsViews[2].show = false;
+    tagsViews[2].disabled = true;
+  }
 }
 
 /** 检查当前右键的菜单两边是否存在别的菜单，如果左侧的菜单是顶级菜单，则不显示关闭左侧标签页，如果右侧没有菜单，则不显示关闭右侧标签页 */
@@ -363,6 +395,13 @@ function showMenuModel(
     currentIndex = allRoute.findIndex(v => v.path === currentPath);
   } else {
     currentIndex = allRoute.findIndex(v => isEqual(v.query, query));
+  }
+  function fixedTagDisabled() {
+    if (allRoute[currentIndex]?.meta?.fixedTag) {
+      Array.of(1, 2, 3, 4, 5).forEach(v => {
+        tagsViews[v].disabled = true;
+      });
+    }
   }
 
   showMenus(true);
@@ -382,6 +421,7 @@ function showMenuModel(
       tagsViews[v].disabled = false;
     });
     tagsViews[2].disabled = true;
+    fixedTagDisabled();
   } else if (currentIndex === 1 && routeLength === 2) {
     disabledMenus(false);
     // 左侧的菜单是顶级菜单，右侧不存在别的菜单
@@ -389,6 +429,7 @@ function showMenuModel(
       tagsViews[v].show = false;
       tagsViews[v].disabled = true;
     });
+    fixedTagDisabled();
   } else if (routeLength - 1 === currentIndex && currentIndex !== 0) {
     // 当前路由是所有路由中的最后一个
     tagsViews[3].show = false;
@@ -396,29 +437,31 @@ function showMenuModel(
       tagsViews[v].disabled = false;
     });
     tagsViews[3].disabled = true;
+    if (allRoute[currentIndex - 1]?.meta?.fixedTag) {
+      tagsViews[2].show = false;
+      tagsViews[2].disabled = true;
+    }
+    fixedTagDisabled();
   } else if (currentIndex === 0 || currentPath === `/redirect${topPath}`) {
     // 当前路由为顶级菜单
     disabledMenus(true);
   } else {
-    disabledMenus(false);
+    disabledMenus(false, allRoute[currentIndex - 1]?.meta?.fixedTag);
+    fixedTagDisabled();
   }
 }
 
 function openMenu(tag, e) {
   closeMenu();
-  if (tag.path === topPath) {
-    // 右键菜单为顶级菜单，只显示刷新
+  if (tag.path === topPath || tag?.meta?.fixedTag) {
+    // 右键菜单为顶级菜单或拥有 fixedTag 属性，只显示刷新
     showMenus(false);
     tagsViews[0].show = true;
   } else if (route.path !== tag.path && route.name !== tag.name) {
     // 右键菜单不匹配当前路由，隐藏刷新
     tagsViews[0].show = false;
     showMenuModel(tag.path, tag.query);
-  } else if (
-    // eslint-disable-next-line no-dupe-else-if
-    multiTags.value.length === 2 &&
-    route.path !== tag.path
-  ) {
+  } else if (multiTags.value.length === 2 && route.path !== tag.path) {
     showMenus(true);
     // 只有两个标签时不显示关闭其他标签页
     tagsViews[4].show = false;
@@ -466,7 +509,6 @@ function tagOnClick(item) {
   } else {
     router.push({ path });
   }
-  // showMenuModel(item?.path, item?.query);
 }
 
 onClickOutside(contextmenuRef, closeMenu, {
@@ -476,11 +518,6 @@ onClickOutside(contextmenuRef, closeMenu, {
 watch(route, () => {
   activeIndex.value = -1;
   dynamicTagView();
-});
-
-watch(isFullscreen, () => {
-  tagsViews[6].icon = Fullscreen;
-  tagsViews[6].text = $t("buttons.hswholeFullScreen");
 });
 
 onMounted(() => {
@@ -525,13 +562,21 @@ onBeforeUnmount(() => {
     <span v-show="isShowArrow" class="arrow-left">
       <IconifyIconOffline :icon="ArrowLeftSLine" @click="handleScroll(200)" />
     </span>
-    <div ref="scrollbarDom" class="scroll-container">
+    <div
+      ref="scrollbarDom"
+      class="scroll-container"
+      @wheel.prevent="handleWheel"
+    >
       <div ref="tabDom" class="tab select-none" :style="getTabStyle">
         <div
           v-for="(item, index) in multiTags"
           :ref="'dynamic' + index"
           :key="index"
-          :class="['scroll-item is-closable', linkIsActive(item)]"
+          :class="[
+            'scroll-item is-closable',
+            linkIsActive(item),
+            !isAllEmpty(item?.meta?.fixedTag) && 'fixed-tag'
+          ]"
           @contextmenu.prevent="openMenu(item, $event)"
           @mouseenter.prevent="onMouseenter(index)"
           @mouseleave.prevent="onMouseleave(index)"
@@ -544,15 +589,17 @@ onBeforeUnmount(() => {
           </span>
           <span
             v-if="
-              iconIsActive(item, index) ||
-              (index === activeIndex && index !== 0)
+              isAllEmpty(item?.meta?.fixedTag)
+                ? iconIsActive(item, index) ||
+                  (index === activeIndex && index !== 0)
+                : false
             "
             class="el-icon-close"
             @click.stop="deleteMenu(item)"
           >
-            <IconifyIconOffline :icon="CloseBold" />
+            <IconifyIconOffline :icon="Close" />
           </span>
-          <div
+          <span
             v-if="showModel !== 'card'"
             :ref="'schedule' + index"
             :class="[scheduleIsActive(item)]"

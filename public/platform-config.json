@@ -1,5 +1,5 @@
 {
-  "Version": "4.5.0",
+  "Version": "5.3.0",
   "Title": "PureAdmin",
   "FixedHeader": true,
   "HiddenSideBar": false,
@@ -13,7 +13,8 @@
   "Grey": false,
   "Weak": false,
   "HideTabs": false,
-  "HideFooter": true,
+  "HideFooter": false,
+  "Stretch": false,
   "SidebarStatus": true,
   "EpThemeColor": "#409EFF",
   "ShowLogo": true,
@@ -22,8 +23,9 @@
   "CachingAsyncRoutes": false,
   "TooltipEffect": "light",
   "ResponsiveStorageNameSpace": "responsive-",
+  "MenuSearchHistory": 6,
   "MapConfigure": {
-    "amapKey": "97b3248d1553172e81f168cf94ea667e",
+    "amapKey": "adc139d56406f3844c8f1cf1c6b65c41",
     "options": {
       "resizeEnable": true,
       "center": [113.6401, 34.72468],

@@ -39,6 +39,15 @@ declare global {
   }
 
   /**
+   * Document 的类型提示
+   */
+  interface Document {
+    webkitFullscreenElement?: Element;
+    mozFullScreenElement?: Element;
+    msFullscreenElement?: Element;
+  }
+
+  /**
    * 打包压缩格式的类型声明
    */
   type ViteCompression =
@@ -78,6 +87,7 @@ declare global {
     FixedHeader?: boolean;
     HiddenSideBar?: boolean;
     MultiTagsCache?: boolean;
+    MaxTagsLevel?: number;
     KeepAlive?: boolean;
     Locale?: string;
     Layout?: string;
@@ -88,6 +98,7 @@ declare global {
     Weak?: boolean;
     HideTabs?: boolean;
     HideFooter?: boolean;
+    Stretch?: boolean | number;
     SidebarStatus?: boolean;
     EpThemeColor?: string;
     ShowLogo?: boolean;
@@ -96,6 +107,7 @@ declare global {
     CachingAsyncRoutes?: boolean;
     TooltipEffect?: Effect;
     ResponsiveStorageNameSpace?: string;
+    MenuSearchHistory?: number;
     MapConfigure?: {
       amapKey?: string;
       options: {
@@ -131,6 +143,7 @@ declare global {
     overallStyle?: string;
     showLogo?: boolean;
     showModel?: string;
+    menuSearchHistory?: number;
     mapConfigure?: {
       amapKey?: string;
       options: {
@@ -166,6 +179,7 @@ declare global {
       showLogo?: boolean;
       showModel?: string;
       multiTagsCache?: boolean;
+      stretch?: boolean | number;
     };
     tags?: Array<any>;
   }
@@ -177,5 +191,19 @@ declare global {
     $echarts: ECharts;
     $storage: ResponsiveStorage;
     $config: PlatformConfigs;
+  }
+
+  /**
+   * 扩展 `Element`
+   */
+  interface Element {
+    // v-ripple 作用于 src/directives/ripple/index.ts 文件
+    _ripple?: {
+      enabled?: boolean;
+      centered?: boolean;
+      class?: string;
+      circle?: boolean;
+      touched?: boolean;
+    };
   }
 }

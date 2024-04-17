@@ -16,9 +16,16 @@ defineOptions({
       <div class="card-header">
         <span class="font-medium"> 消息提示 </span>
       </div>
+      <el-link
+        class="mt-2"
+        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/components/message.vue"
+        target="_blank"
+      >
+        代码位置 src/views/components/message.vue
+      </el-link>
     </template>
 
-    <h4 class="mb-4">element-plus 的消息提示，点击弹出提示信息</h4>
+    <h4 class="mb-4">Element Plus 的消息提示，点击弹出提示信息</h4>
 
     <el-space wrap>
       <el-button

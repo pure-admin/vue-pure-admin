@@ -1,13 +1,4 @@
 <script setup lang="ts">
-import {
-  ref,
-  toRaw,
-  reactive,
-  watch,
-  computed,
-  onMounted,
-  onBeforeUnmount
-} from "vue";
 import { useI18n } from "vue-i18n";
 import Motion from "./utils/motion";
 import { useRouter } from "vue-router";
@@ -15,10 +6,12 @@ import { message } from "@/utils/message";
 import { loginRules } from "./utils/rule";
 import phone from "./components/phone.vue";
 import TypeIt from "@/components/ReTypeit";
+import { debounce } from "@pureadmin/utils";
 import qrCode from "./components/qrCode.vue";
 import regist from "./components/regist.vue";
 import update from "./components/update.vue";
 import { useNav } from "@/layout/hooks/useNav";
+import { useEventListener } from "@vueuse/core";
 import type { FormInstance } from "element-plus";
 import { $t, transformI18n } from "@/plugins/i18n";
 import { operates, thirdParty } from "./utils/enums";
@@ -27,6 +20,7 @@ import { useUserStoreHook } from "@/store/modules/user";
 import { initRouter, getTopMenu } from "@/router/utils";
 import { bg, avatar, illustration } from "./utils/static";
 import { ReImageVerify } from "@/components/ReImageVerify";
+import { ref, toRaw, reactive, watch, computed } from "vue";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import { useTranslationLang } from "@/layout/hooks/useTranslationLang";
 import { useDataThemeChange } from "@/layout/hooks/useDataThemeChange";
@@ -48,6 +42,7 @@ const loginDay = ref(7);
 const router = useRouter();
 const loading = ref(false);
 const checked = ref(false);
+const disabled = ref(false);
 const ruleFormRef = ref<FormInstance>();
 const currentPage = computed(() => {
   return useUserStoreHook().currentPage;
@@ -68,42 +63,44 @@ const ruleForm = reactive({
 });
 
 const onLogin = async (formEl: FormInstance | undefined) => {
-  loading.value = true;
   if (!formEl) return;
   await formEl.validate((valid, fields) => {
     if (valid) {
+      loading.value = true;
       useUserStoreHook()
         .loginByUsername({ username: ruleForm.username, password: "admin123" })
         .then(res => {
           if (res.success) {
             // 获取后端路由
             return initRouter().then(() => {
-              router.push(getTopMenu(true).path);
-              message("登录成功", { type: "success" });
+              disabled.value = true;
+              router
+                .push(getTopMenu(true).path)
+                .then(() => {
+                  message(t("login.pureLoginSuccess"), { type: "success" });
+                })
+                .finally(() => (disabled.value = false));
             });
+          } else {
+            message(t("login.pureLoginFail"), { type: "error" });
           }
         })
         .finally(() => (loading.value = false));
     } else {
-      loading.value = false;
       return fields;
     }
   });
 };
 
-/** 使用公共函数，避免`removeEventListener`失效 */
-function onkeypress({ code }: KeyboardEvent) {
-  if (code === "Enter") {
-    onLogin(ruleFormRef.value);
-  }
-}
+const immediateDebounce: any = debounce(
+  formRef => onLogin(formRef),
+  1000,
+  true
+);
 
-onMounted(() => {
-  window.document.addEventListener("keypress", onkeypress);
-});
-
-onBeforeUnmount(() => {
-  window.document.removeEventListener("keypress", onkeypress);
+useEventListener(document, "keypress", ({ code }) => {
+  if (code === "Enter" && !disabled.value && !loading.value)
+    immediateDebounce(ruleFormRef.value);
 });
 
 watch(imgCode, value => {
@@ -171,7 +168,9 @@ watch(loginDay, value => {
           <avatar class="avatar" />
           <Motion>
             <h2 class="outline-none">
-              <TypeIt :values="[title]" :cursor="false" :speed="150" />
+              <TypeIt
+                :options="{ strings: [title], cursor: false, speed: 100 }"
+              />
             </h2>
           </Motion>
 
@@ -187,7 +186,7 @@ watch(loginDay, value => {
                 :rules="[
                   {
                     required: true,
-                    message: transformI18n($t('login.usernameReg')),
+                    message: transformI18n($t('login.pureUsernameReg')),
                     trigger: 'blur'
                   }
                 ]"
@@ -196,7 +195,7 @@ watch(loginDay, value => {
                 <el-input
                   v-model="ruleForm.username"
                   clearable
-                  :placeholder="t('login.username')"
+                  :placeholder="t('login.pureUsername')"
                   :prefix-icon="useRenderIcon(User)"
                 />
               </el-form-item>
@@ -208,7 +207,7 @@ watch(loginDay, value => {
                   v-model="ruleForm.password"
                   clearable
                   show-password
-                  :placeholder="t('login.password')"
+                  :placeholder="t('login.purePassword')"
                   :prefix-icon="useRenderIcon(Lock)"
                 />
               </el-form-item>
@@ -219,7 +218,7 @@ watch(loginDay, value => {
                 <el-input
                   v-model="ruleForm.verifyCode"
                   clearable
-                  :placeholder="t('login.verifyCode')"
+                  :placeholder="t('login.pureVerifyCode')"
                   :prefix-icon="useRenderIcon('ri:shield-keyhole-line')"
                 >
                   <template v-slot:append>
@@ -247,14 +246,15 @@ watch(loginDay, value => {
                         <option value="7">7</option>
                         <option value="30">30</option>
                       </select>
-                      {{ t("login.remember") }}
-                      <el-tooltip
-                        effect="dark"
-                        placement="top"
-                        :content="t('login.rememberInfo')"
-                      >
-                        <IconifyIconOffline :icon="Info" class="ml-1" />
-                      </el-tooltip>
+                      {{ t("login.pureRemember") }}
+                      <IconifyIconOffline
+                        v-tippy="{
+                          content: t('login.pureRememberInfo'),
+                          placement: 'top'
+                        }"
+                        :icon="Info"
+                        class="ml-1"
+                      />
                     </span>
                   </el-checkbox>
                   <el-button
@@ -262,7 +262,7 @@ watch(loginDay, value => {
                     type="primary"
                     @click="useUserStoreHook().SET_CURRENTPAGE(4)"
                   >
-                    {{ t("login.forget") }}
+                    {{ t("login.pureForget") }}
                   </el-button>
                 </div>
                 <el-button
@@ -270,9 +270,10 @@ watch(loginDay, value => {
                   size="default"
                   type="primary"
                   :loading="loading"
+                  :disabled="disabled"
                   @click="onLogin(ruleFormRef)"
                 >
-                  {{ t("login.login") }}
+                  {{ t("login.pureLogin") }}
                 </el-button>
               </el-form-item>
             </Motion>
@@ -297,7 +298,9 @@ watch(loginDay, value => {
           <Motion v-if="currentPage === 0" :delay="350">
             <el-form-item>
               <el-divider>
-                <p class="text-gray-500 text-xs">{{ t("login.thirdLogin") }}</p>
+                <p class="text-gray-500 text-xs">
+                  {{ t("login.pureThirdLogin") }}
+                </p>
               </el-divider>
               <div class="w-full flex justify-evenly">
                 <span
@@ -324,6 +327,18 @@ watch(loginDay, value => {
           <update v-if="currentPage === 4" />
         </div>
       </div>
+    </div>
+    <div
+      class="w-full flex-c absolute bottom-3 text-sm text-[rgba(0,0,0,0.6)] dark:text-[rgba(220,220,242,0.8)]"
+    >
+      Copyright © 2020-present
+      <a
+        class="hover:text-primary"
+        href="https://github.com/pure-admin"
+        target="_blank"
+      >
+        &nbsp;{{ title }}
+      </a>
     </div>
   </div>
 </template>

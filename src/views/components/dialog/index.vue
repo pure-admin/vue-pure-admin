@@ -2,8 +2,8 @@
 import { useRouter } from "vue-router";
 import { h, createVNode, ref } from "vue";
 import { message } from "@/utils/message";
-import forms, { type FormProps } from "./form.vue";
 import formPrimitive from "./formPrimitive.vue";
+import forms, { type FormProps } from "./form.vue";
 import { cloneDeep, debounce } from "@pureadmin/utils";
 import {
   addDialog,
@@ -43,9 +43,11 @@ function onFullscreenClick() {
 
 function onFullscreenIconClick() {
   addDialog({
-    title: "全屏按钮",
+    title: "全屏按钮和全屏事件",
     fullscreenIcon: true,
-    contentRenderer: () => <p>弹框内容-全屏按钮</p>
+    fullscreenCallBack: ({ options, index }) =>
+      message(options.fullscreen ? "全屏" : "非全屏"),
+    contentRenderer: () => <p>弹框内容-全屏按钮和全屏事件</p>
   });
 }
 
@@ -203,7 +205,7 @@ function onCloseCallBackClick() {
       } else if (args?.command === "sure") {
         text = "您点击了确定按钮";
       } else {
-        text = "您点击了右上角关闭按钮或者空白页";
+        text = "您点击了右上角关闭按钮或空白页或按下了esc键";
       }
       message(text);
     },
@@ -278,6 +280,16 @@ function onUpdateClick() {
   });
 }
 
+// popconfirm 确认框
+function onPopconfirmClick() {
+  addDialog({
+    width: "30%",
+    title: "popconfirm确认框示例",
+    popconfirm: { title: "是否确认修改当前数据" },
+    contentRenderer: () => <p>点击右下方确定按钮看看效果吧</p>
+  });
+}
+
 // 结合Form表单（第一种方式，弹框关闭立刻恢复初始值）通过 props 属性接收子组件的 prop 并赋值
 function onFormOneClick() {
   addDialog({
@@ -301,7 +313,9 @@ function onFormOneClick() {
       } else if (args?.command === "sure") {
         message(`您点击了确定按钮，当前表单数据为 ${text}`);
       } else {
-        message(`您点击了右上角关闭按钮或者空白页，当前表单数据为 ${text}`);
+        message(
+          `您点击了右上角关闭按钮或空白页或按下了esc键，当前表单数据为 ${text}`
+        );
       }
     }
   });
@@ -443,7 +457,7 @@ function onBeforeSureClick() {
     <template #header>
       <div class="card-header">
         <span class="font-medium">
-          二次封装 element-plus 的
+          二次封装 Element Plus 的
           <el-link
             href="https://element-plus.org/zh-CN/component/dialog.html"
             target="_blank"
@@ -461,12 +475,18 @@ function onBeforeSureClick() {
           ）
         </span>
       </div>
+      <el-link
+        href="https://github.com/pure-admin/vue-pure-admin/tree/main/src/views/components/dialog"
+        target="_blank"
+      >
+        代码位置 src/views/components/dialog
+      </el-link>
     </template>
     <el-space wrap>
       <el-button @click="onBaseClick"> 基础用法 </el-button>
       <el-button @click="onDraggableClick"> 可拖拽 </el-button>
       <el-button @click="onFullscreenClick"> 全屏 </el-button>
-      <el-button @click="onFullscreenIconClick"> 全屏按钮 </el-button>
+      <el-button @click="onFullscreenIconClick"> 全屏按钮和全屏事件 </el-button>
       <el-button @click="onModalClick"> 无背景遮罩层 </el-button>
       <el-button @click="onStyleClick"> 自定义弹出位置 </el-button>
       <el-button @click="onoOpenDelayClick"> 延时2秒打开弹框 </el-button>
@@ -486,6 +506,7 @@ function onBeforeSureClick() {
       <el-button @click="onCloseCallBackClick"> 关闭后的回调 </el-button>
       <el-button @click="onNestingClick"> 嵌套的弹框 </el-button>
       <el-button @click="onUpdateClick"> 更改弹框自身属性值 </el-button>
+      <el-button @click="onPopconfirmClick">popconfirm确认框</el-button>
     </el-space>
     <el-divider />
     <el-space wrap>

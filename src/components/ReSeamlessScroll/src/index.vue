@@ -1,6 +1,12 @@
 <script setup lang="ts">
-import { computed, ref, unref, nextTick } from "vue";
-import type { CSSProperties, PropType } from "vue";
+import {
+  type PropType,
+  type CSSProperties,
+  ref,
+  unref,
+  nextTick,
+  computed
+} from "vue";
 import {
   tryOnMounted,
   tryOnUnmounted,
@@ -301,7 +307,7 @@ function touchMove(e) {
 
 function touchEnd() {
   if (!unref(canTouchScroll)) return;
-  // eslint-disable-next-line prefer-const
+
   let timer: any;
   const direction = unref(options).direction;
   delay.value = 50;

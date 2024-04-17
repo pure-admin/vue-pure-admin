@@ -36,8 +36,9 @@ const defaultProps = {
 const buttonClass = computed(() => {
   return [
     "!h-[20px]",
+    "!text-sm",
     "reset-margin",
-    "!text-gray-500",
+    "!text-[var(--el-text-color-regular)]",
     "dark:!text-white",
     "dark:hover:!text-primary"
   ];
@@ -96,7 +97,7 @@ defineExpose({ onTreeReset });
   <div
     v-loading="props.treeLoading"
     class="h-full bg-bg_color overflow-auto"
-    :style="{ minHeight: `calc(100vh - 133px)` }"
+    :style="{ minHeight: `calc(100vh - 141px)` }"
   >
     <div class="flex items-center h-[34px]">
       <el-input
@@ -110,7 +111,7 @@ defineExpose({ onTreeReset });
           <el-icon class="el-input__icon">
             <IconifyIconOffline
               v-show="searchValue.length === 0"
-              icon="search"
+              icon="ri:search-line"
             />
           </el-icon>
         </template>

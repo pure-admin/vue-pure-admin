@@ -44,19 +44,27 @@
 }
 
 .pure-dialog {
+  .el-dialog__header.show-close {
+    padding-right: 16px;
+  }
+
+  .el-dialog__headerbtn {
+    top: 16px;
+    right: 12px;
+    width: 24px;
+    height: 24px;
+  }
+
   .pure-dialog-svg {
     color: var(--el-color-info);
   }
 
-  .el-dialog__headerbtn {
-    top: 20px;
-    right: 14px;
-    width: 24px;
-    height: 24px;
+  .el-dialog__footer {
+    padding-top: 0;
   }
 }
 
-/* 全局覆盖element-plus的el-dialog、el-drawer、el-message-box、el-notification组件右上角关闭图标的样式，表现更鲜明 */
+/* 全局覆盖element-plus的el-tour、el-dialog、el-drawer、el-message-box、el-notification组件右上角关闭图标和el-upload上传文件列表右侧关闭图标的样式，表现更鲜明 */
 .el-dialog__headerbtn,
 .el-message-box__headerbtn {
   &:hover {
@@ -67,10 +75,12 @@
 }
 
 .el-icon {
+  &.el-tour__close,
   &.el-dialog__close,
   &.el-drawer__close,
   &.el-message-box__close,
-  &.el-notification__closeBtn {
+  &.el-notification__closeBtn,
+  .el-upload-list__item.is-ready &.el-icon--close {
     width: 24px;
     height: 24px;
     border-radius: 4px;
@@ -93,7 +103,6 @@
 
 /* 克隆并自定义 ElMessage 样式，不会影响 ElMessage 原本样式，在 src/utils/message.ts 中调用自定义样式 ElMessage 方法即可，整体暗色风格在 src/style/dark.scss 文件进行了适配 */
 .pure-message {
-  padding: 10px 13px !important;
   background: #fff !important;
   border-width: 0 !important;
   box-shadow:
@@ -101,22 +110,13 @@
     0 6px 16px #00000014,
     0 9px 28px 8px #0000000d !important;
 
-  &.el-message.is-closable .el-message__content {
-    padding-right: 17px !important;
-  }
-
   & .el-message__content {
     color: #000000d9 !important;
     pointer-events: all !important;
     background-image: initial !important;
   }
 
-  & .el-message__icon {
-    margin-right: 8px !important;
-  }
-
   & .el-message__closeBtn {
-    right: 9px !important;
     border-radius: 4px;
     outline: none;
     transition:
@@ -147,17 +147,14 @@
     display: none;
   }
 
-  .el-dialog__body {
-    padding-top: 12px;
-    padding-bottom: 0;
-  }
-
   .el-input__inner {
     font-size: 1.2em;
   }
 
   .el-dialog__footer {
-    padding-bottom: 10px;
+    width: calc(100% + 32px);
+    padding: 10px 20px;
+    margin: auto -16px -16px;
     box-shadow:
       0 -1px 0 0 #e0e3e8,
       0 -3px 6px 0 rgb(69 98 155 / 12%);

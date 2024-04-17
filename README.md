@@ -8,7 +8,14 @@
 
 ## 简介
 
-`vue-pure-admin` 是一款开源免费且开箱即用的中后台管理系统模版。完全采用 `ECMAScript` 模块（`ESM`）规范来编写和组织代码，使用了最新的 `Vue3`、`Vite`、`Element-Plus`、`TypeScript`、`Pinia`、`Tailwindcss` 等主流技术开发
+`vue-pure-admin` 是一款开源免费且开箱即用的中后台管理系统模版。完全采用 `ECMAScript` 模块（`ESM`）规范来编写和组织代码，使用了最新的 `Vue3`、
+`Vite`、`Element-Plus`、`TypeScript`、`Pinia`、`Tailwindcss` 等主流技术开发
+
+## 赞助商
+
+<a class="logo" href="https://ai-tools.cn/resume/start" target="_blank" rel="sponsored noopener">
+  <img src="./public/sponsors/aitools.svg" alt="aitools">
+</a>
 
 ## 精简版本（实际项目开发请用精简版本，提供 `非国际化` 、`国际化` 两个版本选择）
 
@@ -19,13 +26,17 @@
 
 ## 配套视频
 
-[点我查看快速开发教程](https://www.bilibili.com/video/BV1kg411v7QT)  
-[点我查看 UI 设计](https://www.bilibili.com/video/BV17g411T7rq)
+[点我查看 UI 设计](https://www.bilibili.com/video/BV17g411T7rq)  
+[点我查看快速开发教程](https://www.bilibili.com/video/BV1kg411v7QT)
 
 ## 配套保姆级文档
 
-[查看 vue-pure-admin 文档](https://yiming_chang.gitee.io/pure-admin-doc)  
-[查看 @pureadmin/utils 文档](https://pure-admin-utils.netlify.app)
+[点我查看 vue-pure-admin 文档](https://yiming_chang.gitee.io/pure-admin-doc)  
+[点我查看 @pureadmin/utils 文档](https://pure-admin-utils.netlify.app)
+
+## 优质服务、软件外包、赞助支持
+
+[点我查看详情](https://yiming_chang.gitee.io/pure-admin-doc/pages/service/)
 
 ## `Tauri` 版本
 
@@ -37,7 +48,7 @@
 
 ## 预览
 
-[查看预览](https://yiming_chang.gitee.io/vue-pure-admin)
+[点我查看预览](https://yiming_chang.gitee.io/vue-pure-admin)
 
 `PC` 端
 
@@ -159,6 +170,21 @@ docker run -dp 8080:80  --name pure-admin vue-pure-admin
 3. 提交您的修改: `git commit -am 'feat(function): add xxxxx'`
 4. 推送您的分支: `git push origin feat/xxxx`
 5. 提交`pull request`
+
+## 特别代码贡献
+
+非常感谢你们能深入了解源码并对 `pure-admin` 组织作出优秀贡献 ❤️
+
+|                   **贡献人**                    |                                   **具体代码**                                   |
+| :---------------------------------------------: | :------------------------------------------------------------------------------: |
+|       [hb0730](https://github.com/hb0730)       |    [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=hb0730)    |
+|         [o-cc](https://github.com/o-cc)         |     [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=o-cc)     |
+| [yj-liuzepeng](https://github.com/yj-liuzepeng) | [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=yj-liuzepeng) |
+|   [skyline523](https://github.com/skyline523)   |  [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=skyline523)  |
+| [shark-lajiao](https://github.com/shark-lajiao) | [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=shark-lajiao) |
+|      [WitMiao](https://github.com/WitMiao)      |   [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=WitMiao)    |
+|     [QFifteen](https://github.com/QFifteen)     |   [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=QFifteen)   |
+|     [edgexie](https://github.com/edgexie)     |   [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=edgexie)   |
 
 ## `Git` 贡献提交规范
 

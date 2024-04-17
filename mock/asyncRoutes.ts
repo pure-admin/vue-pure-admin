@@ -1,6 +1,6 @@
 // 模拟后端动态生成路由
 import { defineFakeRoute } from "vite-plugin-fake-server/client";
-import { system, permission, frame, tabs } from "@/router/enums";
+import { system, monitor, permission, frame, tabs } from "@/router/enums";
 
 /**
  * roles：页面级别权限，这里模拟二种 "admin"、"common"
@@ -8,11 +8,11 @@ import { system, permission, frame, tabs } from "@/router/enums";
  * common：普通角色
  */
 
-const systemRouter = {
+const systemManagementRouter = {
   path: "/system",
   meta: {
-    icon: "setting",
-    title: "menus.hssysManagement",
+    icon: "ri:settings-3-line",
+    title: "menus.pureSysManagement",
     rank: system
   },
   children: [
@@ -20,8 +20,8 @@ const systemRouter = {
       path: "/system/user/index",
       name: "SystemUser",
       meta: {
-        icon: "flUser",
-        title: "menus.hsUser",
+        icon: "ri:admin-line",
+        title: "menus.pureUser",
         roles: ["admin"]
       }
     },
@@ -29,8 +29,17 @@ const systemRouter = {
       path: "/system/role/index",
       name: "SystemRole",
       meta: {
-        icon: "role",
-        title: "menus.hsRole",
+        icon: "ri:admin-fill",
+        title: "menus.pureRole",
+        roles: ["admin"]
+      }
+    },
+    {
+      path: "/system/menu/index",
+      name: "SystemMenu",
+      meta: {
+        icon: "ep:menu",
+        title: "menus.pureSystemMenu",
         roles: ["admin"]
       }
     },
@@ -38,8 +47,59 @@ const systemRouter = {
       path: "/system/dept/index",
       name: "SystemDept",
       meta: {
-        icon: "dept",
-        title: "menus.hsDept",
+        icon: "ri:git-branch-line",
+        title: "menus.pureDept",
+        roles: ["admin"]
+      }
+    }
+  ]
+};
+
+const systemMonitorRouter = {
+  path: "/monitor",
+  meta: {
+    icon: "ep:monitor",
+    title: "menus.pureSysMonitor",
+    rank: monitor
+  },
+  children: [
+    {
+      path: "/monitor/online-user",
+      component: "monitor/online/index",
+      name: "OnlineUser",
+      meta: {
+        icon: "ri:user-voice-line",
+        title: "menus.pureOnlineUser",
+        roles: ["admin"]
+      }
+    },
+    {
+      path: "/monitor/login-logs",
+      component: "monitor/logs/login/index",
+      name: "LoginLog",
+      meta: {
+        icon: "ri:window-line",
+        title: "menus.pureLoginLog",
+        roles: ["admin"]
+      }
+    },
+    {
+      path: "/monitor/operation-logs",
+      component: "monitor/logs/operation/index",
+      name: "OperationLog",
+      meta: {
+        icon: "ri:history-fill",
+        title: "menus.pureOperationLog",
+        roles: ["admin"]
+      }
+    },
+    {
+      path: "/monitor/system-logs",
+      component: "monitor/logs/system/index",
+      name: "SystemLog",
+      meta: {
+        icon: "ri:file-search-line",
+        title: "menus.pureSystemLog",
         roles: ["admin"]
       }
     }
@@ -49,8 +109,8 @@ const systemRouter = {
 const permissionRouter = {
   path: "/permission",
   meta: {
-    title: "menus.permission",
-    icon: "lollipop",
+    title: "menus.purePermission",
+    icon: "ep:lollipop",
     rank: permission
   },
   children: [
@@ -58,7 +118,7 @@ const permissionRouter = {
       path: "/permission/page/index",
       name: "PermissionPage",
       meta: {
-        title: "menus.permissionPage",
+        title: "menus.purePermissionPage",
         roles: ["admin", "common"]
       }
     },
@@ -66,9 +126,13 @@ const permissionRouter = {
       path: "/permission/button/index",
       name: "PermissionButton",
       meta: {
-        title: "menus.permissionButton",
+        title: "menus.purePermissionButton",
         roles: ["admin", "common"],
-        auths: ["btn_add", "btn_edit", "btn_delete"]
+        auths: [
+          "permission:btn:add",
+          "permission:btn:edit",
+          "permission:btn:delete"
+        ]
       }
     }
   ]
@@ -77,30 +141,30 @@ const permissionRouter = {
 const frameRouter = {
   path: "/iframe",
   meta: {
-    icon: "monitor",
-    title: "menus.hsExternalPage",
+    icon: "ri:links-fill",
+    title: "menus.pureExternalPage",
     rank: frame
   },
   children: [
     {
       path: "/iframe/external",
       meta: {
-        title: "menus.hsExternalDoc"
+        title: "menus.pureExternalDoc"
       },
       children: [
         {
           path: "/external",
           name: "https://yiming_chang.gitee.io/pure-admin-doc",
           meta: {
-            title: "menus.externalLink",
+            title: "menus.pureExternalLink",
             roles: ["admin", "common"]
           }
         },
         {
-          path: "/pureutilsLink",
+          path: "/pureUtilsLink",
           name: "https://pure-admin-utils.netlify.app/",
           meta: {
-            title: "menus.pureutilsLink",
+            title: "menus.pureUtilsLink",
             roles: ["admin", "common"]
           }
         }
@@ -109,14 +173,34 @@ const frameRouter = {
     {
       path: "/iframe/embedded",
       meta: {
-        title: "menus.hsEmbeddedDoc"
+        title: "menus.pureEmbeddedDoc"
       },
       children: [
+        {
+          path: "/iframe/colorhunt",
+          name: "FrameColorHunt",
+          meta: {
+            title: "menus.pureColorHuntDoc",
+            frameSrc: "https://colorhunt.co/",
+            keepAlive: true,
+            roles: ["admin", "common"]
+          }
+        },
+        {
+          path: "/iframe/uigradients",
+          name: "FrameUiGradients",
+          meta: {
+            title: "menus.pureUiGradients",
+            frameSrc: "https://uigradients.com/",
+            keepAlive: true,
+            roles: ["admin", "common"]
+          }
+        },
         {
           path: "/iframe/ep",
           name: "FrameEp",
           meta: {
-            title: "menus.hsEpDocument",
+            title: "menus.pureEpDoc",
             frameSrc: "https://element-plus.org/zh-CN/",
             keepAlive: true,
             roles: ["admin", "common"]
@@ -126,7 +210,7 @@ const frameRouter = {
           path: "/iframe/tailwindcss",
           name: "FrameTailwindcss",
           meta: {
-            title: "menus.hsTailwindcssDocument",
+            title: "menus.pureTailwindcssDoc",
             frameSrc: "https://tailwindcss.com/docs/installation",
             keepAlive: true,
             roles: ["admin", "common"]
@@ -136,7 +220,7 @@ const frameRouter = {
           path: "/iframe/vue3",
           name: "FrameVue",
           meta: {
-            title: "menus.hsVueDocument",
+            title: "menus.pureVueDoc",
             frameSrc: "https://cn.vuejs.org/",
             keepAlive: true,
             roles: ["admin", "common"]
@@ -146,7 +230,7 @@ const frameRouter = {
           path: "/iframe/vite",
           name: "FrameVite",
           meta: {
-            title: "menus.hsViteDocument",
+            title: "menus.pureViteDoc",
             frameSrc: "https://cn.vitejs.dev/",
             keepAlive: true,
             roles: ["admin", "common"]
@@ -156,7 +240,7 @@ const frameRouter = {
           path: "/iframe/pinia",
           name: "FramePinia",
           meta: {
-            title: "menus.hsPiniaDocument",
+            title: "menus.purePiniaDoc",
             frameSrc: "https://pinia.vuejs.org/zh/index.html",
             keepAlive: true,
             roles: ["admin", "common"]
@@ -166,7 +250,7 @@ const frameRouter = {
           path: "/iframe/vue-router",
           name: "FrameRouter",
           meta: {
-            title: "menus.hsRouterDocument",
+            title: "menus.pureRouterDoc",
             frameSrc: "https://router.vuejs.org/zh/",
             keepAlive: true,
             roles: ["admin", "common"]
@@ -180,8 +264,8 @@ const frameRouter = {
 const tabsRouter = {
   path: "/tabs",
   meta: {
-    icon: "tag",
-    title: "menus.hstabs",
+    icon: "ri:bookmark-2-line",
+    title: "menus.pureTabs",
     rank: tabs
   },
   children: [
@@ -189,7 +273,7 @@ const tabsRouter = {
       path: "/tabs/index",
       name: "Tabs",
       meta: {
-        title: "menus.hstabs",
+        title: "menus.pureTabs",
         roles: ["admin", "common"]
       }
     },
@@ -226,7 +310,13 @@ export default defineFakeRoute([
     response: () => {
       return {
         success: true,
-        data: [systemRouter, permissionRouter, frameRouter, tabsRouter]
+        data: [
+          systemManagementRouter,
+          systemMonitorRouter,
+          permissionRouter,
+          frameRouter,
+          tabsRouter
+        ]
       };
     }
   }

@@ -1,11 +1,23 @@
 import type { CSSProperties, VNode, Component } from "vue";
 
 type DoneFn = (cancel?: boolean) => void;
-type EventType = "open" | "close" | "openAutoFocus" | "closeAutoFocus";
+type EventType =
+  | "open"
+  | "close"
+  | "openAutoFocus"
+  | "closeAutoFocus"
+  | "fullscreenCallBack";
 type ArgsType = {
-  /** `cancel` 点击取消按钮、`sure` 点击确定按钮、`close` 点击右上角关闭按钮或者空白页 */
+  /** `cancel` 点击取消按钮、`sure` 点击确定按钮、`close` 点击右上角关闭按钮或空白页或按下了esc键 */
   command: "cancel" | "sure" | "close";
 };
+type ButtonType =
+  | "primary"
+  | "success"
+  | "warning"
+  | "danger"
+  | "info"
+  | "text";
 
 /** https://element-plus.org/zh-CN/component/dialog.html#attributes */
 type DialogProps = {
@@ -53,6 +65,34 @@ type DialogProps = {
   destroyOnClose?: boolean;
 };
 
+//element-plus.org/zh-CN/component/popconfirm.html#attributes
+type Popconfirm = {
+  /** 标题 */
+  title?: string;
+  /** 确认按钮文字 */
+  confirmButtonText?: string;
+  /** 取消按钮文字 */
+  cancelButtonText?: string;
+  /** 确认按钮类型，默认 `primary` */
+  confirmButtonType?: ButtonType;
+  /** 取消按钮类型，默认 `text` */
+  cancelButtonType?: ButtonType;
+  /** 自定义图标，默认 `QuestionFilled` */
+  icon?: string | Component;
+  /** `Icon` 颜色，默认 `#f90` */
+  iconColor?: string;
+  /** 是否隐藏 `Icon`，默认 `false` */
+  hideIcon?: boolean;
+  /** 关闭时的延迟，默认 `200` */
+  hideAfter?: number;
+  /** 是否将 `popover` 的下拉列表插入至 `body` 元素，默认 `true` */
+  teleported?: boolean;
+  /** 当 `popover` 组件长时间不触发且 `persistent` 属性设置为 `false` 时, `popover` 将会被删除，默认 `false` */
+  persistent?: boolean;
+  /** 弹层宽度，最小宽度 `150px`，默认 `150` */
+  width?: string | number;
+};
+
 type BtnClickDialog = {
   options?: DialogOptions;
   index?: number;
@@ -81,6 +121,8 @@ type ButtonProps = {
   round?: boolean;
   /** 是否为圆形按钮，默认 `false` */
   circle?: boolean;
+  /** 确认按钮的 `Popconfirm` 气泡确认框相关配置 */
+  popconfirm?: Popconfirm;
   /** 是否为加载中状态，默认 `false` */
   loading?: boolean;
   /** 自定义加载中状态图标组件 */
@@ -118,6 +160,8 @@ interface DialogOptions extends DialogProps {
   props?: any;
   /** 是否隐藏 `Dialog` 按钮操作区的内容 */
   hideFooter?: boolean;
+  /** 确认按钮的 `Popconfirm` 气泡确认框相关配置 */
+  popconfirm?: Popconfirm;
   /**
    * @description 自定义对话框标题的内容渲染器
    * @see {@link https://element-plus.org/zh-CN/component/dialog.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%A4%B4%E9%83%A8}
@@ -157,7 +201,7 @@ interface DialogOptions extends DialogProps {
     options: DialogOptions;
     index: number;
   }) => void;
-  /** `Dialog` 关闭后的回调（只有点击右上角关闭按钮或者空白页关闭页面时才会触发） */
+  /** `Dialog` 关闭后的回调（只有点击右上角关闭按钮或空白页或按下了esc键关闭页面时才会触发） */
   close?: ({
     options,
     index
@@ -165,7 +209,7 @@ interface DialogOptions extends DialogProps {
     options: DialogOptions;
     index: number;
   }) => void;
-  /** `Dialog` 关闭后的回调。 `args` 返回的 `command` 值解析：`cancel` 点击取消按钮、`sure` 点击确定按钮、`close` 点击右上角关闭按钮或者空白页  */
+  /** `Dialog` 关闭后的回调。 `args` 返回的 `command` 值解析：`cancel` 点击取消按钮、`sure` 点击确定按钮、`close` 点击右上角关闭按钮或空白页或按下了esc键  */
   closeCallBack?: ({
     options,
     index,
@@ -174,6 +218,14 @@ interface DialogOptions extends DialogProps {
     options: DialogOptions;
     index: number;
     args: any;
+  }) => void;
+  /** 点击全屏按钮时的回调 */
+  fullscreenCallBack?: ({
+    options,
+    index
+  }: {
+    options: DialogOptions;
+    index: number;
   }) => void;
   /** 输入焦点聚焦在 `Dialog` 内容时的回调 */
   openAutoFocus?: ({

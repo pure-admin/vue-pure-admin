@@ -23,7 +23,14 @@ const settingTB: ContextProps = reactive({
   <el-card shadow="never">
     <template #header>
       <div class="card-header">
-        <span class="font-medium">切割面板</span>
+        <p class="font-medium">切割面板</p>
+        <el-link
+          class="mt-2"
+          href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/components/split-pane.vue"
+          target="_blank"
+        >
+          代码位置 src/views/components/split-pane.vue
+        </el-link>
       </div>
     </template>
     <div class="split-pane">
@@ -57,7 +64,7 @@ const settingTB: ContextProps = reactive({
 <style lang="scss" scoped>
 .split-pane {
   width: 100%;
-  height: calc(100vh - 260px);
+  height: calc(100vh - 300px);
   font-size: 50px;
   text-align: center;
   border: 1px solid #e5e6eb;

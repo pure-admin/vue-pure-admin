@@ -32,6 +32,7 @@ const {
   selectedNum,
   pagination,
   buttonClass,
+  deviceDetection,
   onSearch,
   resetForm,
   onbatchDel,
@@ -50,20 +51,22 @@ const {
 </script>
 
 <template>
-  <div class="flex justify-between">
+  <div :class="['flex', 'justify-between', deviceDetection() && 'flex-wrap']">
     <tree
       ref="treeRef"
-      class="min-w-[200px] mr-2"
+      :class="['mr-2', deviceDetection() ? 'w-full' : 'min-w-[200px]']"
       :treeData="treeData"
       :treeLoading="treeLoading"
       @tree-select="onTreeSelect"
     />
-    <div class="w-[calc(100%-200px)]">
+    <div
+      :class="[deviceDetection() ? ['w-full', 'mt-2'] : 'w-[calc(100%-200px)]']"
+    >
       <el-form
         ref="formRef"
         :inline="true"
         :model="form"
-        class="search-form bg-bg_color w-[99/100] pl-8 pt-[12px]"
+        class="search-form bg-bg_color w-[99/100] pl-8 pt-[12px] overflow-auto"
       >
         <el-form-item label="用户名称：" prop="username">
           <el-input
@@ -95,7 +98,7 @@ const {
         <el-form-item>
           <el-button
             type="primary"
-            :icon="useRenderIcon('search')"
+            :icon="useRenderIcon('ri:search-line')"
             :loading="loading"
             @click="onSearch"
           >
@@ -150,6 +153,7 @@ const {
             ref="tableRef"
             row-key="id"
             adaptive
+            :adaptiveConfig="{ offsetBottom: 108 }"
             align-whole="center"
             table-layout="auto"
             :loading="loading"
@@ -258,6 +262,10 @@ const {
 
 :deep(.el-button:focus-visible) {
   outline: none;
+}
+
+.main-content {
+  margin: 24px 24px 0 !important;
 }
 
 .search-form {

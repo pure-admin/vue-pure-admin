@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
 import { emitter } from "@/utils/mitt";
 import { onClickOutside } from "@vueuse/core";
 import { ref, computed, onMounted, onBeforeUnmount } from "vue";
@@ -10,9 +11,12 @@ const show = ref<Boolean>(false);
 
 const iconClass = computed(() => {
   return [
+    "w-[22px]",
+    "h-[22px]",
+    "flex",
+    "justify-center",
+    "items-center",
     "outline-none",
-    "width-[20px]",
-    "height-[20px]",
     "rounded-[4px]",
     "cursor-pointer",
     "transition-colors",
@@ -22,6 +26,7 @@ const iconClass = computed(() => {
   ];
 });
 
+const { t } = useI18n();
 const { onReset } = useDataThemeChange();
 
 onClickOutside(target, (event: any) => {
@@ -42,16 +47,18 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div :class="{ show: show }" class="right-panel-container">
+  <div :class="{ show }">
     <div class="right-panel-background" />
     <div ref="target" class="right-panel bg-bg_color">
       <div
         class="project-configuration border-b-[1px] border-solid border-[var(--pure-border-color)]"
       >
-        <h4 class="dark:text-white">项目配置</h4>
+        <h4 class="dark:text-white">
+          {{ t("panel.pureSystemSet") }}
+        </h4>
         <span
           v-tippy="{
-            content: '关闭配置',
+            content: t('panel.pureCloseSystemSet'),
             placement: 'bottom-start',
             zIndex: 41000
           }"
@@ -59,8 +66,8 @@ onBeforeUnmount(() => {
         >
           <IconifyIconOffline
             class="dark:text-white"
-            width="20px"
-            height="20px"
+            width="18px"
+            height="18px"
             :icon="Close"
             @click="show = !show"
           />
@@ -75,7 +82,7 @@ onBeforeUnmount(() => {
       >
         <el-button
           v-tippy="{
-            content: '清空缓存并返回登录页',
+            content: t('panel.pureClearCacheAndToLogin'),
             placement: 'left-start',
             zIndex: 41000
           }"
@@ -84,20 +91,12 @@ onBeforeUnmount(() => {
           bg
           @click="onReset"
         >
-          清空缓存
+          {{ t("panel.pureClearCache") }}
         </el-button>
       </div>
     </div>
   </div>
 </template>
-
-<style>
-.showright-panel {
-  position: relative;
-  width: calc(100% - 15px);
-  overflow: hidden;
-}
-</style>
 
 <style lang="scss" scoped>
 :deep(.el-scrollbar) {
@@ -121,7 +120,6 @@ onBeforeUnmount(() => {
   z-index: 40000;
   width: 100%;
   max-width: 280px;
-  height: 100vh;
   box-shadow: 0 0 15px 0 rgb(0 0 0 / 5%);
   transition: all 0.25s cubic-bezier(0.7, 0.3, 0.1, 1);
   transform: translate(100%);

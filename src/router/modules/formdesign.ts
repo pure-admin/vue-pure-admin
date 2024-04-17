@@ -6,8 +6,8 @@ export default {
   path: "/form-design",
   redirect: "/form-design/index",
   meta: {
-    icon: "terminalWindowLine",
-    title: $t("menus.hsFormDesign"),
+    icon: "ri:terminal-window-line",
+    title: $t("menus.pureFormDesign"),
     rank: formdesign
   },
   children: [
@@ -16,7 +16,8 @@ export default {
       name: "FormDesign",
       component: IFrame,
       meta: {
-        title: $t("menus.hsFormDesign"),
+        title: $t("menus.pureFormDesign"),
+        keepAlive: true,
         frameSrc:
           "https://haixin-fang.github.io/vue-form-design/playground/index.html",
         frameLoading: false

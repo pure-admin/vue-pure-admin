@@ -92,7 +92,7 @@ const handleManageProduct = product => {
 </script>
 
 <template>
-  <div class="main">
+  <div>
     <div class="w-full flex justify-between mb-4">
       <el-button
         :icon="useRenderIcon(AddFill)"
@@ -110,7 +110,7 @@ const handleManageProduct = product => {
           <el-icon class="el-input__icon">
             <IconifyIconOffline
               v-show="searchValue.length === 0"
-              icon="search"
+              icon="ri:search-line"
             />
           </el-icon>
         </template>

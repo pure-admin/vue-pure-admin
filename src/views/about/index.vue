@@ -75,67 +75,79 @@ Object.keys(devDependencies).forEach(key => {
           <span class="font-medium">平台信息</span>
         </div>
       </template>
-      <PureDescriptions border :columns="columns" :column="4" />
+      <el-scrollbar>
+        <PureDescriptions border :columns="columns" :column="4" />
+      </el-scrollbar>
     </el-card>
 
     <el-card class="m-4 box-card" shadow="never">
       <template #header>
-        <div class="card-header">
+        <div class="card-header flex items-center">
           <span class="font-medium">生产环境依赖</span>
+          <el-tag type="primary" effect="dark" size="small" round class="ml-1">
+            {{ schema.length }}
+          </el-tag>
         </div>
       </template>
-      <el-descriptions border size="small" :column="6">
-        <el-descriptions-item
-          v-for="(item, index) in schema"
-          :key="index"
-          :label="item.label"
-          :label-class-name="getMainLabel(item.label)"
-          class-name="pure-version"
-          label-align="right"
-        >
-          <a
-            :href="'https://www.npmjs.com/package/' + item.label"
-            target="_blank"
+      <el-scrollbar>
+        <el-descriptions border size="small" :column="6">
+          <el-descriptions-item
+            v-for="(item, index) in schema"
+            :key="index"
+            :label="item.label"
+            :label-class-name="getMainLabel(item.label)"
+            class-name="pure-version"
+            label-align="right"
           >
-            <span
-              :class="getMainLabel(item.label)"
-              style="color: var(--el-color-primary)"
+            <a
+              :href="'https://www.npmjs.com/package/' + item.label"
+              target="_blank"
             >
-              {{ item.field }}
-            </span>
-          </a>
-        </el-descriptions-item>
-      </el-descriptions>
+              <span
+                :class="getMainLabel(item.label)"
+                style="color: var(--el-color-primary)"
+              >
+                {{ item.field }}
+              </span>
+            </a>
+          </el-descriptions-item>
+        </el-descriptions>
+      </el-scrollbar>
     </el-card>
 
     <el-card class="m-4 box-card" shadow="never">
       <template #header>
-        <div class="card-header">
+        <div class="card-header flex items-center">
           <span class="font-medium">开发环境依赖</span>
+          <el-tag type="primary" effect="dark" size="small" round class="ml-1">
+            {{ devSchema.length }}
+          </el-tag>
         </div>
       </template>
-      <el-descriptions border size="small" :column="5">
-        <el-descriptions-item
-          v-for="(item, index) in devSchema"
-          :key="index"
-          :label="item.label"
-          :label-class-name="getMainLabel(item.label)"
-          class-name="pure-version"
-          label-align="right"
-        >
-          <a
-            :href="'https://www.npmjs.com/package/' + item.label"
-            target="_blank"
+      <el-scrollbar>
+        <el-descriptions border size="small" :column="5">
+          <el-descriptions-item
+            v-for="(item, index) in devSchema"
+            :key="index"
+            :label="item.label"
+            :label-class-name="getMainLabel(item.label)"
+            class-name="pure-version"
+            label-align="right"
           >
-            <span
-              :class="getMainLabel(item.label)"
-              style="color: var(--el-color-primary)"
+            <a
+              :href="'https://www.npmjs.com/package/' + item.label"
+              target="_blank"
             >
-              {{ item.field }}
-            </span>
-          </a>
-        </el-descriptions-item>
-      </el-descriptions>
+              <span
+                :class="getMainLabel(item.label)"
+                style="color: var(--el-color-primary)"
+              >
+                {{ item.field }}
+              </span>
+            </a>
+          </el-descriptions-item>
+        </el-descriptions>
+      </el-scrollbar>
     </el-card>
   </div>
 </template>
