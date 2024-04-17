@@ -29,7 +29,7 @@ const emit = defineEmits<Emits>();
 const props = withDefaults(defineProps<Props>(), {});
 
 const router = useRouter();
-const { locale } = useI18n();
+const { t, locale } = useI18n();
 
 const HISTORY_TYPE = "history";
 const COLLECT_TYPE = "collect";
@@ -293,7 +293,7 @@ onKeyStroke("ArrowDown", handleDown);
       v-model="keyword"
       size="large"
       clearable
-      :placeholder="transformI18n($t('search.purePlaceholder'))"
+      :placeholder="t('search.purePlaceholder')"
       @input="handleSearch"
     >
       <template #prefix>
@@ -305,10 +305,7 @@ onKeyStroke("ArrowDown", handleDown);
     </el-input>
     <div class="search-content">
       <el-scrollbar ref="scrollbarRef" max-height="calc(90vh - 140px)">
-        <el-empty
-          v-if="showEmpty"
-          :description="transformI18n($t('search.pureEmpty'))"
-        />
+        <el-empty v-if="showEmpty" :description="t('search.pureEmpty')" />
         <SearchHistory
           v-if="showSearchHistory"
           ref="historyRef"

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { transformI18n, $t } from "@/plugins/i18n";
+import { useI18n } from "vue-i18n";
 import MenuFold from "@iconify-icons/ri/menu-fold-fill";
 import MenuUnfold from "@iconify-icons/ri/menu-unfold-fill";
 
@@ -10,6 +10,8 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   isActive: false
 });
+
+const { t } = useI18n();
 
 const emit = defineEmits<{
   (e: "toggleClick"): void;
@@ -24,11 +26,9 @@ const toggleClick = () => {
   <div
     class="px-3 mr-1 navbar-bg-hover"
     :title="
-      transformI18n(
-        props.isActive
-          ? $t('buttons.pureClickCollapse')
-          : $t('buttons.pureClickExpand')
-      )
+      props.isActive
+        ? t('buttons.pureClickCollapse')
+        : t('buttons.pureClickExpand')
     "
     @click="toggleClick"
   >

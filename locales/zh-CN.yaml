@@ -2,7 +2,7 @@ buttons:
   pureAccountSettings: 账户设置
   pureLoginOut: 退出系统
   pureLogin: 登录
-  pureSystemSet: 打开项目配置
+  pureOpenSystemSet: 打开系统配置
   pureReload: 重新加载
   pureCloseCurrentTab: 关闭当前标签页
   pureCloseLeftTabs: 关闭左侧标签页
@@ -16,6 +16,7 @@ buttons:
   pureConfirm: 确认
   pureSwitch: 切换
   pureClose: 关闭
+  pureBackTop: 回到顶部
 search:
   pureTotal: 共
   pureHistory: 搜索历史
@@ -23,6 +24,11 @@ search:
   pureDragSort: （可拖拽排序）
   pureEmpty: 暂无搜索结果
   purePlaceholder: 搜索菜单（支持拼音搜索）
+panel:
+  pureSystemSet: 系统配置
+  pureCloseSystemSet: 关闭配置
+  pureClearCacheAndToLogin: 清空缓存并返回登录页
+  pureClearCache: 清空缓存
 menus:
   pureHome: 首页
   pureLogin: 登录
@@ -148,6 +154,7 @@ menus:
   pureChildMenuOverflow: 菜单超出显示 Tooltip 文字提示
 status:
   pureLoad: 加载中...
+  pureNoMessage: 暂无消息
 login:
   pureUsername: 账号
   purePassword: 密码

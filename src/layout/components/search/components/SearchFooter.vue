@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
 import { useNav } from "@/layout/hooks/useNav";
-import { transformI18n, $t } from "@/plugins/i18n";
 import mdiKeyboardEsc from "@/assets/svg/keyboard_esc.svg?component";
 import enterOutlined from "@/assets/svg/enter_outlined.svg?component";
 import ArrowUpLine from "@iconify-icons/ri/arrow-up-line";
@@ -10,6 +10,7 @@ const props = withDefaults(defineProps<{ total: number }>(), {
   total: 0
 });
 
+const { t } = useI18n();
 const { device } = useNav();
 </script>
 
@@ -17,22 +18,22 @@ const { device } = useNav();
   <div class="search-footer text-[#333] dark:text-white">
     <span class="search-footer-item">
       <enterOutlined class="icon" />
-      {{ transformI18n($t("buttons.pureConfirm")) }}
+      {{ t("buttons.pureConfirm") }}
     </span>
     <span class="search-footer-item">
       <IconifyIconOffline :icon="ArrowUpLine" class="icon" />
       <IconifyIconOffline :icon="ArrowDownLine" class="icon" />
-      {{ transformI18n($t("buttons.pureSwitch")) }}
+      {{ t("buttons.pureSwitch") }}
     </span>
     <span class="search-footer-item">
       <mdiKeyboardEsc class="icon" />
-      {{ transformI18n($t("buttons.pureClose")) }}
+      {{ t("buttons.pureClose") }}
     </span>
     <p
       v-if="device !== 'mobile' && props.total > 0"
       class="search-footer-total"
     >
-      {{ `${transformI18n($t("search.pureTotal"))} ${props.total}` }}
+      {{ `${t("search.pureTotal")} ${props.total}` }}
     </p>
   </div>
 </template>

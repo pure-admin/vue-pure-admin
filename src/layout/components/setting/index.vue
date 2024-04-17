@@ -291,7 +291,7 @@ function watchSystemThemeChange() {
 }
 
 onBeforeMount(() => {
-  /* 初始化项目配置 */
+  /* 初始化系统配置 */
   nextTick(() => {
     watchSystemThemeChange();
     settings.greyVal &&

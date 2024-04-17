@@ -2,7 +2,7 @@ buttons:
   pureAccountSettings: Account
   pureLoginOut: LoginOut
   pureLogin: Login
-  pureSystemSet: Open ProjectConfig
+  pureOpenSystemSet: Open System Configs
   pureReload: Reload
   pureCloseCurrentTab: Close CurrentTab
   pureCloseLeftTabs: Close LeftTabs
@@ -16,6 +16,7 @@ buttons:
   pureConfirm: Confirm
   pureSwitch: Switch
   pureClose: Close
+  pureBackTop: BackTop
 search:
   pureTotal: Total
   pureHistory: History
@@ -23,6 +24,11 @@ search:
   pureDragSort: （Drag Sort）
   pureEmpty: Empty
   purePlaceholder: Search Menu
+panel:
+  pureSystemSet: System Configs
+  pureCloseSystemSet: Close System Configs
+  pureClearCacheAndToLogin: Clear Cache And To Login Page
+  pureClearCache: Clear Cache
 menus:
   pureHome: Home
   pureLogin: Login
@@ -148,6 +154,7 @@ menus:
   pureChildMenuOverflow: Child Menu Overflow Show Tooltip Text
 status:
   pureLoad: Loading...
+  pureNoMessage: No Message
 login:
   pureUsername: Username
   purePassword: Password
