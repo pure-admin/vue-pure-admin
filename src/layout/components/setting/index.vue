@@ -147,18 +147,20 @@ function setFalse(Doms): any {
 }
 
 /** 页宽 */
-const stretchTypeOptions: Array<OptionsType> = [
-  {
-    label: t("panel.pureStretchFixed"),
-    tip: t("panel.pureStretchFixedTip"),
-    value: "fixed"
-  },
-  {
-    label: t("panel.pureStretchCustom"),
-    tip: t("panel.pureStretchCustomTip"),
-    value: "custom"
-  }
-];
+const stretchTypeOptions = computed<Array<OptionsType>>(() => {
+  return [
+    {
+      label: t("panel.pureStretchFixed"),
+      tip: t("panel.pureStretchFixedTip"),
+      value: "fixed"
+    },
+    {
+      label: t("panel.pureStretchCustom"),
+      tip: t("panel.pureStretchCustomTip"),
+      value: "custom"
+    }
+  ];
+});
 
 const setStretch = value => {
   settings.stretch = value;
@@ -219,18 +221,20 @@ const themeOptions = computed<Array<OptionsType>>(() => {
   ];
 });
 
-const markOptions: Array<OptionsType> = [
-  {
-    label: t("panel.pureTagsStyleSmart"),
-    tip: t("panel.pureTagsStyleSmartTip"),
-    value: "smart"
-  },
-  {
-    label: t("panel.pureTagsStyleCard"),
-    tip: t("panel.pureTagsStyleCardTip"),
-    value: "card"
-  }
-];
+const markOptions = computed<Array<OptionsType>>(() => {
+  return [
+    {
+      label: t("panel.pureTagsStyleSmart"),
+      tip: t("panel.pureTagsStyleSmartTip"),
+      value: "smart"
+    },
+    {
+      label: t("panel.pureTagsStyleCard"),
+      tip: t("panel.pureTagsStyleCardTip"),
+      value: "card"
+    }
+  ];
+});
 
 /** 设置导航模式 */
 function setLayoutModel(layout: string) {
