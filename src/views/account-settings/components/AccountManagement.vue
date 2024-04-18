@@ -3,6 +3,10 @@ import { ref } from "vue";
 import { message } from "@/utils/message";
 import { deviceDetection } from "@pureadmin/utils";
 
+defineOptions({
+  name: "AccountManagement"
+});
+
 const list = ref([
   {
     title: "账户密码",

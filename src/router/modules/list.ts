@@ -12,11 +12,11 @@ export default {
   children: [
     {
       path: "/list/card",
-      name: "ListCard",
+      name: "CardList",
       component: () => import("@/views/list/card/index.vue"),
       meta: {
         icon: "ri:bank-card-line",
-        title: $t("menus.pureListCard"),
+        title: $t("menus.pureCardList"),
         showParent: true
       }
     }

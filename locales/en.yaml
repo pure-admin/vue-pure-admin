@@ -157,7 +157,7 @@ menus:
   pureTimeline: Time Line
   pureLineTree: LineTree
   pureList: List Page
-  pureListCard: Card List Page
+  pureCardList: Card List Page
   pureDebounce: Debounce & Throttle
   pureFormDesign: Form Design
   pureBarcode: Barcode

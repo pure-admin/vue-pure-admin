@@ -3,11 +3,11 @@ import { getMine } from "@/api/user";
 import { useRouter } from "vue-router";
 import { ref, onBeforeMount } from "vue";
 import { ReText } from "@/components/ReText";
-import Profile from "./components/profile.vue";
-import Preferences from "./components/preferences.vue";
-import SecurityLog from "./components/securityLog.vue";
+import Profile from "./components/Profile.vue";
+import Preferences from "./components/Preferences.vue";
+import SecurityLog from "./components/SecurityLog.vue";
 import { useGlobal, deviceDetection } from "@pureadmin/utils";
-import AccountManagement from "./components/accountManagement.vue";
+import AccountManagement from "./components/AccountManagement.vue";
 import TopCollapse from "@/layout/components/sidebar/topCollapse.vue";
 import { useDataThemeChange } from "@/layout/hooks/useDataThemeChange";
 

@@ -157,7 +157,7 @@ menus:
   pureTimeline: 时间线
   pureLineTree: 树形连接线
   pureList: 列表页面
-  pureListCard: 卡片列表页
+  pureCardList: 卡片列表页
   pureDebounce: 防抖节流
   pureFormDesign: 表单设计器
   pureBarcode: 条形码

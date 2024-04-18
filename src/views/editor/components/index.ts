@@ -1,9 +1,3 @@
-import base from "./base.vue";
-import multi from "./multi.vue";
-import picUpload from "./picUpload.vue";
-
-const Base = base;
-const Multi = multi;
-const PicUpload = picUpload;
-
-export { Base, Multi, PicUpload };
+export { default as EditorBase } from "./EditorBase.vue";
+export { default as EditorMulti } from "./EditorMulti.vue";
+export { default as EditorUpload } from "./EditorUpload.vue";
