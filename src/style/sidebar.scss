@@ -263,8 +263,9 @@
     }
 
     & > .el-menu {
-      i {
-        margin-right: 20px;
+      i,
+      svg {
+        margin-right: 5px;
       }
     }
 
