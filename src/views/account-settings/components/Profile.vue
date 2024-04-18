@@ -8,6 +8,10 @@ import ReCropperPreview from "@/components/ReCropperPreview";
 import { createFormData, deviceDetection } from "@pureadmin/utils";
 import uploadLine from "@iconify-icons/ri/upload-line";
 
+defineOptions({
+  name: "Profile"
+});
+
 const imgSrc = ref("");
 const cropperInfo = ref();
 const cropRef = ref();

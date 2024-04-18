@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import Card from "./components/Card.vue";
 import { getCardList } from "@/api/list";
 import { message } from "@/utils/message";
 import { ElMessageBox } from "element-plus";
 import { ref, onMounted, nextTick } from "vue";
-import dialogForm from "./components/DialogForm.vue";
+import ListCard from "./components/ListCard.vue";
+import ListDialogForm from "./components/ListDialogForm.vue";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import AddFill from "@iconify-icons/ri/add-circle-line";
 
 defineOptions({
-  name: "ListCard"
+  name: "CardList"
 });
 
 const svg = `
@@ -152,7 +152,7 @@ const handleManageProduct = product => {
             :lg="6"
             :xl="4"
           >
-            <Card
+            <ListCard
               :product="product"
               @delete-item="handleDeleteItem"
               @manage-product="handleManageProduct"
@@ -172,6 +172,6 @@ const handleManageProduct = product => {
         />
       </template>
     </div>
-    <dialogForm v-model:visible="formDialogVisible" :data="formData" />
+    <ListDialogForm v-model:visible="formDialogVisible" :data="formData" />
   </div>
 </template>

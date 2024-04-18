@@ -2,11 +2,11 @@
 import { ref, markRaw } from "vue";
 import ReCol from "@/components/ReCol";
 import { useDark, randomGradient } from "./utils";
-import PureTable from "./components/table/index.vue";
 import { ReNormalCountTo } from "@/components/ReCountTo";
 import { useRenderFlicker } from "@/components/ReFlicker";
-import { barChart, lineChart, roundChart } from "./components/chart";
+import WelcomeTable from "./components/WelcomeTable/index.vue";
 import Segmented, { type OptionsType } from "@/components/ReSegmented";
+import { ChartBar, ChartLine, ChartRound } from "./components/WelcomeCharts";
 import { chartData, barChartData, progressData, latestNewsData } from "./data";
 
 defineOptions({
@@ -78,13 +78,13 @@ const optionsBasis: Array<OptionsType> = [
               />
               <p class="font-medium text-green-500">{{ item.percent }}</p>
             </div>
-            <lineChart
+            <ChartLine
               v-if="item.data.length > 1"
               class="!w-1/2"
               :color="item.color"
               :data="item.data"
             />
-            <roundChart v-else class="!w-1/2" />
+            <ChartRound v-else class="!w-1/2" />
           </div>
         </el-card>
       </re-col>
@@ -112,7 +112,7 @@ const optionsBasis: Array<OptionsType> = [
             <Segmented v-model="curWeek" :options="optionsBasis" />
           </div>
           <div class="flex justify-between items-start mt-3">
-            <barChart
+            <ChartBar
               :requireData="barChartData[curWeek].requireData"
               :questionData="barChartData[curWeek].questionData"
             />
@@ -188,7 +188,7 @@ const optionsBasis: Array<OptionsType> = [
           <div class="flex justify-between">
             <span class="text-md font-medium">数据统计</span>
           </div>
-          <PureTable class="mt-3" />
+          <WelcomeTable class="mt-3" />
         </el-card>
       </re-col>
 

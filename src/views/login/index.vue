@@ -4,18 +4,18 @@ import Motion from "./utils/motion";
 import { useRouter } from "vue-router";
 import { message } from "@/utils/message";
 import { loginRules } from "./utils/rule";
-import phone from "./components/phone.vue";
 import TypeIt from "@/components/ReTypeit";
 import { debounce } from "@pureadmin/utils";
-import qrCode from "./components/qrCode.vue";
-import regist from "./components/regist.vue";
-import update from "./components/update.vue";
 import { useNav } from "@/layout/hooks/useNav";
 import { useEventListener } from "@vueuse/core";
 import type { FormInstance } from "element-plus";
 import { $t, transformI18n } from "@/plugins/i18n";
 import { operates, thirdParty } from "./utils/enums";
 import { useLayout } from "@/layout/hooks/useLayout";
+import LoginPhone from "./components/LoginPhone.vue";
+import LoginRegist from "./components/LoginRegist.vue";
+import LoginUpdate from "./components/LoginUpdate.vue";
+import LoginQrCode from "./components/LoginQrCode.vue";
 import { useUserStoreHook } from "@/store/modules/user";
 import { initRouter, getTopMenu } from "@/router/utils";
 import { bg, avatar, illustration } from "./utils/static";
@@ -318,13 +318,13 @@ watch(loginDay, value => {
             </el-form-item>
           </Motion>
           <!-- 手机号登录 -->
-          <phone v-if="currentPage === 1" />
+          <LoginPhone v-if="currentPage === 1" />
           <!-- 二维码登录 -->
-          <qrCode v-if="currentPage === 2" />
+          <LoginQrCode v-if="currentPage === 2" />
           <!-- 注册 -->
-          <regist v-if="currentPage === 3" />
+          <LoginRegist v-if="currentPage === 3" />
           <!-- 忘记密码 -->
-          <update v-if="currentPage === 4" />
+          <LoginUpdate v-if="currentPage === 4" />
         </div>
       </div>
     </div>

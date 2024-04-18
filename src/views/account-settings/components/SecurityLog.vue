@@ -5,6 +5,10 @@ import { reactive, ref, onMounted } from "vue";
 import { deviceDetection } from "@pureadmin/utils";
 import type { PaginationProps } from "@pureadmin/table";
 
+defineOptions({
+  name: "SecurityLog"
+});
+
 const loading = ref(true);
 const dataList = ref([]);
 const pagination = reactive<PaginationProps>({
