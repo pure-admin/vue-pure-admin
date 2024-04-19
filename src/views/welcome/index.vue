@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, markRaw } from "vue";
+import { ref, markRaw, onMounted } from "vue";
 import ReCol from "@/components/ReCol";
 import { useDark, randomGradient } from "./utils";
 import { ReNormalCountTo } from "@/components/ReCountTo";
@@ -8,6 +8,7 @@ import WelcomeTable from "./components/WelcomeTable/index.vue";
 import Segmented, { type OptionsType } from "@/components/ReSegmented";
 import { ChartBar, ChartLine, ChartRound } from "./components/WelcomeCharts";
 import { chartData, barChartData, progressData, latestNewsData } from "./data";
+import { useMotion } from "@vueuse/motion";
 
 defineOptions({
   name: "Welcome"
@@ -24,6 +25,27 @@ const optionsBasis: Array<OptionsType> = [
     label: "本周"
   }
 ];
+const colRefs = ref<InstanceType<typeof ReCol>[]>([]);
+function addColRef(colRef: any) {
+  colRefs.value.push(colRef);
+}
+onMounted(() => {
+  colRefs.value.forEach((item, index) => {
+    useMotion(item.$el, {
+      initial: {
+        opacity: 0,
+        y: 100
+      },
+      enter: {
+        opacity: 1,
+        y: 0,
+        transition: {
+          delay: 80 * (index + 1)
+        }
+      }
+    });
+  });
+});
 </script>
 
 <template>
@@ -32,23 +54,12 @@ const optionsBasis: Array<OptionsType> = [
       <re-col
         v-for="(item, index) in chartData"
         :key="index"
-        v-motion
+        :ref="addColRef"
         class="mb-[18px]"
         :value="6"
         :md="12"
         :sm="12"
         :xs="24"
-        :initial="{
-          opacity: 0,
-          y: 100
-        }"
-        :enter="{
-          opacity: 1,
-          y: 0,
-          transition: {
-            delay: 80 * (index + 1)
-          }
-        }"
       >
         <el-card class="line-card" shadow="never">
           <div class="flex justify-between">
@@ -89,23 +100,7 @@ const optionsBasis: Array<OptionsType> = [
         </el-card>
       </re-col>
 
-      <re-col
-        v-motion
-        class="mb-[18px]"
-        :value="18"
-        :xs="24"
-        :initial="{
-          opacity: 0,
-          y: 100
-        }"
-        :enter="{
-          opacity: 1,
-          y: 0,
-          transition: {
-            delay: 400
-          }
-        }"
-      >
+      <re-col :ref="addColRef" class="mb-[18px]" :value="18" :xs="24">
         <el-card class="bar-card" shadow="never">
           <div class="flex justify-between">
             <span class="text-md font-medium">分析概览</span>
@@ -120,23 +115,7 @@ const optionsBasis: Array<OptionsType> = [
         </el-card>
       </re-col>
 
-      <re-col
-        v-motion
-        class="mb-[18px]"
-        :value="6"
-        :xs="24"
-        :initial="{
-          opacity: 0,
-          y: 100
-        }"
-        :enter="{
-          opacity: 1,
-          y: 0,
-          transition: {
-            delay: 480
-          }
-        }"
-      >
+      <re-col :ref="addColRef" class="mb-[18px]" :value="6" :xs="24">
         <el-card shadow="never">
           <div class="flex justify-between">
             <span class="text-md font-medium">解决概率</span>
@@ -167,23 +146,7 @@ const optionsBasis: Array<OptionsType> = [
         </el-card>
       </re-col>
 
-      <re-col
-        v-motion
-        class="mb-[18px]"
-        :value="18"
-        :xs="24"
-        :initial="{
-          opacity: 0,
-          y: 100
-        }"
-        :enter="{
-          opacity: 1,
-          y: 0,
-          transition: {
-            delay: 560
-          }
-        }"
-      >
+      <re-col :ref="addColRef" class="mb-[18px]" :value="18" :xs="24">
         <el-card shadow="never" class="h-[580px]">
           <div class="flex justify-between">
             <span class="text-md font-medium">数据统计</span>
@@ -192,23 +155,7 @@ const optionsBasis: Array<OptionsType> = [
         </el-card>
       </re-col>
 
-      <re-col
-        v-motion
-        class="mb-[18px]"
-        :value="6"
-        :xs="24"
-        :initial="{
-          opacity: 0,
-          y: 100
-        }"
-        :enter="{
-          opacity: 1,
-          y: 0,
-          transition: {
-            delay: 640
-          }
-        }"
-      >
+      <re-col :ref="addColRef" class="mb-[18px]" :value="6" :xs="24">
         <el-card shadow="never">
           <div class="flex justify-between">
             <span class="text-md font-medium">最新动态</span>
