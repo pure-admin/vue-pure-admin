@@ -19,11 +19,12 @@ import {
   // 可选组件
   Icon,
   Column,
+  Grid,
+  Pager,
+  Select,
   // Colgroup,
-  // Grid,
   // Tooltip,
   // Toolbar,
-  // Pager,
   // Form,
   // FormItem,
   // FormGather,
@@ -34,7 +35,6 @@ import {
   // RadioButton,
   // Switch,
   // Input,
-  // Select,
   // Optgroup,
   // Option,
   // Textarea,
@@ -74,11 +74,12 @@ export function useVxeTable(app: App) {
   app
     .use(Icon)
     .use(Column)
+    .use(Grid)
+    .use(Pager)
+    .use(Select)
     // .use(Colgroup)
-    // .use(Grid)
     // .use(Tooltip)
     // .use(Toolbar)
-    // .use(Pager)
     // .use(Form)
     // .use(FormItem)
     // .use(FormGather)
@@ -89,7 +90,6 @@ export function useVxeTable(app: App) {
     // .use(RadioButton)
     // .use(Switch)
     // .use(Input)
-    // .use(Select)
     // .use(Optgroup)
     // .use(Option)
     // .use(Textarea)
