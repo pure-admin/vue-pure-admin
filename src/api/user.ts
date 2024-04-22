@@ -3,8 +3,12 @@ import { http } from "@/utils/http";
 export type UserResult = {
   success: boolean;
   data: {
+    /** 头像 */
+    avatar: string;
     /** 用户名 */
     username: string;
+    /** 昵称 */
+    nickname: string;
     /** 当前登录用户的角色 */
     roles: Array<string>;
     /** `token` */
