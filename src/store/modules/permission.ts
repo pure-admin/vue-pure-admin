@@ -1,3 +1,4 @@
+import { defineStore } from "pinia";
 import {
   type cacheType,
   store,
@@ -5,7 +6,6 @@ import {
   ascending,
   getKeyList,
   filterTree,
-  defineStore,
   constantMenus,
   filterNoPermissionTree,
   formatFlatteningRoutes

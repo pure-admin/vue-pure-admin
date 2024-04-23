@@ -36,8 +36,6 @@ const include = [
   "vue-json-pretty",
   "@logicflow/core",
   "@pureadmin/utils",
-  "@vue-office/docx",
-  "@vue-office/excel",
   "@wangeditor/editor",
   "responsive-storage",
   "plus-pro-components",

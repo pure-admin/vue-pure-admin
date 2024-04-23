@@ -1,8 +1,8 @@
+import { defineStore } from "pinia";
 import {
   type appType,
   store,
   getConfig,
-  defineStore,
   storageLocal,
   deviceDetection,
   responsiveStorageNameSpace

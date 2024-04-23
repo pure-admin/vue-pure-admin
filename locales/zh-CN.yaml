@@ -166,8 +166,6 @@ menus:
   pureSwiper: Swiper插件
   pureVirtualList: 虚拟列表
   purePdf: PDF预览
-  pureWord: Word预览
-  pureExcels: Excel预览
   pureExcel: 导出Excel
   pureInfiniteScroll: 表格无限滚动
   pureSensitive: 敏感词过滤
