@@ -91,7 +91,7 @@
     "v-contextmenu": "^3.2.0",
     "v3-infinite-loading": "^1.3.1",
     "version-rocket": "^1.7.1",
-    "vue": "^3.4.24",
+    "vue": "3.4.23",
     "vue-i18n": "^9.13.1",
     "vue-json-pretty": "^2.4.0",
     "vue-pdf-embed": "^2.0.3",
@@ -109,7 +109,7 @@
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.2.2",
+    "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@commitlint/types": "^19.0.3",
     "@eslint/js": "^9.1.1",
@@ -152,7 +152,7 @@
     "rimraf": "^5.0.5",
     "rollup-plugin-visualizer": "^5.12.0",
     "sass": "^1.75.0",
-    "stylelint": "^16.3.1",
+    "stylelint": "^16.4.0",
     "stylelint-config-recess-order": "^5.0.1",
     "stylelint-config-recommended-vue": "^1.5.0",
     "stylelint-config-standard-scss": "^13.1.0",
