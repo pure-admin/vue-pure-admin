@@ -166,8 +166,6 @@ menus:
   pureSwiper: Swiper Plugin
   pureVirtualList: Virtual List
   purePdf: PDF Preview
-  pureWord: Word Preview
-  pureExcels: Excel Preview
   pureExcel: Export Excel
   pureInfiniteScroll: Table Infinite Scroll
   pureSensitive: Sensitive Filter

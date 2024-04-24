@@ -1,3 +1,4 @@
+import { defineStore } from "pinia";
 import {
   type multiType,
   type positionType,
@@ -7,7 +8,6 @@ import {
   isNumber,
   isBoolean,
   getConfig,
-  defineStore,
   routerArrays,
   storageLocal,
   responsiveStorageNameSpace

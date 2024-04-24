@@ -13,7 +13,7 @@ defineOptions({
 });
 
 const imgSrc = ref("");
-const cropperInfo = ref();
+const cropperBlob = ref();
 const cropRef = ref();
 const uploadRef = ref();
 const isShow = ref(false);
@@ -66,11 +66,11 @@ const handleClose = () => {
   isShow.value = false;
 };
 
-const onCropper = info => (cropperInfo.value = info);
+const onCropper = ({ blob }) => (cropperBlob.value = blob);
 
 const handleSubmitImage = () => {
   const formData = createFormData({
-    files: new File([cropperInfo.value], "avatar")
+    files: new File([cropperBlob.value], "avatar")
   });
   formUpload(formData)
     .then(({ success, data }) => {

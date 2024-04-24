@@ -1,5 +1,4 @@
 export { store } from "@/store";
-export { defineStore } from "pinia";
 export { routerArrays } from "@/layout/types";
 export { router, resetRouter, constantMenus } from "@/router";
 export { getConfig, responsiveStorageNameSpace } from "@/config";

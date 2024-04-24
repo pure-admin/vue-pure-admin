@@ -1,7 +1,7 @@
+import { defineStore } from "pinia";
 import {
   store,
   getConfig,
-  defineStore,
   storageLocal,
   responsiveStorageNameSpace
 } from "../utils";

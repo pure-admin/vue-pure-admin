@@ -1,3 +1,33 @@
+# 5.4.0 (2024-04-18)
+
+### 🎫 Feat
+
+- Add global disabled attribute `disabled` to `ReSegmented` component
+- Added mind map examples
+- Functional pop-up box `ReDialog` adds `Popconfirm` bubble confirmation box
+- `pure-table` adds `headerSlot` custom header slot usage example
+- The route adds a configurable `fixedTag` attribute, which determines whether the current menu name is fixedly displayed on the tab and cannot be closed.
+- Added account setting function page and compatible with mobile terminals
+- Upgrade `eslint9` and related compatibility processing
+- Added global configuration `MaxTagsLevel` property to set the maximum number of open tabs
+- Full coverage of the internationalization of the core code of the framework (only the internationalization of the business code needs to be processed)
+
+### 🐞 Bug fixes
+
+- Fixed the issue where columns cannot be dragged normally when there are multiple `RePureTableBar` components on a page
+- Fixed the problem of icon display style after the third-level menu is folded to the left
+- Fixed the issue where the font color does not take effect after refreshing the account settings page
+- Fixed the issue where the `refreshToken` parameter is empty when calling the refresh `token` interface
+
+### 🍏 Perf
+
+- Optimize login interface
+- Optimize the logic of obtaining the top menu
+- Optimize request whitelist logic and be compatible with more scenarios
+- Simplified export and import usage in `store` files
+- Removed unnecessary `cloc` tool dependency package, which uses the `GPL` open source license and is controversial
+- Optimize the types of `post` and `get` utility functions in `src/utils/http` files
+
 # 5.3.0 (2024-03-28)
 
 ### ✔️ refactor

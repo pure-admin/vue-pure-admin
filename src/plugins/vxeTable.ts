@@ -16,6 +16,7 @@ import {
   // Export,
   // Keyboard,
   // Validator,
+  Custom,
   // 可选组件
   Icon,
   Column,
@@ -64,14 +65,15 @@ VXETable.config({
 
 export function useVxeTable(app: App) {
   // 表格功能
-  // app.use(Filter)
-  // .use(Edit)
-  // .use(Menu)
-  // .use(Export)
-  // .use(Keyboard)
-  // .use(Validator)
-  // 可选组件
   app
+    // .use(Filter)
+    // .use(Edit)
+    // .use(Menu)
+    // .use(Export)
+    // .use(Keyboard)
+    // .use(Validator)
+    .use(Custom)
+    // 可选组件
     .use(Icon)
     .use(Column)
     // .use(Colgroup)
