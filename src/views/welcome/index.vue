@@ -2,11 +2,11 @@
 import { ref, markRaw } from "vue";
 import ReCol from "@/components/ReCol";
 import { useDark, randomGradient } from "./utils";
+import WelcomeTable from "./components/table/index.vue";
 import { ReNormalCountTo } from "@/components/ReCountTo";
 import { useRenderFlicker } from "@/components/ReFlicker";
-import WelcomeTable from "./components/WelcomeTable/index.vue";
+import { ChartBar, ChartLine, ChartRound } from "./components/charts";
 import Segmented, { type OptionsType } from "@/components/ReSegmented";
-import { ChartBar, ChartLine, ChartRound } from "./components/WelcomeCharts";
 import { chartData, barChartData, progressData, latestNewsData } from "./data";
 
 defineOptions({
