@@ -93,6 +93,9 @@ class PureHttp {
                         PureHttp.requests.forEach(cb => cb(token));
                         PureHttp.requests = [];
                       })
+                      .catch(() => {
+                        useUserStoreHook().logOut();
+                      })
                       .finally(() => {
                         PureHttp.isRefreshing = false;
                       });
