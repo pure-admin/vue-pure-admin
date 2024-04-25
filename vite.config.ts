@@ -4,14 +4,14 @@ import { type UserConfigExport, type ConfigEnv, loadEnv } from "vite";
 import {
   root,
   alias,
-  warpperEnv,
+  wrapperEnv,
   pathResolve,
   __APP_INFO__
 } from "./build/utils";
 
 export default ({ mode }: ConfigEnv): UserConfigExport => {
   const { VITE_CDN, VITE_PORT, VITE_COMPRESSION, VITE_PUBLIC_PATH } =
-    warpperEnv(loadEnv(mode, root));
+    wrapperEnv(loadEnv(mode, root));
   return {
     base: VITE_PUBLIC_PATH,
     root,
