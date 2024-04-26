@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import { useI18n } from "vue-i18n";
 import { noticesData } from "./data";
-import NoticeList from "./noticeList.vue";
+import NoticeList from "./NoticeList.vue";
 import Bell from "@iconify-icons/ep/bell";
 
 const { t } = useI18n();

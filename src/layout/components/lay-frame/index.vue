@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { getConfig } from "@/config";
+import { useMultiFrame } from "@/layout/hooks/useMultiFrame";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
 import { type Component, shallowRef, watch, computed } from "vue";
 import { type RouteRecordRaw, RouteLocationNormalizedLoaded } from "vue-router";
-import { useMultiFrame } from "@/layout/components/keepAliveFrame/useMultiFrame";
 
 const props = defineProps<{
   currRoute: RouteLocationNormalizedLoaded;
