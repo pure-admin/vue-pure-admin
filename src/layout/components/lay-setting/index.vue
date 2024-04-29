@@ -10,8 +10,8 @@ import {
   onBeforeMount
 } from "vue";
 import { useI18n } from "vue-i18n";
-import panel from "../panel/index.vue";
 import { emitter } from "@/utils/mitt";
+import LayPanel from "../lay-panel/index.vue";
 import { useNav } from "@/layout/hooks/useNav";
 import { useAppStoreHook } from "@/store/modules/app";
 import { toggleTheme } from "@pureadmin/theme/dist/browser-utils";
@@ -23,9 +23,9 @@ import { useDark, useGlobal, debounce, isNumber } from "@pureadmin/utils";
 import Check from "@iconify-icons/ep/check";
 import LeftArrow from "@iconify-icons/ri/arrow-left-s-line";
 import RightArrow from "@iconify-icons/ri/arrow-right-s-line";
-import dayIcon from "@/assets/svg/day.svg?component";
-import darkIcon from "@/assets/svg/dark.svg?component";
-import systemIcon from "@/assets/svg/system.svg?component";
+import DayIcon from "@/assets/svg/day.svg?component";
+import DarkIcon from "@/assets/svg/dark.svg?component";
+import SystemIcon from "@/assets/svg/system.svg?component";
 
 const { t } = useI18n();
 const { device } = useNav();
@@ -199,21 +199,21 @@ const themeOptions = computed<Array<OptionsType>>(() => {
   return [
     {
       label: t("panel.pureOverallStyleLight"),
-      icon: dayIcon,
+      icon: DayIcon,
       theme: "light",
       tip: t("panel.pureOverallStyleLightTip"),
       iconAttrs: { fill: isDark.value ? "#fff" : "#000" }
     },
     {
       label: t("panel.pureOverallStyleDark"),
-      icon: darkIcon,
+      icon: DarkIcon,
       theme: "dark",
       tip: t("panel.pureOverallStyleDarkTip"),
       iconAttrs: { fill: isDark.value ? "#fff" : "#000" }
     },
     {
       label: t("panel.pureOverallStyleSystem"),
-      icon: systemIcon,
+      icon: SystemIcon,
       theme: "system",
       tip: t("panel.pureOverallStyleSystemTip"),
       iconAttrs: { fill: isDark.value ? "#fff" : "#000" }
@@ -313,7 +313,7 @@ onUnmounted(() => removeMatchMedia);
 </script>
 
 <template>
-  <panel>
+  <LayPanel>
     <div class="p-5">
       <p :class="pClass">{{ t("panel.pureOverallStyle") }}</p>
       <Segmented
@@ -517,7 +517,7 @@ onUnmounted(() => removeMatchMedia);
         </li>
       </ul>
     </div>
-  </panel>
+  </LayPanel>
 </template>
 
 <style lang="scss" scoped>

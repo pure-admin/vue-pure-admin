@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
 import { useNav } from "@/layout/hooks/useNav";
-import mdiKeyboardEsc from "@/assets/svg/keyboard_esc.svg?component";
-import enterOutlined from "@/assets/svg/enter_outlined.svg?component";
+import MdiKeyboardEsc from "@/assets/svg/keyboard_esc.svg?component";
+import EnterOutlined from "@/assets/svg/enter_outlined.svg?component";
 import ArrowUpLine from "@iconify-icons/ri/arrow-up-line";
 import ArrowDownLine from "@iconify-icons/ri/arrow-down-line";
 
@@ -17,7 +17,7 @@ const { device } = useNav();
 <template>
   <div class="search-footer text-[#333] dark:text-white">
     <span class="search-footer-item">
-      <enterOutlined class="icon" />
+      <EnterOutlined class="icon" />
       {{ t("buttons.pureConfirm") }}
     </span>
     <span class="search-footer-item">
@@ -26,7 +26,7 @@ const { device } = useNav();
       {{ t("buttons.pureSwitch") }}
     </span>
     <span class="search-footer-item">
-      <mdiKeyboardEsc class="icon" />
+      <MdiKeyboardEsc class="icon" />
       {{ t("buttons.pureClose") }}
     </span>
     <p

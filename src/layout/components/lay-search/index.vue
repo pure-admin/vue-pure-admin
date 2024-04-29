@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SearchModal } from "./components";
 import { useBoolean } from "../../hooks/useBoolean";
+import SearchModal from "./components/SearchModal.vue";
 
 const { bool: show, toggle } = useBoolean();
 function handleSearch() {

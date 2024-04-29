@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import Logo from "./logo.vue";
 import { useRoute } from "vue-router";
 import { emitter } from "@/utils/mitt";
-import SidebarItem from "./sidebarItem.vue";
-import LeftCollapse from "./leftCollapse.vue";
 import { useNav } from "@/layout/hooks/useNav";
-import CenterCollapse from "./centerCollapse.vue";
 import { responsiveStorageNameSpace } from "@/config";
 import { storageLocal, isAllEmpty } from "@pureadmin/utils";
 import { findRouteByPath, getParentPaths } from "@/router/utils";
 import { usePermissionStoreHook } from "@/store/modules/permission";
 import { ref, computed, watch, onMounted, onBeforeUnmount } from "vue";
+import LaySidebarLogo from "../lay-sidebar/components/SidebarLogo.vue";
+import LaySidebarItem from "../lay-sidebar/components/SidebarItem.vue";
+import LaySidebarLeftCollapse from "../lay-sidebar/components/SidebarLeftCollapse.vue";
+import LaySidebarCenterCollapse from "../lay-sidebar/components/SidebarCenterCollapse.vue";
 
 const route = useRoute();
 const isShow = ref(false);
@@ -93,7 +93,7 @@ onBeforeUnmount(() => {
     @mouseenter.prevent="isShow = true"
     @mouseleave.prevent="isShow = false"
   >
-    <Logo v-if="showLogo" :collapse="isCollapse" />
+    <LaySidebarLogo v-if="showLogo" :collapse="isCollapse" />
     <el-scrollbar
       wrap-class="scrollbar-wrapper"
       :class="[device === 'mobile' ? 'mobile' : 'pc']"
@@ -109,7 +109,7 @@ onBeforeUnmount(() => {
         :popper-effect="tooltipEffect"
         :default-active="defaultActive"
       >
-        <sidebar-item
+        <LaySidebarItem
           v-for="routes in menuData"
           :key="routes.path"
           :item="routes"
@@ -118,12 +118,12 @@ onBeforeUnmount(() => {
         />
       </el-menu>
     </el-scrollbar>
-    <CenterCollapse
+    <LaySidebarCenterCollapse
       v-if="device !== 'mobile' && (isShow || isCollapse)"
       :is-active="pureApp.sidebar.opened"
       @toggleClick="toggleSideBar"
     />
-    <LeftCollapse
+    <LaySidebarLeftCollapse
       v-if="device !== 'mobile'"
       :is-active="pureApp.sidebar.opened"
       @toggleClick="toggleSideBar"

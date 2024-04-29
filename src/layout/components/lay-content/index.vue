@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
-import Footer from "./footer/index.vue";
+import LayFrame from "../lay-frame/index.vue";
+import LayFooter from "../lay-footer/index.vue";
 import { useGlobal, isNumber } from "@pureadmin/utils";
-import KeepAliveFrame from "./keepAliveFrame/index.vue";
-import backTop from "@/assets/svg/back_top.svg?component";
+import BackTopIcon from "@/assets/svg/back_top.svg?component";
 import { h, computed, Transition, defineComponent } from "vue";
 import { usePermissionStoreHook } from "@/store/modules/permission";
 
@@ -104,7 +104,7 @@ const transitionMain = defineComponent({
   >
     <router-view>
       <template #default="{ Component, route }">
-        <KeepAliveFrame :currComp="Component" :currRoute="route">
+        <LayFrame :currComp="Component" :currRoute="route">
           <template #default="{ Comp, fullPath, frameInfo }">
             <el-scrollbar
               v-if="props.fixedHeader"
@@ -126,7 +126,7 @@ const transitionMain = defineComponent({
                 :title="t('buttons.pureBackTop')"
                 target=".app-main .el-scrollbar__wrap"
               >
-                <backTop />
+                <BackTopIcon />
               </el-backtop>
               <div class="grow">
                 <transitionMain :route="route">
@@ -150,7 +150,7 @@ const transitionMain = defineComponent({
                   />
                 </transitionMain>
               </div>
-              <Footer v-if="!hideFooter" />
+              <LayFooter v-if="!hideFooter" />
             </el-scrollbar>
             <div v-else class="grow">
               <transitionMain :route="route">
@@ -175,12 +175,12 @@ const transitionMain = defineComponent({
               </transitionMain>
             </div>
           </template>
-        </KeepAliveFrame>
+        </LayFrame>
       </template>
     </router-view>
 
     <!-- 页脚 -->
-    <Footer v-if="!hideFooter && !props.fixedHeader" />
+    <LayFooter v-if="!hideFooter && !props.fixedHeader" />
   </section>
 </template>
 

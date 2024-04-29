@@ -13,7 +13,7 @@ import { ref, computed, shallowRef, watch } from "vue";
 import { useDebounceFn, onKeyStroke } from "@vueuse/core";
 import { usePermissionStoreHook } from "@/store/modules/permission";
 import { cloneDeep, isAllEmpty, storageLocal } from "@pureadmin/utils";
-import Search from "@iconify-icons/ri/search-line";
+import SearchIcon from "@iconify-icons/ri/search-line";
 
 interface Props {
   /** 弹窗显隐 */
@@ -298,7 +298,7 @@ onKeyStroke("ArrowDown", handleDown);
     >
       <template #prefix>
         <IconifyIconOffline
-          :icon="Search"
+          :icon="SearchIcon"
           class="text-primary w-[24px] h-[24px]"
         />
       </template>

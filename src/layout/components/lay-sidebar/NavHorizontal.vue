@@ -1,14 +1,15 @@
 <script setup lang="ts">
-import Search from "../search/index.vue";
-import Notice from "../notice/index.vue";
-import FullScreen from "./fullScreen.vue";
-import SidebarItem from "./sidebarItem.vue";
 import { isAllEmpty } from "@pureadmin/utils";
 import { ref, nextTick, computed } from "vue";
 import { useNav } from "@/layout/hooks/useNav";
+import LaySearch from "../lay-search/index.vue";
+import LayNotice from "../lay-notice/index.vue";
 import { useTranslationLang } from "../../hooks/useTranslationLang";
 import { usePermissionStoreHook } from "@/store/modules/permission";
-import globalization from "@/assets/svg/globalization.svg?component";
+import LaySidebarItem from "../lay-sidebar/components/SidebarItem.vue";
+import LaySidebarFullScreen from "../lay-sidebar/components/SidebarFullScreen.vue";
+
+import GlobalizationIcon from "@/assets/svg/globalization.svg?component";
 import AccountSettingsIcon from "@iconify-icons/ri/user-settings-line";
 import LogoutCircleRLine from "@iconify-icons/ri/logout-circle-r-line";
 import Setting from "@iconify-icons/ri/settings-3-line";
@@ -58,7 +59,7 @@ nextTick(() => {
       class="horizontal-header-menu"
       :default-active="defaultActive"
     >
-      <sidebar-item
+      <LaySidebarItem
         v-for="route in usePermissionStoreHook().wholeMenus"
         :key="route.path"
         :item="route"
@@ -67,10 +68,10 @@ nextTick(() => {
     </el-menu>
     <div class="horizontal-header-right">
       <!-- 菜单搜索 -->
-      <Search id="header-search" />
+      <LaySearch id="header-search" />
       <!-- 国际化 -->
       <el-dropdown id="header-translation" trigger="click">
-        <globalization
+        <GlobalizationIcon
           class="navbar-bg-hover w-[40px] h-[48px] p-[11px] cursor-pointer outline-none"
         />
         <template #dropdown>
@@ -99,9 +100,9 @@ nextTick(() => {
         </template>
       </el-dropdown>
       <!-- 全屏 -->
-      <FullScreen id="full-screen" />
+      <LaySidebarFullScreen id="full-screen" />
       <!-- 消息通知 -->
-      <Notice id="header-notice" />
+      <LayNotice id="header-notice" />
       <!-- 退出登录 -->
       <el-dropdown trigger="click">
         <span class="el-dropdown-link navbar-bg-hover">

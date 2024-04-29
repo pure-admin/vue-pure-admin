@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import Search from "./search/index.vue";
-import Notice from "./notice/index.vue";
-import mixNav from "./sidebar/mixNav.vue";
 import { useNav } from "@/layout/hooks/useNav";
-import FullScreen from "./sidebar/fullScreen.vue";
-import Breadcrumb from "./sidebar/breadCrumb.vue";
-import topCollapse from "./sidebar/topCollapse.vue";
-import { useTranslationLang } from "../hooks/useTranslationLang";
-import globalization from "@/assets/svg/globalization.svg?component";
+import LaySearch from "../lay-search/index.vue";
+import LayNotice from "../lay-notice/index.vue";
+import LayNavMix from "../lay-sidebar/NavMix.vue";
+import { useTranslationLang } from "@/layout/hooks/useTranslationLang";
+import LaySidebarFullScreen from "../lay-sidebar/components/SidebarFullScreen.vue";
+import LaySidebarBreadCrumb from "../lay-sidebar/components/SidebarBreadCrumb.vue";
+import LaySidebarTopCollapse from "../lay-sidebar/components/SidebarTopCollapse.vue";
+
+import GlobalizationIcon from "@/assets/svg/globalization.svg?component";
 import AccountSettingsIcon from "@iconify-icons/ri/user-settings-line";
 import LogoutCircleRLine from "@iconify-icons/ri/logout-circle-r-line";
 import Setting from "@iconify-icons/ri/settings-3-line";
@@ -33,26 +34,26 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
 
 <template>
   <div class="navbar bg-[#fff] shadow-sm shadow-[rgba(0,21,41,0.08)]">
-    <topCollapse
+    <LaySidebarTopCollapse
       v-if="device === 'mobile'"
       class="hamburger-container"
       :is-active="pureApp.sidebar.opened"
       @toggleClick="toggleSideBar"
     />
 
-    <Breadcrumb
+    <LaySidebarBreadCrumb
       v-if="layout !== 'mix' && device !== 'mobile'"
       class="breadcrumb-container"
     />
 
-    <mixNav v-if="layout === 'mix'" />
+    <LayNavMix v-if="layout === 'mix'" />
 
     <div v-if="layout === 'vertical'" class="vertical-header-right">
       <!-- 菜单搜索 -->
-      <Search id="header-search" />
+      <LaySearch id="header-search" />
       <!-- 国际化 -->
       <el-dropdown id="header-translation" trigger="click">
-        <globalization
+        <GlobalizationIcon
           class="navbar-bg-hover w-[40px] h-[48px] p-[11px] cursor-pointer outline-none"
         />
         <template #dropdown>
@@ -83,9 +84,9 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
         </template>
       </el-dropdown>
       <!-- 全屏 -->
-      <FullScreen id="full-screen" />
+      <LaySidebarFullScreen id="full-screen" />
       <!-- 消息通知 -->
-      <Notice id="header-notice" />
+      <LayNotice id="header-notice" />
       <!-- 退出登录 -->
       <el-dropdown trigger="click">
         <span class="el-dropdown-link navbar-bg-hover select-none">

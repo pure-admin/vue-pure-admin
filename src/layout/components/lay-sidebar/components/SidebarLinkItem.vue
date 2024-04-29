@@ -3,10 +3,6 @@ import { computed } from "vue";
 import { isUrl } from "@pureadmin/utils";
 import { menuType } from "@/layout/types";
 
-defineOptions({
-  name: "LinkItem"
-});
-
 const props = defineProps<{
   to: menuType;
 }>();

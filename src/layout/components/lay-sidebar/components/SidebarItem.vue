@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import path from "path";
 import { getConfig } from "@/config";
-import LinkItem from "./linkItem.vue";
-import { menuType } from "../../types";
-import extraIcon from "./extraIcon.vue";
+import { menuType } from "@/layout/types";
 import { ReText } from "@/components/ReText";
 import { useNav } from "@/layout/hooks/useNav";
 import { transformI18n } from "@/plugins/i18n";
+import SidebarLinkItem from "./SidebarLinkItem.vue";
+import SidebarExtraIcon from "./SidebarExtraIcon.vue";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import {
   type PropType,
@@ -106,7 +106,7 @@ function resolvePath(routePath) {
 </script>
 
 <template>
-  <link-item
+  <SidebarLinkItem
     v-if="
       hasOneShowingChild(props.item.children, props.item) &&
       (!onlyOneChild.children || onlyOneChild.noShowingChildren)
@@ -161,11 +161,11 @@ function resolvePath(routePath) {
           >
             {{ transformI18n(onlyOneChild.meta.title) }}
           </ReText>
-          <extraIcon :extraIcon="onlyOneChild.meta.extraIcon" />
+          <SidebarExtraIcon :extraIcon="onlyOneChild.meta.extraIcon" />
         </div>
       </template>
     </el-menu-item>
-  </link-item>
+  </SidebarLinkItem>
   <el-sub-menu
     v-else
     ref="subMenu"
@@ -210,7 +210,10 @@ function resolvePath(routePath) {
       >
         {{ transformI18n(props.item.meta.title) }}
       </ReText>
-      <extraIcon v-if="!isCollapse" :extraIcon="props.item.meta.extraIcon" />
+      <SidebarExtraIcon
+        v-if="!isCollapse"
+        :extraIcon="props.item.meta.extraIcon"
+      />
     </template>
 
     <sidebar-item
