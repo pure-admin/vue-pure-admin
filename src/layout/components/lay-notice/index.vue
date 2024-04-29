@@ -2,8 +2,8 @@
 import { ref } from "vue";
 import { useI18n } from "vue-i18n";
 import { noticesData } from "./data";
-import NoticeList from "./NoticeList.vue";
-import Bell from "@iconify-icons/ep/bell";
+import NoticeList from "./components/NoticeList.vue";
+import BellIcon from "@iconify-icons/ep/bell";
 
 const { t } = useI18n();
 const noticesNum = ref(0);
@@ -18,7 +18,7 @@ notices.value.map(v => (noticesNum.value += v.list.length));
     <span class="dropdown-badge navbar-bg-hover select-none">
       <el-badge :value="noticesNum" :max="99">
         <span class="header-notice-icon">
-          <IconifyIconOffline :icon="Bell" />
+          <IconifyIconOffline :icon="BellIcon" />
         </span>
       </el-badge>
     </span>

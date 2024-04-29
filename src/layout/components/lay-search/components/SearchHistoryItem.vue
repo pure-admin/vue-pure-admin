@@ -2,8 +2,8 @@
 import type { optionsItem } from "../types";
 import { transformI18n } from "@/plugins/i18n";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
-import Star from "@iconify-icons/ep/star";
-import Close from "@iconify-icons/ep/close";
+import StarIcon from "@iconify-icons/ep/star";
+import CloseIcon from "@iconify-icons/ep/close";
 
 interface Props {
   item: optionsItem;
@@ -33,12 +33,12 @@ function handleDelete(item) {
   </span>
   <IconifyIconOffline
     v-show="item.type === 'history'"
-    :icon="Star"
+    :icon="StarIcon"
     class="w-[18px] h-[18px] mr-2 hover:text-[#d7d5d4]"
     @click.stop="handleCollect(item)"
   />
   <IconifyIconOffline
-    :icon="Close"
+    :icon="CloseIcon"
     class="w-[18px] h-[18px] hover:text-[#d7d5d4] cursor-pointer"
     @click.stop="handleDelete(item)"
   />

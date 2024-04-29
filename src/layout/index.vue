@@ -30,7 +30,7 @@ import LayContent from "./components/lay-content/index.vue";
 import LaySetting from "./components/lay-setting/index.vue";
 import NavVertical from "./components/lay-sidebar/NavVertical.vue";
 import NavHorizontal from "./components/lay-sidebar/NavHorizontal.vue";
-import BackTop from "@/assets/svg/back_top.svg?component";
+import BackTopIcon from "@/assets/svg/back_top.svg?component";
 
 const { t } = useI18n();
 const appWrapperRef = ref();
@@ -191,7 +191,7 @@ const LayHeader = defineComponent({
           :title="t('buttons.pureBackTop')"
           target=".main-container .el-scrollbar__wrap"
         >
-          <BackTop />
+          <BackTopIcon />
         </el-backtop>
         <LayHeader />
         <!-- 主体内容 -->

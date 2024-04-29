@@ -22,11 +22,11 @@ const { t, route, locale, translationCh, translationEn } =
 const {
   title,
   logout,
-  backTopMenu,
   onPanel,
   getLogo,
   username,
   userAvatar,
+  backTopMenu,
   avatarsStyle,
   toAccountSettings,
   getDropdownItemStyle,

@@ -4,7 +4,7 @@ import { useRoute } from "vue-router";
 import { ref, unref, watch, onMounted, nextTick } from "vue";
 
 defineOptions({
-  name: "FrameView"
+  name: "LayFrame"
 });
 
 const props = defineProps<{

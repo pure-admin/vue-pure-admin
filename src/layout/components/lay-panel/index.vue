@@ -4,7 +4,7 @@ import { emitter } from "@/utils/mitt";
 import { onClickOutside } from "@vueuse/core";
 import { ref, computed, onMounted, onBeforeUnmount } from "vue";
 import { useDataThemeChange } from "@/layout/hooks/useDataThemeChange";
-import Close from "@iconify-icons/ep/close";
+import CloseIcon from "@iconify-icons/ep/close";
 
 const target = ref(null);
 const show = ref<Boolean>(false);
@@ -68,7 +68,7 @@ onBeforeUnmount(() => {
             class="dark:text-white"
             width="18px"
             height="18px"
-            :icon="Close"
+            :icon="CloseIcon"
             @click="show = !show"
           />
         </span>

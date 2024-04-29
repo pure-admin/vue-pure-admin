@@ -20,7 +20,7 @@ const keep = computed(() => {
     !!props.currRoute.meta?.frameSrc
   );
 });
-// 避免重新渲染 frameView
+// 避免重新渲染 LayFrame
 const normalComp = computed(() => !keep.value && props.currComp);
 
 watch(useMultiTagsStoreHook().multiTags, (tags: any) => {
