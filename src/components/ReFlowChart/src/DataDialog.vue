@@ -2,7 +2,7 @@
 import VueJsonPretty from "vue-json-pretty";
 import "vue-json-pretty/lib/styles.css";
 
-const props = defineProps({
+defineProps({
   graphData: Object
 });
 </script>
@@ -12,6 +12,6 @@ const props = defineProps({
     :path="'res'"
     :deep="3"
     :showLength="true"
-    :data="props.graphData"
+    :data="graphData"
   />
 </template>

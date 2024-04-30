@@ -99,7 +99,7 @@ const transitionMain = defineComponent({
 
 <template>
   <section
-    :class="[props.fixedHeader ? 'app-main' : 'app-main-nofixed-header']"
+    :class="[fixedHeader ? 'app-main' : 'app-main-nofixed-header']"
     :style="getSectionStyle"
   >
     <router-view>
@@ -107,7 +107,7 @@ const transitionMain = defineComponent({
         <LayFrame :currComp="Component" :currRoute="route">
           <template #default="{ Comp, fullPath, frameInfo }">
             <el-scrollbar
-              v-if="props.fixedHeader"
+              v-if="fixedHeader"
               :wrap-style="{
                 display: 'flex',
                 'flex-wrap': 'wrap',
@@ -180,7 +180,7 @@ const transitionMain = defineComponent({
     </router-view>
 
     <!-- 页脚 -->
-    <LayFooter v-if="!hideFooter && !props.fixedHeader" />
+    <LayFooter v-if="!hideFooter && !fixedHeader" />
   </section>
 </template>
 

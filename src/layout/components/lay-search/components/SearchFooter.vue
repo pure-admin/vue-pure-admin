@@ -29,11 +29,8 @@ const { device } = useNav();
       <MdiKeyboardEsc class="icon" />
       {{ t("buttons.pureClose") }}
     </span>
-    <p
-      v-if="device !== 'mobile' && props.total > 0"
-      class="search-footer-total"
-    >
-      {{ `${t("search.pureTotal")} ${props.total}` }}
+    <p v-if="device !== 'mobile' && total > 0" class="search-footer-total">
+      {{ `${t("search.pureTotal")} ${total}` }}
     </p>
   </div>
 </template>

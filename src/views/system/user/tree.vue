@@ -17,7 +17,7 @@ interface Tree {
   children?: Tree[];
 }
 
-const props = defineProps({
+defineProps({
   treeLoading: Boolean,
   treeData: Array
 });
@@ -95,7 +95,7 @@ defineExpose({ onTreeReset });
 
 <template>
   <div
-    v-loading="props.treeLoading"
+    v-loading="treeLoading"
     class="h-full bg-bg_color overflow-auto"
     :style="{ minHeight: `calc(100vh - 141px)` }"
   >
@@ -153,7 +153,7 @@ defineExpose({ onTreeReset });
     <el-divider />
     <el-tree
       ref="treeRef"
-      :data="props.treeData"
+      :data="treeData"
       node-key="id"
       size="small"
       :props="defaultProps"

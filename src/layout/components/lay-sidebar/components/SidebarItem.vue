@@ -108,7 +108,7 @@ function resolvePath(routePath) {
 <template>
   <SidebarLinkItem
     v-if="
-      hasOneShowingChild(props.item.children, props.item) &&
+      hasOneShowingChild(item.children, item) &&
       (!onlyOneChild.children || onlyOneChild.noShowingChildren)
     "
     :to="item"
@@ -120,7 +120,7 @@ function resolvePath(routePath) {
       v-bind="attrs"
     >
       <div
-        v-if="toRaw(props.item.meta.icon)"
+        v-if="toRaw(item.meta.icon)"
         class="sub-menu-icon"
         :style="getSubMenuIconStyle"
       >
@@ -128,21 +128,21 @@ function resolvePath(routePath) {
           :is="
             useRenderIcon(
               toRaw(onlyOneChild.meta.icon) ||
-                (props.item.meta && toRaw(props.item.meta.icon))
+                (item.meta && toRaw(item.meta.icon))
             )
           "
         />
       </div>
       <el-text
         v-if="
-          (!props.item?.meta.icon &&
+          (!item?.meta.icon &&
             isCollapse &&
             layout === 'vertical' &&
-            props.item?.pathList?.length === 1) ||
+            item?.pathList?.length === 1) ||
           (!onlyOneChild.meta.icon &&
             isCollapse &&
             layout === 'mix' &&
-            props.item?.pathList?.length === 2)
+            item?.pathList?.length === 2)
         "
         truncated
         class="!w-full !px-4 !text-inherit"
@@ -170,28 +170,26 @@ function resolvePath(routePath) {
     v-else
     ref="subMenu"
     teleported
-    :index="resolvePath(props.item.path)"
+    :index="resolvePath(item.path)"
     v-bind="expandCloseIcon"
   >
     <template #title>
       <div
-        v-if="toRaw(props.item.meta.icon)"
+        v-if="toRaw(item.meta.icon)"
         :style="getSubMenuIconStyle"
         class="sub-menu-icon"
       >
-        <component
-          :is="useRenderIcon(props.item.meta && toRaw(props.item.meta.icon))"
-        />
+        <component :is="useRenderIcon(item.meta && toRaw(item.meta.icon))" />
       </div>
       <ReText
         v-if="
-          layout === 'mix' && toRaw(props.item.meta.icon)
-            ? !isCollapse || props.item?.pathList?.length !== 2
+          layout === 'mix' && toRaw(item.meta.icon)
+            ? !isCollapse || item?.pathList?.length !== 2
             : !(
                 layout === 'vertical' &&
                 isCollapse &&
-                toRaw(props.item.meta.icon) &&
-                props.item.parentId === null
+                toRaw(item.meta.icon) &&
+                item.parentId === null
               )
         "
         :tippyProps="{
@@ -204,20 +202,17 @@ function resolvePath(routePath) {
           '!px-4':
             layout !== 'horizontal' &&
             isCollapse &&
-            !toRaw(props.item.meta.icon) &&
-            props.item.parentId === null
+            !toRaw(item.meta.icon) &&
+            item.parentId === null
         }"
       >
-        {{ transformI18n(props.item.meta.title) }}
+        {{ transformI18n(item.meta.title) }}
       </ReText>
-      <SidebarExtraIcon
-        v-if="!isCollapse"
-        :extraIcon="props.item.meta.extraIcon"
-      />
+      <SidebarExtraIcon v-if="!isCollapse" :extraIcon="item.meta.extraIcon" />
     </template>
 
     <sidebar-item
-      v-for="child in props.item.children"
+      v-for="child in item.children"
       :key="child.path"
       :is-nest="true"
       :item="child"

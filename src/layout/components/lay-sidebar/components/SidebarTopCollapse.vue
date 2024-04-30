@@ -26,14 +26,12 @@ const toggleClick = () => {
   <div
     class="px-3 mr-1 navbar-bg-hover"
     :title="
-      props.isActive
-        ? t('buttons.pureClickCollapse')
-        : t('buttons.pureClickExpand')
+      isActive ? t('buttons.pureClickCollapse') : t('buttons.pureClickExpand')
     "
     @click="toggleClick"
   >
     <IconifyIconOffline
-      :icon="props.isActive ? MenuFold : MenuUnfold"
+      :icon="isActive ? MenuFold : MenuUnfold"
       class="inline-block align-middle hover:text-primary dark:hover:!text-white"
     />
   </div>

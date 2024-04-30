@@ -36,7 +36,7 @@ const toggleClick = () => {
 <template>
   <div
     v-tippy="{
-      content: props.isActive
+      content: isActive
         ? t('buttons.pureClickCollapse')
         : t('buttons.pureClickExpand'),
       theme: tooltipEffect,
@@ -49,7 +49,7 @@ const toggleClick = () => {
     <IconifyIconOffline
       :icon="ArrowLeft"
       :class="[iconClass, themeColor === 'light' ? '' : 'text-primary']"
-      :style="{ transform: props.isActive ? 'none' : 'rotateY(180deg)' }"
+      :style="{ transform: isActive ? 'none' : 'rotateY(180deg)' }"
     />
   </div>
 </template>
