@@ -1,6 +1,6 @@
 import { $t } from "@/plugins/i18n";
 import { formdesign } from "@/router/enums";
-const IFrame = () => import("@/layout/frameView.vue");
+const IFrame = () => import("@/layout/frame.vue");
 
 export default {
   path: "/form-design",

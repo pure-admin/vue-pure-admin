@@ -7,7 +7,7 @@ defineOptions({
   name: "ReCropperPreview"
 });
 
-const props = defineProps({
+defineProps({
   imgSrc: String
 });
 
@@ -44,7 +44,7 @@ defineExpose({ hidePopover });
         <div class="w-[18vw]">
           <ReCropper
             ref="refCropper"
-            :src="props.imgSrc"
+            :src="imgSrc"
             circled
             @cropper="onCropper"
             @readied="showPopover = true"

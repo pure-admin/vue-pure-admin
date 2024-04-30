@@ -7,7 +7,7 @@ defineOptions({
   name: "ReAnimateSelector"
 });
 
-const props = defineProps({
+defineProps({
   placeholder: {
     type: String,
     default: "请选择动画"
@@ -81,7 +81,7 @@ function onMouseleave() {
   <el-select
     clearable
     filterable
-    :placeholder="props.placeholder"
+    :placeholder="placeholder"
     popper-class="pure-animate-popper"
     :model-value="inputValue"
     :filter-method="filterMethod"

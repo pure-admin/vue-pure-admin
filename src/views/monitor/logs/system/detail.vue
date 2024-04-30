@@ -82,12 +82,7 @@ const dataList = ref([
 <template>
   <div>
     <el-scrollbar>
-      <PureDescriptions
-        border
-        :data="props.data"
-        :columns="columns"
-        :column="5"
-      />
+      <PureDescriptions border :data="data" :columns="columns" :column="5" />
     </el-scrollbar>
     <el-tabs :modelValue="'responseBody'" type="border-card" class="mt-4">
       <el-tab-pane
