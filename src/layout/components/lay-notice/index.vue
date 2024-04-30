@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import { useI18n } from "vue-i18n";
+import { ref, computed } from "vue";
 import { noticesData } from "./data";
 import NoticeList from "./components/NoticeList.vue";
 import BellIcon from "@iconify-icons/ep/bell";
@@ -8,15 +8,27 @@ import BellIcon from "@iconify-icons/ep/bell";
 const { t } = useI18n();
 const noticesNum = ref(0);
 const notices = ref(noticesData);
-const activeKey = ref(noticesData[0].key);
+const activeKey = ref(noticesData[0]?.key);
 
 notices.value.map(v => (noticesNum.value += v.list.length));
+
+const getLabel = computed(
+  () => item =>
+    t(item.name) + (item.list.length > 0 ? `(${item.list.length})` : "")
+);
 </script>
 
 <template>
   <el-dropdown trigger="click" placement="bottom-end">
-    <span class="dropdown-badge navbar-bg-hover select-none">
-      <el-badge :value="noticesNum" :max="99">
+    <span
+      :class="[
+        'dropdown-badge',
+        'navbar-bg-hover',
+        'select-none',
+        Number(noticesNum) !== 0 && 'mr-[10px]'
+      ]"
+    >
+      <el-badge :value="Number(noticesNum) === 0 ? '' : noticesNum" :max="99">
         <span class="header-notice-icon">
           <IconifyIconOffline :icon="BellIcon" />
         </span>
@@ -37,13 +49,10 @@ notices.value.map(v => (noticesNum.value += v.list.length));
           />
           <span v-else>
             <template v-for="item in notices" :key="item.key">
-              <el-tab-pane
-                :label="`${item.name}(${item.list.length})`"
-                :name="`${item.key}`"
-              >
+              <el-tab-pane :label="getLabel(item)" :name="`${item.key}`">
                 <el-scrollbar max-height="330px">
                   <div class="noticeList-container">
-                    <NoticeList :list="item.list" />
+                    <NoticeList :list="item.list" :emptyText="item.emptyText" />
                   </div>
                 </el-scrollbar>
               </el-tab-pane>
@@ -62,7 +71,6 @@ notices.value.map(v => (noticesNum.value += v.list.length));
   justify-content: center;
   width: 40px;
   height: 48px;
-  margin-right: 10px;
   cursor: pointer;
 
   .header-notice-icon {

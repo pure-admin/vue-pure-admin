@@ -1,26 +1,24 @@
 <script setup lang="ts">
 import { PropType } from "vue";
 import { ListItem } from "../data";
-import { useI18n } from "vue-i18n";
 import NoticeItem from "./NoticeItem.vue";
+import { transformI18n } from "@/plugins/i18n";
 
-const props = defineProps({
+defineProps({
   list: {
     type: Array as PropType<Array<ListItem>>,
     default: () => []
+  },
+  emptyText: {
+    type: String,
+    default: ""
   }
 });
-
-const { t } = useI18n();
 </script>
 
 <template>
-  <div v-if="props.list.length">
-    <NoticeItem
-      v-for="(item, index) in props.list"
-      :key="index"
-      :noticeItem="item"
-    />
+  <div v-if="list.length">
+    <NoticeItem v-for="(item, index) in list" :key="index" :noticeItem="item" />
   </div>
-  <el-empty v-else :description="t('status.pureNoMessage')" />
+  <el-empty v-else :description="transformI18n(emptyText)" />
 </template>
