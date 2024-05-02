@@ -30,7 +30,7 @@ const columns: TableColumnList = [
     <template #video>
       <video width="180" height="180" controls>
         <source
-          src="https://yiming_chang.gitee.io/pure-admin-doc/video/url.mov"
+          src="https://pure-admin.github.io/pure-admin-doc/video/url.mov"
           type="video/mp4"
         />
       </video>
