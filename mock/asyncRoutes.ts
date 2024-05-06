@@ -154,7 +154,7 @@ const frameRouter = {
       children: [
         {
           path: "/external",
-          name: "https://yiming_chang.gitee.io/pure-admin-doc",
+          name: "https://pure-admin.github.io/pure-admin-doc",
           meta: {
             title: "menus.pureExternalLink",
             roles: ["admin", "common"]

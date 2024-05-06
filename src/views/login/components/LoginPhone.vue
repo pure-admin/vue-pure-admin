@@ -23,7 +23,7 @@ const { isDisabled, text } = useVerifyCode();
 const onLogin = async (formEl: FormInstance | undefined) => {
   loading.value = true;
   if (!formEl) return;
-  await formEl.validate((valid, fields) => {
+  await formEl.validate(valid => {
     if (valid) {
       // 模拟登录请求，需根据实际开发进行修改
       setTimeout(() => {
@@ -34,7 +34,6 @@ const onLogin = async (formEl: FormInstance | undefined) => {
       }, 2000);
     } else {
       loading.value = false;
-      return fields;
     }
   });
 };

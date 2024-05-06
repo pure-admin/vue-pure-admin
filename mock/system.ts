@@ -430,7 +430,7 @@ export default defineFakeRoute([
             id: 102,
             menuType: 2,
             title: "menus.pureExternalLink",
-            name: "https://yiming_chang.gitee.io/pure-admin-doc",
+            name: "https://pure-admin.github.io/pure-admin-doc",
             path: "/external",
             component: "",
             rank: null,

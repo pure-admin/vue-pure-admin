@@ -32,7 +32,7 @@ body:
       label: 验证 (Verify)
       description: 在提交问题之前，请确保您执行以下操作 (Before submitting an issue, please ensure you do the following)
       options:
-        - label: 是否仔细阅读过 [文档](https://yiming_chang.gitee.io/pure-admin-doc/) (Have you read [documentation](https://yiming_chang.gitee.io/pure-admin-doc/) carefully)
+        - label: 是否仔细阅读过 [文档](https://pure-admin.github.io/pure-admin-doc/) (Have you read [documentation](https://pure-admin.github.io/pure-admin-doc/) carefully)
           required: true
         - label: 检查是否存在相同或类似的问题 [issues](https://github.com/pure-admin/vue-pure-admin/issues) (Check for the same or similar [issues](https://github.com/pure-admin/vue-pure-admin/issues))
           required: true

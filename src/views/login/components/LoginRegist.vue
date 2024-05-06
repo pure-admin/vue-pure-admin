@@ -45,7 +45,7 @@ const repeatPasswordRule = [
 const onUpdate = async (formEl: FormInstance | undefined) => {
   loading.value = true;
   if (!formEl) return;
-  await formEl.validate((valid, fields) => {
+  await formEl.validate(valid => {
     if (valid) {
       if (checked.value) {
         // 模拟请求，需根据实际开发进行修改
@@ -63,7 +63,6 @@ const onUpdate = async (formEl: FormInstance | undefined) => {
       }
     } else {
       loading.value = false;
-      return fields;
     }
   });
 };

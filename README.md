@@ -31,12 +31,12 @@
 
 ## 配套保姆级文档
 
-[点我查看 vue-pure-admin 文档](https://yiming_chang.gitee.io/pure-admin-doc)  
+[点我查看 vue-pure-admin 文档](https://pure-admin.github.io/pure-admin-doc)  
 [点我查看 @pureadmin/utils 文档](https://pure-admin-utils.netlify.app)
 
 ## 优质服务、软件外包、赞助支持
 
-[点我查看详情](https://yiming_chang.gitee.io/pure-admin-doc/pages/service/)
+[点我查看详情](https://pure-admin.github.io/pure-admin-doc/pages/service/)
 
 ## `Tauri` 版本
 
@@ -48,7 +48,7 @@
 
 ## 预览
 
-[点我查看预览](https://yiming_chang.gitee.io/vue-pure-admin)
+[点我查看预览](https://pure-admin.github.io/vue-pure-admin)
 
 `PC` 端
 
@@ -184,7 +184,7 @@ docker run -dp 8080:80  --name pure-admin vue-pure-admin
 | [shark-lajiao](https://github.com/shark-lajiao) | [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=shark-lajiao) |
 |      [WitMiao](https://github.com/WitMiao)      |   [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=WitMiao)    |
 |     [QFifteen](https://github.com/QFifteen)     |   [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=QFifteen)   |
-|     [edgexie](https://github.com/edgexie)     |   [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=edgexie)   |
+|      [edgexie](https://github.com/edgexie)      |   [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=edgexie)    |
 
 ## `Git` 贡献提交规范
 

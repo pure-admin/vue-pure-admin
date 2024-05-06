@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { tableDataMore } from "./data";
 
-const props = withDefaults(
+withDefaults(
   defineProps<{
     height?: string;
   }>(),
@@ -62,12 +62,12 @@ function handleClick(row) {
 <template>
   <pure-table
     :data="
-      props.height
+      height
         ? tableDataMore.concat(tableDataMore).concat(tableDataMore)
         : tableDataMore
     "
     :columns="columns"
-    :height="props.height"
+    :height="height"
   >
     <template #operation="{ row }">
       <el-button link type="primary" size="small" @click="handleClick(row)">

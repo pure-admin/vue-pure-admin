@@ -29,9 +29,11 @@ const addDialog = (options: DialogOptions) => {
 const closeDialog = (options: DialogOptions, index: number, args?: any) => {
   dialogStore.value[index].visible = false;
   options.closeCallBack && options.closeCallBack({ options, index, args });
+
+  const closeDelay = options?.closeDelay ?? 200;
   useTimeoutFn(() => {
     dialogStore.value.splice(index, 1);
-  }, 200);
+  }, closeDelay);
 };
 
 /**

@@ -8,8 +8,8 @@ import Preferences from "./components/Preferences.vue";
 import SecurityLog from "./components/SecurityLog.vue";
 import { useGlobal, deviceDetection } from "@pureadmin/utils";
 import AccountManagement from "./components/AccountManagement.vue";
-import TopCollapse from "@/layout/components/sidebar/topCollapse.vue";
 import { useDataThemeChange } from "@/layout/hooks/useDataThemeChange";
+import LaySidebarTopCollapse from "@/layout/components/lay-sidebar/components/SidebarTopCollapse.vue";
 
 import leftLine from "@iconify-icons/ri/arrow-left-s-line";
 import ProfileIcon from "@iconify-icons/ri/user-3-line";
@@ -115,7 +115,7 @@ getMine().then(res => {
       </el-menu>
     </el-aside>
     <el-main>
-      <TopCollapse
+      <LaySidebarTopCollapse
         v-if="deviceDetection()"
         class="px-0"
         :is-active="isOpen"

@@ -24,13 +24,13 @@ import {
   useResizeObserver
 } from "@pureadmin/utils";
 
-import navbar from "./components/navbar.vue";
-import tag from "./components/tag/index.vue";
-import appMain from "./components/appMain.vue";
-import setting from "./components/setting/index.vue";
-import Vertical from "./components/sidebar/vertical.vue";
-import Horizontal from "./components/sidebar/horizontal.vue";
-import backTop from "@/assets/svg/back_top.svg?component";
+import LayTag from "./components/lay-tag/index.vue";
+import LayNavbar from "./components/lay-navbar/index.vue";
+import LayContent from "./components/lay-content/index.vue";
+import LaySetting from "./components/lay-setting/index.vue";
+import NavVertical from "./components/lay-sidebar/NavVertical.vue";
+import NavHorizontal from "./components/lay-sidebar/NavHorizontal.vue";
+import BackTopIcon from "@/assets/svg/back_top.svg?component";
 
 const { t } = useI18n();
 const appWrapperRef = ref();
@@ -126,7 +126,8 @@ onBeforeMount(() => {
   useDataThemeChange().dataThemeChange($storage.layout?.overallStyle);
 });
 
-const layoutHeader = defineComponent({
+const LayHeader = defineComponent({
+  name: "LayHeader",
   render() {
     return h(
       "div",
@@ -144,12 +145,12 @@ const layoutHeader = defineComponent({
         default: () => [
           !pureSetting.hiddenSideBar &&
           (layout.value.includes("vertical") || layout.value.includes("mix"))
-            ? h(navbar)
+            ? h(LayNavbar)
             : null,
           !pureSetting.hiddenSideBar && layout.value.includes("horizontal")
-            ? h(Horizontal)
+            ? h(NavHorizontal)
             : null,
-          h(tag)
+          h(LayTag)
         ]
       }
     );
@@ -168,7 +169,7 @@ const layoutHeader = defineComponent({
       class="app-mask"
       @click="useAppStoreHook().toggleSideBar()"
     />
-    <Vertical
+    <NavVertical
       v-show="
         !pureSetting.hiddenSideBar &&
         (layout.includes('vertical') || layout.includes('mix'))
@@ -181,24 +182,24 @@ const layoutHeader = defineComponent({
       ]"
     >
       <div v-if="set.fixedHeader">
-        <layout-header />
+        <LayHeader />
         <!-- 主体内容 -->
-        <app-main :fixed-header="set.fixedHeader" />
+        <LayContent :fixed-header="set.fixedHeader" />
       </div>
       <el-scrollbar v-else>
         <el-backtop
           :title="t('buttons.pureBackTop')"
           target=".main-container .el-scrollbar__wrap"
         >
-          <backTop />
+          <BackTopIcon />
         </el-backtop>
-        <layout-header />
+        <LayHeader />
         <!-- 主体内容 -->
-        <app-main :fixed-header="set.fixedHeader" />
+        <LayContent :fixed-header="set.fixedHeader" />
       </el-scrollbar>
     </div>
     <!-- 系统设置 -->
-    <setting />
+    <LaySetting />
   </div>
 </template>
 
