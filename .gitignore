@@ -3,6 +3,7 @@ node_modules
 *.local
 .eslintcache
 report.html
+dist
 vite.config.*.timestamp*
 
 yarn.lock
