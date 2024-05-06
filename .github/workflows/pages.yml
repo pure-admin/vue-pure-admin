@@ -4,7 +4,7 @@ permissions:
 on:
   push:
     branches:
-      - main
+      - pages
       
 jobs:
   deploy:
