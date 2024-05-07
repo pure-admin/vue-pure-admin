@@ -30,12 +30,12 @@ The simplified version is based on the shelf extracted from [vue-pure-admin](htt
 
 ## Nanny-level documents
 
-[Click me to view vue-pure-admin documentation](https://yiming_chang.gitee.io/pure-admin-doc)  
+[Click me to view vue-pure-admin documentation](https://pure-admin.github.io/pure-admin-doc)  
 [Click me to view @pureadmin/utils documentation](https://pure-admin-utils.netlify.app)
 
 ## Quality service, software outsourcing, sponsorship support
 
-[Click me for details](https://yiming_chang.gitee.io/pure-admin-doc/pages/service/)
+[Click me for details](https://pure-admin.github.io/pure-admin-doc/pages/service/)
 
 ## Tauri
 
@@ -47,7 +47,7 @@ The simplified version is based on the shelf extracted from [vue-pure-admin](htt
 
 ## Preview
 
-[preview station](https://yiming_chang.gitee.io/vue-pure-admin)
+[preview station](https://pure-admin.github.io/vue-pure-admin)
 
 `PC`
 
@@ -183,7 +183,7 @@ Thank you very much for your in-depth understanding of the source code and your 
 | [shark-lajiao](https://github.com/shark-lajiao) | [code](https://github.com/pure-admin/vue-pure-admin/commits?author=shark-lajiao) |
 |      [WitMiao](https://github.com/WitMiao)      |   [code](https://github.com/pure-admin/vue-pure-admin/commits?author=WitMiao)    |
 |     [QFifteen](https://github.com/QFifteen)     |   [code](https://github.com/pure-admin/vue-pure-admin/commits?author=QFifteen)   |
-|     [edgexie](https://github.com/edgexie)     |   [code](https://github.com/pure-admin/vue-pure-admin/commits?author=edgexie)   |
+|      [edgexie](https://github.com/edgexie)      |   [code](https://github.com/pure-admin/vue-pure-admin/commits?author=edgexie)    |
 
 ## Git Contribution submission specification
 

@@ -82,10 +82,7 @@ export function useColumns() {
       className: "pure-version",
       cellRenderer: () => {
         return (
-          <a
-            href="https://yiming_chang.gitee.io/pure-admin-doc"
-            target="_blank"
-          >
+          <a href="https://pure-admin.github.io/pure-admin-doc" target="_blank">
             <span style="color: var(--el-color-primary)">文档链接</span>
           </a>
         );
@@ -97,10 +94,7 @@ export function useColumns() {
       className: "pure-version",
       cellRenderer: () => {
         return (
-          <a
-            href="https://yiming_chang.gitee.io/vue-pure-admin"
-            target="_blank"
-          >
+          <a href="https://pure-admin.github.io/vue-pure-admin" target="_blank">
             <span style="color: var(--el-color-primary)">预览链接</span>
           </a>
         );

@@ -1,56 +1,51 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import treeList from "./tree.json";
+import { VxeTableBar } from "@/components/ReVxeTableBar";
 
-const tableRef = ref();
+const vxeTableRef = ref();
 
-const loading = ref(false);
+const loading = ref(true);
 const tableData = ref([]);
 
-const loadList = () => {
+const columns = [
+  { type: "seq", field: "seq", title: "序号", width: 200, treeNode: true },
+  { field: "id", title: "Id" },
+  { field: "name", title: "地点" }
+];
+
+async function onSearch() {
   loading.value = true;
+  tableData.value = treeList;
   setTimeout(() => {
-    tableData.value = treeList;
     loading.value = false;
-  }, 200);
-};
+  }, 500);
+}
 
-const expandAllEvent = () => {
-  const $table = tableRef.value;
-  if ($table) {
-    $table.setAllTreeExpand(true);
-  }
-};
-
-const claseExpandEvent = () => {
-  const $table = tableRef.value;
-  if ($table) {
-    $table.clearTreeExpand();
-  }
-};
-
-loadList();
+onSearch();
 </script>
 
 <template>
-  <div>
-    <div class="mb-4">
-      <el-button @click="expandAllEvent">展开所有</el-button>
-      <el-button @click="claseExpandEvent">收起所有</el-button>
-    </div>
-
-    <vxe-table
-      ref="tableRef"
-      show-overflow
-      height="500"
-      :loading="loading"
-      :tree-config="{ transform: true }"
-      :scroll-y="{ enabled: true, gt: 20 }"
-      :data="tableData"
-    >
-      <vxe-column type="seq" title="序号" width="200" tree-node />
-      <vxe-column field="id" title="Id" />
-      <vxe-column field="name" title="地点" />
-    </vxe-table>
-  </div>
+  <VxeTableBar
+    tree
+    title="虚拟树形表格"
+    :isExpandAll="false"
+    :vxeTableRef="vxeTableRef"
+    :columns="columns"
+    @refresh="onSearch"
+  >
+    <template v-slot="{ size, dynamicColumns }">
+      <vxe-grid
+        ref="vxeTableRef"
+        v-loading="loading"
+        show-overflow
+        height="500"
+        :size="size"
+        :tree-config="{ transform: true }"
+        :scroll-y="{ enabled: true, gt: 20 }"
+        :columns="dynamicColumns"
+        :data="tableData"
+      />
+    </template>
+  </VxeTableBar>
 </template>

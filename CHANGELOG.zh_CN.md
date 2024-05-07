@@ -1,3 +1,29 @@
+# 5.5.0 (2024-05-07)
+
+### 📄 Docs
+
+文档站和完整版预览站地址更换！
+
+- 最新文档站地址：https://pure-admin.github.io/pure-admin-doc
+- 最新完整版预览站地址：https://pure-admin.github.io/vue-pure-admin
+
+### ✔️ Refactor
+
+- 重构`layout`文件命名规范，更易读
+
+### 🎫 Feat
+
+- 添加新组件`ReVxeTableBar`搭配`vxe-table`使用
+
+### 🐞 Bug fixes
+
+- 修复深色模式下设置`FixedHeader`为`false`时，背景色为白色的问题
+- 修复函数式弹窗`ReDialog`点击取消按钮，延时关闭无效问题
+
+### 🍏 Perf
+
+- 优化账号设置-头像上传功能
+
 # 5.4.0 (2024-04-18)
 
 ### 🎫 Feat
@@ -30,7 +56,7 @@
 
 # 5.3.0 (2024-03-28)
 
-### ✔️ refactor
+### ✔️ Refactor
 
 - 重构国际化文件命名规范以及演示页加上代码位置提示
 
@@ -43,7 +69,7 @@
 
 # 5.2.0 (2024-03-22)
 
-### ✔️ refactor
+### ✔️ Refactor
 
 - 将全屏按钮置于顶部，使其显眼且易于操作
 
@@ -79,7 +105,7 @@
 
 # 5.1.0 (2024-03-02)
 
-### ✔️ refactor
+### ✔️ Refactor
 
 - 重构标签页`UI`，点击关闭按钮更方便
 
@@ -101,7 +127,7 @@
 
 全面`ESM`版本
 
-### ✔️ refactor
+### ✔️ Refactor
 
 - 升级`vite`至`v5`版本，规定`node`版本`>18.18.0`，`pnpm`版本`>=8.6.10`
 - 使用 [vite-plugin-fake-server](https://www.npmjs.com/package/vite-plugin-fake-server) 替换 [vite-plugin-mock](https://www.npmjs.com/package/vite-plugin-mock)，使用 [@faker-js/faker](https://www.npmjs.com/package/@faker-js/faker) 替换 [mockjs](https://www.npmjs.com/package/mockjs)
@@ -192,7 +218,7 @@
 
 # 4.5.0 (2023-06-26)
 
-### ✔️ refactor
+### ✔️ Refactor
 
 - 重构图片裁剪 `ReCropper` 组件，添加更多实用功能
 
@@ -304,7 +330,7 @@
 
 [查看 4.0.0 版本优化细节](https://github.com/pure-admin/vue-pure-admin/issues/428#issuecomment-1422191158)
 
-### ✔️ refactor
+### ✔️ Refactor
 
 - 采用 `css` 伪类 `before` 写法重构菜单的激活背景，类似于 [ant.design-menu](https://ant.design/components/menu-cn#components-menu-demo-inline-collapsed)
 
@@ -375,10 +401,10 @@
 
 # 3.9.5 (2022-12-13)
 
-### ✔️ refactor
+### ✔️ Refactor
 
 - 完全移除了 `lodash` 和其相关库
-  [点击此处查看为什么移除？如何自行集成？](https://yiming_chang.gitee.io/pure-admin-doc/pages/FAQ/#%E5%B9%B3%E5%8F%B0%E5%9C%A8-v3-9-5-%E7%89%88%E6%9C%AC%E5%AE%8C%E5%85%A8%E7%A7%BB%E9%99%A4%E4%BA%86-lodash-%E5%92%8C%E5%85%B6%E7%9B%B8%E5%85%B3%E5%BA%93-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%A7%BB%E9%99%A4-%E5%A6%82%E4%BD%95%E8%87%AA%E8%A1%8C%E9%9B%86%E6%88%90)
+  [点击此处查看为什么移除？如何自行集成？](https://pure-admin.github.io/pure-admin-doc/pages/FAQ/#%E5%B9%B3%E5%8F%B0%E5%9C%A8-v3-9-5-%E7%89%88%E6%9C%AC%E5%AE%8C%E5%85%A8%E7%A7%BB%E9%99%A4%E4%BA%86-lodash-%E5%92%8C%E5%85%B6%E7%9B%B8%E5%85%B3%E5%BA%93-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%A7%BB%E9%99%A4-%E5%A6%82%E4%BD%95%E8%87%AA%E8%A1%8C%E9%9B%86%E6%88%90)
 
 ### 🎫 Feat
 
@@ -395,10 +421,10 @@
 
 # 3.9.4 (2022-12-05)
 
-### ✔️ refactor
+### ✔️ Refactor
 
 - 完全移除了 `vxe-table`，移除后，完整版整体打包大小减少 `1.82MB`，首启动时长基本和精简版持平 🐮
-  [点击此处查看为什么移除？如何自行集成？](https://yiming_chang.gitee.io/pure-admin-doc/pages/FAQ/#%E5%B9%B3%E5%8F%B0%E5%9C%A8-v3-9-4-%E7%89%88%E6%9C%AC%E5%AE%8C%E5%85%A8%E7%A7%BB%E9%99%A4%E4%BA%86-vxe-table-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%A7%BB%E9%99%A4-%E5%A6%82%E4%BD%95%E8%87%AA%E8%A1%8C%E9%9B%86%E6%88%90)
+  [点击此处查看为什么移除？如何自行集成？](https://pure-admin.github.io/pure-admin-doc/pages/FAQ/#%E5%B9%B3%E5%8F%B0%E5%9C%A8-v3-9-4-%E7%89%88%E6%9C%AC%E5%AE%8C%E5%85%A8%E7%A7%BB%E9%99%A4%E4%BA%86-vxe-table-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%A7%BB%E9%99%A4-%E5%A6%82%E4%BD%95%E8%87%AA%E8%A1%8C%E9%9B%86%E6%88%90)
 
 ### 🎫 Feat
 
@@ -504,13 +530,13 @@
 
 # 3.7.0 (2022-11-21)
 
-### ✔️ refactor
+### ✔️ Refactor
 
 - 使用 `intro.js` 替换 `driver.js`
 
 ### 🎫 Feat
 
-- 添加前端单点登录，测试地址 https://yiming_chang.gitee.io/vue-pure-admin/#/pure-table/index?username=sso&roles=admin&accessToken=eyJhbGciOiJIUzUxMiJ9.admin
+- 添加前端单点登录，测试地址 https://pure-admin.github.io/vue-pure-admin/#/pure-table/index?username=sso&roles=admin&accessToken=eyJhbGciOiJIUzUxMiJ9.admin
 - 为 [@pureadmin/table](https://github.com/pure-admin/pure-admin-table) 添加更多的示例和 `element-plus` 的 [table](https://element-plus.org/zh-CN/component/table.html) 示例保持一致
 - 丰富水印功能页面（支持自定义各种颜色、阴影、文字、额外属性、设置不可删除水印以及给指定元素设置水印）
 - 优化菜单，添加 `MenuArrowIconNoTransition` 全局配置，在 `public/platform-config.json` 中配置即可，对于出现左侧菜单模式，菜单展开卡顿的可设置 `MenuArrowIconNoTransition: true` 即可解决
@@ -555,7 +581,7 @@
 
 # 3.6.2 (2022-10-27)
 
-### ✔️ refactor
+### ✔️ Refactor
 
 - 使用`@/`别名替换`/@/`别名
 
@@ -583,7 +609,7 @@
 - 添加打字机组件`demo`
 - 添加`json`编辑器`demo`
 
-### ✔️ refactor
+### ✔️ Refactor
 
 - 重构权限模块，采用目前最常用的`RBAC`（Role-Based Access List）: 基于角色的权限控制（ 用户 -> 角色 -> 权限 ），并更新页面权限和按钮权限`demo`示例，按钮权限支持三种操作模式（组件方式判断权限、函数方式判断权限、指令方式判断权限）
 
@@ -609,9 +635,9 @@
 - 添加 `element-plus` 无缝滚动 `Table` 页面 demo
 - 开启 `vscode` 括号对指南
 
-### ✔️ refactor
+### ✔️ Refactor
 
-- 使用 `tailwindcss` 替换 `unocss`，新增 `tailwindcss` [使用文档](https://yiming_chang.gitee.io/pure-admin-doc/pages/tailwindcss/)
+- 使用 `tailwindcss` 替换 `unocss`，新增 `tailwindcss` [使用文档](https://pure-admin.github.io/pure-admin-doc/pages/tailwindcss/)
 
 ### 🐞 Bug fixes
 
@@ -659,7 +685,7 @@
 - 添加导出 `excel` 页面 demo
 - 添加无 `Layout` 的空白页面 demo
 
-### ✔️ refactor
+### ✔️ Refactor
 
 - 重构主题色，适配 `element-plus` 暗黑模式（同时也解决了 `3.3.0` 及更低版本中同样的元素 `css` 被多次覆盖，导致样式不好调试的问题）
 - 重构路由重置功能
@@ -695,7 +721,7 @@
 - 添加预发布打包模式
 - 添加关闭某个标签的[hooks](https://github.com/pure-admin/vue-pure-admin/commit/5e8723a031923e79f507e5a17151d3bd88a51523)
 
-### ✔️ refactor
+### ✔️ Refactor
 
 - 重构登录页，更偏向实际业务场景
 - 使用`unocss`替换`windicss`，`unocss`开发环境下性能更好，没有内存泄露，而且`api`使用上兼容`windicss`
@@ -774,7 +800,7 @@
 - 添加 `WindiCSS` 支持
 - 添加线上环境删 console 插件`vite-plugin-remove-console`
 
-### ✔️ refactor
+### ✔️ Refactor
 
 - 使用`@iconify-icons/ep`替换`@element-plus/icons-vue`
 

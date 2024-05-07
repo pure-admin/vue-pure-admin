@@ -1,0 +1,42 @@
+name: Build and Deploy
+permissions:
+  contents: write
+on:
+  push:
+    branches:
+      - pages
+      
+jobs:
+  deploy:
+    concurrency: ci-${{ github.ref }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.com/
+
+      - uses: pnpm/action-setup@v3
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 8.6.10
+          run_install: false
+
+      - name: Deploy 🔧
+        run: |
+          pnpm install --no-frozen-lockfile
+          sed -i "s#VITE_PUBLIC_PATH = /#VITE_PUBLIC_PATH = /vue-pure-admin/#g" $(pwd)/.env.production
+          pnpm build
+          cd dist
+          touch README.md .nojekyll
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
+          clean: true

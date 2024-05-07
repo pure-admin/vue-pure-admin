@@ -1,6 +1,7 @@
 import Sortable from "sortablejs";
 import { transformI18n } from "@/plugins/i18n";
 import { useEpThemeStoreHook } from "@/store/modules/epTheme";
+import { delay, cloneDeep, getKeyList } from "@pureadmin/utils";
 import {
   type PropType,
   ref,
@@ -10,13 +11,6 @@ import {
   defineComponent,
   getCurrentInstance
 } from "vue";
-import {
-  delay,
-  cloneDeep,
-  isBoolean,
-  isFunction,
-  getKeyList
-} from "@pureadmin/utils";
 
 import DragIcon from "@/assets/table-bar/drag.svg?component";
 import ExpandIcon from "@/assets/table-bar/expand.svg?component";
@@ -30,14 +24,18 @@ const props = {
     type: String,
     default: "列表"
   },
-  /** 对于树形表格，如果想启用展开和折叠功能，传入当前表格的ref即可 */
-  tableRef: {
+  vxeTableRef: {
     type: Object as PropType<any>
   },
   /** 需要展示的列 */
   columns: {
-    type: Array as PropType<TableColumnList>,
+    type: Array as PropType<any>,
     default: () => []
+  },
+  /** 是否为树列表 */
+  tree: {
+    type: Boolean,
+    default: false
   },
   isExpandAll: {
     type: Boolean,
@@ -50,23 +48,18 @@ const props = {
 };
 
 export default defineComponent({
-  name: "PureTableBar",
+  name: "VxeTableBar",
   props,
   emits: ["refresh"],
   setup(props, { emit, slots, attrs }) {
-    const size = ref("default");
+    const size = ref("small");
     const loading = ref(false);
     const checkAll = ref(true);
     const isIndeterminate = ref(false);
     const instance = getCurrentInstance()!;
     const isExpandAll = ref(props.isExpandAll);
-    const filterColumns = cloneDeep(props?.columns).filter(column =>
-      isBoolean(column?.hide)
-        ? !column.hide
-        : !(isFunction(column?.hide) && column?.hide())
-    );
-    let checkColumnList = getKeyList(cloneDeep(props?.columns), "label");
-    const checkedColumns = ref(getKeyList(cloneDeep(filterColumns), "label"));
+    let checkColumnList = getKeyList(cloneDeep(props?.columns), "title");
+    const checkedColumns = ref(getKeyList(cloneDeep(props?.columns), "title"));
     const dynamicColumns = ref(cloneDeep(props?.columns));
 
     const getDropdownItemStyle = computed(() => {
@@ -111,24 +104,23 @@ export default defineComponent({
 
     function onExpand() {
       isExpandAll.value = !isExpandAll.value;
-      toggleRowExpansionAll(props.tableRef.data, isExpandAll.value);
+      isExpandAll.value
+        ? props.vxeTableRef.setAllTreeExpand(true)
+        : props.vxeTableRef.clearTreeExpand();
+      props.vxeTableRef.refreshColumn();
     }
 
-    function toggleRowExpansionAll(data, isExpansion) {
-      data.forEach(item => {
-        props.tableRef.toggleRowExpansion(item, isExpansion);
-        if (item.children !== undefined && item.children !== null) {
-          toggleRowExpansionAll(item.children, isExpansion);
-        }
-      });
+    function reloadColumn() {
+      const curCheckedColumns = cloneDeep(dynamicColumns.value).filter(item =>
+        checkedColumns.value.includes(item.title)
+      );
+      props.vxeTableRef.reloadColumn(curCheckedColumns);
     }
 
     function handleCheckAllChange(val: boolean) {
       checkedColumns.value = val ? checkColumnList : [];
       isIndeterminate.value = false;
-      dynamicColumns.value.map(column =>
-        val ? (column.hide = false) : (column.hide = true)
-      );
+      reloadColumn();
     }
 
     function handleCheckedColumnsChange(value: string[]) {
@@ -139,39 +131,39 @@ export default defineComponent({
         checkedCount > 0 && checkedCount < checkColumnList.length;
     }
 
-    function handleCheckColumnListChange(val: boolean, label: string) {
-      dynamicColumns.value.filter(
-        item => transformI18n(item.label) === transformI18n(label)
-      )[0].hide = !val;
-    }
-
     async function onReset() {
       checkAll.value = true;
       isIndeterminate.value = false;
       dynamicColumns.value = cloneDeep(props?.columns);
       checkColumnList = [];
-      checkColumnList = await getKeyList(cloneDeep(props?.columns), "label");
-      checkedColumns.value = getKeyList(cloneDeep(filterColumns), "label");
+      checkColumnList = await getKeyList(cloneDeep(props?.columns), "title");
+      checkedColumns.value = getKeyList(cloneDeep(props?.columns), "title");
+      props.vxeTableRef.refreshColumn();
+    }
+
+    function changeSize(curSize: string) {
+      size.value = curSize;
+      props.vxeTableRef.refreshColumn();
     }
 
     const dropdown = {
       dropdown: () => (
         <el-dropdown-menu class="translation">
           <el-dropdown-item
-            style={getDropdownItemStyle.value("large")}
-            onClick={() => (size.value = "large")}
+            style={getDropdownItemStyle.value("medium")}
+            onClick={() => changeSize("medium")}
           >
             宽松
           </el-dropdown-item>
           <el-dropdown-item
-            style={getDropdownItemStyle.value("default")}
-            onClick={() => (size.value = "default")}
+            style={getDropdownItemStyle.value("small")}
+            onClick={() => changeSize("small")}
           >
             默认
           </el-dropdown-item>
           <el-dropdown-item
-            style={getDropdownItemStyle.value("small")}
-            onClick={() => (size.value = "small")}
+            style={getDropdownItemStyle.value("mini")}
+            onClick={() => changeSize("mini")}
           >
             紧凑
           </el-dropdown-item>
@@ -184,7 +176,7 @@ export default defineComponent({
       event.preventDefault();
       nextTick(() => {
         const wrapper: HTMLElement = (
-          instance?.proxy?.$refs[`GroupRef${unref(props.tableKey)}`] as any
+          instance?.proxy?.$refs[`VxeGroupRef${unref(props.tableKey)}`] as any
         ).$el.firstElementChild;
         Sortable.create(wrapper, {
           animation: 300,
@@ -209,14 +201,15 @@ export default defineComponent({
             }
             const currentRow = dynamicColumns.value.splice(oldIndex, 1)[0];
             dynamicColumns.value.splice(newIndex, 0, currentRow);
+            reloadColumn();
           }
         });
       });
     };
 
-    const isFixedColumn = (label: string) => {
+    const isFixedColumn = (title: string) => {
       return dynamicColumns.value.filter(
-        item => transformI18n(item.label) === transformI18n(label)
+        item => transformI18n(item.title) === transformI18n(title)
       )[0].fixed
         ? true
         : false;
@@ -255,7 +248,7 @@ export default defineComponent({
               {slots?.buttons ? (
                 <div class="flex mr-4">{slots.buttons()}</div>
               ) : null}
-              {props.tableRef?.size ? (
+              {props.tree ? (
                 <>
                   <ExpandIcon
                     class={["w-[16px]", iconClass.value]}
@@ -312,7 +305,7 @@ export default defineComponent({
                 <div class="pt-[6px] pl-[11px]">
                   <el-scrollbar max-height="36vh">
                     <el-checkbox-group
-                      ref={`GroupRef${unref(props.tableKey)}`}
+                      ref={`VxeGroupRef${unref(props.tableKey)}`}
                       modelValue={checkedColumns.value}
                       onChange={value => handleCheckedColumnsChange(value)}
                     >
@@ -339,9 +332,7 @@ export default defineComponent({
                                 key={index}
                                 label={item}
                                 value={item}
-                                onChange={value =>
-                                  handleCheckColumnListChange(value, item)
-                                }
+                                onChange={reloadColumn}
                               >
                                 <span
                                   title={transformI18n(item)}

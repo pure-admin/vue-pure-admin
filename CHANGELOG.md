@@ -1,3 +1,29 @@
+# 5.5.0 (2024-05-07)
+
+### 📄 Docs
+
+The addresses of the document site and full version preview site have been changed!
+
+- The latest document site address: https://pure-admin.github.io/pure-admin-doc
+- The latest full version preview site address: https://pure-admin.github.io/vue-pure-admin
+
+### ✔️ Refactor
+
+- Reconstruct the `layout` file naming convention to make it more readable
+
+### 🎫 Feat
+
+- Add new component `ReVxeTableBar` to be used with `vxe-table`
+
+### 🐞 Bug fixes
+
+- Fixed the issue where the background color is white when `FixedHeader` is set to `false` in dark mode
+- Fixed the problem of delayed closing of functional pop-up window `ReDialog` when clicking the cancel button
+
+### 🍏 Perf
+
+- Optimize account settings-avatar upload function
+
 # 5.4.0 (2024-04-18)
 
 ### 🎫 Feat
@@ -30,7 +56,7 @@
 
 # 5.3.0 (2024-03-28)
 
-### ✔️ refactor
+### ✔️ Refactor
 
 - Reconstruct internationalized file naming conventions and demo pages with code location hints
 
@@ -43,7 +69,7 @@
 
 # 5.2.0 (2024-03-22)
 
-### ✔️ refactor
+### ✔️ Refactor
 
 - Place the full screen button at the top to make it visible and easy to operate
 
@@ -79,7 +105,7 @@
 
 # 5.1.0 (2024-03-02)
 
-### ✔️ refactor
+### ✔️ Refactor
 
 - Reconstruct the tab page `UI` to make it more convenient to click the close button
 
@@ -101,7 +127,7 @@
 
 Totally `ESM` version
 
-### ✔️ refactor
+### ✔️ Refactor
 
 - Upgrade `vite` to `v5` version, specify `node` version `>18.18.0`, `pnpm` version `>=8.6.10`
 - Use [vite-plugin-fake-server](https://www.npmjs.com/package/vite-plugin-fake-server) to replace [vite-plugin-mock](https://www.npmjs.com/package/vite-plugin-mock), use [@faker-js/faker](https://www.npmjs.com/package/@faker-js/faker) to replace [mockjs](https://www.npmjs.com/package/mockjs)
@@ -192,7 +218,7 @@ Totally `ESM` version
 
 # 4.5.0 (2023-06-26)
 
-### ✔️ refactor
+### ✔️ Refactor
 
 - Refactor image crop `ReCropper` component, add more useful functions
 
@@ -305,7 +331,7 @@ Totally `ESM` version
 
 [View 4.0.0 version optimization details](https://github.com/pure-admin/vue-pure-admin/issues/428#issuecomment-1422191158)
 
-### ✔️ refactor
+### ✔️ Refactor
 
 - Use `css` pseudo-class `before` to refactor the activation background of the menu, similar to [ant.design-menu](https://ant.design/components/menu-cn#components-menu-demo-inline-collapsed)
 
@@ -376,10 +402,10 @@ Totally `ESM` version
 
 # 3.9.5 (2022-12-13)
 
-### ✔️ refactor
+### ✔️ Refactor
 
 - completely removed `lodash` and its related libraries
-  [Click here to see Why Removed? How to integrate it yourself? ](https://yiming_chang.gitee.io/pure-admin-doc/pages/FAQ/#%E5%B9%B3%E5%8F%B0%E5%9C%A8-v3-9-5-%E7 %89%88%E6%9C%AC%E5%AE%8C%E5%85%A8%E7%A7%BB%E9%99%A4%E4%BA%86-lodash-%E5%92%8C% E5%85%B6%E7%9B%B8%E5%85%B3%E5%BA%93-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%A7%BB%E9 %99%A4-%E5%A6%82%E4%BD%95%E8%87%AA%E8%A1%8C%E9%9B%86%E6%88%90)
+  [Click here to see Why Removed? How to integrate it yourself? ](https://pure-admin.github.io/pure-admin-doc/pages/FAQ/#%E5%B9%B3%E5%8F%B0%E5%9C%A8-v3-9-5-%E7 %89%88%E6%9C%AC%E5%AE%8C%E5%85%A8%E7%A7%BB%E9%99%A4%E4%BA%86-lodash-%E5%92%8C% E5%85%B6%E7%9B%B8%E5%85%B3%E5%BA%93-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%A7%BB%E9 %99%A4-%E5%A6%82%E4%BD%95%E8%87%AA%E8%A1%8C%E9%9B%86%E6%88%90)
 
 ### 🎫 Feat
 
@@ -396,10 +422,10 @@ Totally `ESM` version
 
 # 3.9.4 (2022-12-05)
 
-### ✔️ refactor
+### ✔️ Refactor
 
 - Completely removed `vxe-table`, after removal, the overall package size of the full version is reduced by `1.82MB`, and the initial startup time is basically the same as the lite version 🐮
-  [Click here to see Why Removed? How to integrate it yourself?](https://yiming_chang.gitee.io/pure-admin-doc/pages/FAQ/#%E5%B9%B3%E5%8F%B0%E5%9C%A8-v3-9-4-%E7%89%88%E6%9C%AC%E5%AE%8C%E5%85%A8%E7%A7%BB%E9%99%A4%E4%BA%86-vxe-table-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%A7%BB%E9%99%A4-%E5%A6%82%E4%BD%95%E8%87%AA%E8%A1%8C%E9%9B%86%E6%88%90)
+  [Click here to see Why Removed? How to integrate it yourself?](https://pure-admin.github.io/pure-admin-doc/pages/FAQ/#%E5%B9%B3%E5%8F%B0%E5%9C%A8-v3-9-4-%E7%89%88%E6%9C%AC%E5%AE%8C%E5%85%A8%E7%A7%BB%E9%99%A4%E4%BA%86-vxe-table-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%A7%BB%E9%99%A4-%E5%A6%82%E4%BD%95%E8%87%AA%E8%A1%8C%E9%9B%86%E6%88%90)
 
 ### 🎫 Feat
 
@@ -505,13 +531,13 @@ Totally `ESM` version
 
 # 3.7.0 (2022-11-21)
 
-### ✔️ refactor
+### ✔️ Refactor
 
 - Replace `driver.js` with `intro.js`
 
 ### 🎫 Feat
 
-- Add front-end single sign-on, test address https://yiming_chang.gitee.io/vue-pure-admin/#/pure-table/index?username=sso&roles=admin&accessToken=eyJhbGciOiJIUzUxMiJ9.admin
+- Add front-end single sign-on, test address https://pure-admin.github.io/vue-pure-admin/#/pure-table/index?username=sso&roles=admin&accessToken=eyJhbGciOiJIUzUxMiJ9.admin
 - Add more examples for [@pureadmin/table](https://github.com/pure-admin/pure-admin-table) and `element-plus` [table](https://element-plus.org /zh-CN/component/table.html) example remains the same
 - Rich watermark function page (supports customizing various colors, shadows, text, additional attributes, setting undeletable watermarks and setting watermarks for specified elements)
 - Optimize the menu, add `MenuArrowIconNoTransition` global configuration, configure it in `public/platform-config.json`, for the left menu mode, the menu expansion can be set `MenuArrowIconNoTransition: true` to solve
@@ -556,7 +582,7 @@ Totally `ESM` version
 
 # 3.6.2 (2022-10-27)
 
-### ✔️ refactor
+### ✔️ Refactor
 
 - Replace `/@/` alias with `@/` alias
 
@@ -584,7 +610,7 @@ Totally `ESM` version
 - Add typewriter component `demo`
 - Added `json` editor `demo`
 
-### ✔️ refactor
+### ✔️ Refactor
 
 - Refactor the permission module, adopt the most commonly used `RBAC` (Role-Based Access List): role-based permission control (User -> Role -> Permission), and update the page permission and button permission `demo` example, button Permissions support three operation modes (judging permissions in component mode, judging permissions in function mode, and judging permissions in instruction mode)
 
@@ -610,9 +636,9 @@ Totally `ESM` version
 - Add `element-plus` seamless scrolling `Table` page demo
 - Open `vscode` bracket pair guide
 
-### ✔️ refactor
+### ✔️ Refactor
 
-- Replace `unocss` with `tailwindcss`, add `tailwindcss` [documentation](https://yiming_chang.gitee.io/pure-admin-doc/pages/tailwindcss/)
+- Replace `unocss` with `tailwindcss`, add `tailwindcss` [documentation](https://pure-admin.github.io/pure-admin-doc/pages/tailwindcss/)
 
 ### 🐞 Bug fixes
 
@@ -660,7 +686,7 @@ Totally `ESM` version
 - Added export `excel` page demo
 - Added blank page demo without `Layout`
 
-### ✔️ refactor
+### ✔️ Refactor
 
 - Refactored the theme color to adapt to `element-plus` dark mode (also solved the problem that the same element `css` in `3.3.0` and earlier versions was overwritten many times, resulting in poor style debugging)
 - Refactored route reset function
@@ -696,7 +722,7 @@ Totally `ESM` version
 - Added pre-release packaging mode
 - Add [hooks] to close a tag (https://github.com/pure-admin/vue-pure-admin/commit/5e8723a031923e79f507e5a17151d3bd88a51523)
 
-### ✔️ refactor
+### ✔️ Refactor
 
 - Refactored the landing page to be more inclined to the actual business scenario
 - Use `unocss` instead of `windicss`, `unocss` has better performance in development environment, no memory leaks, and `api` is compatible with `windicss`
@@ -775,7 +801,7 @@ Totally `ESM` version
 - Added `WindiCSS` support
 - Add online environment remove console plugin `vite-plugin-remove-console`
 
-### ✔️ refactor
+### ✔️ Refactor
 
 - Replace `@element-plus/icons-vue` with `@iconify-icons/ep`
 
