@@ -99,7 +99,6 @@ onBeforeUnmount(() => {
       :class="[device === 'mobile' ? 'mobile' : 'pc']"
     >
       <el-menu
-        router
         unique-opened
         mode="vertical"
         popper-class="pure-scrollbar"

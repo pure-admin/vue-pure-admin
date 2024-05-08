@@ -147,30 +147,6 @@ const frameRouter = {
   },
   children: [
     {
-      path: "/iframe/external",
-      meta: {
-        title: "menus.pureExternalDoc"
-      },
-      children: [
-        {
-          path: "/external",
-          name: "https://pure-admin.github.io/pure-admin-doc",
-          meta: {
-            title: "menus.pureExternalLink",
-            roles: ["admin", "common"]
-          }
-        },
-        {
-          path: "/pureUtilsLink",
-          name: "https://pure-admin-utils.netlify.app/",
-          meta: {
-            title: "menus.pureUtilsLink",
-            roles: ["admin", "common"]
-          }
-        }
-      ]
-    },
-    {
       path: "/iframe/embedded",
       meta: {
         title: "menus.pureEmbeddedDoc"
@@ -253,6 +229,30 @@ const frameRouter = {
             title: "menus.pureRouterDoc",
             frameSrc: "https://router.vuejs.org/zh/",
             keepAlive: true,
+            roles: ["admin", "common"]
+          }
+        }
+      ]
+    },
+    {
+      path: "/iframe/external",
+      meta: {
+        title: "menus.pureExternalDoc"
+      },
+      children: [
+        {
+          path: "/external",
+          name: "https://pure-admin.github.io/pure-admin-doc",
+          meta: {
+            title: "menus.pureExternalLink",
+            roles: ["admin", "common"]
+          }
+        },
+        {
+          path: "/pureUtilsLink",
+          name: "https://pure-admin-utils.netlify.app/",
+          meta: {
+            title: "menus.pureUtilsLink",
             roles: ["admin", "common"]
           }
         }
