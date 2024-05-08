@@ -114,6 +114,7 @@ function resolvePath(routePath) {
     :to="item"
   >
     <el-menu-item
+      :index="resolvePath(onlyOneChild.path)"
       :class="{ 'submenu-title-noDropdown': !isNest }"
       :style="getNoDropdownStyle"
       v-bind="attrs"

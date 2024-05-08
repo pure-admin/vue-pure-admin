@@ -53,7 +53,6 @@ nextTick(() => {
     </div>
     <el-menu
       ref="menuRef"
-      router
       mode="horizontal"
       popper-class="pure-scrollbar"
       class="horizontal-header-menu"
