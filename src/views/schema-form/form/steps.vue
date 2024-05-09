@@ -197,7 +197,7 @@ const next = (actives: number, values: any) => {
     v-model="active"
     simple
     class="w-[800px] m-auto"
-    :data="stepForm"
+    :data="stepForm as any"
     align-center
     @next="next"
   />
