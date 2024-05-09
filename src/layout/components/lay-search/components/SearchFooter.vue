@@ -6,7 +6,7 @@ import EnterOutlined from "@/assets/svg/enter_outlined.svg?component";
 import ArrowUpLine from "@iconify-icons/ri/arrow-up-line";
 import ArrowDownLine from "@iconify-icons/ri/arrow-down-line";
 
-const props = withDefaults(defineProps<{ total: number }>(), {
+withDefaults(defineProps<{ total: number }>(), {
   total: 0
 });
 
