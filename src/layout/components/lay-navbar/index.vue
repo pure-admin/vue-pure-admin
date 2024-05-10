@@ -7,12 +7,12 @@ import { useTranslationLang } from "@/layout/hooks/useTranslationLang";
 import LaySidebarFullScreen from "../lay-sidebar/components/SidebarFullScreen.vue";
 import LaySidebarBreadCrumb from "../lay-sidebar/components/SidebarBreadCrumb.vue";
 import LaySidebarTopCollapse from "../lay-sidebar/components/SidebarTopCollapse.vue";
+import LaySidebarI18nSelect from "../lay-sidebar/components/SidebarI18nSelect.vue";
 
 import GlobalizationIcon from "@/assets/svg/globalization.svg?component";
 import AccountSettingsIcon from "@iconify-icons/ri/user-settings-line";
 import LogoutCircleRLine from "@iconify-icons/ri/logout-circle-r-line";
 import Setting from "@iconify-icons/ri/settings-3-line";
-import Check from "@iconify-icons/ep/check";
 
 const {
   layout,
@@ -24,12 +24,10 @@ const {
   userAvatar,
   avatarsStyle,
   toggleSideBar,
-  toAccountSettings,
-  getDropdownItemStyle,
-  getDropdownItemClass
+  toAccountSettings
 } = useNav();
 
-const { t, locale, translationCh, translationEn } = useTranslationLang();
+const { t } = useTranslationLang();
 </script>
 
 <template>
@@ -57,30 +55,7 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
           class="navbar-bg-hover w-[40px] h-[48px] p-[11px] cursor-pointer outline-none"
         />
         <template #dropdown>
-          <el-dropdown-menu class="translation">
-            <el-dropdown-item
-              :style="getDropdownItemStyle(locale, 'zh')"
-              :class="['dark:!text-white', getDropdownItemClass(locale, 'zh')]"
-              @click="translationCh"
-            >
-              <IconifyIconOffline
-                v-show="locale === 'zh'"
-                class="check-zh"
-                :icon="Check"
-              />
-              简体中文
-            </el-dropdown-item>
-            <el-dropdown-item
-              :style="getDropdownItemStyle(locale, 'en')"
-              :class="['dark:!text-white', getDropdownItemClass(locale, 'en')]"
-              @click="translationEn"
-            >
-              <span v-show="locale === 'en'" class="check-en">
-                <IconifyIconOffline :icon="Check" />
-              </span>
-              English
-            </el-dropdown-item>
-          </el-dropdown-menu>
+          <LaySidebarI18nSelect />
         </template>
       </el-dropdown>
       <!-- 全屏 -->
@@ -168,22 +143,6 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
   .breadcrumb-container {
     float: left;
     margin-left: 16px;
-  }
-}
-
-.translation {
-  ::v-deep(.el-dropdown-menu__item) {
-    padding: 5px 40px;
-  }
-
-  .check-zh {
-    position: absolute;
-    left: 20px;
-  }
-
-  .check-en {
-    position: absolute;
-    left: 20px;
   }
 }
 
