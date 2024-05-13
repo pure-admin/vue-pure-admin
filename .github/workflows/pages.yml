@@ -24,7 +24,7 @@ jobs:
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 8.6.10
+          version: 9
           run_install: false
 
       - name: Deploy 🔧
