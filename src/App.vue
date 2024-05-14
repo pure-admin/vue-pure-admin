@@ -57,14 +57,15 @@ export default defineComponent({
       title: "通知",
       duration: 0,
       //@ts-expect-error
-      style: { width: "235px" },
+      style: { width: "310px" },
       position: "bottom-right",
       dangerouslyUseHTMLString: true,
-      message: `
-        <a target='_blank' style='font-size: 16px' class='text-center text-[red] rounded hover:text-[var(--el-color-primary)]' href='https://github.com/pure-admin/vue-pure-admin/issues/1150'>
+      message: `<a target='_blank' style='font-size: 16px' class='block text-center border mb-2 rounded hover:text-[red]' href='https://github.com/pure-admin/vue-pure-admin/issues/1150'>
         issues 通道即将关闭！反馈问题请走网易邮箱
         </a>
-      `
+        <a target='_blank' style='font-size: 16px' class='block text-center text-[red] rounded hover:text-[var(--el-color-primary)] border' href='https://pure-admin.github.io/pure-admin-doc/pages/service/#%E6%B0%B8%E4%B9%85%E8%A7%A3%E7%AD%94%E5%BE%AE%E4%BF%A1%E7%BE%A4'>
+        永久解答微信群优惠价即将恢复，原价：<del>￥ 698</del>，现价：￥ 298
+        `
     });
   }
 });
