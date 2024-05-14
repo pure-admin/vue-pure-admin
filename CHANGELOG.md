@@ -1,3 +1,17 @@
+# 5.6.0 (2024-05-14)
+
+### ✔️ Refactor
+
+- Upgrade `pnpm` to `v9` version, requiring `pnpm` version `>=9`
+
+### 🐞 Bug fixes
+
+- Fixed the issue where clicking on an external link would jump twice
+
+### 🍏 Perf
+
+- Optimize `ReSegmented` component
+
 # 5.5.0 (2024-05-07)
 
 ### 📄 Docs

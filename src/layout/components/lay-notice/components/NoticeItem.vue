@@ -4,7 +4,7 @@ import { ref, PropType, nextTick } from "vue";
 import { useNav } from "@/layout/hooks/useNav";
 import { deviceDetection } from "@pureadmin/utils";
 
-const props = defineProps({
+defineProps({
   noticeItem: {
     type: Object as PropType<ListItem>,
     default: () => {}

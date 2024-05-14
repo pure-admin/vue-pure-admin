@@ -2,7 +2,7 @@
 import { toRaw } from "vue";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 
-const props = defineProps({
+defineProps({
   extraIcon: {
     type: String,
     default: ""

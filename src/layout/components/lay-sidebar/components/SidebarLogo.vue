@@ -2,7 +2,7 @@
 import { getTopMenu } from "@/router/utils";
 import { useNav } from "@/layout/hooks/useNav";
 
-const props = defineProps({
+defineProps({
   collapse: Boolean
 });
 
