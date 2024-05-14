@@ -14,6 +14,7 @@ import en from "element-plus/es/locale/lang/en";
 import zhCn from "element-plus/es/locale/lang/zh-cn";
 import plusEn from "plus-pro-components/es/locale/lang/en";
 import plusZhCn from "plus-pro-components/es/locale/lang/zh-cn";
+import { ElNotification } from "element-plus";
 
 export default defineComponent({
   name: "app",
@@ -50,21 +51,21 @@ export default defineComponent({
         }
       );
     }
+  },
+  mounted() {
+    ElNotification({
+      title: "通知",
+      duration: 0,
+      //@ts-expect-error
+      style: { width: "235px" },
+      position: "bottom-right",
+      dangerouslyUseHTMLString: true,
+      message: `
+        <a target='_blank' style='font-size: 16px' class='text-center text-[red] rounded hover:text-[var(--el-color-primary)]' href='https://github.com/pure-admin/vue-pure-admin/issues/1150'>
+        issues 通道即将关闭！反馈问题请走网易邮箱
+        </a>
+      `
+    });
   }
-  // mounted() {
-  //   ElNotification({
-  //     title: "永久解答服务",
-  //     duration: 0,
-  //     //@ts-expect-error
-  //     style: { width: "370px" },
-  //     position: "bottom-right",
-  //     dangerouslyUseHTMLString: true,
-  //     message: `
-  //       <a target='_blank' style='font-size: 16px' class='text-center text-[red] rounded hover:text-[var(--el-color-primary)]' href='https://yiming_chang.gitee.io/pure-admin-doc/pages/service/#%E6%B0%B8%E4%B9%85%E8%A7%A3%E7%AD%94%E5%BE%AE%E4%BF%A1%E7%BE%A4'>
-  //       服务已升级！！！点击查看升级详情！！！
-  //       </a>
-  //     `
-  //   });
-  // }
 });
 </script>
