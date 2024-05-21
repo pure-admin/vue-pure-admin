@@ -36,12 +36,12 @@ export default class PureHttp {
   ): Promise<T>;
   post<T, P>(
     url: string,
-    params?: T,
+    params?: P,
     config?: PureHttpRequestConfig
-  ): Promise<P>;
+  ): Promise<T>;
   get<T, P>(
     url: string,
-    params?: T,
+    params?: P,
     config?: PureHttpRequestConfig
-  ): Promise<P>;
+  ): Promise<T>;
 }
