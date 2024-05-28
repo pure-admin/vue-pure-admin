@@ -48,7 +48,7 @@ import {
 } from "vxe-table";
 
 // 全局默认参数
-VXETable.config({
+VXETable.setConfig({
   // i18n: (key, args) => {
   //   return unref(i18n.global.locale) === "zh"
   //     ? XEUtils.toFormatString(XEUtils.get(zh, key), args)
