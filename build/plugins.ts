@@ -13,6 +13,7 @@ import { themePreprocessorPlugin } from "@pureadmin/theme";
 import VueI18nPlugin from "@intlify/unplugin-vue-i18n/vite";
 import { genScssMultipleScopeVars } from "../src/layout/theme";
 import { vitePluginFakeServer } from "vite-plugin-fake-server";
+import Inspector from "vite-plugin-vue-inspector";
 
 export function getPluginsList(
   VITE_CDN: boolean,
@@ -28,6 +29,8 @@ export function getPluginsList(
       include: [pathResolve("../locales/**")]
     }),
     viteBuildInfo(),
+    // 选中DOM 打开IDE
+    Inspector(),
     /**
      * 开发环境下移除非必要的vue-router动态路由警告No match found for location with path
      * 非必要具体看 https://github.com/vuejs/router/issues/521 和 https://github.com/vuejs/router/issues/359

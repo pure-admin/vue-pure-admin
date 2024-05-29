@@ -166,6 +166,7 @@
     "vite-plugin-fake-server": "^2.1.1",
     "vite-plugin-remove-console": "^2.2.0",
     "vite-plugin-router-warn": "^1.0.0",
+    "vite-plugin-vue-inspector": "^5.1.2",
     "vite-svg-loader": "^5.1.0",
     "vue-eslint-parser": "^9.4.2",
     "vue-tsc": "^1.8.27"
