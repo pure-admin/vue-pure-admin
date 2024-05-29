@@ -3,13 +3,13 @@ import { useEventListener } from "@vueuse/core";
 import { copyTextToClipboard } from "@pureadmin/utils";
 import type { Directive, DirectiveBinding } from "vue";
 
-interface CopyEl extends HTMLElement {
+export interface CopyEl extends HTMLElement {
   copyValue: string;
 }
 
 /** 文本复制指令（默认双击复制） */
 export const copy: Directive = {
-  mounted(el: CopyEl, binding: DirectiveBinding) {
+  mounted(el: CopyEl, binding: DirectiveBinding<string>) {
     const { value } = binding;
     if (value) {
       el.copyValue = value;

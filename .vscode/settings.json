@@ -43,5 +43,7 @@
       "port": 1883,
       "clientId": "vsmqtt_client_db34"
     }
-  ]
+  ],
+  "vscodeCustomCodeColor.highlightValue": "v-auth",
+  "vscodeCustomCodeColor.highlightValueColor": "#6366f1",
 }
