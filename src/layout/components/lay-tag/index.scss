@@ -41,6 +41,13 @@
       padding-right: 24px;
     }
 
+    &.chrome-item {
+      padding-right: 0;
+      padding-left: 0;
+      margin-right: -18px;
+      box-shadow: none;
+    }
+
     .el-icon-close {
       position: absolute;
       top: 50%;
@@ -76,6 +83,10 @@
     overflow: hidden;
     white-space: nowrap;
 
+    &.chrome-scroll-container {
+      padding-top: 6px;
+    }
+
     .tab {
       position: relative;
       float: left;
@@ -85,6 +96,12 @@
 
       .scroll-item {
         transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+        &.chrome-item {
+          &:nth-child(1) {
+            padding-right: 0;
+          }
+        }
 
         &:nth-child(1) {
           padding: 0 12px;
@@ -173,8 +190,20 @@
   color: #fff;
   box-shadow: 0 0 0.7px #888;
 
+  .chrome-tab__bg {
+    color: var(--el-color-primary-light-9) !important;
+  }
+
   .tag-title {
     color: var(--el-color-primary) !important;
+  }
+
+  .chrome-close-btn {
+    color: var(--el-color-primary);
+
+    &:hover {
+      background-color: var(--el-color-primary);
+    }
   }
 }
 
@@ -261,4 +290,56 @@
   height: 2px;
   background: var(--el-color-primary);
   animation: schedule-out-width 200ms ease-in;
+}
+
+/* 谷歌风格的页签 */
+.chrome-tab {
+  position: relative;
+  display: inline-flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  white-space: nowrap;
+  cursor: pointer;
+
+  .tag-title {
+    padding: 0;
+  }
+
+  &:hover {
+    .chrome-tab__bg {
+      color: #dee1e6;
+    }
+
+    .tag-title {
+      color: #1f1f1f;
+    }
+  }
+
+  .chrome-tab__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -10;
+    width: 100%;
+    height: 100%;
+    color: transparent;
+    pointer-events: none;
+  }
+
+  .chrome-close-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    color: #666;
+    border-radius: 50%;
+
+    &:hover {
+      color: white;
+      background-color: #b1b3b8;
+    }
+  }
 }
