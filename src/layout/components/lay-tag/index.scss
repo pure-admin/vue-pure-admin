@@ -190,6 +190,10 @@
   color: #fff;
   box-shadow: 0 0 0.7px #888;
 
+  .chrome-tab {
+    z-index: 10;
+  }
+
   .chrome-tab__bg {
     color: var(--el-color-primary-light-9) !important;
   }
@@ -204,6 +208,10 @@
     &:hover {
       background-color: var(--el-color-primary);
     }
+  }
+
+  .chrome-tab-divider {
+    opacity: 0;
   }
 }
 
@@ -307,13 +315,27 @@
     padding: 0;
   }
 
+  .chrome-tab-divider {
+    position: absolute;
+    right: 7px;
+    width: 1px;
+    height: 14px;
+    background-color: #2b2d2f;
+  }
+
   &:hover {
+    z-index: 10;
+
     .chrome-tab__bg {
       color: #dee1e6;
     }
 
     .tag-title {
       color: #1f1f1f;
+    }
+
+    .chrome-tab-divider {
+      opacity: 0;
     }
   }
 
@@ -340,6 +362,23 @@
     &:hover {
       color: white;
       background-color: #b1b3b8;
+    }
+  }
+}
+
+// 暗黑模式下chrome-tab的样式
+html.dark .chrome-tab {
+  .tag-title {
+    color: #666;
+  }
+
+  &:hover {
+    .chrome-tab__bg {
+      color: #333;
+    }
+
+    .tag-title {
+      color: #adadad;
     }
   }
 }

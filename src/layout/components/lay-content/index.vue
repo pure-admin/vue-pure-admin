@@ -6,6 +6,7 @@ import { useGlobal, isNumber } from "@pureadmin/utils";
 import BackTopIcon from "@/assets/svg/back_top.svg?component";
 import { h, computed, Transition, defineComponent } from "vue";
 import { usePermissionStoreHook } from "@/store/modules/permission";
+import { useTags } from "@/layout/hooks/useTag";
 
 const props = defineProps({
   fixedHeader: Boolean
@@ -13,6 +14,8 @@ const props = defineProps({
 
 const { t } = useI18n();
 const { $storage, $config } = useGlobal<GlobalPropertiesApi>();
+
+const { showModel } = useTags();
 
 const isKeepAlive = computed(() => {
   return $config?.KeepAlive;
@@ -51,9 +54,17 @@ const getMainWidth = computed(() => {
 const getSectionStyle = computed(() => {
   return [
     hideTabs.value && layout ? "padding-top: 48px;" : "",
-    !hideTabs.value && layout ? "padding-top: 81px;" : "",
+    !hideTabs.value && layout
+      ? showModel.value == "chrome"
+        ? "padding-top: 87px;"
+        : "padding-top: 81px;"
+      : "",
     hideTabs.value && !layout.value ? "padding-top: 48px;" : "",
-    !hideTabs.value && !layout.value ? "padding-top: 81px;" : "",
+    !hideTabs.value && !layout.value
+      ? showModel.value == "chrome"
+        ? "padding-top: 87px;"
+        : "padding-top: 81px;"
+      : "",
     props.fixedHeader
       ? ""
       : `padding-top: 0;${
