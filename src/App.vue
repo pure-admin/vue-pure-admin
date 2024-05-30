@@ -57,14 +57,11 @@ export default defineComponent({
       title: "通知",
       duration: 0,
       //@ts-expect-error
-      style: { width: "310px" },
+      style: { width: "340px" },
       position: "bottom-right",
       dangerouslyUseHTMLString: true,
-      message: `<a target='_blank' style='font-size: 16px' class='block text-center border mb-2 rounded hover:text-[red]' href='https://pure-admin.github.io/pure-admin-doc/pages/service/#%E6%B0%B8%E4%B9%85%E8%A7%A3%E7%AD%94%E5%BE%AE%E4%BF%A1%E7%BE%A4'>
-        永久解答微信群优惠价即将恢复，原价：<del>￥ 698</del>，现价：￥ 298
-        </a>
-        <a target='_blank' style='font-size: 16px' class='block text-center text-[red] rounded hover:text-[var(--el-color-primary)] border' href='https://pure-admin.github.io/pure-admin-doc/pages/service/#%E4%B8%80%E5%AF%B9%E4%B8%80%E5%8C%85%E6%9C%88%E8%BF%9C%E7%A8%8B%E6%8C%87%E5%AF%BC'>
-        一对一包月远程指导 <br /> 每月仅一个名额
+      message: `<a target='_blank' style='font-size: 16px' class='block text-center text-[red] rounded hover:text-[var(--el-color-primary)] border' href='https://pure-admin.github.io/pure-admin-doc/pages/service/#%E6%B0%B8%E4%B9%85%E8%A7%A3%E7%AD%94%E5%BE%AE%E4%BF%A1%E7%BE%A4'>
+        永久解答微信群优惠价6月1号当天恢复 原价：<del>￥ 698</del>，现价：￥ 298
         </a>
         `
     });
