@@ -10,6 +10,10 @@
 
 `vue-pure-admin` is an open source, free and out-of-the-box middle and backend management system template. Completely adopts `ECMAScript` module (`ESM`) specifications to write and organize code, using the latest `Vue3`, `Vite`, `Element-Plus`, `TypeScript`, `Pinia`, `Tailwindcss` and other mainstream technologies develop
 
+## R&D philosophy
+
+Seek innovation in stability and see the future in technology
+
 ## Sponsors
 
 <a class="logo" href="https://ai-tools.cn/resume/start" target="_blank" rel="sponsored noopener">
