@@ -15,12 +15,6 @@
 
 稳定中求创新，技术中见未来
 
-## 赞助商
-
-<a class="logo" href="https://ai-tools.cn/resume/start" target="_blank" rel="sponsored noopener">
-  <img src="./public/sponsors/aitools.svg" alt="aitools">
-</a>
-
 ## 精简版本（实际项目开发请用精简版本，提供 `非国际化` 、`国际化` 两个版本选择）
 
 精简版本是基于 [vue-pure-admin](https://github.com/pure-admin/vue-pure-admin) 提炼出的架子，包含主体功能，更适合实际项目开发，打包后的大小在全局引入 [element-plus](https://element-plus.org) 的情况下仍然低于 `2.3MB`，并且会永久同步完整版的代码。开启 `brotli` 压缩和 `cdn` 替换本地库模式后，打包大小低于 `350kb`
