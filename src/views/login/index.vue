@@ -337,7 +337,7 @@ watch(loginDay, value => {
       >
         &nbsp;{{ title }}
       </a>
-      <div class="ml-8">
+      <!-- <div class="ml-8">
         <span>赞助商：</span>
         <a
           class="hover:text-primary"
@@ -346,7 +346,7 @@ watch(loginDay, value => {
         >
           二猫 AI 简历
         </a>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

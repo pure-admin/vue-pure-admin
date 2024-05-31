@@ -16,7 +16,7 @@ const TITLE = getConfig("Title");
     >
       &nbsp;{{ TITLE }}
     </a>
-    <div class="ml-8">
+    <!-- <div class="ml-8">
       <span>赞助商：</span>
       <a
         class="hover:text-primary"
@@ -25,7 +25,7 @@ const TITLE = getConfig("Title");
       >
         二猫 AI 简历
       </a>
-    </div>
+    </div> -->
   </footer>
 </template>
 

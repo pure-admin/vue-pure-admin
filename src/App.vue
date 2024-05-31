@@ -54,14 +54,14 @@ export default defineComponent({
   },
   mounted() {
     ElNotification({
-      title: "通知",
+      title: "优质服务",
       duration: 0,
       //@ts-expect-error
-      style: { width: "340px" },
+      style: { width: "140px" },
       position: "bottom-right",
       dangerouslyUseHTMLString: true,
-      message: `<a target='_blank' style='font-size: 16px' class='block text-center text-[red] rounded hover:text-[var(--el-color-primary)] border' href='https://pure-admin.github.io/pure-admin-doc/pages/service/#%E6%B0%B8%E4%B9%85%E8%A7%A3%E7%AD%94%E5%BE%AE%E4%BF%A1%E7%BE%A4'>
-        永久解答微信群优惠价6月1号当天恢复 原价：<del>￥ 698</del>，现价：￥ 298
+      message: `<a target='_blank' style='font-size: 16px' class='block text-center hover:text-[var(--el-color-primary)]' href='https://pure-admin.github.io/pure-admin-doc/pages/service/'>
+        点击了解
         </a>
         `
     });
