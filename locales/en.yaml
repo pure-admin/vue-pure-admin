@@ -53,6 +53,8 @@ panel:
   pureTagsStyleSmartTip: Smart tags add fun and brilliance
   pureTagsStyleCard: Card
   pureTagsStyleCardTip: Card tags for efficient browsing
+  pureTagsStyleChrome: Chrome
+  pureTagsStyleChromeTip: Chrome style is classic and elegant
   pureInterfaceDisplay: Interface Display
   pureGreyModel: Grey Model
   pureWeakModel: Weak Model
