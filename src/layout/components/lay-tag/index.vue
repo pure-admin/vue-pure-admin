@@ -5,6 +5,7 @@ import { RouteConfigs } from "../../types";
 import { useTags } from "../../hooks/useTag";
 import { routerArrays } from "@/layout/types";
 import { onClickOutside } from "@vueuse/core";
+import TagChrome from "./components/TagChrome.vue";
 import { handleAliveRoute, getTopMenu } from "@/router/utils";
 import { useSettingStoreHook } from "@/store/modules/settings";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
@@ -565,6 +566,7 @@ onBeforeUnmount(() => {
     <div
       ref="scrollbarDom"
       class="scroll-container"
+      :class="showModel === 'chrome' && 'chrome-scroll-container'"
       @wheel.prevent="handleWheel"
     >
       <div ref="tabDom" class="tab select-none" :style="getTabStyle">
@@ -575,6 +577,7 @@ onBeforeUnmount(() => {
           :class="[
             'scroll-item is-closable',
             linkIsActive(item),
+            showModel === 'chrome' && 'chrome-item',
             !isAllEmpty(item?.meta?.fixedTag) && 'fixed-tag'
           ]"
           @contextmenu.prevent="openMenu(item, $event)"
@@ -582,28 +585,46 @@ onBeforeUnmount(() => {
           @mouseleave.prevent="onMouseleave(index)"
           @click="tagOnClick(item)"
         >
-          <span
-            class="tag-title dark:!text-text_color_primary dark:hover:!text-primary"
-          >
-            {{ transformI18n(item.meta.title) }}
-          </span>
-          <span
-            v-if="
-              isAllEmpty(item?.meta?.fixedTag)
-                ? iconIsActive(item, index) ||
-                  (index === activeIndex && index !== 0)
-                : false
-            "
-            class="el-icon-close"
-            @click.stop="deleteMenu(item)"
-          >
-            <IconifyIconOffline :icon="Close" />
-          </span>
-          <span
-            v-if="showModel !== 'card'"
-            :ref="'schedule' + index"
-            :class="[scheduleIsActive(item)]"
-          />
+          <template v-if="showModel !== 'chrome'">
+            <span
+              class="tag-title dark:!text-text_color_primary dark:hover:!text-primary"
+            >
+              {{ transformI18n(item.meta.title) }}
+            </span>
+            <span
+              v-if="
+                isAllEmpty(item?.meta?.fixedTag)
+                  ? iconIsActive(item, index) ||
+                    (index === activeIndex && index !== 0)
+                  : false
+              "
+              class="el-icon-close"
+              @click.stop="deleteMenu(item)"
+            >
+              <IconifyIconOffline :icon="Close" />
+            </span>
+            <span
+              v-if="showModel !== 'card'"
+              :ref="'schedule' + index"
+              :class="[scheduleIsActive(item)]"
+            />
+          </template>
+          <div v-else class="chrome-tab">
+            <div class="chrome-tab__bg">
+              <TagChrome />
+            </div>
+            <span class="tag-title">
+              {{ transformI18n(item.meta.title) }}
+            </span>
+            <span
+              v-if="isAllEmpty(item?.meta?.fixedTag) ? index !== 0 : false"
+              class="chrome-close-btn"
+              @click.stop="deleteMenu(item)"
+            >
+              <IconifyIconOffline :icon="Close" />
+            </span>
+            <span class="chrome-tab-divider" />
+          </div>
         </div>
       </div>
     </div>
