@@ -182,6 +182,7 @@ Thank you very much for your in-depth understanding of the source code and your 
 |      [WitMiao](https://github.com/WitMiao)      |   [code](https://github.com/pure-admin/vue-pure-admin/commits?author=WitMiao)    |
 |     [QFifteen](https://github.com/QFifteen)     |   [code](https://github.com/pure-admin/vue-pure-admin/commits?author=QFifteen)   |
 |      [edgexie](https://github.com/edgexie)      |   [code](https://github.com/pure-admin/vue-pure-admin/commits?author=edgexie)    |
+|       [way-jm](https://github.com/way-jm)       |    [code](https://github.com/pure-admin/vue-pure-admin/commits?author=way-jm)    |
 
 ## Git Contribution submission specification
 
