@@ -1,3 +1,13 @@
+# 5.7.0 (2024-06-04)
+
+### 🎫 Feat
+
+- Add Google style tabs
+
+### 🐞 Bug fixes
+
+- Fixed the issue where the text exceeds and is not hidden after the menu is folded in Firefox browser
+
 # 5.6.0 (2024-05-14)
 
 ### ✔️ Refactor
