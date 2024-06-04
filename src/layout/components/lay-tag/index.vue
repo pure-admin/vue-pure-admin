@@ -5,6 +5,7 @@ import { RouteConfigs } from "../../types";
 import { useTags } from "../../hooks/useTag";
 import { routerArrays } from "@/layout/types";
 import { onClickOutside } from "@vueuse/core";
+import TagChrome from "./components/TagChrome.vue";
 import { handleAliveRoute, getTopMenu } from "@/router/utils";
 import { useSettingStoreHook } from "@/store/modules/settings";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
@@ -22,8 +23,6 @@ import Fullscreen from "@iconify-icons/ri/fullscreen-fill";
 import ArrowDown from "@iconify-icons/ri/arrow-down-s-line";
 import ArrowRightSLine from "@iconify-icons/ri/arrow-right-s-line";
 import ArrowLeftSLine from "@iconify-icons/ri/arrow-left-s-line";
-
-import ChromeTabBg from "./chrome-tab-bg.vue";
 
 const {
   Close,
@@ -612,13 +611,13 @@ onBeforeUnmount(() => {
           </template>
           <div v-else class="chrome-tab">
             <div class="chrome-tab__bg">
-              <ChromeTabBg />
+              <TagChrome />
             </div>
             <span class="tag-title">
               {{ transformI18n(item.meta.title) }}
             </span>
             <span
-              v-if="index !== 0"
+              v-if="isAllEmpty(item?.meta?.fixedTag) ? index !== 0 : false"
               class="chrome-close-btn"
               @click.stop="deleteMenu(item)"
             >

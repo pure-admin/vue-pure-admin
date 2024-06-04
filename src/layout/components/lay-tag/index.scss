@@ -84,7 +84,11 @@
     white-space: nowrap;
 
     &.chrome-scroll-container {
-      padding-top: 6px;
+      padding-top: 4px;
+
+      .fixed-tag {
+        padding: 0 !important;
+      }
     }
 
     .tab {
@@ -97,14 +101,14 @@
       .scroll-item {
         transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
 
-        &.chrome-item {
-          &:nth-child(1) {
-            padding-right: 0;
-          }
-        }
-
         &:nth-child(1) {
           padding: 0 12px;
+        }
+
+        &.chrome-item {
+          &:nth-child(1) {
+            padding: 0;
+          }
         }
       }
 
@@ -362,23 +366,6 @@
     &:hover {
       color: white;
       background-color: #b1b3b8;
-    }
-  }
-}
-
-// 暗黑模式下chrome-tab的样式
-html.dark .chrome-tab {
-  .tag-title {
-    color: #666;
-  }
-
-  &:hover {
-    .chrome-tab__bg {
-      color: #333;
-    }
-
-    .tag-title {
-      color: #adadad;
     }
   }
 }
