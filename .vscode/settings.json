@@ -44,6 +44,6 @@
       "clientId": "vsmqtt_client_db34"
     }
   ],
-  "vscodeCustomCodeColor.highlightValue": "v-auth",
+  "vscodeCustomCodeColor.highlightValue": ["v-auth", "v-optimize", "v-copy", "v-longpress", "v-ripple"],
   "vscodeCustomCodeColor.highlightValueColor": "#6366f1",
 }
