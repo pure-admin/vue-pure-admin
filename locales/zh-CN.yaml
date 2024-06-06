@@ -53,6 +53,8 @@ panel:
   pureTagsStyleSmartTip: 灵动标签，添趣生辉
   pureTagsStyleCard: 卡片
   pureTagsStyleCardTip: 卡片标签，高效浏览
+  pureTagsStyleChrome: 谷歌
+  pureTagsStyleChromeTip: 谷歌风格，经典美观
   pureInterfaceDisplay: 界面显示
   pureGreyModel: 灰色模式
   pureWeakModel: 色弱模式

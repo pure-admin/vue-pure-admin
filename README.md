@@ -11,11 +11,9 @@
 `vue-pure-admin` 是一款开源免费且开箱即用的中后台管理系统模版。完全采用 `ECMAScript` 模块（`ESM`）规范来编写和组织代码，使用了最新的 `Vue3`、
 `Vite`、`Element-Plus`、`TypeScript`、`Pinia`、`Tailwindcss` 等主流技术开发
 
-## 赞助商
+## 研发理念
 
-<a class="logo" href="https://ai-tools.cn/resume/start" target="_blank" rel="sponsored noopener">
-  <img src="./public/sponsors/aitools.svg" alt="aitools">
-</a>
+稳定中求创新，技术中见未来
 
 ## 精简版本（实际项目开发请用精简版本，提供 `非国际化` 、`国际化` 两个版本选择）
 
@@ -189,6 +187,7 @@ docker run -dp 8080:80  --name pure-admin vue-pure-admin
 |      [WitMiao](https://github.com/WitMiao)      |   [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=WitMiao)    |
 |     [QFifteen](https://github.com/QFifteen)     |   [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=QFifteen)   |
 |      [edgexie](https://github.com/edgexie)      |   [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=edgexie)    |
+|       [way-jm](https://github.com/way-jm)       |    [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=way-jm)    |
 
 ## `Git` 贡献提交规范
 

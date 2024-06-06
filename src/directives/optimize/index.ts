@@ -8,9 +8,22 @@ import {
 import { useEventListener } from "@vueuse/core";
 import type { Directive, DirectiveBinding } from "vue";
 
+export interface OptimizeOptions {
+  /** 事件名 */
+  event: string;
+  /** 事件触发的方法 */
+  fn: (...params: any) => any;
+  /** 是否立即执行 */
+  immediate?: boolean;
+  /** 防抖或节流的延迟时间（防抖默认：`200`毫秒、节流默认：`1000`毫秒） */
+  timeout?: number;
+  /** 传递的参数 */
+  params?: any;
+}
+
 /** 防抖（v-optimize或v-optimize:debounce）、节流（v-optimize:throttle）指令 */
 export const optimize: Directive = {
-  mounted(el: HTMLElement, binding: DirectiveBinding) {
+  mounted(el: HTMLElement, binding: DirectiveBinding<OptimizeOptions>) {
     const { value } = binding;
     const optimizeType = binding.arg ?? "debounce";
     const type = ["debounce", "throttle"].find(t => t === optimizeType);

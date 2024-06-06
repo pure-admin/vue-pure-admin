@@ -115,6 +115,22 @@ html.dark {
           background-color: rgb(255 255 255 / 12%);
         }
       }
+
+      .chrome-tab {
+        .tag-title {
+          color: #666;
+        }
+
+        &:hover {
+          .chrome-tab__bg {
+            color: #333;
+          }
+
+          .tag-title {
+            color: #adadad;
+          }
+        }
+      }
     }
   }
 
