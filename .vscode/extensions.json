@@ -1,6 +1,7 @@
 {
   "recommendations": [
     "christian-kohler.path-intellisense",
+    "warmthsea.vscode-custom-code-color",
     "vscode-icons-team.vscode-icons",
     "davidanson.vscode-markdownlint",
     "ms-azuretools.vscode-docker",
