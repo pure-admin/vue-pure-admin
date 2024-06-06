@@ -54,14 +54,14 @@ export default defineComponent({
   },
   mounted() {
     ElNotification({
-      title: "优质服务",
+      title: "通知",
       duration: 0,
       //@ts-expect-error
-      style: { width: "140px" },
+      style: { width: "360px" },
       position: "bottom-right",
       dangerouslyUseHTMLString: true,
-      message: `<a target='_blank' style='font-size: 16px' class='block text-center hover:text-[var(--el-color-primary)]' href='https://pure-admin.github.io/pure-admin-doc/pages/service/'>
-        点击了解
+      message: `<a target='_blank' style='font-size: 16px' class='block text-center hover:text-[var(--el-color-primary)]' href='https://pure-admin.github.io/pure-admin-doc/pages/introduction/'>
+        保姆级文档已更新！所有失效、有误链接都已修复！强制刷新文档页面即可！
         </a>
         `
     });
