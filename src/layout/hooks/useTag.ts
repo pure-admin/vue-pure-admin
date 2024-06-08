@@ -114,15 +114,12 @@ export function useTags() {
   ]);
 
   function conditionHandle(item, previous, next) {
-    if (isBoolean(route?.meta?.showLink) && route?.meta?.showLink === false) {
-      if (Object.keys(route.query).length > 0) {
-        return isEqual(route.query, item.query) ? previous : next;
-      } else {
-        return isEqual(route.params, item.params) ? previous : next;
-      }
-    } else {
-      return route.path === item.path ? previous : next;
-    }
+    const isSamePath = route.path === item.path;
+    const hasQuery = Object.keys(route.query).length > 0;
+    const isSameData = hasQuery
+      ? isEqual(route.query, item.query)
+      : isEqual(route.params, item.params);
+    return isSamePath ? (isSameData ? previous : next) : next;
   }
 
   const iconIsActive = computed(() => {
