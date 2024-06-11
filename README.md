@@ -36,6 +36,10 @@
 
 [点我查看详情](https://pure-admin.github.io/pure-admin-doc/pages/service/)
 
+## `js` 版本
+
+[点我查看 js 版本](https://pure-admin.github.io/pure-admin-doc/pages/js/)
+
 ## `max` 版本
 
 [点我查看 max 版本](https://github.com/pure-admin/vue-pure-admin-max)
