@@ -35,6 +35,14 @@ The simplified version is based on the shelf extracted from [vue-pure-admin](htt
 
 [Click me for details](https://pure-admin.github.io/pure-admin-doc/pages/service/)
 
+## `js` version
+
+[Click me to view js version](https://pure-admin.github.io/pure-admin-doc/pages/js/)
+
+## `max` version
+
+[Click me to view the max version](https://github.com/pure-admin/vue-pure-admin-max)
+
 ## Tauri
 
 [Click Watch Tauri](https://github.com/pure-admin/tauri-pure-admin)
