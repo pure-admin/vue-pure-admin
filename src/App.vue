@@ -61,7 +61,7 @@ export default defineComponent({
       position: "bottom-right",
       dangerouslyUseHTMLString: true,
       message: `<a target='_blank' style='font-size: 16px' class='block text-center text-[red] hover:text-[var(--el-color-primary)]' href='https://pure-admin.github.io/pure-admin-doc/pages/js/'>
-        JS 版本限时优惠预售中！
+        JS 版本限时优惠中！
         </a>
         `
     });
