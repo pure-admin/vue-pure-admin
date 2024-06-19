@@ -25,6 +25,9 @@
       "@/*": [
         "src/*"
       ],
+      "@public/*": [
+        "public/*"
+      ],
       "@build/*": [
         "build/*"
       ]

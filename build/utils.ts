@@ -38,6 +38,7 @@ const pathResolve = (dir = ".", metaUrl = import.meta.url) => {
 /** 设置别名 */
 const alias: Record<string, string> = {
   "@": pathResolve("../src"),
+  "@public": pathResolve("../public"),
   "@build": pathResolve()
 };
 

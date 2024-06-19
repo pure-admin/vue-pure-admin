@@ -1,5 +1,6 @@
 import axios from "axios";
 import type { App } from "vue";
+import platformConfig from "@public/platform-config.json";
 
 let config: object = {};
 const { VITE_PUBLIC_PATH } = import.meta.env;
@@ -27,26 +28,34 @@ const getConfig = (key?: string): PlatformConfigs => {
 };
 
 /** 获取项目动态全局配置 */
-export const getPlatformConfig = async (app: App): Promise<undefined> => {
+export const getPlatformConfig = async (
+  app: App,
+  local = false
+): Promise<undefined> => {
   app.config.globalProperties.$config = getConfig();
-  return axios({
-    method: "get",
-    url: `${VITE_PUBLIC_PATH}platform-config.json`
-  })
-    .then(({ data: config }) => {
-      let $config = app.config.globalProperties.$config;
-      // 自动注入系统配置
-      if (app && $config && typeof config === "object") {
-        $config = Object.assign($config, config);
-        app.config.globalProperties.$config = $config;
-        // 设置全局配置
-        setConfig($config);
-      }
-      return $config;
+  const fn = ({ data: config }) => {
+    let $config = app.config.globalProperties.$config;
+    // 自动注入系统配置
+    if (app && $config && typeof config === "object") {
+      $config = Object.assign($config, config);
+      app.config.globalProperties.$config = $config;
+      // 设置全局配置
+      setConfig($config);
+    }
+    return $config;
+  };
+  if (local) {
+    return Promise.resolve({ data: platformConfig }).then(fn);
+  } else {
+    return axios({
+      method: "get",
+      url: `${VITE_PUBLIC_PATH}platform-config.json`
     })
-    .catch(() => {
-      throw "请在public文件夹下添加platform-config.json配置文件";
-    });
+      .then(fn)
+      .catch(() => {
+        throw "请在public文件夹下添加platform-config.json配置文件";
+      });
+  }
 };
 
 /** 本地响应式存储的命名空间 */
