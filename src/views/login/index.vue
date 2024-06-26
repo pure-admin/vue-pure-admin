@@ -97,7 +97,11 @@ const immediateDebounce: any = debounce(
 );
 
 useEventListener(document, "keypress", ({ code }) => {
-  if (code === "Enter" && !disabled.value && !loading.value)
+  if (
+    ["Enter", "NumpadEnter"].includes(code) &&
+    !disabled.value &&
+    !loading.value
+  )
     immediateDebounce(ruleFormRef.value);
 });
 
@@ -195,7 +199,6 @@ watch(loginDay, value => {
                   clearable
                   :placeholder="t('login.pureUsername')"
                   :prefix-icon="useRenderIcon(User)"
-                  @keyup.enter="onLogin(ruleFormRef)"
                 />
               </el-form-item>
             </Motion>
@@ -208,7 +211,6 @@ watch(loginDay, value => {
                   show-password
                   :placeholder="t('login.purePassword')"
                   :prefix-icon="useRenderIcon(Lock)"
-                  @keyup.enter="onLogin(ruleFormRef)"
                 />
               </el-form-item>
             </Motion>
@@ -220,7 +222,6 @@ watch(loginDay, value => {
                   clearable
                   :placeholder="t('login.pureVerifyCode')"
                   :prefix-icon="useRenderIcon('ri:shield-keyhole-line')"
-                  @keyup.enter="onLogin(ruleFormRef)"
                 >
                   <template v-slot:append>
                     <ReImageVerify v-model:code="imgCode" />
