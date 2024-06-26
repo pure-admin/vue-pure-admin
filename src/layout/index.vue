@@ -224,7 +224,7 @@ const LayHeader = defineComponent({
 .app-mask {
   position: absolute;
   top: 0;
-  z-index: 999;
+  z-index: 2001;
   width: 100%;
   height: 100%;
   background: #000;
