@@ -188,15 +188,11 @@ router.beforeEach((to: ToRouteType, _from, next) => {
       toCorrectRoute();
     }
   } else {
-    if (to.path !== "/login") {
-      if (whiteList.indexOf(to.path) !== -1) {
-        next();
-      } else {
-        removeToken();
-        next({ path: "/login" });
-      }
-    } else {
+    if (to.path === "/login" || whiteList.includes(to.path)) {
       next();
+    } else {
+      removeToken();
+      next({ path: "/login" });
     }
   }
 });
