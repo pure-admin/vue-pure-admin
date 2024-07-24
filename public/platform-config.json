@@ -1,6 +1,6 @@
 {
-  "Version": "5.7.0",
-  "Title": "PureAdmin",
+  "Version": "1.0.0",
+  "Title": "UI自动化测试平台",
   "FixedHeader": true,
   "HiddenSideBar": false,
   "MultiTagsCache": false,
