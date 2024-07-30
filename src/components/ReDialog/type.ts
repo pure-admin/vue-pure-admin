@@ -162,6 +162,8 @@ interface DialogOptions extends DialogProps {
   hideFooter?: boolean;
   /** 确认按钮的 `Popconfirm` 气泡确认框相关配置 */
   popconfirm?: Popconfirm;
+  /** 点击确认按钮后是否开启 `loading` 加载动画 */
+  sureBtnLoading?: boolean;
   /**
    * @description 自定义对话框标题的内容渲染器
    * @see {@link https://element-plus.org/zh-CN/component/dialog.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%A4%B4%E9%83%A8}
