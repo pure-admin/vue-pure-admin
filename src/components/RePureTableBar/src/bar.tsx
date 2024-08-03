@@ -18,6 +18,8 @@ import {
   getKeyList
 } from "@pureadmin/utils";
 
+import Fullscreen from "@iconify-icons/ri/fullscreen-fill";
+import ExitFullscreen from "@iconify-icons/ri/fullscreen-exit-fill";
 import DragIcon from "@/assets/table-bar/drag.svg?component";
 import ExpandIcon from "@/assets/table-bar/expand.svg?component";
 import RefreshIcon from "@/assets/table-bar/refresh.svg?component";
@@ -57,6 +59,7 @@ export default defineComponent({
     const size = ref("default");
     const loading = ref(false);
     const checkAll = ref(true);
+    const isFullscreen = ref(false);
     const isIndeterminate = ref(false);
     const instance = getCurrentInstance()!;
     const isExpandAll = ref(props.isExpandAll);
@@ -244,7 +247,18 @@ export default defineComponent({
 
     return () => (
       <>
-        <div {...attrs} class="w-[99/100] mt-2 px-2 pb-2 bg-bg_color">
+        <div
+          {...attrs}
+          class={[
+            "w-[99/100]",
+            "px-2",
+            "pb-2",
+            "bg-bg_color",
+            isFullscreen.value
+              ? ["!w-full", "!h-full", "z-[2002]", "fixed", "inset-0"]
+              : "mt-2"
+          ]}
+        >
           <div class="flex justify-between w-full h-[60px] p-4">
             {slots?.title ? (
               slots.title()
@@ -358,6 +372,14 @@ export default defineComponent({
                   </el-scrollbar>
                 </div>
               </el-popover>
+              <el-divider direction="vertical" />
+
+              <iconifyIconOffline
+                class={["w-[16px]", iconClass.value]}
+                icon={isFullscreen.value ? ExitFullscreen : Fullscreen}
+                v-tippy={isFullscreen.value ? "退出全屏" : "全屏"}
+                onClick={() => (isFullscreen.value = !isFullscreen.value)}
+              />
             </div>
           </div>
           {slots.default({
