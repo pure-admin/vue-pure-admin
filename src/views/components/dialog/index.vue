@@ -450,6 +450,17 @@ function onBeforeSureClick() {
     }
   });
 }
+
+function onSureBtnLoading() {
+  addDialog({
+    sureBtnLoading: true,
+    title: "点击底部确定按钮可开启按钮动画",
+    contentRenderer: () => <p>弹框内容-点击底部确定按钮可开启按钮动画</p>,
+    beforeSure: done => {
+      setTimeout(() => done(), 800);
+    }
+  });
+}
 </script>
 
 <template>
@@ -533,6 +544,9 @@ function onBeforeSureClick() {
       </el-button>
       <el-button @click="onBeforeSureClick">
         点击底部确定按钮的回调（会暂停弹框的关闭，经常用于新增、修改弹框内容后调用接口）
+      </el-button>
+      <el-button @click="onSureBtnLoading">
+        点击底部确定按钮可开启按钮动画
       </el-button>
     </el-space>
   </el-card>

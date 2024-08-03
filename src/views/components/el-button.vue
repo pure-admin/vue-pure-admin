@@ -99,7 +99,7 @@ watch(size, val =>
       <el-button
         v-for="(button, index) in buttonList"
         :key="index"
-        :type="button.type"
+        :type="button.type as any"
         :size="dynamicSize"
         :disabled="size === 'disabled'"
         :plain="baseRadio === 'plain'"
