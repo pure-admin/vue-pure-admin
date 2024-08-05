@@ -456,7 +456,9 @@ function onSureBtnLoading() {
     sureBtnLoading: true,
     title: "点击底部确定按钮可开启按钮动画",
     contentRenderer: () => <p>弹框内容-点击底部确定按钮可开启按钮动画</p>,
-    beforeSure: done => {
+    beforeSure: (done, { closeLoading }) => {
+      // closeLoading() // 关闭确定按钮动画，不关闭弹框
+      // done() // 关闭确定按钮动画并关闭弹框
       setTimeout(() => done(), 800);
     }
   });
