@@ -85,14 +85,14 @@ export function setToken(data: DataInfo<Date>) {
     });
   }
 
-  if (data.username && data.roles && data.permissions) {
-    const { username, roles, permissions } = data;
+  if (data.username && data.roles) {
+    const { username, roles } = data;
     setUserKey({
       avatar: data?.avatar ?? "",
       username,
       nickname: data?.nickname ?? "",
       roles,
-      permissions
+      permissions: data?.permissions ?? []
     });
   } else {
     const avatar =
@@ -130,8 +130,10 @@ export const formatToken = (token: string): string => {
 /** 是否有按钮级别的权限（根据登录接口返回的`permissions`字段进行判断）*/
 export const hasPerms = (value: string | Array<string>): boolean => {
   if (!value) return false;
+  const allPerms = "*:*:*";
   const { permissions } = useUserStoreHook();
   if (!permissions) return false;
+  if (permissions.length === 1 && permissions[0] === allPerms) return true;
   const isAuths = isString(value)
     ? permissions.includes(value)
     : isIncludeAllChildren(value, permissions);
