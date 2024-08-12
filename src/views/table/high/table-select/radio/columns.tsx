@@ -33,7 +33,7 @@ export function useColumns(selectRef: Ref) {
     layout: "prev, pager, next",
     total: tableDataEdit.length,
     background: true,
-    small: true
+    size: "small"
   });
 
   /** 高亮当前选中行 */

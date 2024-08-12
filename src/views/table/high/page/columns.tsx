@@ -9,7 +9,6 @@ export function useColumns() {
   const select = ref("no");
   const hideVal = ref("nohide");
   const tableSize = ref("default");
-  const paginationSmall = ref(false);
   const paginationAlign = ref("right");
   const columns: TableColumnList = [
     {
@@ -43,7 +42,7 @@ export function useColumns() {
     total: 0,
     align: "right",
     background: true,
-    small: false
+    size: "default"
   });
 
   /** 加载动画配置 */
@@ -65,7 +64,7 @@ export function useColumns() {
   });
 
   function onChange(val) {
-    pagination.small = val;
+    pagination.size = val;
   }
 
   function onSizeChange(val) {
@@ -108,7 +107,6 @@ export function useColumns() {
     pagination,
     loadingConfig,
     paginationAlign,
-    paginationSmall,
     onChange,
     onSizeChange,
     onCurrentChange

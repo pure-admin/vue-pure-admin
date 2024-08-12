@@ -116,7 +116,11 @@ const columns: TableColumnList = [
       border
       lazy
       :load="load"
-      :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
+      :tree-props="{
+        hasChildren: 'hasChildren',
+        children: 'children',
+        checkStrictly: false
+      }"
     />
   </div>
 </template>

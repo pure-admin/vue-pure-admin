@@ -33,7 +33,7 @@ export function useColumns() {
     total: 0,
     align: "right",
     background: true,
-    small: false
+    size: "default"
   });
 
   /** 加载动画配置 */
