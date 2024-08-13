@@ -59,7 +59,7 @@ export function useColumns(selectRef: Ref, formRef: Ref, tableRef: Ref) {
     layout: "prev, pager, next",
     total: tableData.value.length,
     background: true,
-    small: true
+    size: "small"
   });
 
   const handleSelectionChange = val => {

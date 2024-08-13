@@ -53,14 +53,17 @@ const footerButtons = computed(() => {
                   }
                 );
               }
-              const done = () => {
+              const closeLoading = () => {
                 if (options?.sureBtnLoading) {
                   sureBtnMap.value[index].loading = false;
                 }
+              };
+              const done = () => {
+                closeLoading();
                 closeDialog(options, index, { command: "sure" });
               };
               if (options?.beforeSure && isFunction(options?.beforeSure)) {
-                options.beforeSure(done, { options, index });
+                options.beforeSure(done, { options, index, closeLoading });
               } else {
                 done();
               }

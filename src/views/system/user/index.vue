@@ -160,8 +160,7 @@ const {
             :size="size"
             :data="dataList"
             :columns="dynamicColumns"
-            :pagination="pagination"
-            :paginationSmall="size === 'small' ? true : false"
+            :pagination="{ ...pagination, size }"
             :header-cell-style="{
               background: 'var(--el-fill-color-light)',
               color: 'var(--el-text-color-primary)'

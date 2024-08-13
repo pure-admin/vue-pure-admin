@@ -125,6 +125,8 @@ menus:
   purePermission: Permission Manage
   purePermissionPage: Page Permission
   purePermissionButton: Button Permission
+  purePermissionButtonRouter: Route return button permission
+  purePermissionButtonLogin: Login interface return button permission
   pureTabs: Tabs Operate
   pureGuide: Guide
   pureAble: Able
