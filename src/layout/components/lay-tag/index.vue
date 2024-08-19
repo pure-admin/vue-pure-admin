@@ -585,6 +585,7 @@ onBeforeUnmount(() => {
           @mouseenter.prevent="onMouseenter(index)"
           @mouseleave.prevent="onMouseleave(index)"
           @click="tagOnClick(item)"
+          @click.middle="deleteMenu(item)"
         >
           <template v-if="showModel !== 'chrome'">
             <span
