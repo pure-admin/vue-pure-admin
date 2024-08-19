@@ -1,3 +1,28 @@
+# 5.8.0 (2024-08-19)
+
+### 🎫 Feat
+
+- 新增第二种按钮权限指令（根据登录接口返回的`permissions`字段进行判断）
+- 函数式弹框`ReDialog`添加点击确认按钮后是否开启`loading`加载动画功能
+- `PureTableBar`组件添加全屏和退出全屏功能
+- `VxeTableBar`组件添加全屏和退出全屏功能
+- `ReDialog`组件的确定按钮提供关闭按钮动画`closeLoading`功能
+- 添加开发环境代码调试`vite-plugin-vue-inspector`插件，提升开发体验
+- 添加`vite-plugin-checker`插件，更严格的类型和`eslint`校验
+
+### 🐞 Bug fixes
+
+- 修复配置路由属性`fixedTag`为`false`后当前标签页不可关闭的问题
+- 修复顶部菜单模式下`logo`不可隐藏的问题
+
+### 🍏 Perf
+
+- 优化自定义指令的类型提示
+- 优化登录页回车登录功能
+- 优化移动端左侧菜单遮罩层级
+- 优化系统管理-角色管理的权限功能样式
+- 升级依赖，`element-plus`最新版兼容处理
+
 # 5.7.0 (2024-06-04)
 
 ### 🎫 Feat
