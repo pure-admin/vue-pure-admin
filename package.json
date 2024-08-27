@@ -38,7 +38,8 @@
     "url": "git+https://github.com/pure-admin/vue-pure-admin.git"
   },
   "bugs": {
-    "url": "https://github.com/pure-admin/vue-pure-admin/issues"
+    "url": "https://github.com/pure-admin/vue-pure-admin/issues",
+    "email": "pureadmin@163.com"
   },
   "license": "MIT",
   "author": {
