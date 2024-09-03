@@ -83,6 +83,7 @@ menus:
   pureFive: "500"
   pureComponents: Components
   pureDialog: Dialog
+  pureDrawer: Drawer
   pureMessage: Message Tips
   pureVideo: Video
   pureSegmented: Segmented

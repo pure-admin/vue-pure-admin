@@ -19,6 +19,14 @@ export default {
       }
     },
     {
+      path: "/components/drawer",
+      name: "DrawerPage",
+      component: () => import("@/views/components/drawer/index.vue"),
+      meta: {
+        title: $t("menus.pureDrawer")
+      }
+    },
+    {
       path: "/components/message",
       name: "Message",
       component: () => import("@/views/components/message.vue"),

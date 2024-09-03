@@ -83,6 +83,7 @@ menus:
   pureFive: "500"
   pureComponents: 组件
   pureDialog: 函数式弹框
+  pureDrawer: 函数式抽屉
   pureMessage: 消息提示
   pureVideo: 视频
   pureSegmented: 分段控制器
