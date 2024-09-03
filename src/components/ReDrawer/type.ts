@@ -30,6 +30,8 @@ type DrawerProps = {
   closeOnClickModal?: boolean;
   /** 是否可以通过按下 ESC 关闭 Drawer ，默认 `true` */
   closeOnPressEscape?: boolean;
+  /** 是否显示关闭按钮，默认 `true` */
+  showClose?: boolean;
   /** `Drawer` 打开的延时时间，单位毫秒，默认 `0` */
   openDelay?: number;
   /** `Drawer` 关闭的延时时间，单位毫秒，默认 `0` */
@@ -153,6 +155,8 @@ interface DrawerOptions extends DrawerProps {
   hideFooter?: boolean;
   /** 确认按钮的 `PopConfirm` 气泡确认框相关配置 */
   popConfirm?: PopConfirm;
+  /** 点击确定按钮后是否开启 `loading` 加载动画 */
+  sureBtnLoading?: boolean;
   /**
    * @description 自定义抽屉标题的内容渲染器
    * @see {@link https://element-plus.org/zh-CN/component/drawer.html#%E6%8F%92%E6%A7%BD}
@@ -243,10 +247,12 @@ interface DrawerOptions extends DrawerProps {
     done: Function,
     {
       options,
-      index
+      index,
+      closeLoading
     }: {
       options: DrawerOptions;
       index: number;
+      closeLoading: Function;
     }
   ) => void;
 }

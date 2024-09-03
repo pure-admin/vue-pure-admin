@@ -6,11 +6,13 @@ import {
   closeDrawer,
   drawerStore
 } from "./index";
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import { isFunction } from "@pureadmin/utils";
 defineOptions({
   name: "ReDrawer"
 });
+
+const sureBtnMap = ref({});
 
 const footerButtons = computed(() => {
   return (options: DrawerOptions) => {
@@ -38,10 +40,26 @@ const footerButtons = computed(() => {
             bg: true,
             popConfirm: options?.popConfirm,
             btnClick: ({ drawer: { options, index } }) => {
-              const done = () =>
+              if (options?.sureBtnLoading) {
+                sureBtnMap.value[index] = Object.assign(
+                  {},
+                  sureBtnMap.value[index],
+                  {
+                    loading: true
+                  }
+                );
+              }
+              const closeLoading = () => {
+                if (options?.sureBtnLoading) {
+                  sureBtnMap.value[index].loading = false;
+                }
+              };
+              const done = () => {
+                closeLoading();
                 closeDrawer(options, index, { command: "sure" });
+              };
               if (options?.beforeSure && isFunction(options?.beforeSure)) {
-                options.beforeSure(done, { options, index });
+                options.beforeSure(done, { options, index, closeLoading });
               } else {
                 done();
               }
@@ -131,6 +149,7 @@ function handleClose(
           <el-button
             v-else
             v-bind="btn"
+            :loading="key === 1 && sureBtnMap[index]?.loading"
             @click="
               btn.btnClick({
                 drawer: { options, index },
