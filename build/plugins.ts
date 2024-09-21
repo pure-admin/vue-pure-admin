@@ -26,7 +26,6 @@ export function getPluginsList(
     // jsx、tsx语法支持
     vueJsx(),
     VueI18nPlugin({
-      jitCompilation: false,
       include: [pathResolve("../locales/**")]
     }),
     checker({
