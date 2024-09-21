@@ -78,7 +78,8 @@ export default defineFlatConfig([
     languageOptions: {
       parser: parserTypeScript,
       parserOptions: {
-        sourceType: "module"
+        sourceType: "module",
+        warnOnUnsupportedTypeScriptVersion: false
       }
     },
     plugins: {
