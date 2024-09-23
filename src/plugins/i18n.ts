@@ -50,7 +50,7 @@ function getObjectKeys(obj) {
       if (obj[k] && isObject(obj[k])) {
         stack.push({ obj: obj[k], key: newKey });
       } else {
-        keys.add(newKey);
+        keys.add(key);
       }
     }
   }

@@ -6,11 +6,7 @@ const { columns, dataList, exportExcel } = useColumns();
 
 <template>
   <div>
-    <el-button
-      type="primary"
-      class="mb-[20px] float-right"
-      @click="exportExcel"
-    >
+    <el-button type="primary" class="mb-[20px]" @click="exportExcel">
       导出
     </el-button>
     <pure-table row-key="id" border :data="dataList" :columns="columns" />

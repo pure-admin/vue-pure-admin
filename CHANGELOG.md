@@ -1,3 +1,28 @@
+# 5.8.0 (2024-08-19)
+
+### 🎫 Feat
+
+- Added a second button permission command (judged based on the `permissions` field returned by the login interface)
+- Functional pop-up box `ReDialog` adds whether to enable the `loading` loading animation function after clicking the confirmation button
+- `PureTableBar` component adds full screen and exit full screen functions
+- `VxeTableBar` component adds full screen and exit full screen functions
+- The OK button of the `ReDialog` component provides the close button animation `closeLoading` function
+- Add development environment code debugging `vite-plugin-vue-inspector` plug-in to improve development experience
+- Added `vite-plugin-checker` plugin for stricter type and `eslint` verification
+
+### 🐞 Bug fixes
+
+- Fixed the problem that the current tab cannot be closed after configuring the routing attribute `fixedTag` to `false`
+- Fixed the issue where `logo` cannot be hidden in top menu mode
+
+### 🍏 Perf
+
+- Optimize type hints for custom instructions
+- Optimize the press enter login function on the login page
+- Optimize the mask level of the left menu on the mobile side
+- Optimize system management-permission function style of role management
+- Upgraded dependencies, compatible with the latest version of `element-plus`
+
 # 5.7.0 (2024-06-04)
 
 ### 🎫 Feat
