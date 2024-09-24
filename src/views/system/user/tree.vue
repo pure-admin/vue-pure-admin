@@ -96,7 +96,7 @@ defineExpose({ onTreeReset });
 <template>
   <div
     v-loading="treeLoading"
-    class="h-full bg-bg_color overflow-auto"
+    class="h-full bg-bg_color overflow-hidden relative"
     :style="{ minHeight: `calc(100vh - 141px)` }"
   >
     <div class="flex items-center h-[34px]">
@@ -151,54 +151,56 @@ defineExpose({ onTreeReset });
       </el-dropdown>
     </div>
     <el-divider />
-    <el-tree
-      ref="treeRef"
-      :data="treeData"
-      node-key="id"
-      size="small"
-      :props="defaultProps"
-      default-expand-all
-      :expand-on-click-node="false"
-      :filter-node-method="filterNode"
-      @node-click="nodeClick"
-    >
-      <template #default="{ node, data }">
-        <span
-          :class="[
-            'pl-1',
-            'pr-1',
-            'rounded',
-            'flex',
-            'items-center',
-            'select-none',
-            'hover:text-primary',
-            searchValue.trim().length > 0 &&
-              node.label.includes(searchValue) &&
-              'text-red-500',
-            highlightMap[node.id]?.highlight ? 'dark:text-primary' : ''
-          ]"
-          :style="{
-            color: highlightMap[node.id]?.highlight
-              ? 'var(--el-color-primary)'
-              : '',
-            background: highlightMap[node.id]?.highlight
-              ? 'var(--el-color-primary-light-7)'
-              : 'transparent'
-          }"
-        >
-          <IconifyIconOffline
-            :icon="
-              data.type === 1
-                ? OfficeBuilding
-                : data.type === 2
-                  ? LocationCompany
-                  : Dept
-            "
-          />
-          {{ node.label }}
-        </span>
-      </template>
-    </el-tree>
+    <el-scrollbar height="calc(90vh - 88px)">
+      <el-tree
+        ref="treeRef"
+        :data="treeData"
+        node-key="id"
+        size="small"
+        :props="defaultProps"
+        default-expand-all
+        :expand-on-click-node="false"
+        :filter-node-method="filterNode"
+        @node-click="nodeClick"
+      >
+        <template #default="{ node, data }">
+          <div
+            :class="[
+              'rounded',
+              'flex',
+              'items-center',
+              'select-none',
+              'hover:text-primary',
+              searchValue.trim().length > 0 &&
+                node.label.includes(searchValue) &&
+                'text-red-500',
+              highlightMap[node.id]?.highlight ? 'dark:text-primary' : ''
+            ]"
+            :style="{
+              color: highlightMap[node.id]?.highlight
+                ? 'var(--el-color-primary)'
+                : '',
+              background: highlightMap[node.id]?.highlight
+                ? 'var(--el-color-primary-light-7)'
+                : 'transparent'
+            }"
+          >
+            <IconifyIconOffline
+              :icon="
+                data.type === 1
+                  ? OfficeBuilding
+                  : data.type === 2
+                    ? LocationCompany
+                    : Dept
+              "
+            />
+            <span class="!w-[120px] !truncate" :title="node.label">
+              {{ node.label }}
+            </span>
+          </div>
+        </template>
+      </el-tree>
+    </el-scrollbar>
   </div>
 </template>
 
