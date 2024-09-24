@@ -52,7 +52,7 @@ const props = {
 export default defineComponent({
   name: "VxeTableBar",
   props,
-  emits: ["refresh"],
+  emits: ["refresh", "fullscreen"],
   setup(props, { emit, slots, attrs }) {
     const size = ref("small");
     const loading = ref(false);
@@ -111,6 +111,11 @@ export default defineComponent({
         ? props.vxeTableRef.setAllTreeExpand(true)
         : props.vxeTableRef.clearTreeExpand();
       props.vxeTableRef.refreshColumn();
+    }
+
+    function onFullscreen() {
+      isFullscreen.value = !isFullscreen.value;
+      emit("fullscreen", isFullscreen.value);
     }
 
     function reloadColumn() {
@@ -369,7 +374,7 @@ export default defineComponent({
                 class={["w-[16px]", iconClass.value]}
                 icon={isFullscreen.value ? ExitFullscreen : Fullscreen}
                 v-tippy={isFullscreen.value ? "退出全屏" : "全屏"}
-                onClick={() => (isFullscreen.value = !isFullscreen.value)}
+                onClick={() => onFullscreen()}
               />
             </div>
           </div>

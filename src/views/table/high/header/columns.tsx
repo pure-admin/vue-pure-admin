@@ -1,6 +1,6 @@
 import { tableData } from "../data";
 import { ref, onMounted } from "vue";
-import { clone, delay } from "@pureadmin/utils";
+import { clone } from "@pureadmin/utils";
 
 export function useColumns() {
   const dataList = ref([]);
@@ -38,14 +38,8 @@ export function useColumns() {
   }
 
   onMounted(() => {
-    delay(600).then(() => {
-      const newList = [];
-      Array.from({ length: 6 }).forEach(() => {
-        newList.push(clone(tableData, true));
-      });
-      newList.flat(Infinity).forEach((item, index) => {
-        dataList.value.push({ id: index, ...item });
-      });
+    clone(tableData, true).forEach((item, index) => {
+      dataList.value.push({ id: index, ...item });
     });
   });
 
