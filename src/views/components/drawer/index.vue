@@ -1,126 +1,84 @@
 <script setup lang="tsx">
-import { useRouter } from "vue-router";
-import { h, createVNode, ref } from "vue";
+import {
+  addDrawer,
+  closeDrawer,
+  closeAllDrawer,
+  updateDrawer
+} from "@/components/ReDrawer/index";
+import { cloneDeep, debounce } from "@pureadmin/utils";
 import { message } from "@/utils/message";
+import { createVNode, h, ref } from "vue";
 import formPrimitive from "./formPrimitive.vue";
 import forms, { type FormProps } from "./form.vue";
-import { cloneDeep, debounce } from "@pureadmin/utils";
-import {
-  addDialog,
-  closeDialog,
-  updateDialog,
-  closeAllDialog
-} from "@/components/ReDialog";
-
-defineOptions({
-  name: "DialogPage"
-});
-
-const router = useRouter();
 
 function onBaseClick() {
-  addDialog({
+  addDrawer({
     title: "基础用法",
-    contentRenderer: () => <p>弹框内容-基础用法</p> // jsx 语法 （注意在.vue文件启用jsx语法，需要在script开启lang="tsx"）
-  });
-}
-
-function onDraggableClick() {
-  addDialog({
-    title: "可拖拽",
-    draggable: true,
-    contentRenderer: () => h("p", "弹框内容-可拖拽") // h 渲染函数 https://cn.vuejs.org/api/render-function.html#h
-  });
-}
-
-function onFullscreenClick() {
-  addDialog({
-    title: "全屏",
-    fullscreen: true,
-    contentRenderer: () => createVNode("p", null, "弹框内容-全屏") // createVNode 渲染函数 https://cn.vuejs.org/guide/extras/render-function.html#creating-vnodes
-  });
-}
-
-function onFullscreenIconClick() {
-  addDialog({
-    title: "全屏按钮和全屏事件",
-    fullscreenIcon: true,
-    fullscreenCallBack: ({ options, index }) =>
-      message(options.fullscreen ? "全屏" : "非全屏"),
-    contentRenderer: () => <p>弹框内容-全屏按钮和全屏事件</p>
+    contentRenderer: () => <p>抽屉内容-基础用法</p> // jsx 语法 （注意在.vue文件启用jsx语法，需要在script开启lang="tsx"）
   });
 }
 
 function onModalClick() {
-  addDialog({
+  addDrawer({
     title: "无背景遮罩层",
     modal: false,
-    contentRenderer: () => <p>弹框内容-无背景遮罩层</p>
-  });
-}
-
-function onStyleClick() {
-  addDialog({
-    title: "自定义弹出位置",
-    top: "60vh",
-    style: { marginRight: "20px" },
-    contentRenderer: () => <p>弹框内容-自定义弹出位置</p>
+    contentRenderer: () => <p>抽屉内容-无背景遮罩层</p>
   });
 }
 
 // 添加 600ms 防抖
 const onoOpenDelayClick = debounce(
   () =>
-    addDialog({
-      title: "延时2秒打开弹框",
+    addDrawer({
+      title: "延时2秒打开抽屉",
       openDelay: 2000 - 600,
-      contentRenderer: () => <p>弹框内容-延时2秒打开弹框</p>
+      contentRenderer: () => <p>抽屉内容-延时2秒打开抽屉</p>
     }),
   600
 );
 
 function onCloseDelayClick() {
-  addDialog({
-    title: "延时2秒关闭弹框",
+  addDrawer({
+    title: "延时2秒关闭抽屉",
     closeDelay: 2000,
-    contentRenderer: () => <p>弹框内容-延时2秒关闭弹框</p>
+    contentRenderer: () => <p>抽屉内容-延时2秒关闭抽屉</p>
   });
 }
 
 function onShowCloseClick() {
-  addDialog({
+  addDrawer({
     title: "不显示右上角关闭按钮图标",
     showClose: false,
-    contentRenderer: () => <p>弹框内容-不显示右上角关闭按钮图标</p>
+    contentRenderer: () => <p>抽屉内容-不显示右上角关闭按钮图标</p>
   });
 }
 
 function onBeforeCloseClick() {
-  addDialog({
+  addDrawer({
     title: "禁止通过键盘ESC关闭",
     closeOnPressEscape: false,
-    contentRenderer: () => <p>弹框内容-禁止通过键盘ESC关闭</p>
+    contentRenderer: () => <p>抽屉内容-禁止通过键盘ESC关闭</p>
   });
 }
 
 function onCloseOnClickModalClick() {
-  addDialog({
+  addDrawer({
     title: "禁止通过点击modal关闭",
     closeOnClickModal: false,
-    contentRenderer: () => <p>弹框内容-禁止通过点击modal关闭</p>
+    contentRenderer: () => <p>抽屉内容-禁止通过点击modal关闭</p>
   });
 }
 
 function onHideFooterClick() {
-  addDialog({
+  addDrawer({
     title: "隐藏底部取消、确定按钮",
     hideFooter: true,
-    contentRenderer: () => <p>弹框内容-隐藏底部取消、确定按钮</p>
+    contentRenderer: () => <p>抽屉内容-隐藏底部取消、确定按钮</p>
   });
 }
 
 function onHeaderRendererClick() {
-  addDialog({
+  addDrawer({
     title: "自定义头部",
     showClose: false,
     headerRenderer: ({ close, titleId, titleClass }) => (
@@ -134,68 +92,68 @@ function onHeaderRendererClick() {
         </el-button>
       </div>
     ),
-    contentRenderer: () => <p>弹框内容-自定义头部</p>
+    contentRenderer: () => <p>抽屉内容-自定义头部</p>
   });
 }
 
 function onFooterRendererClick() {
-  addDialog({
+  addDrawer({
     title: "自定义底部",
     footerRenderer: ({ options, index }) => (
-      <el-button onClick={() => closeDialog(options, index)}>
+      <el-button onClick={() => closeDrawer(options, index)}>
         {options.title}-{index}
       </el-button>
     ),
-    contentRenderer: () => <p>弹框内容-自定义底部</p>
+    contentRenderer: () => <p>抽屉内容-自定义底部</p>
   });
 }
 
 function onFooterButtonsClick() {
-  addDialog({
+  addDrawer({
     title: "自定义底部按钮",
     footerButtons: [
       {
         label: "按钮1",
         size: "small",
         type: "success",
-        btnClick: ({ dialog: { options, index }, button }) => {
+        btnClick: ({ drawer: { options, index }, button }) => {
           console.log(options, index, button);
-          closeDialog(options, index);
+          closeDrawer(options, index);
         }
       },
       {
         label: "按钮2",
         text: true,
         bg: true,
-        btnClick: ({ dialog: { options, index }, button }) => {
+        btnClick: ({ drawer: { options, index }, button }) => {
           console.log(options, index, button);
-          closeDialog(options, index);
+          closeDrawer(options, index);
         }
       },
       {
         label: "按钮3",
         size: "large",
         type: "warning",
-        btnClick: ({ dialog: { options, index }, button }) => {
+        btnClick: ({ drawer: { options, index }, button }) => {
           console.log(options, index, button);
-          closeDialog(options, index);
+          closeDrawer(options, index);
         }
       }
     ],
-    contentRenderer: () => <p>弹框内容-自定义底部按钮</p>
+    contentRenderer: () => <p>抽屉内容-自定义底部按钮</p>
   });
 }
 
 function onOpenClick() {
-  addDialog({
+  addDrawer({
     title: "打开后的回调",
     open: ({ options, index }) => message({ options, index } as any),
-    contentRenderer: () => <p>弹框内容-打开后的回调</p>
+    contentRenderer: () => <p>抽屉内容-打开后的回调</p>
   });
 }
 
 function onCloseCallBackClick() {
-  addDialog({
+  addDrawer({
     title: "关闭后的回调",
     closeCallBack: ({ options, index, args }) => {
       console.log(options, index, args);
@@ -209,60 +167,61 @@ function onCloseCallBackClick() {
       }
       message(text);
     },
-    contentRenderer: () => <p>弹框内容-关闭后的回调</p>
+    contentRenderer: () => <p>抽屉内容-关闭后的回调</p>
   });
 }
 
-// 这里为了演示方便，使用了嵌套写法，实际情况下最好把 addDialog 函数抽出来 套娃不可取
+// 这里为了演示方便，使用了嵌套写法，实际情况下最好把 addDrawer 函数抽出来 套娃不可取
 function onNestingClick() {
-  addDialog({
-    title: "嵌套的弹框",
+  addDrawer({
+    title: "嵌套的抽屉",
+    size: "50%",
     contentRenderer: ({ index }) => (
       <el-button
         onClick={() =>
-          addDialog({
-            title: `第${index + 1}个子弹框`,
-            width: "40%",
+          addDrawer({
+            title: `第${index + 1}个子抽屉`,
+            size: "40%",
             contentRenderer: ({ index }) => (
               <el-button
                 onClick={() =>
-                  addDialog({
-                    title: `第${index + 1}个子弹框`,
-                    width: "30%",
+                  addDrawer({
+                    title: `第${index + 1}个子抽屉`,
+                    size: "30%",
                     contentRenderer: () => (
                       <>
-                        <el-button round onClick={() => closeAllDialog()}>
-                          哎呦，你干嘛，赶快关闭所有弹框
+                        <el-button round onClick={() => closeAllDrawer()}>
+                          哎呦，你干嘛，赶快关闭所有抽屉
                         </el-button>
                       </>
                     )
                   })
                 }
               >
-                点击打开第{index + 1}个子弹框
+                点击打开第{index + 1}个子抽屉
               </el-button>
             )
           })
         }
       >
-        点击打开第{index + 1}个子弹框
+        点击打开第{index + 1}个子抽屉
       </el-button>
     )
   });
 }
 
-// 满足在 contentRenderer 内容区更改弹框自身属性值的场景
+// 满足在 contentRenderer 内容区更改抽屉自身属性值的场景
 function onUpdateClick() {
   const curPage = ref(1);
-  addDialog({
+  addDrawer({
     title: `第${curPage.value}页`,
     contentRenderer: () => (
       <>
         <el-button
-          disabled={curPage.value > 1 ? false : true}
+          disabled={curPage.value <= 1}
           onClick={() => {
             curPage.value -= 1;
-            updateDialog(`第${curPage.value}页`);
+            updateDrawer(`第${curPage.value}页`);
           }}
         >
           上一页
@@ -270,7 +229,7 @@ function onUpdateClick() {
         <el-button
           onClick={() => {
             curPage.value += 1;
-            updateDialog(`第${curPage.value}页`);
+            updateDrawer(`第${curPage.value}页`);
           }}
         >
           下一页
@@ -281,19 +240,19 @@ function onUpdateClick() {
 }
 
 // Popconfirm 确认框
-function onPopconfirmClick() {
-  addDialog({
-    width: "30%",
+function onPopConfirmClick() {
+  addDrawer({
+    size: "30%",
     title: "Popconfirm确认框示例",
-    popconfirm: { title: "是否确认修改当前数据" },
+    popConfirm: { title: "是否确认修改当前数据" },
     contentRenderer: () => <p>点击右下方确定按钮看看效果吧</p>
   });
 }
 
-// 结合Form表单（第一种方式，弹框关闭立刻恢复初始值）通过 props 属性接收子组件的 prop 并赋值
+// 结合Form表单（第一种方式，抽屉关闭立刻恢复初始值）通过 props 属性接收子组件的 prop 并赋值
 function onFormOneClick() {
-  addDialog({
-    width: "30%",
+  addDrawer({
+    size: "30%",
     title: "结合Form表单（第一种方式）",
     contentRenderer: () => forms,
     props: {
@@ -328,8 +287,8 @@ const formInline = ref({
 });
 const resetFormInline = cloneDeep(formInline.value);
 function onFormTwoClick() {
-  addDialog({
-    width: "30%",
+  addDrawer({
+    size: "30%",
     title: "结合Form表单（第二种方式）",
     contentRenderer: () =>
       h(forms, {
@@ -352,8 +311,8 @@ const formThreeInline = ref({
 });
 const resetFormThreeInline = cloneDeep(formThreeInline.value);
 function onFormThreeClick() {
-  addDialog({
-    width: "30%",
+  addDrawer({
+    size: "30%",
     title: "结合Form表单（第三种方式）",
     contentRenderer: () =>
       createVNode(forms, {
@@ -379,8 +338,8 @@ const formFourInline = ref({
 });
 const resetFormFourInline = cloneDeep(formFourInline.value);
 function onFormFourClick() {
-  addDialog({
-    width: "30%",
+  addDrawer({
+    size: "30%",
     title: "结合Form表单（第四种方式）",
     contentRenderer: () => <forms formInline={formFourInline.value} />,
     closeCallBack: () => {
@@ -397,8 +356,8 @@ function onFormFourClick() {
 const formPrimitiveParam = ref("Hello World");
 const resetFormPrimitiveParam = ref(formPrimitiveParam.value);
 function onFormPrimitiveFormClick() {
-  addDialog({
-    width: "30%",
+  addDrawer({
+    size: "30%",
     title: "子组件 prop 为 primitive 类型 demo",
     contentRenderer: () =>
       h(formPrimitive, {
@@ -414,10 +373,10 @@ function onFormPrimitiveFormClick() {
 }
 
 function onBeforeCancelClick() {
-  addDialog({
+  addDrawer({
     title: "点击底部取消按钮的回调",
     contentRenderer: () => (
-      <p>弹框内容-点击底部取消按钮的回调（会暂停弹框的关闭）</p>
+      <p>抽屉内容-点击底部取消按钮的回调（会暂停抽屉的关闭）</p>
     ),
     beforeCancel: (done, { options, index }) => {
       console.log(
@@ -432,11 +391,11 @@ function onBeforeCancelClick() {
 }
 
 function onBeforeSureClick() {
-  addDialog({
+  addDrawer({
     title: "点击底部确定按钮的回调",
     contentRenderer: () => (
       <p>
-        弹框内容-点击底部确定按钮的回调（会暂停弹框的关闭，经常用于新增、修改弹框内容后调用接口）
+        抽屉内容-点击底部确定按钮的回调（会暂停抽屉的关闭，经常用于新增、修改抽屉内容后调用接口）
       </p>
     ),
     beforeSure: (done, { options, index }) => {
@@ -452,13 +411,13 @@ function onBeforeSureClick() {
 }
 
 function onSureBtnLoading() {
-  addDialog({
+  addDrawer({
     sureBtnLoading: true,
     title: "点击底部确定按钮可开启按钮动画",
-    contentRenderer: () => <p>弹框内容-点击底部确定按钮可开启按钮动画</p>,
+    contentRenderer: () => <p>抽屉内容-点击底部确定按钮可开启按钮动画</p>,
     beforeSure: (done, { closeLoading }) => {
-      // closeLoading() // 关闭确定按钮动画，不关闭弹框
-      // done() // 关闭确定按钮动画并关闭弹框
+      // closeLoading(); // 关闭确定按钮动画，不关闭抽屉
+      // done() // 关闭确定按钮动画并关闭抽屉
       setTimeout(() => done(), 800);
     }
   });
@@ -472,38 +431,26 @@ function onSureBtnLoading() {
         <span class="font-medium">
           二次封装 Element Plus 的
           <el-link
-            href="https://element-plus.org/zh-CN/component/dialog.html"
+            href="https://element-plus.org/zh-CN/component/drawer.html"
             target="_blank"
             style="margin: 0 4px 5px; font-size: 16px"
           >
-            Dialog
+            Drawer
           </el-link>
-          ，采用函数式调用弹框组件（更多操作实例请参考
-          <span
-            class="cursor-pointer text-primary"
-            @click="router.push({ name: 'SystemDept' })"
-          >
-            系统管理页面
-          </span>
-          ）
         </span>
       </div>
       <el-link
-        href="https://github.com/pure-admin/vue-pure-admin/tree/main/src/views/components/dialog"
+        href="https://github.com/pure-admin/vue-pure-admin/tree/main/src/views/components/drawer"
         target="_blank"
       >
-        代码位置 src/views/components/dialog
+        代码位置 src/views/components/drawer
       </el-link>
     </template>
     <el-space wrap>
-      <el-button @click="onBaseClick"> 基础用法 </el-button>
-      <el-button @click="onDraggableClick"> 可拖拽 </el-button>
-      <el-button @click="onFullscreenClick"> 全屏 </el-button>
-      <el-button @click="onFullscreenIconClick"> 全屏按钮和全屏事件 </el-button>
+      <el-button @click="onBaseClick">基础用法</el-button>
       <el-button @click="onModalClick"> 无背景遮罩层 </el-button>
-      <el-button @click="onStyleClick"> 自定义弹出位置 </el-button>
-      <el-button @click="onoOpenDelayClick"> 延时2秒打开弹框 </el-button>
-      <el-button @click="onCloseDelayClick"> 延时2秒关闭弹框 </el-button>
+      <el-button @click="onoOpenDelayClick"> 延时2秒打开抽屉 </el-button>
+      <el-button @click="onCloseDelayClick"> 延时2秒关闭抽屉 </el-button>
       <el-button @click="onShowCloseClick">
         不显示右上角关闭按钮图标
       </el-button>
@@ -517,9 +464,9 @@ function onSureBtnLoading() {
       <el-button @click="onFooterButtonsClick"> 自定义底部按钮 </el-button>
       <el-button @click="onOpenClick"> 打开后的回调 </el-button>
       <el-button @click="onCloseCallBackClick"> 关闭后的回调 </el-button>
-      <el-button @click="onNestingClick"> 嵌套的弹框 </el-button>
-      <el-button @click="onUpdateClick"> 更改弹框自身属性值 </el-button>
-      <el-button @click="onPopconfirmClick">Popconfirm确认框</el-button>
+      <el-button @click="onNestingClick"> 嵌套的抽屉 </el-button>
+      <el-button @click="onUpdateClick"> 更改抽屉自身属性值 </el-button>
+      <el-button @click="onPopConfirmClick">Popconfirm确认框</el-button>
     </el-space>
     <el-divider />
     <el-space wrap>
@@ -542,10 +489,10 @@ function onSureBtnLoading() {
     <el-divider />
     <el-space wrap>
       <el-button @click="onBeforeCancelClick">
-        点击底部取消按钮的回调（会暂停弹框的关闭）
+        点击底部取消按钮的回调（会暂停抽屉的关闭）
       </el-button>
       <el-button @click="onBeforeSureClick">
-        点击底部确定按钮的回调（会暂停弹框的关闭，经常用于新增、修改弹框内容后调用接口）
+        点击底部确定按钮的回调（会暂停抽屉的关闭，经常用于新增、修改抽屉内容后调用接口）
       </el-button>
       <el-button @click="onSureBtnLoading">
         点击底部确定按钮可开启按钮动画
