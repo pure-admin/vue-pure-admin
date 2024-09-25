@@ -239,11 +239,11 @@ function onUpdateClick() {
   });
 }
 
-// popConfirm 确认框
+// Popconfirm 确认框
 function onPopConfirmClick() {
   addDrawer({
     size: "30%",
-    title: "popConfirm确认框示例",
+    title: "Popconfirm确认框示例",
     popConfirm: { title: "是否确认修改当前数据" },
     contentRenderer: () => <p>点击右下方确定按钮看看效果吧</p>
   });
@@ -416,7 +416,7 @@ function onSureBtnLoading() {
     title: "点击底部确定按钮可开启按钮动画",
     contentRenderer: () => <p>抽屉内容-点击底部确定按钮可开启按钮动画</p>,
     beforeSure: (done, { closeLoading }) => {
-      closeLoading(); // 关闭确定按钮动画，不关闭抽屉
+      // closeLoading(); // 关闭确定按钮动画，不关闭抽屉
       // done() // 关闭确定按钮动画并关闭抽屉
       setTimeout(() => done(), 800);
     }
@@ -466,7 +466,7 @@ function onSureBtnLoading() {
       <el-button @click="onCloseCallBackClick"> 关闭后的回调 </el-button>
       <el-button @click="onNestingClick"> 嵌套的抽屉 </el-button>
       <el-button @click="onUpdateClick"> 更改抽屉自身属性值 </el-button>
-      <el-button @click="onPopConfirmClick">popConfirm确认框</el-button>
+      <el-button @click="onPopConfirmClick">Popconfirm确认框</el-button>
     </el-space>
     <el-divider />
     <el-space wrap>

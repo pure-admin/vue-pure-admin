@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import {
   type EventType,
   type ButtonProps,
@@ -8,6 +8,7 @@ import {
 } from "./index";
 import { computed, ref } from "vue";
 import { isFunction } from "@pureadmin/utils";
+
 defineOptions({
   name: "ReDrawer"
 });
@@ -78,6 +79,7 @@ function eventsCallBack(
     return options?.[event]({ options, index });
   }
 }
+
 /**
  *
  * @param {DrawerOptions} options - 包含抽屉相关配置的对象
@@ -94,6 +96,7 @@ function handleClose(
   eventsCallBack("close", options, index);
 }
 </script>
+
 <template>
   <el-drawer
     v-for="(options, index) in drawerStore"

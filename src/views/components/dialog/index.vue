@@ -280,11 +280,11 @@ function onUpdateClick() {
   });
 }
 
-// popconfirm 确认框
+// Popconfirm 确认框
 function onPopconfirmClick() {
   addDialog({
     width: "30%",
-    title: "popconfirm确认框示例",
+    title: "Popconfirm确认框示例",
     popconfirm: { title: "是否确认修改当前数据" },
     contentRenderer: () => <p>点击右下方确定按钮看看效果吧</p>
   });
@@ -519,7 +519,7 @@ function onSureBtnLoading() {
       <el-button @click="onCloseCallBackClick"> 关闭后的回调 </el-button>
       <el-button @click="onNestingClick"> 嵌套的弹框 </el-button>
       <el-button @click="onUpdateClick"> 更改弹框自身属性值 </el-button>
-      <el-button @click="onPopconfirmClick">popconfirm确认框</el-button>
+      <el-button @click="onPopconfirmClick">Popconfirm确认框</el-button>
     </el-space>
     <el-divider />
     <el-space wrap>
