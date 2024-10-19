@@ -1,1 +1,0 @@
-import{aB as a}from"./index-B0Z6rV6K.js";const r=t=>a.request("get","/get-map-info",{params:t}),e=t=>a.request("post","https://run.mocky.io/v3/3aa761d7-b0b3-4a03-96b3-6168d4f7467b",{data:t},{headers:{"Content-Type":"multipart/form-data"}});export{e as f,r as m};
