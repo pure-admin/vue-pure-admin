@@ -4,7 +4,6 @@ import { pathResolve } from "./utils";
 import { viteBuildInfo } from "./info";
 import svgLoader from "vite-svg-loader";
 import type { PluginOption } from "vite";
-import checker from "vite-plugin-checker";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 import Inspector from "vite-plugin-vue-inspector";
 import { configCompressPlugin } from "./compress";
@@ -25,16 +24,6 @@ export function getPluginsList(
     vueJsx(),
     VueI18nPlugin({
       include: [pathResolve("../locales/**")]
-    }),
-    checker({
-      typescript: true,
-      vueTsc: true,
-      eslint: {
-        lintCommand: `eslint ${pathResolve("../{src,mock,build}/**/*.{vue,js,ts,tsx}")}`,
-        useFlatConfig: true
-      },
-      terminal: false,
-      enableBuild: false
     }),
     // 按下Command(⌘)+Shift(⇧)，然后点击页面元素会自动打开本地IDE并跳转到对应的代码位置
     Inspector(),

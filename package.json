@@ -160,7 +160,6 @@
     "typescript": "^5.6.3",
     "vite": "6.0.0-beta.7",
     "vite-plugin-cdn-import": "^1.0.1",
-    "vite-plugin-checker": "^0.8.0",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-fake-server": "^2.1.2",
     "vite-plugin-remove-console": "^2.2.0",

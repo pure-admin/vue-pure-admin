@@ -342,9 +342,6 @@ importers:
       vite-plugin-cdn-import:
         specifier: ^1.0.1
         version: 1.0.1(rollup@4.24.3)(vite@6.0.0-beta.7(@types/node@20.17.5)(jiti@2.4.0)(sass@1.80.6)(yaml@2.6.0))
-      vite-plugin-checker:
-        specifier: ^0.8.0
-        version: 0.8.0(eslint@9.14.0(jiti@2.4.0))(optionator@0.9.4)(stylelint@16.10.0(typescript@5.6.3))(typescript@5.6.3)(vite@6.0.0-beta.7(@types/node@20.17.5)(jiti@2.4.0)(sass@1.80.6)(yaml@2.6.0))(vue-tsc@2.1.10(typescript@5.6.3))
       vite-plugin-compression:
         specifier: ^0.5.1
         version: 0.5.1(vite@6.0.0-beta.7(@types/node@20.17.5)(jiti@2.4.0)(sass@1.80.6)(yaml@2.6.0))
@@ -2265,10 +2262,6 @@ packages:
     resolution: {integrity: sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==}
     engines: {node: '>= 10'}
 
-  commander@8.3.0:
-    resolution: {integrity: sha512-OkTL9umf+He2DZkUq8f8J9of7yL6RJKI24dVITBmNfZBmri9zYZQrKkuXiKhyfPSu8tUhnVBB1iKXevvnlR4Ww==}
-    engines: {node: '>= 12'}
-
   commist@1.1.0:
     resolution: {integrity: sha512-rraC8NXWOEjhADbZe9QBNzLAN5Q3fsTPQtBV+fEVj6xKIgDgNiEVE6ZNfHpZOqfQ21YUzfVNUXLOEZquYvQPPg==}
 
@@ -2933,10 +2926,6 @@ packages:
   fs-extra@10.1.0:
     resolution: {integrity: sha512-oRXApq54ETRj4eMiFzGnHWGy+zo5raudjuxN0b8H7s/RU2oW0Wvsx9O0ACRN/kRq9E8Vu/ReskGB5o3ji+FzHQ==}
     engines: {node: '>=12'}
-
-  fs-extra@11.2.0:
-    resolution: {integrity: sha512-PmDi3uwK5nFuXh7XDTlVnS17xJS7vW36is2+w3xcv8SVxiB4NyATf4ctkVY5bkSjX0Y4nbvZCq1/EjtEyr9ktw==}
-    engines: {node: '>=14.14'}
 
   fs-minipass@2.1.0:
     resolution: {integrity: sha512-V/JgOLFCS+R6Vcq0slCuaeWEdNC3ouDlJMNIsacH2VtALiu9mV4LPrHc5cDl8k5aw6J8jwgWWpiTo5RYhmIzvg==}
@@ -4921,9 +4910,6 @@ packages:
   through@2.3.8:
     resolution: {integrity: sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==}
 
-  tiny-invariant@1.3.3:
-    resolution: {integrity: sha512-+FbBPE1o9QAYvviau/qC5SE3caw21q3xkvWKBtja5vgqOWIHHJ3ioaq1VPfn/Szqctz2bU/oYeKd9/z5BL+PVg==}
-
   tiny-warning@1.0.3:
     resolution: {integrity: sha512-lBN9zLN/oAf68o3zNXYrdCt1kP8WsiGW8Oo2ka41b2IM5JL/S1CTyX1rW0mb/zSuJun0ZUrDxx4sqvYS2FWzPA==}
 
@@ -5090,40 +5076,6 @@ packages:
   vite-plugin-cdn-import@1.0.1:
     resolution: {integrity: sha512-lgjLxgwFSKvJLbqjVBirUZ0rQo00GpUGJzRpgQu8RyBw9LA7jaqG6fUMQzBC9qWmTGabPC3iOzwCcoi7PseRAQ==}
 
-  vite-plugin-checker@0.8.0:
-    resolution: {integrity: sha512-UA5uzOGm97UvZRTdZHiQVYFnd86AVn8EVaD4L3PoVzxH+IZSfaAw14WGFwX9QS23UW3lV/5bVKZn6l0w+q9P0g==}
-    engines: {node: '>=14.16'}
-    peerDependencies:
-      '@biomejs/biome': '>=1.7'
-      eslint: '>=7'
-      meow: ^9.0.0
-      optionator: ^0.9.1
-      stylelint: '>=13'
-      typescript: '*'
-      vite: '>=2.0.0'
-      vls: '*'
-      vti: '*'
-      vue-tsc: ~2.1.6
-    peerDependenciesMeta:
-      '@biomejs/biome':
-        optional: true
-      eslint:
-        optional: true
-      meow:
-        optional: true
-      optionator:
-        optional: true
-      stylelint:
-        optional: true
-      typescript:
-        optional: true
-      vls:
-        optional: true
-      vti:
-        optional: true
-      vue-tsc:
-        optional: true
-
   vite-plugin-compression@0.5.1:
     resolution: {integrity: sha512-5QJKBDc+gNYVqL/skgFAP81Yuzo9R+EAf19d+EtsMF/i8kFUpNi3J/H01QD3Oo8zBQn+NzoCIFkpPLynoOzaJg==}
     peerDependencies:
@@ -5193,27 +5145,6 @@ packages:
         optional: true
       yaml:
         optional: true
-
-  vscode-jsonrpc@6.0.0:
-    resolution: {integrity: sha512-wnJA4BnEjOSyFMvjZdpiOwhSq9uDoK8e/kpRJDTaMYzwlkrhG1fwDIZI94CLsLzlCK5cIbMMtFlJlfR57Lavmg==}
-    engines: {node: '>=8.0.0 || >=10.0.0'}
-
-  vscode-languageclient@7.0.0:
-    resolution: {integrity: sha512-P9AXdAPlsCgslpP9pRxYPqkNYV7Xq8300/aZDpO35j1fJm/ncize8iGswzYlcvFw5DQUx4eVk+KvfXdL0rehNg==}
-    engines: {vscode: ^1.52.0}
-
-  vscode-languageserver-protocol@3.16.0:
-    resolution: {integrity: sha512-sdeUoAawceQdgIfTI+sdcwkiK2KU+2cbEYA0agzM2uqaUy2UpnnGHtWTHVEtS0ES4zHU0eMFRGN+oQgDxlD66A==}
-
-  vscode-languageserver-textdocument@1.0.12:
-    resolution: {integrity: sha512-cxWNPesCnQCcMPeenjKKsOCKQZ/L6Tv19DTRIGuLWe32lyzWhihGVJ/rcckZXJxfdKCFvRLS3fpBIsV/ZGX4zA==}
-
-  vscode-languageserver-types@3.16.0:
-    resolution: {integrity: sha512-k8luDIWJWyenLc5ToFQQMaSrqCHiLwyKPHKPQZ5zz21vM+vIVUSvsRpcbiECH4WR88K2XZqc4ScRcZ7nk/jbeA==}
-
-  vscode-languageserver@7.0.0:
-    resolution: {integrity: sha512-60HTx5ID+fLRcgdHfmz0LDZAXYEV68fzwG0JWwEPBode9NuMYTIxuYXPg4ngO8i8+Ou0lM7y6GzaYWbiDL0drw==}
-    hasBin: true
 
   vscode-uri@3.0.8:
     resolution: {integrity: sha512-AyFQ0EVmsOZOlAnxoFOGOq1SQDWAB7C6aqMGS23svWAllfOaxbuFvcT8D1i8z3Gyn8fraVeZNNmN6e9bxxXkKw==}
@@ -7650,8 +7581,6 @@ snapshots:
 
   commander@7.2.0: {}
 
-  commander@8.3.0: {}
-
   commist@1.1.0:
     dependencies:
       leven: 2.1.0
@@ -8434,12 +8363,6 @@ snapshots:
       tslib: 2.4.0
 
   fs-extra@10.1.0:
-    dependencies:
-      graceful-fs: 4.2.11
-      jsonfile: 6.1.0
-      universalify: 2.0.1
-
-  fs-extra@11.2.0:
     dependencies:
       graceful-fs: 4.2.11
       jsonfile: 6.1.0
@@ -10671,8 +10594,6 @@ snapshots:
 
   through@2.3.8: {}
 
-  tiny-invariant@1.3.3: {}
-
   tiny-warning@1.0.3: {}
 
   tinycolor2@1.6.0: {}
@@ -10855,30 +10776,6 @@ snapshots:
       - rollup
       - vite
 
-  vite-plugin-checker@0.8.0(eslint@9.14.0(jiti@2.4.0))(optionator@0.9.4)(stylelint@16.10.0(typescript@5.6.3))(typescript@5.6.3)(vite@6.0.0-beta.7(@types/node@20.17.5)(jiti@2.4.0)(sass@1.80.6)(yaml@2.6.0))(vue-tsc@2.1.10(typescript@5.6.3)):
-    dependencies:
-      '@babel/code-frame': 7.26.2
-      ansi-escapes: 4.3.2
-      chalk: 4.1.2
-      chokidar: 3.6.0
-      commander: 8.3.0
-      fast-glob: 3.3.2
-      fs-extra: 11.2.0
-      npm-run-path: 4.0.1
-      strip-ansi: 6.0.1
-      tiny-invariant: 1.3.3
-      vite: 6.0.0-beta.7(@types/node@20.17.5)(jiti@2.4.0)(sass@1.80.6)(yaml@2.6.0)
-      vscode-languageclient: 7.0.0
-      vscode-languageserver: 7.0.0
-      vscode-languageserver-textdocument: 1.0.12
-      vscode-uri: 3.0.8
-    optionalDependencies:
-      eslint: 9.14.0(jiti@2.4.0)
-      optionator: 0.9.4
-      stylelint: 16.10.0(typescript@5.6.3)
-      typescript: 5.6.3
-      vue-tsc: 2.1.10(typescript@5.6.3)
-
   vite-plugin-compression@0.5.1(vite@6.0.0-beta.7(@types/node@20.17.5)(jiti@2.4.0)(sass@1.80.6)(yaml@2.6.0)):
     dependencies:
       chalk: 4.1.2
@@ -10938,27 +10835,6 @@ snapshots:
       jiti: 2.4.0
       sass: 1.80.6
       yaml: 2.6.0
-
-  vscode-jsonrpc@6.0.0: {}
-
-  vscode-languageclient@7.0.0:
-    dependencies:
-      minimatch: 3.1.2
-      semver: 7.6.3
-      vscode-languageserver-protocol: 3.16.0
-
-  vscode-languageserver-protocol@3.16.0:
-    dependencies:
-      vscode-jsonrpc: 6.0.0
-      vscode-languageserver-types: 3.16.0
-
-  vscode-languageserver-textdocument@1.0.12: {}
-
-  vscode-languageserver-types@3.16.0: {}
-
-  vscode-languageserver@7.0.0:
-    dependencies:
-      vscode-languageserver-protocol: 3.16.0
 
   vscode-uri@3.0.8: {}
 
