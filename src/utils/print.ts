@@ -172,7 +172,7 @@ Print.prototype = {
           if (!frameWindow.document.execCommand("print", false, null)) {
             frameWindow.print();
           }
-        } catch (e) {
+        } catch {
           frameWindow.print();
         }
         frameWindow.close();

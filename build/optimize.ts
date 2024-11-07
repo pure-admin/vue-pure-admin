@@ -54,10 +54,6 @@ const include = [
  * 在预构建中强制排除的依赖项
  * 温馨提示：所有以 `@iconify-icons/` 开头引入的的本地图标模块，都应该加入到下面的 `exclude` 里，因为平台推荐的使用方式是哪里需要哪里引入而且都是单个的引入，不需要预构建，直接让浏览器加载就好
  */
-const exclude = [
-  "@iconify-icons/ep",
-  "@iconify-icons/ri",
-  "@pureadmin/theme/dist/browser-utils"
-];
+const exclude = ["@iconify-icons/ep", "@iconify-icons/ri"];
 
 export { include, exclude };
