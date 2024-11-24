@@ -57,15 +57,13 @@ export default defineComponent({
   },
   mounted() {
     ElNotification({
-      title: "优惠活动已推出",
+      title: "优惠活动即将结束",
       duration: 0,
       //@ts-expect-error
       style: { width: "200px" },
       position: "bottom-right",
       dangerouslyUseHTMLString: true,
-      message: `<a target='_blank' style='font-size: 16px' class='block text-center border mb-2 rounded hover:text-[red]' href='https://pure-admin.github.io/pure-admin-doc/pages/service/#%E8%A7%A3%E7%AD%94%E5%BE%AE%E4%BF%A1%E7%BE%A4'>
-        优质服务
-        </a>
+      message: `
         <a target='_blank' style='font-size: 16px' class='block text-center border mb-2 rounded hover:text-[red]' href='https://pure-admin.github.io/pure-admin-doc/pages/js/'>
         JS版本
         </a>
