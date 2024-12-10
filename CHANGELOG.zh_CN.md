@@ -1,3 +1,23 @@
+# 5.9.0 (2024-12-10)
+
+### ✔️ Refactor
+
+- 升级`vite`至`v6`版本，升级`sass`至最新版，重构主题写法，弃用 [@pureadmin/theme](https://www.npmjs.com/package/@pureadmin/theme)，点击查看 [相关优化点细节](https://github.com/pure-admin/vue-pure-admin/pull/1188#issue-2630095115)。对于拥有 [Max版本](https://pure-admin.cn/pages/max/) 的用户平台强烈建议升级，后续`Max版本用户`会享有一套更现代、美观且自定义程度高的主题色
+- 使用 [code-inspector-plugin](https://www.npmjs.com/package/code-inspector-plugin) 替换 [vite-plugin-vue-inspector](https://www.npmjs.com/package/vite-plugin-vue-inspector)
+
+### 🎫 Feat
+
+- 新增函数式抽屉组件
+- `pure-table`添加动态表头示例
+
+### 🐞 Bug fixes
+
+- 修复在菜单、部门管理中，表格展开后启用或关闭全屏功能时，表格高度未自动适应的问题
+
+### 🍏 Perf
+
+- 优化用户管理左侧部门树的布局
+
 # 5.8.0 (2024-08-19)
 
 ### 🎫 Feat

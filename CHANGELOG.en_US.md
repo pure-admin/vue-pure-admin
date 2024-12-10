@@ -1,3 +1,23 @@
+# 5.9.0 (2024-12-10)
+
+### ✔️Refactor
+
+- Upgrade `vite` to `v6` version, upgrade `sass` to the latest version, reconstruct the theme writing method, and deprecate [@pureadmin/theme](https://www.npmjs.com/package/@pureadmin/theme) , click to view [Related optimization point details](https://github.com/pure-admin/vue-pure-admin/pull/1188#issue-2630095115). For users who have the [Max version](https://pure-admin.cn/pages/max/), it is strongly recommended to upgrade. Subsequent Max version users will enjoy a more modern, beautiful and highly customized theme color
+- Use [code-inspector-plugin](https://www.npmjs.com/package/code-inspector-plugin) to replace [vite-plugin-vue-inspector](https://www.npmjs.com/package/vite-plugin-vue-inspector)
+
+### 🎫Feat
+
+- Added `ReDrawer` component
+- `pure-table` adds dynamic table header example
+
+### 🐞 Bug fixes
+
+- Fixed an issue where the height of the table does not automatically adapt when the full screen function is enabled or disabled after the table is expanded in the menu and department management
+
+### 🍏Perf
+
+- Optimize the layout of the department tree on the left side of user management
+
 # 5.8.0 (2024-08-19)
 
 ### 🎫 Feat
