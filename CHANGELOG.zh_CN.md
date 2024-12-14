@@ -1,3 +1,23 @@
+# 5.9.0 (2024-12-10)
+
+### ✔️ Refactor
+
+- 升级`vite`至`v6`版本，升级`sass`至最新版，重构主题写法，弃用 [@pureadmin/theme](https://www.npmjs.com/package/@pureadmin/theme)，点击查看 [相关优化点细节](https://github.com/pure-admin/vue-pure-admin/pull/1188#issue-2630095115)。对于拥有 [Max版本](https://pure-admin.cn/pages/max/) 的用户平台强烈建议升级，后续`Max版本用户`会享有一套更现代、美观且自定义程度高的主题色
+- 使用 [code-inspector-plugin](https://www.npmjs.com/package/code-inspector-plugin) 替换 [vite-plugin-vue-inspector](https://www.npmjs.com/package/vite-plugin-vue-inspector)
+
+### 🎫 Feat
+
+- 新增函数式抽屉组件
+- `pure-table`添加动态表头示例
+
+### 🐞 Bug fixes
+
+- 修复在菜单、部门管理中，表格展开后启用或关闭全屏功能时，表格高度未自动适应的问题
+
+### 🍏 Perf
+
+- 优化用户管理左侧部门树的布局
+
 # 5.8.0 (2024-08-19)
 
 ### 🎫 Feat
@@ -53,7 +73,7 @@
 
 文档站和完整版预览站地址更换！
 
-- 最新文档站地址：https://pure-admin.github.io/pure-admin-doc
+- 最新文档站地址：https://pure-admin.cn
 - 最新完整版预览站地址：https://pure-admin.github.io/vue-pure-admin
 
 ### ✔️ Refactor
@@ -453,7 +473,7 @@
 ### ✔️ Refactor
 
 - 完全移除了 `lodash` 和其相关库
-  [点击此处查看为什么移除？如何自行集成？](https://pure-admin.github.io/pure-admin-doc/pages/FAQ/#%E5%B9%B3%E5%8F%B0%E5%9C%A8-v3-9-5-%E7%89%88%E6%9C%AC%E5%AE%8C%E5%85%A8%E7%A7%BB%E9%99%A4%E4%BA%86-lodash-%E5%92%8C%E5%85%B6%E7%9B%B8%E5%85%B3%E5%BA%93-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%A7%BB%E9%99%A4-%E5%A6%82%E4%BD%95%E8%87%AA%E8%A1%8C%E9%9B%86%E6%88%90)
+  [点击此处查看为什么移除？如何自行集成？](https://pure-admin.cn/pages/FAQ/#%E5%B9%B3%E5%8F%B0%E5%9C%A8-v3-9-5-%E7%89%88%E6%9C%AC%E5%AE%8C%E5%85%A8%E7%A7%BB%E9%99%A4%E4%BA%86-lodash-%E5%92%8C%E5%85%B6%E7%9B%B8%E5%85%B3%E5%BA%93-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%A7%BB%E9%99%A4-%E5%A6%82%E4%BD%95%E8%87%AA%E8%A1%8C%E9%9B%86%E6%88%90)
 
 ### 🎫 Feat
 
@@ -473,7 +493,7 @@
 ### ✔️ Refactor
 
 - 完全移除了 `vxe-table`，移除后，完整版整体打包大小减少 `1.82MB`，首启动时长基本和精简版持平 🐮
-  [点击此处查看为什么移除？如何自行集成？](https://pure-admin.github.io/pure-admin-doc/pages/FAQ/#%E5%B9%B3%E5%8F%B0%E5%9C%A8-v3-9-4-%E7%89%88%E6%9C%AC%E5%AE%8C%E5%85%A8%E7%A7%BB%E9%99%A4%E4%BA%86-vxe-table-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%A7%BB%E9%99%A4-%E5%A6%82%E4%BD%95%E8%87%AA%E8%A1%8C%E9%9B%86%E6%88%90)
+  [点击此处查看为什么移除？如何自行集成？](https://pure-admin.cn/pages/FAQ/#%E5%B9%B3%E5%8F%B0%E5%9C%A8-v3-9-4-%E7%89%88%E6%9C%AC%E5%AE%8C%E5%85%A8%E7%A7%BB%E9%99%A4%E4%BA%86-vxe-table-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%A7%BB%E9%99%A4-%E5%A6%82%E4%BD%95%E8%87%AA%E8%A1%8C%E9%9B%86%E6%88%90)
 
 ### 🎫 Feat
 
@@ -686,7 +706,7 @@
 
 ### ✔️ Refactor
 
-- 使用 `tailwindcss` 替换 `unocss`，新增 `tailwindcss` [使用文档](https://pure-admin.github.io/pure-admin-doc/pages/tailwindcss/)
+- 使用 `tailwindcss` 替换 `unocss`，新增 `tailwindcss` [使用文档](https://pure-admin.cn/pages/tailwindcss/)
 
 ### 🐞 Bug fixes
 

@@ -29,20 +29,20 @@
 
 ## 配套保姆级文档
 
-[点我查看 vue-pure-admin 文档](https://pure-admin.github.io/pure-admin-doc)  
+[点我查看 vue-pure-admin 文档](https://pure-admin.cn/)  
 [点我查看 @pureadmin/utils 文档](https://pure-admin-utils.netlify.app)
 
 ## 优质服务、软件外包、赞助支持
 
-[点我查看详情](https://pure-admin.github.io/pure-admin-doc/pages/service/)
+[点我查看详情](https://pure-admin.cn/pages/service/)
 
 ## `js` 版本
 
-[点我查看 js 版本](https://pure-admin.github.io/pure-admin-doc/pages/js/)
+[点我查看 js 版本](https://pure-admin.cn/pages/js/)
 
 ## `max` 版本
 
-[点我查看 max 版本](https://github.com/pure-admin/vue-pure-admin-max)
+[点我查看 max 版本](https://pure-admin.cn/pages/max/)
 
 ## `Tauri` 版本
 
@@ -181,18 +181,18 @@ docker run -dp 8080:80  --name pure-admin vue-pure-admin
 
 非常感谢你们能深入了解源码并对 `pure-admin` 组织作出优秀贡献 ❤️
 
-|                   **贡献人**                    |                         **具体代码**                         |
-| :---------------------------------------------: | :----------------------------------------------------------: |
-|       [hb0730](https://github.com/hb0730)       | [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=hb0730) |
-|         [o-cc](https://github.com/o-cc)         | [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=o-cc) |
+|                   **贡献人**                    |                                   **具体代码**                                   |
+| :---------------------------------------------: | :------------------------------------------------------------------------------: |
+|       [hb0730](https://github.com/hb0730)       |    [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=hb0730)    |
+|         [o-cc](https://github.com/o-cc)         |     [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=o-cc)     |
 | [yj-liuzepeng](https://github.com/yj-liuzepeng) | [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=yj-liuzepeng) |
-|   [skyline523](https://github.com/skyline523)   | [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=skyline523) |
+|   [skyline523](https://github.com/skyline523)   |  [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=skyline523)  |
 | [shark-lajiao](https://github.com/shark-lajiao) | [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=shark-lajiao) |
-|      [WitMiao](https://github.com/WitMiao)      | [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=WitMiao) |
-|     [QFifteen](https://github.com/QFifteen)     | [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=QFifteen) |
-|      [edgexie](https://github.com/edgexie)      | [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=edgexie) |
-|       [way-jm](https://github.com/way-jm)       | [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=way-jm) |
-|   [simple-hui](https://github.com/simple-hui)   | [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=simple-hui) |
+|      [WitMiao](https://github.com/WitMiao)      |   [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=WitMiao)    |
+|     [QFifteen](https://github.com/QFifteen)     |   [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=QFifteen)   |
+|      [edgexie](https://github.com/edgexie)      |   [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=edgexie)    |
+|       [way-jm](https://github.com/way-jm)       |    [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=way-jm)    |
+|   [simple-hui](https://github.com/simple-hui)   |  [代码](https://github.com/pure-admin/vue-pure-admin/commits?author=simple-hui)  |
 
 ## `Git` 贡献提交规范
 

@@ -1,3 +1,23 @@
+# 5.9.0 (2024-12-10)
+
+### ✔️Refactor
+
+- Upgrade `vite` to `v6` version, upgrade `sass` to the latest version, reconstruct the theme writing method, and deprecate [@pureadmin/theme](https://www.npmjs.com/package/@pureadmin/theme) , click to view [Related optimization point details](https://github.com/pure-admin/vue-pure-admin/pull/1188#issue-2630095115). For users who have the [Max version](https://pure-admin.cn/pages/max/), it is strongly recommended to upgrade. Subsequent Max version users will enjoy a more modern, beautiful and highly customized theme color
+- Use [code-inspector-plugin](https://www.npmjs.com/package/code-inspector-plugin) to replace [vite-plugin-vue-inspector](https://www.npmjs.com/package/vite-plugin-vue-inspector)
+
+### 🎫Feat
+
+- Added `ReDrawer` component
+- `pure-table` adds dynamic table header example
+
+### 🐞 Bug fixes
+
+- Fixed an issue where the height of the table does not automatically adapt when the full screen function is enabled or disabled after the table is expanded in the menu and department management
+
+### 🍏Perf
+
+- Optimize the layout of the department tree on the left side of user management
+
 # 5.8.0 (2024-08-19)
 
 ### 🎫 Feat
@@ -53,7 +73,7 @@
 
 The addresses of the document site and full version preview site have been changed!
 
-- The latest document site address: https://pure-admin.github.io/pure-admin-doc
+- The latest document site address: https://pure-admin.cn
 - The latest full version preview site address: https://pure-admin.github.io/vue-pure-admin
 
 ### ✔️ Refactor
@@ -454,7 +474,7 @@ Totally `ESM` version
 ### ✔️ Refactor
 
 - completely removed `lodash` and its related libraries
-  [Click here to see Why Removed? How to integrate it yourself? ](https://pure-admin.github.io/pure-admin-doc/pages/FAQ/#%E5%B9%B3%E5%8F%B0%E5%9C%A8-v3-9-5-%E7 %89%88%E6%9C%AC%E5%AE%8C%E5%85%A8%E7%A7%BB%E9%99%A4%E4%BA%86-lodash-%E5%92%8C% E5%85%B6%E7%9B%B8%E5%85%B3%E5%BA%93-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%A7%BB%E9 %99%A4-%E5%A6%82%E4%BD%95%E8%87%AA%E8%A1%8C%E9%9B%86%E6%88%90)
+  [Click here to see Why Removed? How to integrate it yourself? ](https://pure-admin.cn/pages/FAQ/#%E5%B9%B3%E5%8F%B0%E5%9C%A8-v3-9-5-%E7%89%88%E6%9C%AC%E5%AE%8C%E5%85%A8%E7%A7%BB%E9%99%A4%E4%BA%86-lodash-%E5%92%8C%E5%85%B6%E7%9B%B8%E5%85%B3%E5%BA%93-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%A7%BB%E9%99%A4-%E5%A6%82%E4%BD%95%E8%87%AA%E8%A1%8C%E9%9B%86%E6%88%90)
 
 ### 🎫 Feat
 
@@ -474,7 +494,7 @@ Totally `ESM` version
 ### ✔️ Refactor
 
 - Completely removed `vxe-table`, after removal, the overall package size of the full version is reduced by `1.82MB`, and the initial startup time is basically the same as the lite version 🐮
-  [Click here to see Why Removed? How to integrate it yourself?](https://pure-admin.github.io/pure-admin-doc/pages/FAQ/#%E5%B9%B3%E5%8F%B0%E5%9C%A8-v3-9-4-%E7%89%88%E6%9C%AC%E5%AE%8C%E5%85%A8%E7%A7%BB%E9%99%A4%E4%BA%86-vxe-table-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%A7%BB%E9%99%A4-%E5%A6%82%E4%BD%95%E8%87%AA%E8%A1%8C%E9%9B%86%E6%88%90)
+  [Click here to see Why Removed? How to integrate it yourself?](https://pure-admin.cn/pages/FAQ/#%E5%B9%B3%E5%8F%B0%E5%9C%A8-v3-9-4-%E7%89%88%E6%9C%AC%E5%AE%8C%E5%85%A8%E7%A7%BB%E9%99%A4%E4%BA%86-vxe-table-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%A7%BB%E9%99%A4-%E5%A6%82%E4%BD%95%E8%87%AA%E8%A1%8C%E9%9B%86%E6%88%90)
 
 ### 🎫 Feat
 
@@ -687,7 +707,7 @@ Totally `ESM` version
 
 ### ✔️ Refactor
 
-- Replace `unocss` with `tailwindcss`, add `tailwindcss` [documentation](https://pure-admin.github.io/pure-admin-doc/pages/tailwindcss/)
+- Replace `unocss` with `tailwindcss`, add `tailwindcss` [documentation](https://pure-admin.cn/pages/tailwindcss/)
 
 ### 🐞 Bug fixes
 

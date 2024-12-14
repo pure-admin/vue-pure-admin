@@ -28,9 +28,15 @@ const columns: TableColumnList = [
 <template>
   <pure-table :data="tableDataImage" :columns="columns">
     <template #video>
-      <video width="180" height="180" controls>
+      <video
+        width="180"
+        height="180"
+        controls
+        muted
+        poster="http://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/byted-player-videos/1.0.0/poster.jpg"
+      >
         <source
-          src="https://pure-admin.github.io/pure-admin-doc/video/url.mov"
+          src="http://lf3-static.bytednsdoc.com/obj/eden-cn/nupenuvpxnuvo/xgplayer_doc/xgplayer-demo.mp4"
           type="video/mp4"
         />
       </video>
