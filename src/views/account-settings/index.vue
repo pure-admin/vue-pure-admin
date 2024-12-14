@@ -131,7 +131,7 @@ getMine().then(res => {
 
 <style lang="scss">
 .pure-account-settings {
-  background: var(--pure-theme-menu-bg);
+  background: var(--pure-theme-menu-bg) !important;
 }
 
 .pure-account-settings-menu {

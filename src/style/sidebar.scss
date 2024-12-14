@@ -1,7 +1,5 @@
 /* $sideBarWidth: vertical 模式下主体内容距离网页文档左侧的距离 */
 @mixin merge-style($sideBarWidth) {
-  $menuActiveText: #7a80b4;
-
   @media screen and (width >= 150px) and (width <= 420px) {
     .app-main-nofixed-header {
       overflow-y: hidden;
@@ -94,7 +92,7 @@
     height: 100%;
     overflow: visible;
     font-size: 0;
-    background: var(--pure-theme-menu-bg);
+    background: var(--pure-theme-menu-bg) !important;
     border-right: 1px solid var(--pure-border-color);
 
     /* 展开动画 */
@@ -415,7 +413,7 @@
     justify-content: space-around;
     width: 100%;
     height: 48px;
-    background: var(--pure-theme-menu-bg);
+    background: var(--pure-theme-menu-bg) !important;
 
     .horizontal-header-left {
       display: flex;
@@ -533,7 +531,7 @@
     .el-sub-menu__title {
       height: 48px;
       line-height: 48px;
-      background: var(--pure-theme-menu-bg);
+      background: var(--pure-theme-menu-bg) !important;
 
       svg {
         position: static !important;
