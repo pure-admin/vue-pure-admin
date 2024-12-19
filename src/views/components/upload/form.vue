@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { reactive, ref } from "vue";
 import { formUpload } from "@/api/mock";
 import { message } from "@/utils/message";

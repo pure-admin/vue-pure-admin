@@ -92,6 +92,7 @@ menus:
   pureDraggable: 拖拽
   pureSplitPane: 切割面板
   pureText: 文本省略
+  pureSlider: 滑块
   pureElButton: 按钮
   pureCheckButton: 可选按钮
   pureButton: 按钮动效

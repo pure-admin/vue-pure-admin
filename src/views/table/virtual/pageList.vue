@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { ref, reactive, computed } from "vue";
 import { VxeTableBar } from "@/components/ReVxeTableBar";
 

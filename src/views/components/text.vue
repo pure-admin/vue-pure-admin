@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import dayjs from "dayjs";
 import { ref } from "vue";
 import { ReText } from "@/components/ReText";
