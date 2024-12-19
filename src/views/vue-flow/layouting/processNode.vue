@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { toRef } from "vue";
 import { Handle, useHandleConnections } from "@vue-flow/core";
 

@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { h, onMounted, ref, useSlots } from "vue";
 import { type TippyOptions, useTippy } from "vue-tippy";
 

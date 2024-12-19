@@ -92,6 +92,7 @@ menus:
   pureDraggable: Draggable
   pureSplitPane: Split Pane
   pureText: Text Ellipsis
+  pureSlider: Slider
   pureElButton: Button
   pureButton: Button Animation
   pureCheckButton: Check Button
