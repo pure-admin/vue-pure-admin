@@ -39,8 +39,7 @@
     (t.innerHTML = i),
       (i = null),
       (t = t.getElementsByTagName("svg")[0]) &&
-        (t.setAttribute("aria-hidden", "true"),
-        (t.style.position = "absolute"),
+        ((t.style.position = "absolute"),
         (t.style.width = 0),
         (t.style.height = 0),
         (t.style.overflow = "hidden"),

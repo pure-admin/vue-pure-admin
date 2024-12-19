@@ -28,8 +28,7 @@
           c = document.createElement("div");
         (c.innerHTML = e._iconfont_svg_string_2208059),
           (c = c.getElementsByTagName("svg")[0]) &&
-            (c.setAttribute("aria-hidden", "true"),
-            (c.style.position = "absolute"),
+            ((c.style.position = "absolute"),
             (c.style.width = 0),
             (c.style.height = 0),
             (c.style.overflow = "hidden"),
