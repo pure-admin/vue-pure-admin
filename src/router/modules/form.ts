@@ -15,8 +15,7 @@ export default {
       name: "SchemaForm",
       component: () => import("@/views/schema-form/index.vue"),
       meta: {
-        title: $t("menus.pureSchemaForm"),
-        extraIcon: "IF-pure-iconfont-new svg"
+        title: $t("menus.pureSchemaForm")
       }
     }
   ]

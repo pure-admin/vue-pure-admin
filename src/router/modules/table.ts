@@ -31,8 +31,7 @@ export default {
       name: "PureTableEdit",
       component: () => import("@/views/table/edit.vue"),
       meta: {
-        title: $t("menus.pureTableEdit"),
-        extraIcon: "IF-pure-iconfont-new svg"
+        title: $t("menus.pureTableEdit")
       }
     },
     {
@@ -40,8 +39,7 @@ export default {
       name: "VxeTable",
       component: () => import("@/views/table/virtual.vue"),
       meta: {
-        title: $t("menus.pureVxeTable"),
-        extraIcon: "IF-pure-iconfont-new svg"
+        title: $t("menus.pureVxeTable")
       }
     }
   ]

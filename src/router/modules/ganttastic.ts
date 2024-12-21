@@ -15,8 +15,7 @@ export default {
       name: "Ganttastic",
       component: () => import("@/views/ganttastic/index.vue"),
       meta: {
-        title: $t("menus.pureGanttastic"),
-        extraIcon: "IF-pure-iconfont-new svg"
+        title: $t("menus.pureGanttastic")
       }
     }
   ]

@@ -11,6 +11,7 @@ const include = [
   "dayjs",
   "axios",
   "pinia",
+  "vditor",
   "typeit",
   "swiper",
   "qrcode",
