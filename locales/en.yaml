@@ -76,6 +76,7 @@ menus:
   pureLoginLog: Login Log
   pureOperationLog: Operation Log
   pureSystemLog: System Log
+  pureMarkdown: Markdown
   pureEditor: Editor
   pureAbnormal: Abnormal Page
   pureFourZeroFour: "404"
