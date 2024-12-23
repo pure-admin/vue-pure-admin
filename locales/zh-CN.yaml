@@ -76,6 +76,7 @@ menus:
   pureLoginLog: 登录日志
   pureOperationLog: 操作日志
   pureSystemLog: 系统日志
+  pureMarkdown: Markdown
   pureEditor: 编辑器
   pureAbnormal: 异常页面
   pureFourZeroFour: "404"

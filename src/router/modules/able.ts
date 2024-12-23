@@ -15,8 +15,7 @@ export default {
       name: "MqttClient",
       component: () => import("@/views/able/mqtt-client.vue"),
       meta: {
-        title: $t("menus.pureMqtt"),
-        extraIcon: "IF-pure-iconfont-new svg"
+        title: $t("menus.pureMqtt")
       }
     },
     {
