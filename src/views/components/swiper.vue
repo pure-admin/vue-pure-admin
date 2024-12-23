@@ -121,7 +121,7 @@ const swiperExample: any[] = [
   </el-card>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 :deep(.el-card__body) {
   padding-top: 0;
 }
