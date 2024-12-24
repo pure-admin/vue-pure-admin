@@ -89,7 +89,7 @@ const cardLogoClass = computed(() => [
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .list-card-item {
   display: flex;
   flex-direction: column;

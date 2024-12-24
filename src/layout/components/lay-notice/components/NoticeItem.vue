@@ -112,7 +112,7 @@ function hoverDescription(event, description) {
   max-width: 238px;
 }
 </style>
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .notice-container {
   display: flex;
   align-items: flex-start;
