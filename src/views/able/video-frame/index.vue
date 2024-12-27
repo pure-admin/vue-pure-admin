@@ -170,7 +170,7 @@ onBeforeUnmount(() => {
   </el-card>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 ::v-deep(.el-upload-dragger) {
   display: flex;
   align-items: center;

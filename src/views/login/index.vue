@@ -96,7 +96,7 @@ const immediateDebounce: any = debounce(
   true
 );
 
-useEventListener(document, "keypress", ({ code }) => {
+useEventListener(document, "keydown", ({ code }) => {
   if (
     ["Enter", "NumpadEnter"].includes(code) &&
     !disabled.value &&
