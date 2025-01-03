@@ -12,8 +12,7 @@ import {
 } from "../utils";
 import { useMultiTagsStoreHook } from "./multiTags";
 
-export const usePermissionStore = defineStore({
-  id: "pure-permission",
+export const usePermissionStore = defineStore("pure-permission", {
   state: () => ({
     // 静态路由生成的菜单
     constantMenus,
@@ -31,7 +30,7 @@ export const usePermissionStore = defineStore({
         filterTree(ascending(this.constantMenus.concat(routes)))
       );
       this.flatteningRoutes = formatFlatteningRoutes(
-        this.constantMenus.concat(routes)
+        this.constantMenus.concat(routes) as any
       );
     },
     cacheOperate({ mode, name }: cacheType) {

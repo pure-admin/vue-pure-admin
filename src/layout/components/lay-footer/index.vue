@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { getConfig } from "@/config";
 
 const TITLE = getConfig("Title");

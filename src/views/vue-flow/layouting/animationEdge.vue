@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { computed, nextTick, ref, toRef, watch } from "vue";
 import { TransitionPresets, executeTransition } from "@vueuse/core";
 import {

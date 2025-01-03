@@ -76,6 +76,8 @@ menus:
   pureLoginLog: 登录日志
   pureOperationLog: 操作日志
   pureSystemLog: 系统日志
+  pureCodeMirror: 代码编辑器
+  pureMarkdown: Markdown
   pureEditor: 编辑器
   pureAbnormal: 异常页面
   pureFourZeroFour: "404"
@@ -92,6 +94,7 @@ menus:
   pureDraggable: 拖拽
   pureSplitPane: 切割面板
   pureText: 文本省略
+  pureSlider: 滑块
   pureElButton: 按钮
   pureCheckButton: 可选按钮
   pureButton: 按钮动效
