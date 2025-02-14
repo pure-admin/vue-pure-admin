@@ -233,10 +233,10 @@ watch(size, val =>
 
 .el-button .custom-loading .circular .path {
   stroke: var(--el-button-text-color);
+  stroke-width: 2;
+  stroke-linecap: round;
   stroke-dasharray: 90, 150;
   stroke-dashoffset: 0;
-  stroke-linecap: round;
-  stroke-width: 2;
   animation: loading-dash 1.5s ease-in-out infinite;
 }
 </style>

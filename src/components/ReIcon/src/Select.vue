@@ -219,8 +219,8 @@ watch(
   &:hover {
     color: var(--el-color-primary);
     border-color: var(--el-color-primary);
-    transition: all 0.4s;
     transform: scaleX(1.05);
+    transition: all 0.4s;
   }
 }
 

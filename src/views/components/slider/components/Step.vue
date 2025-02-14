@@ -32,10 +32,10 @@ const value2 = ref(0);
   flex: 1;
   margin-bottom: 0;
   overflow: hidden;
+  text-overflow: ellipsis;
   font-size: 14px;
   line-height: 44px;
   color: var(--el-text-color-secondary);
-  text-overflow: ellipsis;
   white-space: nowrap;
 }
 
