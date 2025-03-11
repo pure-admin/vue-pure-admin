@@ -83,8 +83,8 @@
   .el-upload-list__item.is-ready &.el-icon--close {
     width: 24px;
     height: 24px;
-    border-radius: 4px;
     outline: none;
+    border-radius: 4px;
     transition:
       background-color 0.2s,
       color 0.2s;
@@ -117,8 +117,8 @@
   }
 
   & .el-message__closeBtn {
-    border-radius: 4px;
     outline: none;
+    border-radius: 4px;
     transition:
       background-color 0.2s,
       color 0.2s;

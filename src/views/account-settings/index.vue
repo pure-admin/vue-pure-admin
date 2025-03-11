@@ -158,8 +158,8 @@ getMine().then(res => {
       &::before {
         position: absolute;
         inset: 0 8px;
-        margin: 4px 0;
         clear: both;
+        margin: 4px 0;
         content: "";
         background: var(--el-color-primary);
         border-radius: 3px;

@@ -139,10 +139,10 @@ const cardLogoClass = computed(() => [
       height: 40px;
       margin-bottom: 24px;
       overflow: hidden;
-      font-size: 12px;
-      line-height: 20px;
       text-overflow: ellipsis;
       -webkit-line-clamp: 2;
+      font-size: 12px;
+      line-height: 20px;
       -webkit-box-orient: vertical;
     }
   }
