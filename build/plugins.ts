@@ -19,7 +19,13 @@ export function getPluginsList(
 ): PluginOption[] {
   const lifecycle = process.env.npm_lifecycle_event;
   return [
-    vue(),
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: tag => tag === "deep-chat"
+        }
+      }
+    }),
     // jsx、tsx语法支持
     vueJsx(),
     VueI18nPlugin({

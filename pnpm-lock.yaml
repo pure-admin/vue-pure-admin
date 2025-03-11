@@ -74,6 +74,9 @@ importers:
       dayjs:
         specifier: ^1.11.13
         version: 1.11.13
+      deep-chat:
+        specifier: ^2.1.1
+        version: 2.1.1
       echarts:
         specifier: ^5.6.0
         version: 5.6.0
@@ -83,6 +86,9 @@ importers:
       element-plus:
         specifier: ^2.9.4
         version: 2.9.4(vue@3.5.13(typescript@5.7.3))
+      highlight.js:
+        specifier: ^11.11.1
+        version: 11.11.1
       intro.js:
         specifier: ^7.2.0
         version: 7.2.0
@@ -980,6 +986,10 @@ packages:
     resolution: {integrity: sha512-2kGiWoXaeV8HZlhU/Nml12oTbhv7j2ufsJ5vQaa0VTjzUmZVdd/nmKFRAOJ/FtjO90Qba5AnZDwsrY7ZND5udA==}
     engines: {node: '>= 16'}
 
+  '@intlify/shared@11.1.2':
+    resolution: {integrity: sha512-dF2iMMy8P9uKVHV/20LA1ulFLL+MKSbfMiixSmn6fpwqzvix38OIc7ebgnFbBqElvghZCW9ACtzKTGKsTGTWGA==}
+    engines: {node: '>= 16'}
+
   '@intlify/unplugin-vue-i18n@6.0.3':
     resolution: {integrity: sha512-9ZDjBlhUHtgjRl23TVcgfJttgu8cNepwVhWvOv3mUMRDAhjW0pur1mWKEUKr1I8PNwE4Gvv2IQ1xcl4RL0nG0g==}
     engines: {node: '>= 18'}
@@ -1103,6 +1113,9 @@ packages:
 
   '@logicflow/extension@1.2.28':
     resolution: {integrity: sha512-OHaO57SxjNwDDYVAqrJp/fq9g0NDc4elHmZnWGIqLbkbOMJhiU9IUT2WWK6DctUoYzxhGzTR4Ai5S/TFZ9JjGA==}
+
+  '@microsoft/fetch-event-source@2.0.1':
+    resolution: {integrity: sha512-W6CLUJ2eBMw3Rec70qrsEW0jOm/3twwJv21mrmj2yORiaVmVYGS4sSS5yUwvQc1ZlDLYGPnClVWmUUMagKNsfA==}
 
   '@napi-rs/canvas-android-arm64@0.1.67':
     resolution: {integrity: sha512-W+3DFG5h0WU8Vqqb3W5fNmm5/TPH5ECZRinQDK4CAKFSUkc4iZcDwrmyFG9sB4KdHazf1mFVHCpEeVMO6Mk6Zg==}
@@ -1957,6 +1970,9 @@ packages:
   asynckit@0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
 
+  autolinker@3.16.2:
+    resolution: {integrity: sha512-JiYl7j2Z19F9NdTmirENSUUIIL/9MytEWtmzhfmsKPCp9E+G35Y0UNCMoM9tFigxT59qSc8Ml2dlZXOCVTYwuA==}
+
   autoprefixer@10.4.20:
     resolution: {integrity: sha512-XY25y5xSv/wEoqzDyXXME4AFfkZI0P23z6Fs3YgymDnKJkCGOnkL0iTxCa85UTqaSgfcqyf3UA6+c7wUvx/16g==}
     engines: {node: ^10 || ^12 || >=14}
@@ -2454,6 +2470,9 @@ packages:
 
   dedent@0.7.0:
     resolution: {integrity: sha512-Q6fKUPqnAHAyhiUgFU7BUzLiv0kd8saH9al7tnu5Q/okj6dnupxyTgFIBjVzJATdfIAm9NAsvXNzjaKa+bxVyA==}
+
+  deep-chat@2.1.1:
+    resolution: {integrity: sha512-zJV34RvuTHoyXlmSKeHOJS4dcEuTkh1Ndcm7ByKVKOLz2H2UAhAx2RPMeSlW5Yx0yYEh9n29uJk7fWbgHGYdlA==}
 
   deep-is@0.1.4:
     resolution: {integrity: sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==}
@@ -3037,6 +3056,10 @@ packages:
 
   hey-listen@1.0.8:
     resolution: {integrity: sha512-COpmrF2NOg4TBWUJ5UVyaCU2A88wEMkUPK4hNqyCkqHbxT92BbvfjoSozkAIIm6XhicGlJHhFdullInrdhwU8Q==}
+
+  highlight.js@11.11.1:
+    resolution: {integrity: sha512-Xwwo44whKBVCYoliBQwaPvtd/2tYFkRQtXDWj1nackaV2JPXx3L0+Jvd8/qCJ2p+ML0/XVkJ2q+Mr+UVdpJK5w==}
+    engines: {node: '>=12.0.0'}
 
   hookable@5.5.3:
     resolution: {integrity: sha512-Yc+BQe8SvoXH1643Qez1zqLRmbA5rCL+sSmk6TVos0LWVfNIB7PGncdlId77WzLGSIB5KaWgTaNTs2lNVEI6VQ==}
@@ -4378,6 +4401,11 @@ packages:
   reinterval@1.1.0:
     resolution: {integrity: sha512-QIRet3SYrGp0HUHO88jVskiG6seqUGC5iAG7AwI/BV4ypGcuqk9Du6YQBUOUqm9c8pw1eyLoIaONifRua1lsEQ==}
 
+  remarkable@2.0.1:
+    resolution: {integrity: sha512-YJyMcOH5lrR+kZdmB0aJJ4+93bEojRZ1HGDn9Eagu6ibg7aVZhc3OWbbShRid+Q5eAfsEqWxpe+g5W5nYNfNiA==}
+    engines: {node: '>= 6.0.0'}
+    hasBin: true
+
   require-directory@2.1.1:
     resolution: {integrity: sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q==}
     engines: {node: '>=0.10.0'}
@@ -4593,6 +4621,9 @@ packages:
   speakingurl@14.0.1:
     resolution: {integrity: sha512-1POYv7uv2gXoyGFpBCmpDVSNV74IfsWlDW216UPjbWufNf+bSU6GdbDsxdcxtfwb4xlI3yxzOTKClUosxARYrQ==}
     engines: {node: '>=0.10.0'}
+
+  speech-to-element@0.1.66:
+    resolution: {integrity: sha512-tHDZ8ttFCsXtQLgWHDDVVTGuiCGWqkxRoIGLygBbU0DUsod2Ho89fws7OeCHpGOeDL9s5rBVpEqj45BsEIKy+Q==}
 
   split2@3.2.2:
     resolution: {integrity: sha512-9NThjpgZnifTkJpzTZ7Eue85S49QwpNhZTq6GRJwObb6jnLFNGB7Qm73V5HewTROPyxD0C29xqmaI68bQtV+hg==}
@@ -5989,12 +6020,14 @@ snapshots:
 
   '@intlify/shared@11.1.1': {}
 
+  '@intlify/shared@11.1.2': {}
+
   '@intlify/unplugin-vue-i18n@6.0.3(@vue/compiler-dom@3.5.13)(eslint@9.20.1(jiti@2.4.2))(rollup@4.34.6)(typescript@5.7.3)(vue-i18n@11.1.1(vue@3.5.13(typescript@5.7.3)))(vue@3.5.13(typescript@5.7.3))':
     dependencies:
       '@eslint-community/eslint-utils': 4.4.1(eslint@9.20.1(jiti@2.4.2))
       '@intlify/bundle-utils': 10.0.0(vue-i18n@11.1.1(vue@3.5.13(typescript@5.7.3)))
-      '@intlify/shared': 11.1.1
-      '@intlify/vue-i18n-extensions': 8.0.0(@intlify/shared@11.1.1)(@vue/compiler-dom@3.5.13)(vue-i18n@11.1.1(vue@3.5.13(typescript@5.7.3)))(vue@3.5.13(typescript@5.7.3))
+      '@intlify/shared': 11.1.2
+      '@intlify/vue-i18n-extensions': 8.0.0(@intlify/shared@11.1.2)(@vue/compiler-dom@3.5.13)(vue-i18n@11.1.1(vue@3.5.13(typescript@5.7.3)))(vue@3.5.13(typescript@5.7.3))
       '@rollup/pluginutils': 5.1.4(rollup@4.34.6)
       '@typescript-eslint/scope-manager': 8.24.0
       '@typescript-eslint/typescript-estree': 8.24.0(typescript@5.7.3)
@@ -6016,11 +6049,11 @@ snapshots:
       - supports-color
       - typescript
 
-  '@intlify/vue-i18n-extensions@8.0.0(@intlify/shared@11.1.1)(@vue/compiler-dom@3.5.13)(vue-i18n@11.1.1(vue@3.5.13(typescript@5.7.3)))(vue@3.5.13(typescript@5.7.3))':
+  '@intlify/vue-i18n-extensions@8.0.0(@intlify/shared@11.1.2)(@vue/compiler-dom@3.5.13)(vue-i18n@11.1.1(vue@3.5.13(typescript@5.7.3)))(vue@3.5.13(typescript@5.7.3))':
     dependencies:
       '@babel/parser': 7.26.8
     optionalDependencies:
-      '@intlify/shared': 11.1.1
+      '@intlify/shared': 11.1.2
       '@vue/compiler-dom': 3.5.13
       vue: 3.5.13(typescript@5.7.3)
       vue-i18n: 11.1.1(vue@3.5.13(typescript@5.7.3))
@@ -6232,6 +6265,8 @@ snapshots:
       - supports-color
       - ts-node
       - utf-8-validate
+
+  '@microsoft/fetch-event-source@2.0.1': {}
 
   '@napi-rs/canvas-android-arm64@0.1.67':
     optional: true
@@ -7147,6 +7182,10 @@ snapshots:
 
   asynckit@0.4.0: {}
 
+  autolinker@3.16.2:
+    dependencies:
+      tslib: 2.8.1
+
   autoprefixer@10.4.20(postcss@8.5.2):
     dependencies:
       browserslist: 4.24.4
@@ -7719,6 +7758,12 @@ snapshots:
   decimal.js@10.5.0: {}
 
   dedent@0.7.0: {}
+
+  deep-chat@2.1.1:
+    dependencies:
+      '@microsoft/fetch-event-source': 2.0.1
+      remarkable: 2.0.1
+      speech-to-element: 0.1.66
 
   deep-is@0.1.4: {}
 
@@ -8394,6 +8439,8 @@ snapshots:
       readable-stream: 3.6.2
 
   hey-listen@1.0.8: {}
+
+  highlight.js@11.11.1: {}
 
   hookable@5.5.3: {}
 
@@ -9880,6 +9927,11 @@ snapshots:
 
   reinterval@1.1.0: {}
 
+  remarkable@2.0.1:
+    dependencies:
+      argparse: 1.0.10
+      autolinker: 3.16.2
+
   require-directory@2.1.1: {}
 
   require-from-string@2.0.2: {}
@@ -10093,6 +10145,8 @@ snapshots:
   sourcemap-codec@1.4.8: {}
 
   speakingurl@14.0.1: {}
+
+  speech-to-element@0.1.66: {}
 
   split2@3.2.2:
     dependencies:
