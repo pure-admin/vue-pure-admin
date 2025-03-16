@@ -2,7 +2,7 @@
 import { onMounted } from "vue";
 import { deviceDetection } from "@pureadmin/utils";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
-import VideoPlay from "@iconify-icons/ep/video-play";
+import VideoPlay from "~icons/ep/video-play";
 
 import Player from "xgplayer";
 import "xgplayer/dist/index.min.css";

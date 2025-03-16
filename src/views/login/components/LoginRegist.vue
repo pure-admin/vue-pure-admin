@@ -9,9 +9,9 @@ import { useVerifyCode } from "../utils/verifyCode";
 import { $t, transformI18n } from "@/plugins/i18n";
 import { useUserStoreHook } from "@/store/modules/user";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
-import Lock from "@iconify-icons/ri/lock-fill";
-import Iphone from "@iconify-icons/ep/iphone";
-import User from "@iconify-icons/ri/user-3-fill";
+import Lock from "~icons/ri/lock-fill";
+import Iphone from "~icons/ep/iphone";
+import User from "~icons/ri/user-3-fill";
 
 const { t } = useI18n();
 const checked = ref(false);

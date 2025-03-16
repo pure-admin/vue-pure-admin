@@ -9,7 +9,7 @@ import { $t, transformI18n } from "@/plugins/i18n";
 import { useVerifyCode } from "../utils/verifyCode";
 import { useUserStoreHook } from "@/store/modules/user";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
-import Iphone from "@iconify-icons/ep/iphone";
+import Iphone from "~icons/ep/iphone";
 
 const { t } = useI18n();
 const loading = ref(false);

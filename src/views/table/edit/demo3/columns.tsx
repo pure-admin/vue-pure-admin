@@ -1,8 +1,8 @@
 import { ref, computed } from "vue";
 import { tableDataEdit } from "../data";
 
-import EditPen from "@iconify-icons/ep/edit-pen";
-import Check from "@iconify-icons/ep/check";
+import EditPen from "~icons/ep/edit-pen";
+import Check from "~icons/ep/check";
 
 export function useColumns() {
   const editMap = ref({});

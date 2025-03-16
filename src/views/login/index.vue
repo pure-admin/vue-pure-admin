@@ -28,10 +28,10 @@ import { useDataThemeChange } from "@/layout/hooks/useDataThemeChange";
 import dayIcon from "@/assets/svg/day.svg?component";
 import darkIcon from "@/assets/svg/dark.svg?component";
 import globalization from "@/assets/svg/globalization.svg?component";
-import Lock from "@iconify-icons/ri/lock-fill";
-import Check from "@iconify-icons/ep/check";
-import User from "@iconify-icons/ri/user-3-fill";
-import Info from "@iconify-icons/ri/information-line";
+import Lock from "~icons/ri/lock-fill";
+import Check from "~icons/ep/check";
+import User from "~icons/ri/user-3-fill";
+import Info from "~icons/ri/information-line";
 
 defineOptions({
   name: "Login"

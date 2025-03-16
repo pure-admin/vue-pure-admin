@@ -9,8 +9,8 @@ import { useVerifyCode } from "../utils/verifyCode";
 import { $t, transformI18n } from "@/plugins/i18n";
 import { useUserStoreHook } from "@/store/modules/user";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
-import Lock from "@iconify-icons/ri/lock-fill";
-import Iphone from "@iconify-icons/ep/iphone";
+import Lock from "~icons/ri/lock-fill";
+import Iphone from "~icons/ep/iphone";
 
 const { t } = useI18n();
 const loading = ref(false);

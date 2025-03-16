@@ -6,7 +6,7 @@ import type { PaginationProps } from "@pureadmin/table";
 import { type Ref, reactive, ref, onMounted, toRaw } from "vue";
 import { getKeyList, useCopyToClipboard } from "@pureadmin/utils";
 import { getSystemLogsList, getSystemLogsDetail } from "@/api/system";
-import Info from "@iconify-icons/ri/question-line";
+import Info from "~icons/ri/question-line";
 
 export function useRole(tableRef: Ref) {
   const form = reactive({
