@@ -5,6 +5,7 @@ import { viteBuildInfo } from "./info";
 import svgLoader from "vite-svg-loader";
 import type { PluginOption } from "vite";
 import vueJsx from "@vitejs/plugin-vue-jsx";
+import tailwindcss from "@tailwindcss/vite";
 import { configCompressPlugin } from "./compress";
 import removeNoMatch from "vite-plugin-router-warn";
 import { visualizer } from "rollup-plugin-visualizer";
@@ -19,6 +20,7 @@ export function getPluginsList(
 ): PluginOption[] {
   const lifecycle = process.env.npm_lifecycle_event;
   return [
+    tailwindcss(),
     vue(),
     // jsx、tsx语法支持
     vueJsx(),

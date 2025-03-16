@@ -142,7 +142,7 @@ defineExpose({ getRef });
         <el-form-item label="菜单排序">
           <el-input-number
             v-model="newFormInline.rank"
-            class="!w-full"
+            class="w-full!"
             :min="1"
             :max="9999"
             controls-position="right"

@@ -190,7 +190,7 @@ watch(size, val =>
     <el-date-picker
       v-model="value"
       type="datetime"
-      class="!w-[200px]"
+      class="w-[200px]!"
       placeholder="请选择日期时间"
       :shortcuts="shortcuts"
       :size="dynamicSize"
@@ -213,7 +213,7 @@ watch(size, val =>
       <el-date-picker
         v-model="value1"
         type="datetime"
-        class="!w-[200px]"
+        class="w-[200px]!"
         placeholder="请选择日期时间"
         format="YYYY/MM/DD hh:mm:ss"
         :value-format="datetimeFormat"

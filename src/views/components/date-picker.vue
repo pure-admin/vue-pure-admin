@@ -164,7 +164,7 @@ watch(size, val =>
     <el-date-picker
       v-model="value"
       type="date"
-      class="!w-[160px]"
+      class="w-[160px]!"
       placeholder="请选择"
       :disabled-date="disabledDate"
       :shortcuts="shortcuts"
@@ -180,7 +180,7 @@ watch(size, val =>
       <el-date-picker
         v-model="value1"
         type="week"
-        class="!w-[160px]"
+        class="w-[160px]!"
         format="YYYY年第ww周"
         placeholder="选择某年中的某周"
         :size="dynamicSize"
@@ -189,7 +189,7 @@ watch(size, val =>
       <el-date-picker
         v-model="value2"
         type="month"
-        class="!w-[160px]"
+        class="w-[160px]!"
         placeholder="选择某月"
         :size="dynamicSize"
         :disabled="size === 'disabled'"
@@ -197,7 +197,7 @@ watch(size, val =>
       <el-date-picker
         v-model="value3"
         type="year"
-        class="!w-[160px]"
+        class="w-[160px]!"
         placeholder="选择某年"
         :size="dynamicSize"
         :disabled="size === 'disabled'"
@@ -205,7 +205,7 @@ watch(size, val =>
       <el-date-picker
         v-model="value4"
         type="dates"
-        class="!w-[160px]"
+        class="w-[160px]!"
         placeholder="选择多个日期"
         :size="dynamicSize"
         :disabled="size === 'disabled'"
@@ -216,7 +216,7 @@ watch(size, val =>
     <el-date-picker
       v-model="value5"
       type="daterange"
-      class="!w-[240px]"
+      class="w-[240px]!"
       unlink-panels
       range-separator="至"
       start-placeholder="开始时间"
@@ -261,7 +261,7 @@ watch(size, val =>
       <el-date-picker
         v-model="value7"
         type="date"
-        class="!w-[160px]"
+        class="w-[160px]!"
         placeholder="请选择日期"
         format="YYYY/MM/DD"
         :value-format="dateFormat"
@@ -275,7 +275,7 @@ watch(size, val =>
     <el-date-picker
       v-model="value8"
       type="date"
-      class="!w-[160px]"
+      class="w-[160px]!"
       placeholder="请选择日期"
       :prefix-icon="useRenderIcon('twemoji:spiral-calendar')"
       :size="dynamicSize"

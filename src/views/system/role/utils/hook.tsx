@@ -94,11 +94,11 @@ export function useRole(treeRef: Ref) {
   ];
   // const buttonClass = computed(() => {
   //   return [
-  //     "!h-[20px]",
+  //     "h-[20px]!",
   //     "reset-margin",
-  //     "!text-gray-500",
-  //     "dark:!text-white",
-  //     "dark:hover:!text-primary"
+  //     "text-gray-500!",
+  //     "dark:text-white!",
+  //     "dark:hover:text-primary!"
   //   ];
   // });
 

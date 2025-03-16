@@ -79,7 +79,7 @@ const fullscreenClass = computed(() => {
     "el-dialog__close",
     "-translate-x-2",
     "cursor-pointer",
-    "hover:!text-[red]"
+    "hover:text-[red]!"
   ];
 });
 
