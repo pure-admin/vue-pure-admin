@@ -121,6 +121,7 @@
     "@faker-js/faker": "^9.5.0",
     "@iconify-json/ep": "^1.2.2",
     "@iconify-json/ri": "^1.2.5",
+    "@iconify/utils": "^2.3.0",
     "@iconify/vue": "4.2.0",
     "@intlify/unplugin-vue-i18n": "^6.0.3",
     "@types/codemirror": "^5.60.15",

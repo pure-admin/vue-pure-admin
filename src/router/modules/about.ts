@@ -5,7 +5,7 @@ export default {
   path: "/about",
   redirect: "/about/index",
   meta: {
-    icon: "ri:file-info-line",
+    icon: "ri/file-info-line",
     title: $t("menus.pureAbout"),
     rank: about
   },

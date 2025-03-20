@@ -13,3 +13,11 @@ const IconSelect = iconSelect;
 const FontIcon = fontIcon;
 
 export { IconifyIconOffline, IconifyIconOnline, IconSelect, FontIcon };
+
+export function getIconOffline(icon: string) {
+  if (icon && icon.includes("/")) {
+    return icon.replace("/", ":");
+  } else {
+    return icon;
+  }
+}
