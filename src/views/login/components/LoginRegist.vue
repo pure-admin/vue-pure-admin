@@ -12,6 +12,7 @@ import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import Lock from "~icons/ri/lock-fill";
 import Iphone from "~icons/ep/iphone";
 import User from "~icons/ri/user-3-fill";
+import Keyhole from "~icons/ri/shield-keyhole-line";
 
 const { t } = useI18n();
 const checked = ref(false);
@@ -118,7 +119,7 @@ function onBack() {
             v-model="ruleForm.verifyCode"
             clearable
             :placeholder="t('login.pureSmsVerifyCode')"
-            :prefix-icon="useRenderIcon('ri:shield-keyhole-line')"
+            :prefix-icon="useRenderIcon(Keyhole)"
           />
           <el-button
             :disabled="isDisabled"
