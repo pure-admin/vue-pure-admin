@@ -1,5 +1,5 @@
-import ArrowRightSLine from "@iconify-icons/ri/arrow-right-s-line";
-import CloseCircleLine from "@iconify-icons/ri/close-circle-line";
+import ArrowRightSLine from "~icons/ri/arrow-right-s-line";
+import CloseCircleLine from "~icons/ri/close-circle-line";
 
 export function useColumns() {
   const columns = [

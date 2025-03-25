@@ -5,7 +5,7 @@ export default {
   path: "/guide",
   redirect: "/guide/index",
   meta: {
-    icon: "ep:guide",
+    icon: "ep/guide",
     title: $t("menus.pureGuide"),
     rank: guide
   },

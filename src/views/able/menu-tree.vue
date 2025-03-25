@@ -7,7 +7,7 @@ import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import { extractPathList, deleteChildren } from "@/utils/tree";
 import { usePermissionStoreHook } from "@/store/modules/permission";
 import type { TreeNode } from "element-plus/es/components/tree-v2/src/types";
-import NodeTree from "@iconify-icons/ri/node-tree";
+import NodeTree from "~icons/ri/node-tree";
 
 defineOptions({
   name: "MenuTree"

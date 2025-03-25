@@ -1,7 +1,7 @@
 <script setup lang="tsx">
 import { h, ref, watch } from "vue";
 import { message } from "@/utils/message";
-import HomeFilled from "@iconify-icons/ep/home-filled";
+import HomeFilled from "~icons/ep/home-filled";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import Segmented, { type OptionsType } from "@/components/ReSegmented";
 

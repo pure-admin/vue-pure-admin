@@ -4,8 +4,8 @@ import { useRole } from "./hook";
 import { PureTableBar } from "@/components/RePureTableBar";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 
-import Plane from "@iconify-icons/ri/plane-line";
-import Refresh from "@iconify-icons/ep/refresh";
+import Plane from "~icons/ri/plane-line";
+import Refresh from "~icons/ep/refresh";
 
 defineOptions({
   name: "OnlineUser"

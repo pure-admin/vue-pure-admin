@@ -14,7 +14,7 @@ function handleSearch() {
       class="search-container w-[40px] h-[48px] flex-c cursor-pointer navbar-bg-hover"
       @click="handleSearch"
     >
-      <IconifyIconOffline icon="ri:search-line" />
+      <IconifyIconOffline icon="ri/search-line" />
     </div>
     <SearchModal v-model:value="show" />
   </div>

@@ -5,7 +5,7 @@ export default {
   path: "/codemirror",
   redirect: "/codemirror/index",
   meta: {
-    icon: "ri:code-box-line",
+    icon: "ri/code-box-line",
     title: $t("menus.pureCodeMirror"),
     rank: codemirror
   },

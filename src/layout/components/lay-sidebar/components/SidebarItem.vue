@@ -17,10 +17,10 @@ import {
   useAttrs
 } from "vue";
 
-import ArrowUp from "@iconify-icons/ep/arrow-up-bold";
-import EpArrowDown from "@iconify-icons/ep/arrow-down-bold";
-import ArrowLeft from "@iconify-icons/ep/arrow-left-bold";
-import ArrowRight from "@iconify-icons/ep/arrow-right-bold";
+import ArrowUp from "~icons/ep/arrow-up-bold";
+import EpArrowDown from "~icons/ep/arrow-down-bold";
+import ArrowLeft from "~icons/ep/arrow-left-bold";
+import ArrowRight from "~icons/ep/arrow-right-bold";
 
 const attrs = useAttrs();
 const { layout, isCollapse, tooltipEffect, getDivStyle } = useNav();

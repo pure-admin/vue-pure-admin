@@ -6,7 +6,7 @@ export default {
   redirect: "/nested/menu1/menu1-1",
   meta: {
     title: $t("menus.pureMenus"),
-    icon: "ep:histogram",
+    icon: "ep/histogram",
     rank: nested
   },
   children: [

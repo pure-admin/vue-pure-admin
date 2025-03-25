@@ -9,7 +9,7 @@ export default {
   component: Layout,
   redirect: "/welcome",
   meta: {
-    icon: "ep:home-filled",
+    icon: "ep/home-filled",
     title: $t("menus.pureHome"),
     rank: home
   },

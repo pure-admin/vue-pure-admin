@@ -2,11 +2,11 @@
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import { ref, computed, watch, getCurrentInstance } from "vue";
 
-import Dept from "@iconify-icons/ri/git-branch-line";
-// import Reset from "@iconify-icons/ri/restart-line";
-import More2Fill from "@iconify-icons/ri/more-2-fill";
-import OfficeBuilding from "@iconify-icons/ep/office-building";
-import LocationCompany from "@iconify-icons/ep/add-location";
+import Dept from "~icons/ri/git-branch-line";
+// import Reset from "~icons/ri/restart-line";
+import More2Fill from "~icons/ri/more-2-fill";
+import OfficeBuilding from "~icons/ep/office-building";
+import LocationCompany from "~icons/ep/add-location";
 import ExpandIcon from "./svg/expand.svg?component";
 import UnExpandIcon from "./svg/unexpand.svg?component";
 
