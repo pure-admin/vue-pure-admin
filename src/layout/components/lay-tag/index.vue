@@ -514,6 +514,13 @@ function tagOnClick(item) {
   emitter.emit("tagOnClick", item);
 }
 
+/** 点击鼠标滚轮键关闭标签页 */
+function tagOnMousedown(index: Number, item: any, e: MouseEvent) {
+  if (e.button == 1 && index !== 0) {
+    deleteMenu(item);
+  }
+}
+
 onClickOutside(contextmenuRef, closeMenu, {
   detectIframe: true
 });
@@ -586,6 +593,7 @@ onBeforeUnmount(() => {
           @mouseenter.prevent="onMouseenter(index)"
           @mouseleave.prevent="onMouseleave(index)"
           @click="tagOnClick(item)"
+          @mousedown="tagOnMousedown(index, item, $event)"
         >
           <template v-if="showModel !== 'chrome'">
             <span
