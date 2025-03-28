@@ -36,10 +36,10 @@ importers:
         specifier: ^1.3.2
         version: 1.3.2(@vue-flow/core@1.42.4(vue@3.5.13(typescript@5.8.2)))(vue@3.5.13(typescript@5.8.2))
       '@vue-flow/core':
-        specifier: ^1.42.1
+        specifier: ^1.42.4
         version: 1.42.4(vue@3.5.13(typescript@5.8.2))
       '@vueuse/core':
-        specifier: ^12.5.0
+        specifier: ^12.8.2
         version: 12.8.2(typescript@5.8.2)
       '@vueuse/motion':
         specifier: ^2.2.6
@@ -57,13 +57,13 @@ importers:
         specifier: ^4.1.1
         version: 4.1.1
       axios:
-        specifier: ^1.7.9
+        specifier: ^1.8.4
         version: 1.8.4
       china-area-data:
         specifier: ^5.0.1
         version: 5.0.1
       codemirror:
-        specifier: ^5.65.18
+        specifier: ^5.65.19
         version: 5.65.19
       codemirror-editor-vue3:
         specifier: ^2.8.0
@@ -84,7 +84,7 @@ importers:
         specifier: ^3.0.6
         version: 3.0.6(typescript@5.8.2)
       element-plus:
-        specifier: ^2.9.4
+        specifier: ^2.9.7
         version: 2.9.7(vue@3.5.13(typescript@5.8.2))
       highlight.js:
         specifier: ^11.11.1
@@ -123,7 +123,7 @@ importers:
         specifier: ^3.26.0
         version: 3.26.0
       plus-pro-components:
-        specifier: ^0.1.20
+        specifier: ^0.1.21
         version: 0.1.21(element-plus@2.9.7(vue@3.5.13(typescript@5.8.2)))(vue@3.5.13(typescript@5.8.2))
       qrcode:
         specifier: ^1.5.4
@@ -138,7 +138,7 @@ importers:
         specifier: ^1.15.6
         version: 1.15.6
       swiper:
-        specifier: ^11.2.3
+        specifier: ^11.2.6
         version: 11.2.6
       typeit:
         specifier: ^8.8.7
@@ -159,7 +159,7 @@ importers:
         specifier: ^3.5.13
         version: 3.5.13(typescript@5.8.2)
       vue-i18n:
-        specifier: ^11.1.1
+        specifier: ^11.1.2
         version: 11.1.2(vue@3.5.13(typescript@5.8.2))
       vue-json-pretty:
         specifier: ^2.4.0
@@ -171,7 +171,7 @@ importers:
         specifier: ^4.5.0
         version: 4.5.0(vue@3.5.13(typescript@5.8.2))
       vue-tippy:
-        specifier: ^6.6.0
+        specifier: ^6.7.0
         version: 6.7.0(vue@3.5.13(typescript@5.8.2))
       vue-types:
         specifier: ^5.1.3
@@ -195,41 +195,41 @@ importers:
         specifier: 4.6.25
         version: 4.6.25(vue@3.5.13(typescript@5.8.2))
       wavesurfer.js:
-        specifier: ^7.9.1
+        specifier: ^7.9.4
         version: 7.9.4
       xgplayer:
-        specifier: ^3.0.20
+        specifier: ^3.0.21
         version: 3.0.21(core-js@3.41.0)
       xlsx:
         specifier: ^0.18.5
         version: 0.18.5
     devDependencies:
       '@commitlint/cli':
-        specifier: ^19.7.1
+        specifier: ^19.8.0
         version: 19.8.0(@types/node@20.17.28)(typescript@5.8.2)
       '@commitlint/config-conventional':
-        specifier: ^19.7.1
+        specifier: ^19.8.0
         version: 19.8.0
       '@commitlint/types':
-        specifier: ^19.5.0
+        specifier: ^19.8.0
         version: 19.8.0
       '@eslint/js':
-        specifier: ^9.20.0
+        specifier: ^9.23.0
         version: 9.23.0
       '@faker-js/faker':
-        specifier: ^9.5.0
+        specifier: ^9.6.0
         version: 9.6.0
       '@iconify/json':
-        specifier: ^2.2.319
+        specifier: ^2.2.321
         version: 2.2.321
       '@iconify/vue':
         specifier: 4.2.0
         version: 4.2.0(vue@3.5.13(typescript@5.8.2))
       '@intlify/unplugin-vue-i18n':
-        specifier: ^6.0.3
+        specifier: ^6.0.5
         version: 6.0.5(@vue/compiler-dom@3.5.13)(eslint@9.23.0(jiti@2.4.2))(rollup@4.37.0)(typescript@5.8.2)(vue-i18n@11.1.2(vue@3.5.13(typescript@5.8.2)))(vue@3.5.13(typescript@5.8.2))
       '@tailwindcss/vite':
-        specifier: ^4.0.13
+        specifier: ^4.0.17
         version: 4.0.17(vite@6.2.3(@types/node@20.17.28)(jiti@2.4.2)(lightningcss@1.29.2)(sass@1.86.0)(yaml@2.7.0))
       '@types/codemirror':
         specifier: ^5.60.15
@@ -244,7 +244,7 @@ importers:
         specifier: ^3.0.6
         version: 3.0.6
       '@types/node':
-        specifier: ^20.17.19
+        specifier: ^20.17.28
         version: 20.17.28
       '@types/nprogress':
         specifier: ^0.2.3
@@ -262,22 +262,22 @@ importers:
         specifier: ^1.15.8
         version: 1.15.8
       '@typescript-eslint/eslint-plugin':
-        specifier: ^8.24.0
+        specifier: ^8.28.0
         version: 8.28.0(@typescript-eslint/parser@8.28.0(eslint@9.23.0(jiti@2.4.2))(typescript@5.8.2))(eslint@9.23.0(jiti@2.4.2))(typescript@5.8.2)
       '@typescript-eslint/parser':
-        specifier: ^8.24.0
+        specifier: ^8.28.0
         version: 8.28.0(eslint@9.23.0(jiti@2.4.2))(typescript@5.8.2)
       '@vitejs/plugin-vue':
-        specifier: ^5.2.1
+        specifier: ^5.2.3
         version: 5.2.3(vite@6.2.3(@types/node@20.17.28)(jiti@2.4.2)(lightningcss@1.29.2)(sass@1.86.0)(yaml@2.7.0))(vue@3.5.13(typescript@5.8.2))
       '@vitejs/plugin-vue-jsx':
-        specifier: ^4.1.1
+        specifier: ^4.1.2
         version: 4.1.2(vite@6.2.3(@types/node@20.17.28)(jiti@2.4.2)(lightningcss@1.29.2)(sass@1.86.0)(yaml@2.7.0))(vue@3.5.13(typescript@5.8.2))
       boxen:
         specifier: ^8.0.1
         version: 8.0.1
       code-inspector-plugin:
-        specifier: ^0.20.0
+        specifier: ^0.20.7
         version: 0.20.7
       cssnano:
         specifier: ^7.0.6
@@ -286,19 +286,16 @@ importers:
         specifier: ^0.8.5
         version: 0.8.5
       eslint:
-        specifier: ^9.20.1
+        specifier: ^9.23.0
         version: 9.23.0(jiti@2.4.2)
       eslint-config-prettier:
-        specifier: ^10.0.1
+        specifier: ^10.1.1
         version: 10.1.1(eslint@9.23.0(jiti@2.4.2))
-      eslint-define-config:
-        specifier: ^2.1.0
-        version: 2.1.0
       eslint-plugin-prettier:
-        specifier: ^5.2.3
+        specifier: ^5.2.5
         version: 5.2.5(eslint-config-prettier@10.1.1(eslint@9.23.0(jiti@2.4.2)))(eslint@9.23.0(jiti@2.4.2))(prettier@3.5.3)
       eslint-plugin-vue:
-        specifier: ^9.32.0
+        specifier: ^9.33.0
         version: 9.33.0(eslint@9.23.0(jiti@2.4.2))
       gradient-string:
         specifier: ^3.0.0
@@ -307,10 +304,10 @@ importers:
         specifier: ^9.1.7
         version: 9.1.7
       lint-staged:
-        specifier: ^15.4.3
+        specifier: ^15.5.0
         version: 15.5.0
       postcss:
-        specifier: ^8.5.2
+        specifier: ^8.5.3
         version: 8.5.3
       postcss-html:
         specifier: ^1.8.0
@@ -322,7 +319,7 @@ importers:
         specifier: ^4.0.9
         version: 4.0.9(postcss@8.5.3)
       prettier:
-        specifier: ^3.5.1
+        specifier: ^3.5.3
         version: 3.5.3
       rimraf:
         specifier: ^6.0.1
@@ -331,10 +328,10 @@ importers:
         specifier: ^5.14.0
         version: 5.14.0(rollup@4.37.0)
       sass:
-        specifier: ^1.85.0
+        specifier: ^1.86.0
         version: 1.86.0
       stylelint:
-        specifier: ^16.14.1
+        specifier: ^16.17.0
         version: 16.17.0(typescript@5.8.2)
       stylelint-config-recess-order:
         specifier: ^6.0.0
@@ -355,13 +352,13 @@ importers:
         specifier: ^4.0.17
         version: 4.0.17
       typescript:
-        specifier: ^5.7.3
+        specifier: ^5.8.2
         version: 5.8.2
       unplugin-icons:
         specifier: ^22.1.0
         version: 22.1.0(@vue/compiler-sfc@3.5.13)
       vite:
-        specifier: ^6.1.0
+        specifier: ^6.2.3
         version: 6.2.3(@types/node@20.17.28)(jiti@2.4.2)(lightningcss@1.29.2)(sass@1.86.0)(yaml@2.7.0)
       vite-plugin-cdn-import:
         specifier: ^1.0.1
@@ -385,7 +382,7 @@ importers:
         specifier: ^9.4.3
         version: 9.4.3(eslint@9.23.0(jiti@2.4.2))
       vue-tsc:
-        specifier: ^2.2.0
+        specifier: ^2.2.8
         version: 2.2.8(typescript@5.8.2)
 
 packages:
@@ -2761,8 +2758,8 @@ packages:
   el-table-infinite-scroll@3.0.6:
     resolution: {integrity: sha512-rdrEBcSMYpkD0s0jl28KcGZpiIbWzVR2OAf7hBB+c+c08G89jb9d6rOn+y2DuhE1iI1C0pEOlC5/lrP3QceOXg==}
 
-  electron-to-chromium@1.5.127:
-    resolution: {integrity: sha512-Ke5OggqOtEqzCzcUyV+9jgO6L6sv1gQVKGtSExXHjD/FK0p4qzPZbrDsrCdy0DptcQprD0V80RCBYSWLMhTTgQ==}
+  electron-to-chromium@1.5.128:
+    resolution: {integrity: sha512-bo1A4HH/NS522Ws0QNFIzyPcyUUNV/yyy70Ho1xqfGYzPUme2F/xr4tlEOuM6/A538U1vDA7a4XfCd1CKRegKQ==}
 
   element-plus@2.9.7:
     resolution: {integrity: sha512-6vjZh5SXBncLhUwJGTVKS5oDljfgGMh6J4zVTeAZK3YdMUN76FgpvHkwwFXocpJpMbii6rDYU3sgie64FyPerQ==}
@@ -2879,11 +2876,6 @@ packages:
     hasBin: true
     peerDependencies:
       eslint: '>=7.0.0'
-
-  eslint-define-config@2.1.0:
-    resolution: {integrity: sha512-QUp6pM9pjKEVannNAbSJNeRuYwW3LshejfyBBpjeMGaJjaDUpVps4C6KVR8R7dWZnD3i0synmrE36znjTkJvdQ==}
-    engines: {node: '>=18.0.0', npm: '>=9.0.0', pnpm: '>=8.6.0'}
-    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   eslint-plugin-prettier@5.2.5:
     resolution: {integrity: sha512-IKKP8R87pJyMl7WWamLgPkloB16dagPIdd2FjBDbyRYPKo93wS/NbCOPh6gH+ieNLC+XZrhJt/kWj0PS/DFdmg==}
@@ -5163,8 +5155,8 @@ packages:
     resolution: {integrity: sha512-+QBBXBCvifc56fsbuxZQ6Sic3wqqc3WWaqxs58gvJrcOuN83HGTCwz3oS5phzU9LthRNE9VrJCFCLUgHeeFnfA==}
     engines: {node: '>=18'}
 
-  unimport@4.1.2:
-    resolution: {integrity: sha512-oVUL7PSlyVV3QRhsdcyYEMaDX8HJyS/CnUonEJTYA3//bWO+o/4gG8F7auGWWWkrrxBQBYOO8DKe+C53ktpRXw==}
+  unimport@4.1.3:
+    resolution: {integrity: sha512-H+IVJ7rAkE3b+oC8rSJ2FsPaVsweeMC8eKZc+C6Mz7+hxDF45AnrY/tVCNRBvzMwWNcJEV67WdAVcal27iMjOw==}
     engines: {node: '>=18.12.0'}
 
   universalify@0.2.0:
@@ -6624,7 +6616,7 @@ snapshots:
       std-env: 3.8.1
       ufo: 1.5.4
       unctx: 2.4.1
-      unimport: 4.1.2
+      unimport: 4.1.3
       untyped: 2.0.0
     transitivePeerDependencies:
       - magicast
@@ -7629,7 +7621,7 @@ snapshots:
   browserslist@4.24.4:
     dependencies:
       caniuse-lite: 1.0.30001707
-      electron-to-chromium: 1.5.127
+      electron-to-chromium: 1.5.128
       node-releases: 2.0.19
       update-browserslist-db: 1.1.3(browserslist@4.24.4)
 
@@ -8164,7 +8156,7 @@ snapshots:
       - '@vue/composition-api'
       - typescript
 
-  electron-to-chromium@1.5.127: {}
+  electron-to-chromium@1.5.128: {}
 
   element-plus@2.9.7(vue@3.5.13(typescript@5.8.2)):
     dependencies:
@@ -8336,8 +8328,6 @@ snapshots:
   eslint-config-prettier@10.1.1(eslint@9.23.0(jiti@2.4.2)):
     dependencies:
       eslint: 9.23.0(jiti@2.4.2)
-
-  eslint-define-config@2.1.0: {}
 
   eslint-plugin-prettier@5.2.5(eslint-config-prettier@10.1.1(eslint@9.23.0(jiti@2.4.2)))(eslint@9.23.0(jiti@2.4.2))(prettier@3.5.3):
     dependencies:
@@ -10820,7 +10810,7 @@ snapshots:
   unicorn-magic@0.3.0:
     optional: true
 
-  unimport@4.1.2:
+  unimport@4.1.3:
     dependencies:
       acorn: 8.14.1
       escape-string-regexp: 5.0.0
@@ -10830,7 +10820,7 @@ snapshots:
       mlly: 1.7.4
       pathe: 2.0.3
       picomatch: 4.0.2
-      pkg-types: 1.3.1
+      pkg-types: 2.1.0
       scule: 1.3.0
       strip-literal: 3.0.0
       tinyglobby: 0.2.12
