@@ -183,6 +183,7 @@
     "allowedDeprecatedVersions": {
       "are-we-there-yet": "*",
       "sourcemap-codec": "*",
+      "lodash.isequal": "*",
       "domexception": "*",
       "w3c-hr-time": "*",
       "inflight": "*",
