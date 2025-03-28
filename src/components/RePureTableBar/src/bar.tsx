@@ -18,8 +18,8 @@ import {
   getKeyList
 } from "@pureadmin/utils";
 
-import Fullscreen from "@iconify-icons/ri/fullscreen-fill";
-import ExitFullscreen from "@iconify-icons/ri/fullscreen-exit-fill";
+import Fullscreen from "~icons/ri/fullscreen-fill";
+import ExitFullscreen from "~icons/ri/fullscreen-exit-fill";
 import DragIcon from "@/assets/table-bar/drag.svg?component";
 import ExpandIcon from "@/assets/table-bar/expand.svg?component";
 import RefreshIcon from "@/assets/table-bar/refresh.svg?component";

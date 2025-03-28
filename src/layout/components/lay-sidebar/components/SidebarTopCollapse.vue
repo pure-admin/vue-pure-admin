@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
-import MenuFold from "@iconify-icons/ri/menu-fold-fill";
-import MenuUnfold from "@iconify-icons/ri/menu-unfold-fill";
+import MenuFold from "~icons/ri/menu-fold-fill";
+import MenuUnfold from "~icons/ri/menu-unfold-fill";
 
 interface Props {
   isActive: boolean;

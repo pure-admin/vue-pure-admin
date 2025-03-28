@@ -6,7 +6,7 @@ import { type UserInfo, getMine } from "@/api/user";
 import type { FormInstance, FormRules } from "element-plus";
 import ReCropperPreview from "@/components/ReCropperPreview";
 import { createFormData, deviceDetection } from "@pureadmin/utils";
-import uploadLine from "@iconify-icons/ri/upload-line";
+import uploadLine from "~icons/ri/upload-line";
 
 defineOptions({
   name: "Profile"

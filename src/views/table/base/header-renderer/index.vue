@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useColumns } from "./columns";
-import Calendar from "@iconify-icons/ri/calendar-2-line";
+import Calendar from "~icons/ri/calendar-2-line";
 
 const { columns, filterTableData } = useColumns();
 </script>

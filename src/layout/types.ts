@@ -1,4 +1,4 @@
-import type { IconifyIcon } from "@iconify/vue";
+import type { FunctionalComponent } from "vue";
 const { VITE_HIDE_HOME } = import.meta.env;
 
 export const routerArrays: Array<RouteConfigs> =
@@ -8,7 +8,7 @@ export const routerArrays: Array<RouteConfigs> =
           path: "/welcome",
           meta: {
             title: "menus.pureHome",
-            icon: "ep:home-filled"
+            icon: "ep/home-filled"
           }
         }
       ]
@@ -16,7 +16,7 @@ export const routerArrays: Array<RouteConfigs> =
 
 export type routeMetaType = {
   title?: string;
-  icon?: string | IconifyIcon;
+  icon?: string | FunctionalComponent;
   showLink?: boolean;
   savedPosition?: boolean;
   auths?: Array<string>;
@@ -36,7 +36,7 @@ export type multiTagsType = {
 };
 
 export type tagsViewsType = {
-  icon: string | IconifyIcon;
+  icon: string | FunctionalComponent;
   text: string;
   divided: boolean;
   disabled: boolean;

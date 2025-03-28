@@ -11,7 +11,7 @@ import "./index.scss";
 import propTypes from "@/utils/propTypes";
 import { isString, cloneDeep } from "@pureadmin/utils";
 import QRCode, { type QRCodeRenderersOptions } from "qrcode";
-import RefreshRight from "@iconify-icons/ep/refresh-right";
+import RefreshRight from "~icons/ep/refresh-right";
 
 interface QrcodeLogo {
   src?: string;

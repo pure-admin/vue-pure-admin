@@ -6,7 +6,7 @@ export default {
   path: "/form-design",
   redirect: "/form-design/index",
   meta: {
-    icon: "ri:terminal-window-line",
+    icon: "ri/terminal-window-line",
     title: $t("menus.pureFormDesign"),
     rank: formdesign
   },

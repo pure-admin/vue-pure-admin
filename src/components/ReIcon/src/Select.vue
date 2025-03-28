@@ -2,7 +2,7 @@
 import { IconJson } from "@/components/ReIcon/data";
 import { cloneDeep, isAllEmpty } from "@pureadmin/utils";
 import { ref, computed, CSSProperties, watch } from "vue";
-import Search from "@iconify-icons/ri/search-eye-line";
+import Search from "~icons/ri/search-eye-line";
 
 type ParameterCSSProperties = (item?: string) => CSSProperties | undefined;
 
@@ -219,8 +219,8 @@ watch(
   &:hover {
     color: var(--el-color-primary);
     border-color: var(--el-color-primary);
-    transition: all 0.4s;
     transform: scaleX(1.05);
+    transition: all 0.4s;
   }
 }
 

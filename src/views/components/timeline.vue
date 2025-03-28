@@ -3,7 +3,7 @@ import { markRaw } from "vue";
 import { randomGradient } from "@pureadmin/utils";
 import { useRenderFlicker } from "@/components/ReFlicker";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
-import Iphone from "@iconify-icons/ep/iphone";
+import Iphone from "~icons/ep/iphone";
 
 defineOptions({
   name: "TimeLine"

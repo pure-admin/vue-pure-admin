@@ -8,9 +8,9 @@ import { message } from "@/utils/message";
 import type { UploadFile } from "element-plus";
 import { getKeyList, extractFields, downloadByData } from "@pureadmin/utils";
 
-import Add from "@iconify-icons/ep/plus";
-import Eye from "@iconify-icons/ri/eye-line";
-import Delete from "@iconify-icons/ri/delete-bin-7-line";
+import Add from "~icons/ep/plus";
+import Eye from "~icons/ri/eye-line";
+import Delete from "~icons/ri/delete-bin-7-line";
 
 defineOptions({
   name: "PureUpload"

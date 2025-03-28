@@ -4,7 +4,7 @@ import { formUpload } from "@/api/mock";
 import { message } from "@/utils/message";
 import { createFormData } from "@pureadmin/utils";
 
-import UploadIcon from "@iconify-icons/ri/upload-2-line";
+import UploadIcon from "~icons/ri/upload-2-line";
 
 const formRef = ref();
 const uploadRef = ref();

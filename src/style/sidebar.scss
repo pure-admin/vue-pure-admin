@@ -191,8 +191,8 @@
     .el-menu-item.is-active.nest-menu::before {
       position: absolute;
       inset: 0 8px;
-      margin: 4px 0;
       clear: both;
+      margin: 4px 0;
       content: "";
       background: var(--el-color-primary) !important;
       border-radius: 3px;
@@ -212,13 +212,13 @@
       position: absolute;
       top: 0;
       left: 0;
+      clear: both;
       width: 2px;
       height: 100%;
-      clear: both;
       content: "";
       background-color: var(--pure-theme-menu-active-before);
-      transition: all var(--pure-transition-duration) ease-in-out;
       transform: translateY(0);
+      transition: all var(--pure-transition-duration) ease-in-out;
     }
 
     .el-menu--collapse .outer-most.el-sub-menu > .el-sub-menu__title::before {
@@ -240,8 +240,8 @@
     .is-active.submenu-title-noDropdown.outer-most::before {
       position: absolute;
       inset: 0 8px;
-      margin: 4px 0;
       clear: both;
+      margin: 4px 0;
       content: "";
       background: var(--el-color-primary) !important;
       border-radius: 3px;
@@ -435,11 +435,11 @@
         height: 32px;
         margin: 2px 0 0 12px;
         overflow: hidden;
+        text-overflow: ellipsis;
         font-size: 18px;
         font-weight: 600;
         line-height: 32px;
         color: var(--pure-theme-sub-menu-active-text);
-        text-overflow: ellipsis;
         white-space: nowrap;
       }
     }
@@ -577,8 +577,8 @@
     &.hideSidebar {
       .sidebar-container {
         pointer-events: none;
-        transition-duration: 0.3s;
         transform: translate3d(-$sideBarWidth, 0, 0);
+        transition-duration: 0.3s;
       }
     }
   }
@@ -621,10 +621,10 @@ body[layout="vertical"] {
       .el-sub-menu {
         & > .el-sub-menu__title {
           & > span {
+            visibility: visible;
             width: 100%;
             height: 100%;
             text-align: center;
-            visibility: visible;
           }
         }
       }
@@ -715,10 +715,10 @@ body[layout="mix"] {
           padding: 0;
 
           & > span {
+            visibility: visible;
             width: 100%;
             height: 100%;
             text-align: center;
-            visibility: visible;
           }
         }
       }

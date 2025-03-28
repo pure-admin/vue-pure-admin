@@ -5,8 +5,8 @@ import { getPickerShortcuts } from "../../utils";
 import { PureTableBar } from "@/components/RePureTableBar";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 
-import Delete from "@iconify-icons/ep/delete";
-import Refresh from "@iconify-icons/ep/refresh";
+import Delete from "~icons/ep/delete";
+import Refresh from "~icons/ep/refresh";
 
 defineOptions({
   name: "LoginLog"

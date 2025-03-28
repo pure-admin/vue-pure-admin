@@ -11,11 +11,11 @@ import AccountManagement from "./components/AccountManagement.vue";
 import { useDataThemeChange } from "@/layout/hooks/useDataThemeChange";
 import LaySidebarTopCollapse from "@/layout/components/lay-sidebar/components/SidebarTopCollapse.vue";
 
-import leftLine from "@iconify-icons/ri/arrow-left-s-line";
-import ProfileIcon from "@iconify-icons/ri/user-3-line";
-import PreferencesIcon from "@iconify-icons/ri/settings-3-line";
-import SecurityLogIcon from "@iconify-icons/ri/window-line";
-import AccountManagementIcon from "@iconify-icons/ri/profile-line";
+import leftLine from "~icons/ri/arrow-left-s-line";
+import ProfileIcon from "~icons/ri/user-3-line";
+import PreferencesIcon from "~icons/ri/settings-3-line";
+import SecurityLogIcon from "~icons/ri/window-line";
+import AccountManagementIcon from "~icons/ri/profile-line";
 
 defineOptions({
   name: "AccountSettings"
@@ -158,8 +158,8 @@ getMine().then(res => {
       &::before {
         position: absolute;
         inset: 0 8px;
-        margin: 4px 0;
         clear: both;
+        margin: 4px 0;
         content: "";
         background: var(--el-color-primary);
         border-radius: 3px;

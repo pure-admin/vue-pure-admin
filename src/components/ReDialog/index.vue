@@ -8,8 +8,8 @@ import {
 } from "./index";
 import { ref, computed } from "vue";
 import { isFunction } from "@pureadmin/utils";
-import Fullscreen from "@iconify-icons/ri/fullscreen-fill";
-import ExitFullscreen from "@iconify-icons/ri/fullscreen-exit-fill";
+import Fullscreen from "~icons/ri/fullscreen-fill";
+import ExitFullscreen from "~icons/ri/fullscreen-exit-fill";
 
 defineOptions({
   name: "ReDialog"
