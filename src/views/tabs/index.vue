@@ -93,7 +93,7 @@ function onCloseTags() {
     <el-divider />
     <el-tree-select
       v-model="currentValues"
-      class="!w-[300px]"
+      class="w-[300px]!"
       node-key="uniqueId"
       placeholder="请选择要关闭的标签"
       clearable

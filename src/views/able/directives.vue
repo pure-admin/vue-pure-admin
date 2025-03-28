@@ -76,7 +76,7 @@ function onReset() {
           immediate: true,
           timeout: 1000
         }"
-        class="!w-[200px]"
+        class="w-[200px]!"
         clearable
         @clear="onInput"
       />
@@ -86,7 +86,7 @@ function onReset() {
       <el-input
         v-model="searchTwo"
         v-optimize="{ event: 'input', fn: onInputTwo, timeout: 400 }"
-        class="!w-[200px]"
+        class="w-[200px]!"
         clearable
       />
     </div>
@@ -100,7 +100,7 @@ function onReset() {
           timeout: 400,
           params: { name: '小明', sex: '男' }
         }"
-        class="!w-[200px]"
+        class="w-[200px]!"
         clearable
       />
     </div>
@@ -112,7 +112,7 @@ function onReset() {
       <el-input
         v-model="searchFour"
         v-optimize:throttle="{ event: 'input', fn: onInputFour, timeout: 1000 }"
-        class="!w-[200px]"
+        class="w-[200px]!"
         clearable
       />
     </div>
@@ -125,7 +125,7 @@ function onReset() {
           fn: onInputFive,
           params: { name: '小明', sex: '男' }
         }"
-        class="!w-[200px]"
+        class="w-[200px]!"
         clearable
       />
     </div>
@@ -134,7 +134,7 @@ function onReset() {
 
     <div class="mb-2">
       文本复制指令（双击输入框内容即可复制）
-      <el-input v-model="searchSix" v-copy="searchSix" class="!w-[200px]" />
+      <el-input v-model="searchSix" v-copy="searchSix" class="w-[200px]!" />
     </div>
     <div>
       文本复制指令（自定义触发事件，单击复制）

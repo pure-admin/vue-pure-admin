@@ -53,7 +53,7 @@ onBeforeUnmount(() => {
         代码位置 src/views/able/watermark.vue
       </el-link>
     </template>
-    <el-space wrap class="!mb-2">
+    <el-space wrap class="mb-2!">
       <span> 请输入要创建水印的值：</span>
       <el-input v-model="value" class="mr-4" style="width: 200px" clearable />
       <span>请选择要创建水印的颜色：</span>

@@ -144,7 +144,7 @@ function resolvePath(routePath) {
             item?.pathList?.length === 2)
         "
         truncated
-        class="!w-full !pl-4 !text-inherit"
+        class="w-full! pl-4! text-inherit!"
       >
         {{ transformI18n(onlyOneChild.meta.title) }}
       </el-text>
@@ -156,7 +156,7 @@ function resolvePath(routePath) {
               offset: [0, -10],
               theme: tooltipEffect
             }"
-            class="!w-full !text-inherit"
+            class="w-full! text-inherit!"
           >
             {{ transformI18n(onlyOneChild.meta.title) }}
           </ReText>
@@ -196,9 +196,9 @@ function resolvePath(routePath) {
           theme: tooltipEffect
         }"
         :class="{
-          '!w-full': true,
-          '!text-inherit': true,
-          '!pl-4':
+          'w-full!': true,
+          'text-inherit!': true,
+          'pl-4!':
             layout !== 'horizontal' &&
             isCollapse &&
             !toRaw(item.meta.icon) &&
