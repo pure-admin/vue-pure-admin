@@ -111,7 +111,7 @@ defineExpose({ onTreeReset });
           <el-icon class="el-input__icon">
             <IconifyIconOffline
               v-show="searchValue.length === 0"
-              icon="ri:search-line"
+              icon="ri/search-line"
             />
           </el-icon>
         </template>
