@@ -12,7 +12,7 @@ const { columns, dataList } = useColumns();
       </code>
     </el-scrollbar>
     <pure-table
-      class="!w-[30vw]"
+      class="w-[30vw]!"
       row-key="id"
       border
       :data="dataList"

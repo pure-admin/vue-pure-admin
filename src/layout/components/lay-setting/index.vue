@@ -429,7 +429,7 @@ onUnmounted(() => removeMatchMedia);
               height="20"
             />
             <div
-              class="flex-grow border-b border-dashed"
+              class="grow border-b border-dashed"
               style="border-color: var(--el-color-primary)"
             />
             <IconifyIconOffline

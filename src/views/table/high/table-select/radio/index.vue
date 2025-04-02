@@ -17,7 +17,7 @@ const {
   <el-select
     ref="selectRef"
     v-model="selectValue"
-    class="!w-[200px]"
+    class="w-[200px]!"
     placeholder="请选择"
     value-key="id"
     clearable

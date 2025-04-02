@@ -173,7 +173,7 @@ const onDownload = () => {
             id="pure-upload-item"
             :class="[
               'el-upload-list__item-actions',
-              fileList.length > 1 && '!cursor-move'
+              fileList.length > 1 && 'cursor-move!'
             ]"
           >
             <span

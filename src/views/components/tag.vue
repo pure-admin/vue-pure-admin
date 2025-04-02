@@ -156,7 +156,7 @@ const handleInputConfirm = () => {
       v-if="inputVisible"
       ref="InputRef"
       v-model="inputValue"
-      class="ml-1 !w-20"
+      class="ml-1 w-20!"
       size="small"
       @keyup.enter="handleInputConfirm"
       @blur="handleInputConfirm"

@@ -70,12 +70,12 @@ getMine().then(res => {
   <el-container class="h-full">
     <el-aside
       v-if="isOpen"
-      class="pure-account-settings overflow-hidden px-2 dark:!bg-[var(--el-bg-color)] border-r-[1px] border-[var(--pure-border-color)]"
+      class="pure-account-settings overflow-hidden px-2 dark:bg-(--el-bg-color)! border-r-[1px] border-[var(--pure-border-color)]"
       :width="deviceDetection() ? '180px' : '240px'"
     >
       <el-menu :default-active="witchPane" class="pure-account-settings-menu">
         <el-menu-item
-          class="hover:!transition-all hover:!duration-200 hover:!text-base !h-[50px]"
+          class="hover:transition-all! hover:duration-200! hover:text-base! h-[50px]!"
           @click="router.go(-1)"
         >
           <div class="flex items-center">
@@ -86,10 +86,10 @@ getMine().then(res => {
         <div class="flex items-center ml-8 mt-4 mb-4">
           <el-avatar :size="48" :src="userInfo.avatar" />
           <div class="ml-4 flex flex-col max-w-[130px]">
-            <ReText class="font-bold !self-baseline">
+            <ReText class="font-bold self-baseline!">
               {{ userInfo.nickname }}
             </ReText>
-            <ReText class="!self-baseline" type="info">
+            <ReText class="self-baseline!" type="info">
               {{ userInfo.username }}
             </ReText>
           </div>

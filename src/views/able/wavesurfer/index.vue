@@ -103,7 +103,7 @@ onBeforeUnmount(() => {
     </template>
     <div
       v-loading="loading"
-      class="w-8/12 !m-auto !mt-[20px]"
+      class="w-8/12 m-auto! mt-[20px]!"
       element-loading-background="transparent"
     >
       <div ref="wavesurferRef" />

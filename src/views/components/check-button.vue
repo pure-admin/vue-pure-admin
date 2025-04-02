@@ -221,7 +221,7 @@ watch(size, val =>
     <p>可控制间距的按钮样式</p>
     <el-slider
       v-model="spaceSize"
-      class="mb-2 !w-[300px]"
+      class="mb-2 w-[300px]!"
       :show-tooltip="false"
       :disabled="size === 'disabled'"
     />
