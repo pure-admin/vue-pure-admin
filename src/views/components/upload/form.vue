@@ -4,7 +4,7 @@ import { formUpload } from "@/api/mock";
 import { message } from "@/utils/message";
 import { createFormData } from "@pureadmin/utils";
 
-import UploadIcon from "~icons/ri/upload-2-line";
+import UploadIcon from "~icons/ri/upload-2-line?width=26&height=26";
 
 const formRef = ref();
 const uploadRef = ref();
@@ -62,11 +62,7 @@ const resetForm = formEl => {
         :auto-upload="false"
       >
         <div class="el-upload__text">
-          <IconifyIconOffline
-            :icon="UploadIcon"
-            width="26"
-            class="m-auto mb-2"
-          />
+          <UploadIcon class="m-auto mb-2" />
           可点击或拖拽上传
         </div>
       </el-upload>

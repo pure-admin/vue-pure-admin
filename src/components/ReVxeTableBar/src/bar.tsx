@@ -248,7 +248,7 @@ export default defineComponent({
         <div
           {...attrs}
           class={[
-            "w-99/100",
+            "w-full",
             "px-2",
             "pb-2",
             "bg-bg_color",

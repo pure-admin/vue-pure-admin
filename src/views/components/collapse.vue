@@ -50,12 +50,12 @@ const handleChange = (val: string[]) => {
       </el-link>
     </template>
 
-    <p class="mb-2">基础用法</p>
+    <div class="mb-2">基础用法</div>
     <el-radio-group v-model="radio" class="mb-3">
       <el-radio value="">可同时展开多个面板</el-radio>
       <el-radio value="accordion">每次只能展开一个面板</el-radio>
     </el-radio-group>
-    <el-button size="small" text bg class="ml-8 mb-1" @click="onClick">
+    <el-button size="small" text bg class="ml-8! mb-1!" @click="onClick">
       外部触发打开、关闭
     </el-button>
     <el-collapse

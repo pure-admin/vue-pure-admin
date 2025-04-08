@@ -23,7 +23,7 @@ const iconClass = computed(() => {
     "mb-1",
     "w-[16px]",
     "h-[16px]",
-    "inline-block",
+    "inline-block!",
     "align-middle",
     "cursor-pointer",
     "duration-[100ms]"

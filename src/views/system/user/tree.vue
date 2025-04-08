@@ -4,7 +4,7 @@ import { ref, computed, watch, getCurrentInstance } from "vue";
 
 import Dept from "~icons/ri/git-branch-line";
 // import Reset from "~icons/ri/restart-line";
-import More2Fill from "~icons/ri/more-2-fill";
+import More2Fill from "~icons/ri/more-2-fill?width=18&height=18";
 import OfficeBuilding from "~icons/ep/office-building";
 import LocationCompany from "~icons/ep/add-location";
 import ExpandIcon from "./svg/expand.svg?component";
@@ -111,17 +111,13 @@ defineExpose({ onTreeReset });
           <el-icon class="el-input__icon">
             <IconifyIconOffline
               v-show="searchValue.length === 0"
-              icon="ri:search-line"
+              icon="ri/search-line"
             />
           </el-icon>
         </template>
       </el-input>
       <el-dropdown :hide-on-click="false">
-        <IconifyIconOffline
-          class="w-[28px] cursor-pointer"
-          width="18px"
-          :icon="More2Fill"
-        />
+        <More2Fill class="w-[28px] cursor-pointer outline-none" />
         <template #dropdown>
           <el-dropdown-menu>
             <el-dropdown-item>

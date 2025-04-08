@@ -85,7 +85,7 @@ const endTime = ref("");
         </el-link>
       </template>
 
-      <p class="mb-2">日期和时间点</p>
+      <div class="mb-2">日期和时间点</div>
       <el-space wrap>
         <p class="text-[15px]">鼠标滚轮进行选择</p>
         <el-time-picker
@@ -107,7 +107,7 @@ const endTime = ref("");
       </el-space>
       <el-divider />
 
-      <p class="mb-2">限制时间选择范围</p>
+      <div class="mb-2">限制时间选择范围</div>
       <el-time-picker
         v-model="value2"
         class="w-[140px]!"
@@ -120,7 +120,7 @@ const endTime = ref("");
       />
       <el-divider />
 
-      <p class="mb-2">任意时间范围</p>
+      <div class="mb-2">任意时间范围</div>
       <el-time-picker
         v-model="value3"
         class="w-[220px]!"
@@ -149,7 +149,7 @@ const endTime = ref("");
         </div>
       </template>
 
-      <p class="mb-2">固定时间点</p>
+      <div class="mb-2">固定时间点</div>
       <el-time-select
         v-model="value4"
         placeholder="请选择时间"
@@ -161,7 +161,7 @@ const endTime = ref("");
         :disabled="size === 'disabled'"
       />
 
-      <p class="mb-2 mt-4">时间格式</p>
+      <div class="mb-2 mt-4">时间格式</div>
       <el-time-select
         v-model="value5"
         placeholder="请选择时间"
@@ -174,7 +174,7 @@ const endTime = ref("");
         :disabled="size === 'disabled'"
       />
 
-      <p class="mb-2 mt-4">固定时间范围</p>
+      <div class="mb-2 mt-4">固定时间范围</div>
       <el-space wrap>
         <el-time-select
           v-model="startTime"

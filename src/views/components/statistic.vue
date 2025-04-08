@@ -63,7 +63,7 @@ function reset() {
             format="HH:mm:ss"
             :value="value1"
           />
-          <el-button class="mt-2" type="primary" text bg @click="reset">
+          <el-button class="mt-2!" type="primary" text bg @click="reset">
             重置
           </el-button>
         </re-col>

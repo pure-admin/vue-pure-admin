@@ -44,7 +44,7 @@ function onChange() {
 
 <template>
   <div>
-    <p class="mb-2">
+    <p class="mb-2!">
       模拟后台根据不同角色返回对应路由，观察左侧菜单变化（管理员角色可查看系统管理菜单、普通角色不可查看系统管理菜单）
     </p>
     <el-card shadow="never" :style="elStyle">

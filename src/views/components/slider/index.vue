@@ -29,28 +29,28 @@ defineOptions({
         </el-link>
       </div>
     </template>
-    <p class="mb-2">基础用法</p>
+    <div class="mb-2">基础用法</div>
     <Base />
     <el-divider />
-    <p class="mb-2">离散值</p>
+    <div class="mb-2">离散值</div>
     <Step />
     <el-divider />
-    <p class="mb-2">带有输入框的滑块</p>
+    <div class="mb-2">带有输入框的滑块</div>
     <Input />
     <el-divider />
-    <p class="mb-2">不同尺寸</p>
+    <div class="mb-2">不同尺寸</div>
     <Size />
     <el-divider />
-    <p class="mb-2">位置</p>
+    <div class="mb-2">位置</div>
     <Placement />
     <el-divider />
-    <p class="mb-2">范围选择</p>
+    <div class="mb-2">范围选择</div>
     <Range />
     <el-divider />
-    <p class="mb-2">垂直模式</p>
+    <div class="mb-2">垂直模式</div>
     <Vertical />
     <el-divider />
-    <p class="mb-2">显示标记</p>
+    <div class="mb-2">显示标记</div>
     <Marks class="mb-6" />
   </el-card>
 </template>

@@ -32,7 +32,7 @@ const format = percentage => (percentage === 100 ? "Full" : `${percentage}%`);
       </el-link>
     </template>
 
-    <p class="mb-4">直线进度条动画</p>
+    <div class="mb-4">直线进度条动画</div>
     <div class="w-1/4">
       <el-progress indeterminate :percentage="50" class="mb-4" />
       <el-progress
@@ -61,7 +61,7 @@ const format = percentage => (percentage === 100 ? "Full" : `${percentage}%`);
       />
     </div>
 
-    <p class="mb-4">进度条内显示百分比标识</p>
+    <div class="mb-4">进度条内显示百分比标识</div>
     <div class="w-1/4">
       <el-progress
         :text-inside="true"
@@ -97,7 +97,7 @@ const format = percentage => (percentage === 100 ? "Full" : `${percentage}%`);
       />
     </div>
 
-    <p class="mb-4">自定义内容</p>
+    <div class="mb-4">自定义内容</div>
     <div class="w-1/4 demo-progress">
       <el-progress :percentage="50">
         <el-button text>自定义内容</el-button>

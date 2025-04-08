@@ -54,8 +54,8 @@ const icons = [
   // Remix Icon: https://github.com/Remix-Design/RemixIcon
   ["ri/mind-map", RiMindMap],
   ["ri/admin-fill", RiAdminFill],
-  ["ri/links-fill", RiTableLine],
-  ["ri/table-line", RiLinksFill],
+  ["ri/table-line", RiTableLine],
+  ["ri/links-fill", RiLinksFill],
   ["ri/admin-line", RiAdminLine],
   ["ri/list-check", RiListCheck],
   ["ri/search-line", RiSearchLine],

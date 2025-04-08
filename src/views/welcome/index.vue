@@ -65,6 +65,7 @@ const optionsBasis: Array<OptionsType> = [
                 :icon="item.icon"
                 :color="item.color"
                 width="18"
+                height="18"
               />
             </div>
           </div>

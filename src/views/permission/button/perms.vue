@@ -11,8 +11,8 @@ defineOptions({
 
 <template>
   <div>
-    <p class="mb-2">当前拥有的code列表：{{ permissions }}</p>
-    <p v-show="permissions?.[0] === '*:*:*'" class="mb-2">
+    <p class="mb-2!">当前拥有的code列表：{{ permissions }}</p>
+    <p v-show="permissions?.[0] === '*:*:*'" class="mb-2!">
       *:*:* 代表拥有全部按钮级别权限
     </p>
 
