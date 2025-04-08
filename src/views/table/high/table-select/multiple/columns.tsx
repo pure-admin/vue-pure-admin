@@ -73,7 +73,7 @@ export function useColumns(selectRef: Ref, formRef: Ref, tableRef: Ref) {
   const onSearch = () => {
     tableData.value = cloneTableData;
     if (!isAllEmpty(searchForm.sexValue)) {
-      let sex = sexOptions
+      const sex = sexOptions
         .map(sex => sex.value === Number(searchForm.sexValue) && sex.label)
         .filter(Boolean)[0];
       tableData.value = tableData.value.filter(data => data.sex === sex);

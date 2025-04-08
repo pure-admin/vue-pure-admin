@@ -3,7 +3,7 @@ import { ref } from "vue";
 
 // 声明 props 类型
 export interface FormProps {
-  formInline: {
+  formInline?: {
     user: string;
     region: string;
   };

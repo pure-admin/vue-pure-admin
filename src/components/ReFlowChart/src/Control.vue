@@ -3,7 +3,7 @@ import { ref, unref, onMounted } from "vue";
 import { LogicFlow } from "@logicflow/core";
 
 interface Props {
-  lf: LogicFlow;
+  lf?: LogicFlow;
   catTurboData?: boolean;
 }
 
