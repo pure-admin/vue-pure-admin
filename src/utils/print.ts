@@ -140,8 +140,10 @@ Print.prototype = {
       "position:absolute;width:0;height:0;top:-10px;left:-10px;"
     );
 
+    // eslint-disable-next-line prefer-const
     w = f.contentWindow || f.contentDocument;
 
+    // eslint-disable-next-line prefer-const
     doc = f.contentDocument || f.contentWindow.document;
     doc.open();
     doc.write(content);

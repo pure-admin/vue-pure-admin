@@ -7,7 +7,7 @@ import { useNav } from "@/layout/hooks/useNav";
 import ArrowLeft from "~icons/ri/arrow-left-double-fill";
 
 interface Props {
-  isActive: boolean;
+  isActive?: boolean;
 }
 
 withDefaults(defineProps<Props>(), {

@@ -3,7 +3,7 @@ import { useVModel } from "@vueuse/core";
 
 // 声明 props 类型
 export interface FormProps {
-  data: string;
+  data?: string;
 }
 
 // 声明 props 默认值
