@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { toRef } from "vue";
-import { Handle, useHandleConnections } from "@vue-flow/core";
+import { Handle, useNodeConnections } from "@vue-flow/core";
 
 const props = defineProps({
   data: {
@@ -15,12 +15,12 @@ const props = defineProps({
   }
 });
 
-const sourceConnections = useHandleConnections({
-  type: "target"
+const sourceConnections = useNodeConnections({
+  handleType: "target"
 });
 
-const targetConnections = useHandleConnections({
-  type: "source"
+const targetConnections = useNodeConnections({
+  handleType: "source"
 });
 
 const isSender = toRef(() => sourceConnections.value.length <= 0);

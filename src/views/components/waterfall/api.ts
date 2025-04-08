@@ -14,7 +14,7 @@ function randomColor() {
   return COLORS[getRandomNum(0, 4)];
 }
 
-const website = "https://www.getphotoblanket.com";
+const website = "https://wanderprints.com";
 
 export const getList = ({ page = 1, pageSize = 20 }) => {
   const url = `${website}/products.json?page=${page}&limit=${pageSize}`;
