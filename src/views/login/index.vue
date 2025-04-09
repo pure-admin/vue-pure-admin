@@ -338,7 +338,7 @@ watch(loginDay, value => {
     <div
       class="w-full flex-c flex-wrap absolute bottom-3 text-sm text-[rgba(0,0,0,0.6)] dark:text-[rgba(220,220,242,0.8)]"
     >
-      Copyright © 2020-2024
+      Copyright © 2020-2025
       <a
         class="hover:text-primary"
         href="https://github.com/pure-admin"
