@@ -117,7 +117,7 @@ defineExpose({ onTreeReset });
         </template>
       </el-input>
       <el-dropdown :hide-on-click="false">
-        <More2Fill class="w-[28px] cursor-pointer outline-none" />
+        <More2Fill class="w-[28px] cursor-pointer outline-hidden" />
         <template #dropdown>
           <el-dropdown-menu>
             <el-dropdown-item>
