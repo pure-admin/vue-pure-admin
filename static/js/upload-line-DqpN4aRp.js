@@ -1,0 +1,1 @@
+import{a1 as o,k as t,e as a,g as l}from"./index-IH9aHMkJ.js";const r={viewBox:"0 0 24 24",width:"1em",height:"1em"};function n(s,e){return a(),t("svg",r,e[0]||(e[0]=[l("path",{fill:"currentColor",d:"M3 19h18v2H3zM13 5.828V17h-2V5.828L4.929 11.9l-1.414-1.414L12 2l8.485 8.485l-1.414 1.415z"},null,-1)]))}const c=o({name:"ri-upload-line",render:n});export{c as U};
