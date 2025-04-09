@@ -31,7 +31,7 @@ const { columns, dataList, onAdd, onDel } = useColumns();
       <template #append>
         <el-button
           plain
-          class="w-full my-2"
+          class="w-full my-2!"
           :icon="useRenderIcon(AddFill)"
           @click="onAdd"
         >

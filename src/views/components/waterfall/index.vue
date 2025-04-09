@@ -106,7 +106,7 @@ onMounted(() => {
             />
           </div>
           <div class="px-4 pt-2 pb-4 border-t border-t-gray-800">
-            <h4 class="pb-4 text-gray-50 group-hover:text-yellow-300">
+            <h4 class="pb-4! text-gray-50 group-hover:text-yellow-300">
               {{ item.name }}
             </h4>
             <div

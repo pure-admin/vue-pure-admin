@@ -24,7 +24,7 @@ const filteredItems = computed(() => {
       水平模式 horizontal
       <el-input
         v-model="search"
-        class="mr-2 !w-[1/1.5]"
+        class="mr-2 w-[1/1.5]!"
         clearable
         placeholder="Filter..."
         style="width: 300px"

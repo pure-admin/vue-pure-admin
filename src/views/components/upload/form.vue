@@ -4,7 +4,7 @@ import { formUpload } from "@/api/mock";
 import { message } from "@/utils/message";
 import { createFormData } from "@pureadmin/utils";
 
-import UploadIcon from "~icons/ri/upload-2-line";
+import UploadIcon from "~icons/ri/upload-2-line?width=26&height=26";
 
 const formRef = ref();
 const uploadRef = ref();
@@ -58,15 +58,11 @@ const resetForm = formEl => {
         drag
         multiple
         action="#"
-        class="!w-[200px]"
+        class="w-[200px]!"
         :auto-upload="false"
       >
         <div class="el-upload__text">
-          <IconifyIconOffline
-            :icon="UploadIcon"
-            width="26"
-            class="m-auto mb-2"
-          />
+          <UploadIcon class="m-auto mb-2" />
           可点击或拖拽上传
         </div>
       </el-upload>
@@ -79,7 +75,7 @@ const resetForm = formEl => {
       <el-date-picker
         v-model="validateForm.date"
         type="datetime"
-        class="!w-[200px]"
+        class="w-[200px]!"
         placeholder="请选择日期时间"
         value-format="YYYY-MM-DD HH:mm:ss"
       />

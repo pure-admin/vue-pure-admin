@@ -18,7 +18,7 @@ const { t } = useI18n();
   </Motion>
   <Motion :delay="150">
     <el-button
-      class="w-full mt-4"
+      class="w-full mt-4!"
       @click="useUserStoreHook().SET_CURRENTPAGE(0)"
     >
       {{ t("login.pureBack") }}

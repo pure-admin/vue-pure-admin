@@ -65,6 +65,7 @@ const optionsBasis: Array<OptionsType> = [
                 :icon="item.icon"
                 :color="item.color"
                 width="18"
+                height="18"
               />
             </div>
           </div>
@@ -80,11 +81,11 @@ const optionsBasis: Array<OptionsType> = [
             </div>
             <ChartLine
               v-if="item.data.length > 1"
-              class="!w-1/2"
+              class="w-1/2!"
               :color="item.color"
               :data="item.data"
             />
-            <ChartRound v-else class="!w-1/2" />
+            <ChartRound v-else class="w-1/2!" />
           </div>
         </el-card>
       </re-col>

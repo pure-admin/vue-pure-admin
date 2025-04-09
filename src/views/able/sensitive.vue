@@ -45,6 +45,6 @@ function onInput() {
       </el-tag>
     </div>
     <el-input v-model="modelValue" @input="onInput" />
-    <p class="mt-2">{{ modelValue }}</p>
+    <p class="mt-2!">{{ modelValue }}</p>
   </el-card>
 </template>

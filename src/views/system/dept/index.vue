@@ -39,14 +39,14 @@ function onFullscreen() {
       ref="formRef"
       :inline="true"
       :model="form"
-      class="search-form bg-bg_color w-[99/100] pl-8 pt-[12px] overflow-auto"
+      class="search-form bg-bg_color w-full pl-8 pt-[12px] overflow-auto"
     >
       <el-form-item label="部门名称：" prop="name">
         <el-input
           v-model="form.name"
           placeholder="请输入部门名称"
           clearable
-          class="!w-[180px]"
+          class="w-[180px]!"
         />
       </el-form-item>
       <el-form-item label="状态：" prop="status">
@@ -54,7 +54,7 @@ function onFullscreen() {
           v-model="form.status"
           placeholder="请选择状态"
           clearable
-          class="!w-[180px]"
+          class="w-[180px]!"
         >
           <el-option label="启用" :value="1" />
           <el-option label="停用" :value="0" />

@@ -8,7 +8,7 @@ import { message } from "@/utils/message";
 import type { UploadFile } from "element-plus";
 import { getKeyList, extractFields, downloadByData } from "@pureadmin/utils";
 
-import Add from "~icons/ep/plus";
+import EpPlus from "~icons/ep/plus?width=30&height=30";
 import Eye from "~icons/ri/eye-line";
 import Delete from "~icons/ri/delete-bin-7-line";
 
@@ -124,16 +124,16 @@ const onDownload = () => {
       </el-link>
     </template>
 
-    <el-button class="mb-4" text bg @click="onDownload">
+    <el-button class="mb-4!" text bg @click="onDownload">
       点击下载安全文件进行上传测试
     </el-button>
-    <p class="mb-4">
+    <p class="mb-4!">
       综合示例<span class="text-[14px]">
         （ <span class="text-[red]">自动上传</span>
         、拖拽上传、拖拽排序、设置请求头、上传进度、大图预览、多选文件、最大文件数量、文件类型限制、文件大小限制、删除文件）
       </span>
     </p>
-    <p v-show="fileList.length > 0" class="mb-4">
+    <p v-show="fileList.length > 0" class="mb-4!">
       {{ imgInfos }}
     </p>
     <el-upload
@@ -149,15 +149,15 @@ const onDownload = () => {
       :on-exceed="onExceed"
       :before-upload="onBefore"
     >
-      <IconifyIconOffline :icon="Add" class="m-auto mt-4" width="30" />
+      <EpPlus class="m-auto mt-4" />
       <template #file="{ file }">
         <div
           v-if="file.status == 'ready' || file.status == 'uploading'"
-          class="mt-[35%] m-auto"
+          class="mt-[35%]! m-auto"
         >
           <p class="font-medium">文件上传中</p>
           <el-progress
-            class="mt-2"
+            class="mt-2!"
             :stroke-width="2"
             :text-inside="true"
             :show-text="false"
@@ -173,7 +173,7 @@ const onDownload = () => {
             id="pure-upload-item"
             :class="[
               'el-upload-list__item-actions',
-              fileList.length > 1 && '!cursor-move'
+              fileList.length > 1 && 'cursor-move!'
             ]"
           >
             <span
@@ -232,7 +232,7 @@ const onDownload = () => {
     </p>
     <el-divider />
 
-    <p class="mb-4 mt-4">
+    <p class="my-4!">
       结合表单校验进行<span class="text-[red]">手动上传</span>
       <span class="text-[14px]">
         （可先打开浏览器控制台找到Network，然后填写表单内容后点击点提交观察请求变化）

@@ -31,7 +31,7 @@ const iconClass = computed(() => {
     "flex",
     "justify-center",
     "items-center",
-    "outline-none",
+    "outline-hidden",
     "rounded-[4px]",
     "cursor-pointer",
     "transition-colors",
@@ -96,14 +96,14 @@ onMounted(() => {
       ref="formRef"
       :inline="true"
       :model="form"
-      class="search-form bg-bg_color w-[99/100] pl-8 pt-[12px] overflow-auto"
+      class="search-form bg-bg_color w-full pl-8 pt-[12px] overflow-auto"
     >
       <el-form-item label="角色名称：" prop="name">
         <el-input
           v-model="form.name"
           placeholder="请输入角色名称"
           clearable
-          class="!w-[180px]"
+          class="w-[180px]!"
         />
       </el-form-item>
       <el-form-item label="角色标识：" prop="code">
@@ -111,7 +111,7 @@ onMounted(() => {
           v-model="form.code"
           placeholder="请输入角色标识"
           clearable
-          class="!w-[180px]"
+          class="w-[180px]!"
         />
       </el-form-item>
       <el-form-item label="状态：" prop="status">
@@ -119,7 +119,7 @@ onMounted(() => {
           v-model="form.status"
           placeholder="请选择状态"
           clearable
-          class="!w-[180px]"
+          class="w-[180px]!"
         >
           <el-option label="已启用" value="1" />
           <el-option label="已停用" value="0" />
@@ -145,7 +145,7 @@ onMounted(() => {
       :class="['flex', deviceDetection() ? 'flex-wrap' : '']"
     >
       <PureTableBar
-        :class="[isShow && !deviceDetection() ? '!w-[60vw]' : 'w-full']"
+        :class="[isShow && !deviceDetection() ? 'w-[60vw]!' : 'w-full']"
         style="transition: width 220ms cubic-bezier(0.4, 0, 0.2, 1)"
         title="角色管理（仅演示，操作后不生效）"
         :columns="columns"
@@ -263,7 +263,7 @@ onMounted(() => {
 
       <div
         v-if="isShow"
-        class="!min-w-[calc(100vw-60vw-268px)] w-full mt-2 px-2 pb-2 bg-bg_color ml-2 overflow-auto"
+        class="min-w-[calc(100vw-60vw-268px)]! w-full mt-2 px-2 pb-2 bg-bg_color ml-2 overflow-auto"
       >
         <div class="flex justify-between w-full px-3 pt-5 pb-4">
           <div class="flex">

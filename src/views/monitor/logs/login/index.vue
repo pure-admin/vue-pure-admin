@@ -39,14 +39,14 @@ const {
       ref="formRef"
       :inline="true"
       :model="form"
-      class="search-form bg-bg_color w-[99/100] pl-8 pt-[12px] overflow-auto"
+      class="search-form bg-bg_color w-full pl-8 pt-[12px] overflow-auto"
     >
       <el-form-item label="用户名" prop="username">
         <el-input
           v-model="form.username"
           placeholder="请输入用户名"
           clearable
-          class="!w-[150px]"
+          class="w-[150px]!"
         />
       </el-form-item>
       <el-form-item label="登录状态" prop="status">
@@ -54,7 +54,7 @@ const {
           v-model="form.status"
           placeholder="请选择"
           clearable
-          class="!w-[150px]"
+          class="w-[150px]!"
         >
           <el-option label="成功" value="1" />
           <el-option label="失败" value="0" />
@@ -118,7 +118,7 @@ const {
           </div>
           <el-popconfirm title="是否确认删除?" @confirm="onbatchDel">
             <template #reference>
-              <el-button type="danger" text class="mr-1"> 批量删除 </el-button>
+              <el-button type="danger" text class="mr-1!"> 批量删除 </el-button>
             </template>
           </el-popconfirm>
         </div>

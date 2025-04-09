@@ -135,13 +135,13 @@ watch(loginDay, value => {
       <!-- 国际化 -->
       <el-dropdown trigger="click">
         <globalization
-          class="hover:text-primary hover:!bg-[transparent] w-[20px] h-[20px] ml-1.5 cursor-pointer outline-none duration-300"
+          class="hover:text-primary hover:bg-[transparent]! w-[20px] h-[20px] ml-1.5 cursor-pointer outline-hidden duration-300"
         />
         <template #dropdown>
           <el-dropdown-menu class="translation">
             <el-dropdown-item
               :style="getDropdownItemStyle(locale, 'zh')"
-              :class="['dark:!text-white', getDropdownItemClass(locale, 'zh')]"
+              :class="['dark:text-white!', getDropdownItemClass(locale, 'zh')]"
               @click="translationCh"
             >
               <IconifyIconOffline
@@ -153,7 +153,7 @@ watch(loginDay, value => {
             </el-dropdown-item>
             <el-dropdown-item
               :style="getDropdownItemStyle(locale, 'en')"
-              :class="['dark:!text-white', getDropdownItemClass(locale, 'en')]"
+              :class="['dark:text-white!', getDropdownItemClass(locale, 'en')]"
               @click="translationEn"
             >
               <span v-show="locale === 'en'" class="check-en">
@@ -173,7 +173,7 @@ watch(loginDay, value => {
         <div class="login-form">
           <avatar class="avatar" />
           <Motion>
-            <h2 class="outline-none">
+            <h2 class="outline-hidden">
               <TypeIt
                 :options="{ strings: [title], cursor: false, speed: 100 }"
               />
@@ -245,7 +245,8 @@ watch(loginDay, value => {
                           width: loginDay < 10 ? '10px' : '16px',
                           outline: 'none',
                           background: 'none',
-                          appearance: 'none'
+                          appearance: 'none',
+                          border: 'none'
                         }"
                       >
                         <option value="1">1</option>
@@ -272,7 +273,7 @@ watch(loginDay, value => {
                   </el-button>
                 </div>
                 <el-button
-                  class="w-full mt-4"
+                  class="w-full mt-4!"
                   size="default"
                   type="primary"
                   :loading="loading"
@@ -290,7 +291,7 @@ watch(loginDay, value => {
                   <el-button
                     v-for="(item, index) in operates"
                     :key="index"
-                    class="w-full mt-4"
+                    class="w-full mt-4!"
                     size="default"
                     @click="useUserStoreHook().SET_CURRENTPAGE(index + 1)"
                   >

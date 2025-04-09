@@ -220,39 +220,39 @@ watch(size, val => (dynamicSize.value = size.value));
       </el-link>
     </template>
     <el-scrollbar>
-      <p class="mb-2">
+      <div class="mb-2">
         基础用法（v-model）<span class="text-primary">
           {{ optionsBasis[value].label }}
         </span>
-      </p>
+      </div>
       <Segmented v-model="value" :options="optionsBasis" :size="dynamicSize" />
       <el-divider />
-      <p class="mb-2">tooltip 提示</p>
+      <div class="mb-2">tooltip 提示</div>
       <Segmented :options="optionsTooltip" :size="dynamicSize" />
       <el-divider />
-      <p class="mb-2">change 事件</p>
+      <div class="mb-2">change 事件</div>
       <Segmented
         :options="optionsChange"
         :size="dynamicSize"
         @change="onChange"
       />
       <el-divider />
-      <p class="mb-2">禁用</p>
+      <div class="mb-2">禁用</div>
       <Segmented :options="optionsDisabled" :size="dynamicSize" />
       <el-divider />
-      <p class="mb-2">全局禁用</p>
+      <div class="mb-2">全局禁用</div>
       <Segmented :options="optionsBasis" :size="dynamicSize" disabled />
       <el-divider />
-      <p class="mb-2">block 属性(将宽度调整为父元素宽度)</p>
+      <div class="mb-2">block 属性(将宽度调整为父元素宽度)</div>
       <Segmented :options="optionsBlock" block :size="dynamicSize" />
       <el-divider />
-      <p class="mb-2">可设置图标</p>
+      <div class="mb-2">可设置图标</div>
       <Segmented :options="optionsIcon" :size="dynamicSize" />
       <el-divider />
-      <p class="mb-2">只设置图标</p>
+      <div class="mb-2">只设置图标</div>
       <Segmented :options="optionsOnlyIcon" :size="dynamicSize" />
       <el-divider />
-      <p class="mb-2">自定义渲染</p>
+      <div class="mb-2">自定义渲染</div>
       <Segmented :options="optionsLabel" :size="dynamicSize" />
     </el-scrollbar>
   </el-card>

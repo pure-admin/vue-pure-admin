@@ -25,7 +25,7 @@ defineOptions({
       </el-link>
     </template>
 
-    <h4 class="mb-4">Element Plus 的消息提示，点击弹出提示信息</h4>
+    <h4 class="mb-4!">Element Plus 的消息提示，点击弹出提示信息</h4>
 
     <el-space wrap>
       <el-button
@@ -121,7 +121,7 @@ defineOptions({
 
     <el-divider />
 
-    <h4 class="mb-4">
+    <h4 class="mb-4!">
       类似 Ant Design 风格的消息提示，点击弹出提示信息（基于 ElMessage
       样式改版，不会影响 ElMessage
       原本样式，使用和打包大小成本极低并适配整体暗色风格）

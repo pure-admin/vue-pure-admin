@@ -123,7 +123,7 @@ function onBack() {
           />
           <el-button
             :disabled="isDisabled"
-            class="ml-2"
+            class="ml-2!"
             @click="useVerifyCode().start(ruleFormRef, 'phone')"
           >
             {{

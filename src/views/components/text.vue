@@ -48,7 +48,7 @@ const changeTooltipContent = () => {
       </el-link>
     </template>
 
-    <p class="mb-2">基础用法</p>
+    <div class="mb-2">基础用法</div>
     <el-space wrap>
       <ul class="content">
         <li>
@@ -64,7 +64,7 @@ const changeTooltipContent = () => {
 
     <el-divider />
 
-    <p class="mb-2">自定义 Tooltip 内容</p>
+    <div class="mb-2">自定义 Tooltip 内容</div>
     <div class="mb-2">
       <el-button @click="changeTooltipContent">
         点击切换下方 Tooltip 内容
@@ -94,7 +94,7 @@ const changeTooltipContent = () => {
     </el-space>
 
     <el-divider />
-    <p class="mb-2">自定义 el-text 配置</p>
+    <div class="mb-2">自定义 el-text 配置</div>
     <el-space wrap>
       <ul class="content">
         <li>
@@ -111,7 +111,7 @@ const changeTooltipContent = () => {
     </el-space>
 
     <el-divider />
-    <p class="mb-2">自定义 VueTippy 配置</p>
+    <div class="mb-2">自定义 VueTippy 配置</div>
     <el-space wrap>
       <ul class="content">
         <li>
@@ -132,7 +132,7 @@ const changeTooltipContent = () => {
     </el-space>
 
     <el-divider />
-    <p class="mb-2">组件嵌套: 不需要省略的需设置 truncated 为 false</p>
+    <div class="mb-2">组件嵌套: 不需要省略的需设置 truncated 为 false</div>
     <el-space wrap>
       <ul class="content">
         <li>

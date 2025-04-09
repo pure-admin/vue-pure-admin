@@ -79,7 +79,7 @@ const activities = [
         </el-timeline-item>
       </el-timeline>
 
-      <el-timeline class="pl-40">
+      <el-timeline class="pl-40!">
         <el-timeline-item
           v-for="(activity, index) in activities"
           :key="index"

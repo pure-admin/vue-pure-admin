@@ -64,7 +64,7 @@ export function useNav() {
 
   const getDropdownItemClass = computed(() => {
     return (locale, t) => {
-      return locale === t ? "" : "dark:hover:!text-primary";
+      return locale === t ? "" : "dark:hover:text-primary!";
     };
   });
 

@@ -109,7 +109,7 @@ watch(size, val =>
         代码位置 src/views/components/check-button.vue
       </el-link>
     </template>
-    <p class="mb-2">单选（紧凑风格的按钮样式）</p>
+    <div class="mb-2">单选（紧凑风格的按钮样式）</div>
     <el-radio-group
       v-model="radio"
       :size="dynamicSize"
@@ -121,7 +121,7 @@ watch(size, val =>
     </el-radio-group>
     <el-divider />
 
-    <p class="mb-2">单选（带有边框）</p>
+    <div class="mb-2">单选（带有边框）</div>
     <el-radio-group
       v-model="radioBox"
       :size="dynamicSize"
@@ -133,7 +133,7 @@ watch(size, val =>
     </el-radio-group>
     <el-divider />
 
-    <p class="mb-2">单选（自定义内容）</p>
+    <div class="mb-2">单选（自定义内容）</div>
     <el-radio-group
       v-model="radioCustom"
       :size="dynamicSize"
@@ -160,7 +160,7 @@ watch(size, val =>
     </el-radio-group>
     <el-divider />
 
-    <p class="mb-2">多选（紧凑风格的按钮样式）</p>
+    <div class="mb-2">多选（紧凑风格的按钮样式）</div>
     <el-checkbox-group
       v-model="checkboxGroup"
       :size="dynamicSize"
@@ -172,7 +172,7 @@ watch(size, val =>
     </el-checkbox-group>
     <el-divider />
 
-    <p class="mb-2">多选（带有边框）</p>
+    <div class="mb-2">多选（带有边框）</div>
     <el-checkbox-group
       v-model="checkboxGroupBox"
       :size="dynamicSize"
@@ -184,7 +184,7 @@ watch(size, val =>
     </el-checkbox-group>
     <el-divider />
 
-    <p class="mb-2">多选（来点不一样的体验）</p>
+    <div class="mb-2">多选（来点不一样的体验）</div>
     <el-checkbox-group
       v-model="checkboxGroupCustom"
       class="pure-checkbox"
@@ -218,14 +218,14 @@ watch(size, val =>
     </el-checkbox-group>
     <el-divider />
 
-    <p>可控制间距的按钮样式</p>
+    <div>可控制间距的按钮样式</div>
     <el-slider
       v-model="spaceSize"
-      class="mb-2 !w-[300px]"
+      class="mb-2 w-[300px]!"
       :show-tooltip="false"
       :disabled="size === 'disabled'"
     />
-    <p class="mb-2">单选</p>
+    <div class="mb-2">单选</div>
     <el-space wrap :size="spaceSize">
       <el-check-tag
         v-for="(tag, index) in checkTag"
@@ -241,7 +241,7 @@ watch(size, val =>
         {{ tag.title }}
       </el-check-tag>
     </el-space>
-    <p class="mb-2 mt-4">
+    <div class="mb-2 mt-4">
       多选
       {{
         getKeyList(
@@ -249,7 +249,7 @@ watch(size, val =>
           "title"
         )
       }}
-    </p>
+    </div>
     <el-space wrap :size="spaceSize">
       <el-check-tag
         v-for="(tag, index) in checkGroupTag"
@@ -267,7 +267,7 @@ watch(size, val =>
     </el-space>
     <el-divider />
 
-    <p class="mb-2">单个可选按钮</p>
+    <div class="mb-2">单个可选按钮</div>
     <el-check-tag
       :class="[
         'select-none',

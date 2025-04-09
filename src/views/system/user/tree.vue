@@ -4,7 +4,7 @@ import { ref, computed, watch, getCurrentInstance } from "vue";
 
 import Dept from "~icons/ri/git-branch-line";
 // import Reset from "~icons/ri/restart-line";
-import More2Fill from "~icons/ri/more-2-fill";
+import More2Fill from "~icons/ri/more-2-fill?width=18&height=18";
 import OfficeBuilding from "~icons/ep/office-building";
 import LocationCompany from "~icons/ep/add-location";
 import ExpandIcon from "./svg/expand.svg?component";
@@ -35,12 +35,12 @@ const defaultProps = {
 };
 const buttonClass = computed(() => {
   return [
-    "!h-[20px]",
-    "!text-sm",
+    "h-[20px]!",
+    "text-sm!",
     "reset-margin",
-    "!text-[var(--el-text-color-regular)]",
-    "dark:!text-white",
-    "dark:hover:!text-primary"
+    "text-(--el-text-color-regular)!",
+    "dark:text-white!",
+    "dark:hover:text-primary!"
   ];
 });
 
@@ -117,11 +117,7 @@ defineExpose({ onTreeReset });
         </template>
       </el-input>
       <el-dropdown :hide-on-click="false">
-        <IconifyIconOffline
-          class="w-[28px] cursor-pointer"
-          width="18px"
-          :icon="More2Fill"
-        />
+        <More2Fill class="w-[28px] cursor-pointer outline-hidden" />
         <template #dropdown>
           <el-dropdown-menu>
             <el-dropdown-item>
@@ -166,7 +162,7 @@ defineExpose({ onTreeReset });
         <template #default="{ node, data }">
           <div
             :class="[
-              'rounded',
+              'rounded-sm',
               'flex',
               'items-center',
               'select-none',
@@ -194,7 +190,7 @@ defineExpose({ onTreeReset });
                     : Dept
               "
             />
-            <span class="!w-[120px] !truncate" :title="node.label">
+            <span class="w-[120px]! truncate!" :title="node.label">
               {{ node.label }}
             </span>
           </div>
