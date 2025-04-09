@@ -232,7 +232,7 @@ const onDownload = () => {
     </p>
     <el-divider />
 
-    <p class="mb-4! mt-4">
+    <p class="my-4!">
       结合表单校验进行<span class="text-[red]">手动上传</span>
       <span class="text-[14px]">
         （可先打开浏览器控制台找到Network，然后填写表单内容后点击点提交观察请求变化）

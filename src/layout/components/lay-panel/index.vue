@@ -78,7 +78,7 @@ onBeforeUnmount(() => {
       </el-scrollbar>
 
       <div
-        class="flex justify-end p-3 border-0 border-t-[1px]! border-solid border-[var(--pure-border-color)]"
+        class="flex justify-end p-3 border-0 border-t-[1px] border-solid border-[var(--pure-border-color)]"
       >
         <el-button
           v-tippy="{
