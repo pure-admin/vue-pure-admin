@@ -5,10 +5,10 @@ import { transformI18n } from "@/plugins/i18n";
 import { PureTableBar } from "@/components/RePureTableBar";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 
-import Delete from "@iconify-icons/ep/delete";
-import EditPen from "@iconify-icons/ep/edit-pen";
-import Refresh from "@iconify-icons/ep/refresh";
-import AddFill from "@iconify-icons/ri/add-circle-line";
+import Delete from "~icons/ep/delete";
+import EditPen from "~icons/ep/edit-pen";
+import Refresh from "~icons/ep/refresh";
+import AddFill from "~icons/ri/add-circle-line";
 
 defineOptions({
   name: "SystemMenu"
@@ -40,20 +40,20 @@ function onFullscreen() {
       ref="formRef"
       :inline="true"
       :model="form"
-      class="search-form bg-bg_color w-[99/100] pl-8 pt-[12px] overflow-auto"
+      class="search-form bg-bg_color w-full pl-8 pt-[12px] overflow-auto"
     >
       <el-form-item label="菜单名称：" prop="title">
         <el-input
           v-model="form.title"
           placeholder="请输入菜单名称"
           clearable
-          class="!w-[180px]"
+          class="w-[180px]!"
         />
       </el-form-item>
       <el-form-item>
         <el-button
           type="primary"
-          :icon="useRenderIcon('ri:search-line')"
+          :icon="useRenderIcon('ri/search-line')"
           :loading="loading"
           @click="onSearch"
         >

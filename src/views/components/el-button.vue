@@ -84,7 +84,7 @@ watch(size, val =>
       </el-link>
     </template>
 
-    <p class="mb-2">基础按钮</p>
+    <div class="mb-2">基础按钮</div>
     <el-radio-group v-model="baseRadio" class="mb-3">
       <el-radio label="default" value="default" />
       <el-radio label="plain" value="plain" />
@@ -117,7 +117,7 @@ watch(size, val =>
     </el-space>
     <el-divider />
 
-    <p class="mb-4">加载状态按钮</p>
+    <div class="mb-4">加载状态按钮</div>
     <el-button
       text
       bg
@@ -166,7 +166,7 @@ watch(size, val =>
     </el-button>
     <el-divider />
 
-    <p class="mb-4">自定义元素标签。例如：按钮、div、链接</p>
+    <div class="mb-4">自定义元素标签。例如：按钮、div、链接</div>
     <el-button :size="dynamicSize" :disabled="size === 'disabled'">
       button 标签
     </el-button>
@@ -196,7 +196,7 @@ watch(size, val =>
     </el-button>
     <el-divider />
 
-    <p class="mb-4">自定义颜色</p>
+    <div class="mb-4">自定义颜色</div>
     <el-space wrap>
       <el-button
         color="#626aef"

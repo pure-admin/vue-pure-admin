@@ -5,7 +5,7 @@ export default {
   path: "/flow-chart",
   redirect: "/flow-chart/index",
   meta: {
-    icon: "ep:set-up",
+    icon: "ep/set-up",
     title: $t("menus.pureFlowChart"),
     rank: flowchart
   },

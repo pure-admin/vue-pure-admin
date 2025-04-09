@@ -3,7 +3,7 @@ import { useVModel } from "@vueuse/core";
 
 // 声明 props 类型
 export interface FormProps {
-  data: string;
+  data?: string;
 }
 
 // 声明 props 默认值
@@ -18,5 +18,5 @@ const data = useVModel(props, "data", emit);
 </script>
 
 <template>
-  <el-input v-model="data" class="!w-[220px]" placeholder="请输入内容" />
+  <el-input v-model="data" class="w-[220px]!" placeholder="请输入内容" />
 </template>

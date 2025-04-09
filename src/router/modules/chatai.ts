@@ -4,7 +4,7 @@ export default {
   path: "/chatai",
   redirect: "/chatai/index",
   meta: {
-    icon: "ri:chat-search-line",
+    icon: "ri/chat-search-line",
     title: "chat-ai",
     rank: chatai
   },

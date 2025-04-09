@@ -51,7 +51,9 @@ const load = () => {
         代码位置 src/views/able/infinite-scroll.vue
       </el-link>
     </template>
-    <p class="mb-2">{{ isBottom ? "已加载全部页" : `加载到第 ${page} 页` }}</p>
+    <div class="mb-2">
+      {{ isBottom ? "已加载全部页" : `加载到第 ${page} 页` }}
+    </div>
     <el-table
       v-el-table-infinite-scroll="load"
       border

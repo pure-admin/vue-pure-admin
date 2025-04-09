@@ -25,7 +25,7 @@ export default defineFakeRoute([
     url: "/mine-logs",
     method: "get",
     response: () => {
-      let list = [
+      const list = [
         {
           id: 1,
           ip: faker.internet.ipv4(),

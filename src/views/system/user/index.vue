@@ -5,14 +5,14 @@ import { useUser } from "./utils/hook";
 import { PureTableBar } from "@/components/RePureTableBar";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 
-import Upload from "@iconify-icons/ri/upload-line";
-import Role from "@iconify-icons/ri/admin-line";
-import Password from "@iconify-icons/ri/lock-password-line";
-import More from "@iconify-icons/ep/more-filled";
-import Delete from "@iconify-icons/ep/delete";
-import EditPen from "@iconify-icons/ep/edit-pen";
-import Refresh from "@iconify-icons/ep/refresh";
-import AddFill from "@iconify-icons/ri/add-circle-line";
+import Upload from "~icons/ri/upload-line";
+import Role from "~icons/ri/admin-line";
+import Password from "~icons/ri/lock-password-line";
+import More from "~icons/ep/more-filled";
+import Delete from "~icons/ep/delete";
+import EditPen from "~icons/ep/edit-pen";
+import Refresh from "~icons/ep/refresh";
+import AddFill from "~icons/ri/add-circle-line";
 
 defineOptions({
   name: "SystemUser"
@@ -66,14 +66,14 @@ const {
         ref="formRef"
         :inline="true"
         :model="form"
-        class="search-form bg-bg_color w-[99/100] pl-8 pt-[12px] overflow-auto"
+        class="search-form bg-bg_color w-full pl-8 pt-[12px] overflow-auto"
       >
         <el-form-item label="用户名称：" prop="username">
           <el-input
             v-model="form.username"
             placeholder="请输入用户名称"
             clearable
-            class="!w-[180px]"
+            class="w-[180px]!"
           />
         </el-form-item>
         <el-form-item label="手机号码：" prop="phone">
@@ -81,7 +81,7 @@ const {
             v-model="form.phone"
             placeholder="请输入手机号码"
             clearable
-            class="!w-[180px]"
+            class="w-[180px]!"
           />
         </el-form-item>
         <el-form-item label="状态：" prop="status">
@@ -89,7 +89,7 @@ const {
             v-model="form.status"
             placeholder="请选择"
             clearable
-            class="!w-[180px]"
+            class="w-[180px]!"
           >
             <el-option label="已开启" value="1" />
             <el-option label="已关闭" value="0" />
@@ -98,7 +98,7 @@ const {
         <el-form-item>
           <el-button
             type="primary"
-            :icon="useRenderIcon('ri:search-line')"
+            :icon="useRenderIcon('ri/search-line')"
             :loading="loading"
             @click="onSearch"
           >
@@ -143,7 +143,7 @@ const {
             </div>
             <el-popconfirm title="是否确认删除?" @confirm="onbatchDel">
               <template #reference>
-                <el-button type="danger" text class="mr-1">
+                <el-button type="danger" text class="mr-1!">
                   批量删除
                 </el-button>
               </template>
@@ -198,7 +198,7 @@ const {
               </el-popconfirm>
               <el-dropdown>
                 <el-button
-                  class="ml-3 mt-[2px]"
+                  class="ml-3! mt-[2px]!"
                   link
                   type="primary"
                   :size="size"

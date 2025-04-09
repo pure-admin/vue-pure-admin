@@ -6,7 +6,7 @@ import { ref, onMounted, nextTick } from "vue";
 import ListCard from "./components/ListCard.vue";
 import ListDialogForm from "./components/ListDialogForm.vue";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
-import AddFill from "@iconify-icons/ri/add-circle-line";
+import AddFill from "~icons/ri/add-circle-line";
 
 defineOptions({
   name: "CardList"
@@ -110,7 +110,7 @@ const handleManageProduct = product => {
           <el-icon class="el-input__icon">
             <IconifyIconOffline
               v-show="searchValue.length === 0"
-              icon="ri:search-line"
+              icon="ri/search-line"
             />
           </el-icon>
         </template>

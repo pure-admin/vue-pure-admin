@@ -3,7 +3,7 @@ import { markRaw } from "vue";
 import { randomGradient } from "@pureadmin/utils";
 import { useRenderFlicker } from "@/components/ReFlicker";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
-import Iphone from "@iconify-icons/ep/iphone";
+import Iphone from "~icons/ep/iphone";
 
 defineOptions({
   name: "TimeLine"
@@ -79,7 +79,7 @@ const activities = [
         </el-timeline-item>
       </el-timeline>
 
-      <el-timeline class="pl-40">
+      <el-timeline class="pl-40!">
         <el-timeline-item
           v-for="(activity, index) in activities"
           :key="index"

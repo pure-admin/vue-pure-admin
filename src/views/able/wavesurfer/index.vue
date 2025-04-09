@@ -103,13 +103,13 @@ onBeforeUnmount(() => {
     </template>
     <div
       v-loading="loading"
-      class="w-8/12 !m-auto !mt-[20px]"
+      class="w-8/12 m-auto! mt-[20px]!"
       element-loading-background="transparent"
     >
       <div ref="wavesurferRef" />
       <div v-show="totalTime" class="flex justify-between">
         <span class="text-[#81888f]">00:00</span>
-        <h1 class="text-4xl mt-2">{{ curTime }}</h1>
+        <h1 class="text-4xl mt-2!">{{ curTime }}</h1>
         <span class="text-[#81888f]">{{ totalTime }}</span>
       </div>
       <div v-show="totalTime" class="flex mt-2 w-[180px] justify-around m-auto">

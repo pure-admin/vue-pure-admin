@@ -160,11 +160,11 @@ watch(size, val =>
       </el-link>
     </template>
 
-    <p class="mb-2">选择某一天</p>
+    <div class="mb-2">选择某一天</div>
     <el-date-picker
       v-model="value"
       type="date"
-      class="!w-[160px]"
+      class="w-[160px]!"
       placeholder="请选择"
       :disabled-date="disabledDate"
       :shortcuts="shortcuts"
@@ -175,12 +175,12 @@ watch(size, val =>
       :disabled="size === 'disabled'"
     />
 
-    <p class="mb-2 mt-4">选择周、月、年或多个日期</p>
+    <div class="mb-2 mt-4">选择周、月、年或多个日期</div>
     <el-space wrap>
       <el-date-picker
         v-model="value1"
         type="week"
-        class="!w-[160px]"
+        class="w-[160px]!"
         format="YYYY年第ww周"
         placeholder="选择某年中的某周"
         :size="dynamicSize"
@@ -189,7 +189,7 @@ watch(size, val =>
       <el-date-picker
         v-model="value2"
         type="month"
-        class="!w-[160px]"
+        class="w-[160px]!"
         placeholder="选择某月"
         :size="dynamicSize"
         :disabled="size === 'disabled'"
@@ -197,7 +197,7 @@ watch(size, val =>
       <el-date-picker
         v-model="value3"
         type="year"
-        class="!w-[160px]"
+        class="w-[160px]!"
         placeholder="选择某年"
         :size="dynamicSize"
         :disabled="size === 'disabled'"
@@ -205,18 +205,18 @@ watch(size, val =>
       <el-date-picker
         v-model="value4"
         type="dates"
-        class="!w-[160px]"
+        class="w-[160px]!"
         placeholder="选择多个日期"
         :size="dynamicSize"
         :disabled="size === 'disabled'"
       />
     </el-space>
 
-    <p class="mb-2 mt-4">选择一段时间</p>
+    <div class="mb-2 mt-4">选择一段时间</div>
     <el-date-picker
       v-model="value5"
       type="daterange"
-      class="!w-[240px]"
+      class="w-[240px]!"
       unlink-panels
       range-separator="至"
       start-placeholder="开始时间"
@@ -229,7 +229,7 @@ watch(size, val =>
       :disabled="size === 'disabled'"
     />
 
-    <p class="mb-2 mt-4">选择月份范围</p>
+    <div class="mb-2 mt-4">选择月份范围</div>
     <el-date-picker
       v-model="value6"
       type="monthrange"
@@ -245,7 +245,7 @@ watch(size, val =>
       :disabled="size === 'disabled'"
     />
 
-    <p class="mb-2 mt-4">日期格式</p>
+    <div class="mb-2 mt-4">日期格式</div>
     <el-radio-group
       v-model="dateFormat"
       class="mb-2"
@@ -261,7 +261,7 @@ watch(size, val =>
       <el-date-picker
         v-model="value7"
         type="date"
-        class="!w-[160px]"
+        class="w-[160px]!"
         placeholder="请选择日期"
         format="YYYY/MM/DD"
         :value-format="dateFormat"
@@ -271,18 +271,18 @@ watch(size, val =>
       <span class="ml-2">{{ value7 }}</span>
     </el-space>
 
-    <p class="mb-2 mt-4">自定义前缀</p>
+    <div class="mb-2 mt-4">自定义前缀</div>
     <el-date-picker
       v-model="value8"
       type="date"
-      class="!w-[160px]"
+      class="w-[160px]!"
       placeholder="请选择日期"
       :prefix-icon="useRenderIcon('twemoji:spiral-calendar')"
       :size="dynamicSize"
       :disabled="size === 'disabled'"
     />
 
-    <p class="mb-2 mt-4">自定义内容</p>
+    <div class="mb-2 mt-4">自定义内容</div>
     <el-date-picker
       v-model="value9"
       type="date"

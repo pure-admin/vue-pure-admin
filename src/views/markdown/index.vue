@@ -45,7 +45,7 @@ sayHello();
         代码位置 src/views/markdown
       </el-link>
     </template>
-    <h1 class="mb-2">
+    <h1 class="mb-2!">
       双向绑定：<span class="text-red-500">{{ text }}</span>
     </h1>
     <Vditor

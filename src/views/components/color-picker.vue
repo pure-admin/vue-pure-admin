@@ -73,7 +73,7 @@ function onClick() {
       </el-link>
     </template>
 
-    <p class="mb-2">不同尺寸、选择透明度、预定义颜色</p>
+    <div class="mb-2">不同尺寸、选择透明度、预定义颜色</div>
     <el-color-picker
       v-model="color"
       show-alpha
@@ -83,7 +83,7 @@ function onClick() {
     />
     <el-divider />
 
-    <p class="mb-2">外部触发器</p>
+    <div class="mb-2">外部触发器</div>
     <el-space wrap>
       <el-color-picker
         ref="colorPickerRef"

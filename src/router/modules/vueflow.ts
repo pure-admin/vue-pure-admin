@@ -4,7 +4,7 @@ export default {
   path: "/vue-flow",
   redirect: "/vue-flow/index",
   meta: {
-    icon: "ep:set-up",
+    icon: "ep/set-up",
     title: "vue-flow",
     rank: vueflow
   },

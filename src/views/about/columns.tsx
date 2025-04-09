@@ -7,7 +7,7 @@ export function useColumns() {
       minWidth: 100,
       cellRenderer: () => {
         return (
-          <el-tag size="large" class="!text-base">
+          <el-tag size="large" class="text-base!">
             {version}
           </el-tag>
         );
@@ -18,7 +18,7 @@ export function useColumns() {
       minWidth: 120,
       cellRenderer: () => {
         return (
-          <el-tag size="large" class="!text-base">
+          <el-tag size="large" class="text-base!">
             {lastBuildTime}
           </el-tag>
         );
@@ -29,7 +29,7 @@ export function useColumns() {
       minWidth: 140,
       cellRenderer: () => {
         return (
-          <el-tag size="large" class="!text-base">
+          <el-tag size="large" class="text-base!">
             {engines.node}
           </el-tag>
         );
@@ -40,7 +40,7 @@ export function useColumns() {
       minWidth: 140,
       cellRenderer: () => {
         return (
-          <el-tag size="large" class="!text-base">
+          <el-tag size="large" class="text-base!">
             {engines.pnpm}
           </el-tag>
         );

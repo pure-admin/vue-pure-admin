@@ -1,21 +1,46 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
 
-@layer components {
-  .flex-c {
-    @apply flex justify-center items-center;
-  }
+@custom-variant dark (&:is(.dark *));
 
-  .flex-ac {
-    @apply flex justify-around items-center;
-  }
+@theme {
+  --color-bg_color: var(--el-bg-color);
+  --color-primary: var(--el-color-primary);
+  --color-text_color_primary: var(--el-text-color-primary);
+  --color-text_color_regular: var(--el-text-color-regular);
+}
 
-  .flex-bc {
-    @apply flex justify-between items-center;
-  }
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
 
-  .navbar-bg-hover {
-    @apply dark:text-white dark:hover:!bg-[#242424];
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
   }
+}
+
+@utility flex-c {
+  @apply flex justify-center items-center;
+}
+
+@utility flex-ac {
+  @apply flex justify-around items-center;
+}
+
+@utility flex-bc {
+  @apply flex justify-between items-center;
+}
+
+@utility navbar-bg-hover {
+  @apply dark:text-white dark:hover:bg-[#242424]!;
 }

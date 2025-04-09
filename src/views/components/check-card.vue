@@ -69,7 +69,7 @@ watch(size, val =>
       </el-link>
     </template>
 
-    <p class="mb-2 mt-4">单选</p>
+    <div class="mb-2 mt-4">单选</div>
     <PlusCheckCardGroup
       v-model="list"
       :options="options"
@@ -77,7 +77,7 @@ watch(size, val =>
       :disabled="size === 'disabled'"
     />
 
-    <p class="mb-2 mt-4">多选</p>
+    <div class="mb-2 mt-4">多选</div>
     <PlusCheckCardGroup
       v-model="list1"
       :options="options"

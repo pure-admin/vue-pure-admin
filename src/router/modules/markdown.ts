@@ -5,7 +5,7 @@ export default {
   path: "/markdown",
   redirect: "/markdown/index",
   meta: {
-    icon: "ri:markdown-line",
+    icon: "ri/markdown-line",
     title: $t("menus.pureMarkdown"),
     rank: markdown
   },

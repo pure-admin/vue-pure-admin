@@ -2,7 +2,7 @@
 import { IconJson } from "@/components/ReIcon/data";
 import { cloneDeep, isAllEmpty } from "@pureadmin/utils";
 import { ref, computed, CSSProperties, watch } from "vue";
-import Search from "@iconify-icons/ri/search-eye-line";
+import Search from "~icons/ri/search-eye-line";
 
 type ParameterCSSProperties = (item?: string) => CSSProperties | undefined;
 
@@ -158,7 +158,7 @@ watch(
               :name="pane.name"
             >
               <el-scrollbar height="220px">
-                <ul class="flex flex-wrap px-2 ml-2">
+                <ul class="flex flex-wrap px-2! ml-2!">
                   <li
                     v-for="(item, key) in pageList"
                     :key="key"
@@ -198,7 +198,7 @@ watch(
               @current-change="onCurrentChange"
             />
             <el-button
-              class="justify-end mr-2 ml-2"
+              class="justify-end mx-2!"
               type="danger"
               size="small"
               text
