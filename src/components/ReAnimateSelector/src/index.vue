@@ -95,7 +95,7 @@ function onMouseleave() {
           :view-style="{ overflow: 'hidden' }"
           class="border-t border-[#e5e7eb]"
         >
-          <ul class="flex flex-wrap justify-around mb-1">
+          <ul class="flex flex-wrap justify-around mb-1!">
             <li
               v-for="(animate, index) in animatesList"
               :key="index"

@@ -107,7 +107,7 @@ const handleInputConfirm = () => {
         v-model="checked1"
         label="可移除"
       />
-      <el-button v-else size="small" text bg class="mr-6" @click="onReset">
+      <el-button v-else size="small" text bg class="mr-6!" @click="onReset">
         重置
       </el-button>
       <el-button
@@ -115,7 +115,7 @@ const handleInputConfirm = () => {
         size="small"
         text
         bg
-        class="mr-6 ml-4"
+        class="mr-6! ml-4!"
         @click="tagList = []"
       >
         移除全部

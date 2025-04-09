@@ -143,7 +143,7 @@ const {
             </div>
             <el-popconfirm title="是否确认删除?" @confirm="onbatchDel">
               <template #reference>
-                <el-button type="danger" text class="mr-1">
+                <el-button type="danger" text class="mr-1!">
                   批量删除
                 </el-button>
               </template>

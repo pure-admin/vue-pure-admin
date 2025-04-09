@@ -62,7 +62,7 @@ function onCloseTags() {
       <el-button
         v-for="index in 6"
         :key="index"
-        class="m-2"
+        class="m-2!"
         @click="toDetail({ id: index }, 'query')"
       >
         打开{{ index }}详情页
@@ -83,7 +83,7 @@ function onCloseTags() {
       <el-button
         v-for="index in 6"
         :key="index"
-        class="m-2"
+        class="m-2!"
         @click="toDetail({ id: index }, 'params')"
       >
         打开{{ index }}详情页
@@ -112,7 +112,7 @@ function onCloseTags() {
         <span>{{ transformI18n(data.meta.title) }}</span>
       </template>
     </el-tree-select>
-    <el-button class="m-2" @click="onCloseTags">关闭标签</el-button>
+    <el-button class="m-2!" @click="onCloseTags">关闭标签</el-button>
 
     <el-divider />
     <el-button @click="router.push({ name: 'Menu1-2-2' })">
