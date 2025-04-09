@@ -174,8 +174,8 @@ importers:
         specifier: ^6.7.0
         version: 6.7.0(vue@3.5.13(typescript@5.8.3))
       vue-types:
-        specifier: ^5.1.3
-        version: 5.1.3(vue@3.5.13(typescript@5.8.3))
+        specifier: ^6.0.0
+        version: 6.0.0(vue@3.5.13(typescript@5.8.3))
       vue-virtual-scroller:
         specifier: 2.0.0-beta.8
         version: 2.0.0-beta.8(vue@3.5.13(typescript@5.8.3))
@@ -5373,11 +5373,11 @@ packages:
     peerDependencies:
       typescript: '>=5.0.0'
 
-  vue-types@5.1.3:
-    resolution: {integrity: sha512-3Wy6QcZl0VusCCHX3vYrWSILFlrOB2EQDoySnuYmASM5cUp1FivJGfkS5lp1CutDgyRb41g32r/1QCmiBj5i1Q==}
+  vue-types@6.0.0:
+    resolution: {integrity: sha512-fBgCA4nrBrB8SCU/AN40tFq8HUxLGBvU2ds7a5+SEDse6dYc+TJyvy8mWiwwL8oWIC/aGS/8nTqmhwxApgU5eA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
-      vue: ^2.0.0 || ^3.0.0
+      vue: ^3.0.0
     peerDependenciesMeta:
       vue:
         optional: true
@@ -11019,9 +11019,7 @@ snapshots:
       '@vue/language-core': 2.2.8(typescript@5.8.3)
       typescript: 5.8.3
 
-  vue-types@5.1.3(vue@3.5.13(typescript@5.8.3)):
-    dependencies:
-      is-plain-object: 5.0.0
+  vue-types@6.0.0(vue@3.5.13(typescript@5.8.3)):
     optionalDependencies:
       vue: 3.5.13(typescript@5.8.3)
 
