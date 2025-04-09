@@ -253,7 +253,7 @@ export default defineComponent({
             "pb-2",
             "bg-bg_color",
             isFullscreen.value
-              ? ["w-full!", "h-full!", "z-2002", "fixed", "inset-0"]
+              ? ["h-full!", "z-2002", "fixed", "inset-0"]
               : "mt-2"
           ]}
         >
