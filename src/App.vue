@@ -16,7 +16,7 @@ import en from "element-plus/es/locale/lang/en";
 import zhCn from "element-plus/es/locale/lang/zh-cn";
 import plusEn from "plus-pro-components/es/locale/lang/en";
 import plusZhCn from "plus-pro-components/es/locale/lang/zh-cn";
-// import { ElNotification } from "element-plus";
+import { ElNotification } from "element-plus";
 
 export default defineComponent({
   name: "app",
@@ -54,24 +54,24 @@ export default defineComponent({
         }
       );
     }
+  },
+  mounted() {
+    ElNotification({
+      title: "其他版本",
+      duration: 0,
+      // @ts-expect-error
+      style: { width: "200px" },
+      position: "bottom-right",
+      dangerouslyUseHTMLString: true,
+      message: `
+        <a target='_blank' style='font-size: 16px' class='block text-center border mb-2 rounded hover:text-[red]' href='https://pure-admin.cn/pages/js/'>
+        JS版本
+        </a>
+        <a target='_blank' style='font-size: 16px' class='block text-center border mb-2 rounded hover:text-[red]' href='https://pure-admin.cn/pages/max/'>
+        Max版本
+        </a>
+        `
+    });
   }
-  // mounted() {
-  //   ElNotification({
-  //     title: "优惠活动即将结束",
-  //     duration: 0,
-  //     //@ts-expect-error
-  //     style: { width: "200px" },
-  //     position: "bottom-right",
-  //     dangerouslyUseHTMLString: true,
-  //     message: `
-  //       <a target='_blank' style='font-size: 16px' class='block text-center border mb-2 rounded hover:text-[red]' href='https://pure-admin.github.io/pure-admin-doc/pages/js/'>
-  //       JS版本
-  //       </a>
-  //       <a target='_blank' style='font-size: 16px' class='block text-center border mb-2 rounded hover:text-[red]' href='https://pure-admin.github.io/pure-admin-doc/pages/max/'>
-  //       Max版本
-  //       </a>
-  //       `
-  //   });
-  // }
 });
 </script>
