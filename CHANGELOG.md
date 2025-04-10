@@ -1,3 +1,32 @@
+# 6.0.0 (2025-04-10)
+
+### ✔️ Refactor
+
+- Refactor the icon module, use `@iconify/json` to replace the `@iconify-icons/*` dependency that is no longer maintained and updated, optimize the user experience, ensure that the icon library can be continuously updated and support `Tree-shaking`
+- Upgrade `tailwindcss` to `v4` version, bringing faster build speed, simpler installation and configuration, and providing a dedicated `vite` plug-in
+
+### 🎫 Feat
+
+- Add `Ai` chat component example
+- Add `tagOnClick` tag to switch global public events
+- Add code editor example
+- Add `Markdown` example
+- Add slider example
+
+### 🐞 Bug fixes
+
+- Fix `aria-hidden` error
+- Fix the problem that code hints cannot be displayed when using `this` syntax and update `pinia` related syntax
+
+### 🍏 Perf
+
+- Fix broken links in the waterfall infinite scrolling example
+- Update `vue-flow`, related compatibility processing
+- Delete the deprecated dependency package `eslint-define-config`, upgrade `eslint` to the latest version, related compatibility processing
+- Optimize `src/style/dark.scss` syntax
+- Optimize login parameter transfer
+- Use `keydown` to replace `keypress`, the `keypress` event has been deprecated
+
 # 5.9.0 (2024-12-10)
 
 ### ✔️Refactor
