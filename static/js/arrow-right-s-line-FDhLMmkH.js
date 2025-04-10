@@ -1,0 +1,1 @@
+import{a1 as r,k as t,e as o,g as a}from"./index-B4VGSjPk.js";const l={viewBox:"0 0 24 24",width:"1em",height:"1em"};function n(i,e){return o(),t("svg",l,e[0]||(e[0]=[a("path",{fill:"currentColor",d:"m13.172 12l-4.95-4.95l1.414-1.413L16 12l-6.364 6.364l-1.414-1.415z"},null,-1)]))}const m=r({name:"ri-arrow-right-s-line",render:n});export{m as A};
