@@ -57,7 +57,7 @@ export default defineComponent({
   },
   mounted() {
     ElNotification({
-      title: "其他版本",
+      title: "限时活动",
       duration: 0,
       // @ts-expect-error
       style: { width: "200px" },
