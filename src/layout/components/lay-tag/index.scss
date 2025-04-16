@@ -59,10 +59,10 @@
       color: var(--el-color-primary);
       cursor: pointer;
       border-radius: 4px;
+      transform: translate(0, -50%);
       transition:
         background-color 0.12s,
         color 0.12s;
-      transform: translate(0, -50%);
 
       &:hover {
         color: rgb(0 0 0 / 88%) !important;
@@ -127,10 +127,10 @@
     font-weight: normal;
     color: var(--el-text-color-primary);
     white-space: nowrap;
+    outline: 0;
     list-style-type: none;
     background: #fff;
     border-radius: 4px;
-    outline: 0;
     box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
 
     li {

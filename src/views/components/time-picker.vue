@@ -85,13 +85,13 @@ const endTime = ref("");
         </el-link>
       </template>
 
-      <p class="mb-2">日期和时间点</p>
+      <div class="mb-2">日期和时间点</div>
       <el-space wrap>
         <p class="text-[15px]">鼠标滚轮进行选择</p>
         <el-time-picker
           v-model="value"
           placeholder="请选择时间"
-          class="!w-[140px]"
+          class="w-[140px]!"
           :size="dynamicSize"
           :disabled="size === 'disabled'"
         />
@@ -100,17 +100,17 @@ const endTime = ref("");
           v-model="value1"
           arrow-control
           placeholder="请选择时间"
-          class="!w-[140px]"
+          class="w-[140px]!"
           :size="dynamicSize"
           :disabled="size === 'disabled'"
         />
       </el-space>
       <el-divider />
 
-      <p class="mb-2">限制时间选择范围</p>
+      <div class="mb-2">限制时间选择范围</div>
       <el-time-picker
         v-model="value2"
-        class="!w-[140px]"
+        class="w-[140px]!"
         :disabled-hours="disabledHours"
         :disabled-minutes="disabledMinutes"
         :disabled-seconds="disabledSeconds"
@@ -120,10 +120,10 @@ const endTime = ref("");
       />
       <el-divider />
 
-      <p class="mb-2">任意时间范围</p>
+      <div class="mb-2">任意时间范围</div>
       <el-time-picker
         v-model="value3"
-        class="!w-[220px]"
+        class="w-[220px]!"
         is-range
         range-separator="至"
         start-placeholder="开始时间"
@@ -149,11 +149,11 @@ const endTime = ref("");
         </div>
       </template>
 
-      <p class="mb-2">固定时间点</p>
+      <div class="mb-2">固定时间点</div>
       <el-time-select
         v-model="value4"
         placeholder="请选择时间"
-        class="!w-[140px]"
+        class="w-[140px]!"
         start="08:30"
         step="00:15"
         end="18:30"
@@ -161,11 +161,11 @@ const endTime = ref("");
         :disabled="size === 'disabled'"
       />
 
-      <p class="mb-2 mt-4">时间格式</p>
+      <div class="mb-2 mt-4">时间格式</div>
       <el-time-select
         v-model="value5"
         placeholder="请选择时间"
-        class="!w-[140px]"
+        class="w-[140px]!"
         start="00:00"
         step="00:30"
         end="23:59"
@@ -174,12 +174,12 @@ const endTime = ref("");
         :disabled="size === 'disabled'"
       />
 
-      <p class="mb-2 mt-4">固定时间范围</p>
+      <div class="mb-2 mt-4">固定时间范围</div>
       <el-space wrap>
         <el-time-select
           v-model="startTime"
           placeholder="开始时间"
-          class="!w-[140px]"
+          class="w-[140px]!"
           :max-time="endTime"
           start="08:30"
           step="00:15"
@@ -190,7 +190,7 @@ const endTime = ref("");
         <el-time-select
           v-model="endTime"
           placeholder="结束时间"
-          class="!w-[140px]"
+          class="w-[140px]!"
           :min-time="startTime"
           start="08:30"
           step="00:15"

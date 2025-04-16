@@ -83,8 +83,8 @@
   .el-upload-list__item.is-ready &.el-icon--close {
     width: 24px;
     height: 24px;
-    border-radius: 4px;
     outline: none;
+    border-radius: 4px;
     transition:
       background-color 0.2s,
       color 0.2s;
@@ -117,8 +117,8 @@
   }
 
   & .el-message__closeBtn {
-    border-radius: 4px;
     outline: none;
+    border-radius: 4px;
     transition:
       background-color 0.2s,
       color 0.2s;
@@ -163,9 +163,10 @@
 
 /* 仿 el-scrollbar 滚动条样式，支持大多数浏览器，如Chrome、Edge、Firefox、Safari等。整体暗色风格在 src/style/dark.scss 文件进行了适配 */
 .pure-scrollbar {
+  scrollbar-color: rgb(221 222 224) transparent; /* 滑块颜色、轨道颜色 */
+
   /* Firefox */
   scrollbar-width: thin; /* 可选值为 'auto', 'thin', 'none' */
-  scrollbar-color: rgb(221 222 224) transparent; /* 滑块颜色、轨道颜色 */
   ::-webkit-scrollbar {
     width: 6px; /* 滚动条宽度 */
   }

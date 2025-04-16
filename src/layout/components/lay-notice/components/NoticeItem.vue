@@ -49,7 +49,7 @@ function hoverDescription(event, description) {
 
 <template>
   <div
-    class="notice-container border-b-[1px] border-solid border-[#f0f0f0] dark:border-[#303030]"
+    class="notice-container border-0 border-b-[1px] border-solid border-[#f0f0f0] dark:border-[#303030]"
   >
     <el-avatar
       v-if="noticeItem.avatar"
@@ -112,7 +112,7 @@ function hoverDescription(event, description) {
   max-width: 238px;
 }
 </style>
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .notice-container {
   display: flex;
   align-items: flex-start;

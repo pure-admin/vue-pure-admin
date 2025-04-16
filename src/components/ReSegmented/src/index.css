@@ -98,7 +98,6 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  transition: 0.1s;
 }
 
 .pure-segmented-group {

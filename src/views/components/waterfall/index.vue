@@ -106,7 +106,7 @@ onMounted(() => {
             />
           </div>
           <div class="px-4 pt-2 pb-4 border-t border-t-gray-800">
-            <h4 class="pb-4 text-gray-50 group-hover:text-yellow-300">
+            <h4 class="pb-4! text-gray-50 group-hover:text-yellow-300">
               {{ item.name }}
             </h4>
             <div
@@ -115,7 +115,7 @@ onMounted(() => {
               <div class="text-gray-50">$ {{ item.price }}</div>
               <div>
                 <button
-                  class="px-3 h-7 rounded-full bg-red-500 text-sm text-white shadow-lg transition-all duration-300 hover:bg-red-600"
+                  class="px-3! rounded-full bg-red-500 text-sm text-white shadow-lg transition-all duration-300 hover:bg-red-600 border-0"
                   @click.stop="handleDelete(item, index)"
                 >
                   删除
@@ -129,7 +129,7 @@ onMounted(() => {
 
     <!-- <div class="flex justify-center py-10">
         <button
-          class="px-5 py-2 rounded-full bg-gray-700 text-md text-white cursor-pointer hover:bg-gray-800 transition-all duration-300"
+          class="px-5! py-2! rounded-full bg-gray-700 text-md text-white cursor-pointer hover:bg-gray-800 transition-all duration-300 border-0"
           @click="handleLoadMore"
         >
           加载更多

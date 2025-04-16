@@ -9,10 +9,10 @@ import LaySidebarBreadCrumb from "../lay-sidebar/components/SidebarBreadCrumb.vu
 import LaySidebarTopCollapse from "../lay-sidebar/components/SidebarTopCollapse.vue";
 
 import GlobalizationIcon from "@/assets/svg/globalization.svg?component";
-import AccountSettingsIcon from "@iconify-icons/ri/user-settings-line";
-import LogoutCircleRLine from "@iconify-icons/ri/logout-circle-r-line";
-import Setting from "@iconify-icons/ri/settings-3-line";
-import Check from "@iconify-icons/ep/check";
+import AccountSettingsIcon from "~icons/ri/user-settings-line";
+import LogoutCircleRLine from "~icons/ri/logout-circle-r-line";
+import Setting from "~icons/ri/settings-3-line";
+import Check from "~icons/ep/check";
 
 const {
   layout,
@@ -33,7 +33,7 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
 </script>
 
 <template>
-  <div class="navbar bg-[#fff] shadow-sm shadow-[rgba(0,21,41,0.08)]">
+  <div class="navbar bg-[#fff] shadow-xs shadow-[rgba(0,21,41,0.08)]">
     <LaySidebarTopCollapse
       v-if="device === 'mobile'"
       class="hamburger-container"
@@ -54,13 +54,13 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
       <!-- 国际化 -->
       <el-dropdown id="header-translation" trigger="click">
         <GlobalizationIcon
-          class="navbar-bg-hover w-[40px] h-[48px] p-[11px] cursor-pointer outline-none"
+          class="navbar-bg-hover w-[40px] h-[48px] p-[11px] cursor-pointer outline-hidden"
         />
         <template #dropdown>
           <el-dropdown-menu class="translation">
             <el-dropdown-item
               :style="getDropdownItemStyle(locale, 'zh')"
-              :class="['dark:!text-white', getDropdownItemClass(locale, 'zh')]"
+              :class="['dark:text-white!', getDropdownItemClass(locale, 'zh')]"
               @click="translationCh"
             >
               <IconifyIconOffline
@@ -72,7 +72,7 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
             </el-dropdown-item>
             <el-dropdown-item
               :style="getDropdownItemStyle(locale, 'en')"
-              :class="['dark:!text-white', getDropdownItemClass(locale, 'en')]"
+              :class="['dark:text-white!', getDropdownItemClass(locale, 'en')]"
               @click="translationEn"
             >
               <span v-show="locale === 'en'" class="check-en">

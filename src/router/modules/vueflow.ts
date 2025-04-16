@@ -4,7 +4,7 @@ export default {
   path: "/vue-flow",
   redirect: "/vue-flow/index",
   meta: {
-    icon: "ep:set-up",
+    icon: "ep/set-up",
     title: "vue-flow",
     rank: vueflow
   },
@@ -14,8 +14,7 @@ export default {
       name: "VueFlow",
       component: () => import("@/views/vue-flow/layouting/index.vue"),
       meta: {
-        title: "vue-flow",
-        extraIcon: "IF-pure-iconfont-new svg"
+        title: "vue-flow"
       }
     }
   ]

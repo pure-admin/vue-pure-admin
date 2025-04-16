@@ -163,11 +163,11 @@ export function useUser(tableRef: Ref, treeRef: Ref) {
   ];
   const buttonClass = computed(() => {
     return [
-      "!h-[20px]",
+      "h-[20px]!",
       "reset-margin",
-      "!text-gray-500",
-      "dark:!text-white",
-      "dark:hover:!text-primary"
+      "text-gray-500!",
+      "dark:text-white!",
+      "dark:hover:text-primary!"
     ];
   });
   // 重置的新密码
@@ -331,7 +331,7 @@ export function useUser(tableRef: Ref, treeRef: Ref) {
       fullscreen: deviceDetection(),
       fullscreenIcon: true,
       closeOnClickModal: false,
-      contentRenderer: () => h(editForm, { ref: formRef }),
+      contentRenderer: () => h(editForm, { ref: formRef, formInline: null }),
       beforeSure: (done, { options }) => {
         const FormRef = formRef.value.getRef();
         const curData = options.props.formInline as FormItemProps;
@@ -419,7 +419,7 @@ export function useUser(tableRef: Ref, treeRef: Ref) {
               />
             </ElFormItem>
           </ElForm>
-          <div class="mt-4 flex">
+          <div class="my-4 flex">
             {pwdProgress.map(({ color, text }, idx) => (
               <div
                 class="w-[19vw]"

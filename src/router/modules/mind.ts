@@ -6,7 +6,7 @@ export default {
   path: "/mind-map",
   redirect: "/mind-map/index",
   meta: {
-    icon: "ri:mind-map",
+    icon: "ri/mind-map",
     title: $t("menus.pureMindMap"),
     rank: mind
   },

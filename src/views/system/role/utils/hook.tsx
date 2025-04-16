@@ -94,11 +94,11 @@ export function useRole(treeRef: Ref) {
   ];
   // const buttonClass = computed(() => {
   //   return [
-  //     "!h-[20px]",
+  //     "h-[20px]!",
   //     "reset-margin",
-  //     "!text-gray-500",
-  //     "dark:!text-white",
-  //     "dark:hover:!text-primary"
+  //     "text-gray-500!",
+  //     "dark:text-white!",
+  //     "dark:hover:text-primary!"
   //   ];
   // });
 
@@ -195,7 +195,7 @@ export function useRole(treeRef: Ref) {
       fullscreen: deviceDetection(),
       fullscreenIcon: true,
       closeOnClickModal: false,
-      contentRenderer: () => h(editForm, { ref: formRef }),
+      contentRenderer: () => h(editForm, { ref: formRef, formInline: null }),
       beforeSure: (done, { options }) => {
         const FormRef = formRef.value.getRef();
         const curData = options.props.formInline as FormItemProps;

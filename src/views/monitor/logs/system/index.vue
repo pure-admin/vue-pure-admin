@@ -5,9 +5,9 @@ import { getPickerShortcuts } from "../../utils";
 import { PureTableBar } from "@/components/RePureTableBar";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 
-import View from "@iconify-icons/ep/view";
-import Delete from "@iconify-icons/ep/delete";
-import Refresh from "@iconify-icons/ep/refresh";
+import View from "~icons/ep/view";
+import Delete from "~icons/ep/delete";
+import Refresh from "~icons/ep/refresh";
 
 defineOptions({
   name: "SystemLog"
@@ -42,14 +42,14 @@ const {
       ref="formRef"
       :inline="true"
       :model="form"
-      class="search-form bg-bg_color w-[99/100] pl-8 pt-[12px] overflow-auto"
+      class="search-form bg-bg_color w-full pl-8 pt-[12px] overflow-auto"
     >
       <el-form-item label="所属模块" prop="module">
         <el-input
           v-model="form.module"
           placeholder="请输入所属模块"
           clearable
-          class="!w-[170px]"
+          class="w-[170px]!"
         />
       </el-form-item>
       <el-form-item label="请求时间" prop="requestTime">
@@ -110,7 +110,7 @@ const {
           </div>
           <el-popconfirm title="是否确认删除?" @confirm="onbatchDel">
             <template #reference>
-              <el-button type="danger" text class="mr-1"> 批量删除 </el-button>
+              <el-button type="danger" text class="mr-1!"> 批量删除 </el-button>
             </template>
           </el-popconfirm>
         </div>
@@ -125,8 +125,7 @@ const {
           :adaptiveConfig="{ offsetBottom: 108 }"
           :data="dataList"
           :columns="dynamicColumns"
-          :pagination="pagination"
-          :paginationSmall="size === 'small' ? true : false"
+          :pagination="{ ...pagination, size }"
           :header-cell-style="{
             background: 'var(--el-fill-color-light)',
             color: 'var(--el-text-color-primary)'
@@ -138,7 +137,7 @@ const {
         >
           <template #operation="{ row }">
             <el-button
-              class="reset-margin !outline-none"
+              class="reset-margin outline-hidden!"
               link
               type="primary"
               :size="size"
@@ -154,7 +153,7 @@ const {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 :deep(.el-dropdown-menu__item i) {
   margin: 0;
 }

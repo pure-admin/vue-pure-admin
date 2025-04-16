@@ -94,7 +94,7 @@ const handleInputConfirm = () => {
       </el-link>
     </template>
 
-    <p class="mb-2">基础按钮</p>
+    <div class="mb-2">基础按钮</div>
     <el-radio-group v-model="baseTag" class="mb-3">
       <el-radio label="dark" value="dark" />
       <el-radio label="light" value="light" />
@@ -107,7 +107,7 @@ const handleInputConfirm = () => {
         v-model="checked1"
         label="可移除"
       />
-      <el-button v-else size="small" text bg class="mr-6" @click="onReset">
+      <el-button v-else size="small" text bg class="mr-6!" @click="onReset">
         重置
       </el-button>
       <el-button
@@ -115,7 +115,7 @@ const handleInputConfirm = () => {
         size="small"
         text
         bg
-        class="mr-6 ml-4"
+        class="mr-6! ml-4!"
         @click="tagList = []"
       >
         移除全部
@@ -140,7 +140,7 @@ const handleInputConfirm = () => {
     </el-space>
     <el-divider />
 
-    <p class="mb-2">动态编辑标签</p>
+    <div class="mb-2">动态编辑标签</div>
     <el-tag
       v-for="tag in dynamicTags"
       :key="tag"
@@ -156,14 +156,14 @@ const handleInputConfirm = () => {
       v-if="inputVisible"
       ref="InputRef"
       v-model="inputValue"
-      class="ml-1 !w-20"
+      class="ml-1 w-20!"
       size="small"
       @keyup.enter="handleInputConfirm"
       @blur="handleInputConfirm"
     />
     <el-button
       v-else
-      class="button-new-tag ml-1"
+      class="button-new-tag ml-1!"
       size="small"
       @click="showInput"
     >

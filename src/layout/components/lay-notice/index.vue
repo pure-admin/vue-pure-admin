@@ -3,7 +3,7 @@ import { useI18n } from "vue-i18n";
 import { ref, computed } from "vue";
 import { noticesData } from "./data";
 import NoticeList from "./components/NoticeList.vue";
-import BellIcon from "@iconify-icons/ep/bell";
+import BellIcon from "~icons/ep/bell";
 
 const { t } = useI18n();
 const noticesNum = ref(0);

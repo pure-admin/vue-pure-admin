@@ -15,7 +15,7 @@ const router = useRouter();
     <div class="ml-12">
       <p
         v-motion
-        class="font-medium text-4xl mb-4 dark:text-white"
+        class="font-medium text-4xl mb-4! dark:text-white"
         :initial="{
           opacity: 0,
           y: 100
@@ -32,7 +32,7 @@ const router = useRouter();
       </p>
       <p
         v-motion
-        class="mb-4 text-gray-500"
+        class="mb-4! text-gray-500"
         :initial="{
           opacity: 0,
           y: 100

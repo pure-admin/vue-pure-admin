@@ -2,13 +2,13 @@
 import { hasAuth, getAuths } from "@/router/utils";
 
 defineOptions({
-  name: "PermissionButton"
+  name: "PermissionButtonRouter"
 });
 </script>
 
 <template>
   <div>
-    <p class="mb-2">当前拥有的code列表：{{ getAuths() }}</p>
+    <p class="mb-2!">当前拥有的code列表：{{ getAuths() }}</p>
 
     <el-card shadow="never" class="mb-2">
       <template #header>

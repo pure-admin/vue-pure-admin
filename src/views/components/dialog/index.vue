@@ -280,11 +280,11 @@ function onUpdateClick() {
   });
 }
 
-// popconfirm 确认框
+// Popconfirm 确认框
 function onPopconfirmClick() {
   addDialog({
     width: "30%",
-    title: "popconfirm确认框示例",
+    title: "Popconfirm确认框示例",
     popconfirm: { title: "是否确认修改当前数据" },
     contentRenderer: () => <p>点击右下方确定按钮看看效果吧</p>
   });
@@ -450,6 +450,19 @@ function onBeforeSureClick() {
     }
   });
 }
+
+function onSureBtnLoading() {
+  addDialog({
+    sureBtnLoading: true,
+    title: "点击底部确定按钮可开启按钮动画",
+    contentRenderer: () => <p>弹框内容-点击底部确定按钮可开启按钮动画</p>,
+    beforeSure: (done, { closeLoading }) => {
+      // closeLoading() // 关闭确定按钮动画，不关闭弹框
+      // done() // 关闭确定按钮动画并关闭弹框
+      setTimeout(() => done(), 800);
+    }
+  });
+}
 </script>
 
 <template>
@@ -506,7 +519,7 @@ function onBeforeSureClick() {
       <el-button @click="onCloseCallBackClick"> 关闭后的回调 </el-button>
       <el-button @click="onNestingClick"> 嵌套的弹框 </el-button>
       <el-button @click="onUpdateClick"> 更改弹框自身属性值 </el-button>
-      <el-button @click="onPopconfirmClick">popconfirm确认框</el-button>
+      <el-button @click="onPopconfirmClick">Popconfirm确认框</el-button>
     </el-space>
     <el-divider />
     <el-space wrap>
@@ -533,6 +546,9 @@ function onBeforeSureClick() {
       </el-button>
       <el-button @click="onBeforeSureClick">
         点击底部确定按钮的回调（会暂停弹框的关闭，经常用于新增、修改弹框内容后调用接口）
+      </el-button>
+      <el-button @click="onSureBtnLoading">
+        点击底部确定按钮可开启按钮动画
       </el-button>
     </el-space>
   </el-card>

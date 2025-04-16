@@ -6,7 +6,7 @@ export interface OptionsType {
   label?: string | (() => VNode | Component);
   /**
    * @description 图标，采用平台内置的 `useRenderIcon` 函数渲染
-   * @see {@link 用法参考 https://pure-admin.github.io/pure-admin-doc/pages/icon/#%E9%80%9A%E7%94%A8%E5%9B%BE%E6%A0%87-userendericon-hooks }
+   * @see {@link 用法参考 https://pure-admin.cn/pages/icon/#%E9%80%9A%E7%94%A8%E5%9B%BE%E6%A0%87-userendericon-hooks }
    */
   icon?: string | Component;
   /** 图标属性、样式配置 */

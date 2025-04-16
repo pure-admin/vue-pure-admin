@@ -18,11 +18,11 @@ import {
   useResizeObserver
 } from "@pureadmin/utils";
 
-import ExitFullscreen from "@iconify-icons/ri/fullscreen-exit-fill";
-import Fullscreen from "@iconify-icons/ri/fullscreen-fill";
-import ArrowDown from "@iconify-icons/ri/arrow-down-s-line";
-import ArrowRightSLine from "@iconify-icons/ri/arrow-right-s-line";
-import ArrowLeftSLine from "@iconify-icons/ri/arrow-left-s-line";
+import ExitFullscreen from "~icons/ri/fullscreen-exit-fill";
+import Fullscreen from "~icons/ri/fullscreen-fill";
+import ArrowDown from "~icons/ri/arrow-down-s-line";
+import ArrowRightSLine from "~icons/ri/arrow-right-s-line";
+import ArrowLeftSLine from "~icons/ri/arrow-left-s-line";
 
 const {
   Close,
@@ -511,6 +511,7 @@ function tagOnClick(item) {
   } else {
     router.push({ path });
   }
+  emitter.emit("tagOnClick", item);
 }
 
 onClickOutside(contextmenuRef, closeMenu, {
@@ -588,7 +589,7 @@ onBeforeUnmount(() => {
         >
           <template v-if="showModel !== 'chrome'">
             <span
-              class="tag-title dark:!text-text_color_primary dark:hover:!text-primary"
+              class="tag-title dark:text-text_color_primary! dark:hover:text-primary!"
             >
               {{ transformI18n(item.meta.title) }}
             </span>

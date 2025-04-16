@@ -90,9 +90,9 @@ export default defineComponent({
         ];
     // 取得每一层的当前节点是不是在当前层级列表的最后一个
     const lastnodeArr = [];
-    let currentNode = this.node;
+    let currentNode: any = this.node;
     while (currentNode) {
-      let parentNode = currentNode.parent;
+      let parentNode: any = currentNode.parent;
       // 兼容element-plus的 el-tree-v2 (Virtualized Tree 虚拟树)
       if (currentNode.level === 1 && !currentNode.parent) {
         // el-tree-v2的第一层node是没有parent的，必需 treeData 创建一个parent

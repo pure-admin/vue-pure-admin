@@ -76,6 +76,8 @@ menus:
   pureLoginLog: 登录日志
   pureOperationLog: 操作日志
   pureSystemLog: 系统日志
+  pureCodeMirror: 代码编辑器
+  pureMarkdown: Markdown
   pureEditor: 编辑器
   pureAbnormal: 异常页面
   pureFourZeroFour: "404"
@@ -83,6 +85,7 @@ menus:
   pureFive: "500"
   pureComponents: 组件
   pureDialog: 函数式弹框
+  pureDrawer: 函数式抽屉
   pureMessage: 消息提示
   pureVideo: 视频
   pureSegmented: 分段控制器
@@ -91,6 +94,7 @@ menus:
   pureDraggable: 拖拽
   pureSplitPane: 切割面板
   pureText: 文本省略
+  pureSlider: 滑块
   pureElButton: 按钮
   pureCheckButton: 可选按钮
   pureButton: 按钮动效
@@ -125,6 +129,8 @@ menus:
   purePermission: 权限管理
   purePermissionPage: 页面权限
   purePermissionButton: 按钮权限
+  purePermissionButtonRouter: 路由返回按钮权限
+  purePermissionButtonLogin: 登录接口返回按钮权限
   pureTabs: 标签页操作
   pureGuide: 引导页
   pureAble: 功能

@@ -76,6 +76,8 @@ menus:
   pureLoginLog: Login Log
   pureOperationLog: Operation Log
   pureSystemLog: System Log
+  pureCodeMirror: CodeMirror
+  pureMarkdown: Markdown
   pureEditor: Editor
   pureAbnormal: Abnormal Page
   pureFourZeroFour: "404"
@@ -83,6 +85,7 @@ menus:
   pureFive: "500"
   pureComponents: Components
   pureDialog: Dialog
+  pureDrawer: Drawer
   pureMessage: Message Tips
   pureVideo: Video
   pureSegmented: Segmented
@@ -91,6 +94,7 @@ menus:
   pureDraggable: Draggable
   pureSplitPane: Split Pane
   pureText: Text Ellipsis
+  pureSlider: Slider
   pureElButton: Button
   pureButton: Button Animation
   pureCheckButton: Check Button
@@ -125,6 +129,8 @@ menus:
   purePermission: Permission Manage
   purePermissionPage: Page Permission
   purePermissionButton: Button Permission
+  purePermissionButtonRouter: Route return button permission
+  purePermissionButtonLogin: Login interface return button permission
   pureTabs: Tabs Operate
   pureGuide: Guide
   pureAble: Able

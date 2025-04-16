@@ -4,8 +4,8 @@ import { useRole } from "./hook";
 import { PureTableBar } from "@/components/RePureTableBar";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 
-import Plane from "@iconify-icons/ri/plane-line";
-import Refresh from "@iconify-icons/ep/refresh";
+import Plane from "~icons/ri/plane-line";
+import Refresh from "~icons/ep/refresh";
 
 defineOptions({
   name: "OnlineUser"
@@ -33,14 +33,14 @@ const {
       ref="formRef"
       :inline="true"
       :model="form"
-      class="search-form bg-bg_color w-[99/100] pl-8 pt-[12px] overflow-auto"
+      class="search-form bg-bg_color w-full pl-8 pt-[12px] overflow-auto"
     >
       <el-form-item label="用户名" prop="username">
         <el-input
           v-model="form.username"
           placeholder="请输入用户名"
           clearable
-          class="!w-[180px]"
+          class="w-[180px]!"
         />
       </el-form-item>
       <el-form-item>
@@ -74,8 +74,7 @@ const {
           :adaptiveConfig="{ offsetBottom: 108 }"
           :data="dataList"
           :columns="dynamicColumns"
-          :pagination="pagination"
-          :paginationSmall="size === 'small' ? true : false"
+          :pagination="{ ...pagination, size }"
           :header-cell-style="{
             background: 'var(--el-fill-color-light)',
             color: 'var(--el-text-color-primary)'
@@ -108,7 +107,7 @@ const {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 :deep(.el-dropdown-menu__item i) {
   margin: 0;
 }

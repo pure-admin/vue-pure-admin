@@ -5,7 +5,7 @@ export default {
   path: "/form",
   redirect: "/form/index",
   meta: {
-    icon: "ri:edit-box-line",
+    icon: "ri/edit-box-line",
     title: $t("menus.pureSchemaForm"),
     rank: form
   },
@@ -15,8 +15,7 @@ export default {
       name: "SchemaForm",
       component: () => import("@/views/schema-form/index.vue"),
       meta: {
-        title: $t("menus.pureSchemaForm"),
-        extraIcon: "IF-pure-iconfont-new svg"
+        title: $t("menus.pureSchemaForm")
       }
     }
   ]

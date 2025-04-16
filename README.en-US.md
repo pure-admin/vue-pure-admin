@@ -28,20 +28,20 @@ The simplified version is based on the shelf extracted from [vue-pure-admin](htt
 
 ## Nanny-level documents
 
-[Click me to view vue-pure-admin documentation](https://pure-admin.github.io/pure-admin-doc)  
+[Click me to view vue-pure-admin documentation](https://pure-admin.cn/)  
 [Click me to view @pureadmin/utils documentation](https://pure-admin-utils.netlify.app)
 
 ## Quality service, software outsourcing, sponsorship support
 
-[Click me for details](https://pure-admin.github.io/pure-admin-doc/pages/service/)
+[Click me for details](https://pure-admin.cn/pages/service/)
 
 ## `js` version
 
-[Click me to view js version](https://pure-admin.github.io/pure-admin-doc/pages/js/)
+[Click me to view js version](https://pure-admin.cn/pages/js/)
 
 ## `max` version
 
-[Click me to view the max version](https://github.com/pure-admin/vue-pure-admin-max)
+[Click me to view the max version](https://pure-admin.cn/pages/max/)
 
 ## Tauri
 
@@ -191,6 +191,7 @@ Thank you very much for your in-depth understanding of the source code and your 
 |     [QFifteen](https://github.com/QFifteen)     |   [code](https://github.com/pure-admin/vue-pure-admin/commits?author=QFifteen)   |
 |      [edgexie](https://github.com/edgexie)      |   [code](https://github.com/pure-admin/vue-pure-admin/commits?author=edgexie)    |
 |       [way-jm](https://github.com/way-jm)       |    [code](https://github.com/pure-admin/vue-pure-admin/commits?author=way-jm)    |
+|   [simple-hui](https://github.com/simple-hui)   |  [code](https://github.com/pure-admin/vue-pure-admin/commits?author=simple-hui)  |
 
 ## Git Contribution submission specification
 

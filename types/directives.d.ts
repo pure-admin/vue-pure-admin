@@ -5,7 +5,7 @@ declare module "vue" {
   export interface ComponentCustomProperties {
     /** `Loading` 动画加载指令，具体看：https://element-plus.org/zh-CN/component/loading.html#%E6%8C%87%E4%BB%A4 */
     vLoading: Directive<Element, boolean>;
-    /** 按钮权限指令 */
+    /** 按钮权限指令（根据路由`meta`中的`auths`字段进行判断）*/
     vAuth: Directive<HTMLElement, string | Array<string>>;
     /** 文本复制指令（默认双击复制） */
     vCopy: Directive<CopyEl, string>;
@@ -13,6 +13,8 @@ declare module "vue" {
     vLongpress: Directive<HTMLElement, Function>;
     /** 防抖、节流指令 */
     vOptimize: Directive<HTMLElement, OptimizeOptions>;
+    /** 按钮权限指令（根据登录接口返回的`permissions`字段进行判断）*/
+    vPerms: Directive<HTMLElement, string | Array<string>>;
     /**
      * `v-ripple`指令，用法如下：
      * 1. `v-ripple`代表启用基本的`ripple`功能

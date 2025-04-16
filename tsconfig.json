@@ -4,10 +4,11 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "strict": false,
+    "strictFunctionTypes": false,
+    "noImplicitThis": true,
     "jsx": "preserve",
     "importHelpers": true,
     "experimentalDecorators": true,
-    "strictFunctionTypes": false,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "isolatedModules": true,
@@ -34,6 +35,7 @@
       "vite/client",
       "element-plus/global",
       "@pureadmin/table/volar",
+      "unplugin-icons/types/vue",
       "@pureadmin/descriptions/volar"
     ]
   },

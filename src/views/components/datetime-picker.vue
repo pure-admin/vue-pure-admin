@@ -186,18 +186,18 @@ watch(size, val =>
       </el-link>
     </template>
 
-    <p class="mb-2">日期和时间点</p>
+    <div class="mb-2">日期和时间点</div>
     <el-date-picker
       v-model="value"
       type="datetime"
-      class="!w-[200px]"
+      class="w-[200px]!"
       placeholder="请选择日期时间"
       :shortcuts="shortcuts"
       :size="dynamicSize"
       :disabled="size === 'disabled'"
     />
 
-    <p class="mb-2 mt-4">日期时间格式</p>
+    <div class="mb-2 mt-4">日期时间格式</div>
     <el-radio-group
       v-model="datetimeFormat"
       class="mb-2"
@@ -213,7 +213,7 @@ watch(size, val =>
       <el-date-picker
         v-model="value1"
         type="datetime"
-        class="!w-[200px]"
+        class="w-[200px]!"
         placeholder="请选择日期时间"
         format="YYYY/MM/DD hh:mm:ss"
         :value-format="datetimeFormat"
@@ -223,7 +223,7 @@ watch(size, val =>
       <span class="ml-2">{{ value1 }}</span>
     </el-space>
 
-    <p class="mb-2 mt-4">日期和时间范围</p>
+    <div class="mb-2 mt-4">日期和时间范围</div>
     <el-date-picker
       v-model="value2"
       type="datetimerange"
@@ -238,9 +238,9 @@ watch(size, val =>
       :disabled="size === 'disabled'"
     />
 
-    <p class="mb-2 mt-4">
+    <div class="mb-2 mt-4">
       弹出面板位置可控（如果弹出位置不足以完整展示面板会自动调整位置）
-    </p>
+    </div>
     <el-space wrap class="w-[400px]">
       <el-check-tag
         v-for="(tag, index) in checkTag"

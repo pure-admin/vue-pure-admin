@@ -1,5 +1,6 @@
 import Adaptive from "./adaptive/index.vue";
 import Page from "./page/index.vue";
+import Header from "./header/index.vue";
 import RowDrag from "./drag/row/index.vue";
 import ColumnDrag from "./drag/column/index.vue";
 import Contextmenu from "./contextmenu/index.vue";
@@ -24,6 +25,12 @@ export const list = [
     content: rendContent("page"),
     title: "分页、加载动画、动态列",
     component: Page
+  },
+  {
+    key: "header",
+    content: rendContent("header"),
+    title: "动态表头",
+    component: Header
   },
   {
     key: "tableSelect",

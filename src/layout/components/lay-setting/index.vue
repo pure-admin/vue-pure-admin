@@ -14,15 +14,14 @@ import { emitter } from "@/utils/mitt";
 import LayPanel from "../lay-panel/index.vue";
 import { useNav } from "@/layout/hooks/useNav";
 import { useAppStoreHook } from "@/store/modules/app";
-import { toggleTheme } from "@pureadmin/theme/dist/browser-utils";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
 import Segmented, { type OptionsType } from "@/components/ReSegmented";
 import { useDataThemeChange } from "@/layout/hooks/useDataThemeChange";
 import { useDark, useGlobal, debounce, isNumber } from "@pureadmin/utils";
 
-import Check from "@iconify-icons/ep/check";
-import LeftArrow from "@iconify-icons/ri/arrow-left-s-line";
-import RightArrow from "@iconify-icons/ri/arrow-right-s-line";
+import Check from "~icons/ep/check";
+import LeftArrow from "~icons/ri/arrow-left-s-line?width=20&height=20";
+import RightArrow from "~icons/ri/arrow-right-s-line?width=20&height=20";
 import DayIcon from "@/assets/svg/day.svg?component";
 import DarkIcon from "@/assets/svg/dark.svg?component";
 import SystemIcon from "@/assets/svg/system.svg?component";
@@ -50,9 +49,7 @@ const {
 if (unref(layoutTheme)) {
   const layout = unref(layoutTheme).layout;
   const theme = unref(layoutTheme).theme;
-  toggleTheme({
-    scopeName: `layout-theme-${theme}`
-  });
+  document.documentElement.setAttribute("data-theme", theme);
   setLayoutModel(layout);
 }
 
@@ -192,7 +189,7 @@ const getThemeColor = computed(() => {
 });
 
 const pClass = computed(() => {
-  return ["mb-[12px]", "font-medium", "text-sm", "dark:text-white"];
+  return ["mb-[12px]!", "font-medium", "text-sm", "dark:text-white"];
 });
 
 const themeOptions = computed<Array<OptionsType>>(() => {
@@ -338,7 +335,7 @@ onUnmounted(() => removeMatchMedia);
         "
       />
 
-      <p :class="['mt-5', pClass]">{{ t("panel.pureThemeColor") }}</p>
+      <p :class="['mt-5!', pClass]">{{ t("panel.pureThemeColor") }}</p>
       <ul class="theme-color">
         <li
           v-for="(item, index) in themeColors"
@@ -357,7 +354,7 @@ onUnmounted(() => removeMatchMedia);
         </li>
       </ul>
 
-      <p :class="['mt-5', pClass]">{{ t("panel.pureLayoutModel") }}</p>
+      <p :class="['mt-5!', pClass]">{{ t("panel.pureLayoutModel") }}</p>
       <ul class="pure-theme">
         <li
           ref="verticalRef"
@@ -400,7 +397,7 @@ onUnmounted(() => removeMatchMedia);
       </ul>
 
       <span v-if="useAppStoreHook().getViewportWidth > 1280">
-        <p :class="['mt-5', pClass]">{{ t("panel.pureStretch") }}</p>
+        <p :class="['mt-5!', pClass]">{{ t("panel.pureStretch") }}</p>
         <Segmented
           resize
           class="mb-2 select-none"
@@ -429,21 +426,19 @@ onUnmounted(() => removeMatchMedia);
           >
             <IconifyIconOffline
               :icon="settings.stretch ? RightArrow : LeftArrow"
-              height="20"
             />
             <div
-              class="flex-grow border-b border-dashed"
+              class="grow border-0 border-b border-dashed"
               style="border-color: var(--el-color-primary)"
             />
             <IconifyIconOffline
               :icon="settings.stretch ? LeftArrow : RightArrow"
-              height="20"
             />
           </div>
         </button>
       </span>
 
-      <p :class="['mt-4', pClass]">{{ t("panel.pureTagsStyle") }}</p>
+      <p :class="['mt-4!', pClass]">{{ t("panel.pureTagsStyle") }}</p>
       <Segmented
         resize
         class="select-none"
@@ -452,7 +447,7 @@ onUnmounted(() => removeMatchMedia);
         @change="onChange"
       />
 
-      <p class="mt-5 font-medium text-sm dark:text-white">
+      <p class="mt-5! font-medium text-sm dark:text-white">
         {{ t("panel.pureInterfaceDisplay") }}
       </p>
       <ul class="setting">

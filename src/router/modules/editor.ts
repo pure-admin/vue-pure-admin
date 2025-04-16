@@ -5,7 +5,7 @@ export default {
   path: "/editor",
   redirect: "/editor/index",
   meta: {
-    icon: "ep:edit",
+    icon: "ep/edit",
     title: $t("menus.pureEditor"),
     rank: editor
   },

@@ -5,7 +5,7 @@ export default {
   path: "/components",
   redirect: "/components/dialog",
   meta: {
-    icon: "ep:menu",
+    icon: "ep/menu",
     title: $t("menus.pureComponents"),
     rank: components
   },
@@ -16,6 +16,14 @@ export default {
       component: () => import("@/views/components/dialog/index.vue"),
       meta: {
         title: $t("menus.pureDialog")
+      }
+    },
+    {
+      path: "/components/drawer",
+      name: "DrawerPage",
+      component: () => import("@/views/components/drawer/index.vue"),
+      meta: {
+        title: $t("menus.pureDrawer")
       }
     },
     {
@@ -39,8 +47,7 @@ export default {
       name: "CheckCard",
       component: () => import("@/views/components/check-card.vue"),
       meta: {
-        title: $t("menus.pureCheckCard"),
-        extraIcon: "IF-pure-iconfont-new svg"
+        title: $t("menus.pureCheckCard")
       }
     },
     {
@@ -104,7 +111,15 @@ export default {
       name: "PureText",
       component: () => import("@/views/components/text.vue"),
       meta: {
-        title: $t("menus.pureText"),
+        title: $t("menus.pureText")
+      }
+    },
+    {
+      path: "/components/slider",
+      name: "PureSlider",
+      component: () => import("@/views/components/slider/index.vue"),
+      meta: {
+        title: $t("menus.pureSlider"),
         extraIcon: "IF-pure-iconfont-new svg"
       }
     },
@@ -121,8 +136,7 @@ export default {
       name: "CheckButton",
       component: () => import("@/views/components/check-button.vue"),
       meta: {
-        title: $t("menus.pureCheckButton"),
-        extraIcon: "IF-pure-iconfont-new svg"
+        title: $t("menus.pureCheckButton")
       }
     },
     {

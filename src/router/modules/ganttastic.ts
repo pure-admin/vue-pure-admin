@@ -5,7 +5,7 @@ export default {
   path: "/ganttastic",
   redirect: "/ganttastic/index",
   meta: {
-    icon: "ri:bar-chart-horizontal-line",
+    icon: "ri/bar-chart-horizontal-line",
     title: $t("menus.pureGanttastic"),
     rank: ganttastic
   },
@@ -15,8 +15,7 @@ export default {
       name: "Ganttastic",
       component: () => import("@/views/ganttastic/index.vue"),
       meta: {
-        title: $t("menus.pureGanttastic"),
-        extraIcon: "IF-pure-iconfont-new svg"
+        title: $t("menus.pureGanttastic")
       }
     }
   ]

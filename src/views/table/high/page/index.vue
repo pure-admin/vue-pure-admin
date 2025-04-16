@@ -11,7 +11,6 @@ const {
   pagination,
   loadingConfig,
   paginationAlign,
-  paginationSmall,
   onChange,
   onSizeChange,
   onCurrentChange
@@ -43,9 +42,10 @@ const {
       </el-radio-group>
       <el-divider direction="vertical" />
       <p class="text-sm">分页大小：</p>
-      <el-radio-group v-model="paginationSmall" size="small" @change="onChange">
-        <el-radio-button :value="false">no small</el-radio-button>
-        <el-radio-button :value="true">small</el-radio-button>
+      <el-radio-group v-model="pagination.size" size="small" @change="onChange">
+        <el-radio-button value="large">large</el-radio-button>
+        <el-radio-button value="default">default</el-radio-button>
+        <el-radio-button value="small">small</el-radio-button>
       </el-radio-group>
       <el-divider direction="vertical" />
       <p class="text-sm">分页的对齐方式：</p>

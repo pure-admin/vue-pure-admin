@@ -2,8 +2,8 @@
 import { useColumns } from "./columns";
 import Empty from "../empty.svg?component";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
-import AddFill from "@iconify-icons/ep/plus";
-import Delete from "@iconify-icons/ep/delete";
+import AddFill from "~icons/ep/plus";
+import Delete from "~icons/ep/delete";
 
 const { columns, dataList, onAdd, onDel } = useColumns();
 </script>
@@ -31,7 +31,7 @@ const { columns, dataList, onAdd, onDel } = useColumns();
       <template #append>
         <el-button
           plain
-          class="w-full my-2"
+          class="w-full my-2!"
           :icon="useRenderIcon(AddFill)"
           @click="onAdd"
         >

@@ -11,11 +11,11 @@ import AccountManagement from "./components/AccountManagement.vue";
 import { useDataThemeChange } from "@/layout/hooks/useDataThemeChange";
 import LaySidebarTopCollapse from "@/layout/components/lay-sidebar/components/SidebarTopCollapse.vue";
 
-import leftLine from "@iconify-icons/ri/arrow-left-s-line";
-import ProfileIcon from "@iconify-icons/ri/user-3-line";
-import PreferencesIcon from "@iconify-icons/ri/settings-3-line";
-import SecurityLogIcon from "@iconify-icons/ri/window-line";
-import AccountManagementIcon from "@iconify-icons/ri/profile-line";
+import leftLine from "~icons/ri/arrow-left-s-line";
+import ProfileIcon from "~icons/ri/user-3-line";
+import PreferencesIcon from "~icons/ri/settings-3-line";
+import SecurityLogIcon from "~icons/ri/window-line";
+import AccountManagementIcon from "~icons/ri/profile-line";
 
 defineOptions({
   name: "AccountSettings"
@@ -70,12 +70,12 @@ getMine().then(res => {
   <el-container class="h-full">
     <el-aside
       v-if="isOpen"
-      class="pure-account-settings overflow-hidden px-2 dark:!bg-[var(--el-bg-color)] border-r-[1px] border-[var(--pure-border-color)]"
+      class="pure-account-settings overflow-hidden px-2 dark:bg-(--el-bg-color)! border-r-[1px] border-[var(--pure-border-color)]"
       :width="deviceDetection() ? '180px' : '240px'"
     >
       <el-menu :default-active="witchPane" class="pure-account-settings-menu">
         <el-menu-item
-          class="hover:!transition-all hover:!duration-200 hover:!text-base !h-[50px]"
+          class="hover:transition-all! hover:duration-200! hover:text-base! h-[50px]!"
           @click="router.go(-1)"
         >
           <div class="flex items-center">
@@ -86,10 +86,10 @@ getMine().then(res => {
         <div class="flex items-center ml-8 mt-4 mb-4">
           <el-avatar :size="48" :src="userInfo.avatar" />
           <div class="ml-4 flex flex-col max-w-[130px]">
-            <ReText class="font-bold !self-baseline">
+            <ReText class="font-bold self-baseline!">
               {{ userInfo.nickname }}
             </ReText>
-            <ReText class="!self-baseline" type="info">
+            <ReText class="self-baseline!" type="info">
               {{ userInfo.username }}
             </ReText>
           </div>
@@ -131,7 +131,7 @@ getMine().then(res => {
 
 <style lang="scss">
 .pure-account-settings {
-  background: $menuBg;
+  background: var(--pure-theme-menu-bg) !important;
 }
 
 .pure-account-settings-menu {
@@ -140,12 +140,12 @@ getMine().then(res => {
 
   .el-menu-item {
     height: 48px !important;
-    color: $menuText;
+    color: var(--pure-theme-menu-text);
     background-color: transparent !important;
     transition: color 0.2s;
 
     &:hover {
-      color: $menuTitleHover !important;
+      color: var(--pure-theme-menu-title-hover) !important;
     }
 
     &.is-active {
@@ -158,8 +158,8 @@ getMine().then(res => {
       &::before {
         position: absolute;
         inset: 0 8px;
-        margin: 4px 0;
         clear: both;
+        margin: 4px 0;
         content: "";
         background: var(--el-color-primary);
         border-radius: 3px;

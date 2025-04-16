@@ -7,6 +7,7 @@ declare module "vue" {
     IconifyIconOnline: (typeof import("../src/components/ReIcon"))["IconifyIconOnline"];
     FontIcon: (typeof import("../src/components/ReIcon"))["FontIcon"];
     Auth: (typeof import("../src/components/ReAuth"))["Auth"];
+    Perms: (typeof import("../src/components/RePerms"))["Perms"];
   }
 }
 
@@ -119,6 +120,7 @@ declare module "vue" {
   }
 
   interface ComponentCustomProperties {
+    $storage: ResponsiveStorage;
     $message: (typeof import("element-plus"))["ElMessage"];
     $notify: (typeof import("element-plus"))["ElNotification"];
     $msgbox: (typeof import("element-plus"))["ElMessageBox"];

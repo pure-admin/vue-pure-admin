@@ -83,7 +83,7 @@ const tableData: User[] = [
         <span class="font-medium">打印功能（报表、图表、图片）</span>
         <el-select
           v-model="value"
-          class="!w-[100px] mr-2"
+          class="w-[100px]! mr-2"
           placeholder="Select"
           size="small"
         >

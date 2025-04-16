@@ -119,7 +119,7 @@ export default defineComponent({
         "p-[6px]",
         "h-[30px]",
         "w-[30px]",
-        "outline-none",
+        "outline-hidden",
         "rounded-[4px]",
         "cursor-pointer",
         "hover:bg-[rgba(0,0,0,0.06)]"

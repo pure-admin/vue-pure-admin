@@ -9,8 +9,8 @@ type nodeListType = {
 };
 
 interface Props {
-  lf: LogicFlow;
-  nodeList: Array<nodeListType>;
+  lf?: LogicFlow;
+  nodeList?: Array<nodeListType>;
 }
 
 const props = withDefaults(defineProps<Props>(), {

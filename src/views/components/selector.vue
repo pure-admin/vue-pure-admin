@@ -49,7 +49,7 @@ const selectedVal = ({ left, right }): void => {
         :disabled="item.disabled"
         @selectedVal="selectedVal"
       />
-      <h4 v-if="!item.disabled" class="mt-3">选中范围：{{ selectRange }}</h4>
+      <h4 v-if="!item.disabled" class="mt-3!">选中范围：{{ selectRange }}</h4>
     </el-card>
   </div>
 </template>

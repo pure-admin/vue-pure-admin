@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import path from "path";
 import { getConfig } from "@/config";
+import { posix } from "path-browserify";
 import { menuType } from "@/layout/types";
 import { ReText } from "@/components/ReText";
 import { useNav } from "@/layout/hooks/useNav";
@@ -17,10 +17,10 @@ import {
   useAttrs
 } from "vue";
 
-import ArrowUp from "@iconify-icons/ep/arrow-up-bold";
-import EpArrowDown from "@iconify-icons/ep/arrow-down-bold";
-import ArrowLeft from "@iconify-icons/ep/arrow-left-bold";
-import ArrowRight from "@iconify-icons/ep/arrow-right-bold";
+import ArrowUp from "~icons/ep/arrow-up-bold";
+import EpArrowDown from "~icons/ep/arrow-down-bold";
+import ArrowLeft from "~icons/ep/arrow-left-bold";
+import ArrowRight from "~icons/ep/arrow-right-bold";
 
 const attrs = useAttrs();
 const { layout, isCollapse, tooltipEffect, getDivStyle } = useNav();
@@ -99,8 +99,7 @@ function resolvePath(routePath) {
   if (httpReg.test(routePath) || httpReg.test(props.basePath)) {
     return routePath || props.basePath;
   } else {
-    // 使用path.posix.resolve替代path.resolve 避免windows环境下使用electron出现盘符问题
-    return path.posix.resolve(props.basePath, routePath);
+    return posix.resolve(props.basePath, routePath);
   }
 }
 </script>
@@ -145,7 +144,7 @@ function resolvePath(routePath) {
             item?.pathList?.length === 2)
         "
         truncated
-        class="!w-full !pl-4 !text-inherit"
+        class="w-full! pl-4! text-inherit!"
       >
         {{ transformI18n(onlyOneChild.meta.title) }}
       </el-text>
@@ -157,7 +156,7 @@ function resolvePath(routePath) {
               offset: [0, -10],
               theme: tooltipEffect
             }"
-            class="!w-full !text-inherit"
+            class="w-full! text-inherit!"
           >
             {{ transformI18n(onlyOneChild.meta.title) }}
           </ReText>
@@ -197,9 +196,9 @@ function resolvePath(routePath) {
           theme: tooltipEffect
         }"
         :class="{
-          '!w-full': true,
-          '!text-inherit': true,
-          '!pl-4':
+          'w-full!': true,
+          'text-inherit!': true,
+          'pl-4!':
             layout !== 'horizontal' &&
             isCollapse &&
             !toRaw(item.meta.icon) &&

@@ -10,7 +10,7 @@ import zhLocale from "element-plus/es/locale/lang/zh-cn";
 
 const siphonI18n = (function () {
   // 仅初始化一次国际化配置
-  let cache = Object.fromEntries(
+  const cache = Object.fromEntries(
     Object.entries(
       import.meta.glob("../../locales/*.y(a)?ml", { eager: true })
     ).map(([key, value]: any) => {
@@ -50,7 +50,7 @@ function getObjectKeys(obj) {
       if (obj[k] && isObject(obj[k])) {
         stack.push({ obj: obj[k], key: newKey });
       } else {
-        keys.add(newKey);
+        keys.add(key);
       }
     }
   }

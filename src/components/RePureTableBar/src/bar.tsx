@@ -18,6 +18,8 @@ import {
   getKeyList
 } from "@pureadmin/utils";
 
+import Fullscreen from "~icons/ri/fullscreen-fill";
+import ExitFullscreen from "~icons/ri/fullscreen-exit-fill";
 import DragIcon from "@/assets/table-bar/drag.svg?component";
 import ExpandIcon from "@/assets/table-bar/expand.svg?component";
 import RefreshIcon from "@/assets/table-bar/refresh.svg?component";
@@ -52,11 +54,12 @@ const props = {
 export default defineComponent({
   name: "PureTableBar",
   props,
-  emits: ["refresh"],
+  emits: ["refresh", "fullscreen"],
   setup(props, { emit, slots, attrs }) {
     const size = ref("default");
     const loading = ref(false);
     const checkAll = ref(true);
+    const isFullscreen = ref(false);
     const isIndeterminate = ref(false);
     const instance = getCurrentInstance()!;
     const isExpandAll = ref(props.isExpandAll);
@@ -84,9 +87,9 @@ export default defineComponent({
         "text-black",
         "dark:text-white",
         "duration-100",
-        "hover:!text-primary",
+        "hover:text-primary!",
         "cursor-pointer",
-        "outline-none"
+        "outline-hidden"
       ];
     });
 
@@ -112,6 +115,11 @@ export default defineComponent({
     function onExpand() {
       isExpandAll.value = !isExpandAll.value;
       toggleRowExpansionAll(props.tableRef.data, isExpandAll.value);
+    }
+
+    function onFullscreen() {
+      isFullscreen.value = !isFullscreen.value;
+      emit("fullscreen", isFullscreen.value);
     }
 
     function toggleRowExpansionAll(data, isExpansion) {
@@ -244,7 +252,18 @@ export default defineComponent({
 
     return () => (
       <>
-        <div {...attrs} class="w-[99/100] mt-2 px-2 pb-2 bg-bg_color">
+        <div
+          {...attrs}
+          class={[
+            "w-full",
+            "px-2",
+            "pb-2",
+            "bg-bg_color",
+            isFullscreen.value
+              ? ["h-full!", "z-2002", "fixed", "inset-0"]
+              : "mt-2"
+          ]}
+        >
           <div class="flex justify-between w-full h-[60px] p-4">
             {slots?.title ? (
               slots.title()
@@ -298,7 +317,7 @@ export default defineComponent({
               >
                 <div class={[topClass.value]}>
                   <el-checkbox
-                    class="!-mr-1"
+                    class="-mr-1!"
                     label="列展示"
                     v-model={checkAll.value}
                     indeterminate={isIndeterminate.value}
@@ -328,8 +347,8 @@ export default defineComponent({
                                 class={[
                                   "drag-btn w-[16px] mr-2",
                                   isFixedColumn(item)
-                                    ? "!cursor-no-drop"
-                                    : "!cursor-grab"
+                                    ? "cursor-no-drop!"
+                                    : "cursor-grab!"
                                 ]}
                                 onMouseenter={(event: {
                                   preventDefault: () => void;
@@ -358,6 +377,14 @@ export default defineComponent({
                   </el-scrollbar>
                 </div>
               </el-popover>
+              <el-divider direction="vertical" />
+
+              <iconifyIconOffline
+                class={["w-[16px]", iconClass.value]}
+                icon={isFullscreen.value ? ExitFullscreen : Fullscreen}
+                v-tippy={isFullscreen.value ? "退出全屏" : "全屏"}
+                onClick={() => onFullscreen()}
+              />
             </div>
           </div>
           {slots.default({
