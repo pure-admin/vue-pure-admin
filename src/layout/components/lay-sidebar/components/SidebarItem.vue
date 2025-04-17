@@ -61,6 +61,21 @@ const getSubMenuIconStyle = computed((): CSSProperties => {
   };
 });
 
+const textClass = computed(() => {
+  const item = props.item;
+  const baseClass = "w-full! text-inherit!";
+  if (
+    layout.value !== "horizontal" &&
+    isCollapse.value &&
+    !toRaw(item.meta.icon) &&
+    ((layout.value === "vertical" && item.parentId === null) ||
+      (layout.value === "mix" && item.parentId !== 0))
+  ) {
+    return `${baseClass} min-w-[54px]! text-center! px-3!`;
+  }
+  return baseClass;
+});
+
 const expandCloseIcon = computed(() => {
   if (!getConfig()?.MenuArrowIconNoTransition) return "";
   return {
@@ -144,7 +159,7 @@ function resolvePath(routePath) {
             item?.pathList?.length === 2)
         "
         truncated
-        class="w-full! pl-4! text-inherit!"
+        class="w-full! px-3! min-w-[54px]! text-center! text-inherit!"
       >
         {{ transformI18n(onlyOneChild.meta.title) }}
       </el-text>
@@ -195,15 +210,7 @@ function resolvePath(routePath) {
           offset: [0, -10],
           theme: tooltipEffect
         }"
-        :class="{
-          'w-full!': true,
-          'text-inherit!': true,
-          'pl-4!':
-            layout !== 'horizontal' &&
-            isCollapse &&
-            !toRaw(item.meta.icon) &&
-            item.parentId === null
-        }"
+        :class="textClass"
       >
         {{ transformI18n(item.meta.title) }}
       </ReText>
