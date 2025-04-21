@@ -192,6 +192,7 @@ Thank you very much for your in-depth understanding of the source code and your 
 |      [edgexie](https://github.com/edgexie)      |   [code](https://github.com/pure-admin/vue-pure-admin/commits?author=edgexie)    |
 |       [way-jm](https://github.com/way-jm)       |    [code](https://github.com/pure-admin/vue-pure-admin/commits?author=way-jm)    |
 |   [simple-hui](https://github.com/simple-hui)   |  [code](https://github.com/pure-admin/vue-pure-admin/commits?author=simple-hui)  |
+|   [tinysimple](https://github.com/tinysimple)   |  [code](https://github.com/pure-admin/vue-pure-admin/commits?author=tinysimple)  |
 
 ## Git Contribution submission specification
 
