@@ -10,9 +10,9 @@ import { usePermissionStoreHook } from "@/store/modules/permission";
 import {
   isUrl,
   openLink,
-  storageLocal,
+  cloneDeep,
   isAllEmpty,
-  cloneDeep
+  storageLocal
 } from "@pureadmin/utils";
 import {
   ascending,
@@ -27,9 +27,9 @@ import {
 } from "./utils";
 import {
   type Router,
-  createRouter,
   type RouteRecordRaw,
-  type RouteComponent
+  type RouteComponent,
+  createRouter
 } from "vue-router";
 import {
   type DataInfo,
@@ -61,7 +61,7 @@ export const constantRoutes: Array<RouteRecordRaw> = formatTwoStageRoutes(
   formatFlatteningRoutes(buildHierarchyTree(ascending(routes.flat(Infinity))))
 );
 
-/** 初始的静态路由，用来在退出登陆时重置路由 */
+/** 初始的静态路由，用于退出登陆时重置路由 */
 const initConstantRoutes: Array<RouteRecordRaw> = cloneDeep(constantRoutes);
 
 /** 用于渲染菜单，保持原始层级 */
