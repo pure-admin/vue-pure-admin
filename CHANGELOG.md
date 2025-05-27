@@ -31,7 +31,7 @@
 
 ### ✔️Refactor
 
-- Upgrade `vite` to `v6` version, upgrade `sass` to the latest version, reconstruct the theme writing method, and deprecate [@pureadmin/theme](https://www.npmjs.com/package/@pureadmin/theme) , click to view [Related optimization point details](https://github.com/pure-admin/vue-pure-admin/pull/1188#issue-2630095115). For users who have the [Max version](https://pure-admin.cn/pages/max/), it is strongly recommended to upgrade. Subsequent Max version users will enjoy a more modern, beautiful and highly customized theme color
+- Upgrade `vite` to `v6` version, upgrade `sass` to the latest version, reconstruct the theme writing method, and deprecate [@pureadmin/theme](https://www.npmjs.com/package/@pureadmin/theme) , click to view [Related optimization point details](https://github.com/pure-admin/vue-pure-admin/pull/1188#issue-2630095115). For users who have the [Max version](https://pure-admin.cn/pages/service/#max-%E7%89%88%E6%9C%AC), it is strongly recommended to upgrade. Subsequent Max version users will enjoy a more modern, beautiful and highly customized theme color
 - Use [code-inspector-plugin](https://www.npmjs.com/package/code-inspector-plugin) to replace [vite-plugin-vue-inspector](https://www.npmjs.com/package/vite-plugin-vue-inspector)
 
 ### 🎫Feat

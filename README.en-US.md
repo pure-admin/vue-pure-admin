@@ -31,17 +31,9 @@ The simplified version is based on the shelf extracted from [vue-pure-admin](htt
 [Click me to view vue-pure-admin documentation](https://pure-admin.cn/)  
 [Click me to view @pureadmin/utils documentation](https://pure-admin-utils.netlify.app)
 
-## Quality service, software outsourcing, sponsorship support
+## Premium service
 
 [Click me for details](https://pure-admin.cn/pages/service/)
-
-## `js` version
-
-[Click me to view js version](https://pure-admin.cn/pages/js/)
-
-## `max` version
-
-[Click me to view the max version](https://pure-admin.cn/pages/max/)
 
 ## Tauri
 
