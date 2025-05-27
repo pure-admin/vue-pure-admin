@@ -1,1 +1,0 @@
-import{t as o}from"./data-nWhaHp21.js";import{d as r,b as t,e as n,h as p,u as s}from"./index-BY53z-3q.js";const d=r({__name:"border",setup(l){const e=[{label:"日期",prop:"date"},{label:"姓名",prop:"name"},{label:"地址",prop:"address"}];return(c,_)=>{const a=p("pure-table");return n(),t(a,{data:s(o),columns:e,border:""},null,8,["data"])}}});export{d as _};

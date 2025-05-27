@@ -1,1 +1,0 @@
-import{u as n}from"./hooks-CJCKH6wf.js";import{d as o,k as s,e as i,j as u,g as l,t as a,u as t}from"./index-BY53z-3q.js";const f=o({name:"TabQueryDetail",__name:"query-detail",setup(c){const{initToDetail:r,getParameter:e}=n();return r("query"),(m,p)=>(i(),s("div",null,[u(a(t(e).id)+" - 详情页内容在此（query传参） ",1),l("p",null,"当前页面参数为："+a(t(e)),1)]))}});export{f as default};
