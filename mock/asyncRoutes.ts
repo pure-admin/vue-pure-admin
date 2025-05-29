@@ -1,6 +1,13 @@
 // 模拟后端动态生成路由
 import { defineFakeRoute } from "vite-plugin-fake-server/client";
-import { system, monitor, permission, frame, tabs } from "@/router/enums";
+import {
+  system,
+  monitor,
+  permission,
+  frame,
+  tabs,
+  study
+} from "@/router/enums";
 
 /**
  * roles：页面级别权限，这里模拟二种 "admin"、"common"
@@ -320,6 +327,30 @@ const tabsRouter = {
   ]
 };
 
+const studyRouter = {
+  path: "/study",
+  meta: {
+    title: "学习",
+    rank: study
+  },
+  children: [
+    {
+      path: "/study/color",
+      name: "StudyColor",
+      meta: {
+        title: "颜色"
+      }
+    },
+    {
+      path: "/study/effort",
+      name: "Effort",
+      meta: {
+        title: "努力"
+      }
+    }
+  ]
+};
+
 export default defineFakeRoute([
   {
     url: "/get-async-routes",
@@ -332,7 +363,8 @@ export default defineFakeRoute([
           systemMonitorRouter,
           permissionRouter,
           frameRouter,
-          tabsRouter
+          tabsRouter,
+          studyRouter
         ]
       };
     }
