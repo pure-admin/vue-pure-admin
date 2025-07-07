@@ -13,10 +13,10 @@ $ripple-animation-visible-opacity: 0.25 !default;
     z-index: 0;
     width: 100%;
     height: 100%;
+    contain: strict;
     overflow: hidden;
     pointer-events: none;
     border-radius: inherit;
-    contain: strict;
   }
 
   &__animation {
