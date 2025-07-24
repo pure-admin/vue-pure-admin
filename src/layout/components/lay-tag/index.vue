@@ -254,7 +254,7 @@ function deleteDynamicTag(obj: any, current: any, tag?: string) {
   if (tag === "other") {
     spliceRoute(1, 1, true);
   } else if (tag === "left") {
-    spliceRoute(fixedTags.length, valueIndex - 1, true);
+    spliceRoute(fixedTags.length, valueIndex - fixedTags.length);
   } else if (tag === "right") {
     spliceRoute(valueIndex + 1, multiTags.value.length);
   } else {
