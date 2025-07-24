@@ -31,17 +31,9 @@ The simplified version is based on the shelf extracted from [vue-pure-admin](htt
 [Click me to view vue-pure-admin documentation](https://pure-admin.cn/)  
 [Click me to view @pureadmin/utils documentation](https://pure-admin-utils.netlify.app)
 
-## Quality service, software outsourcing, sponsorship support
+## Premium service
 
 [Click me for details](https://pure-admin.cn/pages/service/)
-
-## `js` version
-
-[Click me to view js version](https://pure-admin.cn/pages/js/)
-
-## `max` version
-
-[Click me to view the max version](https://pure-admin.cn/pages/max/)
 
 ## Tauri
 
@@ -192,6 +184,7 @@ Thank you very much for your in-depth understanding of the source code and your 
 |      [edgexie](https://github.com/edgexie)      |   [code](https://github.com/pure-admin/vue-pure-admin/commits?author=edgexie)    |
 |       [way-jm](https://github.com/way-jm)       |    [code](https://github.com/pure-admin/vue-pure-admin/commits?author=way-jm)    |
 |   [simple-hui](https://github.com/simple-hui)   |  [code](https://github.com/pure-admin/vue-pure-admin/commits?author=simple-hui)  |
+|   [tinysimple](https://github.com/tinysimple)   |  [code](https://github.com/pure-admin/vue-pure-admin/commits?author=tinysimple)  |
 
 ## Git Contribution submission specification
 

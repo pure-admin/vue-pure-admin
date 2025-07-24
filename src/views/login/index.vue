@@ -340,7 +340,7 @@ watch(loginDay, value => {
     >
       Copyright © 2020-2025
       <a
-        class="hover:text-primary"
+        class="hover:text-primary!"
         href="https://github.com/pure-admin"
         target="_blank"
       >

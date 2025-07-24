@@ -33,10 +33,10 @@
     }
     l();
   }
-  (t = function () {
+  ((t = function () {
     var e,
       t = document.createElement("div");
-    (t.innerHTML = i),
+    ((t.innerHTML = i),
       (i = null),
       (t = t.getElementsByTagName("svg")[0]) &&
         ((t.style.position = "absolute"),
@@ -44,13 +44,15 @@
         (t.style.height = 0),
         (t.style.overflow = "hidden"),
         (t = t),
-        (e = document.body).firstChild ? m(t, e.firstChild) : e.appendChild(t));
+        (e = document.body).firstChild
+          ? m(t, e.firstChild)
+          : e.appendChild(t)));
   }),
     document.addEventListener
       ? ~["complete", "loaded", "interactive"].indexOf(document.readyState)
         ? setTimeout(t, 0)
         : ((n = function () {
-            document.removeEventListener("DOMContentLoaded", n, !1), t();
+            (document.removeEventListener("DOMContentLoaded", n, !1), t());
           }),
           document.addEventListener("DOMContentLoaded", n, !1))
       : document.attachEvent &&
@@ -60,5 +62,5 @@
         a(),
         (o.onreadystatechange = function () {
           "complete" == o.readyState && ((o.onreadystatechange = null), l());
-        }));
+        })));
 })(window);

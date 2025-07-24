@@ -74,15 +74,17 @@ getMine().then(res => {
       :width="deviceDetection() ? '180px' : '240px'"
     >
       <el-menu :default-active="witchPane" class="pure-account-settings-menu">
-        <el-menu-item
-          class="hover:transition-all! hover:duration-200! hover:text-base! h-[50px]!"
+        <div
+          class="h-[50px]! text-[var(--pure-theme-menu-text)] cursor-pointer text-sm transition-all duration-300 ease-in-out hover:scale-105 will-change-transform transform-gpu origin-center hover:text-base! hover:text-[var(--pure-theme-menu-title-hover)]!"
           @click="router.go(-1)"
         >
-          <div class="flex items-center">
+          <div
+            class="h-full flex items-center px-[var(--el-menu-base-level-padding)]"
+          >
             <IconifyIconOffline :icon="leftLine" />
             <span class="ml-2">返回</span>
           </div>
-        </el-menu-item>
+        </div>
         <div class="flex items-center ml-8 mt-4 mb-4">
           <el-avatar :size="48" :src="userInfo.avatar" />
           <div class="ml-4 flex flex-col max-w-[130px]">
