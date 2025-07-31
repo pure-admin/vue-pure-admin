@@ -1,3 +1,20 @@
+# 6.1.0 (2025-07-31)
+
+### ✔️ Refactor
+
+- 升级至`vite7`，更新依赖，相关兼容处理
+
+### 🐞 Bug fixes
+
+- 修复`ReSegmented`分段控制器组件在浅色和深色整体风格切换时的闪烁问题
+- 修复`resetRouter`未清空全部路由数据问题
+- 修复标签页-关闭左侧标签页关闭异常问题
+
+### 🍏 Perf
+
+- 优化导航样式
+- 升级`@pureadmin/table`兼容最新版`element-plus`的`el-table`的所有`API`
+
 # 6.0.0 (2025-04-10)
 
 ### ✔️ Refactor
