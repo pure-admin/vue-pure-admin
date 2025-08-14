@@ -1,3 +1,20 @@
+# 6.1.0 (2025-07-31)
+
+### ✔️ Refactor
+
+- Upgrade to `vite7`, update dependencies, and related compatibility processing
+
+### 🐞 Bug fixes
+
+- Fixed a flickering issue in the `ReSegmented` segmented controller component when switching between light and dark styles
+- Fixed an issue where `resetRouter` did not clear all routing data
+- Fixed an issue where closing the left tab in the tabs window did not work properly
+
+### 🍏 Perf
+
+- Optimized navigation styles
+- Upgraded `@pureadmin/table` to be compatible with all `el-table` APIs in the latest `element-plus` version.
+
 # 6.0.0 (2025-04-10)
 
 ### ✔️ Refactor
