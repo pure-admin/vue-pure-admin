@@ -6,6 +6,7 @@ export const routerArrays: Array<RouteConfigs> =
     ? [
         {
           path: "/welcome",
+          name: "Welcome",
           meta: {
             title: "menus.pureHome",
             icon: "ep/home-filled"
