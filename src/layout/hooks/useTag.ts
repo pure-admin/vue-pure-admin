@@ -114,14 +114,21 @@ export function useTags() {
   ]);
 
   function conditionHandle(item, previous, next) {
+    const currentName = route.name || "";
+    const itemName = item.name || "";
+
     if (isBoolean(route?.meta?.showLink) && route?.meta?.showLink === false) {
       if (Object.keys(route.query).length > 0) {
-        return isEqual(route.query, item.query) ? previous : next;
+        return currentName === itemName && isEqual(route.query, item.query)
+          ? previous
+          : next;
       } else {
-        return isEqual(route.params, item.params) ? previous : next;
+        return currentName === itemName && isEqual(route.params, item.params)
+          ? previous
+          : next;
       }
     } else {
-      return route.path === item.path ? previous : next;
+      return currentName === itemName ? previous : next;
     }
   }
 
