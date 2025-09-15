@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { $t } from "@/plugins/i18n";
 import { emitter } from "@/utils/mitt";
+import NProgress from "@/utils/progress";
 import { RouteConfigs } from "../../types";
 import { useTags } from "../../hooks/useTag";
 import { routerArrays } from "@/layout/types";
@@ -206,12 +207,14 @@ function dynamicRouteTag(value: string): void {
 
 /** 刷新路由 */
 function onFresh() {
+  NProgress.start();
   const { fullPath, query } = unref(route);
   router.replace({
     path: "/redirect" + fullPath,
     query
   });
   handleAliveRoute(route as ToRouteType, "refresh");
+  NProgress.done();
 }
 
 function deleteDynamicTag(obj: any, current: any, tag?: string) {
