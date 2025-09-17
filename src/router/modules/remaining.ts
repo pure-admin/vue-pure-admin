@@ -18,7 +18,7 @@ export default [
     name: "AccessDenied",
     component: () => import("@/views/error/403.vue"),
     meta: {
-      title: $t("menus.pureFourZeroOne"),
+      title: $t("menus.pureAccessDenied"),
       showLink: false,
       rank: 102
     }
@@ -29,7 +29,7 @@ export default [
     name: "PageNotFound",
     component: () => import("@/views/error/404.vue"),
     meta: {
-      title: $t("menus.pureFourZeroFour"),
+      title: $t("menus.purePageNotFound"),
       showLink: false,
       rank: 103
     }
@@ -40,7 +40,7 @@ export default [
     name: "ServerError",
     component: () => import("@/views/error/500.vue"),
     meta: {
-      title: $t("menus.pureFive"),
+      title: $t("menus.pureServerError"),
       showLink: false,
       rank: 104
     }
