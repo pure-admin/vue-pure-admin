@@ -80,9 +80,9 @@ menus:
   pureMarkdown: Markdown
   pureEditor: 编辑器
   pureAbnormal: 异常页面
-  pureFourZeroFour: "404"
-  pureFourZeroOne: "403"
-  pureFive: "500"
+  purePageNotFound: "404"
+  pureAccessDenied: "403"
+  pureServerError: "500"
   pureComponents: 组件
   pureDialog: 函数式弹框
   pureDrawer: 函数式抽屉

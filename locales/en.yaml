@@ -80,9 +80,9 @@ menus:
   pureMarkdown: Markdown
   pureEditor: Editor
   pureAbnormal: Abnormal Page
-  pureFourZeroFour: "404"
-  pureFourZeroOne: "403"
-  pureFive: "500"
+  purePageNotFound: "404"
+  pureAccessDenied: "403"
+  pureServerError: "500"
   pureComponents: Components
   pureDialog: Dialog
   pureDrawer: Drawer
