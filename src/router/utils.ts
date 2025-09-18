@@ -139,16 +139,6 @@ function findRouteByPath(path: string, routes: RouteRecordRaw[]) {
   }
 }
 
-function addPathMatch() {
-  if (!router.hasRoute("pathMatch")) {
-    router.addRoute({
-      path: "/:pathMatch(.*)",
-      name: "pathMatch",
-      redirect: "/error/404"
-    });
-  }
-}
-
 /** 处理动态路由（后端返回的路由） */
 function handleAsyncRoutes(routeList) {
   if (routeList.length === 0) {
@@ -188,7 +178,6 @@ function handleAsyncRoutes(routeList) {
       )
     ]);
   }
-  addPathMatch();
 }
 
 /** 初始化路由（`new Promise` 写法防止在异步请求中造成无限循环）*/
@@ -397,7 +386,6 @@ export {
   filterTree,
   initRouter,
   getTopMenu,
-  addPathMatch,
   isOneOfArray,
   getHistoryMode,
   addAsyncRoutes,
