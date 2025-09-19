@@ -139,6 +139,21 @@ function findRouteByPath(path: string, routes: RouteRecordRaw[]) {
   }
 }
 
+/** 动态路由注册完成后，再添加全屏404（页面不存在）页面，避免刷新动态路由页面时误跳转到404页面 */
+function addPathMatch() {
+  if (!router.hasRoute("pathMatch")) {
+    router.addRoute({
+      path: "/:pathMatch(.*)*",
+      name: "PageNotFound",
+      component: () => import("@/views/error/404.vue"),
+      meta: {
+        title: "menus.purePageNotFound",
+        showLink: false
+      }
+    });
+  }
+}
+
 /** 处理动态路由（后端返回的路由） */
 function handleAsyncRoutes(routeList) {
   if (routeList.length === 0) {
@@ -178,6 +193,7 @@ function handleAsyncRoutes(routeList) {
       )
     ]);
   }
+  addPathMatch();
 }
 
 /** 初始化路由（`new Promise` 写法防止在异步请求中造成无限循环）*/
@@ -386,6 +402,7 @@ export {
   filterTree,
   initRouter,
   getTopMenu,
+  addPathMatch,
   isOneOfArray,
   getHistoryMode,
   addAsyncRoutes,
