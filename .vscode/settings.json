@@ -19,7 +19,8 @@
     "strings": true
   },
   "files.associations": {
-    "editor.snippetSuggestions": "top"
+    "editor.snippetSuggestions": "top",
+    "*.css": "tailwindcss"
   },
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
