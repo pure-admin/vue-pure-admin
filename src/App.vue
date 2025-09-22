@@ -55,22 +55,22 @@ export default defineComponent({
       );
     }
   },
-  mounted() {
-    ElNotification({
-      title: "平台最新活动与动态",
-      duration: 0,
-      customClass: "fullpage-notification",
-      // @ts-expect-error
-      style: { width: "260px" },
-      position: "bottom-right",
-      dangerouslyUseHTMLString: true,
-      message: `
-        <a target='_blank' class='block text-base text-center border mt-4 rounded hover:text-[red]!' href='https://pure-admin.cn/pages/service/#%E6%9C%80%E6%96%B0%E6%B4%BB%E5%8A%A8%E4%B8%8E%E5%8A%A8%E6%80%81'>
-        点我查看
-        </a>
-      `
-    });
-  }
+  // mounted() {
+  //   ElNotification({
+  //     title: "平台最新活动与动态",
+  //     duration: 0,
+  //     customClass: "fullpage-notification",
+  //     // @ts-expect-error
+  //     style: { width: "260px" },
+  //     position: "bottom-right",
+  //     dangerouslyUseHTMLString: true,
+  //     message: `
+  //       <a target='_blank' class='block text-base text-center border mt-4 rounded hover:text-[red]!' href='https://pure-admin.cn/pages/service/#%E6%9C%80%E6%96%B0%E6%B4%BB%E5%8A%A8%E4%B8%8E%E5%8A%A8%E6%80%81'>
+  //       点我查看
+  //       </a>
+  //     `
+  //   });
+  // }
 });
 </script>
 
