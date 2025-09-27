@@ -45,6 +45,7 @@ function init() {
   });
 }
 
+let isRedirect = false;
 watch(
   () => currentRoute.fullPath,
   path => {
@@ -52,12 +53,19 @@ watch(
       currentRoute.name === "Redirect" &&
       path.includes(props.frameInfo?.fullPath)
     ) {
-      frameSrc.value = path; // redirect时，置换成任意值，待重定向后 重新赋值
+      isRedirect = true;
       loading.value = true;
     }
     // 重新赋值
     if (props.frameInfo?.fullPath === path) {
       frameSrc.value = props.frameInfo?.frameSrc;
+      if (isRedirect) {
+        let joinChar = new URL(props.frameInfo.frameSrc)?.search ? "&" : "?";
+        frameSrc.value =
+          props.frameInfo.frameSrc + `${joinChar}t=` + Date.now();
+        hideLoading();
+      }
+      isRedirect = false;
     }
   }
 );
