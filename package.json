@@ -70,7 +70,7 @@
     "cropperjs": "^1.6.2",
     "dayjs": "^1.11.18",
     "deep-chat": "^2.2.2",
-    "echarts": "^5.6.0",
+    "echarts": "^6.0.0",
     "el-table-infinite-scroll": "^3.0.7",
     "element-plus": "^2.11.4",
     "highlight.js": "^11.11.1",
