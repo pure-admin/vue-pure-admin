@@ -1,3 +1,23 @@
+# 6.2.0 (2025-10-16)
+
+### 🎫 Features
+
+- Added full-screen `403`, `404`, and `500` error pages. These full-screen error pages are clear and secure, improving the user experience.
+
+### 🐞 Bug Fixes
+
+- Fixed an issue where the built-in homepage did not have a `name` configured, causing cache invalidation after setting the page cache.
+- Fixed an issue where, in an embedded same-origin `iframe` page, when the `beforeunload` event was registered, right-clicking a tab and reloading it would cause the browser to prompt two confirmation blocks.
+- Fixed an issue where pages with `keepAlive: true` set to cache invalidation when the initial load was slow.
+- Fixed an issue where multiple tabs could be activated simultaneously when using the same parameters in different routes.
+- Fixed an issue where the right-click menu on a tab displayed incorrectly when passing `params` parameters.
+
+### 🍏 Perf
+
+- Optimized the `nprogress` progress bar. It no longer displays when reloading a page or requesting an interface, improving the user experience.
+- Optimized the timing of capturing all unmatched routes and redirecting to a full-screen `404` page.
+- Explicitly configured the `Tailwind CSS` entry file path to improve the contextual recognition and prompting performance of the `Tailwind CSS IntelliSense` plugin
+
 # 6.1.0 (2025-07-31)
 
 ### ✔️ Refactor
