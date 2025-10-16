@@ -471,9 +471,6 @@ function openMenu(tag, e) {
     // 只有两个标签时不显示关闭其他标签页
     tagsViews[4].show = false;
     showMenuModel(tag.path, tag.query, tag.params);
-  } else if (route.path === tag.path) {
-    // 右键当前激活的菜单
-    showMenuModel(tag.path, tag.query, tag.params, true);
   } else {
     showMenuModel(tag.path, tag.query, tag.params, true);
   }
