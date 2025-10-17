@@ -68,7 +68,7 @@ onMounted(() => {
         <span class="font-medium">
           流程图组件，采用开源的
           <el-link
-            href="https://site.logic-flow.cn/docs/#/zh/guide/start"
+            href="https://site.logic-flow.cn/tutorial/get-started"
             target="_blank"
             style="margin: 0 4px 5px; font-size: 16px"
           >

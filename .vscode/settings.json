@@ -1,4 +1,5 @@
 {
+  "tailwindCSS.experimental.configFile": "src/style/tailwind.css",
   "editor.formatOnType": true,
   "editor.formatOnSave": true,
   "[vue]": {

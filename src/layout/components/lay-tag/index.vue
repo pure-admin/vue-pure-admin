@@ -356,7 +356,7 @@ function onClickDrop(key, item, selectRoute?: RouteConfigs) {
       break;
   }
   setTimeout(() => {
-    showMenuModel(route.fullPath, route.query);
+    showMenuModel(route.fullPath, route.query, route.params);
   });
 }
 
@@ -391,15 +391,18 @@ function disabledMenus(value: boolean, fixedTag = false) {
 function showMenuModel(
   currentPath: string,
   query: object = {},
+  params: object = {},
   refresh = false
 ) {
   const allRoute = multiTags.value;
   const routeLength = multiTags.value.length;
   let currentIndex = -1;
-  if (isAllEmpty(query)) {
-    currentIndex = allRoute.findIndex(v => v.path === currentPath);
-  } else {
+  if (!isAllEmpty(params)) {
+    currentIndex = allRoute.findIndex(v => isEqual(v.params, params));
+  } else if (!isAllEmpty(query)) {
     currentIndex = allRoute.findIndex(v => isEqual(v.query, query));
+  } else {
+    currentIndex = allRoute.findIndex(v => v.path === currentPath);
   }
   function fixedTagDisabled() {
     if (allRoute[currentIndex]?.meta?.fixedTag) {
@@ -465,14 +468,14 @@ function openMenu(tag, e) {
   } else if (route.path !== tag.path && route.name !== tag.name) {
     // 右键菜单不匹配当前路由，隐藏刷新
     tagsViews[0].show = false;
-    showMenuModel(tag.path, tag.query);
+    showMenuModel(tag.path, tag.query, tag.params);
   } else if (multiTags.value.length === 2 && route.path !== tag.path) {
     showMenus(true);
     // 只有两个标签时不显示关闭其他标签页
     tagsViews[4].show = false;
-  } else if (route.path === tag.path) {
-    // 右键当前激活的菜单
-    showMenuModel(tag.path, tag.query, true);
+    showMenuModel(tag.path, tag.query, tag.params);
+  } else {
+    showMenuModel(tag.path, tag.query, tag.params, true);
   }
 
   currentSelect.value = tag;
