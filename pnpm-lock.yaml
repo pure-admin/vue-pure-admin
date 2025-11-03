@@ -83,9 +83,6 @@ importers:
       el-table-infinite-scroll:
         specifier: ^3.0.7
         version: 3.0.7(typescript@5.9.3)
-      element-plus:
-        specifier: ^2.11.4
-        version: 2.11.4(vue@3.5.22(typescript@5.9.3))
       highlight.js:
         specifier: ^11.11.1
         version: 11.11.1
