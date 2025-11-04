@@ -463,6 +463,16 @@ function onSureBtnLoading() {
     }
   });
 }
+
+// 自定义动画
+function onTransitionClick(title, transition) {
+  addDialog({
+    width: "30%",
+    title,
+    transition,
+    contentRenderer: () => <p>{JSON.stringify(transition)}</p>
+  });
+}
 </script>
 
 <template>
@@ -551,5 +561,112 @@ function onSureBtnLoading() {
         点击底部确定按钮可开启按钮动画
       </el-button>
     </el-space>
+    <el-divider />
+    <el-space wrap>
+      <el-button
+        @click="onTransitionClick('淡入淡出动画（默认）', 'dialog-fade')"
+      >
+        淡入淡出动画（默认）
+      </el-button>
+      <el-button @click="onTransitionClick('缩放动画', 'dialog-scale')">
+        缩放动画
+      </el-button>
+      <el-button @click="onTransitionClick('滑动动画', 'dialog-slide')">
+        滑动动画
+      </el-button>
+      <el-button @click="onTransitionClick('弹跳动画', 'dialog-bounce')">
+        弹跳动画
+      </el-button>
+      <el-button
+        @click="
+          onTransitionClick('自定义动画事件处理器（可配置对象）', {
+            name: 'dialog-custom-object',
+            appear: true,
+            mode: 'out-in',
+            duration: 500
+          })
+        "
+      >
+        自定义动画事件处理器（可配置对象）
+      </el-button>
+    </el-space>
   </el-card>
 </template>
+
+<style>
+/* Scale Animation */
+.dialog-scale-enter-active,
+.dialog-scale-leave-active,
+.dialog-scale-enter-active .el-dialog,
+.dialog-scale-leave-active .el-dialog {
+  transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.dialog-scale-enter-from,
+.dialog-scale-leave-to {
+  opacity: 0;
+}
+
+.dialog-scale-enter-from .el-dialog,
+.dialog-scale-leave-to .el-dialog {
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+/* Slide Animation */
+.dialog-slide-enter-active,
+.dialog-slide-leave-active,
+.dialog-slide-enter-active .el-dialog,
+.dialog-slide-leave-active .el-dialog {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.dialog-slide-enter-from,
+.dialog-slide-leave-to {
+  opacity: 0;
+}
+
+.dialog-slide-enter-from .el-dialog,
+.dialog-slide-leave-to .el-dialog {
+  opacity: 0;
+  transform: translateY(-100px);
+}
+
+/* Bounce Animation */
+.dialog-bounce-enter-active,
+.dialog-bounce-leave-active,
+.dialog-bounce-enter-active .el-dialog,
+.dialog-bounce-leave-active .el-dialog {
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dialog-bounce-enter-from,
+.dialog-bounce-leave-to {
+  opacity: 0;
+}
+
+.dialog-bounce-enter-from .el-dialog,
+.dialog-bounce-leave-to .el-dialog {
+  opacity: 0;
+  transform: scale(0.3) translateY(-50px);
+}
+
+/* Object Configuration Animation */
+.dialog-custom-object-enter-active,
+.dialog-custom-object-leave-active,
+.dialog-custom-object-enter-active .el-dialog,
+.dialog-custom-object-leave-active .el-dialog {
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.dialog-custom-object-enter-from,
+.dialog-custom-object-leave-to {
+  opacity: 0;
+}
+
+.dialog-custom-object-enter-from .el-dialog,
+.dialog-custom-object-leave-to .el-dialog {
+  opacity: 0;
+  transform: rotate(180deg) scale(0.5);
+}
+</style>
