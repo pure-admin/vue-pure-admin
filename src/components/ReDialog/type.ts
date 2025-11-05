@@ -35,8 +35,20 @@ type DialogProps = {
   top?: string;
   /** 是否需要遮罩层，默认 `true` */
   modal?: boolean;
+  /** 是否允许穿透遮罩层，默认 `false`。使用时需将 `modal` 属性设置为 `false` */
+  modalPenetrable?: boolean;
+  /** 遮罩的自定义类名 */
+  modalClass?: string;
+  /** `header` 部分的自定义 `class` 名 */
+  headerClass?: string;
+  /** `body` 部分的自定义 `class` 名 */
+  bodyClass?: string;
+  /** `footer` 部分的自定义 `class` 名 */
+  footerClass?: string;
   /** `Dialog` 自身是否插入至 `body` 元素上。嵌套的 `Dialog` 必须指定该属性并赋值为 `true`，默认 `false` */
   appendToBody?: boolean;
+  /** `Dialog` 挂载到哪个 `DOM` 元素，该属性会覆盖 `append-to-body` 属性，默认 `body` */
+  appendTo?: string | HTMLElement;
   /** 是否在 `Dialog` 出现时将 `body` 滚动锁定，默认 `true` */
   lockScroll?: boolean;
   /** `Dialog` 的自定义类名 */
@@ -57,12 +69,22 @@ type DialogProps = {
   beforeClose?: (done: DoneFn) => void;
   /** 为 `Dialog` 启用可拖拽功能，默认 `false` */
   draggable?: boolean;
+  /** 拖动范围可以超出可视区，默认 `false` */
+  overflow?: boolean;
   /** 是否让 `Dialog` 的 `header` 和 `footer` 部分居中排列，默认 `false` */
   center?: boolean;
   /** 是否水平垂直对齐对话框，默认 `false` */
   alignCenter?: boolean;
   /** 当关闭 `Dialog` 时，销毁其中的元素，默认 `false` */
   destroyOnClose?: boolean;
+  /** 自定义关闭图标，默认 `Close` */
+  closeIcon?: string | Component;
+  /** 和原生的 `CSS` 的 `z-index` 相同，改变 `z` 轴的顺序 */
+  zIndex?: number;
+  /** `header` 的 `aria-level` 属性 */
+  headerAriaLevel?: string;
+  /** 对话框动画的自定义过渡配置。可以是一个字符串（过渡名称），也可以是一个包含 `Vue` 过渡属性的对象，默认 `dialog-fade` */
+  transition?: string | object;
 };
 
 //element-plus.org/zh-CN/component/popconfirm.html#attributes
