@@ -100,7 +100,7 @@ export default defineComponent({
         "pt-[3px]",
         "px-[11px]",
         "border-b-[1px]",
-        "border-solid",
+        "border-b-solid",
         "border-[#dcdfe6]",
         "dark:border-[#303030]"
       ];

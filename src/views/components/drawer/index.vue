@@ -422,6 +422,17 @@ function onSureBtnLoading() {
     }
   });
 }
+
+function onResizableClick(title, content, direction) {
+  addDrawer({
+    title,
+    direction,
+    resizable: true, // 启用可调整大小的功能
+    contentRenderer: () => (
+      <p class="text-[var(--el-color-primary)]">{content}</p> // jsx 语法 （注意在.vue文件启用jsx语法，需要在script开启lang="tsx"）
+    )
+  });
+}
 </script>
 
 <template>
@@ -496,6 +507,29 @@ function onSureBtnLoading() {
       </el-button>
       <el-button @click="onSureBtnLoading">
         点击底部确定按钮可开启按钮动画
+      </el-button>
+    </el-space>
+    <el-divider />
+    <el-space wrap>
+      <el-button
+        @click="onResizableClick('从左侧打开', '拖动抽屉右侧边缘', 'ltr')"
+      >
+        拖拽调整大小（从左侧打开）
+      </el-button>
+      <el-button
+        @click="onResizableClick('从右侧打开', '拖动抽屉左侧边缘', 'rtl')"
+      >
+        拖拽调整大小（从右侧打开）
+      </el-button>
+      <el-button
+        @click="onResizableClick('从顶部打开', '拖动抽屉底部边缘', 'ttb')"
+      >
+        拖拽调整大小（从顶部打开）
+      </el-button>
+      <el-button
+        @click="onResizableClick('从底部打开', '拖动抽屉顶部边缘', 'btt')"
+      >
+        拖拽调整大小（从底部打开）
       </el-button>
     </el-space>
   </el-card>
