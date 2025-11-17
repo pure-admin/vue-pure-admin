@@ -108,6 +108,7 @@ menus:
   pureTypeit: 打字机
   pureJsonEditor: JSON编辑器
   pureColorPicker: 颜色选择器
+  pureColorPickerPanel: 颜色选择器面板
   pureDatePicker: 日期选择器
   pureDateTimePicker: 日期时间选择器
   pureTimePicker: 时间选择器
