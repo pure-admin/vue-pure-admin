@@ -119,8 +119,7 @@ export default {
       name: "PureSlider",
       component: () => import("@/views/components/slider/index.vue"),
       meta: {
-        title: $t("menus.pureSlider"),
-        extraIcon: "IF-pure-iconfont-new svg"
+        title: $t("menus.pureSlider")
       }
     },
     {
@@ -193,6 +192,15 @@ export default {
       component: () => import("@/views/components/color-picker.vue"),
       meta: {
         title: $t("menus.pureColorPicker")
+      }
+    },
+    {
+      path: "/components/color-picker-panel",
+      name: "ColorPickerPanel",
+      component: () => import("@/views/components/color-picker-panel.vue"),
+      meta: {
+        title: $t("menus.pureColorPickerPanel"),
+        extraIcon: "IF-pure-iconfont-new svg"
       }
     },
     {

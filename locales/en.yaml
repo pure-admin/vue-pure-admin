@@ -108,6 +108,7 @@ menus:
   pureTypeit: Typeit
   pureJsonEditor: JSON Editor
   pureColorPicker: Color Picker
+  pureColorPickerPanel: Color PickerPanel
   pureDatePicker: Date Picker
   pureDateTimePicker: DateTimePicker
   pureTimePicker: TimePicker
