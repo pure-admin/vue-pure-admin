@@ -618,6 +618,10 @@ onBeforeUnmount(() => {
             />
           </template>
           <div v-else class="chrome-tab">
+            <span
+              v-if="index !== 0 && index !== activeIndex"
+              class="chrome-tab-divider"
+            />
             <div class="chrome-tab__bg">
               <TagChrome />
             </div>
@@ -631,7 +635,6 @@ onBeforeUnmount(() => {
             >
               <IconifyIconOffline :icon="Close" />
             </span>
-            <span class="chrome-tab-divider" />
           </div>
         </div>
       </div>
