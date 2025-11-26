@@ -195,24 +195,24 @@ const pClass = computed(() => {
 const themeOptions = computed<Array<OptionsType>>(() => {
   return [
     {
-      label: t("panel.pureOverallStyleLight"),
+      label: t("panel.pureThemeModeLight"),
       icon: DayIcon,
       theme: "light",
-      tip: t("panel.pureOverallStyleLightTip"),
+      tip: t("panel.pureThemeModeLightTip"),
       iconAttrs: { fill: isDark.value ? "#fff" : "#000" }
     },
     {
-      label: t("panel.pureOverallStyleDark"),
+      label: t("panel.pureThemeModeDark"),
       icon: DarkIcon,
       theme: "dark",
-      tip: t("panel.pureOverallStyleDarkTip"),
+      tip: t("panel.pureThemeModeDarkTip"),
       iconAttrs: { fill: isDark.value ? "#fff" : "#000" }
     },
     {
-      label: t("panel.pureOverallStyleSystem"),
+      label: t("panel.pureThemeModeSystem"),
       icon: SystemIcon,
       theme: "system",
-      tip: t("panel.pureOverallStyleSystemTip"),
+      tip: t("panel.pureThemeModeSystemTip"),
       iconAttrs: { fill: isDark.value ? "#fff" : "#000" }
     }
   ];
@@ -238,7 +238,7 @@ const markOptions = computed<Array<OptionsType>>(() => {
   ];
 });
 
-/** 设置导航模式 */
+/** 设置菜单布局 */
 function setLayoutModel(layout: string) {
   layoutTheme.value.layout = layout;
   window.document.body.setAttribute("layout", layout);
@@ -276,7 +276,7 @@ watch($storage, ({ layout }) => {
 
 const mediaQueryList = window.matchMedia("(prefers-color-scheme: dark)");
 
-/** 根据操作系统主题设置平台整体风格 */
+/** 根据操作系统主题设置平台主题模式 */
 function updateTheme() {
   if (overallStyle.value !== "system") return;
   if (mediaQueryList.matches) {
@@ -317,7 +317,7 @@ onUnmounted(() => removeMatchMedia);
 <template>
   <LayPanel>
     <div class="p-5">
-      <p :class="pClass">{{ t("panel.pureOverallStyle") }}</p>
+      <p :class="pClass">{{ t("panel.pureThemeMode") }}</p>
       <Segmented
         resize
         class="select-none"
@@ -354,7 +354,7 @@ onUnmounted(() => removeMatchMedia);
         </li>
       </ul>
 
-      <p :class="['mt-5!', pClass]">{{ t("panel.pureLayoutModel") }}</p>
+      <p :class="['mt-5!', pClass]">{{ t("panel.pureMenuLayout") }}</p>
       <ul class="pure-theme">
         <li
           ref="verticalRef"

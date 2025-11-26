@@ -89,7 +89,7 @@ export function useDataThemeChange() {
     }
   };
 
-  /** 浅色、深色整体风格切换 */
+  /** 浅色、深色主题模式切换 */
   function dataThemeChange(overall?: string) {
     overallStyle.value = overall;
     if (useEpThemeStoreHook().epTheme === "light" && dataTheme.value) {

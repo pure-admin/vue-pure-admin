@@ -31,15 +31,15 @@ panel:
   pureCloseSystemSet: 关闭配置
   pureClearCacheAndToLogin: 清空缓存并返回登录页
   pureClearCache: 清空缓存
-  pureOverallStyle: 整体风格
-  pureOverallStyleLight: 浅色
-  pureOverallStyleLightTip: 清新启航，点亮舒适的工作界面
-  pureOverallStyleDark: 深色
-  pureOverallStyleDarkTip: 月光序曲，沉醉于夜的静谧雅致
-  pureOverallStyleSystem: 自动
-  pureOverallStyleSystemTip: 同步时光，界面随晨昏自然呼应
+  pureThemeMode: 主题模式
+  pureThemeModeLight: 浅色
+  pureThemeModeLightTip: 清新启航，点亮舒适的工作界面
+  pureThemeModeDark: 深色
+  pureThemeModeDarkTip: 月光序曲，沉醉于夜的静谧雅致
+  pureThemeModeSystem: 自动
+  pureThemeModeSystemTip: 同步时光，界面随晨昏自然呼应
   pureThemeColor: 主题色
-  pureLayoutModel: 导航模式
+  pureMenuLayout: 菜单布局
   pureVerticalTip: 左侧菜单，亲切熟悉
   pureHorizontalTip: 顶部菜单，简洁概览
   pureMixTip: 混合菜单，灵活多变
