@@ -620,7 +620,7 @@ onBeforeUnmount(() => {
           <div v-else class="chrome-tab">
             <span
               v-if="index !== 0 && index !== activeIndex"
-              class="chrome-tab-divider"
+              class="chrome-tab-divider bg-[#e2e2e2] dark:bg-[#2d2d2d]"
             />
             <div class="chrome-tab__bg">
               <TagChrome />
