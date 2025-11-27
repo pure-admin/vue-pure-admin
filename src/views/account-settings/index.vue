@@ -25,7 +25,7 @@ const router = useRouter();
 const isOpen = ref(deviceDetection() ? false : true);
 const { $storage } = useGlobal<GlobalPropertiesApi>();
 onBeforeMount(() => {
-  useDataThemeChange().dataThemeChange($storage.layout?.overallStyle);
+  useDataThemeChange().dataThemeChange($storage.layout?.themeMode);
 });
 
 const userInfo = ref({
