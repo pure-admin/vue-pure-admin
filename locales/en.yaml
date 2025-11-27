@@ -31,15 +31,15 @@ panel:
   pureCloseSystemSet: Close System Configs
   pureClearCacheAndToLogin: Clear cache and return to login page
   pureClearCache: Clear Cache
-  pureOverallStyle: Overall Style
-  pureOverallStyleLight: Light
-  pureOverallStyleLightTip: Set sail freshly and light up the comfortable work interface
-  pureOverallStyleDark: Dark
-  pureOverallStyleDarkTip: Moonlight Overture, indulge in the tranquility and elegance of the night
-  pureOverallStyleSystem: Auto
-  pureOverallStyleSystemTip: Synchronize time, the interface naturally responds to morning and dusk
+  pureThemeMode: Theme Mode
+  pureThemeModeLight: Light
+  pureThemeModeLightTip: Set sail freshly and light up the comfortable work interface
+  pureThemeModeDark: Dark
+  pureThemeModeDarkTip: Moonlight Overture, indulge in the tranquility and elegance of the night
+  pureThemeModeSystem: Auto
+  pureThemeModeSystemTip: Synchronize time, the interface naturally responds to morning and dusk
   pureThemeColor: Theme Color
-  pureLayoutModel: Layout Model
+  pureMenuLayout: Menu Layout
   pureVerticalTip: The menu on the left is familiar and friendly
   pureHorizontalTip: Top menu, concise overview
   pureMixTip: Mixed menu, flexible
