@@ -61,12 +61,12 @@ export default defineComponent({
       duration: 0,
       customClass: "fullpage-notification",
       // @ts-expect-error
-      style: { width: "200px" },
+      style: { width: "260px" },
       position: "bottom-right",
       dangerouslyUseHTMLString: true,
       message: `
         <a target='_blank' class='block text-base text-center border mt-4 rounded hover:text-[red]!' href='https://pure-admin.cn/pages/service/'>
-        点我查看
+        新功能更新，点我查看
         </a>
       `
     });
