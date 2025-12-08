@@ -190,7 +190,7 @@ const onDownload = () => {
               class="el-upload-list__item-delete"
               @click="handleRemove(file)"
             >
-              <span title="移除" class="hover:text-[var(--el-color-danger)]">
+              <span title="移除" class="hover:text-(--el-color-danger)">
                 <IconifyIconOffline
                   :icon="Delete"
                   class="hover:scale-125 duration-100"

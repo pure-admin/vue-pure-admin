@@ -38,7 +38,7 @@ const handleChange = value => {
     <el-row :gutter="24">
       <el-col :xl="12" :lg="12" :md="24" :sm="24" :xs="24">
         <div class="flex flex-col items-center justify-center">
-          <span class="text-[var(--el-color-primary)]">
+          <span class="text-(--el-color-primary)">
             1. 二级联动（不带“全部”选项）
             <el-cascader
               v-model="selectedOptions1"
@@ -67,7 +67,7 @@ const handleChange = value => {
       </el-col>
       <el-col :xl="12" :lg="12" :md="24" :sm="24" :xs="24">
         <div class="flex flex-col items-center justify-center mt-3">
-          <span class="text-[var(--el-color-primary)]">
+          <span class="text-(--el-color-primary)">
             2. 二级联动（带有“全部”选项）
             <el-cascader
               v-model="selectedOptions3"
@@ -96,7 +96,7 @@ const handleChange = value => {
       </el-col>
       <el-col :xl="12" :lg="12" :md="24" :sm="24" :xs="24">
         <div class="flex flex-col items-center justify-center mt-3">
-          <span class="text-[var(--el-color-primary)]">
+          <span class="text-(--el-color-primary)">
             3. 三级联动（不带“全部”选项）
             <el-cascader
               v-model="selectedOptions2"
@@ -127,7 +127,7 @@ const handleChange = value => {
       </el-col>
       <el-col :xl="12" :lg="12" :md="24" :sm="24" :xs="24">
         <div class="flex flex-col items-center justify-center mt-3">
-          <span class="text-[var(--el-color-primary)]">
+          <span class="text-(--el-color-primary)">
             4. 三级联动（带"全部选项"）
             <el-cascader
               v-model="selectedOptions4"

@@ -103,7 +103,7 @@ const {
         <div
           v-if="selectedNum > 0"
           v-motion-fade
-          class="bg-[var(--el-fill-color-light)] w-full h-[46px] mb-2 pl-4 flex items-center"
+          class="bg-(--el-fill-color-light) w-full h-[46px] mb-2 pl-4 flex items-center"
         >
           <div class="flex-auto">
             <span
