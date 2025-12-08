@@ -13,7 +13,7 @@ const props = defineProps({
 });
 
 const { t } = useI18n();
-const { showModel } = useTags();
+const { tagsStyle } = useTags();
 const { $storage, $config } = useGlobal<GlobalPropertiesApi>();
 
 const isKeepAlive = computed(() => {
@@ -54,13 +54,13 @@ const getSectionStyle = computed(() => {
   return [
     hideTabs.value && layout ? "padding-top: 48px;" : "",
     !hideTabs.value && layout
-      ? showModel.value == "chrome"
+      ? tagsStyle.value == "chrome"
         ? "padding-top: 85px;"
         : "padding-top: 81px;"
       : "",
     hideTabs.value && !layout.value ? "padding-top: 48px;" : "",
     !hideTabs.value && !layout.value
-      ? showModel.value == "chrome"
+      ? tagsStyle.value == "chrome"
         ? "padding-top: 85px;"
         : "padding-top: 81px;"
       : "",

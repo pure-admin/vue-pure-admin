@@ -8,7 +8,7 @@ type Events = {
   logoChange: boolean;
   tagViewsChange: string;
   changLayoutRoute: string;
-  tagViewsShowModel: string;
+  tagViewsTagsStyle: string;
   imageInfo: {
     img: HTMLImageElement;
     height: number;

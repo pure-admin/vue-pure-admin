@@ -18,7 +18,7 @@
   "SidebarStatus": true,
   "EpThemeColor": "#409EFF",
   "ShowLogo": true,
-  "ShowModel": "smart",
+  "TagsStyle": "chrome",
   "MenuArrowIconNoTransition": false,
   "CachingAsyncRoutes": false,
   "TooltipEffect": "light",
