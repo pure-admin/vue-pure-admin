@@ -70,7 +70,7 @@ getMine().then(res => {
   <el-container class="h-full">
     <el-aside
       v-if="isOpen"
-      class="pure-account-settings overflow-hidden px-2 dark:bg-(--el-bg-color)! border-r-[1px] border-(--pure-border-color)"
+      class="pure-account-settings overflow-hidden px-2 dark:bg-(--el-bg-color)! border-r border-(--pure-border-color)"
       :width="deviceDetection() ? '180px' : '240px'"
     >
       <el-menu :default-active="witchPane" class="pure-account-settings-menu">

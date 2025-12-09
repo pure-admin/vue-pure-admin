@@ -222,7 +222,7 @@ const onDownload = () => {
         type="info"
         class="img-name"
       >
-        <p class="text-[#fff] dark:text-black">
+        <p class="text-white dark:text-black">
           {{ fileList[curOpenImgIndex].name }}
         </p>
       </div>

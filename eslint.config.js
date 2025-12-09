@@ -180,7 +180,8 @@ export default defineConfig([
       "better-tailwindcss": eslintPluginBetterTailwindcss
     },
     rules: {
-      "better-tailwindcss/enforce-consistent-variable-syntax": "warn"
+      "better-tailwindcss/enforce-consistent-variable-syntax": "warn",
+      "better-tailwindcss/enforce-canonical-classes": "warn"
     },
     settings: {
       "better-tailwindcss": {
