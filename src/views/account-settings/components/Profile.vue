@@ -105,10 +105,7 @@ getMine().then(res => {
 
 <template>
   <div
-    :class="[
-      'min-w-[180px]',
-      deviceDetection() ? 'max-w-[100%]' : 'max-w-[70%]'
-    ]"
+    :class="['min-w-[180px]', deviceDetection() ? 'max-w-full' : 'max-w-[70%]']"
   >
     <h3 class="my-8!">个人信息</h3>
     <el-form
