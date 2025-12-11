@@ -370,8 +370,8 @@ importers:
         specifier: ^2.2.0
         version: 2.2.0
       vite-plugin-router-warn:
-        specifier: ^1.0.0
-        version: 1.0.0
+        specifier: ^2.0.0
+        version: 2.0.0
       vite-svg-loader:
         specifier: ^5.1.0
         version: 5.1.0(vue@3.5.25(typescript@5.9.3))
@@ -5247,8 +5247,8 @@ packages:
   vite-plugin-remove-console@2.2.0:
     resolution: {integrity: sha512-qgjh5pz75MdE9Kzs8J0kBwaCfifHV0ezRbB9rpGsIOxam+ilcGV7WOk91vFJXquzRmiKrFh3Hxlh0JJWAmXTbQ==}
 
-  vite-plugin-router-warn@1.0.0:
-    resolution: {integrity: sha512-jnr7faHJPkKxukBXVpg7Ui1UDqhmxD7xU6JGidq8ivSHTsNAPqzSpPpwW8O1PBP/0+Owq4bLfNNk11drOkz4xA==}
+  vite-plugin-router-warn@2.0.0:
+    resolution: {integrity: sha512-Zgg5IUaNtUSHdL+SL+g7YOYQQlTHh1eRqSkmf8c961AQv1eaJxCl/9/8pUZZDcTbwWjAlgbctgAF7iGm2vxNjA==}
 
   vite-svg-loader@5.1.0:
     resolution: {integrity: sha512-M/wqwtOEjgb956/+m5ZrYT/Iq6Hax0OakWbokj8+9PXOnB7b/4AxESHieEtnNEy7ZpjsjYW1/5nK8fATQMmRxw==}
@@ -10875,7 +10875,7 @@ snapshots:
 
   vite-plugin-remove-console@2.2.0: {}
 
-  vite-plugin-router-warn@1.0.0: {}
+  vite-plugin-router-warn@2.0.0: {}
 
   vite-svg-loader@5.1.0(vue@3.5.25(typescript@5.9.3)):
     dependencies:

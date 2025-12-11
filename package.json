@@ -169,7 +169,7 @@
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-fake-server": "^2.2.2",
     "vite-plugin-remove-console": "^2.2.0",
-    "vite-plugin-router-warn": "^1.0.0",
+    "vite-plugin-router-warn": "^2.0.0",
     "vite-svg-loader": "^5.1.0",
     "vue-eslint-parser": "^10.2.0",
     "vue-tsc": "^3.1.8"
