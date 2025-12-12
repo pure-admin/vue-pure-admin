@@ -239,3 +239,17 @@ login:
   purePassWordSureReg: Please enter confirm password
   purePassWordDifferentReg: The two passwords do not match!
   purePassWordUpdateReg: Password has been updated
+tableBar:
+  pureList: List
+  pureLarge: Large
+  pureDefault: Default
+  pureSmall: Small
+  pureColumnSettings: ColumnSettings
+  pureCollapse: Collapse
+  pureExpand: Expand
+  pureRefresh: Refresh
+  pureDensity: Density
+  pureColumnDisplay: ColumnDisplay
+  pureReset: Reset
+  pureExitFullScreen: ExitFullScreen
+  pureFullScreen: FullScreen
