@@ -3,7 +3,7 @@ import { useI18n } from "vue-i18n";
 import { ref, computed } from "vue";
 import { noticesData } from "./data";
 import NoticeList from "./components/NoticeList.vue";
-import BellIcon from "~icons/ep/bell";
+import BellIcon from "~icons/lucide/bell";
 
 const { t } = useI18n();
 const noticesNum = ref(0);
@@ -25,10 +25,10 @@ const getLabel = computed(
         'dropdown-badge',
         'navbar-bg-hover',
         'select-none',
-        Number(noticesNum) !== 0 && 'mr-[10px]'
+        Number(noticesNum) !== 0 && 'mr-[7px]'
       ]"
     >
-      <el-badge :value="Number(noticesNum) === 0 ? '' : noticesNum" :max="99">
+      <el-badge is-dot>
         <span class="header-notice-icon">
           <IconifyIconOffline :icon="BellIcon" />
         </span>
@@ -65,6 +65,34 @@ const getLabel = computed(
 </template>
 
 <style lang="scss" scoped>
+/* ”铃铛“摇晃衰减动画 */
+@keyframes pure-bell-ring {
+  0%,
+  100% {
+    transform-origin: top;
+  }
+
+  15% {
+    transform: rotateZ(10deg);
+  }
+
+  30% {
+    transform: rotateZ(-10deg);
+  }
+
+  45% {
+    transform: rotateZ(5deg);
+  }
+
+  60% {
+    transform: rotateZ(-5deg);
+  }
+
+  75% {
+    transform: rotateZ(2deg);
+  }
+}
+
 .dropdown-badge {
   display: flex;
   align-items: center;
@@ -74,7 +102,13 @@ const getLabel = computed(
   cursor: pointer;
 
   .header-notice-icon {
-    font-size: 18px;
+    font-size: 16px;
+  }
+
+  &:hover {
+    .header-notice-icon svg {
+      animation: pure-bell-ring 1s both;
+    }
   }
 }
 

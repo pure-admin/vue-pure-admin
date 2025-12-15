@@ -53,9 +53,11 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
       <LaySearch id="header-search" />
       <!-- 国际化 -->
       <el-dropdown id="header-translation" trigger="click">
-        <GlobalizationIcon
-          class="navbar-bg-hover w-[40px] h-[48px] p-[11px] cursor-pointer outline-hidden"
-        />
+        <div
+          class="globalization-icon navbar-bg-hover hover:animate-scale-bounce"
+        >
+          <IconifyIconOffline :icon="GlobalizationIcon" />
+        </div>
         <template #dropdown>
           <el-dropdown-menu class="translation">
             <el-dropdown-item
@@ -113,7 +115,7 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
         </template>
       </el-dropdown>
       <span
-        class="set-icon navbar-bg-hover"
+        class="set-icon navbar-bg-hover hover:animate-scale-bounce"
         :title="t('buttons.pureOpenSystemSet')"
         @click="onPanel"
       >
