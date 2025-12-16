@@ -54,7 +54,7 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
       <!-- 国际化 -->
       <el-dropdown id="header-translation" trigger="click">
         <div
-          class="globalization-icon navbar-bg-hover hover:animate-scale-bounce"
+          class="globalization-icon navbar-bg-hover hover:[&>svg]:animate-scale-bounce"
         >
           <IconifyIconOffline :icon="GlobalizationIcon" />
         </div>
@@ -115,7 +115,7 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
         </template>
       </el-dropdown>
       <span
-        class="set-icon navbar-bg-hover hover:animate-scale-bounce"
+        class="set-icon navbar-bg-hover hover:[&>svg]:animate-scale-bounce"
         :title="t('buttons.pureOpenSystemSet')"
         @click="onPanel"
       >
