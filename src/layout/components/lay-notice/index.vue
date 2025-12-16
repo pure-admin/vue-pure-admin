@@ -6,11 +6,8 @@ import NoticeList from "./components/NoticeList.vue";
 import BellIcon from "~icons/lucide/bell";
 
 const { t } = useI18n();
-const noticesNum = ref(0);
 const notices = ref(noticesData);
 const activeKey = ref(noticesData[0]?.key);
-
-notices.value.map(v => (noticesNum.value += v.list.length));
 
 const getLabel = computed(
   () => item =>
@@ -21,12 +18,7 @@ const getLabel = computed(
 <template>
   <el-dropdown trigger="click" placement="bottom-end">
     <span
-      :class="[
-        'dropdown-badge',
-        'navbar-bg-hover',
-        'select-none',
-        Number(noticesNum) !== 0 && 'mr-[7px]'
-      ]"
+      :class="['dropdown-badge', 'navbar-bg-hover', 'select-none', 'mr-[7px]']"
     >
       <el-badge is-dot>
         <span class="header-notice-icon">
