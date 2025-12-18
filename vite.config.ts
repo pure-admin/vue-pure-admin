@@ -42,7 +42,7 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
       sourcemap: false,
       // 消除打包大小超过500kb警告
       chunkSizeWarningLimit: 4000,
-      rollupOptions: {
+      rolldownOptions: {
         input: {
           index: pathResolve("./index.html", import.meta.url)
         },
@@ -51,6 +51,10 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
           chunkFileNames: "static/js/[name]-[hash].js",
           entryFileNames: "static/js/[name]-[hash].js",
           assetFileNames: "static/[ext]/[name]-[hash].[ext]"
+        },
+        checks: {
+          // 禁用插件计时警告
+          pluginTimings: false
         }
       }
     },
