@@ -9,6 +9,14 @@ import {
   onUnmounted,
   onBeforeMount
 } from "vue";
+import {
+  useDark,
+  debounce,
+  isNumber,
+  useGlobal,
+  isAllEmpty,
+  useWatermark
+} from "@pureadmin/utils";
 import { useI18n } from "vue-i18n";
 import { emitter } from "@/utils/mitt";
 import LayPanel from "../lay-panel/index.vue";
@@ -17,7 +25,6 @@ import { useAppStoreHook } from "@/store/modules/app";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
 import Segmented, { type OptionsType } from "@/components/ReSegmented";
 import { useDataThemeChange } from "@/layout/hooks/useDataThemeChange";
-import { useDark, useGlobal, debounce, isNumber } from "@pureadmin/utils";
 
 import Check from "~icons/ep/check";
 import LeftArrow from "~icons/ri/arrow-left-s-line?width=20&height=20";
@@ -27,8 +34,9 @@ import DarkIcon from "@/assets/svg/dark.svg?component";
 import SystemIcon from "@/assets/svg/system.svg?component";
 
 const { t } = useI18n();
-const { device } = useNav();
 const { isDark } = useDark();
+const { device, title } = useNav();
+const { setWatermark, clear } = useWatermark();
 const { $storage } = useGlobal<GlobalPropertiesApi>();
 
 const mixRef = ref();
@@ -57,6 +65,12 @@ if (unref(layoutTheme)) {
 const markValue = ref($storage.configure?.showModel ?? "smart");
 
 const logoVal = ref($storage.configure?.showLogo ?? true);
+
+/** WIP... */
+const watermarkConfigs = reactive({
+  enable: false,
+  text: null
+});
 
 const settings = reactive({
   greyVal: $storage.configure.grey,
@@ -127,6 +141,21 @@ function onChange({ option }) {
   markValue.value = value;
   storageConfigureChange("showModel", value);
   emitter.emit("tagViewsShowModel", value);
+}
+
+function onWatermarkSwitchChange(value) {
+  const text = isAllEmpty(watermarkConfigs.text)
+    ? title.value
+    : watermarkConfigs.text;
+  if (value) {
+    setWatermark(text);
+  } else {
+    clear();
+  }
+}
+
+function onWatermarkInputChange(value) {
+  setWatermark(value);
 }
 
 /** 侧边栏Logo */
@@ -448,29 +477,38 @@ onUnmounted(() => removeMatchMedia);
       />
 
       <p class="mt-5! font-medium text-sm dark:text-white">
-        {{ t("panel.pureInterfaceDisplay") }}
+        {{ t("panel.pureFullScreenWatermark") }}
       </p>
       <ul class="setting">
         <li>
-          <span class="dark:text-white">{{ t("panel.pureGreyModel") }}</span>
+          <span class="dark:text-white">
+            {{ t("panel.pureEnableWatermark") }}
+          </span>
           <el-switch
-            v-model="settings.greyVal"
+            v-model="watermarkConfigs.enable"
             inline-prompt
             :active-text="t('buttons.pureOpenText')"
             :inactive-text="t('buttons.pureCloseText')"
-            @change="greyChange"
+            @change="onWatermarkSwitchChange"
           />
         </li>
         <li>
-          <span class="dark:text-white">{{ t("panel.pureWeakModel") }}</span>
-          <el-switch
-            v-model="settings.weakVal"
-            inline-prompt
-            :active-text="t('buttons.pureOpenText')"
-            :inactive-text="t('buttons.pureCloseText')"
-            @change="weekChange"
+          <span class="dark:text-white">
+            {{ t("panel.pureWatermarkText") }}
+          </span>
+          <el-input
+            v-model="watermarkConfigs.text"
+            class="w-[100px]!"
+            :placeholder="title"
+            @input="onWatermarkInputChange"
           />
         </li>
+      </ul>
+
+      <p class="mt-5! font-medium text-sm dark:text-white">
+        {{ t("panel.pureInterfaceDisplay") }}
+      </p>
+      <ul class="setting">
         <li>
           <span class="dark:text-white">{{ t("panel.pureHiddenTags") }}</span>
           <el-switch
@@ -492,6 +530,18 @@ onUnmounted(() => removeMatchMedia);
           />
         </li>
         <li>
+          <span class="dark:text-white">
+            {{ t("panel.pureMultiTagsCache") }}
+          </span>
+          <el-switch
+            v-model="settings.multiTagsCache"
+            inline-prompt
+            :active-text="t('buttons.pureOpenText')"
+            :inactive-text="t('buttons.pureCloseText')"
+            @change="multiTagsCacheChange"
+          />
+        </li>
+        <li>
           <span class="dark:text-white">Logo</span>
           <el-switch
             v-model="logoVal"
@@ -504,15 +554,23 @@ onUnmounted(() => removeMatchMedia);
           />
         </li>
         <li>
-          <span class="dark:text-white">
-            {{ t("panel.pureMultiTagsCache") }}
-          </span>
+          <span class="dark:text-white">{{ t("panel.pureGreyModel") }}</span>
           <el-switch
-            v-model="settings.multiTagsCache"
+            v-model="settings.greyVal"
             inline-prompt
             :active-text="t('buttons.pureOpenText')"
             :inactive-text="t('buttons.pureCloseText')"
-            @change="multiTagsCacheChange"
+            @change="greyChange"
+          />
+        </li>
+        <li>
+          <span class="dark:text-white">{{ t("panel.pureWeakModel") }}</span>
+          <el-switch
+            v-model="settings.weakVal"
+            inline-prompt
+            :active-text="t('buttons.pureOpenText')"
+            :inactive-text="t('buttons.pureCloseText')"
+            @change="weekChange"
           />
         </li>
       </ul>
