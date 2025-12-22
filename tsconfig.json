@@ -15,7 +15,6 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "sourceMap": true,
-    "baseUrl": ".",
     "allowJs": false,
     "resolveJsonModule": true,
     "lib": [
@@ -24,10 +23,10 @@
     ],
     "paths": {
       "@/*": [
-        "src/*"
+        "./src/*"
       ],
       "@build/*": [
-        "build/*"
+        "./build/*"
       ]
     },
     "types": [
