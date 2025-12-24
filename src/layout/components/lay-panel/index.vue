@@ -51,7 +51,7 @@ onBeforeUnmount(() => {
     <div class="right-panel-background" />
     <div ref="target" class="right-panel bg-bg_color">
       <div
-        class="project-configuration border-0 border-b-[1px] border-solid border-[var(--pure-border-color)]"
+        class="flex-bc py-3 px-5 border-0 border-l border-solid border-(--pure-border-color)"
       >
         <h4 class="dark:text-white">
           {{ t("panel.pureSystemSet") }}
@@ -73,12 +73,14 @@ onBeforeUnmount(() => {
           />
         </span>
       </div>
-      <el-scrollbar>
+      <el-scrollbar
+        class="border-y border-l border-r-0 border-solid border-(--pure-border-color) h-[calc(100vh-104px)]!"
+      >
         <slot />
       </el-scrollbar>
 
       <div
-        class="flex justify-end p-3 border-0 border-t-[1px] border-solid border-[var(--pure-border-color)]"
+        class="flex justify-end p-3 border-0 border-l border-solid border-(--pure-border-color)"
       >
         <el-button
           v-tippy="{
@@ -99,10 +101,6 @@ onBeforeUnmount(() => {
 </template>
 
 <style lang="scss" scoped>
-:deep(.el-scrollbar) {
-  height: calc(100vh - 110px);
-}
-
 .right-panel-background {
   position: fixed;
   top: 0;
@@ -138,12 +136,5 @@ onBeforeUnmount(() => {
   .right-panel {
     transform: translate(0);
   }
-}
-
-.project-configuration {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 20px;
 }
 </style>
