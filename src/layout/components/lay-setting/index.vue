@@ -53,8 +53,8 @@ if (unref(layoutTheme)) {
   setMenuLayout(layout);
 }
 
-/** 默认灵动模式 */
-const markValue = ref($storage.configure?.showModel ?? "smart");
+/** 页签风格默认为谷歌风格 */
+const tagsStyleValue = ref($storage.configure?.tagsStyle ?? "chrome");
 
 const logoVal = ref($storage.configure?.showLogo ?? true);
 
@@ -63,7 +63,7 @@ const settings = reactive({
   weakVal: $storage.configure.weak,
   tabsVal: $storage.configure.hideTabs,
   showLogo: $storage.configure.showLogo,
-  showModel: $storage.configure.showModel,
+  tagsStyle: $storage.configure.tagsStyle,
   hideFooter: $storage.configure.hideFooter,
   multiTagsCache: $storage.configure.multiTagsCache,
   stretch: $storage.configure.stretch
@@ -124,9 +124,9 @@ const multiTagsCacheChange = () => {
 
 function onChange({ option }) {
   const { value } = option;
-  markValue.value = value;
-  storageConfigureChange("showModel", value);
-  emitter.emit("tagViewsShowModel", value);
+  tagsStyleValue.value = value;
+  storageConfigureChange("tagsStyle", value);
+  emitter.emit("tagViewsTagsStyle", value);
 }
 
 /** 侧边栏Logo */
@@ -442,7 +442,9 @@ onUnmounted(() => removeMatchMedia);
       <Segmented
         resize
         class="select-none"
-        :modelValue="markValue === 'smart' ? 0 : markValue === 'card' ? 1 : 2"
+        :modelValue="
+          tagsStyleValue === 'smart' ? 0 : tagsStyleValue === 'card' ? 1 : 2
+        "
         :options="markOptions"
         @change="onChange"
       />
