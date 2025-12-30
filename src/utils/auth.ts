@@ -45,13 +45,24 @@ export function getToken(): DataInfo<number> {
  * 将`accessToken`、`expires`、`refreshToken`这三条信息放在key值为authorized-token的cookie里（过期自动销毁）
  * 将`avatar`、`username`、`nickname`、`roles`、`permissions`、`refreshToken`、`expires`这七条信息放在key值为`user-info`的localStorage里（利用`multipleTabsKey`当浏览器完全关闭后自动销毁）
  */
-export function setToken(data: DataInfo<Date>) {
+export function setToken(data: any) {
   let expires = 0;
-  const { accessToken, refreshToken } = data;
-  const { isRemembered, loginDay } = useUserStoreHook();
-  expires = new Date(data.expires).getTime(); // 如果后端直接设置时间戳，将此处代码改为expires = data.expires，然后把上面的DataInfo<Date>改成DataInfo<number>即可
-  const cookieString = JSON.stringify({ accessToken, expires, refreshToken });
 
+  // 1. 字段映射：将后端字段映射为模板名称
+  // 兼容登录接口(access, refresh) 和 刷新接口(只有access)
+  const accessToken = data.access;
+  const refreshToken = data.refresh;
+  const user_id = data.user_id;
+  const roles = data.roles;
+
+  const { isRemembered, loginDay } = useUserStoreHook();
+
+  // 2. 设置过期时间（2小时）
+  const expiresInMs = 2 * 60 * 60 * 1000;
+  expires = Date.now() + expiresInMs;
+
+  // 3. 构造并写入 Cookie
+  const cookieString = JSON.stringify({ accessToken, expires, refreshToken });
   expires > 0
     ? Cookies.set(TokenKey, cookieString, {
         expires: (expires - Date.now()) / 86400000
@@ -61,11 +72,7 @@ export function setToken(data: DataInfo<Date>) {
   Cookies.set(
     multipleTabsKey,
     "true",
-    isRemembered
-      ? {
-          expires: loginDay
-        }
-      : {}
+    isRemembered ? { expires: loginDay } : {}
   );
 
   function setUserKey({ avatar, username, nickname, roles, permissions }) {
@@ -74,6 +81,7 @@ export function setToken(data: DataInfo<Date>) {
     useUserStoreHook().SET_NICKNAME(nickname);
     useUserStoreHook().SET_ROLES(roles);
     useUserStoreHook().SET_PERMS(permissions);
+
     storageLocal().setItem(userKey, {
       refreshToken,
       expires,
@@ -85,32 +93,25 @@ export function setToken(data: DataInfo<Date>) {
     });
   }
 
-  if (data.username && data.roles) {
-    const { username, roles } = data;
+  // 5. 判断是第一次登录还是刷新 Token
+  // 如果 data 中包含 user_id，说明是登录接口返回，更新全部信息
+  if (user_id) {
     setUserKey({
       avatar: data?.avatar ?? "",
-      username,
+      username: user_id,
       nickname: data?.nickname ?? "",
-      roles,
+      roles: roles ?? [],
       permissions: data?.permissions ?? []
     });
   } else {
-    const avatar =
-      storageLocal().getItem<DataInfo<number>>(userKey)?.avatar ?? "";
-    const username =
-      storageLocal().getItem<DataInfo<number>>(userKey)?.username ?? "";
-    const nickname =
-      storageLocal().getItem<DataInfo<number>>(userKey)?.nickname ?? "";
-    const roles =
-      storageLocal().getItem<DataInfo<number>>(userKey)?.roles ?? [];
-    const permissions =
-      storageLocal().getItem<DataInfo<number>>(userKey)?.permissions ?? [];
+    // 如果是刷新 Token 接口，只更新 token，用户信息从本地缓存中取回
+    const userInfo = storageLocal().getItem<DataInfo<number>>(userKey);
     setUserKey({
-      avatar,
-      username,
-      nickname,
-      roles,
-      permissions
+      avatar: userInfo?.avatar ?? "",
+      username: userInfo?.username ?? "",
+      nickname: userInfo?.nickname ?? "",
+      roles: userInfo?.roles ?? [],
+      permissions: userInfo?.permissions ?? []
     });
   }
 }

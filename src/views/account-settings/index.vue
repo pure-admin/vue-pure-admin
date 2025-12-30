@@ -1,22 +1,17 @@
 <script setup lang="ts">
-import { getMine } from "@/api/user";
 import { useRouter } from "vue-router";
 import { ref, onBeforeMount } from "vue";
 import { ReText } from "@/components/ReText";
 import Profile from "./components/Profile.vue";
-import Preferences from "./components/Preferences.vue";
-import SecurityLog from "./components/SecurityLog.vue";
+import { getUserProfile } from "@/api/user";
 import { useGlobal, deviceDetection } from "@pureadmin/utils";
-import AccountManagement from "./components/AccountManagement.vue";
 import { useDataThemeChange } from "@/layout/hooks/useDataThemeChange";
 import LaySidebarTopCollapse from "@/layout/components/lay-sidebar/components/SidebarTopCollapse.vue";
+import Lock from "~icons/ri/lock-fill";
 
 import leftLine from "~icons/ri/arrow-left-s-line";
 import ProfileIcon from "~icons/ri/user-3-line";
-import PreferencesIcon from "~icons/ri/settings-3-line";
-import SecurityLogIcon from "~icons/ri/window-line";
-import AccountManagementIcon from "~icons/ri/profile-line";
-
+import ChangePassword from "./components/ChangePassword.vue"; // 新组件名
 defineOptions({
   name: "AccountSettings"
 });
@@ -36,33 +31,26 @@ const userInfo = ref({
 const panes = [
   {
     key: "profile",
-    label: "个人信息",
+    label: "个人资料",
     icon: ProfileIcon,
     component: Profile
   },
   {
-    key: "preferences",
-    label: "偏好设置",
-    icon: PreferencesIcon,
-    component: Preferences
-  },
-  {
-    key: "securityLog",
-    label: "安全日志",
-    icon: SecurityLogIcon,
-    component: SecurityLog
-  },
-  {
-    key: "accountManagement",
-    label: "账户管理",
-    icon: AccountManagementIcon,
-    component: AccountManagement
+    key: "password",
+    label: "修改密码",
+    icon: Lock, // 记得 import 锁图标
+    component: ChangePassword
   }
 ];
 const witchPane = ref("profile");
 
-getMine().then(res => {
-  userInfo.value = res.data;
+// 这里改为从你的 Profile 接口获取初始简要信息用于侧边栏显示
+getUserProfile().then(res => {
+  userInfo.value = {
+    avatar: "", // 如果接口没返回头像可给默认值
+    username: res.user_id,
+    nickname: res.real_name
+  };
 });
 </script>
 

@@ -3,6 +3,7 @@ import Axios, {
   type AxiosRequestConfig,
   type CustomParamsSerializer
 } from "axios";
+import { message } from "@/utils/message";
 import type {
   PureHttpError,
   RequestMethods,
@@ -70,7 +71,7 @@ class PureHttp {
           return config;
         }
         /** 请求白名单，放置一些不需要`token`的接口（通过设置请求白名单，防止`token`过期后再请求造成的死循环问题） */
-        const whiteList = ["/refresh-token", "/login"];
+        const whiteList = ["/user/token/refresh/", "/user/login/"];
         return whiteList.some(url => config.url.endsWith(url))
           ? config
           : new Promise(resolve => {
@@ -81,11 +82,14 @@ class PureHttp {
                 if (expired) {
                   if (!PureHttp.isRefreshing) {
                     PureHttp.isRefreshing = true;
-                    // token过期刷新
+                    // token 过期刷新
                     useUserStoreHook()
-                      .handRefreshToken({ refreshToken: data.refreshToken })
+                      .handRefreshToken({ refresh: data.refreshToken }) // 1. 确保传给后端的键名是 refresh
                       .then(res => {
-                        const token = res.data.accessToken;
+                        // 2. 这里的 res.data 对应你后端的 { access: "..." }
+                        // 将原来的 res.data.accessToken 改为 res.data.access
+                        const token = res.access;
+
                         config.headers["Authorization"] = formatToken(token);
                         PureHttp.requests.forEach(cb => cb(token));
                         PureHttp.requests = [];
@@ -133,6 +137,20 @@ class PureHttp {
         const $error = error;
         $error.isCancelRequest = Axios.isCancel($error);
         // 所有的响应异常 区分来源为取消请求/非取消请求
+        if ($error.response) {
+          const status = $error.response.status;
+          const data = $error.response.data as any;
+
+          if (status === 401) {
+            message(data.detail || "用户名或密码错误", { type: "error" });
+          } else if (status === 500) {
+            message("服务器错误", { type: "error" });
+          } else {
+            message(data.detail || "请求失败", { type: "error" });
+          }
+        } else {
+          message("网络连接异常", { type: "error" });
+        }
         return Promise.reject($error);
       }
     );

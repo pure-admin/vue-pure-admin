@@ -24,7 +24,18 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
       port: VITE_PORT,
       host: "0.0.0.0",
       // 本地跨域代理 https://cn.vitejs.dev/config/server-options.html#server-proxy
-      proxy: {},
+      proxy: {
+        "/user-profile": {
+          target: "http://127.0.0.1:8000", // 这里换成你真正的后端地址
+          changeOrigin: true
+          // 如果后端接口里没有 /user-profile，才需要 rewrite
+          // rewrite: (path) => path.replace(/^\/user-profile/, "")
+        },
+        "/user": {
+          target: "http://127.0.0.1:8000",
+          changeOrigin: true
+        }
+      },
       // 预热文件以提前转换和缓存结果，降低启动期间的初始页面加载时长并防止转换瀑布
       warmup: {
         clientFiles: ["./index.html", "./src/{views,components}/*"]

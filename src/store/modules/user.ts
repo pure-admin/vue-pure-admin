@@ -7,6 +7,7 @@ import {
   routerArrays,
   storageLocal
 } from "../utils";
+import { initRouter } from "@/router/utils"; // 确保引入了这个
 import {
   type UserResult,
   type RefreshTokenResult,
@@ -78,10 +79,23 @@ export const useUserStore = defineStore("pure-user", {
     /** 登入 */
     async loginByUsername(data) {
       return new Promise<UserResult>((resolve, reject) => {
-        getLogin(data)
+        getLogin({
+          user_id: data.username, // 假设 UI 传过来的是 username
+          password: data.password
+        })
           .then(data => {
-            if (data?.success) setToken(data.data);
-            resolve(data);
+            if (data) {
+              // 这里传入你后端返回的 access, refresh 等
+              setToken(data);
+              // 1. 写入 token 和 roles 到本地缓存
+              setToken(data);
+
+              // 2. 关键修改：由于 roles 发生了变化，必须重新初始化路由
+              // initRouter 会根据当前最新的 roles 去加载对应的菜单
+              initRouter().then(() => {
+                resolve(data);
+              });
+            }
           })
           .catch(error => {
             reject(error);
@@ -102,10 +116,20 @@ export const useUserStore = defineStore("pure-user", {
     async handRefreshToken(data) {
       return new Promise<RefreshTokenResult>((resolve, reject) => {
         refreshTokenApi(data)
-          .then(data => {
-            if (data) {
-              setToken(data.data);
-              resolve(data);
+          .then(res => {
+            // 注意：这里的 res 就是 RefreshTokenResult 类型
+            if (res) {
+              // 这里是关键：
+              // setToken 预期接收完整的 token 信息。
+              // 但刷新接口通常只返回新 access，不返回 refresh。
+              // 我们需要保留旧的 refresh 重新存入。
+              const tokenData = {
+                access: res.access,
+                refresh: data.refresh // 从传入参数中拿回旧的 refresh
+              };
+
+              setToken(tokenData);
+              resolve(res);
             }
           })
           .catch(error => {
