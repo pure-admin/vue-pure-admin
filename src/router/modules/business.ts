@@ -120,6 +120,12 @@ export default [
         name: "CertSearch",
         component: () => import("@/views/certificate/search/index.vue"),
         meta: { title: "证书查询" }
+      },
+      {
+        path: "/certificate/entry",
+        name: "CertEntry",
+        component: () => import("@/views/certificate/entry/index.vue"),
+        meta: { title: "证书录入" }
       }
     ]
   },

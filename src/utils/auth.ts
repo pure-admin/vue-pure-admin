@@ -57,8 +57,8 @@ export function setToken(data: any) {
 
   const { isRemembered, loginDay } = useUserStoreHook();
 
-  // 2. 设置过期时间（2小时）
-  const expiresInMs = 2 * 60 * 60 * 1000;
+  // 2. 设置过期时间（54分钟）
+  const expiresInMs = 0.9 * 60 * 60 * 1000;
   expires = Date.now() + expiresInMs;
 
   // 3. 构造并写入 Cookie

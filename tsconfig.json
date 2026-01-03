@@ -46,7 +46,7 @@
     "src/**/*.vue",
     "types/*.d.ts",
     "vite.config.ts"
-  ],
+, "src/router/modules/result.ts", "src/router/modules/remaining.ts"  ],
   "exclude": [
     "dist",
     "**/*.js",
