@@ -41,3 +41,13 @@ export const getCompLevels = () => {
 export const getCompCategories = () => {
   return http.request<any>("get", "/comp/categories/");
 };
+
+/** 新增等级 */
+export const createCompLevel = (data: { name: string }) => {
+  return http.request<any>("post", "/comp/levels/", { data });
+};
+
+/** 新增类别 */
+export const createCompCategory = (data: { name: string }) => {
+  return http.request<any>("post", "/comp/categories/", { data });
+};

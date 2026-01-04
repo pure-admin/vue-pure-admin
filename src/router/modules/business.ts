@@ -20,7 +20,7 @@ export default [
         component: () => import("@/views/award/my/index.vue"),
         meta: {
           title: "我的获奖",
-          roles: ["Student", "Teacher", "Administrator"]
+          roles: ["Student", "Teacher"]
         }
       },
       {
@@ -29,7 +29,7 @@ export default [
         component: () => import("@/views/award/overview/index.vue"),
         meta: {
           title: "总览",
-          roles: ["CompetitionAdministrator", "Administrator"]
+          roles: ["CompetitionAdministrator"]
         }
       },
       {
@@ -38,7 +38,7 @@ export default [
         component: () => import("@/views/award/search/index.vue"),
         meta: {
           title: "获奖查询",
-          roles: ["CompetitionAdministrator", "Administrator"]
+          roles: ["CompetitionAdministrator"]
         }
       },
       {
@@ -47,7 +47,7 @@ export default [
         component: () => import("@/views/award/entry/index.vue"),
         meta: {
           title: "奖项录入",
-          roles: ["CompetitionAdministrator", "Administrator"]
+          roles: ["CompetitionAdministrator"]
         }
       },
       {
@@ -56,7 +56,7 @@ export default [
         component: () => import("@/views/award/report/index.vue"),
         meta: {
           title: "报表打印",
-          roles: ["CompetitionAdministrator", "Administrator"]
+          roles: ["CompetitionAdministrator"]
         }
       }
     ]
@@ -71,7 +71,7 @@ export default [
     meta: {
       title: "竞赛管理",
       icon: "ri:trophy-line",
-      roles: ["CompetitionAdministrator", "Administrator"],
+      roles: ["CompetitionAdministrator"],
       rank: 20
     },
     children: [
@@ -105,7 +105,7 @@ export default [
     meta: {
       title: "证书管理",
       icon: "ri:medal-2-line",
-      roles: ["CompetitionAdministrator", "Administrator"],
+      roles: ["CompetitionAdministrator"],
       rank: 30
     },
     children: [

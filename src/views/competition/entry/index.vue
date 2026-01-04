@@ -5,6 +5,24 @@
         <div class="flex justify-between items-center">
           <span>竞赛管理</span>
           <el-button
+            type="success"
+            :icon="useRenderIcon('download')"
+            @click="handleExport"
+          >
+            导出 Excel
+          </el-button>
+          <el-upload
+            action="#"
+            :auto-upload="false"
+            :show-file-list="false"
+            accept=".xlsx, .xls"
+            :on-change="handleImport"
+          >
+            <el-button type="warning" :icon="useRenderIcon('upload')">
+              批量导入
+            </el-button>
+          </el-upload>
+          <el-button
             type="primary"
             :icon="useRenderIcon('addFill')"
             @click="handleOpenDialog()"
@@ -88,11 +106,32 @@
         <el-button type="primary" @click="handleSubmit">确定</el-button>
       </template>
     </el-dialog>
+
+    <el-dialog v-model="importVisible" title="导入预览" width="800px">
+      <el-table :data="importPreviewList" border height="400">
+        <el-table-column prop="title" label="标题" />
+        <el-table-column prop="year" label="年份" width="80" />
+        <el-table-column prop="level_name" label="级别" width="100" />
+        <el-table-column prop="category_name" label="类别" width="100" />
+        <el-table-column prop="uri" label="链接" show-overflow-tooltip />
+      </el-table>
+      <template #footer>
+        <el-button @click="importVisible = false">取消</el-button>
+        <el-button
+          type="primary"
+          :loading="importLoading"
+          @click="confirmImport"
+        >
+          确认导入 {{ importPreviewList.length }} 条
+        </el-button>
+      </template>
+    </el-dialog>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, reactive } from "vue";
+import { read, utils, writeFile } from "xlsx";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import { message } from "@/utils/message";
 import {
@@ -102,6 +141,8 @@ import {
   deleteComp,
   getCompLevels,
   getCompCategories,
+  createCompLevel,
+  createCompCategory,
   CompInfo
 } from "@/api/comp";
 
@@ -131,6 +172,151 @@ const initialForm: CompInfo = {
   level: null
 };
 const form = reactive({ ...initialForm });
+
+// --- 导入导出相关状态 ---
+const importVisible = ref(false);
+const importLoading = ref(false);
+const importPreviewList = ref([]);
+
+/** 导出功能实现 */
+function handleExport() {
+  if (dataList.value.length === 0) {
+    message("暂无数据可导出", { type: "warning" });
+    return;
+  }
+  // 转换数据为 Excel 格式
+  const exportData = dataList.value.map(item => ({
+    竞赛标题: item.title,
+    年份: item.year,
+    级别: item.level_name,
+    类别: item.category_name,
+    链接: item.uri,
+    描述: item.description
+  }));
+  const worksheet = utils.json_to_sheet(exportData);
+  const workbook = utils.book_new();
+  utils.book_append_sheet(workbook, worksheet, "竞赛列表");
+  writeFile(workbook, `竞赛信息表_${new Date().getTime()}.xlsx`);
+}
+
+/** 导入文件处理 */
+function handleImport(file: any) {
+  const reader = new FileReader();
+  reader.onload = (e: any) => {
+    const data = new Uint8Array(e.target.result);
+    const workbook = read(data, { type: "array" });
+    const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+    const jsonData = utils.sheet_to_json(worksheet);
+
+    importPreviewList.value = jsonData.map((item: any) => ({
+      title: item["竞赛标题"],
+      year: Number(item["年份"]) || new Date().getFullYear(),
+      level_name: String(item["级别"] || "").trim(),
+      category_name: String(item["类别"] || "").trim(),
+      uri: item["链接"] || "",
+      description: item["描述"] || ""
+    }));
+    importVisible.value = true;
+  };
+  reader.readAsArrayBuffer(file.raw);
+}
+
+/** 辅助函数：根据名称获取ID，不存在则创建 */
+async function getOrCreateLevelId(name: string) {
+  if (!name) return null;
+  // 先从当前缓存中找
+  let level = levelOptions.value.find(l => l.name === name);
+  if (level) return level.id;
+
+  try {
+    // 不存在则调用接口创建
+    const res = await createCompLevel({ name });
+    const newLevel = Array.isArray(res) ? res[0] : res.data || res;
+    // 更新本地下拉框缓存，避免重复创建
+    levelOptions.value.push(newLevel);
+    return newLevel.id;
+  } catch (e) {
+    console.error(`创建级别 [${name}] 失败`, e);
+    return null;
+  }
+}
+
+async function getOrCreateCategoryId(name: string) {
+  if (!name) return null;
+  let category = categoryOptions.value.find(c => c.name === name);
+  if (category) return category.id;
+
+  try {
+    const res = await createCompCategory({ name });
+    const newCat = Array.isArray(res) ? res[0] : res.data || res;
+    categoryOptions.value.push(newCat);
+    return newCat.id;
+  } catch (e) {
+    console.error(`创建类别 [${name}] 失败`, e);
+    return null;
+  }
+}
+
+/** 确认批量导入 */
+async function confirmImport() {
+  if (importPreviewList.value.length === 0) return;
+  importLoading.value = true;
+  let successCount = 0;
+  let errorCount = 0;
+
+  for (const item of importPreviewList.value) {
+    try {
+      // 1. 动态获取或创建级别 ID
+      const levelId = await getOrCreateLevelId(item.level_name);
+      // 2. 动态获取或创建类别 ID
+      const categoryId = await getOrCreateCategoryId(item.category_name);
+
+      // 3. 构造提交数据
+      const submitData: CompInfo = {
+        title: item.title,
+        year: item.year,
+        uri: item.uri,
+        description: item.description,
+        level: levelId,
+        category: categoryId
+      };
+
+      await createComp(submitData);
+      successCount++;
+    } catch (err) {
+      errorCount++;
+      console.error("导入失败单条:", item.title, err);
+    }
+  }
+
+  message(
+    `导入完成！成功 ${successCount} 条${errorCount > 0 ? `，失败 ${errorCount} 条` : ""}`,
+    {
+      type: errorCount === 0 ? "success" : "warning"
+    }
+  );
+  importLoading.value = false;
+  importVisible.value = false;
+  onSearch(); // 刷新列表数据
+}
+
+/** 初始化及刷新配置项的方法 */
+async function loadOptions() {
+  try {
+    const [levelsRes, catsRes] = await Promise.all([
+      getCompLevels(),
+      getCompCategories()
+    ]);
+    levelOptions.value = Array.isArray(levelsRes)
+      ? levelsRes
+      : (levelsRes as any).data;
+    categoryOptions.value = Array.isArray(catsRes)
+      ? catsRes
+      : (catsRes as any).data;
+  } catch (e) {
+    console.error("加载配置项失败", e);
+  }
+}
 
 /** 刷新列表 */
 async function onSearch() {
@@ -178,6 +364,7 @@ async function handleDelete(row: CompInfo) {
 /** 初始化数据 */
 onMounted(async () => {
   onSearch();
+  loadOptions();
   try {
     // 处理竞赛级别下拉框
     const levelsRes = await getCompLevels();
