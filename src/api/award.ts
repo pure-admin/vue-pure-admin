@@ -43,7 +43,7 @@ export const getAwardReport = (params: {
 
 /** 获取当前登录用户的获奖记录 */
 export const getMyAwards = () => {
-  return http.request<any[]>("get", "/award/infos/my-awards/");
+  return http.request<any[]>("get", "/award/infos/");
 };
 
 /** 获取获奖统计数据 */

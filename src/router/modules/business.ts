@@ -24,6 +24,24 @@ export default [
         }
       },
       {
+        path: "/award/apply",
+        name: "AwardApply",
+        component: () => import("@/views/award/apply/index.vue"),
+        meta: {
+          title: "获奖申请",
+          roles: ["Student", "Teacher"]
+        }
+      },
+      {
+        path: "/award/approve",
+        name: "AwardApprove",
+        component: () => import("@/views/award/approve/index.vue"),
+        meta: {
+          title: "获奖申请",
+          roles: ["CompetitionAdministrator"]
+        }
+      },
+      {
         path: "/award/overview",
         name: "AwardOverview",
         component: () => import("@/views/award/overview/index.vue"),
