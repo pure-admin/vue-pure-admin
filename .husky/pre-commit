@@ -1,8 +1,8 @@
-. "$(dirname "$0")/common.sh"
+#!/bin/sh
+# . "$(dirname "$0")/_/husky.sh"
 
-[ -n "$CI" ] && exit 0
-
-PATH="/usr/local/bin:$PATH"
+# 如果上面那行没起作用，可以直接在这里添加路径（假设你的 pnpm 在 /usr/local/bin）
+# export PATH="/usr/local/bin:$PATH"
 
 # Perform lint check on files in the staging area through .lintstagedrc configuration
 pnpm exec lint-staged
