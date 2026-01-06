@@ -1,3 +1,27 @@
+# 6.3.0 (2025-12-10)
+
+### ✔️ Refactor
+
+- Renamed "Overall Style" in system configuration to "Theme Mode" and "Navigation Mode" to "Menu Layout" to improve naming professionalism and clarity.
+- Migrated the deprecated `tseslint.config` configuration method of `typescript-eslint`.
+
+### 🎫 Feat
+
+- Added a color picker panel component.
+
+### 🐞 Bug fixes
+
+- Fixed an issue where the selected/activated state style of the navigation menu was displayed incorrectly when using `iconfont` icons.
+- Fixed a style issue with the column settings pop-up of the `RePureTableBar` and `ReVxeTableBar` components.
+
+### 🍏 Perf
+
+- Adapting the `ReDialog` component to the latest version of `el-dialog` with API changes and supplementary examples
+- Adapting the `ReDrawer` component to the latest version of `el-drawer` with API changes and supplementary examples
+- Adapting the `message` utility function to the latest version of `ElMessage` with API changes and supplementary examples
+- Importing the latest version of `element-plus` components
+- Optimizing the tab layout and style for Google Chrome mode
+
 # 6.2.0 (2025-10-16)
 
 ### 🎫 Features

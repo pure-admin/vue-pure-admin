@@ -34,12 +34,14 @@
   }
 
   .set-icon,
-  .fullscreen-icon {
+  .fullscreen-icon,
+  .globalization-icon {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 40px;
     height: 48px;
+    font-size: 16px;
     cursor: pointer;
   }
 
@@ -450,7 +452,7 @@
       /* 搜索 */
       .search-container,
       /* 国际化 */
-      .globalization,
+      .globalization-icon,
       /* 全屏 */
       .fullscreen-icon,
       /* 消息通知 */
@@ -467,15 +469,6 @@
       .dropdown-badge {
         height: 48px;
         color: var(--pure-theme-sub-menu-active-text);
-      }
-
-      .globalization {
-        width: 40px;
-        height: 48px;
-        padding: 11px;
-        color: var(--pure-theme-sub-menu-active-text);
-        cursor: pointer;
-        outline: none;
       }
 
       .el-dropdown-link {
@@ -631,7 +624,7 @@ body[layout="vertical"] {
   /* 搜索 */
   .search-container,
   /* 国际化 */
-  .globalization,
+  .globalization-icon,
   /* 全屏 */
   .fullscreen-icon,
   /* 消息通知 */

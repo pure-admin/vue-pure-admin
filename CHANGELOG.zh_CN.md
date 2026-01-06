@@ -1,3 +1,27 @@
+# 6.3.0 (2025-12-10)
+
+### ✔️ Refactor
+
+- 将系统配置中的“整体风格”更名为“主题模式”，“导航模式”更名为“菜单布局”，以提升命名的专业性与清晰度
+- 迁移`typescript-eslint`已弃用的`tseslint.config`配置方式
+
+### 🎫 Feat
+
+- 添加颜色选择器面板组件
+
+### 🐞 Bug fixes
+
+- 修复导航菜单在使用`iconfont`图标时，选中/激活状态的样式显示异常问题
+- 修复`RePureTableBar`和`ReVxeTableBar`组件的列设置弹窗样式问题
+
+### 🍏 Perf
+
+- `ReDialog`组件适配`el-dialog`最新版本的`API`变更以及补充相关示例
+- `ReDrawer`组件适配`el-drawer`最新版本的`API`变更以及补充相关示例
+- `message`工具函数适配`ElMessage`最新版本的`API`变更以及补充相关示例
+- 导入`element-plus`最新版本的新组件
+- 优化页签风格为谷歌模式下的布局和样式
+
 # 6.2.0 (2025-10-16)
 
 ### 🎫 Feat
