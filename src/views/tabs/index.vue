@@ -102,7 +102,6 @@ function onCloseTags() {
       default-expand-all
       :props="{
         label: data => transformI18n(data.meta.title),
-        value: 'uniqueId',
         children: 'children',
         disabled: 'disabled'
       }"
