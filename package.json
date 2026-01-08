@@ -120,6 +120,7 @@
     "@commitlint/types": "^20.2.0",
     "@eslint/js": "^9.39.2",
     "@faker-js/faker": "^10.1.0",
+    "@iconify-icons/ep": "^1.2.12",
     "@iconify/json": "^2.2.417",
     "@iconify/vue": "4.2.0",
     "@intlify/unplugin-vue-i18n": "^11.0.3",

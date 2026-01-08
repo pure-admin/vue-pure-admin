@@ -101,6 +101,14 @@ export const searchUserByName = (realName: string) => {
   });
 };
 
+/** 通过user_id获取用户详细信息 */
+export const searchUserByID = (userId: string) => {
+  return http.request<UserProfileSearchItem[]>(
+    "get",
+    `/user-profile/by-user-id/${userId}/`
+  );
+};
+
 /** 更新用户账户信息（密码和角色） */
 export const updateUserAccount = (
   userId: string,
