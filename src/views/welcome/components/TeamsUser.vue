@@ -32,7 +32,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import { getMyTeams } from "@/api/team";
+import { getTeamList } from "@/api/team";
 import TeamEditDialogUser from "./TeamEditDialogUser.vue";
 
 const loading = ref(false);
@@ -41,7 +41,7 @@ const editRef = ref();
 
 const fetchMyData = async () => {
   loading.value = true;
-  const res = await getMyTeams();
+  const res = await getTeamList();
   teams.value = res;
   loading.value = false;
 };

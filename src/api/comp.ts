@@ -116,3 +116,9 @@ export const TEAM_STATUS_CONFIG = {
   awarded: { label: "已获奖", color: "success", canEdit: false },
   ended: { label: "未获奖", color: "info", canEdit: false }
 };
+
+/* 用于获取赛事当前的 status (如 registration, ongoing, awarding 等)
+ */
+export const getEventDetail = (id: number) => {
+  return http.request<any>("get", `/comp/events/${id}/`);
+};

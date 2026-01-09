@@ -92,7 +92,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from "vue";
-import { getMyTeams, reviewShortlist, reviewAward } from "@/api/team";
+import { getTeamList, reviewShortlist, reviewAward } from "@/api/team";
 import { message } from "@/utils/message";
 import { ElMessageBox } from "element-plus";
 import TeamViewDialogAdmin from "./TeamViewDialogAdmin.vue";
@@ -123,7 +123,7 @@ const groupedTeams = computed(() => {
 const fetchAllData = async () => {
   loading.value = true;
   try {
-    const res = await getMyTeams(); // 管理员调用此接口返回全量
+    const res = await getTeamList(); // 管理员调用此接口返回全量
     allTeams.value = res;
   } finally {
     loading.value = false;

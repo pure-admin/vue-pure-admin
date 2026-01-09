@@ -2,113 +2,234 @@
   <el-dialog
     v-model="visible"
     title="维护团队资料"
-    width="650px"
+    width="750px"
     destroy-on-close
   >
-    <el-form :model="form" label-width="100px" :disabled="isAllDisabled">
-      <el-divider content-position="left">基础信息 (报名阶段可改)</el-divider>
-      <el-form-item label="团队名称" required>
-        <el-input v-model="form.name" :disabled="!isRegistrationPhase" />
-      </el-form-item>
+    <el-form v-loading="loading" label-width="100px">
+      <TeamBasicInfo
+        v-model:name="form.name"
+        v-model:teachers="form.teachers"
+        v-model:teacherDetails="form.teacher_details"
+        v-model:members="form.members"
+        v-model:memberDetails="form.member_details"
+        :disabled="!canEditBasicInfo"
+      />
 
-      <el-form-item label="指导老师" :disabled="!isRegistrationPhase">
-        <el-select
-          v-model="form.teachers"
-          multiple
-          placeholder="请搜索并选择导师"
-        >
-          >
-        </el-select>
-      </el-form-item>
+      <TeamWorksInfo
+        :current-file-url="form.works"
+        :disabled="!canUploadWorks"
+        @file-change="f => (pendingFiles.works = f)"
+      />
 
-      <el-form-item label="作品附件">
-        <el-upload action="/api/upload/" :disabled="!isRegistrationPhase">
-          <el-button type="primary" size="small">上传作品</el-button>
-        </el-upload>
-      </el-form-item>
-
-      <el-divider content-position="left">获奖与证书 (评奖阶段开放)</el-divider>
-      <div :class="{ 'opacity-50 pointer-events-none': !isAwardingPhase }">
-        <el-form-item label="获奖等级">
-          <el-select
-            v-model="form.applied_award_level"
-            placeholder="请选择获奖等级"
-          >
-            <el-option label="一等奖" value="first" />
-            <el-option label="二等奖" value="second" />
-            <el-option label="三等奖" value="third" />
-          </el-select>
-        </el-form-item>
-        <el-form-item label="证书编号">
-          <el-input
-            v-model="form.temp_cert_no"
-            placeholder="请输入证书上的编号"
-          />
-        </el-form-item>
-        <el-form-item label="证书扫描件">
-          <el-upload action="/api/upload/" list-type="picture-card">
-            <IconifyIconOffline icon="ep:plus" />
-          </el-upload>
-        </el-form-item>
-      </div>
+      <TeamAwardInfo
+        v-model:certNo="form.temp_cert_no"
+        v-model:level="form.applied_award_level"
+        :visible="showAwardSection"
+        :current-img-url="form.attachment"
+        :disabled="!canEditAward"
+        @file-change="f => (pendingFiles.attachment = f)"
+      />
     </el-form>
 
     <template #footer>
-      <el-button @click="visible = false">取消</el-button>
-      <el-button v-if="!isAllDisabled" type="primary" @click="handleSave"
-        >保存修改</el-button
-      >
+      <div class="flex justify-between items-center w-full">
+        <span class="text-xs text-gray-400"
+          >状态：<el-tag size="small">{{ form.status_display }}</el-tag></span
+        >
+        <div class="flex gap-2">
+          <el-button @click="visible = false">取消</el-button>
+          <el-button
+            v-if="hasAnyPermission"
+            type="primary"
+            plain
+            :loading="saveLoading"
+            @click="onSave(false)"
+          >
+            保存修改
+          </el-button>
+          <el-button
+            v-if="canSubmit"
+            type="success"
+            :loading="saveLoading"
+            @click="onSave(true)"
+          >
+            正式提交报名
+          </el-button>
+        </div>
+      </div>
     </template>
   </el-dialog>
 </template>
 
 <script setup lang="ts">
 import { ref, computed } from "vue";
-import { updateTeamInfo } from "@/api/team";
+import TeamBasicInfo from "./TeamBasicInfo.vue";
+import TeamWorksInfo from "./TeamWorksInfo.vue";
+import TeamAwardInfo from "./TeamAwardInfo.vue";
+import {
+  updateTeamInfo,
+  uploadTeamFiles,
+  getTeamDetail,
+  submitTeamRegistration
+} from "@/api/team";
 import { message } from "@/utils/message";
+import { ElMessageBox } from "element-plus";
+import { getEventDetail } from "@/api/comp";
 
+const emit = defineEmits(["refresh"]);
 const visible = ref(false);
-const form = ref<any>({});
-const eventStatus = ref(""); // 记录所属赛事的状态
+const loading = ref(false);
+const saveLoading = ref(false);
 
-// 逻辑判断
-const isRegistrationPhase = computed(
-  () => eventStatus.value === "registration"
+// 表单数据初始化
+const form = ref<any>({
+  teachers: [],
+  teacher_details: [],
+  members: [],
+  member_details: []
+});
+const eventStatus = ref("");
+const pendingFiles = ref<{ works?: File; attachment?: File }>({});
+
+// --- 权限计算 (逻辑层) ---
+const isTeamDraft = computed(
+  () => form.value.status === "draft" || form.value.status === "rejected"
 );
-const isAwardingPhase = computed(() => eventStatus.value === "awarding");
-// 如果赛事已归档，则全部不可点
-const isAllDisabled = computed(() => eventStatus.value === "archived");
 
-const open = (teamData: any) => {
-  form.value = { ...teamData };
-  // 重要：需要从 team 数据中拿到它所属 event 的当前状态
-  eventStatus.value = teamData.event_status;
+// 阶段权限
+// 1. 定义什么才是“第一阶段”（报名阶段）
+const isRegistrationPhase = computed(() => {
+  // 只有赛事状态是 'draft' (草稿) 或 'registration' (报名中) 时，才算第一阶段
+  return ["registration"].includes(eventStatus.value);
+});
+// 2. 基础信息编辑权限：必须同时满足 [处于报名阶段] AND [团队是草稿状态]
+const canEditBasicInfo = computed(() => {
+  return isRegistrationPhase.value && isTeamDraft.value;
+});
+
+const canUploadWorks = computed(
+  () => isTeamDraft.value && eventStatus.value !== "archived"
+);
+const canEditAward = computed(() => {
+  return eventStatus.value === "awarding" && isTeamDraft.value;
+});
+const canSubmit = computed(() => {
+  return isTeamDraft.value && eventStatus.value !== "archived";
+});
+const showAwardSection = computed(() => {
+  // 1. 只要赛事进入了评奖阶段，就该显示（无论能不能改）
+  const isAwardingPhase = eventStatus.value === "awarding";
+  // 2. 如果已经有获奖数据了（比如管理员审完了），也要显示
+  const hasAwardData = !!form.value.applied_award_level;
+  return isAwardingPhase || hasAwardData;
+});
+const hasAnyPermission = computed(() => {
+  // 确保在评奖阶段且为草稿时，保存按钮是可见的
+  return canEditBasicInfo.value || canUploadWorks.value || canEditAward.value;
+});
+
+// --- 业务方法 ---
+const open = async (teamData: any) => {
+  const teamId = typeof teamData === "object" ? teamData.id : teamData;
   visible.value = true;
-};
-
-const handleSave = async () => {
+  loading.value = true;
+  pendingFiles.value = {}; // 重置待上传文件
   try {
-    // 根据当前阶段只发送允许修改的字段
-    let payload = {};
-    if (isRegistrationPhase.value) {
-      payload = {
+    // 1. 获取团队基本资料
+    const teamRes = await getTeamDetail(teamId);
+    form.value = {
+      ...teamRes,
+      teachers: teamRes.teachers || [],
+      members: teamRes.members || []
+    };
+
+    // 2. 关键：根据团队关联的 event ID 获取赛事当前状态
+    // 注意：请确认后端返回的字段是 .event 还是 .event_id
+    const eventId = teamRes.event;
+    if (eventId) {
+      const eventRes = await getEventDetail(eventId);
+      // 这里的 eventRes.status 就会是 "awarding"、"ongoing" 等
+      eventStatus.value = eventRes.status;
+      console.log("成功获取关联赛事状态:", eventStatus.value);
+    } else {
+      console.warn("该团队未关联任何赛事 ID");
+    }
+  } catch (error) {
+    console.error("加载详情失败:", error);
+    message("获取资料失败", { type: "error" });
+  } finally {
+    loading.value = false;
+  }
+};
+const onSave = async (isFinalSubmit: boolean) => {
+  if (isFinalSubmit) {
+    try {
+      await ElMessageBox.confirm("提交后将进入审核状态，确认提交吗？", "提示", {
+        type: "warning"
+      });
+    } catch {
+      return;
+    }
+  }
+
+  saveLoading.value = true;
+  const targetId = Number(form.value.id);
+
+  try {
+    // 【逻辑 A】报名阶段：更新基础信息 + 上传文件
+    if (canEditBasicInfo.value) {
+      const infoPayload = {
         name: form.value.name,
         teachers: form.value.teachers,
-        works: form.value.works
+        members: form.value.members
       };
-    } else if (isAwardingPhase.value) {
-      payload = {
-        applied_award_level: form.value.applied_award_level,
-        temp_cert_no: form.value.temp_cert_no,
-        attachment: form.value.attachment
-      };
+      await updateTeamInfo(targetId, infoPayload);
+      if (pendingFiles.value.works) {
+        const fd = new FormData();
+        fd.append("works", pendingFiles.value.works);
+        await uploadTeamFiles(targetId, fd);
+      }
+    }
+    // 【逻辑 B】非报名阶段（Ongoing/Awarding）：仅上传文件或获奖信息
+    else if (isTeamDraft.value) {
+      const fd = new FormData();
+      let hasData = false;
+
+      if (pendingFiles.value.works) {
+        fd.append("works", pendingFiles.value.works);
+        hasData = true;
+      }
+
+      if (canEditAward.value) {
+        if (form.value.applied_award_level)
+          fd.append("applied_award_level", form.value.applied_award_level);
+        if (form.value.temp_cert_no)
+          fd.append("temp_cert_no", form.value.temp_cert_no);
+        if (pendingFiles.value.attachment)
+          fd.append("attachment", pendingFiles.value.attachment);
+        hasData = true;
+      }
+
+      if (hasData) {
+        await uploadTeamFiles(targetId, fd);
+      }
     }
 
-    await updateTeamInfo(form.value.id, payload);
-    message("保存成功", { type: "success" });
+    // 【核心流转逻辑】无论哪个阶段，只要点击了“正式提交”
+    if (isFinalSubmit) {
+      // 调用后端流转接口，将 status 从 draft/rejected 变为 submitted
+      await submitTeamRegistration(targetId);
+      message("提交成功，状态已更新", { type: "success" });
+    } else {
+      message("保存成功", { type: "success" });
+    }
+
     visible.value = false;
+    emit("refresh");
   } catch (e) {
-    console.error(e);
+    message("操作失败，请重试", { type: "error" });
+  } finally {
+    saveLoading.value = false;
   }
 };
 
