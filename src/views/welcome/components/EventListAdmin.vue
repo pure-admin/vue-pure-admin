@@ -28,18 +28,49 @@
         </template>
       </el-table-column>
 
+      <el-table-column label="参赛/获奖人数" width="150">
+        <template #default="{ row }">
+          <div v-if="row.status === 'archived'" class="text-sm">
+            <el-tooltip content="最终参赛人数" placement="top">
+              <span class="text-blue-600 font-bold">{{
+                row.final_participants_count
+              }}</span>
+            </el-tooltip>
+            <span class="mx-1">/</span>
+            <el-tooltip content="最终获奖人数" placement="top">
+              <span class="text-green-600 font-bold">{{
+                row.final_winners_count
+              }}</span>
+            </el-tooltip>
+          </div>
+          <span v-else class="text-gray-400">-</span>
+        </template>
+      </el-table-column>
+
       <el-table-column label="管理操作" width="250" fixed="right">
         <template #default="{ row }">
           <div class="flex gap-2">
-            <el-button
-              v-if="row.status !== 'archived'"
-              type="primary"
-              size="small"
-              plain
-              @click="handleNextStage(row)"
-            >
-              推进阶段
-            </el-button>
+            <template v-if="row.status !== 'archived'">
+              <el-button
+                v-if="row.status === 'awarding'"
+                type="danger"
+                size="small"
+                @click="handleArchive(row)"
+              >
+                归档赛事
+              </el-button>
+
+              <el-button
+                v-else
+                type="primary"
+                size="small"
+                plain
+                @click="handleNextStage(row)"
+              >
+                推进阶段
+              </el-button>
+            </template>
+
             <el-button type="warning" size="small" @click="handleEdit(row)"
               >编辑</el-button
             >
@@ -56,7 +87,12 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import { getActiveEvents, updateEventStage, STAGE_MAP } from "@/api/comp";
+import {
+  getActiveEvents,
+  updateEventStage,
+  STAGE_MAP,
+  archiveEvent
+} from "@/api/comp";
 import { message } from "@/utils/message";
 import { ElMessageBox } from "element-plus";
 import CompDetailDialog from "./CompDetailDialog.vue";
@@ -103,6 +139,36 @@ const handleNextStage = async (event: any) => {
     fetchEvents();
   } catch (error) {
     if (error !== "cancel") console.error(error);
+  }
+};
+
+/**
+ * 处理归档逻辑
+ */
+const handleArchive = async (event: any) => {
+  try {
+    // 弹窗警告：使用 danger 样式和更加醒目的文案
+    await ElMessageBox.confirm(
+      `警告：归档赛事“${event.name}”将清空所有参赛团队记录并冻结获奖名单。该操作不可逆，请确认所有评审工作已完全结束！`,
+      "严正警告：赛事归档",
+      {
+        confirmButtonText: "确定归档",
+        cancelButtonText: "取消",
+        confirmButtonClass: "el-button--danger",
+        type: "error"
+      }
+    );
+
+    await archiveEvent(event.id);
+    // 成功提示
+    message(`赛事归档成功！统计结果已锁定。`, { type: "success" });
+    // 刷新列表
+    fetchEvents();
+  } catch (error) {
+    if (error !== "cancel") {
+      console.error(error);
+      message("归档失败，请检查数据完整性", { type: "error" });
+    }
   }
 };
 

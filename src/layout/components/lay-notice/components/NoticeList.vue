@@ -14,11 +14,17 @@ defineProps({
     default: ""
   }
 });
+defineEmits(["item-click"]);
 </script>
 
 <template>
   <div v-if="list.length">
-    <NoticeItem v-for="(item, index) in list" :key="index" :noticeItem="item" />
+    <NoticeItem
+      v-for="(item, index) in list"
+      :key="index"
+      :noticeItem="item"
+      @click="$emit('item-click', item)"
+    />
   </div>
   <el-empty v-else :description="transformI18n(emptyText)" />
 </template>

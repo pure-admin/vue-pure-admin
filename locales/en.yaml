@@ -197,6 +197,7 @@ status:
   pureNoMessage: No Message
   pureNoNotify: No Notify
   pureNoTodo: No Todo
+  pureNotifications: Notifications
 login:
   pureUsername: Username
   purePassword: Password

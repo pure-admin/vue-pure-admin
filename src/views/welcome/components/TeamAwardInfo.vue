@@ -8,9 +8,14 @@
         placeholder="请选择"
         @update:model-value="$emit('update:level', $event)"
       >
-        <el-option label="一等奖" value="first" />
-        <el-option label="二等奖" value="second" />
-        <el-option label="三等奖" value="third" />
+        <el-option label="一等奖" value="一等奖" />
+        <el-option label="二等奖" value="二等奖" />
+        <el-option label="三等奖" value="三等奖" />
+        <el-option label="金奖" value="金奖" />
+        <el-option label="银奖" value="银奖" />
+        <el-option label="铜奖" value="铜奖" />
+        <el-option label="优秀奖" value="优秀奖" />
+        <el-option label="参与奖" value="参与奖" />
       </el-select>
     </el-form-item>
     <el-form-item label="证书编号">

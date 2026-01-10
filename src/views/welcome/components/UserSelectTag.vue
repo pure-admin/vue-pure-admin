@@ -95,16 +95,20 @@ const searchResults = ref<UserDetail[]>([]);
 // 自动补全逻辑
 const internalFetchDetails = async (ids: string[]) => {
   if (!ids || ids.length === 0) return;
-  const existingIds = props.details.map(d => d.user_id);
+  // 确保 details 至少是个空数组
+  const currentDetails = props.details || [];
+  const existingIds = currentDetails.map(d => d.user_id);
   const needFetchIds = ids.filter(id => !existingIds.includes(id));
   if (needFetchIds.length === 0) return;
+
   try {
     const promises = needFetchIds.map(id => searchUserByID(id));
     const results = await Promise.all(promises);
     const newDetails = results
       .map(r => (Array.isArray(r) ? r[0] : r))
       .filter(Boolean) as UserDetail[];
-    emit("update:details", [...props.details, ...newDetails]);
+    // 发射更新时也要合并
+    emit("update:details", [...currentDetails, ...newDetails]);
   } catch (e) {
     console.error(`补全${props.label}详情失败`, e);
   }
@@ -113,13 +117,14 @@ const internalFetchDetails = async (ids: string[]) => {
 watch(
   () => props.modelValue,
   newIds => {
-    if (newIds && newIds.length > props.details.length) {
+    // 使用可选链 ?. 并且确保 details 存在
+    const currentDetailsLen = props.details?.length || 0;
+    if (newIds && newIds.length > currentDetailsLen) {
       internalFetchDetails(newIds);
     }
   },
   { immediate: true }
 );
-
 const openSearch = () => {
   keyword.value = "";
   searchResults.value = [];

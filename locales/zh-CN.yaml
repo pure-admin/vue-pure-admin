@@ -197,6 +197,7 @@ status:
   pureNoMessage: 暂无消息
   pureNoNotify: 暂无通知
   pureNoTodo: 暂无待办
+  pureNotifications: 通知
 login:
   pureUsername: 账号
   purePassword: 密码

@@ -18,6 +18,8 @@ const descriptionTooltip = ref(false);
 const { tooltipEffect } = useNav();
 const isMobile = deviceDetection();
 
+defineEmits(["click"]);
+
 function hoverTitle() {
   nextTick(() => {
     titleRef.value?.scrollWidth > titleRef.value?.clientWidth
@@ -50,12 +52,14 @@ function hoverDescription(event, description) {
 <template>
   <div
     class="notice-container border-0 border-b-[1px] border-solid border-[#f0f0f0] dark:border-[#303030]"
+    @click="$emit('click', noticeItem)"
   >
     <el-avatar
       v-if="noticeItem.avatar"
       :size="30"
       :src="noticeItem.avatar"
       class="notice-container-avatar"
+      @click="$emit('click', noticeItem)"
     />
     <div class="notice-container-text">
       <div class="notice-text-title text-[#000000d9] dark:text-white">
@@ -118,6 +122,8 @@ function hoverDescription(event, description) {
   align-items: flex-start;
   justify-content: space-between;
   padding: 12px 0;
+  cursor: pointer;
+  transition: background 0.3s;
 
   // border-bottom: 1px solid #f0f0f0;
 
@@ -173,5 +179,9 @@ function hoverDescription(event, description) {
       margin-top: 4px;
     }
   }
+}
+
+.notice-container:hover {
+  background: var(--el-fill-color-light);
 }
 </style>

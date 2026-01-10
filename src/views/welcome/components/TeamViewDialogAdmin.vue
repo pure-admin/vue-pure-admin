@@ -13,8 +13,12 @@
         <el-descriptions-item label="所属赛事">
           {{ form.event_name }}
         </el-descriptions-item>
-        <el-descriptions-item label="队长学/工号">
-          {{ form.leader_name }}
+        <el-descriptions-item label="队长信息">
+          <span v-if="form.leader_real_name">
+            {{ form.leader_real_name }}
+            <span class="text-gray-400 text-xs">({{ form.leader_name }})</span>
+          </span>
+          <span v-else>{{ form.leader }}</span>
         </el-descriptions-item>
         <el-descriptions-item label="当前状态">
           <el-tag :type="statusTagType" effect="dark">{{
@@ -138,9 +142,29 @@
           </div>
         </div>
 
-        <div v-else class="text-center text-gray-500">
-          当前状态
-          <el-tag size="small">{{ form.status_display }}</el-tag> 无需审批操作
+        <div v-else class="text-center text-gray-500 py-2">
+          <p class="mb-3">
+            当前状态
+            <el-tag size="small">{{ form.status_display }}</el-tag> 无需审批操作
+          </p>
+          <el-popconfirm
+            title="确定要将该团队重置为草稿状态吗？这通常用于修正录入错误。"
+            confirm-button-text="确定重置"
+            cancel-button-text="取消"
+            width="250"
+            @confirm="handleResetToDraft"
+          >
+            <template #reference>
+              <el-button
+                v-if="form.status !== 'draft'"
+                type="warning"
+                size="small"
+                plain
+              >
+                重置为草稿状态
+              </el-button>
+            </template>
+          </el-popconfirm>
         </div>
       </div>
     </div>
@@ -153,8 +177,12 @@
 
 <script setup lang="ts">
 import { ref, computed } from "vue";
-import { searchUserByID } from "@/api/user";
-import { getTeamDetail, reviewShortlist, reviewAward } from "@/api/team";
+import {
+  getTeamDetail,
+  reviewShortlist,
+  reviewAward,
+  resetTeamToDraft
+} from "@/api/team";
 import { message } from "@/utils/message";
 
 const emit = defineEmits(["refresh"]);
@@ -192,31 +220,28 @@ const open = async (teamData: any) => {
     const res = await getTeamDetail(teamId);
     form.value = {
       ...res,
-      id: teamId // 再次强制覆盖，确保 form.value.id 是基本类型
+      // 队长信息从 leader_detail.profile 中取
+      leader_real_name: res.leader_detail?.profile?.real_name,
+      // 教师和成员详情直接映射到表格需要的数据格式
+      teacher_details:
+        res.teachers_detail?.map(t => ({
+          user_id: t.user_id,
+          real_name: t.profile?.real_name,
+          department: t.profile?.department
+        })) || [],
+      member_details:
+        res.members_detail?.map(m => ({
+          user_id: m.user_id,
+          real_name: m.profile?.real_name,
+          department:
+            m.profile?.clazz || m.profile?.major || m.profile?.department
+        })) || []
     };
-    // 补全人员详情
-    if (!form.value.teacher_details?.length) {
-      form.value.teacher_details = await fetchUserDetails(
-        form.value.teachers || []
-      );
-    }
-    if (!form.value.member_details?.length) {
-      form.value.member_details = await fetchUserDetails(
-        form.value.members || []
-      );
-    }
   } catch (error) {
     message("详情获取失败", { type: "error" });
   } finally {
     loading.value = false;
   }
-};
-
-const fetchUserDetails = async (ids: string[]) => {
-  if (!ids.length) return [];
-  const promises = ids.map(id => searchUserByID(id));
-  const results = await Promise.all(promises);
-  return results.map(r => (Array.isArray(r) ? r[0] : r)).filter(Boolean);
 };
 
 // --- 审批操作 ---
@@ -253,6 +278,23 @@ const handleReviewAward = async (action: "award" | "finish") => {
     visible.value = false;
   } catch (e) {
     message("操作失败", { type: "error" });
+  } finally {
+    loading.value = false;
+  }
+};
+
+// 重置团队状态逻辑
+const handleResetToDraft = async () => {
+  try {
+    loading.value = true;
+    const res = await resetTeamToDraft(form.value.id);
+    // 根据你后端的 Response 返回信息进行提示
+    message(res.detail || "团队已重置为草稿状态", { type: "success" });
+    emit("refresh"); // 刷新父级列表
+    visible.value = false; // 关闭弹窗
+  } catch (e) {
+    console.error(e);
+    message("重置失败，请联系系统管理员", { type: "error" });
   } finally {
     loading.value = false;
   }

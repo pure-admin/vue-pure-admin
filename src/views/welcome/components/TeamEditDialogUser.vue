@@ -139,8 +139,11 @@ const open = async (teamData: any) => {
     const teamRes = await getTeamDetail(teamId);
     form.value = {
       ...teamRes,
+      // 显式强制为数组，防止后端返回 null 导致 details 变成 null
       teachers: teamRes.teachers || [],
-      members: teamRes.members || []
+      teacher_details: teamRes.teacher_details || [],
+      members: teamRes.members || [],
+      member_details: teamRes.member_details || []
     };
 
     // 2. 关键：根据团队关联的 event ID 获取赛事当前状态

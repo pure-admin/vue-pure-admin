@@ -122,3 +122,9 @@ export const TEAM_STATUS_CONFIG = {
 export const getEventDetail = (id: number) => {
   return http.request<any>("get", `/comp/events/${id}/`);
 };
+
+/* 用于归档当前赛事，前置条件：赛事处于awarding状态
+ */
+export const archiveEvent = (id: number) => {
+  return http.request<any>("post", `/comp/events/${id}/archive/`);
+};

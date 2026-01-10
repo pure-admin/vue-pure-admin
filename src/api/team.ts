@@ -74,3 +74,20 @@ export const reviewAward = (
 export const submitTeamRegistration = (id: number) => {
   return http.request<any>("post", `/team/info/${id}/submit-registration/`);
 };
+
+/** 导出赛事作品压缩包 (管理员专用) */
+export const exportEventWorks = (eventId: number) => {
+  return http.request<any>("get", "/team/info/export-works/", {
+    params: { event_id: eventId },
+    // 关键配置：指定响应类型为 blob
+    responseType: "blob"
+  });
+};
+
+/**
+ * 用于重置团队状态的
+ * 从ended状态重置到draft状态，注意竞赛处于archived状态无效
+ */
+export const resetTeamToDraft = (id: number) => {
+  return http.request<any>("post", `/team/info/${id}/reset-to-draft/`);
+};
