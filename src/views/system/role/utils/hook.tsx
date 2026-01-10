@@ -163,11 +163,13 @@ export function useRole(treeRef: Ref) {
 
   async function onSearch() {
     loading.value = true;
-    const { data } = await getRoleList(toRaw(form));
-    dataList.value = data.list;
-    pagination.total = data.total;
-    pagination.pageSize = data.pageSize;
-    pagination.currentPage = data.currentPage;
+    const { code, data } = await getRoleList(toRaw(form));
+    if (code === 0) {
+      dataList.value = data.list;
+      pagination.total = data.total;
+      pagination.pageSize = data.pageSize;
+      pagination.currentPage = data.currentPage;
+    }
 
     setTimeout(() => {
       loading.value = false;
@@ -229,8 +231,10 @@ export function useRole(treeRef: Ref) {
     if (id) {
       curRow.value = row;
       isShow.value = true;
-      const { data } = await getRoleMenuIds({ id });
-      treeRef.value.setCheckedKeys(data);
+      const { code, data } = await getRoleMenuIds({ id });
+      if (code === 0) {
+        treeRef.value.setCheckedKeys(data);
+      }
     } else {
       curRow.value = null;
       isShow.value = false;
@@ -268,9 +272,11 @@ export function useRole(treeRef: Ref) {
 
   onMounted(async () => {
     onSearch();
-    const { data } = await getRoleMenu();
-    treeIds.value = getKeyList(data, "id");
-    treeData.value = handleTree(data);
+    const { code, data } = await getRoleMenu();
+    if (code === 0) {
+      treeIds.value = getKeyList(data, "id");
+      treeData.value = handleTree(data);
+    }
   });
 
   watch(isExpandAll, val => {

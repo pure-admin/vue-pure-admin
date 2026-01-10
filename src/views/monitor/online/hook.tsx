@@ -80,11 +80,13 @@ export function useRole() {
 
   async function onSearch() {
     loading.value = true;
-    const { data } = await getOnlineLogsList(toRaw(form));
-    dataList.value = data.list;
-    pagination.total = data.total;
-    pagination.pageSize = data.pageSize;
-    pagination.currentPage = data.currentPage;
+    const { code, data } = await getOnlineLogsList(toRaw(form));
+    if (code === 0) {
+      dataList.value = data.list;
+      pagination.total = data.total;
+      pagination.pageSize = data.pageSize;
+      pagination.currentPage = data.currentPage;
+    }
 
     setTimeout(() => {
       loading.value = false;

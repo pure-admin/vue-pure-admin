@@ -80,7 +80,7 @@ export const useUserStore = defineStore("pure-user", {
       return new Promise<UserResult>((resolve, reject) => {
         getLogin(data)
           .then(data => {
-            if (data?.success) setToken(data.data);
+            if (data.code === 0) setToken(data.data);
             resolve(data);
           })
           .catch(error => {
@@ -103,7 +103,7 @@ export const useUserStore = defineStore("pure-user", {
       return new Promise<RefreshTokenResult>((resolve, reject) => {
         refreshTokenApi(data)
           .then(data => {
-            if (data) {
+            if (data.code === 0) {
               setToken(data.data);
               resolve(data);
             }

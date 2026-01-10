@@ -23,8 +23,8 @@ const submitForm = formEl => {
         date: validateForm.date // 别的字段
       });
       formUpload(formData)
-        .then(({ success }) => {
-          if (success) {
+        .then(({ code }) => {
+          if (code === 0) {
             message("提交成功", { type: "success" });
           } else {
             message("提交失败");
