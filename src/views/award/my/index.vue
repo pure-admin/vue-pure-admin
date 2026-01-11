@@ -1,9 +1,86 @@
 <template>
   <div class="main p-4">
-    <el-card shadow="never" class="mb-4">
+    <el-card shadow="never" class="mb-4 search-card">
+      <el-form :inline="true" :model="filterForm" size="default">
+        <el-form-item label="竞赛名称">
+          <el-input
+            v-model="filterForm.competitionTitle"
+            placeholder="搜索名称"
+            clearable
+          />
+        </el-form-item>
+        <el-form-item label="竞赛类别">
+          <el-select
+            v-model="filterForm.category"
+            placeholder="全部"
+            clearable
+            style="width: 140px"
+          >
+            <el-option
+              v-for="opt in categoryOptions"
+              :key="opt"
+              :label="opt"
+              :value="opt"
+            />
+          </el-select>
+        </el-form-item>
+
+        <el-form-item label="级别">
+          <el-select
+            v-model="filterForm.level"
+            placeholder="全部"
+            clearable
+            style="width: 100px"
+          >
+            <el-option
+              v-for="opt in levelOptions"
+              :key="opt"
+              :label="opt + '类'"
+              :value="opt"
+            />
+          </el-select>
+        </el-form-item>
+
+        <el-form-item label="获奖等级">
+          <el-select
+            v-model="filterForm.awardLevel"
+            placeholder="全部"
+            clearable
+            style="width: 120px"
+          >
+            <el-option
+              v-for="opt in awardLevelOptions"
+              :key="opt"
+              :label="opt"
+              :value="opt"
+            />
+          </el-select>
+        </el-form-item>
+
+        <el-form-item label="获奖日期">
+          <el-date-picker
+            v-model="filterForm.dateRange"
+            type="daterange"
+            range-separator="至"
+            start-placeholder="开始日期"
+            end-placeholder="结束日期"
+            value-format="YYYY-MM-DD"
+          />
+        </el-form-item>
+
+        <el-form-item>
+          <el-button type="info" plain @click="resetFilters">重置</el-button>
+        </el-form-item>
+      </el-form>
+    </el-card>
+
+    <el-card shadow="never">
       <template #header>
         <div class="flex justify-between items-center">
-          <span class="font-bold">我的获奖记录</span>
+          <div class="flex items-center gap-2">
+            <span class="font-bold">查询结果</span>
+            <el-tag size="small">{{ filteredAwards.length }} 条</el-tag>
+          </div>
           <el-button
             :icon="useRenderIcon('refresh')"
             circle
@@ -12,177 +89,96 @@
         </div>
       </template>
 
-      <div v-loading="loading">
-        <el-empty
-          v-if="awards.length === 0"
-          description="暂无获奖记录，继续加油哦！"
-        />
-
-        <div v-else class="grid grid-cols-1 xl:grid-cols-2 gap-6">
-          <el-card
-            v-for="item in awards"
-            :key="item.id"
-            shadow="hover"
-            class="border-none shadow-md hover:shadow-lg transition-all"
-          >
-            <div class="flex flex-col sm:flex-row">
-              <div
-                class="w-full sm:w-40 h-56 shrink-0 mb-4 sm:mb-0 bg-gray-50 rounded-lg overflow-hidden border"
-              >
-                <el-image
-                  style="width: 100%; height: 100%"
-                  :src="item.certificate_details?.image_uri"
-                  :preview-src-list="[item.certificate_details?.image_uri]"
-                  fit="contain"
-                  preview-teleported
-                >
-                  <template #error>
-                    <div
-                      class="flex flex-col items-center justify-center h-full text-gray-400"
-                    >
-                      <el-icon :size="30"><Picture /></el-icon>
-                      <span class="text-xs mt-2">证书加载失败</span>
-                    </div>
-                  </template>
-                </el-image>
-              </div>
-
-              <div class="sm:ml-6 grow">
-                <div class="flex justify-between items-start mb-2">
-                  <h3 class="text-lg font-bold text-gray-800 leading-tight">
-                    {{ item.competition_name }}
-                  </h3>
-                  <el-tag :type="getLevelTag(item.award_level)" effect="dark">
-                    {{ item.award_level }}
-                  </el-tag>
-                </div>
-
-                <div class="grid grid-cols-1 gap-2 text-sm">
-                  <div class="flex items-center text-gray-600">
-                    <span class="w-20 shrink-0">证书编号：</span>
-                    <span class="text-gray-900 font-mono">{{
-                      item.certificate_details?.cert_no || "未录入"
-                    }}</span>
-                  </div>
-                  <div class="flex items-center text-gray-600">
-                    <span class="w-20 shrink-0">获奖日期：</span>
-                    <span class="text-gray-900">{{ item.award_date }}</span>
-                  </div>
-                  <el-divider class="my-2" />
-
-                  <div>
-                    <span class="text-gray-500 text-xs block mb-1"
-                      >团队成员</span
-                    >
-                    <div class="flex flex-wrap gap-1">
-                      <el-tag
-                        v-for="p in item.participant_details"
-                        :key="p.user_id"
-                        size="small"
-                        round
-                        :effect="isMe(p.user_id) ? 'light' : 'plain'"
-                        :type="isMe(p.user_id) ? 'primary' : 'info'"
-                      >
-                        {{ p.user_id }}
-                      </el-tag>
-                    </div>
-                  </div>
-
-                  <div class="mt-1">
-                    <span class="text-gray-500 text-xs block mb-1"
-                      >指导教师</span
-                    >
-                    <div class="flex flex-wrap gap-1">
-                      <el-tag
-                        v-for="ins in item.instructor_details"
-                        :key="ins.user_id"
-                        size="small"
-                        type="warning"
-                        plain
-                      >
-                        {{ ins.user_id }}
-                      </el-tag>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </el-card>
-        </div>
-      </div>
+      <AwardList
+        :awards="filteredAwards"
+        :loading="loading"
+        :currentUserId="myProfile.user_id"
+      />
     </el-card>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
-import { Picture } from "@element-plus/icons-vue";
+import { ref, onMounted, reactive, computed } from "vue";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
 import { getMyAwards } from "@/api/award";
-import { message } from "@/utils/message";
 import { getUserProfile } from "@/api/user";
-import form from "element-plus/es/components/form/index.mjs";
+import AwardList from "../components/AwardList.vue"; // 引入列表组件
+
+// 筛选器表单数据
+const filterForm = reactive({
+  dateRange: [], // [开始日期, 结束日期]
+  competitionTitle: "", // 竞赛名称模糊搜索
+  category: "", // 竞赛类别
+  level: "", // 竞赛级别 (A/B/C)
+  awardLevel: "" // 获奖等级 (一等奖/二等奖等)
+});
+
+// 筛选选项（实际开发中建议从后端字典接口获取，这里先写死）
+const categoryOptions = ["计算机类", "艺术类", "机械类", "创新创业"];
+const levelOptions = ["A", "B", "C"];
+const awardLevelOptions = ["特等奖", "一等奖", "二等奖", "三等奖", "优秀奖"];
 
 const loading = ref(false);
 const awards = ref([]);
-
-const isMe = (userId: string) => {
-  // 优先使用接口获取到的 user_id 进行比对
-  return userId === form.value.user_id;
-};
-
-/** 也可以在 loadProfile 成功后，同步更新全局状态或本地变量 */
-const loadProfile = async () => {
-  try {
-    const res = await getUserProfile();
-    if (res) {
-      form.value = { ...form.value, ...res };
-      // 这里的 real_name 就是我们要找的用户真实姓名
-      console.log("当前登录用户：", form.value.real_name);
-    }
-  } catch (e) {
-    console.error("加载个人资料失败", e);
-  }
-};
-
-/** 根据奖项等级返回颜色 */
-const getLevelTag = (level: string) => {
-  if (/特等奖|金奖|冠军/.test(level)) return "danger";
-  if (/一等奖|银奖/.test(level)) return "warning";
-  if (/二等奖|铜奖/.test(level)) return "success";
-  return "info";
-};
+const myProfile = ref<any>({});
 
 const loadData = async () => {
   loading.value = true;
   try {
     const res = await getMyAwards();
-    awards.value = Array.isArray(res) ? res : (res as any).data;
-  } catch (e) {
-    message("加载获奖记录失败", { type: "error" });
+    awards.value = Array.isArray(res) ? res : (res as any).data || [];
   } finally {
     loading.value = false;
   }
 };
 
+const filteredAwards = computed(() => {
+  return awards.value.filter(item => {
+    // 1. 竞赛名称搜索
+    const matchTitle =
+      !filterForm.competitionTitle ||
+      item.competition_details?.title.includes(filterForm.competitionTitle);
+
+    // 2. 竞赛类别筛选
+    const matchCategory =
+      !filterForm.category ||
+      item.competition_details?.category?.name === filterForm.category;
+
+    // 3. 竞赛级别筛选
+    const matchLevel =
+      !filterForm.level ||
+      item.competition_details?.level?.name === filterForm.level;
+
+    // 4. 获奖等级筛选
+    const matchAwardLevel =
+      !filterForm.awardLevel || item.award_level === filterForm.awardLevel;
+
+    // 5. 日期范围筛选
+    let matchDate = true;
+    if (filterForm.dateRange && filterForm.dateRange.length === 2) {
+      const start = new Date(filterForm.dateRange[0]);
+      const end = new Date(filterForm.dateRange[1]);
+      const target = new Date(item.award_date);
+      matchDate = target >= start && target <= end;
+    }
+
+    return (
+      matchTitle && matchCategory && matchLevel && matchAwardLevel && matchDate
+    );
+  });
+});
+
+const resetFilters = () => {
+  filterForm.competitionTitle = "";
+  filterForm.category = "";
+  filterForm.level = "";
+  filterForm.awardLevel = "";
+  filterForm.dateRange = [];
+};
+
 onMounted(async () => {
-  loading.value = true;
-  // 并行请求：个人资料 和 获奖列表
-  await Promise.all([
-    loadProfile(),
-    loadData() // 这里的 loadData 是指获取获奖列表的函数
-  ]);
-  loading.value = false;
+  const [profileRes] = await Promise.all([getUserProfile(), loadData()]);
+  myProfile.value = profileRes;
 });
 </script>
-
-<style scoped>
-.el-card {
-  --el-card-padding: 20px;
-}
-
-/* 卡片悬浮微动动画 */
-.transition-all:hover {
-  transform: translateY(-2px);
-}
-</style>

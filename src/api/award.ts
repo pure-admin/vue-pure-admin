@@ -12,7 +12,13 @@ export interface AwardInfo {
 }
 
 /** 获取获奖列表 */
-export const getAwardList = () => http.request<any[]>("get", "/award/infos/");
+export const getAwardList = (params?: any) =>
+  http.request<any[]>("get", "/award/infos/", { params });
+
+// 之前的方法可以简化为调用 getAwardList
+export const getAwardsByUserId = (userId: string) => {
+  return getAwardList({ user_id: userId });
+};
 
 /** 创建获奖信息（带证书文件） */
 export const createAwardWithCert = (data: FormData) =>
@@ -20,13 +26,6 @@ export const createAwardWithCert = (data: FormData) =>
     data,
     headers: { "Content-Type": "multipart/form-data" }
   });
-
-/** 根据用户ID获取获奖信息 */
-export const getAwardsByUserId = (userId: string) => {
-  return http.request<any[]>("get", "/award/infos/", {
-    params: { user_id: userId }
-  });
-};
 
 /** 删除获奖 */
 export const deleteAward = (id: string) =>
@@ -49,4 +48,36 @@ export const getMyAwards = () => {
 /** 获取获奖统计数据 */
 export const getAwardStatistics = () => {
   return http.request<any>("get", "/award/statistics/");
+};
+
+// 批量导入api
+/** 上传文件 */
+export const uploadImportFile = (file: File) => {
+  const formData = new FormData();
+  formData.append("file", file);
+  return http.request<any>("post", "/import/upload/", {
+    data: formData,
+    headers: { "Content-Type": "multipart/form-data" }
+  });
+};
+
+/** 获取任务下的暂存数据项 */
+export const getImportItems = (taskId: number) => {
+  return http.request<any>("get", `/import/${taskId}/items/`);
+};
+
+/** 更新单行暂存数据 (纠错) */
+export const updateImportItem = (taskId: number, itemId: number, data: any) => {
+  return http.request<any>(
+    "patch",
+    `/import/${taskId}/update-item/${itemId}/`,
+    {
+      data
+    }
+  );
+};
+
+/** 提交入库 */
+export const commitImportTask = (taskId: number) => {
+  return http.request<any>("post", `/import/${taskId}/commit/`);
 };

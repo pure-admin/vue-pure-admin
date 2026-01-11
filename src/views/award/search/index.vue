@@ -2,167 +2,202 @@
   <div class="main p-4">
     <el-card shadow="never" class="mb-4">
       <template #header>
-        <div class="font-bold">获奖信息按人查询</div>
+        <div class="font-bold flex items-center">
+          <span>获奖记录搜索</span>
+          <el-tooltip content="支持学号、老师、学院、时间等多维度联合搜索">
+            <el-icon class="ml-2 cursor-help"><QuestionFilled /></el-icon>
+          </el-tooltip>
+        </div>
       </template>
-      <el-form :inline="true" @submit.prevent>
-        <el-form-item label="学号/工号">
-          <el-input
-            v-model="searchUserId"
-            placeholder="请输入用户ID (如: 23101100514)"
-            clearable
-            @keyup.enter="handleSearch"
-          />
-        </el-form-item>
-        <el-form-item>
-          <el-button
-            type="primary"
-            :icon="useRenderIcon('search')"
-            @click="handleSearch"
-          >
-            搜索
-          </el-button>
-        </el-form-item>
+
+      <el-form :model="queryParams" label-position="top">
+        <el-row :gutter="20">
+          <el-col :span="6">
+            <el-form-item label="学生学号/工号">
+              <el-input
+                v-model="queryParams.user_id"
+                placeholder="输入 ID"
+                clearable
+              />
+            </el-form-item>
+          </el-col>
+          <el-col :span="6">
+            <el-form-item label="指导教师姓名">
+              <el-input
+                v-model="queryParams.instructor_name"
+                placeholder="输入教师姓名"
+                clearable
+              />
+            </el-form-item>
+          </el-col>
+          <el-col :span="6">
+            <el-form-item label="所属学院">
+              <el-input
+                v-model="queryParams.college"
+                placeholder="输入学院关键词"
+                clearable
+              />
+            </el-form-item>
+          </el-col>
+          <el-col :span="6">
+            <el-form-item label="竞赛类别">
+              <el-select
+                v-model="queryParams.category"
+                placeholder="全部类别"
+                clearable
+                class="w-full"
+              >
+                <el-option
+                  v-for="item in categoryOptions"
+                  :key="item.id"
+                  :label="item.name"
+                  :value="item.id"
+                />
+              </el-select>
+            </el-form-item>
+
+            <el-form-item label="竞赛级别">
+              <el-select
+                v-model="queryParams.level"
+                placeholder="全部级别"
+                clearable
+                class="w-full"
+              >
+                <el-option
+                  v-for="item in levelOptions"
+                  :key="item.id"
+                  :label="item.name + '类'"
+                  :value="item.id"
+                />
+              </el-select>
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="时间跨度">
+              <el-date-picker
+                v-model="dateRange"
+                type="daterange"
+                range-separator="至"
+                start-placeholder="开始"
+                end-placeholder="结束"
+                value-format="YYYY-MM-DD"
+                class="w-full!"
+              />
+            </el-form-item>
+          </el-col>
+          <el-col :span="6" class="flex items-end pb-4.5">
+            <el-button
+              type="primary"
+              :loading="loading"
+              :icon="useRenderIcon('search')"
+              @click="handleSearch"
+            >
+              开始联合搜索
+            </el-button>
+            <el-button @click="resetQuery">重置</el-button>
+          </el-col>
+        </el-row>
       </el-form>
     </el-card>
 
-    <div v-loading="loading">
-      <el-empty
-        v-if="awards.length === 0 && hasSearched"
-        description="暂无获奖记录"
+    <el-card shadow="never">
+      <AwardList
+        :awards="awards"
+        :loading="loading"
+        :currentUserId="queryParams.user_id"
       />
-      <div v-else class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <el-card
-          v-for="item in awards"
-          :key="item.id"
-          shadow="hover"
-          class="award-card"
-        >
-          <div class="flex">
-            <div
-              class="w-32 h-44 mr-4 shrink-0 bg-gray-100 rounded overflow-hidden"
-            >
-              <el-image
-                style="width: 100%; height: 100%"
-                :src="item.certificate_details?.image_uri"
-                :preview-src-list="[item.certificate_details?.image_uri]"
-                fit="cover"
-                preview-teleported
-              >
-                <template #error>
-                  <div
-                    class="flex items-center justify-center h-full text-gray-400 text-xs text-center p-2"
-                  >
-                    证书暂未上传或预览失败
-                  </div>
-                </template>
-              </el-image>
-            </div>
-
-            <div class="grow">
-              <div class="flex justify-between items-start">
-                <h4 class="text-lg font-bold text-blue-600 mb-2">
-                  {{ item.competition_name }}
-                </h4>
-                <el-tag :type="getAwardType(item.award_level)">{{
-                  item.award_level
-                }}</el-tag>
-              </div>
-
-              <div class="text-sm space-y-1">
-                <p>
-                  <span class="text-gray-500">证书编号：</span
-                  >{{ item.certificate_details?.cert_no }}
-                </p>
-                <p>
-                  <span class="text-gray-500">获奖日期：</span
-                  >{{ item.award_date }}
-                </p>
-                <div class="mt-3">
-                  <span class="text-gray-500 block">团队成员：</span>
-                  <div class="flex flex-wrap gap-1 mt-1">
-                    <el-tooltip
-                      v-for="p in item.participant_details"
-                      :key="p.user_id"
-                      :content="`角色: ${p.group_details?.[0]?.name}`"
-                    >
-                      <el-tag
-                        size="small"
-                        effect="plain"
-                        :type="p.user_id === searchUserId ? 'success' : 'info'"
-                      >
-                        {{ p.user_id }}
-                      </el-tag>
-                    </el-tooltip>
-                  </div>
-                </div>
-
-                <div class="mt-2">
-                  <span class="text-gray-500 block">指导教师：</span>
-                  <div class="flex flex-wrap gap-1 mt-1">
-                    <el-tag
-                      v-for="ins in item.instructor_details"
-                      :key="ins.user_id"
-                      size="small"
-                      type="warning"
-                    >
-                      {{ ins.user_id }}
-                    </el-tag>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </el-card>
-      </div>
-    </div>
+    </el-card>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, reactive, onMounted } from "vue";
 import { useRenderIcon } from "@/components/ReIcon/src/hooks";
-import { getAwardsByUserId } from "@/api/award";
+import { QuestionFilled } from "@element-plus/icons-vue";
+import { getAwardList } from "@/api/award";
 import { message } from "@/utils/message";
+import AwardList from "../components/AwardList.vue"; // 引用你拆分出来的组件
+import { getCompCategories, getCompLevels } from "@/api/comp";
 
-const searchUserId = ref("");
 const loading = ref(false);
 const awards = ref([]);
-const hasSearched = ref(false);
+const dateRange = ref([]);
 
-/** 颜色映射逻辑 */
-const getAwardType = (level: string) => {
-  if (level.includes("一等奖") || level.includes("金奖")) return "danger";
-  if (level.includes("二等奖") || level.includes("银奖")) return "warning";
-  if (level.includes("三等奖") || level.includes("铜奖")) return "success";
-  return "info";
+// 定义下拉框数据源
+const categoryOptions = ref([]);
+const levelOptions = ref([]);
+
+/** 加载字典数据 */
+const loadOptions = async () => {
+  try {
+    // 使用 Promise.all 并行请求，提高效率
+    const [levels, categories] = await Promise.all([
+      getCompLevels(),
+      getCompCategories()
+    ]);
+    // 假设接口返回结构是 { data: [...] } 或直接是数组
+    levelOptions.value = Array.isArray(levels) ? levels : levels.data;
+    categoryOptions.value = Array.isArray(categories)
+      ? categories
+      : categories.data;
+  } catch (e) {
+    console.error("加载筛选项失败", e);
+  }
 };
 
+// 初始参数对象
+const queryParams = reactive({
+  user_id: "",
+  instructor_name: "",
+  college: "",
+  category: undefined,
+  level: undefined,
+  date_min: "",
+  date_max: ""
+});
+
 const handleSearch = async () => {
-  if (!searchUserId.value) {
-    message("请输入学号或工号", { type: "warning" });
-    return;
+  loading.value = true;
+  // 处理日期字段
+  if (dateRange.value && dateRange.value.length === 2) {
+    queryParams.date_min = dateRange.value[0];
+    queryParams.date_max = dateRange.value[1];
+  } else {
+    queryParams.date_min = "";
+    queryParams.date_max = "";
   }
 
-  loading.value = true;
-  hasSearched.value = true;
   try {
-    const res = await getAwardsByUserId(searchUserId.value);
-    awards.value = Array.isArray(res) ? res : (res as any).data;
+    const res = await getAwardList(queryParams);
+    awards.value = Array.isArray(res) ? res : (res as any).data || [];
+    if (awards.value.length === 0) {
+      message("未找到匹配的获奖记录", { type: "info" });
+    }
   } catch (e) {
-    message("查询失败，请检查网络或ID是否正确", { type: "error" });
-    console.error(e);
+    message("查询出错，请稍后再试", { type: "error" });
   } finally {
     loading.value = false;
   }
 };
+
+const resetQuery = () => {
+  // 使用 Object.assign 批量重置，category 和 level 设为 undefined
+  Object.assign(queryParams, {
+    user_id: "",
+    instructor_name: "",
+    college: "",
+    category: undefined,
+    level: undefined,
+    date_min: "",
+    date_max: ""
+  });
+  dateRange.value = [];
+  awards.value = [];
+};
+
+onMounted(() => {
+  loadOptions();
+  // 如果需要页面进来就显示全部结果，可以取消下面注释
+  // handleSearch();
+});
 </script>
-
-<style scoped>
-.award-card {
-  transition: all 0.3s;
-}
-
-.award-card:hover {
-  transform: translateY(-4px);
-}
-</style>
