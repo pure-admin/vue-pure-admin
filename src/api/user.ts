@@ -65,23 +65,9 @@ export type UserStatistics = {
   total_users: number;
 };
 
-/** 用户简要信息类型 */
-export type UserListItem = {
-  id: number;
-  user_id: string;
-  username: string;
-  groups: number[];
-  group_details: Array<{ id: number; name: string }>;
-};
-
 /** 获取用户统计数据 */
 export const getUserStats = () => {
   return http.request<UserStatistics>("get", "/user/statistic/");
-};
-
-/** 获取用户列表（支持按角色筛选） */
-export const getUsers = (params?: { role?: string }) => {
-  return http.request<UserListItem[]>("get", "/user/users/", { params });
 };
 
 /** 搜索用户 Profile 结果类型 */
@@ -117,11 +103,6 @@ export const updateUserAccount = (
   return http.request<any>("patch", `/user/users/${userId}/`, { data });
 };
 
-/** 删除用户 */
-export const deleteUser = (userId: string) => {
-  return http.request<any>("delete", `/user/users/${userId}/`);
-};
-
 /** 角色项类型 */
 export type RoleItem = {
   id: number;
@@ -131,4 +112,35 @@ export type RoleItem = {
 /** 获取所有可用角色列表 */
 export const getAllRoles = () => {
   return http.request<RoleItem[]>("get", "/user/roles/");
+};
+
+export interface UserListItem {
+  user_id: string;
+  real_name: string;
+  phone: string | null;
+  email: string | null;
+  department: string;
+  college: string | null;
+  major: string | null;
+  clazz: string | null;
+  role_name: string;
+}
+
+export interface UserListResponse {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: UserListItem[];
+}
+
+// 修改获取用户列表的函数
+export const getUsers = (params: any) => {
+  return http.request<UserListResponse>("get", "/user-profile/list/", {
+    params
+  });
+};
+
+// 新增删除用户函数
+export const deleteUser = (userId: string) => {
+  return http.request("delete", `/user/users/${userId}/`);
 };
