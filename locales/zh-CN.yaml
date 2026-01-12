@@ -239,6 +239,7 @@ login:
   purePassWordSureReg: 请输入确认密码
   purePassWordDifferentReg: 两次密码不一致!
   purePassWordUpdateReg: 修改密码成功
+  pureLoginExpired: 登录已过期，请重新登录
 tableBar:
   pureList: 列表
   pureLarge: 宽松

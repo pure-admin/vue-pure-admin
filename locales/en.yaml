@@ -239,6 +239,7 @@ login:
   purePassWordSureReg: Please enter confirm password
   purePassWordDifferentReg: The two passwords do not match!
   purePassWordUpdateReg: Password has been updated
+  pureLoginExpired: Login expired, please login again
 tableBar:
   pureList: List
   pureLarge: Large
