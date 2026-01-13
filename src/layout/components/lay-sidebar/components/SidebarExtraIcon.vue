@@ -12,6 +12,6 @@ defineProps({
 
 <template>
   <div v-if="extraIcon" class="flex-c">
-    <component :is="useRenderIcon(toRaw(extraIcon))" class="w-7.5 h-7.5" />
+    <component :is="useRenderIcon(toRaw(extraIcon))" class="size-7.5" />
   </div>
 </template>

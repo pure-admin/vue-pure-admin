@@ -92,7 +92,7 @@ export default defineComponent({
         "justify-between",
         "pt-[3px]",
         "px-[11px]",
-        "border-b-[1px]",
+        "border-b",
         "border-b-solid",
         "border-[#dcdfe6]",
         "dark:border-[#303030]"
@@ -265,7 +265,7 @@ export default defineComponent({
             ) : (
               <p class="font-bold truncate">{transformI18n(props.title)}</p>
             )}
-            <div class="flex-ac  ">
+            <div class="flex-ac">
               {slots?.buttons ? (
                 <div class="flex mr-4">{slots.buttons()}</div>
               ) : null}

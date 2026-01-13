@@ -158,7 +158,7 @@ onBeforeUnmount(() => {
         v-if="curImg"
         :src="curImg"
         :preview-src-list="Array.of(curImg)"
-        class="w-45 h-45 ml-2 rounded-md"
+        class="size-45 ml-2 rounded-md"
       />
     </div>
     <div

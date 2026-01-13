@@ -240,7 +240,7 @@ export default defineComponent({
           )}
           {props.disabled && (
             <div
-              class="qrcode--disabled absolute top-0 left-0 flex-c size-full   "
+              class="qrcode--disabled absolute top-0 left-0 flex-c size-full"
               onClick={disabledClick}
             >
               <div class="absolute top-[50%] left-[50%] font-bold">
