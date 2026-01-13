@@ -72,9 +72,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div
-    :class="['min-w-[180px]', deviceDetection() ? 'max-w-full' : 'max-w-[70%]']"
-  >
+  <div :class="['min-w-45', deviceDetection() ? 'max-w-full' : 'max-w-[70%]']">
     <h3 class="my-8!">安全日志</h3>
     <pure-table
       row-key="id"

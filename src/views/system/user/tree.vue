@@ -99,7 +99,7 @@ defineExpose({ onTreeReset });
     class="h-full bg-bg_color overflow-hidden relative"
     :style="{ minHeight: `calc(100vh - 141px)` }"
   >
-    <div class="flex items-center h-[34px]">
+    <div class="flex items-center h-8.5">
       <el-input
         v-model="searchValue"
         class="ml-2"
@@ -117,7 +117,7 @@ defineExpose({ onTreeReset });
         </template>
       </el-input>
       <el-dropdown :hide-on-click="false">
-        <More2Fill class="w-[28px] cursor-pointer outline-hidden" />
+        <More2Fill class="w-7 cursor-pointer outline-hidden" />
         <template #dropdown>
           <el-dropdown-menu>
             <el-dropdown-item>
@@ -190,7 +190,7 @@ defineExpose({ onTreeReset });
                     : Dept
               "
             />
-            <span class="w-[120px]! truncate!" :title="node.label">
+            <span class="w-30! truncate!" :title="node.label">
               {{ node.label }}
             </span>
           </div>

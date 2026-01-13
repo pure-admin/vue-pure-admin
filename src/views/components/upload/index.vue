@@ -243,7 +243,7 @@ const onDownload = () => {
       <div>
         <p class="text-center">上传接口相关截图</p>
         <el-image
-          class="w-[200px] rounded-md"
+          class="w-50 rounded-md"
           :src="srcList[0]"
           :preview-src-list="srcList"
           fit="cover"

@@ -135,7 +135,7 @@ watch(loginDay, value => {
       <!-- 国际化 -->
       <el-dropdown trigger="click">
         <globalization
-          class="hover:text-primary hover:bg-transparent! w-[20px] h-[20px] ml-1.5 cursor-pointer outline-hidden duration-300"
+          class="hover:text-primary hover:bg-transparent! w-5 h-5 ml-1.5 cursor-pointer outline-hidden duration-300"
         />
         <template #dropdown>
           <el-dropdown-menu class="translation">
@@ -236,7 +236,7 @@ watch(loginDay, value => {
 
             <Motion :delay="250">
               <el-form-item>
-                <div class="w-full h-[20px] flex justify-between items-center">
+                <div class="w-full h-5 flex-bc">
                   <el-checkbox v-model="checked">
                     <span class="flex">
                       <select
@@ -287,7 +287,7 @@ watch(loginDay, value => {
 
             <Motion :delay="300">
               <el-form-item>
-                <div class="w-full h-[20px] flex justify-between items-center">
+                <div class="w-full h-5 flex-bc">
                   <el-button
                     v-for="(item, index) in operates"
                     :key="index"

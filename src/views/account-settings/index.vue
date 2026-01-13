@@ -75,7 +75,7 @@ getMine().then(res => {
     >
       <el-menu :default-active="witchPane" class="pure-account-settings-menu">
         <div
-          class="h-[50px]! text-(--pure-theme-menu-text) cursor-pointer text-sm transition-all duration-300 ease-in-out hover:scale-105 will-change-transform transform-gpu origin-center hover:text-base! hover:text-(--pure-theme-menu-title-hover)!"
+          class="h-12.5! text-(--pure-theme-menu-text) cursor-pointer text-sm transition-all duration-300 ease-in-out hover:scale-105 will-change-transform transform-gpu origin-center hover:text-base! hover:text-(--pure-theme-menu-title-hover)!"
           @click="router.go(-1)"
         >
           <div
@@ -85,9 +85,9 @@ getMine().then(res => {
             <span class="ml-2">返回</span>
           </div>
         </div>
-        <div class="flex items-center ml-8 mt-4 mb-4">
+        <div class="flex items-center ml-8 my-4">
           <el-avatar :size="48" :src="userInfo.avatar" />
-          <div class="ml-4 flex flex-col max-w-[130px]">
+          <div class="ml-4 flex flex-col max-w-32.5">
             <ReText class="font-bold self-baseline!">
               {{ userInfo.nickname }}
             </ReText>
@@ -125,7 +125,7 @@ getMine().then(res => {
       />
       <component
         :is="panes.find(item => item.key === witchPane).component"
-        :class="[!deviceDetection() && 'ml-[120px]']"
+        :class="[!deviceDetection() && 'ml-30']"
       />
     </el-main>
   </el-container>

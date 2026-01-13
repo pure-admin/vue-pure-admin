@@ -58,7 +58,7 @@ const resetForm = formEl => {
         drag
         multiple
         action="#"
-        class="w-[200px]!"
+        class="w-50!"
         :auto-upload="false"
       >
         <div class="el-upload__text">
@@ -75,7 +75,7 @@ const resetForm = formEl => {
       <el-date-picker
         v-model="validateForm.date"
         type="datetime"
-        class="w-[200px]!"
+        class="w-50!"
         placeholder="请选择日期时间"
         value-format="YYYY-MM-DD HH:mm:ss"
       />

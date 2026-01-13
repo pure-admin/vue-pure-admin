@@ -96,14 +96,14 @@ onMounted(() => {
       ref="formRef"
       :inline="true"
       :model="form"
-      class="search-form bg-bg_color w-full pl-8 pt-[12px] overflow-auto"
+      class="search-form bg-bg_color w-full pl-8 pt-3 overflow-auto"
     >
       <el-form-item label="角色名称：" prop="name">
         <el-input
           v-model="form.name"
           placeholder="请输入角色名称"
           clearable
-          class="w-[180px]!"
+          class="w-45!"
         />
       </el-form-item>
       <el-form-item label="角色标识：" prop="code">
@@ -111,7 +111,7 @@ onMounted(() => {
           v-model="form.code"
           placeholder="请输入角色标识"
           clearable
-          class="w-[180px]!"
+          class="w-45!"
         />
       </el-form-item>
       <el-form-item label="状态：" prop="status">
@@ -119,7 +119,7 @@ onMounted(() => {
           v-model="form.status"
           placeholder="请选择状态"
           clearable
-          class="w-[180px]!"
+          class="w-45!"
         >
           <el-option label="已启用" value="1" />
           <el-option label="已停用" value="0" />

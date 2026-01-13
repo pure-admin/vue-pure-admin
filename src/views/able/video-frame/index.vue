@@ -158,14 +158,14 @@ onBeforeUnmount(() => {
         v-if="curImg"
         :src="curImg"
         :preview-src-list="Array.of(curImg)"
-        class="w-[180px] h-[180px] ml-2 rounded-[6px]"
+        class="w-45 h-45 ml-2 rounded-md"
       />
     </div>
     <div
       id="canvas-container"
       v-loading="loading"
       element-loading-text="温馨提示：可左右拖拽图片并单击选取所需的帧图片"
-      class="w-full h-[200px] overflow-hidden mt-6"
+      class="w-full h-50 overflow-hidden mt-6"
     />
   </el-card>
 </template>

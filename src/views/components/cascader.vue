@@ -37,7 +37,7 @@ const handleChange = value => {
     </template>
     <el-row :gutter="24">
       <el-col :xl="12" :lg="12" :md="24" :sm="24" :xs="24">
-        <div class="flex flex-col items-center justify-center">
+        <div class="flex-c flex-col">
           <span class="text-(--el-color-primary)">
             1. 二级联动（不带“全部”选项）
             <el-cascader
@@ -66,7 +66,7 @@ const handleChange = value => {
         </div>
       </el-col>
       <el-col :xl="12" :lg="12" :md="24" :sm="24" :xs="24">
-        <div class="flex flex-col items-center justify-center mt-3">
+        <div class="flex-c flex-col mt-3">
           <span class="text-(--el-color-primary)">
             2. 二级联动（带有“全部”选项）
             <el-cascader
@@ -95,7 +95,7 @@ const handleChange = value => {
         </div>
       </el-col>
       <el-col :xl="12" :lg="12" :md="24" :sm="24" :xs="24">
-        <div class="flex flex-col items-center justify-center mt-3">
+        <div class="flex-c flex-col mt-3">
           <span class="text-(--el-color-primary)">
             3. 三级联动（不带“全部”选项）
             <el-cascader
@@ -126,7 +126,7 @@ const handleChange = value => {
         </div>
       </el-col>
       <el-col :xl="12" :lg="12" :md="24" :sm="24" :xs="24">
-        <div class="flex flex-col items-center justify-center mt-3">
+        <div class="flex-c flex-col mt-3">
           <span class="text-(--el-color-primary)">
             4. 三级联动（带"全部选项"）
             <el-cascader

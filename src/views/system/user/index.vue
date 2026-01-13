@@ -54,7 +54,7 @@ const {
   <div :class="['flex', 'justify-between', deviceDetection() && 'flex-wrap']">
     <tree
       ref="treeRef"
-      :class="['mr-2', deviceDetection() ? 'w-full' : 'min-w-[200px]']"
+      :class="['mr-2', deviceDetection() ? 'w-full' : 'min-w-50']"
       :treeData="treeData"
       :treeLoading="treeLoading"
       @tree-select="onTreeSelect"
@@ -66,14 +66,14 @@ const {
         ref="formRef"
         :inline="true"
         :model="form"
-        class="search-form bg-bg_color w-full pl-8 pt-[12px] overflow-auto"
+        class="search-form bg-bg_color w-full pl-8 pt-3 overflow-auto"
       >
         <el-form-item label="用户名称：" prop="username">
           <el-input
             v-model="form.username"
             placeholder="请输入用户名称"
             clearable
-            class="w-[180px]!"
+            class="w-45!"
           />
         </el-form-item>
         <el-form-item label="手机号码：" prop="phone">
@@ -81,7 +81,7 @@ const {
             v-model="form.phone"
             placeholder="请输入手机号码"
             clearable
-            class="w-[180px]!"
+            class="w-45!"
           />
         </el-form-item>
         <el-form-item label="状态：" prop="status">
@@ -89,7 +89,7 @@ const {
             v-model="form.status"
             placeholder="请选择"
             clearable
-            class="w-[180px]!"
+            class="w-45!"
           >
             <el-option label="已开启" value="1" />
             <el-option label="已关闭" value="0" />
@@ -128,7 +128,7 @@ const {
           <div
             v-if="selectedNum > 0"
             v-motion-fade
-            class="bg-(--el-fill-color-light) w-full h-[46px] mb-2 pl-4 flex items-center"
+            class="bg-(--el-fill-color-light) w-full h-11.5 mb-2 pl-4 flex items-center"
           >
             <div class="flex-auto">
               <span
@@ -198,7 +198,7 @@ const {
               </el-popconfirm>
               <el-dropdown>
                 <el-button
-                  class="ml-3! mt-[2px]!"
+                  class="ml-3! mt-0.5!"
                   link
                   type="primary"
                   :size="size"

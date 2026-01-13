@@ -8,7 +8,7 @@ const { t } = useI18n();
 </script>
 
 <template>
-  <Motion class="-mt-2 -mb-2">
+  <Motion class="-my-2">
     <ReQrcode :text="t('login.pureTest')" />
   </Motion>
   <Motion :delay="100">

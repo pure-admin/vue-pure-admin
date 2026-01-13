@@ -8,7 +8,7 @@ const { columns, dataList } = useColumns();
   <div class="flex">
     <el-scrollbar height="700px">
       <code>
-        <pre class="w-[700px]"> {{ dataList }}</pre>
+        <pre class="w-175"> {{ dataList }}</pre>
       </code>
     </el-scrollbar>
     <pure-table row-key="id" :data="dataList" :columns="columns" />

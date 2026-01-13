@@ -252,7 +252,7 @@ export default defineComponent({
       },
       setup() {
         return () => (
-          <div class="flex flex-wrap w-[60px] justify-between">
+          <div class="flex flex-wrap w-15 justify-between">
             <ElUpload
               accept="image/*"
               show-file-list={false}

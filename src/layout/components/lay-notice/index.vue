@@ -18,7 +18,7 @@ const getLabel = computed(
 <template>
   <el-dropdown trigger="click" placement="bottom-end">
     <span
-      :class="['dropdown-badge', 'navbar-bg-hover', 'select-none', 'mr-[7px]']"
+      :class="['dropdown-badge', 'navbar-bg-hover', 'select-none', 'mr-1.75']"
     >
       <el-badge is-dot>
         <span class="header-notice-icon">

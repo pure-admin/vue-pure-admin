@@ -8,7 +8,7 @@ const { editMap, columns, dataList, onEdit, onSave, onCancel } = useColumns();
   <div class="flex">
     <el-scrollbar>
       <code>
-        <pre class="w-[400px]"> {{ dataList }}</pre>
+        <pre class="w-100"> {{ dataList }}</pre>
       </code>
     </el-scrollbar>
     <pure-table

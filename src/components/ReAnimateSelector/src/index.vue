@@ -88,7 +88,7 @@ function onMouseleave() {
     @clear="onClear"
   >
     <template #empty>
-      <div class="w-[280px]">
+      <div class="w-70">
         <el-scrollbar
           noresize
           height="212px"
