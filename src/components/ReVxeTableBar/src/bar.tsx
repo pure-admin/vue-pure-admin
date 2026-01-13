@@ -1,5 +1,5 @@
 import Sortable from "sortablejs";
-import { transformI18n } from "@/plugins/i18n";
+import { $t, transformI18n } from "@/plugins/i18n";
 import { useEpThemeStoreHook } from "@/store/modules/epTheme";
 import { delay, cloneDeep, getKeyList } from "@pureadmin/utils";
 import {
@@ -24,7 +24,7 @@ const props = {
   /** 头部最左边的标题 */
   title: {
     type: String,
-    default: "列表"
+    default: $t("tableBar.pureList")
   },
   vxeTableRef: {
     type: Object as PropType<any>
@@ -161,19 +161,19 @@ export default defineComponent({
             style={getDropdownItemStyle.value("medium")}
             onClick={() => changeSize("medium")}
           >
-            宽松
+            {transformI18n($t("tableBar.pureLarge"))}
           </el-dropdown-item>
           <el-dropdown-item
             style={getDropdownItemStyle.value("small")}
             onClick={() => changeSize("small")}
           >
-            默认
+            {transformI18n($t("tableBar.pureDefault"))}
           </el-dropdown-item>
           <el-dropdown-item
             style={getDropdownItemStyle.value("mini")}
             onClick={() => changeSize("mini")}
           >
-            紧凑
+            {transformI18n($t("tableBar.pureSmall"))}
           </el-dropdown-item>
         </el-dropdown-menu>
       )
@@ -238,7 +238,9 @@ export default defineComponent({
       reference: () => (
         <SettingIcon
           class={["w-4", iconClass.value]}
-          v-tippy={rendTippyProps("列设置")}
+          v-tippy={rendTippyProps(
+            transformI18n($t("tableBar.pureColumnSettings"))
+          )}
         />
       )
     };
@@ -261,7 +263,7 @@ export default defineComponent({
             {slots?.title ? (
               slots.title()
             ) : (
-              <p class="font-bold truncate">{props.title}</p>
+              <p class="font-bold truncate">{transformI18n(props.title)}</p>
             )}
             <div class="flex-ac  ">
               {slots?.buttons ? (
@@ -275,7 +277,9 @@ export default defineComponent({
                       transform: isExpandAll.value ? "none" : "rotate(-90deg)"
                     }}
                     v-tippy={rendTippyProps(
-                      isExpandAll.value ? "折叠" : "展开"
+                      isExpandAll.value
+                        ? transformI18n($t("tableBar.pureCollapse"))
+                        : transformI18n($t("tableBar.pureExpand"))
                     )}
                     onClick={() => onExpand()}
                   />
@@ -288,14 +292,18 @@ export default defineComponent({
                   iconClass.value,
                   loading.value ? "animate-spin" : ""
                 ]}
-                v-tippy={rendTippyProps("刷新")}
+                v-tippy={rendTippyProps(
+                  transformI18n($t("tableBar.pureRefresh"))
+                )}
                 onClick={() => onReFresh()}
               />
               <el-divider direction="vertical" />
               <el-dropdown
                 v-slots={dropdown}
                 trigger="click"
-                v-tippy={rendTippyProps("密度")}
+                v-tippy={rendTippyProps(
+                  transformI18n($t("tableBar.pureDensity"))
+                )}
               >
                 <CollapseIcon class={["w-4", iconClass.value]} />
               </el-dropdown>
@@ -311,13 +319,13 @@ export default defineComponent({
                 <div class={[topClass.value]}>
                   <el-checkbox
                     class="-mr-1!"
-                    label="列展示"
+                    label={transformI18n($t("tableBar.pureColumnDisplay"))}
                     v-model={checkAll.value}
                     indeterminate={isIndeterminate.value}
                     onChange={value => handleCheckAllChange(value)}
                   />
                   <el-button type="primary" link onClick={() => onReset()}>
-                    重置
+                    {transformI18n($t("tableBar.pureReset"))}
                   </el-button>
                 </div>
 
@@ -373,7 +381,11 @@ export default defineComponent({
               <iconifyIconOffline
                 class={["w-4", iconClass.value]}
                 icon={isFullscreen.value ? ExitFullscreen : Fullscreen}
-                v-tippy={isFullscreen.value ? "退出全屏" : "全屏"}
+                v-tippy={
+                  isFullscreen.value
+                    ? transformI18n($t("tableBar.pureExitFullScreen"))
+                    : transformI18n($t("tableBar.pureFullScreen"))
+                }
                 onClick={() => onFullscreen()}
               />
             </div>

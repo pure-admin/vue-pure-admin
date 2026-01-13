@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { getMine } from "@/api/user";
 import { useRouter } from "vue-router";
-import { ref, onBeforeMount } from "vue";
 import { ReText } from "@/components/ReText";
 import Profile from "./components/Profile.vue";
+import { ref, onMounted, onBeforeMount } from "vue";
 import Preferences from "./components/Preferences.vue";
 import SecurityLog from "./components/SecurityLog.vue";
 import { useGlobal, deviceDetection } from "@pureadmin/utils";
@@ -61,8 +61,11 @@ const panes = [
 ];
 const witchPane = ref("profile");
 
-getMine().then(res => {
-  userInfo.value = res.data;
+onMounted(async () => {
+  const { code, data } = await getMine();
+  if (code === 0) {
+    userInfo.value = data;
+  }
 });
 </script>
 

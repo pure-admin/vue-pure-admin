@@ -239,3 +239,18 @@ login:
   purePassWordSureReg: 请输入确认密码
   purePassWordDifferentReg: 两次密码不一致!
   purePassWordUpdateReg: 修改密码成功
+  pureLoginExpired: 登录已过期，请重新登录
+tableBar:
+  pureList: 列表
+  pureLarge: 宽松
+  pureDefault: 默认
+  pureSmall: 紧凑
+  pureColumnSettings: 列设置
+  pureCollapse: 折叠
+  pureExpand: 展开
+  pureRefresh: 刷新
+  pureDensity: 密度
+  pureColumnDisplay: 列展示
+  pureReset: 重置
+  pureExitFullScreen: 退出全屏
+  pureFullScreen: 全屏
