@@ -90,8 +90,8 @@ export default defineComponent({
       return [
         "flex",
         "justify-between",
-        "pt-[3px]",
-        "px-[11px]",
+        "pt-0.75",
+        "px-2.75",
         "border-b",
         "border-b-solid",
         "border-[#dcdfe6]",

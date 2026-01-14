@@ -23,17 +23,15 @@ const copyAnimatesList = cloneDeep(animatesList);
 const animateClass = computed(() => {
   return [
     "mt-1",
-    "flex",
+    "flex-c",
     "border",
-    "w-[130px]",
-    "h-[100px]",
-    "items-center",
+    "w-32.5",
+    "h-25",
     "cursor-pointer",
     "transition-all",
-    "justify-center",
     "border-[#e5e7eb]",
     "hover:text-primary",
-    "hover:duration-[700ms]"
+    "hover:duration-700"
   ];
 });
 
