@@ -5,14 +5,10 @@ import {
   ref,
   unref,
   nextTick,
-  computed
+  computed,
+  useTemplateRef
 } from "vue";
-import {
-  tryOnMounted,
-  tryOnUnmounted,
-  templateRef,
-  useDebounceFn
-} from "@vueuse/core";
+import { tryOnMounted, tryOnUnmounted, useDebounceFn } from "@vueuse/core";
 import * as utilsMethods from "./utils";
 const { animationFrame, copyObj } = utilsMethods;
 animationFrame();
@@ -62,17 +58,14 @@ if (props.classOption["key"] === undefined) {
   props.classOption["key"] = 0;
 }
 
-const wrap = templateRef<HTMLElement | null>(
-  `wrap${props.classOption["key"]}`,
-  null
+const wrap = useTemplateRef<HTMLElement | null>(
+  `wrap${props.classOption["key"]}`
 );
-const slotList = templateRef<HTMLElement | null>(
-  `slotList${props.classOption["key"]}`,
-  null
+const slotList = useTemplateRef<HTMLElement | null>(
+  `slotList${props.classOption["key"]}`
 );
-const realBox = templateRef<HTMLElement | null>(
-  `realBox${props.classOption["key"]}`,
-  null
+const realBox = useTemplateRef<HTMLElement | null>(
+  `realBox${props.classOption["key"]}`
 );
 
 const leftSwitchState = computed(() => {
