@@ -35,7 +35,7 @@ const defaultProps = {
 };
 const buttonClass = computed(() => {
   return [
-    "h-[20px]!",
+    "h-5!",
     "text-sm!",
     "reset-margin",
     "text-(--el-text-color-regular)!",

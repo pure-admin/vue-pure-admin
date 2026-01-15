@@ -26,13 +26,10 @@ defineOptions({
 
 const iconClass = computed(() => {
   return [
-    "w-[22px]",
-    "h-[22px]",
-    "flex",
-    "justify-center",
-    "items-center",
+    "size-5.5",
+    "flex-c",
     "outline-hidden",
-    "rounded-[4px]",
+    "rounded-sm",
     "cursor-pointer",
     "transition-colors",
     "hover:bg-[#0000000f]",
