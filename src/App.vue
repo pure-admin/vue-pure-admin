@@ -7,8 +7,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { useGlobal } from "@pureadmin/utils";
 import { checkVersion } from "version-rocket";
+import { defineComponent, computed } from "vue";
 import { ElConfigProvider } from "element-plus";
 import { ReDialog } from "@/components/ReDialog";
 import { ReDrawer } from "@/components/ReDrawer";
@@ -24,12 +25,16 @@ export default defineComponent({
     ReDialog,
     ReDrawer
   },
-  computed: {
-    currentLocale() {
-      return this.$storage.locale?.locale === "zh"
+  setup() {
+    const { $storage } = useGlobal<GlobalPropertiesApi>();
+    const currentLocale = computed(() => {
+      return $storage.locale?.locale === "zh"
         ? { ...zhCn, ...plusZhCn }
         : { ...en, ...plusEn };
-    }
+    });
+    return {
+      currentLocale
+    };
   },
   beforeCreate() {
     const { version, name: title } = __APP_INFO__.pkg;
