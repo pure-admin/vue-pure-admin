@@ -71,7 +71,7 @@ const textClass = computed(() => {
     ((layout.value === "vertical" && item.parentId === null) ||
       (layout.value === "mix" && item.pathList.length === 2))
   ) {
-    return `${baseClass} min-w-[54px]! text-center! px-3!`;
+    return `${baseClass} min-w-13.5! text-center! px-3!`;
   }
   return baseClass;
 });
