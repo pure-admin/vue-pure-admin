@@ -53,8 +53,8 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
           assetFileNames: "static/[ext]/[name]-[hash].[ext]"
         },
         checks: {
-          // 禁用插件计时警告
-          pluginTimings: false
+          pluginTimings: false,
+          toleratedTransform: false
         }
       }
     },
