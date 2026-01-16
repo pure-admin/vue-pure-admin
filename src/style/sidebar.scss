@@ -471,6 +471,11 @@
         color: var(--pure-theme-sub-menu-active-text);
       }
 
+      .globalization-icon {
+        color: var(--pure-theme-sub-menu-active-text);
+        outline: none;
+      }
+
       .el-dropdown-link {
         display: flex;
         align-items: center;
