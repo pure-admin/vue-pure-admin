@@ -272,7 +272,7 @@ importers:
         version: 8.0.1
       code-inspector-plugin:
         specifier: ^1.3.4
-        version: 1.3.4
+        version: 1.3.5
       cssnano:
         specifier: ^7.1.2
         version: 7.1.2(postcss@8.5.6)
@@ -290,7 +290,7 @@ importers:
         version: 5.5.5(eslint-config-prettier@10.1.8(eslint@9.39.2(jiti@2.6.1)))(eslint@9.39.2(jiti@2.6.1))(prettier@3.8.0)
       eslint-plugin-vue:
         specifier: ^10.6.2
-        version: 10.6.2(@typescript-eslint/parser@8.53.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1))(vue-eslint-parser@10.2.0(eslint@9.39.2(jiti@2.6.1)))
+        version: 10.7.0(@typescript-eslint/parser@8.53.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1))(vue-eslint-parser@10.2.0(eslint@9.39.2(jiti@2.6.1)))
       gradient-string:
         specifier: ^3.0.0
         version: 3.0.0
@@ -599,23 +599,23 @@ packages:
   '@cacheable/utils@2.3.3':
     resolution: {integrity: sha512-JsXDL70gQ+1Vc2W/KUFfkAJzgb4puKwwKehNLuB+HrNKWf91O736kGfxn4KujXCCSuh6mRRL4XEB0PkAFjWS0A==}
 
-  '@code-inspector/core@1.3.4':
-    resolution: {integrity: sha512-AUFtDH/hngBHrNVwW1z44ogZkaGhfmFQJZjyQrSCp+mERVQqa4QNGQpRqiIEWVCwJ2e3GCuwxeAr/k48r1nscA==}
+  '@code-inspector/core@1.3.5':
+    resolution: {integrity: sha512-VQRjhdFtg9QczqNMgaZtLg396gcuv77vcCJUWTK2FNDNANUOCgKofSXYlo4Jr+B0T6JDBqVw4nmbF6QY9FnXTg==}
 
-  '@code-inspector/esbuild@1.3.4':
-    resolution: {integrity: sha512-VVZLPnaUNtX4fm07bKBkdIn2t1H0jPzah3fHd/CtNO82mnT1H3hZCuvtlO4jQZnErWC1KYJUEDrEe4T5TA5giQ==}
+  '@code-inspector/esbuild@1.3.5':
+    resolution: {integrity: sha512-HYuRwltbrzVLbr4dSBEUs3+kNRG2p/WCdXRT7N0qi26N0pswkzO1qIaWLKQgJ0VxCNR9s3Z0aY7eUk9KwkMAhw==}
 
-  '@code-inspector/mako@1.3.4':
-    resolution: {integrity: sha512-SvjZSfLXgiWDMmJ9+YfPqbE2WVbXCNPjREclEJfqkM2qS/oRPmHw/O81p5wh6dN48gzVadLKEOPtSE0+FURJgQ==}
+  '@code-inspector/mako@1.3.5':
+    resolution: {integrity: sha512-jRePxa6Dybk96KfARymkm1zruaY6F7nZmFqUp0XLIlzA1TQX9q6HVSJSJwSjeW+FEnXKZWYo6Ll//l2lGzYWLQ==}
 
-  '@code-inspector/turbopack@1.3.4':
-    resolution: {integrity: sha512-zsv2ppMFedNZetrlN4PEW4B2vAheu3yUfrmSKfZlXEb8YT378sq+49+57aP/E1Q8cHRzowy4GItuPKwAy7TTVQ==}
+  '@code-inspector/turbopack@1.3.5':
+    resolution: {integrity: sha512-m1kCgN4en6BVe3DfiVsCJLnPbDqn1Peryr/ZQkehKUNyMLYjCgvH0Rzv4FfVnSqGB2TGvF9JFpLVmBuTcjuDbg==}
 
-  '@code-inspector/vite@1.3.4':
-    resolution: {integrity: sha512-BcRnQFwt8yQ4CcbN7yPf/Vmon3yfS5lPpcH0QAcjD03r61if5fmix29f65Rf/WxzlVyBkk7148xaIVQ3iT2Yjg==}
+  '@code-inspector/vite@1.3.5':
+    resolution: {integrity: sha512-CQa0I4xVHQ0DzR6s1sBTZWwe9fh8Yz6Wp7YSalmPrHICjIE932c44DaMRz92TTSpQ6skuwAkb3fWT+JScrf1Lw==}
 
-  '@code-inspector/webpack@1.3.4':
-    resolution: {integrity: sha512-lqsDOSmKXgOYvlurWL4SHaNItNCNZDVbFJlroM4ECnOGt/iNUI0UwaFxn9U5NeKff7fnTmdH8Hrz2IaMR4FVTg==}
+  '@code-inspector/webpack@1.3.5':
+    resolution: {integrity: sha512-Zr8tx3hGTv17xJ8RdHGa/bmYvd9mp9rwqY+uzGeqt3N2vLEy5dZFd9f2VKlfJZ1u9wiZeSBw6aBSbZrgg9vo1Q==}
 
   '@commitlint/cli@20.3.1':
     resolution: {integrity: sha512-NtInjSlyev/+SLPvx/ulz8hRE25Wf5S9dLNDcIwazq0JyB4/w1ROF/5nV0ObPTX8YpRaKYeKtXDYWqumBNHWsw==}
@@ -2481,8 +2481,8 @@ packages:
   base64-js@1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
 
-  baseline-browser-mapping@2.9.14:
-    resolution: {integrity: sha512-B0xUquLkiGLgHhpPBqvl7GWegWBUNuujQ6kXd/r1U38ElPT6Ok8KZ8e+FpUGEc2ZoRQUzq/aUnaKFc/svWUGSg==}
+  baseline-browser-mapping@2.9.15:
+    resolution: {integrity: sha512-kX8h7K2srmDyYnXRIppo4AH/wYgzWVCs+eKr3RusRSQ5PvRYoEFmR/I0PbdTjKFAoKqp5+kbxnNTFO9jOfSVJg==}
     hasBin: true
 
   birpc@2.9.0:
@@ -2636,8 +2636,8 @@ packages:
     resolution: {integrity: sha512-QVb0dM5HvG+uaxitm8wONl7jltx8dqhfU33DcqtOZcLSVIKSDDLDi7+0LbAKiyI8hD9u42m2YxXSkMGWThaecQ==}
     engines: {iojs: '>= 1.0.0', node: '>= 0.12.0'}
 
-  code-inspector-plugin@1.3.4:
-    resolution: {integrity: sha512-735rAAc655oSAMd/6+PIsjpgB5jwugDISom9WFwhNUbOuFHiL2PYwshMmfIhAtOgECl+7g6o50rBIIYwCEa8xg==}
+  code-inspector-plugin@1.3.5:
+    resolution: {integrity: sha512-7Pgq8as9aPBU6J7YfeHdCiuOUjRNKeyRN8TwmbTZwvf2TVo3D0CVG3dJ3bYtxIo7xOuSzTsDcO5M/6XWD1BxUQ==}
 
   codemirror-editor-vue3@2.8.0:
     resolution: {integrity: sha512-ebYGNhBpLmQNLguXzNyMMkn6K8v3lcS5/Ncvdn6YS4bLGEHE67MfsJIS/WV0L7I6WavUuFlY/Rs/AJKChIwSwg==}
@@ -3139,8 +3139,8 @@ packages:
       eslint-config-prettier:
         optional: true
 
-  eslint-plugin-vue@10.6.2:
-    resolution: {integrity: sha512-nA5yUs/B1KmKzvC42fyD0+l9Yd+LtEpVhWRbXuDj0e+ZURcTtyRbMDWUeJmTAh2wC6jC83raS63anNM2YT3NPw==}
+  eslint-plugin-vue@10.7.0:
+    resolution: {integrity: sha512-r2XFCK4qlo1sxEoAMIoTTX0PZAdla0JJDt1fmYiworZUX67WeEGqm+JbyAg3M+pGiJ5U6Mp5WQbontXWtIW7TA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       '@stylistic/eslint-plugin': ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0
@@ -3918,8 +3918,8 @@ packages:
   known-css-properties@0.37.0:
     resolution: {integrity: sha512-JCDrsP4Z1Sb9JwG0aJ8Eo2r7k4Ou5MwmThS/6lcIe1ICyb7UBJKGRIUUdqc2ASdE/42lgz6zFUnzAIhtXnBVrQ==}
 
-  launch-ide@1.3.1:
-    resolution: {integrity: sha512-opTthrpkuhi1Y8yFn6TWUeycyiI1aiZpVuTV4HQFUfVut7nMYGr5nQ8heYHrRJH2KYISLVYwz+QFRNZxFlbQmA==}
+  launch-ide@1.4.0:
+    resolution: {integrity: sha512-c2mcqZy7mNhzXiWoBFV0lDsEOfpSFGqqxKubPffhqcnv3GV0xpeGcHWLxYFm+jz1/5VAKp796QkyVV4++07eiw==}
 
   leven@2.1.0:
     resolution: {integrity: sha512-nvVPLpIHUxCUoRLrFqTgSxXJ614d8AgQoWl7zPe/2VadE8+1dpU3LBhowRuBAcuwruWtOdD8oYC9jDNJjXDPyA==}
@@ -6052,45 +6052,45 @@ snapshots:
       hashery: 1.4.0
       keyv: 5.5.5
 
-  '@code-inspector/core@1.3.4':
+  '@code-inspector/core@1.3.5':
     dependencies:
       '@vue/compiler-dom': 3.5.26
       chalk: 4.1.1
       dotenv: 16.6.1
-      launch-ide: 1.3.1
+      launch-ide: 1.4.0
       portfinder: 1.0.38
     transitivePeerDependencies:
       - supports-color
 
-  '@code-inspector/esbuild@1.3.4':
+  '@code-inspector/esbuild@1.3.5':
     dependencies:
-      '@code-inspector/core': 1.3.4
+      '@code-inspector/core': 1.3.5
     transitivePeerDependencies:
       - supports-color
 
-  '@code-inspector/mako@1.3.4':
+  '@code-inspector/mako@1.3.5':
     dependencies:
-      '@code-inspector/core': 1.3.4
+      '@code-inspector/core': 1.3.5
     transitivePeerDependencies:
       - supports-color
 
-  '@code-inspector/turbopack@1.3.4':
+  '@code-inspector/turbopack@1.3.5':
     dependencies:
-      '@code-inspector/core': 1.3.4
-      '@code-inspector/webpack': 1.3.4
+      '@code-inspector/core': 1.3.5
+      '@code-inspector/webpack': 1.3.5
     transitivePeerDependencies:
       - supports-color
 
-  '@code-inspector/vite@1.3.4':
+  '@code-inspector/vite@1.3.5':
     dependencies:
-      '@code-inspector/core': 1.3.4
+      '@code-inspector/core': 1.3.5
       chalk: 4.1.1
     transitivePeerDependencies:
       - supports-color
 
-  '@code-inspector/webpack@1.3.4':
+  '@code-inspector/webpack@1.3.5':
     dependencies:
-      '@code-inspector/core': 1.3.4
+      '@code-inspector/core': 1.3.5
     transitivePeerDependencies:
       - supports-color
 
@@ -7920,7 +7920,7 @@ snapshots:
 
   base64-js@1.5.1: {}
 
-  baseline-browser-mapping@2.9.14: {}
+  baseline-browser-mapping@2.9.15: {}
 
   birpc@2.9.0: {}
 
@@ -7960,7 +7960,7 @@ snapshots:
 
   browserslist@4.28.1:
     dependencies:
-      baseline-browser-mapping: 2.9.14
+      baseline-browser-mapping: 2.9.15
       caniuse-lite: 1.0.30001764
       electron-to-chromium: 1.5.267
       node-releases: 2.0.27
@@ -8103,14 +8103,14 @@ snapshots:
 
   co@4.6.0: {}
 
-  code-inspector-plugin@1.3.4:
+  code-inspector-plugin@1.3.5:
     dependencies:
-      '@code-inspector/core': 1.3.4
-      '@code-inspector/esbuild': 1.3.4
-      '@code-inspector/mako': 1.3.4
-      '@code-inspector/turbopack': 1.3.4
-      '@code-inspector/vite': 1.3.4
-      '@code-inspector/webpack': 1.3.4
+      '@code-inspector/core': 1.3.5
+      '@code-inspector/esbuild': 1.3.5
+      '@code-inspector/mako': 1.3.5
+      '@code-inspector/turbopack': 1.3.5
+      '@code-inspector/vite': 1.3.5
+      '@code-inspector/webpack': 1.3.5
       chalk: 4.1.1
     transitivePeerDependencies:
       - supports-color
@@ -8684,7 +8684,7 @@ snapshots:
     optionalDependencies:
       eslint-config-prettier: 10.1.8(eslint@9.39.2(jiti@2.6.1))
 
-  eslint-plugin-vue@10.6.2(@typescript-eslint/parser@8.53.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1))(vue-eslint-parser@10.2.0(eslint@9.39.2(jiti@2.6.1))):
+  eslint-plugin-vue@10.7.0(@typescript-eslint/parser@8.53.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1))(vue-eslint-parser@10.2.0(eslint@9.39.2(jiti@2.6.1))):
     dependencies:
       '@eslint-community/eslint-utils': 4.9.1(eslint@9.39.2(jiti@2.6.1))
       eslint: 9.39.2(jiti@2.6.1)
@@ -9710,7 +9710,7 @@ snapshots:
 
   known-css-properties@0.37.0: {}
 
-  launch-ide@1.3.1:
+  launch-ide@1.4.0:
     dependencies:
       chalk: 4.1.1
       dotenv: 16.6.1
