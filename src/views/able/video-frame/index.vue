@@ -171,7 +171,7 @@ onBeforeUnmount(() => {
 </template>
 
 <style lang="scss" scoped>
-::v-deep(.el-upload-dragger) {
+:deep(.el-upload-dragger) {
   display: flex;
   align-items: center;
   height: 180px;
