@@ -97,9 +97,9 @@ export default defineComponent({
       return [
         "flex",
         "justify-between",
-        "pt-[3px]",
-        "px-[11px]",
-        "border-b-[1px]",
+        "pt-0.75",
+        "px-2.75",
+        "border-b",
         "border-b-solid",
         "border-[#dcdfe6]",
         "dark:border-[#303030]"
@@ -244,7 +244,7 @@ export default defineComponent({
     const reference = {
       reference: () => (
         <SettingIcon
-          class={["w-[16px]", iconClass.value]}
+          class={["w-4", iconClass.value]}
           v-tippy={rendTippyProps(
             transformI18n($t("tableBar.pureColumnSettings"))
           )}
@@ -266,20 +266,20 @@ export default defineComponent({
               : "mt-2"
           ]}
         >
-          <div class="flex justify-between w-full h-[60px] p-4">
+          <div class="flex justify-between w-full h-15 p-4">
             {slots?.title ? (
               slots.title()
             ) : (
               <p class="font-bold truncate">{transformI18n(props.title)}</p>
             )}
-            <div class="flex items-center justify-around">
+            <div class="flex-ac">
               {slots?.buttons ? (
                 <div class="flex mr-4">{slots.buttons()}</div>
               ) : null}
               {props.tableRef?.size ? (
                 <>
                   <ExpandIcon
-                    class={["w-[16px]", iconClass.value]}
+                    class={["w-4", iconClass.value]}
                     style={{
                       transform: isExpandAll.value ? "none" : "rotate(-90deg)"
                     }}
@@ -295,7 +295,7 @@ export default defineComponent({
               ) : null}
               <RefreshIcon
                 class={[
-                  "w-[16px]",
+                  "w-4",
                   iconClass.value,
                   loading.value ? "animate-spin" : ""
                 ]}
@@ -312,7 +312,7 @@ export default defineComponent({
                   transformI18n($t("tableBar.pureDensity"))
                 )}
               >
-                <CollapseIcon class={["w-[16px]", iconClass.value]} />
+                <CollapseIcon class={["w-4", iconClass.value]} />
               </el-dropdown>
               <el-divider direction="vertical" />
 
@@ -336,7 +336,7 @@ export default defineComponent({
                   </el-button>
                 </div>
 
-                <div class="pt-[6px] pl-[11px]">
+                <div class="pt-1.5 pl-2.75">
                   <el-scrollbar max-height="36vh">
                     <el-checkbox-group
                       ref={`GroupRef${unref(props.tableKey)}`}
@@ -353,7 +353,7 @@ export default defineComponent({
                             <div class="flex items-center">
                               <DragIcon
                                 class={[
-                                  "drag-btn w-[16px] mr-2",
+                                  "drag-btn w-4 mr-2",
                                   isFixedColumn(item)
                                     ? "cursor-no-drop!"
                                     : "cursor-grab!"
@@ -372,7 +372,7 @@ export default defineComponent({
                               >
                                 <span
                                   title={transformI18n(item)}
-                                  class="inline-block w-[120px] truncate hover:text-text_color_primary"
+                                  class="inline-block w-30 truncate hover:text-text_color_primary"
                                 >
                                   {transformI18n(item)}
                                 </span>
@@ -388,7 +388,7 @@ export default defineComponent({
               <el-divider direction="vertical" />
 
               <iconifyIconOffline
-                class={["w-[16px]", iconClass.value]}
+                class={["w-4", iconClass.value]}
                 icon={isFullscreen.value ? ExitFullscreen : Fullscreen}
                 v-tippy={
                   isFullscreen.value

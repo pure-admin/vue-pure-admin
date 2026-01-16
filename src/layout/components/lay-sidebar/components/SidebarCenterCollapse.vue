@@ -18,7 +18,7 @@ const { t } = useI18n();
 const { tooltipEffect } = useNav();
 
 const iconClass = computed(() => {
-  return ["w-[16px]", "h-[16px]"];
+  return ["size-4"];
 });
 
 const { $storage } = useGlobal<GlobalPropertiesApi>();

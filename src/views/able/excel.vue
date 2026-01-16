@@ -89,7 +89,7 @@ const exportExcel = () => {
       </el-link>
     </template>
     <el-button type="primary" @click="exportExcel">导出Excel</el-button>
-    <div class="h-[25rem] mt-3">
+    <div class="h-100 mt-3">
       <el-auto-resizer>
         <template #default="{ height, width }">
           <el-table-v2

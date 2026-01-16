@@ -23,6 +23,6 @@ const icon = ref("ep:add-location");
         代码位置 src/views/components/icon-select.vue
       </el-link>
     </template>
-    <IconSelect v-model="icon" class="w-[200px]" />
+    <IconSelect v-model="icon" class="w-50" />
   </el-card>
 </template>

@@ -21,12 +21,11 @@ const iconClass = computed(() => {
   return [
     "ml-4",
     "mb-1",
-    "w-[16px]",
-    "h-[16px]",
+    "size-4",
     "inline-block!",
     "align-middle",
     "cursor-pointer",
-    "duration-[100ms]"
+    "duration-100"
   ];
 });
 

@@ -49,7 +49,7 @@ export function useColumns() {
               rowDrop(event)
             }
           />
-          <p class="ml-[16px]">{row.id}</p>
+          <p class="ml-4">{row.id}</p>
         </div>
       )
     },

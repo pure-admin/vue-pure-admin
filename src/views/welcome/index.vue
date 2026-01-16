@@ -33,7 +33,7 @@ const optionsBasis: Array<OptionsType> = [
         v-for="(item, index) in chartData"
         :key="index"
         v-motion
-        class="mb-[18px]"
+        class="mb-4.5"
         :value="6"
         :md="12"
         :sm="12"
@@ -92,7 +92,7 @@ const optionsBasis: Array<OptionsType> = [
 
       <re-col
         v-motion
-        class="mb-[18px]"
+        class="mb-4.5"
         :value="18"
         :xs="24"
         :initial="{
@@ -123,7 +123,7 @@ const optionsBasis: Array<OptionsType> = [
 
       <re-col
         v-motion
-        class="mb-[18px]"
+        class="mb-4.5"
         :value="6"
         :xs="24"
         :initial="{
@@ -170,7 +170,7 @@ const optionsBasis: Array<OptionsType> = [
 
       <re-col
         v-motion
-        class="mb-[18px]"
+        class="mb-4.5"
         :value="18"
         :xs="24"
         :initial="{
@@ -185,7 +185,7 @@ const optionsBasis: Array<OptionsType> = [
           }
         }"
       >
-        <el-card shadow="never" class="h-[580px]">
+        <el-card shadow="never" class="h-145">
           <div class="flex justify-between">
             <span class="text-md font-medium">数据统计</span>
           </div>
@@ -195,7 +195,7 @@ const optionsBasis: Array<OptionsType> = [
 
       <re-col
         v-motion
-        class="mb-[18px]"
+        class="mb-4.5"
         :value="6"
         :xs="24"
         :initial="{

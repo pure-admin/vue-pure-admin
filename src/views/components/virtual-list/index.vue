@@ -29,8 +29,8 @@ defineOptions({
       </el-link>
     </template>
     <div class="w-full flex justify-around flex-wrap">
-      <vertical-list class="h-[500px] w-[500px]" />
-      <horizontal-list class="h-[500px] w-[500px]" />
+      <vertical-list class="size-125" />
+      <horizontal-list class="size-125" />
     </div>
   </el-card>
 </template>

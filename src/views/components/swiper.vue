@@ -106,11 +106,11 @@ const swiperExample: any[] = [
     </template>
     <el-row :gutter="10">
       <el-col v-for="item in swiperExample" :key="item.id" :span="12">
-        <h6 class="py-[16px]! text-base">{{ item.label }}</h6>
+        <h6 class="py-4! text-base">{{ item.label }}</h6>
         <swiper v-bind="item.options">
           <swiper-slide v-for="i in 5" :key="i">
             <div
-              class="flex justify-center items-center h-[240px] border border-[#999]"
+              class="flex justify-center items-center h-60 border border-[#999]"
             >
               Slide{{ i }}
             </div>

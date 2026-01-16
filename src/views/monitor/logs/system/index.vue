@@ -42,14 +42,14 @@ const {
       ref="formRef"
       :inline="true"
       :model="form"
-      class="search-form bg-bg_color w-full pl-8 pt-[12px] overflow-auto"
+      class="search-form bg-bg_color w-full pl-8 pt-3 overflow-auto"
     >
       <el-form-item label="所属模块" prop="module">
         <el-input
           v-model="form.module"
           placeholder="请输入所属模块"
           clearable
-          class="w-[170px]!"
+          class="w-42.5!"
         />
       </el-form-item>
       <el-form-item label="请求时间" prop="requestTime">
@@ -95,7 +95,7 @@ const {
         <div
           v-if="selectedNum > 0"
           v-motion-fade
-          class="bg-[var(--el-fill-color-light)] w-full h-[46px] mb-2 pl-4 flex items-center"
+          class="bg-(--el-fill-color-light) w-full h-11.5 mb-2 pl-4 flex items-center"
         >
           <div class="flex-auto">
             <span

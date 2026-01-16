@@ -88,7 +88,7 @@ export function useUser(tableRef: Ref, treeRef: Ref) {
           preview-teleported={true}
           src={row.avatar || userAvatar}
           preview-src-list={Array.of(row.avatar || userAvatar)}
-          class="w-[24px] h-[24px] rounded-full align-middle"
+          class="size-6 rounded-full align-middle"
         />
       ),
       width: 90
@@ -163,7 +163,7 @@ export function useUser(tableRef: Ref, treeRef: Ref) {
   ];
   const buttonClass = computed(() => {
     return [
-      "h-[20px]!",
+      "h-5!",
       "reset-margin",
       "text-gray-500!",
       "dark:text-white!",

@@ -71,7 +71,7 @@ const textClass = computed(() => {
     ((layout.value === "vertical" && item.parentId === null) ||
       (layout.value === "mix" && item.pathList.length === 2))
   ) {
-    return `${baseClass} min-w-[54px]! text-center! px-3!`;
+    return `${baseClass} min-w-13.5! text-center! px-3!`;
   }
   return baseClass;
 });
@@ -159,7 +159,7 @@ function resolvePath(routePath) {
             item?.pathList?.length === 2)
         "
         truncated
-        class="w-full! px-3! min-w-[54px]! text-center! text-inherit!"
+        class="w-full! px-3! min-w-13.5! text-center! text-inherit!"
       >
         {{ transformI18n(onlyOneChild.meta.title) }}
       </el-text>
