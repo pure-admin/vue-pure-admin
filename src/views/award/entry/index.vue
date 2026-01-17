@@ -1,8 +1,8 @@
 <template>
   <div class="main p-4">
     <el-row :gutter="20">
-      <el-col :xl="14" :lg="14" :md="24" :sm="24">
-        <el-card shadow="never" class="h-full">
+      <el-col :span="24" class="mb-4">
+        <el-card shadow="never">
           <template #header>
             <div class="flex items-center gap-2">
               <el-icon class="text-primary"><EditPen /></el-icon>
@@ -13,8 +13,8 @@
         </el-card>
       </el-col>
 
-      <el-col :xl="10" :lg="10" :md="24" :sm="24">
-        <el-card shadow="never" class="h-full">
+      <el-col :span="24">
+        <el-card shadow="never">
           <template #header>
             <div class="flex items-center gap-2">
               <el-icon class="text-success"><Box /></el-icon>
@@ -31,7 +31,7 @@
 <script setup lang="ts">
 import { EditPen, Box } from "@element-plus/icons-vue";
 import AwardFormInner from "../components/AwardFormInner.vue";
-import BatchImportWizard from "../components/BatchImportWizard.vue"; // 引入新组件
+import BatchImportWizard from "../components/import/BatchImport.vue"; // 引入新组件
 
 // 统一的处理函数，无论是单条录入成功，还是批量导入成功，可能都需要刷新某个列表
 const handleSuccess = () => {

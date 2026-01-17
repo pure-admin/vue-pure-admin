@@ -55,29 +55,33 @@ export const getAwardStatistics = () => {
 export const uploadImportFile = (file: File) => {
   const formData = new FormData();
   formData.append("file", file);
-  return http.request<any>("post", "/import/upload/", {
+  return http.request<any>("post", "/award/import/upload/", {
     data: formData,
     headers: { "Content-Type": "multipart/form-data" }
   });
 };
 
 /** 获取任务下的暂存数据项 */
-export const getImportItems = (taskId: number) => {
-  return http.request<any>("get", `/import/${taskId}/items/`);
+export const getImportItems = (taskId: string | number) => {
+  return http.request<any>("get", `/award/import/${taskId}/items/`);
 };
 
 /** 更新单行暂存数据 (纠错) */
-export const updateImportItem = (taskId: number, itemId: number, data: any) => {
-  return http.request<any>(
-    "patch",
-    `/import/${taskId}/update-item/${itemId}/`,
-    {
-      data
-    }
-  );
+export const updateImportItem = (taskId: number, data: any) => {
+  return http.request<any>("patch", `/award/import/${taskId}/update-item/`, {
+    data
+  });
 };
 
 /** 提交入库 */
 export const commitImportTask = (taskId: number) => {
-  return http.request<any>("post", `/import/${taskId}/commit/`);
+  return http.request<any>("post", `/award/import/${taskId}/commit/`);
+};
+
+/** 获取导入任务状态 (轮询用) */
+export const getImportStatus = (taskId: number) => {
+  return http.request<{ status: string; progress: number }>(
+    "get",
+    `/award/import/${taskId}/status/`
+  );
 };
