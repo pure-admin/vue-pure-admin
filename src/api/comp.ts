@@ -8,6 +8,7 @@ export type CompInfo = {
   category: number;
   uri: string;
   level: number;
+  scale: string;
   category_name?: string;
   level_name?: string;
 };

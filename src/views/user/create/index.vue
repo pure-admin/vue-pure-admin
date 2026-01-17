@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref, reactive, computed } from "vue";
+import { ref, reactive, computed, onUnmounted } from "vue";
 import { read, utils } from "xlsx";
 import { message } from "@/utils/message";
-import { registerUser } from "@/api/user";
+import { getImportStatus, importUsers, registerUser } from "@/api/user";
 import type { FormInstance, FormRules } from "element-plus";
 import { UploadFilled } from "@element-plus/icons-vue";
 
@@ -96,7 +96,30 @@ const onSubmit = async (formEl: FormInstance | undefined) => {
 };
 
 // 3. 处理 Excel 批量导入映射
+const rawFile = ref<File | null>(null); // 存储原始文件对象
+const importResult = ref<{
+  total: number;
+  success_count: number;
+  error_count: number;
+  errors: any[];
+} | null>(null);
+
+const progress = ref(0); // 进度条百分比
+const isImporting = ref(false); // 是否正在处理中
+const timer = ref<any>(null); // 轮询定时器
+
+// 清除定时器，防止内存泄漏
+const clearTimer = () => {
+  if (timer.value) {
+    clearInterval(timer.value);
+    timer.value = null;
+  }
+};
+
+onUnmounted(() => clearTimer());
+
 const handleUpload = (file: any) => {
+  rawFile.value = file.raw; // 保存原始文件
   const reader = new FileReader();
   reader.onload = (e: any) => {
     const data = new Uint8Array(e.target.result);
@@ -126,22 +149,56 @@ const handleUpload = (file: any) => {
 };
 
 const submitBatch = async () => {
-  if (tableData.value.length === 0) return;
-  loading.value = true;
-  let successCount = 0;
-  for (const user of tableData.value) {
-    try {
-      await registerUser(user);
-      successCount++;
-    } catch (err) {
-      console.error(`用户 ${user.user_id} 导入失败`, err);
-    }
+  if (!rawFile.value) return;
+
+  try {
+    loading.value = true;
+    isImporting.value = true;
+    progress.value = 0;
+    importResult.value = null;
+
+    const formData = new FormData();
+    formData.append("file", rawFile.value);
+
+    // 1. 发起导入请求，获取 task_id
+    const res = await importUsers(formData);
+    const taskId = res.task_id;
+
+    // 2. 开始轮询
+    timer.value = setInterval(async () => {
+      try {
+        const statusRes = await getImportStatus(taskId);
+
+        // 更新进度条 (假设后端返回格式为 { percent: 85 })
+        if (statusRes.progress) {
+          progress.value = statusRes.progress.percent;
+        }
+
+        // 3. 判断任务是否结束
+        if (statusRes.status === "SUCCESS") {
+          clearTimer();
+          isImporting.value = false;
+          loading.value = false;
+          importResult.value = statusRes.result; // 后端在任务完成后将结果放入 result 字段
+          message("导入任务已完成", { type: "success" });
+        } else if (statusRes.status === "FAILURE") {
+          clearTimer();
+          isImporting.value = false;
+          loading.value = false;
+          message("后台处理任务失败", { type: "error" });
+        }
+      } catch (err) {
+        clearTimer();
+        isImporting.value = false;
+        loading.value = false;
+        console.error("轮询状态失败", err);
+      }
+    }, 1500); // 每 1.5 秒查询一次进度
+  } catch (error: any) {
+    loading.value = false;
+    isImporting.value = false;
+    message("提交任务失败", { type: "error" });
   }
-  loading.value = false;
-  message(`导入完成！成功 ${successCount}/${tableData.value.length}`, {
-    type: successCount === tableData.value.length ? "success" : "warning"
-  });
-  if (successCount > 0) tableData.value = [];
 };
 </script>
 
@@ -293,6 +350,65 @@ const submitBatch = async () => {
       <el-icon class="el-icon--upload"><upload-filled /></el-icon>
       <div class="el-upload__text">将文件拖到此处，或 <em>点击上传</em></div>
     </el-upload>
+
+    <div
+      v-if="importResult"
+      class="mt-5 p-4 border-l-4 border-orange-400 bg-orange-50"
+    >
+      <h4 class="font-bold text-orange-700 mb-2">导入结果报告：</h4>
+      <div class="flex gap-6 mb-4 text-sm">
+        <span
+          >总条数：<b class="text-blue-600">{{ importResult.total }}</b></span
+        >
+        <span
+          >成功：<b class="text-green-600">{{
+            importResult.success_count
+          }}</b></span
+        >
+        <span
+          >失败：<b class="text-red-600">{{
+            importResult.error_count
+          }}</b></span
+        >
+      </div>
+
+      <el-collapse v-if="importResult.errors.length > 0">
+        <el-collapse-item title="查看错误详情" name="1">
+          <el-table :data="importResult.errors" size="small" border>
+            <el-table-column
+              prop="row"
+              label="行号"
+              width="80"
+              align="center"
+            />
+            <el-table-column prop="user_id" label="学工号" width="120" />
+            <el-table-column label="错误原因">
+              <template #default="scope">
+                <div class="text-red-500">
+                  <div v-for="(val, key) in scope.row.error" :key="key">
+                    <strong>{{ key }}:</strong>
+                    {{ Array.isArray(val) ? val.join(", ") : val }}
+                  </div>
+                </div>
+              </template>
+            </el-table-column>
+          </el-table>
+        </el-collapse-item>
+      </el-collapse>
+    </div>
+
+    <div v-if="isImporting" class="mb-5 p-4 bg-gray-50 rounded">
+      <div class="flex justify-between mb-2 text-sm text-gray-600">
+        <span>正在解析并保存数据，请勿关闭页面...</span>
+        <span>{{ progress }}%</span>
+      </div>
+      <el-progress
+        :percentage="progress"
+        :status="progress === 100 ? 'success' : ''"
+        :indeterminate="progress === 0"
+        :stroke-width="15"
+      />
+    </div>
 
     <div v-if="tableData.length > 0" class="mt-5">
       <div class="flex justify-between mb-4 items-center">

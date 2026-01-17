@@ -94,6 +94,19 @@
             />
           </el-select>
         </el-form-item>
+        <el-form-item label="规模">
+          <el-select
+            v-model="form.scale"
+            placeholder="请选择规模"
+            class="w-full"
+          >
+            <el-option label="校级" value="校级" />
+            <el-option label="市级" value="市级" />
+            <el-option label="省级" value="省级" />
+            <el-option label="国家级" value="国家级" />
+            <el-option label="国际级" value="国际级" />
+          </el-select>
+        </el-form-item>
         <el-form-item label="链接">
           <el-input v-model="form.uri" />
         </el-form-item>
@@ -113,6 +126,7 @@
         <el-table-column prop="year" label="年份" width="80" />
         <el-table-column prop="level_name" label="级别" width="100" />
         <el-table-column prop="category_name" label="类别" width="100" />
+        <el-table-column prop="scale_name" label="规模" width="100" />
         <el-table-column prop="uri" label="链接" show-overflow-tooltip />
       </el-table>
       <template #footer>
@@ -151,6 +165,7 @@ const columns: TableColumnList = [
   { label: "ID", prop: "id", width: 70 },
   { label: "竞赛标题", prop: "title" },
   { label: "年份", prop: "year", width: 100 },
+  { label: "规模", prop: "scale", width: 100 },
   { label: "级别", prop: "level_name", width: 100 },
   { label: "类别", prop: "category_name", width: 120 },
   { label: "链接", prop: "uri" },
@@ -169,7 +184,8 @@ const initialForm: CompInfo = {
   year: new Date().getFullYear(),
   category: null,
   uri: "",
-  level: null
+  level: null,
+  scale: null
 };
 const form = reactive({ ...initialForm });
 
@@ -190,6 +206,7 @@ function handleExport() {
     年份: item.year,
     级别: item.level_name,
     类别: item.category_name,
+    规模: item.scale,
     链接: item.uri,
     描述: item.description
   }));
@@ -213,6 +230,7 @@ function handleImport(file: any) {
       year: Number(item["年份"]) || new Date().getFullYear(),
       level_name: String(item["级别"] || "").trim(),
       category_name: String(item["类别"] || "").trim(),
+      scale: String(item["规模"] || "").trim(),
       uri: item["链接"] || "",
       description: item["描述"] || ""
     }));
@@ -278,7 +296,8 @@ async function confirmImport() {
         uri: item.uri,
         description: item.description,
         level: levelId,
-        category: categoryId
+        category: categoryId,
+        scale: item.scale
       };
 
       await createComp(submitData);

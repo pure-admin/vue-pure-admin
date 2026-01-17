@@ -1,6 +1,6 @@
 <template>
   <div class="p-4">
-    <el-form :model="form" label-width="100px" class="max-w-[500px]">
+    <el-form :model="form" label-width="100px" class="max-w-125">
       <el-form-item label="学/工号">
         <el-input v-model="form.user_id" disabled />
       </el-form-item>
@@ -11,7 +11,7 @@
         <el-input v-model="form.department" disabled />
       </el-form-item>
       <el-form-item label="角色">
-        <el-tag :type="form.role_name === 'Teacher' ? 'success' : 'primary'">
+        <el-tag :type="form.role_name === 'Student' ? 'success' : 'primary'">
           {{
             form.role_name === "Teacher"
               ? "教师"
@@ -19,7 +19,9 @@
                 ? "学生"
                 : form.role_name === "Administrator"
                   ? "管理员"
-                  : "竞赛管理员"
+                  : form.role_name === "CompetitionAdministrator"
+                    ? "竞赛管理员"
+                    : "超级管理员"
           }}
         </el-tag>
       </el-form-item>

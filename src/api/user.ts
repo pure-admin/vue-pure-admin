@@ -144,3 +144,17 @@ export const getUsers = (params: any) => {
 export const deleteUser = (userId: string) => {
   return http.request("delete", `/user/users/${userId}/`);
 };
+
+// 批量导入用户接口
+export const importUsers = (data: FormData) => {
+  return http.request<any>("post", "/user/import-users/", {
+    data,
+    headers: {
+      "Content-Type": "multipart/form-data"
+    }
+  });
+};
+// 获取进度
+export const getImportStatus = (taskId: string) => {
+  return http.request<any>("get", `/user/import-status/${taskId}/`);
+};
