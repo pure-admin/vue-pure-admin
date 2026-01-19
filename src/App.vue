@@ -66,12 +66,12 @@ export default defineComponent({
       duration: 0,
       customClass: "fullpage-notification",
       // @ts-expect-error
-      style: { width: "260px" },
+      style: { width: "280px" },
       position: "bottom-right",
       dangerouslyUseHTMLString: true,
       message: `
-        <a target='_blank' class='block text-base text-center border mt-4 rounded hover:text-[red]!' href='https://pure-admin.cn/pages/service/'>
-        新功能更新，点我查看
+        <a target='_blank' class='block text-2xl text-center border mt-4 rounded hover:text-[red]!' href='https://pure-admin.cn/pages/service'>
+        限时活动即将结束！
         </a>
       `
     });
