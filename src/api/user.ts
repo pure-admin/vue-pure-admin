@@ -71,14 +71,18 @@ export const getUserStats = () => {
 };
 
 /** 搜索用户 Profile 结果类型 */
-export type UserProfileSearchItem = {
+export interface UserProfileSearchItem {
   user_id: string;
   real_name: string;
   phone: string | null;
   email: string | null;
-  department: string;
+  college: string | null; // 确保有这一行
+  department: string | null;
   role_name: string;
-};
+  major?: string | null;
+  clazz?: string | null;
+  title?: string | null;
+}
 
 /** 按真实姓名搜索用户 */
 export const searchUserByName = (realName: string) => {
@@ -119,11 +123,12 @@ export interface UserListItem {
   real_name: string;
   phone: string | null;
   email: string | null;
-  department: string;
-  college: string | null;
-  major: string | null;
-  clazz: string | null;
+  college: string | null; // 确保有这一行
+  department: string | null;
   role_name: string;
+  major?: string | null;
+  clazz?: string | null;
+  title?: string | null;
 }
 
 export interface UserListResponse {
