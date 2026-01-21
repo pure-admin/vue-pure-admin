@@ -1,10 +1,22 @@
 <template>
   <el-card
     shadow="hover"
-    class="award-card border-none shadow-md hover:shadow-lg transition-all"
+    class="award-card border-none relative group shadow-md hover:shadow-lg transition-all"
   >
+    <div
+      v-if="isAdmin"
+      class="absolute right-4 bottom-4 opacity-0 group-hover:opacity-100 transition-opacity z-10"
+    >
+      <el-button
+        type="primary"
+        size="small"
+        :icon="Edit"
+        circle
+        @click="handleEdit"
+      />
+    </div>
     <div class="flex flex-col sm:flex-row">
-      <div class="w-full sm:w-44 h-60 shrink-0 mb-4 sm:mb-0 relative group">
+      <div class="w-full sm:w-44 h-60 shrink-0 mb-4 sm:mb-0 relative">
         <el-image
           class="w-full h-full rounded-lg border shadow-sm"
           :src="award.certificate_details?.image_uri"
@@ -123,13 +135,29 @@
 </template>
 
 <script setup lang="ts">
-import { Picture } from "@element-plus/icons-vue";
+import { useUserStore } from "@/store/modules/user";
+import { Edit, Picture } from "@element-plus/icons-vue";
+import { computed } from "vue";
 
 // 定义组件 Props
 const props = defineProps<{
   award: any;
   currentUserId?: string;
 }>();
+
+// 定义事件
+const emit = defineEmits(["edit"]);
+
+const userStore = useUserStore();
+
+// 权限判断
+const isAdmin = computed(() =>
+  userStore.roles?.includes("CompetitionAdministrator")
+);
+
+const handleEdit = () => {
+  emit("edit", props.award);
+};
 
 const isMe = (userId: string) => userId === props.currentUserId;
 

@@ -9,6 +9,7 @@ import {
   __APP_INFO__
 } from "./build/utils";
 
+const BASE_URL = "http://127.0.0.1:8080";
 export default ({ mode }: ConfigEnv): UserConfigExport => {
   const { VITE_CDN, VITE_PORT, VITE_COMPRESSION, VITE_PUBLIC_PATH } =
     wrapperEnv(loadEnv(mode, root));
@@ -26,37 +27,37 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
       // 本地跨域代理 https://cn.vitejs.dev/config/server-options.html#server-proxy
       proxy: {
         "/user-profile": {
-          target: "http://127.0.0.1:8000", // 这里换成你真正的后端地址
+          target: BASE_URL, // 这里换成你真正的后端地址
           changeOrigin: true
           // 如果后端接口里没有 /user-profile，才需要 rewrite
           // rewrite: (path) => path.replace(/^\/user-profile/, "")
         },
         "/user": {
-          target: "http://127.0.0.1:8000",
+          target: BASE_URL,
           changeOrigin: true
         },
         "/comp": {
-          target: "http://127.0.0.1:8000",
+          target: BASE_URL,
           changeOrigin: true
         },
         "/cert": {
-          target: "http://127.0.0.1:8000",
+          target: BASE_URL,
           changeOrigin: true
         },
         "/award": {
-          target: "http://127.0.0.1:8000",
+          target: BASE_URL,
           changeOrigin: true
         },
         "/apply": {
-          target: "http://127.0.0.1:8000",
+          target: BASE_URL,
           changeOrigin: true
         },
         "/team": {
-          target: "http://127.0.0.1:8000",
+          target: BASE_URL,
           changeOrigin: true
         },
         "/notification": {
-          target: "http://127.0.0.1:8000",
+          target: BASE_URL,
           changeOrigin: true
         }
       },

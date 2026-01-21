@@ -71,6 +71,18 @@
                 />
               </el-select>
             </el-form-item>
+
+            <el-form-item label="证书状态">
+              <el-select
+                v-model="queryParams.has_certificate"
+                placeholder="全部状态"
+                clearable
+                class="w-full"
+              >
+                <el-option label="已上传证书" :value="true" />
+                <el-option label="缺失证书" :value="false" />
+              </el-select>
+            </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="时间跨度">
@@ -105,8 +117,10 @@
         :awards="awards"
         :loading="loading"
         :currentUserId="queryParams.user_id"
+        @edit="handleEditAward"
       />
     </el-card>
+    <AwardDialog ref="awardDialogRef" @success="handleSearch" />
   </div>
 </template>
 
@@ -117,11 +131,13 @@ import { QuestionFilled } from "@element-plus/icons-vue";
 import { getAwardList } from "@/api/award";
 import { message } from "@/utils/message";
 import AwardList from "../components/AwardList.vue"; // 引用你拆分出来的组件
+import AwardDialog from "../components/AwardForm.vue";
 import { getCompCategories, getCompLevels } from "@/api/comp";
 
 const loading = ref(false);
 const awards = ref([]);
 const dateRange = ref([]);
+const awardDialogRef = ref();
 
 // 定义下拉框数据源
 const categoryOptions = ref([]);
@@ -153,8 +169,14 @@ const queryParams = reactive({
   category: undefined,
   level: undefined,
   date_min: "",
-  date_max: ""
+  date_max: "",
+  has_certificate: undefined
 });
+
+// 处理编辑点击
+const handleEditAward = (award: any) => {
+  awardDialogRef.value.open(award);
+};
 
 const handleSearch = async () => {
   loading.value = true;
@@ -189,7 +211,8 @@ const resetQuery = () => {
     category: undefined,
     level: undefined,
     date_min: "",
-    date_max: ""
+    date_max: "",
+    has_certificate: undefined
   });
   dateRange.value = [];
   awards.value = [];

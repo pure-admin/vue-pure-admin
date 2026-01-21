@@ -13,7 +13,7 @@ export type CompInfo = {
   level_name?: string;
 };
 
-/** 获取竞赛列表（假设支持分页或查询） */
+/** 获取竞赛列表 */
 export const getCompList = (params?: object) => {
   return http.request<any>("get", "/comp/info/", { params });
 };

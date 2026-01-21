@@ -27,6 +27,13 @@ export const createAwardWithCert = (data: FormData) =>
     headers: { "Content-Type": "multipart/form-data" }
   });
 
+/** 更新获奖信息 */
+export const updateAward = (id: number | string, data: FormData) =>
+  http.request<any>("patch", `/award/infos/${id}/`, {
+    data,
+    headers: { "Content-Type": "multipart/form-data" }
+  });
+
 /** 删除获奖 */
 export const deleteAward = (id: string) =>
   http.request<any>("delete", `/award/infos/${id}/`);
@@ -68,9 +75,19 @@ export const getImportItems = (taskId: string | number) => {
 
 /** 更新单行暂存数据 (纠错) */
 export const updateImportItem = (taskId: number, data: any) => {
-  return http.request<any>("patch", `/award/import/${taskId}/update-item/`, {
+  return http.request<any>("post", `/award/import/${taskId}/update-item/`, {
     data
   });
+};
+
+/** 获取所有导入任务列表 */
+export const getImportTasks = () => {
+  return http.request<any[]>("get", "/award/import/");
+};
+
+/** 删除特定导入任务 */
+export const deleteImportTask = (taskId: number) => {
+  return http.request<any>("delete", `/award/import/${taskId}/`);
 };
 
 /** 提交入库 */

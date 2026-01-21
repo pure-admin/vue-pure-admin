@@ -7,6 +7,7 @@
         :key="item.id"
         :award="item"
         :currentUserId="currentUserId"
+        @edit="$emit('edit', $event)"
       />
     </div>
   </div>

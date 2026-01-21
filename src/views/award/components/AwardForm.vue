@@ -101,7 +101,7 @@ import { ref, reactive, onMounted } from "vue";
 import { UploadFilled } from "@element-plus/icons-vue";
 import { message } from "@/utils/message";
 import { getCompList } from "@/api/comp";
-import { createAwardWithCert } from "@/api/award";
+import { createAwardWithCert, updateAward } from "@/api/award";
 import { createCert } from "@/api/certificate";
 import UserSelectTag from "./UserSelectTag.vue";
 
@@ -128,8 +128,31 @@ const form = reactive({
 // 暴露给父组件的打开方法
 const open = (row?: any) => {
   if (row) {
-    // 如果是编辑，拷贝数据
-    Object.assign(form, row);
+    // 1. 提取竞赛 ID
+    const competitionId = row.competition || row.competition_details?.id;
+
+    // 2. 提取人员 ID 数组 (防止回显失败)
+    // 如果 participants 里面存的是对象，则提取 user_id，如果是 ID 则保留
+    const pIds = Array.isArray(row.participants)
+      ? row.participants.map(p => (typeof p === "object" ? p.user_id : p))
+      : row.participant_details?.map(p => p.user_id) || [];
+
+    const iIds = Array.isArray(row.instructors)
+      ? row.instructors.map(i => (typeof i === "object" ? i.user_id : i))
+      : row.instructor_details?.map(i => i.user_id) || [];
+
+    // 3. 赋值给 form 响应式对象
+    Object.assign(form, {
+      id: row.id,
+      competition: competitionId,
+      award_level: row.award_level,
+      award_date: row.award_date,
+      participants: pIds,
+      participant_details: row.participant_details || [],
+      instructors: iIds,
+      instructor_details: row.instructor_details || [],
+      cert_no: row.certificate_details?.cert_no || ""
+    });
   } else {
     resetForm();
   }
@@ -191,10 +214,13 @@ const handleSubmit = async () => {
 
     form.participants.forEach(id => awardFormData.append("participants", id));
     form.instructors.forEach(id => awardFormData.append("instructors", id));
-
-    await createAwardWithCert(awardFormData);
-
-    message("提交成功", { type: "success" });
+    if (form.id) {
+      await updateAward(form.id, awardFormData);
+      message("更新成功", { type: "success" });
+    } else {
+      await createAwardWithCert(awardFormData);
+      message("提交成功", { type: "success" });
+    }
     visible.value = false;
     emit("success"); // 通知父组件刷新列表
   } catch (e) {
