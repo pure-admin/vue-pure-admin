@@ -9,7 +9,7 @@ import {
   __APP_INFO__
 } from "./build/utils";
 
-const BASE_URL = "http://127.0.0.1:8080";
+const BASE_URL = "http://127.0.0.1:8000";
 export default ({ mode }: ConfigEnv): UserConfigExport => {
   const { VITE_CDN, VITE_PORT, VITE_COMPRESSION, VITE_PUBLIC_PATH } =
     wrapperEnv(loadEnv(mode, root));
