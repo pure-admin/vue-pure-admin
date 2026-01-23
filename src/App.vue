@@ -17,7 +17,7 @@ import en from "element-plus/es/locale/lang/en";
 import zhCn from "element-plus/es/locale/lang/zh-cn";
 import plusEn from "plus-pro-components/es/locale/lang/en";
 import plusZhCn from "plus-pro-components/es/locale/lang/zh-cn";
-// import { ElNotification } from "element-plus";
+import { ElNotification } from "element-plus";
 
 export default defineComponent({
   name: "app",
@@ -59,23 +59,23 @@ export default defineComponent({
         }
       );
     }
+  },
+  mounted() {
+    ElNotification({
+      title: "高级服务",
+      duration: 0,
+      customClass: "fullpage-notification",
+      // @ts-expect-error
+      style: { width: "260px" },
+      position: "bottom-right",
+      dangerouslyUseHTMLString: true,
+      message: `
+        <a target='_blank' class='block text-base text-center border mt-4 rounded hover:text-[red]!' href='https://pure-admin.cn/pages/service'>
+        补差价活动即将结束！
+        </a>
+      `
+    });
   }
-  // mounted() {
-  //   ElNotification({
-  //     title: "高级服务",
-  //     duration: 0,
-  //     customClass: "fullpage-notification",
-  //     // @ts-expect-error
-  //     style: { width: "280px" },
-  //     position: "bottom-right",
-  //     dangerouslyUseHTMLString: true,
-  //     message: `
-  //       <a target='_blank' class='block text-2xl text-center border mt-4 rounded hover:text-[red]!' href='https://pure-admin.cn/pages/service'>
-  //       限时活动即将结束！
-  //       </a>
-  //     `
-  //   });
-  // }
 });
 </script>
 
