@@ -159,7 +159,7 @@ onMounted(() => {
 }
 
 .translation {
-  ::v-deep(.el-dropdown-menu__item) {
+  :deep(.el-dropdown-menu__item) {
     padding: 5px 40px;
   }
 
@@ -177,7 +177,7 @@ onMounted(() => {
 .logout {
   width: 120px;
 
-  ::v-deep(.el-dropdown-menu__item) {
+  :deep(.el-dropdown-menu__item) {
     display: inline-flex;
     flex-wrap: wrap;
     min-width: 100%;
