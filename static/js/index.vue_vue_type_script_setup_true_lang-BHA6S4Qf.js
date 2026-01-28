@@ -1,0 +1,1 @@
+import{useColumns as a}from"./columns-Y_RXdn9y.js";import{d as s,a as c,b as m,e as u,f as _,u as o}from"./index-Ccf-YuTD.js";const b=s({__name:"index",setup(p){const e=c(),{columns:n,dataList:r}=a(e);return(f,l)=>{const t=m("pure-table");return _(),u(t,{ref_key:"waterRef",ref:e,"row-key":"id",border:"",data:o(r),columns:o(n)},null,8,["data","columns"])}}});export{b as _};
