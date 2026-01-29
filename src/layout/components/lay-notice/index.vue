@@ -3,7 +3,9 @@ import { useI18n } from "vue-i18n";
 import { ref, computed } from "vue";
 import { noticesData } from "./data";
 import NoticeList from "./components/NoticeList.vue";
+
 import BellIcon from "~icons/lucide/bell";
+import ArrowRightIcon from "~icons/ri/arrow-right-s-line";
 
 const { t } = useI18n();
 const notices = ref(noticesData);
@@ -51,6 +53,14 @@ const getLabel = computed(
             </template>
           </span>
         </el-tabs>
+        <div class="border-t border-t-(--el-border-color-light) text-sm">
+          <div class="flex-bc m-2">
+            <el-button type="primary" size="small" text>
+              查看更多<IconifyIconOffline :icon="ArrowRightIcon" />
+            </el-button>
+            <el-button type="primary" size="small" text>标为已读</el-button>
+          </div>
+        </div>
       </el-dropdown-menu>
     </template>
   </el-dropdown>
