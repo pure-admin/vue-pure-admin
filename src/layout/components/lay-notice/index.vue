@@ -8,6 +8,7 @@ import BellIcon from "~icons/lucide/bell";
 import ArrowRightIcon from "~icons/ri/arrow-right-s-line";
 
 const { t } = useI18n();
+const dropdownRef = ref();
 const notices = ref(noticesData);
 const activeKey = ref(noticesData[0]?.key);
 
@@ -23,7 +24,11 @@ const currentNoticeHasData = computed(() => {
   return currentNotice && currentNotice.list.length > 0;
 });
 
-const markAsRead = () => {
+const onWatchMore = () => {
+  dropdownRef.value.handleClose();
+};
+
+const onMarkAsRead = () => {
   const currentNotice = notices.value.find(
     item => item.key === activeKey.value
   );
@@ -34,7 +39,7 @@ const markAsRead = () => {
 </script>
 
 <template>
-  <el-dropdown trigger="click" placement="bottom-end">
+  <el-dropdown ref="dropdownRef" trigger="click" placement="bottom-end">
     <span
       :class="['dropdown-badge', 'navbar-bg-hover', 'select-none', 'mr-[7px]']"
     >
@@ -74,11 +79,12 @@ const markAsRead = () => {
           class="border-t border-t-(--el-border-color-light) text-sm"
         >
           <div class="flex-bc m-1">
-            <el-button type="primary" size="small" text>
-              查看更多<IconifyIconOffline :icon="ArrowRightIcon" />
+            <el-button type="primary" size="small" text @click="onWatchMore">
+              {{ t("buttons.pureWatchMore") }}
+              <IconifyIconOffline :icon="ArrowRightIcon" />
             </el-button>
-            <el-button type="primary" size="small" text @click="markAsRead">
-              标为已读
+            <el-button type="primary" size="small" text @click="onMarkAsRead">
+              {{ t("buttons.pureMarkAsRead") }}
             </el-button>
           </div>
         </div>
