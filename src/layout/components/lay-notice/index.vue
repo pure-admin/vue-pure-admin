@@ -3,9 +3,12 @@ import { useI18n } from "vue-i18n";
 import { ref, computed } from "vue";
 import { noticesData } from "./data";
 import NoticeList from "./components/NoticeList.vue";
+
 import BellIcon from "~icons/lucide/bell";
+import ArrowRightIcon from "~icons/ri/arrow-right-s-line";
 
 const { t } = useI18n();
+const dropdownRef = ref();
 const notices = ref(noticesData);
 const activeKey = ref(noticesData[0]?.key);
 
@@ -13,10 +16,30 @@ const getLabel = computed(
   () => item =>
     t(item.name) + (item.list.length > 0 ? `(${item.list.length})` : "")
 );
+
+const currentNoticeHasData = computed(() => {
+  const currentNotice = notices.value.find(
+    item => item.key === activeKey.value
+  );
+  return currentNotice && currentNotice.list.length > 0;
+});
+
+const onWatchMore = () => {
+  dropdownRef.value.handleClose();
+};
+
+const onMarkAsRead = () => {
+  const currentNotice = notices.value.find(
+    item => item.key === activeKey.value
+  );
+  if (currentNotice) {
+    currentNotice.list = [];
+  }
+};
 </script>
 
 <template>
-  <el-dropdown trigger="click" placement="bottom-end">
+  <el-dropdown ref="dropdownRef" trigger="click" placement="bottom-end">
     <span
       :class="['dropdown-badge', 'navbar-bg-hover', 'select-none', 'mr-[7px]']"
     >
@@ -42,7 +65,7 @@ const getLabel = computed(
           <span v-else>
             <template v-for="item in notices" :key="item.key">
               <el-tab-pane :label="getLabel(item)" :name="`${item.key}`">
-                <el-scrollbar max-height="330px">
+                <el-scrollbar max-height="345px">
                   <div class="noticeList-container">
                     <NoticeList :list="item.list" :emptyText="item.emptyText" />
                   </div>
@@ -51,6 +74,20 @@ const getLabel = computed(
             </template>
           </span>
         </el-tabs>
+        <div
+          v-if="currentNoticeHasData"
+          class="border-t border-t-(--el-border-color-light) text-sm"
+        >
+          <div class="flex-bc m-1">
+            <el-button type="primary" size="small" text @click="onWatchMore">
+              {{ t("buttons.pureWatchMore") }}
+              <IconifyIconOffline :icon="ArrowRightIcon" />
+            </el-button>
+            <el-button type="primary" size="small" text @click="onMarkAsRead">
+              {{ t("buttons.pureMarkAsRead") }}
+            </el-button>
+          </div>
+        </div>
       </el-dropdown-menu>
     </template>
   </el-dropdown>
