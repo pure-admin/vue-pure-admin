@@ -15,6 +15,22 @@ const getLabel = computed(
   () => item =>
     t(item.name) + (item.list.length > 0 ? `(${item.list.length})` : "")
 );
+
+const currentNoticeHasData = computed(() => {
+  const currentNotice = notices.value.find(
+    item => item.key === activeKey.value
+  );
+  return currentNotice && currentNotice.list.length > 0;
+});
+
+const markAsRead = () => {
+  const currentNotice = notices.value.find(
+    item => item.key === activeKey.value
+  );
+  if (currentNotice) {
+    currentNotice.list = [];
+  }
+};
 </script>
 
 <template>
@@ -44,7 +60,7 @@ const getLabel = computed(
           <span v-else>
             <template v-for="item in notices" :key="item.key">
               <el-tab-pane :label="getLabel(item)" :name="`${item.key}`">
-                <el-scrollbar max-height="330px">
+                <el-scrollbar max-height="345px">
                   <div class="noticeList-container">
                     <NoticeList :list="item.list" :emptyText="item.emptyText" />
                   </div>
@@ -53,12 +69,17 @@ const getLabel = computed(
             </template>
           </span>
         </el-tabs>
-        <div class="border-t border-t-(--el-border-color-light) text-sm">
-          <div class="flex-bc m-2">
+        <div
+          v-if="currentNoticeHasData"
+          class="border-t border-t-(--el-border-color-light) text-sm"
+        >
+          <div class="flex-bc m-1">
             <el-button type="primary" size="small" text>
               查看更多<IconifyIconOffline :icon="ArrowRightIcon" />
             </el-button>
-            <el-button type="primary" size="small" text>标为已读</el-button>
+            <el-button type="primary" size="small" text @click="markAsRead">
+              标为已读
+            </el-button>
           </div>
         </div>
       </el-dropdown-menu>
