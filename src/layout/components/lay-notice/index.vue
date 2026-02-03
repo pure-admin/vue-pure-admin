@@ -43,7 +43,7 @@ const onMarkAsRead = () => {
     <span
       :class="['dropdown-badge', 'navbar-bg-hover', 'select-none', 'mr-[7px]']"
     >
-      <el-badge is-dot>
+      <el-badge :is-dot="currentNoticeHasData">
         <span class="header-notice-icon">
           <IconifyIconOffline :icon="BellIcon" />
         </span>
