@@ -1,0 +1,1 @@
+import{t as o}from"./data-CCzN0epu.js";import{d as n,a as r,b as p,e as s,u as l}from"./index-Cdx-WL5u.js";const i=n({__name:"customIndex",setup(c){const t=[{type:"index",index:e=>e*2},{label:"日期",prop:"date"},{label:"姓名",prop:"name"},{label:"地址",prop:"address"}];return(e,m)=>{const a=r("pure-table");return p(),s(a,{data:l(o),columns:t},null,8,["data"])}}});export{i as _};
