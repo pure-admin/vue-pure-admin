@@ -24,6 +24,12 @@ const currentNoticeHasData = computed(() => {
   return currentNotice && currentNotice.list.length > 0;
 });
 
+const hasAnyNoticeData = computed(() => {
+  return notices.value.some(
+    item => Array.isArray(item.list) && item.list.length > 0
+  );
+});
+
 const onWatchMore = () => {
   dropdownRef.value.handleClose();
 };
@@ -43,7 +49,7 @@ const onMarkAsRead = () => {
     <span
       :class="['dropdown-badge', 'navbar-bg-hover', 'select-none', 'mr-[7px]']"
     >
-      <el-badge :is-dot="currentNoticeHasData">
+      <el-badge is-dot :hidden="!hasAnyNoticeData">
         <span class="header-notice-icon">
           <IconifyIconOffline :icon="BellIcon" />
         </span>
