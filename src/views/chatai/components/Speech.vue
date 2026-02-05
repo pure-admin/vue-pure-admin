@@ -22,7 +22,7 @@ onMounted(() => {
     style="border-radius: 8px"
     :speechToText="{
       webSpeech: { language: 'zh-CN' },
-      button: { position: 'outside-left' }
+      button: { position: 'outside-start' }
     }"
     :textInput="{
       placeholder: { text: '发送消息' }

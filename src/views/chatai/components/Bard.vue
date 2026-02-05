@@ -56,13 +56,13 @@ onMounted(() => {
     :avatars="{
       default: {
         styles: {
-          position: 'left',
+          position: 'start',
           container: { marginLeft: '12px', marginRight: '5px' }
         }
       },
       ai: {
         src: 'https://xiaoxian521.github.io/hyperlink/img/vue-pure-admin/chatai/gemini.png',
-        styles: { position: 'left', avatar: { paddingTop: '6px' } }
+        styles: { position: 'start', avatar: { paddingTop: '6px' } }
       }
     }"
     :speechToText="{
@@ -80,11 +80,11 @@ onMounted(() => {
           },
           svg: { styles: { default: { bottom: '0.35em', left: '0.35em' } } }
         },
-        position: 'inside-right'
+        position: 'inside-end'
       }
     }"
     :submitButtonStyles="{
-      position: 'outside-right',
+      position: 'outside-end',
       submit: {
         container: {
           default: {
