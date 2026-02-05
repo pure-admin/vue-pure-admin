@@ -1,0 +1,1 @@
+import{a1 as a,a as t,i as o,f as r}from"./index-x27QZ00Q.js";const n={viewBox:"0 0 1024 1024",width:"1em",height:"1em"};function c(l,e){return t(),o("svg",n,[...e[0]||(e[0]=[r("path",{fill:"currentColor",d:"M406.7 707L195.8 496.2a32 32 0 1 0-45.2 45.2l256 256l512-512a32 32 0 0 0-45.3-45.2L406.6 706.9z"},null,-1)])])}const i=a({name:"ep-check",render:c});export{i as C};

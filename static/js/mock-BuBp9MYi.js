@@ -1,1 +1,0 @@
-import{az as e}from"./index-Cdx-WL5u.js";const o=t=>e.request("get","/get-map-info",{params:t}),a=t=>e.request("post","https://pureadmin.free.beeceptor.com/images",{data:t},{headers:{"Content-Type":"multipart/form-data"}});export{a as f,o as m};
