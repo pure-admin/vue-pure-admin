@@ -1,0 +1,1 @@
+import{a1 as r,a as t,i as o,f as a}from"./index-BAFRNKWY.js";const i={viewBox:"0 0 24 24",width:"1em",height:"1em"};function l(n,e){return t(),o("svg",i,[...e[0]||(e[0]=[a("path",{fill:"currentColor",d:"m13.172 12l-4.95-4.95l1.414-1.413L16 12l-6.364 6.364l-1.414-1.415z"},null,-1)])])}const m=r({name:"ri-arrow-right-s-line",render:l});export{m as A};
