@@ -89,7 +89,7 @@ onMounted(() => {
       }
     }"
     :submitButtonStyles="{
-      position: 'outside-right',
+      position: 'outside-end',
       submit: {
         container: {
           default: {
