@@ -1,1 +1,0 @@
-import{t as o}from"./data-Qk60hToT.js";import{d as t,a as n,b as r,u as p,l as s}from"./index-BAFRNKWY.js";const b=t({__name:"base",setup(l){const e=[{label:"日期",prop:"date"},{label:"姓名",prop:"name"},{label:"地址",prop:"address"}];return(c,_)=>{const a=s("pure-table");return n(),r(a,{data:p(o),columns:e},null,8,["data"])}}});export{b as _};
