@@ -161,7 +161,7 @@
     "stylelint-prettier": "^5.0.3",
     "svgo": "^4.0.0",
     "tailwindcss": "^4.1.18",
-    "typescript": "^5.9.3",
+    "typescript": "6.0.0-beta",
     "typescript-eslint": "^8.55.0",
     "unplugin-icons": "^23.0.1",
     "vite": "^7.3.1",
