@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, nextTick, ref, toRef, watch } from "vue";
-import { TransitionPresets, executeTransition } from "@vueuse/core";
+import { TransitionPresets, transition } from "@vueuse/core";
 import {
   Position,
   BaseEdge,
@@ -153,7 +153,7 @@ async function runAnimation() {
     currentLength.value = totalLength;
   }
 
-  await executeTransition(edgePoint, from, totalLength, {
+  await transition(edgePoint, from, totalLength, {
     transition: TransitionPresets.easeInOutCubic,
     duration: Math.max(1500, totalLength / 2),
     abort: () => !isAnimating.value

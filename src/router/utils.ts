@@ -209,18 +209,26 @@ function initRouter() {
       });
     } else {
       return new Promise(resolve => {
-        getAsyncRoutes().then(({ data }) => {
-          handleAsyncRoutes(cloneDeep(data));
-          storageLocal().setItem(key, data);
-          resolve(router);
+        getAsyncRoutes().then(({ code, data }) => {
+          if (code === 0) {
+            handleAsyncRoutes(cloneDeep(data));
+            storageLocal().setItem(key, data);
+            resolve(router);
+          } else {
+            resolve(router);
+          }
         });
       });
     }
   } else {
     return new Promise(resolve => {
-      getAsyncRoutes().then(({ data }) => {
-        handleAsyncRoutes(cloneDeep(data));
-        resolve(router);
+      getAsyncRoutes().then(({ code, data }) => {
+        if (code === 0) {
+          handleAsyncRoutes(cloneDeep(data));
+          resolve(router);
+        } else {
+          resolve(router);
+        }
       });
     });
   }

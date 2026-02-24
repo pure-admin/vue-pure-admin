@@ -38,12 +38,14 @@ const dataLoading = ref(true);
 
 const getCardListData = async () => {
   try {
-    const { data } = await getCardList();
-    productList.value = data.list;
-    pagination.value = {
-      ...pagination.value,
-      total: data.list.length
-    };
+    const { code, data } = await getCardList();
+    if (code === 0) {
+      productList.value = data.list;
+      pagination.value = {
+        ...pagination.value,
+        total: data.list.length
+      };
+    }
   } catch (e) {
     console.log(e);
   } finally {
