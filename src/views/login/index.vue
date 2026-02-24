@@ -73,23 +73,21 @@ const onLogin = async (formEl: FormInstance | undefined) => {
           username: ruleForm.username,
           password: ruleForm.password
         })
-        .then(res => {
-          if (res.success) {
-            // 获取后端路由
-            return initRouter().then(() => {
-              disabled.value = true;
-              router
-                .push(getTopMenu(true).path)
-                .then(() => {
-                  message(t("login.pureLoginSuccess"), { type: "success" });
-                })
-                .finally(() => (disabled.value = false));
-            });
-          } else {
-            message(t("login.pureLoginFail"), { type: "error" });
-          }
+        .then(async () => {
+          // 获取后端路由
+          await initRouter();
+          disabled.value = true;
+          router.push(getTopMenu(true).path).then(() => {
+            message(t("login.pureLoginSuccess"), { type: "success" });
+          });
         })
-        .finally(() => (loading.value = false));
+        .catch(_err => {
+          message(t("login.pureLoginFail"), { type: "error" });
+        })
+        .finally(() => {
+          disabled.value = false;
+          loading.value = false;
+        });
     }
   });
 };
@@ -360,7 +358,7 @@ watch(loginDay, value => {
 }
 
 .translation {
-  ::v-deep(.el-dropdown-menu__item) {
+  :deep(.el-dropdown-menu__item) {
     padding: 5px 40px;
   }
 

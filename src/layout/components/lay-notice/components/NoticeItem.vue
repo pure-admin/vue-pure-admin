@@ -8,6 +8,10 @@ defineProps({
   noticeItem: {
     type: Object as PropType<ListItem>,
     default: () => {}
+  },
+  isLast: {
+    type: Boolean,
+    default: false
   }
 });
 
@@ -49,7 +53,11 @@ function hoverDescription(event, description) {
 
 <template>
   <div
-    class="notice-container border-0 border-b-[1px] border-solid border-[#f0f0f0] dark:border-[#303030]"
+    :class="[
+      'notice-container',
+      'border-0 border-solid border-[#f0f0f0] dark:border-[#303030]',
+      { 'border-b': !isLast }
+    ]"
   >
     <el-avatar
       v-if="noticeItem.avatar"
@@ -118,8 +126,6 @@ function hoverDescription(event, description) {
   align-items: flex-start;
   justify-content: space-between;
   padding: 12px 0;
-
-  // border-bottom: 1px solid #f0f0f0;
 
   .notice-container-avatar {
     margin-right: 16px;
