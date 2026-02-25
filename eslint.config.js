@@ -109,10 +109,7 @@ export default defineConfig([
   {
     files: ["**/*.d.ts"],
     rules: {
-      "eslint-comments/no-unlimited-disable": "off",
-      "import/no-duplicates": "off",
-      "no-restricted-syntax": "off",
-      "unused-imports/no-unused-vars": "off"
+      "no-restricted-syntax": "off"
     }
   },
   {
