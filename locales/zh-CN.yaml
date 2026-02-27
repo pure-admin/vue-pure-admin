@@ -57,6 +57,9 @@ panel:
   pureTagsStyleCardTip: 卡片标签，高效浏览
   pureTagsStyleChrome: 谷歌
   pureTagsStyleChromeTip: 谷歌风格，经典美观
+  pureFullScreenWatermark: 全屏水印
+  pureEnableWatermark: 水印
+  pureWatermarkText: 文本
   pureInterfaceDisplay: 界面显示
   pureGreyModel: 灰色模式
   pureWeakModel: 色弱模式
