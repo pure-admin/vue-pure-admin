@@ -44,11 +44,11 @@ export function useTags() {
   const currentSelect = ref({});
   const isScrolling = ref(false);
 
-  /** 显示模式，默认灵动模式 */
-  const showModel = ref(
+  /** 页签风格默认为谷歌风格 */
+  const tagsStyle = ref(
     storageLocal().getItem<StorageConfigs>(
       `${responsiveStorageNameSpace()}configure`
-    )?.showModel || "smart"
+    )?.tagsStyle || "chrome"
   );
   /** 是否隐藏标签页，默认显示 */
   const showTags =
@@ -175,7 +175,7 @@ export function useTags() {
   /** 鼠标移入添加激活样式 */
   function onMouseenter(index) {
     if (index) activeIndex.value = index;
-    if (unref(showModel) === "smart") {
+    if (unref(tagsStyle) === "smart") {
       if (hasClass(instance.refs["schedule" + index][0], "schedule-active"))
         return;
       toggleClass(true, "schedule-in", instance.refs["schedule" + index][0]);
@@ -190,7 +190,7 @@ export function useTags() {
   /** 鼠标移出恢复默认样式 */
   function onMouseleave(index) {
     activeIndex.value = -1;
-    if (unref(showModel) === "smart") {
+    if (unref(tagsStyle) === "smart") {
       if (hasClass(instance.refs["schedule" + index][0], "schedule-active"))
         return;
       toggleClass(false, "schedule-in", instance.refs["schedule" + index][0]);
@@ -209,11 +209,11 @@ export function useTags() {
   }
 
   onMounted(() => {
-    if (!showModel.value) {
+    if (!tagsStyle.value) {
       const configure = storageLocal().getItem<StorageConfigs>(
         `${responsiveStorageNameSpace()}configure`
       );
-      configure.showModel = "card";
+      configure.tagsStyle = "card";
       storageLocal().setItem(
         `${responsiveStorageNameSpace()}configure`,
         configure
@@ -229,7 +229,7 @@ export function useTags() {
     showTags,
     instance,
     multiTags,
-    showModel,
+    tagsStyle,
     tagsViews,
     buttonTop,
     buttonLeft,

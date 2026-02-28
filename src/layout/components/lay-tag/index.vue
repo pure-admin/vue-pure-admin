@@ -32,11 +32,11 @@ const {
   visible,
   showTags,
   instance,
+  tagsStyle,
   multiTags,
   tagsViews,
   buttonTop,
   buttonLeft,
-  showModel,
   translateX,
   isFixedTag,
   pureSetting,
@@ -542,8 +542,8 @@ onMounted(() => {
   });
 
   // 改变标签风格
-  emitter.on("tagViewsShowModel", key => {
-    showModel.value = key;
+  emitter.on("tagViewsTagsStyle", key => {
+    tagsStyle.value = key;
   });
 
   //  接收侧边栏切换传递过来的参数
@@ -559,9 +559,9 @@ onMounted(() => {
 });
 
 onBeforeUnmount(() => {
-  // 解绑`tagViewsChange`、`tagViewsShowModel`、`changLayoutRoute`公共事件，防止多次触发
+  // 解绑`tagViewsChange`、`tagViewsTagsStyle`、`changLayoutRoute`公共事件，防止多次触发
   emitter.off("tagViewsChange");
-  emitter.off("tagViewsShowModel");
+  emitter.off("tagViewsTagsStyle");
   emitter.off("changLayoutRoute");
 });
 </script>
@@ -574,7 +574,7 @@ onBeforeUnmount(() => {
     <div
       ref="scrollbarDom"
       class="scroll-container"
-      :class="showModel === 'chrome' && 'chrome-scroll-container'"
+      :class="tagsStyle === 'chrome' && 'chrome-scroll-container'"
       @wheel.prevent="handleWheel"
     >
       <div ref="tabDom" class="tab select-none" :style="getTabStyle">
@@ -585,7 +585,7 @@ onBeforeUnmount(() => {
           :class="[
             'scroll-item is-closable',
             linkIsActive(item),
-            showModel === 'chrome' && 'chrome-item',
+            tagsStyle === 'chrome' && 'chrome-item',
             isFixedTag(item) && 'fixed-tag'
           ]"
           @contextmenu.prevent="openMenu(item, $event)"
@@ -593,7 +593,7 @@ onBeforeUnmount(() => {
           @mouseleave.prevent="onMouseleave(index)"
           @click="tagOnClick(item)"
         >
-          <template v-if="showModel !== 'chrome'">
+          <template v-if="tagsStyle !== 'chrome'">
             <span
               class="tag-title dark:text-text_color_primary! dark:hover:text-primary!"
             >
@@ -612,7 +612,7 @@ onBeforeUnmount(() => {
               <IconifyIconOffline :icon="Close" />
             </span>
             <span
-              v-if="showModel !== 'card'"
+              v-if="tagsStyle !== 'card'"
               :ref="'schedule' + index"
               :class="[scheduleIsActive(item)]"
             />
