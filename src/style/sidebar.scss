@@ -34,12 +34,14 @@
   }
 
   .set-icon,
-  .fullscreen-icon {
+  .fullscreen-icon,
+  .globalization-icon {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 40px;
     height: 48px;
+    font-size: 16px;
     cursor: pointer;
   }
 
@@ -172,10 +174,6 @@
     .is-active > .el-sub-menu__title,
     .is-active.submenu-title-noDropdown {
       color: var(--pure-theme-sub-menu-active-text) !important;
-
-      i {
-        color: var(--pure-theme-sub-menu-active-text) !important;
-      }
     }
 
     .is-active {
@@ -270,10 +268,6 @@
     .is-active > .el-sub-menu__title,
     .is-active.submenu-title-noDropdown {
       color: var(--pure-theme-sub-menu-active-text) !important;
-
-      i {
-        color: var(--pure-theme-sub-menu-active-text) !important;
-      }
     }
 
     /* 子菜单中还有子菜单 */
@@ -374,10 +368,6 @@
     .is-active > .el-sub-menu__title,
     .is-active.submenu-title-noDropdown {
       color: var(--pure-theme-sub-menu-active-text) !important;
-
-      i {
-        color: var(--pure-theme-sub-menu-active-text) !important;
-      }
     }
 
     .nest-menu .el-sub-menu > .el-sub-menu__title,
@@ -461,7 +451,7 @@
       /* 搜索 */
       .search-container,
       /* 国际化 */
-      .globalization,
+      .globalization-icon,
       /* 全屏 */
       .fullscreen-icon,
       /* 消息通知 */
@@ -480,12 +470,8 @@
         color: var(--pure-theme-sub-menu-active-text);
       }
 
-      .globalization {
-        width: 40px;
-        height: 48px;
-        padding: 11px;
+      .globalization-icon {
         color: var(--pure-theme-sub-menu-active-text);
-        cursor: pointer;
         outline: none;
       }
 
@@ -541,10 +527,6 @@
     .is-active > .el-sub-menu__title,
     .is-active.submenu-title-noDropdown {
       color: var(--pure-theme-sub-menu-active-text) !important;
-
-      i {
-        color: var(--pure-theme-sub-menu-active-text) !important;
-      }
     }
 
     .is-active {
@@ -646,7 +628,7 @@ body[layout="vertical"] {
   /* 搜索 */
   .search-container,
   /* 国际化 */
-  .globalization,
+  .globalization-icon,
   /* 全屏 */
   .fullscreen-icon,
   /* 消息通知 */

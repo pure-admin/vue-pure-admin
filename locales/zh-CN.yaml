@@ -19,6 +19,8 @@ buttons:
   pureBackTop: 回到顶部
   pureOpenText: 开
   pureCloseText: 关
+  pureWatchMore: 查看更多
+  pureMarkAsRead: 标为已读
 search:
   pureTotal: 共
   pureHistory: 搜索历史
@@ -31,15 +33,15 @@ panel:
   pureCloseSystemSet: 关闭配置
   pureClearCacheAndToLogin: 清空缓存并返回登录页
   pureClearCache: 清空缓存
-  pureOverallStyle: 整体风格
-  pureOverallStyleLight: 浅色
-  pureOverallStyleLightTip: 清新启航，点亮舒适的工作界面
-  pureOverallStyleDark: 深色
-  pureOverallStyleDarkTip: 月光序曲，沉醉于夜的静谧雅致
-  pureOverallStyleSystem: 自动
-  pureOverallStyleSystemTip: 同步时光，界面随晨昏自然呼应
+  pureThemeMode: 主题模式
+  pureThemeModeLight: 浅色
+  pureThemeModeLightTip: 清新启航，点亮舒适的工作界面
+  pureThemeModeDark: 深色
+  pureThemeModeDarkTip: 月光序曲，沉醉于夜的静谧雅致
+  pureThemeModeSystem: 自动
+  pureThemeModeSystemTip: 同步时光，界面随晨昏自然呼应
   pureThemeColor: 主题色
-  pureLayoutModel: 导航模式
+  pureMenuLayout: 菜单布局
   pureVerticalTip: 左侧菜单，亲切熟悉
   pureHorizontalTip: 顶部菜单，简洁概览
   pureMixTip: 混合菜单，灵活多变
@@ -80,9 +82,9 @@ menus:
   pureMarkdown: Markdown
   pureEditor: 编辑器
   pureAbnormal: 异常页面
-  pureFourZeroFour: "404"
-  pureFourZeroOne: "403"
-  pureFive: "500"
+  purePageNotFound: "404"
+  pureAccessDenied: "403"
+  pureServerError: "500"
   pureComponents: 组件
   pureDialog: 函数式弹框
   pureDrawer: 函数式抽屉
@@ -108,6 +110,7 @@ menus:
   pureTypeit: 打字机
   pureJsonEditor: JSON编辑器
   pureColorPicker: 颜色选择器
+  pureColorPickerPanel: 颜色选择器面板
   pureDatePicker: 日期选择器
   pureDateTimePicker: 日期时间选择器
   pureTimePicker: 时间选择器
@@ -238,3 +241,18 @@ login:
   purePassWordSureReg: 请输入确认密码
   purePassWordDifferentReg: 两次密码不一致!
   purePassWordUpdateReg: 修改密码成功
+  pureLoginExpired: 登录已过期，请重新登录
+tableBar:
+  pureList: 列表
+  pureLarge: 宽松
+  pureDefault: 默认
+  pureSmall: 紧凑
+  pureColumnSettings: 列设置
+  pureCollapse: 折叠
+  pureExpand: 展开
+  pureRefresh: 刷新
+  pureDensity: 密度
+  pureColumnDisplay: 列展示
+  pureReset: 重置
+  pureExitFullScreen: 退出全屏
+  pureFullScreen: 全屏

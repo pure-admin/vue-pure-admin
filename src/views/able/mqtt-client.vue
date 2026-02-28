@@ -194,7 +194,7 @@ onUnmounted(() => {
         基于
         <el-link
           type="primary"
-          :underline="false"
+          underline="never"
           href="https://github.com/mqttjs/MQTT.js"
           target="_blank"
         >
@@ -203,7 +203,7 @@ onUnmounted(() => {
         和 免费的公共MQTT代理
         <el-link
           type="primary"
-          :underline="false"
+          underline="never"
           href="broker.emqx.io"
           target="_blank"
         >

@@ -4,6 +4,7 @@ import {
   getNodeByUniqueId,
   appendFieldByUniqueId
 } from "@/utils/tree";
+import { useI18n } from "vue-i18n";
 import { useDetail } from "./hooks";
 import { ref, computed } from "vue";
 import { clone } from "@pureadmin/utils";
@@ -15,6 +16,7 @@ defineOptions({
   name: "Tabs"
 });
 
+const { locale } = useI18n();
 const { toDetail, router } = useDetail();
 const menusTree = clone(usePermissionStoreHook().wholeMenus, true);
 
@@ -29,6 +31,12 @@ const currentValues = ref<string[]>([]);
 const multiTags = computed(() => {
   return useMultiTagsStoreHook()?.multiTags;
 });
+
+const treeSelectProps = {
+  label: (data: any) => transformI18n(data.meta.title),
+  children: "children",
+  disabled: "disabled"
+};
 
 function onCloseTags() {
   if (currentValues.value.length === 0) return;
@@ -92,6 +100,7 @@ function onCloseTags() {
 
     <el-divider />
     <el-tree-select
+      :key="locale"
       v-model="currentValues"
       class="w-[300px]!"
       node-key="uniqueId"
@@ -100,12 +109,7 @@ function onCloseTags() {
       multiple
       filterable
       default-expand-all
-      :props="{
-        label: data => transformI18n(data.meta.title),
-        value: 'uniqueId',
-        children: 'children',
-        disabled: 'disabled'
-      }"
+      :props="treeSelectProps"
       :data="treeData"
     >
       <template #default="{ data }">

@@ -19,6 +19,8 @@ buttons:
   pureBackTop: BackTop
   pureOpenText: Open
   pureCloseText: Close
+  pureWatchMore: Watch More
+  pureMarkAsRead: Mark As Read
 search:
   pureTotal: Total
   pureHistory: History
@@ -31,15 +33,15 @@ panel:
   pureCloseSystemSet: Close System Configs
   pureClearCacheAndToLogin: Clear cache and return to login page
   pureClearCache: Clear Cache
-  pureOverallStyle: Overall Style
-  pureOverallStyleLight: Light
-  pureOverallStyleLightTip: Set sail freshly and light up the comfortable work interface
-  pureOverallStyleDark: Dark
-  pureOverallStyleDarkTip: Moonlight Overture, indulge in the tranquility and elegance of the night
-  pureOverallStyleSystem: Auto
-  pureOverallStyleSystemTip: Synchronize time, the interface naturally responds to morning and dusk
+  pureThemeMode: Theme Mode
+  pureThemeModeLight: Light
+  pureThemeModeLightTip: Set sail freshly and light up the comfortable work interface
+  pureThemeModeDark: Dark
+  pureThemeModeDarkTip: Moonlight Overture, indulge in the tranquility and elegance of the night
+  pureThemeModeSystem: Auto
+  pureThemeModeSystemTip: Synchronize time, the interface naturally responds to morning and dusk
   pureThemeColor: Theme Color
-  pureLayoutModel: Layout Model
+  pureMenuLayout: Menu Layout
   pureVerticalTip: The menu on the left is familiar and friendly
   pureHorizontalTip: Top menu, concise overview
   pureMixTip: Mixed menu, flexible
@@ -80,9 +82,9 @@ menus:
   pureMarkdown: Markdown
   pureEditor: Editor
   pureAbnormal: Abnormal Page
-  pureFourZeroFour: "404"
-  pureFourZeroOne: "403"
-  pureFive: "500"
+  purePageNotFound: "404"
+  pureAccessDenied: "403"
+  pureServerError: "500"
   pureComponents: Components
   pureDialog: Dialog
   pureDrawer: Drawer
@@ -108,6 +110,7 @@ menus:
   pureTypeit: Typeit
   pureJsonEditor: JSON Editor
   pureColorPicker: Color Picker
+  pureColorPickerPanel: Color PickerPanel
   pureDatePicker: Date Picker
   pureDateTimePicker: DateTimePicker
   pureTimePicker: TimePicker
@@ -238,3 +241,18 @@ login:
   purePassWordSureReg: Please enter confirm password
   purePassWordDifferentReg: The two passwords do not match!
   purePassWordUpdateReg: Password has been updated
+  pureLoginExpired: Login expired, please login again
+tableBar:
+  pureList: List
+  pureLarge: Large
+  pureDefault: Default
+  pureSmall: Small
+  pureColumnSettings: ColumnSettings
+  pureCollapse: Collapse
+  pureExpand: Expand
+  pureRefresh: Refresh
+  pureDensity: Density
+  pureColumnDisplay: ColumnDisplay
+  pureReset: Reset
+  pureExitFullScreen: ExitFullScreen
+  pureFullScreen: FullScreen

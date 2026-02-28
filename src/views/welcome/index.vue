@@ -185,11 +185,13 @@ const optionsBasis: Array<OptionsType> = [
           }
         }"
       >
-        <el-card shadow="never" class="h-[580px]">
+        <el-card shadow="never">
           <div class="flex justify-between">
             <span class="text-md font-medium">数据统计</span>
           </div>
-          <WelcomeTable class="mt-3" />
+          <el-scrollbar max-height="504" class="mt-3">
+            <WelcomeTable />
+          </el-scrollbar>
         </el-card>
       </re-col>
 
@@ -269,6 +271,10 @@ const optionsBasis: Array<OptionsType> = [
   .el-timeline-item {
     margin: 0 6px;
   }
+}
+
+:deep(.el-timeline.is-start) {
+  padding-left: 0;
 }
 
 .main-content {

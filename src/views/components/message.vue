@@ -199,6 +199,31 @@ defineOptions({
 
     <el-divider />
 
+    <h4 class="mb-4!">
+      控制消息出现的位置，消息可以显示在窗口的顶部(默认) 或其他位置
+    </h4>
+
+    <el-space wrap>
+      <el-button @click="message('顶部中间')"> 顶部中间 </el-button>
+      <el-button @click="message('顶部左侧', { placement: 'top-left' })">
+        顶部左侧
+      </el-button>
+      <el-button @click="message('顶部右侧', { placement: 'top-right' })">
+        顶部右侧
+      </el-button>
+      <el-button @click="message('底部中间', { placement: 'bottom' })">
+        底部中间
+      </el-button>
+      <el-button @click="message('底部左侧', { placement: 'bottom-left' })">
+        底部左侧
+      </el-button>
+      <el-button @click="message('底部右侧', { placement: 'bottom-right' })">
+        底部右侧
+      </el-button>
+    </el-space>
+
+    <el-divider />
+
     <el-button @click="closeAllMessage"> 关闭所有消息提示 </el-button>
   </el-card>
 </template>

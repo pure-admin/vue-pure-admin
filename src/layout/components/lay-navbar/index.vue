@@ -53,9 +53,11 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
       <LaySearch id="header-search" />
       <!-- 国际化 -->
       <el-dropdown id="header-translation" trigger="click">
-        <GlobalizationIcon
-          class="navbar-bg-hover w-[40px] h-[48px] p-[11px] cursor-pointer outline-hidden"
-        />
+        <div
+          class="globalization-icon navbar-bg-hover hover:[&>svg]:animate-scale-bounce"
+        >
+          <IconifyIconOffline :icon="GlobalizationIcon" />
+        </div>
         <template #dropdown>
           <el-dropdown-menu class="translation">
             <el-dropdown-item
@@ -113,7 +115,7 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
         </template>
       </el-dropdown>
       <span
-        class="set-icon navbar-bg-hover"
+        class="set-icon navbar-bg-hover hover:[&>svg]:animate-scale-bounce"
         :title="t('buttons.pureOpenSystemSet')"
         @click="onPanel"
       >
@@ -172,7 +174,7 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
 }
 
 .translation {
-  ::v-deep(.el-dropdown-menu__item) {
+  :deep(.el-dropdown-menu__item) {
     padding: 5px 40px;
   }
 
@@ -190,7 +192,7 @@ const { t, locale, translationCh, translationEn } = useTranslationLang();
 .logout {
   width: 120px;
 
-  ::v-deep(.el-dropdown-menu__item) {
+  :deep(.el-dropdown-menu__item) {
     display: inline-flex;
     flex-wrap: wrap;
     min-width: 100%;

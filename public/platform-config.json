@@ -1,5 +1,5 @@
 {
-  "Version": "6.0.0",
+  "Version": "6.3.0",
   "Title": "PureAdmin",
   "FixedHeader": true,
   "HiddenSideBar": false,
@@ -9,7 +9,7 @@
   "Layout": "vertical",
   "Theme": "light",
   "DarkMode": false,
-  "OverallStyle": "light",
+  "ThemeMode": "light",
   "Grey": false,
   "Weak": false,
   "HideTabs": false,

@@ -65,8 +65,7 @@ interface LocalForageDbMethodsOptional {
 }
 
 interface LocalForageDriverDbMethods
-  extends LocalForageDbMethodsCore,
-    LocalForageDriverMethodsOptional {}
+  extends LocalForageDbMethodsCore, LocalForageDriverMethodsOptional {}
 
 interface LocalForageDriverSupportFunc {
   (): Promise<boolean>;
@@ -94,8 +93,7 @@ interface LocalForageSerializer {
 }
 
 interface LocalForageDbMethods
-  extends LocalForageDbMethodsCore,
-    LocalForageDbMethodsOptional {}
+  extends LocalForageDbMethodsCore, LocalForageDbMethodsOptional {}
 
 export interface LocalForage extends LocalForageDbMethods {
   LOCALSTORAGE: string;

@@ -19,13 +19,22 @@ const loading = ref(true);
 const currentRoute = useRoute();
 const frameSrc = ref<string>("");
 const frameRef = ref<HTMLElement | null>(null);
+const fallbackTimer = ref<number | null>(null);
+
 if (unref(currentRoute.meta)?.frameSrc) {
   frameSrc.value = unref(currentRoute.meta)?.frameSrc as string;
 }
-unref(currentRoute.meta)?.frameLoading === false && hideLoading();
+
+function clearFallbackTimer() {
+  if (fallbackTimer.value !== null) {
+    clearTimeout(fallbackTimer.value);
+    fallbackTimer.value = null;
+  }
+}
 
 function hideLoading() {
   loading.value = false;
+  clearFallbackTimer();
 }
 
 function init() {
@@ -34,32 +43,42 @@ function init() {
     if (!iframe) return;
     const _frame = iframe as any;
     if (_frame.attachEvent) {
-      _frame.attachEvent("onload", () => {
-        hideLoading();
-      });
+      _frame.attachEvent("onload", hideLoading);
     } else {
-      iframe.onload = () => {
-        hideLoading();
-      };
+      iframe.onload = hideLoading;
     }
   });
 }
+
+let isRedirect = false;
 
 watch(
   () => currentRoute.fullPath,
   path => {
     if (
       currentRoute.name === "Redirect" &&
-      path.includes(props.frameInfo?.fullPath)
+      props.frameInfo?.fullPath &&
+      path.includes(props.frameInfo.fullPath)
     ) {
-      frameSrc.value = path; // redirect时，置换成任意值，待重定向后 重新赋值
+      isRedirect = true;
       loading.value = true;
+      return;
     }
-    // 重新赋值
-    if (props.frameInfo?.fullPath === path) {
-      frameSrc.value = props.frameInfo?.frameSrc;
+    if (props.frameInfo?.fullPath === path && isRedirect) {
+      loading.value = true;
+      clearFallbackTimer();
+      const url = new URL(props.frameInfo.frameSrc, window.location.origin);
+      const joinChar = url.search ? "&" : "?";
+      frameSrc.value = `${props.frameInfo.frameSrc}${joinChar}t=${Date.now()}`;
+      fallbackTimer.value = window.setTimeout(() => {
+        if (loading.value) {
+          hideLoading();
+        }
+      }, 1500);
+      isRedirect = false;
     }
-  }
+  },
+  { immediate: true }
 );
 
 onMounted(() => {

@@ -1,3 +1,64 @@
+# 6.3.0 (2025-12-10)
+
+### ✔️ Refactor
+
+- Renamed "Overall Style" in system configuration to "Theme Mode" and "Navigation Mode" to "Menu Layout" to improve naming professionalism and clarity.
+- Migrated the deprecated `tseslint.config` configuration method of `typescript-eslint`.
+
+### 🎫 Feat
+
+- Added a color picker panel component.
+
+### 🐞 Bug fixes
+
+- Fixed an issue where the selected/activated state style of the navigation menu was displayed incorrectly when using `iconfont` icons.
+- Fixed a style issue with the column settings pop-up of the `RePureTableBar` and `ReVxeTableBar` components.
+
+### 🍏 Perf
+
+- Adapting the `ReDialog` component to the latest version of `el-dialog` with API changes and supplementary examples
+- Adapting the `ReDrawer` component to the latest version of `el-drawer` with API changes and supplementary examples
+- Adapting the `message` utility function to the latest version of `ElMessage` with API changes and supplementary examples
+- Importing the latest version of `element-plus` components
+- Optimizing the tab layout and style for Google Chrome mode
+
+# 6.2.0 (2025-10-16)
+
+### 🎫 Features
+
+- Added full-screen `403`, `404`, and `500` error pages. These full-screen error pages are clear and secure, improving the user experience.
+
+### 🐞 Bug Fixes
+
+- Fixed an issue where the built-in homepage did not have a `name` configured, causing cache invalidation after setting the page cache.
+- Fixed an issue where, in an embedded same-origin `iframe` page, when the `beforeunload` event was registered, right-clicking a tab and reloading it would cause the browser to prompt two confirmation blocks.
+- Fixed an issue where pages with `keepAlive: true` set to cache invalidation when the initial load was slow.
+- Fixed an issue where multiple tabs could be activated simultaneously when using the same parameters in different routes.
+- Fixed an issue where the right-click menu on a tab displayed incorrectly when passing `params` parameters.
+
+### 🍏 Perf
+
+- Optimized the `nprogress` progress bar. It no longer displays when reloading a page or requesting an interface, improving the user experience.
+- Optimized the timing of capturing all unmatched routes and redirecting to a full-screen `404` page.
+- Explicitly configured the `Tailwind CSS` entry file path to improve the contextual recognition and prompting performance of the `Tailwind CSS IntelliSense` plugin
+
+# 6.1.0 (2025-07-31)
+
+### ✔️ Refactor
+
+- Upgrade to `vite7`, update dependencies, and related compatibility processing
+
+### 🐞 Bug fixes
+
+- Fixed a flickering issue in the `ReSegmented` segmented controller component when switching between light and dark styles
+- Fixed an issue where `resetRouter` did not clear all routing data
+- Fixed an issue where closing the left tab in the tabs window did not work properly
+
+### 🍏 Perf
+
+- Optimized navigation styles
+- Upgraded `@pureadmin/table` to be compatible with all `el-table` APIs in the latest `element-plus` version.
+
 # 6.0.0 (2025-04-10)
 
 ### ✔️ Refactor

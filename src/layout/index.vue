@@ -67,16 +67,16 @@ const set: setType = reactive({
   })
 });
 
-function setTheme(layoutModel: string) {
-  window.document.body.setAttribute("layout", layoutModel);
+function setTheme(menuLayout: string) {
+  window.document.body.setAttribute("layout", menuLayout);
   $storage.layout = {
-    layout: `${layoutModel}`,
+    layout: `${menuLayout}`,
     theme: $storage.layout?.theme,
     darkMode: $storage.layout?.darkMode,
     sidebarStatus: $storage.layout?.sidebarStatus,
     epThemeColor: $storage.layout?.epThemeColor,
     themeColor: $storage.layout?.themeColor,
-    overallStyle: $storage.layout?.overallStyle
+    themeMode: $storage.layout?.themeMode
   };
 }
 
@@ -123,7 +123,7 @@ onMounted(() => {
 });
 
 onBeforeMount(() => {
-  useDataThemeChange().dataThemeChange($storage.layout?.overallStyle);
+  useDataThemeChange().dataThemeChange($storage.layout?.themeMode);
 });
 
 const LayHeader = defineComponent({

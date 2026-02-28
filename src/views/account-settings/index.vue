@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { getMine } from "@/api/user";
 import { useRouter } from "vue-router";
-import { ref, onBeforeMount } from "vue";
 import { ReText } from "@/components/ReText";
 import Profile from "./components/Profile.vue";
+import { ref, onMounted, onBeforeMount } from "vue";
 import Preferences from "./components/Preferences.vue";
 import SecurityLog from "./components/SecurityLog.vue";
 import { useGlobal, deviceDetection } from "@pureadmin/utils";
@@ -25,7 +25,7 @@ const router = useRouter();
 const isOpen = ref(deviceDetection() ? false : true);
 const { $storage } = useGlobal<GlobalPropertiesApi>();
 onBeforeMount(() => {
-  useDataThemeChange().dataThemeChange($storage.layout?.overallStyle);
+  useDataThemeChange().dataThemeChange($storage.layout?.themeMode);
 });
 
 const userInfo = ref({
@@ -61,8 +61,11 @@ const panes = [
 ];
 const witchPane = ref("profile");
 
-getMine().then(res => {
-  userInfo.value = res.data;
+onMounted(async () => {
+  const { code, data } = await getMine();
+  if (code === 0) {
+    userInfo.value = data;
+  }
 });
 </script>
 
@@ -74,15 +77,17 @@ getMine().then(res => {
       :width="deviceDetection() ? '180px' : '240px'"
     >
       <el-menu :default-active="witchPane" class="pure-account-settings-menu">
-        <el-menu-item
-          class="hover:transition-all! hover:duration-200! hover:text-base! h-[50px]!"
+        <div
+          class="h-[50px]! text-[var(--pure-theme-menu-text)] cursor-pointer text-sm transition-all duration-300 ease-in-out hover:scale-105 will-change-transform transform-gpu origin-center hover:text-base! hover:text-[var(--pure-theme-menu-title-hover)]!"
           @click="router.go(-1)"
         >
-          <div class="flex items-center">
+          <div
+            class="h-full flex items-center px-[var(--el-menu-base-level-padding)]"
+          >
             <IconifyIconOffline :icon="leftLine" />
             <span class="ml-2">返回</span>
           </div>
-        </el-menu-item>
+        </div>
         <div class="flex items-center ml-8 mt-4 mb-4">
           <el-avatar :size="48" :src="userInfo.avatar" />
           <div class="ml-4 flex flex-col max-w-[130px]">
