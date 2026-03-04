@@ -190,7 +190,7 @@ watch(size, val =>
     <el-date-picker
       v-model="value"
       type="datetime"
-      class="w-[200px]!"
+      class="w-50!"
       placeholder="请选择日期时间"
       :shortcuts="shortcuts"
       :size="dynamicSize"
@@ -213,7 +213,7 @@ watch(size, val =>
       <el-date-picker
         v-model="value1"
         type="datetime"
-        class="w-[200px]!"
+        class="w-50!"
         placeholder="请选择日期时间"
         format="YYYY/MM/DD hh:mm:ss"
         :value-format="datetimeFormat"
@@ -241,7 +241,7 @@ watch(size, val =>
     <div class="mb-2 mt-4">
       弹出面板位置可控（如果弹出位置不足以完整展示面板会自动调整位置）
     </div>
-    <el-space wrap class="w-[400px]">
+    <el-space wrap class="w-100">
       <el-check-tag
         v-for="(tag, index) in checkTag"
         :key="index"

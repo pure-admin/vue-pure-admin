@@ -36,6 +36,6 @@ watch(animate, () => {
         代码位置 src/views/components/animatecss.vue
       </el-link>
     </template>
-    <ReAnimateSelector v-model="animate" class="w-[200px]!" />
+    <ReAnimateSelector v-model="animate" class="w-50!" />
   </el-card>
 </template>

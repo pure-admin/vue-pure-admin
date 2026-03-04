@@ -141,6 +141,7 @@
     "dagre": "^0.8.5",
     "eslint": "^10.0.2",
     "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-better-tailwindcss": "^4.3.1",
     "eslint-plugin-prettier": "^5.5.5",
     "eslint-plugin-vue": "^10.8.0",
     "gradient-string": "^3.0.0",

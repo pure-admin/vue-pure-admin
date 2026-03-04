@@ -61,7 +61,7 @@ const handleChange = (val: string[]) => {
     <el-collapse
       ref="collapseRef"
       v-model="activeNames"
-      class="w-[360px]"
+      class="w-90"
       :accordion="radio === 'accordion' ? true : false"
       @change="handleChange"
     >
