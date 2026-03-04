@@ -110,7 +110,7 @@ onMounted(() => {
               {{ item.name }}
             </h4>
             <div
-              class="pt-3 flex justify-between items-center border-t border-t-gray-600 border-opacity-50"
+              class="pt-3 flex-bc border-t border-t-gray-600 border-opacity-50"
             >
               <div class="text-gray-50">$ {{ item.price }}</div>
               <div>

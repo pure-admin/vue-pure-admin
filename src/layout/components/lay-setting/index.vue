@@ -53,8 +53,8 @@ if (unref(layoutTheme)) {
   setMenuLayout(layout);
 }
 
-/** 默认灵动模式 */
-const markValue = ref($storage.configure?.showModel ?? "smart");
+/** 页签风格默认为谷歌风格 */
+const tagsStyleValue = ref($storage.configure?.tagsStyle ?? "chrome");
 
 const logoVal = ref($storage.configure?.showLogo ?? true);
 
@@ -63,7 +63,7 @@ const settings = reactive({
   weakVal: $storage.configure.weak,
   tabsVal: $storage.configure.hideTabs,
   showLogo: $storage.configure.showLogo,
-  showModel: $storage.configure.showModel,
+  tagsStyle: $storage.configure.tagsStyle,
   hideFooter: $storage.configure.hideFooter,
   multiTagsCache: $storage.configure.multiTagsCache,
   stretch: $storage.configure.stretch
@@ -124,9 +124,9 @@ const multiTagsCacheChange = () => {
 
 function onChange({ option }) {
   const { value } = option;
-  markValue.value = value;
-  storageConfigureChange("showModel", value);
-  emitter.emit("tagViewsShowModel", value);
+  tagsStyleValue.value = value;
+  storageConfigureChange("tagsStyle", value);
+  emitter.emit("tagViewsTagsStyle", value);
 }
 
 /** 侧边栏Logo */
@@ -189,7 +189,7 @@ const getThemeColor = computed(() => {
 });
 
 const pClass = computed(() => {
-  return ["mb-[12px]!", "font-medium", "text-sm", "dark:text-white"];
+  return ["mb-3!", "font-medium", "text-sm", "dark:text-white"];
 });
 
 const themeOptions = computed<Array<OptionsType>>(() => {
@@ -416,7 +416,7 @@ onUnmounted(() => removeMatchMedia);
         <button
           v-else
           v-ripple="{ class: 'text-gray-300' }"
-          class="bg-transparent flex-c w-full h-20 rounded-md border border-[var(--pure-border-color)]"
+          class="bg-transparent flex-c w-full h-20 rounded-md border border-(--pure-border-color)"
           @click="setStretch(!settings.stretch)"
         >
           <div
@@ -442,7 +442,9 @@ onUnmounted(() => removeMatchMedia);
       <Segmented
         resize
         class="select-none"
-        :modelValue="markValue === 'smart' ? 0 : markValue === 'card' ? 1 : 2"
+        :modelValue="
+          tagsStyleValue === 'smart' ? 0 : tagsStyleValue === 'card' ? 1 : 2
+        "
         :options="markOptions"
         @change="onChange"
       />

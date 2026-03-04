@@ -25,7 +25,7 @@ const {
   <el-select
     ref="selectRef"
     v-model="selectValue"
-    class="w-[200px]!"
+    class="w-50!"
     placeholder="请选择"
     clearable
     multiple
@@ -41,7 +41,7 @@ const {
           <el-form-item prop="sexValue">
             <el-select
               v-model="searchForm.sexValue"
-              class="w-[120px]!"
+              class="w-30!"
               placeholder="请选择性别"
               :teleported="false"
               clearable
@@ -57,7 +57,7 @@ const {
           <el-form-item prop="searchDate">
             <el-date-picker
               v-model="searchForm.searchDate"
-              class="w-[150px]!"
+              class="w-37.5!"
               type="date"
               placeholder="请选择日期"
               format="YYYY/MM/DD"
@@ -91,7 +91,7 @@ const {
           @selection-change="handleSelectionChange"
         />
         <el-button
-          class="absolute bottom-[25px] left-[20px]"
+          class="absolute bottom-6.25 left-5"
           type="primary"
           size="small"
           text

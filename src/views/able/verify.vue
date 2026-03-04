@@ -33,7 +33,7 @@ function onFail() {
         代码位置 src/views/able/verify.vue
       </el-link>
     </template>
-    <div class="bg-[rgba(15,23,42,0.2)] p-6 w-[360px]">
+    <div class="bg-[rgba(15,23,42,0.2)] p-6 w-90">
       <Vcode :show="isShow" type="inside" @fail="onFail" @success="onSuccess" />
     </div>
   </el-card>

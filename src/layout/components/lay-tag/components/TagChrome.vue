@@ -1,5 +1,5 @@
 <template>
-  <svg class="w-full h-full">
+  <svg class="size-full">
     <defs>
       <symbol id="geometry-left" viewBox="0 0 214 36">
         <path d="M17 0h197v36H0v-2c4.5 0 9-3.5 9-8V8c0-4.5 3.5-8 8-8z" />

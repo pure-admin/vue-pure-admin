@@ -30,7 +30,7 @@ defineOptions({
       <el-button v-ripple type="warning">Warning</el-button>
       <el-button v-ripple type="danger">Danger</el-button>
     </el-space>
-    <el-card v-ripple class="mb-5 w-[510px] select-none" shadow="hover">
+    <el-card v-ripple class="mb-5 w-127.5 select-none" shadow="hover">
       卡片
     </el-card>
 

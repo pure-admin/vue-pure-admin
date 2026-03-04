@@ -73,24 +73,24 @@ onMounted(async () => {
   <el-container class="h-full">
     <el-aside
       v-if="isOpen"
-      class="pure-account-settings overflow-hidden px-2 dark:bg-(--el-bg-color)! border-r-[1px] border-[var(--pure-border-color)]"
+      class="pure-account-settings overflow-hidden px-2 dark:bg-(--el-bg-color)! border-r border-(--pure-border-color)"
       :width="deviceDetection() ? '180px' : '240px'"
     >
       <el-menu :default-active="witchPane" class="pure-account-settings-menu">
         <div
-          class="h-[50px]! text-[var(--pure-theme-menu-text)] cursor-pointer text-sm transition-all duration-300 ease-in-out hover:scale-105 will-change-transform transform-gpu origin-center hover:text-base! hover:text-[var(--pure-theme-menu-title-hover)]!"
+          class="h-12.5! text-(--pure-theme-menu-text) cursor-pointer text-sm transition-all duration-300 ease-in-out hover:scale-105 will-change-transform transform-gpu origin-center hover:text-base! hover:text-(--pure-theme-menu-title-hover)!"
           @click="router.go(-1)"
         >
           <div
-            class="h-full flex items-center px-[var(--el-menu-base-level-padding)]"
+            class="h-full flex items-center px-(--el-menu-base-level-padding)"
           >
             <IconifyIconOffline :icon="leftLine" />
             <span class="ml-2">返回</span>
           </div>
         </div>
-        <div class="flex items-center ml-8 mt-4 mb-4">
+        <div class="flex items-center ml-8 my-4">
           <el-avatar :size="48" :src="userInfo.avatar" />
-          <div class="ml-4 flex flex-col max-w-[130px]">
+          <div class="ml-4 flex flex-col max-w-32.5">
             <ReText class="font-bold self-baseline!">
               {{ userInfo.nickname }}
             </ReText>
@@ -128,7 +128,7 @@ onMounted(async () => {
       />
       <component
         :is="panes.find(item => item.key === witchPane).component"
-        :class="[!deviceDetection() && 'ml-[120px]']"
+        :class="[!deviceDetection() && 'ml-30']"
       />
     </el-main>
   </el-container>
