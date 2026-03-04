@@ -9,6 +9,7 @@ import { createApp, type Directive } from "vue";
 import { useVxeTable } from "@/plugins/vxeTable";
 import { useElementPlus } from "@/plugins/elementPlus";
 import { injectResponsiveStorage } from "@/utils/responsive";
+import { usePermissionStoreHook } from "@/store/modules/permission";
 
 import Table from "@pureadmin/table";
 import PureDescriptions from "@pureadmin/descriptions";
@@ -56,6 +57,8 @@ app.use(VueTippy);
 
 getPlatformConfig(app).then(async config => {
   setupStore(app);
+  // 初始化菜单（本项目作为管理台使用，默认只使用静态路由菜单）
+  usePermissionStoreHook().handleWholeMenus([]);
   app.use(router);
   await router.isReady();
   injectResponsiveStorage(app, config);

@@ -43,10 +43,8 @@ import {
  * 如何排除文件请看：https://cn.vitejs.dev/guide/features.html#negative-patterns
  */
 const modules: Record<string, any> = import.meta.glob(
-  ["./modules/**/*.ts", "!./modules/**/remaining.ts"],
-  {
-    eager: true
-  }
+  ["./modules/home.ts", "./modules/tg.ts"],
+  { eager: true }
 );
 
 /** 原始静态路由（未做任何处理） */
@@ -115,8 +113,17 @@ export function resetRouter() {
   resetLoadedPaths();
 }
 
-/** 路由白名单 */
-const whiteList = ["/login"];
+/** 路由白名单（本项目作为管理台使用，默认不强制登录） */
+const whiteList = [
+  "/login",
+  "/",
+  "/welcome",
+  "/tg",
+  "/tg/accounts",
+  "/tg/chats",
+  "/tg/rules",
+  "/tg/monitor"
+];
 
 const { VITE_HIDE_HOME } = import.meta.env;
 
