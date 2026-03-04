@@ -19,6 +19,8 @@ buttons:
   pureBackTop: BackTop
   pureOpenText: Open
   pureCloseText: Close
+  pureWatchMore: Watch More
+  pureMarkAsRead: Mark As Read
 search:
   pureTotal: Total
   pureHistory: History

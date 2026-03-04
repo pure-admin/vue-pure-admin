@@ -68,7 +68,7 @@ const shortcuts1 = [
 
 const value3 = ref("");
 const datePickerRef = ref();
-const placement = ref("auto");
+const placement = ref("auto") as any;
 const checkTag = ref([
   {
     title: "auto", // https://popper.js.org/docs/v2/constructors/#options

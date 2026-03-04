@@ -19,6 +19,8 @@ buttons:
   pureBackTop: 回到顶部
   pureOpenText: 开
   pureCloseText: 关
+  pureWatchMore: 查看更多
+  pureMarkAsRead: 标为已读
 search:
   pureTotal: 共
   pureHistory: 搜索历史
