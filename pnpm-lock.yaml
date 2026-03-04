@@ -286,7 +286,7 @@ importers:
         specifier: ^10.1.8
         version: 10.1.8(eslint@10.0.2(jiti@2.6.1))
       eslint-plugin-better-tailwindcss:
-        specifier: ^4.0.1
+        specifier: ^4.3.1
         version: 4.3.1(eslint@10.0.2(jiti@2.6.1))(tailwindcss@4.2.1)(typescript@5.9.3)
       eslint-plugin-prettier:
         specifier: ^5.5.5
@@ -9848,7 +9848,7 @@ snapshots:
 
   launch-ide@1.4.0:
     dependencies:
-      chalk: 4.1.1
+      chalk: 4.1.2
       dotenv: 16.6.1
 
   leven@2.1.0: {}

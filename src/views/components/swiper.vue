@@ -109,11 +109,7 @@ const swiperExample: any[] = [
         <h6 class="py-4! text-base">{{ item.label }}</h6>
         <swiper v-bind="item.options">
           <swiper-slide v-for="i in 5" :key="i">
-            <div
-              class="flex justify-center items-center h-60 border border-[#999]"
-            >
-              Slide{{ i }}
-            </div>
+            <div class="flex-c h-60 border border-[#999]">Slide{{ i }}</div>
           </swiper-slide>
         </swiper>
       </el-col>
