@@ -148,14 +148,14 @@ function onWatermarkSwitchChange(value) {
     ? title.value
     : watermarkConfigs.text;
   if (value) {
-    setWatermark(text);
+    setWatermark(text, { verticalOffset: 170 });
   } else {
     clear();
   }
 }
 
-function onWatermarkInputChange(value) {
-  setWatermark(value);
+function onWatermarkInputChange(text) {
+  setWatermark(text, { verticalOffset: 170 });
 }
 
 /** 侧边栏Logo */
