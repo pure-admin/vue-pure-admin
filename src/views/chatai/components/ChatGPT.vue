@@ -46,7 +46,7 @@ onMounted(() => {
       }
     }"
     :avatars="{
-      default: { styles: { position: 'left' } },
+      default: { styles: { position: 'start' } },
       ai: { src: 'https://xiaoxian521.github.io/hyperlink/svg/openai.svg' }
     }"
     :submitButtonStyles="{

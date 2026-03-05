@@ -1,5 +1,5 @@
 import Sortable from "sortablejs";
-import { transformI18n } from "@/plugins/i18n";
+import { $t, transformI18n } from "@/plugins/i18n";
 import { useEpThemeStoreHook } from "@/store/modules/epTheme";
 import {
   type PropType,
@@ -30,7 +30,7 @@ const props = {
   /** 头部最左边的标题 */
   title: {
     type: String,
-    default: "列表"
+    default: $t("tableBar.pureList")
   },
   /** 对于树形表格，如果想启用展开和折叠功能，传入当前表格的ref即可 */
   tableRef: {
@@ -97,9 +97,9 @@ export default defineComponent({
       return [
         "flex",
         "justify-between",
-        "pt-[3px]",
-        "px-[11px]",
-        "border-b-[1px]",
+        "pt-0.75",
+        "px-2.75",
+        "border-b",
         "border-b-solid",
         "border-[#dcdfe6]",
         "dark:border-[#303030]"
@@ -169,19 +169,19 @@ export default defineComponent({
             style={getDropdownItemStyle.value("large")}
             onClick={() => (size.value = "large")}
           >
-            宽松
+            {transformI18n($t("tableBar.pureLarge"))}
           </el-dropdown-item>
           <el-dropdown-item
             style={getDropdownItemStyle.value("default")}
             onClick={() => (size.value = "default")}
           >
-            默认
+            {transformI18n($t("tableBar.pureDefault"))}
           </el-dropdown-item>
           <el-dropdown-item
             style={getDropdownItemStyle.value("small")}
             onClick={() => (size.value = "small")}
           >
-            紧凑
+            {transformI18n($t("tableBar.pureSmall"))}
           </el-dropdown-item>
         </el-dropdown-menu>
       )
@@ -244,8 +244,10 @@ export default defineComponent({
     const reference = {
       reference: () => (
         <SettingIcon
-          class={["w-[16px]", iconClass.value]}
-          v-tippy={rendTippyProps("列设置")}
+          class={["w-4", iconClass.value]}
+          v-tippy={rendTippyProps(
+            transformI18n($t("tableBar.pureColumnSettings"))
+          )}
         />
       )
     };
@@ -264,25 +266,27 @@ export default defineComponent({
               : "mt-2"
           ]}
         >
-          <div class="flex justify-between w-full h-[60px] p-4">
+          <div class="flex justify-between w-full h-15 p-4">
             {slots?.title ? (
               slots.title()
             ) : (
-              <p class="font-bold truncate">{props.title}</p>
+              <p class="font-bold truncate">{transformI18n(props.title)}</p>
             )}
-            <div class="flex items-center justify-around">
+            <div class="flex-ac">
               {slots?.buttons ? (
                 <div class="flex mr-4">{slots.buttons()}</div>
               ) : null}
               {props.tableRef?.size ? (
                 <>
                   <ExpandIcon
-                    class={["w-[16px]", iconClass.value]}
+                    class={["w-4", iconClass.value]}
                     style={{
                       transform: isExpandAll.value ? "none" : "rotate(-90deg)"
                     }}
                     v-tippy={rendTippyProps(
-                      isExpandAll.value ? "折叠" : "展开"
+                      isExpandAll.value
+                        ? transformI18n($t("tableBar.pureCollapse"))
+                        : transformI18n($t("tableBar.pureExpand"))
                     )}
                     onClick={() => onExpand()}
                   />
@@ -291,20 +295,24 @@ export default defineComponent({
               ) : null}
               <RefreshIcon
                 class={[
-                  "w-[16px]",
+                  "w-4",
                   iconClass.value,
                   loading.value ? "animate-spin" : ""
                 ]}
-                v-tippy={rendTippyProps("刷新")}
+                v-tippy={rendTippyProps(
+                  transformI18n($t("tableBar.pureRefresh"))
+                )}
                 onClick={() => onReFresh()}
               />
               <el-divider direction="vertical" />
               <el-dropdown
                 v-slots={dropdown}
                 trigger="click"
-                v-tippy={rendTippyProps("密度")}
+                v-tippy={rendTippyProps(
+                  transformI18n($t("tableBar.pureDensity"))
+                )}
               >
-                <CollapseIcon class={["w-[16px]", iconClass.value]} />
+                <CollapseIcon class={["w-4", iconClass.value]} />
               </el-dropdown>
               <el-divider direction="vertical" />
 
@@ -318,17 +326,17 @@ export default defineComponent({
                 <div class={[topClass.value]}>
                   <el-checkbox
                     class="-mr-1!"
-                    label="列展示"
+                    label={transformI18n($t("tableBar.pureColumnDisplay"))}
                     v-model={checkAll.value}
                     indeterminate={isIndeterminate.value}
                     onChange={value => handleCheckAllChange(value)}
                   />
                   <el-button type="primary" link onClick={() => onReset()}>
-                    重置
+                    {transformI18n($t("tableBar.pureReset"))}
                   </el-button>
                 </div>
 
-                <div class="pt-[6px] pl-[11px]">
+                <div class="pt-1.5 pl-2.75">
                   <el-scrollbar max-height="36vh">
                     <el-checkbox-group
                       ref={`GroupRef${unref(props.tableKey)}`}
@@ -345,7 +353,7 @@ export default defineComponent({
                             <div class="flex items-center">
                               <DragIcon
                                 class={[
-                                  "drag-btn w-[16px] mr-2",
+                                  "drag-btn w-4 mr-2",
                                   isFixedColumn(item)
                                     ? "cursor-no-drop!"
                                     : "cursor-grab!"
@@ -364,7 +372,7 @@ export default defineComponent({
                               >
                                 <span
                                   title={transformI18n(item)}
-                                  class="inline-block w-[120px] truncate hover:text-text_color_primary"
+                                  class="inline-block w-30 truncate hover:text-text_color_primary"
                                 >
                                   {transformI18n(item)}
                                 </span>
@@ -380,9 +388,13 @@ export default defineComponent({
               <el-divider direction="vertical" />
 
               <iconifyIconOffline
-                class={["w-[16px]", iconClass.value]}
+                class={["w-4", iconClass.value]}
                 icon={isFullscreen.value ? ExitFullscreen : Fullscreen}
-                v-tippy={isFullscreen.value ? "退出全屏" : "全屏"}
+                v-tippy={
+                  isFullscreen.value
+                    ? transformI18n($t("tableBar.pureExitFullScreen"))
+                    : transformI18n($t("tableBar.pureFullScreen"))
+                }
                 onClick={() => onFullscreen()}
               />
             </div>

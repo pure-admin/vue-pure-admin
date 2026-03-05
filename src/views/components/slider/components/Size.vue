@@ -5,7 +5,7 @@ const value = ref(0);
 </script>
 
 <template>
-  <div class="max-w-[600px] ml-4">
+  <div class="max-w-150 ml-4">
     <el-slider v-model="value" show-input size="large" />
     <el-slider v-model="value" show-input />
     <el-slider v-model="value" show-input size="small" />

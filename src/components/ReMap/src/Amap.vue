@@ -92,14 +92,16 @@ onBeforeMount(() => {
 
       // 获取模拟车辆信息
       mapJson()
-        .then(({ data }) => {
-          const points: object = data.map(v => {
-            return {
-              lnglat: [v.lng, v.lat],
-              ...v
-            };
-          });
-          if (MarkerCluster) MarkerCluster.setData(points);
+        .then(({ code, data }) => {
+          if (code === 0) {
+            const points: object = data.map(v => {
+              return {
+                lnglat: [v.lng, v.lat],
+                ...v
+              };
+            });
+            if (MarkerCluster) MarkerCluster.setData(points);
+          }
         })
         .catch(err => {
           console.log("err:", err);

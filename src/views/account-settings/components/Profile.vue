@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { reactive, ref } from "vue";
 import { formUpload } from "@/api/mock";
 import { message } from "@/utils/message";
+import { onMounted, reactive, ref } from "vue";
 import { type UserInfo, getMine } from "@/api/user";
 import type { FormInstance, FormRules } from "element-plus";
 import ReCropperPreview from "@/components/ReCropperPreview";
@@ -73,8 +73,8 @@ const handleSubmitImage = () => {
     files: new File([cropperBlob.value], "avatar")
   });
   formUpload(formData)
-    .then(({ success, data }) => {
-      if (success) {
+    .then(({ code }) => {
+      if (code === 0) {
         message("更新头像成功", { type: "success" });
         handleClose();
       } else {
@@ -98,18 +98,16 @@ const onSubmit = async (formEl: FormInstance) => {
   });
 };
 
-getMine().then(res => {
-  Object.assign(userInfos, res.data);
+onMounted(async () => {
+  const { code, data } = await getMine();
+  if (code === 0) {
+    Object.assign(userInfos, data);
+  }
 });
 </script>
 
 <template>
-  <div
-    :class="[
-      'min-w-[180px]',
-      deviceDetection() ? 'max-w-[100%]' : 'max-w-[70%]'
-    ]"
-  >
+  <div :class="['min-w-45', deviceDetection() ? 'max-w-full' : 'max-w-[70%]']">
     <h3 class="my-8!">个人信息</h3>
     <el-form
       ref="userInfoFormRef"

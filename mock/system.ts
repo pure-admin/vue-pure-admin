@@ -50,7 +50,8 @@ export default defineFakeRoute([
       if (body.phone) list = list.filter(item => item.phone === body.phone);
       if (body.deptId) list = list.filter(item => item.dept.id === body.deptId);
       return {
-        success: true,
+        code: 0,
+        message: "操作成功",
         data: {
           list,
           total: list.length, // 总条目数
@@ -66,7 +67,8 @@ export default defineFakeRoute([
     method: "get",
     response: () => {
       return {
-        success: true,
+        code: 0,
+        message: "操作成功",
         data: [
           { id: 1, name: "超级管理员" },
           { id: 2, name: "普通角色" }
@@ -82,18 +84,21 @@ export default defineFakeRoute([
       if (body.userId) {
         if (body.userId == 1) {
           return {
-            success: true,
+            code: 0,
+            message: "操作成功",
             data: [1]
           };
         } else if (body.userId == 2) {
           return {
-            success: true,
+            code: 0,
+            message: "操作成功",
             data: [2]
           };
         }
       } else {
         return {
-          success: false,
+          code: 10001,
+          message: "请求参数缺失或格式不正确",
           data: []
         };
       }
@@ -130,7 +135,8 @@ export default defineFakeRoute([
       );
       if (body.code) list = list.filter(item => item.code === body.code);
       return {
-        success: true,
+        code: 0,
+        message: "操作成功",
         data: {
           list,
           total: list.length, // 总条目数
@@ -146,7 +152,8 @@ export default defineFakeRoute([
     method: "post",
     response: () => {
       return {
-        success: true,
+        code: 0,
+        message: "操作成功",
         data: [
           // 外部页面
           {
@@ -350,7 +357,8 @@ export default defineFakeRoute([
     response: ({ body }) => {
       if (body.id == 1) {
         return {
-          success: true,
+          code: 0,
+          message: "操作成功",
           data: [
             100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 200, 201,
             202, 203, 204, 205, 300, 301, 302, 303, 304, 400, 401, 402, 403,
@@ -359,7 +367,8 @@ export default defineFakeRoute([
         };
       } else if (body.id == 2) {
         return {
-          success: true,
+          code: 0,
+          message: "操作成功",
           data: [
             100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 404, 500,
             501, 502, 503
@@ -374,7 +383,8 @@ export default defineFakeRoute([
     method: "post",
     response: () => {
       return {
-        success: true,
+        code: 0,
+        message: "操作成功",
         data: [
           // 外部页面
           {
@@ -1255,7 +1265,8 @@ export default defineFakeRoute([
     method: "post",
     response: () => {
       return {
-        success: true,
+        code: 0,
+        message: "操作成功",
         data: [
           {
             name: "杭州总公司",
@@ -1418,7 +1429,8 @@ export default defineFakeRoute([
       ];
       list = list.filter(item => item.username.includes(body?.username));
       return {
-        success: true,
+        code: 0,
+        message: "操作成功",
         data: {
           list,
           total: list.length, // 总条目数
@@ -1462,7 +1474,8 @@ export default defineFakeRoute([
         String(item.status).includes(String(body?.status))
       );
       return {
-        success: true,
+        code: 0,
+        message: "操作成功",
         data: {
           list,
           total: list.length, // 总条目数
@@ -1508,7 +1521,8 @@ export default defineFakeRoute([
         String(item.status).includes(String(body?.status))
       );
       return {
-        success: true,
+        code: 0,
+        message: "操作成功",
         data: {
           list,
           total: list.length, // 总条目数
@@ -1566,7 +1580,8 @@ export default defineFakeRoute([
       ];
       list = list.filter(item => item.module.includes(body?.module));
       return {
-        success: true,
+        code: 0,
+        message: "操作成功",
         data: {
           list,
           total: list.length, // 总条目数
@@ -1601,7 +1616,8 @@ export default defineFakeRoute([
             "Content-Length": 17019
           },
           responseBody: {
-            success: true,
+            code: 0,
+            message: "操作成功",
             data: [
               {
                 parentId: 0,

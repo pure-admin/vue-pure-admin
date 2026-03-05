@@ -55,11 +55,13 @@ const columns: TableColumnList = [
 
 async function onSearch() {
   loading.value = true;
-  const { data } = await getMineLogs();
-  dataList.value = data.list;
-  pagination.total = data.total;
-  pagination.pageSize = data.pageSize;
-  pagination.currentPage = data.currentPage;
+  const { code, data } = await getMineLogs();
+  if (code === 0) {
+    dataList.value = data.list;
+    pagination.total = data.total;
+    pagination.pageSize = data.pageSize;
+    pagination.currentPage = data.currentPage;
+  }
 
   setTimeout(() => {
     loading.value = false;
@@ -72,12 +74,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div
-    :class="[
-      'min-w-[180px]',
-      deviceDetection() ? 'max-w-[100%]' : 'max-w-[70%]'
-    ]"
-  >
+  <div :class="['min-w-45', deviceDetection() ? 'max-w-full' : 'max-w-[70%]']">
     <h3 class="my-8!">安全日志</h3>
     <pure-table
       row-key="id"

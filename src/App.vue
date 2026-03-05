@@ -7,11 +7,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { useRouter } from "vue-router";
+import { useGlobal } from "@pureadmin/utils";
 import { checkVersion } from "version-rocket";
+import { defineComponent, computed } from "vue";
 import { ElConfigProvider } from "element-plus";
-import { ReDialog } from "@/components/ReDialog";
-import { ReDrawer } from "@/components/ReDrawer";
+import { ReDialog, closeAllDialog } from "@/components/ReDialog";
+import { ReDrawer, closeAllDrawer } from "@/components/ReDrawer";
 import en from "element-plus/es/locale/lang/en";
 import zhCn from "element-plus/es/locale/lang/zh-cn";
 import plusEn from "plus-pro-components/es/locale/lang/en";
@@ -24,12 +26,23 @@ export default defineComponent({
     ReDialog,
     ReDrawer
   },
-  computed: {
-    currentLocale() {
-      return this.$storage.locale?.locale === "zh"
+  setup() {
+    const router = useRouter();
+    const { $storage } = useGlobal<GlobalPropertiesApi>();
+    const currentLocale = computed(() => {
+      return $storage.locale?.locale === "zh"
         ? { ...zhCn, ...plusZhCn }
         : { ...en, ...plusEn };
-    }
+    });
+
+    router.beforeEach(() => {
+      closeAllDialog();
+      closeAllDrawer();
+    });
+
+    return {
+      currentLocale
+    };
   },
   beforeCreate() {
     const { version, name: title } = __APP_INFO__.pkg;

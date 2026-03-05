@@ -66,7 +66,7 @@ onBeforeUnmount(() => {
             @readied="showPopover = true"
           />
         </template>
-        <div class="flex flex-wrap justify-center items-center text-center">
+        <div class="flex-c flex-wrap text-center">
           <el-image
             v-if="cropperImg"
             :src="cropperImg"

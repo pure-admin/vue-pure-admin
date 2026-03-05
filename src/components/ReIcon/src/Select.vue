@@ -135,9 +135,7 @@ watch(
           @after-leave="onAfterLeave"
         >
           <template #reference>
-            <div
-              class="w-[40px] h-[32px] cursor-pointer flex justify-center items-center"
-            >
+            <div class="w-10 h-8 cursor-pointer flex-c">
               <IconifyIconOffline v-if="!icon" :icon="Search" />
               <IconifyIconOnline v-else :icon="inputValue" />
             </div>
@@ -163,7 +161,7 @@ watch(
                     v-for="(item, key) in pageList"
                     :key="key"
                     :title="item"
-                    class="icon-item p-2 cursor-pointer mr-2 mt-1 flex justify-center items-center border border-[#e5e7eb]"
+                    class="icon-item p-2 cursor-pointer mr-2 mt-1 flex-c border border-[#e5e7eb]"
                     :style="iconItemStyle(item)"
                     @click="onChangeIcon(item)"
                   >

@@ -33,7 +33,8 @@ export default defineFakeRoute([
     method: "get",
     response: () => {
       return {
-        success: true,
+        code: 0,
+        message: "操作成功",
         data: mapList()
       };
     }

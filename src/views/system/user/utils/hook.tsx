@@ -88,7 +88,7 @@ export function useUser(tableRef: Ref, treeRef: Ref) {
           preview-teleported={true}
           src={row.avatar || userAvatar}
           preview-src-list={Array.of(row.avatar || userAvatar)}
-          class="w-[24px] h-[24px] rounded-full align-middle"
+          class="size-6 rounded-full align-middle"
         />
       ),
       width: 90
@@ -163,7 +163,7 @@ export function useUser(tableRef: Ref, treeRef: Ref) {
   ];
   const buttonClass = computed(() => {
     return [
-      "h-[20px]!",
+      "h-5!",
       "reset-margin",
       "text-gray-500!",
       "dark:text-white!",
@@ -272,11 +272,13 @@ export function useUser(tableRef: Ref, treeRef: Ref) {
 
   async function onSearch() {
     loading.value = true;
-    const { data } = await getUserList(toRaw(form));
-    dataList.value = data.list;
-    pagination.total = data.total;
-    pagination.pageSize = data.pageSize;
-    pagination.currentPage = data.currentPage;
+    const { code, data } = await getUserList(toRaw(form));
+    if (code === 0) {
+      dataList.value = data.list;
+      pagination.total = data.total;
+      pagination.pageSize = data.pageSize;
+      pagination.currentPage = data.currentPage;
+    }
 
     setTimeout(() => {
       loading.value = false;
@@ -497,13 +499,16 @@ export function useUser(tableRef: Ref, treeRef: Ref) {
     onSearch();
 
     // 归属部门
-    const { data } = await getDeptList();
-    higherDeptOptions.value = handleTree(data);
-    treeData.value = handleTree(data);
+    const { code, data } = await getDeptList();
+    if (code === 0) {
+      higherDeptOptions.value = handleTree(data);
+      treeData.value = handleTree(data);
+    }
+
     treeLoading.value = false;
 
     // 角色列表
-    roleOptions.value = (await getAllRoleList()).data;
+    roleOptions.value = (await getAllRoleList()).data ?? [];
   });
 
   return {

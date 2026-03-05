@@ -71,17 +71,17 @@ const settingTB: ContextProps = reactive({
 
   .dv-a {
     padding-top: 30vh;
-    color: rgba($color: dodgerblue, $alpha: 80%);
+    color: rgb(30 144 255 / 80%);
   }
 
   .dv-b {
     padding-top: 10vh;
-    color: rgba($color: #000, $alpha: 80%);
+    color: rgb(0 0 0 / 80%);
   }
 
   .dv-c {
     padding-top: 18vh;
-    color: rgba($color: #ce272d, $alpha: 80%);
+    color: rgb(206 39 45 / 80%);
   }
 }
 </style>

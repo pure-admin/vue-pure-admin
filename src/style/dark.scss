@@ -135,17 +135,6 @@ html.dark {
     }
   }
 
-  /* 系统配置面板 */
-  .right-panel-items {
-    .el-divider__text {
-      --el-bg-color: var(--el-bg-color);
-    }
-
-    .el-divider--horizontal {
-      border-top: none;
-    }
-  }
-
   /* 表单设计器 */
   .design-form {
     .el-main.config-content,

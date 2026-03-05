@@ -1,7 +1,6 @@
-import { ref, computed } from "vue";
 import { tableDataDrag } from "../data";
 import { message } from "@/utils/message";
-import { templateRef } from "@vueuse/core";
+import { ref, computed, useTemplateRef } from "vue";
 import { clone, useDark, useECharts } from "@pureadmin/utils";
 
 export function useColumns() {
@@ -31,7 +30,7 @@ export function useColumns() {
   const theme = computed(() => (isDark.value ? "dark" : "light"));
 
   dataList.value.forEach((_, i) => {
-    const { setOptions } = useECharts(templateRef(`PieChartRef${i}`), {
+    const { setOptions } = useECharts(useTemplateRef(`PieChartRef${i}`), {
       theme
     });
 

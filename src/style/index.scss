@@ -35,3 +35,18 @@
 .html-weakness {
   filter: invert(80%);
 }
+
+/* 轻微缩小，再恢复原状的平滑缩放动画 */
+@keyframes pure-scale-bounce {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0.9);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}

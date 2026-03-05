@@ -73,23 +73,21 @@ const onLogin = async (formEl: FormInstance | undefined) => {
           username: ruleForm.username,
           password: ruleForm.password
         })
-        .then(res => {
-          if (res.success) {
-            // 获取后端路由
-            return initRouter().then(() => {
-              disabled.value = true;
-              router
-                .push(getTopMenu(true).path)
-                .then(() => {
-                  message(t("login.pureLoginSuccess"), { type: "success" });
-                })
-                .finally(() => (disabled.value = false));
-            });
-          } else {
-            message(t("login.pureLoginFail"), { type: "error" });
-          }
+        .then(async () => {
+          // 获取后端路由
+          await initRouter();
+          disabled.value = true;
+          router.push(getTopMenu(true).path).then(() => {
+            message(t("login.pureLoginSuccess"), { type: "success" });
+          });
         })
-        .finally(() => (loading.value = false));
+        .catch(_err => {
+          message(t("login.pureLoginFail"), { type: "error" });
+        })
+        .finally(() => {
+          disabled.value = false;
+          loading.value = false;
+        });
     }
   });
 };
@@ -135,7 +133,7 @@ watch(loginDay, value => {
       <!-- 国际化 -->
       <el-dropdown trigger="click">
         <globalization
-          class="hover:text-primary hover:bg-[transparent]! w-[20px] h-[20px] ml-1.5 cursor-pointer outline-hidden duration-300"
+          class="hover:text-primary hover:bg-transparent! size-5 ml-1.5 cursor-pointer outline-hidden duration-300"
         />
         <template #dropdown>
           <el-dropdown-menu class="translation">
@@ -236,7 +234,7 @@ watch(loginDay, value => {
 
             <Motion :delay="250">
               <el-form-item>
-                <div class="w-full h-[20px] flex justify-between items-center">
+                <div class="w-full h-5 flex-bc">
                   <el-checkbox v-model="checked">
                     <span class="flex">
                       <select
@@ -287,7 +285,7 @@ watch(loginDay, value => {
 
             <Motion :delay="300">
               <el-form-item>
-                <div class="w-full h-[20px] flex justify-between items-center">
+                <div class="w-full h-5 flex-bc">
                   <el-button
                     v-for="(item, index) in operates"
                     :key="index"
@@ -360,7 +358,7 @@ watch(loginDay, value => {
 }
 
 .translation {
-  ::v-deep(.el-dropdown-menu__item) {
+  :deep(.el-dropdown-menu__item) {
     padding: 5px 40px;
   }
 
