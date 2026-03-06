@@ -15,6 +15,7 @@ import {
   isNumber,
   useGlobal,
   isAllEmpty,
+  storageLocal,
   useWatermark
 } from "@pureadmin/utils";
 import { useI18n } from "vue-i18n";
@@ -61,15 +62,16 @@ if (unref(layoutTheme)) {
   setMenuLayout(layout);
 }
 
+const watermarkKey = "watermark-text";
+
 /** 页签风格默认为谷歌风格 */
 const tagsStyleValue = ref($storage.configure?.tagsStyle ?? "chrome");
 
 const logoVal = ref($storage.configure?.showLogo ?? true);
 
-/** WIP... */
 const watermarkConfigs = reactive({
-  enable: false,
-  text: null
+  enable: $storage.configure.watermark,
+  text: (storageLocal().getItem(watermarkKey) as string) ?? title.value
 });
 
 const settings = reactive({
@@ -82,6 +84,8 @@ const settings = reactive({
   multiTagsCache: $storage.configure.multiTagsCache,
   stretch: $storage.configure.stretch
 });
+
+const watermarkEnable = computed(() => $storage.configure?.watermark);
 
 const getThemeColorStyle = computed(() => {
   return color => {
@@ -143,19 +147,25 @@ function onChange({ option }) {
   emitter.emit("tagViewsTagsStyle", value);
 }
 
+function applyWatermark(text: string) {
+  setWatermark(text, { verticalOffset: 170 });
+}
+
 function onWatermarkSwitchChange(value) {
   const text = isAllEmpty(watermarkConfigs.text)
     ? title.value
     : watermarkConfigs.text;
   if (value) {
-    setWatermark(text, { verticalOffset: 170 });
+    applyWatermark(text);
   } else {
     clear();
   }
+  storageConfigureChange("watermark", value);
 }
 
 function onWatermarkInputChange(text) {
-  setWatermark(text, { verticalOffset: 170 });
+  applyWatermark(text);
+  storageLocal().setItem(watermarkKey, text);
 }
 
 /** 侧边栏Logo */
@@ -337,6 +347,7 @@ onBeforeMount(() => {
       document.querySelector("html")?.classList.add("html-weakness");
     settings.tabsVal && tagsChange();
     settings.hideFooter && hideFooterChange();
+    watermarkEnable.value ? applyWatermark(watermarkConfigs.text) : clear();
   });
 });
 

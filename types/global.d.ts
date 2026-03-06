@@ -102,6 +102,7 @@ declare global {
     SidebarStatus?: boolean;
     EpThemeColor?: string;
     ShowLogo?: boolean;
+    Watermark?: boolean;
     TagsStyle?: string;
     MenuArrowIconNoTransition?: boolean;
     CachingAsyncRoutes?: boolean;
@@ -142,6 +143,7 @@ declare global {
     themeColor?: string;
     themeMode?: string;
     showLogo?: boolean;
+    watermark?: boolean;
     tagsStyle?: string;
     menuSearchHistory?: number;
     mapConfigure?: {
@@ -177,6 +179,7 @@ declare global {
       hideTabs?: boolean;
       hideFooter?: boolean;
       showLogo?: boolean;
+      watermark?: boolean;
       tagsStyle?: string;
       multiTagsCache?: boolean;
       stretch?: boolean | number;
