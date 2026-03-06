@@ -14,7 +14,6 @@ import {
   debounce,
   isNumber,
   useGlobal,
-  isAllEmpty,
   storageLocal,
   useWatermark
 } from "@pureadmin/utils";
@@ -152,11 +151,8 @@ function applyWatermark(text: string) {
 }
 
 function onWatermarkSwitchChange(value) {
-  const text = isAllEmpty(watermarkConfigs.text)
-    ? title.value
-    : watermarkConfigs.text;
   if (value) {
-    applyWatermark(text);
+    applyWatermark(watermarkConfigs.text);
   } else {
     clear();
   }
