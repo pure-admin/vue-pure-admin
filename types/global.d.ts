@@ -103,6 +103,7 @@ declare global {
     EpThemeColor?: string;
     ShowLogo?: boolean;
     Watermark?: boolean;
+    WatermarkText?: string;
     TagsStyle?: string;
     MenuArrowIconNoTransition?: boolean;
     CachingAsyncRoutes?: boolean;
@@ -144,6 +145,7 @@ declare global {
     themeMode?: string;
     showLogo?: boolean;
     watermark?: boolean;
+    watermarkText?: string;
     tagsStyle?: string;
     menuSearchHistory?: number;
     mapConfigure?: {
@@ -180,6 +182,7 @@ declare global {
       hideFooter?: boolean;
       showLogo?: boolean;
       watermark?: boolean;
+      watermarkText?: string;
       tagsStyle?: string;
       multiTagsCache?: boolean;
       stretch?: boolean | number;

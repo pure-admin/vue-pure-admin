@@ -9,14 +9,6 @@ import {
   onUnmounted,
   onBeforeMount
 } from "vue";
-import {
-  useDark,
-  debounce,
-  isNumber,
-  useGlobal,
-  storageLocal,
-  useWatermark
-} from "@pureadmin/utils";
 import { useI18n } from "vue-i18n";
 import { emitter } from "@/utils/mitt";
 import LayPanel from "../lay-panel/index.vue";
@@ -25,6 +17,7 @@ import { useAppStoreHook } from "@/store/modules/app";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
 import Segmented, { type OptionsType } from "@/components/ReSegmented";
 import { useDataThemeChange } from "@/layout/hooks/useDataThemeChange";
+import { useDark, debounce, isNumber, useGlobal } from "@pureadmin/utils";
 
 import Check from "~icons/ep/check";
 import LeftArrow from "~icons/ri/arrow-left-s-line?width=20&height=20";
@@ -34,9 +27,8 @@ import DarkIcon from "@/assets/svg/dark.svg?component";
 import SystemIcon from "@/assets/svg/system.svg?component";
 
 const { t } = useI18n();
+const { device } = useNav();
 const { isDark } = useDark();
-const { device, title } = useNav();
-const { setWatermark, clear } = useWatermark();
 const { $storage } = useGlobal<GlobalPropertiesApi>();
 
 const mixRef = ref();
@@ -61,8 +53,6 @@ if (unref(layoutTheme)) {
   setMenuLayout(layout);
 }
 
-const watermarkKey = "watermark-text";
-
 /** 页签风格默认为谷歌风格 */
 const tagsStyleValue = ref($storage.configure?.tagsStyle ?? "chrome");
 
@@ -70,7 +60,7 @@ const logoVal = ref($storage.configure?.showLogo ?? true);
 
 const watermarkConfigs = reactive({
   enable: $storage.configure.watermark,
-  text: storageLocal().getItem(watermarkKey) as string
+  text: $storage.configure.watermarkText
 });
 
 const settings = reactive({
@@ -83,8 +73,6 @@ const settings = reactive({
   multiTagsCache: $storage.configure.multiTagsCache,
   stretch: $storage.configure.stretch
 });
-
-const watermarkEnable = computed(() => $storage.configure?.watermark);
 
 const getThemeColorStyle = computed(() => {
   return color => {
@@ -146,22 +134,12 @@ function onChange({ option }) {
   emitter.emit("tagViewsTagsStyle", value);
 }
 
-function applyWatermark(text: string) {
-  setWatermark(text, { verticalOffset: 170 });
-}
-
 function onWatermarkSwitchChange(value) {
-  if (value) {
-    applyWatermark(watermarkConfigs.text);
-  } else {
-    clear();
-  }
   storageConfigureChange("watermark", value);
 }
 
 function onWatermarkInputChange(text) {
-  applyWatermark(text);
-  storageLocal().setItem(watermarkKey, text);
+  storageConfigureChange("watermarkText", text);
 }
 
 /** 侧边栏Logo */
@@ -343,7 +321,6 @@ onBeforeMount(() => {
       document.querySelector("html")?.classList.add("html-weakness");
     settings.tabsVal && tagsChange();
     settings.hideFooter && hideFooterChange();
-    watermarkEnable.value ? applyWatermark(watermarkConfigs.text) : clear();
   });
 });
 
