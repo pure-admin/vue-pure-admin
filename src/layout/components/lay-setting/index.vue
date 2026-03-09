@@ -17,7 +17,7 @@ import { useAppStoreHook } from "@/store/modules/app";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
 import Segmented, { type OptionsType } from "@/components/ReSegmented";
 import { useDataThemeChange } from "@/layout/hooks/useDataThemeChange";
-import { useDark, debounce, isNumber, useGlobal } from "@pureadmin/utils";
+import { useDark, useGlobal, debounce, isNumber } from "@pureadmin/utils";
 
 import Check from "~icons/ep/check";
 import LeftArrow from "~icons/ri/arrow-left-s-line?width=20&height=20";
@@ -451,7 +451,7 @@ onUnmounted(() => removeMatchMedia);
         </button>
       </span>
 
-      <p :class="['mt-4!', pClass]">{{ t("panel.pureTagsStyle") }}</p>
+      <p :class="['mt-5!', pClass]">{{ t("panel.pureTagsStyle") }}</p>
       <Segmented
         resize
         class="select-none"
@@ -492,7 +492,7 @@ onUnmounted(() => removeMatchMedia);
         </li>
       </ul>
 
-      <p class="mt-5! font-medium text-sm dark:text-white">
+      <p class="mt-3! font-medium text-sm dark:text-white">
         {{ t("panel.pureInterfaceDisplay") }}
       </p>
       <ul class="setting">
