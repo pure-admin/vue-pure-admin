@@ -70,7 +70,7 @@ const logoVal = ref($storage.configure?.showLogo ?? true);
 
 const watermarkConfigs = reactive({
   enable: $storage.configure.watermark,
-  text: (storageLocal().getItem(watermarkKey) as string) ?? title.value
+  text: storageLocal().getItem(watermarkKey) as string
 });
 
 const settings = reactive({
@@ -501,14 +501,15 @@ onUnmounted(() => removeMatchMedia);
             @change="onWatermarkSwitchChange"
           />
         </li>
-        <li>
+        <li v-if="watermarkConfigs.enable" v-motion-fade>
           <span class="dark:text-white">
             {{ t("panel.pureWatermarkText") }}
           </span>
           <el-input
             v-model="watermarkConfigs.text"
-            class="w-25!"
-            :placeholder="title"
+            class="w-32!"
+            clearable
+            :placeholder="t('panel.pureWatermarkTextPlaceholder')"
             @input="onWatermarkInputChange"
           />
         </li>
