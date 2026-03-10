@@ -1,1 +1,0 @@
-import{useColumns as t}from"./columns-DJT-_Mfb.js";import{d as s,a as r,b as c,u as e,l}from"./index-bAmZNc0l.js";const f=s({__name:"index",setup(m){const{columns:o,tableData:n}=t();return(u,p)=>{const a=l("pure-table");return r(),c(a,{data:e(n),columns:e(o)},null,8,["data","columns"])}}});export{f as _};
