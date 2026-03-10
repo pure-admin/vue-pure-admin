@@ -58,6 +58,11 @@ const tagsStyleValue = ref($storage.configure?.tagsStyle ?? "chrome");
 
 const logoVal = ref($storage.configure?.showLogo ?? true);
 
+const watermarkConfigs = reactive({
+  enable: $storage.configure.watermark,
+  text: $storage.configure.watermarkText
+});
+
 const settings = reactive({
   greyVal: $storage.configure.grey,
   weakVal: $storage.configure.weak,
@@ -127,6 +132,14 @@ function onChange({ option }) {
   tagsStyleValue.value = value;
   storageConfigureChange("tagsStyle", value);
   emitter.emit("tagViewsTagsStyle", value);
+}
+
+function onWatermarkSwitchChange(value) {
+  storageConfigureChange("watermark", value);
+}
+
+function onWatermarkInputChange(text) {
+  storageConfigureChange("watermarkText", text);
 }
 
 /** 侧边栏Logo */
@@ -438,7 +451,7 @@ onUnmounted(() => removeMatchMedia);
         </button>
       </span>
 
-      <p :class="['mt-4!', pClass]">{{ t("panel.pureTagsStyle") }}</p>
+      <p :class="['mt-5!', pClass]">{{ t("panel.pureTagsStyle") }}</p>
       <Segmented
         resize
         class="select-none"
@@ -450,29 +463,39 @@ onUnmounted(() => removeMatchMedia);
       />
 
       <p class="mt-5! font-medium text-sm dark:text-white">
-        {{ t("panel.pureInterfaceDisplay") }}
+        {{ t("panel.pureFullScreenWatermark") }}
       </p>
       <ul class="setting">
         <li>
-          <span class="dark:text-white">{{ t("panel.pureGreyModel") }}</span>
+          <span class="dark:text-white">
+            {{ t("panel.pureEnableWatermark") }}
+          </span>
           <el-switch
-            v-model="settings.greyVal"
+            v-model="watermarkConfigs.enable"
             inline-prompt
             :active-text="t('buttons.pureOpenText')"
             :inactive-text="t('buttons.pureCloseText')"
-            @change="greyChange"
+            @change="onWatermarkSwitchChange"
           />
         </li>
-        <li>
-          <span class="dark:text-white">{{ t("panel.pureWeakModel") }}</span>
-          <el-switch
-            v-model="settings.weakVal"
-            inline-prompt
-            :active-text="t('buttons.pureOpenText')"
-            :inactive-text="t('buttons.pureCloseText')"
-            @change="weekChange"
+        <li v-if="watermarkConfigs.enable" v-motion-fade>
+          <span class="dark:text-white">
+            {{ t("panel.pureWatermarkText") }}
+          </span>
+          <el-input
+            v-model="watermarkConfigs.text"
+            class="w-32!"
+            clearable
+            :placeholder="t('panel.pureWatermarkTextPlaceholder')"
+            @input="onWatermarkInputChange"
           />
         </li>
+      </ul>
+
+      <p class="mt-3! font-medium text-sm dark:text-white">
+        {{ t("panel.pureInterfaceDisplay") }}
+      </p>
+      <ul class="setting">
         <li>
           <span class="dark:text-white">{{ t("panel.pureHiddenTags") }}</span>
           <el-switch
@@ -494,6 +517,18 @@ onUnmounted(() => removeMatchMedia);
           />
         </li>
         <li>
+          <span class="dark:text-white">
+            {{ t("panel.pureMultiTagsCache") }}
+          </span>
+          <el-switch
+            v-model="settings.multiTagsCache"
+            inline-prompt
+            :active-text="t('buttons.pureOpenText')"
+            :inactive-text="t('buttons.pureCloseText')"
+            @change="multiTagsCacheChange"
+          />
+        </li>
+        <li>
           <span class="dark:text-white">Logo</span>
           <el-switch
             v-model="logoVal"
@@ -506,15 +541,23 @@ onUnmounted(() => removeMatchMedia);
           />
         </li>
         <li>
-          <span class="dark:text-white">
-            {{ t("panel.pureMultiTagsCache") }}
-          </span>
+          <span class="dark:text-white">{{ t("panel.pureGreyModel") }}</span>
           <el-switch
-            v-model="settings.multiTagsCache"
+            v-model="settings.greyVal"
             inline-prompt
             :active-text="t('buttons.pureOpenText')"
             :inactive-text="t('buttons.pureCloseText')"
-            @change="multiTagsCacheChange"
+            @change="greyChange"
+          />
+        </li>
+        <li>
+          <span class="dark:text-white">{{ t("panel.pureWeakModel") }}</span>
+          <el-switch
+            v-model="settings.weakVal"
+            inline-prompt
+            :active-text="t('buttons.pureOpenText')"
+            :inactive-text="t('buttons.pureCloseText')"
+            @change="weekChange"
           />
         </li>
       </ul>
