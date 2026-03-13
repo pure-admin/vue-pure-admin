@@ -116,11 +116,10 @@ export default defineComponent({
 
     const iconClass = computed(() => {
       return [
-        "p-[6px]",
-        "h-[30px]",
-        "w-[30px]",
+        "p-1.5",
+        "size-7.5",
+        "rounded-sm",
         "outline-hidden",
-        "rounded-[4px]",
         "cursor-pointer",
         "hover:bg-[rgba(0,0,0,0.06)]"
       ];
@@ -252,7 +251,7 @@ export default defineComponent({
       },
       setup() {
         return () => (
-          <div class="flex flex-wrap w-[60px] justify-between">
+          <div class="flex flex-wrap w-15 justify-between">
             <ElUpload
               accept="image/*"
               show-file-list={false}

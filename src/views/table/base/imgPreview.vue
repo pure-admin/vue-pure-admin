@@ -49,7 +49,7 @@ const columns: TableColumnList = [
         :preview-src-list="tableDataImage.map(v => v.image)"
         :initial-index="index"
         fit="cover"
-        class="w-[100px] h-[100px]"
+        class="size-25"
       />
     </template>
   </pure-table>

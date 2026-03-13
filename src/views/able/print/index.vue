@@ -83,7 +83,7 @@ const tableData: User[] = [
         <span class="font-medium">打印功能（报表、图表、图片）</span>
         <el-select
           v-model="value"
-          class="w-[100px]! mr-2"
+          class="w-25! mr-2"
           placeholder="Select"
           size="small"
         >
@@ -131,7 +131,7 @@ const tableData: User[] = [
           border
           :data="tableData"
           :row-class-name="tableRowClassName"
-          class="el-table w-full mt-[10px]"
+          class="el-table w-full mt-2.5"
         >
           <el-table-column prop="date" label="Date" />
           <el-table-column prop="name" label="Name" />
@@ -160,7 +160,7 @@ const tableData: User[] = [
         }"
       >
         <p class="font-medium text-lg text-center">Echart</p>
-        <pieChart class="echart mt-[10px]" />
+        <pieChart class="echart mt-2.5" />
       </el-col>
 
       <el-col
@@ -186,7 +186,7 @@ const tableData: User[] = [
         <img
           src="https://pure-admin-utils.netlify.app/logo.png"
           alt="avatars"
-          class="img mt-[10px] m-auto"
+          class="img mt-2.5 m-auto"
         />
       </el-col>
     </el-row>

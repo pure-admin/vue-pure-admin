@@ -7,11 +7,11 @@
 </template>
 
 <script lang="ts">
-import { useRouter } from "vue-router";
-import { useGlobal } from "@pureadmin/utils";
 import { checkVersion } from "version-rocket";
-import { defineComponent, computed } from "vue";
 import { ElConfigProvider } from "element-plus";
+import { useRouter, useRoute } from "vue-router";
+import { useGlobal, useWatermark } from "@pureadmin/utils";
+import { defineComponent, computed, watch, nextTick } from "vue";
 import { ReDialog, closeAllDialog } from "@/components/ReDialog";
 import { ReDrawer, closeAllDrawer } from "@/components/ReDrawer";
 import en from "element-plus/es/locale/lang/en";
@@ -27,8 +27,12 @@ export default defineComponent({
     ReDrawer
   },
   setup() {
+    const route = useRoute();
     const router = useRouter();
+    const { setWatermark, clear } = useWatermark();
     const { $storage } = useGlobal<GlobalPropertiesApi>();
+    const watermarkEnable = computed(() => $storage.configure?.watermark);
+    const watermarkText = computed(() => $storage.configure?.watermarkText);
     const currentLocale = computed(() => {
       return $storage.locale?.locale === "zh"
         ? { ...zhCn, ...plusZhCn }
@@ -39,6 +43,21 @@ export default defineComponent({
       closeAllDialog();
       closeAllDrawer();
     });
+
+    watch(
+      [watermarkEnable, watermarkText, () => route.name],
+      async ([enable, text, name]) => {
+        await nextTick();
+        if (enable && name !== "Login") {
+          setWatermark(text, { verticalOffset: 170 });
+        } else {
+          clear();
+        }
+      },
+      {
+        immediate: true
+      }
+    );
 
     return {
       currentLocale

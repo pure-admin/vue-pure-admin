@@ -10,9 +10,7 @@ const router = useRouter();
 </script>
 
 <template>
-  <div
-    class="flex flex-col md:flex-row justify-center items-center min-h-full w-full p-4 md:p-0"
-  >
+  <div class="flex-c flex-col md:flex-row min-h-full w-full p-4 md:p-0">
     <noExist />
     <div class="mt-8 md:ml-12 md:mt-0 text-center md:text-left">
       <p

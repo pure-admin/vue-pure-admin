@@ -62,7 +62,7 @@ function onChange() {
           代码位置 src/views/permission/page/index.vue
         </el-link>
       </template>
-      <el-select v-model="username" class="w-[160px]!" @change="onChange">
+      <el-select v-model="username" class="w-40!" @change="onChange">
         <el-option
           v-for="item in options"
           :key="item.value"

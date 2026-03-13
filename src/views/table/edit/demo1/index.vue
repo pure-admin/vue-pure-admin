@@ -12,7 +12,7 @@ const { columns, dataList, onAdd, onDel } = useColumns();
   <div class="flex">
     <el-scrollbar height="540px">
       <code>
-        <pre class="w-[400px]"> {{ dataList }}</pre>
+        <pre class="w-100"> {{ dataList }}</pre>
       </code>
     </el-scrollbar>
     <pure-table

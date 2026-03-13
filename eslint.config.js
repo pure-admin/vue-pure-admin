@@ -5,6 +5,7 @@ import * as parserVue from "vue-eslint-parser";
 import configPrettier from "eslint-config-prettier";
 import pluginPrettier from "eslint-plugin-prettier";
 import { defineConfig, globalIgnores } from "eslint/config";
+import eslintPluginBetterTailwindcss from "eslint-plugin-better-tailwindcss";
 
 export default defineConfig([
   globalIgnores([
@@ -109,10 +110,7 @@ export default defineConfig([
   {
     files: ["**/*.d.ts"],
     rules: {
-      "eslint-comments/no-unlimited-disable": "off",
-      "import/no-duplicates": "off",
-      "no-restricted-syntax": "off",
-      "unused-imports/no-unused-vars": "off"
+      "no-restricted-syntax": "off"
     }
   },
   {
@@ -171,6 +169,22 @@ export default defineConfig([
           math: "always"
         }
       ]
+    }
+  },
+  {
+    files: ["**/*.vue", "**/*.tsx"],
+    plugins: {
+      "better-tailwindcss": eslintPluginBetterTailwindcss
+    },
+    rules: {
+      "better-tailwindcss/enforce-consistent-variable-syntax": "warn",
+      "better-tailwindcss/enforce-canonical-classes": "warn"
+    },
+    settings: {
+      "better-tailwindcss": {
+        entryPoint: "src/style/tailwind.css",
+        rootFontSize: 16
+      }
     }
   }
 ]);

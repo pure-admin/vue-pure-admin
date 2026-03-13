@@ -40,7 +40,9 @@ export function useLayout() {
         hideTabs: $config?.HideTabs ?? false,
         hideFooter: $config.HideFooter ?? true,
         showLogo: $config?.ShowLogo ?? true,
-        showModel: $config?.ShowModel ?? "smart",
+        watermark: $config?.Watermark ?? false,
+        watermarkText: $config?.WatermarkText ?? "",
+        tagsStyle: $config?.TagsStyle ?? "chrome",
         multiTagsCache: $config?.MultiTagsCache ?? false,
         stretch: $config?.Stretch ?? false
       };
