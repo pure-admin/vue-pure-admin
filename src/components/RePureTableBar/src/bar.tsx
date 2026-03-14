@@ -20,6 +20,8 @@ import {
 
 import Fullscreen from "~icons/ri/fullscreen-fill";
 import ExitFullscreen from "~icons/ri/fullscreen-exit-fill";
+import PinAngle from "~icons/bi/pin-angle";
+import PinAngleFill from "~icons/bi/pin-angle-fill";
 import DragIcon from "@/assets/table-bar/drag.svg?component";
 import ExpandIcon from "@/assets/table-bar/expand.svg?component";
 import RefreshIcon from "@/assets/table-bar/refresh.svg?component";
@@ -153,6 +155,15 @@ export default defineComponent({
       )[0].hide = !val;
     }
 
+    function handleToggleColumnFixed(fixed, label: string) {
+      const column = dynamicColumns.value.find(
+        item => transformI18n(item.label) === transformI18n(label)
+      );
+      if (column) {
+        column.fixed = fixed;
+      }
+    }
+
     async function onReset() {
       checkAll.value = true;
       isIndeterminate.value = false;
@@ -223,11 +234,44 @@ export default defineComponent({
     };
 
     const isFixedColumn = (label: string) => {
-      return dynamicColumns.value.filter(
+      const column = dynamicColumns.value.filter(
         item => transformI18n(item.label) === transformI18n(label)
-      )[0].fixed
-        ? true
-        : false;
+      )[0];
+      const fixedOption = column?.fixed;
+
+      // 1.fixedOption不存在或为false
+      if (!fixedOption) {
+        return {
+          fixed: false,
+          left: false,
+          right: false
+        };
+      }
+
+      // 2.fixedOption为true或为"right"
+      if (fixedOption === true || fixedOption === "right") {
+        return {
+          fixed: true,
+          left: false,
+          right: true
+        };
+      }
+
+      // 3.fixedOption为"left"
+      if (fixedOption === "left") {
+        return {
+          fixed: true,
+          left: true,
+          right: false
+        };
+      }
+
+      // 4.其他情况兜底(比如传入的既不是boolean也不是"left""right")
+      return {
+        fixed: false,
+        left: false,
+        right: false
+      };
     };
 
     const rendTippyProps = (content: string) => {
@@ -320,7 +364,7 @@ export default defineComponent({
                 v-slots={reference}
                 placement="bottom-start"
                 popper-style={{ padding: 0 }}
-                width="200"
+                width="245"
                 trigger="click"
               >
                 <div class={[topClass.value]}>
@@ -349,14 +393,13 @@ export default defineComponent({
                         size={0}
                       >
                         {checkColumnList.map((item, index) => {
+                          const { fixed, left, right } = isFixedColumn(item);
                           return (
                             <div class="flex items-center">
                               <DragIcon
                                 class={[
                                   "drag-btn w-4 mr-2",
-                                  isFixedColumn(item)
-                                    ? "cursor-no-drop!"
-                                    : "cursor-grab!"
+                                  fixed ? "cursor-no-drop!" : "cursor-grab!"
                                 ]}
                                 onMouseenter={(event: {
                                   preventDefault: () => void;
@@ -377,6 +420,49 @@ export default defineComponent({
                                   {transformI18n(item)}
                                 </span>
                               </el-checkbox>
+                              <iconifyIconOffline
+                                class={[
+                                  "ml-2",
+                                  "size-4",
+                                  "hover:text-primary",
+                                  "cursor-pointer",
+                                  left ? "text-primary" : ""
+                                ]}
+                                icon={left ? PinAngleFill : PinAngle}
+                                v-tippy={
+                                  left
+                                    ? transformI18n($t("tableBar.pureUnpin"))
+                                    : transformI18n($t("tableBar.purePinLeft"))
+                                }
+                                onClick={() =>
+                                  handleToggleColumnFixed(
+                                    left ? false : "left",
+                                    item
+                                  )
+                                }
+                              />
+                              <iconifyIconOffline
+                                class={[
+                                  "ml-2",
+                                  "size-4",
+                                  "hover:text-primary",
+                                  "scale-x-[-1]",
+                                  "cursor-pointer",
+                                  right ? "text-primary" : ""
+                                ]}
+                                icon={right ? PinAngleFill : PinAngle}
+                                v-tippy={
+                                  right
+                                    ? transformI18n($t("tableBar.pureUnpin"))
+                                    : transformI18n($t("tableBar.purePinRight"))
+                                }
+                                onClick={() =>
+                                  handleToggleColumnFixed(
+                                    right ? false : "right",
+                                    item
+                                  )
+                                }
+                              />
                             </div>
                           );
                         })}

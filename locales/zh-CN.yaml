@@ -260,3 +260,6 @@ tableBar:
   pureReset: 重置
   pureExitFullScreen: 退出全屏
   pureFullScreen: 全屏
+  purePinLeft: 固定在左边
+  purePinRight: 固定在右边
+  pureUnpin: 取消固定
