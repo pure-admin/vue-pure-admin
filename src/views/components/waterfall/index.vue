@@ -3,9 +3,9 @@ import { getList } from "./api";
 import error from "./error.png";
 import loading from "./loading.png";
 import { ElLoading } from "element-plus";
+import { reactive, ref, nextTick } from "vue";
+import { useInfiniteScroll } from "@vueuse/core";
 import "vue-waterfall-plugin-next/dist/style.css";
-import InfiniteLoading from "v3-infinite-loading";
-import { onMounted, reactive, ref, nextTick } from "vue";
 import backTop from "@/assets/svg/back_top.svg?component";
 import { LazyImg, Waterfall } from "vue-waterfall-plugin-next";
 
@@ -55,26 +55,34 @@ const options = reactive({
 const page = ref(1);
 const list = ref([]);
 const pageSize = ref();
+const scrollbarRef = ref();
+const isLoading = ref(false);
 const loadingInstance = ref();
 
 /** 加载更多 */
 function handleLoadMore() {
+  if (isLoading.value) return Promise.resolve();
+  isLoading.value = true;
   loadingInstance.value = ElLoading.service({
     target: ".content",
     background: "transparent",
     text: "加载中"
   });
-  getList({
-    page: page.value,
-    pageSize: pageSize.value
-  }).then(res => {
-    setTimeout(() => {
-      list.value.push(...res);
-      page.value += 1;
-      nextTick(() => {
-        loadingInstance.value.close();
-      });
-    }, 500);
+  return new Promise<void>(resolve => {
+    getList({
+      page: page.value,
+      pageSize: pageSize.value
+    }).then(res => {
+      setTimeout(() => {
+        list.value.push(...res);
+        page.value += 1;
+        nextTick(() => {
+          loadingInstance.value.close();
+          isLoading.value = false;
+          resolve();
+        });
+      }, 500);
+    });
   });
 }
 
@@ -86,13 +94,21 @@ function handleClick(item) {
   console.log(item);
 }
 
-onMounted(() => {
-  handleLoadMore();
-});
+useInfiniteScroll(
+  () => scrollbarRef.value?.wrapRef,
+  () => {
+    return handleLoadMore();
+  },
+  { distance: 10 }
+);
 </script>
 
 <template>
-  <el-scrollbar max-height="calc(100vh - 120px)" class="content">
+  <el-scrollbar
+    ref="scrollbarRef"
+    max-height="calc(100vh - 120px)"
+    class="content"
+  >
     <Waterfall :list="list" v-bind="options">
       <template #item="{ item, url, index }">
         <div
@@ -145,9 +161,6 @@ onMounted(() => {
     >
       <backTop />
     </el-backtop>
-
-    <!-- 加载更多 -->
-    <InfiniteLoading :firstload="false" @infinite="handleLoadMore" />
   </el-scrollbar>
 </template>
 
