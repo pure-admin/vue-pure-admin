@@ -1,1 +1,0 @@
-import{useColumns as a}from"./columns-B9O1C5Yx.js";import{d as s,a as c,b as m,u as o,k as u,l as _}from"./index-C2Lt7UZT.js";const k=s({__name:"index",setup(l){const e=u(),{columns:n,dataList:r}=a(e);return(p,f)=>{const t=_("pure-table");return c(),m(t,{ref_key:"waterRef",ref:e,"row-key":"id",border:"",data:o(r),columns:o(n)},null,8,["data","columns"])}}});export{k as _};
