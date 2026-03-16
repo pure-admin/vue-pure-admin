@@ -12,10 +12,10 @@ import {
   getCurrentInstance
 } from "vue";
 
-import Fullscreen from "~icons/ri/fullscreen-fill";
-import ExitFullscreen from "~icons/ri/fullscreen-exit-fill";
 import PinAngle from "~icons/bi/pin-angle";
+import Fullscreen from "~icons/ri/fullscreen-fill";
 import PinAngleFill from "~icons/bi/pin-angle-fill";
+import ExitFullscreen from "~icons/ri/fullscreen-exit-fill";
 import DragIcon from "@/assets/table-bar/drag.svg?component";
 import ExpandIcon from "@/assets/table-bar/expand.svg?component";
 import RefreshIcon from "@/assets/table-bar/refresh.svg?component";
@@ -228,44 +228,13 @@ export default defineComponent({
     };
 
     const isFixedColumn = (label: string) => {
-      const column = dynamicColumns.value.filter(
+      const column = dynamicColumns.value.find(
         item => transformI18n(item.title) === transformI18n(label)
-      )[0];
+      );
       const fixedOption = column?.fixed;
-
-      // 1.fixedOption不存在或为false
-      if (!fixedOption) {
-        return {
-          fixed: false,
-          left: false,
-          right: false
-        };
-      }
-
-      // 2.fixedOption为true或为"right"
-      if (fixedOption === true || fixedOption === "right") {
-        return {
-          fixed: true,
-          left: false,
-          right: true
-        };
-      }
-
-      // 3.fixedOption为"left"
-      if (fixedOption === "left") {
-        return {
-          fixed: true,
-          left: true,
-          right: false
-        };
-      }
-
-      // 4.其他情况兜底(比如传入的既不是boolean也不是"left""right")
-      return {
-        fixed: false,
-        left: false,
-        right: false
-      };
+      const left = fixedOption === "left";
+      const right = fixedOption === true || fixedOption === "right";
+      return { fixed: left || right, left, right };
     };
 
     const rendTippyProps = (content: string) => {
