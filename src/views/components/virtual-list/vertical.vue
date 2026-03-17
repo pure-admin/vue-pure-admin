@@ -35,7 +35,17 @@ const filteredItems = computed(() => {
       :min-item-size="54"
       class="scroller"
     >
-      <template #default="{ item, index, active }">
+      <template
+        #default="{
+          item,
+          index,
+          active
+        }: {
+          item: any;
+          index: number;
+          active: boolean;
+        }"
+      >
         <DynamicScrollerItem
           :item="item"
           :active="active"
