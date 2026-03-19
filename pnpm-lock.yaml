@@ -364,7 +364,7 @@ importers:
         specifier: ^0.5.1
         version: 0.5.1(vite@8.0.0(@types/node@20.19.37)(esbuild@0.27.4)(jiti@2.6.1)(sass@1.98.0)(yaml@2.8.2))
       vite-plugin-fake-server:
-        specifier: ^2.2.2
+        specifier: ^2.2.3
         version: 2.2.3
       vite-plugin-remove-console:
         specifier: ^2.2.0
