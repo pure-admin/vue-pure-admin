@@ -260,3 +260,6 @@ tableBar:
   pureReset: Reset
   pureExitFullScreen: ExitFullScreen
   pureFullScreen: FullScreen
+  purePinLeft: Pin Left
+  purePinRight: Pin Right
+  pureUnpin: Unpin
