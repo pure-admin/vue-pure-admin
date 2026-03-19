@@ -226,7 +226,7 @@ importers:
         specifier: ^11.0.7
         version: 11.0.7(@vue/compiler-dom@3.5.30)(eslint@10.0.3(jiti@2.6.1))(rollup@4.59.0)(typescript@5.9.3)(vue-i18n@11.3.0(vue@3.5.30(typescript@5.9.3)))(vue@3.5.30(typescript@5.9.3))
       '@tailwindcss/vite':
-        specifier: ^4.2.1
+        specifier: ^4.2.2
         version: 4.2.2(vite@8.0.0(@types/node@20.19.37)(esbuild@0.27.4)(jiti@2.6.1)(sass@1.98.0)(yaml@2.8.2))
       '@types/codemirror':
         specifier: ^5.60.17
