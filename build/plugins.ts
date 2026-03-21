@@ -1,4 +1,3 @@
-import { cdn } from "./cdn";
 import vue from "@vitejs/plugin-vue";
 import { pathResolve } from "./utils";
 import { viteBuildInfo } from "./info";
@@ -15,10 +14,10 @@ import VueI18nPlugin from "@intlify/unplugin-vue-i18n/vite";
 import { codeInspectorPlugin } from "code-inspector-plugin";
 import { vitePluginFakeServer } from "vite-plugin-fake-server";
 
-export function getPluginsList(
+export async function getPluginsList(
   VITE_CDN: boolean,
   VITE_COMPRESSION: ViteCompression
-): PluginOption[] {
+): Promise<PluginOption[]> {
   const lifecycle = process.env.npm_lifecycle_event;
   return [
     tailwindcss(),
@@ -65,7 +64,7 @@ export function getPluginsList(
       compiler: "vue3",
       scale: 1
     }),
-    VITE_CDN ? cdn : null,
+    VITE_CDN ? (await import("./cdn")).cdn : null,
     configCompressPlugin(VITE_COMPRESSION),
     // 线上环境删除console
     removeConsole({ external: ["src/assets/iconfont/iconfont.js"] }),
