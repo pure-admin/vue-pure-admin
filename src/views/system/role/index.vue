@@ -24,6 +24,8 @@ defineOptions({
   name: "SystemRole"
 });
 
+return;
+
 const iconClass = computed(() => {
   return [
     "size-5.5",
