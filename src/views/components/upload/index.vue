@@ -190,7 +190,7 @@ const onDownload = () => {
               class="el-upload-list__item-delete"
               @click="handleRemove(file)"
             >
-              <span title="移除" class="hover:text-[var(--el-color-danger)]">
+              <span title="移除" class="hover:text-(--el-color-danger)">
                 <IconifyIconOffline
                   :icon="Delete"
                   class="hover:scale-125 duration-100"
@@ -222,7 +222,7 @@ const onDownload = () => {
         type="info"
         class="img-name"
       >
-        <p class="text-[#fff] dark:text-black">
+        <p class="text-white dark:text-black">
           {{ fileList[curOpenImgIndex].name }}
         </p>
       </div>
@@ -243,7 +243,7 @@ const onDownload = () => {
       <div>
         <p class="text-center">上传接口相关截图</p>
         <el-image
-          class="w-[200px] rounded-md"
+          class="w-50 rounded-md"
           :src="srcList[0]"
           :preview-src-list="srcList"
           fit="cover"

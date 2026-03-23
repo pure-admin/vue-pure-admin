@@ -35,7 +35,7 @@ export function useColumns() {
       prop: "name",
       cellRenderer: ({ row, index }) => (
         <div
-          class="flex-bc w-full h-[32px]"
+          class="flex-bc w-full h-8"
           onMouseenter={() => (activeIndex.value = index)}
           onMouseleave={() => onMouseleave(index)}
         >

@@ -57,6 +57,10 @@ panel:
   pureTagsStyleCardTip: Card tags for efficient browsing
   pureTagsStyleChrome: Chrome
   pureTagsStyleChromeTip: Chrome style is classic and elegant
+  pureFullScreenWatermark: FullScreen Watermark
+  pureEnableWatermark: Watermark
+  pureWatermarkText: Text
+  pureWatermarkTextPlaceholder: Please enter text
   pureInterfaceDisplay: Interface Display
   pureGreyModel: Grey Model
   pureWeakModel: Weak Model
@@ -256,3 +260,6 @@ tableBar:
   pureReset: Reset
   pureExitFullScreen: ExitFullScreen
   pureFullScreen: FullScreen
+  purePinLeft: Pin Left
+  purePinRight: Pin Right
+  pureUnpin: Unpin

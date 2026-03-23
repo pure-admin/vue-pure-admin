@@ -102,7 +102,9 @@ declare global {
     SidebarStatus?: boolean;
     EpThemeColor?: string;
     ShowLogo?: boolean;
-    ShowModel?: string;
+    Watermark?: boolean;
+    WatermarkText?: string;
+    TagsStyle?: string;
     MenuArrowIconNoTransition?: boolean;
     CachingAsyncRoutes?: boolean;
     TooltipEffect?: Effect;
@@ -142,7 +144,9 @@ declare global {
     themeColor?: string;
     themeMode?: string;
     showLogo?: boolean;
-    showModel?: string;
+    watermark?: boolean;
+    watermarkText?: string;
+    tagsStyle?: string;
     menuSearchHistory?: number;
     mapConfigure?: {
       amapKey?: string;
@@ -177,7 +181,9 @@ declare global {
       hideTabs?: boolean;
       hideFooter?: boolean;
       showLogo?: boolean;
-      showModel?: string;
+      watermark?: boolean;
+      watermarkText?: string;
+      tagsStyle?: string;
       multiTagsCache?: boolean;
       stretch?: boolean | number;
     };
