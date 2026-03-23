@@ -26,7 +26,7 @@ const systemManagementRouter = {
       }
     },
     {
-      path: "/system/role/Index",
+      path: "/system/role/index",
       name: "SystemRole",
       meta: {
         icon: "ri:admin-fill",
