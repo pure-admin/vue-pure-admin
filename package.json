@@ -11,7 +11,7 @@
     "report": "rimraf dist && vite build",
     "preview": "vite preview",
     "preview:build": "pnpm build && vite preview",
-    "typecheck": "tsc --noEmit && vue-tsc --noEmit --skipLibCheck",
+    "typecheck": "vue-tsc --noEmit --skipLibCheck",
     "svgo": "svgo -f . -r",
     "clean:cache": "rimraf .eslintcache && rimraf pnpm-lock.yaml && rimraf node_modules && pnpm store prune && pnpm install",
     "lint:eslint": "eslint --cache --max-warnings 0 src mock build --fix",
