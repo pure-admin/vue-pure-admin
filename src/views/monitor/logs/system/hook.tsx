@@ -61,7 +61,7 @@ export function useRole(tableRef: Ref) {
       headerRenderer: () => (
         <span class="flex-c">
           请求接口
-          <iconifyIconOffline
+          <iconify-icon-offline
             icon={Info}
             class="ml-1 cursor-help"
             v-tippy={{

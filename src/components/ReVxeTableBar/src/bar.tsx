@@ -1,5 +1,6 @@
 import Sortable from "sortablejs";
 import { $t, transformI18n } from "@/plugins/i18n";
+import type { CheckboxValueType } from "element-plus";
 import { useEpThemeStoreHook } from "@/store/modules/epTheme";
 import { delay, cloneDeep, getKeyList } from "@pureadmin/utils";
 import {
@@ -127,13 +128,13 @@ export default defineComponent({
       props.vxeTableRef.reloadColumn(curCheckedColumns);
     }
 
-    function handleCheckAllChange(val: boolean) {
+    function handleCheckAllChange(val: CheckboxValueType) {
       checkedColumns.value = val ? checkColumnList : [];
       isIndeterminate.value = false;
       reloadColumn();
     }
 
-    function handleCheckedColumnsChange(value: string[]) {
+    function handleCheckedColumnsChange(value: CheckboxValueType[]) {
       checkedColumns.value = value;
       const checkedCount = value.length;
       checkAll.value = checkedCount === checkColumnList.length;
@@ -381,7 +382,7 @@ export default defineComponent({
                                   {transformI18n(item)}
                                 </span>
                               </el-checkbox>
-                              <iconifyIconOffline
+                              <iconify-icon-offline
                                 class={[
                                   "ml-2",
                                   "size-4",
@@ -402,7 +403,7 @@ export default defineComponent({
                                   )
                                 }
                               />
-                              <iconifyIconOffline
+                              <iconify-icon-offline
                                 class={[
                                   "ml-2",
                                   "size-4",
@@ -434,7 +435,7 @@ export default defineComponent({
               </el-popover>
               <el-divider direction="vertical" />
 
-              <iconifyIconOffline
+              <iconify-icon-offline
                 class={["w-4", iconClass.value]}
                 icon={isFullscreen.value ? ExitFullscreen : Fullscreen}
                 v-tippy={

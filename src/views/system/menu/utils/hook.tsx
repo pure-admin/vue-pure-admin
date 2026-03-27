@@ -54,7 +54,7 @@ export function useMenu() {
       cellRenderer: ({ row, props }) => (
         <el-tag
           size={props.size}
-          type={getMenuType(row.menuType)}
+          type={getMenuType(row.menuType) as any}
           effect="plain"
         >
           {getMenuType(row.menuType, true)}
