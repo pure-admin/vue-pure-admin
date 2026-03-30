@@ -1,3 +1,5 @@
+<!-- prettier-ignore-start -->
+
 ## 字段含义
 
 | 字段              | 说明                                                         |
@@ -24,3 +26,4 @@
 | `showLink`        | 菜单（是否显示该菜单）                                       |
 | `showParent`      | 父级菜单（是否显示父级菜单 [点击查看更多](https://pure-admin.cn/pages/routerMenu/#%E7%AC%AC%E4%B8%80%E7%A7%8D-%E8%AF%A5%E6%A8%A1%E5%BC%8F%E9%92%88%E5%AF%B9%E7%88%B6%E7%BA%A7%E8%8F%9C%E5%8D%95%E4%B8%8B%E5%8F%AA%E6%9C%89%E4%B8%80%E4%B8%AA%E5%AD%90%E8%8F%9C%E5%8D%95%E7%9A%84%E6%83%85%E5%86%B5-%E5%9C%A8%E5%AD%90%E8%8F%9C%E5%8D%95%E7%9A%84-meta-%E5%B1%9E%E6%80%A7%E4%B8%AD%E5%8A%A0%E4%B8%8A-showparent-true-%E5%8D%B3%E5%8F%AF)） |
 
+<!-- prettier-ignore-end -->
