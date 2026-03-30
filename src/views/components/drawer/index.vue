@@ -87,7 +87,7 @@ function onHeaderRendererClick() {
         <h4 id={titleId} class={titleClass}>
           自定义头部
         </h4>
-        <el-button type="danger" onClick={close}>
+        <el-button type="danger" onClick={() => close()}>
           关闭
         </el-button>
       </div>
@@ -429,7 +429,7 @@ function onResizableClick(title, content, direction) {
     direction,
     resizable: true, // 启用可调整大小的功能
     contentRenderer: () => (
-      <p class="text-[var(--el-color-primary)]">{content}</p> // jsx 语法 （注意在.vue文件启用jsx语法，需要在script开启lang="tsx"）
+      <p class="text-(--el-color-primary)">{content}</p> // jsx 语法 （注意在.vue文件启用jsx语法，需要在script开启lang="tsx"）
     )
   });
 }
