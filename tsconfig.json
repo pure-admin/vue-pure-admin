@@ -33,13 +33,6 @@
       "@pureadmin/descriptions/volar"
     ]
   },
-  "include": [
-    "mock/*.ts",
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "types/*.d.ts",
-    "vite.config.ts"
-  ],
+  "include": ["mock/*.ts", "src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "types/*.d.ts", "vite.config.ts"],
   "exclude": ["dist", "**/*.js", "node_modules"]
 }
