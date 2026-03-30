@@ -2,8 +2,14 @@
 
 /** @type {import("prettier").Config} */
 export default {
-  bracketSpacing: true,
-  singleQuote: false,
   arrowParens: "avoid",
-  trailingComma: "none"
+  trailingComma: "none",
+  overrides: [
+    {
+      files: "*.json",
+      options: {
+        printWidth: 120
+      }
+    }
+  ]
 };
