@@ -6,3 +6,6 @@ declare module "*.vue" {
 }
 
 declare module "vue3-puzzle-vcode";
+declare module "swiper/css";
+declare module "swiper/css/navigation";
+declare module "swiper/css/pagination";
