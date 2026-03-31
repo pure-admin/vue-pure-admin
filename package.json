@@ -201,10 +201,6 @@
       "typeit",
       "vue-demi"
     ],
-    "ignoredBuiltDependencies": [
-      "@tailwindcss/oxide",
-      "plain-crypto-js",
-      "vue3-danmaku"
-    ]
+    "ignoredBuiltDependencies": ["@tailwindcss/oxide", "vue3-danmaku"]
   }
 }
