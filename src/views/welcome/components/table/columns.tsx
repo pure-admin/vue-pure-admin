@@ -50,7 +50,7 @@ export function useColumns() {
         <div class="flex justify-center w-full">
           <span class="flex items-center w-15">
             <span class="ml-auto mr-2">{row.satisfaction}%</span>
-            <iconifyIconOffline
+            <iconify-icon-offline
               icon={row.satisfaction > 98 ? Hearts : ThumbUp}
               color="#e85f33"
             />

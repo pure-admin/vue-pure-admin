@@ -5,13 +5,4 @@ declare module "*.vue" {
   export default component;
 }
 
-declare module "*.scss" {
-  const scss: Record<string, string>;
-  export default scss;
-}
-
 declare module "vue3-puzzle-vcode";
-declare module "vuedraggable/src/vuedraggable";
-declare module "swiper/css";
-declare module "swiper/css/navigation";
-declare module "swiper/css/pagination";
