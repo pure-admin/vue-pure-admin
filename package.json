@@ -63,7 +63,7 @@
     "@wangeditor/editor-for-vue": "^5.1.12",
     "@zxcvbn-ts/core": "^3.0.4",
     "animate.css": "^4.1.1",
-    "axios": "^1.14.0",
+    "axios": "1.14.0",
     "china-area-data": "^5.0.1",
     "codemirror": "^5.65.21",
     "codemirror-editor-vue3": "^2.8.0",
@@ -201,6 +201,9 @@
       "typeit",
       "vue-demi"
     ],
-    "ignoredBuiltDependencies": ["@tailwindcss/oxide", "vue3-danmaku"]
+    "ignoredBuiltDependencies": [
+      "@tailwindcss/oxide",
+      "vue3-danmaku"
+    ]
   }
 }
