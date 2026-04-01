@@ -18,7 +18,7 @@ import en from "element-plus/es/locale/lang/en";
 import zhCn from "element-plus/es/locale/lang/zh-cn";
 import plusEn from "plus-pro-components/es/locale/lang/en";
 import plusZhCn from "plus-pro-components/es/locale/lang/zh-cn";
-// import { ElNotification } from "element-plus";
+import { ElNotification } from "element-plus";
 
 export default defineComponent({
   name: "app",
@@ -86,23 +86,42 @@ export default defineComponent({
         }
       );
     }
+  },
+  mounted() {
+    ElNotification({
+      title: "高级服务",
+      duration: 0,
+      customClass: "fullpage-notification",
+      // @ts-expect-error
+      style: { width: "280px" },
+      position: "bottom-right",
+      dangerouslyUseHTMLString: true,
+      message: `
+        <div style="padding: 4px 0;">
+          <a
+            target='_blank'
+            style="
+              display: block;
+              text-align: center;
+              padding: 10px 16px;
+              background: #f5f7fa;
+              color: #606266;
+              border: 1px solid #e4e7ed;
+              border-radius: 6px;
+              text-decoration: none;
+              font-size: 15px;
+              transition: all 0.2s ease;
+            "
+            onmouseover="this.style.background='#ecf5ff'; this.style.borderColor='#409eff'; this.style.color='#409eff'"
+            onmouseout="this.style.background='#f5f7fa'; this.style.borderColor='#e4e7ed'; this.style.color='#606266'"
+            href='https://pure-admin.cn/pages/service'
+          >
+            @pureadmin/utils 源码<br/>首次限时开放销售
+          </a>
+        </div>
+      `
+    });
   }
-  // mounted() {
-  //   ElNotification({
-  //     title: "高级服务",
-  //     duration: 0,
-  //     customClass: "fullpage-notification",
-  //     // @ts-expect-error
-  //     style: { width: "260px" },
-  //     position: "bottom-right",
-  //     dangerouslyUseHTMLString: true,
-  //     message: `
-  //       <a target='_blank' class='block text-base text-center border mt-4 rounded hover:text-[red]!' href='https://pure-admin.cn/pages/service'>
-  //       补差价活动即将结束！
-  //       </a>
-  //     `
-  //   });
-  // }
 });
 </script>
 
