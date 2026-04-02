@@ -97,8 +97,11 @@ function flatTree(arr) {
   const res = [];
   function deep(arr) {
     arr.forEach(item => {
-      res.push(item);
-      item.children && deep(item.children);
+      if (!item.children || item.children.length === 0) {
+        res.push(item);
+      } else {
+        deep(item.children);
+      }
     });
   }
   deep(arr);
