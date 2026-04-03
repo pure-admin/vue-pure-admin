@@ -95,12 +95,16 @@ function setStorageItem(key, value) {
 /** 将菜单树形结构扁平化为一维数组，用于菜单查询 */
 function flatTree(arr) {
   const res = [];
-  function deep(arr) {
+  function deep(arr, parentIcon?) {
     arr.forEach(item => {
       if (!item.children || item.children.length === 0) {
-        res.push(item);
+        const menuItem =
+          !item.meta?.icon && parentIcon
+            ? { ...item, meta: { ...item.meta, icon: parentIcon } }
+            : item;
+        res.push(menuItem);
       } else {
-        deep(item.children);
+        deep(item.children, item.meta?.icon);
       }
     });
   }
