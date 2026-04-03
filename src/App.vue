@@ -114,9 +114,30 @@ export default defineComponent({
             "
             onmouseover="this.style.background='#ecf5ff'; this.style.borderColor='#409eff'; this.style.color='#409eff'"
             onmouseout="this.style.background='#f5f7fa'; this.style.borderColor='#e4e7ed'; this.style.color='#606266'"
-            href='https://pure-admin.cn/pages/service'
+            href='https://pure-admin.cn/pages/service/#max-ts-%E7%89%88%E6%9C%AC'
           >
-            @pureadmin/utils 源码<br/>首次限时开放销售
+            Max-Ts 版本
+          </a>
+           <a
+            target='_blank'
+            style="
+              display: block;
+              text-align: center;
+              padding: 10px 16px;
+              margin-top: 10px;
+              background: #f5f7fa;
+              color: #606266;
+              border: 1px solid #e4e7ed;
+              border-radius: 6px;
+              text-decoration: none;
+              font-size: 15px;
+              transition: all 0.2s ease;
+            "
+            onmouseover="this.style.background='#ecf5ff'; this.style.borderColor='#409eff'; this.style.color='#409eff'"
+            onmouseout="this.style.background='#f5f7fa'; this.style.borderColor='#e4e7ed'; this.style.color='#606266'"
+            href='https://pure-admin.cn/pages/service/#max-js-%E7%89%88%E6%9C%AC'
+          >
+            Max-Js 版本
           </a>
         </div>
       `
