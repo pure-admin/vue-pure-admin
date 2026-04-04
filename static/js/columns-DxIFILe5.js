@@ -1,0 +1,1 @@
+import{t as e}from"./columns-AFWevfIW.js";export{e as useColumns};

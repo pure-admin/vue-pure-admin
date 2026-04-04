@@ -1,0 +1,1 @@
+import{$ as e,A as t,S as n,St as r,Y as i,jt as a}from"./vue.runtime.esm-bundler-7ocrn71d.js";import{t as o}from"./columns-dXu5TpXy.js";var s=t({__name:`index`,setup(t){let s=r(),{columns:c,dataList:l}=o(s);return(t,r)=>{let o=e(`pure-table`);return i(),n(o,{ref_key:`waterRef`,ref:s,"row-key":`id`,border:``,data:a(l),columns:a(c)},null,8,[`data`,`columns`])}}});export{s as t};

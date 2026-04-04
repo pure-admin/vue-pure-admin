@@ -1,0 +1,1 @@
+import{t as e}from"./columns-ClQ5nvdc.js";export{e as useColumns};

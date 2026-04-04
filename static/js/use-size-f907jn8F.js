@@ -1,0 +1,1 @@
+import{F as e,b as t,jt as n}from"./vue.runtime.esm-bundler-7ocrn71d.js";import{t as r}from"./size-C_G0kni_.js";import{i}from"./use-namespace-DCgB5FLc.js";var a=i({type:String,values:r,required:!1}),o=Symbol(`size`),s=()=>{let r=e(o,{});return t(()=>n(r.size)||``)};export{s as n,a as r,o as t};

@@ -1,0 +1,1 @@
+import{t as e}from"./border-YPrz4cvX.js";export{e as default};

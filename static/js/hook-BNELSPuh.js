@@ -1,0 +1,1 @@
+import{t as e}from"./hook-1Hf0gs_g.js";export{e as useDept};

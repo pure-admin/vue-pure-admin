@@ -1,0 +1,1 @@
+import{$ as e,A as t,S as n,Y as r,jt as i}from"./vue.runtime.esm-bundler-7ocrn71d.js";import{t as a}from"./columns-DNUNbjur.js";var o=t({__name:`index`,setup(t){let{columns:o,tableData:s}=a();return(t,a)=>{let c=e(`pure-table`);return r(),n(c,{data:i(s),columns:i(o)},null,8,[`data`,`columns`])}}});export{o as t};

@@ -1,0 +1,1 @@
+import{$ as e,A as t,S as n,Y as r,jt as i}from"./vue.runtime.esm-bundler-7ocrn71d.js";import{t as a}from"./data-6N4gJ88M.js";var o=t({__name:`stripe`,setup(t){let o=[{label:`日期`,prop:`date`},{label:`姓名`,prop:`name`},{label:`地址`,prop:`address`}];return(t,s)=>{let c=e(`pure-table`);return r(),n(c,{data:i(a),columns:o,stripe:``},null,8,[`data`])}}});export{o as t};

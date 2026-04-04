@@ -1,0 +1,1 @@
+import{t as e}from"./column-template-B-s7h6_Y.js";export{e as default};

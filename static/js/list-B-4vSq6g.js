@@ -1,0 +1,1 @@
+import{t as e}from"./list-_-zjuHuh.js";export{e as list};

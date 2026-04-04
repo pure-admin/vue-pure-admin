@@ -1,0 +1,1 @@
+import{t as e}from"./table-B5MHuBpe.js";export{e as default};

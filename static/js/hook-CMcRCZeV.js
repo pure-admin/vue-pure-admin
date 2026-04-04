@@ -1,0 +1,1 @@
+import{t as e}from"./hook-DM9Knmot.js";export{e as useMenu};
