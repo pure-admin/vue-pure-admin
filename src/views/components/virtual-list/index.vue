@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import verticalList from "./vertical.vue";
 import horizontalList from "./horizontal.vue";
-import "vue-virtual-scroller/dist/vue-virtual-scroller.css";
+import "vue-virtual-scroller/index.css";
 
 defineOptions({
   name: "VirtualList"
@@ -13,7 +13,7 @@ defineOptions({
     <template #header>
       <div class="font-medium">
         <el-link
-          href="https://github.com/Akryum/vue-virtual-scroller/tree/next/packages/vue-virtual-scroller"
+          href="https://vue-virtual-scroller.netlify.app/guide/"
           target="_blank"
           style="margin: 0 5px 4px 0; font-size: 16px"
         >

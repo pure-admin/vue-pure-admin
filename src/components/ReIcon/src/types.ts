@@ -1,3 +1,5 @@
+import type { CSSProperties } from "vue";
+
 export interface iconType {
   // iconify (https://docs.iconify.design/icon-components/vue/#properties)
   inline?: boolean;
@@ -11,10 +13,10 @@ export interface iconType {
   horizontalAlign?: boolean;
   verticalAlign?: boolean;
   align?: string;
-  onLoad?: Function;
-  includes?: Function;
+  onLoad?: (name: string) => void;
+  includes?: (name: string) => boolean;
   // svg 需要什么SVG属性自行添加
   fill?: string;
   // all icon
-  style?: object;
+  style?: CSSProperties;
 }

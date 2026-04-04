@@ -129,7 +129,7 @@ function onHeaderRendererClick() {
         <h4 id={titleId} class={titleClass}>
           自定义头部
         </h4>
-        <el-button type="danger" onClick={close}>
+        <el-button type="danger" onClick={() => close()}>
           关闭
         </el-button>
       </div>
