@@ -1,4 +1,5 @@
 import dayjs from "dayjs";
+import { utils, writeFile } from "xlsx";
 import editForm from "../form.vue";
 import { handleTree } from "@/utils/tree";
 import { message } from "@/utils/message";
@@ -31,6 +32,9 @@ export function useRole(treeRef: Ref) {
   const isExpandAll = ref(false);
   const isSelectAll = ref(false);
   const { switchStyle } = usePublicHooks();
+  const treeStateCache = ref<
+    Record<number, { expandedKeys: any[]; checkedKeys: any[] }>
+  >({});
   const treeProps = {
     value: "id",
     label: "title",
@@ -227,15 +231,51 @@ export function useRole(treeRef: Ref) {
 
   /** 菜单权限 */
   async function handleMenu(row?: any) {
-    const { id } = row;
-    if (id) {
+    if (row && row.id !== undefined) {
+      const { id } = row;
+      const isSameRole = curRow.value?.id === id;
+
+      if (!isSameRole && curRow.value?.id !== undefined) {
+        const prevId = curRow.value.id;
+        treeStateCache.value[prevId] = {
+          expandedKeys: treeRef.value.getExpandedKeys() || [],
+          checkedKeys: treeRef.value.getCheckedKeys(false, true) || []
+        };
+        isExpandAll.value = false;
+        isSelectAll.value = false;
+      }
+
+      if (isSameRole) {
+        isShow.value = true;
+        return;
+      }
+
       curRow.value = row;
       isShow.value = true;
-      const { code, data } = await getRoleMenuIds({ id });
-      if (code === 0) {
-        treeRef.value.setCheckedKeys(data);
+
+      if (treeStateCache.value[id]) {
+        const cached = treeStateCache.value[id];
+        treeRef.value.setExpandedKeys(cached.expandedKeys);
+        treeRef.value.setCheckedKeys(cached.checkedKeys);
+      } else {
+        const { code, data } = await getRoleMenuIds({ id });
+        if (code === 0) {
+          treeRef.value.setCheckedKeys(data);
+          treeRef.value.setExpandedKeys([]);
+          treeStateCache.value[id] = {
+            expandedKeys: [],
+            checkedKeys: data || []
+          };
+        }
       }
     } else {
+      if (curRow.value?.id !== undefined) {
+        const id = curRow.value.id;
+        treeStateCache.value[id] = {
+          expandedKeys: treeRef.value.getExpandedKeys() || [],
+          checkedKeys: treeRef.value.getCheckedKeys(false, true) || []
+        };
+      }
       curRow.value = null;
       isShow.value = false;
     }
@@ -254,9 +294,69 @@ export function useRole(treeRef: Ref) {
     const { id, name } = curRow.value;
     // 根据用户 id 调用实际项目中菜单权限修改接口
     console.log(id, treeRef.value.getCheckedKeys());
+
+    treeStateCache.value[id] = {
+      expandedKeys: treeRef.value.getExpandedKeys() || [],
+      checkedKeys: treeRef.value.getCheckedKeys(false, true) || []
+    };
+
     message(`角色名称为${name}的菜单权限修改成功`, {
       type: "success"
     });
+  }
+
+  /** 导出角色列表 */
+  async function exportData() {
+    loading.value = true;
+    const exportParams = {
+      ...toRaw(form),
+      pageSize: -1
+    };
+    const { code, data } = await getRoleList(exportParams);
+    if (code === 0) {
+      const exportList = data.list || [];
+
+      const exportColumns = [
+        { label: "角色编号", prop: "id" },
+        { label: "角色名称", prop: "name" },
+        { label: "角色标识", prop: "code" },
+        { label: "状态", prop: "status" },
+        { label: "备注", prop: "remark" },
+        { label: "创建时间", prop: "createTime" }
+      ];
+
+      const res = exportList.map((item: any) => {
+        const arr = [];
+        exportColumns.forEach(column => {
+          if (column.prop === "status") {
+            arr.push(item[column.prop] === 1 ? "已启用" : "已停用");
+          } else if (column.prop === "createTime") {
+            arr.push(
+              item[column.prop]
+                ? dayjs(item[column.prop]).format("YYYY-MM-DD HH:mm:ss")
+                : ""
+            );
+          } else {
+            arr.push(item[column.prop] ?? "");
+          }
+        });
+        return arr;
+      });
+
+      const titleList = exportColumns.map(column => column.label);
+      res.unshift(titleList);
+
+      const workSheet = utils.aoa_to_sheet(res);
+      const workBook = utils.book_new();
+      utils.book_append_sheet(workBook, workSheet, "角色列表");
+      writeFile(workBook, `角色列表_${dayjs().format("YYYYMMDD")}.xlsx`);
+
+      message("导出成功", { type: "success" });
+    }
+
+    setTimeout(() => {
+      loading.value = false;
+    }, 500);
   }
 
   /** 数据权限 可自行开发 */
@@ -313,6 +413,7 @@ export function useRole(treeRef: Ref) {
     handleMenu,
     handleSave,
     handleDelete,
+    exportData,
     filterMethod,
     transformI18n,
     onQueryChanged,

@@ -17,6 +17,7 @@ import EditPen from "~icons/ep/edit-pen";
 import Refresh from "~icons/ep/refresh";
 import Menu from "~icons/ep/menu";
 import AddFill from "~icons/ri/add-circle-line";
+import Download from "~icons/ri/download-2-line";
 import Close from "~icons/ep/close";
 import Check from "~icons/ep/check";
 
@@ -66,6 +67,7 @@ const {
   handleMenu,
   handleSave,
   handleDelete,
+  exportData,
   filterMethod,
   transformI18n,
   onQueryChanged,
@@ -155,6 +157,9 @@ onMounted(() => {
             @click="openDialog()"
           >
             新增角色
+          </el-button>
+          <el-button :icon="useRenderIcon(Download)" @click="exportData">
+            导出
           </el-button>
         </template>
         <template v-slot="{ size, dynamicColumns }">
