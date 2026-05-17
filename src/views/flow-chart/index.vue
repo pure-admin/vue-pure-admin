@@ -3,7 +3,7 @@ import demoData from "./dataTurbo.json";
 import "@logicflow/core/dist/style/index.css";
 import "@logicflow/extension/lib/style/index.css";
 
-import LogicFlow from "@logicflow/core";
+import _LogicFlow from "@logicflow/core";
 import { ref, unref, onMounted } from "vue";
 import { BpmnNode } from "@/components/ReFlowChart/src/config";
 import { Snapshot, BpmnElement, Menu } from "@logicflow/extension";
@@ -27,6 +27,9 @@ const config = ref({
   }
 });
 const nodeList = BpmnNode;
+
+const LogicFlow = ((_LogicFlow as any).default ??
+  _LogicFlow) as typeof _LogicFlow;
 
 function initLf() {
   // 画布配置
