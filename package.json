@@ -113,9 +113,9 @@
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
-    "@commitlint/cli": "^20.5.3",
-    "@commitlint/config-conventional": "^20.5.3",
-    "@commitlint/types": "^20.5.0",
+    "@commitlint/cli": "^21.0.1",
+    "@commitlint/config-conventional": "^21.0.1",
+    "@commitlint/types": "^21.0.1",
     "@eslint/js": "^10.0.1",
     "@faker-js/faker": "^10.4.0",
     "@iconify/json": "^2.2.474",
@@ -136,7 +136,7 @@
     "@vitejs/plugin-vue-jsx": "^5.1.5",
     "boxen": "^8.0.1",
     "code-inspector-plugin": "^1.5.1",
-    "cssnano": "^7.1.9",
+    "cssnano": "^8.0.1",
     "dagre": "^0.8.5",
     "eslint": "^10.4.0",
     "eslint-config-prettier": "^10.1.8",
@@ -145,14 +145,14 @@
     "eslint-plugin-vue": "^10.9.1",
     "gradient-string": "^3.0.0",
     "husky": "^9.1.7",
-    "lint-staged": "^16.4.0",
+    "lint-staged": "^17.0.5",
     "postcss": "^8.5.14",
     "postcss-html": "^1.8.1",
     "postcss-load-config": "^6.0.1",
     "postcss-scss": "^4.0.9",
     "prettier": "^3.8.3",
     "rimraf": "^6.1.3",
-    "rollup-plugin-visualizer": "^6.0.11",
+    "rollup-plugin-visualizer": "^7.0.1",
     "sass": "^1.99.0",
     "stylelint": "^17.11.1",
     "stylelint-config-recess-order": "^7.7.0",
@@ -175,7 +175,7 @@
     "vue-tsc": "^3.2.9"
   },
   "engines": {
-    "node": "^22.13.0 || >=24.0.0",
+    "node": ">=22.22.1",
     "pnpm": ">=11"
   }
 }
