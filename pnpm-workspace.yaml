@@ -16,6 +16,7 @@ allowedDeprecatedVersions:
   gauge: '*'
   abab: '*'
   glob: '*'
+  ini: '*'
 
 allowBuilds:
   '@parcel/watcher': true
