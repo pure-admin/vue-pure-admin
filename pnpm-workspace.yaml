@@ -2,6 +2,7 @@ shellEmulator: true
 shamefullyHoist: true
 enablePrePostScripts: false
 strictPeerDependencies: false
+minimumReleaseAge: 0
 
 allowedDeprecatedVersions:
   are-we-there-yet: '*'
