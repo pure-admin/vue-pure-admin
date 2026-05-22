@@ -141,10 +141,11 @@ function findRouteByPath(path: string, routes: RouteRecordRaw[]) {
 
 /** 动态路由注册完成后，再添加全屏404（页面不存在）页面，避免刷新动态路由页面时误跳转到404页面 */
 function addPathMatch() {
-  if (!router.hasRoute("pathMatch")) {
+  const routeName = "PageNotFound";
+  if (!router.hasRoute(routeName)) {
     router.addRoute({
       path: "/:pathMatch(.*)*",
-      name: "PageNotFound",
+      name: routeName,
       component: () => import("@/views/error/404.vue"),
       meta: {
         title: "menus.purePageNotFound",
