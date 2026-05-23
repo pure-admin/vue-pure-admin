@@ -15,9 +15,6 @@ const emit = defineEmits<{
   (e: "catData"): void;
 }>();
 
-const controlButton3 = ref();
-const controlButton4 = ref();
-
 const focusIndex = ref<Number>(-1);
 const titleLists = ref([
   {
@@ -87,8 +84,8 @@ const onEnter = key => {
 
 onMounted(() => {
   props.lf.on("history:change", ({ data: { undoAble, redoAble } }) => {
-    unref(titleLists)[3].disabled = unref(controlButton3).disabled = !undoAble;
-    unref(titleLists)[4].disabled = unref(controlButton4).disabled = !redoAble;
+    unref(titleLists)[3].disabled = !undoAble;
+    unref(titleLists)[4].disabled = !redoAble;
   });
 });
 </script>
@@ -106,7 +103,6 @@ onMounted(() => {
         @mouseleave.prevent="focusIndex = -1"
       >
         <button
-          :ref="'controlButton' + key"
           v-tippy="{
             content: item.text
           }"
