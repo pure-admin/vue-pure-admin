@@ -1,3 +1,51 @@
+# 7.0.0 (2026-04-07)
+
+### ✔️ Refactor
+
+- 重构`API`接口响应格式，带来简洁高效的接口设计
+- `stylelint`升级至`v17`版本
+- 在`vue-router`的导航守卫中，使用`return`语句替代即将弃用的`next()`
+- `eslint`升级至`v10`版本
+- 将全局配置文件`platform-config.json`中的`ShowModel`重命名为`TagsStyle`，以更准确地反映其语义
+- 使用`eslint-plugin-better-tailwindcss`插件优化`tailwindcss`类名
+- 使用`vueuse`中的`useInfiniteScroll`函数替换`v3-infinite-loading`库
+- 升级`vite`至`v8`版本，从`Rollup`和`esbuild`转向`Rolldown`和`Oxc`
+- 从`CDN`模式中移除`pinia`和`vue-demi`。最新版`pinia`不再依赖`vue-demi`，但生成的`iife`文件存在问题，等待修复后再将`pinia`加入`CDN`模式
+- 重构全局类型声明，新增`PascalCase`转`kebab-case`的类型映射，使全局注册的组件在`TSX`中支持`kebab-case`写法并获得完整类型提示
+- `typescript`升级至`v6`版本
+
+### 🎫 Feat
+
+- `layout`右上角的操作按钮添加动效
+- `RePureTableBar`与`ReVxeTableBar`组件实现全量文本国际化
+- 刷新`token`接口请求失败后，跳转到登录页面，需重新登录
+- 在`layout`的消息下拉框中，新增“查看更多”和“标为已读”功能
+- 系统配置面板新增全屏水印功能
+- `RePureTableBar`和`ReVxeTableBar`组件新增固定列功能
+
+### 🐞 Bug fixes
+
+- 修复文件上传演示接口失效问题
+- 修复`this.$storage`类型报错
+- 修复`ReDialog`和`ReDrawer`组件在打开时切换路由弹出层未关闭的问题
+- 修复标签页操作示例在切换国际化时报错
+- 锁定`axios`版本至`1.14.0`
+- 修复菜单搜索结果重复显示的问题
+
+### 🍏 Perf
+
+- 升级`vite-plugin-router-warn`至`v2`版本，兼容最新版的`vue-router`
+- 优化系统配置面板
+- 优化主题色选项风格
+- 优化接口处理逻辑
+- 优化国际化图标样式
+- 优化消息通知小红点显示逻辑
+- 动态导入`CDN`插件，避免开发模式下加载多余代码
+- 优化并精简`.husky`文件，提升`commit`提交速度
+- 规范全局自定义指令的`TypeScript`声明，优化`directives.d.ts`文件
+- 精简`types/shims-vue.d.ts`类型文件，移除冗余声明
+- 优化`prettier`配置
+
 # 6.3.0 (2025-12-10)
 
 ### ✔️ Refactor
