@@ -1,0 +1,1 @@
+import{En as e,Hr as t,os as n,ss as r,zr as i}from"./index-DYLbQH3m.js";r();var a=i({name:`ReCol`,props:{value:{type:Number,default:24}},render(){let r=this.$attrs,i=this.value;return t(e,n({xs:i,sm:i,md:i,lg:i,xl:i},r),{default:()=>this.$slots.default()})}});export{a as t};

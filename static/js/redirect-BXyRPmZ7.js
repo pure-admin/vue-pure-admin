@@ -1,0 +1,1 @@
+import{Fi as e,Nr as t,os as n,ri as r,ss as i,tn as a,zr as o}from"./index-DYLbQH3m.js";i();var s=o(n(n({},{name:`Redirect`}),{},{__name:`redirect`,setup(n){let{currentRoute:i,replace:o}=a(),{params:s,query:c}=e(i),{path:l}=s;return o({path:`/`+(Array.isArray(l)?l.join(`/`):l),query:c}),(e,n)=>(r(),t(`div`))}}));export{s as default};

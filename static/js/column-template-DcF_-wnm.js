@@ -1,0 +1,1 @@
+import{Fi as e,fs as t,jr as n,ri as r,si as i,zr as a}from"./index-DYLbQH3m.js";import{n as o}from"./columns-3YRqIO9B.js";var s=a({__name:`index`,setup(t){let{columns:a,tableData:s}=o();return(t,o)=>{let c=i(`pure-table`);return r(),n(c,{data:e(s),columns:e(a)},null,8,[`data`,`columns`])}}}),c=t({default:()=>l}),l=s;export{c as n,l as t};

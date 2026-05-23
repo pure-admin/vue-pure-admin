@@ -1,1 +1,0 @@
-import{t as e}from"./columns-CG5ZCMW1.js";export{e as useColumns};

@@ -1,0 +1,1 @@
+.el-overlay{z-index:2000;background-color:var(--el-overlay-color-lighter);height:100%;position:fixed;top:0;bottom:0;left:0;right:0;overflow:auto}.el-overlay .el-overlay-root{height:0}

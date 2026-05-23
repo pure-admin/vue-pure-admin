@@ -1,1 +1,0 @@
-import{t as e}from"./list-DkWUMMVO.js";export{e as default};

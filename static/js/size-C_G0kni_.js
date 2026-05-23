@@ -1,1 +1,0 @@
-var e=[``,`default`,`small`,`large`];export{e as t};

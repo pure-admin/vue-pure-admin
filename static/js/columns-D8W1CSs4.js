@@ -1,1 +1,0 @@
-import{t as e}from"./columns-C3G17_IJ.js";export{e as useColumns};

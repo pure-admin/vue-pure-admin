@@ -1,1 +1,0 @@
-import{t as e}from"./list-47XC-9zC.js";export{e as list};
