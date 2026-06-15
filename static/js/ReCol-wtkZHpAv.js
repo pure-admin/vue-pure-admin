@@ -1,0 +1,1 @@
+import"./rolldown-runtime-DMcso9tT.js";import{A as e,N as t}from"./vue.runtime.esm-bundler-DIu5y9Tj.js";import{aa as n,oa as r,wn as i}from"./index-DaYJcm4a.js";r();var a=e({name:`ReCol`,props:{value:{type:Number,default:24}},render(){let e=this.$attrs,r=this.value;return t(i,n({xs:r,sm:r,md:r,lg:r,xl:r},e),{default:()=>this.$slots.default()})}});export{a as t};

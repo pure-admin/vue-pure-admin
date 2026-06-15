@@ -1,1 +1,0 @@
-import{Ar as e,Nr as t,ri as n,wi as r}from"./index-DYLbQH3m.js";var i={viewBox:`0 0 24 24`,width:`1em`,height:`1em`};function a(r,a){return n(),t(`svg`,i,[...a[0]||(a[0]=[e(`path`,{fill:`currentColor`,d:`M3 19h18v2H3zM13 5.828V17h-2V5.828L4.929 11.9l-1.414-1.414L12 2l8.485 8.485l-1.414 1.415z`},null,-1)])])}var o=r({name:`ri-upload-line`,render:a});export{o as t};

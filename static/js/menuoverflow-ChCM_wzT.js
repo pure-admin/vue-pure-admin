@@ -1,1 +1,0 @@
-import{Nr as e,os as t,ri as n,ss as r,zr as i}from"./index-DYLbQH3m.js";r();var a=i(t(t({},{name:`MenuOverflow`}),{},{__name:`index`,setup(t){return(t,r)=>(n(),e(`div`,null,`目录、菜单文字超出显示 Tooltip 文字提示`))}}));export{a as default};
