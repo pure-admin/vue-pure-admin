@@ -42,7 +42,12 @@ export function useRenderIcon(icon: any, attrs?: iconType): Component {
       render: () =>
         h("img", {
           src: icon,
-          style: { width: "18px", height: "18px", objectFit: "contain" },
+          style: {
+            width: "18px",
+            height: "18px",
+            minWidth: "18px",
+            objectFit: "contain"
+          },
           ...attrs
         })
     });

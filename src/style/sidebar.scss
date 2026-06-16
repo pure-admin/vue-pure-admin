@@ -29,10 +29,13 @@
 
     svg,
     .svg-raw-icon {
-      display: inline-flex;
-      align-items: center;
       width: 18px;
       height: 18px;
+    }
+
+    .svg-raw-icon {
+      display: inline-flex;
+      align-items: center;
     }
 
     .svg-raw-icon svg path {
