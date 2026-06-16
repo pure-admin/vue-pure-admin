@@ -27,9 +27,16 @@
     margin-right: 5px;
     font-size: 18px;
 
-    svg {
+    svg,
+    .svg-raw-icon {
+      display: inline-flex;
+      align-items: center;
       width: 18px;
       height: 18px;
+    }
+
+    .svg-raw-icon svg path {
+      fill: currentcolor !important;
     }
   }
 
