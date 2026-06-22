@@ -49,7 +49,6 @@ const filteredItems = computed(() => {
         <DynamicScrollerItem
           :item="item"
           :active="active"
-          :size-dependencies="[item.id]"
           :data-index="index"
           :data-active="active"
           :title="`Click to change message ${index}`"

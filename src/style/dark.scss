@@ -132,6 +132,12 @@ html.dark {
           }
         }
       }
+
+      &.is-active {
+        .chrome-tab__bg {
+          color: var(--el-color-primary-light-8) !important;
+        }
+      }
     }
   }
 
