@@ -28,3 +28,4 @@ allowBuilds:
   vue-demi: true
   '@tailwindcss/oxide': false
   vue3-danmaku: false
+  '@logicflow/core': false

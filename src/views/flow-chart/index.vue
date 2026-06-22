@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import demoData from "./dataTurbo.json";
-import "@logicflow/core/dist/style/index.css";
+import "@logicflow/core/lib/style/index.css";
 import "@logicflow/extension/lib/style/index.css";
 
 import _LogicFlow from "@logicflow/core";
