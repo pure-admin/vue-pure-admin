@@ -55,6 +55,7 @@ const nodeDragNode = item => {
 .node-panel {
   position: absolute;
   top: 10px;
+  left: 10px;
   z-index: 101;
   width: 60px;
   padding: 20px 10px;
@@ -64,8 +65,8 @@ const nodeDragNode = item => {
   box-shadow: 0 0 10px 1px rgb(228 224 219);
 }
 
-.node-item {
-  margin-bottom: 20px;
+.node-item:not(:first-child) {
+  margin-top: 20px;
 }
 
 .node-item-icon {
