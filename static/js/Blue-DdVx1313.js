@@ -1,0 +1,7 @@
+import{r as e}from"./rolldown-runtime-DMcso9tT.js";import{A as t,K as n,St as r,Y as i,w as a}from"./vue.runtime.esm-bundler-tJfJiBfC.js";import"./deepChat-BzUUrhzc.js";var o=t({__name:`Blue`,setup(e){let t=r();return n(()=>{t.value.demo={response:e=>({text:`仅演示，如需AI服务，请参考 https://deepchat.dev/docs/connect`})}}),(e,n)=>(i(),a(`deep-chat`,{ref_key:`chatRef`,ref:t,style:{"border-radius":`10px`,border:`unset`,"background-image":`url("https://xiaoxian521.github.io/hyperlink/img/vue-pure-admin/chatai/blue.jpg")`,"background-size":`cover`},messageStyles:{default:{user:{bubble:{backgroundColor:`#2670ff`}},ai:{bubble:{backgroundColor:`#004f97`,color:`white`}}}},submitButtonStyles:{submit:{svg:{styles:{default:{filter:`brightness(0) saturate(100%) invert(60%) sepia(79%) saturate(643%) hue-rotate(185deg) brightness(102%) contrast(100%)`}}}}},textInput:{styles:{container:{backgroundColor:`#004f97`,color:`white`,boxShadow:`unset`}},placeholder:{text:`发送消息`,style:{color:`#d1d1d1`}}},auxiliaryStyle:`
+    ::-webkit-scrollbar-thumb {
+      background-color: #0174db;
+    }
+    ::-webkit-scrollbar-track {
+      background-color: unset;
+    }`,history:[{text:`熬夜都有哪些坏处？`,role:`user`},{text:`熬夜会损害身体健康，导致免疫力下降、精神不振和工作效率降低。`,role:`ai`}],demo:!0,connect:{stream:!0}},null,512))}}),s=e({default:()=>c}),c=o;export{s as n,c as t};
