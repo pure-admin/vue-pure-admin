@@ -89,7 +89,7 @@ export default defineComponent({
   },
   mounted() {
     ElNotification({
-      title: "高级服务",
+      title: "最新公告",
       duration: 0,
       customClass: "fullpage-notification",
       // @ts-expect-error
@@ -114,30 +114,9 @@ export default defineComponent({
             "
             onmouseover="this.style.background='#ecf5ff'; this.style.borderColor='#409eff'; this.style.color='#409eff'"
             onmouseout="this.style.background='#f5f7fa'; this.style.borderColor='#e4e7ed'; this.style.color='#606266'"
-            href='https://pure-admin.cn/pages/service/#max-ts-%E7%89%88%E6%9C%AC'
+            href='https://pure-admin.cn/pages/news/'
           >
-            Max-Ts 版本
-          </a>
-           <a
-            target='_blank'
-            style="
-              display: block;
-              text-align: center;
-              padding: 10px 16px;
-              margin-top: 10px;
-              background: #f5f7fa;
-              color: #606266;
-              border: 1px solid #e4e7ed;
-              border-radius: 6px;
-              text-decoration: none;
-              font-size: 15px;
-              transition: all 0.2s ease;
-            "
-            onmouseover="this.style.background='#ecf5ff'; this.style.borderColor='#409eff'; this.style.color='#409eff'"
-            onmouseout="this.style.background='#f5f7fa'; this.style.borderColor='#e4e7ed'; this.style.color='#606266'"
-            href='https://pure-admin.cn/pages/service/#max-js-%E7%89%88%E6%9C%AC'
-          >
-            Max-Js 版本
+            点我查看最新公告
           </a>
         </div>
       `
@@ -150,8 +129,9 @@ export default defineComponent({
 .fullpage-notification > .el-notification__group > .el-notification__closeBtn {
   top: 15px;
 }
+
 .fullpage-notification > div > h2 {
-  color: red;
   font-size: 18px;
+  color: red;
 }
 </style>
