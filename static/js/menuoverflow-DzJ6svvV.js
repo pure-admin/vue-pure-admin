@@ -1,0 +1,1 @@
+import{A as e,Y as t,w as n}from"./vue.runtime.esm-bundler-tJfJiBfC.js";import{aa as r,oa as i}from"./index-D0zQ-Zgw.js";i();var a=e(r(r({},{name:`MenuOverflow`}),{},{__name:`index`,setup(e){return(e,r)=>(t(),n(`div`,null,`目录、菜单文字超出显示 Tooltip 文字提示`))}}));export{a as default};
