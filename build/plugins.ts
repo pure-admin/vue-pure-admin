@@ -1,13 +1,13 @@
 import vue from "@vitejs/plugin-vue";
-import { pathResolve } from "./utils";
-import { viteBuildInfo } from "./info";
 import svgLoader from "vite-svg-loader";
 import Icons from "unplugin-icons/vite";
 import type { PluginOption } from "vite";
+import { pathResolve } from "./utils.ts";
+import { viteBuildInfo } from "./info.ts";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 import tailwindcss from "@tailwindcss/vite";
-import { configCompressPlugin } from "./compress";
 import removeNoMatch from "vite-plugin-router-warn";
+import { configCompressPlugin } from "./compress.ts";
 import { visualizer } from "rollup-plugin-visualizer";
 import removeConsole from "vite-plugin-remove-console";
 import VueI18nPlugin from "@intlify/unplugin-vue-i18n/vite";
@@ -64,7 +64,7 @@ export async function getPluginsList(
       compiler: "vue3",
       scale: 1
     }),
-    VITE_CDN ? (await import("./cdn")).cdn : null,
+    VITE_CDN ? (await import("./cdn.ts")).cdn : null,
     configCompressPlugin(VITE_COMPRESSION),
     // 线上环境删除console
     removeConsole({ external: ["src/assets/iconfont/iconfont.js"] }),

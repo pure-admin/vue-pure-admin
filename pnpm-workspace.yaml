@@ -20,12 +20,20 @@ allowedDeprecatedVersions:
   ini: '*'
 
 allowBuilds:
-  '@parcel/watcher': true
-  core-js: true
-  es5-ext: true
-  esbuild: true
-  typeit: true
-  vue-demi: true
   '@tailwindcss/oxide': false
-  vue3-danmaku: false
   '@logicflow/core': false
+  '@parcel/watcher': true
+  vue3-danmaku: false
+  node-pty: false
+  vue-demi: true
+  esbuild: true
+  es5-ext: true
+  core-js: true
+  typeit: true
+
+
+
+
+
+
+

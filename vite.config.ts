@@ -1,5 +1,5 @@
-import { getPluginsList } from "./build/plugins";
-import { include, exclude } from "./build/optimize";
+import { getPluginsList } from "./build/plugins.ts";
+import { include, exclude } from "./build/optimize.ts";
 import { type UserConfigExport, type ConfigEnv, loadEnv } from "vite";
 import {
   root,
@@ -7,7 +7,7 @@ import {
   wrapperEnv,
   pathResolve,
   __APP_INFO__
-} from "./build/utils";
+} from "./build/utils.ts";
 
 export default async ({ mode }: ConfigEnv): Promise<UserConfigExport> => {
   const { VITE_CDN, VITE_PORT, VITE_COMPRESSION, VITE_PUBLIC_PATH } =

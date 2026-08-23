@@ -9,7 +9,7 @@ import {
   engines,
   dependencies,
   devDependencies
-} from "../package.json";
+} from "../package.json" with { type: "json" };
 
 /** 启动`node`进程时所在工作目录的绝对路径 */
 const root: string = process.cwd();

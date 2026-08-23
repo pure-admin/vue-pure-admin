@@ -16,6 +16,8 @@
     "sourceMap": true,
     "allowJs": false,
     "resolveJsonModule": true,
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
     "lib": ["ESNext", "DOM"],
     "paths": {
       "@/*": ["./src/*"],
