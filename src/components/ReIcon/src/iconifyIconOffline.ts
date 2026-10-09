@@ -1,4 +1,4 @@
-import { h, defineComponent } from "vue";
+import { h, defineComponent, type PropType } from "vue";
 import { Icon as IconifyIcon, addIcon } from "@iconify/vue/dist/offline";
 
 // Iconify Icon在Vue里本地使用（用于内网环境）
@@ -7,6 +7,7 @@ export default defineComponent({
   components: { IconifyIcon },
   props: {
     icon: {
+      type: [String, Object, Function] as PropType<any>,
       default: null
     }
   },
