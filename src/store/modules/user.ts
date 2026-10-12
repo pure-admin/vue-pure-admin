@@ -93,14 +93,14 @@ export const useUserStore = defineStore("pure-user", {
       });
     },
     /** 前端登出（不调用接口） */
-    logOut() {
+    async logOut() {
       this.username = "";
       this.roles = [];
       this.permissions = [];
       removeToken();
       useMultiTagsStoreHook().handleTags("equal", [...routerArrays]);
+      await router.push("/login");
       resetRouter();
-      router.push("/login");
     },
     /** 刷新`token` */
     async handRefreshToken(data) {

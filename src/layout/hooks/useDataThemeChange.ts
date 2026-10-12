@@ -109,7 +109,7 @@ export function useDataThemeChange() {
   }
 
   /** 清空缓存并返回登录页 */
-  function onReset() {
+  async function onReset() {
     removeToken();
     storageLocal().clear();
     const { Grey, Weak, MultiTagsCache, EpThemeColor, Layout } = getConfig();
@@ -118,8 +118,8 @@ export function useDataThemeChange() {
     useMultiTagsStoreHook().multiTagsCacheChange(MultiTagsCache);
     toggleClass(Grey, "html-grey", document.querySelector("html"));
     toggleClass(Weak, "html-weakness", document.querySelector("html"));
-    router.push("/login");
     useMultiTagsStoreHook().handleTags("equal", [...routerArrays]);
+    await router.push("/login");
     resetRouter();
   }
 
